@@ -59,7 +59,6 @@ html {
   html {
     font-size: 9.411764705882353px;
   }
-
 }
 
 html,
@@ -98,8 +97,6 @@ a:active {
   outline: 0;
 }
 
-
-
 /* ===================================================================
  * # typography & general theme styles
  * 
@@ -134,7 +131,6 @@ h5, .h5, h6, .h6 {
     margin-top: 4rem;
     margin-bottom: 0.8rem;
   }
-
 }
 
 h1, .h1 {
@@ -148,7 +144,6 @@ h1, .h1 {
     font-size: 3.3rem;
     letter-spacing: -.07rem;
   }
-
 }
 
 h2, .h2 {
@@ -195,7 +190,6 @@ p.lead {
   p.lead {
     font-size: 2.2rem;
   }
-
 }
 
 em,
@@ -400,27 +394,6 @@ dd {
 }
 
 /* ------------------------------------------------------------------- 
- * ## responsive video container
- * ------------------------------------------------------------------- */
-.video-container {
-  position: relative;
-  padding-bottom: 56.25%;
-  height: 0;
-  overflow: hidden;
-}
-
-.video-container iframe,
-.video-container object,
-.video-container embed,
-.video-container video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
-
-/* ------------------------------------------------------------------- 
  * ## floated image
  * ------------------------------------------------------------------- */
 img.pull-right {
@@ -528,8 +501,6 @@ form,
   display: none;
 }
 
-
-
 /* =================================================================== 
  * # preloader
  *
@@ -601,8 +572,6 @@ form,
   }
 
 }
-
-
 
 /* ===================================================================
  * # forms 
@@ -789,8 +758,6 @@ select:-webkit-autofill:focus {
   transition: background-color 5000s ease-in-out 0s;
 }
 
-
-
 /* ===================================================================
  * # buttons
  *
@@ -911,8 +878,6 @@ input::-moz-focus-inner {
   padding: 0;
 }
 
-
-
 /* =================================================================== 
  * # additional components
  *
@@ -985,18 +950,6 @@ input::-moz-focus-inner {
   content: counter(definitions, decimal) ". ";
 }
 
-/** 
- * Pull Quotes
- * -----------
- * markup:
- *
- * <aside class="pull-quote">
- *    <blockquote>
- *      <p></p>
- *    </blockquote>
- *  </aside>
- *
- * --------------------------------------------------------------------- */
 .pull-quote {
   position: relative;
   padding: 2.4rem 3.2rem 2.4rem 0px;
@@ -1043,18 +996,6 @@ input::-moz-focus-inner {
   content: none;
 }
 
-/** 
- * Stats Tab
- * ---------
- * markup:
- *
- * <ul class="stats-tabs">
- *    <li><a href="#">[value]<em>[name]</em></a></li>
- *  </ul>
- *
- * Extend this object into your markup.
- *
- * --------------------------------------------------------------------- */
 .stats-tabs {
   padding: 0;
   margin: 3.2rem 0;
@@ -1436,8 +1377,6 @@ input::-moz-focus-inner {
 
 }
 
-
-
 /* ===================================================================
  * # Common and Reusable Styles
  *
@@ -1461,8 +1400,8 @@ input::-moz-focus-inner {
 
 .section-heading {
   font-family: "Roboto", sans-serif;
-  font-weight: 600;
-  font-size: 1.7rem;
+  font-weight: 400;
+  font-size: 3rem;
   line-height: 1.176;
   text-transform: uppercase;
   letter-spacing: .5rem;
@@ -1498,7 +1437,7 @@ input::-moz-focus-inner {
 
 .section-desc {
   font-family: "Frank Ruhl Libre", serif;
-  font-size: 5.4rem;
+  font-size: 2.2rem;
   font-weight: 400;
   line-height: 1.259;
   letter-spacing: -0.05rem;
@@ -1514,6 +1453,12 @@ input::-moz-focus-inner {
   color: #000000;
 }
 
+.item-service__content .item-title
+{
+  text-align: center;
+  text-transform: uppercase;
+}
+
 .ss-dark .section-heading,
 .ss-dark .section-desc {
   color: #ffffff;
@@ -1525,20 +1470,19 @@ input::-moz-focus-inner {
  * ------------------------------------------------------------------- */
 @media screen and (max-width:1200px) {
   .item-title {
-    font-size: 3rem;
+    font-size: 2.4rem;
+    padding-bottom: 1.2rem;
   }
-
 }
 
 @media screen and (max-width:1024px) {
   .heading-block {
-    max-width: 800px;
+    max-width: 900px;
   }
 
   .section-desc {
-    font-size: 4.8rem;
+    font-size: 2.4rem;
   }
-
 }
 
 @media screen and (max-width:800px) {
@@ -1547,7 +1491,7 @@ input::-moz-focus-inner {
   }
 
   .section-heading {
-    font-size: 1.6rem;
+    font-size: 3rem;
     padding-top: 0;
     padding-bottom: 3.2rem;
     text-align: center;
@@ -1559,7 +1503,6 @@ input::-moz-focus-inner {
     left: 50%;
     margin-left: -75px;
   }
-
 }
 
 @media screen and (max-width:600px) {
@@ -1568,23 +1511,20 @@ input::-moz-focus-inner {
   }
 
   .section-desc {
-    font-size: 4rem;
+    font-size: 2.4rem;
   }
-
 }
 
 @media screen and (max-width:400px) {
   .section-desc {
-    font-size: 3.4rem;
+    font-size: 1.8rem;
   }
 
   .item-title {
-    font-size: 2.8rem;
+    font-size: 2.4rem;
+    padding-bottom: 1.2rem;
   }
-
 }
-
-
 
 /* ===================================================================
  * # header 
@@ -1804,7 +1744,6 @@ input::-moz-focus-inner {
   .header-main-nav li {
     margin: 0 1.4rem;
   }
-
 }
 
 @media screen and (max-width:1000px) {
@@ -1819,7 +1758,6 @@ input::-moz-focus-inner {
   .header-nav-wrap .header-social {
     display: none;
   }
-
 }
 
 @media screen and (max-width:800px) {
@@ -1880,14 +1818,12 @@ input::-moz-focus-inner {
   .header-menu-toggle {
     display: block;
   }
-
 }
 
 @media screen and (max-width:600px) {
   .header-logo {
     left: 35px;
   }
-
 }
 
 /* -------------------------------------------------------------------
@@ -1897,10 +1833,7 @@ input::-moz-focus-inner {
   .header-nav-wrap {
     display: block !important;
   }
-
 }
-
-
 
 /* ===================================================================
  * # intro 
@@ -2024,7 +1957,6 @@ input::-moz-focus-inner {
   .intro-text h1 {
     font-size: 7.2rem;
   }
-
 }
 
 @media screen and (max-width:1200px) {
@@ -2039,7 +1971,6 @@ input::-moz-focus-inner {
   .intro-text h1 {
     font-size: 7rem;
   }
-
 }
 
 @media screen and (max-width:1024px) {
@@ -2050,18 +1981,16 @@ input::-moz-focus-inner {
   .intro-text h1 {
     font-size: 6.2rem;
   }
-
 }
 
 @media screen and (max-width:900px) {
   .intro-text h1 {
-    font-size: 6rem;
+    font-size: 4.5rem;
   }
 
   .intro-text br {
     display: none;
   }
-
 }
 
 @media screen and (max-width:800px) {
@@ -2091,12 +2020,11 @@ input::-moz-focus-inner {
   .intro-text h1 {
     font-size: 5.6rem;
   }
-
 }
 
 @media screen and (max-width:700px) {
   .intro-text h1 {
-    font-size: 5rem;
+    font-size: 3.5rem;
   }
 
   .intro-pic {
@@ -2106,7 +2034,6 @@ input::-moz-focus-inner {
   .intro-grid {
     left: 15%;
   }
-
 }
 
 @media screen and (max-width:600px) {
@@ -2139,7 +2066,6 @@ input::-moz-focus-inner {
     font-size: 1.1rem;
     left: 30px;
   }
-
 }
 
 @media screen and (max-width:400px) {
@@ -2148,22 +2074,19 @@ input::-moz-focus-inner {
   }
 
   .intro-text h1 {
-    font-size: 4.5rem;
+    font-size: 3.5rem;
   }
-
 }
 
 @media screen and (max-width:350px) {
   .intro-text h1 {
-    font-size: 4.2rem;
+    font-size: 3rem;
   }
-
 }
 
 
-
 /* ===================================================================
- * # about
+ * # About me
  *
  * ------------------------------------------------------------------- */
 .s-about {
@@ -2190,7 +2113,10 @@ input::-moz-focus-inner {
   columns: 2 360px;
   column-gap: 64px;
 }
-
+.about-me p
+{
+  text-align: justify;
+}
 .about-me__buttons {
   margin-top: 4.8rem;
 }
@@ -2330,7 +2256,10 @@ input::-moz-focus-inner {
   line-height: 1.333;
   margin-top: 0;
 }
-
+.timeline__desc
+{
+  text-align: justify;
+}
 /* ------------------------------------------------------------------- 
  * responsive:
  * about
@@ -2364,7 +2293,12 @@ input::-moz-focus-inner {
   .timeline__header h5 {
     font-size: 1.8rem;
   }
+}
 
+@media screen and (max-width:800px) {
+  .about-me__buttons {
+    margin-top: 1rem;
+  }
 }
 
 @media screen and (max-width:1024px) {
@@ -2387,7 +2321,6 @@ input::-moz-focus-inner {
   .about-experience__timeline .column:last-child {
     padding-left: 16px;
   }
-
 }
 
 @media screen and (max-width:900px) {
@@ -2426,18 +2359,16 @@ input::-moz-focus-inner {
     min-height: 0;
     padding-left: 5.6rem;
   }
-
 }
 
 @media screen and (max-width:800px) {
   .s-about {
-    padding-top: 16rem;
+    padding-top: 10rem;
   }
 
   .s-about .row {
     max-width: 600px;
   }
-
 }
 
 @media screen and (max-width:600px) {
@@ -2466,7 +2397,6 @@ input::-moz-focus-inner {
   .timeline__header h5 {
     font-size: 1.8rem;
   }
-
 }
 
 @media screen and (max-width:400px) {
@@ -2498,21 +2428,23 @@ input::-moz-focus-inner {
 
 }
 
-
-
 /* ===================================================================
- * # services
+ * # Services
  *
  * ------------------------------------------------------------------- */
 .s-services {
-  padding-top: 19.2rem;
-  padding-bottom: 16rem;
+  padding-top: 10rem;
+  padding-bottom: 12rem;
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
   background-image: url(../images/services-bg.jpg);
   color: rgba(255, 255, 255, 0.7);
   position: relative;
+}
+.s-services .section-heading
+{
+  margin-bottom: 2rem;
 }
 
 .s-services .shadow-overlay {
@@ -2553,7 +2485,7 @@ input::-moz-focus-inner {
 
 .services-list {
   max-width: 1240px;
-  margin-top: 8.8rem;
+  margin-top: 4rem;
   counter-reset: ctr;
   position: relative;
 }
@@ -2564,182 +2496,86 @@ input::-moz-focus-inner {
   min-height: 44.8rem;
 }
 
+
+
+
 .services-list .item-service__content {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   padding-top: 3.6rem;
-}
-
-.services-list .item-service__content::before {
-  display: block;
-  content: counter(ctr, decimal-leading-zero) ".";
-  counter-increment: ctr;
-  margin-bottom: 4.8rem;
-  font-family: "Roboto", sans-serif;
-  font-weight: 300;
-  font-size: 8rem;
-  line-height: 1;
-  color: #cf1767;
+  text-align: justify;
 }
 
 /* ------------------------------------------------------------------- 
  * responsive:
  * services
  * ------------------------------------------------------------------- */
-@media screen and (max-width:1400px) {
+ @media screen and (max-width:1400px) {
+  .s-services {
+    padding-top: 6rem;
+    padding-bottom: 4rem;
+  }
+}
+
+ @media screen and (max-width:1400px) {
   .services-list .item-service {
     padding: 0 20px;
+    min-height: 22.4rem;
   }
-
-  .services-list .item-service__content::before {
-    font-size: 7.2rem;
-  }
-
 }
 
 @media screen and (max-width:1200px) {
   .services-list {
     max-width: 900px;
   }
-
-  .services-list .item-service__content::before {
-    font-size: 6.8rem;
-  }
-
 }
 
 @media screen and (max-width:800px) {
-  .s-services {
-    padding-top: 16rem;
-    padding-bottom: 16rem;
-  }
-
   .services-list {
     max-width: 600px;
-    margin-top: 8rem;
+    margin-top: 4rem;
   }
 
   .services-list .item-service {
     padding: 0 16px;
     min-height: 0;
   }
-
-  .services-list .item-service__content::before {
-    font-size: 5.4rem;
-  }
-
 }
 
 @media screen and (max-width:600px) {
   .services-list .item-service {
     padding: 0 10px;
   }
-
 }
 
 @media screen and (max-width:400px) {
   .services-list .item-service {
     padding: 0;
   }
-
-  .services-list .item-service__content::before {
-    font-size: 4.8rem;
-  }
-
 }
-
-
+@media screen and (max-width:400px) {
+  .services-list .item-service__content {
+    padding-top: 1.6rem;
+  }
+}
 
 /* ===================================================================
- * # CTA
- *
- * ------------------------------------------------------------------- */
-.s-cta {
-  padding-top: 13.5rem;
-  padding-bottom: 13.6rem;
-  background-color: #000000;
-  border-top: 1px solid rgba(255, 255, 255, 0.03);
-  font-size: 2.4rem;
-  line-height: 1.833;
-  color: rgba(255, 255, 255, 0.5);
-  text-align: center;
-}
-
-.s-cta a {
-  color: #ffffff;
-}
-
-.s-cta a:hover,
-.s-cta a:focus,
-.s-cta a:active {
-  color: #cf1767;
-}
-
-.s-cta .section-desc {
-  margin-top: 0;
-}
-
-.cta-content {
-  max-width: 800px;
-}
-
-.cta-content .btn {
-  max-width: 600px;
-  background-color: #cf1767;
-  border: 0.2rem solid #cf1767;
-}
-
-.cta-content .btn:hover,
-.cta-content .btn:focus {
-  background-color: #ffffff;
-  border: 0.2rem solid #ffffff;
-  color: #000000;
-}
-
-/* ------------------------------------------------------------------- 
- * responsive:
- * cta
- * ------------------------------------------------------------------- */
-@media screen and (max-width:800px) {
-  .s-cta {
-    font-size: 2.2rem;
-  }
-
-  .cta-content {
-    max-width: 600px;
-  }
-
-}
-
-@media screen and (max-width:600px) {
-  .s-cta {
-    font-size: 2rem;
-  }
-
-}
-
-@media screen and (max-width:600px) {
-  .s-cta {
-    font-size: 1.8rem;
-  }
-
-}
-
-
-
-/* ===================================================================
- * # works
+ * # My Works
  *
  * ------------------------------------------------------------------- */
 .s-works {
-  padding-top: 19.2rem;
+  padding-top: 15rem;
   padding-bottom: 16rem;
   background-color: #ffffff;
+}
+.s-works .section-heading
+{
+  margin-bottom: 2rem;
 }
 
 .masonry-wrap {
   width: 89%;
   max-width: 1400px;
-  margin-top: 11.2rem;
+  margin-top: 9rem;
   margin-right: auto;
   margin-left: auto;
 }
@@ -2914,7 +2750,6 @@ input::-moz-focus-inner {
   .item-folio__cat {
     font-size: 1.5rem;
   }
-
 }
 
 @media screen and (max-width:1024px) {
@@ -2926,7 +2761,6 @@ input::-moz-focus-inner {
   .item-folio {
     padding: 40px;
   }
-
 }
 
 @media screen and (max-width:900px) {
@@ -2938,7 +2772,6 @@ input::-moz-focus-inner {
   .item-folio {
     padding: 32px;
   }
-
 }
 
 @media screen and (max-width:800px) {
@@ -2978,7 +2811,6 @@ input::-moz-focus-inner {
   .item-folio__cat {
     font-size: 1.7rem;
   }
-
 }
 
 @media screen and (max-width:600px) {
@@ -3007,14 +2839,12 @@ input::-moz-focus-inner {
   .item-folio__cat {
     font-size: 1.5rem;
   }
-
 }
 
 @media screen and (max-width:500px) {
   .masonry__brick {
     margin-bottom: 3.6rem;
   }
-
 }
 
 @media screen and (max-width:400px) {
@@ -3022,254 +2852,125 @@ input::-moz-focus-inner {
     padding: 0;
     margin-bottom: 3.2rem;
   }
-
 }
-
-
 
 /* ===================================================================
- * # testimonials
+ * # Hobbies
  *
  * ------------------------------------------------------------------- */
-.s-testimonials {
-  padding-top: 18.4rem;
-  padding-bottom: 16rem;
-  background-color: #efefef;
+ .hobbies {
+  padding-top: 12rem;
+  padding-bottom: 30rem;
+  background-color: #ffffff;
+}
+.hobbies .section-heading {
+  margin-bottom: 2rem;
 }
 
-.testimonials {
+.hobbies-cards {
   position: relative;
+  left: 50%;
+  top: 10%;
+  transform: translate(-50%, 10%);
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-.testimonials p {
-  font-family: "Roboto", sans-serif;
-  font-weight: 400;
-  font-size: 4rem;
-  line-height: 1.8;
-  color: #000000;
-}
-
-.testimonials__slider {
+.card-item {
   position: relative;
-}
-
-.testimonials__slider .slick-slide {
-  outline: none;
-}
-
-.testimonials__slider .slick-dots {
-  display: block;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  position: absolute;
-  bottom: 3.6rem;
-  right: 4rem;
-}
-
-.testimonials__slider .slick-dots li {
-  display: inline-block;
-  width: 27px;
-  height: 27px;
-  margin: 0;
-  padding: 9px;
-  cursor: pointer;
-}
-
-.testimonials__slider .slick-dots li button {
-  display: block;
-  width: 10px;
-  height: 10px;
-  line-height: 10px;
-  border-radius: 50%;
-  background: rgba(0, 0, 0, 0.4);
+  width: 350px;
+  height: 350px;
+  color: #333;
   border: none;
-  padding: 0;
-  margin: 0;
-  cursor: pointer;
-  font: 0/0 a;
-  text-shadow: none;
-  color: transparent;
+  border-radius: 10px;
+  margin: 20px;
+  background-color: #fff;
+  transition: background-color 0.5s ease, color 0.1s, linear 0.6s;
+  margin-top: 0px;
+  -webkit-box-shadow: 0px 0px 16px -3px rgba(0,0,0,0.41);
+  -moz-box-shadow: 0px 0px 16px -3px rgba(0,0,0,0.41);
+  box-shadow: 0px 0px 16px -3px rgba(0,0,0,0.41);
 }
 
-.testimonials__slider .slick-dots li button:hover,
-.testimonials__slider .slick-dots li button:focus {
-  outline: none;
+.card-item:hover {
+  color: #333;
+  background-color: rgba(207,23,103,0.7);
+  transition: background-color 0.5s ease, color 0.1s, linear 0.6s;
+  margin-top: -14px;
 }
 
-.testimonials__slider .slick-dots li.slick-active button,
-.testimonials__slider .slick-dots li:hover button {
-  background: #cf1767;
+.card-item a {
+  color: #333;
 }
 
-.testimonials__slide {
-  position: relative;
-}
-
-.testimonials__info {
-  height: 7.2rem;
-  margin-top: 8rem;
-  padding-left: 10rem;
-  position: relative;
-}
-
-.testimonials__avatar {
-  width: 7.2rem;
-  height: 7.2rem;
-  border-radius: 100%;
-  outline: none;
+.card-inner {
+  width: 100%;
+  padding: 5%;
+  text-align: center;
   position: absolute;
-  top: 0;
-  left: 0;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
 }
 
-.testimonials__cite {
-  display: block;
+.card-inner h2 {
+  margin-top: 2rem;
+  font-size: 32px;
+  font-weight: 300;
 }
 
-.testimonials__cite strong,
-.testimonials__cite span {
-  font-family: "Roboto", sans-serif;
-  font-style: normal;
+.card-inner:hover h2 {
+  color:#fff;
 }
 
-.testimonials__cite strong {
-  font-size: 2.4rem;
-  line-height: 1.5;
+.card-inner span {
+  font-size: 14px;
+  font-weight: 300;
 }
 
-.testimonials__cite span {
-  display: block;
-  font-size: 1.8rem;
-  line-height: 1.333;
-  color: rgba(0, 0, 0, 0.7);
+.card-inner:hover span {
+  color:#fff;
+}
+.card-inner:hover .hobbies-icons path
+{
+    fill: white;
+}
+.card-inner path
+{
+    transition: fill .3s ease;
 }
 
 /* ------------------------------------------------------------------- 
- * responsive:
- * testimonials
- * ------------------------------------------------------------------- */
+* responsive:
+* Hobbies
+* ------------------------------------------------------------------- */
 @media screen and (max-width:1400px) {
-  .testimonials p {
-    font-size: 3.8rem;
+  .hobbies {
+    padding-top: 8rem;
   }
-
 }
 
-@media screen and (max-width:1200px) {
-  .testimonials {
-    max-width: 1000px;
-  }
-
-  .testimonials p {
-    font-size: 3.6rem;
-  }
-
-  .testimonials__info {
-    height: 6.8rem;
-    padding-left: 9.4rem;
-  }
-
-  .testimonials__avatar {
-    width: 6.8rem;
-    height: 6.8rem;
-  }
-
-  .testimonials__cite strong {
-    font-size: 2.2rem;
-  }
-
-  .testimonials__cite span {
-    font-size: 1.7rem;
-  }
-
-}
-
-@media screen and (max-width:1000px) {
-  .testimonials {
-    max-width: 800px;
-  }
-
-  .testimonials p {
-    font-size: 3.2rem;
-  }
-
-  .testimonials__cite strong {
-    font-size: 2rem;
-  }
-
-  .testimonials__cite span {
-    font-size: 1.6rem;
-  }
-
-}
-
-@media screen and (max-width:900px) {
-  .testimonials p {
-    font-size: 3rem;
-  }
-
-}
 
 @media screen and (max-width:800px) {
-  .s-testimonials {
-    padding-top: 16rem;
-    text-align: center;
+  .hobbies-cards {
+    transform: translate(-50%, 2%);
   }
-
-  .testimonials p {
-    font-size: 2.8rem;
-  }
-
-  .testimonials__slider .slick-dots {
-    margin-top: 4rem;
-    position: static;
-  }
-
-  .testimonials__info {
-    display: inline-block;
-    height: 6.4rem;
-    padding-left: 9rem;
-  }
-
-  .testimonials__avatar {
-    width: 6.4rem;
-    height: 6.4rem;
-  }
-
-  .testimonials__cite strong {
-    font-size: 1.8rem;
-  }
-
-  .testimonials__cite span {
-    font-size: 1.6rem;
-  }
-
 }
 
 @media screen and (max-width:600px) {
-  .s-testimonials {
-    padding-top: 13.6rem;
-    padding-bottom: 13.6rem;
+  .card-item {
+    width: 100%;
+    height: auto;
   }
-
-  .testimonials p {
-    font-size: 2.6rem;
-  }
-
 }
 
-@media screen and (max-width:400px) {
-  .testimonials p {
-    font-size: 2.4rem;
-  }
-
-}
 
 
 
 /* ===================================================================
- * # contact
+ * # Contacts
  *
  * ------------------------------------------------------------------- */
 .s-contact {
@@ -3358,7 +3059,7 @@ input::-moz-focus-inner {
 
 /* ------------------------------------------------------------------- 
 * responsive:
-* contact
+* contacts
 * ------------------------------------------------------------------- */
 @media screen and (max-width:1300px) {
   .contact-email {
@@ -3372,7 +3073,6 @@ input::-moz-focus-inner {
   .contact-infos h4 {
     font-size: 2rem;
   }
-
 }
 
 @media screen and (max-width:1200px) {
@@ -3383,7 +3083,6 @@ input::-moz-focus-inner {
   .contact-infos {
     margin-top: 9.6rem;
   }
-
 }
 
 @media screen and (max-width:1024px) {
@@ -3398,7 +3097,6 @@ input::-moz-focus-inner {
   .contact-infos h4 {
     font-size: 1.8rem;
   }
-
 }
 
 @media screen and (max-width:800px) {
@@ -3413,7 +3111,6 @@ input::-moz-focus-inner {
   .contact-infos {
     font-size: 3.6rem;
   }
-
 }
 
 @media screen and (max-width:600px) {
@@ -3424,20 +3121,16 @@ input::-moz-focus-inner {
   .contact-social ul li::before {
     display: none;
   }
-
 }
 
 @media screen and (max-width:400px) {
   .contact-infos {
     font-size: 3rem;
   }
-
 }
 
-
-
 /* ===================================================================
- * # footer
+ * # Footer
  *
  * ------------------------------------------------------------------- */
 footer {
@@ -3561,7 +3254,6 @@ footer a:hover {
   .ss-go-top {
     right: 3rem;
   }
-
 }
 
 @media screen and (max-width:900px) {
@@ -3573,7 +3265,6 @@ footer a:hover {
   .ss-go-top::after {
     display: none;
   }
-
 }
 
 @media screen and (max-width:600px) {
@@ -3595,17 +3286,13 @@ footer a:hover {
     right: 50%;
     margin-right: -30px;
   }
-
 }
 
 @media screen and (max-width:400px) {
   .ss-copyright span {
     font-size: 13px;
   }
-
 }
-
-
 
 /* ===================================================================
  * # IE10/IE11 Specific
