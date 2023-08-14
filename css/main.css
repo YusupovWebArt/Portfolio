@@ -186,8 +186,9 @@ p.lead {
   color: #000000;
 }
 
-@media screen and (max-width:1200px) {
+@media screen and (max-width:1440px) {
   p.lead {
+    text-align: center;
     font-size: 2.2rem;
   }
 }
