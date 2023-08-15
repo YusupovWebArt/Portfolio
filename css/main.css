@@ -2060,7 +2060,7 @@ input::-moz-focus-inner {
   }
 
   .intro-text h1 {
-    font-size: 4.8rem;
+    font-size: 3.5rem;
   }
 
   .intro-scroll {
@@ -2073,10 +2073,6 @@ input::-moz-focus-inner {
   .s-intro {
     min-height: 656px;
   }
-
-  .intro-text h1 {
-    font-size: 3.5rem;
-  }
 }
 
 @media screen and (max-width:350px) {
@@ -2084,7 +2080,6 @@ input::-moz-focus-inner {
     font-size: 3rem;
   }
 }
-
 
 /* ===================================================================
  * # About me

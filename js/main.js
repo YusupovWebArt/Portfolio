@@ -286,3 +286,9 @@
     })();
 
 })(jQuery);
+
+   /* Current Year
+    * ------------------------------------------------------ */
+    const currentYear = new Date().getFullYear();
+    const yearElement = document.getElementById('currentYear');
+    yearElement.textContent = `${currentYear}`;
