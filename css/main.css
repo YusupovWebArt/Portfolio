@@ -1995,13 +1995,14 @@ input::-moz-focus-inner {
   .intro-content {
     max-width: 1000px;
   }
-
-  .intro-text h3 {
-    font-size: 2rem;
-  }
-
   .intro-text h1 {
     font-size: 7rem;
+  }
+  .intro-text h2 {
+    font-size: 2.4rem;
+  }
+  .intro-text h3 {
+    font-size: 2rem;
   }
 }
 
@@ -2663,8 +2664,8 @@ input::-moz-focus-inner {
 }
 @media screen and (max-width: 600px) {
   .tab-content {
-    position: relative;
-    top: 0;
+    position: auto;
+    top: auto;
   }
 }
 .tab-content-wrapper {
