@@ -2587,7 +2587,7 @@ input::-moz-focus-inner {
 .s-works {
   padding-top: 15rem;
   padding-bottom: 16rem;
-  background-color: #ffffff;
+  background-color: #f1f3f4;
 }
 .s-works .section-heading {
   margin-bottom: 2rem;
@@ -2734,6 +2734,10 @@ input::-moz-focus-inner {
 
 .gallery-items button {
   display: none;
+}
+.pswp__ui--fit .pswp__caption,
+.pswp__ui--fit .pswp__top-bar {
+  background-color: rgba(0, 0, 0, 0.7) !important;
 }
 .pswp__caption__center button {
   display: block;
