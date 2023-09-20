@@ -570,25 +570,26 @@
 
    /* Initialize
     * ------------------------------------------------------ */
-    (function clInit() {
+   (function clInit() {
 
-        ssPreloader();
-        ssMenuOnScrolldown();
-        ssMobileMenu();
-        ssWaypoints();
-        ssMasonryFolio();
-        ssPhotoswipe();
-        ssSlickSlider();
-        ssSmoothScroll();
-        ssAlertBoxes();
-        ssAOS();
+    ssPreloader();
+    ssMenuOnScrolldown();
+    ssMobileMenu();
+    ssWaypoints();
+    ssMasonryFolio();
+    ssPhotoswipe();
+    ssSlickSlider();
+    ssSmoothScroll();
+    ssAlertBoxes();
+    ssAOS();
 
-    })();
+})();
 
 })(jQuery);
 
-   /* Current Year
-    * ------------------------------------------------------ */
-    const currentYear = new Date().getFullYear();
-    const yearElement = document.getElementById('currentYear');
-    yearElement.textContent = `© Copyright WebArt ${currentYear}`;
+/* Current Year
+* ------------------------------------------------------ */
+const currentYear = new Date().getFullYear();
+const yearElement = document.getElementById('currentYear');
+yearElement.textContent = `© Copyright WebArt ${currentYear}`;
+

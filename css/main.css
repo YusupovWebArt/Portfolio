@@ -2715,9 +2715,7 @@ input::-moz-focus-inner {
   box-sizing: border-box;
   padding: 10px;
 }
-.gallery-items form {
-  display: none;
-}
+
 @media (max-width: 1000px) {
   .gallery-items {
     column-count: 3;
@@ -2733,12 +2731,16 @@ input::-moz-focus-inner {
     column-count: 1;
   }
 }
-.pswp__caption__center input {
+
+.gallery-items button {
+  display: none;
+}
+.pswp__caption__center button {
   display: block;
   cursor: pointer;
   background-color: #c3c3c3;
   border: none;
-  margin: 0 auto;
+  margin: 10px auto 30px auto;
 }
 
 /* ===================================================================
