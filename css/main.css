@@ -1921,16 +1921,6 @@ input::-moz-focus-inner {
   position: static;
   z-index: 1;
 }
-
-.intro-text h3 {
-  font-family: 'Roboto', sans-serif;
-  font-size: 2.4rem;
-  font-weight: 500;
-  line-height: 1.333;
-  color: #cf1767;
-  margin-top: 0;
-}
-
 .intro-text h1 {
   font-size: 7.8rem;
   font-weight: 500;
@@ -1940,10 +1930,18 @@ input::-moz-focus-inner {
 }
 .intro-text h2 {
   font-family: 'Roboto', sans-serif;
-  font-size: 3.4rem;
+  font-size: 2.4rem;
   font-weight: 500;
   line-height: 1.333;
   color: #ffffff;
+  margin-top: 0;
+}
+.intro-text h3 {
+  font-family: 'Roboto', sans-serif;
+  font-size: 2.4rem;
+  font-weight: 500;
+  line-height: 1.333;
+  color: #cf1767;
   margin-top: 0;
 }
 
@@ -1999,7 +1997,7 @@ input::-moz-focus-inner {
     font-size: 7rem;
   }
   .intro-text h2 {
-    font-size: 2.4rem;
+    font-size: 1.4rem;
   }
   .intro-text h3 {
     font-size: 2rem;
@@ -2686,9 +2684,71 @@ input::-moz-focus-inner {
 #tab3:checked ~ .tab-content-wrapper #tab-content-3,
 #tab4:checked ~ .tab-content-wrapper #tab-content-4,
 #tab5:checked ~ .tab-content-wrapper #tab-content-5,
-#tab5:checked ~ .tab-content-wrapper #tab-content-6 {
+#tab6:checked ~ .tab-content-wrapper #tab-content-6 {
   position: relative;
   top: 0px;
+}
+
+.load-more-container {
+  background: #fff;
+  width: 500px;
+  min-height: 500px;
+  margin: 20px auto;
+  position: relative;
+}
+.load-more-container ul {
+  list-style-type: none;
+  padding: 0;
+}
+.load-more-container ul:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+.load-more-container ul li {
+  width: calc(25% - 10px);
+  margin: 10px 5px 0;
+  height: 100px;
+  background: #446cb3;
+  color: #fff;
+  float: left;
+  border-radius: 2px;
+}
+.load-more-container ul li:nth-child(1n + 5) {
+  max-height: 0;
+  opacity: 0;
+  transition: 0.1s ease-in;
+}
+.load-more-container .load-more-btn {
+  width: 150px;
+  line-height: 40px;
+  border-radius: 2px;
+  margin: 0 auto;
+  display: block;
+  background: #219150;
+  color: #fff;
+  cursor: pointer;
+  text-align: center;
+}
+.load-more-container .load-more-btn:hover {
+  background: green;
+}
+.load-more-container .load-more-btn .loaded {
+  display: none;
+}
+.load-more-container #load-more {
+  display: none;
+}
+.load-more-container #load-more:checked ~ ul li:nth-child(1n + 5) {
+  max-height: 999px;
+  opacity: 1;
+  transition: 0.2s ease-in;
+}
+.load-more-container #load-more:checked ~ .load-more-btn .loaded {
+  display: block;
+}
+.load-more-container #load-more:checked ~ .load-more-btn .unloaded {
+  display: none;
 }
 
 /* ----------------------------------------------------------------------------------------------------------GALLERY PORTFOLIO*/
