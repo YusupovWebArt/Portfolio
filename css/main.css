@@ -2766,8 +2766,8 @@ input::-moz-focus-inner {
 }
 .gallery-items > a > img {
   display: block;
-  width: 100%;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+  width: 100%;
 }
 
 .gallery-items > a > img + div {
