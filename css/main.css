@@ -2758,6 +2758,7 @@ input::-moz-focus-inner {
   column-count: 5;
   column-gap: 5px;
 }
+
 .gallery-items > a {
   display: block;
   position: relative;
@@ -2768,6 +2769,7 @@ input::-moz-focus-inner {
   width: 100%;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
 }
+
 .gallery-items > a > img + div {
   position: absolute;
   z-index: 2;
