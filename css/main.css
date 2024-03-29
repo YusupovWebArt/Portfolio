@@ -2523,6 +2523,10 @@ input::-moz-focus-inner {
   text-align: justify;
 }
 
+#services .learn-process {
+  color: #bebebe;
+}
+
 /* ------------------------------------------------------------------- 
  * responsive:
  * services
