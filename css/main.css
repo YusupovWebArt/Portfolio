@@ -3006,6 +3006,12 @@ footer a:hover {
 #contact .section-desc {
   color: rgba(255, 255, 255, 0.35);
 }
+#contact .about-me__buttons a {
+  box-shadow: 5px 5px 30px #cf1767;
+}
+#contact .about-me__buttons a:hover {
+  box-shadow: none !important;
+}
 
 /* ------------------------------------------------------------------- 
  * ## copyright
