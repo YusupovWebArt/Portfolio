@@ -3191,7 +3191,7 @@ html[data-useragent*='rv:11.0'] .ss-go-top::after {
   cursor: pointer;
   font-weight: 700;
   padding: 1.5rem;
-  border-bottom-radius: 10px;
+  border-radius: 10px;
   text-transform: uppercase;
 }
 .last-accordion-item {
