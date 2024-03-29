@@ -593,3 +593,8 @@ const currentYear = new Date().getFullYear();
 const yearElement = document.getElementById('currentYear');
 yearElement.textContent = `© Copyright WebArt ${currentYear}`;
 
+/* Accordion
+* ------------------------------------------------------ */
+$(".accordion").on("click", ".accordion-header", function() {
+    $(this).toggleClass("active").next().slideToggle();
+});
