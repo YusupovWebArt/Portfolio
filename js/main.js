@@ -598,3 +598,26 @@ yearElement.textContent = `© Copyright WebArt ${currentYear}`;
 $(".accordion").on("click", ".accordion-header", function() {
     $(this).toggleClass("active").next().slideToggle();
 });
+
+/* Mobile Slider
+* ------------------------------------------------------ */
+
+function nextSlide(carouselId) {
+    var carousel = document.getElementById(carouselId);
+    var slides = carousel.querySelectorAll('img');
+    var activeIndex = Array.from(slides).findIndex(slide => slide.classList.contains('active'));
+    var nextIndex = (activeIndex + 1) % slides.length;
+
+    slides[activeIndex].classList.remove('active');
+    slides[nextIndex].classList.add('active');
+  }
+
+  function prevSlide(carouselId) {
+    var carousel = document.getElementById(carouselId);
+    var slides = carousel.querySelectorAll('img');
+    var activeIndex = Array.from(slides).findIndex(slide => slide.classList.contains('active'));
+    var prevIndex = (activeIndex - 1 + slides.length) % slides.length;
+
+    slides[activeIndex].classList.remove('active');
+    slides[prevIndex].classList.add('active');
+  }

@@ -3228,3 +3228,78 @@ html[data-useragent*='rv:11.0'] .ss-go-top::after {
 .active.accordion-header::before {
   background-color: #cf1767;
 }
+
+/* ===================================================================
+ * # MYWORKS MOBILE SLIDER
+ *
+ * ------------------------------------------------------------------- */
+
+.mywork-mobile-slider {
+  display: none;
+}
+
+.mobile-menu-link {
+  display: none !important;
+}
+
+@media screen and (max-width: 768px) {
+  .mywork-desktop {
+    display: none;
+  }
+  .mywork-mobile-slider {
+    display: block;
+  }
+  .mobile-menu-link {
+    display: block !important;
+  }
+  .desktop-menu-link {
+    display: none !important;
+  }
+}
+
+/* ------------------------------------------------------------------- */
+
+.heading-slider {
+  text-align: center;
+  background: #cf1767;
+  margin: 0 10%;
+}
+.heading-slider h2 {
+  color: #fff;
+}
+
+/*---------------*/
+
+.slider {
+  width: 80%;
+  margin: 0 auto;
+}
+.carousel {
+  position: relative;
+}
+.carousel img {
+  width: 100%;
+  display: none;
+}
+.carousel img.active {
+  display: block;
+}
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  padding: 10px;
+  border: none;
+  outline: none;
+  z-index: 1;
+}
+.prev {
+  left: 0;
+}
+.next {
+  right: 0;
+}
