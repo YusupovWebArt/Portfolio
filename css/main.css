@@ -2637,7 +2637,7 @@ input::-moz-focus-inner {
     width: 20%;
   }
 }
-/*
+
 @media screen and (max-width: 600px) {
   .tabs label {
     width: 100%;
@@ -2648,9 +2648,9 @@ input::-moz-focus-inner {
 }
 @media screen and (max-width: 600px) {
   .tabs {
-    margin: 0;
+    margin: 0 10px;
   }
-}*/
+}
 #tab1:checked + label,
 #tab2:checked + label,
 #tab3:checked + label,
