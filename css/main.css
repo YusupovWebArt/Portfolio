@@ -2323,6 +2323,9 @@ input::-moz-focus-inner {
   .about-me__buttons {
     margin-top: 1rem;
   }
+  .about-experience {
+    margin-bottom: 5rem !important;
+  }
 }
 
 @media screen and (max-width: 1024px) {
@@ -2388,6 +2391,7 @@ input::-moz-focus-inner {
 @media screen and (max-width: 800px) {
   .s-about {
     padding-top: 10rem;
+    padding-bottom: 10rem;
   }
 
   .s-about .row {
@@ -2563,6 +2567,13 @@ input::-moz-focus-inner {
   }
 }
 
+@media screen and (max-width: 768px) {
+  .s-services {
+    padding-top: 10rem;
+    padding-bottom: 10rem;
+  }
+}
+
 @media screen and (max-width: 600px) {
   .services-list .item-service {
     padding: 0 10px;
@@ -2597,7 +2608,10 @@ input::-moz-focus-inner {
 
 @media screen and (max-width: 800px) {
   .s-works {
-    padding-top: 16rem;
+    padding-top: 10rem;
+  }
+  #mobile-works .section-desc {
+    margin-bottom: 0px;
   }
 }
 
