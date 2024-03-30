@@ -2637,6 +2637,7 @@ input::-moz-focus-inner {
     width: 20%;
   }
 }
+/*
 @media screen and (max-width: 600px) {
   .tabs label {
     width: 100%;
@@ -2649,7 +2650,7 @@ input::-moz-focus-inner {
   .tabs {
     margin: 0;
   }
-}
+}*/
 #tab1:checked + label,
 #tab2:checked + label,
 #tab3:checked + label,
@@ -2663,9 +2664,10 @@ input::-moz-focus-inner {
   position: absolute;
   top: -9999px;
 }
+
 @media screen and (max-width: 600px) {
   .tab-content {
-    position: auto;
+    position: relative;
     top: auto;
   }
 }
@@ -2691,7 +2693,7 @@ input::-moz-focus-inner {
   position: relative;
   top: 0px;
 }
-
+/* ----------------------------------------------------------------------------------------------------------LOAD MORE TAB*/
 .load-more-container {
   background: #fff;
   width: 500px;
@@ -2742,6 +2744,7 @@ input::-moz-focus-inner {
 .load-more-container #load-more {
   display: none;
 }
+
 .load-more-container #load-more:checked ~ ul li:nth-child(1n + 5) {
   max-height: 999px;
   opacity: 1;
@@ -2793,6 +2796,10 @@ input::-moz-focus-inner {
 @media (max-width: 1000px) {
   .gallery-items {
     column-count: 3;
+    width: 100%;
+    height: auto;
+  }
+  .gallery-items > a > img {
     width: 100%;
     height: auto;
   }
@@ -2964,7 +2971,11 @@ input::-moz-focus-inner {
   }
 
   .contact-infos {
-    font-size: 3.6rem;
+    font-size: 2.6rem;
+    text-align: center;
+  }
+  .contact-social ul {
+    justify-content: center;
   }
 }
 
@@ -2980,7 +2991,7 @@ input::-moz-focus-inner {
 
 @media screen and (max-width: 400px) {
   .contact-infos {
-    font-size: 3rem;
+    font-size: 2rem;
   }
 }
 
@@ -3220,4 +3231,33 @@ html[data-useragent*='rv:11.0'] .ss-go-top::after {
 
 .active.accordion-header::before {
   background-color: #cf1767;
+}
+
+/* ===================================================================
+ * # LOAD MORE
+ *
+ * ------------------------------------------------------------------- */
+
+#loadMore {
+  width: 200px;
+  color: #fff;
+  display: block;
+  text-align: center;
+  margin: 20px auto;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid transparent;
+  background-color: blue;
+  transition: 0.3s;
+}
+#loadMore:hover {
+  color: blue;
+  background-color: #fff;
+  border: 1px solid blue;
+  text-decoration: none;
+}
+.noContent {
+  color: #000 !important;
+  background-color: transparent !important;
+  pointer-events: none;
 }
