@@ -3320,3 +3320,13 @@ html[data-useragent*='rv:11.0'] .ss-go-top::after {
 .next {
   right: 0;
 }
+
+@media screen and (max-width: 768px) {
+  #mobile-works .btn,
+  #mobile-works button,
+  #mobile-works input[type='submit'],
+  #mobile-works input[type='reset'],
+  #mobile-works input[type='button'] {
+    line-height: 0rem;
+  }
+}
