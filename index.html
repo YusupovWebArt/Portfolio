@@ -1,343 +1,524 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+
     <title>Webart - Artur Yusupov</title>
-    <meta
-      name="description"
-      content="This Portfolio Website describes my experience, skills and my works."
+    <meta content="" name="description" />
+    <meta content="" name="keywords" />
+
+    <!-- Favicons -->
+    <link href="assets/img/favicon.ico" rel="icon" />
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
+
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+      rel="stylesheet"
     />
-    <meta name="author" content="Artur Yusupov" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="css/base.css" />
-    <link rel="stylesheet" href="css/vendor.css" />
-    <link rel="stylesheet" href="css/main.css" />
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
-    <link rel="manifest" href="site.webmanifest" />
+
+    <!-- Vendor CSS Files -->
+    <link
+      href="assets/vendor/bootstrap/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="assets/vendor/bootstrap-icons/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet" />
+    <link
+      href="assets/vendor/glightbox/css/glightbox.min.css"
+      rel="stylesheet"
+    />
+    <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet" />
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+
+    <!-- Template Main CSS File -->
+    <link href="assets/css/style.css" rel="stylesheet" />
   </head>
 
-  <body id="top">
-    <div id="preloader">
-      <div id="loader"></div>
-    </div>
+  <body>
+    <!-- ======= Header ======= -->
+    <header id="header">
+      <div class="container">
+        <!-- <a href="index.html" class="mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a> -->
 
-    <header class="s-header">
-      <div class="header-logo">
-        <a class="site-logo" href="index.html">
-          <img src="images/logo.png" alt="Homepage" />
-        </a>
+        <h1>Artur Yusupov</h1>
+
+        <h2>FRONT-END DEVELOPER</h2>
+        <h2>
+          <span class="attention-underline">Wordpress</span>,
+          <span class="attention-underline">HTML/CSS developer</span>,
+          <span class="attention-underline">SEO</span>
+        </h2>
+
+        <nav id="navbar" class="navbar">
+          <ul>
+            <li><a class="nav-link active" href="#header">Home</a></li>
+            <li><a class="nav-link" href="#about">About me</a></li>
+            <li><a class="nav-link" href="#resume">Education &#38; Work</a></li>
+            <li><a class="nav-link" href="#skills">Skills</a></li>
+            <li><a class="nav-link" href="#portfolio">Portfolio</a></li>
+            <li><a class="nav-link" href="#contact">Contact</a></li>
+          </ul>
+          <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav>
+        <!-- .navbar -->
+
+        <div class="button-container">
+          <a href="resume/Artur-Yusupov-resume.pdf" download class="button"
+            >Download Resume</a
+          >
+        </div>
       </div>
-      <nav class="header-nav-wrap">
-        <ul class="header-main-nav">
-          <li class="current">
-            <a class="smoothscroll" href="#intro" title="intro">Intro</a>
-          </li>
-          <li>
-            <a class="smoothscroll" href="#about" title="about"
-              >Work/Education</a
-            >
-          </li>
-          <li>
-            <a class="smoothscroll" href="#services" title="services"
-              >Skills
-            </a>
-          </li>
-          <li class="desktop-menu-link">
-            <a class="smoothscroll" href="#works" title="works">My works</a>
-          </li>
-          <li class="mobile-menu-link">
-            <a class="smoothscroll" href="#mobile-works" title="works"
-              >My works</a
-            >
-          </li>
-          <li>
-            <a class="smoothscroll" href="#contact" title="contact us"
-              >Contacts</a
-            >
-          </li>
-        </ul>
-        <ul class="header-social">
-          <li>
-            <a target="_blank" href="https://www.linkedin.com/in/artur-iusupov/"
-              ><i class="fab fa-linkedin" aria-hidden="true"></i
-            ></a>
-          </li>
-          <li>
-            <a
-              target="_blank"
-              href="https://www.facebook.com/profile.php?id=100011055840439"
-              ><i class="fab fa-facebook-f" aria-hidden="true"></i
-            ></a>
-          </li>
-          <li>
-            <a target="_blank" href="https://t.me/develop_create"
-              ><i class="fab fa-telegram" aria-hidden="true"></i
-            ></a>
-          </li>
-          <li>
-            <a target="_blank" href="tel:+34642413967"
-              ><i class="fab fa-whatsapp" aria-hidden="true"></i
-            ></a>
-          </li>
-          <li>
-            <a target="_blank" href="https://www.instagram.com/yusupov.webart/"
-              ><i class="fab fa-instagram" aria-hidden="true"></i
-            ></a>
-          </li>
-        </ul>
-      </nav>
-      <a class="header-menu-toggle" href="#"><span>Menu</span></a>
     </header>
+    <!-- End Header -->
 
-    <!-- Intro
-    ================================================== -->
-    <section id="intro" class="s-intro target-section">
-      <div class="row intro-content">
-        <div class="column large-9 mob-full intro-text">
-          <h3>Artur Yusupov</h3>
-          <h1>Front-end Developer</h1>
-          <h2>WordPress(WooCommerce)/Shopify/Wix</h2>
-          <br />
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <!-- ======= About Me ======= -->
+      <div class="about-me container">
+        <div class="section-title">
+          <h2>About</h2>
+          <p>Learn more about me</p>
         </div>
-        <div class="intro-scroll">
-          <a href="#about" class="intro-scroll-link smoothscroll">
-            Scroll For More
-          </a>
-        </div>
-        <div class="intro-grid"></div>
-        <div class="intro-pic"></div>
-      </div>
-    </section>
 
-    <!-- About me
-    ================================================== -->
-    <section id="about" class="s-about target-section">
-      <div class="about-experience">
-        <div class="row heading-block" data-aos="fade-up">
-          <div class="column large-full">
-            <h2 class="section-heading">Work and Education</h2>
+        <div class="row">
+          <div class="col-lg-4" data-aos="fade-right">
+            <img src="assets/img/hero-pic.webp" class="img-fluid" alt="" />
           </div>
-        </div>
-        <div class="row about-experience__timeline">
-          <div class="column large-half tab-full" data-aos="fade-up">
-            <div class="timeline">
-              <div class="timeline__icon-wrap">
-                <span class="timeline__icon timeline__icon--work"></span>
+          <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
+            <h3>WordPress(WooCommerce) | Shopify | Wix | HTML/CSS/JS</h3>
+            <p class="fst-italic">
+              Integration of digital technologies into business to improve
+              people's lives
+            </p>
+            <div class="row">
+              <div class="col-lg-6">
+                <ul>
+                  <li>
+                    <i class="bi bi-chevron-right"></i> <strong>Email:</strong>
+                    <span>web.sunline@gmail.com</span>
+                  </li>
+                  <li>
+                    <i class="bi bi-chevron-right"></i>
+                    <strong>Degree:</strong>
+                    <span>National Technical University</span>
+                  </li>
+                  <li>
+                    <i class="bi bi-chevron-right"></i>
+                    <strong>Country of origin:</strong> <span>Ukraine</span>
+                  </li>
+                </ul>
               </div>
-              <div class="timeline__block">
-                <div class="timeline__bullet"></div>
-                <div class="timeline__header">
-                  <p class="timeline__timeframe">09.2022 - 02.2023</p>
-                  <h3 class="item-title">
-                    <a target="_blank" href="https://agenturro.co/ "
-                      >Agenturro</a
-                    ><br />
-                  </h3>
-                  <h5>Front-end developer (Remote)</h5>
-                </div>
-                <div class="timeline__desc">
-                  <p>
-                    HTML/CSS/JS - developer. Working with CMS - WordPress,
-                    Shopify. SEO-optimization. <br />
-                    German customers.
-                  </p>
-                </div>
-              </div>
-              <div class="timeline__block">
-                <div class="timeline__bullet"></div>
-                <div class="timeline__header">
-                  <p class="timeline__timeframe">03.2021-06.2022</p>
-                  <h3 class="item-title">
-                    <a target="_blank" href="https://frontdeskhelpers.com/es/"
-                      >Frontdeskhelpers</a
-                    >
-                  </h3>
-                  <h5>Front-end Developer (Remote)</h5>
-                </div>
-                <div class="timeline__desc">
-                  <p>
-                    WordPress/Wix developer. <br />
-                    Working remote full time work according to methodology
-                    Agile. US English and Spanish speaking customers. (USA, ES).
-                  </p>
-                </div>
-              </div>
-              <div class="timeline__block">
-                <div class="timeline__bullet"></div>
-                <div class="timeline__header">
-                  <p class="timeline__timeframe">03.2017-02.2021</p>
-                  <h3 class="item-title">Freelance and Personal projects</h3>
-                  <h5>
-                    Web-developer (WordPress, Shopify, WIX), SEO-specialist.
-                  </h5>
-                </div>
-                <div class="timeline__desc">
-                  <p>
-                    I worked remotely as a freelancer on Ukrainian and American
-                    freelance platforms - Freelancehunt, Upwork, Freelancer,
-                    etc. Part-time as a remote worker for a few companies that
-                    are focused on European clients. Personal projects based on
-                    affiliate marketing, dropshipping and POD.
-                  </p>
-                </div>
+              <div class="col-lg-6">
+                <ul>
+                  <li>
+                    <i class="bi bi-chevron-right"></i>
+                    <strong>Full-time:</strong> <span>Available</span>
+                  </li>
+                  <li>
+                    <i class="bi bi-chevron-right"></i>
+                    <strong>Part-time:</strong> <span>Available</span>
+                  </li>
+                  <li>
+                    <i class="bi bi-chevron-right"></i>
+                    <strong>Freelance:</strong> <span>Available</span>
+                  </li>
+                </ul>
               </div>
             </div>
-          </div>
-          <div class="column large-half tab-full" data-aos="fade-up">
-            <div class="timeline">
-              <div class="timeline__icon-wrap">
-                <span class="timeline__icon timeline__icon--education"></span>
-              </div>
-              <div class="timeline__block">
-                <div class="timeline__bullet"></div>
-                <div class="timeline__header">
-                  <p class="timeline__timeframe">
-                    10.2016 - Never stop learning!
-                  </p>
-                  <h3 class="item-title">
-                    Specialized courses and practical classes
-                  </h3>
-                  <h5>
-                    W3schools, Coursera, Udemy, Codecademy, SoloLearn,
-                    Programminghub, YouTube
-                  </h5>
-                </div>
-                <div class="timeline__desc">
-                  <p>
-                    Constantly learning, improving my knowledge and skills every
-                    day in my profession. Also, I read a lot and watch video
-                    courses with up-to-date information from related areas of
-                    interest to me. I firmly believe that the development of a
-                    person in any form is his salvation. In my daily work, also
-                    use resources such as W3C, MDN, CODEX WordPress, Stack
-                    Overflow, GitHub, CodePen, Udemy, Google, YouTube.
-                  </p>
-                </div>
-              </div>
-              <div class="timeline__block">
-                <div class="timeline__bullet"></div>
-                <div class="timeline__header">
-                  <p class="timeline__timeframe">09.2005-08.2010</p>
-                  <h3 class="item-title">
-                    VNTU - Vinnitsa National Technical University (Ukraine)
-                  </h3>
-                  <h5>System Administrator</h5>
-                </div>
-                <div class="timeline__desc">
-                  <p>
-                    Administrative management in the field of information
-                    security with limited access in companies and in production.
-                  </p>
-                </div>
-              </div>
-            </div>
+            <p>
+              I started my journey in Web Development as
+              <span class="attention-underline">HTML/CSS developer</span>
+              creating landing pages. As a freelancer, I began to take orders of
+              varying complexity while simultaneously studying and implementing
+              freelance projects on such popular CMS as Wordpress, Joomla!,
+              Opencart etc and SaaS - Shopify, Wix. I liked working with
+              <span class="attention-underline">Wordpress</span> and decided to
+              choose it for further study of all its capabilities. At the same
+              time, I began studying the PHP-backend and
+              <span class="attention-underline">SEO</span>. Subsequently, all
+              this knowledge was useful to me for working remotely in companies
+              focused on America and Europe clients.
+            </p>
           </div>
         </div>
-      </div>
-
-      <div class="row about-me__buttons">
-        <div class="column large-half tab-full" data-aos="fade-up">
-          <a
-            href="mailto:web.sunline@gmail.com"
-            class="btn btn--stroke full-width"
-            >Email</a
-          >
-        </div>
-        <div class="column large-half tab-full" data-aos="fade-up">
-          <a
-            href="resume/Artur-Yusupov-resume.pdf"
-            download
-            class="btn btn--primary full-width"
-            >Download resume</a
+        <div class="button-container">
+          <a href="resume/Artur-Yusupov-resume.pdf" download class="button"
+            >Download Resume</a
           >
         </div>
       </div>
+      <!-- End About Me -->
     </section>
+    <!-- End About Section -->
 
-    <!-- Services
-    ================================================== -->
-    <section id="services" class="s-services ss-dark target-section">
-      <div class="row heading-block heading-block--center">
-        <div class="column large-full">
-          <h2 class="section-heading section-heading--centerbottom">
-            My skills
-          </h2>
+    <!-- ======= Education Work Section ======= -->
+    <section id="resume" class="resume">
+      <div class="container">
+        <div class="section-title">
+          <h2>Education &#38; Work</h2>
+          <p>Check My Path in Web Development</p>
         </div>
-      </div>
 
-      <div
-        class="row services-list block-large-1-3 block-medium-1-2 block-tab-full"
-      >
-        <div class="accordion">
-          <div class="accordion-header">WEB Development Stack</div>
-          <div class="accordion-content">
-            <ul>
-              <li><u>HTML5+CSS3;</u></li>
-              - Semantic and Accessibility HTML5 code. Adhering to Standards and
-              Validity W3C and WCAG 2.0,
-              <br />
-              - Flexbox &amp; Grid,
-              <br />
-              - adaptive/responsive design,<br />
-              - SASS/SCSS/LESS;<br />
-              <li>CSS Framework: Bootstrap;</li>
-              <li>Javascript/JSON/jQuery/AJAX;</li>
-              <li>
-                <span class="learn-process"
-                  >REACT - <em>in the learning process;</em></span
+        <div class="row">
+          <div class="col-lg-6">
+            <h3 class="resume-title">Education</h3>
+            <div class="resume-item">
+              <h4>REACT/Javascript | Blockchain | Web3 </h4>
+              <h5>09.2024 - at the moment</h5>
+              <p>
+                <em
+                  >App Development, Blockchain technologies, TON ecosystem</em
                 >
-              </li>
-              <li>UX/UI;</li>
-              <li>
-                PHP (Creating/customization WordPress themes and plugins);
-              </li>
-              <li>MySQL;</li>
-              <li>Gitlab/Github;</li>
-              <li>Write Semantic code based on methodology BEM;</li>
-              <li>Cross-browser compatibility and site accessibility;</li>
-              <li>
-                Internal technical optimization (according to Google PageSpeed,
-                Gtmetrix);
-              </li>
-              <li>Site security;</li>
-              <li>Responsive website development;</li>
-              <li><u>Website builders and SaaS:</u></li>
-              - Shopify,<br />
-              - WIX (EditorX, VELO),<br />
-              - Webflow,<br />
-              - Tilda;<br />
-              <li><u>CMS:</u></li>
-              - WordPress, Prestashop, Joomla!, OpenCart, MODX, Drupal and
-              others;
-              <li>NPM;</li>
-              <li>
-                SEO-optimization based the ranking factors from Google. Core Web
-                Vitals;
-              </li>
-              <li>
-                Working with hosting/domain name registrar, Google Cloud
-                Platform (GCP), Cloudflare;
-              </li>
-              <li><u>Prototyping Tools:</u></li>
-              - Figma,<br />
-              - Adobe XD,<br />
-              - Avocode,<br />
-              - Zeplin;
-              <li><u>AI TOOLS:</u></li>
-              - ChatGPT - help with complex code, for create articles,
-              descriptions, ideas, - Midjourney, Stable Diffusion, Leonardo Ai,
-              etc;
-              <li>
-                Code editors: Visual Studio Code, Notepad++, Sublime Text, Atom.
-              </li>
-            </ul>
+              </p>
+              <p>
+                In parallel with my main work and specialization, I study and practice App Development
+                with in-depth study of React and Javascript. The immediate goal is to become
+                a strong React-developer and TMA developer. The long-term goal - is to become a blockchain/web3 developer.
+                Focusing on TON blockchain. I have been following blockchain technologies and the 
+                cryptocurrency market since 2017.
+              </p>
+            </div>
+            <div class="resume-item">
+              <h4>Specialized courses and practical classes</h4>
+              <h5>10.2016 - NEVER STOP LEARNING! (lifelong learning)</h5>
+              <p>
+                <em
+                  >W3schools, Coursera, Udemy, Codecademy, SoloLearn,
+                  Programminghub, YouTube</em
+                >
+              </p>
+              <p>
+                Constantly learning, improving my knowledge and skills every day
+                in my profession. Also, I read a lot and watch video courses
+                with up-to-date information from related areas of interest to
+                me. In my daily work, also use resources such
+                as W3C, MDN, CODEX WordPress, Stack Overflow, GitHub, CodePen,
+                Udemy, Google, YouTube.
+              </p>
+            </div>
+            <div class="resume-item">
+              <h4>National Technical University (Ukraine)</h4>
+              <h5>09.2005-08.2010</h5>
+              <p>
+                <em>VNTU - Vinnitsa National Technical University (Ukraine)</em>
+              </p>
+              <p>
+                Administrative management in the field of information security
+                with limited access in companies and in production. System Administrator. 
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <h3 class="resume-title">Professional Experience</h3>
+            <div class="resume-item">
+              <h4>
+                <a href="https://frontdeskhelpers.com" target="_blank"
+                  >Frontdeskhelpers</a
+                >
+              </h4>
+              <h5>05.2023-at the moment</h5>
+              <p>Combined offline work (Spain) and Front-end Developer (Remote Part-time)</p>
+              <p>
+                WordPress/Wix developer/SEO. Working remote full time work according
+                to methodology Agile. US English and Spanish speaking customers.
+                (USA, ES).
+              </p>
+            </div>
+            <div class="resume-item">
+              <h4>
+                <a href="https://www.agenturro.co/" target="_blank"
+                  >Agenturro</a
+                >
+              </h4>
+              <h5>09.2022 - 02.2023</h5>
+              <p><em>Combined offline work (Spain) and Front-end Developer (Remote Part-time)</em></p>
+              <p>
+                HTML/CSS/JS - developer. Working with CMS - WordPress, Shopify.
+                SEO-optimization. German customers.
+              </p>
+            </div>
+            <div class="resume-item">
+              <h4>
+                <a href="https://frontdeskhelpers.com" target="_blank"
+                  >Frontdeskhelpers</a
+                >
+              </h4>
+              <h5>03.2021-06.2022</h5>
+              <p><em>Front-end Developer (Remote Full-time) </em></p>
+              <p>
+                WordPress/Wix developer/SEO. Working remote full time work according
+                to methodology Agile. US English and Spanish speaking customers.
+                (USA, ES).
+              </p>
+            </div>
+            <div class="resume-item">
+              <h4>Freelance and Personal projects</h4>
+              <h5>03.2017-02.2021</h5>
+              <p>
+                <em
+                  >Web-developer (WordPress, Shopify, WIX), SEO-specialist.</em
+                >
+              </p>
+              <p>
+                I worked remotely as a freelancer on Ukrainian and American
+                freelance platforms - Freelancehunt, Upwork, Freelancer, etc.
+                Part-time as a remote worker for a few companies that are
+                focused on European clients. Personal projects based on
+                affiliate marketing, dropshipping and POD.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End Education Work Section -->
+
+    <!-- ======= Skills Section ======= -->
+    <!-- <section id="services" class="services">
+      <div class="container">
+        <div class="section-title">
+          <h2>Skills</h2>
+          <p>My Skills</p>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+            <div class="icon-box">
+              <div class="icon"><i class="bx bxl-html5"></i></div>
+              <h4><a href="">WEB DEVELOPMENT STACK</a></h4>
+              <p>
+                My skills are like HTML/CSS developer. Working with code,
+                implementing custom code in the CMS.
+              </p>
+            </div>
           </div>
 
-          <div class="accordion-header">WORDPRESS Development</div>
-          <div class="accordion-content">
-            <ul>
+          <div
+            class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0"
+          >
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-file"></i></div>
+              <h4><a href="">Sed ut perspiciatis</a></h4>
+              <p>
+                Duis aute irure dolor in reprehenderit in voluptate velit esse
+                cillum dolore
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0"
+          >
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-tachometer"></i></div>
+              <h4><a href="">Magni Dolores</a></h4>
+              <p>
+                Excepteur sint occaecat cupidatat non proident, sunt in culpa
+                qui officia
+              </p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-world"></i></div>
+              <h4><a href="">Nemo Enim</a></h4>
+              <p>
+                At vero eos et accusamus et iusto odio dignissimos ducimus qui
+                blanditiis
+              </p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-slideshow"></i></div>
+              <h4><a href="">Dele cardo</a></h4>
+              <p>
+                Quis consequatur saepe eligendi voluptatem consequatur dolor
+                consequuntur
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section> -->
+    <!-- End Skills Section -->
+
+    <section id="skills" class="skills">
+      <div class="container">
+        <div class="section-title">
+          <h2>Skills</h2>
+          <p>My Skills</p>
+        </div>
+
+        <div class="row skills-blocks">
+          <div
+            id="skill-1"
+            class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4"
+          >
+            <div class="icon-box">
+              <div class="icon"><i class="bx bxl-html5"></i></div>
+              <h4>Web Development Stack</h4>
+              <p>
+                My skills are like HTML/CSS developer. Working with code,
+                implementing custom code in the CMS.
+              </p>
+            </div>
+          </div>
+
+          <div
+            id="skill-2"
+            class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4"
+          >
+            <div class="icon-box">
+              <div class="icon"><i class="bx bxl-wordpress"></i></div>
+              <h4><a href="#">WORDPRESS Development</a></h4>
+              <p>
+                Wordpress themes from scratch based on layouts in Figma. 
+                Custom editing themes and plugins based on Codex WordPress. Work with 
+                pagebuilders like a Elementor, Divi, Wpbakery page builder, Gutenberg etc
+              </p>
+            </div>
+          </div>
+
+          <div
+            id="skill-3"
+            class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4"
+          >
+            <div class="icon-box">
+              <div class="icon"><i class="bx bxl-google"></i></div>
+              <h4><a href="#">SEO</a></h4>
+              <p>
+                Site audit, technical and SEO optimization as a basic stage for further external promotion and development of the project. During SEO optimization, I rely on the cheat sheet of 200+ known Google ranking factors and the latest updates and news on search engine principles.
+              </p>
+            </div>
+          </div>
+
+          <div
+          id="skill-4"
+          class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4"
+        >
+          <div class="icon-box">
+            <div class="icon"><i class="bx bx-link"></i></div>
+            <h4><a href="#">Blockchain</a></h4>
+            <p>
+              App Development, Blockchain technologies, TON ecosystem.
+            </p>
+          </div>
+        </div>
+
+          <div
+            id="skill-5"
+            class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4"
+          >
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-briefcase"></i></div>
+              <h4><a href="#">Work Organization Tools</a></h4>
+              <p>
+                I have experience working in Agile and Kanban companies. I put the quality of my work above all else and always try to deliver the project on time.
+              </p>
+            </div>
+          </div>
+
+          
+
+          <div
+            id="skill-6"
+            class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4"
+          >
+            <div class="icon-box">
+              <div class="icon"><i class="bx bxs-user"></i></div>
+              <h4><a href="#">Soft Skills</a></h4>
+              <p>
+                In my opinion, I know how to find a common language with people and work in a team.
+                I take criticism well and listen to more experienced people.
+              </p>
+            </div>
+          </div>
+
+       
+        </div>
+
+        <!-- Content Sections -->
+        <div class="row skills_skill-content">
+          <button id="backButton">
+            <i class="bx bx-arrow-back"></i>
+            <span class="attention-underline">Back to Skills</span>
+          </button>
+          <div id="content-skill-1" class="skill-content">
+            <h3>Web Development Stack</h3>
+            <p>
+              <ul>
+                <li><u>HTML5+CSS3;</u></li>
+                - Semantic and Accessibility HTML5 code. Adhering to Standards and
+                Validity W3C and WCAG 2.0,
+                <br />
+                - Flexbox &amp; Grid,
+                <br />
+                - adaptive/responsive design,<br />
+                - SASS/SCSS/LESS;<br />
+                <li>CSS Framework: Bootstrap;</li>
+                <li>Javascript/JSON/jQuery/AJAX;</li>
+                <li>
+                  <span class="learn-process"
+                    >REACT - <em>in the learning process;</em></span
+                  >
+                </li>
+                <li>UX/UI;</li>
+                <li>
+                  PHP (Creating/customization WordPress themes and plugins);
+                </li>
+                <li>MySQL;</li>
+                <li>Gitlab/Github;</li>
+                <li>Write Semantic code based on methodology BEM;</li>
+                <li>Cross-browser compatibility and site accessibility;</li>
+                <li>
+                  Internal technical optimization (according to Google PageSpeed,
+                  Gtmetrix);
+                </li>
+                <li>Site security;</li>
+                <li>Responsive website development;</li>
+                <li><u>Website builders and SaaS:</u></li>
+                - Shopify,<br />
+                - WIX (EditorX, VELO),<br />
+                - Webflow,<br />
+                - Tilda;<br />
+                <li><u>CMS:</u></li>
+                - WordPress, Prestashop, Joomla!, OpenCart, MODX, Drupal and
+                others;
+                <li>NPM;</li>
+                <li>
+                  SEO-optimization based the ranking factors from Google. Core Web
+                  Vitals;
+                </li>
+                <li>
+                  Working with hosting/domain name registrar, Google Cloud
+                  Platform (GCP), Cloudflare;
+                </li>
+                <li><u>Prototyping Tools:</u></li>
+                - Figma,<br />
+                - Adobe XD,<br />
+                - Avocode,<br />
+                - Zeplin;
+                <li><u>AI TOOLS:</u></li>
+                - ChatGPT - help with complex code, for create articles,
+                descriptions, ideas, - Midjourney, Stable Diffusion, Leonardo Ai,
+                etc;
+                <li>
+                  Code editors: Visual Studio Code, Notepad++, Sublime Text, Atom.
+                </li>
+              </ul>
+            </p>
+          </div>
+          <div id="content-skill-2" class="skill-content">
+            <h3>Wordpress Development</h3>
+            <p> <ul>
               <li><u>PHP and MySQL:</u></li>
               - WP-themes from scratch based on layouts in Figma or .psd,<br />
               - Custom editing themes and plugins based on Codex WordPress.
@@ -357,12 +538,11 @@
                 Internal technical optimization (based on the metrics of Google
                 PageSpeed, Gtmetrix).
               </li>
-            </ul>
+            </ul></p>
           </div>
-
-          <div class="accordion-header">SEO</div>
-          <div class="accordion-content">
-            <ul>
+          <div id="content-skill-3" class="skill-content">
+            <h3>SEO</h3>
+            <p><ul>
               <li>
                 Technical SEO-optimization based on indicators Google pagespeed,
                 GTMetrix;
@@ -377,11 +557,11 @@
               <li>Link building;</li>
               <li>SEO-tools:</li>
               - Google Search Console,<br />
-              - Bing Webmaster Tools,<br />
-              - Google Keyword Planner,<br />
-              - Google My Business,<br />
               - Google Analytics,<br />
               - Google Tag Manager,<br />
+              - Google Keyword Planner,<br />
+              - Google My Business,<br />
+              - Bing Webmaster Tools,<br />
               - Serpstat,<br />
               - SERanking,<br />
               - SEMRush,<br />
@@ -398,1998 +578,1988 @@
               updates and news on search engine principles. I use these tools in
               my work: Google Analytics and Google Search Console, SE Ranking,
               Semrush, Ahrefs, Moz etc.
-            </ul>
+            </ul></p>
           </div>
-
-          <div class="accordion-header">Work Organization Tools</div>
-          <div class="accordion-content">
-            <li>
-              Experience with Google Workspace, Google docs, Google Cloud
-              Platform (GCP);
-            </li>
-            <li>Trello, Asana, Jira, Redmine, Bitrix;</li>
-            <li><u> CRM:</u></li>
-            - AmoCRM,<br />
-            - RetailCRM,<br />
-            - Bitrix24;<br />
-            <li><u> METHODOLOGY:</u></li>
-            - AGILE,<br />
-            - SCRUM,<br />
-            - KANBAN;
-            <li>English B1.</li>
+          <div id="content-skill-4" class="skill-content">
+            <h3>Blockchain</h3>
+            <p>
+              In parallel with my main work and specialization, I study and practice
+              App Development with in-depth study of React and Javascript. The 
+              immediate goal is to become a strong React-developer and TMA developer. 
+              The long-term goal - is to become a blockchain/web3 developer. 
+              Focusing on TON blockchain. I have been following blockchain technologies 
+              and the cryptocurrency market since 2017.
+            </p>
           </div>
-
-          <div class="accordion-header last-accordion-item">SOFT SKILLS</div>
-          <div class="accordion-content">
-            <li>Time management and self-discipline;</li>
-            <li>
-              Interest in the profession and the ability to fast learn new
-              knowledge;
-            </li>
-            <li>The ability to bring the work I started to the end;</li>
-            <li>Communication and ability to work in a team;</li>
-            <li>Integrity and work ethic;</li>
-            <li>Problem-solving.</li>
+          <div id="content-skill-5" class="skill-content">
+            <h3>Work Organization Tools</h3>
+            <p><ul>
+              <li>
+                Experience with Google Workspace, Google docs, Google Cloud
+                Platform (GCP);
+              </li>
+              <li>Trello, Asana, Jira, Redmine, Bitrix24;</li>
+              <li><u> CRM:</u></li>
+              - AmoCRM,<br />
+              - RetailCRM,<br />
+              - Bitrix24;<br />
+              <li><u> METHODOLOGY:</u></li>
+              - AGILE,<br />
+              - SCRUM,<br />
+              - KANBAN;
+              <li>English B1.</li>
+            </ul></p>
+          </div>
+          <div id="content-skill-6" class="skill-content">
+            <h3>Soft Skills</h3>
+            <p>
+            <ul>
+              <li>Time management and self-discipline;</li>
+              <li>
+                Interest in the profession and the ability to fast learn new
+                knowledge;
+              </li>
+              <li>The ability to bring the work I started to the end;</li>
+              <li>Communication and ability to work in a team;</li>
+              <li>Integrity and work ethic;</li>
+              <li>Problem-solving.</li>
+            </ul> 
+            </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- My Works
-    ================================================== -->
+   
 
-    <section id="works" class="s-works target-section mywork-desktop">
-      <div class="row heading-block heading-block--center">
-        <div class="column large-full">
-          <h2 class="section-heading section-heading--centerbottom">
-            My Recent Works
-          </h2>
-          <p class="section-desc">
-            These are some of my latest works from scratch, on various
-            platforms, or in pure code.
-          </p>
+    <!-- ======= Portfolio Section ======= -->
+    <section id="portfolio" class="portfolio">
+      <div class="container">
+        <div class="section-title">
+          <h2>Portfolio</h2>
+          <p>My Works</p>
         </div>
-      </div>
-      <div class="tabs">
-        <input type="radio" name="tab" id="tab1" checked="checked" />
-        <label for="tab1">WORDPRESS</label>
-        <input type="radio" name="tab" id="tab2" />
-        <label for="tab2">BOOTSTRAP</label>
-        <input type="radio" name="tab" id="tab3" />
-        <label for="tab3">SHOPIFY</label>
-        <input type="radio" name="tab" id="tab4" />
-        <label for="tab4">WIX</label>
-        <input type="radio" name="tab" id="tab5" />
-        <label for="tab5">OTHERS CMS</label>
-        <input type="radio" name="tab" id="tab6" />
-        <label for="tab6">HTML/CSS/JS</label>
-        <div class="tab-content-wrapper">
-          <div id="tab-content-1" class="tab-content">
-            <div class="gallery-items">
-              <a
-                href="images\portfolio\wordpress\bemol.jpg"
-                data-size="1903x6047"
-                data-med="images\portfolio\wordpress\bemol.jpg"
-                data-med-size="1903x6047"
-                data-author="Wordpress. Elementor"
-              >
-                <img
-                  src="images\portfolio\thumb\wordpress\bemol.jpg"
-                  alt="bemol"
-                />
-                <div>
-                  <button
-                    onclick="window.open('https://www.bemol.cz/', '_blank')"
-                  >
-                    Go to website
-                  </button>
-                  Bemol - Cleaning of heating systems in the Liberec region in
-                  the Czech Republic
-                </div>
-              </a>
-              <a
-                href="images\portfolio\wordpress\soladentalspa.jpg"
-                data-size="1891x10144"
-                data-med="images\portfolio\wordpress\soladentalspa.jpg"
-                data-med-size="1891x10144"
-                data-author="Wordpress. WPBakery Page Builder"
-              >
-                <img
-                  src="images\portfolio\thumb\wordpress\soladentalspa.jpg"
-                  alt="soladentalspa"
-                />
-                <div>
-                  <button
-                    onclick="window.open('https://www.soladentalspa.com/', '_blank')"
-                  >
-                    Go to website
-                  </button>
-                  Soladentalspa (USA) - Staten Island dental clinic on Richmond
-                  Ave.
-                </div>
-              </a>
-              <a
-                href="images\portfolio\wordpress\aurumbud.jpg"
-                data-size="1350x4670"
-                data-med="images\portfolio\wordpress\aurumbud.jpg"
-                data-med-size="1350x4670"
-                data-author="Wordpress"
-              >
-                <img
-                  src="images\portfolio\thumb\wordpress\aurumbud.jpg"
-                  alt="aurumbud"
-                />
-                <div>
-                  <button
-                    onclick="window.open('http://www.aurumbud.com.ua', '_blank')"
-                  >
-                    Go to website
-                  </button>
-                  Aurumbud - Ukrainian home repair company.
-                </div>
-              </a>
-              <a
-                href="images\portfolio\wordpress\lunamebel.jpg"
-                data-size="1903x4234"
-                data-med="images\portfolio\wordpress\lunamebel.jpg"
-                data-med-size="1903x4234"
-                data-author="Wordpress. WooCommerce"
-              >
-                <img
-                  src="images\portfolio\thumb\wordpress\lunamebel.jpg"
-                  alt="lunamebel"
-                />
-                <div>
-                  <button
-                    onclick="window.open('https://lunamebel.com.ua/', '_blank')"
-                  >
-                    Go to website
-                  </button>
-                  Lunamebel - Ukrainian furniture company.
-                </div>
-              </a>
-              <a
-                href="images\portfolio\wordpress\orozco.jpg"
-                data-size="1891x7490"
-                data-med="images\portfolio\wordpress\orozco.jpg"
-                data-med-size="1891x7490"
-                data-author="Wordpress"
-              >
-                <img
-                  src="images\portfolio\thumb\wordpress\orozco.jpg"
-                  alt="orozco trucking"
-                />
-                <div>
-                  <button
-                    onclick="window.open('https://www.orozcotrucking.com', '_blank')"
-                  >
-                    Go to website
-                  </button>
-                  Orozco Trucking (USA) - specialize in providing climate
-                  controlled, dry freight, less than truckload (LTL), intermodal
-                  and flatbed service throughout the lower 48 states.
-                </div>
-              </a>
 
-              <a
-                href="images\portfolio\wordpress\911mg.jpg"
-                data-size="1903x3444"
-                data-med="images\portfolio\wordpress\911mg.jpg"
-                data-med-size="1903x3444"
-                data-author="Wordpress. ACF. Custom post type. Redux framework"
-              >
-                <img
-                  src="images\portfolio\thumb\wordpress\911mg.jpg"
-                  alt="911mg"
-                />
-                <div>
-                  <button
-                    onclick="window.open('https://www.911mg.org/', '_blank')"
-                  >
-                    Go to website
-                  </button>
-                  911mg - HTML to Wordpress.
-                </div>
-              </a>
-              <a
-                href="images\portfolio\wordpress\bezalel.jpg"
-                data-size="1440x5956"
-                data-med="images\portfolio\wordpress\bezalel.jpg"
-                data-med-size="1440x5956"
-                data-author="Wordpress"
-              >
-                <img
-                  src="images\portfolio\thumb\wordpress\bezalel.jpg"
-                  alt="bezalel"
-                />
-                <div>
-                  <button
-                    onclick="window.open('https://bezalelservices.com', '_blank')"
-                  >
-                    Go to website
-                  </button>
-                  Bezalel (USA) - care management services give seniors and
-                  people with disabilities the opportunity to lead fulfilling
-                  lives.
-                </div>
-              </a>
+        <div class="row">
+          <div class="col-lg-12 d-flex justify-content-center">
+            <ul id="portfolio-flters">
+              <li data-filter="*" class="filter-active">All</li>
+              <li data-filter=".filter-wordpress">Wordpress</li>
+              <li data-filter=".filter-bootstrap">Bootstrap</li>
+              <li data-filter=".filter-shopify">Shopify</li>
+              <li data-filter=".filter-wix">Wix</li>
+              <li data-filter=".filter-html-css">HTML/CSS/JS</li>
+              <li data-filter=".filter-javascript">Javascript</li>
+              <li data-filter=".filter-other-cms">Other CMS</li>
+            </ul>
+          </div>
+        </div>
 
-              <a
-                href="images\portfolio\wordpress\causetume.jpg"
-                data-size="1903x4327"
-                data-med="images\portfolio\wordpress\causetume.jpg"
-                data-med-size="1903x4327"
-                data-author="Wordpress. WooCommerce"
-              >
-                <img
-                  src="images\portfolio\thumb\wordpress\causetume.jpg"
-                  alt="causetume"
-                />
-                <div>
-                  <button
-                    onclick="window.open('https://causetume.com/en/', '_blank')"
-                  >
-                    Go to website
-                  </button>
-                  Causetume - online store Knitwear Brand.
-                </div>
-              </a>
-              <a
-                href="images\portfolio\wordpress\besttextile.jpg"
-                data-size="1349x1865"
-                data-med="images\portfolio\wordpress\besttextile.jpg"
-                data-med-size="1349x1865"
-                data-author="Wordpress"
-              >
-                <img
-                  src="images\portfolio\thumb\wordpress\besttextile.jpg"
-                  alt="besttextile"
-                />
-                <div>
-                  <button
-                    onclick="window.open('http://www.besttextile.com.ua', '_blank')"
-                  >
-                    Go to website
-                  </button>
-                  Besttextile - Ukrainian home repair company.
-                </div>
-              </a>
+        <div class="row portfolio-container">
 
-              <a
-                href="images\portfolio\wordpress\quatrefincas.jpg"
-                data-size="1903x6353"
-                data-med="images\portfolio\wordpress\quatrefincas.jpg"
-                data-med-size="1903x6353"
-                data-author="Wordpress."
-              >
-                <img
-                  src="images\portfolio\thumb\wordpress\quatrefincas.jpg"
-                  alt="quatrefincas"
-                />
-                <div>
-                  <button onclick="window.open('#', '_blank')">
-                    Go to website
-                  </button>
-                  Quatrefincas (Spain) - real estate in Spain.
-                </div>
-              </a>
-              <a
-                href="images\portfolio\wordpress\fluffy-ninja.jpg"
-                data-size="1800x2840"
-                data-med="images\portfolio\wordpress\fluffy-ninja.jpg"
-                data-med-size="1800x2840"
-                data-author="Wordpress. WooCommerce"
-              >
-                <img
-                  src="images\portfolio\thumb\wordpress\fluffy-ninja.jpg"
-                  alt="fluffy-ninja"
-                />
-                <div>
-                  <button
-                    onclick="window.open('https://fluffy-ninja.com/', '_blank')"
-                  >
-                    Go to website
-                  </button>
-                  Fluffy-ninja - online store.
-                </div>
-              </a>
-              <a
-                href="images\portfolio\wordpress\demes.jpg"
-                data-size="1903x5150"
-                data-med="images\portfolio\wordpress\demes.jpg"
-                data-med-size="1903x5150"
-                data-author="Wordpress. Woocommerce"
-              >
-                <img
-                  src="images\portfolio\thumb\wordpress\demes.jpg"
-                  alt="demes"
-                />
-                <div>
-                  <button
-                    onclick="window.open('https://artdemes.com', '_blank')"
-                  >
-                    Go to website
-                  </button>
-                  Demes - Spanish online store for selling handmade wood
-                  products.
-                </div>
-              </a>
-              <a
-                href="images\portfolio\wordpress\vival.jpg"
-                data-size="1903x4216"
-                data-med="images\portfolio\wordpress\vival.jpg"
-                data-med-size="1903x4216"
-                data-author="Wordpress. WooCommerce."
-              >
-                <img
-                  src="images\portfolio\thumb\wordpress\vival.jpg"
-                  alt="vival"
-                />
-                <div>
-                  <button
-                    onclick="window.open('https://www.vival.ua', '_blank')"
-                  >
-                    Go to website
-                  </button>
-                  Vival - Ukrainian online store of building materials.
-                </div>
-              </a>
-              <a
-                href="images\portfolio\wordpress\tubebeytu.jpg"
-                data-size="1903x11526"
-                data-med="images\portfolio\wordpress\tubebeytu.jpg"
-                data-med-size="1903x11526"
-                data-author="Wordpress. WooCommerce"
-              >
-                <img
-                  src="images\portfolio\thumb\wordpress\tubebeytu.jpg"
-                  alt="tubebeytu"
-                />
-                <div>
-                  <button
-                    onclick="window.open('https://www.tubebeytu.es/', '_blank')"
-                  >
-                    Go to website
-                  </button>
-                  Tu bebe y tu (Spain) - online store of children's clothing and
-                  accessories.
-                </div>
-              </a>
-              <a
-                href="images\portfolio\wordpress\djrihis.jpg"
-                data-size="1903x4092"
-                data-med="images\portfolio\wordpress\djrihis.jpg"
-                data-med-size="1903x4092"
-                data-author="Wordpress."
-              >
-                <img
-                  src="images\portfolio\thumb\wordpress\djrihis.jpg"
-                  alt="djrihis"
-                />
-                <div>
-                  <button onclick="window.open('#', '_blank')">
-                    Go to website
-                  </button>
-                  Dj Rihis (Spain) - Dj in Andalucia.
-                </div>
-              </a>
-              <a
-                href="images\portfolio\wordpress\telefon.jpg"
-                data-size="1903x7616"
-                data-med="images\portfolio\wordpress\telefon.jpg"
-                data-med-size="1903x7616"
-                data-author="Wordpress. WPBakery Page Builder"
-              >
-                <img
-                  src="images\portfolio\thumb\wordpress\telefon.jpg"
-                  alt="telefontrainingskoffer"
-                />
-                <div>
-                  <button
-                    onclick="window.open('https://callcenter-akademie.de/telefontrainingskoffer/', '_blank')"
-                  >
-                    Go to website
-                  </button>
-                  Telefontrainingskoffer (Germany) - Internal training with
-                  PhoneTrain. The professional tool for recording, evaluating
-                  and digitizing simulated telephone calls.
-                </div>
-              </a>
-              <a
-                href="images\portfolio\wordpress\buhlede.jpg"
-                data-size="1903x2305"
-                data-med="images\portfolio\wordpress\buhlede.jpg"
-                data-med-size="1903x2305"
-                data-author="Landing on pure code. Wordpress."
-              >
-                <img
-                  src="images\portfolio\thumb\wordpress\buhlede.jpg"
-                  alt="buhlde"
-                />
-                <div>
-                  <button
-                    onclick="window.open('https://www.buhl.de/', '_blank')"
-                  >
-                    Go to website
-                  </button>
-                  :BUHL - Financial and tax software in Germany
-                </div>
-              </a>
-              <a
-                href="images\portfolio\wordpress\svkus.jpg"
-                data-size="1903x8586"
-                data-med="images\portfolio\wordpress\svkus.jpg"
-                data-med-size="1903x8586"
-                data-author="Wordpress. Elementor"
-              >
-                <img
-                  src="images\portfolio\thumb\wordpress\svkus.jpg"
-                  alt="svkus"
-                />
-                <div>
-                  <button onclick="window.open('https://svkus.com/', '_blank')">
-                    Go to website
-                  </button>
-                  Svkus - Ukrainian restaurants and food delivery.
-                </div>
-              </a>
-              <a
-                href="images\portfolio\wordpress\vikamaster.jpg"
-                data-size="1349x3954"
-                data-med="images\portfolio\wordpress\vikamaster.jpg"
-                data-med-size="1349x3954"
-                data-author="Wordpress. WooCommerce"
-              >
-                <img
-                  src="images\portfolio\thumb\wordpress\vikamaster.jpg"
-                  alt="vikamaster"
-                />
-                <div>
-                  <button
-                    onclick="window.open('https://vikamaster.com/', '_blank')"
-                  >
-                    Go to website
-                  </button>
-                  Vikamaster - Ukrainian jewelry online store.
-                </div>
-              </a>
-              <a
-                href="images\portfolio\wordpress\mundodeapartamentos.jpg"
-                data-size="1349x3902"
-                data-med="images\portfolio\wordpress\mundodeapartamentos.jpg"
-                data-med-size="1349x3902"
-                data-author="Wordpress."
-              >
-                <img
-                  src="images\portfolio\thumb\wordpress\mundodeapartamentos.jpg"
-                  alt="mundodeapartamentos"
-                />
-                <div>
-                  <button
-                    onclick="window.open('https://mundodeapartamentos.com/', '_blank')"
-                  >
-                    Go to website
-                  </button>
-                  Mundodeapartamentos (Spain) - real estate in Spain.
-                </div>
-              </a>
-              <a
-                href="images\portfolio\wordpress\serzak.jpg"
-                data-size="1422x9000"
-                data-med="images\portfolio\wordpress\serzak.jpg"
-                data-med-size="1422x9000"
-                data-author="Wordpress. Elementor + Custom HTML/CSS code"
-              >
-                <img
-                  src="images\portfolio\thumb\wordpress\serzak.jpg"
-                  alt="serzak"
-                />
-                <div>
-                  <button onclick="window.open('#', '_blank')">
-                    Go to website
-                  </button>
-                  Serzak - marketing agency
-                </div>
-              </a>
-              <a
-                href="images\portfolio\wordpress\lellex.jpg"
-                data-size="1400x6400"
-                data-med="images\portfolio\wordpress\serzak.jpg"
-                data-med-size="1400x6400"
-                data-author="Wordpress. Custom theme from scratch based on pure HTML5/CSS3 code"
-              >
-                <img
-                  src="images\portfolio\thumb\wordpress\lellex.jpg"
-                  alt="lellex"
-                />
-                <div>
-                  <button onclick="window.open('#', '_blank')">
-                    Go to website
-                  </button>
-                  Lellex - Film production
-                </div>
-              </a>
-              <a
-                href="images\portfolio\wordpress\psichologonline.jpg"
-                data-size="1800x9627"
-                data-med="images\portfolio\wordpress\psichologonline.jpg"
-                data-med-size="1800x9627"
-                data-author="Wordpress. Elementor"
-              >
-                <img
-                  src="images\portfolio\thumb\wordpress\psichologonline.jpg"
-                  alt="psichologonline"
-                />
-                <div>
-                  <button
-                    onclick="window.open('https://psichologonline.com/', '_blank')"
-                  >
-                    Go to website
-                  </button>
-                  Psicholog online
-                </div>
-              </a>
-              <a
-                href="images\portfolio\wordpress\kolosochok.jpg"
-                data-size="1349x6110"
-                data-med="images\portfolio\wordpress\kolosochok.jpg"
-                data-med-size="1349x6110"
-                data-author="Landing page - PSD to HTML/CSS based on Wordpress."
-              >
-                <img
-                  src="images\portfolio\thumb\wordpress\kolosochok.jpg"
-                  alt="kolosochok"
-                />
-                <div>
-                  <button
-                    onclick="window.open('https://kolosochok.kiev.ua', '_blank')"
-                  >
-                    Go to website
-                  </button>
-                  Kolosochok - Ukrainian children's public organization.
-                </div>
-              </a>
-            </div>
-            <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-              <div class="pswp__bg"></div>
-              <div class="pswp__scroll-wrap">
-                <div class="pswp__container">
-                  <div class="pswp__item"></div>
-                  <div class="pswp__item"></div>
-                  <div class="pswp__item"></div>
-                </div>
-                <div class="pswp__ui pswp__ui--hidden">
-                  <div class="pswp__top-bar">
-                    <div class="pswp__counter"></div>
-                    <button
-                      class="pswp__button pswp__button--close"
-                      title="Close (Esc)"
-                    ></button>
-                    <button
-                      class="pswp__button pswp__button--share"
-                      title="Share"
-                    ></button>
-                    <button
-                      class="pswp__button pswp__button--fs"
-                      title="Toggle fullscreen"
-                    ></button>
-                    <button
-                      class="pswp__button pswp__button--zoom"
-                      title="Zoom in/out"
-                    ></button>
-                    <div class="pswp__preloader">
-                      <div class="pswp__preloader__icn">
-                        <div class="pswp__preloader__cut">
-                          <div class="pswp__preloader__donut"></div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div
-                    class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"
-                  >
-                    <div class="pswp__share-tooltip"></div>
-                  </div>
-                  <button
-                    class="pswp__button pswp__button--arrow--left"
-                    title="Previous (arrow left)"
-                  ></button>
-                  <button
-                    class="pswp__button pswp__button--arrow--right"
-                    title="Next (arrow right)"
-                  ></button>
-                  <div class="pswp__caption">
-                    <div class="pswp__caption__center"></div>
-                  </div>
+          <div class="col-lg-4 col-md-6 portfolio-item filter-wordpress">
+            <div class="portfolio-wrap">
+              <img
+                src="/assets/img/portfolio/thumbs/wordpress/frontdeskhelpers_thumb.webp"
+                class="img-fluid"
+                alt="frontdeskhelpers"
+              />
+              <div class="portfolio-info">
+                <h4>Front Desk Helpers</h4>
+                <p>Wordpress theme from scratch. Elementor + Custom CSS3/JS/PHP</p>
+                <div class="portfolio-links">
+                  <a
+                    href="/assets/img/portfolio/wordpress/frontdeskhelpers.webp"
+                    data-gallery="portfolioGallery"
+                    class="portfolio-lightbox"
+                    title="frontdeskhelpers"
+                    ><i class="bx bxs-zoom-in"></i
+                  ></a>
+                  <a
+                    href="/assets/portfolio-details/wordpress-details/frontdeskhelpers_portfolio-details.html"
+                    data-gallery="portfolioDetailsGallery"
+                    data-glightbox="type: external"
+                    class="portfolio-details-lightbox"
+                    title="Portfolio Details"
+                    ><i class="bx bx-link"></i
+                  ></a>
                 </div>
               </div>
             </div>
           </div>
 
-          <div id="tab-content-2" class="tab-content">
-            <div class="gallery-items">
-              <a
-                href="images\portfolio\bootstrap\delivery-fdh.jpg"
-                data-size="1316x14000"
-                data-med="images\portfolio\bootstrap\delivery-fdh.jpg"
-                data-med-size="1316x14000"
-                data-author="Landing page Bootstrap. Based on Wordpress."
-              >
-                <img
-                  src="images\portfolio\thumb\bootstrap\delivery-fdh.jpg"
-                  alt="delivery-fdh"
-                />
-                <div>
-                  <button
-                    onclick="window.open('https://frontdeskhelpers.com/remote-virtual-services/delivery-solution-fdh-cloud/', '_blank')"
-                  >
-                    Go to website
-                  </button>
-                  The FDH Cloud Delivery solution (USA) - The FDH Cloud Delivery
-                  solution (system) for dispatching, planning, and tracking your
-                  deliveries and courier. Use delivery software to automate
-                  delivery.
+          <div class="col-lg-4 col-md-6 portfolio-item filter-wordpress">
+            <div class="portfolio-wrap">
+              <img
+                src="/assets/img/portfolio/thumbs/wordpress/it-magic_thumb.webp"
+                class="img-fluid"
+                alt="IT-Magic"
+              />
+              <div class="portfolio-info">
+                <h4>IT-Magic</h4>
+                <p>Wordpress theme from scratch. Elementor + Custom CSS3/JS/PHP</p>
+                <div class="portfolio-links">
+                  <a
+                    href="/assets/img/portfolio/wordpress/it-magic.webp"
+                    data-gallery="portfolioGallery"
+                    class="portfolio-lightbox"
+                    title="IT-Magic"
+                    ><i class="bx bxs-zoom-in"></i
+                  ></a>
+                  <a
+                    href="/assets/portfolio-details/wordpress-details/it-magic_portfolio-details.html"
+                    data-gallery="portfolioDetailsGallery"
+                    data-glightbox="type: external"
+                    class="portfolio-details-lightbox"
+                    title="Portfolio Details"
+                    ><i class="bx bx-link"></i
+                  ></a>
                 </div>
-              </a>
-              <a
-                href="images\portfolio\bootstrap\telecommunication-solutions-fdh.jpg"
-                data-size="1903x14631"
-                data-med="images\portfolio\bootstrap\telecommunication-solutions-fdh.jpg"
-                data-med-size="1903x14631"
-                data-author="Landing page Bootstrap. Based on WordPress."
-              >
-                <img
-                  src="images\portfolio\thumb\bootstrap\telecommunication-solutions-fdh.jpg"
-                  alt="telecommunication-solutions-fdh"
-                />
-                <div>
-                  <button
-                    onclick="window.open('https://frontdeskhelpers.com/remote-virtual-services/innovative-telecommunication-solutions-for-business/', '_blank')"
-                  >
-                    Go to website
-                  </button>
-                  Telecommunication solutions FDH (USA) - innovative
-                  telecommunication solutions for business.
-                </div>
-              </a>
-              <a
-                href="images\portfolio\bootstrap\website-integration-with-crm.jpg"
-                data-size="1903x14239"
-                data-med="images\portfolio\bootstrap\website-integration-with-crm.jpg"
-                data-med-size="1903x14239"
-                data-author="Landing page Bootstrap. Based on WordPress."
-              >
-                <img
-                  src="images\portfolio\thumb\bootstrap\website-integration-with-crm.jpg"
-                  alt="website-integration-with-crm"
-                />
-                <div>
-                  <button
-                    onclick="window.open('https://frontdeskhelpers.com/remote-virtual-services/website-integration-with-crm/', '_blank')"
-                  >
-                    Go to website
-                  </button>
-                  CRM Integration FDH (USA) - website integration with a crm
-                  systems.
-                </div>
-              </a>
-            </div>
-          </div>
-          <div id="tab-content-3" class="tab-content">
-            <div class="gallery-items">
-              <a
-                href="images\portfolio\shopify\artezioeu.jpg"
-                data-size="1903x6924"
-                data-med="images\portfolio\shopify\artezioeu.jpg"
-                data-med-size="1903x6924"
-                data-author="Shopify."
-              >
-                <img
-                  src="images\portfolio\thumb\shopify\artezioeu.jpg"
-                  alt="artezioeu"
-                />
-                <div>
-                  <button
-                    onclick="window.open('https://www.artezio.es/', '_blank')"
-                  >
-                    Go to website
-                  </button>
-                  Artezioeu (Spain) - Online store Paintings by numbers.
-                </div>
-              </a>
-              <a
-                href="images\portfolio\shopify\cartooniko.jpg"
-                data-size="1903x5424"
-                data-med="images\portfolio\shopify\cartooniko.jpg"
-                data-med-size="1903x5424"
-                data-author="Shopify."
-              >
-                <img
-                  src="images\portfolio\thumb\shopify\cartooniko.jpg"
-                  alt="cartooniko"
-                />
-                <div>
-                  <button
-                    onclick="window.open('https://cartooniko.com', '_blank')"
-                  >
-                    Go to website
-                  </button>
-                  Cartoonization - Online store create custom portraites in
-                  cartoon style.
-                </div>
-              </a>
-              <a
-                href="images\portfolio\shopify\prezentify.jpg"
-                data-size="1903x12296"
-                data-med="images\portfolio\shopify\prezentify.jpg"
-                data-med-size="1903x12296"
-                data-author="Shopify."
-              >
-                <img
-                  src="images\portfolio\thumb\shopify\prezentify.jpg"
-                  alt="prezentify"
-                />
-                <div>
-                  <button
-                    onclick="window.open('https://prezentify.pl', '_blank')"
-                  >
-                    Go to website
-                  </button>
-                  Prezentify (Poland) - Online store personalized gifts.
-                </div>
-              </a>
-              <a
-                href="images\portfolio\shopify\kidzely.jpg"
-                data-size="1903x5742"
-                data-med="images\portfolio\shopify\kidzely.jpg"
-                data-med-size="1903x5742"
-                data-author="Shopify."
-              >
-                <img
-                  src="images\portfolio\thumb\shopify\kidzely.jpg"
-                  alt="kidzely"
-                />
-                <div>
-                  <button
-                    onclick="window.open('https://www.kidzely.com/', '_blank')"
-                  >
-                    Go to website
-                  </button>
-                  Kidzely - children's clothing and accessories online store.
-                </div>
-              </a>
-              <a
-                href="images\portfolio\shopify\lueirislashes.jpg"
-                data-size="1903x6157"
-                data-med="images\portfolio\shopify\lueirislashes.jpg"
-                data-med-size="1903x6157"
-                data-author="Shopify."
-              >
-                <img
-                  src="images\portfolio\thumb\shopify\lueirislashes.jpg"
-                  alt="lueirislashes"
-                />
-                <div>
-                  <button
-                    onclick="window.open('https://lueirislashes.com/', '_blank')"
-                  >
-                    Go to website
-                  </button>
-                  Lueirislashes - premium eye makeup online store.
-                </div>
-              </a>
-              <a
-                href="images\portfolio\shopify\secondchancedecor.jpg"
-                data-size="1903x9177"
-                data-med="images\portfolio\shopify\secondchancedecor.jpg"
-                data-med-size="1903x9177"
-                data-author="Shopify."
-              >
-                <img
-                  src="images\portfolio\thumb\shopify\secondchancedecor.jpg"
-                  alt="secondchancedecor"
-                />
-                <div>
-                  <button
-                    onclick="window.open('https://www.secondchancedecor.ca/', '_blank')"
-                  >
-                    Go to website
-                  </button>
-                  Secondchancedecor - furniture and home accessories online
-                  store.
-                </div>
-              </a>
-            </div>
-          </div>
-          <div id="tab-content-4" class="tab-content">
-            <div class="gallery-items">
-              <a
-                href="images\portfolio\wix\techsupportnew.jpg"
-                data-size="1903x9434"
-                data-med="images\portfolio\wix\techsupportnew.jpg"
-                data-med-size="1903x9434"
-                data-author="Wix."
-              >
-                <img
-                  src="images\portfolio\thumb\wix\techsupportnew.jpg"
-                  alt="techsupportnew"
-                />
-                <div>
-                  <button
-                    onclick="window.open('https://www.technicalsupport.team/', '_blank')"
-                  >
-                    Go to website
-                  </button>
-                  Technicalsupport (USA) - Unlock the full potential of your
-                  business online presence with our digital expertise.
-                </div>
-              </a>
-              <a
-                href="images\portfolio\wix\nft-zone.jpg"
-                data-size="1903x7126"
-                data-med="images\portfolio\wix\nft-zone.jpg"
-                data-med-size="1903x7126"
-                data-author="Wix."
-              >
-                <img
-                  src="images\portfolio\thumb\wix\nft-zone.jpg"
-                  alt="nft-zone"
-                />
-                <div>
-                  <button
-                    onclick="window.open('https://www.nftzone.club/', '_blank')"
-                  >
-                    Go to website
-                  </button>
-                  NFT zone - website about NFT.
-                </div>
-              </a>
-              <a
-                href="images\portfolio\wix\lashbou.jpg"
-                data-size="1903x5679"
-                data-med="images\portfolio\wix\lashbou.jpg"
-                data-med-size="1903x5679"
-                data-author="Wix."
-              >
-                <img
-                  src="images\portfolio\thumb\wix\lashbou.jpg"
-                  alt="lashbou"
-                />
-                <div>
-                  <button
-                    onclick="window.open('https://www.arlington.lashbousalon.com/', '_blank')"
-                  >
-                    Go to website
-                  </button>
-                  Lashbou (USA) - eyelash salon in Arlington.
-                </div>
-              </a>
-              <a
-                href="images\portfolio\wix\lashbou-academy.jpg"
-                data-size="1961x5606"
-                data-med="images\portfolio\wix\lashbou-academy.jpg"
-                data-med-size="1961x5606"
-                data-author="Wix."
-              >
-                <img
-                  src="images\portfolio\thumb\wix\lashbou-academy.jpg"
-                  alt="lashbou-academy"
-                />
-                <div>
-                  <button
-                    onclick="window.open('https://www.lashbouacademy.com/', '_blank')"
-                  >
-                    Go to website
-                  </button>
-                  Lashbou Academy (USA) - eyelash Academy in Arlington.
-                </div>
-              </a>
+              </div>
             </div>
           </div>
 
-          <div id="tab-content-5" class="tab-content">
-            <div class="gallery-items">
-              <a
-                href="images\portfolio\others-cms\wellnessawarenessforall.jpg"
-                data-size="1800x3443"
-                data-med="images\portfolio\others-cms\wellnessawarenessforall.jpg"
-                data-med-size="1800x3443"
-                data-author="Joomla."
-              >
-                <img
-                  src="images\portfolio\thumb\others-cms\wellnessawarenessforall.jpg"
-                  alt="wellnessawarenessforall"
-                />
-                <div>
-                  <button
-                    onclick="window.open('https://wellnessawarenessforall.org/', '_blank')"
-                  >
-                    Go to website
-                  </button>
-                  World of Wellness
+          <div class="col-lg-4 col-md-6 portfolio-item filter-wordpress">
+            <div class="portfolio-wrap">
+              <img
+                src="/assets/img/portfolio/thumbs/wordpress/rolen-construction_thumb.webp"
+                class="img-fluid"
+                alt="Rolen Construction"
+              />
+              <div class="portfolio-info">
+                <h4>Rolen Construction</h4>
+                <p>Wordpress theme from scratch. ACF. Custom CSS3/PHP. Inner Services landing pages with Elementor</p>
+                <div class="portfolio-links">
+                  <a
+                    href="/assets/img/portfolio/wordpress/rolen-construction.webp"
+                    data-gallery="portfolioGallery"
+                    class="portfolio-lightbox"
+                    title="Rolen Construction"
+                    ><i class="bx bxs-zoom-in"></i
+                  ></a>
+                  <a
+                    href="/assets/portfolio-details/wordpress-details/rolen-construction_portfolio-details.html"
+                    data-gallery="portfolioDetailsGallery"
+                    data-glightbox="type: external"
+                    class="portfolio-details-lightbox"
+                    title="Portfolio Details"
+                    ><i class="bx bx-link"></i
+                  ></a>
                 </div>
-              </a>
-
-              <a
-                href="images\portfolio\others-cms\ambumedica.jpg"
-                data-size="1800x3052"
-                data-med="images\portfolio\others-cms\ambumedica.jpg"
-                data-med-size="1800x3052"
-                data-author="Joomla."
-              >
-                <img
-                  src="images\portfolio\thumb\others-cms\ambumedica.jpg"
-                  alt="ambumedica"
-                />
-                <div>
-                  <button
-                    onclick="window.open('https://ambumedica.net/', '_blank')"
-                  >
-                    Go to website
-                  </button>
-                  AmbuMedica - your health and well-being are our top priorities
-                </div>
-              </a>
-
-              <a
-                href="images\portfolio\others-cms\canaldosorganicos.jpg"
-                data-size="1800x2854"
-                data-med="images\portfolio\others-cms\canaldosorganicos.jpg"
-                data-med-size="1800x2854"
-                data-author="Joomla."
-              >
-                <img
-                  src="images\portfolio\thumb\others-cms\canaldosorganicos.jpg"
-                  alt="canaldosorganicos"
-                />
-                <div>
-                  <button
-                    onclick="window.open('https://canaldosorganicos.com/', '_blank')"
-                  >
-                    Go to website
-                  </button>
-                  Canaldosorganicos - digital platform, based in Brazil.
-                </div>
-              </a>
-
-              <a
-                href="images\portfolio\others-cms\clinicallyvalidated-dtx.jpg"
-                data-size="1800x3580"
-                data-med="images\portfolio\others-cms\clinicallyvalidated-dtx.jpg"
-                data-med-size="1800x3580"
-                data-author="Joomla."
-              >
-                <img
-                  src="images\portfolio\thumb\others-cms\clinicallyvalidated-dtx.jpg"
-                  alt="clinicallyvalidated-dtx"
-                />
-                <div>
-                  <button
-                    onclick="window.open('https://clinicallyvalidated-dtx.com/', '_blank')"
-                  >
-                    Go to website
-                  </button>
-                  Clinically Validated.
-                </div>
-              </a>
-
-              <a
-                href="images\portfolio\others-cms\dallaspediatricwellness.jpg"
-                data-size="1800x3649"
-                data-med="images\portfolio\others-cms\dallaspediatricwellness.jpg"
-                data-med-size="1800x3649"
-                data-author="Joomla."
-              >
-                <img
-                  src="images\portfolio\thumb\others-cms\dallaspediatricwellness.jpg"
-                  alt="dallaspediatricwellness"
-                />
-                <div>
-                  <button
-                    onclick="window.open('https://dallaspediatricwellness.com/', '_blank')"
-                  >
-                    Go to website
-                  </button>
-                  Dallaspediatricwellness - child's wellness is our priority.
-                </div>
-              </a>
-
-              <a
-                href="images\portfolio\others-cms\elitehealthwarrior.jpg"
-                data-size="1800x4683"
-                data-med="images\portfolio\others-cms\elitehealthwarrior.jpg"
-                data-med-size="1800x4683"
-                data-author="Joomla."
-              >
-                <img
-                  src="images\portfolio\thumb\others-cms\elitehealthwarrior.jpg"
-                  alt="elitehealthwarrior"
-                />
-                <div>
-                  <button
-                    onclick="window.open('https://elitehealthwarrior.com/', '_blank')"
-                  >
-                    Go to website
-                  </button>
-                  Elitehealthwarrior.
-                </div>
-              </a>
-
-              <a
-                href="images\portfolio\others-cms\doctorguys.jpg"
-                data-size="1800x5077"
-                data-med="images\portfolio\others-cms\doctorguys.jpg"
-                data-med-size="1800x5077"
-                data-author="Joomla."
-              >
-                <img
-                  src="images\portfolio\thumb\others-cms\doctorguys.jpg"
-                  alt="doctorguys"
-                />
-                <div>
-                  <button
-                    onclick="window.open('https://doctorguys.com/', '_blank')"
-                  >
-                    Go to website
-                  </button>
-                  Doctorguys.
-                </div>
-              </a>
-
-              <a
-                href="images\portfolio\others-cms\epharmy.jpg"
-                data-size="1800x3218"
-                data-med="images\portfolio\others-cms\epharmy.jpg"
-                data-med-size="1800x3218"
-                data-author="Joomla."
-              >
-                <img
-                  src="images\portfolio\thumb\others-cms\epharmy.jpg"
-                  alt="epharmy"
-                />
-                <div>
-                  <button
-                    onclick="window.open('https://epharmy.net/', '_blank')"
-                  >
-                    Go to website
-                  </button>
-                  Epharmy - online pharmacy.
-                </div>
-              </a>
-
-              <a
-                href="images\portfolio\others-cms\flowermounddentalimplant.jpg"
-                data-size="1800x3754"
-                data-med="images\portfolio\others-cms\flowermounddentalimplant.jpg"
-                data-med-size="1800x3754"
-                data-author="Joomla."
-              >
-                <img
-                  src="images\portfolio\thumb\others-cms\flowermounddentalimplant.jpg"
-                  alt="flowermounddentalimplant"
-                />
-                <div>
-                  <button
-                    onclick="window.open('https://flowermounddentalimplant.com/', '_blank')"
-                  >
-                    Go to website
-                  </button>
-                  Dental implants.
-                </div>
-              </a>
-
-              <a
-                href="images\portfolio\others-cms\healthlinespro.jpg"
-                data-size="1800x3618"
-                data-med="images\portfolio\others-cms\healthlinespro.jpg"
-                data-med-size="1800x3618"
-                data-author="Joomla."
-              >
-                <img
-                  src="images\portfolio\thumb\others-cms\healthlinespro.jpg"
-                  alt="healthlinespro"
-                />
-                <div>
-                  <button
-                    onclick="window.open('https://healthlinespro.com/', '_blank')"
-                  >
-                    Go to website
-                  </button>
-                  Healthlinespro.
-                </div>
-              </a>
-
-              <a
-                href="images\portfolio\others-cms\medicinesummary.jpg"
-                data-size="1800x3940"
-                data-med="images\portfolio\others-cms\medicinesummary.jpg"
-                data-med-size="1800x3940"
-                data-author="Joomla."
-              >
-                <img
-                  src="images\portfolio\thumb\others-cms\medicinesummary.jpg"
-                  alt="medicinesummary"
-                />
-                <div>
-                  <button
-                    onclick="window.open('https://medicinesummary.com/', '_blank')"
-                  >
-                    Go to website
-                  </button>
-                  Medicine summary.
-                </div>
-              </a>
-
-              <a
-                href="images\portfolio\others-cms\medmalpalinsurance.jpg"
-                data-size="1800x3560"
-                data-med="images\portfolio\others-cms\medmalpalinsurance.jpg"
-                data-med-size="1800x3560"
-                data-author="Joomla."
-              >
-                <img
-                  src="images\portfolio\thumb\others-cms\medmalpalinsurance.jpg"
-                  alt="medmalpalinsurance"
-                />
-                <div>
-                  <button
-                    onclick="window.open('https://medmalpalinsurance.com/', '_blank')"
-                  >
-                    Go to website
-                  </button>
-                  Medical Malpractice Insurance.
-                </div>
-              </a>
-
-              <a
-                href="images\portfolio\others-cms\medprimeinternational.jpg"
-                data-size="1800x3199"
-                data-med="images\portfolio\others-cms\medprimeinternational.jpg"
-                data-med-size="1800x3199"
-                data-author="Joomla."
-              >
-                <img
-                  src="images\portfolio\thumb\others-cms\medprimeinternational.jpg"
-                  alt="medprimeinternational"
-                />
-                <div>
-                  <button
-                    onclick="window.open('https://medprimeinternational.com/', '_blank')"
-                  >
-                    Go to website
-                  </button>
-                  MedPrime International - Your Global Health Partner.
-                </div>
-              </a>
-
-              <a
-                href="images\portfolio\others-cms\minidentalimplantswaterburyct.jpg"
-                data-size="1800x4265"
-                data-med="images\portfolio\others-cms\minidentalimplantswaterburyct.jpg"
-                data-med-size="1800x4265"
-                data-author="Joomla."
-              >
-                <img
-                  src="images\portfolio\thumb\others-cms\minidentalimplantswaterburyct.jpg"
-                  alt="minidentalimplantswaterburyct"
-                />
-                <div>
-                  <button
-                    onclick="window.open('https://minidentalimplantswaterburyct.com/', '_blank')"
-                  >
-                    Go to website
-                  </button>
-                  Dental implants.
-                </div>
-              </a>
-
-              <a
-                href="images\portfolio\others-cms\osteopathe-16.jpg"
-                data-size="1800x4545"
-                data-med="images\portfolio\others-cms\osteopathe-16.jpg"
-                data-med-size="1800x4545"
-                data-author="Joomla."
-              >
-                <img
-                  src="images\portfolio\thumb\others-cms\osteopathe-16.jpg"
-                  alt="osteopathe-16"
-                />
-                <div>
-                  <button
-                    onclick="window.open('https://osteopathe-16.com/', '_blank')"
-                  >
-                    Go to website
-                  </button>
-                  Healing Power of Osteopathy.
-                </div>
-              </a>
-
-              <a
-                href="images\portfolio\others-cms\physicaltherapyworkspvb.jpg"
-                data-size="1800x4012"
-                data-med="images\portfolio\others-cms\physicaltherapyworkspvb.jpg"
-                data-med-size="1800x4012"
-                data-author="Joomla."
-              >
-                <img
-                  src="images\portfolio\thumb\others-cms\physicaltherapyworkspvb.jpg"
-                  alt="physicaltherapyworkspvb"
-                />
-                <div>
-                  <button
-                    onclick="window.open('https://physicaltherapyworkspvb.com/', '_blank')"
-                  >
-                    Go to website
-                  </button>
-                  SPVB's world of transformative physical therapy.
-                </div>
-              </a>
-
-              <a
-                href="images\portfolio\others-cms\pierpandentistry.jpg"
-                data-size="1800x3716"
-                data-med="images\portfolio\others-cms\pierpandentistry.jpg"
-                data-med-size="1800x3716"
-                data-author="Joomla."
-              >
-                <img
-                  src="images\portfolio\thumb\others-cms\pierpandentistry.jpg"
-                  alt="pierpandentistry"
-                />
-                <div>
-                  <button
-                    onclick="window.open('https://pierpandentistry.net/', '_blank')"
-                  >
-                    Go to website
-                  </button>
-                  Dr. John Pierpan.
-                </div>
-              </a>
-
-              <a
-                href="images\portfolio\others-cms\portagedental.jpg"
-                data-size="1800x3207"
-                data-med="images\portfolio\others-cms\portagedental.jpg"
-                data-med-size="1800x3207"
-                data-author="Joomla."
-              >
-                <img
-                  src="images\portfolio\thumb\others-cms\portagedental.jpg"
-                  alt="portagedental"
-                />
-                <div>
-                  <button
-                    onclick="window.open('https://portagedental.net/', '_blank')"
-                  >
-                    Go to website
-                  </button>
-                  Portage Dental.
-                </div>
-              </a>
-
-              <a
-                href="images\portfolio\others-cms\progohealthdaily.jpg"
-                data-size="1800x3131"
-                data-med="images\portfolio\others-cms\progohealthdaily.jpg"
-                data-med-size="1800x3131"
-                data-author="Joomla."
-              >
-                <img
-                  src="images\portfolio\thumb\others-cms\progohealthdaily.jpg"
-                  alt="progohealthdaily"
-                />
-                <div>
-                  <button
-                    onclick="window.open('https://progohealthdaily.com/', '_blank')"
-                  >
-                    Go to website
-                  </button>
-                  Progo Health Daily.
-                </div>
-              </a>
-
-              <a
-                href="images\portfolio\others-cms\respiratorytherapistschools.jpg"
-                data-size="1800x3084"
-                data-med="images\portfolio\others-cms\respiratorytherapistschools.jpg"
-                data-med-size="1800x3084"
-                data-author="Joomla."
-              >
-                <img
-                  src="images\portfolio\thumb\others-cms\respiratorytherapistschools.jpg"
-                  alt="respiratorytherapistschools"
-                />
-                <div>
-                  <button
-                    onclick="window.open('https://respiratorytherapistschools.org/', '_blank')"
-                  >
-                    Go to website
-                  </button>
-                  Respiratory Therapist School.
-                </div>
-              </a>
-
-              <a
-                href="images\portfolio\others-cms\wwmeditationgarden.jpg"
-                data-size="1800x4340"
-                data-med="images\portfolio\others-cms\wwmeditationgarden.jpg"
-                data-med-size="1800x4340"
-                data-author="Joomla."
-              >
-                <img
-                  src="images\portfolio\thumb\others-cms\wwmeditationgarden.jpg"
-                  alt="wwmeditationgarden"
-                />
-                <div>
-                  <button
-                    onclick="window.open('https://wwmeditationgarden.net/', '_blank')"
-                  >
-                    Go to website
-                  </button>
-                  Meditation Garden.
-                </div>
-              </a>
-
-              <a
-                href="images\portfolio\others-cms\sportpit24.jpg"
-                data-size="1903x6463"
-                data-med="images\portfolio\others-cms\sportpit24.jpg"
-                data-med-size="1903x6463"
-                data-author="OpenCart."
-              >
-                <img
-                  src="images\portfolio\thumb\others-cms\sportpit24.jpg"
-                  alt="sportpit24"
-                />
-                <div>
-                  <button
-                    onclick="window.open('https://sportpit24.com.ua/', '_blank')"
-                  >
-                    Go to website
-                  </button>
-                  Sportpit24 - Ukrainian online store of sports vitamins and
-                  minerals.
-                </div>
-              </a>
+              </div>
             </div>
           </div>
 
-          <div id="tab-content-6" class="tab-content">
-            <div class="gallery-items">
-              <a
-                href="images\portfolio\wordpress\911mg.jpg"
-                data-size="1903x3444"
-                data-med="images\portfolio\wordpress\911mg.jpg"
-                data-med-size="1903x3444"
-                data-author="Wordpress. ACF. Custom post type. Redux framework"
-              >
-                <img
-                  src="images\portfolio\thumb\wordpress\911mg.jpg"
-                  alt="911mg"
-                />
-                <div>
-                  <button
-                    onclick="window.open('https://www.911mg.org/', '_blank')"
-                  >
-                    Go to website
-                  </button>
-                  911mg - HTML to WordPress.
+          <div class="col-lg-4 col-md-6 portfolio-item filter-wordpress">
+            <div class="portfolio-wrap">
+              <img
+                src="/assets/img/portfolio/thumbs/wordpress/delivery-fdh_thumb.webp"
+                class="img-fluid"
+                alt="FDH Cloud Delivery"
+              />
+              <div class="portfolio-info">
+                <h4>FDH Cloud Delivery Managment Solution</h4>
+                <p>Wordpress theme from scratch. Bootstrap.</p>
+                <div class="portfolio-links">
+                  <a
+                    href="/assets/img/portfolio/wordpress/delivery-fdh.webp"
+                    data-gallery="portfolioGallery"
+                    class="portfolio-lightbox"
+                    title="FDH Cloud Delivery"
+                    ><i class="bx bxs-zoom-in"></i
+                  ></a>
+                  <a
+                    href="/assets/portfolio-details/wordpress-details/delivery-fdh_portfolio-details.html"
+                    data-gallery="portfolioDetailsGallery"
+                    data-glightbox="type: external"
+                    class="portfolio-details-lightbox"
+                    title="Portfolio Details"
+                    ><i class="bx bx-link"></i
+                  ></a>
                 </div>
-              </a>
-              <a
-                href="images\portfolio\html-css-js\webart.jpg"
-                data-size="1903x11543"
-                data-med="images\portfolio\html-css-js\webart.jpg"
-                data-med-size="1903x11543"
-                data-author="Landing on pure code HTML/CSS/JS."
-              >
-                <img
-                  src="images\portfolio\thumb\html-css-js\webart.jpg"
-                  alt="webart"
-                />
-                <div>
-                  <button
-                    onclick="window.open('https://yusupovwebart.github.io/Portfolio/', '_blank')"
-                  >
-                    Go to website
-                  </button>
-                  Webart - my website-Portfolio.
-                </div>
-              </a>
-
-              <a
-                href="images\portfolio\html-css-js\mohave.jpg"
-                data-size="1831x4000"
-                data-med="images\portfolio\html-css-js\mohave.jpg"
-                data-med-size="1831x4000"
-                data-author="Landing on pure code HTML/CSS/JS."
-              >
-                <img
-                  src="images\portfolio\thumb\html-css-js\mohave.jpg"
-                  alt="mohave"
-                />
-                <div>
-                  <button
-                    onclick="window.open('https://mohavecosmeticsurgery.com/', '_blank')"
-                  >
-                    Go to website
-                  </button>
-                  Plastic Surgery Las Vegas Breast Augmentation Liposuction
-                  Botox.
-                </div>
-              </a>
-
-              <a
-                href="images\portfolio\wordpress\kolosochok.jpg"
-                data-size="1349x6110"
-                data-med="images\portfolio\wordpress\kolosochok.jpg"
-                data-med-size="1349x6110"
-                data-author="Landing page - PSD to HTML/CSS based on WordPress."
-              >
-                <img
-                  src="images\portfolio\thumb\wordpress\kolosochok.jpg"
-                  alt="kolosochok"
-                />
-                <div>
-                  <button
-                    onclick="window.open('https://kolosochok.kiev.ua', '_blank')"
-                  >
-                    Go to website
-                  </button>
-                  Kolosochok - Ukrainian children's public organization.
-                </div>
-              </a>
-              <a
-                href="images\portfolio\wordpress\lellex.jpg"
-                data-size="1400x6400"
-                data-med="images\portfolio\wordpress\serzak.jpg"
-                data-med-size="1400x6400"
-                data-author="Wordpress. Custom theme from scratch based on pure HTML5/CSS3 code"
-              >
-                <img
-                  src="images\portfolio\thumb\wordpress\lellex.jpg"
-                  alt="lellex"
-                />
-                <div>
-                  <button onclick="window.open('#', '_blank')">
-                    Go to website
-                  </button>
-                  Lellex - Film production
-                </div>
-              </a>
-              <a
-                href="images\portfolio\wordpress\buhlede.jpg"
-                data-size="1903x2305"
-                data-med="images\portfolio\wordpress\buhlede.jpg"
-                data-med-size="1903x2305"
-                data-author="Landing on pure code. Wordpress."
-              >
-                <img
-                  src="images\portfolio\thumb\wordpress\buhlede.jpg"
-                  alt="buhlde"
-                />
-                <div>
-                  <button
-                    onclick="window.open('https://www.buhl.de/', '_blank')"
-                  >
-                    Go to website
-                  </button>
-                  :BUHL - Financial and tax software in Germany
-                </div>
-              </a>
-              <a
-                href="images\portfolio\bootstrap\delivery-fdh.jpg"
-                data-size="1316x14000"
-                data-med="images\portfolio\bootstrap\delivery-fdh.jpg"
-                data-med-size="1316x14000"
-                data-author="Landing page Bootstrap. Based on Wordpress."
-              >
-                <img
-                  src="images\portfolio\thumb\bootstrap\delivery-fdh.jpg"
-                  alt="delivery-fdh"
-                />
-                <div>
-                  <button
-                    onclick="window.open('https://frontdeskhelpers.com/remote-virtual-services/delivery-solution-fdh-cloud/', '_blank')"
-                  >
-                    Go to website
-                  </button>
-                  The FDH Cloud Delivery solution (USA) - The FDH Cloud Delivery
-                  solution (system) for dispatching, planning, and tracking your
-                  deliveries and courier. Use delivery software to automate
-                  delivery.
-                </div>
-              </a>
-              <a
-                href="images\portfolio\bootstrap\telecommunication-solutions-fdh.jpg"
-                data-size="1903x14631"
-                data-med="images\portfolio\bootstrap\telecommunication-solutions-fdh.jpg"
-                data-med-size="1903x14631"
-                data-author="Landing page Bootstrap. Based on Wordpress."
-              >
-                <img
-                  src="images\portfolio\thumb\bootstrap\telecommunication-solutions-fdh.jpg"
-                  alt="telecommunication-solutions-fdh"
-                />
-                <div>
-                  <button
-                    onclick="window.open('https://frontdeskhelpers.com/remote-virtual-services/innovative-telecommunication-solutions-for-business/', '_blank')"
-                  >
-                    Go to website
-                  </button>
-                  Telecommunication solutions FDH (USA) - innovative
-                  telecommunication solutions for business.
-                </div>
-              </a>
-              <a
-                href="images\portfolio\wordpress\serzak.jpg"
-                data-size="1422x9000"
-                data-med="images\portfolio\wordpress\serzak.jpg"
-                data-med-size="1422x9000"
-                data-author="WordPress. Elementor + Custom HTML/CSS code"
-              >
-                <img
-                  src="images\portfolio\thumb\wordpress\serzak.jpg"
-                  alt="serzak"
-                />
-                <div>
-                  <button onclick="window.open('#', '_blank')">
-                    Go to website
-                  </button>
-                  Serzak - marketing agency
-                </div>
-              </a>
-              <a
-                href="images\portfolio\bootstrap\website-integration-with-crm.jpg"
-                data-size="1903x14239"
-                data-med="images\portfolio\bootstrap\website-integration-with-crm.jpg"
-                data-med-size="1903x14239"
-                data-author="Landing page Bootstrap. Based on WordPress."
-              >
-                <img
-                  src="images\portfolio\thumb\bootstrap\website-integration-with-crm.jpg"
-                  alt="website-integration-with-crm"
-                />
-                <div>
-                  <button
-                    onclick="window.open('https://frontdeskhelpers.com/remote-virtual-services/website-integration-with-crm/', '_blank')"
-                  >
-                    Go to website
-                  </button>
-                  CRM Integration FDH (USA) - website integration with a crm
-                  systems.
-                </div>
-              </a>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- MY WORKS - SLIDER ADAPTIVE
-    ================================================== -->
+          <div class="col-lg-4 col-md-6 portfolio-item filter-wordpress">
+            <div class="portfolio-wrap">
+              <img
+                src="/assets/img/portfolio/thumbs/wordpress/all-day-medical-care-clinic_thumb.webp"
+                class="img-fluid"
+                alt="All Day Medical Care Clinic"
+              />
+              <div class="portfolio-info">
+                <h4>All Day Medical Care Clinic</h4>
+                <p>Wordpress theme from scratch personalized with Elementor and Custom CSS3 and PHP code. ACF.</p>
+                <div class="portfolio-links">
+                  <a
+                    href="/assets/img/portfolio/wordpress/all-day-medical-care-clinic.webp"
+                    data-gallery="portfolioGallery"
+                    class="portfolio-lightbox"
+                    title="All Day Medical Care Clinic"
+                    ><i class="bx bxs-zoom-in"></i
+                  ></a>
+                  <a
+                    href="/assets/portfolio-details/wordpress-details/all-day-medical-care-clinic_portfolio-details.html"
+                    data-gallery="portfolioDetailsGallery"
+                    data-glightbox="type: external"
+                    class="portfolio-details-lightbox"
+                    title="Portfolio Details"
+                    ><i class="bx bx-link"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
 
-    <section
-      id="mobile-works"
-      class="s-works target-section mywork-mobile-slider"
-    >
-      <div class="row heading-block heading-block--center">
-        <div class="column large-full">
-          <h2 class="section-heading section-heading--centerbottom">
-            My Recent Works
-          </h2>
-          <p class="section-desc">
-            These are some of my latest works from scratch, on various
-            platforms, or in pure code.
-          </p>
-        </div>
-      </div>
 
-      <div class="heading-slider">
-        <h2>WORDPRESS</h2>
-      </div>
-      <div class="slider">
-        <div class="carousel" id="carousel1">
-          <img src="images\portfolio\thumb\wordpress\orozco.jpg" alt="orozco" />
-          <img
-            src="images\portfolio\thumb\wordpress\fluffy-ninja.jpg"
-            alt="fluffy-ninja"
-            class="active"
-          />
-          <img
-            src="images\portfolio\thumb\wordpress\telefon.jpg"
-            alt="telefon"
-          />
-          <img src="images\portfolio\thumb\wordpress\bemol.jpg" alt="bemol" />
-          <img src="images\portfolio\thumb\wordpress\lellex.jpg" alt="lellex" />
-          <img src="images\portfolio\thumb\wordpress\serzak.jpg" alt="serzak" />
-          <img src="images\portfolio\thumb\wordpress\911mg.jpg" alt="911mg" />
-          <img src="images\portfolio\thumb\wordpress\demes.jpg" alt="demes" />
-          <img
-            src="images\portfolio\thumb\wordpress\buhlede.jpg"
-            alt="buhlede"
-          />
-          <img
-            src="images\portfolio\thumb\wordpress\bezalel.jpg"
-            alt="bezalel"
-          />
-          <img
-            src="images\portfolio\thumb\wordpress\tubebeytu.jpg"
-            alt="tubebeytu"
-          />
-          <img
-            src="images\portfolio\thumb\wordpress\soladentalspa.jpg"
-            alt="soladentalspa"
-          />
-          <img
-            src="images\portfolio\thumb\wordpress\psichologonline.jpg"
-            alt="psichologonline"
-          />
-          <img
-            src="images\portfolio\thumb\wordpress\quatrefincas.jpg"
-            alt="quatrefincas"
-          />
-          <img
-            src="images\portfolio\thumb\wordpress\kolosochok.jpg"
-            alt="kolosochok"
-          />
-          <img
-            src="images\portfolio\thumb\wordpress\mundodeapartamentos.jpg"
-            alt="mundodeapartamentos"
-          />
-          <img src="images\portfolio\thumb\wordpress\svkus.jpg" alt="svkus" />
-          <img
-            src="images\portfolio\thumb\wordpress\djrihis.jpg"
-            alt="djrihis"
-          />
-          <img
-            src="images\portfolio\thumb\wordpress\causetume.jpg"
-            alt="causetume"
-          />
-          <img
-            src="images\portfolio\thumb\wordpress\vikamaster.jpg"
-            alt="vikamaster"
-          />
-          <img src="images\portfolio\thumb\wordpress\vival.jpg" alt="vival" />
-          <img
-            src="images\portfolio\thumb\wordpress\lunamebel.jpg"
-            alt="lunamebel"
-          />
-          <img
-            src="images\portfolio\thumb\wordpress\besttextile.jpg"
-            alt="besttextile"
-          />
-          <img
-            src="images\portfolio\thumb\wordpress\aurumbud.jpg"
-            alt="aurumbud"
-          />
-          <button class="prev" onclick="prevSlide('carousel1')">❮</button>
-          <button class="next" onclick="nextSlide('carousel1')">❯</button>
-        </div>
-      </div>
+          <div class="col-lg-4 col-md-6 portfolio-item filter-wordpress">
+            <div class="portfolio-wrap">
+              <img
+                src="/assets/img/portfolio/thumbs/wordpress/organicbed_thumb.webp"
+                class="img-fluid"
+                alt="Organic Bed"
+              />
+              <div class="portfolio-info">
+                <h4>Organic Bed</h4>
+                <p>RTL Wordpress theme from scratch. WooCommerce. Custom CSS3/JS</p>
+                <div class="portfolio-links">
+                  <a
+                    href="/assets/img/portfolio/wordpress/organicbed.webp"
+                    data-gallery="portfolioGallery"
+                    class="portfolio-lightbox"
+                    title="Organic Bed"
+                    ><i class="bx bxs-zoom-in"></i
+                  ></a>
+                  <a
+                    href="/assets/portfolio-details/wordpress-details/organicbed_portfolio-details.html"
+                    data-gallery="portfolioDetailsGallery"
+                    data-glightbox="type: external"
+                    class="portfolio-details-lightbox"
+                    title="Portfolio Details"
+                    ><i class="bx bx-link"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+      
 
-      <div class="heading-slider">
-        <h2>BOOTSTRAP</h2>
-      </div>
-      <div class="slider">
-        <div class="carousel" id="carousel2">
-          <img
-            src="images\portfolio\thumb\bootstrap\delivery-fdh.jpg"
-            alt="delivery-fdh"
-            class="active"
-          />
-          <img
-            src="images\portfolio\thumb\bootstrap\telecommunication-solutions-fdh.jpg"
-            alt="telecommunication-solutions-fdh"
-          />
-          <img
-            src="images\portfolio\thumb\bootstrap\website-integration-with-crm.jpg"
-            alt="website-integration-with-crm"
-          />
-          <button class="prev" onclick="prevSlide('carousel2')">❮</button>
-          <button class="next" onclick="nextSlide('carousel2')">❯</button>
-        </div>
-      </div>
 
-      <div class="heading-slider">
-        <h2>HTML/CSS/JS</h2>
-      </div>
-      <div class="slider">
-        <div class="carousel" id="carousel3">
-          <img
-            src="images\portfolio\thumb\html-css-js\mohave.jpg"
-            alt="mohave"
-            class="active"
-          />
-          <img
-            src="images\portfolio\thumb\html-css-js\webart.jpg"
-            alt="webart"
-          />
-          <img src="images\portfolio\thumb\wordpress\911mg.jpg" alt="911mg" />
-          <img src="images\portfolio\thumb\wordpress\lellex.jpg" alt="lellex" />
-          <img src="images\portfolio\thumb\wordpress\serzak.jpg" alt="serzak" />
-          <img
-            src="images\portfolio\thumb\wordpress\buhlede.jpg"
-            alt="buhlede"
-          />
-          <img
-            src="images\portfolio\thumb\bootstrap\delivery-fdh.jpg"
-            alt="delivery-fdh"
-          />
-          <img
-            src="images\portfolio\thumb\bootstrap\telecommunication-solutions-fdh.jpg"
-            alt="telecommunication-solutions-fdh"
-          />
-          <img
-            src="images\portfolio\thumb\bootstrap\website-integration-with-crm.jpg"
-            alt="website-integration-with-crm"
-          />
-          <button class="prev" onclick="prevSlide('carousel3')">❮</button>
-          <button class="next" onclick="nextSlide('carousel3')">❯</button>
-        </div>
-      </div>
+          <div class="col-lg-4 col-md-6 portfolio-item filter-wordpress">
+            <div class="portfolio-wrap">
+              <img
+                src="/assets/img/portfolio/thumbs/wordpress/adwoods-design_thumb.webp"
+                class="img-fluid"
+                alt="Adwoods Design"
+              />
+              <div class="portfolio-info">
+                <h4>Adwoods Design</h4>
+                <p>Wordpress theme from scratch. DIVI page builder + Custom CSS3/JS/PHP</p>
+                <div class="portfolio-links">
+                  <a
+                    href="/assets/img/portfolio/wordpress/adwoods-design.webp"
+                    data-gallery="portfolioGallery"
+                    class="portfolio-lightbox"
+                    title="Adwoods Design"
+                    ><i class="bx bxs-zoom-in"></i
+                  ></a>
+                  <a
+                    href="/assets/portfolio-details/wordpress-details/adwoods-design_portfolio-details.html"
+                    data-gallery="portfolioDetailsGallery"
+                    data-glightbox="type: external"
+                    class="portfolio-details-lightbox"
+                    title="Portfolio Details"
+                    ><i class="bx bx-link"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
 
-      <div class="heading-slider">
-        <h2>SHOPIFY</h2>
-      </div>
-      <div class="slider">
-        <div class="carousel" id="carousel4">
-          <img
-            src="images\portfolio\thumb\shopify\lueirislashes.jpg"
-            alt="lueirislashes"
-            class="active"
-          />
-          <img
-            src="images\portfolio\thumb\shopify\artezioeu.jpg"
-            alt="artezioeu"
-          />
-          <img
-            src="images\portfolio\thumb\shopify\secondchancedecor.jpg"
-            alt="secondchancedecor"
-          />
-          <img
-            src="images\portfolio\thumb\shopify\cartooniko.jpg"
-            alt="cartooniko"
-          />
-          <img src="images\portfolio\thumb\shopify\kidzely.jpg" alt="kidzely" />
-          <img
-            src="images\portfolio\thumb\shopify\prezentify.jpg"
-            alt="prezentify"
-          />
-          <button class="prev" onclick="prevSlide('carousel4')">❮</button>
-          <button class="next" onclick="nextSlide('carousel4')">❯</button>
-        </div>
-      </div>
+          <div class="col-lg-4 col-md-6 portfolio-item filter-wordpress">
+            <div class="portfolio-wrap">
+              <img
+                src="/assets/img/portfolio/thumbs/wordpress/lellexvideoproduction_thumb.webp"
+                class="img-fluid"
+                alt="Lellex Video Production"
+              />
+              <div class="portfolio-info">
+                <h4>Lellex Video Production</h4>
+                <p>Wordpress theme from scratch. Custom CSS3/JS</p>
+                <div class="portfolio-links">
+                  <a
+                    href="/assets/img/portfolio/wordpress/lellexvideoproduction.webp"
+                    data-gallery="portfolioGallery"
+                    class="portfolio-lightbox"
+                    title="Lellex Video Production"
+                    ><i class="bx bxs-zoom-in"></i
+                  ></a>
+                  <a
+                    href="/assets/portfolio-details/wordpress-details/lellexvideoproduction_portfolio-details.html"
+                    data-gallery="portfolioDetailsGallery"
+                    data-glightbox="type: external"
+                    class="portfolio-details-lightbox"
+                    title="Portfolio Details"
+                    ><i class="bx bx-link"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
 
-      <div class="heading-slider">
-        <h2>WIX</h2>
-      </div>
-      <div class="slider">
-        <div class="carousel" id="carousel5">
-          <img
-            src="images\portfolio\thumb\wix\techsupportnew.jpg"
-            alt="techsupportnew"
-            class="active"
-          />
-          <img
-            src="images\portfolio\thumb\wix\lashbou-academy.jpg"
-            alt="lashbou-academy"
-          />
-          <img src="images\portfolio\thumb\wix\nft-zone.jpg" alt="nft-zone" />
-          <img src="images\portfolio\thumb\wix\lashbou.jpg" alt="lashbou" />
-          <button class="prev" onclick="prevSlide('carousel5')">❮</button>
-          <button class="next" onclick="nextSlide('carousel5')">❯</button>
-        </div>
-      </div>
+          <div class="col-lg-4 col-md-6 portfolio-item filter-wordpress">
+            <div class="portfolio-wrap">
+              <img
+                src="/assets/img/portfolio/thumbs/wordpress/telefontrainingskoffer_thumb.webp"
+                class="img-fluid"
+                alt="Telefontrainingskoffer"
+              />
+              <div class="portfolio-info">
+                <h4>Telefontrainingskoffer - Callcenter Akademie</h4>
+                <p>Wordpress theme from scratch based on WPBakery Page Builder + Custom CSS3/JS + content</p>
+                <div class="portfolio-links">
+                  <a
+                    href="/assets/img/portfolio/wordpress/telefontrainingskoffer.webp"
+                    data-gallery="portfolioGallery"
+                    class="portfolio-lightbox"
+                    title="Telefontrainingskoffer"
+                    ><i class="bx bxs-zoom-in"></i
+                  ></a>
+                  <a
+                    href="/assets/portfolio-details/wordpress-details/telefontrainingskoffer_portfolio-details.html"
+                    data-gallery="portfolioDetailsGallery"
+                    data-glightbox="type: external"
+                    class="portfolio-details-lightbox"
+                    title="Portfolio Details"
+                    ><i class="bx bx-link"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
 
-      <div class="heading-slider">
-        <h2>OTHER CMS</h2>
-      </div>
-      <div class="slider">
-        <div class="carousel" id="carousel6">
-          <img
-            src="images\portfolio\thumb\others-cms\ambumedica.jpg"
-            alt="ambumedica"
-            class="active"
-          />
-          <img
-            src="images\portfolio\thumb\others-cms\sportpit24.jpg"
-            alt="sportpit24"
-          />
-          <img
-            src="images\portfolio\thumb\others-cms\canaldosorganicos.jpg"
-            alt="canaldosorganicos"
-          />
-          <img
-            src="images\portfolio\thumb\others-cms\clinicallyvalidated-dtx.jpg"
-            alt="clinicallyvalidated-dtx"
-          />
-          <img
-            src="images\portfolio\thumb\others-cms\dallaspediatricwellness.jpg"
-            alt="dallaspediatricwellness"
-          />
-          <img
-            src="images\portfolio\thumb\others-cms\doctorguys.jpg"
-            alt="doctorguys"
-          />
-          <img
-            src="images\portfolio\thumb\others-cms\elitehealthwarrior.jpg"
-            alt="elitehealthwarrior"
-          />
-          <img
-            src="images\portfolio\thumb\others-cms\epharmy.jpg"
-            alt="epharmy"
-          />
-          <img
-            src="images\portfolio\thumb\others-cms\flowermounddentalimplant.jpg"
-            alt="flowermounddentalimplant"
-          />
-          <img
-            src="images\portfolio\thumb\others-cms\healthlinespro.jpg"
-            alt="healthlinespro"
-          />
-          <img
-            src="images\portfolio\thumb\others-cms\medicinesummary.jpg"
-            alt="medicinesummary"
-          />
-          <img
-            src="images\portfolio\thumb\others-cms\medmalpalinsurance.jpg"
-            alt="medmalpalinsurance"
-          />
-          <img
-            src="images\portfolio\thumb\others-cms\medprimeinternational.jpg"
-            alt="medprimeinternational"
-          />
-          <img
-            src="images\portfolio\thumb\others-cms\minidentalimplantswaterburyct.jpg"
-            alt="minidentalimplantswaterburyct"
-          />
-          <img
-            src="images\portfolio\thumb\others-cms\osteopathe-16.jpg"
-            alt="osteopathe-16"
-          />
-          <img
-            src="images\portfolio\thumb\others-cms\physicaltherapyworkspvb.jpg"
-            alt="physicaltherapyworkspvb"
-          />
-          <img
-            src="images\portfolio\thumb\others-cms\pierpandentistry.jpg"
-            alt="pierpandentistry"
-          />
-          <img
-            src="images\portfolio\thumb\others-cms\portagedental.jpg"
-            alt="portagedental"
-          />
-          <img
-            src="images\portfolio\thumb\others-cms\progohealthdaily.jpg"
-            alt="progohealthdaily"
-          />
-          <img
-            src="images\portfolio\thumb\others-cms\respiratorytherapistschools.jpg"
-            alt="respiratorytherapistschools"
-          />
-          <img
-            src="images\portfolio\thumb\others-cms\wellnessawarenessforall.jpg"
-            alt="wellnessawarenessforall"
-          />
-          <img
-            src="images\portfolio\thumb\others-cms\wwmeditationgarden.jpg"
-            alt="wwmeditationgarden"
-          />
-          <button class="prev" onclick="prevSlide('carousel6')">❮</button>
-          <button class="next" onclick="nextSlide('carousel6')">❯</button>
-        </div>
-      </div>
-    </section>
+          <div class="col-lg-4 col-md-6 portfolio-item filter-wordpress">
+            <div class="portfolio-wrap">
+              <img
+                src="/assets/img/portfolio/thumbs/wordpress/serzakmarketak_thumb.webp"
+                class="img-fluid"
+                alt="Serzak Marketak"
+              />
+              <div class="portfolio-info">
+                <h4>Serzak Marketak</h4>
+                <p>Wordpress theme from scratch. Elementor. Custom CSS3/JS</p>
+                <div class="portfolio-links">
+                  <a
+                    href="/assets/img/portfolio/wordpress/serzakmarketak.webp"
+                    data-gallery="portfolioGallery"
+                    class="portfolio-lightbox"
+                    title="Serzak Marketak"
+                    ><i class="bx bxs-zoom-in"></i
+                  ></a>
+                  <a
+                    href="/assets/portfolio-details/wordpress-details/serzakmarketak_portfolio-details.html"
+                    data-gallery="portfolioDetailsGallery"
+                    data-glightbox="type: external"
+                    class="portfolio-details-lightbox"
+                    title="Portfolio Details"
+                    ><i class="bx bx-link"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
 
-    <!-- Contacts
-    ================================================== -->
-    <section id="contact" class="s-contact ss-dark target-section">
-      <div class="row heading-block">
-        <div class="column large-full">
-          <h2 class="section-heading">Contacts</h2>
-        </div>
-      </div>
-      <div class="row contact-main">
-        <div class="column large-full">
-          <p class="section-desc">
-            Integration of digital technologies into business to improve
-            people's lives
-          </p>
-        </div>
-      </div>
-      <div class="row about-me__buttons">
-        <div class="column large-half tab-full" data-aos="fade-up">
-          <a
-            href="resume/Artur-Yusupov-resume.pdf"
-            download
-            class="btn btn--primary full-width"
-            >Download resume</a
-          >
-        </div>
-      </div>
-      <div class="row contact-infos" data-aos-anchor=".contact-main">
-        <div class="column large-5 medium-full contact-phone">
-          <h4>Email</h4>
-          <a href="mailto:web.sunline@gmail.com">web.sunline@gmail.com</a>
-        </div>
-        <div class="column large-7 medium-full contact-social">
-          <h4>Social</h4>
-          <ul>
-            <li>
-              <a
-                target="_blank"
-                href="https://www.linkedin.com/in/artur-iusupov/"
-                ><i class="fab fa-linkedin" aria-hidden="true"></i
-              ></a>
-            </li>
-            <li>
-              <a
-                target="_blank"
-                href="https://www.facebook.com/profile.php?id=100011055840439"
-                ><i class="fab fa-facebook-f" aria-hidden="true"></i
-              ></a>
-            </li>
-            <li>
-              <a target="_blank" href="https://t.me/develop_create"
-                ><i class="fab fa-telegram" aria-hidden="true"></i
-              ></a>
-            </li>
-            <li>
-              <a target="_blank" href="tel:+34642413967"
-                ><i class="fab fa-whatsapp" aria-hidden="true"></i
-              ></a>
-            </li>
-            <li>
-              <a
-                target="_blank"
-                href="https://www.instagram.com/yusupov.webart/"
-                ><i class="fab fa-instagram" aria-hidden="true"></i
-              ></a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </section>
+          <div class="col-lg-4 col-md-6 portfolio-item filter-wordpress">
+            <div class="portfolio-wrap">
+              <img
+                src="/assets/img/portfolio/thumbs/wordpress/buhl-de_thumb.webp"
+                class="img-fluid"
+                alt="Buhl"
+              />
+              <div class="portfolio-info">
+                <h4>Buhl WISO Steuer Jetzt Geld zurückholen!</h4>
+                <p>Wordpress theme from scratch. Landing based pure code. Custom CSS3/JS</p>
+                <div class="portfolio-links">
+                  <a
+                    href="/assets/img/portfolio/wordpress/buhl-de.webp"
+                    data-gallery="portfolioGallery"
+                    class="portfolio-lightbox"
+                    title="Buhl"
+                    ><i class="bx bxs-zoom-in"></i
+                  ></a>
+                  <a
+                    href="/assets/portfolio-details/wordpress-details/buhl-de_portfolio-details.html"
+                    data-gallery="portfolioDetailsGallery"
+                    data-glightbox="type: external"
+                    class="portfolio-details-lightbox"
+                    title="Portfolio Details"
+                    ><i class="bx bx-link"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
 
-    <!-- Footer
-    ================================================== -->
-    <footer>
-      <div class="row">
-        <div class="column large-full ss-copyright">
-          <span id="currentYear"></span>
-          <span
-            >Designed by
-            <a target="_blank" href="https://www.linkedin.com/in/artur-iusupov/"
-              >Artur Yusupov</a
-            >
-            with HTML5/CSS3/JS</span
-          >
-        </div>
+          <div class="col-lg-4 col-md-6 portfolio-item filter-wordpress">
+            <div class="portfolio-wrap">
+              <img
+                src="/assets/img/portfolio/thumbs/wordpress/artdemes_thumb.webp"
+                class="img-fluid"
+                alt="Artdemes"
+              />
+              <div class="portfolio-info">
+                <h4>Artdemes - Artesania creativa</h4>
+                <p>WooCommerce. Wordpress theme from scratch. Elementor. Custom CSS3/JS</p>
+                <div class="portfolio-links">
+                  <a
+                    href="/assets/img/portfolio/wordpress/artdemes.webp"
+                    data-gallery="portfolioGallery"
+                    class="portfolio-lightbox"
+                    title="Artdemes"
+                    ><i class="bx bxs-zoom-in"></i
+                  ></a>
+                  <a
+                    href="/assets/portfolio-details/wordpress-details/artdemes_portfolio-details.html"
+                    data-gallery="portfolioDetailsGallery"
+                    data-glightbox="type: external"
+                    class="portfolio-details-lightbox"
+                    title="Portfolio Details"
+                    ><i class="bx bx-link"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
 
-        <div class="ss-go-top">
-          <a class="smoothscroll" title="Back to Top" href="#top"></a>
-        </div>
-      </div>
-    </footer>
+          <div class="col-lg-4 col-md-6 portfolio-item filter-wordpress">
+            <div class="portfolio-wrap">
+              <img
+                src="/assets/img/portfolio/thumbs/wordpress/causetume_thumb.webp"
+                class="img-fluid"
+                alt="Causetume"
+              />
+              <div class="portfolio-info">
+                <h4>Causetume - Knitwear Brand</h4>
+                <p>WooCommerce. Premium Wordpress theme. Custom CSS3/JS + add products and content</p>
+                <div class="portfolio-links">
+                  <a
+                    href="/assets/img/portfolio/wordpress/causetume.webp"
+                    data-gallery="portfolioGallery"
+                    class="portfolio-lightbox"
+                    title="Causetume"
+                    ><i class="bx bxs-zoom-in"></i
+                  ></a>
+                  <a
+                    href="/assets/portfolio-details/wordpress-details/causetume_portfolio-details.html"
+                    data-gallery="portfolioDetailsGallery"
+                    data-glightbox="type: external"
+                    class="portfolio-details-lightbox"
+                    title="Portfolio Details"
+                    ><i class="bx bx-link"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
 
-    <!-- JavaScript
-    ================================================== -->
-    <!-- <script src="js/modernizr.js"></script> -->
-    <!-- <script src="js/pace.min.js"></script> -->
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css"
-      rel="stylesheet"
+          <div class="col-lg-4 col-md-6 portfolio-item filter-wordpress">
+            <div class="portfolio-wrap">
+              <img
+                src="/assets/img/portfolio/thumbs/wordpress/bemol_thumb.webp"
+                class="img-fluid"
+                alt="Bemol"
+              />
+              <div class="portfolio-info">
+                <h4>Bemol</h4>
+                <p>Wordpress theme from scratch. Elementor. Custom CSS3/JS/PHP</p>
+                <div class="portfolio-links">
+                  <a
+                    href="/assets/img/portfolio/wordpress/bemol.webp"
+                    data-gallery="portfolioGallery"
+                    class="portfolio-lightbox"
+                    title="Bemol"
+                    ><i class="bx bxs-zoom-in"></i
+                  ></a>
+                  <a
+                    href="/assets/portfolio-details/wordpress-details/bemol_portfolio-details.html"
+                    data-gallery="portfolioDetailsGallery"
+                    data-glightbox="type: external"
+                    class="portfolio-details-lightbox"
+                    title="Portfolio Details"
+                    ><i class="bx bx-link"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-wordpress">
+            <div class="portfolio-wrap">
+              <img
+                src="/assets/img/portfolio/thumbs/wordpress/orozcotrucking_thumb.webp"
+                class="img-fluid"
+                alt="Orozco Trucking"
+              />
+              <div class="portfolio-info">
+                <h4>Orozco Trucking</h4>
+                <p>Wordpress Premium theme. Custom CSS3/JS/PHP</p>
+                <div class="portfolio-links">
+                  <a
+                    href="/assets/img/portfolio/wordpress/orozcotrucking.webp"
+                    data-gallery="portfolioGallery"
+                    class="portfolio-lightbox"
+                    title="Orozco Trucking"
+                    ><i class="bx bxs-zoom-in"></i
+                  ></a>
+                  <a
+                    href="/assets/portfolio-details/wordpress-details/orozcotrucking_portfolio-details.html"
+                    data-gallery="portfolioDetailsGallery"
+                    data-glightbox="type: external"
+                    class="portfolio-details-lightbox"
+                    title="Portfolio Details"
+                    ><i class="bx bx-link"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-wordpress">
+            <div class="portfolio-wrap">
+              <img
+                src="/assets/img/portfolio/thumbs/wordpress/soladentalspa_thumb.webp"
+                class="img-fluid"
+                alt="Sola Dental Spa"
+              />
+              <div class="portfolio-info">
+                <h4>Sola Dental Spa</h4>
+                <p>Wordpress theme from scratch. WPBakery page builder. Custom CSS3/JS/PHP</p>
+                <div class="portfolio-links">
+                  <a
+                    href="/assets/img/portfolio/wordpress/soladentalspa.webp"
+                    data-gallery="portfolioGallery"
+                    class="portfolio-lightbox"
+                    title="Sola Dental Spa"
+                    ><i class="bx bxs-zoom-in"></i
+                  ></a>
+                  <a
+                    href="/assets/portfolio-details/wordpress-details/soladentalspa_portfolio-details.html"
+                    data-gallery="portfolioDetailsGallery"
+                    data-glightbox="type: external"
+                    class="portfolio-details-lightbox"
+                    title="Portfolio Details"
+                    ><i class="bx bx-link"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-wordpress">
+            <div class="portfolio-wrap">
+              <img
+                src="/assets/img/portfolio/thumbs/wordpress/bezalelservices_thumb.webp"
+                class="img-fluid"
+                alt="Bezalel Care Management"
+              />
+              <div class="portfolio-info">
+                <h4>Bezalel Care Management</h4>
+                <p>Wordpress theme from scratch. Elementor. Custom CSS3/JS/PHP</p>
+                <div class="portfolio-links">
+                  <a
+                    href="/assets/img/portfolio/wordpress/bezalelservices.webp"
+                    data-gallery="portfolioGallery"
+                    class="portfolio-lightbox"
+                    title="Bezalel Care Management"
+                    ><i class="bx bxs-zoom-in"></i
+                  ></a>
+                  <a
+                    href="/assets/portfolio-details/wordpress-details/bezalelservices_portfolio-details.html"
+                    data-gallery="portfolioDetailsGallery"
+                    data-glightbox="type: external"
+                    class="portfolio-details-lightbox"
+                    title="Portfolio Details"
+                    ><i class="bx bx-link"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-wordpress">
+            <div class="portfolio-wrap">
+              <img
+                src="/assets/img/portfolio/thumbs/wordpress/fluffy-ninja_thumb.webp"
+                class="img-fluid"
+                alt="Fluffy Ninja"
+              />
+              <div class="portfolio-info">
+                <h4>Fluffy Ninja</h4>
+                <p>Wordpress theme from scratch. WooCommerce. Custom CSS3/JS/PHP</p>
+                <div class="portfolio-links">
+                  <a
+                    href="/assets/img/portfolio/wordpress/fluffy-ninja.webp"
+                    data-gallery="portfolioGallery"
+                    class="portfolio-lightbox"
+                    title="Fluffy Ninja"
+                    ><i class="bx bxs-zoom-in"></i
+                  ></a>
+                  <a
+                    href="/assets/portfolio-details/wordpress-details/fluffy-ninja_portfolio-details.html"
+                    data-gallery="portfolioDetailsGallery"
+                    data-glightbox="type: external"
+                    class="portfolio-details-lightbox"
+                    title="Portfolio Details"
+                    ><i class="bx bx-link"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-wordpress">
+            <div class="portfolio-wrap">
+              <img
+                src="/assets/img/portfolio/thumbs/wordpress/manitoulintimberframes_thumb.webp"
+                class="img-fluid"
+                alt="Manitoulin Timber Frames"
+              />
+              <div class="portfolio-info">
+                <h4>Manitoulin Timber Frames</h4>
+                <p>Wordpress theme from scratch. (Design from Wix to WP) Elementor. Custom CSS3/JS</p>
+                <div class="portfolio-links">
+                  <a
+                    href="/assets/img/portfolio/wordpress/manitoulintimberframes.webp"
+                    data-gallery="portfolioGallery"
+                    class="portfolio-lightbox"
+                    title="Manitoulin Timber Frames"
+                    ><i class="bx bxs-zoom-in"></i
+                  ></a>
+                  <a
+                    href="/assets/portfolio-details/wordpress-details/manitoulintimberframes_portfolio-details.html"
+                    data-gallery="portfolioDetailsGallery"
+                    data-glightbox="type: external"
+                    class="portfolio-details-lightbox"
+                    title="Portfolio Details"
+                    ><i class="bx bx-link"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-wordpress">
+            <div class="portfolio-wrap">
+              <img
+                src="/assets/img/portfolio/thumbs/wordpress/telecommunication-solutions_thumb.webp"
+                class="img-fluid"
+                alt="telecommunication solutions"
+              />
+              <div class="portfolio-info">
+                <h4>Telecommunication Solutions for Business</h4>
+                <p>Wordpress theme from scratch based on Bootstrap and Custom CSS3/JS/PHP + content</p>
+                <div class="portfolio-links">
+                  <a
+                    href="/assets/img/portfolio/wordpress/telecommunication-solutions.webp"
+                    data-gallery="portfolioGallery"
+                    class="portfolio-lightbox"
+                    title="telecommunication solutions"
+                    ><i class="bx bxs-zoom-in"></i
+                  ></a>
+                  <a
+                    href="/assets/portfolio-details/wordpress-details/telecommunication-solutions_portfolio-details.html"
+                    data-gallery="portfolioDetailsGallery"
+                    data-glightbox="type: external"
+                    class="portfolio-details-lightbox"
+                    title="Portfolio Details"
+                    ><i class="bx bx-link"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        <div class="col-lg-4 col-md-6 portfolio-item filter-wordpress">
+            <div class="portfolio-wrap">
+              <img
+                src="/assets/img/portfolio/thumbs/wordpress/website-integration-crm_thumb.webp"
+                class="img-fluid"
+                alt="website integration with crm"
+              />
+              <div class="portfolio-info">
+                <h4>Website integration with CRM</h4>
+                <p>Wordpress theme from scratch based on Bootstrap and Custom CSS3/JS/PHP + content</p>
+                <div class="portfolio-links">
+                  <a
+                    href="/assets/img/portfolio/wordpress/website-integration-crm.webp"
+                    data-gallery="portfolioGallery"
+                    class="portfolio-lightbox"
+                    title="website integration with crm"
+                    ><i class="bx bxs-zoom-in"></i
+                  ></a>
+                  <a
+                    href="/assets/portfolio-details/wordpress-details/website-integration-crm_portfolio-details.html"
+                    data-gallery="portfolioDetailsGallery"
+                    data-glightbox="type: external"
+                    class="portfolio-details-lightbox"
+                    title="Portfolio Details"
+                    ><i class="bx bx-link"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-wordpress">
+            <div class="portfolio-wrap">
+              <img
+                src="/assets/img/portfolio/thumbs/wordpress/911mg_thumb.webp"
+                class="img-fluid"
+                alt="911mg"
+              />
+              <div class="portfolio-info">
+                <h4>911mg</h4>
+                <p>Wordpress theme from scratch based pure code and Custom CSS3/JS/PHP + content</p>
+                <div class="portfolio-links">
+                  <a
+                    href="/assets/img/portfolio/wordpress/911mg.webp"
+                    data-gallery="portfolioGallery"
+                    class="portfolio-lightbox"
+                    title="911mg"
+                    ><i class="bx bxs-zoom-in"></i
+                  ></a>
+                  <a
+                    href="/assets/portfolio-details/wordpress-details/911mg_portfolio-details.html"
+                    data-gallery="portfolioDetailsGallery"
+                    data-glightbox="type: external"
+                    class="portfolio-details-lightbox"
+                    title="Portfolio Details"
+                    ><i class="bx bx-link"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-wordpress">
+            <div class="portfolio-wrap">
+              <img
+                src="/assets/img/portfolio/thumbs/wordpress/leo-lardy_thumb.webp"
+                class="img-fluid"
+                alt="Leo Lardy"
+              />
+              <div class="portfolio-info">
+                <h4>Leo Lardy</h4>
+                <p>Premium Wordpress theme + Custom CSS3/JS + content</p>
+                <div class="portfolio-links">
+                  <a
+                    href="/assets/img/portfolio/wordpress/leo-lardy.webp"
+                    data-gallery="portfolioGallery"
+                    class="portfolio-lightbox"
+                    title="Leo Lardy"
+                    ><i class="bx bxs-zoom-in"></i
+                  ></a>
+                  <a
+                    href="/assets/portfolio-details/wordpress-details/leo-lardy_portfolio-details.html"
+                    data-gallery="portfolioDetailsGallery"
+                    data-glightbox="type: external"
+                    class="portfolio-details-lightbox"
+                    title="Portfolio Details"
+                    ><i class="bx bx-link"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-wordpress">
+            <div class="portfolio-wrap">
+              <img
+                src="/assets/img/portfolio/thumbs/wordpress/tubebeytu_thumb.webp"
+                class="img-fluid"
+                alt="Tu bebe y tu"
+              />
+              <div class="portfolio-info">
+                <h4>Tu bebe y tu</h4>
+                <p>WooCommerce. Wordpress theme. add products and content</p>
+                <div class="portfolio-links">
+                  <a
+                    href="/assets/img/portfolio/wordpress/tubebeytu.webp"
+                    data-gallery="portfolioGallery"
+                    class="portfolio-lightbox"
+                    title="Tu bebe y tu"
+                    ><i class="bx bxs-zoom-in"></i
+                  ></a>
+                  <a
+                    href="/assets/portfolio-details/wordpress-details/tubebeytu_portfolio-details.html"
+                    data-gallery="portfolioDetailsGallery"
+                    data-glightbox="type: external"
+                    class="portfolio-details-lightbox"
+                    title="Portfolio Details"
+                    ><i class="bx bx-link"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-wordpress">
+            <div class="portfolio-wrap">
+              <img
+                src="/assets/img/portfolio/thumbs/wordpress/lunamebel_thumb.webp"
+                class="img-fluid"
+                alt="lunamebel"
+              />
+              <div class="portfolio-info">
+                <h4>Luna - furniture store</h4>
+                <p>WooCommerce. Premium Wordpress theme. Add products and content</p>
+                <div class="portfolio-links">
+                  <a
+                    href="/assets/img/portfolio/wordpress/lunamebel.webp"
+                    data-gallery="portfolioGallery"
+                    class="portfolio-lightbox"
+                    title="lunamebel"
+                    ><i class="bx bxs-zoom-in"></i
+                  ></a>
+                  <a
+                    href="/assets/portfolio-details/wordpress-details/lunamebel_portfolio-details.html"
+                    data-gallery="portfolioDetailsGallery"
+                    data-glightbox="type: external"
+                    class="portfolio-details-lightbox"
+                    title="Portfolio Details"
+                    ><i class="bx bx-link"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-wordpress">
+            <div class="portfolio-wrap">
+              <img
+                src="/assets/img/portfolio/thumbs/wordpress/moskitnaya-setka_thumb.webp"
+                class="img-fluid"
+                alt="moskitnaya-setka"
+              />
+              <div class="portfolio-info">
+                <h4>Mosquito net store</h4>
+                <p>WooCommerce. Wordpress theme from scratch. Add products and content</p>
+                <div class="portfolio-links">
+                  <a
+                    href="/assets/img/portfolio/wordpress/moskitnaya-setka.webp"
+                    data-gallery="portfolioGallery"
+                    class="portfolio-lightbox"
+                    title="moskitnaya-setka"
+                    ><i class="bx bxs-zoom-in"></i
+                  ></a>
+                  <a
+                    href="/assets/portfolio-details/wordpress-details/moskitnaya-setka_portfolio-details.html"
+                    data-gallery="portfolioDetailsGallery"
+                    data-glightbox="type: external"
+                    class="portfolio-details-lightbox"
+                    title="Portfolio Details"
+                    ><i class="bx bx-link"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-wordpress">
+            <div class="portfolio-wrap">
+              <img
+                src="/assets/img/portfolio/thumbs/wordpress/svkus_thumb.webp"
+                class="img-fluid"
+                alt="svkus"
+              />
+              <div class="portfolio-info">
+                <h4>Svkus - Group of restaurants. Food delivery</h4>
+                <p>Wordpress theme from scratch. Add products and content. Custom CSS3/JS + content</p>
+                <div class="portfolio-links">
+                  <a
+                    href="/assets/img/portfolio/wordpress/svkus.webp"
+                    data-gallery="portfolioGallery"
+                    class="portfolio-lightbox"
+                    title="svkus"
+                    ><i class="bx bxs-zoom-in"></i
+                  ></a>
+                  <a
+                    href="/assets/portfolio-details/wordpress-details/svkus_portfolio-details.html"
+                    data-gallery="portfolioDetailsGallery"
+                    data-glightbox="type: external"
+                    class="portfolio-details-lightbox"
+                    title="Portfolio Details"
+                    ><i class="bx bx-link"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-wordpress">
+            <div class="portfolio-wrap">
+              <img
+                src="/assets/img/portfolio/thumbs/wordpress/vikamaster_thumb.webp"
+                class="img-fluid"
+                alt="vikamaster"
+              />
+              <div class="portfolio-info">
+                <h4>Vikamaster - Jewelry store</h4>
+                <p>WooCommerce. Wordpress theme from scratch. Add products and content. Custom CSS3/JS</p>
+                <div class="portfolio-links">
+                  <a
+                    href="/assets/img/portfolio/wordpress/vikamaster.webp"
+                    data-gallery="portfolioGallery"
+                    class="portfolio-lightbox"
+                    title="vikamaster"
+                    ><i class="bx bxs-zoom-in"></i
+                  ></a>
+                  <a
+                    href="/assets/portfolio-details/wordpress-details/vikamaster_portfolio-details.html"
+                    data-gallery="portfolioDetailsGallery"
+                    data-glightbox="type: external"
+                    class="portfolio-details-lightbox"
+                    title="Portfolio Details"
+                    ><i class="bx bx-link"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-wordpress">
+            <div class="portfolio-wrap">
+              <img
+                src="/assets/img/portfolio/thumbs/wordpress/kolosochok_thumb.webp"
+                class="img-fluid"
+                alt="kolosochok"
+              />
+              <div class="portfolio-info">
+                <h4>Kolosochok - community organization</h4>
+                <p>Wordpress theme from scratch. Elementor. Custom CSS3/JS</p>
+                <div class="portfolio-links">
+                  <a
+                    href="/assets/img/portfolio/wordpress/kolosochok.webp"
+                    data-gallery="portfolioGallery"
+                    class="portfolio-lightbox"
+                    title="kolosochok"
+                    ><i class="bx bxs-zoom-in"></i
+                  ></a>
+                  <a
+                    href="/assets/portfolio-details/wordpress-details/kolosochok_portfolio-details.html"
+                    data-gallery="portfolioDetailsGallery"
+                    data-glightbox="type: external"
+                    class="portfolio-details-lightbox"
+                    title="Portfolio Details"
+                    ><i class="bx bx-link"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-wordpress">
+            <div class="portfolio-wrap">
+              <img
+                src="/assets/img/portfolio/thumbs/wordpress/vival_thumb.webp"
+                class="img-fluid"
+                alt="Vival"
+              />
+              <div class="portfolio-info">
+                <h4>Vival - building materials store</h4>
+                <p>WooCommerce. Wordpress theme from scratch. Add products and content. Custom CSS3/JS</p>
+                <div class="portfolio-links">
+                  <a
+                    href="/assets/img/portfolio/wordpress/vival.webp"
+                    data-gallery="portfolioGallery"
+                    class="portfolio-lightbox"
+                    title="Vival"
+                    ><i class="bx bxs-zoom-in"></i
+                  ></a>
+                  <a
+                    href="/assets/portfolio-details/wordpress-details/vival_portfolio-details.html"
+                    data-gallery="portfolioDetailsGallery"
+                    data-glightbox="type: external"
+                    class="portfolio-details-lightbox"
+                    title="Portfolio Details"
+                    ><i class="bx bx-link"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-wordpress">
+            <div class="portfolio-wrap">
+              <img
+                src="/assets/img/portfolio/thumbs/wordpress/psichologonline_thumb.webp"
+                class="img-fluid"
+                alt="psichologonline"
+              />
+              <div class="portfolio-info">
+                <h4>Psicholog online</h4>
+                <p>Wordpress theme from scratch. Elementor. Custom CSS3/JS</p>
+                <div class="portfolio-links">
+                  <a
+                    href="/assets/img/portfolio/wordpress/psichologonline.webp"
+                    data-gallery="portfolioGallery"
+                    class="portfolio-lightbox"
+                    title="psichologonline"
+                    ><i class="bx bxs-zoom-in"></i
+                  ></a>
+                  <a
+                    href="/assets/portfolio-details/wordpress-details/psichologonline_portfolio-details.html"
+                    data-gallery="portfolioDetailsGallery"
+                    data-glightbox="type: external"
+                    class="portfolio-details-lightbox"
+                    title="Portfolio Details"
+                    ><i class="bx bx-link"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-wordpress">
+            <div class="portfolio-wrap">
+              <img
+                src="/assets/img/portfolio/thumbs/wordpress/aristokrat_thumb.webp"
+                class="img-fluid"
+                alt="aristokrat"
+              />
+              <div class="portfolio-info">
+                <h4>Aristokrat - Hotel and Restaurant</h4>
+                <p>Wordpress theme from scratch. 3D Panorama. Booking system. Custom CSS3/JS</p>
+                <div class="portfolio-links">
+                  <a
+                    href="/assets/img/portfolio/wordpress/aristokrat.webp"
+                    data-gallery="portfolioGallery"
+                    class="portfolio-lightbox"
+                    title="aristokrat"
+                    ><i class="bx bxs-zoom-in"></i
+                  ></a>
+                  <a
+                    href="/assets/portfolio-details/wordpress-details/aristokrat_portfolio-details.html"
+                    data-gallery="portfolioDetailsGallery"
+                    data-glightbox="type: external"
+                    class="portfolio-details-lightbox"
+                    title="Portfolio Details"
+                    ><i class="bx bx-link"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+
+          
+          
+
+       
+<!----------------------------- Portfolio HTML/CSS/JS  -->
+
+
+<div class="col-lg-4 col-md-6 portfolio-item filter-html-css">
+  <div class="portfolio-wrap">
+    <img
+      src="/assets/img/portfolio/thumbs/html-css-js/webart_old-version_thumb.webp"
+      class="img-fluid"
+      alt="Webart"
     />
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css"
-      rel="stylesheet"
-    />
+    <div class="portfolio-info">
+      <h4>Webart - old version</h4>
+      <p>Pure HTML/CSS/JS code</p>
+      <div class="portfolio-links">
+        <a
+          href="/assets/img/portfolio/html-css-js/webart_old-version.webp"
+          data-gallery="portfolioGallery"
+          class="portfolio-lightbox"
+          title="Webart"
+          ><i class="bx bxs-zoom-in"></i
+        ></a>
+        <a
+          href="/assets/portfolio-details/html-css-js-details/webart_old-version_portfolio-details.html"
+          data-gallery="portfolioDetailsGallery"
+          data-glightbox="type: external"
+          class="portfolio-details-lightbox"
+          title="Portfolio Details"
+          ><i class="bx bx-link"></i
+        ></a>
+      </div>
+    </div>
+  </div>
+</div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js"></script>
-    <script src="js/jquery-3.2.1.min.js"></script>
-    <script src="js/plugins.js"></script>
-    <script src="js/main.js"></script>
+          <div class="col-lg-4 col-md-6 portfolio-item filter-html-css">
+            <div class="portfolio-wrap">
+              <img
+                src="/assets/img/portfolio/thumbs/html-css-js/mohavecosmeticsurgery_thumb.webp"
+                class="img-fluid"
+                alt="mohavecosmeticsurgery"
+              />
+              <div class="portfolio-info">
+                <h4>Dr. Bryson Richards - Plastic Surgery Las Vegas</h4>
+                <p>Pure HTML/CSS/JS code</p>
+                <div class="portfolio-links">
+                  <a
+                    href="/assets/img/portfolio/html-css-js/mohavecosmeticsurgery.webp"
+                    data-gallery="portfolioGallery"
+                    class="portfolio-lightbox"
+                    title="mohavecosmeticsurgery"
+                    ><i class="bx bxs-zoom-in"></i
+                  ></a>
+                  <a
+                    href="/assets/portfolio-details/html-css-js-details/mohavecosmeticsurgery_portfolio-details.html"
+                    data-gallery="portfolioDetailsGallery"
+                    data-glightbox="type: external"
+                    class="portfolio-details-lightbox"
+                    title="Portfolio Details"
+                    ><i class="bx bx-link"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-html-css">
+            <div class="portfolio-wrap">
+              <img
+                src="/assets/img/portfolio/thumbs/html-css-js/nokyc_thumb.webp"
+                class="img-fluid"
+                alt="nokyc"
+              />
+              <div class="portfolio-info">
+                <h4>Nokyc</h4>
+                <p>Pure HTML/CSS/JS code</p>
+                <div class="portfolio-links">
+                  <a
+                    href="/assets/img/portfolio/html-css-js/nokyc.webp"
+                    data-gallery="portfolioGallery"
+                    class="portfolio-lightbox"
+                    title="nokyc"
+                    ><i class="bx bxs-zoom-in"></i
+                  ></a>
+                  <a
+                    href="/assets/portfolio-details/html-css-js-details/nokyc_portfolio-details.html"
+                    data-gallery="portfolioDetailsGallery"
+                    data-glightbox="type: external"
+                    class="portfolio-details-lightbox"
+                    title="Portfolio Details"
+                    ><i class="bx bx-link"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+         
+
+
+<!----------------------------- Portfolio BOOTSTRAP  -->
+
+<div class="col-lg-4 col-md-6 portfolio-item filter-bootstrap">
+  <div class="portfolio-wrap">
+    <img
+      src="/assets/img/portfolio/thumbs/wordpress/delivery-fdh_thumb.webp"
+      class="img-fluid"
+      alt="FDH Cloud Delivery"
+    />
+    <div class="portfolio-info">
+      <h4>FDH Cloud Delivery Managment Solution</h4>
+      <p>Wordpress theme from scratch. Bootstrap.</p>
+      <div class="portfolio-links">
+        <a
+          href="/assets/img/portfolio/wordpress/delivery-fdh.webp"
+          data-gallery="portfolioGallery"
+          class="portfolio-lightbox"
+          title="FDH Cloud Delivery"
+          ><i class="bx bxs-zoom-in"></i
+        ></a>
+        <a
+          href="/assets/portfolio-details/wordpress-details/delivery-fdh_portfolio-details.html"
+          data-gallery="portfolioDetailsGallery"
+          data-glightbox="type: external"
+          class="portfolio-details-lightbox"
+          title="Portfolio Details"
+          ><i class="bx bx-link"></i
+        ></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-bootstrap">
+            <div class="portfolio-wrap">
+              <img
+                src="/assets/img/portfolio/thumbs/wordpress/telecommunication-solutions_thumb.webp"
+                class="img-fluid"
+                alt="telecommunication solutions"
+              />
+              <div class="portfolio-info">
+                <h4>Telecommunication Solutions for Business</h4>
+                <p>Wordpress theme from scratch based on Bootstrap and Custom CSS3/JS/PHP + content</p>
+                <div class="portfolio-links">
+                  <a
+                    href="/assets/img/portfolio/wordpress/telecommunication-solutions.webp"
+                    data-gallery="portfolioGallery"
+                    class="portfolio-lightbox"
+                    title="telecommunication solutions"
+                    ><i class="bx bxs-zoom-in"></i
+                  ></a>
+                  <a
+                    href="/assets/portfolio-details/wordpress-details/telecommunication-solutions_portfolio-details.html"
+                    data-gallery="portfolioDetailsGallery"
+                    data-glightbox="type: external"
+                    class="portfolio-details-lightbox"
+                    title="Portfolio Details"
+                    ><i class="bx bx-link"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 portfolio-item filter-bootstrap">
+            <div class="portfolio-wrap">
+              <img
+                src="/assets/img/portfolio/thumbs/wordpress/website-integration-crm_thumb.webp"
+                class="img-fluid"
+                alt="website integration with crm"
+              />
+              <div class="portfolio-info">
+                <h4>Website integration with CRM</h4>
+                <p>Wordpress theme from scratch based on Bootstrap and Custom CSS3/JS/PHP + content</p>
+                <div class="portfolio-links">
+                  <a
+                    href="/assets/img/portfolio/wordpress/website-integration-crm.webp"
+                    data-gallery="portfolioGallery"
+                    class="portfolio-lightbox"
+                    title="website integration with crm"
+                    ><i class="bx bxs-zoom-in"></i
+                  ></a>
+                  <a
+                    href="/assets/portfolio-details/wordpress-details/website-integration-crm_portfolio-details.html"
+                    data-gallery="portfolioDetailsGallery"
+                    data-glightbox="type: external"
+                    class="portfolio-details-lightbox"
+                    title="Portfolio Details"
+                    ><i class="bx bx-link"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+<!----------------------------- Portfolio SHOPIFY  -->
+
+<div class="col-lg-4 col-md-6 portfolio-item filter-shopify">
+  <div class="portfolio-wrap">
+    <img
+      src="/assets/img/portfolio/thumbs/shopify/lueirislashes_thumb.webp"
+      class="img-fluid"
+      alt="lueirislashes"
+    />
+    <div class="portfolio-info">
+      <h4>Lueiris lashes - store</h4>
+      <p>Shopify store + products and content</p>
+      <div class="portfolio-links">
+        <a
+          href="/assets/img/portfolio/shopify/lueirislashes.webp"
+          data-gallery="portfolioGallery"
+          class="portfolio-lightbox"
+          title="lueirislashes"
+          ><i class="bx bxs-zoom-in"></i
+        ></a>
+        <a
+          href="/assets/portfolio-details/shopify-details/lueirislashes_portfolio-details.html"
+          data-gallery="portfolioDetailsGallery"
+          data-glightbox="type: external"
+          class="portfolio-details-lightbox"
+          title="Portfolio Details"
+          ><i class="bx bx-link"></i
+        ></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-6 portfolio-item filter-shopify">
+  <div class="portfolio-wrap">
+    <img
+      src="/assets/img/portfolio/thumbs/shopify/secondchancedecor_thumb.webp"
+      class="img-fluid"
+      alt="secondchancedecor"
+    />
+    <div class="portfolio-info">
+      <h4>Second Chance Decor - furniture store</h4>
+      <p>Shopify store + products and content</p>
+      <div class="portfolio-links">
+        <a
+          href="/assets/img/portfolio/shopify/secondchancedecor.webp"
+          data-gallery="portfolioGallery"
+          class="portfolio-lightbox"
+          title="secondchancedecor"
+          ><i class="bx bxs-zoom-in"></i
+        ></a>
+        <a
+          href="/assets/portfolio-details/shopify-details/secondchancedecor_portfolio-details.html"
+          data-gallery="portfolioDetailsGallery"
+          data-glightbox="type: external"
+          class="portfolio-details-lightbox"
+          title="Portfolio Details"
+          ><i class="bx bx-link"></i
+        ></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-6 portfolio-item filter-shopify">
+  <div class="portfolio-wrap">
+    <img
+      src="/assets/img/portfolio/thumbs/shopify/kidzely_thumb.webp"
+      class="img-fluid"
+      alt="kidzely"
+    />
+    <div class="portfolio-info">
+      <h4>Kidzely - store for baby</h4>
+      <p>Shopify store + products and content</p>
+      <div class="portfolio-links">
+        <a
+          href="/assets/img/portfolio/shopify/kidzely.webp"
+          data-gallery="portfolioGallery"
+          class="portfolio-lightbox"
+          title="kidzely"
+          ><i class="bx bxs-zoom-in"></i
+        ></a>
+        <a
+          href="/assets/portfolio-details/shopify-details/kidzely_portfolio-details.html"
+          data-gallery="portfolioDetailsGallery"
+          data-glightbox="type: external"
+          class="portfolio-details-lightbox"
+          title="Portfolio Details"
+          ><i class="bx bx-link"></i
+        ></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-6 portfolio-item filter-shopify">
+  <div class="portfolio-wrap">
+    <img
+      src="/assets/img/portfolio/thumbs/shopify/prezentify_thumb.webp"
+      class="img-fluid"
+      alt="prezentify"
+    />
+    <div class="portfolio-info">
+      <h4>Prezentify store</h4>
+      <p>Shopify store + products and content</p>
+      <div class="portfolio-links">
+        <a
+          href="/assets/img/portfolio/shopify/prezentify.webp"
+          data-gallery="portfolioGallery"
+          class="portfolio-lightbox"
+          title="prezentify"
+          ><i class="bx bxs-zoom-in"></i
+        ></a>
+        <a
+          href="/assets/portfolio-details/shopify-details/prezentify_portfolio-details.html"
+          data-gallery="portfolioDetailsGallery"
+          data-glightbox="type: external"
+          class="portfolio-details-lightbox"
+          title="Portfolio Details"
+          ><i class="bx bx-link"></i
+        ></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-6 portfolio-item filter-shopify">
+  <div class="portfolio-wrap">
+    <img
+      src="/assets/img/portfolio/thumbs/shopify/artezioeu_thumb.webp"
+      class="img-fluid"
+      alt="artezioeu"
+    />
+    <div class="portfolio-info">
+      <h4>Artezioeu painting by numbers store</h4>
+      <p>Shopify store + products and content</p>
+      <div class="portfolio-links">
+        <a
+          href="/assets/img/portfolio/shopify/artezioeu.webp"
+          data-gallery="portfolioGallery"
+          class="portfolio-lightbox"
+          title="artezioeu"
+          ><i class="bx bxs-zoom-in"></i
+        ></a>
+        <a
+          href="/assets/portfolio-details/shopify-details/artezioeu_portfolio-details.html"
+          data-gallery="portfolioDetailsGallery"
+          data-glightbox="type: external"
+          class="portfolio-details-lightbox"
+          title="Portfolio Details"
+          ><i class="bx bx-link"></i
+        ></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-6 portfolio-item filter-shopify">
+  <div class="portfolio-wrap">
+    <img
+      src="/assets/img/portfolio/thumbs/shopify/cartooniko_thumb.webp"
+      class="img-fluid"
+      alt="cartooniko"
+    />
+    <div class="portfolio-info">
+      <h4>Cartooniko - create your own design</h4>
+      <p>Shopify store + products and content</p>
+      <div class="portfolio-links">
+        <a
+          href="/assets/img/portfolio/shopify/cartooniko.webp"
+          data-gallery="portfolioGallery"
+          class="portfolio-lightbox"
+          title="cartooniko"
+          ><i class="bx bxs-zoom-in"></i
+        ></a>
+        <a
+          href="/assets/portfolio-details/shopify-details/cartooniko_portfolio-details.html"
+          data-gallery="portfolioDetailsGallery"
+          data-glightbox="type: external"
+          class="portfolio-details-lightbox"
+          title="Portfolio Details"
+          ><i class="bx bx-link"></i
+        ></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!----------------------------- Portfolio WIX  -->
+
+<div class="col-lg-4 col-md-6 portfolio-item filter-wix">
+  <div class="portfolio-wrap">
+    <img
+      src="/assets/img/portfolio/thumbs/wix/technicalsupport_thumb.webp"
+      class="img-fluid"
+      alt="technicalsupport"
+    />
+    <div class="portfolio-info">
+      <h4>TST - Technical Support Team</h4>
+      <p>Custom Wix theme</p>
+      <div class="portfolio-links">
+        <a
+          href="/assets/img/portfolio/wix/technicalsupport.webp"
+          data-gallery="portfolioGallery"
+          class="portfolio-lightbox"
+          title="technicalsupport"
+          ><i class="bx bxs-zoom-in"></i
+        ></a>
+        <a
+          href="/assets/portfolio-details/wix-details/technicalsupport_portfolio-details.html"
+          data-gallery="portfolioDetailsGallery"
+          data-glightbox="type: external"
+          class="portfolio-details-lightbox"
+          title="Portfolio Details"
+          ><i class="bx bx-link"></i
+        ></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-6 portfolio-item filter-wix">
+  <div class="portfolio-wrap">
+    <img
+      src="/assets/img/portfolio/thumbs/wix/isal_thumb.webp"
+      class="img-fluid"
+      alt="isal"
+    />
+    <div class="portfolio-info">
+      <h4>ISAL - Learn English in Boston</h4>
+      <p>Custom Wix theme. Payments Fees Functionality. Integrate with crm ZOHO. Blog</p>
+      <div class="portfolio-links">
+        <a
+          href="/assets/img/portfolio/wix/isal.webp"
+          data-gallery="portfolioGallery"
+          class="portfolio-lightbox"
+          title="isal"
+          ><i class="bx bxs-zoom-in"></i
+        ></a>
+        <a
+          href="/assets/portfolio-details/wix-details/isal_portfolio-details.html"
+          data-gallery="portfolioDetailsGallery"
+          data-glightbox="type: external"
+          class="portfolio-details-lightbox"
+          title="Portfolio Details"
+          ><i class="bx bx-link"></i
+        ></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-6 portfolio-item filter-wix">
+  <div class="portfolio-wrap">
+    <img
+      src="/assets/img/portfolio/thumbs/wix/lashbouacademy_thumb.webp"
+      class="img-fluid"
+      alt="lashbouacademy"
+    />
+    <div class="portfolio-info">
+      <h4>Lashbou Academy - Eyelash Academy</h4>
+      <p>Custom Wix theme</p>
+      <div class="portfolio-links">
+        <a
+          href="/assets/img/portfolio/wix/lashbouacademy.webp"
+          data-gallery="portfolioGallery"
+          class="portfolio-lightbox"
+          title="lashbouacademy"
+          ><i class="bx bxs-zoom-in"></i
+        ></a>
+        <a
+          href="/assets/portfolio-details/wix-details/lashbouacademy_portfolio-details.html"
+          data-gallery="portfolioDetailsGallery"
+          data-glightbox="type: external"
+          class="portfolio-details-lightbox"
+          title="Portfolio Details"
+          ><i class="bx bx-link"></i
+        ></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-6 portfolio-item filter-wix">
+  <div class="portfolio-wrap">
+    <img
+      src="/assets/img/portfolio/thumbs/wix/lashbousalon_thumb.webp"
+      class="img-fluid"
+      alt="lashbousalon"
+    />
+    <div class="portfolio-info">
+      <h4>Lashbousalon  - Eyelash Salons in Arlington</h4>
+      <p>Custom Wix theme</p>
+      <div class="portfolio-links">
+        <a
+          href="/assets/img/portfolio/wix/lashbousalon.webp"
+          data-gallery="portfolioGallery"
+          class="portfolio-lightbox"
+          title="lashbousalon"
+          ><i class="bx bxs-zoom-in"></i
+        ></a>
+        <a
+          href="/assets/portfolio-details/wix-details/lashbousalon_portfolio-details.html"
+          data-gallery="portfolioDetailsGallery"
+          data-glightbox="type: external"
+          class="portfolio-details-lightbox"
+          title="Portfolio Details"
+          ><i class="bx bx-link"></i
+        ></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!----------------------------- OTHER CMS  -->
+
+<div class="col-lg-4 col-md-6 portfolio-item filter-other-cms">
+  <div class="portfolio-wrap">
+    <img
+      src="/assets/img/portfolio/thumbs/other-cms/elitehealthwarrior_thumb.webp"
+      class="img-fluid"
+      alt="elitehealthwarrior"
+    />
+    <div class="portfolio-info">
+      <h4>Elite Health Warrior</h4>
+      <p>Custom Joomla theme. Custom CSS/JS</p>
+      <div class="portfolio-links">
+        <a
+          href="/assets/img/portfolio/other-cms/elitehealthwarrior.webp"
+          data-gallery="portfolioGallery"
+          class="portfolio-lightbox"
+          title="elitehealthwarrior"
+          ><i class="bx bxs-zoom-in"></i
+        ></a>
+        <a
+          href="/assets/portfolio-details/other-cms-details/elitehealthwarrior_portfolio-details.html"
+          data-gallery="portfolioDetailsGallery"
+          data-glightbox="type: external"
+          class="portfolio-details-lightbox"
+          title="Portfolio Details"
+          ><i class="bx bx-link"></i
+        ></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-6 portfolio-item filter-other-cms">
+  <div class="portfolio-wrap">
+    <img
+      src="/assets/img/portfolio/thumbs/other-cms/sportpit24_thumb.webp"
+      class="img-fluid"
+      alt="sportpit24"
+    />
+    <div class="portfolio-info">
+      <h4>Sportpit24 - Online sports food store</h4>
+      <p>Custom OpenCart theme. Custom CSS/JS + add products and content</p>
+      <div class="portfolio-links">
+        <a
+          href="/assets/img/portfolio/other-cms/sportpit24.webp"
+          data-gallery="portfolioGallery"
+          class="portfolio-lightbox"
+          title="sportpit24"
+          ><i class="bx bxs-zoom-in"></i
+        ></a>
+        <a
+          href="/assets/portfolio-details/other-cms-details/sportpit24_portfolio-details.html"
+          data-gallery="portfolioDetailsGallery"
+          data-glightbox="type: external"
+          class="portfolio-details-lightbox"
+          title="Portfolio Details"
+          ><i class="bx bx-link"></i
+        ></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-6 portfolio-item filter-other-cms">
+  <div class="portfolio-wrap">
+    <img
+      src="/assets/img/portfolio/thumbs/other-cms/healthlinespro_thumb.webp"
+      class="img-fluid"
+      alt="healthlinespro"
+    />
+    <div class="portfolio-info">
+      <h4>Health Linespro</h4>
+      <p>Custom Joomla theme. Custom CSS/JS</p>
+      <div class="portfolio-links">
+        <a
+          href="/assets/img/portfolio/other-cms/healthlinespro.webp"
+          data-gallery="portfolioGallery"
+          class="portfolio-lightbox"
+          title="healthlinespro"
+          ><i class="bx bxs-zoom-in"></i
+        ></a>
+        <a
+          href="/assets/portfolio-details/other-cms-details/healthlinespro_portfolio-details.html"
+          data-gallery="portfolioDetailsGallery"
+          data-glightbox="type: external"
+          class="portfolio-details-lightbox"
+          title="Portfolio Details"
+          ><i class="bx bx-link"></i
+        ></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-6 portfolio-item filter-other-cms">
+  <div class="portfolio-wrap">
+    <img
+      src="/assets/img/portfolio/thumbs/other-cms/umantravel_thumb.webp"
+      class="img-fluid"
+      alt="umantravel"
+    />
+    <div class="portfolio-info">
+      <h4>Uman travel - tourist website of the city of Uman</h4>
+      <p>Custom Joomla theme. Custom CSS/JS + add content</p>
+      <div class="portfolio-links">
+        <a
+          href="/assets/img/portfolio/other-cms/umantravel.webp"
+          data-gallery="portfolioGallery"
+          class="portfolio-lightbox"
+          title="umantravel"
+          ><i class="bx bxs-zoom-in"></i
+        ></a>
+        <a
+          href="/assets/portfolio-details/other-cms-details/umantravel_portfolio-details.html"
+          data-gallery="portfolioDetailsGallery"
+          data-glightbox="type: external"
+          class="portfolio-details-lightbox"
+          title="Portfolio Details"
+          ><i class="bx bx-link"></i
+        ></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-6 portfolio-item filter-other-cms">
+  <div class="portfolio-wrap">
+    <img
+      src="/assets/img/portfolio/thumbs/other-cms/portagedental_thumb.webp"
+      class="img-fluid"
+      alt="portagedental"
+    />
+    <div class="portfolio-info">
+      <h4>Portage - Dental Clinic</h4>
+      <p>Custom Joomla theme. Custom CSS/JS + add content</p>
+      <div class="portfolio-links">
+        <a
+          href="/assets/img/portfolio/other-cms/portagedental.webp"
+          data-gallery="portfolioGallery"
+          class="portfolio-lightbox"
+          title="portagedental"
+          ><i class="bx bxs-zoom-in"></i
+        ></a>
+        <a
+          href="/assets/portfolio-details/other-cms-details/portagedental_portfolio-details.html"
+          data-gallery="portfolioDetailsGallery"
+          data-glightbox="type: external"
+          class="portfolio-details-lightbox"
+          title="Portfolio Details"
+          ><i class="bx bx-link"></i
+        ></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-6 portfolio-item filter-other-cms">
+  <div class="portfolio-wrap">
+    <img
+      src="/assets/img/portfolio/thumbs/other-cms/vinenergo_thumb.webp"
+      class="img-fluid"
+      alt="vinenergo"
+    />
+    <div class="portfolio-info">
+      <h4>Vinenergo - equipment for the production briquettes Pini Kay</h4>
+      <p>Custom Joomla theme. Custom CSS/JS + add content</p>
+      <div class="portfolio-links">
+        <a
+          href="/assets/img/portfolio/other-cms/vinenergo.webp"
+          data-gallery="portfolioGallery"
+          class="portfolio-lightbox"
+          title="vinenergo"
+          ><i class="bx bxs-zoom-in"></i
+        ></a>
+        <a
+          href="/assets/portfolio-details/other-cms-details/vinenergo_portfolio-details.html"
+          data-gallery="portfolioDetailsGallery"
+          data-glightbox="type: external"
+          class="portfolio-details-lightbox"
+          title="Portfolio Details"
+          ><i class="bx bx-link"></i
+        ></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!----------------------------- JAVASCRIPT  -->
+
+<div class="col-lg-4 col-md-6 portfolio-item filter-javascript">
+  <div class="portfolio-wrap">
+    <img
+      src="/assets/img/portfolio/thumbs/javascript/calculator-js_thumb.webp"
+      class="img-fluid"
+      alt="calculator js"
+    />
+    <div class="portfolio-info">
+      <h4>Calculator JS</h4>
+      <p>Pet project for learning and practicing JavaScript</p>
+      <div class="portfolio-links">
+        <a
+          href="/assets/img/portfolio/javascript/calculator-js.webp"
+          data-gallery="portfolioGallery"
+          class="portfolio-lightbox"
+          title="calculator js"
+          ><i class="bx bxs-zoom-in"></i
+        ></a>
+        <a
+          href="/assets/portfolio-details/javascript-details/calculator-js_portfolio-details.html"
+          data-gallery="portfolioDetailsGallery"
+          data-glightbox="type: external"
+          class="portfolio-details-lightbox"
+          title="Portfolio Details"
+          ><i class="bx bx-link"></i
+        ></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-6 portfolio-item filter-javascript">
+  <div class="portfolio-wrap">
+    <img
+      src="/assets/img/portfolio/thumbs/javascript/date-n-time_thumb.webp"
+      class="img-fluid"
+      alt="date-n-time"
+    />
+    <div class="portfolio-info">
+      <h4>Date and time app</h4>
+      <p>Pet project for learning and practicing JavaScript</p>
+      <div class="portfolio-links">
+        <a
+          href="/assets/img/portfolio/javascript/date-n-time.webp"
+          data-gallery="portfolioGallery"
+          class="portfolio-lightbox"
+          title="date-n-time"
+          ><i class="bx bxs-zoom-in"></i
+        ></a>
+        <a
+          href="/assets/portfolio-details/javascript-details/date-n-time_portfolio-details.html"
+          data-gallery="portfolioDetailsGallery"
+          data-glightbox="type: external"
+          class="portfolio-details-lightbox"
+          title="Portfolio Details"
+          ><i class="bx bx-link"></i
+        ></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-lg-4 col-md-6 portfolio-item filter-javascript">
+  <div class="portfolio-wrap">
+    <img
+      src="/assets/img/portfolio/thumbs/javascript/list-of-users_thumb.webp"
+      class="img-fluid"
+      alt="list-of-users"
+    />
+    <div class="portfolio-info">
+      <h4>List of Users</h4>
+      <p>Pet project for learning and practicing JavaScript</p>
+      <div class="portfolio-links">
+        <a
+          href="/assets/img/portfolio/javascript/list-of-users.webp"
+          data-gallery="portfolioGallery"
+          class="portfolio-lightbox"
+          title="list-of-users"
+          ><i class="bx bxs-zoom-in"></i
+        ></a>
+        <a
+          href="/assets/portfolio-details/javascript-details/list-of-users_portfolio-details.html"
+          data-gallery="portfolioDetailsGallery"
+          data-glightbox="type: external"
+          class="portfolio-details-lightbox"
+          title="Portfolio Details"
+          ><i class="bx bx-link"></i
+        ></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+        </div>
+      </div>
+    </section>
+    <!-- End Portfolio Section -->
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+      <div class="container">
+        <div class="section-title">
+          <h2>Contact</h2>
+          <p>Contact Me</p>
+        </div>
+
+        <div class="row mt-2">
+          <div class="col-md-6 d-flex align-items-stretch">
+            <div class="info-box">
+              <i class="bx bx-map"></i>
+              <h3>My Address</h3>
+              <p>Worlwide</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 mt-4 mt-md-0 d-flex align-items-stretch">
+            <div class="info-box">
+              <i class="bx bx-share-alt"></i>
+              <h3>Social Profiles</h3>
+              <div class="social-links">
+                <a
+                  target="_blank"
+                  href="https://www.linkedin.com/in/artur-iusupov/"
+                  class="linkedin"
+                  ><i class="bi bi-linkedin"></i
+                ></a>
+                <a target="_blank" href="https://t.me/develop_create" class="telegram"
+                  ><i class="bi bi-telegram"></i
+                ></a>
+                <a target="_blank" href="tel:+34642413967" class="whatsapp"
+                  ><i class="bi bi-whatsapp"></i
+                ></a>
+                <a
+                  target="_blank"
+                  href="https://github.com/YusupovWebArt"
+                  class="github"
+                  ><i class="bi bi-github"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-6 mt-4 d-flex align-items-stretch">
+            <div class="info-box">
+              <i class="bx bx-envelope"></i>
+              <h3>Email Me</h3>
+              <p><a href="mailto:web.sunline@gmail.com">web.sunline@gmail.com</a></p>
+            </div>
+          </div>
+          <div class="col-md-6 mt-4 d-flex align-items-stretch">
+            <div class="info-box">
+              <i class="bx bx-phone-call"></i>
+              <h3>Call Me</h3>
+              <p><a href="tel:+34642413967">+34642413967 (Whatsapp)</a></p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+    <!-- End Contact Section -->
+
+    <div class="credits">
+
+  
+      <div class="social-links">
+        <a
+          target="_blank"
+          href="https://www.linkedin.com/in/artur-iusupov/"
+          class="linkedin"
+          ><i class="bi bi-linkedin"></i
+        ></a>
+        <a target="_blank" href="https://t.me/develop_create" class="telegram"
+          ><i class="bi bi-telegram"></i
+        ></a>
+        <a target="_blank" href="tel:+34642413967" class="whatsapp"
+          ><i class="bi bi-whatsapp"></i
+        ></a>
+        <a
+          target="_blank"
+          href="https://github.com/YusupovWebArt"
+          class="github"
+          ><i class="bi bi-github"></i
+        ></a>
+      </div>
+    </div>
+
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="assets/js/main.js"></script>
   </body>
 </html>
