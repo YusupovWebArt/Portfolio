@@ -1070,8 +1070,10 @@ section .container {
   background-color: #a3da05;
 }
 
-.portfolio-details-slider img {
-  width: 100%;
+@media only screen and (max-width: 768px) {
+  .portfolio-details-slider img {
+    width: 100%;
+  }
 }
 
 /*--------------------------------------------------------------
