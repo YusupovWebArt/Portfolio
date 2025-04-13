@@ -190,13 +190,14 @@ h6 {
 }
 
 .attention-underline {
-  padding-bottom: 6px;
+  padding-bottom: 4px;
   color: #fff;
   background-image: linear-gradient(120deg, #a3da05 0%, #a3da05 100%);
   background-repeat: no-repeat;
-  background-size: 100% 0.2em;
+  background-size: 100% 0.1em;
   background-position: 0 88%;
   transition: background-size 200ms ease-in;
+  line-height: 1.5em;
   &:hover {
     background-size: 100% 88%;
   }
