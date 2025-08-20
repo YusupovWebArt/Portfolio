@@ -1,84 +1,84 @@
-import { SiReact, SiWordpress, SiGoogleanalytics } from "react-icons/si";
-import { LuBrainCircuit } from "react-icons/lu";
+import { SiReact, SiWordpress, SiGoogleanalytics } from 'react-icons/si'
+import { LuBrainCircuit } from 'react-icons/lu'
 
 const About = () => {
   const highlights = [
     {
       icon: <SiWordpress className="w-6 h-6" />,
-      title: "WordPress development",
+      title: 'WordPress development',
       description:
-        "Full-stack WordPress development with custom themes and plugins",
+        'Full-stack WordPress development with custom themes and plugins',
     },
     {
       icon: <SiReact className="w-6 h-6" />,
-      title: "App Development",
-      description: "Expert in React/Next.js, TypeScript, and JavaScript",
+      title: 'App Development',
+      description: 'Expert in React/Next.js, TypeScript, and JavaScript',
     },
     {
       icon: <SiGoogleanalytics className="w-6 h-6" />,
-      title: "SEO Optimization",
-      description: "Technical SEO implementation and performance optimization",
+      title: 'SEO Optimization',
+      description: 'Technical SEO implementation and performance optimization',
     },
     {
       icon: <LuBrainCircuit className="w-6 h-6" />,
-      title: "AI Tools",
+      title: 'AI Tools',
       description:
-        "Explore and integrate AI tools into my WordPress and React projects development workflows.",
+        'Explore and integrate AI tools into my WordPress and React projects development workflows.',
     },
-  ];
+  ]
 
   const education = [
     {
-      year: "2024-Present",
-      title: "REACT/Next.js/Javascript | AI-tools | TMA | Web3",
+      year: '2024-Present',
+      title: 'REACT/Next.js/Javascript | AI-tools | TMA | Web3',
       institution:
-        "Full-stack App Development, AI-tools, Blockchain technologies",
+        'Full-stack App Development, AI-tools, Blockchain technologies',
       description:
-        "In parallel with my main work and specialization, I study and practice App Development with in-depth study of React/Next.js and Javascript. AI-tools. TMA development.",
+        'In parallel with my main work and specialization, I study and practice App Development with in-depth study of React/Next.js and Javascript. AI-tools. TMA development.',
     },
     {
-      year: "2016",
-      title: "Specialized courses and practical classes",
+      year: '2016',
+      title: 'Specialized courses and practical classes',
       institution:
-        "W3schools, Coursera, Udemy, Codecademy, SoloLearn, Programminghub, YouTube",
+        'W3schools, Coursera, Udemy, Codecademy, SoloLearn, Programminghub, YouTube',
       description:
-        "NEVER STOP LEARNING! (lifelong learning). Constantly learning, improving my knowledge and skills every day in my profession. Also, I read a lot and watch video courses with up-to-date information from related areas of interest to me. In my daily work, also use resources such as ChatGPT, Claude Code and others AI-tools. W3C, MDN, CODEX WordPress, Stack Overflow, GitHub, CodePen, Udemy, Google, YouTube.",
+        'NEVER STOP LEARNING! (lifelong learning). Constantly learning, improving my knowledge and skills every day in my profession. Also, I read a lot and watch video courses with up-to-date information from related areas of interest to me. In my daily work, also use resources such as ChatGPT, Claude Code and others AI-tools. W3C, MDN, CODEX WordPress, Stack Overflow, GitHub, CodePen, Udemy, Google, YouTube.',
     },
     {
-      year: "2005-2010",
-      title: "National Technical University (Ukraine)",
-      institution: "VNTU - Vinnitsa National Technical University (Ukraine)",
+      year: '2005-2010',
+      title: 'National Technical University (Ukraine)',
+      institution: 'VNTU - Vinnitsa National Technical University (Ukraine)',
       description:
-        "Administrative management in the field of information security with limited access in companies and in production. System Administrator.",
+        'Administrative management in the field of information security with limited access in companies and in production. System Administrator.',
     },
-  ];
+  ]
 
   const workExperience = [
     {
-      year: "2021-Present",
-      title: "Front-end Developer (Remote Full-time/Part-time)",
-      company: "Frontdeskhelpers",
-      companyUrl: "https://frontdeskhelpers.com/",
+      year: '2021-Present',
+      title: 'Front-end Developer (Remote Full-time/Part-time)',
+      company: 'Frontdeskhelpers',
+      companyUrl: 'https://frontdeskhelpers.com/',
       description:
-        "WordPress/Wix developer/SEO. Working remote full time work according to methodology Agile. US English and Spanish speaking customers. (USA, ES).",
+        'WordPress/Wix developer/SEO. Working remote full time work according to methodology Agile. US English and Spanish speaking customers. (USA, ES).',
     },
     {
-      year: "2020-2021",
-      title: "Front-end Developer (Remote Part-time)",
-      company: "Agenturro",
-      companyUrl: "https://www.agenturro.co/",
+      year: '2020-2021',
+      title: 'Front-end Developer (Remote Part-time)',
+      company: 'Agenturro',
+      companyUrl: 'https://www.agenturro.co/',
       description:
-        "HTML/CSS/JS - developer. Working with CMS - WordPress, Shopify. SEO-optimization. German customers.",
+        'HTML/CSS/JS - developer. Working with CMS - WordPress, Shopify. SEO-optimization. German customers.',
     },
     {
-      year: "2017-2024",
-      title: "Freelance and Personal projects",
-      company: "Web-developer (WordPress, Shopify, WIX), SEO-specialist.",
-      companyUrl: "https://freelancehunt.com/freelancer/arsly.html",
+      year: '2017-2024',
+      title: 'Freelance and Personal projects',
+      company: 'Web-developer (WordPress, Shopify, WIX), SEO-specialist.',
+      companyUrl: 'https://freelancehunt.com/freelancer/arsly.html',
       description:
-        "I worked remotely as a freelancer on Ukrainian and American freelance platforms - Freelancehunt, Upwork, Freelancer, etc. Part-time as a remote worker for a few companies that are focused on European clients. Personal projects based on affiliate marketing, dropshipping and POD on Etsy.",
+        'I worked remotely as a freelancer on Ukrainian and American freelance platforms - Freelancehunt, Upwork, Freelancer, etc. Part-time as a remote worker for a few companies that are focused on European clients. Personal projects based on affiliate marketing, dropshipping and POD on Etsy.',
     },
-  ];
+  ]
 
   return (
     <section
@@ -161,7 +161,7 @@ const About = () => {
             <div className="relative bg-white dark:bg-slate-700 rounded-3xl overflow-hidden shadow-2xl max-w-sm mx-auto">
               <div className="aspect-[9/16] relative">
                 <img
-                  src="/images/hero-pic.webp"
+                  src="/Portfolio/public/images/hero-pic.webp"
                   alt="Alex Developer - Professional Photo"
                   className="w-full h-full object-cover"
                 />
@@ -216,9 +216,9 @@ const About = () => {
                     className="relative flex items-start mb-8 last:mb-0"
                   >
                     <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-blue-500 dark:from-lime-500 dark:to-lime-600 rounded-full flex items-center justify-center text-white font-bold text-sm shadow-lg relative z-10">
-                      {item.year.includes("Present")
-                        ? "Now"
-                        : item.year.split("-")[0]}
+                      {item.year.includes('Present')
+                        ? 'Now'
+                        : item.year.split('-')[0]}
                     </div>
                     <div className="ml-6 flex-1">
                       <div className="bg-white dark:bg-slate-700 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-600 hover:shadow-md transition-shadow">
@@ -255,9 +255,9 @@ const About = () => {
                     className="relative flex items-start mb-8 last:mb-0"
                   >
                     <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-teal-500 dark:from-lime-500 dark:to-lime-600 rounded-full flex items-center justify-center text-white font-bold text-xs shadow-lg relative z-10">
-                      {item.year.includes("Present")
-                        ? "Now"
-                        : item.year.split("-")[0]}
+                      {item.year.includes('Present')
+                        ? 'Now'
+                        : item.year.split('-')[0]}
                     </div>
                     <div className="ml-6 flex-1">
                       <div className="bg-white dark:bg-slate-700 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-600 hover:shadow-md transition-shadow">
@@ -288,7 +288,7 @@ const About = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default About;
+export default About
