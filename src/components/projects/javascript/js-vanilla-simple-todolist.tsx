@@ -1,26 +1,27 @@
-import { Project } from "../project-types";
+import { Project } from '../project-types'
 
 const jsVanillaSimpleTodoList: Project = {
   id: 44,
-  title: "Javascript Simple To-Do List",
-  description: "Pet project for learning and practicing JavaScript.",
+  title: 'Javascript Simple To-Do List',
+  description: 'Pet project for learning and practicing JavaScript.',
   fullDescription:
-    "A lightweight web-based To&#45;Do List application developed using HTML5, CSS3, and vanilla JavaScript.",
-  image: "/images/portfolio/thumbs/javascript/js-simple-todo-list_thumb.webp",
+    'A lightweight web-based To&#45;Do List application developed using HTML5, CSS3, and vanilla JavaScript.',
+  image:
+    '/Portfolio/images/portfolio/thumbs/javascript/js-simple-todo-list_thumb.webp',
   fullScreenshot:
-    "/images/portfolio/thumbs/javascript/js-simple-todo-list_thumb.webp",
+    '/Portfolio/images/portfolio/thumbs/javascript/js-simple-todo-list_thumb.webp',
   images: [
     {
-      src: "/images/portfolio/thumbs/javascript/js-simple-todo-list_thumb.webp",
-      caption: "General view of Simple To-Do List",
+      src: '/Portfolio/images/portfolio/thumbs/javascript/js-simple-todo-list_thumb.webp',
+      caption: 'General view of Simple To-Do List',
     },
   ],
   technologies: [
-    "JavaScript (ES6+)",
-    "HTML5",
-    "CSS3",
-    "GitHub",
-    "GitHub Pages",
+    'JavaScript (ES6+)',
+    'HTML5',
+    'CSS3',
+    'GitHub',
+    'GitHub Pages',
   ],
   features: [
     <p>
@@ -46,9 +47,9 @@ const jsVanillaSimpleTodoList: Project = {
   ],
   challenges: [],
   solutions: [],
-  liveUrl: "https://yusupovwebart.github.io/js-simple-todo-list/",
-  githubUrl: "https://github.com/YusupovWebArt/js-simple-todo-list",
-  category: ["javascript"],
-};
+  liveUrl: 'https://yusupovwebart.github.io/js-simple-todo-list/',
+  githubUrl: 'https://github.com/YusupovWebArt/js-simple-todo-list',
+  category: ['javascript'],
+}
 
-export default jsVanillaSimpleTodoList;
+export default jsVanillaSimpleTodoList
