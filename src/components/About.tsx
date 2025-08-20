@@ -161,7 +161,7 @@ const About = () => {
             <div className="relative bg-white dark:bg-slate-700 rounded-3xl overflow-hidden shadow-2xl max-w-sm mx-auto">
               <div className="aspect-[9/16] relative">
                 <img
-                  src="/Portfolio/public/images/hero-pic.webp"
+                  src="/Portfolio/images/hero-pic.webp"
                   alt="Artur Yusupov - Web developer"
                   className="w-full h-full object-cover"
                 />
