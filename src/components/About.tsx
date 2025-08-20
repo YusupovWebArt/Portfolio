@@ -162,7 +162,7 @@ const About = () => {
               <div className="aspect-[9/16] relative">
                 <img
                   src="/Portfolio/public/images/hero-pic.webp"
-                  alt="Alex Developer - Professional Photo"
+                  alt="Artur Yusupov - Web developer"
                   className="w-full h-full object-cover"
                 />
 
