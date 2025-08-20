@@ -1,26 +1,27 @@
-import { Project } from "../project-types";
+import { Project } from '../project-types'
 
 const simpleVanillaCalculator: Project = {
   id: 43,
-  title: "Vanilla Javascript Simple Calculator",
-  description: "Pet project for learning and practicing JavaScript.",
+  title: 'Vanilla Javascript Simple Calculator',
+  description: 'Pet project for learning and practicing JavaScript.',
   fullDescription:
-    "A lightweight Javascript Simple Calculator application developed using HTML5, CSS3, and vanilla JavaScript.",
-  image: "/images/portfolio/thumbs/javascript/calculator-js_thumb.webp",
+    'A lightweight Javascript Simple Calculator application developed using HTML5, CSS3, and vanilla JavaScript.',
+  image:
+    '/Portfolio/images/portfolio/thumbs/javascript/calculator-js_thumb.webp',
   fullScreenshot:
-    "/images/portfolio/thumbs/javascript/calculator-js_thumb.webp",
+    '/Portfolio/images/portfolio/thumbs/javascript/calculator-js_thumb.webp',
   images: [
     {
-      src: "/images/portfolio/thumbs/javascript/calculator-js_thumb.webp",
-      caption: "General view of Javascript Simple Calculator",
+      src: '/Portfolio/images/portfolio/thumbs/javascript/calculator-js_thumb.webp',
+      caption: 'General view of Javascript Simple Calculator',
     },
   ],
   technologies: [
-    "JavaScript (ES6+)",
-    "HTML5",
-    "CSS3",
-    "GitHub",
-    "GitHub Pages",
+    'JavaScript (ES6+)',
+    'HTML5',
+    'CSS3',
+    'GitHub',
+    'GitHub Pages',
   ],
   features: [
     <p>
@@ -46,9 +47,9 @@ const simpleVanillaCalculator: Project = {
   ],
   challenges: [],
   solutions: [],
-  liveUrl: "https://yusupovwebart.github.io/js-calculator/",
-  githubUrl: "https://github.com/YusupovWebArt/js-calculator",
-  category: ["javascript"],
-};
+  liveUrl: 'https://yusupovwebart.github.io/js-calculator/',
+  githubUrl: 'https://github.com/YusupovWebArt/js-calculator',
+  category: ['javascript'],
+}
 
-export default simpleVanillaCalculator;
+export default simpleVanillaCalculator

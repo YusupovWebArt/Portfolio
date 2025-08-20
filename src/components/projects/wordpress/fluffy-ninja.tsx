@@ -1,40 +1,41 @@
-import { Project } from "../project-types";
+import { Project } from '../project-types'
 
 const fluffyNinja: Project = {
   id: 133,
-  title: "Fluffy Ninja",
-  description: "Creative cloth store. France",
+  title: 'Fluffy Ninja',
+  description: 'Creative cloth store. France',
   fullDescription:
-    "Wordpress theme from scratch. WooCommerce. Custom CSS3/JS/PHP.",
-  image: "/images/portfolio/thumbs/wordpress/fluffy-ninja_thumb.webp",
-  fullScreenshot: "/images/portfolio/thumbs/wordpress/fluffy-ninja_thumb.webp",
+    'Wordpress theme from scratch. WooCommerce. Custom CSS3/JS/PHP.',
+  image: '/Portfolio/images/portfolio/thumbs/wordpress/fluffy-ninja_thumb.webp',
+  fullScreenshot:
+    '/Portfolio/images/portfolio/thumbs/wordpress/fluffy-ninja_thumb.webp',
   images: [
     {
-      src: "/images/portfolio/thumbs/wordpress/fluffy-ninja_thumb.webp",
-      caption: "Home page",
+      src: '/Portfolio/images/portfolio/thumbs/wordpress/fluffy-ninja_thumb.webp',
+      caption: 'Home page',
     },
     {
-      src: "/images/portfolio/sliders/wordpress/fluffy-ninja/fluffy-ninja_slide2.webp",
-      caption: "Products",
+      src: '/Portfolio/images/portfolio/sliders/wordpress/fluffy-ninja/fluffy-ninja_slide2.webp',
+      caption: 'Products',
     },
     {
-      src: "/images/portfolio/sliders/wordpress/fluffy-ninja/fluffy-ninja_slide3.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/sliders/wordpress/fluffy-ninja/fluffy-ninja_slide3.webp',
+      caption: '',
     },
   ],
   technologies: [
-    "WP custom theme from scratch",
-    "Responsive design with CSS Grid",
-    "WooCommerce",
-    "Custom CSS3",
-    "JavaScript ES6",
-    "PHP 8+",
-    "Technical optimization",
-    "SEO-optimization",
-    "Google Analytics",
-    "Schema.org markup implementation",
-    "Google Maps API",
-    "Marketing Tools",
+    'WP custom theme from scratch',
+    'Responsive design with CSS Grid',
+    'WooCommerce',
+    'Custom CSS3',
+    'JavaScript ES6',
+    'PHP 8+',
+    'Technical optimization',
+    'SEO-optimization',
+    'Google Analytics',
+    'Schema.org markup implementation',
+    'Google Maps API',
+    'Marketing Tools',
   ],
   features: [
     <p>
@@ -66,9 +67,9 @@ const fluffyNinja: Project = {
   ],
   challenges: [],
   solutions: [],
-  liveUrl: "https://fluffy-ninja.com/",
-  githubUrl: "#",
-  category: ["wordpress"],
-};
+  liveUrl: 'https://fluffy-ninja.com/',
+  githubUrl: '#',
+  category: ['wordpress'],
+}
 
-export default fluffyNinja;
+export default fluffyNinja

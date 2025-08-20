@@ -1,41 +1,42 @@
-import { Project } from "../project-types";
+import { Project } from '../project-types'
 
 const organicBed: Project = {
   id: 146,
-  title: "Organic Bed",
+  title: 'Organic Bed',
   description:
-    "RTL Israeli website offering a range of eco-friendly, organic bedding products.",
+    'RTL Israeli website offering a range of eco-friendly, organic bedding products.',
   fullDescription:
-    "RTL Wordpress theme from scratch. WooCommerce. Custom CSS3/JS.",
-  image: "/images/portfolio/thumbs/wordpress/organicbed_thumb.webp",
-  fullScreenshot: "/images/portfolio/thumbs/wordpress/organicbed_thumb.webp",
+    'RTL Wordpress theme from scratch. WooCommerce. Custom CSS3/JS.',
+  image: '/Portfolio/images/portfolio/thumbs/wordpress/organicbed_thumb.webp',
+  fullScreenshot:
+    '/Portfolio/images/portfolio/thumbs/wordpress/organicbed_thumb.webp',
   images: [
     {
-      src: "/images/portfolio/thumbs/wordpress/organicbed_thumb.webp",
-      caption: "Home page",
+      src: '/Portfolio/images/portfolio/thumbs/wordpress/organicbed_thumb.webp',
+      caption: 'Home page',
     },
     {
-      src: "/images/portfolio/sliders/wordpress/organicbed/organicbed_slide2.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/sliders/wordpress/organicbed/organicbed_slide2.webp',
+      caption: '',
     },
     {
-      src: "/images/portfolio/sliders/wordpress/organicbed/organicbed_slide3.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/sliders/wordpress/organicbed/organicbed_slide3.webp',
+      caption: '',
     },
   ],
   technologies: [
-    "WP custom theme from scratch",
-    "Responsive design",
-    "Advanced Custom Fields",
-    "Custom CSS3",
-    "JavaScript ES6",
-    "PHP 8+",
-    "WooCommerce",
-    "Add products and content",
-    "Technical optimization",
-    "SEO-optimization",
-    "Marketing Tools",
-    "Google Analytics",
+    'WP custom theme from scratch',
+    'Responsive design',
+    'Advanced Custom Fields',
+    'Custom CSS3',
+    'JavaScript ES6',
+    'PHP 8+',
+    'WooCommerce',
+    'Add products and content',
+    'Technical optimization',
+    'SEO-optimization',
+    'Marketing Tools',
+    'Google Analytics',
   ],
   features: [
     <p>
@@ -70,9 +71,9 @@ const organicBed: Project = {
   ],
   challenges: [],
   solutions: [],
-  liveUrl: "https://organicbed.co.il/",
-  githubUrl: "#",
-  category: ["wordpress"],
-};
+  liveUrl: 'https://organicbed.co.il/',
+  githubUrl: '#',
+  category: ['wordpress'],
+}
 
-export default organicBed;
+export default organicBed

@@ -1,44 +1,45 @@
-import { Project } from "../project-types";
+import { Project } from '../project-types'
 
 const prezentify: Project = {
   id: 67,
-  title: "Prezentify",
-  description: "Polish online store specializing in personalized gifts.",
+  title: 'Prezentify',
+  description: 'Polish online store specializing in personalized gifts.',
   fullDescription:
-    "Created using Shopify, this online store offers a seamless shopping experience with customizable themes and secure payment options. Shopify store + products and content.",
-  image: "/images/portfolio/thumbs/shopify/prezentify_thumb.webp",
-  fullScreenshot: "/images/portfolio/projects/shopify/prezentify_thumb.webp",
+    'Created using Shopify, this online store offers a seamless shopping experience with customizable themes and secure payment options. Shopify store + products and content.',
+  image: '/Portfolio/images/portfolio/thumbs/shopify/prezentify_thumb.webp',
+  fullScreenshot:
+    '/Portfolio/images/portfolio/projects/shopify/prezentify_thumb.webp',
   images: [
     {
-      src: "/images/portfolio/thumbs/shopify/prezentify_thumb.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/thumbs/shopify/prezentify_thumb.webp',
+      caption: '',
     },
     {
-      src: "/images/portfolio/sliders/shopify/prezentify/prezentify_slide2.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/sliders/shopify/prezentify/prezentify_slide2.webp',
+      caption: '',
     },
     {
-      src: "/images/portfolio/sliders/shopify/prezentify/prezentify_slide3.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/sliders/shopify/prezentify/prezentify_slide3.webp',
+      caption: '',
     },
     {
-      src: "/images/portfolio/sliders/shopify/prezentify/prezentify_slide4.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/sliders/shopify/prezentify/prezentify_slide4.webp',
+      caption: '',
     },
     {
-      src: "/images/portfolio/sliders/shopify/prezentify/prezentify_slide5.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/sliders/shopify/prezentify/prezentify_slide5.webp',
+      caption: '',
     },
   ],
   technologies: [
-    "Shopify",
-    "Theme Customization",
-    "CSS3",
-    "JavaScript (ES6+)",
-    "Admin Dashboard",
-    "App Integration",
-    "Product Management",
-    "Content Creation",
+    'Shopify',
+    'Theme Customization',
+    'CSS3',
+    'JavaScript (ES6+)',
+    'Admin Dashboard',
+    'App Integration',
+    'Product Management',
+    'Content Creation',
   ],
   features: [
     <p>
@@ -75,9 +76,9 @@ const prezentify: Project = {
   ],
   challenges: [],
   solutions: [],
-  liveUrl: "https://prezentify.pl/",
-  githubUrl: "#",
-  category: ["shopify"],
-};
+  liveUrl: 'https://prezentify.pl/',
+  githubUrl: '#',
+  category: ['shopify'],
+}
 
-export default prezentify;
+export default prezentify

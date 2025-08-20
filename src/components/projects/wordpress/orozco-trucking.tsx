@@ -1,40 +1,41 @@
-import { Project } from "../project-types";
+import { Project } from '../project-types'
 
 const orozcoTrucking: Project = {
   id: 126,
-  title: "Orozco Trucking",
+  title: 'Orozco Trucking',
   description:
-    "Freight transportation company based in Elk Grove Village, Illinois.",
-  fullDescription: "Wordpress Premium theme. Custom CSS3/JS/PHP.",
-  image: "/images/portfolio/thumbs/wordpress/orozcotrucking_thumb.webp",
+    'Freight transportation company based in Elk Grove Village, Illinois.',
+  fullDescription: 'Wordpress Premium theme. Custom CSS3/JS/PHP.',
+  image:
+    '/Portfolio/images/portfolio/thumbs/wordpress/orozcotrucking_thumb.webp',
   fullScreenshot:
-    "/images/portfolio/thumbs/wordpress/orozcotrucking_thumb.webp",
+    '/Portfolio/images/portfolio/thumbs/wordpress/orozcotrucking_thumb.webp',
   images: [
     {
-      src: "/images/portfolio/thumbs/wordpress/orozcotrucking_thumb.webp",
-      caption: "Home page",
+      src: '/Portfolio/images/portfolio/thumbs/wordpress/orozcotrucking_thumb.webp',
+      caption: 'Home page',
     },
     {
-      src: "/images/portfolio/sliders/wordpress/orozcotrucking/orozcotrucking_slide2.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/sliders/wordpress/orozcotrucking/orozcotrucking_slide2.webp',
+      caption: '',
     },
     {
-      src: "/images/portfolio/sliders/wordpress/orozcotrucking/orozcotrucking_slide3.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/sliders/wordpress/orozcotrucking/orozcotrucking_slide3.webp',
+      caption: '',
     },
   ],
   technologies: [
-    "Wordpress Premium theme",
-    "Responsive design with CSS Grid",
-    "Custom CSS3",
-    "JavaScript ES6",
-    "PHP 8+",
-    "Technical optimization",
-    "SEO-optimization",
-    "Google Analytics",
-    "Schema.org markup implementation",
-    "Google Maps API",
-    "Marketing Tools",
+    'Wordpress Premium theme',
+    'Responsive design with CSS Grid',
+    'Custom CSS3',
+    'JavaScript ES6',
+    'PHP 8+',
+    'Technical optimization',
+    'SEO-optimization',
+    'Google Analytics',
+    'Schema.org markup implementation',
+    'Google Maps API',
+    'Marketing Tools',
   ],
   features: [
     <p>
@@ -61,9 +62,9 @@ const orozcoTrucking: Project = {
   ],
   challenges: [],
   solutions: [],
-  liveUrl: "https://www.orozcotrucking.com/",
-  githubUrl: "#",
-  category: ["wordpress"],
-};
+  liveUrl: 'https://www.orozcotrucking.com/',
+  githubUrl: '#',
+  category: ['wordpress'],
+}
 
-export default orozcoTrucking;
+export default orozcoTrucking

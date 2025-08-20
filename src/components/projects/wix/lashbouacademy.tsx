@@ -1,34 +1,35 @@
-import { Project } from "../project-types";
+import { Project } from '../project-types'
 
 const lashbouAcademy: Project = {
   id: 75,
-  title: "Lashbou Academy",
-  description: "USA Eyelash Academy.",
+  title: 'Lashbou Academy',
+  description: 'USA Eyelash Academy.',
   fullDescription:
-    "Built on a Velo editor with pixel-perfect control, with seamless integration of apps and design elements, mobile‑friendly optimization, and built‑in tools like contact forms, SEO settings, and site analytics.",
-  image: "/images/portfolio/thumbs/wix/lashbouacademy_thumb.webp",
-  fullScreenshot: "/images/portfolio/projects/wix/lashbouacademy_thumb.webp",
+    'Built on a Velo editor with pixel-perfect control, with seamless integration of apps and design elements, mobile‑friendly optimization, and built‑in tools like contact forms, SEO settings, and site analytics.',
+  image: '/Portfolio/images/portfolio/thumbs/wix/lashbouacademy_thumb.webp',
+  fullScreenshot:
+    '/Portfolio/images/portfolio/projects/wix/lashbouacademy_thumb.webp',
   images: [
     {
-      src: "/images/portfolio/thumbs/wix/lashbouacademy_thumb.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/thumbs/wix/lashbouacademy_thumb.webp',
+      caption: '',
     },
     {
-      src: "/images/portfolio/sliders/wix/lashbouacademy/lashbouacademy_slide2.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/sliders/wix/lashbouacademy/lashbouacademy_slide2.webp',
+      caption: '',
     },
   ],
   technologies: [
-    "WIX",
-    "Theme Customization",
-    "Ecommerce Integration",
-    "CSS3",
-    "JavaScript (ES6+)",
-    "Admin Dashboard",
-    "App Integration",
-    "Content Creation",
-    "SEO-optimization",
-    "Marketing Tools",
+    'WIX',
+    'Theme Customization',
+    'Ecommerce Integration',
+    'CSS3',
+    'JavaScript (ES6+)',
+    'Admin Dashboard',
+    'App Integration',
+    'Content Creation',
+    'SEO-optimization',
+    'Marketing Tools',
   ],
   features: [
     <p>
@@ -70,9 +71,9 @@ const lashbouAcademy: Project = {
   ],
   challenges: [],
   solutions: [],
-  liveUrl: "https://www.lashbouacademy.com/",
-  githubUrl: "#",
-  category: ["wix"],
-};
+  liveUrl: 'https://www.lashbouacademy.com/',
+  githubUrl: '#',
+  category: ['wix'],
+}
 
-export default lashbouAcademy;
+export default lashbouAcademy

@@ -1,42 +1,43 @@
-import { Project } from "../project-types";
+import { Project } from '../project-types'
 
 const leoLardy: Project = {
   id: 120,
-  title: "Leo Lardy",
-  description: "French visually driven creative platform.",
-  fullDescription: "Premium Wordpress theme + Custom CSS3/JS + content.",
-  image: "/images/portfolio/thumbs/wordpress/leo-lardy_thumb.webp",
-  fullScreenshot: "/images/portfolio/thumbs/wordpress/leo-lardy_thumb.webp",
+  title: 'Leo Lardy',
+  description: 'French visually driven creative platform.',
+  fullDescription: 'Premium Wordpress theme + Custom CSS3/JS + content.',
+  image: '/Portfolio/images/portfolio/thumbs/wordpress/leo-lardy_thumb.webp',
+  fullScreenshot:
+    '/Portfolio/images/portfolio/thumbs/wordpress/leo-lardy_thumb.webp',
   images: [
     {
-      src: "/images/portfolio/thumbs/wordpress/leo-lardy_thumb.webp",
-      caption: "Home page",
+      src: '/Portfolio/images/portfolio/thumbs/wordpress/leo-lardy_thumb.webp',
+      caption: 'Home page',
     },
     {
-      src: "/images/portfolio/sliders/wordpress/leo-lardy/leo-lardy_slide2.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/sliders/wordpress/leo-lardy/leo-lardy_slide2.webp',
+      caption: '',
     },
     {
-      src: "/images/portfolio/sliders/wordpress/leo-lardy/leo-lardy_slide3.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/sliders/wordpress/leo-lardy/leo-lardy_slide3.webp',
+      caption: '',
     },
     {
-      src: "/images/portfolio/sliders/wordpress/leo-lardy/leo-lardy_slide4.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/sliders/wordpress/leo-lardy/leo-lardy_slide4.webp',
+      caption: '',
     },
   ],
   technologies: [
-    "Premium Wordpress theme",
-    "Responsive design with CSS Grid",
-    "Custom CSS3",
-    "JavaScript ES6",
-    "PHP 8+",
-    "Technical optimization",
-    "SEO-optimization",
-    "Google Analytics",
-    "Schema.org markup implementation",
-    "Google Maps API",
-    "Marketing Tools",
+    'Premium Wordpress theme',
+    'Responsive design with CSS Grid',
+    'Custom CSS3',
+    'JavaScript ES6',
+    'PHP 8+',
+    'Technical optimization',
+    'SEO-optimization',
+    'Google Analytics',
+    'Schema.org markup implementation',
+    'Google Maps API',
+    'Marketing Tools',
   ],
   features: [
     <p>
@@ -62,9 +63,9 @@ const leoLardy: Project = {
   ],
   challenges: [],
   solutions: [],
-  liveUrl: "https://lardyleo.com/",
-  githubUrl: "#",
-  category: ["wordpress"],
-};
+  liveUrl: 'https://lardyleo.com/',
+  githubUrl: '#',
+  category: ['wordpress'],
+}
 
-export default leoLardy;
+export default leoLardy

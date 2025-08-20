@@ -1,27 +1,27 @@
-import { Project } from "../project-types";
+import { Project } from '../project-types'
 
 const simpleJavascriptCalculator: Project = {
   id: 45,
-  title: "Modern Simple Javascript Calculator",
-  description: "Pet project for learning and practicing JavaScript.",
+  title: 'Modern Simple Javascript Calculator',
+  description: 'Pet project for learning and practicing JavaScript.',
   fullDescription:
-    "A basic calculator built with vanilla JavaScript, HTML, and CSS. It supports simple arithmetic operations with a clean and easy-to-use interface.",
+    'A basic calculator built with vanilla JavaScript, HTML, and CSS. It supports simple arithmetic operations with a clean and easy-to-use interface.',
   image:
-    "/images/portfolio/thumbs/javascript/simple-javascript-calculator_thumb.webp",
+    '/Portfolio/images/portfolio/thumbs/javascript/simple-javascript-calculator_thumb.webp',
   fullScreenshot:
-    "/images/portfolio/thumbs/javascript/simple-javascript-calculator_thumb.webp",
+    '/Portfolio/images/portfolio/thumbs/javascript/simple-javascript-calculator_thumb.webp',
   images: [
     {
-      src: "/images/portfolio/thumbs/javascript/simple-javascript-calculator_thumb.webp",
-      caption: "General view of Modern Simple Javascript Calculator",
+      src: '/Portfolio/images/portfolio/thumbs/javascript/simple-javascript-calculator_thumb.webp',
+      caption: 'General view of Modern Simple Javascript Calculator',
     },
   ],
   technologies: [
-    "JavaScript (ES6+)",
-    "HTML5",
-    "CSS3",
-    "GitHub",
-    "GitHub Pages",
+    'JavaScript (ES6+)',
+    'HTML5',
+    'CSS3',
+    'GitHub',
+    'GitHub Pages',
   ],
   features: [
     <p>
@@ -47,9 +47,9 @@ const simpleJavascriptCalculator: Project = {
   ],
   challenges: [],
   solutions: [],
-  liveUrl: "https://yusupovwebart.github.io/js-simple-calculator/",
-  githubUrl: "https://github.com/YusupovWebArt/js-simple-calculator",
-  category: ["javascript"],
-};
+  liveUrl: 'https://yusupovwebart.github.io/js-simple-calculator/',
+  githubUrl: 'https://github.com/YusupovWebArt/js-simple-calculator',
+  category: ['javascript'],
+}
 
-export default simpleJavascriptCalculator;
+export default simpleJavascriptCalculator

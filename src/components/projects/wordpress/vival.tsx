@@ -1,38 +1,39 @@
-import { Project } from "../project-types";
+import { Project } from '../project-types'
 
 const vival: Project = {
   id: 112,
-  title: "Vival",
+  title: 'Vival',
   description:
-    "Ukrainian online store specializing in premium construction materials, particularly for roofing and industrial flooring.",
+    'Ukrainian online store specializing in premium construction materials, particularly for roofing and industrial flooring.',
   fullDescription:
-    "WooCommerce. Wordpress theme from scratch. Add products and content. Custom CSS3/JS.",
-  image: "/images/portfolio/thumbs/wordpress/vival_thumb.webp",
-  fullScreenshot: "/images/portfolio/thumbs/wordpress/vival_thumb.webp",
+    'WooCommerce. Wordpress theme from scratch. Add products and content. Custom CSS3/JS.',
+  image: '/Portfolio/images/portfolio/thumbs/wordpress/vival_thumb.webp',
+  fullScreenshot:
+    '/Portfolio/images/portfolio/thumbs/wordpress/vival_thumb.webp',
   images: [
     {
-      src: "/images/portfolio/thumbs/wordpress/vival_thumb.webp",
-      caption: "Home page",
+      src: '/Portfolio/images/portfolio/thumbs/wordpress/vival_thumb.webp',
+      caption: 'Home page',
     },
     {
-      src: "/images/portfolio/sliders/wordpress/vival/vival_slide2.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/sliders/wordpress/vival/vival_slide2.webp',
+      caption: '',
     },
   ],
   technologies: [
-    "WP custom theme from scratch",
-    "Responsive design with CSS Grid",
-    "Custom CSS3",
-    "JavaScript ES6",
-    "WooCommerce",
-    "Add products and content",
-    "PHP 8+",
-    "Technical optimization",
-    "SEO-optimization",
-    "Google Analytics",
-    "Schema.org markup implementation",
-    "Google Maps API",
-    "Marketing Tools",
+    'WP custom theme from scratch',
+    'Responsive design with CSS Grid',
+    'Custom CSS3',
+    'JavaScript ES6',
+    'WooCommerce',
+    'Add products and content',
+    'PHP 8+',
+    'Technical optimization',
+    'SEO-optimization',
+    'Google Analytics',
+    'Schema.org markup implementation',
+    'Google Maps API',
+    'Marketing Tools',
   ],
   features: [
     <p>
@@ -63,9 +64,9 @@ const vival: Project = {
   ],
   challenges: [],
   solutions: [],
-  liveUrl: "https://vival.ua/",
-  githubUrl: "#",
-  category: ["wordpress"],
-};
+  liveUrl: 'https://vival.ua/',
+  githubUrl: '#',
+  category: ['wordpress'],
+}
 
-export default vival;
+export default vival

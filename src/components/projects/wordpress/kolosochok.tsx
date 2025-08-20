@@ -1,42 +1,43 @@
-import { Project } from "../project-types";
+import { Project } from '../project-types'
 
 const kolosochok: Project = {
   id: 111,
-  title: "Kolosochok",
+  title: 'Kolosochok',
   description:
-    "Ukrainian private ethno-kindergarten in Kyiv offering culturally immersive preschool education.",
-  fullDescription: "Wordpress theme from scratch. Elementor. Custom CSS3/JS.",
-  image: "/images/portfolio/thumbs/wordpress/kolosochok_thumb.webp",
-  fullScreenshot: "/images/portfolio/thumbs/wordpress/kolosochok_thumb.webp",
+    'Ukrainian private ethno-kindergarten in Kyiv offering culturally immersive preschool education.',
+  fullDescription: 'Wordpress theme from scratch. Elementor. Custom CSS3/JS.',
+  image: '/Portfolio/images/portfolio/thumbs/wordpress/kolosochok_thumb.webp',
+  fullScreenshot:
+    '/Portfolio/images/portfolio/thumbs/wordpress/kolosochok_thumb.webp',
   images: [
     {
-      src: "/images/portfolio/thumbs/wordpress/kolosochok_thumb.webp",
-      caption: "Home page",
+      src: '/Portfolio/images/portfolio/thumbs/wordpress/kolosochok_thumb.webp',
+      caption: 'Home page',
     },
     {
-      src: "/images/portfolio/sliders/wordpress/kolosochok/kolosochok_slide2.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/sliders/wordpress/kolosochok/kolosochok_slide2.webp',
+      caption: '',
     },
     {
-      src: "/images/portfolio/sliders/wordpress/kolosochok/kolosochok_slide3.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/sliders/wordpress/kolosochok/kolosochok_slide3.webp',
+      caption: '',
     },
     {
-      src: "/images/portfolio/sliders/wordpress/kolosochok/kolosochok_slide4.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/sliders/wordpress/kolosochok/kolosochok_slide4.webp',
+      caption: '',
     },
   ],
   technologies: [
-    "WP custom theme from scratch",
-    "Elementor",
-    "Custom CSS3",
-    "JavaScript ES6",
-    "PHP 8+",
-    "Google Maps API",
-    "Schema.org markup implementation",
-    "SEO optimization",
-    "Responsive design with CSS Grid",
-    "Google Analytics",
+    'WP custom theme from scratch',
+    'Elementor',
+    'Custom CSS3',
+    'JavaScript ES6',
+    'PHP 8+',
+    'Google Maps API',
+    'Schema.org markup implementation',
+    'SEO optimization',
+    'Responsive design with CSS Grid',
+    'Google Analytics',
   ],
   features: [
     <p>
@@ -72,9 +73,9 @@ const kolosochok: Project = {
   ],
   challenges: [],
   solutions: [],
-  liveUrl: "https://kolosochok.kiev.ua/",
-  githubUrl: "#",
-  category: ["wordpress"],
-};
+  liveUrl: 'https://kolosochok.kiev.ua/',
+  githubUrl: '#',
+  category: ['wordpress'],
+}
 
-export default kolosochok;
+export default kolosochok

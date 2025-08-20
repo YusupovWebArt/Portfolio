@@ -1,36 +1,37 @@
-import { Project } from "../project-types";
+import { Project } from '../project-types'
 
 const artezioeu: Project = {
   id: 68,
-  title: "Artezioeu",
-  description: "Spain-based painting by numbers store.",
+  title: 'Artezioeu',
+  description: 'Spain-based painting by numbers store.',
   fullDescription:
-    "Created using Shopify, this online store offers a seamless shopping experience with customizable themes and secure payment options. Shopify store + products and content.",
-  image: "/images/portfolio/thumbs/shopify/artezioeu_thumb.webp",
-  fullScreenshot: "/images/portfolio/projects/shopify/artezioeu_thumb.webp",
+    'Created using Shopify, this online store offers a seamless shopping experience with customizable themes and secure payment options. Shopify store + products and content.',
+  image: '/Portfolio/images/portfolio/thumbs/shopify/artezioeu_thumb.webp',
+  fullScreenshot:
+    '/Portfolio/images/portfolio/projects/shopify/artezioeu_thumb.webp',
   images: [
     {
-      src: "/images/portfolio/thumbs/shopify/artezioeu_thumb.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/thumbs/shopify/artezioeu_thumb.webp',
+      caption: '',
     },
     {
-      src: "/images/portfolio/sliders/shopify/artezioeu/artezioeu_slide2.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/sliders/shopify/artezioeu/artezioeu_slide2.webp',
+      caption: '',
     },
     {
-      src: "/images/portfolio/sliders/shopify/artezioeu/artezioeu_slide3.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/sliders/shopify/artezioeu/artezioeu_slide3.webp',
+      caption: '',
     },
   ],
   technologies: [
-    "Shopify",
-    "Theme Customization",
-    "CSS3",
-    "JavaScript (ES6+)",
-    "Admin Dashboard",
-    "App Integration",
-    "Product Management",
-    "Content Creation",
+    'Shopify',
+    'Theme Customization',
+    'CSS3',
+    'JavaScript (ES6+)',
+    'Admin Dashboard',
+    'App Integration',
+    'Product Management',
+    'Content Creation',
   ],
   features: [
     <p>
@@ -67,9 +68,9 @@ const artezioeu: Project = {
   ],
   challenges: [],
   solutions: [],
-  liveUrl: "https://www.artezio.es/",
-  githubUrl: "#",
-  category: ["shopify"],
-};
+  liveUrl: 'https://www.artezio.es/',
+  githubUrl: '#',
+  category: ['shopify'],
+}
 
-export default artezioeu;
+export default artezioeu

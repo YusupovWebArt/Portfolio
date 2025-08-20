@@ -1,29 +1,30 @@
-import { Project } from "../project-types";
+import { Project } from '../project-types'
 
 const nokyc: Project = {
   id: 51,
-  title: "Nokyc",
-  description: "Pure HTML/CSS/JS code.",
+  title: 'Nokyc',
+  description: 'Pure HTML/CSS/JS code.',
   fullDescription:
-    "Website developed using HTML5, CSS3, and vanilla JavaScript.",
-  image: "/images/portfolio/thumbs/html-css-js/nokyc_thumb.webp",
-  fullScreenshot: "/images/portfolio/projects/html-css-js/nokyc_thumb.webp",
+    'Website developed using HTML5, CSS3, and vanilla JavaScript.',
+  image: '/Portfolio/images/portfolio/thumbs/html-css-js/nokyc_thumb.webp',
+  fullScreenshot:
+    '/Portfolio/images/portfolio/projects/html-css-js/nokyc_thumb.webp',
   images: [
     {
-      src: "/images/portfolio/thumbs/html-css-js/nokyc_thumb.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/thumbs/html-css-js/nokyc_thumb.webp',
+      caption: '',
     },
     {
-      src: "/images/portfolio/sliders/html-css-js/nokyc/nokyc_slide2.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/sliders/html-css-js/nokyc/nokyc_slide2.webp',
+      caption: '',
     },
   ],
   technologies: [
-    "HTML5",
-    "CSS3",
-    "JavaScript (ES6+)",
-    "GitHub",
-    "GitHub Pages",
+    'HTML5',
+    'CSS3',
+    'JavaScript (ES6+)',
+    'GitHub',
+    'GitHub Pages',
   ],
   features: [
     <p>
@@ -49,9 +50,9 @@ const nokyc: Project = {
   ],
   challenges: [],
   solutions: [],
-  liveUrl: "https://yusupovwebart.github.io/nokyc/",
-  githubUrl: "https://github.com/YusupovWebArt/nokyc",
-  category: ["static"],
-};
+  liveUrl: 'https://yusupovwebart.github.io/nokyc/',
+  githubUrl: 'https://github.com/YusupovWebArt/nokyc',
+  category: ['static'],
+}
 
-export default nokyc;
+export default nokyc

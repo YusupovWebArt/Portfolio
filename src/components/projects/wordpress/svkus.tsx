@@ -1,38 +1,39 @@
-import { Project } from "../project-types";
+import { Project } from '../project-types'
 
 const svkus: Project = {
   id: 114,
-  title: "Svkus",
+  title: 'Svkus',
   description:
-    "Syndicate of Taste is the online portal for a dynamic and creative group of restaurants in Ukraine.",
+    'Syndicate of Taste is the online portal for a dynamic and creative group of restaurants in Ukraine.',
   fullDescription:
-    "Wordpress theme from scratch. Add products and content. Custom CSS3/JS.",
-  image: "/images/portfolio/thumbs/wordpress/svkus_thumb.webp",
-  fullScreenshot: "/images/portfolio/thumbs/wordpress/svkus_thumb.webp",
+    'Wordpress theme from scratch. Add products and content. Custom CSS3/JS.',
+  image: '/Portfolio/images/portfolio/thumbs/wordpress/svkus_thumb.webp',
+  fullScreenshot:
+    '/Portfolio/images/portfolio/thumbs/wordpress/svkus_thumb.webp',
   images: [
     {
-      src: "/images/portfolio/thumbs/wordpress/svkus_thumb.webp",
-      caption: "Home page",
+      src: '/Portfolio/images/portfolio/thumbs/wordpress/svkus_thumb.webp',
+      caption: 'Home page',
     },
     {
-      src: "/images/portfolio/sliders/wordpress/svkus/svkus_slide2.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/sliders/wordpress/svkus/svkus_slide2.webp',
+      caption: '',
     },
   ],
   technologies: [
-    "WP custom theme from scratch",
-    "Responsive design with CSS Grid",
-    "Custom CSS3",
-    "JavaScript ES6",
-    "Ecommerce functionality",
-    "Add products and content",
-    "PHP 8+",
-    "Technical optimization",
-    "SEO-optimization",
-    "Google Analytics",
-    "Schema.org markup implementation",
-    "Google Maps API",
-    "Marketing Tools",
+    'WP custom theme from scratch',
+    'Responsive design with CSS Grid',
+    'Custom CSS3',
+    'JavaScript ES6',
+    'Ecommerce functionality',
+    'Add products and content',
+    'PHP 8+',
+    'Technical optimization',
+    'SEO-optimization',
+    'Google Analytics',
+    'Schema.org markup implementation',
+    'Google Maps API',
+    'Marketing Tools',
   ],
   features: [
     <p>
@@ -63,9 +64,9 @@ const svkus: Project = {
   ],
   challenges: [],
   solutions: [],
-  liveUrl: "https://svkus.com/",
-  githubUrl: "#",
-  category: ["wordpress"],
-};
+  liveUrl: 'https://svkus.com/',
+  githubUrl: '#',
+  category: ['wordpress'],
+}
 
-export default svkus;
+export default svkus

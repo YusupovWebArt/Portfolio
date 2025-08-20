@@ -1,41 +1,42 @@
-import { Project } from "../project-types";
+import { Project } from '../project-types'
 
 const eliteHealthWarrior: Project = {
   id: 87,
-  title: "Elite Health Warrior",
-  description: "US-based Health and Wellness",
+  title: 'Elite Health Warrior',
+  description: 'US-based Health and Wellness',
   fullDescription:
-    "Custom Joomla theme. Custom CSS/JS + add products and content.",
-  image: "/images/portfolio/thumbs/other-cms/elitehealthwarrior_thumb.webp",
+    'Custom Joomla theme. Custom CSS/JS + add products and content.',
+  image:
+    '/Portfolio/images/portfolio/thumbs/other-cms/elitehealthwarrior_thumb.webp',
   fullScreenshot:
-    "/images/portfolio/projects/other-cms/elitehealthwarrior_thumb.webp",
+    '/Portfolio/images/portfolio/projects/other-cms/elitehealthwarrior_thumb.webp',
   images: [
     {
-      src: "/images/portfolio/thumbs/other-cms/elitehealthwarrior_thumb.webp",
-      caption: "Home page",
+      src: '/Portfolio/images/portfolio/thumbs/other-cms/elitehealthwarrior_thumb.webp',
+      caption: 'Home page',
     },
     {
-      src: "/images/portfolio/sliders/other-cms/elitehealthwarrior/elitehealthwarrior_slide2.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/sliders/other-cms/elitehealthwarrior/elitehealthwarrior_slide2.webp',
+      caption: '',
     },
     {
-      src: "/images/portfolio/sliders/other-cms/elitehealthwarrior/elitehealthwarrior_slide3.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/sliders/other-cms/elitehealthwarrior/elitehealthwarrior_slide3.webp',
+      caption: '',
     },
   ],
   technologies: [
-    "Joomla",
-    "Custom Template Development",
-    "Responsive design",
-    "eCommerce integration",
-    "add Products and Content",
-    "Custom CSS3",
-    "JavaScript ES6",
-    "Technical optimization",
-    "SEO-optimization",
-    "Google Analytics",
-    "Marketing Tools",
-    "Google Maps API",
+    'Joomla',
+    'Custom Template Development',
+    'Responsive design',
+    'eCommerce integration',
+    'add Products and Content',
+    'Custom CSS3',
+    'JavaScript ES6',
+    'Technical optimization',
+    'SEO-optimization',
+    'Google Analytics',
+    'Marketing Tools',
+    'Google Maps API',
   ],
   features: [
     <p>
@@ -75,9 +76,9 @@ const eliteHealthWarrior: Project = {
   ],
   challenges: [],
   solutions: [],
-  liveUrl: "https://elitehealthwarrior.com/",
-  githubUrl: "#",
-  category: ["other-cms"],
-};
+  liveUrl: 'https://elitehealthwarrior.com/',
+  githubUrl: '#',
+  category: ['other-cms'],
+}
 
-export default eliteHealthWarrior;
+export default eliteHealthWarrior

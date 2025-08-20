@@ -1,45 +1,46 @@
-import { Project } from "../project-types";
+import { Project } from '../project-types'
 
 const bezalel: Project = {
   id: 125,
-  title: "Bezalel Care Management",
-  description: "Care coordination agency located in New York City.",
+  title: 'Bezalel Care Management',
+  description: 'Care coordination agency located in New York City.',
   fullDescription:
-    "Wordpress theme from scratch. Elementor. Custom CSS3/JS/PHP.",
-  image: "/images/portfolio/thumbs/wordpress/bezalelservices_thumb.webp",
+    'Wordpress theme from scratch. Elementor. Custom CSS3/JS/PHP.',
+  image:
+    '/Portfolio/images/portfolio/thumbs/wordpress/bezalelservices_thumb.webp',
   fullScreenshot:
-    "/images/portfolio/thumbs/wordpress/bezalelservices_thumb.webp",
+    '/Portfolio/images/portfolio/thumbs/wordpress/bezalelservices_thumb.webp',
   images: [
     {
-      src: "/images/portfolio/thumbs/wordpress/bezalelservices_thumb.webp",
-      caption: "Home page",
+      src: '/Portfolio/images/portfolio/thumbs/wordpress/bezalelservices_thumb.webp',
+      caption: 'Home page',
     },
     {
-      src: "/images/portfolio/sliders/wordpress/bezalelservices/bezalelservices_slide2.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/sliders/wordpress/bezalelservices/bezalelservices_slide2.webp',
+      caption: '',
     },
     {
-      src: "/images/portfolio/sliders/wordpress/bezalelservices/bezalelservices_slide3.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/sliders/wordpress/bezalelservices/bezalelservices_slide3.webp',
+      caption: '',
     },
     {
-      src: "/images/portfolio/sliders/wordpress/bezalelservices/bezalelservices_slide4.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/sliders/wordpress/bezalelservices/bezalelservices_slide4.webp',
+      caption: '',
     },
   ],
   technologies: [
-    "WP custom theme from scratch",
-    "Responsive design with CSS Grid",
-    "Elementor",
-    "Custom CSS3",
-    "JavaScript ES6",
-    "PHP 8+",
-    "Technical optimization",
-    "SEO-optimization",
-    "Google Analytics",
-    "Schema.org markup implementation",
-    "Google Maps API",
-    "Marketing Tools",
+    'WP custom theme from scratch',
+    'Responsive design with CSS Grid',
+    'Elementor',
+    'Custom CSS3',
+    'JavaScript ES6',
+    'PHP 8+',
+    'Technical optimization',
+    'SEO-optimization',
+    'Google Analytics',
+    'Schema.org markup implementation',
+    'Google Maps API',
+    'Marketing Tools',
   ],
   features: [
     <p>
@@ -76,9 +77,9 @@ const bezalel: Project = {
   ],
   challenges: [],
   solutions: [],
-  liveUrl: "https://www.bezalelservices.com/",
-  githubUrl: "#",
-  category: ["wordpress"],
-};
+  liveUrl: 'https://www.bezalelservices.com/',
+  githubUrl: '#',
+  category: ['wordpress'],
+}
 
-export default bezalel;
+export default bezalel

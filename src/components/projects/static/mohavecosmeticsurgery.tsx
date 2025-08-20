@@ -1,27 +1,27 @@
-import { Project } from "../project-types";
+import { Project } from '../project-types'
 
 const mohaveCosmeticSurgery: Project = {
   id: 52,
-  title: "Mohave Cosmetic Surgery",
+  title: 'Mohave Cosmetic Surgery',
   description:
-    "Las Vegas-based practice led by board-certified plastic surgeon Dr. Bryson Richards.",
+    'Las Vegas-based practice led by board-certified plastic surgeon Dr. Bryson Richards.',
   fullDescription:
-    "Portfolio website developed using HTML5, CSS3, and vanilla JavaScript.",
+    'Portfolio website developed using HTML5, CSS3, and vanilla JavaScript.',
   image:
-    "/images/portfolio/thumbs/html-css-js/mohavecosmeticsurgery_thumb.webp",
+    '/Portfolio/images/portfolio/thumbs/html-css-js/mohavecosmeticsurgery_thumb.webp',
   fullScreenshot:
-    "/images/portfolio/projects/html-css-js/mohavecosmeticsurgery_thumb.webp",
+    '/Portfolio/images/portfolio/projects/html-css-js/mohavecosmeticsurgery_thumb.webp',
   images: [
     {
-      src: "/images/portfolio/thumbs/html-css-js/mohavecosmeticsurgery_thumb.webp",
-      caption: "Home page",
+      src: '/Portfolio/images/portfolio/thumbs/html-css-js/mohavecosmeticsurgery_thumb.webp',
+      caption: 'Home page',
     },
     {
-      src: "/images/portfolio/sliders/html-css-js/mohavecosmeticsurgery/mohavecosmeticsurgery_slide2.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/sliders/html-css-js/mohavecosmeticsurgery/mohavecosmeticsurgery_slide2.webp',
+      caption: '',
     },
   ],
-  technologies: ["HTML5", "CSS3", "JavaScript (ES6+)"],
+  technologies: ['HTML5', 'CSS3', 'JavaScript (ES6+)'],
   features: [
     <p>
       <strong>HTML5: </strong> Provides the structure and layout of the
@@ -38,9 +38,9 @@ const mohaveCosmeticSurgery: Project = {
   ],
   challenges: [],
   solutions: [],
-  liveUrl: "https://mohavecosmeticsurgery.com/",
-  githubUrl: "#",
-  category: ["static"],
-};
+  liveUrl: 'https://mohavecosmeticsurgery.com/',
+  githubUrl: '#',
+  category: ['static'],
+}
 
-export default mohaveCosmeticSurgery;
+export default mohaveCosmeticSurgery

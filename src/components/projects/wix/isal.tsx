@@ -1,58 +1,58 @@
-import { Project } from "../project-types";
+import { Project } from '../project-types'
 
 const isal: Project = {
   id: 76,
-  title: "ISAL",
-  description: "Learn English in Boston.",
+  title: 'ISAL',
+  description: 'Learn English in Boston.',
   fullDescription:
-    "Built on a Velo editor with pixel-perfect control, Custom Wix theme. Payments Fees Functionality. Integrate with crm ZOHO. Blog.",
-  image: "/images/portfolio/thumbs/wix/isal_thumb.webp",
-  fullScreenshot: "/images/portfolio/projects/wix/isal_thumb.webp",
+    'Built on a Velo editor with pixel-perfect control, Custom Wix theme. Payments Fees Functionality. Integrate with crm ZOHO. Blog.',
+  image: '/Portfolio/images/portfolio/thumbs/wix/isal_thumb.webp',
+  fullScreenshot: '/Portfolio/images/portfolio/projects/wix/isal_thumb.webp',
   images: [
     {
-      src: "/images/portfolio/thumbs/wix/isal_thumb.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/thumbs/wix/isal_thumb.webp',
+      caption: '',
     },
     {
-      src: "/images/portfolio/sliders/wix/isal/isal_slide2.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/sliders/wix/isal/isal_slide2.webp',
+      caption: '',
     },
     {
-      src: "/images/portfolio/sliders/wix/isal/isal_slide3.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/sliders/wix/isal/isal_slide3.webp',
+      caption: '',
     },
     {
-      src: "/images/portfolio/sliders/wix/isal/isal_slide4.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/sliders/wix/isal/isal_slide4.webp',
+      caption: '',
     },
     {
-      src: "/images/portfolio/sliders/wix/isal/isal_slide5.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/sliders/wix/isal/isal_slide5.webp',
+      caption: '',
     },
     {
-      src: "/images/portfolio/sliders/wix/isal/isal_slide6.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/sliders/wix/isal/isal_slide6.webp',
+      caption: '',
     },
     {
-      src: "/images/portfolio/sliders/wix/isal/isal_slide7.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/sliders/wix/isal/isal_slide7.webp',
+      caption: '',
     },
     {
-      src: "/images/portfolio/sliders/wix/isal/isal_slide8.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/sliders/wix/isal/isal_slide8.webp',
+      caption: '',
     },
   ],
   technologies: [
-    "WIX",
-    "Theme Customization",
-    "CSS3",
-    "JavaScript (ES6+)",
-    "Admin Dashboard",
-    "App Integration",
-    "Content Creation",
-    "SEO-optimization",
-    "ZOHO crm",
-    "Marketing Tools",
+    'WIX',
+    'Theme Customization',
+    'CSS3',
+    'JavaScript (ES6+)',
+    'Admin Dashboard',
+    'App Integration',
+    'Content Creation',
+    'SEO-optimization',
+    'ZOHO crm',
+    'Marketing Tools',
   ],
   features: [
     <p>
@@ -89,9 +89,9 @@ const isal: Project = {
   ],
   challenges: [],
   solutions: [],
-  liveUrl: "https://www.isalusa.com/",
-  githubUrl: "#",
-  category: ["wix"],
-};
+  liveUrl: 'https://www.isalusa.com/',
+  githubUrl: '#',
+  category: ['wix'],
+}
 
-export default isal;
+export default isal

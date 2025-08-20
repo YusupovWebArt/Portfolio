@@ -1,42 +1,42 @@
-import { Project } from "../project-types";
+import { Project } from '../project-types'
 
 const telecommunicationSolutions: Project = {
   id: 123,
-  title: "Telecommunication Solutions for Business",
-  description: "USA (+ localization Spain).",
+  title: 'Telecommunication Solutions for Business',
+  description: 'USA (+ localization Spain).',
   fullDescription:
-    "This landing page was created using the CSS-framework Bootstrap in Wordpress theme from scratch.",
+    'This landing page was created using the CSS-framework Bootstrap in Wordpress theme from scratch.',
   image:
-    "/images/portfolio/thumbs/wordpress/telecommunication-solutions_thumb.webp",
+    '/Portfolio/images/portfolio/thumbs/wordpress/telecommunication-solutions_thumb.webp',
   fullScreenshot:
-    "/images/portfolio/thumbs/wordpress/telecommunication-solutions_thumb.webp",
+    '/Portfolio/images/portfolio/thumbs/wordpress/telecommunication-solutions_thumb.webp',
   images: [
     {
-      src: "/images/portfolio/thumbs/wordpress/telecommunication-solutions_thumb.webp",
-      caption: "Home page",
+      src: '/Portfolio/images/portfolio/thumbs/wordpress/telecommunication-solutions_thumb.webp',
+      caption: 'Home page',
     },
     {
-      src: "/images/portfolio/sliders/wordpress/telecommunication-solutions/telecommunication-solutions_slide2.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/sliders/wordpress/telecommunication-solutions/telecommunication-solutions_slide2.webp',
+      caption: '',
     },
     {
-      src: "/images/portfolio/sliders/wordpress/telecommunication-solutions/telecommunication-solutions_slide3.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/sliders/wordpress/telecommunication-solutions/telecommunication-solutions_slide3.webp',
+      caption: '',
     },
   ],
   technologies: [
-    "WP custom theme from scratch",
-    "Responsive design with CSS Grid",
-    "Bootstrap 5+",
-    "Custom CSS3",
-    "JavaScript ES6",
-    "PHP 8+",
-    "Technical optimization",
-    "SEO-optimization",
-    "Google Analytics",
-    "Schema.org markup implementation",
-    "Google Maps API",
-    "Marketing Tools",
+    'WP custom theme from scratch',
+    'Responsive design with CSS Grid',
+    'Bootstrap 5+',
+    'Custom CSS3',
+    'JavaScript ES6',
+    'PHP 8+',
+    'Technical optimization',
+    'SEO-optimization',
+    'Google Analytics',
+    'Schema.org markup implementation',
+    'Google Maps API',
+    'Marketing Tools',
   ],
   features: [
     <p>
@@ -69,9 +69,9 @@ const telecommunicationSolutions: Project = {
   challenges: [],
   solutions: [],
   liveUrl:
-    "https://frontdeskhelpers.com/remote-virtual-services/innovative-telecommunication-solutions-for-business/",
-  githubUrl: "#",
-  category: ["wordpress"],
-};
+    'https://frontdeskhelpers.com/remote-virtual-services/innovative-telecommunication-solutions-for-business/',
+  githubUrl: '#',
+  category: ['wordpress'],
+}
 
-export default telecommunicationSolutions;
+export default telecommunicationSolutions

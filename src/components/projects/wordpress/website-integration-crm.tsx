@@ -1,42 +1,42 @@
-import { Project } from "../project-types";
+import { Project } from '../project-types'
 
 const websiteIntegrationCrm: Project = {
   id: 122,
-  title: "Website integration with CRM",
-  description: "USA (+ localization Spain)",
+  title: 'Website integration with CRM',
+  description: 'USA (+ localization Spain)',
   fullDescription:
-    "This landing page was created using the CSS-framework Bootstrap in Wordpress theme from scratch.",
+    'This landing page was created using the CSS-framework Bootstrap in Wordpress theme from scratch.',
   image:
-    "/images/portfolio/thumbs/wordpress/website-integration-crm_thumb.webp",
+    '/Portfolio/images/portfolio/thumbs/wordpress/website-integration-crm_thumb.webp',
   fullScreenshot:
-    "/images/portfolio/thumbs/wordpress/website-integration-crm_thumb.webp",
+    '/Portfolio/images/portfolio/thumbs/wordpress/website-integration-crm_thumb.webp',
   images: [
     {
-      src: "/images/portfolio/thumbs/wordpress/website-integration-crm_thumb.webp",
-      caption: "Home page",
+      src: '/Portfolio/images/portfolio/thumbs/wordpress/website-integration-crm_thumb.webp',
+      caption: 'Home page',
     },
     {
-      src: "/images/portfolio/sliders/wordpress/website-integration-crm/website-integration-crm_slide2.webp",
-      caption: "Products",
+      src: '/Portfolio/images/portfolio/sliders/wordpress/website-integration-crm/website-integration-crm_slide2.webp',
+      caption: 'Products',
     },
     {
-      src: "/images/portfolio/sliders/wordpress/website-integration-crm/website-integration-crm_slide3.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/sliders/wordpress/website-integration-crm/website-integration-crm_slide3.webp',
+      caption: '',
     },
   ],
   technologies: [
-    "WP custom theme from scratch",
-    "Responsive design with CSS Grid",
-    "Bootstrap 5+",
-    "Custom CSS3",
-    "JavaScript ES6",
-    "PHP 8+",
-    "Technical optimization",
-    "SEO-optimization",
-    "Google Analytics",
-    "Schema.org markup implementation",
-    "Google Maps API",
-    "Marketing Tools",
+    'WP custom theme from scratch',
+    'Responsive design with CSS Grid',
+    'Bootstrap 5+',
+    'Custom CSS3',
+    'JavaScript ES6',
+    'PHP 8+',
+    'Technical optimization',
+    'SEO-optimization',
+    'Google Analytics',
+    'Schema.org markup implementation',
+    'Google Maps API',
+    'Marketing Tools',
   ],
   features: [
     <p>
@@ -69,9 +69,9 @@ const websiteIntegrationCrm: Project = {
   challenges: [],
   solutions: [],
   liveUrl:
-    "https://frontdeskhelpers.com/remote-virtual-services/website-integration-with-crm/",
-  githubUrl: "#",
-  category: ["wordpress"],
-};
+    'https://frontdeskhelpers.com/remote-virtual-services/website-integration-with-crm/',
+  githubUrl: '#',
+  category: ['wordpress'],
+}
 
-export default websiteIntegrationCrm;
+export default websiteIntegrationCrm

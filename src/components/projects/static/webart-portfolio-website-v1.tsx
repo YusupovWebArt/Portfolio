@@ -1,42 +1,43 @@
-import { Project } from "../project-types";
+import { Project } from '../project-types'
 
 const webartPortfolioWebsiteV1: Project = {
   id: 53,
-  title: "Webart Portfolio Website v1",
-  description: "Pure HTML/CSS/JS code.",
+  title: 'Webart Portfolio Website v1',
+  description: 'Pure HTML/CSS/JS code.',
   fullDescription:
-    "Portfolio website developed using HTML5, CSS3, and vanilla JavaScript.",
-  image: "/images/portfolio/thumbs/html-css-js/webart_old-version_thumb.webp",
+    'Portfolio website developed using HTML5, CSS3, and vanilla JavaScript.',
+  image:
+    '/Portfolio/images/portfolio/thumbs/html-css-js/webart_old-version_thumb.webp',
   fullScreenshot:
-    "/images/portfolio/projects/html-css-js/webart_old-version_thumb.webp",
+    '/Portfolio/images/portfolio/projects/html-css-js/webart_old-version_thumb.webp',
   images: [
     {
-      src: "/images/portfolio/thumbs/html-css-js/webart_old-version_thumb.webp",
-      caption: "General view of the application Unitrition",
+      src: '/Portfolio/images/portfolio/thumbs/html-css-js/webart_old-version_thumb.webp',
+      caption: 'General view of the application Unitrition',
     },
     {
-      src: "/images/portfolio/sliders/html-css-js/webart_old-version/webart_old-version_slide2.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/sliders/html-css-js/webart_old-version/webart_old-version_slide2.webp',
+      caption: '',
     },
     {
-      src: "/images/portfolio/sliders/html-css-js/webart_old-version/webart_old-version_slide3.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/sliders/html-css-js/webart_old-version/webart_old-version_slide3.webp',
+      caption: '',
     },
     {
-      src: "/images/portfolio/sliders/html-css-js/webart_old-version/webart_old-version_slide4.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/sliders/html-css-js/webart_old-version/webart_old-version_slide4.webp',
+      caption: '',
     },
     {
-      src: "/images/portfolio/sliders/html-css-js/webart_old-version/webart_old-version_slide5.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/sliders/html-css-js/webart_old-version/webart_old-version_slide5.webp',
+      caption: '',
     },
   ],
   technologies: [
-    "HTML5",
-    "CSS3",
-    "JavaScript (ES6+)",
-    "GitHub",
-    "GitHub Pages",
+    'HTML5',
+    'CSS3',
+    'JavaScript (ES6+)',
+    'GitHub',
+    'GitHub Pages',
   ],
   features: [
     <p>
@@ -62,9 +63,9 @@ const webartPortfolioWebsiteV1: Project = {
   ],
   challenges: [],
   solutions: [],
-  liveUrl: "#",
-  githubUrl: "#",
-  category: ["static"],
-};
+  liveUrl: '#',
+  githubUrl: '#',
+  category: ['static'],
+}
 
-export default webartPortfolioWebsiteV1;
+export default webartPortfolioWebsiteV1

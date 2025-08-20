@@ -1,40 +1,41 @@
-import { Project } from "../project-types";
+import { Project } from '../project-types'
 
 const LueirisLashes: Project = {
   id: 65,
-  title: "Lueiris lashes",
-  description: "US based lashes store.",
+  title: 'Lueiris lashes',
+  description: 'US based lashes store.',
   fullDescription:
-    "Created using Shopify, this online store offers a seamless shopping experience with customizable themes and secure payment options.",
-  image: "/images/portfolio/thumbs/shopify/lueirislashes_thumb.webp",
-  fullScreenshot: "/images/portfolio/projects/shopify/lueirislashes_thumb.webp",
+    'Created using Shopify, this online store offers a seamless shopping experience with customizable themes and secure payment options.',
+  image: '/Portfolio/images/portfolio/thumbs/shopify/lueirislashes_thumb.webp',
+  fullScreenshot:
+    '/Portfolio/images/portfolio/projects/shopify/lueirislashes_thumb.webp',
   images: [
     {
-      src: "/images/portfolio/thumbs/shopify/lueirislashes_thumb.webp",
-      caption: "General view of the application Unitrition",
+      src: '/Portfolio/images/portfolio/thumbs/shopify/lueirislashes_thumb.webp',
+      caption: 'General view of the application Unitrition',
     },
     {
-      src: "/images/portfolio/sliders/shopify/lueirislashes/lueirislashes_slide2.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/sliders/shopify/lueirislashes/lueirislashes_slide2.webp',
+      caption: '',
     },
     {
-      src: "/images/portfolio/sliders/shopify/lueirislashes/lueirislashes_slide3.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/sliders/shopify/lueirislashes/lueirislashes_slide3.webp',
+      caption: '',
     },
     {
-      src: "/images/portfolio/sliders/shopify/lueirislashes/lueirislashes_slide4.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/sliders/shopify/lueirislashes/lueirislashes_slide4.webp',
+      caption: '',
     },
   ],
   technologies: [
-    "Shopify",
-    "Theme Customization",
-    "CSS3",
-    "JavaScript (ES6+)",
-    "Admin Dashboard",
-    "App Integration",
-    "Product Management",
-    "Content Creation",
+    'Shopify',
+    'Theme Customization',
+    'CSS3',
+    'JavaScript (ES6+)',
+    'Admin Dashboard',
+    'App Integration',
+    'Product Management',
+    'Content Creation',
   ],
   features: [
     <p>
@@ -71,9 +72,9 @@ const LueirisLashes: Project = {
   ],
   challenges: [],
   solutions: [],
-  liveUrl: "https://lueirislashes.com/",
-  githubUrl: "#",
-  category: ["shopify"],
-};
+  liveUrl: 'https://lueirislashes.com/',
+  githubUrl: '#',
+  category: ['shopify'],
+}
 
-export default LueirisLashes;
+export default LueirisLashes

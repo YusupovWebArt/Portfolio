@@ -1,44 +1,44 @@
-import { Project } from "../project-types";
+import { Project } from '../project-types'
 
 const alldayMedicalcare: Project = {
   id: 143,
-  title: "All Day Medical Care Clinic",
+  title: 'All Day Medical Care Clinic',
   description:
-    "Healthcare provider focused on offering a wide range of medical services.",
+    'Healthcare provider focused on offering a wide range of medical services.',
   fullDescription:
-    "Using Elementor and custom HTML/CSS/JS/PHP code, I created a unique design based on an old client theme (the client asked to keep the old theme). Also used was a tool such as ACF (Advanced Custom Fields). For page https://alldaymedicalcare.com/doctors/, a unique template was created based on PHP with the functions of filtering doctors according to the established parameters.",
+    'Using Elementor and custom HTML/CSS/JS/PHP code, I created a unique design based on an old client theme (the client asked to keep the old theme). Also used was a tool such as ACF (Advanced Custom Fields). For page https://alldaymedicalcare.com/doctors/, a unique template was created based on PHP with the functions of filtering doctors according to the established parameters.',
   image:
-    "/images/portfolio/thumbs/wordpress/all-day-medical-care-clinic_thumb.webp",
+    '/Portfolio/images/portfolio/thumbs/wordpress/all-day-medical-care-clinic_thumb.webp',
   fullScreenshot:
-    "/images/portfolio/thumbs/wordpress/all-day-medical-care-clinic_thumb.webp",
+    '/Portfolio/images/portfolio/thumbs/wordpress/all-day-medical-care-clinic_thumb.webp',
   images: [
     {
-      src: "/images/portfolio/thumbs/wordpress/all-day-medical-care-clinic_thumb.webp",
-      caption: "Home page",
+      src: '/Portfolio/images/portfolio/thumbs/wordpress/all-day-medical-care-clinic_thumb.webp',
+      caption: 'Home page',
     },
     {
-      src: "/images/portfolio/sliders/wordpress/all-day-medical/all-day-medical-care-clinic_slide2.webp",
-      caption: "Custom filter for Providers (custom post types)",
+      src: '/Portfolio/images/portfolio/sliders/wordpress/all-day-medical/all-day-medical-care-clinic_slide2.webp',
+      caption: 'Custom filter for Providers (custom post types)',
     },
     {
-      src: "/images/portfolio/sliders/wordpress/all-day-medical/all-day-medical-care-clinic_slide3.webp",
-      caption: "Providers Custom templates",
+      src: '/Portfolio/images/portfolio/sliders/wordpress/all-day-medical/all-day-medical-care-clinic_slide3.webp',
+      caption: 'Providers Custom templates',
     },
   ],
   technologies: [
-    "WP custom theme from scratch",
-    "Responsive design with CSS Grid",
-    "Elementor",
-    "Advanced Custom Fields",
-    "JavaScript ES6",
-    "Custom CSS3",
-    "PHP 8+",
-    "Technical optimization",
-    "SEO-optimization",
-    "Google Analytics",
-    "Schema.org markup implementation",
-    "Marketing Tools",
-    "Google Maps API",
+    'WP custom theme from scratch',
+    'Responsive design with CSS Grid',
+    'Elementor',
+    'Advanced Custom Fields',
+    'JavaScript ES6',
+    'Custom CSS3',
+    'PHP 8+',
+    'Technical optimization',
+    'SEO-optimization',
+    'Google Analytics',
+    'Schema.org markup implementation',
+    'Marketing Tools',
+    'Google Maps API',
   ],
   features: [
     <p>
@@ -84,9 +84,9 @@ const alldayMedicalcare: Project = {
   ],
   challenges: [],
   solutions: [],
-  liveUrl: "https://alldaymedicalcare.com/",
-  githubUrl: "#",
-  category: ["wordpress"],
-};
+  liveUrl: 'https://alldaymedicalcare.com/',
+  githubUrl: '#',
+  category: ['wordpress'],
+}
 
-export default alldayMedicalcare;
+export default alldayMedicalcare

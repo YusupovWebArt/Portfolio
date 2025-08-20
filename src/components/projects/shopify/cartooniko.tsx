@@ -1,32 +1,33 @@
-import { Project } from "../project-types";
+import { Project } from '../project-types'
 
 const cartooniko: Project = {
   id: 64,
-  title: "Cartooniko",
-  description: "Custom portraites in cartoon style.",
+  title: 'Cartooniko',
+  description: 'Custom portraites in cartoon style.',
   fullDescription:
-    "Created using Shopify, this online store offers a seamless shopping experience with customizable themes and secure payment options. Shopify store + products and content.",
-  image: "/images/portfolio/thumbs/shopify/cartooniko_thumb.webp",
-  fullScreenshot: "/images/portfolio/projects/shopify/cartooniko_thumb.webp",
+    'Created using Shopify, this online store offers a seamless shopping experience with customizable themes and secure payment options. Shopify store + products and content.',
+  image: '/Portfolio/images/portfolio/thumbs/shopify/cartooniko_thumb.webp',
+  fullScreenshot:
+    '/Portfolio/images/portfolio/projects/shopify/cartooniko_thumb.webp',
   images: [
     {
-      src: "/images/portfolio/thumbs/shopify/cartooniko_thumb.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/thumbs/shopify/cartooniko_thumb.webp',
+      caption: '',
     },
     {
-      src: "/images/portfolio/sliders/shopify/cartooniko/cartooniko_slide2.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/sliders/shopify/cartooniko/cartooniko_slide2.webp',
+      caption: '',
     },
   ],
   technologies: [
-    "Shopify",
-    "Theme Customization",
-    "CSS3",
-    "JavaScript (ES6+)",
-    "Admin Dashboard",
-    "App Integration",
-    "Product Management",
-    "Content Creation",
+    'Shopify',
+    'Theme Customization',
+    'CSS3',
+    'JavaScript (ES6+)',
+    'Admin Dashboard',
+    'App Integration',
+    'Product Management',
+    'Content Creation',
   ],
   features: [
     <p>
@@ -63,9 +64,9 @@ const cartooniko: Project = {
   ],
   challenges: [],
   solutions: [],
-  liveUrl: "https://cartooniko.myshopify.com/",
-  githubUrl: "#",
-  category: ["shopify"],
-};
+  liveUrl: 'https://cartooniko.myshopify.com/',
+  githubUrl: '#',
+  category: ['shopify'],
+}
 
-export default cartooniko;
+export default cartooniko

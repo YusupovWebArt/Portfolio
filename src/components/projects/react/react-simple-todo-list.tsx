@@ -1,29 +1,30 @@
-import { Project } from "../project-types";
+import { Project } from '../project-types'
 
 const reactSimpleTodoList: Project = {
   id: 33,
-  title: "Simple To-Do App",
-  description: "In the process of learning React.js technology.",
+  title: 'Simple To-Do App',
+  description: 'In the process of learning React.js technology.',
   fullDescription:
-    "This Simple To-Do App is a beginner-friendly project built with React.js, designed to help users manage their daily tasks efficiently.",
-  image: "/images/portfolio/thumbs/react/react-js-basic-todo-list_thumb.webp",
+    'This Simple To-Do App is a beginner-friendly project built with React.js, designed to help users manage their daily tasks efficiently.',
+  image:
+    '/Portfolio/images/portfolio/thumbs/react/react-js-basic-todo-list_thumb.webp',
   fullScreenshot:
-    "/images/portfolio/thumbs/react/react-js-basic-todo-list_thumb.webp",
+    '/Portfolio/images/portfolio/thumbs/react/react-js-basic-todo-list_thumb.webp',
   images: [
     {
-      src: "/images/portfolio/thumbs/react/react-js-basic-todo-list_thumb.webp",
-      caption: "General view of the To-Do App",
+      src: '/Portfolio/images/portfolio/thumbs/react/react-js-basic-todo-list_thumb.webp',
+      caption: 'General view of the To-Do App',
     },
   ],
   technologies: [
-    "React.js",
-    "Bootstrap 5",
-    "React-Bootstrap",
-    "React Icons",
-    "JavaScript (ES6+)",
-    "Vite",
-    "GitHub",
-    "GitHub Pages",
+    'React.js',
+    'Bootstrap 5',
+    'React-Bootstrap',
+    'React Icons',
+    'JavaScript (ES6+)',
+    'Vite',
+    'GitHub',
+    'GitHub Pages',
   ],
   features: [
     <p>
@@ -65,9 +66,9 @@ const reactSimpleTodoList: Project = {
   ],
   challenges: [],
   solutions: [],
-  liveUrl: "https://yusupovwebart.github.io/react-js-basic-todo-list/",
-  githubUrl: "https://github.com/YusupovWebArt/react-js-basic-todo-list",
-  category: ["react"],
-};
+  liveUrl: 'https://yusupovwebart.github.io/react-js-basic-todo-list/',
+  githubUrl: 'https://github.com/YusupovWebArt/react-js-basic-todo-list',
+  category: ['react'],
+}
 
-export default reactSimpleTodoList;
+export default reactSimpleTodoList

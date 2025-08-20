@@ -1,37 +1,38 @@
-import { Project } from "../project-types";
+import { Project } from '../project-types'
 
 const tuBebeYTu: Project = {
   id: 118,
-  title: "Tu bebe y tu",
+  title: 'Tu bebe y tu',
   description:
-    "Spanish online store specializing in products for babies and mothers.",
-  fullDescription: "WooCommerce. Wordpress theme. add products and content.",
-  image: "/images/portfolio/thumbs/wordpress/tubebeytu_thumb.webp",
-  fullScreenshot: "/images/portfolio/thumbs/wordpress/tubebeytu_thumb.webp",
+    'Spanish online store specializing in products for babies and mothers.',
+  fullDescription: 'WooCommerce. Wordpress theme. add products and content.',
+  image: '/Portfolio/images/portfolio/thumbs/wordpress/tubebeytu_thumb.webp',
+  fullScreenshot:
+    '/Portfolio/images/portfolio/thumbs/wordpress/tubebeytu_thumb.webp',
   images: [
     {
-      src: "/images/portfolio/thumbs/wordpress/tubebeytu_thumb.webp",
-      caption: "Home page",
+      src: '/Portfolio/images/portfolio/thumbs/wordpress/tubebeytu_thumb.webp',
+      caption: 'Home page',
     },
     {
-      src: "/images/portfolio/sliders/wordpress/tubebeytu/tubebeytu_slide2.webp",
-      caption: "Products",
+      src: '/Portfolio/images/portfolio/sliders/wordpress/tubebeytu/tubebeytu_slide2.webp',
+      caption: 'Products',
     },
   ],
   technologies: [
-    "WP custom theme from scratch",
-    "Responsive design with CSS Grid",
-    "Custom CSS3",
-    "JavaScript ES6",
-    "WooCommerce",
-    "Add products and content",
-    "PHP 8+",
-    "Technical optimization",
-    "SEO-optimization",
-    "Google Analytics",
-    "Schema.org markup implementation",
-    "Google Maps API",
-    "Marketing Tools",
+    'WP custom theme from scratch',
+    'Responsive design with CSS Grid',
+    'Custom CSS3',
+    'JavaScript ES6',
+    'WooCommerce',
+    'Add products and content',
+    'PHP 8+',
+    'Technical optimization',
+    'SEO-optimization',
+    'Google Analytics',
+    'Schema.org markup implementation',
+    'Google Maps API',
+    'Marketing Tools',
   ],
   features: [
     <p>
@@ -62,9 +63,9 @@ const tuBebeYTu: Project = {
   ],
   challenges: [],
   solutions: [],
-  liveUrl: "https://www.tubebeytu.es/",
-  githubUrl: "#",
-  category: ["wordpress"],
-};
+  liveUrl: 'https://www.tubebeytu.es/',
+  githubUrl: '#',
+  category: ['wordpress'],
+}
 
-export default tuBebeYTu;
+export default tuBebeYTu

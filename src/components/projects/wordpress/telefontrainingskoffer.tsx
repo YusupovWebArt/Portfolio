@@ -1,40 +1,41 @@
-import { Project } from "../project-types";
+import { Project } from '../project-types'
 
 const telefonTrainingskoffer: Project = {
   id: 147,
-  title: "Telefontrainingskoffer",
-  description: "Callcenter Akademie",
+  title: 'Telefontrainingskoffer',
+  description: 'Callcenter Akademie',
   fullDescription:
-    "Wordpress theme from scratch using ACF (Advanced Custom Fields). Custom CSS3/PHP. Inner Services landing pages at the request of the customer were made with Elementor page builder.",
-  image: "/images/portfolio/thumbs/wordpress/telefontrainingskoffer_thumb.webp",
+    'Wordpress theme from scratch using ACF (Advanced Custom Fields). Custom CSS3/PHP. Inner Services landing pages at the request of the customer were made with Elementor page builder.',
+  image:
+    '/Portfolio/images/portfolio/thumbs/wordpress/telefontrainingskoffer_thumb.webp',
   fullScreenshot:
-    "/images/portfolio/thumbs/wordpress/telefontrainingskoffer_thumb.webp",
+    '/Portfolio/images/portfolio/thumbs/wordpress/telefontrainingskoffer_thumb.webp',
   images: [
     {
-      src: "/images/portfolio/thumbs/wordpress/telefontrainingskoffer_thumb.webp",
-      caption: "Home page",
+      src: '/Portfolio/images/portfolio/thumbs/wordpress/telefontrainingskoffer_thumb.webp',
+      caption: 'Home page',
     },
     {
-      src: "/images/portfolio/sliders/wordpress/telefontrainingskoffer/telefontrainingskoffer_slide2.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/sliders/wordpress/telefontrainingskoffer/telefontrainingskoffer_slide2.webp',
+      caption: '',
     },
     {
-      src: "/images/portfolio/sliders/wordpress/telefontrainingskoffer/telefontrainingskoffer_slide3.webp",
-      caption: "Custom Contact Form",
+      src: '/Portfolio/images/portfolio/sliders/wordpress/telefontrainingskoffer/telefontrainingskoffer_slide3.webp',
+      caption: 'Custom Contact Form',
     },
   ],
   technologies: [
-    "WP-theme from scratch",
-    "Responsive design",
-    "WPBakery Page Builder",
-    "Custom CSS3",
-    "JavaScript ES6",
-    "PHP 8+",
-    "Technical optimization",
-    "SEO-optimization",
-    "Google Analytics",
-    "Schema.org markup implementation",
-    "Marketing Tools",
+    'WP-theme from scratch',
+    'Responsive design',
+    'WPBakery Page Builder',
+    'Custom CSS3',
+    'JavaScript ES6',
+    'PHP 8+',
+    'Technical optimization',
+    'SEO-optimization',
+    'Google Analytics',
+    'Schema.org markup implementation',
+    'Marketing Tools',
   ],
   features: [
     <p>
@@ -56,9 +57,9 @@ const telefonTrainingskoffer: Project = {
   ],
   challenges: [],
   solutions: [],
-  liveUrl: "https://callcenter-akademie.de/telefontrainingskoffer/",
-  githubUrl: "#",
-  category: ["wordpress"],
-};
+  liveUrl: 'https://callcenter-akademie.de/telefontrainingskoffer/',
+  githubUrl: '#',
+  category: ['wordpress'],
+}
 
-export default telefonTrainingskoffer;
+export default telefonTrainingskoffer

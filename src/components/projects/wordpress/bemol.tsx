@@ -1,40 +1,41 @@
-import { Project } from "../project-types";
+import { Project } from '../project-types'
 
 const bemol: Project = {
   id: 127,
-  title: "Bemol",
-  description: "Czech plumbing and heating services provider:",
+  title: 'Bemol',
+  description: 'Czech plumbing and heating services provider:',
   fullDescription:
-    "Wordpress theme from scratch. Elementor. Custom CSS3/JS/PHP.",
-  image: "/images/portfolio/thumbs/wordpress/bemol_thumb.webp",
-  fullScreenshot: "/images/portfolio/thumbs/wordpress/bemol_thumb.webp",
+    'Wordpress theme from scratch. Elementor. Custom CSS3/JS/PHP.',
+  image: '/Portfolio/images/portfolio/thumbs/wordpress/bemol_thumb.webp',
+  fullScreenshot:
+    '/Portfolio/images/portfolio/thumbs/wordpress/bemol_thumb.webp',
   images: [
     {
-      src: "/images/portfolio/thumbs/wordpress/bemol_thumb.webp",
-      caption: "Home page",
+      src: '/Portfolio/images/portfolio/thumbs/wordpress/bemol_thumb.webp',
+      caption: 'Home page',
     },
     {
-      src: "/images/portfolio/sliders/wordpress/bemol/bemol_slide2.webp",
-      caption: "Products",
+      src: '/Portfolio/images/portfolio/sliders/wordpress/bemol/bemol_slide2.webp',
+      caption: 'Products',
     },
     {
-      src: "/images/portfolio/sliders/wordpress/bemol/bemol_slide3.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/sliders/wordpress/bemol/bemol_slide3.webp',
+      caption: '',
     },
   ],
   technologies: [
-    "WP custom theme from scratch",
-    "Responsive design with CSS Grid",
-    "Elementor",
-    "Custom CSS3",
-    "JavaScript ES6",
-    "PHP 8+",
-    "Technical optimization",
-    "SEO-optimization",
-    "Google Analytics",
-    "Schema.org markup implementation",
-    "Marketing Tools",
-    "Google Maps API",
+    'WP custom theme from scratch',
+    'Responsive design with CSS Grid',
+    'Elementor',
+    'Custom CSS3',
+    'JavaScript ES6',
+    'PHP 8+',
+    'Technical optimization',
+    'SEO-optimization',
+    'Google Analytics',
+    'Schema.org markup implementation',
+    'Marketing Tools',
+    'Google Maps API',
   ],
   features: [
     <p>
@@ -71,9 +72,9 @@ const bemol: Project = {
   ],
   challenges: [],
   solutions: [],
-  liveUrl: "https://bemol.cz/",
-  githubUrl: "#",
-  category: ["wordpress"],
-};
+  liveUrl: 'https://bemol.cz/',
+  githubUrl: '#',
+  category: ['wordpress'],
+}
 
-export default bemol;
+export default bemol

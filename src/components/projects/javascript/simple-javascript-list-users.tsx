@@ -1,26 +1,27 @@
-import { Project } from "../project-types";
+import { Project } from '../project-types'
 
 const simpleJavascriptListUsers: Project = {
   id: 41,
-  title: "Javascript Simple List of Users",
-  description: "Pet project for learning and practicing JavaScript.",
+  title: 'Javascript Simple List of Users',
+  description: 'Pet project for learning and practicing JavaScript.',
   fullDescription:
-    "A lightweight Simple List of Users application developed using HTML5, CSS3, and vanilla JavaScript.",
-  image: "/images/portfolio/thumbs/javascript/list-of-users_thumb.webp",
+    'A lightweight Simple List of Users application developed using HTML5, CSS3, and vanilla JavaScript.',
+  image:
+    '/Portfolio/images/portfolio/thumbs/javascript/list-of-users_thumb.webp',
   fullScreenshot:
-    "/images/portfolio/thumbs/javascript/list-of-users_thumb.webp",
+    '/Portfolio/images/portfolio/thumbs/javascript/list-of-users_thumb.webp',
   images: [
     {
-      src: "/images/portfolio/thumbs/javascript/list-of-users_thumb.webp",
-      caption: "General view of Simple List of Users",
+      src: '/Portfolio/images/portfolio/thumbs/javascript/list-of-users_thumb.webp',
+      caption: 'General view of Simple List of Users',
     },
   ],
   technologies: [
-    "JavaScript (ES6+)",
-    "HTML5",
-    "CSS3",
-    "GitHub",
-    "GitHub Pages",
+    'JavaScript (ES6+)',
+    'HTML5',
+    'CSS3',
+    'GitHub',
+    'GitHub Pages',
   ],
   features: [
     <p>
@@ -46,9 +47,9 @@ const simpleJavascriptListUsers: Project = {
   ],
   challenges: [],
   solutions: [],
-  liveUrl: "https://yusupovwebart.github.io/list-of-users-javascript/",
-  githubUrl: "https://github.com/YusupovWebArt/list-of-users-javascript",
-  category: ["javascript"],
-};
+  liveUrl: 'https://yusupovwebart.github.io/list-of-users-javascript/',
+  githubUrl: 'https://github.com/YusupovWebArt/list-of-users-javascript',
+  category: ['javascript'],
+}
 
-export default simpleJavascriptListUsers;
+export default simpleJavascriptListUsers

@@ -1,41 +1,42 @@
-import { Project } from "../project-types";
+import { Project } from '../project-types'
 
 const lunaMebel: Project = {
   id: 117,
-  title: "Lunamebel",
-  description: "Ukrainian online furniture store.",
+  title: 'Lunamebel',
+  description: 'Ukrainian online furniture store.',
   fullDescription:
-    "WooCommerce. Premium Wordpress theme. Add products and content.",
-  image: "/images/portfolio/thumbs/wordpress/lunamebel_thumb.webp",
-  fullScreenshot: "/images/portfolio/thumbs/wordpress/lunamebel_thumb.webp",
+    'WooCommerce. Premium Wordpress theme. Add products and content.',
+  image: '/Portfolio/images/portfolio/thumbs/wordpress/lunamebel_thumb.webp',
+  fullScreenshot:
+    '/Portfolio/images/portfolio/thumbs/wordpress/lunamebel_thumb.webp',
   images: [
     {
-      src: "/images/portfolio/thumbs/wordpress/lunamebel_thumb.webp",
-      caption: "Home page",
+      src: '/Portfolio/images/portfolio/thumbs/wordpress/lunamebel_thumb.webp',
+      caption: 'Home page',
     },
     {
-      src: "/images/portfolio/sliders/wordpress/lunamebel/lunamebel_slide2.webp",
-      caption: "Products",
+      src: '/Portfolio/images/portfolio/sliders/wordpress/lunamebel/lunamebel_slide2.webp',
+      caption: 'Products',
     },
     {
-      src: "/images/portfolio/sliders/wordpress/lunamebel/lunamebel_slide3.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/sliders/wordpress/lunamebel/lunamebel_slide3.webp',
+      caption: '',
     },
   ],
   technologies: [
-    "Premium Wordpress theme",
-    "Responsive design with CSS Grid",
-    "Custom CSS3",
-    "JavaScript ES6",
-    "WooCommerce",
-    "Add products and content",
-    "PHP 8+",
-    "Technical optimization",
-    "SEO-optimization",
-    "Google Analytics",
-    "Schema.org markup implementation",
-    "Google Maps API",
-    "Marketing Tools",
+    'Premium Wordpress theme',
+    'Responsive design with CSS Grid',
+    'Custom CSS3',
+    'JavaScript ES6',
+    'WooCommerce',
+    'Add products and content',
+    'PHP 8+',
+    'Technical optimization',
+    'SEO-optimization',
+    'Google Analytics',
+    'Schema.org markup implementation',
+    'Google Maps API',
+    'Marketing Tools',
   ],
   features: [
     <p>
@@ -66,9 +67,9 @@ const lunaMebel: Project = {
   ],
   challenges: [],
   solutions: [],
-  liveUrl: "https://lunamebel.com.ua/",
-  githubUrl: "#",
-  category: ["wordpress"],
-};
+  liveUrl: 'https://lunamebel.com.ua/',
+  githubUrl: '#',
+  category: ['wordpress'],
+}
 
-export default lunaMebel;
+export default lunaMebel

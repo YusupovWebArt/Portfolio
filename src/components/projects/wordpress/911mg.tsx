@@ -1,56 +1,57 @@
-import { Project } from "../project-types";
+import { Project } from '../project-types'
 
 const mg911: Project = {
   id: 119,
-  title: "911mg",
+  title: '911mg',
   description:
-    "US online health resource offering an extensive database of medications.",
+    'US online health resource offering an extensive database of medications.',
   fullDescription:
-    "Wordpress theme from scratch based pure code and Custom CSS3/JS/PHP + content.",
-  image: "/images/portfolio/thumbs/wordpress/911mg_thumb.webp",
-  fullScreenshot: "/images/portfolio/thumbs/wordpress/911mg_thumb.webp",
+    'Wordpress theme from scratch based pure code and Custom CSS3/JS/PHP + content.',
+  image: '/Portfolio/images/portfolio/thumbs/wordpress/911mg_thumb.webp',
+  fullScreenshot:
+    '/Portfolio/images/portfolio/thumbs/wordpress/911mg_thumb.webp',
   images: [
     {
-      src: "/images/portfolio/thumbs/wordpress/911mg_thumb.webp",
-      caption: "Home page",
+      src: '/Portfolio/images/portfolio/thumbs/wordpress/911mg_thumb.webp',
+      caption: 'Home page',
     },
     {
-      src: "/images/portfolio/sliders/wordpress/911mg/911mg_slide2.webp",
-      caption: "Product page",
+      src: '/Portfolio/images/portfolio/sliders/wordpress/911mg/911mg_slide2.webp',
+      caption: 'Product page',
     },
     {
-      src: "/images/portfolio/sliders/wordpress/911mg/911mg_slide3.webp",
-      caption: "Categories",
+      src: '/Portfolio/images/portfolio/sliders/wordpress/911mg/911mg_slide3.webp',
+      caption: 'Categories',
     },
     {
-      src: "/images/portfolio/sliders/wordpress/911mg/911mg_slide4.webp",
-      caption: "Product Categories",
+      src: '/Portfolio/images/portfolio/sliders/wordpress/911mg/911mg_slide4.webp',
+      caption: 'Product Categories',
     },
     {
-      src: "/images/portfolio/sliders/wordpress/911mg/911mg_slide5.webp",
-      caption: "Coupons",
+      src: '/Portfolio/images/portfolio/sliders/wordpress/911mg/911mg_slide5.webp',
+      caption: 'Coupons',
     },
     {
-      src: "/images/portfolio/sliders/wordpress/911mg/911mg_slide6.webp",
-      caption: "Category page",
+      src: '/Portfolio/images/portfolio/sliders/wordpress/911mg/911mg_slide6.webp',
+      caption: 'Category page',
     },
     {
-      src: "/images/portfolio/sliders/wordpress/911mg/911mg_slide7.webp",
-      caption: "Reviews",
+      src: '/Portfolio/images/portfolio/sliders/wordpress/911mg/911mg_slide7.webp',
+      caption: 'Reviews',
     },
   ],
   technologies: [
-    "WP custom theme from scratch",
-    "Custom CSS3",
-    "JavaScript ES6",
-    "PHP 8+",
-    "Responsive design with CSS Grid",
-    "Technical optimization",
-    "SEO-optimization",
-    "Google Analytics",
-    "Google Maps API",
-    "Schema.org markup implementation",
-    "Marketing Tools",
+    'WP custom theme from scratch',
+    'Custom CSS3',
+    'JavaScript ES6',
+    'PHP 8+',
+    'Responsive design with CSS Grid',
+    'Technical optimization',
+    'SEO-optimization',
+    'Google Analytics',
+    'Google Maps API',
+    'Schema.org markup implementation',
+    'Marketing Tools',
   ],
   features: [
     <p>
@@ -76,9 +77,9 @@ const mg911: Project = {
   ],
   challenges: [],
   solutions: [],
-  liveUrl: "https://www.911mg.org/",
-  githubUrl: "#",
-  category: ["wordpress"],
-};
+  liveUrl: 'https://www.911mg.org/',
+  githubUrl: '#',
+  category: ['wordpress'],
+}
 
-export default mg911;
+export default mg911

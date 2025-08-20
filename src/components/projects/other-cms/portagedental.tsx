@@ -1,34 +1,35 @@
-import { Project } from "../project-types";
+import { Project } from '../project-types'
 
 const portageDental: Project = {
   id: 82,
-  title: "Portage",
-  description: "US-based Dental Clinic",
-  fullDescription: "Custom Joomla theme. Custom CSS/JS.",
-  image: "/images/portfolio/thumbs/other-cms/portagedental_thumb.webp",
+  title: 'Portage',
+  description: 'US-based Dental Clinic',
+  fullDescription: 'Custom Joomla theme. Custom CSS/JS.',
+  image:
+    '/Portfolio/images/portfolio/thumbs/other-cms/portagedental_thumb.webp',
   fullScreenshot:
-    "/images/portfolio/projects/other-cms/portagedental_thumb.webp",
+    '/Portfolio/images/portfolio/projects/other-cms/portagedental_thumb.webp',
   images: [
     {
-      src: "/images/portfolio/thumbs/other-cms/portagedental_thumb.webp",
-      caption: "Home page",
+      src: '/Portfolio/images/portfolio/thumbs/other-cms/portagedental_thumb.webp',
+      caption: 'Home page',
     },
     {
-      src: "/images/portfolio/sliders/other-cms/portagedental/portagedental_slide2.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/sliders/other-cms/portagedental/portagedental_slide2.webp',
+      caption: '',
     },
   ],
   technologies: [
-    "Joomla",
-    "Custom Template Development",
-    "Responsive design",
-    "Custom CSS3",
-    "JavaScript ES6",
-    "Technical optimization",
-    "SEO-optimization",
-    "Google Analytics",
-    "Marketing Tools",
-    "Google Maps API",
+    'Joomla',
+    'Custom Template Development',
+    'Responsive design',
+    'Custom CSS3',
+    'JavaScript ES6',
+    'Technical optimization',
+    'SEO-optimization',
+    'Google Analytics',
+    'Marketing Tools',
+    'Google Maps API',
   ],
   features: [
     <p>
@@ -62,9 +63,9 @@ const portageDental: Project = {
   ],
   challenges: [],
   solutions: [],
-  liveUrl: "#",
-  githubUrl: "#",
-  category: ["other-cms"],
-};
+  liveUrl: '#',
+  githubUrl: '#',
+  category: ['other-cms'],
+}
 
-export default portageDental;
+export default portageDental

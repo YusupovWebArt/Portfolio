@@ -1,41 +1,42 @@
-import { Project } from "../project-types";
+import { Project } from '../project-types'
 
 const sportpit24: Project = {
   id: 86,
-  title: "Sportpit24",
+  title: 'Sportpit24',
   description:
-    "Ukrainian online store specializing in high-quality sports nutrition and fitness supplements.",
+    'Ukrainian online store specializing in high-quality sports nutrition and fitness supplements.',
   fullDescription:
-    "Custom OpenCart theme. Custom CSS/JS + add products and content.",
-  image: "/images/portfolio/thumbs/other-cms/sportpit24_thumb.webp",
-  fullScreenshot: "/images/portfolio/projects/other-cms/sportpit24_thumb.webp",
+    'Custom OpenCart theme. Custom CSS/JS + add products and content.',
+  image: '/Portfolio/images/portfolio/thumbs/other-cms/sportpit24_thumb.webp',
+  fullScreenshot:
+    '/Portfolio/images/portfolio/projects/other-cms/sportpit24_thumb.webp',
   images: [
     {
-      src: "/images/portfolio/thumbs/other-cms/sportpit24_thumb.webp",
-      caption: "Home page",
+      src: '/Portfolio/images/portfolio/thumbs/other-cms/sportpit24_thumb.webp',
+      caption: 'Home page',
     },
     {
-      src: "/images/portfolio/sliders/other-cms/sportpit24/sportpit24_slide2.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/sliders/other-cms/sportpit24/sportpit24_slide2.webp',
+      caption: '',
     },
     {
-      src: "/images/portfolio/sliders/other-cms/sportpit24/sportpit24_slide3.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/sliders/other-cms/sportpit24/sportpit24_slide3.webp',
+      caption: '',
     },
   ],
   technologies: [
-    "OpenCart",
-    "Custom Template Development",
-    "Responsive design",
-    "eCommerce integration",
-    "add Products and Content",
-    "Custom CSS3",
-    "JavaScript ES6",
-    "Technical optimization",
-    "SEO-optimization",
-    "Google Analytics",
-    "Marketing Tools",
-    "Google Maps API",
+    'OpenCart',
+    'Custom Template Development',
+    'Responsive design',
+    'eCommerce integration',
+    'add Products and Content',
+    'Custom CSS3',
+    'JavaScript ES6',
+    'Technical optimization',
+    'SEO-optimization',
+    'Google Analytics',
+    'Marketing Tools',
+    'Google Maps API',
   ],
   features: [
     <p>
@@ -75,9 +76,9 @@ const sportpit24: Project = {
   ],
   challenges: [],
   solutions: [],
-  liveUrl: "https://sportpit24.com.ua/",
-  githubUrl: "#",
-  category: ["other-cms"],
-};
+  liveUrl: 'https://sportpit24.com.ua/',
+  githubUrl: '#',
+  category: ['other-cms'],
+}
 
-export default sportpit24;
+export default sportpit24

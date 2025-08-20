@@ -1,41 +1,42 @@
-import { Project } from "../project-types";
+import { Project } from '../project-types'
 
 const healthLinesPro: Project = {
   id: 85,
-  title: "Health Linespro",
-  description: "US-based Wellness Hub",
+  title: 'Health Linespro',
+  description: 'US-based Wellness Hub',
   fullDescription:
-    "Custom Joomla theme. Custom CSS/JS + add products and content.",
-  image: "/images/portfolio/thumbs/other-cms/healthlinespro_thumb.webp",
+    'Custom Joomla theme. Custom CSS/JS + add products and content.',
+  image:
+    '/Portfolio/images/portfolio/thumbs/other-cms/healthlinespro_thumb.webp',
   fullScreenshot:
-    "/images/portfolio/projects/other-cms/healthlinespro_thumb.webp",
+    '/Portfolio/images/portfolio/projects/other-cms/healthlinespro_thumb.webp',
   images: [
     {
-      src: "/images/portfolio/thumbs/other-cms/healthlinespro_thumb.webp",
-      caption: "Home page",
+      src: '/Portfolio/images/portfolio/thumbs/other-cms/healthlinespro_thumb.webp',
+      caption: 'Home page',
     },
     {
-      src: "/images/portfolio/sliders/other-cms/healthlinespro/healthlinespro_slide2.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/sliders/other-cms/healthlinespro/healthlinespro_slide2.webp',
+      caption: '',
     },
     {
-      src: "/images/portfolio/sliders/other-cms/healthlinespro/healthlinespro_slide3.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/sliders/other-cms/healthlinespro/healthlinespro_slide3.webp',
+      caption: '',
     },
   ],
   technologies: [
-    "Joomla",
-    "Custom Template Development",
-    "Responsive design",
-    "eCommerce integration",
-    "add Products and Content",
-    "Custom CSS3",
-    "JavaScript ES6",
-    "Technical optimization",
-    "SEO-optimization",
-    "Google Analytics",
-    "Marketing Tools",
-    "Google Maps API",
+    'Joomla',
+    'Custom Template Development',
+    'Responsive design',
+    'eCommerce integration',
+    'add Products and Content',
+    'Custom CSS3',
+    'JavaScript ES6',
+    'Technical optimization',
+    'SEO-optimization',
+    'Google Analytics',
+    'Marketing Tools',
+    'Google Maps API',
   ],
   features: [
     <p>
@@ -75,9 +76,9 @@ const healthLinesPro: Project = {
   ],
   challenges: [],
   solutions: [],
-  liveUrl: "#",
-  githubUrl: "#",
-  category: ["other-cms"],
-};
+  liveUrl: '#',
+  githubUrl: '#',
+  category: ['other-cms'],
+}
 
-export default healthLinesPro;
+export default healthLinesPro

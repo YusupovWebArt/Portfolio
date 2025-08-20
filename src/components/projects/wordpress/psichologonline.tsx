@@ -1,44 +1,45 @@
-import { Project } from "../project-types";
+import { Project } from '../project-types'
 
 const psichologonline: Project = {
   id: 110,
-  title: "Psichologonline",
-  description: "Elena Grechka is a qualified Ukrainian psychologist.",
-  fullDescription: "Wordpress theme from scratch. Elementor. Custom CSS3/JS.",
-  image: "/images/portfolio/thumbs/wordpress/psichologonline_thumb.webp",
+  title: 'Psichologonline',
+  description: 'Elena Grechka is a qualified Ukrainian psychologist.',
+  fullDescription: 'Wordpress theme from scratch. Elementor. Custom CSS3/JS.',
+  image:
+    '/Portfolio/images/portfolio/thumbs/wordpress/psichologonline_thumb.webp',
   fullScreenshot:
-    "/images/portfolio/thumbs/wordpress/psichologonline_thumb.webp",
+    '/Portfolio/images/portfolio/thumbs/wordpress/psichologonline_thumb.webp',
   images: [
     {
-      src: "/images/portfolio/thumbs/wordpress/psichologonline_thumb.webp",
-      caption: "Home page",
+      src: '/Portfolio/images/portfolio/thumbs/wordpress/psichologonline_thumb.webp',
+      caption: 'Home page',
     },
     {
-      src: "/images/portfolio/sliders/wordpress/psichologonline/psichologonline_slide2.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/sliders/wordpress/psichologonline/psichologonline_slide2.webp',
+      caption: '',
     },
     {
-      src: "/images/portfolio/sliders/wordpress/psichologonline/psichologonline_slide3.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/sliders/wordpress/psichologonline/psichologonline_slide3.webp',
+      caption: '',
     },
     {
-      src: "/images/portfolio/sliders/wordpress/psichologonline/psichologonline_slide4.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/sliders/wordpress/psichologonline/psichologonline_slide4.webp',
+      caption: '',
     },
   ],
   technologies: [
-    "WP custom theme from scratch",
-    "Responsive design with CSS Grid",
-    "Elementor",
-    "Custom CSS3",
-    "JavaScript ES6",
-    "PHP 8+",
-    "Technical optimization",
-    "SEO-optimization",
-    "Google Analytics",
-    "Schema.org markup implementation",
-    "Google Maps API",
-    "Marketing Tools",
+    'WP custom theme from scratch',
+    'Responsive design with CSS Grid',
+    'Elementor',
+    'Custom CSS3',
+    'JavaScript ES6',
+    'PHP 8+',
+    'Technical optimization',
+    'SEO-optimization',
+    'Google Analytics',
+    'Schema.org markup implementation',
+    'Google Maps API',
+    'Marketing Tools',
   ],
   features: [
     <p>
@@ -74,9 +75,9 @@ const psichologonline: Project = {
   ],
   challenges: [],
   solutions: [],
-  liveUrl: "https://psichologonline.com/",
-  githubUrl: "#",
-  category: ["wordpress"],
-};
+  liveUrl: 'https://psichologonline.com/',
+  githubUrl: '#',
+  category: ['wordpress'],
+}
 
-export default psichologonline;
+export default psichologonline

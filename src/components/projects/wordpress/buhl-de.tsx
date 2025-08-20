@@ -1,38 +1,39 @@
-import { Project } from "../project-types";
+import { Project } from '../project-types'
 
 const buhlDe: Project = {
   id: 136,
-  title: "Buhl WISO",
-  description: "Steuer Jetzt Geld zurückholen. Germany",
+  title: 'Buhl WISO',
+  description: 'Steuer Jetzt Geld zurückholen. Germany',
   fullDescription:
-    "Wordpress theme from scratch. Based pure code. Custom CSS3/JS.",
-  image: "/images/portfolio/thumbs/wordpress/buhl-de_thumb.webp",
-  fullScreenshot: "/images/portfolio/thumbs/wordpress/buhl-de_thumb.webp",
+    'Wordpress theme from scratch. Based pure code. Custom CSS3/JS.',
+  image: '/Portfolio/images/portfolio/thumbs/wordpress/buhl-de_thumb.webp',
+  fullScreenshot:
+    '/Portfolio/images/portfolio/thumbs/wordpress/buhl-de_thumb.webp',
   images: [
     {
-      src: "/images/portfolio/thumbs/wordpress/buhl-de_thumb.webp",
-      caption: "Home page",
+      src: '/Portfolio/images/portfolio/thumbs/wordpress/buhl-de_thumb.webp',
+      caption: 'Home page',
     },
     {
-      src: "/images/portfolio/sliders/wordpress/buhl-de/buhl-de_slide2.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/sliders/wordpress/buhl-de/buhl-de_slide2.webp',
+      caption: '',
     },
     {
-      src: "/images/portfolio/sliders/wordpress/buhl-de/buhl-de_slide3.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/sliders/wordpress/buhl-de/buhl-de_slide3.webp',
+      caption: '',
     },
   ],
   technologies: [
-    "WP custom theme from scratch",
-    "Responsive design with CSS Grid",
-    "Custom CSS3",
-    "JavaScript ES6",
-    "PHP 8+",
-    "Technical optimization",
-    "SEO-optimization",
-    "Google Analytics",
-    "Schema.org markup implementation",
-    "Marketing Tools",
+    'WP custom theme from scratch',
+    'Responsive design with CSS Grid',
+    'Custom CSS3',
+    'JavaScript ES6',
+    'PHP 8+',
+    'Technical optimization',
+    'SEO-optimization',
+    'Google Analytics',
+    'Schema.org markup implementation',
+    'Marketing Tools',
   ],
   features: [
     <p>
@@ -60,9 +61,9 @@ const buhlDe: Project = {
   ],
   challenges: [],
   solutions: [],
-  liveUrl: "https://www.buhl.de/",
-  githubUrl: "#",
-  category: ["wordpress"],
-};
+  liveUrl: 'https://www.buhl.de/',
+  githubUrl: '#',
+  category: ['wordpress'],
+}
 
-export default buhlDe;
+export default buhlDe

@@ -1,38 +1,39 @@
-import { Project } from "../project-types";
+import { Project } from '../project-types'
 
 const technicalsupport: Project = {
   id: 77,
-  title: "TST - Technical Support Team",
+  title: 'TST - Technical Support Team',
   description:
-    "U.S.-based web development and digital marketing agency founded in 2015.",
+    'U.S.-based web development and digital marketing agency founded in 2015.',
   fullDescription:
-    "Built on a Velo editor with pixel-perfect control, with seamless integration of apps and design elements, mobile‑friendly optimization, and built‑in tools like contact forms, SEO settings, and site analytics.",
-  image: "/images/portfolio/thumbs/wix/technicalsupport_thumb.webp",
-  fullScreenshot: "/images/portfolio/projects/wix/technicalsupport_thumb.webp",
+    'Built on a Velo editor with pixel-perfect control, with seamless integration of apps and design elements, mobile‑friendly optimization, and built‑in tools like contact forms, SEO settings, and site analytics.',
+  image: '/Portfolio/images/portfolio/thumbs/wix/technicalsupport_thumb.webp',
+  fullScreenshot:
+    '/Portfolio/images/portfolio/projects/wix/technicalsupport_thumb.webp',
   images: [
     {
-      src: "/images/portfolio/thumbs/wix/technicalsupport_thumb.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/thumbs/wix/technicalsupport_thumb.webp',
+      caption: '',
     },
     {
-      src: "/images/portfolio/sliders/wix/technicalsupport/technicalsupport_slide2.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/sliders/wix/technicalsupport/technicalsupport_slide2.webp',
+      caption: '',
     },
     {
-      src: "/images/portfolio/sliders/wix/technicalsupport/technicalsupport_slide3.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/sliders/wix/technicalsupport/technicalsupport_slide3.webp',
+      caption: '',
     },
   ],
   technologies: [
-    "WIX",
-    "Theme Customization",
-    "CSS3",
-    "JavaScript (ES6+)",
-    "Admin Dashboard",
-    "App Integration",
-    "Content Creation",
-    "SEO-optimization",
-    "Marketing Tools",
+    'WIX',
+    'Theme Customization',
+    'CSS3',
+    'JavaScript (ES6+)',
+    'Admin Dashboard',
+    'App Integration',
+    'Content Creation',
+    'SEO-optimization',
+    'Marketing Tools',
   ],
   features: [
     <p>
@@ -69,9 +70,9 @@ const technicalsupport: Project = {
   ],
   challenges: [],
   solutions: [],
-  liveUrl: "https://www.technicalsupport.team/",
-  githubUrl: "#",
-  category: ["wix"],
-};
+  liveUrl: 'https://www.technicalsupport.team/',
+  githubUrl: '#',
+  category: ['wix'],
+}
 
-export default technicalsupport;
+export default technicalsupport

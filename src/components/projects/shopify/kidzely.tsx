@@ -1,40 +1,41 @@
-import { Project } from "../project-types";
+import { Project } from '../project-types'
 
 const kidzely: Project = {
   id: 63,
-  title: "Kidzely",
-  description: "USA-based online-store for baby.",
+  title: 'Kidzely',
+  description: 'USA-based online-store for baby.',
   fullDescription:
-    "Created using Shopify, this online store offers a seamless shopping experience with customizable themes and secure payment options. Shopify store + products and content.",
-  image: "/images/portfolio/thumbs/shopify/kidzely_thumb.webp",
-  fullScreenshot: "/images/portfolio/projects/shopify/kidzely_thumb.webp",
+    'Created using Shopify, this online store offers a seamless shopping experience with customizable themes and secure payment options. Shopify store + products and content.',
+  image: '/Portfolio/images/portfolio/thumbs/shopify/kidzely_thumb.webp',
+  fullScreenshot:
+    '/Portfolio/images/portfolio/projects/shopify/kidzely_thumb.webp',
   images: [
     {
-      src: "/images/portfolio/thumbs/shopify/kidzely_thumb.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/thumbs/shopify/kidzely_thumb.webp',
+      caption: '',
     },
     {
-      src: "/images/portfolio/sliders/shopify/kidzely/kidzely_slide2.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/sliders/shopify/kidzely/kidzely_slide2.webp',
+      caption: '',
     },
     {
-      src: "/images/portfolio/sliders/shopify/kidzely/kidzely_slide3.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/sliders/shopify/kidzely/kidzely_slide3.webp',
+      caption: '',
     },
     {
-      src: "/images/portfolio/sliders/shopify/kidzely/kidzely_slide4.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/sliders/shopify/kidzely/kidzely_slide4.webp',
+      caption: '',
     },
   ],
   technologies: [
-    "Shopify",
-    "Theme Customization",
-    "CSS3",
-    "JavaScript (ES6+)",
-    "Admin Dashboard",
-    "App Integration",
-    "Product Management",
-    "Content Creation",
+    'Shopify',
+    'Theme Customization',
+    'CSS3',
+    'JavaScript (ES6+)',
+    'Admin Dashboard',
+    'App Integration',
+    'Product Management',
+    'Content Creation',
   ],
   features: [
     <p>
@@ -71,9 +72,9 @@ const kidzely: Project = {
   ],
   challenges: [],
   solutions: [],
-  liveUrl: "https://www.kidzely.com/",
-  githubUrl: "#",
-  category: ["shopify"],
-};
+  liveUrl: 'https://www.kidzely.com/',
+  githubUrl: '#',
+  category: ['shopify'],
+}
 
-export default kidzely;
+export default kidzely

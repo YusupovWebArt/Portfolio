@@ -1,34 +1,35 @@
-import { Project } from "../project-types";
+import { Project } from '../project-types'
 
 const simpleJavascriptQuiz: Project = {
   id: 46,
-  title: "Simple Javascript Quiz App",
-  description: "Pet project for learning and practicing JavaScript.",
+  title: 'Simple Javascript Quiz App',
+  description: 'Pet project for learning and practicing JavaScript.',
   fullDescription:
-    "A lightweight quiz app built with vanilla JavaScript, HTML, and CSS. It features multiple-choice questions, interactive feedback, and a clean, responsive design—perfect for testing your knowledge in a fun way.",
-  image: "/images/portfolio/thumbs/javascript/js-simple-quiz-app_thumb.webp",
+    'A lightweight quiz app built with vanilla JavaScript, HTML, and CSS. It features multiple-choice questions, interactive feedback, and a clean, responsive design—perfect for testing your knowledge in a fun way.',
+  image:
+    '/Portfolio/images/portfolio/thumbs/javascript/js-simple-quiz-app_thumb.webp',
   fullScreenshot:
-    "/images/portfolio/thumbs/javascript/js-simple-quiz-app_thumb.webp",
+    '/Portfolio/images/portfolio/thumbs/javascript/js-simple-quiz-app_thumb.webp',
   images: [
     {
-      src: "/images/portfolio/thumbs/javascript/js-simple-quiz-app_thumb.webp",
-      caption: "General view of Quiz App",
+      src: '/Portfolio/images/portfolio/thumbs/javascript/js-simple-quiz-app_thumb.webp',
+      caption: 'General view of Quiz App',
     },
     {
-      src: "/images/portfolio/sliders/javascript/js-simple-quiz-app/js-simple-quiz-app_slide2.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/sliders/javascript/js-simple-quiz-app/js-simple-quiz-app_slide2.webp',
+      caption: '',
     },
     {
-      src: "/images/portfolio/sliders/javascript/js-simple-quiz-app/js-simple-quiz-app_slide3.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/sliders/javascript/js-simple-quiz-app/js-simple-quiz-app_slide3.webp',
+      caption: '',
     },
   ],
   technologies: [
-    "JavaScript (ES6+)",
-    "HTML5",
-    "CSS3",
-    "GitHub",
-    "GitHub Pages",
+    'JavaScript (ES6+)',
+    'HTML5',
+    'CSS3',
+    'GitHub',
+    'GitHub Pages',
   ],
   features: [
     <p>
@@ -54,9 +55,9 @@ const simpleJavascriptQuiz: Project = {
   ],
   challenges: [],
   solutions: [],
-  liveUrl: "https://yusupovwebart.github.io/js-simple-quiz-app/",
-  githubUrl: "https://github.com/YusupovWebArt/js-simple-quiz-app",
-  category: ["javascript"],
-};
+  liveUrl: 'https://yusupovwebart.github.io/js-simple-quiz-app/',
+  githubUrl: 'https://github.com/YusupovWebArt/js-simple-quiz-app',
+  category: ['javascript'],
+}
 
-export default simpleJavascriptQuiz;
+export default simpleJavascriptQuiz

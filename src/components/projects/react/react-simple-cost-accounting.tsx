@@ -1,27 +1,27 @@
-import { Project } from "../project-types";
+import { Project } from '../project-types'
 
 const reactSimpleCostAccounting: Project = {
   id: 31,
-  title: "Simple React Cost Accounting App",
-  description: "Pet project for learning and practicing React.js.",
+  title: 'Simple React Cost Accounting App',
+  description: 'Pet project for learning and practicing React.js.',
   fullDescription:
-    "This Simple To-Do App is a beginner-friendly project built with React.js, designed to help users manage their daily tasks efficiently.",
+    'This Simple To-Do App is a beginner-friendly project built with React.js, designed to help users manage their daily tasks efficiently.',
   image:
-    "/images/portfolio/thumbs/react/react-js-basic-cost-accounting_thumb.webp",
+    '/Portfolio/images/portfolio/thumbs/react/react-js-basic-cost-accounting_thumb.webp',
   fullScreenshot:
-    "/images/portfolio/thumbs/react/react-js-basic-cost-accounting_thumb.webp",
+    '/Portfolio/images/portfolio/thumbs/react/react-js-basic-cost-accounting_thumb.webp',
   images: [
     {
-      src: "/images/portfolio/thumbs/react/react-js-basic-cost-accounting_thumb.webp",
-      caption: "General view of the Simple React Cost Accounting App",
+      src: '/Portfolio/images/portfolio/thumbs/react/react-js-basic-cost-accounting_thumb.webp',
+      caption: 'General view of the Simple React Cost Accounting App',
     },
   ],
   technologies: [
-    "React.js",
-    "JavaScript (ES6+)",
-    "Vite",
-    "GitHub",
-    "GitHub Pages",
+    'React.js',
+    'JavaScript (ES6+)',
+    'Vite',
+    'GitHub',
+    'GitHub Pages',
   ],
   features: [
     <p>
@@ -48,9 +48,9 @@ const reactSimpleCostAccounting: Project = {
   ],
   challenges: [],
   solutions: [],
-  liveUrl: "https://yusupovwebart.github.io/react-js-basic-cost-accounting/",
-  githubUrl: "https://github.com/YusupovWebArt/react-js-basic-cost-accounting",
-  category: ["react"],
-};
+  liveUrl: 'https://yusupovwebart.github.io/react-js-basic-cost-accounting/',
+  githubUrl: 'https://github.com/YusupovWebArt/react-js-basic-cost-accounting',
+  category: ['react'],
+}
 
-export default reactSimpleCostAccounting;
+export default reactSimpleCostAccounting

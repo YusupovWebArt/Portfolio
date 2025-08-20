@@ -1,28 +1,29 @@
-import { Project } from "../project-types";
+import { Project } from '../project-types'
 
 const reactSimpleCalculator: Project = {
   id: 32,
-  title: "Simple React calculator App",
+  title: 'Simple React calculator App',
   description:
-    "Simple pet-project demonstrates fundamental React concepts such as component structure.",
+    'Simple pet-project demonstrates fundamental React concepts such as component structure.',
   fullDescription:
-    "A simple and intuitive calculator app built with React.js. It allows users to perform basic arithmetic operations like addition, subtraction, multiplication, and division with a clean and responsive interface.",
-  image: "/images/portfolio/thumbs/react/react-js-simple-calculator_thumb.webp",
+    'A simple and intuitive calculator app built with React.js. It allows users to perform basic arithmetic operations like addition, subtraction, multiplication, and division with a clean and responsive interface.',
+  image:
+    '/Portfolio/images/portfolio/thumbs/react/react-js-simple-calculator_thumb.webp',
   fullScreenshot:
-    "/images/portfolio/thumbs/react/react-js-simple-calculator_thumb.webp",
+    '/Portfolio/images/portfolio/thumbs/react/react-js-simple-calculator_thumb.webp',
   images: [
     {
-      src: "/images/portfolio/thumbs/react/react-js-simple-calculator_thumb.webp",
-      caption: "General view of the Simple React calculator App",
+      src: '/Portfolio/images/portfolio/thumbs/react/react-js-simple-calculator_thumb.webp',
+      caption: 'General view of the Simple React calculator App',
     },
   ],
   technologies: [
-    "React.js",
-    "JavaScript (ES6+)",
-    "Vite",
-    "CSS3",
-    "GitHub",
-    "GitHub Pages",
+    'React.js',
+    'JavaScript (ES6+)',
+    'Vite',
+    'CSS3',
+    'GitHub',
+    'GitHub Pages',
   ],
   features: [
     <p>
@@ -49,9 +50,9 @@ const reactSimpleCalculator: Project = {
   ],
   challenges: [],
   solutions: [],
-  liveUrl: "https://yusupovwebart.github.io/react-js-simple-calculator/",
-  githubUrl: "https://github.com/YusupovWebArt/react-js-simple-calculator",
-  category: ["react"],
-};
+  liveUrl: 'https://yusupovwebart.github.io/react-js-simple-calculator/',
+  githubUrl: 'https://github.com/YusupovWebArt/react-js-simple-calculator',
+  category: ['react'],
+}
 
-export default reactSimpleCalculator;
+export default reactSimpleCalculator

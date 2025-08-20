@@ -1,40 +1,41 @@
-import { Project } from "../project-types";
+import { Project } from '../project-types'
 
 const causetume: Project = {
   id: 134,
-  title: "Causetume",
-  description: "Knitwear Brand. Cloth store",
+  title: 'Causetume',
+  description: 'Knitwear Brand. Cloth store',
   fullDescription:
-    "WooCommerce. Premium Wordpress theme. Custom CSS3/JS + add products and content.",
-  image: "/images/portfolio/thumbs/wordpress/causetume_thumb.webp",
-  fullScreenshot: "/images/portfolio/thumbs/wordpress/causetume_thumb.webp",
+    'WooCommerce. Premium Wordpress theme. Custom CSS3/JS + add products and content.',
+  image: '/Portfolio/images/portfolio/thumbs/wordpress/causetume_thumb.webp',
+  fullScreenshot:
+    '/Portfolio/images/portfolio/thumbs/wordpress/causetume_thumb.webp',
   images: [
     {
-      src: "/images/portfolio/thumbs/wordpress/causetume_thumb.webp",
-      caption: "Home page",
+      src: '/Portfolio/images/portfolio/thumbs/wordpress/causetume_thumb.webp',
+      caption: 'Home page',
     },
     {
-      src: "/images/portfolio/sliders/wordpress/causetume/causetume_slide2.webp",
-      caption: "Products",
+      src: '/Portfolio/images/portfolio/sliders/wordpress/causetume/causetume_slide2.webp',
+      caption: 'Products',
     },
     {
-      src: "/images/portfolio/sliders/wordpress/causetume/causetume_slide3.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/sliders/wordpress/causetume/causetume_slide3.webp',
+      caption: '',
     },
   ],
   technologies: [
-    "Premium Wordpress theme",
-    "Responsive design with CSS Grid",
-    "WooCommerce",
-    "Custom CSS3",
-    "JavaScript ES6",
-    "PHP 8+",
-    "Technical optimization",
-    "SEO-optimization",
-    "Google Analytics",
-    "Schema.org markup implementation",
-    "Marketing Tools",
-    "Google Maps API",
+    'Premium Wordpress theme',
+    'Responsive design with CSS Grid',
+    'WooCommerce',
+    'Custom CSS3',
+    'JavaScript ES6',
+    'PHP 8+',
+    'Technical optimization',
+    'SEO-optimization',
+    'Google Analytics',
+    'Schema.org markup implementation',
+    'Marketing Tools',
+    'Google Maps API',
   ],
   features: [
     <p>
@@ -66,9 +67,9 @@ const causetume: Project = {
   ],
   challenges: [],
   solutions: [],
-  liveUrl: "https://causetume.com/en/",
-  githubUrl: "#",
-  category: ["wordpress"],
-};
+  liveUrl: 'https://causetume.com/en/',
+  githubUrl: '#',
+  category: ['wordpress'],
+}
 
-export default causetume;
+export default causetume

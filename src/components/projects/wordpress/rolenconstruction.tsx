@@ -1,47 +1,48 @@
-import { Project } from "../project-types";
+import { Project } from '../project-types'
 
 const rolenConstruction: Project = {
   id: 148,
-  title: "Rolen Construction",
+  title: 'Rolen Construction',
   description:
-    "Partner in ADUs, New Construction, and transformative Remodeling.",
+    'Partner in ADUs, New Construction, and transformative Remodeling.',
   fullDescription:
-    "Wordpress theme from scratch using ACF (Advanced Custom Fields). Custom CSS3/PHP. Inner Services landing pages at the request of the customer were made with Elementor page builder.",
-  image: "/images/portfolio/thumbs/wordpress/rolen-construction_thumb.webp",
+    'Wordpress theme from scratch using ACF (Advanced Custom Fields). Custom CSS3/PHP. Inner Services landing pages at the request of the customer were made with Elementor page builder.',
+  image:
+    '/Portfolio/images/portfolio/thumbs/wordpress/rolen-construction_thumb.webp',
   fullScreenshot:
-    "/images/portfolio/thumbs/wordpress/rolen-construction_thumb.webp",
+    '/Portfolio/images/portfolio/thumbs/wordpress/rolen-construction_thumb.webp',
   images: [
     {
-      src: "/images/portfolio/thumbs/wordpress/rolen-construction_thumb.webp",
-      caption: "Home page",
+      src: '/Portfolio/images/portfolio/thumbs/wordpress/rolen-construction_thumb.webp',
+      caption: 'Home page',
     },
     {
-      src: "/images/portfolio/sliders/wordpress/rolen-construction/rolen-construction_slide2.webp",
-      caption: "Custom Contact Form",
+      src: '/Portfolio/images/portfolio/sliders/wordpress/rolen-construction/rolen-construction_slide2.webp',
+      caption: 'Custom Contact Form',
     },
     {
-      src: "/images/portfolio/sliders/wordpress/rolen-construction/rolen-construction_slide3.webp",
-      caption: "Services custom post types",
+      src: '/Portfolio/images/portfolio/sliders/wordpress/rolen-construction/rolen-construction_slide3.webp',
+      caption: 'Services custom post types',
     },
     {
-      src: "/images/portfolio/sliders/wordpress/rolen-construction/rolen-construction_slide4.webp",
-      caption: "Custom CSS3/JS and PHP code",
+      src: '/Portfolio/images/portfolio/sliders/wordpress/rolen-construction/rolen-construction_slide4.webp',
+      caption: 'Custom CSS3/JS and PHP code',
     },
   ],
   technologies: [
-    "WP custom theme from scratch",
-    "Responsive design with CSS Grid",
-    "Advanced Custom Fields",
-    "Elementor",
-    "Custom CSS3",
-    "JavaScript ES6",
-    "PHP 8+",
-    "Technical optimization",
-    "SEO-optimization",
-    "Google Analytics",
-    "Schema.org markup implementation",
-    "Google Maps API",
-    "Marketing Tools",
+    'WP custom theme from scratch',
+    'Responsive design with CSS Grid',
+    'Advanced Custom Fields',
+    'Elementor',
+    'Custom CSS3',
+    'JavaScript ES6',
+    'PHP 8+',
+    'Technical optimization',
+    'SEO-optimization',
+    'Google Analytics',
+    'Schema.org markup implementation',
+    'Google Maps API',
+    'Marketing Tools',
   ],
   features: [
     <p>
@@ -83,9 +84,9 @@ const rolenConstruction: Project = {
   ],
   challenges: [],
   solutions: [],
-  liveUrl: "https://rolenconstruction.com/",
-  githubUrl: "#",
-  category: ["wordpress"],
-};
+  liveUrl: 'https://rolenconstruction.com/',
+  githubUrl: '#',
+  category: ['wordpress'],
+}
 
-export default rolenConstruction;
+export default rolenConstruction

@@ -1,38 +1,39 @@
-import { Project } from "../project-types";
+import { Project } from '../project-types'
 
 const cloudDeliverySolution: Project = {
   id: 139,
-  title: "Cloud Delivery solution",
+  title: 'Cloud Delivery solution',
   description:
-    "System for dispatching, planning, and tracking your deliveries and courier.",
+    'System for dispatching, planning, and tracking your deliveries and courier.',
   fullDescription:
-    "Wordpress landing page was created using the CSS-framework Bootstrap.",
-  image: "/images/portfolio/thumbs/wordpress/delivery-fdh_thumb.webp",
-  fullScreenshot: "/images/portfolio/thumbs/wordpress/delivery-fdh_thumb.webp",
+    'Wordpress landing page was created using the CSS-framework Bootstrap.',
+  image: '/Portfolio/images/portfolio/thumbs/wordpress/delivery-fdh_thumb.webp',
+  fullScreenshot:
+    '/Portfolio/images/portfolio/thumbs/wordpress/delivery-fdh_thumb.webp',
   images: [
     {
-      src: "/images/portfolio/thumbs/wordpress/delivery-fdh_thumb.webp",
-      caption: "Home page",
+      src: '/Portfolio/images/portfolio/thumbs/wordpress/delivery-fdh_thumb.webp',
+      caption: 'Home page',
     },
     {
-      src: "/images/portfolio/sliders/wordpress/delivery-fdh/delivery-fdh_slide2.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/sliders/wordpress/delivery-fdh/delivery-fdh_slide2.webp',
+      caption: '',
     },
     {
-      src: "/images/portfolio/sliders/wordpress/delivery-fdh/delivery-fdh_slide3.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/sliders/wordpress/delivery-fdh/delivery-fdh_slide3.webp',
+      caption: '',
     },
   ],
   technologies: [
-    "WP custom theme from scratch",
-    "Responsive design",
-    "Bootstrap 5+",
-    "Custom CSS3",
-    "JavaScript ES6",
-    "Technical optimization",
-    "SEO-optimization",
-    "Google Analytics",
-    "Marketing Tools",
+    'WP custom theme from scratch',
+    'Responsive design',
+    'Bootstrap 5+',
+    'Custom CSS3',
+    'JavaScript ES6',
+    'Technical optimization',
+    'SEO-optimization',
+    'Google Analytics',
+    'Marketing Tools',
   ],
   features: [
     <p>
@@ -65,9 +66,9 @@ const cloudDeliverySolution: Project = {
   challenges: [],
   solutions: [],
   liveUrl:
-    "https://frontdeskhelpers.com/remote-virtual-services/delivery-solution-fdh-cloud/",
-  githubUrl: "#",
-  category: ["wordpress"],
-};
+    'https://frontdeskhelpers.com/remote-virtual-services/delivery-solution-fdh-cloud/',
+  githubUrl: '#',
+  category: ['wordpress'],
+}
 
-export default cloudDeliverySolution;
+export default cloudDeliverySolution

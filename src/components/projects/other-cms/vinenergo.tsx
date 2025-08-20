@@ -1,37 +1,38 @@
-import { Project } from "../project-types";
+import { Project } from '../project-types'
 
 const vinEnergo: Project = {
   id: 81,
-  title: "VIN Energo",
+  title: 'VIN Energo',
   description:
-    "Ukrainian company specializing in the production and sale of Pini Kay wood and charcoal briquettes, as well as the manufacture of equipment for briquette production.",
+    'Ukrainian company specializing in the production and sale of Pini Kay wood and charcoal briquettes, as well as the manufacture of equipment for briquette production.',
   fullDescription:
-    "Custom Joomla theme. Custom CSS/JS + add products and content.",
-  image: "/images/portfolio/thumbs/other-cms/vinenergo_thumb.webp",
-  fullScreenshot: "/images/portfolio/projects/other-cms/vinenergo_thumb.webp",
+    'Custom Joomla theme. Custom CSS/JS + add products and content.',
+  image: '/Portfolio/images/portfolio/thumbs/other-cms/vinenergo_thumb.webp',
+  fullScreenshot:
+    '/Portfolio/images/portfolio/projects/other-cms/vinenergo_thumb.webp',
   images: [
     {
-      src: "/images/portfolio/thumbs/other-cms/vinenergo_thumb.webp",
-      caption: "Home page",
+      src: '/Portfolio/images/portfolio/thumbs/other-cms/vinenergo_thumb.webp',
+      caption: 'Home page',
     },
     {
-      src: "/images/portfolio/sliders/other-cms/vinenergo/vinenergo_slide2.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/sliders/other-cms/vinenergo/vinenergo_slide2.webp',
+      caption: '',
     },
   ],
   technologies: [
-    "Joomla",
-    "Custom Template Development",
-    "Responsive design",
-    "eCommerce integration",
-    "add Products and Content",
-    "Custom CSS3",
-    "JavaScript ES6",
-    "Technical optimization",
-    "SEO-optimization",
-    "Google Analytics",
-    "Marketing Tools",
-    "Google Maps API",
+    'Joomla',
+    'Custom Template Development',
+    'Responsive design',
+    'eCommerce integration',
+    'add Products and Content',
+    'Custom CSS3',
+    'JavaScript ES6',
+    'Technical optimization',
+    'SEO-optimization',
+    'Google Analytics',
+    'Marketing Tools',
+    'Google Maps API',
   ],
   features: [
     <p>
@@ -71,9 +72,9 @@ const vinEnergo: Project = {
   ],
   challenges: [],
   solutions: [],
-  liveUrl: "http://vinenergo.com.ua/",
-  githubUrl: "#",
-  category: ["other-cms"],
-};
+  liveUrl: 'http://vinenergo.com.ua/',
+  githubUrl: '#',
+  category: ['other-cms'],
+}
 
-export default vinEnergo;
+export default vinEnergo

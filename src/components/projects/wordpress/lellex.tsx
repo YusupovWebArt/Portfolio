@@ -1,32 +1,33 @@
-import { Project } from "../project-types";
+import { Project } from '../project-types'
 
 const lellex: Project = {
   id: 140,
-  title: "Lellex",
-  description: "Video Production.",
+  title: 'Lellex',
+  description: 'Video Production.',
   fullDescription:
-    "Unique Custom HTML/CSS/JS Wordpress theme based on Figma layout.",
-  image: "/images/portfolio/thumbs/wordpress/lellexvideoproduction_thumb.webp",
+    'Unique Custom HTML/CSS/JS Wordpress theme based on Figma layout.',
+  image:
+    '/Portfolio/images/portfolio/thumbs/wordpress/lellexvideoproduction_thumb.webp',
   fullScreenshot:
-    "/images/portfolio/thumbs/wordpress/lellexvideoproduction_thumb.webp",
+    '/Portfolio/images/portfolio/thumbs/wordpress/lellexvideoproduction_thumb.webp',
   images: [
     {
-      src: "/images/portfolio/thumbs/wordpress/lellexvideoproduction_thumb.webp",
-      caption: "Home page",
+      src: '/Portfolio/images/portfolio/thumbs/wordpress/lellexvideoproduction_thumb.webp',
+      caption: 'Home page',
     },
     {
-      src: "/images/portfolio/sliders/wordpress/lellexvideoproduction/lellexvideoproduction_slide2.webp",
-      caption: "",
+      src: '/Portfolio/images/portfolio/sliders/wordpress/lellexvideoproduction/lellexvideoproduction_slide2.webp',
+      caption: '',
     },
   ],
   technologies: [
-    "WP custom theme from scratch",
-    "Responsive design",
-    "Custom CSS3",
-    "JavaScript ES6",
-    "PHP 8+",
-    "SEO optimization",
-    "Google Analytics",
+    'WP custom theme from scratch',
+    'Responsive design',
+    'Custom CSS3',
+    'JavaScript ES6',
+    'PHP 8+',
+    'SEO optimization',
+    'Google Analytics',
   ],
   features: [
     <p>
@@ -54,9 +55,9 @@ const lellex: Project = {
   ],
   challenges: [],
   solutions: [],
-  liveUrl: "https://lellexvideoproduction.com/",
-  githubUrl: "#",
-  category: ["wordpress"],
-};
+  liveUrl: 'https://lellexvideoproduction.com/',
+  githubUrl: '#',
+  category: ['wordpress'],
+}
 
-export default lellex;
+export default lellex
