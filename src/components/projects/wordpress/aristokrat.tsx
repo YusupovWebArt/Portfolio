@@ -1,0 +1,78 @@
+import { Project } from "../project-types";
+
+const aristokrat: Project = {
+  id: 19,
+  title: "Aristocrat Hotel & Restaurant",
+  description:
+    "Ukrainian hotel-restaurant complex offers guests elegant accommodation in a beautifully restored historic building.",
+  fullDescription:
+    "Wordpress theme from scratch. 3D Panorama. Booking system. Custom CSS3/JS.",
+  image: "/images/portfolio/thumbs/wordpress/aristokrat_thumb.webp",
+  fullScreenshot: "/images/portfolio/thumbs/wordpress/aristokrat_thumb.webp",
+  images: [
+    {
+      src: "/images/portfolio/thumbs/wordpress/aristokrat_thumb.webp",
+      caption: "Home page",
+    },
+    {
+      src: "/images/portfolio/sliders/wordpress/aristokrat/aristokrat_slide2.webp",
+      caption: "",
+    },
+    {
+      src: "/images/portfolio/sliders/wordpress/aristokrat/aristokrat_slide3.webp",
+      caption: "",
+    },
+    {
+      src: "/images/portfolio/sliders/wordpress/aristokrat/aristokrat_slide4.webp",
+      caption: "",
+    },
+    {
+      src: "/images/portfolio/sliders/wordpress/aristokrat/aristokrat_slide5.webp",
+      caption: "",
+    },
+  ],
+  technologies: [
+    "WP custom theme from scratch",
+    "Booking system",
+    "3D Panorama",
+    "Responsive design with CSS Grid",
+    "Custom CSS3",
+    "JavaScript ES6",
+    "PHP 8+",
+    "Technical optimization",
+    "SEO-optimization",
+    "Google Analytics",
+    "Schema.org markup implementation",
+    "Google Maps API",
+    "Marketing Tools",
+  ],
+  features: [
+    <p>
+      <strong>Custom WordPress Theme Development:</strong> Built from scratch to
+      meet specific business needs, ensuring complete control over design and
+      functionality. Add booking system and 3D Panorama.
+    </p>,
+    <p>
+      <strong>Custom CSS3/JS & PHP: </strong> Designed for unique styling and
+      dynamic functionality, ensuring a highly personalized user experience and
+      smooth performance.
+    </p>,
+    <p>
+      <strong>Responsive Design: </strong> Optimized for all devices, ensuring
+      seamless navigation and user experience across desktops, tablets, and
+      smartphones.
+    </p>,
+    <p>
+      <strong>SEO Optimization: </strong> Built with best SEO practices in mind,
+      including fast load times, clean code, and structure that boosts search
+      engine visibility.
+    </p>,
+  ],
+  challenges: [],
+  solutions: [],
+  liveUrl: "https://aristokrat-hotel24.com/",
+  githubUrl: "#",
+  category: ["wordpress"],
+};
+
+export default aristokrat;
