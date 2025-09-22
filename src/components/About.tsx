@@ -95,15 +95,12 @@ const About = () => {
               </h2>
               <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
                 I&#39;m a Fullstack WordPress Developer and React/Next.js
-                Engineer with a strong focus on building scalable,
-                high-performance websites that align with modern business
-                objectives. My work combines clean, efficient code with a deep
-                understanding of SEO, ensuring that the solutions I create are
-                not only functional but also discoverable and results-driven.
-                With years of hands-on experience across both frontend and
-                backend development, I bring a comprehensive approach to web
-                projects — from custom WordPress themes and plugins to dynamic
-                React-based applications.
+                Engineer focused on building scalable, high-performance websites
+                that align with business goals. I combine clean code with SEO
+                expertise to deliver functional, results-driven solutions. As a
+                T-shaped specialist, I bring deep knowledge of web development
+                along with broad skills in UI/UX, SEO, and digital marketing
+                strategy.
               </p>
               <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
                 I also leverage modern AI-powered tools to streamline
