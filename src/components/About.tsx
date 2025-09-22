@@ -99,8 +99,8 @@ const About = () => {
                 that align with business goals. I combine clean code with SEO
                 expertise to deliver functional, results-driven solutions. As a
                 T-shaped specialist, I bring deep knowledge of web development
-                along with broad skills in UI/UX, SEO, and digital marketing
-                strategy.
+                along with broad skills in UI/UX, DevOps, SEO, and digital
+                marketing strategy.
               </p>
               <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
                 I also leverage modern AI-powered tools to streamline
