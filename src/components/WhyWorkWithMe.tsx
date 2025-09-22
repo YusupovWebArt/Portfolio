@@ -1,5 +1,3 @@
-import { DollarSign, Users, Zap } from 'lucide-react'
-
 const WhyWorkWithMe = () => {
   return (
     <section className="py-20 bg-gradient-to-br from-slate-50 via-white to-slate-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 transition-colors duration-300 relative overflow-hidden">
