@@ -23,7 +23,7 @@ const About = () => {
       icon: <LuBrainCircuit className="w-6 h-6" />,
       title: 'AI Tools',
       description:
-        'Explore and integrate AI tools into my WordPress and React projects development workflows.',
+        'Explore and integrate AI tools into WordPress and React projects development workflows.',
     },
   ]
 
@@ -106,11 +106,13 @@ const About = () => {
                 React-based applications.
               </p>
               <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
-                Beyond my core professional work, I have a growing interest in
-                Web3 technologies. While not my primary focus, I actively follow
-                advancements in decentralized applications, blockchain
-                integration, and the future of the internet — always eager to
-                learn and experiment with emerging tools.
+                I also leverage modern AI-powered tools to streamline
+                development, accelerate content creation, and enhance website
+                functionality. From generating code snippets and automating
+                workflows to optimizing SEO strategies and delivering
+                personalized user experiences, I integrate AI into the web
+                development process to achieve faster, smarter, and more
+                impactful results.
               </p>
             </div>
 

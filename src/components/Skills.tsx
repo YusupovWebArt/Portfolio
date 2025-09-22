@@ -416,7 +416,7 @@ const Skills = () => {
                 description: 'Client meetings & presentations',
               },
               {
-                name: 'Asana',
+                name: 'Asana/Jira/Trello/Redmine',
                 description: 'Team project planning & task tracking',
               },
             ].map((tool, index) => (
