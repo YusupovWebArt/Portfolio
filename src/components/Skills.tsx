@@ -409,14 +409,17 @@ const Skills = () => {
                 name: 'Slack',
                 description: 'Team communication & integration',
               },
-              { name: 'Trello', description: 'Task management & workflow' },
+              {
+                name: 'Trello/Redmine',
+                description: 'Task management & workflow',
+              },
 
               {
                 name: 'Google Meet/Zoom',
                 description: 'Client meetings & presentations',
               },
               {
-                name: 'Asana/Jira/Trello/Redmine',
+                name: 'Asana/Jira',
                 description: 'Team project planning & task tracking',
               },
             ].map((tool, index) => (
