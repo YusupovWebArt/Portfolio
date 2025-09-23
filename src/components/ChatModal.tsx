@@ -71,7 +71,7 @@ function getBotAnswer(question: string) {
       return item.answer
     }
   }
-  return "Thank you for your question! I'll get back to you by email or respond personally as soon as possible."
+  return 'Please formulate your question more clearly or choose from the list of questions.'
 }
 
 const ChatModal = ({
@@ -119,7 +119,7 @@ const ChatModal = ({
   if (!open) return null
 
   return (
-    <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50">
+    <div className="fixed inset-0 bg-black/40 flex items-center justify-center z-50 px-2">
       <div className="bg-white dark:bg-slate-800 rounded-lg p-6 w-full max-w-full sm:max-w-2xl shadow-lg relative">
         <button className="absolute top-2 right-2 text-xl" onClick={onClose}>
           ×
@@ -164,7 +164,9 @@ const ChatModal = ({
                   >
                     <span
                       className={
-                        msg.from === 'user' ? 'text-lime-500' : 'text-white'
+                        msg.from === 'user'
+                          ? 'text-lime-500 break-words'
+                          : 'text-white break-words'
                       }
                     >
                       {msg.text}
