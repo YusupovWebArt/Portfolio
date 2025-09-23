@@ -1,42 +1,48 @@
-import { useState, useEffect } from "react";
-import { SiReact, SiWordpress, SiGoogleanalytics } from "react-icons/si";
+import { useState, useEffect } from 'react'
+import {
+  SiReact,
+  SiWordpress,
+  SiGoogleanalytics,
+  SiAdobeacrobatreader,
+} from 'react-icons/si'
 
 const Hero = () => {
-  const [currentText, setCurrentText] = useState("");
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isDeleting, setIsDeleting] = useState(false);
+  const [currentText, setCurrentText] = useState('')
+  const [currentIndex, setCurrentIndex] = useState(0)
+  const [isDeleting, setIsDeleting] = useState(false)
 
   const texts = [
-    "Fullstack WordPress Developer",
-    "React/Next.js Developer",
-    "Technical SEO Specialist",
-  ];
+    'Fullstack WordPress Developer',
+    'React/Next.js Developer',
+    'Technical SEO Specialist',
+    'AI-Assisted Developer',
+  ]
 
   useEffect(() => {
     const timeout = setTimeout(
       () => {
-        const current = texts[currentIndex];
+        const current = texts[currentIndex]
 
         if (!isDeleting) {
-          setCurrentText(current.substring(0, currentText.length + 1));
+          setCurrentText(current.substring(0, currentText.length + 1))
 
           if (currentText === current) {
-            setTimeout(() => setIsDeleting(true), 500);
+            setTimeout(() => setIsDeleting(true), 500)
           }
         } else {
-          setCurrentText(current.substring(0, currentText.length - 1));
+          setCurrentText(current.substring(0, currentText.length - 1))
 
-          if (currentText === "") {
-            setIsDeleting(false);
-            setCurrentIndex((prev) => (prev + 1) % texts.length);
+          if (currentText === '') {
+            setIsDeleting(false)
+            setCurrentIndex((prev) => (prev + 1) % texts.length)
           }
         }
       },
       isDeleting ? 50 : 100
-    );
+    )
 
-    return () => clearTimeout(timeout);
-  }, [currentText, currentIndex, isDeleting, texts]);
+    return () => clearTimeout(timeout)
+  }, [currentText, currentIndex, isDeleting, texts])
 
   return (
     <section
@@ -81,23 +87,21 @@ const Hero = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <button
-              onClick={() =>
-                document
-                  .getElementById("projects")
-                  ?.scrollIntoView({ behavior: "smooth" })
-              }
-              className="px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 dark:from-lime-500 dark:to-lime-600 text-white font-semibold rounded-full hover:from-purple-700 hover:to-blue-700 dark:hover:from-lime-600 dark:hover:to-lime-700 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-purple-500/25 dark:hover:shadow-lime-500/25"
+            <a
+              href="/resume/Curriculum CV - Artur Yusupov.pdf"
+              download
+              className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-600 to-blue-600 dark:from-lime-500 dark:to-lime-600 text-white font-semibold rounded-full hover:from-purple-700 hover:to-blue-700 dark:hover:from-lime-600 dark:hover:to-lime-700 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-purple-500/25 dark:hover:shadow-lime-500/25"
             >
-              View My Work
-            </button>
+              <SiAdobeacrobatreader className="w-5 h-5" />
+              Download CV
+            </a>
             <button
               onClick={() =>
                 document
-                  .getElementById("contact")
-                  ?.scrollIntoView({ behavior: "smooth" })
+                  .getElementById('contact')
+                  ?.scrollIntoView({ behavior: 'smooth' })
               }
-              className="px-8 py-4 border-2 border-purple-500 dark:border-lime-400 text-purple-600 dark:text-lime-400 font-semibold rounded-full hover:bg-purple-500 dark:hover:bg-lime-400 hover:text-white dark:hover:text-slate-900 transition-all duration-200"
+              className="px-4 py-2 border-2 border-purple-500 dark:border-lime-400 text-purple-600 dark:text-lime-400 font-semibold rounded-full hover:bg-purple-500 dark:hover:bg-lime-400 hover:text-white dark:hover:text-slate-900 transition-all duration-200"
             >
               Get In Touch
             </button>
@@ -105,7 +109,7 @@ const Hero = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Hero;
+export default Hero

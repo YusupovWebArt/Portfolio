@@ -103,13 +103,18 @@ const About = () => {
                 marketing strategy.
               </p>
               <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
-                I also leverage modern AI-powered tools to streamline
-                development, accelerate content creation, and enhance website
-                functionality. From generating code snippets and automating
-                workflows to optimizing SEO strategies and delivering
-                personalized user experiences, I integrate AI into the web
-                development process to achieve faster, smarter, and more
-                impactful results.
+                I also specialize in <strong>AI-Assisted Development</strong>,
+                leveraging modern AI-powered tools to streamline development,
+                accelerate content creation, and enhance website functionality.
+                From generating code snippets and automating workflows to
+                optimizing SEO strategies and delivering personalized user
+                experiences, I seamlessly integrate AI into the web development
+                process to achieve faster, smarter, and more impactful results.
+                Additionally, I am experienced in
+                <strong> Prompt engineering</strong> and
+                <strong> Context engineering</strong>, enabling me to maximize
+                the effectiveness of AI tools and deliver highly tailored
+                solutions.
               </p>
             </div>
 
