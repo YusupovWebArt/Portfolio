@@ -4,12 +4,15 @@ import {
   SiWordpress,
   SiGoogleanalytics,
   SiAdobeacrobatreader,
+  SiChatbot,
 } from 'react-icons/si'
+import ChatModal from './ChatModal'
 
 const Hero = () => {
   const [currentText, setCurrentText] = useState('')
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isDeleting, setIsDeleting] = useState(false)
+  const [chatOpen, setChatOpen] = useState(false)
 
   const texts = [
     'Fullstack WordPress Developer',
@@ -96,15 +99,13 @@ const Hero = () => {
               Download CV
             </a>
             <button
-              onClick={() =>
-                document
-                  .getElementById('contact')
-                  ?.scrollIntoView({ behavior: 'smooth' })
-              }
-              className="px-4 py-2 border-2 border-purple-500 dark:border-lime-400 text-purple-600 dark:text-lime-400 font-semibold rounded-full hover:bg-purple-500 dark:hover:bg-lime-400 hover:text-white dark:hover:text-slate-900 transition-all duration-200"
+              onClick={() => setChatOpen(true)}
+              className="flex items-center gap-2 px-4 py-2 border-2 border-purple-500 dark:border-lime-400 text-purple-600 dark:text-lime-400 font-semibold rounded-full hover:bg-purple-500 dark:hover:bg-lime-400 hover:text-white dark:hover:text-slate-900 transition-all duration-200"
             >
-              Get In Touch
+              <SiChatbot className="w-5 h-5" />
+              Ask my Chat-bot
             </button>
+            <ChatModal open={chatOpen} onClose={() => setChatOpen(false)} />
           </div>
         </div>
       </div>

@@ -21,7 +21,7 @@ const About = () => {
     },
     {
       icon: <LuBrainCircuit className="w-6 h-6" />,
-      title: 'AI Tools',
+      title: 'AI Tools/Context engineering',
       description:
         'Explore and integrate AI tools into WordPress and React projects development workflows.',
     },
