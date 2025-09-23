@@ -315,7 +315,7 @@ const Skills = () => {
               {/* Category Header */}
               <div className="flex items-center mb-6">
                 <div
-                  className={`w-12 h-12 bg-gradient-to-r ${category.color} rounded-xl flex items-center justify-center text-white mr-4`}
+                  className={`w-12 h-12 min-w-[3rem] min-h-[3rem]  bg-gradient-to-r ${category.color} rounded-xl flex items-center justify-center text-white mr-4`}
                 >
                   {category.icon}
                 </div>

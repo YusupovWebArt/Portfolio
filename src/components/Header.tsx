@@ -1,45 +1,45 @@
-import { useState, useEffect } from "react";
-import { Menu, X, Github, Linkedin, Sun, Moon } from "lucide-react";
-import { useTheme } from "../contexts/ThemeContext";
+import { useState, useEffect } from 'react'
+import { Menu, X, Github, Linkedin, Sun, Moon } from 'lucide-react'
+import { useTheme } from '../contexts/ThemeContext'
 
 const Header = () => {
-  const { isDark, toggleTheme } = useTheme();
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState("home");
+  const { isDark, toggleTheme } = useTheme()
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [activeSection, setActiveSection] = useState('home')
 
   const navItems = [
-    { id: "home", label: "Home" },
-    { id: "about", label: "About" },
-    { id: "projects", label: "Projects" },
-    { id: "skills", label: "Skills" },
-    { id: "contact", label: "Contact" },
-  ];
+    { id: 'home', label: 'Home' },
+    { id: 'about', label: 'About' },
+    { id: 'projects', label: 'Projects' },
+    { id: 'skills', label: 'Skills' },
+    { id: 'contact', label: 'Contact' },
+  ]
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = navItems.map((item) => document.getElementById(item.id));
-      const scrollPosition = window.scrollY + 100;
+      const sections = navItems.map((item) => document.getElementById(item.id))
+      const scrollPosition = window.scrollY + 100
 
       for (let i = sections.length - 1; i >= 0; i--) {
-        const section = sections[i];
+        const section = sections[i]
         if (section && section.offsetTop <= scrollPosition) {
-          setActiveSection(navItems[i].id);
-          break;
+          setActiveSection(navItems[i].id)
+          break
         }
       }
-    };
+    }
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   const scrollToSection = (sectionId: string) => {
-    const element = document.getElementById(sectionId);
+    const element = document.getElementById(sectionId)
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      element.scrollIntoView({ behavior: 'smooth' })
     }
-    setIsMenuOpen(false);
-  };
+    setIsMenuOpen(false)
+  }
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
@@ -57,8 +57,8 @@ const Header = () => {
                 onClick={() => scrollToSection(item.id)}
                 className={`text-sm font-medium transition-colors duration-200 ${
                   activeSection === item.id
-                    ? "text-purple-600 dark:text-lime-400"
-                    : "text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white"
+                    ? 'text-purple-600 dark:text-lime-400'
+                    : 'text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white'
                 }`}
               >
                 {item.label}
@@ -72,7 +72,7 @@ const Header = () => {
             <button
               onClick={toggleTheme}
               className="p-2 text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white transition-colors rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800"
-              title={isDark ? "Switch to light mode" : "Switch to dark mode"}
+              title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
             >
               {isDark ? <Sun size={20} /> : <Moon size={20} />}
             </button>
@@ -114,14 +114,14 @@ const Header = () => {
                   onClick={() => scrollToSection(item.id)}
                   className={`block w-full text-left px-3 py-2 text-sm font-medium rounded-md transition-colors ${
                     activeSection === item.id
-                      ? "text-purple-600 dark:text-lime-400 bg-slate-200 dark:bg-slate-700"
-                      : "text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-slate-700"
+                      ? 'text-purple-600 dark:text-lime-400 bg-slate-200 dark:bg-slate-700'
+                      : 'text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-slate-700'
                   }`}
                 >
                   {item.label}
                 </button>
               ))}
-              <div className="flex space-x-4 px-3 py-2 border-t border-slate-200 dark:border-slate-700 mt-2 pt-4">
+              <div className="flex items-center justify-center space-x-4 px-3 py-2 border-t border-slate-200 dark:border-slate-700 mt-2 pt-4">
                 <button
                   onClick={toggleTheme}
                   className="p-2 text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white transition-colors rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700"
@@ -150,7 +150,7 @@ const Header = () => {
         )}
       </div>
     </header>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header
