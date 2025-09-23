@@ -59,11 +59,15 @@ const FAQ: FaqItem[] = [
 
 function getBotAnswer(question: string) {
   const lower = question.toLowerCase()
+  // Сначала ищем полное совпадение вопроса
   for (const item of FAQ) {
-    if (
-      item.keywords.some((kw) => lower.includes(kw)) ||
-      lower.includes(item.question.toLowerCase())
-    ) {
+    if (lower === item.question.toLowerCase()) {
+      return item.answer
+    }
+  }
+  // Потом ищем по ключевым словам
+  for (const item of FAQ) {
+    if (item.keywords.some((kw) => lower.includes(kw))) {
       return item.answer
     }
   }
