@@ -1,7 +1,7 @@
 import { Project } from '../project-types'
 
 const umanTravel: Project = {
-  id: 83,
+  id: 8800,
   title: 'Uman travel',
   description:
     'Historical and cultural tourism information center based in Uman, Ukraine.',

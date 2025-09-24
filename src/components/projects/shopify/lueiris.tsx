@@ -1,7 +1,7 @@
 import { Project } from '../project-types'
 
 const LueirisLashes: Project = {
-  id: 65,
+  id: 6800,
   title: 'Lueiris lashes',
   description: 'US based lashes store.',
   fullDescription:

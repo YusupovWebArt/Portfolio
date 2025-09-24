@@ -1,7 +1,7 @@
 import { Project } from '../project-types'
 
 const organicBed: Project = {
-  id: 146,
+  id: 16000,
   title: 'Organic Bed',
   description:
     'RTL Israeli website offering a range of eco-friendly, organic bedding products.',

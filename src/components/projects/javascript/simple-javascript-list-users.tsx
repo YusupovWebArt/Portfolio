@@ -1,7 +1,7 @@
 import { Project } from '../project-types'
 
 const simpleJavascriptListUsers: Project = {
-  id: 41,
+  id: 4700,
   title: 'Javascript Simple List of Users',
   description: 'Pet project for learning and practicing JavaScript.',
   fullDescription:

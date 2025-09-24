@@ -1,7 +1,7 @@
 import { Project } from '../project-types'
 
 const sportpit24: Project = {
-  id: 86,
+  id: 8900,
   title: 'Sportpit24',
   description:
     'Ukrainian online store specializing in high-quality sports nutrition and fitness supplements.',

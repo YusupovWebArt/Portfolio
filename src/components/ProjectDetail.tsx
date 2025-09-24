@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react'
 import {
   ArrowLeft,
   ExternalLink,
@@ -7,43 +7,43 @@ import {
   ChevronRight,
   Eye,
   X,
-} from "lucide-react";
-import { Project } from "./projects/project-types";
+} from 'lucide-react'
+import { Project } from './projects/project-types'
 
 interface ProjectDetailProps {
-  projectId: number;
-  onBack: () => void;
+  projectId: number
+  onBack: () => void
 }
 
 // Автоматический импорт всех проектов
 const projectModules = import.meta.glob<{ default: Project }>(
-  "./projects/*/*.tsx",
+  './projects/*/*.tsx',
   { eager: true }
-);
+)
 const projects: Project[] = Object.values(projectModules).map(
   (mod: any) => mod.default
-);
+)
 
 const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [screenshotModal, setScreenshotModal] = useState<{
-    isOpen: boolean;
-    image: string;
-    title: string;
-    caption: string;
+    isOpen: boolean
+    image: string
+    title: string
+    caption: string
   }>({
     isOpen: false,
-    image: "",
-    title: "",
-    caption: "",
-  });
+    image: '',
+    title: '',
+    caption: '',
+  })
 
   //Скролл наверх страницы
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }, [projectId]);
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }, [projectId])
 
-  const project = projects.find((p) => p.id === projectId);
+  const project = projects.find((p) => p.id === projectId)
 
   if (!project) {
     return (
@@ -61,18 +61,18 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
           </button>
         </div>
       </div>
-    );
+    )
   }
 
   const nextImage = () => {
-    setCurrentImageIndex((prev) => (prev + 1) % project.images.length);
-  };
+    setCurrentImageIndex((prev) => (prev + 1) % project.images.length)
+  }
 
   const prevImage = () => {
     setCurrentImageIndex(
       (prev) => (prev - 1 + project.images.length) % project.images.length
-    );
-  };
+    )
+  }
 
   const openScreenshotModal = () => {
     setScreenshotModal({
@@ -80,14 +80,14 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
       image: project.images[currentImageIndex].src,
       title: project.title,
       caption: project.images[currentImageIndex].caption,
-    });
-    document.body.style.overflow = "hidden";
-  };
+    })
+    document.body.style.overflow = 'hidden'
+  }
 
   const closeScreenshotModal = () => {
-    setScreenshotModal({ isOpen: false, image: "", title: "", caption: "" });
-    document.body.style.overflow = "unset";
-  };
+    setScreenshotModal({ isOpen: false, image: '', title: '', caption: '' })
+    document.body.style.overflow = 'unset'
+  }
 
   return (
     <div className="py-10 px-2 md:px-8 max-w-7xl mx-auto">
@@ -96,14 +96,14 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
         onClick={onBack}
         className="flex fixed top-10 items-center space-x-2 text-purple-600 dark:text-lime-500 hover:text-purple-700 dark:hover:text-lime-600 font-medium mb-8 transition-colors group"
         type="button"
-        style={{ zIndex: 9999, position: "relative" }}
+        style={{ zIndex: 9999, position: 'relative' }}
       >
         <ArrowLeft className="w-5 h-5" />
         <span>Back to Featured Projects</span>
       </button>
 
       {/* Title & Description */}
-      <div className="mb-10 text-center">
+      <div className="mb-10 text-center mt-16">
         <h1 className="text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white mb-6">
           {project.title}
         </h1>
@@ -166,8 +166,8 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
                   onClick={() => setCurrentImageIndex(index)}
                   className={`relative rounded-lg overflow-hidden transition-all duration-200 ${
                     index === currentImageIndex
-                      ? "ring-2 ring-purple-500 dark:ring-lime-500 ring-offset-2"
-                      : "hover:opacity-80"
+                      ? 'ring-2 ring-purple-500 dark:ring-lime-500 ring-offset-2'
+                      : 'hover:opacity-80'
                   }`}
                   type="button"
                 >
@@ -193,7 +193,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
               {project.fullDescription}
             </p>
             <div className="flex flex-wrap gap-4">
-              {project.liveUrl && project.liveUrl !== "#" && (
+              {project.liveUrl && project.liveUrl !== '#' && (
                 <a
                   href={project.liveUrl}
                   target="_blank"
@@ -204,7 +204,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
                   View Live
                 </a>
               )}
-              {project.githubUrl && project.githubUrl !== "#" && (
+              {project.githubUrl && project.githubUrl !== '#' && (
                 <a
                   href={project.githubUrl}
                   target="_blank"
@@ -304,10 +304,12 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
         )}
       </section>
 
-      {/* Screenshot Modal */}
+      {/*
+  Screenshot Modal
+*/}
       {screenshotModal.isOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70">
-          <div className="relative bg-white dark:bg-slate-800 rounded-lg shadow-lg max-w-3xl w-full p-6">
+          <div className="relative bg-white dark:bg-slate-800 rounded-lg shadow-lg w-full max-w-full sm:max-w-5xl p-6 flex flex-col items-center">
             <button
               className="absolute top-4 right-4 text-slate-700 dark:text-slate-300 hover:text-purple-600 dark:hover:text-lime-400"
               onClick={closeScreenshotModal}
@@ -316,11 +318,59 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
             >
               <X size={24} />
             </button>
+            {/* Navigation Arrows */}
+            {project.images.length > 1 && (
+              <>
+                <button
+                  onClick={() =>
+                    setScreenshotModal((prev) => {
+                      const newIndex =
+                        (project.images.findIndex(
+                          (img) => img.src === prev.image
+                        ) -
+                          1 +
+                          project.images.length) %
+                        project.images.length
+                      return {
+                        ...prev,
+                        image: project.images[newIndex].src,
+                        caption: project.images[newIndex].caption,
+                      }
+                    })
+                  }
+                  className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/90 dark:bg-slate-800/90 hover:bg-white dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 p-2 rounded-full shadow-lg transition-all duration-200 hover:scale-110"
+                  type="button"
+                >
+                  <ChevronLeft size={32} />
+                </button>
+                <button
+                  onClick={() =>
+                    setScreenshotModal((prev) => {
+                      const newIndex =
+                        (project.images.findIndex(
+                          (img) => img.src === prev.image
+                        ) +
+                          1) %
+                        project.images.length
+                      return {
+                        ...prev,
+                        image: project.images[newIndex].src,
+                        caption: project.images[newIndex].caption,
+                      }
+                    })
+                  }
+                  className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/90 dark:bg-slate-800/90 hover:bg-white dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 p-2 rounded-full shadow-lg transition-all duration-200 hover:scale-110"
+                  type="button"
+                >
+                  <ChevronRight size={32} />
+                </button>
+              </>
+            )}
             {/* Image */}
             <img
               src={screenshotModal.image}
               alt={screenshotModal.title}
-              className="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
+              className="max-w-full max-h-[80vh] object-contain rounded-lg shadow-2xl mx-auto"
             />
             {/* Title & Caption */}
             <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6 rounded-b-lg">
@@ -338,7 +388,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default ProjectDetail;
+export default ProjectDetail

@@ -1,7 +1,7 @@
 import { Project } from '../project-types'
 
 const prezentify: Project = {
-  id: 67,
+  id: 6900,
   title: 'Prezentify',
   description: 'Polish online store specializing in personalized gifts.',
   fullDescription:

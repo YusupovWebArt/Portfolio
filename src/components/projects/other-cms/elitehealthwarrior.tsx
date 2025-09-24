@@ -1,7 +1,7 @@
 import { Project } from '../project-types'
 
 const eliteHealthWarrior: Project = {
-  id: 87,
+  id: 8950,
   title: 'Elite Health Warrior',
   description: 'US-based Health and Wellness',
   fullDescription:

@@ -1,7 +1,7 @@
 import { Project } from '../project-types'
 
 const webartPortfolioWebsiteV1: Project = {
-  id: 53,
+  id: 5900,
   title: 'Webart Portfolio Website v1',
   description: 'Pure HTML/CSS/JS code.',
   fullDescription:

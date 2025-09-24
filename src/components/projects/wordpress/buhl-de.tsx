@@ -1,7 +1,7 @@
 import { Project } from '../project-types'
 
 const buhlDe: Project = {
-  id: 136,
+  id: 15500,
   title: 'Buhl WISO',
   description: 'Steuer Jetzt Geld zurückholen. Germany',
   fullDescription:

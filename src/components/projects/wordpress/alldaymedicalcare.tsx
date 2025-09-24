@@ -1,7 +1,7 @@
 import { Project } from '../project-types'
 
 const alldayMedicalcare: Project = {
-  id: 143,
+  id: 14500,
   title: 'All Day Medical Care Clinic',
   description:
     'Healthcare provider focused on offering a wide range of medical services.',

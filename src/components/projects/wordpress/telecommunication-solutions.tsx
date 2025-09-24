@@ -1,7 +1,7 @@
 import { Project } from '../project-types'
 
 const telecommunicationSolutions: Project = {
-  id: 123,
+  id: 10920,
   title: 'Telecommunication Solutions for Business',
   description: 'USA (+ localization Spain).',
   fullDescription:

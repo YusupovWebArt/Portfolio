@@ -1,7 +1,7 @@
 import { Project } from '../project-types'
 
 const causetume: Project = {
-  id: 134,
+  id: 11500,
   title: 'Causetume',
   description: 'Knitwear Brand. Cloth store',
   fullDescription:
@@ -67,7 +67,7 @@ const causetume: Project = {
   ],
   challenges: [],
   solutions: [],
-  liveUrl: 'https://causetume.com/en/',
+  liveUrl: 'https://causetume.com/',
   githubUrl: '#',
   category: ['wordpress'],
 }

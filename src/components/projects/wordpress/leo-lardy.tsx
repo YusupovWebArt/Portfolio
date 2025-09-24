@@ -1,7 +1,7 @@
 import { Project } from '../project-types'
 
 const leoLardy: Project = {
-  id: 120,
+  id: 10940,
   title: 'Leo Lardy',
   description: 'French visually driven creative platform.',
   fullDescription: 'Premium Wordpress theme + Custom CSS3/JS + content.',

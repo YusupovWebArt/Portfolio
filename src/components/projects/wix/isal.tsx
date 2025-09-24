@@ -1,7 +1,7 @@
 import { Project } from '../project-types'
 
 const isal: Project = {
-  id: 76,
+  id: 7850,
   title: 'ISAL',
   description: 'Learn English in Boston.',
   fullDescription:

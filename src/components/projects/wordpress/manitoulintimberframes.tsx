@@ -1,7 +1,7 @@
 import { Project } from '../project-types'
 
 const manitoulinTimberFrames: Project = {
-  id: 124,
+  id: 12000,
   title: 'Manitoulin Timber Frames',
   description:
     'Custom builder based on Manitoulin Island, Ontario, specializing in handcrafted timber-frame homes and structures.',

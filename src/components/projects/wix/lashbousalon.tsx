@@ -1,7 +1,7 @@
 import { Project } from '../project-types'
 
 const lashbouSalon: Project = {
-  id: 74,
+  id: 7750,
   title: 'Lashbousalon',
   description: 'U.S.-based Eyelash Salons in Arlington.',
   fullDescription:

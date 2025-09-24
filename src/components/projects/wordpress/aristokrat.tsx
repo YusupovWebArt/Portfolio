@@ -1,7 +1,7 @@
 import { Project } from '../project-types'
 
 const aristokrat: Project = {
-  id: 19,
+  id: 10800,
   title: 'Aristocrat Hotel & Restaurant',
   description:
     'Ukrainian hotel-restaurant complex offers guests elegant accommodation in a beautifully restored historic building.',

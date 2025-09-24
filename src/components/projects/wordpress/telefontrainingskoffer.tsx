@@ -1,7 +1,7 @@
 import { Project } from '../project-types'
 
 const telefonTrainingskoffer: Project = {
-  id: 147,
+  id: 17500,
   title: 'Telefontrainingskoffer',
   description: 'Callcenter Akademie',
   fullDescription:

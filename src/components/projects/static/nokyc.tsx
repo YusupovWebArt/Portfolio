@@ -1,7 +1,7 @@
 import { Project } from '../project-types'
 
 const nokyc: Project = {
-  id: 51,
+  id: 5800,
   title: 'Nokyc',
   description: 'Pure HTML/CSS/JS code.',
   fullDescription:

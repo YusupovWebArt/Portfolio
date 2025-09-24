@@ -1,7 +1,7 @@
 import { Project } from '../project-types'
 
 const solaDentalSpa: Project = {
-  id: 132,
+  id: 10970,
   title: 'Sola Dental Spa',
   description: 'Cosmetic Dental Clinic in Staten Island, NY',
   fullDescription:

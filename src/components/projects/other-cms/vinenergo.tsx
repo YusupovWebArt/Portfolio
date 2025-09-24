@@ -1,7 +1,7 @@
 import { Project } from '../project-types'
 
 const vinEnergo: Project = {
-  id: 81,
+  id: 8700,
   title: 'VIN Energo',
   description:
     'Ukrainian company specializing in the production and sale of Pini Kay wood and charcoal briquettes, as well as the manufacture of equipment for briquette production.',

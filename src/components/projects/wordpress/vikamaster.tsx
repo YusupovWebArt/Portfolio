@@ -1,7 +1,7 @@
 import { Project } from '../project-types'
 
 const vikaMaster: Project = {
-  id: 115,
+  id: 10860,
   title: 'Vikamaster',
   description:
     'Handcrafted jewelry brand based in Ukraine, offering an array of beautifully artisan-made accessories.',

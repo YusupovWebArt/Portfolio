@@ -1,7 +1,7 @@
 import { Project } from '../project-types'
 
 const portageDental: Project = {
-  id: 82,
+  id: 8750,
   title: 'Portage',
   description: 'US-based Dental Clinic',
   fullDescription: 'Custom Joomla theme. Custom CSS/JS.',

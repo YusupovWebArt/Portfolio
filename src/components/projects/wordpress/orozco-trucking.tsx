@@ -1,7 +1,7 @@
 import { Project } from '../project-types'
 
 const orozcoTrucking: Project = {
-  id: 126,
+  id: 10960,
   title: 'Orozco Trucking',
   description:
     'Freight transportation company based in Elk Grove Village, Illinois.',

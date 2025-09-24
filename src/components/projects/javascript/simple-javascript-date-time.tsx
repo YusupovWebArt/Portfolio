@@ -1,7 +1,7 @@
 import { Project } from '../project-types'
 
 const simpleJavascriptDateTime: Project = {
-  id: 42,
+  id: 4750,
   title: 'Javascript Date and time app',
   description: 'Pet project for learning and practicing JavaScript.',
   fullDescription:

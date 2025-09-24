@@ -1,7 +1,7 @@
 import { Project } from '../project-types'
 
 const frontDeskHelpers: Project = {
-  id: 250,
+  id: 19500,
   title: 'Front Desk Helpers',
   description:
     'FDH provides skilled remote employees and advanced IT solutions to help businesses grow and thrive.',

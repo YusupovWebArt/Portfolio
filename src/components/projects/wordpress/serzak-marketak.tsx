@@ -1,7 +1,7 @@
 import { Project } from '../project-types'
 
 const serzakMarketak: Project = {
-  id: 128,
+  id: 14000,
   title: 'Serzak Marketak',
   description:
     'Czech-based digital marketing agency founded and run by marketing specialist Serhiy Venhryn.',

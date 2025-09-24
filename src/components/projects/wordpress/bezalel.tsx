@@ -1,7 +1,7 @@
 import { Project } from '../project-types'
 
 const bezalel: Project = {
-  id: 125,
+  id: 10870,
   title: 'Bezalel Care Management',
   description: 'Care coordination agency located in New York City.',
   fullDescription:

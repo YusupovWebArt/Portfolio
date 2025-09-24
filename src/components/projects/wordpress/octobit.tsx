@@ -1,7 +1,7 @@
 import { Project } from '../project-types'
 
 const octobit: Project = {
-  id: 151,
+  id: 18000,
   title: 'Octobit',
   description:
     'Octobit is a Ukrainian informational portal focused on cryptocurrency and blockchain topics. It’s aimed both at beginners and more experienced users.',

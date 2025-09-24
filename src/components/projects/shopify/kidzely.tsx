@@ -1,7 +1,7 @@
 import { Project } from '../project-types'
 
 const kidzely: Project = {
-  id: 63,
+  id: 6700,
   title: 'Kidzely',
   description: 'USA-based online-store for baby.',
   fullDescription:

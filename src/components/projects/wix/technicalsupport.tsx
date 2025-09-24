@@ -1,7 +1,7 @@
 import { Project } from '../project-types'
 
 const technicalsupport: Project = {
-  id: 77,
+  id: 7900,
   title: 'TST - Technical Support Team',
   description:
     'U.S.-based web development and digital marketing agency founded in 2015.',

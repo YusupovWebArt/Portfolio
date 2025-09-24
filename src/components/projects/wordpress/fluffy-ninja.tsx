@@ -1,7 +1,7 @@
 import { Project } from '../project-types'
 
 const fluffyNinja: Project = {
-  id: 133,
+  id: 10910,
   title: 'Fluffy Ninja',
   description: 'Creative cloth store. France',
   fullDescription:

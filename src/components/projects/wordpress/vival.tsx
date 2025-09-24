@@ -1,7 +1,7 @@
 import { Project } from '../project-types'
 
 const vival: Project = {
-  id: 112,
+  id: 10830,
   title: 'Vival',
   description:
     'Ukrainian online store specializing in premium construction materials, particularly for roofing and industrial flooring.',

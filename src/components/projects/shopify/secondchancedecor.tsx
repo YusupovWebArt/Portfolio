@@ -1,7 +1,7 @@
 import { Project } from '../project-types'
 
 const secondChanceDecor: Project = {
-  id: 66,
+  id: 6850,
   title: 'Second Chance Decor',
   description:
     'Canadian-based sustainable home décor retailer committed to giving discontinued or overstock items a second life.',

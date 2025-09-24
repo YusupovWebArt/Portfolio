@@ -1,7 +1,7 @@
 import { Project } from '../project-types'
 
 const artezioeu: Project = {
-  id: 68,
+  id: 6950,
   title: 'Artezioeu',
   description: 'Spain-based painting by numbers store.',
   fullDescription:

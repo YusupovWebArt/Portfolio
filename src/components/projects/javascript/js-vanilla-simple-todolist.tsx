@@ -1,7 +1,7 @@
 import { Project } from '../project-types'
 
 const jsVanillaSimpleTodoList: Project = {
-  id: 44,
+  id: 4850,
   title: 'Javascript Simple To-Do List',
   description: 'Pet project for learning and practicing JavaScript.',
   fullDescription:

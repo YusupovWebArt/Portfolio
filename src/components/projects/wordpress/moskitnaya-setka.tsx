@@ -1,7 +1,7 @@
 import { Project } from '../project-types'
 
 const moskitnayaSetka: Project = {
-  id: 116,
+  id: 10930,
   title: 'Moskitnaya setka',
   description: 'Ukrainian Mosquito net store.',
   fullDescription:

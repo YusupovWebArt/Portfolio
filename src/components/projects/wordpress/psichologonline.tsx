@@ -1,7 +1,7 @@
 import { Project } from '../project-types'
 
 const psichologonline: Project = {
-  id: 110,
+  id: 10810,
   title: 'Psichologonline',
   description: 'Elena Grechka is a qualified Ukrainian psychologist.',
   fullDescription: 'Wordpress theme from scratch. Elementor. Custom CSS3/JS.',

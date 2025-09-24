@@ -1,7 +1,7 @@
 import { Project } from '../project-types'
 
 const svkus: Project = {
-  id: 114,
+  id: 10850,
   title: 'Svkus',
   description:
     'Syndicate of Taste is the online portal for a dynamic and creative group of restaurants in Ukraine.',

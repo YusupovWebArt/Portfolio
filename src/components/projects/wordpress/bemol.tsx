@@ -1,7 +1,7 @@
 import { Project } from '../project-types'
 
 const bemol: Project = {
-  id: 127,
+  id: 10980,
   title: 'Bemol',
   description: 'Czech plumbing and heating services provider:',
   fullDescription:

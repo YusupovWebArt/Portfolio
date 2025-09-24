@@ -1,7 +1,7 @@
 import { Project } from '../project-types'
 
 const lunaMebel: Project = {
-  id: 117,
+  id: 10880,
   title: 'Lunamebel',
   description: 'Ukrainian online furniture store.',
   fullDescription:

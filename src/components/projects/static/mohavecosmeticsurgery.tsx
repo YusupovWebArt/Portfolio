@@ -1,7 +1,7 @@
 import { Project } from '../project-types'
 
 const mohaveCosmeticSurgery: Project = {
-  id: 52,
+  id: 5850,
   title: 'Mohave Cosmetic Surgery',
   description:
     'Las Vegas-based practice led by board-certified plastic surgeon Dr. Bryson Richards.',

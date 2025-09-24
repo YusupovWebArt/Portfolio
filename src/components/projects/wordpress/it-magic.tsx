@@ -1,7 +1,7 @@
 import { Project } from '../project-types'
 
 const itMagic: Project = {
-  id: 249,
+  id: 19000,
   title: 'IT-Magic',
   description: 'Certified AWS Advanced Partner.',
   fullDescription:

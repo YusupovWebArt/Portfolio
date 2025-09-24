@@ -1,7 +1,7 @@
 import { Project } from '../project-types'
 
 const simpleJavascriptQuiz: Project = {
-  id: 46,
+  id: 4950,
   title: 'Simple Javascript Quiz App',
   description: 'Pet project for learning and practicing JavaScript.',
   fullDescription:

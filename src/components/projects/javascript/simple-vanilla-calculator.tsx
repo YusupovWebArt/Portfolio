@@ -1,7 +1,7 @@
 import { Project } from '../project-types'
 
 const simpleVanillaCalculator: Project = {
-  id: 43,
+  id: 4800,
   title: 'Vanilla Javascript Simple Calculator',
   description: 'Pet project for learning and practicing JavaScript.',
   fullDescription:

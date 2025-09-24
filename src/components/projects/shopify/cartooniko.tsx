@@ -1,7 +1,7 @@
 import { Project } from '../project-types'
 
 const cartooniko: Project = {
-  id: 64,
+  id: 6750,
   title: 'Cartooniko',
   description: 'Custom portraites in cartoon style.',
   fullDescription:

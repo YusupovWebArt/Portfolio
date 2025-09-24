@@ -1,7 +1,7 @@
 import { Project } from '../project-types'
 
 const kolosochok: Project = {
-  id: 111,
+  id: 10820,
   title: 'Kolosochok',
   description:
     'Ukrainian private ethno-kindergarten in Kyiv offering culturally immersive preschool education.',

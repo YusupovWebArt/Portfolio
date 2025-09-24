@@ -1,7 +1,7 @@
 import { Project } from '../project-types'
 
 const reactSimpleCostAccounting: Project = {
-  id: 31,
+  id: 3850,
   title: 'Simple React Cost Accounting App',
   description: 'Pet project for learning and practicing React.js.',
   fullDescription:
