@@ -5,50 +5,50 @@ import {
   MessageCircle,
   Github,
   Linkedin,
-} from "lucide-react";
+} from 'lucide-react'
 
 const Contact = () => {
   const contactInfo = [
     {
       icon: <Mail className="w-6 h-6" />,
-      label: "Email",
-      value: "web.sunline@gmail.com",
-      link: "mailto:web.sunline@gmail.com",
+      label: 'Email',
+      value: 'web.sunline@gmail.com',
+      link: 'mailto:web.sunline@gmail.com',
     },
     {
       icon: <Phone className="w-6 h-6" />,
-      label: "Phone/WhatsApp",
-      value: "+34642413967",
-      link: "tel:+34642413967",
+      label: 'Phone/WhatsApp',
+      value: '+34642413967',
+      link: 'tel:+34642413967',
     },
     {
       icon: <MessageCircle className="w-6 h-6" />,
-      label: "Telegram",
-      value: "@develop_create",
-      link: "https://t.me/develop_create",
+      label: 'Telegram',
+      value: '@develop_create',
+      link: 'https://t.me/develop_create',
     },
     {
       icon: <MapPin className="w-6 h-6" />,
-      label: "Location",
-      value: "Spain, Seville",
-      link: "#",
+      label: 'Location',
+      value: 'Spain, Seville',
+      link: '#',
     },
-  ];
+  ]
 
   const socialLinks = [
     {
       icon: <Github className="w-6 h-6" />,
-      label: "GitHub",
-      url: "https://github.com/YusupovWebArt",
-      color: "hover:text-slate-700",
+      label: 'GitHub',
+      url: 'https://github.com/YusupovWebArt',
+      color: 'hover:text-slate-700',
     },
     {
       icon: <Linkedin className="w-6 h-6" />,
-      label: "LinkedIn",
-      url: "https://www.linkedin.com/in/artur-iusupov/",
-      color: "hover:text-blue-600",
+      label: 'LinkedIn',
+      url: 'https://www.linkedin.com/in/artur-iusupov/',
+      color: 'hover:text-blue-600',
     },
-  ];
+  ]
 
   return (
     <section
@@ -102,9 +102,15 @@ const Contact = () => {
                 Let's Connect
               </h3>
               <p className="text-slate-600 dark:text-slate-300 mb-8 leading-relaxed">
-                Whether you need a modern React application, WordPress solution,
-                SEO optimization, or want to explore Web3 possibilities, I'm
-                here to help bring your vision to reality.
+                With years of experience in web development, I specialize in
+                building modern React applications and WordPress solutions that
+                deliver high performance and align with business goals. I
+                leverage AI-powered tools to accelerate development, streamline
+                workflows, and generate content efficiently, using these
+                technologies effectively to create smarter, faster, and highly
+                impactful websites. Whether you need a scalable web application,
+                a WordPress site, or SEO optimization, I&#39;m here to turn your
+                vision into reality.
               </p>
             </div>
             <div className="pt-8">
@@ -130,7 +136,7 @@ const Contact = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Contact;
+export default Contact
