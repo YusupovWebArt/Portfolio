@@ -1,34 +1,38 @@
 import { Project } from '../project-types'
 
-const webartPortfolioWebsiteV1: Project = {
-  id: 5900,
-  title: 'My Portfolio Website v1',
+const webartPortfolioWebsiteV2: Project = {
+  id: 5950,
+  title: 'My Portfolio Website v2',
   description: 'Personal portfolio site of Artur Yusupov.',
   fullDescription:
     'Portfolio website developed using HTML5, CSS3, and vanilla JavaScript.',
   image:
-    '/Portfolio/images/portfolio/thumbs/html-css-js/webart_old-version_thumb.webp',
+    '/Portfolio/images/portfolio/thumbs/html-css-js/webart_portfolio-website-v2_thumb.webp',
   fullScreenshot:
-    '/Portfolio/images/portfolio/projects/html-css-js/webart_old-version_thumb.webp',
+    '/Portfolio/images/portfolio/projects/html-css-js/webart_portfolio-website-v2_thumb.webp',
   images: [
     {
-      src: '/Portfolio/images/portfolio/thumbs/html-css-js/webart_old-version_thumb.webp',
+      src: '/Portfolio/images/portfolio/thumbs/html-css-js/webart_portfolio-website-v2_thumb.webp',
       caption: '',
     },
     {
-      src: '/Portfolio/images/portfolio/sliders/html-css-js/webart_old-version/webart_old-version_slide2.webp',
+      src: '/Portfolio/images/portfolio/sliders/html-css-js/webart_portfolio-website-v2/webart_portfolio-website-v2_slide2.webp',
       caption: '',
     },
     {
-      src: '/Portfolio/images/portfolio/sliders/html-css-js/webart_old-version/webart_old-version_slide3.webp',
+      src: '/Portfolio/images/portfolio/sliders/html-css-js/webart_portfolio-website-v2/webart_portfolio-website-v2_slide3.webp',
       caption: '',
     },
     {
-      src: '/Portfolio/images/portfolio/sliders/html-css-js/webart_old-version/webart_old-version_slide4.webp',
+      src: '/Portfolio/images/portfolio/sliders/html-css-js/webart_portfolio-website-v2/webart_portfolio-website-v2_slide4.webp',
       caption: '',
     },
     {
-      src: '/Portfolio/images/portfolio/sliders/html-css-js/webart_old-version/webart_old-version_slide5.webp',
+      src: '/Portfolio/images/portfolio/sliders/html-css-js/webart_portfolio-website-v2/webart_portfolio-website-v2_slide5.webp',
+      caption: '',
+    },
+    {
+      src: '/Portfolio/images/portfolio/sliders/html-css-js/webart_portfolio-website-v2/webart_portfolio-website-v2_slide6.webp',
       caption: '',
     },
   ],
@@ -63,9 +67,9 @@ const webartPortfolioWebsiteV1: Project = {
   ],
   challenges: [],
   solutions: [],
-  liveUrl: '#',
-  githubUrl: '#',
+  liveUrl: 'https://yusupovwebart.github.io/Portfolio-v2-static-vanilla-js/',
+  githubUrl: 'https://github.com/YusupovWebArt/Portfolio-v2-static-vanilla-js',
   category: ['static'],
 }
 
-export default webartPortfolioWebsiteV1
+export default webartPortfolioWebsiteV2

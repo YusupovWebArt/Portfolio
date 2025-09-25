@@ -1,7 +1,7 @@
 import { Project } from '../project-types'
 
 const reactSimpleTodoList: Project = {
-  id: 3950,
+  id: 3900,
   title: 'Simple To-Do App',
   description: 'In the process of learning React.js technology.',
   fullDescription:

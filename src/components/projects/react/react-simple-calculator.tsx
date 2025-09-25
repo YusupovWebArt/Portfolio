@@ -1,7 +1,7 @@
 import { Project } from '../project-types'
 
 const reactSimpleCalculator: Project = {
-  id: 3900,
+  id: 3850,
   title: 'Simple React calculator App',
   description:
     'Simple pet-project demonstrates fundamental React concepts such as component structure.',
