@@ -1,7 +1,7 @@
 import { Project } from '../project-types'
 
 const frontDeskHelpers: Project = {
-  id: 19500,
+  id: 19000,
   title: 'Front Desk Helpers',
   description:
     'FDH provides skilled remote employees and advanced IT solutions to help businesses grow and thrive.',
@@ -34,6 +34,7 @@ const frontDeskHelpers: Project = {
     'JavaScript ES6',
     'PHP 8+ and MySQL database',
     'Technical optimization',
+    'Core Web Vitals optimization',
     'SEO-optimization',
     'Google Analytics',
     'Schema.org markup implementation',
@@ -41,6 +42,31 @@ const frontDeskHelpers: Project = {
     'Google Maps API',
   ],
   features: [
+    <p>
+      <strong>Custom WordPress Theme Development:</strong> Built from scratch to
+      meet specific business needs, ensuring complete control over design and
+      functionality.
+    </p>,
+    <p>
+      <strong>AI-generated graphics/visuals:</strong> Created unique visuals and
+      images using AI tools, integrating them seamlessly into the design.
+    </p>,
+    <p>
+      <strong>Custom CSS3/JS & PHP: </strong> Designed for unique styling and
+      dynamic functionality, ensuring a highly personalized user experience and
+      smooth performance.
+    </p>,
+    <p>
+      <strong>Responsive Design: </strong> Optimized for all devices, ensuring
+      seamless navigation and user experience across desktops, tablets, and
+      smartphones.
+    </p>,
+    <p>
+      <strong>SEO Optimization: </strong> Built with best SEO practices in mind,
+      including fast load times, clean code, and structure that boosts search
+      engine visibility.
+    </p>,
+
     'Functionality for feedback with clients and applicants',
     'Google Analytics integration',
     'Google Maps integration with directions',

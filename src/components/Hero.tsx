@@ -6,6 +6,7 @@ import {
   SiAdobeacrobatreader,
   SiChatbot,
 } from 'react-icons/si'
+import { LuBrainCircuit } from 'react-icons/lu'
 import ChatModal from './ChatModal'
 
 const Hero = () => {
@@ -70,6 +71,9 @@ const Hero = () => {
             </div>
             <div className="p-3 bg-white/50 dark:bg-slate-800/50 rounded-full backdrop-blur-sm border border-slate-300 dark:border-slate-700">
               <SiGoogleanalytics className="w-8 h-8 text-orange-500 dark:text-lime-400" />
+            </div>
+            <div className="p-3 bg-white/50 dark:bg-slate-800/50 rounded-full backdrop-blur-sm border border-slate-300 dark:border-slate-700">
+              <LuBrainCircuit className="w-8 h-8 text-orange-500 dark:text-lime-400" />
             </div>
           </div>
 
