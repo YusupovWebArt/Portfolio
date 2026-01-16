@@ -103,7 +103,7 @@ const About = () => {
                 and digital marketing strategy.
               </p>
               <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
-                Specialization in AI-Assisted Development involves leveraging
+                Specialization in AI-Augmented Development involves leveraging
                 industry-leading tools such as GitHub Copilot, Cursor, Gemini
                 and Claude to streamline coding, accelerate content creation,
                 and enhance functionality. From automating complex workflows

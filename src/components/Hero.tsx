@@ -15,14 +15,14 @@ const Hero = () => {
   const [isDeleting, setIsDeleting] = useState(false)
   const [chatOpen, setChatOpen] = useState(false)
 
-  const texts = [
-    'Fullstack WordPress Developer',
-    'React/Next.js Developer',
-    'Technical SEO Specialist',
-    'AI-Assisted Developer',
-  ]
-
   useEffect(() => {
+    const texts = [
+      'Fullstack WordPress Developer',
+      'React/Next.js Developer',
+      'Technical SEO Specialist',
+      'AI-Augmented Developer',
+    ]
+
     const timeout = setTimeout(
       () => {
         const current = texts[currentIndex]
@@ -46,7 +46,7 @@ const Hero = () => {
     )
 
     return () => clearTimeout(timeout)
-  }, [currentText, currentIndex, isDeleting, texts])
+  }, [currentText, currentIndex, isDeleting])
 
   return (
     <section
