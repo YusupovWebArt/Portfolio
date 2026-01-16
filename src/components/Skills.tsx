@@ -333,12 +333,12 @@ const Skills = () => {
             return (
               <div
                 key={categoryIndex}
-                className="bg-white dark:bg-slate-700 rounded-3xl overflow-hidden hover:shadow-lg transition-all duration-300"
+                className="bg-white dark:bg-slate-700 rounded-3xl overflow-hidden border border-slate-200 dark:border-transparent hover:shadow-lg hover:border-slate-300 dark:hover:border-transparent transition-all duration-300"
               >
                 {/* Category Header - Clickable */}
                 <button
                   onClick={() => toggleCategory(categoryIndex)}
-                  className="w-full flex items-center justify-between p-8 hover:bg-slate-50 dark:hover:bg-slate-600 transition-colors duration-200"
+                  className="w-full flex items-center justify-between p-8 hover:bg-slate-100 dark:hover:bg-slate-600 transition-colors duration-200"
                 >
                   <div className="flex items-center flex-1">
                     <div
@@ -347,13 +347,13 @@ const Skills = () => {
                       {category.icon}
                     </div>
                     <div className="text-left">
-                      <h3 className="text-2xl font-bold text-slate-900 dark:text-white">
+                      <h3 className="text-2xl font-semibold text-slate-900 dark:text-white">
                         {category.title}
                       </h3>
                     </div>
                   </div>
                   <ChevronDown
-                    className={`w-6 h-6 text-slate-400 dark:text-slate-400 transition-transform duration-300 flex-shrink-0 ml-4 ${
+                    className={`w-6 h-6 text-slate-600 dark:text-slate-400 transition-transform duration-300 flex-shrink-0 ml-4 ${
                       isOpen ? 'transform rotate-180' : ''
                     }`}
                   />

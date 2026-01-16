@@ -31,14 +31,16 @@ const WhyWorkWithMe = () => {
         <div className="max-w-5xl mx-auto">
           {/* Opening Statement */}
           <div className="bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm rounded-3xl p-8 mb-12 border border-slate-200/50 dark:border-slate-700/50 shadow-lg">
-            <div className="text-center">
+            <div className="text-center mb-6">
               <h3 className="text-3xl font-bold text-slate-900 dark:text-white mb-1">
                 T-Shaped Developer Expertise
               </h3>
-              <h4 className="text-small text-slate-900 dark:text-white mb-6">
+              <h4 className="text-small text-slate-900 dark:text-white">
                 Advanced Frontend, WordPress & React/Next.js Development
               </h4>
-              <p className="text-slate-600 dark:text-slate-300 leading-relaxed text-lg max-w-4xl mx-auto mb-8">
+            </div>
+            <div className="text-left">
+              <p className="text-slate-600 dark:text-slate-300 leading-relaxed text-lg mb-8">
                 I&#39;m a T-shaped developer with deep expertise in Frontend and
                 WordPress development, including backend architecture and custom
                 plugin creation, complemented by broad knowledge across the full
@@ -50,10 +52,10 @@ const WhyWorkWithMe = () => {
                 SEO-optimized, and aligned with business goals.
               </p>
 
-              <p className="text-slate-600 dark:text-slate-300 leading-relaxed text-lg max-w-4xl mx-auto">
+              <p className="text-slate-600 dark:text-slate-300 leading-relaxed text-lg">
                 Broad Knowledge Across Stack
               </p>
-              <p className="text-slate-600 dark:text-slate-300 leading-relaxed text-lg max-w-4xl mx-auto mb-8">
+              <p className="text-slate-600 dark:text-slate-300 leading-relaxed text-lg mb-8">
                 Beyond my core expertise, I bring experience in UI/UX, SEO,
                 digital marketing, and DevOps, enabling me to deliver end-to-end
                 solutions that meet both technical and business objectives.
