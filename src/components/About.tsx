@@ -23,7 +23,7 @@ const About = () => {
     },
     {
       icon: <LuBrainCircuit className="w-6 h-6" />,
-      title: 'AI-Augmented Development & Engineering',
+      title: 'AI-Augmented Development',
       description:
         'Building modern web applications by leveraging an advanced AI ecosystem including Cursor, Antigravity, Claude, Visual Studio Code with GitHub Copilot and Windsurf to accelerate development and ensure high-quality, context-aware code through MCP, RAG, skills etc and agentic workflows.',
     },

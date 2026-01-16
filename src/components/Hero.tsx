@@ -10,43 +10,35 @@ import { LuBrainCircuit } from 'react-icons/lu'
 import ChatModal from './ChatModal'
 
 const Hero = () => {
-  const [currentText, setCurrentText] = useState('')
+  const texts = [
+    'Fullstack WordPress Developer',
+    'React/Next.js Developer',
+    'Technical SEO Specialist',
+    'AI-Augmented Developer',
+  ]
+
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [isDeleting, setIsDeleting] = useState(false)
+  const [blurAmount, setBlurAmount] = useState(0)
   const [chatOpen, setChatOpen] = useState(false)
 
   useEffect(() => {
-    const texts = [
-      'Fullstack WordPress Developer',
-      'React/Next.js Developer',
-      'Technical SEO Specialist',
-      'AI-Augmented Developer',
-    ]
+    const interval = setInterval(() => {
+      // Фаза 1: Размываем текущий текст (0 -> 8px)
+      setBlurAmount(8)
 
-    const timeout = setTimeout(
-      () => {
-        const current = texts[currentIndex]
+      setTimeout(() => {
+        // Фаза 2: Меняем текст (новый текст появляется размытым)
+        setCurrentIndex((prev) => (prev + 1) % texts.length)
 
-        if (!isDeleting) {
-          setCurrentText(current.substring(0, currentText.length + 1))
+        // Фаза 3: Новый текст становится четким (8px -> 0)
+        setTimeout(() => {
+          setBlurAmount(0)
+        }, 50)
+      }, 300)
+    }, 3000)
 
-          if (currentText === current) {
-            setTimeout(() => setIsDeleting(true), 500)
-          }
-        } else {
-          setCurrentText(current.substring(0, currentText.length - 1))
-
-          if (currentText === '') {
-            setIsDeleting(false)
-            setCurrentIndex((prev) => (prev + 1) % texts.length)
-          }
-        }
-      },
-      isDeleting ? 50 : 100
-    )
-
-    return () => clearTimeout(timeout)
-  }, [currentText, currentIndex, isDeleting])
+    return () => clearInterval(interval)
+  }, [texts.length])
 
   return (
     <section
@@ -60,9 +52,9 @@ const Hero = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-        <div className="space-y-8">
+        <div className="space-y-4">
           {/* Icons */}
-          <div className="flex justify-center space-x-8 mb-8">
+          <div className="flex justify-center space-x-8 mb-4">
             <div className="p-3 bg-white/50 dark:bg-slate-800/50 rounded-full backdrop-blur-sm border border-slate-300 dark:border-slate-700">
               <SiReact className="w-8 h-8 text-purple-600 dark:text-lime-400" />
             </div>
@@ -84,12 +76,19 @@ const Hero = () => {
             </span>
           </h1>
 
-          <div className="text-2xl sm:text-3xl lg:text-4xl text-slate-600 dark:text-gray-300 h-16 flex items-center justify-center">
-            <span className="font-light">I'm a </span>
-            <span className="font-semibold text-purple-600 dark:text-lime-400 ml-2 min-w-0">
-              {currentText}
-              <span className="animate-pulse">|</span>
-            </span>
+          <div className="text-2xl sm:text-3xl lg:text-4xl text-slate-600 dark:text-gray-300 flex items-center justify-center min-h-[4rem] sm:min-h-[5rem] lg:min-h-[6rem] w-full px-4">
+            <div className="relative w-full mx-auto h-[4rem] sm:h-[5rem] lg:h-[6rem] text-center flex items-center justify-center">
+              <div
+                className="font-semibold text-purple-600 dark:text-lime-400 transition-all duration-300 ease-in-out whitespace-nowrap text-2xl sm:text-3xl lg:text-4xl"
+                style={{
+                  filter: `blur(${blurAmount}px)`,
+                  opacity: blurAmount > 0 ? 0.4 : 1,
+                  width: 'max-content',
+                }}
+              >
+                {texts[currentIndex]}
+              </div>
+            </div>
           </div>
 
           {/* CTA Buttons */}

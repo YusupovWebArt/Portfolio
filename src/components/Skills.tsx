@@ -299,7 +299,7 @@ const Skills = () => {
             T-Shaped Specialist
           </h2>
           <p className="text-lg text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
-            Skills & Expertise A multi-disciplinary skill set focused on
+            Skills & Expertise a multi-disciplinary skill set focused on
             building high-performance web ecosystems. From Full-stack WordPress
             and React/Next.js engineering to AI-augmented workflows, I combine
             clean architecture with SEO-driven strategies to deliver scalable,
