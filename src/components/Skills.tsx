@@ -1,5 +1,16 @@
 import { useState } from 'react'
-import { Layout, Palette, Brain, ChevronDown } from 'lucide-react'
+import {
+  Layout,
+  Palette,
+  Brain,
+  ChevronDown,
+  Target,
+  MessageSquare,
+  ClipboardCheck,
+  TrendingUp,
+  Handshake,
+  Users,
+} from 'lucide-react'
 import { SiReact, SiWordpress, SiGoogleanalytics } from 'react-icons/si'
 
 const Skills = () => {
@@ -119,7 +130,46 @@ const Skills = () => {
         },
       ],
     },
-
+    {
+      title: 'AI Tools & Automation',
+      icon: <Brain className="w-6 h-6" />,
+      color: 'from-violet-400 to-violet-600',
+      description:
+        'Modern AI tools and automation for enhanced development productivity',
+      technologies: [
+        'GitHub Copilot & AI Code Assistance',
+        'Visual Studio Code with AI-extensions',
+        'Claude Claude and Cursor for Development',
+        'AI Content Generation & SEO',
+        'Cursor AI IDE Integration',
+        'AI Image generators for Design',
+        'Figma AI Plugins & Automation',
+        'Automated Code Review Systems',
+        'AI-Powered Testing Tools',
+      ],
+      skillDetails: [
+        {
+          name: 'AI-Assisted Development',
+          description:
+            'My workflow is centered around AI-augmented development practices, utilizing Cursor, Antigravity, Claude, Visual Studio Code with GitHub Copilot and Windsurf to significantly accelerate the product lifecycle while maintaining superior code quality. I actively leverage the MCP, Skills, RAG etc, to provide AI models with deep integration into local tools, databases, and file systems, ensuring full project awareness for complex architectural tasks. Through Context Engineering and the strategic use of .cursorrules, I enforce strict coding standards and maintain project consistency across every file. By implementing Agentic workflows for automated refactoring and unit testing, I deliver scalable, maintainable solutions that minimize technical debt and allow me to focus on high-impact business logic and rapid innovation.',
+        },
+        {
+          name: 'Prompt/Context Engineering',
+          description:
+            'Crafting effective prompts for AI tools, understanding model limitations, and integrating AI workflows into development processes efficiently.',
+        },
+        {
+          name: 'Design & Content AI',
+          description:
+            'Using Midjourney, DALL-E, and Figma AI plugins for rapid prototyping, asset generation, and creative ideation in design workflows.',
+        },
+        {
+          name: 'Automated Testing & QA',
+          description:
+            'Implementing AI-powered testing tools for automated bug detection, performance optimization, and code quality assurance.',
+        },
+      ],
+    },
     {
       title: 'SEO & Performance',
       icon: <SiGoogleanalytics className="w-6 h-6" />,
@@ -235,46 +285,6 @@ const Skills = () => {
         },
       ],
     },
-    {
-      title: 'AI Tools & Automation',
-      icon: <Brain className="w-6 h-6" />,
-      color: 'from-violet-400 to-violet-600',
-      description:
-        'Modern AI tools and automation for enhanced development productivity',
-      technologies: [
-        'GitHub Copilot & AI Code Assistance',
-        'Visual Studio Code with AI-extensions',
-        'Claude Claude and Cursor for Development',
-        'AI Content Generation & SEO',
-        'Cursor AI IDE Integration',
-        'AI Image generators for Design',
-        'Figma AI Plugins & Automation',
-        'Automated Code Review Systems',
-        'AI-Powered Testing Tools',
-      ],
-      skillDetails: [
-        {
-          name: 'AI-Assisted Development',
-          description:
-            'My workflow is centered around AI-augmented development practices, utilizing Cursor, Antigravity, Claude, Visual Studio Code with GitHub Copilot and Windsurf to significantly accelerate the product lifecycle while maintaining superior code quality. I actively leverage the MCP, Skills, RAG etc, to provide AI models with deep integration into local tools, databases, and file systems, ensuring full project awareness for complex architectural tasks. Through Context Engineering and the strategic use of .cursorrules, I enforce strict coding standards and maintain project consistency across every file. By implementing Agentic workflows for automated refactoring and unit testing, I deliver scalable, maintainable solutions that minimize technical debt and allow me to focus on high-impact business logic and rapid innovation.',
-        },
-        {
-          name: 'Prompt/Context Engineering',
-          description:
-            'Crafting effective prompts for AI tools, understanding model limitations, and integrating AI workflows into development processes efficiently.',
-        },
-        {
-          name: 'Design & Content AI',
-          description:
-            'Using Midjourney, DALL-E, and Figma AI plugins for rapid prototyping, asset generation, and creative ideation in design workflows.',
-        },
-        {
-          name: 'Automated Testing & QA',
-          description:
-            'Implementing AI-powered testing tools for automated bug detection, performance optimization, and code quality assurance.',
-        },
-      ],
-    },
   ]
 
   // const tools = [
@@ -337,14 +347,9 @@ const Skills = () => {
                       {category.icon}
                     </div>
                     <div className="text-left">
-                      <h3
-                        className={`text-2xl font-bold bg-gradient-to-r ${category.color} bg-clip-text text-transparent`}
-                      >
+                      <h3 className="text-2xl font-bold text-slate-900 dark:text-white">
                         {category.title}
                       </h3>
-                      <p className="text-slate-600 dark:text-slate-300 text-sm">
-                        {category.description}
-                      </p>
                     </div>
                   </div>
                   <ChevronDown
@@ -357,6 +362,9 @@ const Skills = () => {
                 {/* Category Content - Accordion */}
                 {isOpen && (
                   <div className="px-8 pb-8">
+                    <p className="text-slate-600 dark:text-slate-300 mb-6">
+                      {category.description}
+                    </p>
                     <div className="grid lg:grid-cols-2 gap-8">
                       {/* Technologies & Knowledge */}
                       <div>
@@ -478,7 +486,7 @@ const Skills = () => {
                 name: 'Problem Solving',
                 description:
                   'Analytical thinking and creative solutions for complex technical challenges',
-                icon: '🧩',
+                icon: <Target className="w-6 h-6" />,
                 gradient: 'from-purple-500 to-indigo-600',
                 bgGradient:
                   'from-purple-50 to-indigo-50 dark:from-purple-900/20 dark:to-indigo-900/20',
@@ -487,7 +495,7 @@ const Skills = () => {
                 name: 'Communication',
                 description:
                   'Clear technical communication with clients, teams, and stakeholders',
-                icon: '💬',
+                icon: <MessageSquare className="w-6 h-6" />,
                 gradient: 'from-blue-500 to-cyan-600',
                 bgGradient:
                   'from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20',
@@ -496,7 +504,7 @@ const Skills = () => {
                 name: 'Project Management',
                 description:
                   'Agile methodologies, timeline management, and deliverable coordination',
-                icon: '📋',
+                icon: <ClipboardCheck className="w-6 h-6" />,
                 gradient: 'from-green-500 to-emerald-600',
                 bgGradient:
                   'from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20',
@@ -505,7 +513,7 @@ const Skills = () => {
                 name: 'Adaptability',
                 description:
                   'Quick learning of new technologies and adapting to changing requirements',
-                icon: '🔄',
+                icon: <TrendingUp className="w-6 h-6" />,
                 gradient: 'from-orange-500 to-red-600',
                 bgGradient:
                   'from-orange-50 to-red-50 dark:from-orange-900/20 dark:to-red-900/20',
@@ -514,7 +522,7 @@ const Skills = () => {
                 name: 'Client Relations',
                 description:
                   'Building trust, managing expectations, and delivering exceptional service',
-                icon: '🤝',
+                icon: <Handshake className="w-6 h-6" />,
                 gradient: 'from-pink-500 to-rose-600',
                 bgGradient:
                   'from-pink-50 to-rose-50 dark:from-pink-900/20 dark:to-rose-900/20',
@@ -523,7 +531,7 @@ const Skills = () => {
                 name: 'Team Collaboration',
                 description:
                   'Cross-functional teamwork, mentoring, and knowledge sharing',
-                icon: '👥',
+                icon: <Users className="w-6 h-6" />,
                 gradient: 'from-teal-500 to-cyan-600',
                 bgGradient:
                   'from-teal-50 to-cyan-50 dark:from-teal-900/20 dark:to-cyan-900/20',
@@ -539,7 +547,7 @@ const Skills = () => {
 
                 {/* Icon container */}
                 <div
-                  className={`relative w-16 h-16 mx-auto mb-4 bg-gradient-to-br ${skill.gradient} rounded-2xl flex items-center justify-center text-2xl shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-all duration-300`}
+                  className={`relative w-16 h-16 mx-auto mb-4 bg-gradient-to-br ${skill.gradient} rounded-2xl flex items-center justify-center text-white shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-all duration-300`}
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent rounded-2xl"></div>
                   {skill.icon}
