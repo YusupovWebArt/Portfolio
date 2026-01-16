@@ -248,7 +248,7 @@ const Skills = () => {
         {
           name: 'AI-Assisted Development',
           description:
-            'Leveraging GitHub Copilot, Cursor, and ChatGPT for faster code generation, debugging, and learning new technologies while maintaining code quality.',
+            'My workflow is centered around AI-augmented development practices, utilizing Cursor, Antigravity, Claude, Visual Studio Code with GitHub Copilot and Windsurf to significantly accelerate the product lifecycle while maintaining superior code quality. I actively leverage the MCP, Skills, RAG etc, to provide AI models with deep integration into local tools, databases, and file systems, ensuring full project awareness for complex architectural tasks. Through Context Engineering and the strategic use of .cursorrules, I enforce strict coding standards and maintain project consistency across every file. By implementing Agentic workflows for automated refactoring and unit testing, I deliver scalable, maintainable solutions that minimize technical debt and allow me to focus on high-impact business logic and rapid innovation.',
         },
         {
           name: 'Prompt/Context Engineering',
@@ -296,12 +296,14 @@ const Skills = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white mb-6">
-            Skills & Expertise
+            T-Shaped Specialist
           </h2>
           <p className="text-lg text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
-            A comprehensive skill set spanning modern web development, content
-            management, SEO optimization, emerging Web3 technologies, design
-            principles, and cutting-edge AI tools.
+            Skills & Expertise A multi-disciplinary skill set focused on
+            building high-performance web ecosystems. From Full-stack WordPress
+            and React/Next.js engineering to AI-augmented workflows, I combine
+            clean architecture with SEO-driven strategies to deliver scalable,
+            future-proof digital solutions.
           </p>
         </div>
 

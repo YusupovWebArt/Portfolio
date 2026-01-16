@@ -25,7 +25,7 @@ const About = () => {
       icon: <LuBrainCircuit className="w-6 h-6" />,
       title: 'AI-Augmented Development & Engineering',
       description:
-        'My workflow is centered around AI-augmented development practices, utilizing Cursor, Antigravity, Claude, Visual Studio Code with GitHub Copilot and Windsurf to significantly accelerate the product lifecycle while maintaining superior code quality. I actively leverage the MCP, Skills, RAG etc, to provide AI models with deep integration into local tools, databases, and file systems, ensuring full project awareness for complex architectural tasks. Through Context Engineering and the strategic use of .cursorrules, I enforce strict coding standards and maintain project consistency across every file. By implementing Agentic workflows for automated refactoring and unit testing, I deliver scalable, maintainable solutions that minimize technical debt and allow me to focus on high-impact business logic and rapid innovation.',
+        'Building modern web applications by leveraging an advanced AI ecosystem including Cursor, Antigravity, Claude, Visual Studio Code with GitHub Copilot and Windsurf to accelerate development and ensure high-quality, context-aware code through MCP, RAG, skills etc and agentic workflows.',
     },
   ]
 
@@ -104,16 +104,19 @@ const About = () => {
                 and digital marketing strategy.
               </p>
               <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
-                Specialization in AI-Augmented Development involves leveraging
-                industry-leading tools such as GitHub Copilot, Cursor, Gemini
-                and Claude to streamline coding, accelerate content creation,
-                and enhance functionality. From automating complex workflows
-                with ChatGPT to rapid UI prototyping using V0.dev, the seamless
-                integration of AI achieves faster, smarter, and more impactful
-                results. Furthermore, advanced proficiency in Prompt and Context
-                engineering allows for maximizing the potential of Large
-                Language Models (LLMs), ensuring highly tailored and
-                high-quality solutions for every project.
+                My specialization in AI-augmented development leverages a
+                cutting-edge toolchain including Cursor, Antigravity, Claude,
+                Visual Studio Code with GitHub Copilot and Windsurf - to
+                streamline the entire product lifecycle while ensuring superior
+                code quality. By integrating MCP (Model Context Protocol), RAG,
+                Skills etc, I provide AI models with deep project awareness
+                across local databases and file systems for complex
+                architectural tasks. I enforce strict coding standards through
+                Context Engineering and .cursorrules, while utilizing Agentic
+                workflows and v0.dev for rapid prototyping and automated
+                refactoring. This seamless integration of LLMs, combined with
+                expert Prompt Engineering, minimizes technical debt and allows
+                for a focus on high-impact business logic and rapid innovation.
               </p>
             </div>
 
@@ -135,26 +138,6 @@ const About = () => {
                   Years Experience
                 </div>
               </div>
-            </div>
-
-            {/* Highlights Grid */}
-            <div className="grid sm:grid-cols-2 gap-6">
-              {highlights.map((item, index) => (
-                <div
-                  key={index}
-                  className="p-6 bg-white dark:bg-slate-700 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 border border-slate-200 dark:border-slate-600 hover:border-lime-200 dark:hover:border-purple-200 group"
-                >
-                  <div className="w-12 h-12 bg-gradient-to-br from-purple-100 to-blue-100 dark:from-lime-100 dark:to-lime-200 rounded-xl flex items-center justify-center text-purple-600 dark:text-lime-600 mb-4 group-hover:scale-110 transition-transform duration-200">
-                    {item.icon}
-                  </div>
-                  <h3 className="font-semibold text-slate-900 dark:text-white mb-2">
-                    {item.title}
-                  </h3>
-                  <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
-                    {item.description}
-                  </p>
-                </div>
-              ))}
             </div>
           </div>
 
@@ -197,6 +180,26 @@ const About = () => {
             <div className="absolute top-1/2 -right-6 w-2 h-2 bg-blue-500 dark:bg-lime-400 rounded-full animate-pulse delay-1000"></div>
             <div className="absolute bottom-1/4 -left-4 w-4 h-4 bg-purple-400 dark:bg-lime-600 rounded-full animate-pulse delay-500"></div>
           </div>
+        </div>
+
+        {/* Highlights Grid - Full Width */}
+        <div className="mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {highlights.map((item, index) => (
+            <div
+              key={index}
+              className="p-6 bg-white dark:bg-slate-700 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 border border-slate-200 dark:border-slate-600 hover:border-lime-200 dark:hover:border-purple-200 group"
+            >
+              <div className="w-12 h-12 bg-gradient-to-br from-purple-100 to-blue-100 dark:from-lime-100 dark:to-lime-200 rounded-xl flex items-center justify-center text-purple-600 dark:text-lime-600 mb-4 group-hover:scale-110 transition-transform duration-200">
+                {item.icon}
+              </div>
+              <h3 className="font-semibold text-slate-900 dark:text-white mb-2">
+                {item.title}
+              </h3>
+              <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                {item.description}
+              </p>
+            </div>
+          ))}
         </div>
 
         {/* My Journey - Education and Work Experience */}
