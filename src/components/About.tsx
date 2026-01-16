@@ -94,27 +94,25 @@ const About = () => {
                 About Me
               </h2>
               <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
-                I&#39;m a Fullstack WordPress Developer and React/Next.js
-                Engineer focused on building scalable, high-performance websites
-                that align with business goals. I combine clean code with SEO
-                expertise to deliver functional, results-driven solutions. As a
-                T-shaped specialist, I bring deep knowledge of web development
-                along with broad skills in UI/UX, DevOps, SEO, and digital
-                marketing strategy.
+                As a Fullstack WordPress Developer and React/Next.js Engineer,
+                the primary focus is on building scalable, high-performance
+                websites that align with business goals. Combining clean code
+                with SEO expertise ensures the delivery of functional,
+                results-driven solutions. This T-shaped approach integrates deep
+                web development expertise with broad skills in UI/UX, DevOps,
+                and digital marketing strategy.
               </p>
               <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
-                I also specialize in <strong>AI-Assisted Development</strong>,
-                leveraging modern AI-powered tools to streamline development,
-                accelerate content creation, and enhance website functionality.
-                From generating code snippets and automating workflows to
-                optimizing SEO strategies and delivering personalized user
-                experiences, I seamlessly integrate AI into the web development
-                process to achieve faster, smarter, and more impactful results.
-                Additionally, I am experienced in
-                <strong> Prompt engineering</strong> and
-                <strong> Context engineering</strong>, enabling me to maximize
-                the effectiveness of AI tools and deliver highly tailored
-                solutions.
+                Specialization in AI-Assisted Development involves leveraging
+                industry-leading tools such as GitHub Copilot, Cursor, Gemini
+                and Claude to streamline coding, accelerate content creation,
+                and enhance functionality. From automating complex workflows
+                with ChatGPT to rapid UI prototyping using V0.dev, the seamless
+                integration of AI achieves faster, smarter, and more impactful
+                results. Furthermore, advanced proficiency in Prompt and Context
+                engineering allows for maximizing the potential of Large
+                Language Models (LLMs), ensuring highly tailored and
+                high-quality solutions for every project.
               </p>
             </div>
 
