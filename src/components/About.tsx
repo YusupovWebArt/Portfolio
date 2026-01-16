@@ -5,36 +5,37 @@ const About = () => {
   const highlights = [
     {
       icon: <SiWordpress className="w-6 h-6" />,
-      title: 'WordPress development',
+      title: 'WordPress Development',
       description:
-        'Full-stack WordPress development with custom themes and plugins',
+        'Custom Full-stack solutions, high-performance themes, and secure plugin architecture tailored for scalability.',
     },
     {
       icon: <SiReact className="w-6 h-6" />,
       title: 'App Development',
-      description: 'Expert in React/Next.js, TypeScript, and JavaScript',
+      description:
+        'Engineering robust React/Next.js applications with TypeScript and Tailwind CSS for high-speed performance and clean UX.',
     },
     {
       icon: <SiGoogleanalytics className="w-6 h-6" />,
       title: 'SEO Optimization',
-      description: 'Technical SEO implementation and performance optimization',
+      description:
+        'Technical SEO implementation and Core Web Vitals optimization to ensure top-tier search visibility.',
     },
     {
       icon: <LuBrainCircuit className="w-6 h-6" />,
-      title: 'Agentic AI development',
+      title: 'AI-Augmented Development & Engineering',
       description:
-        'Prompt/Context engineering. Explore and integrate AI tools into WordPress and React projects development workflows.',
+        'My workflow is centered around AI-augmented development practices, utilizing Cursor, Antigravity, Claude, Visual Studio Code with GitHub Copilot and Windsurf to significantly accelerate the product lifecycle while maintaining superior code quality. I actively leverage the MCP, Skills, RAG etc, to provide AI models with deep integration into local tools, databases, and file systems, ensuring full project awareness for complex architectural tasks. Through Context Engineering and the strategic use of .cursorrules, I enforce strict coding standards and maintain project consistency across every file. By implementing Agentic workflows for automated refactoring and unit testing, I deliver scalable, maintainable solutions that minimize technical debt and allow me to focus on high-impact business logic and rapid innovation.',
     },
   ]
 
   const education = [
     {
       year: '2024-Present',
-      title: 'REACT/Next.js/Javascript | AI-tools | TMA | Web3',
-      institution:
-        'Full-stack App Development, AI-tools, Blockchain technologies',
+      title: 'Advanced Web Engineering & Emerging Tech',
+      institution: 'Focus on Scalable Ecosystems and AI Integration',
       description:
-        'In parallel with my main work and specialization, I study and practice App Development with in-depth study of React/Next.js and Javascript. AI-tools. TMA development.',
+        'Deepening expertise in the React/Next.js ecosystem with a focus on high-performance architecture. Actively developing Telegram Mini Apps (TMA) and exploring Web3/Blockchain integrations. My current focus is bridging the gap between traditional full-stack development and autonomous AI-driven systems.',
     },
     {
       year: '2016',
@@ -60,7 +61,7 @@ const About = () => {
       company: 'Frontdeskhelpers',
       companyUrl: 'https://frontdeskhelpers.com/',
       description:
-        'WordPress/Wix developer/SEO. Working remote full time work according to methodology Agile. US English and Spanish speaking customers. (USA, ES).',
+        'WordPress/Wix developer/SEO. Working remote full time work according to methodology Agile. US English and Spanish speaking customers. (USA, Spain).',
     },
     {
       year: '2020-2021',
