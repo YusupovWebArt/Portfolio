@@ -23,19 +23,16 @@ const Hero = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      // Фаза 1: Размываем текущий текст (0 -> 8px)
       setBlurAmount(8)
 
       setTimeout(() => {
-        // Фаза 2: Меняем текст (новый текст появляется размытым)
         setCurrentIndex((prev) => (prev + 1) % texts.length)
 
-        // Фаза 3: Новый текст становится четким (8px -> 0)
         setTimeout(() => {
           setBlurAmount(0)
         }, 50)
       }, 300)
-    }, 3000)
+    }, 1400)
 
     return () => clearInterval(interval)
   }, [texts.length])

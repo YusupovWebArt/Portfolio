@@ -1,7 +1,15 @@
-import { Layout, Palette, Brain } from 'lucide-react'
+import { useState } from 'react'
+import { Layout, Palette, Brain, ChevronDown } from 'lucide-react'
 import { SiReact, SiWordpress, SiGoogleanalytics } from 'react-icons/si'
 
 const Skills = () => {
+  const [openCategories, setOpenCategories] = useState<number[]>([])
+
+  const toggleCategory = (index: number) => {
+    setOpenCategories((prev) =>
+      prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
+    )
+  }
   const skillCategories = [
     {
       title: 'WordPress Development',
@@ -308,80 +316,99 @@ const Skills = () => {
         </div>
 
         {/* Detailed Skills Categories */}
-        <div className="space-y-12">
-          {skillCategories.map((category, categoryIndex) => (
-            <div
-              key={categoryIndex}
-              className="bg-white dark:bg-slate-700 rounded-3xl p-8 hover:shadow-lg transition-all duration-300"
-            >
-              {/* Category Header */}
-              <div className="flex items-center mb-6">
-                <div
-                  className={`w-12 h-12 min-w-[3rem] min-h-[3rem]  bg-gradient-to-r ${category.color} rounded-xl flex items-center justify-center text-white mr-4`}
+        <div className="space-y-4">
+          {skillCategories.map((category, categoryIndex) => {
+            const isOpen = openCategories.includes(categoryIndex)
+
+            return (
+              <div
+                key={categoryIndex}
+                className="bg-white dark:bg-slate-700 rounded-3xl overflow-hidden hover:shadow-lg transition-all duration-300"
+              >
+                {/* Category Header - Clickable */}
+                <button
+                  onClick={() => toggleCategory(categoryIndex)}
+                  className="w-full flex items-center justify-between p-8 hover:bg-slate-50 dark:hover:bg-slate-600 transition-colors duration-200"
                 >
-                  {category.icon}
-                </div>
-                <div>
-                  <h3
-                    className={`text-2xl font-bold bg-gradient-to-r ${category.color} bg-clip-text text-transparent`}
-                  >
-                    {category.title}
-                  </h3>
-                  <p className="text-slate-600 dark:text-slate-300 text-sm">
-                    {category.description}
-                  </p>
-                </div>
-              </div>
-
-              <div className="grid lg:grid-cols-2 gap-8">
-                {/* Technologies & Knowledge */}
-                <div>
-                  <h4 className="font-semibold text-slate-900 dark:text-white mb-4">
-                    Technologies & Knowledge
-                  </h4>
-                  <div className="grid sm:grid-cols-2 gap-3">
-                    {category.technologies.map((tech, techIndex) => (
-                      <div
-                        key={techIndex}
-                        className="flex items-center space-x-2 p-3 bg-slate-50 dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600 hover:border-lime-200 dark:hover:border-purple-200 transition-colors"
+                  <div className="flex items-center flex-1">
+                    <div
+                      className={`w-12 h-12 min-w-[3rem] min-h-[3rem] bg-gradient-to-r ${category.color} rounded-xl flex items-center justify-center text-white mr-4`}
+                    >
+                      {category.icon}
+                    </div>
+                    <div className="text-left">
+                      <h3
+                        className={`text-2xl font-bold bg-gradient-to-r ${category.color} bg-clip-text text-transparent`}
                       >
-                        <div
-                          className={`w-2 h-2 rounded-full bg-gradient-to-r ${category.color}`}
-                        ></div>
-                        <span className="text-slate-700 dark:text-slate-300 text-sm font-medium">
-                          {tech}
-                        </span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Skill Details */}
-                <div>
-                  <h4 className="font-semibold text-slate-900 dark:text-white mb-4">
-                    Key Skills & Expertise
-                  </h4>
-                  <div className="bg-slate-50 dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-600 hover:border-lime-200 dark:hover:border-purple-200 transition-colors">
-                    <div className="space-y-6">
-                      {category.skillDetails.map((skill, skillIndex) => (
-                        <div
-                          key={skillIndex}
-                          className="border-b border-slate-200 dark:border-slate-700 last:border-b-0 pb-4 last:pb-0"
-                        >
-                          <h5 className="font-semibold text-slate-900 dark:text-white mb-2">
-                            {skill.name}
-                          </h5>
-                          <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
-                            {skill.description}
-                          </p>
-                        </div>
-                      ))}
+                        {category.title}
+                      </h3>
+                      <p className="text-slate-600 dark:text-slate-300 text-sm">
+                        {category.description}
+                      </p>
                     </div>
                   </div>
-                </div>
+                  <ChevronDown
+                    className={`w-6 h-6 text-slate-400 dark:text-slate-400 transition-transform duration-300 flex-shrink-0 ml-4 ${
+                      isOpen ? 'transform rotate-180' : ''
+                    }`}
+                  />
+                </button>
+
+                {/* Category Content - Accordion */}
+                {isOpen && (
+                  <div className="px-8 pb-8">
+                    <div className="grid lg:grid-cols-2 gap-8">
+                      {/* Technologies & Knowledge */}
+                      <div>
+                        <h4 className="font-semibold text-slate-900 dark:text-white mb-4">
+                          Technologies & Knowledge
+                        </h4>
+                        <div className="grid sm:grid-cols-2 gap-3">
+                          {category.technologies.map((tech, techIndex) => (
+                            <div
+                              key={techIndex}
+                              className="flex items-center space-x-2 p-3 bg-slate-50 dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600 hover:border-lime-200 dark:hover:border-purple-200 transition-colors"
+                            >
+                              <div
+                                className={`w-2 h-2 rounded-full bg-gradient-to-r ${category.color}`}
+                              ></div>
+                              <span className="text-slate-700 dark:text-slate-300 text-sm font-medium">
+                                {tech}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Skill Details */}
+                      <div>
+                        <h4 className="font-semibold text-slate-900 dark:text-white mb-4">
+                          Key Skills & Expertise
+                        </h4>
+                        <div className="bg-slate-50 dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-600 hover:border-lime-200 dark:hover:border-purple-200 transition-colors">
+                          <div className="space-y-6">
+                            {category.skillDetails.map((skill, skillIndex) => (
+                              <div
+                                key={skillIndex}
+                                className="border-b border-slate-200 dark:border-slate-700 last:border-b-0 pb-4 last:pb-0"
+                              >
+                                <h5 className="font-semibold text-slate-900 dark:text-white mb-2">
+                                  {skill.name}
+                                </h5>
+                                <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                                  {skill.description}
+                                </p>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                )}
               </div>
-            </div>
-          ))}
+            )
+          })}
         </div>
 
         {/* Work Organization Tools */}
