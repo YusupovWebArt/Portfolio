@@ -1,85 +1,85 @@
-import { SiReact, SiWordpress, SiGoogleanalytics } from 'react-icons/si'
-import { LuBrainCircuit } from 'react-icons/lu'
+import { SiReact, SiWordpress, SiGoogleanalytics } from "react-icons/si";
+import { LuBrainCircuit } from "react-icons/lu";
 
 const About = () => {
   const highlights = [
     {
       icon: <SiWordpress className="w-6 h-6" />,
-      title: 'WordPress Development',
+      title: "WordPress Development",
       description:
-        'Custom Full-stack solutions, high-performance themes, and secure plugin architecture tailored for scalability.',
+        "Delivering custom full-stack solutions by architecting high-performance themes and secure plugin infrastructures from the ground up. By combining traditional PHP expertise with an AI-augmented workflow, I build scalable, enterprise-grade WordPress ecosystems that are optimized for speed, security, and seamless content management.",
     },
     {
       icon: <SiReact className="w-6 h-6" />,
-      title: 'App Development',
+      title: "App Development",
       description:
-        'Engineering robust React/Next.js applications with TypeScript and Tailwind CSS for high-speed performance and clean UX.',
+        "Engineering robust, production-ready React/Next.js applications from the ground up using TypeScript and Tailwind CSS for maximum type-safety and high-speed performance. By merging foundational engineering principles with an AI-augmented workflow, I deliver scalable full-stack solutions with clean UX, ensuring rapid deployment without compromising code integrity.",
     },
     {
       icon: <SiGoogleanalytics className="w-6 h-6" />,
-      title: 'SEO Optimization',
+      title: "SEO Optimization",
       description:
-        'Technical SEO implementation and Core Web Vitals optimization to ensure top-tier search visibility.',
+        "Maximizing search visibility through advanced technical SEO and comprehensive Core Web Vitals optimization to ensure lightning-fast load speeds and top-tier rankings. By implementing semantic HTML, schema markup, and high-performance asset delivery, I bridge the gap between clean engineering and effective digital marketing.",
     },
     {
       icon: <LuBrainCircuit className="w-6 h-6" />,
-      title: 'AI-Augmented Development',
+      title: "AI-Augmented Development",
       description:
-        'Building modern web applications by leveraging an advanced AI ecosystem including Cursor, Antigravity, Claude, Visual Studio Code with GitHub Copilot and Windsurf to accelerate development and ensure high-quality, context-aware code through MCP, RAG, skills etc and agentic workflows.',
+        "Building modern web applications by leveraging an advanced AI ecosystem including Cursor, Antigravity, Claude, Visual Studio Code with GitHub Copilot and Windsurf to accelerate development and ensure high-quality, context-aware code through MCP, RAG, skills etc and agentic workflows.",
     },
-  ]
+  ];
 
   const education = [
     {
-      year: '2024-Present',
-      title: 'Advanced Web Engineering & Emerging Tech',
-      institution: 'Focus on Scalable Ecosystems and AI Integration',
+      year: "2024-Present",
+      title: "Advanced Web Engineering & Emerging Tech",
+      institution: "Focus on Scalable Ecosystems and AI Integration",
       description:
-        'Deepening expertise in the React/Next.js ecosystem with a focus on high-performance architecture. Actively developing Telegram Mini Apps (TMA) and exploring Web3/Blockchain integrations. My current focus is bridging the gap between traditional full-stack development and autonomous AI-driven systems.',
+        "Deepening expertise in the React/Next.js ecosystem with a focus on high-performance architecture. Actively developing Telegram Mini Apps (TMA) and exploring Web3/Blockchain integrations. My current focus is bridging the gap between traditional full-stack development and autonomous AI-driven systems.",
     },
     {
-      year: '2016',
-      title: 'Specialized courses and practical classes',
+      year: "2016",
+      title: "Specialized courses and practical classes",
       institution:
-        'W3schools, Coursera, Udemy, Codecademy, SoloLearn, Programminghub, YouTube',
+        "W3schools, Coursera, Udemy, Codecademy, SoloLearn, Programminghub, YouTube",
       description:
-        'NEVER STOP LEARNING! (lifelong learning). Constantly learning, improving my knowledge and skills every day in my profession. Also, I read a lot and watch video courses with up-to-date information from related areas of interest to me. In my daily work, also use resources such as ChatGPT, Claude Code and others AI-tools. W3C, MDN, CODEX WordPress, Stack Overflow, GitHub, CodePen, Udemy, Google, YouTube.',
+        "NEVER STOP LEARNING! (lifelong learning). Constantly learning, improving my knowledge and skills every day in my profession. Also, I read a lot and watch video courses with up-to-date information from related areas of interest to me. In my daily work, also use resources such as ChatGPT, Claude Code and others AI-tools. W3C, MDN, CODEX WordPress, Stack Overflow, GitHub, CodePen, Udemy, Google, YouTube.",
     },
     {
-      year: '2005-2010',
-      title: 'National Technical University (Ukraine)',
-      institution: 'VNTU - Vinnitsa National Technical University (Ukraine)',
+      year: "2005-2010",
+      title: "National Technical University (Ukraine)",
+      institution: "VNTU - Vinnitsa National Technical University (Ukraine)",
       description:
-        'Administrative management in the field of information security with limited access in companies and in production. System Administrator.',
+        "Administrative management in the field of information security with limited access in companies and in production. System Administrator.",
     },
-  ]
+  ];
 
   const workExperience = [
     {
-      year: '2021-Present',
-      title: 'Front-end Developer (Remote Full-time/Part-time)',
-      company: 'Frontdeskhelpers',
-      companyUrl: 'https://frontdeskhelpers.com/',
+      year: "2021-Present",
+      title: "Front-end Developer (Remote Full-time/Part-time)",
+      company: "Frontdeskhelpers",
+      companyUrl: "https://frontdeskhelpers.com/",
       description:
-        'WordPress/Wix developer/SEO. Working remote full time work according to methodology Agile. US English and Spanish speaking customers. (USA, Spain).',
+        "WordPress/Wix developer/SEO. Working remote full time work according to methodology Agile. US English and Spanish speaking customers. (USA, Spain).",
     },
     {
-      year: '2020-2021',
-      title: 'Front-end Developer (Remote Part-time)',
-      company: 'Agenturro',
-      companyUrl: 'https://www.agenturro.co/',
+      year: "2020-2021",
+      title: "Front-end Developer (Remote Part-time)",
+      company: "Agenturro",
+      companyUrl: "https://www.agenturro.co/",
       description:
-        'HTML/CSS/JS - developer. Working with CMS - WordPress, Shopify. SEO-optimization. German customers.',
+        "HTML/CSS/JS - developer. Working with CMS - WordPress, Shopify. SEO-optimization. German customers.",
     },
     {
-      year: '2017-2024',
-      title: 'Freelance and Personal projects',
-      company: 'Web-developer (WordPress, Shopify, WIX), SEO-specialist.',
-      companyUrl: 'https://freelancehunt.com/freelancer/arsly.html',
+      year: "2017-2024",
+      title: "Freelance and Personal projects",
+      company: "Web-developer (WordPress, Shopify, WIX), SEO-specialist.",
+      companyUrl: "https://freelancehunt.com/freelancer/arsly.html",
       description:
-        'I worked remotely as a freelancer on Ukrainian and American freelance platforms - Freelancehunt, Upwork, Freelancer, etc. Part-time as a remote worker for a few companies that are focused on European clients. Personal projects based on affiliate marketing, dropshipping and POD on Etsy.',
+        "I worked remotely as a freelancer on Ukrainian and American freelance platforms - Freelancehunt, Upwork, Freelancer, etc. Part-time as a remote worker for a few companies that are focused on European clients. Personal projects based on affiliate marketing, dropshipping and POD on Etsy.",
     },
-  ]
+  ];
 
   return (
     <section
@@ -222,9 +222,9 @@ const About = () => {
                     className="relative flex items-start mb-8 last:mb-0"
                   >
                     <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-blue-500 dark:from-lime-500 dark:to-lime-600 rounded-full flex items-center justify-center text-white font-bold text-sm shadow-lg relative z-10">
-                      {item.year.includes('Present')
-                        ? 'Now'
-                        : item.year.split('-')[0]}
+                      {item.year.includes("Present")
+                        ? "Now"
+                        : item.year.split("-")[0]}
                     </div>
                     <div className="ml-6 flex-1">
                       <div className="bg-white dark:bg-slate-700 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-600 hover:shadow-md transition-shadow">
@@ -261,9 +261,9 @@ const About = () => {
                     className="relative flex items-start mb-8 last:mb-0"
                   >
                     <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-teal-500 dark:from-lime-500 dark:to-lime-600 rounded-full flex items-center justify-center text-white font-bold text-xs shadow-lg relative z-10">
-                      {item.year.includes('Present')
-                        ? 'Now'
-                        : item.year.split('-')[0]}
+                      {item.year.includes("Present")
+                        ? "Now"
+                        : item.year.split("-")[0]}
                     </div>
                     <div className="ml-6 flex-1">
                       <div className="bg-white dark:bg-slate-700 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-600 hover:shadow-md transition-shadow">
@@ -294,7 +294,7 @@ const About = () => {
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default About
+export default About;
