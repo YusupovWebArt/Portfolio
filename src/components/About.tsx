@@ -35,7 +35,7 @@ const About = () => {
       title: "Advanced Web Engineering & Emerging Tech",
       institution: "Focus on Scalable Ecosystems and AI Integration",
       description:
-        "Deepening expertise in the React/Next.js ecosystem with a focus on high-performance architecture. Actively developing Telegram Mini Apps (TMA) and exploring Web3/Blockchain integrations. My current focus is bridging the gap between traditional full-stack development and autonomous AI-driven systems.",
+        "I am continuously evolving my Full-stack WordPress capabilities by actively researching advanced backend architectures and mastering the engineering of custom plugins from scratch. My professional growth is driven by deepening my technical mastery within the React/Next.js ecosystem, where I am constantly exploring high-performance Server-Side Rendered (SSR) patterns and Headless CMS structures. Furthermore, I am dedicated to staying at the forefront of search evolution by studying and implementing cutting-edge SEO and GEO (Generative Engine Optimization) strategies, ensuring digital products excel in the era of AI-driven search. To achieve peak efficiency, I regularly integrate and test emerging AI tools for end-to-end application development, refactoring, and automated testing. Within the WordPress ecosystem, I experiment with AI-driven workflows to streamline layout architecture and UI/UX design, accelerating development cycles while continuously refining my deep, low-level understanding of WordPress core and backend engineering. Additionally, I am actively developing expertise in Telegram Mini Apps (TMA).",
     },
     {
       year: "2016",
@@ -61,7 +61,7 @@ const About = () => {
       company: "Frontdeskhelpers",
       companyUrl: "https://frontdeskhelpers.com/",
       description:
-        "WordPress/Wix developer/SEO. Working remote full time work according to methodology Agile. US English and Spanish speaking customers. (USA, Spain).",
+        "Custom WordPress Development: Engineered high-performance, bespoke WordPress themes and websites from scratch, eliminating reliance on bloated templates to ensure superior speed and scalability. End-to-End Website Lifecycle: Managed the full development cycle, including initial site creation from scratch, long-term technical maintenance, and proactive support for international clients. Strategic Website Redesign: Led comprehensive redesign initiatives, transforming legacy websites into modern, user-centric platforms with improved UI/UX and updated codebases. Agile Methodology & Efficiency: Executed full-time development within Agile/Scrum environments, ensuring rapid delivery cycles and high-quality output for US and Spanish-speaking markets. Performance & SEO Architecture: Architected complex Website Layouts & Structures focused on Core Web Vitals, consistently achieving Lighthouse scores of 90+ to boost organic search rankings. Cross-Functional Delivery: Collaborated with international teams to deliver pixel-perfect, responsive solutions that adhere to WCAG 2.0 accessibility standards.",
     },
     {
       year: "2020-2021",
@@ -69,7 +69,7 @@ const About = () => {
       company: "Agenturro",
       companyUrl: "https://www.agenturro.co/",
       description:
-        "HTML/CSS/JS - developer. Working with CMS - WordPress, Shopify. SEO-optimization. German customers.",
+        "Custom WordPress Development: Engineered bespoke, high-performance WordPress themes and websites from scratch, avoiding bloated pre-made templates to ensure maximum speed and scalability. Full-Cycle Site Ownership: Managed the entire lifecycle of web projects, from initial architecture and site creation from scratch to ongoing long-term maintenance and technical support. Strategic Website Redesign: Executed comprehensive website redesigns, modernizing legacy codebases and UI/UX structures to improve user engagement and alignment with current brand standards. Performance Architecture: Architected complex layouts with a focus on Core Web Vitals, consistently achieving Lighthouse scores of 90+ through custom-coded solutions.",
     },
     {
       year: "2017-2024",
@@ -77,7 +77,7 @@ const About = () => {
       company: "Web-developer (WordPress, Shopify, WIX), SEO-specialist.",
       companyUrl: "https://freelancehunt.com/freelancer/arsly.html",
       description:
-        "I worked remotely as a freelancer on Ukrainian and American freelance platforms - Freelancehunt, Upwork, Freelancer, etc. Part-time as a remote worker for a few companies that are focused on European clients. Personal projects based on affiliate marketing, dropshipping and POD on Etsy.",
+        "Full-Cycle Project Delivery: Launched and managed 30+ diverse web projects on global platforms (Freelancehunt, Upwork, Freelancer), consistently maintaining high client satisfaction ratings through expert delivery of WordPress, Shopify, WIX. E-commerce & Venture Development: Engineered and scaled personal digital businesses, including dropshipping and Print-on-Demand (POD) stores on Etsy and Shopify, managing the end-to-end process from Website Layout & Structure to conversion optimization.",
     },
   ];
 
@@ -98,10 +98,11 @@ const About = () => {
                 As a Fullstack WordPress Developer and React/Next.js Engineer,
                 the primary focus is on building scalable, high-performance
                 websites that align with business goals. Combining clean code
-                with SEO expertise ensures the delivery of functional,
-                results-driven solutions. This T-shaped approach integrates deep
-                web development expertise with broad skills in UI/UX, DevOps,
-                and digital marketing strategy.
+                with SEO and GEO (Generative Engine Optimization) expertise
+                ensures the delivery of functional, results-driven solutions.
+                This T-shaped approach integrates deep web development expertise
+                with broad skills in UI/UX, DevOps, and digital marketing
+                strategy.
               </p>
               <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
                 My specialization in AI-augmented development leverages a
