@@ -247,11 +247,11 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
               </div>
             ) : (
               // Новая структура с категориями
-              <div className="space-y-4">
+              <div className="space-y-3">
                 {/* Frontend */}
                 {project.technologies.frontend &&
                   project.technologies.frontend.length > 0 && (
-                    <div>
+                    <div className="p-3 bg-slate-50 dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">
                       <h4 className="font-semibold text-slate-900 dark:text-white mb-2">
                         Frontend:
                       </h4>
@@ -264,7 +264,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
                 {/* Backend & API */}
                 {project.technologies.backendApi &&
                   project.technologies.backendApi.length > 0 && (
-                    <div>
+                    <div className="p-3 bg-slate-50 dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">
                       <h4 className="font-semibold text-slate-900 dark:text-white mb-2">
                         Backend & API:
                       </h4>
@@ -277,7 +277,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
                 {/* Content Management */}
                 {project.technologies.contentManagement &&
                   project.technologies.contentManagement.length > 0 && (
-                    <div>
+                    <div className="p-3 bg-slate-50 dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">
                       <h4 className="font-semibold text-slate-900 dark:text-white mb-2">
                         Content Management:
                       </h4>
@@ -290,7 +290,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
                 {/* DevOps & Security */}
                 {project.technologies.devopsSecurity &&
                   project.technologies.devopsSecurity.length > 0 && (
-                    <div>
+                    <div className="p-3 bg-slate-50 dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">
                       <h4 className="font-semibold text-slate-900 dark:text-white mb-2">
                         DevOps & Security:
                       </h4>
@@ -303,7 +303,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
                 {/* Analytics */}
                 {project.technologies.analytics &&
                   project.technologies.analytics.length > 0 && (
-                    <div>
+                    <div className="p-3 bg-slate-50 dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">
                       <h4 className="font-semibold text-slate-900 dark:text-white mb-2">
                         Analytics:
                       </h4>
