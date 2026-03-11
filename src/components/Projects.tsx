@@ -138,14 +138,27 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
                 {project.description}
               </p>
               <div className="flex flex-wrap gap-2 mb-4">
-                {project.technologies.map((tech, idx) => (
-                  <span
-                    key={idx}
-                    className="bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-slate-200 px-2 py-1 rounded text-xs"
-                  >
-                    {tech}
-                  </span>
-                ))}
+                {Array.isArray(project.technologies)
+                  ? // Старая структура - массив технологий
+                    project.technologies.map((tech, idx) => (
+                      <span
+                        key={idx}
+                        className="bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-slate-200 px-2 py-1 rounded text-xs"
+                      >
+                        {tech}
+                      </span>
+                    ))
+                  : // Новая структура - объект с категориями, отображаем все технологии
+                    Object.values(project.technologies)
+                      .flat()
+                      .map((tech, idx) => (
+                        <span
+                          key={idx}
+                          className="bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-slate-200 px-2 py-1 rounded text-xs"
+                        >
+                          {tech}
+                        </span>
+                      ))}
               </div>
               <div className="flex gap-3">
                 {project.liveUrl && project.liveUrl !== "#" && (

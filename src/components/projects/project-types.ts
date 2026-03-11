@@ -1,6 +1,21 @@
+import React from "react";
+
 export interface ProjectImage {
   src: string;
   caption: string;
+}
+
+export interface ProjectFeature {
+  title: string;
+  description: string;
+}
+
+export interface ProjectTechnologies {
+  frontend: string[];
+  backendApi: string[];
+  contentManagement: string[];
+  devopsSecurity: string[];
+  analytics: string[];
 }
 
 export interface Project {
@@ -11,8 +26,8 @@ export interface Project {
   image: string;
   fullScreenshot: string;
   images: ProjectImage[];
-  technologies: string[];
-  features: (string | JSX.Element)[];
+  technologies: ProjectTechnologies | string[];
+  features: (string | React.ReactNode | ProjectFeature)[];
   challenges: string[];
   solutions: string[];
   liveUrl: string;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from "react";
 import {
   ArrowLeft,
   ExternalLink,
@@ -7,43 +7,43 @@ import {
   ChevronRight,
   Eye,
   X,
-} from 'lucide-react'
-import { Project } from './projects/project-types'
+} from "lucide-react";
+import { Project } from "./projects/project-types";
 
 interface ProjectDetailProps {
-  projectId: number
-  onBack: () => void
+  projectId: number;
+  onBack: () => void;
 }
 
 // Автоматический импорт всех проектов
 const projectModules = import.meta.glob<{ default: Project }>(
-  './projects/*/*.tsx',
-  { eager: true }
-)
+  "./projects/*/*.tsx",
+  { eager: true },
+);
 const projects: Project[] = Object.values(projectModules).map(
-  (mod: any) => mod.default
-)
+  (mod: any) => mod.default,
+);
 
 const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0)
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [screenshotModal, setScreenshotModal] = useState<{
-    isOpen: boolean
-    image: string
-    title: string
-    caption: string
+    isOpen: boolean;
+    image: string;
+    title: string;
+    caption: string;
   }>({
     isOpen: false,
-    image: '',
-    title: '',
-    caption: '',
-  })
+    image: "",
+    title: "",
+    caption: "",
+  });
 
   //Скролл наверх страницы
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }, [projectId])
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [projectId]);
 
-  const project = projects.find((p) => p.id === projectId)
+  const project = projects.find((p) => p.id === projectId);
 
   if (!project) {
     return (
@@ -61,18 +61,18 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
           </button>
         </div>
       </div>
-    )
+    );
   }
 
   const nextImage = () => {
-    setCurrentImageIndex((prev) => (prev + 1) % project.images.length)
-  }
+    setCurrentImageIndex((prev) => (prev + 1) % project.images.length);
+  };
 
   const prevImage = () => {
     setCurrentImageIndex(
-      (prev) => (prev - 1 + project.images.length) % project.images.length
-    )
-  }
+      (prev) => (prev - 1 + project.images.length) % project.images.length,
+    );
+  };
 
   const openScreenshotModal = () => {
     setScreenshotModal({
@@ -80,14 +80,14 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
       image: project.images[currentImageIndex].src,
       title: project.title,
       caption: project.images[currentImageIndex].caption,
-    })
-    document.body.style.overflow = 'hidden'
-  }
+    });
+    document.body.style.overflow = "hidden";
+  };
 
   const closeScreenshotModal = () => {
-    setScreenshotModal({ isOpen: false, image: '', title: '', caption: '' })
-    document.body.style.overflow = 'unset'
-  }
+    setScreenshotModal({ isOpen: false, image: "", title: "", caption: "" });
+    document.body.style.overflow = "unset";
+  };
 
   return (
     <div className="py-10 px-2 md:px-8 max-w-7xl mx-auto">
@@ -96,7 +96,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
         onClick={onBack}
         className="flex fixed top-10 items-center space-x-2 text-purple-600 dark:text-lime-500 hover:text-purple-700 dark:hover:text-lime-600 font-medium mb-8 transition-colors group"
         type="button"
-        style={{ zIndex: 9999, position: 'relative' }}
+        style={{ zIndex: 9999, position: "relative" }}
       >
         <ArrowLeft className="w-5 h-5" />
         <span>Back to Featured Projects</span>
@@ -166,8 +166,8 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
                   onClick={() => setCurrentImageIndex(index)}
                   className={`relative rounded-lg overflow-hidden transition-all duration-200 ${
                     index === currentImageIndex
-                      ? 'ring-2 ring-purple-500 dark:ring-lime-500 ring-offset-2'
-                      : 'hover:opacity-80'
+                      ? "ring-2 ring-purple-500 dark:ring-lime-500 ring-offset-2"
+                      : "hover:opacity-80"
                   }`}
                   type="button"
                 >
@@ -193,7 +193,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
               {project.fullDescription}
             </p>
             <div className="flex flex-wrap gap-4">
-              {project.liveUrl && project.liveUrl !== '#' && (
+              {project.liveUrl && project.liveUrl !== "#" && (
                 <a
                   href={project.liveUrl}
                   target="_blank"
@@ -204,7 +204,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
                   View Live
                 </a>
               )}
-              {project.githubUrl && project.githubUrl !== '#' && (
+              {project.githubUrl && project.githubUrl !== "#" && (
                 <a
                   href={project.githubUrl}
                   target="_blank"
@@ -222,25 +222,98 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
 
       {/* Секция с технологиями, фичами и сложностями */}
       <section className="mt-12">
-        <div className="flex flex-col md:flex-row gap-6">
+        <div className="flex flex-col md:flex-row gap-6 items-start">
           {/* Technologies Used */}
           <div className="md:w-1/2 w-full bg-white dark:bg-slate-700 rounded-2xl p-8 shadow-sm">
             <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4">
-              Technologies Used
+              Technical Stack
             </h3>
-            <div className="grid sm:grid-cols-2 gap-3">
-              {project.technologies.map((tech, index) => (
-                <div
-                  key={index}
-                  className="flex items-center space-x-2 p-3 bg-slate-50 dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600"
-                >
-                  <div className="w-2 h-2 rounded-full bg-purple-500 dark:bg-lime-500"></div>
-                  <span className="text-slate-700 dark:text-slate-300 font-medium">
-                    {tech}
-                  </span>
-                </div>
-              ))}
-            </div>
+
+            {/* Проверяем, используется ли новая структура с категориями */}
+            {Array.isArray(project.technologies) ? (
+              // Старая структура - отображаем как сетку с точками
+              <div className="grid sm:grid-cols-2 gap-3">
+                {project.technologies.map((tech, index) => (
+                  <div
+                    key={index}
+                    className="flex items-center space-x-2 p-3 bg-slate-50 dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600"
+                  >
+                    <div className="w-2 h-2 rounded-full bg-purple-500 dark:bg-lime-500 flex-shrink-0"></div>
+                    <span className="text-slate-700 dark:text-slate-300 font-medium">
+                      {tech}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              // Новая структура с категориями
+              <div className="space-y-4">
+                {/* Frontend */}
+                {project.technologies.frontend &&
+                  project.technologies.frontend.length > 0 && (
+                    <div>
+                      <h4 className="font-semibold text-slate-900 dark:text-white mb-2">
+                        Frontend:
+                      </h4>
+                      <p className="text-slate-600 dark:text-slate-300">
+                        {project.technologies.frontend.join(", ")}.
+                      </p>
+                    </div>
+                  )}
+
+                {/* Backend & API */}
+                {project.technologies.backendApi &&
+                  project.technologies.backendApi.length > 0 && (
+                    <div>
+                      <h4 className="font-semibold text-slate-900 dark:text-white mb-2">
+                        Backend & API:
+                      </h4>
+                      <p className="text-slate-600 dark:text-slate-300">
+                        {project.technologies.backendApi.join(", ")}.
+                      </p>
+                    </div>
+                  )}
+
+                {/* Content Management */}
+                {project.technologies.contentManagement &&
+                  project.technologies.contentManagement.length > 0 && (
+                    <div>
+                      <h4 className="font-semibold text-slate-900 dark:text-white mb-2">
+                        Content Management:
+                      </h4>
+                      <p className="text-slate-600 dark:text-slate-300">
+                        {project.technologies.contentManagement.join(", ")}.
+                      </p>
+                    </div>
+                  )}
+
+                {/* DevOps & Security */}
+                {project.technologies.devopsSecurity &&
+                  project.technologies.devopsSecurity.length > 0 && (
+                    <div>
+                      <h4 className="font-semibold text-slate-900 dark:text-white mb-2">
+                        DevOps & Security:
+                      </h4>
+                      <p className="text-slate-600 dark:text-slate-300">
+                        {project.technologies.devopsSecurity.join(", ")}.
+                      </p>
+                    </div>
+                  )}
+
+                {/* Analytics */}
+                {project.technologies.analytics &&
+                  project.technologies.analytics.length > 0 && (
+                    <div>
+                      <h4 className="font-semibold text-slate-900 dark:text-white mb-2">
+                        Analytics:
+                      </h4>
+                      <p className="text-slate-600 dark:text-slate-300">
+                        {project.technologies.analytics.join(", ")}.
+                      </p>
+                    </div>
+                  )}
+              </div>
+            )}
           </div>
 
           {/* Key Features */}
@@ -248,15 +321,50 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
             <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4">
               Key Features
             </h3>
-            <ul className="space-y-3">
-              {project.features.map((feature, index) => (
-                <li key={index} className="flex items-start space-x-3">
-                  <span className="w-2 h-2 rounded-full bg-purple-500 dark:bg-lime-500 mt-2 flex-shrink-0"></span>
-                  <span className="text-slate-600 dark:text-slate-300">
-                    {feature}
-                  </span>
-                </li>
-              ))}
+            <ul className="space-y-4">
+              {project.features.map((feature, index) => {
+                // Type guard для проверки объекта ProjectFeature
+                const isProjectFeature = (
+                  feature: any,
+                ): feature is { title: string; description: string } => {
+                  return (
+                    typeof feature === "object" &&
+                    feature !== null &&
+                    "title" in feature &&
+                    "description" in feature &&
+                    typeof feature.title === "string" &&
+                    typeof feature.description === "string"
+                  );
+                };
+
+                if (isProjectFeature(feature)) {
+                  return (
+                    <li key={index} className="space-y-2">
+                      <div className="flex items-start space-x-3">
+                        <span className="w-2 h-2 rounded-full bg-purple-500 dark:bg-lime-500 mt-2 flex-shrink-0"></span>
+                        <div className="flex-1">
+                          <h4 className="font-semibold text-slate-900 dark:text-white mb-1">
+                            {feature.title}
+                          </h4>
+                          <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
+                            {feature.description}
+                          </p>
+                        </div>
+                      </div>
+                    </li>
+                  );
+                } else {
+                  // Старый формат - просто текст или React.ReactNode
+                  return (
+                    <li key={index} className="flex items-start space-x-3">
+                      <span className="w-2 h-2 rounded-full bg-purple-500 dark:bg-lime-500 mt-2 flex-shrink-0"></span>
+                      <span className="text-slate-600 dark:text-slate-300">
+                        {typeof feature === "string" ? feature : ""}
+                      </span>
+                    </li>
+                  );
+                }
+              })}
             </ul>
           </div>
         </div>
@@ -326,16 +434,16 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
                     setScreenshotModal((prev) => {
                       const newIndex =
                         (project.images.findIndex(
-                          (img) => img.src === prev.image
+                          (img) => img.src === prev.image,
                         ) -
                           1 +
                           project.images.length) %
-                        project.images.length
+                        project.images.length;
                       return {
                         ...prev,
                         image: project.images[newIndex].src,
                         caption: project.images[newIndex].caption,
-                      }
+                      };
                     })
                   }
                   className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/90 dark:bg-slate-800/90 hover:bg-white dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 p-2 rounded-full shadow-lg transition-all duration-200 hover:scale-110"
@@ -348,15 +456,15 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
                     setScreenshotModal((prev) => {
                       const newIndex =
                         (project.images.findIndex(
-                          (img) => img.src === prev.image
+                          (img) => img.src === prev.image,
                         ) +
                           1) %
-                        project.images.length
+                        project.images.length;
                       return {
                         ...prev,
                         image: project.images[newIndex].src,
                         caption: project.images[newIndex].caption,
-                      }
+                      };
                     })
                   }
                   className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/90 dark:bg-slate-800/90 hover:bg-white dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 p-2 rounded-full shadow-lg transition-all duration-200 hover:scale-110"
@@ -388,7 +496,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
         </div>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default ProjectDetail
+export default ProjectDetail;
