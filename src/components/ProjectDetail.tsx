@@ -359,7 +359,11 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
                     <li key={index} className="flex items-start space-x-3">
                       <span className="w-2 h-2 rounded-full bg-purple-500 dark:bg-lime-500 mt-2 flex-shrink-0"></span>
                       <span className="text-slate-600 dark:text-slate-300">
-                        {typeof feature === "string" ? feature : ""}
+                        {typeof feature === "string"
+                          ? feature
+                          : React.isValidElement(feature)
+                            ? feature
+                            : ""}
                       </span>
                     </li>
                   );
