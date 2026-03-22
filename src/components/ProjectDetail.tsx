@@ -1,8 +1,14 @@
-import React, { useState, useEffect } from 'react'
+import React, {
+  useState,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useCallback,
+} from 'react'
 import {
   ArrowLeft,
-  ExternalLink,
-  Github,
+  ArrowRight,
+  ArrowUpRight,
   ChevronLeft,
   ChevronRight,
   Eye,
@@ -27,6 +33,17 @@ const projects: Project[] = Object.values(projectModules).map(
 const getTechFull = (tech: TechnologyItem): string =>
   typeof tech === 'string' ? tech : tech.full || tech.short
 
+function metricValueClass(accent?: 'green' | 'darkGreen' | 'neutral') {
+  switch (accent) {
+    case 'neutral':
+      return 'text-slate-900 dark:text-white'
+    case 'darkGreen':
+      return 'text-emerald-800 dark:text-emerald-300'
+    default:
+      return 'text-emerald-600 dark:text-emerald-400'
+  }
+}
+
 const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [screenshotModal, setScreenshotModal] = useState<{
@@ -41,9 +58,75 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
     caption: '',
   })
 
-  //Скролл наверх страницы
+  const thumbnailScrollRef = useRef<HTMLDivElement>(null)
+  const [thumbScrollState, setThumbScrollState] = useState({
+    canLeft: false,
+    canRight: false,
+    hasOverflow: false,
+  })
+
+  const updateThumbScrollState = useCallback(() => {
+    const el = thumbnailScrollRef.current
+    if (!el) return
+    const { scrollLeft, scrollWidth, clientWidth } = el
+    const maxScroll = scrollWidth - clientWidth
+    setThumbScrollState({
+      canLeft: scrollLeft > 2,
+      canRight: maxScroll > 2 && scrollLeft < maxScroll - 2,
+      hasOverflow: maxScroll > 2,
+    })
+  }, [])
+
+  const scrollThumbnails = useCallback((direction: 'left' | 'right') => {
+    const el = thumbnailScrollRef.current
+    if (!el) return
+    const delta = Math.max(160, Math.floor(el.clientWidth * 0.75))
+    el.scrollBy({
+      left: direction === 'left' ? -delta : delta,
+      behavior: 'smooth',
+    })
+  }, [])
+
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
+    const el = thumbnailScrollRef.current
+    if (!el) return
+    updateThumbScrollState()
+    const ro = new ResizeObserver(() => updateThumbScrollState())
+    ro.observe(el)
+    el.addEventListener('scroll', updateThumbScrollState, { passive: true })
+    return () => {
+      ro.disconnect()
+      el.removeEventListener('scroll', updateThumbScrollState)
+    }
+  }, [projectId, updateThumbScrollState])
+
+  /** Только горизонталь внутри ленты — scrollIntoView тянул весь document и уводил вниз к блоку со стеком. */
+  const scrollActiveThumbHorizontal = useCallback(() => {
+    const container = thumbnailScrollRef.current
+    if (!container) return
+    const node = container.querySelector(
+      `[data-thumb-index="${currentImageIndex}"]`,
+    ) as HTMLElement | null
+    if (!node) return
+    const left =
+      node.offsetLeft - container.clientWidth / 2 + node.offsetWidth / 2
+    container.scrollTo({
+      left: Math.max(0, left),
+      behavior: 'smooth',
+    })
+    requestAnimationFrame(updateThumbScrollState)
+  }, [currentImageIndex, updateThumbScrollState])
+
+  useEffect(() => {
+    const id = requestAnimationFrame(() => scrollActiveThumbHorizontal())
+    return () => cancelAnimationFrame(id)
+  }, [currentImageIndex, projectId, scrollActiveThumbHorizontal])
+
+  // Сразу вверх без smooth — иначе scrollIntoView/предыдущая позиция страницы конфликтуют с прокруткой к заголовку
+  useLayoutEffect(() => {
+    window.scrollTo(0, 0)
+    const strip = thumbnailScrollRef.current
+    if (strip) strip.scrollLeft = 0
   }, [projectId])
 
   const project = projects.find((p) => p.id === projectId)
@@ -60,7 +143,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
             className="px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
             type="button"
           >
-            Back to Projects
+            Back to Featured Projects
           </button>
         </div>
       </div>
@@ -92,136 +175,187 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
     document.body.style.overflow = 'unset'
   }
 
+  const hasGithub = Boolean(project.githubUrl && project.githubUrl !== '#')
+  const metrics = project.detailMetrics ?? []
+
   return (
-    <div className="py-10 px-2 md:px-8 max-w-7xl mx-auto">
-      {/* Back Button */}
+    <div className="max-w-7xl mx-auto px-2 md:px-8 pt-24 pb-10">
+      {/* Отступ pt-24 — под фиксированный Header (h-16), иначе кнопка оказывается под шапкой */}
       <button
         onClick={onBack}
-        className="flex fixed top-10 items-center space-x-2 text-purple-600 dark:text-lime-500 hover:text-purple-700 dark:hover:text-lime-600 font-medium mb-8 transition-colors group"
         type="button"
-        style={{ zIndex: 9999, position: 'relative' }}
+        className="mb-6 md:mb-8 flex w-full items-center justify-start gap-2 text-left text-sm sm:text-base font-semibold text-purple-600 dark:text-lime-400 hover:text-purple-700 dark:hover:text-lime-300 transition-colors"
       >
-        <ArrowLeft className="w-5 h-5" />
+        <ArrowLeft className="h-5 w-5 shrink-0" aria-hidden />
         <span>Back to Featured Projects</span>
       </button>
 
-      {/* Title & Description */}
-      <div className="mb-10 text-center mt-16">
-        <h1 className="text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white mb-6">
-          {project.title}
-        </h1>
-        <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed">
-          {project.description}
-        </p>
-      </div>
+      <section className="rounded-2xl bg-neutral-100 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700 p-6 md:p-8 lg:p-10">
+        <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-start">
+          <div className="space-y-4">
+            <div className="relative bg-white dark:bg-slate-900 rounded-xl overflow-hidden shadow-sm border border-slate-200/90 dark:border-slate-600">
+              <img
+                src={project.images[currentImageIndex].src}
+                alt={`${project.title} screenshot ${currentImageIndex + 1}`}
+                className="w-full h-80 md:h-96 object-cover"
+              />
 
-      {/* Main Content Grid */}
-      <div className="grid lg:grid-cols-2 gap-12">
-        {/* Image Slider */}
-        <div className="space-y-6">
-          <div className="relative bg-white dark:bg-slate-700 rounded-2xl overflow-hidden shadow-lg">
-            <img
-              src={project.images[currentImageIndex].src}
-              alt={`${project.title} screenshot ${currentImageIndex + 1}`}
-              className="w-full h-96 object-cover"
-            />
+              {project.images.length > 1 && (
+                <>
+                  <button
+                    onClick={prevImage}
+                    className="absolute left-3 top-1/2 -translate-y-1/2 bg-white/95 dark:bg-slate-800/95 text-slate-700 dark:text-slate-200 p-2 rounded-full shadow-md transition hover:scale-105"
+                    type="button"
+                    aria-label="Previous image"
+                  >
+                    <ChevronLeft size={20} />
+                  </button>
+                  <button
+                    onClick={nextImage}
+                    className="absolute right-3 top-1/2 -translate-y-1/2 bg-white/95 dark:bg-slate-800/95 text-slate-700 dark:text-slate-200 p-2 rounded-full shadow-md transition hover:scale-105"
+                    type="button"
+                    aria-label="Next image"
+                  >
+                    <ChevronRight size={20} />
+                  </button>
+                </>
+              )}
 
-            {/* Navigation Arrows */}
+              {project.images.length > 0 && (
+                <button
+                  onClick={openScreenshotModal}
+                  className="absolute bottom-3 right-3 inline-flex items-center gap-1.5 bg-white dark:bg-slate-100 text-slate-800 px-3 py-1.5 rounded-full text-sm font-medium shadow border border-slate-200 dark:border-slate-300 hover:bg-slate-50 dark:hover:bg-white transition"
+                  title="Zoom"
+                  type="button"
+                >
+                  <Eye className="w-4 h-4" aria-hidden />
+                  Zoom
+                </button>
+              )}
+            </div>
+
             {project.images.length > 1 && (
-              <>
-                <button
-                  onClick={prevImage}
-                  className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/90 dark:bg-slate-800/90 hover:bg-white dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 p-2 rounded-full shadow-lg transition-all duration-200 hover:scale-110"
-                  type="button"
+              <div className="flex min-w-0 items-center gap-1 pb-2 sm:pb-3">
+                {thumbScrollState.hasOverflow && (
+                  <button
+                    type="button"
+                    aria-label="Scroll thumbnails left"
+                    disabled={!thumbScrollState.canLeft}
+                    onClick={() => scrollThumbnails('left')}
+                    className={`flex h-14 w-8 shrink-0 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-700 shadow-sm transition dark:border-slate-600 dark:bg-slate-800 dark:text-slate-200 sm:h-16 sm:w-9 ${
+                      thumbScrollState.canLeft
+                        ? 'hover:bg-slate-50 dark:hover:bg-slate-700'
+                        : 'cursor-not-allowed opacity-35'
+                    }`}
+                  >
+                    <ChevronLeft className="h-5 w-5" aria-hidden />
+                  </button>
+                )}
+                <div
+                  ref={thumbnailScrollRef}
+                  className="scrollbar-none flex min-w-0 flex-1 flex-nowrap gap-2 overflow-x-auto overflow-y-visible scroll-smooth py-2.5 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
                 >
-                  <ChevronLeft size={20} />
-                </button>
-                <button
-                  onClick={nextImage}
-                  className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/90 dark:bg-slate-800/90 hover:bg-white dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 p-2 rounded-full shadow-lg transition-all duration-200 hover:scale-110"
-                  type="button"
-                >
-                  <ChevronRight size={20} />
-                </button>
-              </>
-            )}
-
-            {/* Full Screenshot Button */}
-            {project.images && project.images.length > 0 && (
-              <button
-                onClick={openScreenshotModal}
-                className="absolute bottom-4 right-4 bg-purple-600 dark:bg-lime-500 text-white dark:text-slate-900 px-4 py-2 rounded-lg shadow-lg hover:bg-purple-700 dark:hover:bg-lime-400 transition"
-                title="View Full Screenshot"
-                type="button"
-              >
-                <Eye className="inline-block mr-1 w-5 h-5" />
-                Zoom In
-              </button>
+                  {project.images.map((img, index) => (
+                    <button
+                      key={index}
+                      type="button"
+                      data-thumb-index={index}
+                      onClick={() => setCurrentImageIndex(index)}
+                      className={`relative shrink-0 overflow-hidden rounded-lg border-2 transition-colors duration-200 ${
+                        index === currentImageIndex
+                          ? 'border-blue-500 dark:border-sky-400'
+                          : 'border-slate-300/60 hover:border-slate-400 dark:border-slate-600 dark:hover:border-slate-500'
+                      }`}
+                      aria-label={`Screenshot ${index + 1}`}
+                    >
+                      <img
+                        src={img.src}
+                        alt={img.caption || project.title}
+                        className="h-14 w-14 object-cover sm:h-16 sm:w-16"
+                        onLoad={updateThumbScrollState}
+                      />
+                    </button>
+                  ))}
+                </div>
+                {thumbScrollState.hasOverflow && (
+                  <button
+                    type="button"
+                    aria-label="Scroll thumbnails right"
+                    disabled={!thumbScrollState.canRight}
+                    onClick={() => scrollThumbnails('right')}
+                    className={`flex h-14 w-8 shrink-0 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-700 shadow-sm transition dark:border-slate-600 dark:bg-slate-800 dark:text-slate-200 sm:h-16 sm:w-9 ${
+                      thumbScrollState.canRight
+                        ? 'hover:bg-slate-50 dark:hover:bg-slate-700'
+                        : 'cursor-not-allowed opacity-35'
+                    }`}
+                  >
+                    <ChevronRight className="h-5 w-5" aria-hidden />
+                  </button>
+                )}
+              </div>
             )}
           </div>
 
-          {/* Thumbnails */}
-          {project.images.length > 1 && (
-            <div className="flex justify-center gap-2 mt-2">
-              {project.images.map((img, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentImageIndex(index)}
-                  className={`relative rounded-lg overflow-hidden transition-all duration-200 ${
-                    index === currentImageIndex
-                      ? 'ring-2 ring-purple-500 dark:ring-lime-500 ring-offset-2'
-                      : 'hover:opacity-80'
-                  }`}
-                  type="button"
-                >
-                  <img
-                    src={img.src}
-                    alt={img.caption || project.title}
-                    className="w-16 h-16 object-cover"
-                  />
-                </button>
-              ))}
-            </div>
-          )}
-        </div>
-
-        {/* Overview & Actions */}
-        <div className="space-y-8">
-          {/* Full Description */}
-          <div className="bg-white dark:bg-slate-700 rounded-2xl p-8 shadow-sm">
-            <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">
-              Project Overview
-            </h2>
-            <p className="text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
+          <div className="flex flex-col gap-6 min-w-0">
+            {project.detailHeroLine && (
+              <p className="text-xs sm:text-sm font-medium tracking-wide text-slate-500 dark:text-slate-400 uppercase">
+                {project.detailHeroLine}
+              </p>
+            )}
+            <h1 className="text-3xl sm:text-4xl font-bold text-slate-900 dark:text-white leading-tight">
+              {project.title}
+            </h1>
+            <p className="text-slate-600 dark:text-slate-300 leading-relaxed text-base">
               {project.fullDescription}
             </p>
-            <div className="flex flex-wrap gap-4">
+
+            {metrics.length > 0 && (
+              <div className="grid grid-cols-2 gap-3">
+                {metrics.map((m, i) => (
+                  <div
+                    key={`${m.label}-${i}`}
+                    className="rounded-xl bg-white/90 dark:bg-slate-900/80 border border-slate-200/80 dark:border-slate-600 px-4 py-3"
+                  >
+                    <p
+                      className={`text-xl sm:text-2xl font-bold tabular-nums ${metricValueClass(m.accent)}`}
+                    >
+                      {m.value}
+                    </p>
+                    <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+                      {m.label}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            <div className="flex flex-col gap-3 pt-1">
               {project.liveUrl && project.liveUrl !== '#' && (
                 <a
                   href={project.liveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700 dark:bg-lime-500 dark:text-slate-900 dark:hover:bg-lime-400 transition"
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-4 py-3 text-sm font-semibold hover:bg-slate-800 dark:hover:bg-slate-100 transition"
                 >
-                  <ExternalLink className="w-4 h-4" />
                   View Live
+                  <ArrowUpRight className="w-4 h-4" aria-hidden />
                 </a>
               )}
-              {project.githubUrl && project.githubUrl !== '#' && (
+              {hasGithub && (
                 <a
                   href={project.githubUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 text-slate-600 dark:text-slate-300 hover:underline"
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-slate-900 dark:border-slate-300 bg-white dark:bg-transparent text-slate-900 dark:text-white px-4 py-3 text-sm font-semibold hover:bg-slate-50 dark:hover:bg-slate-800/50 transition"
                 >
-                  <Github className="w-4 h-4" />
                   GitHub
+                  <ArrowRight className="w-4 h-4" aria-hidden />
                 </a>
               )}
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
       {/* Секция с технологиями, фичами и сложностями */}
       <section className="mt-12">

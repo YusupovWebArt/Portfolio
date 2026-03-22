@@ -4,9 +4,16 @@ const unitrition: Project = {
   id: 29000,
   title: 'Unitrition',
   description:
-    'Unitrition is a high-performance, data-driven Next.js web application designed to simplify complex dietary management through smart, and visually intuitive insights. This project demonstrates a sophisticated WordPress Headless architecture, bridging traditional content management with modern frontend engineering.',
+    'Choosing the right foods for a specific diet is confusing — Unitrition makes it instant. Pick a diet plan, add foods, and the app shows a clear nutritional comparison: what fits your goals and what doesn\'t. Built as a fullstack headless WordPress + Next.js application with diet-specific scoring, custom nutrition data, and a Bread Units Calculator integrated with the USDA FoodData API.',
   fullDescription:
-    "Unitrition isn't just a calculator; it's a scalable ecosystem built for performance. By leveraging Headless WordPress and Next.js, I created a platform that offers the speed of a static site with the power of a dynamic data engine.",
+    "A smart nutrition tool that helps users find the right foods for their diet — pick a plan, add foods, and get an instant comparison of what fits and what doesn't. Built with headless WordPress as CMS and a Next.js App Router frontend. Bread Units Calculator also integrates real-time data from the USDA FoodData API.",
+  detailHeroLine: 'FULLSTACK · HEADLESS CMS',
+  detailMetrics: [
+    { value: '95+', label: 'PageSpeed', accent: 'green' },
+    { value: '<1s', label: 'Page load', accent: 'green' },
+    { value: 'SSR', label: 'Rendering', accent: 'darkGreen' },
+    { value: 'CI/CD', label: 'Auto-deploy', accent: 'neutral' },
+  ],
   image:
     '/Portfolio/images/portfolio/thumbs/nextjs/unitrition/unitrition_thumb.webp',
   fullScreenshot:

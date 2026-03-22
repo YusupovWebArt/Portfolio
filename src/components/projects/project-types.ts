@@ -30,11 +30,23 @@ export interface ProjectTechnologies {
   digitalMarketing?: TechnologyItem[]
 }
 
+/** Карточка метрик на странице проекта (сетка 2×2). Заполняется под каждый проект отдельно. */
+export interface ProjectDetailMetric {
+  value: string
+  label: string
+  /** Подсветка значения: как в макете (зелёный / тёмно-зелёный / нейтральный). */
+  accent?: 'green' | 'darkGreen' | 'neutral'
+}
+
 export interface Project {
   id: number
   title: string
   description: string
   fullDescription: string
+  /** Строка над заголовком на детальной странице, напр. «FULLSTACK · HEADLESS CMS». */
+  detailHeroLine?: string
+  /** До четырёх метрик; для Next.js часто PageSpeed / load / Rendering / Auto-deploy, для WordPress — свои пары. */
+  detailMetrics?: ProjectDetailMetric[]
   image: string
   fullScreenshot: string
   images: ProjectImage[]
