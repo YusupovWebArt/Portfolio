@@ -38,6 +38,25 @@ export interface ProjectDetailMetric {
   accent?: 'green' | 'darkGreen' | 'neutral'
 }
 
+/** Один шаг в строке диаграммы архитектуры (пилюля). */
+export interface ProjectArchitectureStep {
+  label: string
+  /** Центральный узел (напр. Next.js SSR). */
+  highlight?: boolean
+}
+
+/** Строка потока: подпись слева + цепочка шагов. */
+export interface ProjectArchitectureRow {
+  rowLabel: string
+  steps: ProjectArchitectureStep[]
+}
+
+/** Вкладка Architecture: строки потоков + текст снизу. Без данных вкладка не показывается. */
+export interface ProjectArchitecture {
+  rows: ProjectArchitectureRow[]
+  description: string
+}
+
 export interface Project {
   id: number
   title: string
@@ -47,6 +66,8 @@ export interface Project {
   detailHeroLine?: string
   /** До четырёх метрик; для Next.js часто PageSpeed / load / Rendering / Auto-deploy, для WordPress — свои пары. */
   detailMetrics?: ProjectDetailMetric[]
+  /** Диаграмма архитектуры на вкладке; если не задано — вкладка скрыта. */
+  architecture?: ProjectArchitecture
   image: string
   fullScreenshot: string
   images: ProjectImage[]

@@ -65,6 +65,20 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
     hasOverflow: false,
   })
 
+  const [detailTab, setDetailTab] = useState<
+    'stack' | 'features' | 'architecture'
+  >('stack')
+
+  useEffect(() => {
+    const p = projects.find((x) => x.id === projectId)
+    const hasArch = Boolean(
+      p?.architecture?.rows?.length && p.architecture.description?.trim(),
+    )
+    if (!hasArch && detailTab === 'architecture') {
+      setDetailTab('stack')
+    }
+  }, [projectId, detailTab])
+
   const updateThumbScrollState = useCallback(() => {
     const el = thumbnailScrollRef.current
     if (!el) return
@@ -177,6 +191,10 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
 
   const hasGithub = Boolean(project.githubUrl && project.githubUrl !== '#')
   const metrics = project.detailMetrics ?? []
+  const hasArchitecture = Boolean(
+    project.architecture?.rows?.length &&
+      project.architecture.description?.trim(),
+  )
 
   return (
     <div className="max-w-7xl mx-auto px-2 md:px-8 pt-24 pb-10">
@@ -357,34 +375,92 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
         </div>
       </section>
 
-      {/* Секция с технологиями, фичами и сложностями */}
+      {/* Секция: Technical Stack / Key Features — табы */}
       <section className="mt-12">
-        <div className="flex flex-col md:flex-row gap-6 items-start">
-          {/* Technologies Used */}
-          <div className="md:w-1/2 w-full bg-white dark:bg-slate-700 rounded-2xl p-8 shadow-sm">
-            <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4">
+        <div className="overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-sm dark:border-slate-600 dark:bg-slate-700">
+          <div
+            className="flex border-b border-slate-200 dark:border-slate-600"
+            role="tablist"
+            aria-label="Project details"
+          >
+            <button
+              type="button"
+              role="tab"
+              id="tab-project-stack"
+              aria-selected={detailTab === 'stack'}
+              aria-controls="panel-project-stack"
+              tabIndex={detailTab === 'stack' ? 0 : -1}
+              onClick={() => setDetailTab('stack')}
+              className={`min-w-0 flex-1 px-4 py-3.5 text-center text-sm font-semibold transition-colors sm:text-base ${
+                detailTab === 'stack'
+                  ? 'border-b-2 border-purple-600 text-purple-600 dark:border-lime-400 dark:text-lime-400'
+                  : 'border-b-2 border-transparent text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white'
+              }`}
+            >
               Technical Stack
-            </h3>
+            </button>
+            <button
+              type="button"
+              role="tab"
+              id="tab-project-features"
+              aria-selected={detailTab === 'features'}
+              aria-controls="panel-project-features"
+              tabIndex={detailTab === 'features' ? 0 : -1}
+              onClick={() => setDetailTab('features')}
+              className={`min-w-0 flex-1 px-4 py-3.5 text-center text-sm font-semibold transition-colors sm:text-base ${
+                detailTab === 'features'
+                  ? 'border-b-2 border-purple-600 text-purple-600 dark:border-lime-400 dark:text-lime-400'
+                  : 'border-b-2 border-transparent text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white'
+              }`}
+            >
+              Key Features
+            </button>
+            {hasArchitecture && (
+              <button
+                type="button"
+                role="tab"
+                id="tab-project-architecture"
+                aria-selected={detailTab === 'architecture'}
+                aria-controls="panel-project-architecture"
+                tabIndex={detailTab === 'architecture' ? 0 : -1}
+                onClick={() => setDetailTab('architecture')}
+                className={`min-w-0 flex-1 px-4 py-3.5 text-center text-sm font-semibold transition-colors sm:text-base ${
+                  detailTab === 'architecture'
+                    ? 'border-b-2 border-purple-600 text-purple-600 dark:border-lime-400 dark:text-lime-400'
+                    : 'border-b-2 border-transparent text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white'
+                }`}
+              >
+                Architecture
+              </button>
+            )}
+          </div>
 
-            {/* Проверяем, используется ли новая структура с категориями */}
-            {Array.isArray(project.technologies) ? (
-              // Старая структура - отображаем как сетку с точками
-              <div className="grid sm:grid-cols-2 gap-3">
-                {project.technologies.map((tech, index) => (
-                  <div
-                    key={index}
-                    className="flex items-center space-x-2 p-3 bg-slate-50 dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600"
-                  >
-                    <div className="w-2 h-2 rounded-full bg-purple-500 dark:bg-lime-500 flex-shrink-0"></div>
-                    <span className="text-slate-700 dark:text-slate-300 font-medium">
-                      {getTechFull(tech as TechnologyItem)}
-                    </span>
+          <div className="p-6 sm:p-8">
+            {detailTab === 'stack' && (
+              <div
+                id="panel-project-stack"
+                role="tabpanel"
+                aria-labelledby="tab-project-stack"
+              >
+                {/* Проверяем, используется ли новая структура с категориями */}
+                {Array.isArray(project.technologies) ? (
+                  // Старая структура - отображаем как сетку с точками
+                  <div className="grid sm:grid-cols-2 gap-3">
+                    {project.technologies.map((tech, index) => (
+                      <div
+                        key={index}
+                        className="flex items-center space-x-2 p-3 bg-slate-50 dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600"
+                      >
+                        <div className="w-2 h-2 rounded-full bg-purple-500 dark:bg-lime-500 flex-shrink-0"></div>
+                        <span className="text-slate-700 dark:text-slate-300 font-medium">
+                          {getTechFull(tech as TechnologyItem)}
+                        </span>
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
-            ) : (
-              // Новая структура с категориями
-              <div className="space-y-3">
+                ) : (
+                  // Новая структура с категориями
+                  <div className="space-y-3">
                 {/* Frontend */}
                 {project.technologies.frontend &&
                   project.technologies.frontend.length > 0 && (
@@ -594,15 +670,17 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
                   )}
               </div>
             )}
-          </div>
+              </div>
+            )}
 
-          {/* Key Features */}
-          <div className="md:w-1/2 w-full bg-white dark:bg-slate-700 rounded-2xl p-8 shadow-sm">
-            <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4">
-              Key Features
-            </h3>
-            <ul className="space-y-4">
-              {project.features.map((feature, index) => {
+            {detailTab === 'features' && (
+              <div
+                id="panel-project-features"
+                role="tabpanel"
+                aria-labelledby="tab-project-features"
+              >
+                <ul className="space-y-4">
+                  {project.features.map((feature, index) => {
                 // Type guard для проверки объекта ProjectFeature
                 const isProjectFeature = (
                   feature: any,
@@ -648,8 +726,56 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
                     </li>
                   )
                 }
-              })}
-            </ul>
+                  })}
+                </ul>
+              </div>
+            )}
+
+            {detailTab === 'architecture' && hasArchitecture && project.architecture && (
+              <div
+                id="panel-project-architecture"
+                role="tabpanel"
+                aria-labelledby="tab-project-architecture"
+                className="space-y-6"
+              >
+                {project.architecture.rows.map((row, rowIdx) => (
+                  <div
+                    key={rowIdx}
+                    className="flex flex-col gap-3 sm:flex-row sm:items-start sm:gap-4"
+                  >
+                    <span className="shrink-0 text-xs font-semibold uppercase tracking-wide text-slate-500 dark:text-slate-400 sm:mt-2 sm:w-24">
+                      {row.rowLabel}
+                    </span>
+                    <div className="flex min-w-0 flex-1 flex-wrap items-center gap-x-2 gap-y-2">
+                      {row.steps.map((step, stepIdx) => (
+                        <React.Fragment key={`${rowIdx}-${stepIdx}`}>
+                          {stepIdx > 0 && (
+                            <span
+                              className="text-slate-400 dark:text-slate-500"
+                              aria-hidden
+                            >
+                              →
+                            </span>
+                          )}
+                          <span
+                            className={`inline-flex rounded-full border px-3 py-1.5 text-sm font-medium ${
+                              step.highlight
+                                ? 'border-sky-400 bg-sky-100 text-sky-900 dark:border-sky-500 dark:bg-sky-900/50 dark:text-sky-100'
+                                : 'border-slate-300 bg-white text-slate-800 dark:border-slate-600 dark:bg-slate-800/80 dark:text-slate-200'
+                            }`}
+                          >
+                            {step.label}
+                          </span>
+                        </React.Fragment>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+                <div className="rounded-xl border border-slate-200 bg-slate-50 p-4 text-sm leading-relaxed text-slate-700 dark:border-slate-600 dark:bg-slate-800/80 dark:text-slate-300">
+                  {project.architecture.description}
+                </div>
+              </div>
+            )}
           </div>
         </div>
 

@@ -14,6 +14,29 @@ const unitrition: Project = {
     { value: 'SSR', label: 'Rendering', accent: 'darkGreen' },
     { value: 'CI/CD', label: 'Auto-deploy', accent: 'neutral' },
   ],
+  architecture: {
+    rows: [
+      {
+        rowLabel: 'CONTENT',
+        steps: [
+          { label: 'WordPress CMS' },
+          { label: 'WP REST API' },
+          { label: 'Next.js SSR', highlight: true },
+          { label: 'Vercel CDN' },
+        ],
+      },
+      {
+        rowLabel: 'DATA',
+        steps: [
+          { label: 'USDA API' },
+          { label: 'Node / Express' },
+          { label: 'Next.js SSR', highlight: true },
+        ],
+      },
+    ],
+    description:
+      'Two data streams converge at Next.js — editorial content from headless WordPress and nutritional data from a custom Express API. Both server-side rendered for maximum SEO and Core Web Vitals performance.',
+  },
   image:
     '/Portfolio/images/portfolio/thumbs/nextjs/unitrition/unitrition_thumb.webp',
   fullScreenshot:
