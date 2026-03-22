@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react'
 import {
   ArrowLeft,
   ExternalLink,
@@ -7,43 +7,46 @@ import {
   ChevronRight,
   Eye,
   X,
-} from "lucide-react";
-import { Project } from "./projects/project-types";
+} from 'lucide-react'
+import { Project, TechnologyItem } from './projects/project-types'
 
 interface ProjectDetailProps {
-  projectId: number;
-  onBack: () => void;
+  projectId: number
+  onBack: () => void
 }
 
 // Автоматический импорт всех проектов
 const projectModules = import.meta.glob<{ default: Project }>(
-  "./projects/*/*.tsx",
+  './projects/*/*.tsx',
   { eager: true },
-);
+)
 const projects: Project[] = Object.values(projectModules).map(
   (mod: any) => mod.default,
-);
+)
+
+const getTechFull = (tech: TechnologyItem): string =>
+  typeof tech === 'string' ? tech : tech.full || tech.short
 
 const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [screenshotModal, setScreenshotModal] = useState<{
-    isOpen: boolean;
-    image: string;
-    title: string;
-    caption: string;
+    isOpen: boolean
+    image: string
+    title: string
+    caption: string
   }>({
     isOpen: false,
-    image: "",
-    title: "",
-    caption: "",
-  });
+    image: '',
+    title: '',
+    caption: '',
+  })
 
   //Скролл наверх страницы
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  }, [projectId]);
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }, [projectId])
 
-  const project = projects.find((p) => p.id === projectId);
+  const project = projects.find((p) => p.id === projectId)
 
   if (!project) {
     return (
@@ -61,18 +64,18 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
           </button>
         </div>
       </div>
-    );
+    )
   }
 
   const nextImage = () => {
-    setCurrentImageIndex((prev) => (prev + 1) % project.images.length);
-  };
+    setCurrentImageIndex((prev) => (prev + 1) % project.images.length)
+  }
 
   const prevImage = () => {
     setCurrentImageIndex(
       (prev) => (prev - 1 + project.images.length) % project.images.length,
-    );
-  };
+    )
+  }
 
   const openScreenshotModal = () => {
     setScreenshotModal({
@@ -80,14 +83,14 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
       image: project.images[currentImageIndex].src,
       title: project.title,
       caption: project.images[currentImageIndex].caption,
-    });
-    document.body.style.overflow = "hidden";
-  };
+    })
+    document.body.style.overflow = 'hidden'
+  }
 
   const closeScreenshotModal = () => {
-    setScreenshotModal({ isOpen: false, image: "", title: "", caption: "" });
-    document.body.style.overflow = "unset";
-  };
+    setScreenshotModal({ isOpen: false, image: '', title: '', caption: '' })
+    document.body.style.overflow = 'unset'
+  }
 
   return (
     <div className="py-10 px-2 md:px-8 max-w-7xl mx-auto">
@@ -96,7 +99,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
         onClick={onBack}
         className="flex fixed top-10 items-center space-x-2 text-purple-600 dark:text-lime-500 hover:text-purple-700 dark:hover:text-lime-600 font-medium mb-8 transition-colors group"
         type="button"
-        style={{ zIndex: 9999, position: "relative" }}
+        style={{ zIndex: 9999, position: 'relative' }}
       >
         <ArrowLeft className="w-5 h-5" />
         <span>Back to Featured Projects</span>
@@ -166,8 +169,8 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
                   onClick={() => setCurrentImageIndex(index)}
                   className={`relative rounded-lg overflow-hidden transition-all duration-200 ${
                     index === currentImageIndex
-                      ? "ring-2 ring-purple-500 dark:ring-lime-500 ring-offset-2"
-                      : "hover:opacity-80"
+                      ? 'ring-2 ring-purple-500 dark:ring-lime-500 ring-offset-2'
+                      : 'hover:opacity-80'
                   }`}
                   type="button"
                 >
@@ -193,7 +196,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
               {project.fullDescription}
             </p>
             <div className="flex flex-wrap gap-4">
-              {project.liveUrl && project.liveUrl !== "#" && (
+              {project.liveUrl && project.liveUrl !== '#' && (
                 <a
                   href={project.liveUrl}
                   target="_blank"
@@ -204,7 +207,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
                   View Live
                 </a>
               )}
-              {project.githubUrl && project.githubUrl !== "#" && (
+              {project.githubUrl && project.githubUrl !== '#' && (
                 <a
                   href={project.githubUrl}
                   target="_blank"
@@ -240,7 +243,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
                   >
                     <div className="w-2 h-2 rounded-full bg-purple-500 dark:bg-lime-500 flex-shrink-0"></div>
                     <span className="text-slate-700 dark:text-slate-300 font-medium">
-                      {tech}
+                      {getTechFull(tech as TechnologyItem)}
                     </span>
                   </div>
                 ))}
@@ -255,22 +258,56 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
                       <h4 className="font-semibold text-slate-900 dark:text-white mb-2">
                         Frontend:
                       </h4>
-                      <p className="text-slate-600 dark:text-slate-300">
-                        {project.technologies.frontend.join(", ")}.
-                      </p>
+                      <ul className="list-none pl-2 space-y-1 text-slate-600 dark:text-slate-300">
+                        {project.technologies.frontend.map((tech, idx) => (
+                          <li
+                            key={idx}
+                            className="relative pl-2 before:absolute before:left-0 before:top-0 before:text-slate-600 dark:before:text-slate-300 before:content-['-']"
+                          >
+                            {getTechFull(tech)}
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                   )}
 
-                {/* Backend & API */}
-                {project.technologies.backendApi &&
-                  project.technologies.backendApi.length > 0 && (
+                {/* Backend */}
+                {project.technologies.backend &&
+                  project.technologies.backend.length > 0 && (
                     <div className="p-3 bg-slate-50 dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">
                       <h4 className="font-semibold text-slate-900 dark:text-white mb-2">
-                        Backend & API:
+                        Backend:
                       </h4>
-                      <p className="text-slate-600 dark:text-slate-300">
-                        {project.technologies.backendApi.join(", ")}.
-                      </p>
+                      <ul className="list-none pl-2 space-y-1 text-slate-600 dark:text-slate-300">
+                        {project.technologies.backend.map((tech, idx) => (
+                          <li
+                            key={idx}
+                            className="relative pl-2 before:absolute before:left-0 before:top-0 before:text-slate-600 dark:before:text-slate-300 before:content-['-']"
+                          >
+                            {getTechFull(tech)}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                {/* API */}
+                {project.technologies.api &&
+                  project.technologies.api.length > 0 && (
+                    <div className="p-3 bg-slate-50 dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">
+                      <h4 className="font-semibold text-slate-900 dark:text-white mb-2">
+                        API:
+                      </h4>
+                      <ul className="list-none pl-2 space-y-1 text-slate-600 dark:text-slate-300">
+                        {project.technologies.api.map((tech, idx) => (
+                          <li
+                            key={idx}
+                            className="relative pl-2 before:absolute before:left-0 before:top-0 before:text-slate-600 dark:before:text-slate-300 before:content-['-']"
+                          >
+                            {getTechFull(tech)}
+                          </li>
+                        ))}
+                      </ul>
                     </div>
                   )}
 
@@ -281,9 +318,18 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
                       <h4 className="font-semibold text-slate-900 dark:text-white mb-2">
                         Content Management:
                       </h4>
-                      <p className="text-slate-600 dark:text-slate-300">
-                        {project.technologies.contentManagement.join(", ")}.
-                      </p>
+                      <ul className="list-none pl-2 space-y-1 text-slate-600 dark:text-slate-300">
+                        {project.technologies.contentManagement.map(
+                          (tech, idx) => (
+                            <li
+                              key={idx}
+                              className="relative pl-2 before:absolute before:left-0 before:top-0 before:text-slate-600 dark:before:text-slate-300 before:content-['-']"
+                            >
+                              {getTechFull(tech)}
+                            </li>
+                          ),
+                        )}
+                      </ul>
                     </div>
                   )}
 
@@ -294,9 +340,18 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
                       <h4 className="font-semibold text-slate-900 dark:text-white mb-2">
                         DevOps & Security:
                       </h4>
-                      <p className="text-slate-600 dark:text-slate-300">
-                        {project.technologies.devopsSecurity.join(", ")}.
-                      </p>
+                      <ul className="list-none pl-2 space-y-1 text-slate-600 dark:text-slate-300">
+                        {project.technologies.devopsSecurity.map(
+                          (tech, idx) => (
+                            <li
+                              key={idx}
+                              className="relative pl-2 before:absolute before:left-0 before:top-0 before:text-slate-600 dark:before:text-slate-300 before:content-['-']"
+                            >
+                              {getTechFull(tech)}
+                            </li>
+                          ),
+                        )}
+                      </ul>
                     </div>
                   )}
 
@@ -307,9 +362,100 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
                       <h4 className="font-semibold text-slate-900 dark:text-white mb-2">
                         Analytics:
                       </h4>
-                      <p className="text-slate-600 dark:text-slate-300">
-                        {project.technologies.analytics.join(", ")}.
-                      </p>
+                      <ul className="list-none pl-2 space-y-1 text-slate-600 dark:text-slate-300">
+                        {project.technologies.analytics.map((tech, idx) => (
+                          <li
+                            key={idx}
+                            className="relative pl-2 before:absolute before:left-0 before:top-0 before:text-slate-600 dark:before:text-slate-300 before:content-['-']"
+                          >
+                            {getTechFull(tech)}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                {/* AI Tools */}
+                {project.technologies.aiTools &&
+                  project.technologies.aiTools.length > 0 && (
+                    <div className="p-3 bg-slate-50 dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">
+                      <h4 className="font-semibold text-slate-900 dark:text-white mb-2">
+                        AI Tools:
+                      </h4>
+                      <ul className="list-none pl-2 space-y-1 text-slate-600 dark:text-slate-300">
+                        {project.technologies.aiTools.map((tech, idx) => (
+                          <li
+                            key={idx}
+                            className="relative pl-2 before:absolute before:left-0 before:top-0 before:text-slate-600 dark:before:text-slate-300 before:content-['-']"
+                          >
+                            {getTechFull(tech)}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                {/* SEO */}
+                {project.technologies.seo &&
+                  project.technologies.seo.length > 0 && (
+                    <div className="p-3 bg-slate-50 dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">
+                      <h4 className="font-semibold text-slate-900 dark:text-white mb-2">
+                        SEO:
+                      </h4>
+                      <ul className="list-none pl-2 space-y-1 text-slate-600 dark:text-slate-300">
+                        {project.technologies.seo.map((tech, idx) => (
+                          <li
+                            key={idx}
+                            className="relative pl-2 before:absolute before:left-0 before:top-0 before:text-slate-600 dark:before:text-slate-300 before:content-['-']"
+                          >
+                            {getTechFull(tech)}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+
+                {/* Technical Optimization */}
+                {project.technologies.technicalOptimization &&
+                  project.technologies.technicalOptimization.length > 0 && (
+                    <div className="p-3 bg-slate-50 dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">
+                      <h4 className="font-semibold text-slate-900 dark:text-white mb-2">
+                        Technical Optimization:
+                      </h4>
+                      <ul className="list-none pl-2 space-y-1 text-slate-600 dark:text-slate-300">
+                        {project.technologies.technicalOptimization.map(
+                          (tech, idx) => (
+                            <li
+                              key={idx}
+                              className="relative pl-2 before:absolute before:left-0 before:top-0 before:text-slate-600 dark:before:text-slate-300 before:content-['-']"
+                            >
+                              {getTechFull(tech)}
+                            </li>
+                          ),
+                        )}
+                      </ul>
+                    </div>
+                  )}
+
+                {/* Digital Marketing */}
+                {project.technologies.digitalMarketing &&
+                  project.technologies.digitalMarketing.length > 0 && (
+                    <div className="p-3 bg-slate-50 dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">
+                      <h4 className="font-semibold text-slate-900 dark:text-white mb-2">
+                        Digital Marketing:
+                      </h4>
+                      <ul className="list-none pl-2 space-y-1 text-slate-600 dark:text-slate-300">
+                        {project.technologies.digitalMarketing.map(
+                          (tech, idx) => (
+                            <li
+                              key={idx}
+                              className="relative pl-2 before:absolute before:left-0 before:top-0 before:text-slate-600 dark:before:text-slate-300 before:content-['-']"
+                            >
+                              {getTechFull(tech)}
+                            </li>
+                          ),
+                        )}
+                      </ul>
                     </div>
                   )}
               </div>
@@ -328,14 +474,14 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
                   feature: any,
                 ): feature is { title: string; description: string } => {
                   return (
-                    typeof feature === "object" &&
+                    typeof feature === 'object' &&
                     feature !== null &&
-                    "title" in feature &&
-                    "description" in feature &&
-                    typeof feature.title === "string" &&
-                    typeof feature.description === "string"
-                  );
-                };
+                    'title' in feature &&
+                    'description' in feature &&
+                    typeof feature.title === 'string' &&
+                    typeof feature.description === 'string'
+                  )
+                }
 
                 if (isProjectFeature(feature)) {
                   return (
@@ -352,21 +498,21 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
                         </div>
                       </div>
                     </li>
-                  );
+                  )
                 } else {
                   // Старый формат - просто текст или React.ReactNode
                   return (
                     <li key={index} className="flex items-start space-x-3">
                       <span className="w-2 h-2 rounded-full bg-purple-500 dark:bg-lime-500 mt-2 flex-shrink-0"></span>
                       <span className="text-slate-600 dark:text-slate-300">
-                        {typeof feature === "string"
+                        {typeof feature === 'string'
                           ? feature
                           : React.isValidElement(feature)
                             ? feature
-                            : ""}
+                            : ''}
                       </span>
                     </li>
-                  );
+                  )
                 }
               })}
             </ul>
@@ -442,12 +588,12 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
                         ) -
                           1 +
                           project.images.length) %
-                        project.images.length;
+                        project.images.length
                       return {
                         ...prev,
                         image: project.images[newIndex].src,
                         caption: project.images[newIndex].caption,
-                      };
+                      }
                     })
                   }
                   className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/90 dark:bg-slate-800/90 hover:bg-white dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 p-2 rounded-full shadow-lg transition-all duration-200 hover:scale-110"
@@ -463,12 +609,12 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
                           (img) => img.src === prev.image,
                         ) +
                           1) %
-                        project.images.length;
+                        project.images.length
                       return {
                         ...prev,
                         image: project.images[newIndex].src,
                         caption: project.images[newIndex].caption,
-                      };
+                      }
                     })
                   }
                   className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/90 dark:bg-slate-800/90 hover:bg-white dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 p-2 rounded-full shadow-lg transition-all duration-200 hover:scale-110"
@@ -500,7 +646,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
         </div>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default ProjectDetail;
+export default ProjectDetail

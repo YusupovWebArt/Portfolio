@@ -1,77 +1,83 @@
-import React, { useState, useEffect } from "react";
-import { ExternalLink, X } from "lucide-react";
-import { Project } from "./projects/project-types";
-import ProjectDetail from "./ProjectDetail";
+import React, { useState, useEffect } from 'react'
+import { ExternalLink, X } from 'lucide-react'
+import { Project, TechnologyItem } from './projects/project-types'
+import ProjectDetail from './ProjectDetail'
 
 interface ProjectsProps {
-  onProjectSelect: (projectId: number) => void;
+  onProjectSelect: (projectId: number) => void
 }
 
-const modules = import.meta.glob<{ default: Project }>("./projects/**/*.tsx", {
+const getTechShort = (tech: TechnologyItem): string =>
+  typeof tech === 'string' ? tech : tech.short
+
+const getTechFull = (tech: TechnologyItem): string =>
+  typeof tech === 'string' ? tech : tech.full || tech.short
+
+const modules = import.meta.glob<{ default: Project }>('./projects/**/*.tsx', {
   eager: true,
-});
+})
 
 const projects: Project[] = Object.values(modules)
   .map((mod) => mod.default)
-  .sort((a, b) => b.id - a.id);
+  .sort((a, b) => b.id - a.id)
 
 const filters = [
-  { id: "all", label: "All Projects" },
-  { id: "wordpress", label: "WordPress" },
-  { id: "nextjs", label: "Next.js" },
-  { id: "react", label: "React" },
-  { id: "javascript", label: "Javascript" },
-  { id: "static", label: "Static Websites" },
-  { id: "shopify", label: "Shopify" },
-  { id: "wix", label: "Wix" },
-  { id: "other-cms", label: "Other CMSs" },
-];
+  { id: 'all', label: 'All Projects' },
+  { id: 'wordpress', label: 'WordPress' },
+  { id: 'nextjs', label: 'Next.js' },
+  { id: 'react', label: 'React' },
+  { id: 'javascript', label: 'Javascript' },
+  { id: 'static', label: 'Static Websites' },
+  { id: 'shopify', label: 'Shopify' },
+  { id: 'wix', label: 'Wix' },
+  { id: 'other-cms', label: 'Other CMSs' },
+]
 
 const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
-  const [activeFilter, setActiveFilter] = useState("all");
-  const [currentPage, setCurrentPage] = useState(1);
-  const projectsPerPage = 9;
+  const [activeFilter, setActiveFilter] = useState('all')
+  const [currentPage, setCurrentPage] = useState(1)
+  const projectsPerPage = 9
   const [selectedProjectId, setSelectedProjectId] = useState<number | null>(
     null,
-  );
+  )
   const [screenshotModal, setScreenshotModal] = useState<{
-    isOpen: boolean;
-    image: string;
-    title: string;
+    isOpen: boolean
+    image: string
+    title: string
   }>({
     isOpen: false,
-    image: "",
-    title: "",
-  });
+    image: '',
+    title: '',
+  })
 
   // Фильтрация проектов по категории
   const filteredProjects =
-    activeFilter === "all"
+    activeFilter === 'all'
       ? projects
-      : projects.filter((project) => project.category.includes(activeFilter));
+      : projects.filter((project) => project.category.includes(activeFilter))
 
   // Пагинация
-  const indexOfLastProject = currentPage * projectsPerPage;
-  const indexOfFirstProject = indexOfLastProject - projectsPerPage;
+  const indexOfLastProject = currentPage * projectsPerPage
+  const indexOfFirstProject = indexOfLastProject - projectsPerPage
   const currentProjects = filteredProjects.slice(
     indexOfFirstProject,
     indexOfLastProject,
-  );
-  const totalPages = Math.ceil(filteredProjects.length / projectsPerPage);
+  )
+  const totalPages = Math.ceil(filteredProjects.length / projectsPerPage)
 
   useEffect(() => {
-    setCurrentPage(1);
-  }, [activeFilter]);
+    setCurrentPage(1)
+  }, [activeFilter])
 
   const openScreenshotModal = (image: string, title: string) => {
-    setScreenshotModal({ isOpen: true, image, title });
-    document.body.style.overflow = "hidden";
-  };
+    setScreenshotModal({ isOpen: true, image, title })
+    document.body.style.overflow = 'hidden'
+  }
 
   const closeScreenshotModal = () => {
-    setScreenshotModal({ isOpen: false, image: "", title: "" });
-    document.body.style.overflow = "unset";
-  };
+    setScreenshotModal({ isOpen: false, image: '', title: '' })
+    document.body.style.overflow = 'unset'
+  }
 
   if (selectedProjectId !== null) {
     return (
@@ -79,7 +85,7 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
         projectId={selectedProjectId}
         onBack={() => setSelectedProjectId(null)}
       />
-    );
+    )
   }
 
   return (
@@ -107,8 +113,8 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
               onClick={() => setActiveFilter(filter.id)}
               className={`px-4 py-2 rounded-full font-medium transition ${
                 activeFilter === filter.id
-                  ? "bg-purple-600 text-white dark:bg-lime-500 dark:text-slate-900"
-                  : "bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-slate-200 hover:bg-purple-100 dark:hover:bg-lime-700"
+                  ? 'bg-purple-600 text-white dark:bg-lime-500 dark:text-slate-900'
+                  : 'bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-slate-200 hover:bg-purple-100 dark:hover:bg-lime-700'
               }`}
               type="button"
             >
@@ -143,9 +149,10 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
                     project.technologies.map((tech, idx) => (
                       <span
                         key={idx}
+                        title={getTechFull(tech as TechnologyItem)}
                         className="bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-slate-200 px-2 py-1 rounded text-xs"
                       >
-                        {tech}
+                        {getTechShort(tech as TechnologyItem)}
                       </span>
                     ))
                   : // Новая структура - объект с категориями, отображаем все технологии
@@ -154,14 +161,15 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
                       .map((tech, idx) => (
                         <span
                           key={idx}
+                          title={getTechFull(tech)}
                           className="bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-slate-200 px-2 py-1 rounded text-xs"
                         >
-                          {tech}
+                          {getTechShort(tech)}
                         </span>
                       ))}
               </div>
               <div className="flex gap-3">
-                {project.liveUrl && project.liveUrl !== "#" && (
+                {project.liveUrl && project.liveUrl !== '#' && (
                   <a
                     href={project.liveUrl}
                     target="_blank"
@@ -193,8 +201,8 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
                 onClick={() => setCurrentPage(i + 1)}
                 className={`px-4 py-2 rounded-full font-medium transition ${
                   currentPage === i + 1
-                    ? "bg-purple-600 text-white dark:bg-lime-500 dark:text-slate-900"
-                    : "bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-slate-200 hover:bg-purple-100 dark:hover:bg-lime-700"
+                    ? 'bg-purple-600 text-white dark:bg-lime-500 dark:text-slate-900'
+                    : 'bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-slate-200 hover:bg-purple-100 dark:hover:bg-lime-700'
                 }`}
                 type="button"
               >
@@ -235,7 +243,7 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
         )}
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default Projects;
+export default Projects
