@@ -14,18 +14,14 @@ import {
 import { SiReact, SiWordpress, SiGoogleanalytics } from 'react-icons/si'
 
 const Skills = () => {
-  const [openCategories, setOpenCategories] = useState<number[]>([])
+  const [activeTab, setActiveTab] = useState(0)
 
-  const toggleCategory = (index: number) => {
-    setOpenCategories((prev) =>
-      prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
-    )
-  }
   const skillCategories = [
     {
       title: 'WordPress Development',
       icon: <SiWordpress className="w-6 h-6" />,
       color: 'from-blue-400 to-blue-600',
+      baseColor: 'blue',
       description: 'Custom Themes & Plugins. Ecommerce.',
       technologies: [
         'Hosting & Google App Engine (GAE) management',
@@ -83,8 +79,9 @@ const Skills = () => {
       title: 'App Development',
       icon: <SiReact className="w-6 h-6" />,
       color: 'from-sky-300 to-sky-500',
+      baseColor: 'sky',
       description:
-        'Building fast, scalable web applications using React, Next.js, TypeScript, and Tailwind CSS (or Styled Components or CSS Modules + Sass) — combining modern tools for clean code, optimized performance, and responsive design.',
+        'Building fast, scalable web applications using React, Next.js, TypeScript, and Tailwind CSS — combining modern tools for clean code, optimized performance, and responsive design.',
       technologies: [
         'React (Hooks, Context, Redux)',
         'Next.js (App Router, Server Components)',
@@ -134,6 +131,7 @@ const Skills = () => {
       title: 'AI Tools & Automation',
       icon: <Brain className="w-6 h-6" />,
       color: 'from-violet-400 to-violet-600',
+      baseColor: 'violet',
       description:
         'Modern AI tools and automation for enhanced development productivity',
       technologies: [
@@ -174,6 +172,7 @@ const Skills = () => {
       title: 'SEO & Performance',
       icon: <SiGoogleanalytics className="w-6 h-6" />,
       color: 'from-green-400 to-green-600',
+      baseColor: 'green',
       description: 'Search engine optimization and web performance enhancement',
       technologies: [
         'Technical SEO Auditing',
@@ -208,11 +207,11 @@ const Skills = () => {
         },
       ],
     },
-
     {
       title: 'Website Layout & Structure',
       icon: <Layout className="w-6 h-6" />,
       color: 'from-indigo-400 to-indigo-600',
+      baseColor: 'indigo',
       description: 'Modern layout systems and responsive design architecture',
       technologies: [
         'CSS Grid & Flexbox Mastery',
@@ -251,6 +250,7 @@ const Skills = () => {
       title: 'Design Understanding',
       icon: <Palette className="w-6 h-6" />,
       color: 'from-pink-400 to-pink-600',
+      baseColor: 'pink',
       description: 'Visual design principles and user experience optimization',
       technologies: [
         'Design Systems & Style Guides',
@@ -287,24 +287,27 @@ const Skills = () => {
     },
   ]
 
-  // const tools = [
-  //   { name: "React", category: "Frontend" },
-  //   { name: "TypeScript", category: "Language" },
-  //   { name: "WordPress", category: "CMS" },
-  //   { name: "PHP", category: "Backend" },
-  //   { name: "Node.js", category: "Runtime" },
-  //   { name: "MySQL", category: "Database" },
-  //   { name: "Tailwind CSS", category: "Styling" },
-  //   { name: "Git/GitHub", category: "Version Control" },
-  //   { name: "Vite", category: "Build Tool" },
-  //   { name: "Figma", category: "Design" },
-  //   { name: "Google Analytics", category: "Analytics" },
-  //   { name: "Web3.js", category: "Blockchain" },
-  //   { name: "GitHub Copilot", category: "AI Assistant" },
-  //   { name: "ChatGPT", category: "AI Assistant" },
-  //   { name: "Cursor AI", category: "AI IDE" },
-  //   { name: "Midjourney", category: "AI Design" },
-  // ];
+  const getTabActiveClasses = (category: typeof skillCategories[0], isActive: boolean) => {
+    if (!isActive) {
+      return 'border-slate-200/60 dark:border-white/5 bg-white/40 dark:bg-slate-900/40 text-slate-700 dark:text-slate-300 hover:bg-white/60 dark:hover:bg-slate-900/60'
+    }
+    switch (category.baseColor) {
+      case 'blue':
+        return 'border-blue-500/30 bg-blue-500/10 text-blue-600 dark:text-blue-400 font-semibold shadow-md shadow-blue-500/5 dark:shadow-blue-500/5'
+      case 'sky':
+        return 'border-sky-500/30 bg-sky-500/10 text-sky-600 dark:text-sky-400 font-semibold shadow-md shadow-sky-500/5 dark:shadow-sky-500/5'
+      case 'violet':
+        return 'border-violet-500/30 bg-violet-500/10 text-violet-600 dark:text-violet-400 font-semibold shadow-md shadow-violet-500/5 dark:shadow-violet-500/5'
+      case 'green':
+        return 'border-green-500/30 bg-green-500/10 text-green-600 dark:text-green-400 font-semibold shadow-md shadow-green-500/5 dark:shadow-green-500/5'
+      case 'indigo':
+        return 'border-indigo-500/30 bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 font-semibold shadow-md shadow-indigo-500/5 dark:shadow-indigo-500/5'
+      case 'pink':
+        return 'border-pink-500/30 bg-pink-500/10 text-pink-600 dark:text-pink-400 font-semibold shadow-md shadow-pink-500/5 dark:shadow-pink-500/5'
+      default:
+        return 'border-purple-500/30 bg-purple-500/10 text-purple-600 dark:text-purple-400 font-semibold'
+    }
+  }
 
   return (
     <section
@@ -325,98 +328,146 @@ const Skills = () => {
           </p>
         </div>
 
-        {/* Detailed Skills Categories */}
-        <div className="space-y-4">
-          {skillCategories.map((category, categoryIndex) => {
-            const isOpen = openCategories.includes(categoryIndex)
-
-            return (
-              <div
-                key={categoryIndex}
-                className="bg-white dark:bg-slate-700 rounded-3xl overflow-hidden border border-slate-200 dark:border-transparent hover:shadow-lg hover:border-slate-300 dark:hover:border-transparent transition-all duration-300"
-              >
-                {/* Category Header - Clickable */}
+        {/* Interactive Dashboard Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          
+          {/* Mobile Horizontal Tab Selector */}
+          <div className="lg:hidden flex overflow-x-auto space-x-2 pb-4 scrollbar-none snap-x snap-mandatory">
+            {skillCategories.map((category, index) => {
+              const isActive = activeTab === index
+              return (
                 <button
-                  onClick={() => toggleCategory(categoryIndex)}
-                  className="w-full flex items-center justify-between p-8 hover:bg-slate-100 dark:hover:bg-slate-600 transition-colors duration-200"
+                  key={index}
+                  onClick={() => setActiveTab(index)}
+                  className={`snap-start flex-shrink-0 flex items-center space-x-2 px-5 py-3 rounded-full border transition-all duration-300 text-xs font-semibold
+                    ${getTabActiveClasses(category, isActive)}
+                  `}
+                  type="button"
                 >
-                  <div className="flex items-center flex-1">
-                    <div
-                      className={`w-12 h-12 min-w-[3rem] min-h-[3rem] bg-gradient-to-r ${category.color} rounded-xl flex items-center justify-center text-white mr-4`}
-                    >
+                  <span className={`w-2 h-2 rounded-full bg-gradient-to-r ${category.color} ${isActive ? 'scale-100' : 'scale-75 opacity-50'}`} />
+                  <span>{category.title}</span>
+                </button>
+              )
+            })}
+          </div>
+
+          {/* Desktop Sidebar Tabs */}
+          <div className="hidden lg:flex flex-col space-y-2 lg:col-span-4">
+            {skillCategories.map((category, index) => {
+              const isActive = activeTab === index
+              return (
+                <button
+                  key={index}
+                  onClick={() => setActiveTab(index)}
+                  className={`group w-full flex items-center space-x-4 p-4 rounded-2xl border transition-all duration-300 text-left
+                    ${getTabActiveClasses(category, isActive)}
+                  `}
+                  type="button"
+                >
+                  <div
+                    className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300
+                      ${
+                        isActive
+                          ? `bg-gradient-to-br ${category.color} text-white shadow-lg`
+                          : 'bg-slate-100 dark:bg-white/5 text-slate-500 dark:text-slate-400 group-hover:bg-slate-200 dark:group-hover:bg-white/10 group-hover:scale-105'
+                      }
+                    `}
+                  >
+                    {category.icon}
+                  </div>
+                  <div className="flex-1">
+                    <div className="font-bold text-sm tracking-tight">{category.title}</div>
+                    <div className="text-xs opacity-80 font-normal mt-0.5 truncate max-w-[200px]">
+                      {category.description}
+                    </div>
+                  </div>
+                </button>
+              )
+            })}
+          </div>
+
+          {/* Right Dashboard Content Panel */}
+          <div className="lg:col-span-8">
+            {skillCategories.map((category, index) => {
+              if (activeTab !== index) return null
+
+              return (
+                <div
+                  key={index}
+                  className="group relative overflow-hidden rounded-3xl p-8 backdrop-blur-xl border border-slate-200/80 dark:border-white/10 bg-white/60 dark:bg-slate-900/60 transition-all duration-500 ease-out shadow-xl shadow-slate-200/50 dark:shadow-black/20 animate-fade-in"
+                >
+                  {/* Световой блик на стекле (Specular reflection) */}
+                  <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-white/10 opacity-30 pointer-events-none" />
+
+                  {/* Жидкое цветное свечение, которое просыпается при наведении */}
+                  <div className={`absolute -top-12 -left-12 w-48 h-48 bg-gradient-to-br ${category.color} rounded-full blur-3xl opacity-10 dark:opacity-20 pointer-events-none`} />
+
+                  {/* Заголовок панели */}
+                  <div className="relative z-10 flex items-center space-x-4 mb-6 pb-6 border-b border-slate-200/80 dark:border-slate-800">
+                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center bg-gradient-to-br ${category.color} text-white shadow-lg`}>
                       {category.icon}
                     </div>
-                    <div className="text-left">
-                      <h3 className="text-2xl font-semibold text-slate-900 dark:text-white">
+                    <div>
+                      <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white tracking-tight">
                         {category.title}
                       </h3>
+                      <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+                        {category.description}
+                      </p>
                     </div>
                   </div>
-                  <ChevronDown
-                    className={`w-6 h-6 text-slate-600 dark:text-slate-400 transition-transform duration-300 flex-shrink-0 ml-4 ${
-                      isOpen ? 'transform rotate-180' : ''
-                    }`}
-                  />
-                </button>
 
-                {/* Category Content - Accordion */}
-                {isOpen && (
-                  <div className="px-8 pb-8">
-                    <p className="text-slate-600 dark:text-slate-300 mb-6">
-                      {category.description}
-                    </p>
-                    <div className="grid lg:grid-cols-2 gap-8">
-                      {/* Technologies & Knowledge */}
-                      <div>
-                        <h4 className="font-semibold text-slate-900 dark:text-white mb-4">
-                          Technologies & Knowledge
-                        </h4>
-                        <div className="grid sm:grid-cols-2 gap-3">
-                          {category.technologies.map((tech, techIndex) => (
-                            <div
-                              key={techIndex}
-                              className="flex items-center space-x-2 p-3 bg-slate-50 dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600 hover:border-lime-200 dark:hover:border-purple-200 transition-colors"
-                            >
-                              <div
-                                className={`w-2 h-2 rounded-full bg-gradient-to-r ${category.color}`}
-                              ></div>
-                              <span className="text-slate-700 dark:text-slate-300 text-sm font-medium">
-                                {tech}
-                              </span>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* Skill Details */}
-                      <div>
-                        <h4 className="font-semibold text-slate-900 dark:text-white mb-4">
-                          Key Skills & Expertise
-                        </h4>
-                        <div className="bg-slate-50 dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-600 hover:border-lime-200 dark:hover:border-purple-200 transition-colors">
-                          <div className="space-y-6">
-                            {category.skillDetails.map((skill, skillIndex) => (
-                              <div
-                                key={skillIndex}
-                                className="border-b border-slate-200 dark:border-slate-700 last:border-b-0 pb-4 last:pb-0"
-                              >
-                                <h5 className="font-semibold text-slate-900 dark:text-white mb-2">
-                                  {skill.name}
-                                </h5>
-                                <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
-                                  {skill.description}
-                                </p>
-                              </div>
-                            ))}
+                  {/* Сетка колонок контента */}
+                  <div className="relative z-10 grid grid-cols-1 md:grid-cols-12 gap-8">
+                    
+                    {/* Левая колонка: Technologies & Knowledge */}
+                    <div className="md:col-span-7">
+                      <h4 className="text-xs font-semibold tracking-wider text-slate-400 dark:text-slate-500 uppercase mb-4">
+                        Technologies & Knowledge
+                      </h4>
+                      <div className="flex flex-wrap gap-2">
+                        {category.technologies.map((tech, techIndex) => (
+                          <div
+                            key={techIndex}
+                            className="flex items-center space-x-2 px-3 py-1.5 bg-slate-100/60 dark:bg-white/5 border border-slate-200/50 dark:border-white/5 rounded-xl hover:border-slate-300 dark:hover:border-white/10 transition-colors duration-200"
+                          >
+                            <span className={`w-1.5 h-1.5 rounded-full bg-gradient-to-r ${category.color}`} />
+                            <span className="text-slate-700 dark:text-slate-300 text-xs font-semibold">
+                              {tech}
+                            </span>
                           </div>
-                        </div>
+                        ))}
                       </div>
                     </div>
+
+                    {/* Правая колонка: Key Skills & Expertise */}
+                    <div className="md:col-span-5 space-y-4">
+                      <h4 className="text-xs font-semibold tracking-wider text-slate-400 dark:text-slate-500 uppercase mb-4">
+                        Key Skills & Expertise
+                      </h4>
+                      <div className="space-y-4">
+                        {category.skillDetails.map((detail, detailIndex) => (
+                          <div
+                            key={detailIndex}
+                            className="bg-slate-50/50 dark:bg-slate-950/20 border border-slate-200/50 dark:border-white/5 rounded-2xl p-5 hover:border-slate-300 dark:hover:border-white/10 transition-colors duration-300"
+                          >
+                            <h5 className="font-bold text-slate-900 dark:text-white text-sm mb-1">
+                              {detail.name}
+                            </h5>
+                            <p className="text-slate-600 dark:text-slate-400 text-xs leading-relaxed">
+                              {detail.description}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
                   </div>
-                )}
-              </div>
-            )
-          })}
+                </div>
+              )
+            })}
+          </div>
+
         </div>
 
         {/* Work Organization Tools */}
