@@ -476,10 +476,15 @@ const Skills = () => {
         </div>
 
         {/* Soft Skills */}
-        <div className="mt-16">
-          <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-8 text-center">
-            Soft Skills
-          </h3>
+        <div className="mt-20">
+          <div className="text-center mb-12">
+            <span className="text-xs font-semibold tracking-wider text-purple-600 dark:text-lime-400 uppercase">
+              Personal Attributes
+            </span>
+            <h3 className="text-3xl lg:text-4xl font-bold text-slate-900 dark:text-white mt-2">
+              Soft Skills
+            </h3>
+          </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               {
@@ -488,8 +493,8 @@ const Skills = () => {
                   'Analytical thinking and creative solutions for complex technical challenges',
                 icon: <Target className="w-6 h-6" />,
                 gradient: 'from-purple-500 to-indigo-600',
-                bgGradient:
-                  'from-purple-50 to-indigo-50 dark:from-purple-900/20 dark:to-indigo-900/20',
+                iconColor: 'text-purple-600 dark:text-purple-400',
+                hoverBorder: 'group-hover:border-purple-500/50',
               },
               {
                 name: 'Communication',
@@ -497,8 +502,8 @@ const Skills = () => {
                   'Clear technical communication with clients, teams, and stakeholders',
                 icon: <MessageSquare className="w-6 h-6" />,
                 gradient: 'from-blue-500 to-cyan-600',
-                bgGradient:
-                  'from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20',
+                iconColor: 'text-blue-600 dark:text-blue-400',
+                hoverBorder: 'group-hover:border-blue-500/50',
               },
               {
                 name: 'Project Management',
@@ -506,8 +511,8 @@ const Skills = () => {
                   'Agile methodologies, timeline management, and deliverable coordination',
                 icon: <ClipboardCheck className="w-6 h-6" />,
                 gradient: 'from-green-500 to-emerald-600',
-                bgGradient:
-                  'from-green-50 to-emerald-50 dark:from-green-900/20 dark:to-emerald-900/20',
+                iconColor: 'text-green-600 dark:text-green-400',
+                hoverBorder: 'group-hover:border-green-500/50',
               },
               {
                 name: 'Adaptability',
@@ -515,8 +520,8 @@ const Skills = () => {
                   'Quick learning of new technologies and adapting to changing requirements',
                 icon: <TrendingUp className="w-6 h-6" />,
                 gradient: 'from-orange-500 to-red-600',
-                bgGradient:
-                  'from-orange-50 to-red-50 dark:from-orange-900/20 dark:to-red-900/20',
+                iconColor: 'text-orange-600 dark:text-orange-400',
+                hoverBorder: 'group-hover:border-orange-500/50',
               },
               {
                 name: 'Client Relations',
@@ -524,8 +529,8 @@ const Skills = () => {
                   'Building trust, managing expectations, and delivering exceptional service',
                 icon: <Handshake className="w-6 h-6" />,
                 gradient: 'from-pink-500 to-rose-600',
-                bgGradient:
-                  'from-pink-50 to-rose-50 dark:from-pink-900/20 dark:to-rose-900/20',
+                iconColor: 'text-pink-600 dark:text-pink-400',
+                hoverBorder: 'group-hover:border-pink-500/50',
               },
               {
                 name: 'Team Collaboration',
@@ -533,40 +538,39 @@ const Skills = () => {
                   'Cross-functional teamwork, mentoring, and knowledge sharing',
                 icon: <Users className="w-6 h-6" />,
                 gradient: 'from-teal-500 to-cyan-600',
-                bgGradient:
-                  'from-teal-50 to-cyan-50 dark:from-teal-900/20 dark:to-cyan-900/20',
+                iconColor: 'text-teal-600 dark:text-teal-400',
+                hoverBorder: 'group-hover:border-teal-500/50',
               },
             ].map((skill, index) => (
               <div
                 key={index}
-                className={`relative overflow-hidden bg-gradient-to-br ${skill.bgGradient} rounded-2xl p-6 border border-white/20 dark:border-slate-700/50 hover:shadow-xl hover:scale-105 transition-all duration-300 group backdrop-blur-sm`}
+                className="group relative overflow-hidden rounded-3xl p-8 backdrop-blur-xl border border-slate-200/80 dark:border-white/10 bg-white/60 dark:bg-slate-900/60 hover:bg-white/80 dark:hover:bg-slate-900/85 hover:border-slate-300 dark:hover:border-white/20 hover:scale-[1.02] hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-200/50 dark:hover:shadow-black/20 transition-all duration-500 ease-out"
               >
-                {/* Floating background elements */}
-                <div className="absolute -top-4 -right-4 w-20 h-20 bg-gradient-to-br from-white/10 to-white/5 rounded-full blur-xl"></div>
-                <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-br from-white/5 to-white/10 rounded-full blur-lg"></div>
+                {/* Световой блик на стекле (Specular reflection) */}
+                <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-white/10 opacity-30 pointer-events-none" />
 
-                {/* Icon container */}
-                <div
-                  className={`relative w-16 h-16 mx-auto mb-4 bg-gradient-to-br ${skill.gradient} rounded-2xl flex items-center justify-center text-white shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-all duration-300`}
-                >
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent rounded-2xl"></div>
-                  {skill.icon}
-                </div>
+                {/* Жидкое цветное свечение, которое просыпается при наведении */}
+                <div className={`absolute -top-12 -left-12 w-32 h-32 bg-gradient-to-br ${skill.gradient} rounded-full blur-3xl opacity-0 group-hover:opacity-[0.12] dark:group-hover:opacity-[0.20] transition-opacity duration-500 pointer-events-none`} />
 
-                {/* Content */}
-                <div className="relative z-10 text-center">
-                  <h4 className="font-bold text-slate-900 dark:text-white mb-3 text-lg group-hover:text-slate-800 dark:group-hover:text-slate-100 transition-colors">
+                {/* Контент: иконка слева, текст под ней, все выровнено по левому краю */}
+                <div className="relative z-10 flex flex-col items-start text-left">
+                  {/* Стеклянный контейнер для иконки */}
+                  <div
+                    className={`w-12 h-12 rounded-xl flex items-center justify-center border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 ${skill.iconColor} ${skill.hoverBorder} transition-all duration-500 mb-6`}
+                  >
+                    {skill.icon}
+                  </div>
+
+                  {/* Заголовок */}
+                  <h4 className="font-bold text-slate-900 dark:text-white text-lg tracking-tight mb-2">
                     {skill.name}
                   </h4>
-                  <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed group-hover:text-slate-700 dark:group-hover:text-slate-200 transition-colors">
+
+                  {/* Описание */}
+                  <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
                     {skill.description}
                   </p>
                 </div>
-
-                {/* Hover glow effect */}
-                <div
-                  className={`absolute inset-0 bg-gradient-to-br ${skill.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300 rounded-2xl`}
-                ></div>
               </div>
             ))}
           </div>
