@@ -472,54 +472,79 @@ const Skills = () => {
 
         {/* Work Organization Tools */}
         <div className="mt-20">
-          <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-8 text-center">
-            Work Organization Tools
-          </h3>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+          <div className="text-center mb-10">
+            <span className="text-xs font-semibold tracking-wider text-purple-600 dark:text-lime-400 uppercase">
+              Work Environment
+            </span>
+            <h3 className="text-2xl lg:text-3xl font-bold text-slate-900 dark:text-white mt-1">
+              Work Organization Tools
+            </h3>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {[
               {
-                name: 'Google Workspace',
-                description: 'Document collaboration',
+                name: 'AI IDEs & Copilots',
+                description: 'Claude Code, Google Antigravity, Cursor, Devin, Windsurf',
+                glowColor: 'bg-violet-500',
               },
               {
-                name: 'Notion',
-                description: 'Project management & documentation',
+                name: 'Figma, Pencil & Claude Design',
+                description: 'UI/UX Design, wireframing & prototyping',
+                glowColor: 'bg-pink-500',
               },
               {
-                name: 'Figma',
-                description: 'Design collaboration & prototyping',
+                name: 'Redmine & Jira',
+                description: 'Agile task tracking & project management',
+                glowColor: 'bg-red-500',
               },
               {
-                name: 'GitHub/Gitlab',
-                description: 'Code project management',
+                name: 'Notion, Miro & NotebookLM',
+                description: 'Collaboration, mind mapping & AI research',
+                glowColor: 'bg-slate-400',
               },
               {
-                name: 'Slack',
-                description: 'Team communication & integration',
+                name: 'Slack, MS Teams & Workspace',
+                description: 'Team communication & cloud workspace',
+                glowColor: 'bg-amber-400',
               },
               {
-                name: 'Trello/Redmine',
-                description: 'Task management & workflow',
-              },
-
-              {
-                name: 'Google Meet/Zoom',
-                description: 'Client meetings & presentations',
+                name: 'GitHub & GitLab',
+                description: 'Git workflows & CI/CD automation',
+                glowColor: 'bg-slate-700 dark:bg-white',
               },
               {
-                name: 'Asana/Jira',
-                description: 'Team project planning & task tracking',
+                name: 'Vercel & Netlify',
+                description: 'Serverless cloud hosting platforms',
+                glowColor: 'bg-teal-400',
+              },
+              {
+                name: 'Local WP, XAMPP & Docker',
+                description: 'Local development & server environments',
+                glowColor: 'bg-blue-500',
               },
             ].map((tool, index) => (
               <div
                 key={index}
-                className="bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-xl p-4 hover:border-lime-300 dark:hover:border-purple-300 hover:shadow-md transition-all duration-200 group"
+                className="group relative overflow-hidden bg-white/40 dark:bg-slate-900/40 backdrop-blur-md border border-slate-200/60 dark:border-white/5 rounded-2xl p-5 hover:bg-white/60 dark:hover:bg-slate-900/60 hover:border-slate-300 dark:hover:border-white/20 hover:scale-[1.02] hover:-translate-y-0.5 transition-all duration-300 shadow-sm"
               >
-                <div className="text-slate-700 dark:text-slate-300 font-semibold group-hover:text-purple-600 dark:group-hover:text-lime-500 transition-colors mb-1">
-                  {tool.name}
-                </div>
-                <div className="text-xs text-slate-500 dark:text-slate-400 group-hover:text-purple-400 dark:group-hover:text-lime-400 transition-colors leading-relaxed">
-                  {tool.description}
+                {/* Световой блик на стекле */}
+                <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-white/10 opacity-30 pointer-events-none" />
+
+                {/* Жидкое цветное свечение, которое просыпается при наведении */}
+                <div className={`absolute -top-12 -left-12 w-24 h-24 ${tool.glowColor} rounded-full blur-2xl opacity-0 group-hover:opacity-10 dark:group-hover:opacity-15 transition-opacity duration-300 pointer-events-none`} />
+
+                {/* Контент */}
+                <div className="relative z-10 flex items-start space-x-3 text-left">
+                  {/* Цветной индикатор-точка */}
+                  <span className={`w-2 h-2 rounded-full ${tool.glowColor} mt-1.5 flex-shrink-0 shadow-[0_0_8px_rgba(255,255,255,0.5)]`} />
+                  <div>
+                    <h4 className="text-slate-900 dark:text-white font-bold text-sm tracking-tight transition-colors mb-1">
+                      {tool.name}
+                    </h4>
+                    <p className="text-slate-500 dark:text-slate-400 text-xs leading-relaxed font-normal">
+                      {tool.description}
+                    </p>
+                  </div>
                 </div>
               </div>
             ))}
