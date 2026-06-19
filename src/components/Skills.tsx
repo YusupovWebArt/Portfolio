@@ -421,18 +421,18 @@ const Skills = () => {
                   <div className="relative z-10 grid grid-cols-1 md:grid-cols-12 gap-8">
                     
                     {/* Левая колонка: Technologies & Knowledge */}
-                    <div className="md:col-span-7">
+                    <div className="md:col-span-8">
                       <h4 className="text-xs font-semibold tracking-wider text-slate-400 dark:text-slate-500 uppercase mb-4">
                         Technologies & Knowledge
                       </h4>
-                      <div className="flex flex-wrap gap-2">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                         {category.technologies.map((tech, techIndex) => (
                           <div
                             key={techIndex}
-                            className="flex items-center space-x-2 px-3 py-1.5 bg-slate-100/60 dark:bg-white/5 border border-slate-200/50 dark:border-white/5 rounded-xl hover:border-slate-300 dark:hover:border-white/10 transition-colors duration-200"
+                            className="flex items-start space-x-2 px-3 py-2 bg-slate-100/60 dark:bg-white/5 border border-slate-200/50 dark:border-white/5 rounded-xl hover:border-slate-300 dark:hover:border-white/10 transition-colors duration-200"
                           >
-                            <span className={`w-1.5 h-1.5 rounded-full bg-gradient-to-r ${category.color}`} />
-                            <span className="text-slate-700 dark:text-slate-300 text-xs font-semibold">
+                            <span className={`w-1.5 h-1.5 rounded-full bg-gradient-to-r ${category.color} mt-1.5 flex-shrink-0`} />
+                            <span className="text-slate-700 dark:text-slate-300 text-xs font-semibold leading-tight">
                               {tech}
                             </span>
                           </div>
@@ -441,20 +441,20 @@ const Skills = () => {
                     </div>
 
                     {/* Правая колонка: Key Skills & Expertise */}
-                    <div className="md:col-span-5 space-y-4">
+                    <div className="md:col-span-4 space-y-3">
                       <h4 className="text-xs font-semibold tracking-wider text-slate-400 dark:text-slate-500 uppercase mb-4">
                         Key Skills & Expertise
                       </h4>
-                      <div className="space-y-4">
+                      <div className="space-y-3">
                         {category.skillDetails.map((detail, detailIndex) => (
                           <div
                             key={detailIndex}
-                            className="bg-slate-50/50 dark:bg-slate-950/20 border border-slate-200/50 dark:border-white/5 rounded-2xl p-5 hover:border-slate-300 dark:hover:border-white/10 transition-colors duration-300"
+                            className="bg-slate-50/50 dark:bg-slate-950/20 border border-slate-200/50 dark:border-white/5 rounded-2xl p-4 hover:border-slate-300 dark:hover:border-white/10 transition-colors duration-300"
                           >
-                            <h5 className="font-bold text-slate-900 dark:text-white text-sm mb-1">
+                            <h5 className="font-bold text-slate-900 dark:text-white text-xs mb-1">
                               {detail.name}
                             </h5>
-                            <p className="text-slate-600 dark:text-slate-400 text-xs leading-relaxed">
+                            <p className="text-slate-600 dark:text-slate-400 text-[11px] leading-relaxed">
                               {detail.description}
                             </p>
                           </div>
