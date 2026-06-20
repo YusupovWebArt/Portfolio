@@ -381,7 +381,7 @@ const Skills = () => {
                   type="button"
                 >
                   <div
-                    className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300
+                    className={`w-10 h-10 rounded-full shrink-0 flex items-center justify-center transition-all duration-300
                       ${
                         isActive
                           ? `bg-gradient-to-br ${category.color} text-white shadow-lg`
@@ -420,7 +420,7 @@ const Skills = () => {
 
                   {/* Заголовок панели */}
                   <div className="relative z-10 flex items-center space-x-4 mb-6 pb-6 border-b border-slate-200/80 dark:border-slate-800">
-                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center bg-gradient-to-br ${category.color} text-white shadow-lg`}>
+                    <div className={`w-12 h-12 rounded-full shrink-0 flex items-center justify-center bg-gradient-to-br ${category.color} text-white shadow-lg`}>
                       {category.icon}
                     </div>
                     <div>
@@ -648,7 +648,7 @@ const Skills = () => {
                 <div className="relative z-10 flex flex-col items-start text-left">
                   {/* Стеклянный контейнер для иконки */}
                   <div
-                    className={`w-12 h-12 rounded-xl flex items-center justify-center border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 ${skill.iconColor} ${skill.hoverBorder} transition-all duration-500 mb-6`}
+                    className={`w-12 h-12 rounded-full shrink-0 flex items-center justify-center border border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 ${skill.iconColor} ${skill.hoverBorder} transition-all duration-500 mb-6`}
                   >
                     {skill.icon}
                   </div>
