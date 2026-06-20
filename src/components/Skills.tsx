@@ -332,23 +332,39 @@ const Skills = () => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
           {/* Mobile Horizontal Tab Selector */}
-          <div className="lg:hidden flex overflow-x-auto space-x-2 pb-4 scrollbar-none snap-x snap-mandatory">
-            {skillCategories.map((category, index) => {
-              const isActive = activeTab === index
-              return (
-                <button
-                  key={index}
-                  onClick={() => setActiveTab(index)}
-                  className={`snap-start flex-shrink-0 flex items-center space-x-2 px-5 py-3 rounded-full border transition-all duration-300 text-xs font-semibold
-                    ${getTabActiveClasses(category, isActive)}
-                  `}
-                  type="button"
-                >
-                  <span className={`w-2 h-2 rounded-full bg-gradient-to-r ${category.color} ${isActive ? 'scale-100' : 'scale-75 opacity-50'}`} />
-                  <span>{category.title}</span>
-                </button>
-              )
-            })}
+          <div className="lg:hidden w-full mb-6">
+            <div className="flex items-center justify-between mb-3 px-1">
+              <span className="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
+                Choose Specialization:
+              </span>
+              <span className="text-[10px] text-slate-400 dark:text-slate-500 flex items-center space-x-1 animate-pulse">
+                <span>Swipe</span>
+                <span>→</span>
+              </span>
+            </div>
+            <div className="flex overflow-x-auto space-x-2 pb-3 scrollbar-none snap-x snap-mandatory">
+              {skillCategories.map((category, index) => {
+                const isActive = activeTab === index
+                return (
+                  <button
+                    key={index}
+                    onClick={() => setActiveTab(index)}
+                    className={`snap-start flex-shrink-0 flex items-center space-x-2 px-4 py-2.5 rounded-full border transition-all duration-300 text-xs font-semibold
+                      ${isActive
+                        ? `bg-gradient-to-r ${category.color} text-white border-transparent shadow-md shadow-slate-900/10`
+                        : 'border-slate-200/60 dark:border-white/5 bg-white/40 dark:bg-slate-900/40 text-slate-700 dark:text-slate-300 hover:bg-white/60 dark:hover:bg-slate-900/60'
+                      }
+                    `}
+                    type="button"
+                  >
+                    <span className={`scale-75 -mx-0.5 flex-shrink-0 ${isActive ? 'text-white' : 'text-slate-500 dark:text-slate-400'}`}>
+                      {category.icon}
+                    </span>
+                    <span>{category.title}</span>
+                  </button>
+                )
+              })}
+            </div>
           </div>
 
           {/* Desktop Sidebar Tabs */}
@@ -394,13 +410,13 @@ const Skills = () => {
               return (
                 <div
                   key={index}
-                  className="group relative overflow-hidden rounded-3xl p-8 backdrop-blur-xl border border-slate-200/80 dark:border-white/10 bg-white/60 dark:bg-slate-900/60 transition-all duration-500 ease-out shadow-xl shadow-slate-200/50 dark:shadow-black/20 animate-fade-in"
+                  className="group relative overflow-hidden rounded-3xl p-6 sm:p-8 bg-white dark:bg-slate-900 lg:backdrop-blur-xl lg:bg-white/60 lg:dark:bg-slate-900/60 border border-slate-200/80 dark:border-white/10 transition-all duration-500 ease-out shadow-xl shadow-slate-200/50 dark:shadow-black/20 animate-fade-in"
                 >
                   {/* Световой блик на стекле (Specular reflection) */}
                   <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-white/10 opacity-30 pointer-events-none" />
 
                   {/* Жидкое цветное свечение, которое просыпается при наведении */}
-                  <div className={`absolute -top-12 -left-12 w-48 h-48 bg-gradient-to-br ${category.color} rounded-full blur-3xl opacity-10 dark:opacity-20 pointer-events-none`} />
+                  <div className={`hidden lg:block absolute -top-12 -left-12 w-48 h-48 bg-gradient-to-br ${category.color} rounded-full blur-3xl opacity-10 dark:opacity-20 pointer-events-none`} />
 
                   {/* Заголовок панели */}
                   <div className="relative z-10 flex items-center space-x-4 mb-6 pb-6 border-b border-slate-200/80 dark:border-slate-800">
@@ -425,14 +441,14 @@ const Skills = () => {
                       <h4 className="text-xs font-semibold tracking-wider text-slate-400 dark:text-slate-500 uppercase mb-4">
                         Technologies & Knowledge
                       </h4>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                      <div className="flex flex-wrap gap-2">
                         {category.technologies.map((tech, techIndex) => (
                           <div
                             key={techIndex}
-                            className="flex items-start space-x-2 px-3 py-2 bg-slate-100/60 dark:bg-white/5 border border-slate-200/50 dark:border-white/5 rounded-xl hover:border-slate-300 dark:hover:border-white/10 transition-colors duration-200"
+                            className="inline-flex items-center space-x-1.5 px-3 py-1.5 bg-slate-100/40 dark:bg-white/5 border border-slate-200/40 dark:border-white/5 rounded-full transition-all duration-300"
                           >
-                            <span className={`w-1.5 h-1.5 rounded-full bg-gradient-to-r ${category.color} mt-1.5 flex-shrink-0`} />
-                            <span className="text-slate-700 dark:text-slate-300 text-xs font-semibold leading-tight">
+                            <span className={`w-1.5 h-1.5 rounded-full bg-gradient-to-r ${category.color} flex-shrink-0`} />
+                            <span className="text-slate-700 dark:text-slate-300 text-xs font-medium leading-tight">
                               {tech}
                             </span>
                           </div>
@@ -525,13 +541,13 @@ const Skills = () => {
             ].map((tool, index) => (
               <div
                 key={index}
-                className="group relative overflow-hidden bg-white/40 dark:bg-slate-900/40 backdrop-blur-md border border-slate-200/60 dark:border-white/5 rounded-2xl p-5 hover:bg-white/60 dark:hover:bg-slate-900/60 hover:border-slate-300 dark:hover:border-white/20 hover:scale-[1.02] hover:-translate-y-0.5 transition-all duration-300 shadow-sm"
+                className="group relative overflow-hidden bg-white dark:bg-slate-900 lg:bg-white/40 lg:dark:bg-slate-900/40 lg:backdrop-blur-md border border-slate-200/60 dark:border-white/5 rounded-2xl p-5 hover:bg-white/60 dark:hover:bg-slate-900/60 hover:border-slate-300 dark:hover:border-white/20 hover:scale-[1.02] hover:-translate-y-0.5 transition-all duration-300 shadow-sm"
               >
                 {/* Световой блик на стекле */}
                 <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-white/10 opacity-30 pointer-events-none" />
 
                 {/* Жидкое цветное свечение, которое просыпается при наведении */}
-                <div className={`absolute -top-12 -left-12 w-24 h-24 ${tool.glowColor} rounded-full blur-2xl opacity-0 group-hover:opacity-10 dark:group-hover:opacity-15 transition-opacity duration-300 pointer-events-none`} />
+                <div className={`hidden lg:block absolute -top-12 -left-12 w-24 h-24 ${tool.glowColor} rounded-full blur-2xl opacity-0 group-hover:opacity-10 dark:group-hover:opacity-15 transition-opacity duration-300 pointer-events-none`} />
 
                 {/* Контент */}
                 <div className="relative z-10 flex items-start space-x-3 text-left">
@@ -620,13 +636,13 @@ const Skills = () => {
             ].map((skill, index) => (
               <div
                 key={index}
-                className="group relative overflow-hidden rounded-3xl p-8 backdrop-blur-xl border border-slate-200/80 dark:border-white/10 bg-white/60 dark:bg-slate-900/60 hover:bg-white/80 dark:hover:bg-slate-900/85 hover:border-slate-300 dark:hover:border-white/20 hover:scale-[1.02] hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-200/50 dark:hover:shadow-black/20 transition-all duration-500 ease-out"
+                className="group relative overflow-hidden rounded-3xl p-6 sm:p-8 bg-white dark:bg-slate-900 lg:bg-white/60 lg:dark:bg-slate-900/60 lg:backdrop-blur-xl border border-slate-200/80 dark:border-white/10 hover:bg-white/80 dark:hover:bg-slate-900/85 hover:border-slate-300 dark:hover:border-white/20 hover:scale-[1.02] hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-200/50 dark:hover:shadow-black/20 transition-all duration-500 ease-out"
               >
                 {/* Световой блик на стекле (Specular reflection) */}
                 <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-white/10 opacity-30 pointer-events-none" />
 
                 {/* Жидкое цветное свечение, которое просыпается при наведении */}
-                <div className={`absolute -top-12 -left-12 w-32 h-32 bg-gradient-to-br ${skill.gradient} rounded-full blur-3xl opacity-0 group-hover:opacity-[0.12] dark:group-hover:opacity-[0.20] transition-opacity duration-500 pointer-events-none`} />
+                <div className={`hidden lg:block absolute -top-12 -left-12 w-32 h-32 bg-gradient-to-br ${skill.gradient} rounded-full blur-3xl opacity-0 group-hover:opacity-[0.12] dark:group-hover:opacity-[0.20] transition-opacity duration-500 pointer-events-none`} />
 
                 {/* Контент: иконка слева, текст под ней, все выровнено по левому краю */}
                 <div className="relative z-10 flex flex-col items-start text-left">
