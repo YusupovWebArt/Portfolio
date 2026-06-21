@@ -53,9 +53,14 @@ body {
 }
 
 /* Greenish custom scrollbar */
+.green-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(132, 204, 22, 0.55) transparent;
+}
+
 .green-scrollbar::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
 }
 
 .green-scrollbar::-webkit-scrollbar-track {
@@ -63,12 +68,16 @@ body {
 }
 
 .green-scrollbar::-webkit-scrollbar-thumb {
-  background: rgba(34, 197, 94, 0.35);
+  background: rgba(132, 204, 22, 0.55);
   border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
 }
 
 .green-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: rgba(34, 197, 94, 0.55);
+  background: rgba(132, 204, 22, 0.8);
+  border: 2px solid transparent;
+  background-clip: padding-box;
 }
 
 

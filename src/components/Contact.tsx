@@ -171,10 +171,15 @@ const Contact = () => {
   ])
   const [input, setInput] = useState('')
   const [isTyping, setIsTyping] = useState(false)
-  const chatEndRef = useRef<HTMLDivElement>(null)
+  const scrollContainerRef = useRef<HTMLDivElement>(null)
 
   const scrollToBottom = () => {
-    chatEndRef.current?.scrollIntoView({ behavior: 'smooth' })
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollTo({
+        top: scrollContainerRef.current.scrollHeight,
+        behavior: 'smooth',
+      })
+    }
   }
 
   useEffect(() => {
@@ -348,7 +353,10 @@ const Contact = () => {
               </div>
 
               {/* Chat History List */}
-              <div className="flex-1 overflow-y-auto px-5 py-4 space-y-3.5 bg-slate-50/20 dark:bg-slate-950/5 custom-scrollbar">
+              <div
+                ref={scrollContainerRef}
+                className="flex-1 overflow-y-auto px-5 py-4 space-y-3.5 bg-slate-50/20 dark:bg-slate-950/5 custom-scrollbar"
+              >
                 {messages.map((msg) => {
                   const isBot = msg.from === 'bot'
                   return (
@@ -417,7 +425,6 @@ const Contact = () => {
                   </div>
                 )}
 
-                <div ref={chatEndRef} />
               </div>
 
               {/* Console Input Footer */}

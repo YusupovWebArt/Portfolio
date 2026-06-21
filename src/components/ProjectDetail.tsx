@@ -836,17 +836,17 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
       {screenshotModal.isOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70 p-4">
           
-          {/* Floating Close Button in Viewport */}
-          <button
-            className="fixed top-4 right-4 md:top-6 md:right-6 text-white/70 hover:text-white bg-slate-800/80 dark:bg-slate-900/80 p-2.5 rounded-full border border-slate-700 dark:border-white/10 shadow-lg transition hover:scale-105 z-[60] backdrop-blur-md"
-            onClick={closeScreenshotModal}
-            title="Close"
-            type="button"
-          >
-            <X size={20} />
-          </button>
-
           <div className="relative bg-white dark:bg-slate-900 rounded-2xl shadow-2xl w-full max-w-5xl overflow-hidden flex flex-col">
+            
+            {/* Close Button inside Modal Card (top-right) */}
+            <button
+              className="absolute top-3 right-3 md:top-4 md:right-4 text-slate-400 hover:text-slate-600 dark:text-slate-500 dark:hover:text-slate-300 p-1.5 md:p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800/80 transition z-50"
+              onClick={closeScreenshotModal}
+              title="Close"
+              type="button"
+            >
+              <X size={20} />
+            </button>
 
             {/* Navigation Arrows (Only show when viewing carousel slides, not full screenshot) */}
             {project.images.length > 1 && project.images.some(img => img.src === screenshotModal.image) && (
@@ -897,8 +897,8 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
               </>
             )}
             
-            {/* Scrollable Image Area */}
-            <div className="p-6 pb-2">
+            {/* Scrollable Image Area with top-padding to clear the close button */}
+            <div className="px-4 md:px-6 pb-4 pt-12 md:pt-14">
               {(() => {
                 const isFullPage = !project.images.some(img => img.src === screenshotModal.image)
                 return (
@@ -924,7 +924,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
             </div>
 
             {/* Title & Caption - Statically positioned footer (No overlay!) */}
-            <div className="px-6 py-4 border-t border-slate-100 dark:border-white/5 bg-slate-50/50 dark:bg-slate-950/20 text-left">
+            <div className="px-4 md:px-6 py-4 border-t border-slate-100 dark:border-white/5 bg-slate-50/50 dark:bg-slate-950/20 text-left">
               <h3 className="text-slate-900 dark:text-white text-base font-bold">
                 {screenshotModal.title}
               </h3>
