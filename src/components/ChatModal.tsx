@@ -198,7 +198,7 @@ const ChatModal = ({
         </div>
 
         {/* Message Area */}
-        <div className="flex-1 overflow-y-auto px-6 py-4 space-y-4 bg-slate-50/30 dark:bg-slate-950/10 scrollbar-thin">
+        <div className="flex-1 overflow-y-auto px-6 py-4 space-y-4 bg-slate-50/30 dark:bg-slate-950/10 custom-scrollbar">
           {messages.map((msg) => {
             const isBot = msg.from === 'bot'
             return (
