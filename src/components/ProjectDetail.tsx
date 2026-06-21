@@ -835,17 +835,18 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
 */}
       {screenshotModal.isOpen && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70 p-4">
+          
+          {/* Floating Close Button in Viewport */}
+          <button
+            className="fixed top-4 right-4 md:top-6 md:right-6 text-white/70 hover:text-white bg-slate-800/80 dark:bg-slate-900/80 p-2.5 rounded-full border border-slate-700 dark:border-white/10 shadow-lg transition hover:scale-105 z-[60] backdrop-blur-md"
+            onClick={closeScreenshotModal}
+            title="Close"
+            type="button"
+          >
+            <X size={20} />
+          </button>
+
           <div className="relative bg-white dark:bg-slate-900 rounded-2xl shadow-2xl w-full max-w-5xl overflow-hidden flex flex-col">
-            
-            {/* Close Button */}
-            <button
-              className="absolute top-4 right-4 text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-white bg-slate-100 dark:bg-slate-800 p-2 rounded-full border border-slate-200 dark:border-white/5 shadow-sm transition hover:scale-105 z-50"
-              onClick={closeScreenshotModal}
-              title="Close"
-              type="button"
-            >
-              <X size={18} />
-            </button>
 
             {/* Navigation Arrows (Only show when viewing carousel slides, not full screenshot) */}
             {project.images.length > 1 && project.images.some(img => img.src === screenshotModal.image) && (
@@ -897,11 +898,11 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
             )}
             
             {/* Scrollable Image Area */}
-            <div className="p-6 pb-2 mt-12 lg:mt-6">
+            <div className="p-6 pb-2">
               {(() => {
                 const isFullPage = !project.images.some(img => img.src === screenshotModal.image)
                 return (
-                  <div className={`w-full overflow-y-auto max-h-[65vh] md:max-h-[70vh] custom-scrollbar rounded-xl border border-slate-200/50 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/40 ${isFullPage ? '' : 'flex items-center justify-center'}`}>
+                  <div className={`w-full overflow-y-auto max-h-[65vh] md:max-h-[70vh] green-scrollbar rounded-xl border border-slate-200/50 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/40 ${isFullPage ? '' : 'flex items-center justify-center'}`}>
                     <img
                       src={screenshotModal.image}
                       alt={screenshotModal.title}
