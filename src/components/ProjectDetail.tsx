@@ -66,7 +66,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
   })
 
   const [detailTab, setDetailTab] = useState<
-    'stack' | 'features' | 'architecture'
+    'stack' | 'features' | 'architecture' | 'case-study'
   >('stack')
 
   useEffect(() => {
@@ -74,7 +74,12 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
     const hasArch = Boolean(
       p?.architecture?.rows?.length && p.architecture.description?.trim(),
     )
+    const hasCase = Boolean(
+      p?.challenges?.length || p?.solutions?.length,
+    )
     if (!hasArch && detailTab === 'architecture') {
+      setDetailTab('stack')
+    } else if (!hasCase && detailTab === 'case-study') {
       setDetailTab('stack')
     }
   }, [projectId, detailTab])
@@ -202,6 +207,9 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
   const hasArchitecture = Boolean(
     project.architecture?.rows?.length &&
       project.architecture.description?.trim(),
+  )
+  const hasCaseStudy = Boolean(
+    project.challenges?.length || project.solutions?.length,
   )
 
   return (
@@ -439,6 +447,24 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
                 }`}
               >
                 Architecture
+              </button>
+            )}
+            {hasCaseStudy && (
+              <button
+                type="button"
+                role="tab"
+                id="tab-project-case-study"
+                aria-selected={detailTab === 'case-study'}
+                aria-controls="panel-project-case-study"
+                tabIndex={detailTab === 'case-study' ? 0 : -1}
+                onClick={() => setDetailTab('case-study')}
+                className={`min-w-0 flex-1 px-4 py-3.5 text-center text-sm font-semibold transition-colors sm:text-base ${
+                  detailTab === 'case-study'
+                    ? 'border-b-2 border-purple-600 text-purple-600 dark:border-lime-400 dark:text-lime-400'
+                    : 'border-b-2 border-transparent text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white'
+                }`}
+              >
+                Case Study
               </button>
             )}
           </div>
@@ -784,50 +810,59 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
                 </div>
               </div>
             )}
+
+            {detailTab === 'case-study' && hasCaseStudy && (
+              <div
+                id="panel-project-case-study"
+                role="tabpanel"
+                aria-labelledby="tab-project-case-study"
+                className="space-y-6"
+              >
+                <div>
+                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-6">
+                    Challenges & Solutions
+                  </h3>
+                  <div className="space-y-6">
+                    {project.challenges && project.challenges.length > 0 && (
+                      <div>
+                        <h4 className="font-semibold text-slate-900 dark:text-white mb-3 text-sm uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                          Challenges Faced:
+                        </h4>
+                        <ul className="space-y-2">
+                          {project.challenges.map((challenge, index) => (
+                            <li key={index} className="flex items-start space-x-3">
+                              <div className="w-2 h-2 rounded-full bg-red-500 dark:bg-orange-500 mt-2 flex-shrink-0"></div>
+                              <span className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                                {challenge}
+                              </span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                    {project.solutions && project.solutions.length > 0 && (
+                      <div className="pt-2">
+                        <h4 className="font-semibold text-slate-900 dark:text-white mb-3 text-sm uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                          Solutions Implemented:
+                        </h4>
+                        <ul className="space-y-2">
+                          {project.solutions.map((solution, index) => (
+                            <li key={index} className="flex items-start space-x-3">
+                              <div className="w-2 h-2 rounded-full bg-blue-500 dark:bg-lime-500 mt-2 flex-shrink-0"></div>
+                              <span className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                                {solution}
+                              </span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
-
-        {/* Challenges & Solutions на всю ширину */}
-
-        {(project.challenges.length > 0 || project.solutions.length > 0) && (
-          <div className="bg-white mt-6 dark:bg-slate-700 rounded-2xl p-8 shadow-sm">
-            <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-6">
-              Challenges & Solutions
-            </h3>
-            <div className="space-y-6">
-              <div>
-                <h4 className="font-semibold text-slate-900 dark:text-white mb-3">
-                  Challenges Faced:
-                </h4>
-                <ul className="space-y-2">
-                  {project.challenges.map((challenge, index) => (
-                    <li key={index} className="flex items-start space-x-3">
-                      <div className="w-2 h-2 rounded-full bg-red-500 dark:bg-orange-500 mt-2 flex-shrink-0"></div>
-                      <span className="text-slate-600 dark:text-slate-300 text-sm">
-                        {challenge}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div>
-                <h4 className="font-semibold text-slate-900 dark:text-white mb-3">
-                  Solutions Implemented:
-                </h4>
-                <ul className="space-y-2">
-                  {project.solutions.map((solution, index) => (
-                    <li key={index} className="flex items-start space-x-3">
-                      <div className="w-2 h-2 rounded-full bg-blue-500 dark:bg-lime-500 mt-2 flex-shrink-0"></div>
-                      <span className="text-slate-600 dark:text-slate-300 text-sm">
-                        {solution}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
-        )}
       </section>
 
       {/*
