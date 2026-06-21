@@ -36,7 +36,7 @@ const filters = [
 const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
   const [activeFilter, setActiveFilter] = useState('all')
   const [currentPage, setCurrentPage] = useState(1)
-  const projectsPerPage = 9
+  const projectsPerPage = 6
   const [selectedProjectId, setSelectedProjectId] = useState<number | null>(
     null,
   )
