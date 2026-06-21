@@ -816,49 +816,42 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
                 id="panel-project-case-study"
                 role="tabpanel"
                 aria-labelledby="tab-project-case-study"
-                className="space-y-6"
+                className="space-y-6 animate-fade-in"
               >
-                <div>
-                  <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-6">
-                    Challenges & Solutions
-                  </h3>
-                  <div className="space-y-6">
-                    {project.challenges && project.challenges.length > 0 && (
-                      <div>
-                        <h4 className="font-semibold text-slate-900 dark:text-white mb-3 text-sm uppercase tracking-wider text-slate-500 dark:text-slate-400">
-                          Challenges Faced:
-                        </h4>
-                        <ul className="space-y-2">
-                          {project.challenges.map((challenge, index) => (
-                            <li key={index} className="flex items-start space-x-3">
-                              <div className="w-2 h-2 rounded-full bg-red-500 dark:bg-orange-500 mt-2 flex-shrink-0"></div>
-                              <span className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
-                                {challenge}
-                              </span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-                    {project.solutions && project.solutions.length > 0 && (
-                      <div className="pt-2">
-                        <h4 className="font-semibold text-slate-900 dark:text-white mb-3 text-sm uppercase tracking-wider text-slate-500 dark:text-slate-400">
-                          Solutions Implemented:
-                        </h4>
-                        <ul className="space-y-2">
-                          {project.solutions.map((solution, index) => (
-                            <li key={index} className="flex items-start space-x-3">
-                              <div className="w-2 h-2 rounded-full bg-blue-500 dark:bg-lime-500 mt-2 flex-shrink-0"></div>
-                              <span className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
-                                {solution}
-                              </span>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
+                {project.challenges && project.challenges.length > 0 && (
+                  <div>
+                    <h4 className="font-semibold text-slate-900 dark:text-white mb-3 text-sm uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                      Challenges Faced:
+                    </h4>
+                    <ul className="space-y-2">
+                      {project.challenges.map((challenge, index) => (
+                        <li key={index} className="flex items-start space-x-3">
+                          <div className="w-2 h-2 rounded-full bg-red-500 dark:bg-orange-500 mt-2 flex-shrink-0"></div>
+                          <span className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                            {challenge}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                </div>
+                )}
+                {project.solutions && project.solutions.length > 0 && (
+                  <div className="pt-2">
+                    <h4 className="font-semibold text-slate-900 dark:text-white mb-3 text-sm uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                      Solutions Implemented:
+                    </h4>
+                    <ul className="space-y-2">
+                      {project.solutions.map((solution, index) => (
+                        <li key={index} className="flex items-start space-x-3">
+                          <div className="w-2 h-2 rounded-full bg-blue-500 dark:bg-lime-500 mt-2 flex-shrink-0"></div>
+                          <span className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                            {solution}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
               </div>
             )}
           </div>
