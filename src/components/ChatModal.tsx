@@ -233,6 +233,28 @@ const ChatModal = ({
             )
           })}
 
+          {/* Initial FAQ List inside the chat log */}
+          {messages.length === 1 && !isTyping && (
+            <div className="mt-4 ml-9 space-y-2 animate-fade-in">
+              <div className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-2">
+                Suggested Questions
+              </div>
+              <div className="grid grid-cols-1 gap-2">
+                {FAQ.map((faq, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => handleSend(faq.question)}
+                    className="text-left px-4 py-2.5 bg-white hover:bg-slate-50 dark:bg-slate-800 dark:hover:bg-slate-700/80 text-xs font-semibold text-purple-600 dark:text-lime-400 hover:text-purple-700 dark:hover:text-lime-300 rounded-2xl border border-slate-200/80 dark:border-white/5 shadow-sm transition-all duration-200 active:scale-[0.99] flex items-center justify-between group"
+                    type="button"
+                  >
+                    <span>{faq.question}</span>
+                    <span className="text-slate-300 dark:text-slate-600 group-hover:translate-x-1 transition-transform ml-2 shrink-0">→</span>
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
           {/* Typing Indicator */}
           {isTyping && (
             <div className="flex items-start space-x-2 justify-start">
@@ -253,14 +275,14 @@ const ChatModal = ({
         {/* Footer & Inputs */}
         <div className="p-4 border-t border-slate-200/60 dark:border-white/5 bg-slate-50/50 dark:bg-slate-950/20 space-y-3">
           
-          {/* Suggestion Chips */}
-          {activeSuggestions.length > 0 && (
-            <div className="flex items-center space-x-2 overflow-x-auto pb-1 scrollbar-none snap-x snap-mandatory mask-gradient-x">
-              {activeSuggestions.slice(0, 5).map((faq, idx) => (
+          {/* Suggestion Chips (Wrapped & Compact, only for active chats) */}
+          {activeSuggestions.length > 0 && messages.length > 1 && (
+            <div className="flex flex-wrap gap-2 pb-1">
+              {activeSuggestions.slice(0, 3).map((faq, idx) => (
                 <button
                   key={idx}
                   onClick={() => handleSend(faq.question)}
-                  className="snap-start shrink-0 px-3.5 py-1.5 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700/80 text-[11px] font-semibold text-slate-600 dark:text-slate-300 rounded-full border border-slate-200 dark:border-white/5 hover:border-slate-300 dark:hover:border-white/10 shadow-sm transition-all active:scale-95 duration-200 whitespace-nowrap"
+                  className="px-3.5 py-1.5 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700/80 text-[11px] font-semibold text-slate-600 dark:text-slate-300 rounded-full border border-slate-200 dark:border-white/5 hover:border-slate-300 dark:hover:border-white/10 shadow-sm transition-all active:scale-95 duration-200"
                   type="button"
                 >
                   {faq.question}
