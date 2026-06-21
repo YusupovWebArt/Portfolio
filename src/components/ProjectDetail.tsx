@@ -834,16 +834,19 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
   Screenshot Modal
 */}
       {screenshotModal.isOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70">
-          <div className="relative bg-white dark:bg-slate-800 rounded-lg shadow-lg w-full max-w-full sm:max-w-5xl p-6 flex flex-col items-center">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70 p-4">
+          <div className="relative bg-white dark:bg-slate-900 rounded-2xl shadow-2xl w-full max-w-5xl overflow-hidden flex flex-col">
+            
+            {/* Close Button */}
             <button
-              className="absolute top-4 right-4 text-slate-700 dark:text-slate-300 hover:text-purple-600 dark:hover:text-lime-400 z-10"
+              className="absolute top-4 right-4 text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-white bg-slate-100 dark:bg-slate-800 p-2 rounded-full border border-slate-200 dark:border-white/5 shadow-sm transition hover:scale-105 z-50"
               onClick={closeScreenshotModal}
-              title="Закрыть"
+              title="Close"
               type="button"
             >
-              <X size={24} />
+              <X size={18} />
             </button>
+
             {/* Navigation Arrows (Only show when viewing carousel slides, not full screenshot) */}
             {project.images.length > 1 && project.images.some(img => img.src === screenshotModal.image) && (
               <>
@@ -864,10 +867,10 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
                       }
                     })
                   }
-                  className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/90 dark:bg-slate-800/90 hover:bg-white dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 p-2 rounded-full shadow-lg transition-all duration-200 hover:scale-110 z-10"
+                  className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/95 dark:bg-slate-800/95 text-slate-700 dark:text-slate-200 p-2.5 rounded-full shadow-lg border border-slate-200/50 dark:border-white/5 transition hover:scale-110 z-30"
                   type="button"
                 >
-                  <ChevronLeft size={32} />
+                  <ChevronLeft size={24} />
                 </button>
                 <button
                   onClick={() =>
@@ -885,45 +888,52 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
                       }
                     })
                   }
-                  className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/90 dark:bg-slate-800/90 hover:bg-white dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 p-2 rounded-full shadow-lg transition-all duration-200 hover:scale-110 z-10"
+                  className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/95 dark:bg-slate-800/95 text-slate-700 dark:text-slate-200 p-2.5 rounded-full shadow-lg border border-slate-200/50 dark:border-white/5 transition hover:scale-110 z-30"
                   type="button"
                 >
-                  <ChevronRight size={32} />
+                  <ChevronRight size={24} />
                 </button>
               </>
             )}
             
-            {/* Image (Scrollable wrapper if full page, static if slide) */}
-            {(() => {
-              const isFullPage = !project.images.some(img => img.src === screenshotModal.image)
-              return (
-                <div className={`w-full ${isFullPage ? 'overflow-y-auto max-h-[75vh] custom-scrollbar rounded-lg pr-1' : ''}`}>
-                  <img
-                    src={screenshotModal.image}
-                    alt={screenshotModal.title}
-                    className={isFullPage ? 'w-full h-auto shadow-2xl mx-auto' : 'max-w-full max-h-[80vh] object-contain rounded-lg shadow-2xl mx-auto'}
-                    onError={() => {
-                      // Fallback to currently selected slide image if full page screenshot fails to load
-                      if (screenshotModal.image !== project.images[currentImageIndex].src) {
-                        setScreenshotModal((prev) => ({
-                          ...prev,
-                          image: project.images[currentImageIndex].src,
-                          caption: project.images[currentImageIndex].caption,
-                        }))
-                      }
-                    }}
-                  />
-                </div>
-              )
-            })()}
+            {/* Scrollable Image Area */}
+            <div className="p-6 pb-2 mt-12 lg:mt-6">
+              {(() => {
+                const isFullPage = !project.images.some(img => img.src === screenshotModal.image)
+                return (
+                  <div className={`w-full overflow-y-auto max-h-[65vh] md:max-h-[70vh] custom-scrollbar rounded-xl border border-slate-200/50 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/40 ${isFullPage ? '' : 'flex items-center justify-center'}`}>
+                    <img
+                      src={screenshotModal.image}
+                      alt={screenshotModal.title}
+                      className={isFullPage ? 'w-full h-auto shadow-2xl mx-auto' : 'max-w-full max-h-[65vh] md:max-h-[70vh] object-contain rounded-lg shadow-2xl mx-auto'}
+                      onError={() => {
+                        // Fallback to currently selected slide image if full page screenshot fails to load
+                        if (screenshotModal.image !== project.images[currentImageIndex].src) {
+                          setScreenshotModal((prev) => ({
+                            ...prev,
+                            image: project.images[currentImageIndex].src,
+                            caption: project.images[currentImageIndex].caption,
+                          }))
+                        }
+                      }}
+                    />
+                  </div>
+                )
+              })()}
+            </div>
 
-            {/* Title & Caption */}
-            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6 rounded-b-lg pointer-events-none">
-              <h3 className="text-white text-xl font-bold">
+            {/* Title & Caption - Statically positioned footer (No overlay!) */}
+            <div className="px-6 py-4 border-t border-slate-100 dark:border-white/5 bg-slate-50/50 dark:bg-slate-950/20 text-left">
+              <h3 className="text-slate-900 dark:text-white text-base font-bold">
                 {screenshotModal.title}
               </h3>
-              <p className="text-gray-300 text-sm">{screenshotModal.caption}</p>
+              {screenshotModal.caption && (
+                <p className="text-slate-500 dark:text-slate-400 text-xs mt-1">
+                  {screenshotModal.caption}
+                </p>
+              )}
             </div>
+
           </div>
           {/* Click outside to close */}
           <div
