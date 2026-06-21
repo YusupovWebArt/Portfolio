@@ -1,4 +1,3 @@
-import React from 'react'
 import { Project } from '../project-types'
 
 const itMagic: Project = {
@@ -7,7 +6,7 @@ const itMagic: Project = {
   description:
     'The IT-Magic project represents a comprehensive, end-to-end AWS and DevOps solution provider — from infrastructure design and migration to ongoing support and optimization.',
   fullDescription:
-    'Development of a custom-themed enterprise website for IT-Magic, highlighting the company’s AWS, DevOps, infrastructure management, and cloud consulting services. Built with a custom WordPress theme combined with Elementor for flexible template design, bespoke PHP logic, and Advanced Custom Fields (ACF) Pro. To optimize high-volume tech blogging, it implements automated call-to-action injections and Schema.org markup. For several years, served as the sole developer responsible for ongoing feature updates, technical maintenance, landing page designs, Nginx/MySQL tuning, and deep technical SEO optimizations.',
+    'Development of a custom-themed enterprise website for IT-Magic, highlighting the company’s AWS, DevOps, infrastructure management, and cloud consulting services. Built with a custom WordPress theme combined with Elementor for flexible template design, bespoke PHP logic, and Advanced Custom Fields (ACF). To optimize high-volume tech blogging, it implements automated call-to-action injections and Schema.org markup. For several years, served as the sole developer responsible for ongoing feature updates, technical maintenance, landing page designs, Nginx/MySQL tuning, and deep technical SEO optimizations.',
   detailHeroLine: 'CUSTOM WORDPRESS · AWS & DEVOPS SOLUTIONS PORTAL',
   detailMetrics: [
     { value: '95+', label: 'PageSpeed', accent: 'green' },
@@ -35,7 +34,7 @@ const itMagic: Project = {
       },
     ],
     description:
-      'A robust corporate portal built using a custom WordPress theme integrated with Elementor and Advanced Custom Fields (ACF) Pro. Dynamic call-to-actions (CTAs) and blog metadata are rendered server-side via the Advanced Views engine. Served with optimized Nginx rules and Cloudflare edge caching for superior page load speeds.',
+      'A robust corporate portal built using a custom WordPress theme integrated with Elementor and Advanced Custom Fields (ACF). Dynamic call-to-actions (CTAs) and blog metadata are rendered server-side via the Advanced Views engine. Served with optimized Nginx rules and Cloudflare edge caching for superior page load speeds.',
   },
   image: '/Portfolio/images/portfolio/thumbs/wordpress/it-magic_thumb.webp',
   fullScreenshot:
@@ -115,8 +114,8 @@ const itMagic: Project = {
         full: 'WP custom theme engineered from scratch for optimal rendering speeds',
       },
       {
-        short: 'ACF Pro',
-        full: 'Advanced Custom Fields Pro for flexible meta fields registration',
+        short: 'ACF',
+        full: 'Advanced Custom Fields for flexible meta fields registration',
       },
       {
         short: 'Advanced Views',
