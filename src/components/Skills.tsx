@@ -137,7 +137,7 @@ const Skills = () => {
       technologies: [
         'GitHub Copilot & AI Code Assistance',
         'Visual Studio Code with AI-extensions',
-        'Claude Claude and Cursor for Development',
+        'Claude and Cursor for Development',
         'AI Content Generation & SEO',
         'Cursor AI IDE Integration',
         'AI Image generators for Design',

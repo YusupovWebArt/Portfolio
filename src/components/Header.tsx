@@ -2,18 +2,18 @@ import { useState, useEffect } from 'react'
 import { Menu, X, Github, Linkedin, Sun, Moon } from 'lucide-react'
 import { useTheme } from '../contexts/ThemeContext'
 
+const navItems = [
+  { id: 'home', label: 'Home' },
+  { id: 'about', label: 'About' },
+  { id: 'projects', label: 'Projects' },
+  { id: 'skills', label: 'Skills' },
+  { id: 'contact', label: 'Contact' },
+]
+
 const Header = () => {
   const { isDark, toggleTheme } = useTheme()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('home')
-
-  const navItems = [
-    { id: 'home', label: 'Home' },
-    { id: 'about', label: 'About' },
-    { id: 'projects', label: 'Projects' },
-    { id: 'skills', label: 'Skills' },
-    { id: 'contact', label: 'Contact' },
-  ]
 
   useEffect(() => {
     const handleScroll = () => {
@@ -70,6 +70,7 @@ const Header = () => {
           <div className="hidden md:flex items-center space-x-4">
             {/* Theme Toggle */}
             <button
+              type="button"
               onClick={toggleTheme}
               className="p-2 text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white transition-colors rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800"
               title={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
@@ -97,8 +98,10 @@ const Header = () => {
 
           {/* Mobile Menu Button */}
           <button
+            type="button"
             className="md:hidden text-slate-900 dark:text-white"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle menu"
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -111,6 +114,7 @@ const Header = () => {
               {navItems.map((item) => (
                 <button
                   key={item.id}
+                  type="button"
                   onClick={() => scrollToSection(item.id)}
                   className={`block w-full text-left px-3 py-2 text-sm font-medium rounded-md transition-colors ${
                     activeSection === item.id
@@ -123,6 +127,7 @@ const Header = () => {
               ))}
               <div className="flex items-center justify-center space-x-4 px-3 py-2 border-t border-slate-200 dark:border-slate-700 mt-2 pt-4">
                 <button
+                  type="button"
                   onClick={toggleTheme}
                   className="p-2 text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white transition-colors rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700"
                 >

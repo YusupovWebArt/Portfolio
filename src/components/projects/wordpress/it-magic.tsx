@@ -38,7 +38,7 @@ const itMagic: Project = {
   },
   image: '/Portfolio/images/portfolio/thumbs/wordpress/it-magic_thumb.webp',
   fullScreenshot:
-    '/Portfolio/images/portfolio/thumbs/wordpress/it-magic_thumb.webp',
+    '/Portfolio/images/portfolio/projects/wordpress/it-magic.webp',
   images: [
     {
       src: '/Portfolio/images/portfolio/thumbs/wordpress/it-magic_thumb.webp',

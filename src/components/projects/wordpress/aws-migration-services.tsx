@@ -39,7 +39,7 @@ const awsMigrationServices: Project = {
   image:
     '/Portfolio/images/portfolio/thumbs/wordpress/aws-migration-services_thumb.webp',
   fullScreenshot:
-    '/Portfolio/images/portfolio/thumbs/wordpress/aws-migration-services_thumb.webp',
+    '/Portfolio/images/portfolio/projects/wordpress/aws-migration-services.webp',
   images: [
     {
       src: '/Portfolio/images/portfolio/thumbs/wordpress/aws-migration-services_thumb.webp',

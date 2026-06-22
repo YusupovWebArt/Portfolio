@@ -9,14 +9,14 @@ import {
 import { LuBrainCircuit } from 'react-icons/lu'
 import ChatModal from './ChatModal'
 
-const Hero = () => {
-  const texts = [
-    'Fullstack WordPress Developer',
-    'React/Next.js Developer',
-    'Technical SEO Specialist',
-    'AI-Augmented Developer',
-  ]
+const texts = [
+  'Fullstack WordPress Developer',
+  'React/Next.js Developer',
+  'Technical SEO Specialist',
+  'AI-Augmented Developer',
+]
 
+const Hero = () => {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [blurAmount, setBlurAmount] = useState(0)
   const [chatOpen, setChatOpen] = useState(false)
@@ -35,7 +35,7 @@ const Hero = () => {
     }, 1400)
 
     return () => clearInterval(interval)
-  }, [texts.length])
+  }, [])
 
   return (
     <section

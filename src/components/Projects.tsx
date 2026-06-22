@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { ExternalLink, X } from 'lucide-react'
 import { Project, TechnologyItem } from './projects/project-types'
-import ProjectDetail from './ProjectDetail'
 
 interface ProjectsProps {
   onProjectSelect: (projectId: number) => void
@@ -37,9 +36,6 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
   const [activeFilter, setActiveFilter] = useState('all')
   const [currentPage, setCurrentPage] = useState(1)
   const projectsPerPage = 6
-  const [selectedProjectId, setSelectedProjectId] = useState<number | null>(
-    null,
-  )
   const [screenshotModal, setScreenshotModal] = useState<{
     isOpen: boolean
     image: string
@@ -77,15 +73,6 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
   const closeScreenshotModal = () => {
     setScreenshotModal({ isOpen: false, image: '', title: '' })
     document.body.style.overflow = 'unset'
-  }
-
-  if (selectedProjectId !== null) {
-    return (
-      <ProjectDetail
-        projectId={selectedProjectId}
-        onBack={() => setSelectedProjectId(null)}
-      />
-    )
   }
 
   return (

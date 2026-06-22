@@ -27,7 +27,7 @@ const projectModules = import.meta.glob<{ default: Project }>(
   { eager: true },
 )
 const projects: Project[] = Object.values(projectModules).map(
-  (mod: any) => mod.default,
+  (mod) => mod.default,
 )
 
 const getTechFull = (tech: TechnologyItem): string =>
@@ -70,19 +70,8 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
   >('stack')
 
   useEffect(() => {
-    const p = projects.find((x) => x.id === projectId)
-    const hasArch = Boolean(
-      p?.architecture?.rows?.length && p.architecture.description?.trim(),
-    )
-    const hasCase = Boolean(
-      p?.challenges?.length || p?.solutions?.length,
-    )
-    if (!hasArch && detailTab === 'architecture') {
-      setDetailTab('stack')
-    } else if (!hasCase && detailTab === 'case-study') {
-      setDetailTab('stack')
-    }
-  }, [projectId, detailTab])
+    setDetailTab('stack')
+  }, [projectId])
 
   const updateThumbScrollState = useCallback(() => {
     const el = thumbnailScrollRef.current

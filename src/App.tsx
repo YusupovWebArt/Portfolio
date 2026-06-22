@@ -28,36 +28,28 @@ function App() {
     }, 100)
   }
 
-  if (selectedProject) {
-    return (
-      <ThemeProvider>
-        <div className="min-h-screen bg-white dark:bg-slate-900 transition-colors duration-300">
-          <Header />
+  return (
+    <ThemeProvider>
+      <div className="min-h-screen bg-white dark:bg-slate-900 transition-colors duration-300">
+        <Header />
+        {selectedProject !== null ? (
           <ProjectDetail
             key={selectedProject}
             projectId={selectedProject}
             onBack={handleBackToProjects}
           />
-          <Footer />
-        </div>
-      </ThemeProvider>
-    )
-  }
-
-  return (
-    <ThemeProvider>
-      <div className="min-h-screen bg-white dark:bg-slate-900 transition-colors duration-300">
-        <Header />
-        <main>
-          <Hero />
-          <About />
-          <Projects onProjectSelect={handleProjectSelect} />
-          <Skills />
-          <WhyWorkWithMe />
-          <Contact />
-        </main>
+        ) : (
+          <main>
+            <Hero />
+            <About />
+            <Projects onProjectSelect={handleProjectSelect} />
+            <Skills />
+            <WhyWorkWithMe />
+            <Contact />
+          </main>
+        )}
         <Footer />
-        <ScrollToTopButton />
+        {selectedProject === null && <ScrollToTopButton />}
       </div>
     </ThemeProvider>
   )
