@@ -180,8 +180,20 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
   }
 
   const openScreenshotModal = () => {
-    // Default to fullScreenshot path
+    const currentImg = project.images[currentImageIndex]
+    if (!currentImg) return
+    setScreenshotModal({
+      isOpen: true,
+      image: currentImg.src,
+      title: project.title,
+      caption: currentImg.caption || `Screenshot ${currentImageIndex + 1}`,
+    })
+    document.body.style.overflow = 'hidden'
+  }
+
+  const openFullScreenshotModal = () => {
     let fullPagePath = project.fullScreenshot
+    if (!fullPagePath) return
 
     // Rewrite path from thumbs to projects if necessary
     if (fullPagePath.includes('/thumbs/') && fullPagePath.includes('_thumb.')) {
@@ -192,7 +204,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
       isOpen: true,
       image: fullPagePath,
       title: project.title,
-      caption: project.images[currentImageIndex]?.caption || 'Full page screenshot',
+      caption: 'Full page layout screenshot',
     })
     document.body.style.overflow = 'hidden'
   }
@@ -385,6 +397,16 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
                   GitHub
                   <ArrowRight className="w-4 h-4" aria-hidden />
                 </a>
+              )}
+              {project.fullScreenshot && (
+                <button
+                  onClick={openFullScreenshotModal}
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-purple-100 hover:bg-purple-200 dark:bg-lime-500/10 dark:hover:bg-lime-500/20 text-purple-700 dark:text-lime-400 px-4 py-3 text-sm font-semibold transition"
+                  type="button"
+                >
+                  Full Page Layout
+                  <Eye className="w-4 h-4" aria-hidden />
+                </button>
               )}
             </div>
           </div>
