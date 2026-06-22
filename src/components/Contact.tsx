@@ -74,16 +74,37 @@ const Contact = () => {
   ]
 
   // States for embedded AI console
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      id: 'welcome',
-      from: 'bot',
-      text: "Hi! I am Artur's AI assistant. 🤖 Ask me anything about his experience, skills, stack, or select one of the suggested questions below!",
-    },
-  ])
+  const [messages, setMessages] = useState<Message[]>(() => {
+    const saved = sessionStorage.getItem('portfolio_chat_contact_messages')
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved)
+        return parsed.map((m: any) => ({
+          ...m,
+          timestamp: m.timestamp ? new Date(m.timestamp) : undefined,
+        }))
+      } catch (e) {
+        // Fallback to default
+      }
+    }
+    return [
+      {
+        id: 'welcome',
+        from: 'bot',
+        text: "Hi! I am Artur's AI assistant. 🤖 Ask me anything about his experience, skills, stack, or select one of the suggested questions below!",
+      },
+    ]
+  })
   const [input, setInput] = useState('')
   const [isTyping, setIsTyping] = useState(false)
   const scrollContainerRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    sessionStorage.setItem(
+      'portfolio_chat_contact_messages',
+      JSON.stringify(messages),
+    )
+  }, [messages])
 
   const scrollToBottom = () => {
     if (scrollContainerRef.current) {

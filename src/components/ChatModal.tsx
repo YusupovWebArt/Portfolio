@@ -10,17 +10,38 @@ const ChatModal = ({
   open: boolean
   onClose: () => void
 }) => {
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      id: 'welcome',
-      from: 'bot',
-      text: "Hi! I am Artur's AI assistant. 🤖 Feel free to ask me anything about his professional experience, skills, stack, or availability, or click one of the suggested questions below!",
-      timestamp: new Date(),
-    },
-  ])
+  const [messages, setMessages] = useState<Message[]>(() => {
+    const saved = sessionStorage.getItem('portfolio_chat_modal_messages')
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved)
+        return parsed.map((m: any) => ({
+          ...m,
+          timestamp: m.timestamp ? new Date(m.timestamp) : undefined,
+        }))
+      } catch (e) {
+        // Fallback to default
+      }
+    }
+    return [
+      {
+        id: 'welcome',
+        from: 'bot',
+        text: "Hi! I am Artur's AI assistant. 🤖 Feel free to ask me anything about his professional experience, skills, stack, or availability, or click one of the suggested questions below!",
+        timestamp: new Date(),
+      },
+    ]
+  })
   const [input, setInput] = useState('')
   const [isTyping, setIsTyping] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    sessionStorage.setItem(
+      'portfolio_chat_modal_messages',
+      JSON.stringify(messages),
+    )
+  }, [messages])
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
