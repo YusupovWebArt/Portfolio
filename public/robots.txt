@@ -1,0 +1,34 @@
+# Allow all search engines and crawlers
+User-agent: *
+Allow: /
+
+# Explicitly allow AI crawlers and bots
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: Anthropic-ai
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-extended
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+User-agent: CohereBot
+Allow: /
+
+# Sitemap URL
+Sitemap: https://yusupovwebart.github.io/Portfolio/sitemap.xml
