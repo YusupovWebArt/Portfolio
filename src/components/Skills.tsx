@@ -433,11 +433,36 @@ const Skills = () => {
                     </div>
                   </div>
 
-                  {/* Сетка колонок контента */}
-                  <div className="relative z-10 grid grid-cols-1 md:grid-cols-12 gap-8">
+                  {/* Вертикальная структура контента */}
+                  <div className="relative z-10 flex flex-col gap-8">
                     
-                    {/* Левая колонка: Technologies & Knowledge */}
-                    <div className="md:col-span-8">
+                    {/* Верхняя секция: Key Skills & Expertise в виде сетки из 2 колонок */}
+                    <div>
+                      <h4 className="text-xs font-semibold tracking-wider text-slate-400 dark:text-slate-500 uppercase mb-4">
+                        Key Skills & Expertise
+                      </h4>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        {category.skillDetails.map((detail, detailIndex) => (
+                          <div
+                            key={detailIndex}
+                            className="bg-slate-50/50 dark:bg-slate-950/20 border border-slate-200/50 dark:border-white/5 rounded-2xl p-4 hover:border-slate-300 dark:hover:border-white/10 transition-colors duration-300"
+                          >
+                            <h5 className="font-bold text-slate-900 dark:text-white text-xs mb-1.5">
+                              {detail.name}
+                            </h5>
+                            <p className="text-slate-600 dark:text-slate-400 text-[11px] leading-relaxed">
+                              {detail.description}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Тонкий разделитель */}
+                    <div className="border-t border-slate-150 dark:border-slate-800/80" />
+
+                    {/* Нижня секция: Technologies & Knowledge во всю ширину */}
+                    <div>
                       <h4 className="text-xs font-semibold tracking-wider text-slate-400 dark:text-slate-500 uppercase mb-4">
                         Technologies & Knowledge
                       </h4>
@@ -451,28 +476,6 @@ const Skills = () => {
                             <span className="text-slate-700 dark:text-slate-300 text-xs font-medium leading-tight">
                               {tech}
                             </span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
-                    {/* Правая колонка: Key Skills & Expertise */}
-                    <div className="md:col-span-4 space-y-3">
-                      <h4 className="text-xs font-semibold tracking-wider text-slate-400 dark:text-slate-500 uppercase mb-4">
-                        Key Skills & Expertise
-                      </h4>
-                      <div className="space-y-3">
-                        {category.skillDetails.map((detail, detailIndex) => (
-                          <div
-                            key={detailIndex}
-                            className="bg-slate-50/50 dark:bg-slate-950/20 border border-slate-200/50 dark:border-white/5 rounded-2xl p-4 hover:border-slate-300 dark:hover:border-white/10 transition-colors duration-300"
-                          >
-                            <h5 className="font-bold text-slate-900 dark:text-white text-xs mb-1">
-                              {detail.name}
-                            </h5>
-                            <p className="text-slate-600 dark:text-slate-400 text-[11px] leading-relaxed">
-                              {detail.description}
-                            </p>
                           </div>
                         ))}
                       </div>
