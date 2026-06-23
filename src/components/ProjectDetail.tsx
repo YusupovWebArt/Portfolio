@@ -728,7 +728,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
                   {project.features.map((feature, index) => {
                 // Type guard для проверки объекта ProjectFeature
                 const isProjectFeature = (
-                  feature: any,
+                  feature: unknown,
                 ): feature is { title: string; description: string } => {
                   return (
                     typeof feature === 'object' &&

@@ -3,7 +3,6 @@ import {
   Layout,
   Palette,
   Brain,
-  ChevronDown,
   Target,
   MessageSquare,
   ClipboardCheck,

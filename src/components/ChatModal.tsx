@@ -14,12 +14,12 @@ const ChatModal = ({
     const saved = sessionStorage.getItem('portfolio_chat_modal_messages')
     if (saved) {
       try {
-        const parsed = JSON.parse(saved)
-        return parsed.map((m: any) => ({
+        const parsed = JSON.parse(saved) as Array<Omit<Message, 'timestamp'> & { timestamp?: string }>
+        return parsed.map((m) => ({
           ...m,
           timestamp: m.timestamp ? new Date(m.timestamp) : undefined,
         }))
-      } catch (e) {
+      } catch {
         // Fallback to default
       }
     }
