@@ -6,7 +6,36 @@ const reactSimpleCalculator: Project = {
   description:
     'Simple pet-project demonstrates fundamental React concepts such as component structure.',
   fullDescription:
-    'A simple and intuitive calculator app built with React.js. It allows users to perform basic arithmetic operations like addition, subtraction, multiplication, and division with a clean and responsive interface.',
+    'A simple and intuitive calculator app built with React.js and Vite. It demonstrates core React concepts including functional components and useState hooks, allowing users to perform basic arithmetic operations with a clean, responsive interface deployed on GitHub Pages.',
+  detailHeroLine: 'REACT · JAVASCRIPT · DEMO APP',
+  detailMetrics: [
+    { value: 'React.js', label: 'UI Library', accent: 'green' },
+    { value: 'Vite', label: 'Build Tool', accent: 'green' },
+    { value: 'useState', label: 'State Hook', accent: 'darkGreen' },
+    { value: 'GitHub Pages', label: 'Hosting', accent: 'neutral' },
+  ],
+  architecture: {
+    rows: [
+      {
+        rowLabel: 'FRONTEND',
+        steps: [
+          { label: 'React Components' },
+          { label: 'useState Hook', highlight: true },
+          { label: 'CSS3 Styles' },
+        ],
+      },
+      {
+        rowLabel: 'DEPLOYMENT',
+        steps: [
+          { label: 'GitHub Repo' },
+          { label: 'GitHub Pages', highlight: true },
+          { label: 'Browser' },
+        ],
+      },
+    ],
+    description:
+      'The calculator is structured as a single React component using the useState hook to manage the display value and pending operations. Vite bundles the project into optimized static assets deployed to GitHub Pages.',
+  },
   image:
     '/Portfolio/images/portfolio/thumbs/react/react-js-simple-calculator_thumb.webp',
   fullScreenshot:
@@ -17,36 +46,34 @@ const reactSimpleCalculator: Project = {
       caption: 'General view of the Simple React calculator App',
     },
   ],
-  technologies: [
-    'React.js',
-    'JavaScript (ES6+)',
-    'Vite',
-    'CSS3',
-    'GitHub',
-    'GitHub Pages',
-  ],
+  technologies: {
+    frontend: [
+      { short: 'React.js', full: 'React functional components with hooks powering the calculator UI' },
+      { short: 'JavaScript (ES6+)', full: 'ES6+ JavaScript implementing arithmetic logic and event handling' },
+      { short: 'CSS3', full: 'Custom CSS3 styles for the calculator layout and button grid' },
+    ],
+    devopsSecurity: [
+      { short: 'Vite', full: 'Vite build tool providing fast development server and optimized production build' },
+      { short: 'GitHub Pages', full: 'GitHub Pages hosting the compiled static app publicly for free' },
+      { short: 'SSL/TLS', full: 'HTTPS encryption automatically provided by GitHub Pages' },
+    ],
+  },
   features: [
-    <p>
-      <strong>React.js:</strong> A JavaScript library for building user
-      interfaces, enabling the creation of reusable components and efficient
-      updates.
-    </p>,
-    <p>
-      <strong>Vite:</strong> A modern build tool that offers fast development
-      server startup and optimized production builds.
-    </p>,
-    <p>
-      <strong>JavaScript &#40;ES6+&#41;: </strong> The programming language used
-      for writing the application's logic, utilizing modern JavaScript features.
-    </p>,
-    <p>
-      <strong>GitHub: </strong> Version control systems used for managing the
-      source code and hosting the project repository.
-    </p>,
-    <p>
-      <strong>GitHub Pages: </strong> A service for hosting the static website,
-      making the application accessible online.
-    </p>,
+    {
+      title: 'Basic Arithmetic Operations',
+      description:
+        'Supports addition, subtraction, multiplication, and division with a clean button-grid interface and real-time display updates.',
+    },
+    {
+      title: 'React Hooks State Management',
+      description:
+        'The useState hook manages the calculator display value and pending operator, demonstrating core React state patterns.',
+    },
+    {
+      title: 'Responsive Layout',
+      description:
+        'The calculator adapts to different screen sizes, remaining fully usable on mobile and desktop devices.',
+    },
   ],
   challenges: [],
   solutions: [],

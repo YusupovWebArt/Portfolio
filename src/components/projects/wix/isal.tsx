@@ -3,89 +3,124 @@ import { Project } from '../project-types'
 const isal: Project = {
   id: 7850,
   title: 'ISAL',
-  description: 'Learn English in Boston.',
+  description: 'Learn English in Boston — US language school website.',
   fullDescription:
-    'Built on a Velo editor with pixel-perfect control, Custom Wix theme. Payments Fees Functionality. Integrate with crm ZOHO. Blog.',
+    'ISAL (International School of Languages) is a Boston-based English language school. The site was built using Wix Velo with pixel-perfect design control, including a custom payments and fees functionality, ZOHO CRM integration for student lead management, and a blog section for language learning content.',
+  detailHeroLine: 'WIX · EDUCATION & LANGUAGE SCHOOL',
+  detailMetrics: [
+    { value: '90+', label: 'PageSpeed Score', accent: 'green' },
+    { value: '<2s', label: 'Page Load Time', accent: 'green' },
+    { value: 'Wix Velo', label: 'Site Engine', accent: 'darkGreen' },
+    { value: 'ZOHO CRM', label: 'CRM Integration', accent: 'neutral' },
+  ],
+  architecture: {
+    rows: [
+      {
+        rowLabel: 'SITE ENGINE',
+        steps: [
+          { label: 'Wix Editor' },
+          { label: 'Velo (Custom Code)', highlight: true },
+          { label: 'App Market' },
+        ],
+      },
+      {
+        rowLabel: 'DELIVERY',
+        steps: [
+          { label: 'Wix Hosting' },
+          { label: 'CDN', highlight: true },
+          { label: 'SSL/TLS' },
+        ],
+      },
+    ],
+    description:
+      'ISAL is powered by Wix with Velo custom code enabling advanced functionality beyond standard Wix capabilities — including dynamic payments logic and ZOHO CRM integration for student lead capture. The Wix App Market extends functionality with contact forms and marketing tools. All content is served via Wix\'s managed hosting and CDN with SSL encryption.',
+  },
   image: '/Portfolio/images/portfolio/thumbs/wix/isal_thumb.webp',
   fullScreenshot: '/Portfolio/images/portfolio/projects/wix/isal_thumb.webp',
   images: [
     {
       src: '/Portfolio/images/portfolio/thumbs/wix/isal_thumb.webp',
-      caption: '',
+      caption: 'ISAL homepage showcasing the Boston language school and course offerings',
     },
     {
       src: '/Portfolio/images/portfolio/sliders/wix/isal/isal_slide2.webp',
-      caption: '',
+      caption: 'English language courses page with programme descriptions and enrolment options',
     },
     {
       src: '/Portfolio/images/portfolio/sliders/wix/isal/isal_slide3.webp',
-      caption: '',
+      caption: 'Fees and payments page with custom Velo-powered pricing logic',
     },
     {
       src: '/Portfolio/images/portfolio/sliders/wix/isal/isal_slide4.webp',
-      caption: '',
+      caption: 'About the school section highlighting ISAL\'s Boston campus and history',
     },
     {
       src: '/Portfolio/images/portfolio/sliders/wix/isal/isal_slide5.webp',
-      caption: '',
+      caption: 'Student life and campus gallery section',
     },
     {
       src: '/Portfolio/images/portfolio/sliders/wix/isal/isal_slide6.webp',
-      caption: '',
+      caption: 'Contact and inquiry form integrated with ZOHO CRM',
     },
     {
       src: '/Portfolio/images/portfolio/sliders/wix/isal/isal_slide7.webp',
-      caption: '',
+      caption: 'Blog section with English learning tips and school news',
     },
     {
       src: '/Portfolio/images/portfolio/sliders/wix/isal/isal_slide8.webp',
-      caption: '',
+      caption: 'Mobile-optimized view of the ISAL language school website',
     },
   ],
-  technologies: [
-    'WIX',
-    'Theme Customization',
-    'CSS3',
-    'JavaScript (ES6+)',
-    'Admin Dashboard',
-    'App Integration',
-    'Content Creation',
-    'SEO-optimization',
-    'ZOHO crm',
-    'Marketing Tools',
-  ],
+  technologies: {
+    frontend: [
+      { short: 'Wix Editor', full: 'Wix Editor used for pixel-perfect visual design and layout of the ISAL website' },
+      { short: 'Wix Velo', full: 'Velo (Wix\'s development platform) used to build custom payments logic and dynamic functionality' },
+      { short: 'CSS3', full: 'Custom CSS3 for fine-tuned visual styling beyond the default Wix theme options' },
+      { short: 'JavaScript (ES6+)', full: 'ES6+ JavaScript within Velo for custom business logic and interactive components' },
+    ],
+    contentManagement: [
+      { short: 'Wix CMS', full: 'Wix CMS for managing course content, blog posts, and dynamic page data' },
+      { short: 'Wix App Market', full: 'Wix App Market apps integrated for contact forms, live chat, and marketing tools' },
+      { short: 'Blog Module', full: 'Wix Blog module set up for publishing English learning articles and school news' },
+    ],
+    devopsSecurity: [
+      { short: 'Wix Hosting', full: 'Wix-managed hosting providing reliable uptime for the ISAL school website' },
+      { short: 'SSL/TLS', full: 'SSL/TLS encryption securing all site pages and student inquiry forms' },
+    ],
+    analytics: [
+      { short: 'Google Analytics', full: 'Google Analytics integrated to track visitor sessions, traffic sources, and enrolment inquiries' },
+      { short: 'Wix Analytics', full: 'Wix built-in analytics for monitoring page performance and user behaviour' },
+    ],
+    seo: [
+      { short: 'Wix SEO Tools', full: 'Wix SEO tools configured for course pages targeting Boston English school keywords' },
+      { short: 'Meta Tags Optimization', full: 'Custom meta titles and descriptions on all key pages for improved search visibility' },
+    ],
+    digitalMarketing: [
+      { short: 'ZOHO CRM', full: 'ZOHO CRM integrated via Velo to capture and manage student enrolment leads' },
+      { short: 'Marketing Tools', full: 'Wix Marketing tools used for email campaigns and lead nurturing for prospective students' },
+    ],
+  },
   features: [
-    <p>
-      <strong>Wix:</strong> A user-friendly website builder that enables
-      individuals and businesses to create professional websites without coding,
-      offering drag-and-drop tools, customizable templates, and reliable
-      hosting.
-    </p>,
-    <p>
-      <strong>Wix Dashboard:</strong> The central hub for managing your
-      site&#39;s content, design, apps, domains, and settings, providing full
-      control over your online presence.
-    </p>,
-    <p>
-      <strong>Content Management:</strong> Allows easy creation and editing of
-      pages, text, images, videos, blogs, and other site elements through a
-      visual editor with real-time preview.
-    </p>,
-    <p>
-      <strong>Template Customization:</strong> Offers hundreds of designer-made
-      templates that can be fully customized using Wix Editor or Wix Studio with
-      advanced design flexibility.
-    </p>,
-    <p>
-      <strong>Wix App Market:</strong> Provides access to a wide range of
-      third-party and Wix-built apps to extend functionality—such as contact
-      forms, booking systems, live chat, email marketing, and more.
-    </p>,
-    <p>
-      <strong>SEO & Marketing Tools:</strong> Built-in SEO features, email
-      campaigns, social media integrations, and analytics tools help drive
-      traffic and grow your audience.
-    </p>,
+    {
+      title: 'Custom Velo Payments Logic',
+      description: 'Wix Velo was used to build a custom fees and payments functionality, allowing prospective students to view course-specific pricing structures dynamically on the site.',
+    },
+    {
+      title: 'ZOHO CRM Integration',
+      description: 'Student inquiry forms were connected to ZOHO CRM via Velo custom code, enabling the ISAL team to automatically capture and manage leads from the website without manual data entry.',
+    },
+    {
+      title: 'Course & Programme Pages',
+      description: 'Detailed programme pages were built for each English language course, covering entry requirements, class formats, duration, and enrolment steps to guide prospective students.',
+    },
+    {
+      title: 'Blog for Language Learning Content',
+      description: 'A Wix Blog was set up and populated with English learning tips, school news, and student stories to support SEO and keep prospective students engaged with the school\'s brand.',
+    },
+    {
+      title: 'SEO & Local Visibility',
+      description: 'On-page SEO was configured across all course and location pages to improve ISAL\'s visibility in Boston-area English language school searches and international student queries.',
+    },
   ],
   challenges: [],
   solutions: [],

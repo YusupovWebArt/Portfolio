@@ -5,7 +5,36 @@ const eliteHealthWarrior: Project = {
   title: 'Elite Health Warrior',
   description: 'US-based Health and Wellness',
   fullDescription:
-    'Custom Joomla theme. Custom CSS/JS + add products and content.',
+    'A custom Joomla-powered health and wellness website for a US-based brand, featuring a fully custom-built template, VirtueMart eCommerce integration, product catalog management, and SEO optimization. The project involved complete template development, CSS/JS customization, and ongoing content population.',
+  detailHeroLine: 'JOOMLA · ECOMMERCE · HEALTH & WELLNESS',
+  detailMetrics: [
+    { value: 'Joomla', label: 'CMS Platform', accent: 'green' },
+    { value: 'VirtueMart', label: 'eCommerce', accent: 'green' },
+    { value: 'Custom Theme', label: 'Template Dev', accent: 'darkGreen' },
+    { value: 'SEO Ready', label: 'Optimized', accent: 'neutral' },
+  ],
+  architecture: {
+    rows: [
+      {
+        rowLabel: 'THEME ENGINE',
+        steps: [
+          { label: 'Joomla Core' },
+          { label: 'Custom Template', highlight: true },
+          { label: 'VirtueMart' },
+        ],
+      },
+      {
+        rowLabel: 'DELIVERY',
+        steps: [
+          { label: 'MySQL DB' },
+          { label: 'PHP Engine', highlight: true },
+          { label: 'Web Server' },
+        ],
+      },
+    ],
+    description:
+      'The site is built on Joomla CMS with a fully custom PHP template developed from scratch. VirtueMart powers the eCommerce layer with product catalog, cart, and checkout. MySQL stores all content and product data, served through PHP on a cPanel hosting environment with Cloudflare CDN protection.',
+  },
   image:
     '/Portfolio/images/portfolio/thumbs/other-cms/elitehealthwarrior_thumb.webp',
   fullScreenshot:
@@ -17,62 +46,66 @@ const eliteHealthWarrior: Project = {
     },
     {
       src: '/Portfolio/images/portfolio/sliders/other-cms/elitehealthwarrior/elitehealthwarrior_slide2.webp',
-      caption: '',
+      caption: 'Product catalog page with health supplement listings',
     },
     {
       src: '/Portfolio/images/portfolio/sliders/other-cms/elitehealthwarrior/elitehealthwarrior_slide3.webp',
-      caption: '',
+      caption: 'Inner content page with wellness articles and product details',
     },
   ],
-  technologies: [
-    'Joomla',
-    'Custom Template Development',
-    'Responsive design',
-    'eCommerce integration',
-    'add Products and Content',
-    'Custom CSS3',
-    'JavaScript ES6',
-    'Technical optimization',
-    'SEO-optimization',
-    'Google Analytics',
-    'Marketing Tools',
-    'Google Maps API',
-  ],
+  technologies: {
+    frontend: [
+      { short: 'HTML5', full: 'Semantic HTML5 forming the accessible structure of all template layouts' },
+      { short: 'CSS3', full: 'Custom CSS3 delivering the brand-aligned visual design and responsive layouts' },
+      { short: 'JavaScript (ES6)', full: 'ES6 JavaScript enhancing interactive UI elements and animations' },
+    ],
+    backend: [
+      { short: 'PHP 8+', full: 'PHP powering Joomla CMS server-side rendering and business logic' },
+      { short: 'MySQL', full: 'MySQL database storing all site content, product data, and user information' },
+    ],
+    contentManagement: [
+      { short: 'Joomla CMS', full: 'Joomla CMS managing all site content, modules, and eCommerce data' },
+      { short: 'Custom Template Development', full: 'Fully custom Joomla PHP template built from scratch to match brand identity' },
+      { short: 'VirtueMart', full: 'VirtueMart eCommerce extension handling product catalog, cart, and checkout' },
+    ],
+    devopsSecurity: [
+      { short: 'cPanel Hosting', full: 'cPanel-managed server environment hosting the Joomla application' },
+      { short: 'SSL/TLS', full: 'HTTPS encryption securing all customer data and transactions' },
+    ],
+    analytics: [
+      { short: 'Google Analytics', full: 'GA4 tracking user sessions, traffic sources, and conversion events' },
+    ],
+    seo: [
+      { short: 'SEO Optimization', full: 'Joomla SEO settings with clean URLs, meta tags, and semantic HTML structure' },
+      { short: 'Schema.org Markup', full: 'Structured data markup improving product and business visibility in search results' },
+    ],
+  },
   features: [
-    <p>
-      <strong>Custom Joomla Template Development:</strong> Designed and
-      developed a Joomla template from the ground up to align with the client's
-      branding and functional requirements, offering full control over layout,
-      styling, and modular content.
-    </p>,
-    <p>
-      <strong>eCommerce Integration:</strong> eCommerce VirtueMart to provide
-      comprehensive eCommerce capabilities including product catalog management,
-      cart functionality, secure checkout, and support for multiple payment
-      gateways.
-    </p>,
-    <p>
-      <strong>Page Builder: </strong> Utilized Page Builder to accelerate
-      development while enabling the client to manage and update page content
-      easily. Custom CSS3 and JavaScript enhancements were applied to extend its
-      default styling and interactive capabilities, meeting both creative and
-      performance goals.
-    </p>,
-    <p>
-      <strong>Custom CSS3/JS & PHP: </strong> Implemented tailored styling and
-      dynamic components using custom CSS3, JavaScript, and PHP to create a
-      distinctive, responsive, and interactive site experience.
-    </p>,
-    <p>
-      <strong>Responsive Design: </strong> Carefully optimized for seamless
-      performance across desktops, tablets, and mobile devices, ensuring
-      accessibility and usability across all screen sizes.
-    </p>,
-    <p>
-      <strong>SEO Optimization: </strong> Structured with Joomla&#39;s native
-      SEO tools and best practices—including clean URLs, meta tags, fast loading
-      times, and semantic HTML—for improved visibility on search engines.
-    </p>,
+    {
+      title: 'Custom Joomla Template Development',
+      description:
+        'A fully custom Joomla PHP template was designed and built from scratch to match the brand\'s health and wellness identity, providing complete control over layout, typography, and module placement.',
+    },
+    {
+      title: 'VirtueMart eCommerce Integration',
+      description:
+        'VirtueMart was integrated to deliver a complete eCommerce solution including product catalog management, shopping cart, secure checkout, and multiple payment gateway support.',
+    },
+    {
+      title: 'Product & Content Management',
+      description:
+        'Health supplement products were added with descriptions, pricing, and imagery, alongside wellness articles and informational content managed through the Joomla admin panel.',
+    },
+    {
+      title: 'SEO & Technical Optimization',
+      description:
+        'Implemented Joomla\'s native SEO tools with clean URLs, optimized meta tags, fast loading times, and semantic HTML to improve organic search visibility.',
+    },
+    {
+      title: 'Responsive Design',
+      description:
+        'The custom template was optimized for seamless performance across desktops, tablets, and mobile devices, ensuring accessibility for all visitors.',
+    },
   ],
   challenges: [],
   solutions: [],

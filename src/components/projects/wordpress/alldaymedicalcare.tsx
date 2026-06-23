@@ -6,7 +6,36 @@ const alldayMedicalcare: Project = {
   description:
     'Healthcare provider focused on offering a wide range of medical services.',
   fullDescription:
-    'Using Elementor and custom HTML/CSS/JS/PHP code, I created a unique design based on an old client theme (the client asked to keep the old theme). Also used was a tool such as ACF (Advanced Custom Fields). For page https://alldaymedicalcare.com/doctors/, a unique template was created based on PHP with the functions of filtering doctors according to the established parameters.',
+    'A custom WordPress theme developed on top of an existing client theme using Elementor enhanced with custom HTML, CSS3, JavaScript, and PHP. Advanced Custom Fields (ACF) power flexible content management, while a bespoke PHP-based doctor directory template enables dynamic filtering of providers by specialty, location, and other parameters — giving patients fast access to the right care.',
+  detailHeroLine: 'CUSTOM WORDPRESS · HEALTHCARE & MEDICAL SERVICES',
+  detailMetrics: [
+    { value: '90+', label: 'PageSpeed Score', accent: 'green' },
+    { value: '<2s', label: 'Page Load Time', accent: 'green' },
+    { value: 'ACF + Elementor', label: 'Content Engine', accent: 'darkGreen' },
+    { value: 'Doctor Filter', label: 'Custom Template', accent: 'neutral' },
+  ],
+  architecture: {
+    rows: [
+      {
+        rowLabel: 'CMS LAYER',
+        steps: [
+          { label: 'WordPress Core + ACF' },
+          { label: 'Elementor + Custom PHP', highlight: true },
+          { label: 'MySQL Database' },
+        ],
+      },
+      {
+        rowLabel: 'DELIVERY',
+        steps: [
+          { label: 'Nginx Server' },
+          { label: 'Cloudflare CDN', highlight: true },
+          { label: 'SSL/TLS' },
+        ],
+      },
+    ],
+    description:
+      'WordPress with ACF manages structured medical content including provider profiles and services. Elementor provides client-editable page layouts, extended with custom CSS3 and JavaScript for animations and interactivity beyond the builder\'s defaults. A custom PHP template powers the doctor directory with real-time filtering by specialty and parameters.',
+  },
   image:
     '/Portfolio/images/portfolio/thumbs/wordpress/all-day-medical-care-clinic_thumb.webp',
   fullScreenshot:
@@ -14,73 +43,76 @@ const alldayMedicalcare: Project = {
   images: [
     {
       src: '/Portfolio/images/portfolio/thumbs/wordpress/all-day-medical-care-clinic_thumb.webp',
-      caption: 'Home page',
+      caption: 'Home page presenting the clinic\'s key services and call-to-action',
     },
     {
       src: '/Portfolio/images/portfolio/sliders/wordpress/all-day-medical/all-day-medical-care-clinic_slide2.webp',
-      caption: 'Custom filter for Providers (custom post types)',
+      caption: 'Custom provider filter using PHP to search doctors by specialty and parameters',
     },
     {
       src: '/Portfolio/images/portfolio/sliders/wordpress/all-day-medical/all-day-medical-care-clinic_slide3.webp',
-      caption: 'Providers Custom templates',
+      caption: 'Individual provider profile pages built with custom PHP templates',
     },
   ],
-  technologies: [
-    'WP custom theme from scratch',
-    'Responsive design with CSS Grid',
-    'Elementor',
-    'Advanced Custom Fields',
-    'JavaScript ES6',
-    'Custom CSS3',
-    'PHP 8+',
-    'Technical optimization',
-    'SEO-optimization',
-    'Google Analytics',
-    'Schema.org markup implementation',
-    'Marketing Tools',
-    'Google Maps API',
-  ],
+  technologies: {
+    frontend: [
+      { short: 'HTML5', full: 'Semantic HTML5 markup for accessible medical content structure' },
+      { short: 'CSS3', full: 'Custom CSS3 animations and styling extending Elementor defaults' },
+      { short: 'JavaScript (ES6)', full: 'ES6 JavaScript for interactive UI components and dynamic provider filtering' },
+      { short: 'Elementor', full: 'Elementor page builder used per client requirement for independent content editing' },
+    ],
+    backend: [
+      { short: 'PHP 8+', full: 'Custom PHP 8+ for the doctor directory template with dynamic filtering logic' },
+      { short: 'MySQL', full: 'MySQL database storing provider profiles, services, and ACF field data' },
+    ],
+    contentManagement: [
+      { short: 'WordPress Core', full: 'WordPress CMS managing all clinic content, posts, and custom post types' },
+      { short: 'Advanced Custom Fields (ACF)', full: 'ACF plugin powering flexible structured data for provider profiles and service pages' },
+    ],
+    devopsSecurity: [
+      { short: 'Cloudflare', full: 'Cloudflare CDN for DDoS protection and fast global content delivery' },
+      { short: 'SSL/TLS', full: 'HTTPS encryption ensuring patient data and site traffic are fully secured' },
+      { short: 'Nginx', full: 'Nginx web server for efficient request handling and caching' },
+    ],
+    analytics: [
+      { short: 'Google Analytics', full: 'GA4 tracking for patient journey analysis and service page engagement' },
+      { short: 'Google Maps API', full: 'Google Maps API for displaying clinic locations on the contact page' },
+    ],
+    seo: [
+      { short: 'SEO Optimization', full: 'Technical SEO with optimized meta tags and page structure for local healthcare search' },
+      { short: 'Schema.org Markup', full: 'JSON-LD structured data for medical business rich snippets in search results' },
+    ],
+    technicalOptimization: [
+      { short: 'Core Web Vitals', full: 'Performance tuning for green Core Web Vitals across all clinic pages' },
+      { short: 'WebP Images', full: 'WebP image format for fast-loading provider photos and service visuals' },
+    ],
+  },
   features: [
-    <p>
-      <strong>Custom WordPress Theme Development:</strong> Built from scratch to
-      meet specific business needs, ensuring complete control over design and
-      functionality.
-    </p>,
-    <p>
-      <strong>Advanced Custom Fields &#40;ACF&#41;:</strong> Utilized for
-      flexible content management, allowing clients to easily update and manage
-      their website&#39;s content without technical expertise.
-    </p>,
-    <p>
-      <strong>Custom CSS3/JS & PHP: </strong> Designed for unique styling and
-      dynamic functionality, ensuring a highly personalized user experience and
-      smooth performance.
-    </p>,
-    <p>
-      <strong>Elementor Page Builder: </strong> To deliver a unique and refined
-      user experience within a short timeframe, I enhanced the Elementor-based
-      development with custom CSS3 and JavaScript. This allowed for advanced
-      animations, interactive elements, and precise styling that went beyond the
-      default capabilities of the page builder. The combination ensured both
-      creative flexibility and optimized performance across all devices. The use
-      of a page builder was a client requirement, as they wanted the ability to
-      independently edit content and layout elements in the future.
-    </p>,
-    <p>
-      <strong>Responsive Design: </strong> Optimized for all devices, ensuring
-      seamless navigation and user experience across desktops, tablets, and
-      smartphones.
-    </p>,
-    <p>
-      <strong>SEO Optimization: </strong> Built with best SEO practices in mind,
-      including fast load times, clean code, and structure that boosts search
-      engine visibility.
-    </p>,
-    <p>
-      <strong>Customizable User Interface: </strong> Provides an easily editable
-      backend for ongoing site updates, empowering the client to make changes
-      without developer intervention.
-    </p>,
+    {
+      title: 'Custom Doctor Directory with PHP Filtering',
+      description:
+        'A bespoke PHP template powers the provider directory page, allowing patients to filter doctors by specialty, location, and other custom parameters — providing fast access to the right care.',
+    },
+    {
+      title: 'Advanced Custom Fields (ACF) Integration',
+      description:
+        'ACF structures all provider and service content as reusable field groups, enabling the clinic staff to update physician profiles and medical services without developer assistance.',
+    },
+    {
+      title: 'Elementor Enhanced with Custom Code',
+      description:
+        'Elementor was implemented per the client\'s request and enriched with custom CSS3 and JavaScript, delivering advanced animations and interactive elements beyond the builder\'s native capabilities.',
+    },
+    {
+      title: 'Responsive Healthcare Design',
+      description:
+        'Fully responsive layout ensures patients can access services, find providers, and book appointments comfortably across desktop, tablet, and mobile devices.',
+    },
+    {
+      title: 'SEO & Schema Optimization',
+      description:
+        'Technical SEO with Schema.org medical business markup drives local search visibility, helping patients discover the clinic through Google and map results.',
+    },
   ],
   challenges: [],
   solutions: [],

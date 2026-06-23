@@ -5,7 +5,36 @@ const healthLinesPro: Project = {
   title: 'Health Linespro',
   description: 'US-based Wellness Hub',
   fullDescription:
-    'Custom Joomla theme. Custom CSS/JS + add products and content.',
+    'A custom Joomla-powered wellness hub website for a US-based health brand. The project included full custom template development, eCommerce integration for health products, SEO optimization, and ongoing content management — delivering a professional, conversion-focused wellness platform.',
+  detailHeroLine: 'JOOMLA · ECOMMERCE · WELLNESS HUB',
+  detailMetrics: [
+    { value: 'Joomla', label: 'CMS Platform', accent: 'green' },
+    { value: 'eCommerce', label: 'Shop Ready', accent: 'green' },
+    { value: 'Custom Theme', label: 'Template Dev', accent: 'darkGreen' },
+    { value: 'SEO Ready', label: 'Optimized', accent: 'neutral' },
+  ],
+  architecture: {
+    rows: [
+      {
+        rowLabel: 'THEME ENGINE',
+        steps: [
+          { label: 'Joomla Core' },
+          { label: 'Custom Template', highlight: true },
+          { label: 'eCommerce Extension' },
+        ],
+      },
+      {
+        rowLabel: 'DELIVERY',
+        steps: [
+          { label: 'MySQL DB' },
+          { label: 'PHP Engine', highlight: true },
+          { label: 'Web Server' },
+        ],
+      },
+    ],
+    description:
+      'Built on Joomla CMS with a custom PHP template developed from scratch. An eCommerce extension handles the product catalog and checkout workflow. MySQL stores all content and product data, served through PHP on a cPanel hosting environment.',
+  },
   image:
     '/Portfolio/images/portfolio/thumbs/other-cms/healthlinespro_thumb.webp',
   fullScreenshot:
@@ -17,62 +46,66 @@ const healthLinesPro: Project = {
     },
     {
       src: '/Portfolio/images/portfolio/sliders/other-cms/healthlinespro/healthlinespro_slide2.webp',
-      caption: '',
+      caption: 'Wellness products catalog page with category navigation',
     },
     {
       src: '/Portfolio/images/portfolio/sliders/other-cms/healthlinespro/healthlinespro_slide3.webp',
-      caption: '',
+      caption: 'Content page with health articles and product information',
     },
   ],
-  technologies: [
-    'Joomla',
-    'Custom Template Development',
-    'Responsive design',
-    'eCommerce integration',
-    'add Products and Content',
-    'Custom CSS3',
-    'JavaScript ES6',
-    'Technical optimization',
-    'SEO-optimization',
-    'Google Analytics',
-    'Marketing Tools',
-    'Google Maps API',
-  ],
+  technologies: {
+    frontend: [
+      { short: 'HTML5', full: 'Semantic HTML5 forming the accessible structure of all Joomla template views' },
+      { short: 'CSS3', full: 'Custom CSS3 delivering the wellness brand visual design and responsive layouts' },
+      { short: 'JavaScript (ES6)', full: 'ES6 JavaScript enhancing interactive UI elements across the site' },
+    ],
+    backend: [
+      { short: 'PHP 8+', full: 'PHP powering Joomla CMS server-side rendering and content delivery' },
+      { short: 'MySQL', full: 'MySQL database storing all site content, product listings, and user data' },
+    ],
+    contentManagement: [
+      { short: 'Joomla CMS', full: 'Joomla CMS managing site content, modules, menus, and eCommerce data' },
+      { short: 'Custom Template Development', full: 'Fully custom Joomla PHP template developed to match the wellness brand identity' },
+      { short: 'eCommerce Integration', full: 'Joomla eCommerce extension providing product management, cart, and secure checkout' },
+    ],
+    devopsSecurity: [
+      { short: 'cPanel Hosting', full: 'cPanel-managed web server hosting the Joomla application and database' },
+      { short: 'SSL/TLS', full: 'HTTPS encryption securing customer data and online transactions' },
+    ],
+    analytics: [
+      { short: 'Google Analytics', full: 'GA4 tracking user behaviour, traffic sources, and conversion goals' },
+    ],
+    seo: [
+      { short: 'SEO Optimization', full: 'Clean URLs, meta tags, and semantic markup configured for search engine visibility' },
+      { short: 'Schema.org Markup', full: 'Structured data improving product and content indexing in search results' },
+    ],
+  },
   features: [
-    <p>
-      <strong>Custom Joomla Template Development:</strong> Designed and
-      developed a Joomla template from the ground up to align with the client's
-      branding and functional requirements, offering full control over layout,
-      styling, and modular content.
-    </p>,
-    <p>
-      <strong>eCommerce Integration:</strong> Integrated eCommerce to provide
-      comprehensive eCommerce capabilities including product catalog management,
-      cart functionality, secure checkout, and support for multiple payment
-      gateways.
-    </p>,
-    <p>
-      <strong>Page Builder: </strong> Utilized Page Builder to accelerate
-      development while enabling the client to manage and update page content
-      easily. Custom CSS3 and JavaScript enhancements were applied to extend its
-      default styling and interactive capabilities, meeting both creative and
-      performance goals.
-    </p>,
-    <p>
-      <strong>Custom CSS3/JS & PHP: </strong> Implemented tailored styling and
-      dynamic components using custom CSS3, JavaScript, and PHP to create a
-      distinctive, responsive, and interactive site experience.
-    </p>,
-    <p>
-      <strong>Responsive Design: </strong> Carefully optimized for seamless
-      performance across desktops, tablets, and mobile devices, ensuring
-      accessibility and usability across all screen sizes.
-    </p>,
-    <p>
-      <strong>SEO Optimization: </strong> Structured with Joomla&#39;s native
-      SEO tools and best practices—including clean URLs, meta tags, fast loading
-      times, and semantic HTML—for improved visibility on search engines.
-    </p>,
+    {
+      title: 'Custom Joomla Template Development',
+      description:
+        'A brand-aligned Joomla PHP template was built from the ground up, offering complete control over layout, module zones, and visual styling tailored to the wellness niche.',
+    },
+    {
+      title: 'eCommerce Product Shop',
+      description:
+        'Full eCommerce capabilities were integrated, including a product catalog, category browsing, shopping cart, and secure payment checkout for health and wellness products.',
+    },
+    {
+      title: 'Content & Product Management',
+      description:
+        'Health articles, product descriptions, and media assets were populated and organized through the Joomla admin panel, keeping the hub fresh and informative.',
+    },
+    {
+      title: 'SEO & Performance Optimization',
+      description:
+        'Joomla SEO tools were configured with clean URLs, meta descriptions, and optimized image loading to support organic search traffic growth.',
+    },
+    {
+      title: 'Responsive Design',
+      description:
+        'The custom template is fully responsive, delivering a consistent and usable experience across desktops, tablets, and mobile devices.',
+    },
   ],
   challenges: [],
   solutions: [],

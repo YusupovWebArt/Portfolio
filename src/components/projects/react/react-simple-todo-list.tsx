@@ -5,7 +5,36 @@ const reactSimpleTodoList: Project = {
   title: 'Simple To-Do App',
   description: 'In the process of learning React.js technology.',
   fullDescription:
-    'This Simple To-Do App is a beginner-friendly project built with React.js, designed to help users manage their daily tasks efficiently.',
+    'A beginner-friendly To-Do application built with React.js, Bootstrap 5, and Vite. The app lets users add, complete, and remove tasks in real time, practising core React concepts such as component composition, useState hooks, and React-Bootstrap UI integration.',
+  detailHeroLine: 'REACT · BOOTSTRAP · TASK MANAGER',
+  detailMetrics: [
+    { value: 'React.js', label: 'UI Library', accent: 'green' },
+    { value: 'Bootstrap 5', label: 'UI Framework', accent: 'green' },
+    { value: 'useState', label: 'State Hook', accent: 'darkGreen' },
+    { value: 'GitHub Pages', label: 'Hosting', accent: 'neutral' },
+  ],
+  architecture: {
+    rows: [
+      {
+        rowLabel: 'FRONTEND',
+        steps: [
+          { label: 'React Components' },
+          { label: 'useState Hook', highlight: true },
+          { label: 'Bootstrap 5' },
+        ],
+      },
+      {
+        rowLabel: 'DEPLOYMENT',
+        steps: [
+          { label: 'GitHub Repo' },
+          { label: 'GitHub Pages', highlight: true },
+          { label: 'Browser' },
+        ],
+      },
+    ],
+    description:
+      'The app is composed of React functional components using useState for task list management. React-Bootstrap provides pre-built accessible UI components styled with Bootstrap 5. Vite bundles the project into a static output deployed on GitHub Pages.',
+  },
   image:
     '/Portfolio/images/portfolio/thumbs/react/react-js-basic-todo-list_thumb.webp',
   fullScreenshot:
@@ -16,53 +45,36 @@ const reactSimpleTodoList: Project = {
       caption: 'General view of the To-Do App',
     },
   ],
-  technologies: [
-    'React.js',
-    'Bootstrap 5',
-    'React-Bootstrap',
-    'React Icons',
-    'JavaScript (ES6+)',
-    'Vite',
-    'GitHub',
-    'GitHub Pages',
-  ],
+  technologies: {
+    frontend: [
+      { short: 'React.js', full: 'React functional components managing the task list with real-time updates' },
+      { short: 'Bootstrap 5', full: 'Bootstrap 5 grid and component library for a clean, responsive layout' },
+      { short: 'React-Bootstrap', full: 'React-Bootstrap library wrapping Bootstrap components as native React elements' },
+      { short: 'React Icons', full: 'React Icons providing accessible icon buttons for task actions' },
+      { short: 'JavaScript (ES6+)', full: 'ES6+ JavaScript powering task creation, completion, and removal logic' },
+    ],
+    devopsSecurity: [
+      { short: 'Vite', full: 'Vite build tool enabling fast HMR during development and optimized static output' },
+      { short: 'GitHub Pages', full: 'GitHub Pages hosting the compiled To-Do app as a free public demo' },
+      { short: 'SSL/TLS', full: 'HTTPS encryption automatically provided by GitHub Pages' },
+    ],
+  },
   features: [
-    <p>
-      <strong>React.js:</strong> A JavaScript library for building user
-      interfaces, enabling the creation of reusable components and efficient
-      updates.
-    </p>,
-    <p>
-      <strong>Vite:</strong> A modern build tool that offers fast development
-      server startup and optimized production builds.
-    </p>,
-    <p>
-      <strong>Bootstrap 5: </strong> A front-end framework providing
-      pre-designed components and responsive grid system for styling the
-      application.
-    </p>,
-
-    <p>
-      <strong>React-Bootstrap: </strong> A library that integrates Bootstrap
-      components as React components, allowing for more seamless integration
-      with React.
-    </p>,
-    <p>
-      <strong>React Icons: </strong> A library offering a collection of
-      customizable icons to enhance the user interface.
-    </p>,
-    <p>
-      <strong>JavaScript &#40;ES6+&#41;: </strong> The programming language used
-      for writing the application's logic, utilizing modern JavaScript features.
-    </p>,
-    <p>
-      <strong>GitHub: </strong> Version control systems used for managing the
-      source code and hosting the project repository.
-    </p>,
-    <p>
-      <strong>GitHub Pages: </strong> A service for hosting the static website,
-      making the application accessible online.
-    </p>,
+    {
+      title: 'Task Management',
+      description:
+        'Users can add new tasks via an input field, mark them as complete with a checkbox, and delete them with a trash icon button.',
+    },
+    {
+      title: 'React-Bootstrap UI Components',
+      description:
+        'Pre-built Bootstrap components wrapped as React elements deliver accessible form inputs, buttons, and list groups without custom CSS overhead.',
+    },
+    {
+      title: 'Real-Time State Updates',
+      description:
+        'The useState hook keeps the task list reactive — adding or removing a task immediately updates the rendered list without page reloads.',
+    },
   ],
   challenges: [],
   solutions: [],

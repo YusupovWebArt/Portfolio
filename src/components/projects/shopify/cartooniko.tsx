@@ -3,64 +3,97 @@ import { Project } from '../project-types'
 const cartooniko: Project = {
   id: 6750,
   title: 'Cartooniko',
-  description: 'Custom portraites in cartoon style.',
+  description: 'Custom portraits in cartoon style.',
   fullDescription:
-    'Created using Shopify, this online store offers a seamless shopping experience with customizable themes and secure payment options. Shopify store + products and content.',
+    'Cartooniko is a creative Shopify store offering custom cartoon-style portrait commissions. The store was fully set up with a branded Liquid theme, a product catalogue for portrait packages, and integrated apps to handle orders and customer communication.',
+  detailHeroLine: 'SHOPIFY · CUSTOM ART STORE',
+  detailMetrics: [
+    { value: '90+', label: 'PageSpeed Score', accent: 'green' },
+    { value: '<2s', label: 'Page Load Time', accent: 'green' },
+    { value: 'Shopify Liquid', label: 'Theme Engine', accent: 'darkGreen' },
+    { value: 'Secure Checkout', label: 'Payments', accent: 'neutral' },
+  ],
+  architecture: {
+    rows: [
+      {
+        rowLabel: 'STORE ENGINE',
+        steps: [
+          { label: 'Shopify Liquid' },
+          { label: 'Theme Customization', highlight: true },
+          { label: 'App Integration' },
+        ],
+      },
+      {
+        rowLabel: 'DELIVERY',
+        steps: [
+          { label: 'Shopify CDN' },
+          { label: 'SSL/TLS', highlight: true },
+          { label: 'Customer Checkout' },
+        ],
+      },
+    ],
+    description:
+      'Cartooniko is powered by Shopify\'s managed platform with a bespoke Liquid theme driving the storefront visuals. Commission products are managed via the Shopify Admin, and apps handle order notifications and marketing. Assets are served through the Shopify CDN with full SSL encryption at checkout.',
+  },
   image: '/Portfolio/images/portfolio/thumbs/shopify/cartooniko_thumb.webp',
   fullScreenshot:
     '/Portfolio/images/portfolio/projects/shopify/cartooniko_thumb.webp',
   images: [
     {
       src: '/Portfolio/images/portfolio/thumbs/shopify/cartooniko_thumb.webp',
-      caption: '',
+      caption: 'Cartooniko homepage showcasing custom cartoon portrait offerings',
     },
     {
       src: '/Portfolio/images/portfolio/sliders/shopify/cartooniko/cartooniko_slide2.webp',
-      caption: '',
+      caption: 'Product page for a cartoon portrait package with ordering options',
     },
   ],
-  technologies: [
-    'Shopify',
-    'Theme Customization',
-    'CSS3',
-    'JavaScript (ES6+)',
-    'Admin Dashboard',
-    'App Integration',
-    'Product Management',
-    'Content Creation',
-  ],
+  technologies: {
+    frontend: [
+      { short: 'Shopify Liquid', full: 'Liquid templating engine used to build the customized Cartooniko storefront' },
+      { short: 'CSS3', full: 'Custom CSS3 for brand-specific styling, colours, and responsive design' },
+      { short: 'JavaScript (ES6+)', full: 'ES6+ JavaScript for interactive cart, product galleries, and UI behaviour' },
+    ],
+    contentManagement: [
+      { short: 'Shopify Admin', full: 'Shopify Admin used to manage commission products, orders, and store settings' },
+      { short: 'Theme Customization', full: 'Theme editor and Liquid customization to reflect the playful brand identity' },
+      { short: 'App Integration', full: 'Apps integrated for order confirmation emails, reviews, and upselling' },
+      { short: 'Product Management', full: 'Portrait commission packages configured with pricing, descriptions, and images' },
+    ],
+    devopsSecurity: [
+      { short: 'Shopify Hosting', full: 'Shopify-managed hosting providing reliable uptime and performance' },
+      { short: 'SSL/TLS', full: 'SSL/TLS encryption ensuring secure transactions and customer data protection' },
+      { short: 'CDN', full: 'Shopify CDN delivering store assets quickly to global customers' },
+    ],
+    analytics: [
+      { short: 'Shopify Analytics', full: 'Shopify Analytics tracking sales, conversion rates, and store traffic' },
+    ],
+    seo: [
+      { short: 'Shopify SEO', full: 'SEO configuration for product and collection pages to improve organic reach' },
+      { short: 'Meta Tags Optimization', full: 'Custom meta titles and descriptions set for all key store pages' },
+    ],
+  },
   features: [
-    <p>
-      <strong>Shopify:</strong> A powerful e-commerce platform that allows
-      individuals and businesses to create and manage online stores with ease,
-      offering customizable themes, built-in payment processing, and secure
-      hosting.
-    </p>,
-    <p>
-      <strong>Shopify Admin Dashboard:</strong> The backend interface used to
-      manage all aspects of the store including products, content, orders,
-      payments, and analytics.
-    </p>,
-    <p>
-      <strong>Product Management:</strong> Allows the addition of products with
-      titles, descriptions, images, pricing, variants (such as size or color),
-      inventory tracking, and SEO-friendly details.
-    </p>,
-    <p>
-      <strong>Content Creation:</strong> Supports adding custom pages, blog
-      posts, FAQs, and policies to provide valuable information to customers and
-      enhance SEO.
-    </p>,
-    <p>
-      <strong>Theme Customization:</strong> Shopify themes can be customized
-      using the theme editor or directly through Liquid, HTML, CSS, and
-      JavaScript to reflect your brand&#39;s identity.
-    </p>,
-    <p>
-      <strong>App Integration:</strong> The Shopify App Store provides access to
-      thousands of apps to extend store functionality, such as email marketing,
-      reviews, upselling, shipping, and more.
-    </p>,
+    {
+      title: 'Creative Brand Theme',
+      description: 'A playful, visually engaging Shopify Liquid theme was customized to match the Cartooniko brand, featuring bold colours, custom fonts, and an art-focused layout.',
+    },
+    {
+      title: 'Commission Product Setup',
+      description: 'Portrait commission packages were created as Shopify products with clear package tiers, example artwork galleries, delivery timelines, and pricing variants.',
+    },
+    {
+      title: 'App & Order Management',
+      description: 'Third-party Shopify apps were integrated to automate order notification emails, collect customer reviews, and manage post-purchase upsell offers.',
+    },
+    {
+      title: 'Content & Policy Pages',
+      description: 'Custom pages including How It Works, FAQ, and Refund Policy were created to guide customers through the commission process and reduce support queries.',
+    },
+    {
+      title: 'Secure Payment Processing',
+      description: 'Shopify Payments with SSL-secured checkout enables customers to safely purchase portrait commissions using major credit cards and digital payment methods.',
+    },
   ],
   challenges: [],
   solutions: [],

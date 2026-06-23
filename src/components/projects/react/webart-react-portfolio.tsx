@@ -6,7 +6,36 @@ const webartReactPortfolio: Project = {
   description:
     'Personal portfolio site of Artur Yusupov, showcasing his professional skills and completed projects as a WordPress and React developer',
   fullDescription:
-    'This portfolio website was built with React.js and TypeScript to ensure a scalable, component-based architecture, styled with Tailwind CSS for efficient and responsive design. It leverages Vite for fast development and optimized builds, with React Icons for clean, ready-to-use iconography. Core functionality is powered by modern JavaScript (ES6+), while version control and collaboration are managed through GitHub, and deployment is handled via GitHub Pages.',
+    'This portfolio website was built with React.js and TypeScript to ensure a scalable, component-based architecture, styled with Tailwind CSS for efficient and responsive design. It leverages Vite for fast development and optimized builds, with React Icons for clean, ready-to-use iconography. Version control is managed via GitHub and the site is deployed publicly through GitHub Pages.',
+  detailHeroLine: 'REACT · TYPESCRIPT · PORTFOLIO',
+  detailMetrics: [
+    { value: 'React 18', label: 'UI Framework', accent: 'green' },
+    { value: 'TypeScript', label: 'Type Safety', accent: 'green' },
+    { value: 'Vite', label: 'Build Tool', accent: 'darkGreen' },
+    { value: 'GitHub Pages', label: 'Hosting', accent: 'neutral' },
+  ],
+  architecture: {
+    rows: [
+      {
+        rowLabel: 'FRONTEND',
+        steps: [
+          { label: 'React Components' },
+          { label: 'State Management', highlight: true },
+          { label: 'Tailwind CSS' },
+        ],
+      },
+      {
+        rowLabel: 'DEPLOYMENT',
+        steps: [
+          { label: 'GitHub Repo' },
+          { label: 'GitHub Pages', highlight: true },
+          { label: 'Browser' },
+        ],
+      },
+    ],
+    description:
+      'The portfolio is built as a React SPA with TypeScript, broken into reusable components for each section. Vite powers the build pipeline, outputting optimized static assets deployed to GitHub Pages for zero-cost, globally available hosting.',
+  },
   image:
     '/Portfolio/images/portfolio/thumbs/react/webart-react-portfolio_thumb.webp',
   fullScreenshot:
@@ -14,7 +43,7 @@ const webartReactPortfolio: Project = {
   images: [
     {
       src: '/Portfolio/images/portfolio/thumbs/react/webart-react-portfolio_thumb.webp',
-      caption: '',
+      caption: 'Hero section and project grid overview of the React portfolio',
     },
     {
       src: '/Portfolio/images/portfolio/sliders/react/webart-react-portfolio/webart-react-portfolio_slide2.webp',
@@ -22,80 +51,77 @@ const webartReactPortfolio: Project = {
     },
     {
       src: '/Portfolio/images/portfolio/sliders/react/webart-react-portfolio/webart-react-portfolio_slide3.webp',
-      caption: '',
+      caption: 'About section with skills and experience summary',
     },
     {
       src: '/Portfolio/images/portfolio/sliders/react/webart-react-portfolio/webart-react-portfolio_slide4.webp',
-      caption: '',
+      caption: 'Project cards grid with category filter navigation',
     },
     {
       src: '/Portfolio/images/portfolio/sliders/react/webart-react-portfolio/webart-react-portfolio_slide5.webp',
-      caption: '',
+      caption: 'Project detail modal with technology stack and screenshots',
     },
     {
       src: '/Portfolio/images/portfolio/sliders/react/webart-react-portfolio/webart-react-portfolio_slide6.webp',
-      caption: '',
+      caption: 'Contact section with social links and contact form',
     },
     {
       src: '/Portfolio/images/portfolio/sliders/react/webart-react-portfolio/webart-react-portfolio_slide7.webp',
-      caption: '',
+      caption: 'Mobile-responsive layout on small screen devices',
     },
     {
       src: '/Portfolio/images/portfolio/sliders/react/webart-react-portfolio/webart-react-portfolio_slide8.webp',
-      caption: '',
+      caption: 'Dark mode theme applied across all portfolio sections',
     },
     {
       src: '/Portfolio/images/portfolio/sliders/react/webart-react-portfolio/webart-react-portfolio_slide9.webp',
-      caption: '',
+      caption: 'Footer with navigation links and social media icons',
     },
   ],
-  technologies: [
-    'React.js',
-    'TypeScript',
-    'JavaScript (ES6+)',
-    'Tailwind CSS',
-    'Vite',
-    'Light and Dark Mode',
-    'React Icons',
-    'GitHub',
-    'GitHub Pages',
-  ],
+  technologies: {
+    frontend: [
+      { short: 'React.js', full: 'React 18 component-based UI with hooks for state and side-effects' },
+      { short: 'TypeScript', full: 'Static type checking across all components for safer, maintainable code' },
+      { short: 'Tailwind CSS', full: 'Utility-first CSS framework for rapid, responsive UI styling' },
+      { short: 'React Icons', full: 'Curated icon library integrated throughout the UI for visual clarity' },
+      { short: 'JavaScript (ES6+)', full: 'Modern ES6+ JavaScript powering application logic and interactions' },
+    ],
+    devopsSecurity: [
+      { short: 'Vite', full: 'Next-generation build tool providing instant HMR and optimized production bundles' },
+      { short: 'GitHub Pages', full: 'Free static hosting serving the portfolio directly from the GitHub repository' },
+      { short: 'SSL/TLS', full: 'HTTPS encryption automatically provided by GitHub Pages' },
+    ],
+    seo: [
+      { short: 'Meta Tags', full: 'Custom meta title and description tags for improved search engine indexing' },
+      { short: 'Open Graph', full: 'Open Graph tags enabling rich link previews when shared on social media' },
+    ],
+  },
   features: [
-    <p>
-      <strong>React.js:</strong> A JavaScript library for building user
-      interfaces, enabling the creation of reusable components and efficient
-      updates.
-    </p>,
-    <p>
-      <strong>TypeScript:</strong> A strongly typed programming language that
-      builds on JavaScript, providing static type checking and improved code
-      maintainability.
-    </p>,
-    <p>
-      <strong>Vite:</strong> A modern build tool that offers fast development
-      server startup and optimized production builds.
-    </p>,
-    <p>
-      <strong>Tailwind CSS:</strong> A utility-first CSS framework that provides
-      low-level utility classes to build custom, responsive, and modern user
-      interfaces efficiently.
-    </p>,
-    <p>
-      <strong>React Icons: </strong> A library offering a collection of
-      customizable icons to enhance the user interface.
-    </p>,
-    <p>
-      <strong>JavaScript &#40;ES6+&#41;: </strong> The programming language used
-      for writing the application's logic, utilizing modern JavaScript features.
-    </p>,
-    <p>
-      <strong>GitHub: </strong> Version control systems used for managing the
-      source code and hosting the project repository.
-    </p>,
-    <p>
-      <strong>GitHub Pages: </strong> A service for hosting the static website,
-      making the application accessible online.
-    </p>,
+    {
+      title: 'Component-Based Architecture',
+      description:
+        'Built with React 18 and TypeScript, the portfolio is structured as a collection of reusable, typed components ensuring consistency and ease of future maintenance.',
+    },
+    {
+      title: 'Light & Dark Mode',
+      description:
+        'A fully implemented theme switcher lets visitors toggle between light and dark modes, with preferences persisted across sessions.',
+    },
+    {
+      title: 'Filterable Project Gallery',
+      description:
+        'Projects are displayed in a responsive card grid with category-based filters, allowing recruiters and clients to quickly browse relevant work.',
+    },
+    {
+      title: 'Optimized Build & Deployment',
+      description:
+        'Vite compiles and tree-shakes the project into minimal static assets deployed to GitHub Pages, achieving fast page loads without any server infrastructure.',
+    },
+    {
+      title: 'Fully Responsive Design',
+      description:
+        'Tailwind CSS breakpoint utilities ensure a seamless experience from mobile phones to large desktop monitors.',
+    },
   ],
   challenges: [],
   solutions: [],
