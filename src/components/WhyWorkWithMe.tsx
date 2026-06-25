@@ -2,7 +2,7 @@ import { Cpu, Layers, Check } from 'lucide-react'
 
 const WhyWorkWithMe = () => {
   return (
-    <section className="py-20 bg-gradient-to-br from-slate-50 via-white to-slate-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 transition-colors duration-300 relative overflow-hidden">
+    <section id="why-work-with-me" className="py-20 bg-gradient-to-br from-slate-50 via-white to-slate-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 transition-colors duration-300 relative overflow-hidden">
       {/* Background Effects */}
       <div className="hidden lg:block absolute inset-0">
         <div className="absolute top-1/3 left-1/5 w-96 h-96 bg-purple-300 dark:bg-lime-300 rounded-full mix-blend-multiply filter blur-3xl opacity-10 animate-pulse"></div>
@@ -23,14 +23,14 @@ const WhyWorkWithMe = () => {
             to work with me
           </h2>
           <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed">
-            Let me share why partnering with me will be one of the best business decisions you will make. Here is what sets my services apart from the competition:
+            Partnering with me is a strategic investment in speed, compliance, and future-proof positioning. Here is how I deliver tangible business value to your digital products:
           </p>
         </div>
 
         {/* Redesigned 2-Column Core Strengths Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
           
-          {/* Card 1: T-Shaped Developer Expertise */}
+          {/* Card 1: Business-First Development Velocity */}
           <div className="group relative overflow-hidden bg-white dark:bg-slate-900 lg:bg-white/60 lg:dark:bg-slate-900/60 lg:backdrop-blur-xl rounded-3xl p-6 sm:p-8 border border-slate-200/80 dark:border-white/10 hover:border-slate-300 dark:hover:border-white/20 transition-all duration-300 shadow-lg hover:shadow-xl">
             {/* Ambient hover light glow */}
             <div className="absolute -top-12 -left-12 w-32 h-32 bg-purple-500 dark:bg-lime-500 rounded-full blur-3xl opacity-0 group-hover:opacity-10 dark:group-hover:opacity-15 transition-opacity duration-300 pointer-events-none" />
@@ -43,17 +43,17 @@ const WhyWorkWithMe = () => {
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-slate-900 dark:text-white tracking-tight">
-                    T-Shaped Developer Expertise
+                    Business-First Development Velocity
                   </h3>
                   <p className="text-xs text-purple-600 dark:text-lime-400 font-semibold tracking-wide mt-0.5">
-                    React/Next.js & WordPress Development
+                    Agentic Engineering & 3x Shorter Time-to-Market
                   </p>
                 </div>
               </div>
 
               {/* Main Paragraph */}
               <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-6">
-                I am a T-shaped developer combining deep expertise in advanced frontend engineering and WordPress architectures with a broad understanding of full-stack processes. I leverage state-of-the-art AI tools to speed up the development cycle, delivering technically robust, clean, and highly secure products.
+                I leverage advanced agentic AI environments to accelerate development cycles by 3x. By automating routine syntax generation, I shift engineering focus to system architecture, thorough code reviews, and robust error handling—drastically reducing development costs and delivery time.
               </p>
 
               {/* Core Deliverables list */}
@@ -62,9 +62,9 @@ const WhyWorkWithMe = () => {
                   Key Focus Areas
                 </div>
                 {[
-                  'Scalable React, Next.js & TypeScript apps',
-                  'Custom WordPress Themes & secure Plugin development',
-                  'AI-assisted workflow optimization for rapid delivery',
+                  '3x faster feature deployment using Claude Code & Antigravity',
+                  'Relocated technical rigor on security, scalability & failover paths',
+                  'Spec-driven development for predictable, clean, and modular code',
                 ].map((item, idx) => (
                   <div key={idx} className="flex items-start space-x-2 text-xs">
                     <span className="w-4 h-4 rounded-full bg-purple-100 dark:bg-lime-500/10 text-purple-600 dark:text-lime-400 flex items-center justify-center shrink-0 mt-0.5">
@@ -79,7 +79,7 @@ const WhyWorkWithMe = () => {
             </div>
           </div>
 
-          {/* Card 2: Broad Knowledge Across Stack */}
+          {/* Card 2: Future-Proof Compliance & GEO Visibility */}
           <div className="group relative overflow-hidden bg-white dark:bg-slate-900 lg:bg-white/60 lg:dark:bg-slate-900/60 lg:backdrop-blur-xl rounded-3xl p-6 sm:p-8 border border-slate-200/80 dark:border-white/10 hover:border-slate-300 dark:hover:border-white/20 transition-all duration-300 shadow-lg hover:shadow-xl">
             {/* Ambient hover light glow */}
             <div className="absolute -top-12 -left-12 w-32 h-32 bg-blue-500 dark:bg-lime-400 rounded-full blur-3xl opacity-0 group-hover:opacity-10 dark:group-hover:opacity-15 transition-opacity duration-300 pointer-events-none" />
@@ -92,17 +92,17 @@ const WhyWorkWithMe = () => {
                 </div>
                 <div>
                   <h3 className="text-xl font-bold text-slate-900 dark:text-white tracking-tight">
-                    Broad Knowledge Across Stack
+                    Future-Proof Compliance & GEO
                   </h3>
                   <p className="text-xs text-blue-600 dark:text-lime-400 font-semibold tracking-wide mt-0.5">
-                    End-to-End Digital Solutions
+                    EAA Accessibility, GDPR Privacy & AI Search Ready
                   </p>
                 </div>
               </div>
 
               {/* Main Paragraph */}
               <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-6">
-                Beyond writing code, I bridge the gap between design, marketing, and systems engineering. My multidisciplinary skillset allows me to build digital products that not only work perfectly under the hood but are also optimized for maximum SEO ranking and conversions.
+                I ensure your digital products comply with strict global regulations. I build with EAA/ADA accessibility (WCAG 2.2 AA) to eliminate legal risks and implement server-side tracking (sGTM) for privacy. I also optimize content density for Generative Engine Optimization (GEO) to secure brand citations in AI responses.
               </p>
 
               {/* Core Deliverables list */}
@@ -111,9 +111,9 @@ const WhyWorkWithMe = () => {
                   Key Focus Areas
                 </div>
                 {[
-                  'SEO auditing, Core Web Vitals & speed tuning',
-                  'UI/UX design translation & responsive grids',
-                  'CI/CD deployments, cloud hosting & version control',
+                  'Strict EAA/ADA compliance (screen readers & keyboard navigation)',
+                  'Server-Side Tracking (sGTM) & cookieless analytics for GDPR compliance',
+                  'GEO strategies (fact density, sameAs) for Google AI Overviews & ChatGPT',
                 ].map((item, idx) => (
                   <div key={idx} className="flex items-start space-x-2 text-xs">
                     <span className="w-4 h-4 rounded-full bg-blue-100 dark:bg-lime-500/10 text-blue-600 dark:text-lime-400 flex items-center justify-center shrink-0 mt-0.5">

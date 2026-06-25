@@ -53,11 +53,13 @@ const reactSimpleTodoList: Project = {
       { short: 'React Icons', full: 'React Icons providing accessible icon buttons for task actions' },
       { short: 'JavaScript (ES6+)', full: 'ES6+ JavaScript powering task creation, completion, and removal logic' },
     ],
+    contentManagement: [],
     devopsSecurity: [
       { short: 'Vite', full: 'Vite build tool enabling fast HMR during development and optimized static output' },
       { short: 'GitHub Pages', full: 'GitHub Pages hosting the compiled To-Do app as a free public demo' },
       { short: 'SSL/TLS', full: 'HTTPS encryption automatically provided by GitHub Pages' },
     ],
+    analytics: [],
   },
   features: [
     {

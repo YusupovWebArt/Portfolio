@@ -4,9 +4,11 @@ import { useTheme } from '../contexts/ThemeContext'
 
 const navItems = [
   { id: 'home', label: 'Home' },
-  { id: 'about', label: 'About' },
+  { id: 'about', label: 'About Me' },
+  { id: 'how-i-work', label: 'How I Work' },
   { id: 'projects', label: 'Projects' },
   { id: 'skills', label: 'Skills' },
+  { id: 'why-work-with-me', label: 'Why Me' },
   { id: 'contact', label: 'Contact' },
 ]
 

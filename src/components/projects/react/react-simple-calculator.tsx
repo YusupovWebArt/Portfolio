@@ -52,11 +52,13 @@ const reactSimpleCalculator: Project = {
       { short: 'JavaScript (ES6+)', full: 'ES6+ JavaScript implementing arithmetic logic and event handling' },
       { short: 'CSS3', full: 'Custom CSS3 styles for the calculator layout and button grid' },
     ],
+    contentManagement: [],
     devopsSecurity: [
       { short: 'Vite', full: 'Vite build tool providing fast development server and optimized production build' },
       { short: 'GitHub Pages', full: 'GitHub Pages hosting the compiled static app publicly for free' },
       { short: 'SSL/TLS', full: 'HTTPS encryption automatically provided by GitHub Pages' },
     ],
+    analytics: [],
   },
   features: [
     {

@@ -51,11 +51,13 @@ const reactSimpleCostAccounting: Project = {
       { short: 'JavaScript (ES6+)', full: 'ES6+ JavaScript for balance calculation logic and data manipulation' },
       { short: 'CSS3', full: 'Custom CSS3 styling for the accounting dashboard layout' },
     ],
+    contentManagement: [],
     devopsSecurity: [
       { short: 'Vite', full: 'Vite build tool powering the fast development environment and production bundle' },
       { short: 'GitHub Pages', full: 'GitHub Pages serving the static app as a publicly accessible demo' },
       { short: 'SSL/TLS', full: 'HTTPS encryption automatically provided by GitHub Pages' },
     ],
+    analytics: [],
   },
   features: [
     {

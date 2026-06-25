@@ -7,25 +7,25 @@ const About = () => {
       icon: <SiWordpress className="w-6 h-6" />,
       title: "WordPress Development",
       description:
-        "Delivering custom full-stack solutions by architecting high-performance themes and secure plugin infrastructures from the ground up. By combining traditional PHP expertise with an AI-augmented workflow, I build scalable, enterprise-grade WordPress ecosystems that are optimized for speed, security, and seamless content management.",
+        "Architecting high-performance, custom WordPress themes and plugins from scratch without bloated visual builders. Combining robust PHP 8.x OOP standards (WPCS/PSR-12) with headless CMS configurations (Next.js) to deliver secure, scalable, and lightning-fast enterprise-grade ecosystems.",
     },
     {
       icon: <SiReact className="w-6 h-6" />,
       title: "App Development",
       description:
-        "Engineering robust, production-ready React/Next.js applications from the ground up using TypeScript and Tailwind CSS for maximum type-safety and high-speed performance. By merging foundational engineering principles with an AI-augmented workflow, I deliver scalable full-stack solutions with clean UX, ensuring rapid deployment without compromising code integrity.",
+        "Engineering production-ready React 19 and Next.js 15+ applications using TypeScript for end-to-end type safety. Developing scalable full-stack architectures with clean UX, near-zero rendering latency (Streaming/Suspense), and strict EAA/ADA accessibility compliance.",
     },
     {
       icon: <SiGoogleanalytics className="w-6 h-6" />,
-      title: "SEO Optimization",
+      title: "SEO & GEO Optimization",
       description:
-        "Maximizing search visibility through advanced technical SEO and comprehensive Core Web Vitals optimization to ensure lightning-fast load speeds and top-tier rankings. By implementing semantic HTML, schema markup, and high-performance asset delivery, I bridge the gap between clean engineering and effective digital marketing.",
+        "Maximizing digital presence through advanced technical SEO and Generative Engine Optimization (GEO) to secure brand citations in ChatGPT and Google AI Overviews. Integrating complex JSON-LD schemas, optimizing Core Web Vitals, and deploying GDPR-compliant server-side tracking (sGTM).",
     },
     {
       icon: <LuBrainCircuit className="w-6 h-6" />,
       title: "AI-Augmented Development",
       description:
-        "Building modern web applications by leveraging an advanced AI ecosystem including Cursor, Antigravity, Claude, Visual Studio Code with GitHub Copilot and Windsurf to accelerate development and ensure high-quality, context-aware code through MCP, RAG, skills etc and agentic workflows.",
+        "Accelerating development velocity by 3x through advanced agentic AI programming environments. Shifting technical rigor from writing syntax to system design, context engineering, spec-driven development, and establishing robust multi-agent evaluation frameworks.",
     },
   ];
 
@@ -95,29 +95,10 @@ const About = () => {
                 About Me
               </h2>
               <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
-                As a Fullstack WordPress Developer and React/Next.js Engineer,
-                the primary focus is on building scalable, high-performance
-                websites that align with business goals. Combining clean code
-                with SEO and GEO (Generative Engine Optimization) expertise
-                ensures the delivery of functional, results-driven solutions.
-                This T-shaped approach integrates deep web development expertise
-                with broad skills in UI/UX, DevOps, and digital marketing
-                strategy.
+                As a cross-functional Software Engineer specializing in Fullstack WordPress and React/Next.js, I build high-performance, compliant web applications tailored for the modern digital landscape. I combine deep engineering expertise in headless architectures, custom plugin/theme development, and type-safe systems with a broad mastery of server-side SEO/GEO and web infrastructure. By designing digital products around strict standards - including EAA/ADA accessibility (WCAG 2.2 AA) and server-side tracking for GDPR compliance-I bridge the gap between elegant code and robust business security.
               </p>
               <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
-                My specialization in AI-augmented development leverages a
-                cutting-edge toolchain including Cursor, Antigravity, Claude,
-                Visual Studio Code with GitHub Copilot and Windsurf - to
-                streamline the entire product lifecycle while ensuring superior
-                code quality. By integrating MCP (Model Context Protocol), RAG,
-                Skills etc, I provide AI models with deep project awareness
-                across local databases and file systems for complex
-                architectural tasks. I enforce strict coding standards through
-                Context Engineering and .cursorrules, while utilizing Agentic
-                workflows and v0.dev for rapid prototyping and automated
-                refactoring. This seamless integration of LLMs, combined with
-                expert Prompt Engineering, minimizes technical debt and allows
-                for a focus on high-impact business logic and rapid innovation.
+                My development workflow is deeply integrated with advanced agentic AI environments. I leverage tools like Claude Code and Google Antigravity to automate routine syntax writing, shifting technical rigor toward system architecture, performance profiling, and comprehensive security auditing. Through spec-driven development and context engineering, I streamline the software development lifecycle to achieve near-zero rendering latency and rapid feature delivery while maintaining strict code quality.
               </p>
             </div>
 

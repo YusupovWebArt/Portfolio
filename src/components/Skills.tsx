@@ -446,10 +446,10 @@ const Skills = () => {
                             key={detailIndex}
                             className="bg-slate-50/50 dark:bg-slate-950/20 border border-slate-200/50 dark:border-white/5 rounded-2xl p-4 hover:border-slate-300 dark:hover:border-white/10 transition-colors duration-300"
                           >
-                            <h5 className="font-bold text-slate-900 dark:text-white text-xs mb-1.5">
+                            <h5 className="font-bold text-slate-900 dark:text-white text-sm mb-1.5">
                               {detail.name}
                             </h5>
-                            <p className="text-slate-600 dark:text-slate-400 text-[11px] leading-relaxed">
+                            <p className="text-slate-600 dark:text-slate-400 text-xs sm:text-[13px] leading-relaxed">
                               {detail.description}
                             </p>
                           </div>
