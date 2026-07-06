@@ -15,16 +15,36 @@ import {
 import { FAQ, getBotAnswer, Message } from '../data/chatFaq'
 
 const Contact = () => {
+  const [emailVal, setEmailVal] = useState('web.sunline [at] gmail.com')
+  const [emailLink, setEmailLink] = useState('#')
+
+  useEffect(() => {
+    // Decode email after mount to prevent static HTML scrapers / SSR leaks
+    const timer = setTimeout(() => {
+      setEmailVal(atob('d2ViLnN1bmxpbmVAZ21haWwuY29t'))
+      setEmailLink(atob('bWFpbHRvOndlYi5zdW5saW5lQGdtYWlsLmNvbQ=='))
+    }, 400)
+    return () => clearTimeout(timer)
+  }, [])
+
+  const handleEmailInteraction = () => {
+    if (emailLink === '#') {
+      setEmailVal(atob('d2ViLnN1bmxpbmVAZ21haWwuY29t'))
+      setEmailLink(atob('bWFpbHRvOndlYi5zdW5saW5lQGdtYWlsLmNvbQ=='))
+    }
+  }
+
   const contactInfo = [
     {
       icon: <Mail className="w-5 h-5" />,
       label: 'Email',
-      value: 'web.sunline@gmail.com',
-      link: 'mailto:web.sunline@gmail.com',
+      value: emailVal,
+      link: emailLink,
       glowColor: 'bg-blue-500',
       iconColor: 'text-blue-500 dark:text-blue-400',
       borderHover: 'group-hover:border-blue-500/30',
       tag: 'For official requests & projects',
+      onInteraction: handleEmailInteraction,
     },
     {
       icon: <Phone className="w-5 h-5" />,
@@ -196,8 +216,19 @@ const Contact = () => {
                 <a
                   key={index}
                   href={item.link}
-                  target={item.link === '#' ? undefined : '_blank'}
+                  target={item.link === '#' || item.link.startsWith('#') ? undefined : '_blank'}
                   rel="noopener noreferrer"
+                  onMouseEnter={item.onInteraction}
+                  onClick={(e) => {
+                    if (item.onInteraction) {
+                      item.onInteraction();
+                    }
+                    if (item.label === 'Email' && emailLink === '#') {
+                      e.preventDefault();
+                      const decoded = atob('bWFpbHRvOndlYi5zdW5saW5lQGdtYWlsLmNvbQ==');
+                      window.location.href = decoded;
+                    }
+                  }}
                   className="group flex items-center space-x-4 p-4 bg-white dark:bg-slate-900 lg:bg-white/40 lg:dark:bg-slate-900/40 lg:backdrop-blur-md border border-slate-200/60 dark:border-white/5 rounded-2xl hover:bg-white/70 dark:hover:bg-slate-900/80 hover:border-slate-300 dark:hover:border-white/10 hover:scale-[1.01] hover:-translate-y-0.5 transition-all duration-300 shadow-sm relative overflow-hidden"
                 >
                   {/* Glass reflections and dynamic glow */}
