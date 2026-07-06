@@ -232,6 +232,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
               <img
                 src={project.images[currentImageIndex].src}
                 alt={`${project.title} screenshot ${currentImageIndex + 1}`}
+                loading="lazy"
                 className="w-full h-80 md:h-96 object-cover"
               />
 
@@ -306,6 +307,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
                       <img
                         src={img.src}
                         alt={img.caption || project.title}
+                        loading="lazy"
                         className="h-14 w-14 object-cover sm:h-16 sm:w-16"
                         onLoad={updateThumbScrollState}
                       />

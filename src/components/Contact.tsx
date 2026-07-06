@@ -17,12 +17,20 @@ import { FAQ, getBotAnswer, Message } from '../data/chatFaq'
 const Contact = () => {
   const [emailVal, setEmailVal] = useState('web.sunline [at] gmail.com')
   const [emailLink, setEmailLink] = useState('#')
+  const [phoneVal, setPhoneVal] = useState('+34 642 [at] WhatsApp')
+  const [phoneLink, setPhoneLink] = useState('#')
+  const [tgVal, setTgVal] = useState('@develop [at] Telegram')
+  const [tgLink, setTgLink] = useState('#')
 
   useEffect(() => {
-    // Decode email after mount to prevent static HTML scrapers / SSR leaks
+    // Decode contact info after mount to prevent static HTML scrapers / SSR leaks
     const timer = setTimeout(() => {
       setEmailVal(atob('d2ViLnN1bmxpbmVAZ21haWwuY29t'))
       setEmailLink(atob('bWFpbHRvOndlYi5zdW5saW5lQGdtYWlsLmNvbQ=='))
+      setPhoneVal(atob('KzM0NjQyNDEzOTY3'))
+      setPhoneLink(atob('aHR0cHM6Ly93YS5tZS8zNDY0MjQxMzk2Nw=='))
+      setTgVal(atob('QGRldmVsb3BfY3JlYXRl'))
+      setTgLink(atob('aHR0cHM6Ly90Lm1lL2RldmVsb3BfY3JlYXRl'))
     }, 400)
     return () => clearTimeout(timer)
   }, [])
@@ -31,6 +39,20 @@ const Contact = () => {
     if (emailLink === '#') {
       setEmailVal(atob('d2ViLnN1bmxpbmVAZ21haWwuY29t'))
       setEmailLink(atob('bWFpbHRvOndlYi5zdW5saW5lQGdtYWlsLmNvbQ=='))
+    }
+  }
+
+  const handlePhoneInteraction = () => {
+    if (phoneLink === '#') {
+      setPhoneVal(atob('KzM0NjQyNDEzOTY3'))
+      setPhoneLink(atob('aHR0cHM6Ly93YS5tZS8zNDY0MjQxMzk2Nw=='))
+    }
+  }
+
+  const handleTgInteraction = () => {
+    if (tgLink === '#') {
+      setTgVal(atob('QGRldmVsb3BfY3JlYXRl'))
+      setTgLink(atob('aHR0cHM6Ly90Lm1lL2RldmVsb3BfY3JlYXRl'))
     }
   }
 
@@ -49,22 +71,24 @@ const Contact = () => {
     {
       icon: <Phone className="w-5 h-5" />,
       label: 'Phone/WhatsApp',
-      value: '+34642413967',
-      link: 'https://wa.me/34642413967',
+      value: phoneVal,
+      link: phoneLink,
       glowColor: 'bg-emerald-500',
       iconColor: 'text-emerald-500 dark:text-emerald-400',
       borderHover: 'group-hover:border-emerald-500/30',
       tag: 'Best for quick chats',
+      onInteraction: handlePhoneInteraction,
     },
     {
       icon: <MessageCircle className="w-5 h-5" />,
       label: 'Telegram',
-      value: '@develop_create',
-      link: 'https://t.me/develop_create',
+      value: tgVal,
+      link: tgLink,
       glowColor: 'bg-sky-500',
       iconColor: 'text-sky-500 dark:text-sky-400',
       borderHover: 'group-hover:border-sky-500/30',
       tag: 'Immediate response',
+      onInteraction: handleTgInteraction,
     },
     {
       icon: <MapPin className="w-5 h-5" />,
@@ -227,6 +251,16 @@ const Contact = () => {
                       e.preventDefault();
                       const decoded = atob('bWFpbHRvOndlYi5zdW5saW5lQGdtYWlsLmNvbQ==');
                       window.location.href = decoded;
+                    }
+                    if (item.label === 'Phone/WhatsApp' && phoneLink === '#') {
+                      e.preventDefault();
+                      const decoded = atob('aHR0cHM6Ly93YS5tZS8zNDY0MjQxMzk2Nw==');
+                      window.open(decoded, '_blank', 'noopener,noreferrer');
+                    }
+                    if (item.label === 'Telegram' && tgLink === '#') {
+                      e.preventDefault();
+                      const decoded = atob('aHR0cHM6Ly90Lm1lL2RldmVsb3BfY3JlYXRl');
+                      window.open(decoded, '_blank', 'noopener,noreferrer');
                     }
                   }}
                   className="group flex items-center space-x-4 p-4 bg-white dark:bg-slate-900 lg:bg-white/40 lg:dark:bg-slate-900/40 lg:backdrop-blur-md border border-slate-200/60 dark:border-white/5 rounded-2xl hover:bg-white/70 dark:hover:bg-slate-900/80 hover:border-slate-300 dark:hover:border-white/10 hover:scale-[1.01] hover:-translate-y-0.5 transition-all duration-300 shadow-sm relative overflow-hidden"
