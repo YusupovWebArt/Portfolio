@@ -72,7 +72,7 @@ const About = () => {
         "Custom WordPress Development: Engineered bespoke, high-performance WordPress themes and websites from scratch, avoiding bloated pre-made templates to ensure maximum speed and scalability. Full-Cycle Site Ownership: Managed the entire lifecycle of web projects, from initial architecture and site creation from scratch to ongoing long-term maintenance and technical support. Strategic Website Redesign: Executed comprehensive website redesigns, modernizing legacy codebases and UI/UX structures to improve user engagement and alignment with current brand standards. Performance Architecture: Architected complex layouts with a focus on Core Web Vitals, consistently achieving Lighthouse scores of 90+ through custom-coded solutions.",
     },
     {
-      year: "2017-2024",
+      year: "2016-2024",
       title: "Freelance and Personal projects",
       company: "Web-developer (WordPress, Shopify, WIX), SEO-specialist.",
       companyUrl: "https://freelancehunt.com/freelancer/arsly.html",
