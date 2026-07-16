@@ -94,15 +94,17 @@ const About = () => {
               <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white mb-6">
                 About Me
               </h2>
-              <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
-                I am a results-driven Fullstack Web Engineer with 5+ years of experience engineering, scaling, and technically optimizing high-load platforms, with a deep architectural specialization in WordPress. My expertise lies at the sharp intersection of modern frontend ecosystems (React, Next.js) and enterprise-grade WordPress engineering—ranging from custom PHP 8+ architectures and secure plugin development to high-performance Headless CMS configurations and deep performance engineering.
-              </p>
-              <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
-                My core competitive edge is a sophisticated, AI-first engineering philosophy. Rather than treating AI as a superficial coding assistant, I systematically integrate next-generation systems—including Claude Code, Cursor, and Google Antigravity—directly into the Software Development Life Cycle (SDLC). I heavily leverage AI to automate complex development workflows and conduct deep technical research. By blending my practical architectural experience with AI-augmented development, I fast-track complex refactoring, automate regression checks, and drastically compress Time-to-Market—all while enforcing strict code quality, security, and architectural integrity.
-              </p>
-              <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
-                Beyond core development, I actively apply this AI-first framework to continuous learning and knowledge management. I utilize advanced tools like NotebookLM for synthesizing complex technical documentation and accelerating research. To anchor this knowledge, I build my own custom educational and utility applications using the Vibecoding methodology. This continuous loop of automated research, rapid prototyping, and self-directed application development allows me to master new technologies at an unprecedented pace and consistently bring cutting-edge solutions to the teams I work with.
-              </p>
+              <div className="space-y-5 text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+                <p>
+                  I am a results-driven Fullstack Web Engineer with 5+ years of experience engineering, scaling, and technically optimizing high-load platforms, with a deep architectural specialization in WordPress. My expertise lies at the sharp intersection of modern frontend ecosystems (React, Next.js) and enterprise-grade WordPress engineering—ranging from custom PHP 8+ architectures and secure plugin development to high-performance Headless CMS configurations and deep performance engineering.
+                </p>
+                <p>
+                  My core competitive edge is a sophisticated, AI-first engineering philosophy. Rather than treating AI as a superficial coding assistant, I systematically integrate next-generation systems—including Claude Code, Cursor, and Google Antigravity—directly into the Software Development Life Cycle (SDLC). I heavily leverage AI to automate complex development workflows and conduct deep technical research. By blending my practical architectural experience with AI-augmented development, I fast-track complex refactoring, automate regression checks, and drastically compress Time-to-Market—all while enforcing strict code quality, security, and architectural integrity.
+                </p>
+                <p>
+                  Beyond core development, I actively apply this AI-first framework to continuous learning and knowledge management. I utilize advanced tools like NotebookLM for synthesizing complex technical documentation and accelerating research. To anchor this knowledge, I build my own custom educational and utility applications using the Vibecoding methodology. This continuous loop of automated research, rapid prototyping, and self-directed application development allows me to master new technologies at an unprecedented pace and consistently bring cutting-edge solutions to the teams I work with.
+                </p>
+              </div>
             </div>
 
             {/* Stats */}
