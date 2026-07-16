@@ -1,11 +1,7 @@
 import { useState, useEffect } from 'react'
-import {
-  SiReact,
-  SiWordpress,
-  SiGoogleanalytics,
-  SiAdobeacrobatreader,
-  SiChatbot,
-} from 'react-icons/si'
+import { SiReact, SiWordpress, SiGoogleanalytics } from 'react-icons/si'
+import { FaFilePdf } from 'react-icons/fa'
+import { Bot } from 'lucide-react'
 import { LuBrainCircuit } from 'react-icons/lu'
 import ChatModal from './ChatModal'
 
@@ -95,14 +91,14 @@ const Hero = () => {
               download
               className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-600 to-blue-600 dark:from-lime-500 dark:to-lime-600 text-white font-semibold rounded-full hover:from-purple-700 hover:to-blue-700 dark:hover:from-lime-600 dark:hover:to-lime-700 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-purple-500/25 dark:hover:shadow-lime-500/25"
             >
-              <SiAdobeacrobatreader className="w-5 h-5" />
+              <FaFilePdf className="w-4 h-4" />
               Download CV
             </a>
             <button
               onClick={() => setChatOpen(true)}
               className="flex items-center gap-2 px-4 py-2 border-2 border-purple-500 dark:border-lime-400 text-purple-600 dark:text-lime-400 font-semibold rounded-full hover:bg-purple-500 dark:hover:bg-lime-400 hover:text-white dark:hover:text-slate-900 transition-all duration-200"
             >
-              <SiChatbot className="w-5 h-5" />
+              <Bot className="w-4 h-4" />
               Ask my Chat-bot
             </button>
             <ChatModal open={chatOpen} onClose={() => setChatOpen(false)} />

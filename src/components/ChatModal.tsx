@@ -3,6 +3,8 @@ import { Send, Bot, User, X, Trash2 } from 'lucide-react'
 
 import { FAQ, getBotAnswer, Message } from '../data/chatFaq'
 
+let chatModalMessageIdCounter = 0
+
 const ChatModal = ({
   open,
   onClose,
@@ -57,7 +59,7 @@ const ChatModal = ({
     if (!textToSend.trim()) return
 
     const userMessage: Message = {
-      id: `user-${Date.now()}`,
+      id: `user-${++chatModalMessageIdCounter}`,
       from: 'user',
       text: textToSend,
       timestamp: new Date(),
@@ -71,7 +73,7 @@ const ChatModal = ({
     setTimeout(() => {
       setIsTyping(false)
       const botMessage: Message = {
-        id: `bot-${Date.now()}`,
+        id: `bot-${++chatModalMessageIdCounter}`,
         from: 'bot',
         text: getBotAnswer(textToSend),
         timestamp: new Date(),

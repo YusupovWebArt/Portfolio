@@ -17,15 +17,11 @@ export const useTheme = () => {
 };
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [isDark, setIsDark] = useState(true); // По умолчанию dark theme
-
-  useEffect(() => {
-    // Проверяем сохраненную тему в localStorage
+  const [isDark, setIsDark] = useState(() => {
+    // Проверяем сохраненную тему в localStorage, по умолчанию dark
     const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-      setIsDark(savedTheme === 'dark');
-    }
-  }, []);
+    return savedTheme ? savedTheme === 'dark' : true;
+  });
 
   useEffect(() => {
     // Сохраняем тему в localStorage и применяем к документу

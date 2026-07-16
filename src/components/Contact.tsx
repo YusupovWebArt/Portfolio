@@ -14,6 +14,8 @@ import {
 
 import { FAQ, getBotAnswer, Message } from '../data/chatFaq'
 
+let contactMessageIdCounter = 0
+
 const Contact = () => {
   const [emailVal, setEmailVal] = useState('web.sunline [at] gmail.com')
   const [emailLink, setEmailLink] = useState('#')
@@ -167,7 +169,7 @@ const Contact = () => {
     if (!textToSend.trim()) return
 
     const userMsg: Message = {
-      id: `user-${Date.now()}`,
+      id: `user-${++contactMessageIdCounter}`,
       from: 'user',
       text: textToSend,
     }
@@ -179,7 +181,7 @@ const Contact = () => {
     setTimeout(() => {
       setIsTyping(false)
       const botMsg: Message = {
-        id: `bot-${Date.now()}`,
+        id: `bot-${++contactMessageIdCounter}`,
         from: 'bot',
         text: getBotAnswer(textToSend),
       }

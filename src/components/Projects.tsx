@@ -46,6 +46,23 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
     title: '',
   })
 
+  const [prevFilter, setPrevFilter] = useState(activeFilter)
+  if (activeFilter !== prevFilter) {
+    setPrevFilter(activeFilter)
+    setCurrentPage(1)
+  }
+
+  useEffect(() => {
+    if (screenshotModal.isOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [screenshotModal.isOpen])
+
   // Фильтрация проектов по категории
   const filteredProjects =
     activeFilter === 'all'
@@ -61,18 +78,12 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
   )
   const totalPages = Math.ceil(filteredProjects.length / projectsPerPage)
 
-  useEffect(() => {
-    setCurrentPage(1)
-  }, [activeFilter])
-
   const openScreenshotModal = (image: string, title: string) => {
     setScreenshotModal({ isOpen: true, image, title })
-    document.body.style.overflow = 'hidden'
   }
 
   const closeScreenshotModal = () => {
     setScreenshotModal({ isOpen: false, image: '', title: '' })
-    document.body.style.overflow = 'unset'
   }
 
   return (

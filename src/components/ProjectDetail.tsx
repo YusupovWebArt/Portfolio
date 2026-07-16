@@ -58,6 +58,17 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
     caption: '',
   })
 
+  useEffect(() => {
+    if (screenshotModal.isOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [screenshotModal.isOpen])
+
   const thumbnailScrollRef = useRef<HTMLDivElement>(null)
   const [thumbScrollState, setThumbScrollState] = useState({
     canLeft: false,
@@ -69,9 +80,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
     'stack' | 'features' | 'architecture' | 'case-study'
   >('stack')
 
-  useEffect(() => {
-    setDetailTab('stack')
-  }, [projectId])
+
 
   const updateThumbScrollState = useCallback(() => {
     const el = thumbnailScrollRef.current
@@ -177,7 +186,6 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
       title: project.title,
       caption: currentImg.caption || `Screenshot ${currentImageIndex + 1}`,
     })
-    document.body.style.overflow = 'hidden'
   }
 
   const openFullScreenshotModal = () => {
@@ -195,12 +203,10 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
       title: project.title,
       caption: 'Full page layout screenshot',
     })
-    document.body.style.overflow = 'hidden'
   }
 
   const closeScreenshotModal = () => {
     setScreenshotModal({ isOpen: false, image: '', title: '', caption: '' })
-    document.body.style.overflow = 'unset'
   }
 
   const hasGithub = Boolean(project.githubUrl && project.githubUrl !== '#')
