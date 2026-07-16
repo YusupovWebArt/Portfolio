@@ -27,14 +27,14 @@ const webartReactPortfolio: Project = {
       {
         rowLabel: 'DEPLOYMENT',
         steps: [
-          { label: 'GitHub Repo' },
-          { label: 'GitHub Pages', highlight: true },
-          { label: 'Browser' },
+          { label: 'GHA Commit' },
+          { label: 'CI/CD Pipeline (TSC, Lint, Audit)', highlight: true },
+          { label: 'GitHub Pages Deploy' },
         ],
       },
     ],
     description:
-      'The portfolio is built as a React SPA with TypeScript, broken into reusable components for each section. Vite powers the build pipeline, outputting optimized static assets deployed to GitHub Pages for zero-cost, globally available hosting.',
+      'The portfolio is built as a React SPA with TypeScript. The CI/CD pipeline triggers on push to master, running security audits, TypeScript checks, and lints before deploying to GitHub Pages.',
   },
   image:
     '/Portfolio/images/portfolio/thumbs/react/webart-react-portfolio_thumb.webp',
@@ -90,6 +90,10 @@ const webartReactPortfolio: Project = {
     devopsSecurity: [
       { short: 'Vite', full: 'Next-generation build tool providing instant HMR and optimized production bundles' },
       { short: 'GitHub Pages', full: 'Free static hosting serving the portfolio directly from the GitHub repository' },
+      { short: 'GitHub Actions', full: 'CI/CD pipeline for automated testing, type checking, security audits, and deployment' },
+      { short: 'Dependabot', full: 'Automated dependency scanning and security update PR generation' },
+      { short: 'CSP & Meta Security', full: 'Content Security Policy, Referrer-Policy, and Permissions-Policy via meta tags' },
+      { short: 'Base64 Obfuscation', full: 'Dynamic Base64 encryption and interaction-based decoding to protect contact channels from scrapers' },
       { short: 'SSL/TLS', full: 'HTTPS encryption automatically provided by GitHub Pages' },
     ],
     analytics: [
@@ -108,6 +112,16 @@ const webartReactPortfolio: Project = {
         'Built with React 19 and TypeScript, the portfolio is structured as a collection of reusable, typed components ensuring consistency and ease of future maintenance.',
     },
     {
+      title: 'CI/CD & Automated Audits',
+      description:
+        'Features automated weekly dependency audits via Dependabot and a GitHub Actions pipeline that verifies types, lints code, and runs security checks before deploying.',
+    },
+    {
+      title: 'Contact Obfuscation & Security Headers',
+      description:
+        'Enforces local security policies via CSP/Referrer meta headers, and protects email, phone, and Telegram links with dynamic Base64 decryption on interaction.',
+    },
+    {
       title: 'Light & Dark Mode',
       description:
         'A fully implemented theme switcher lets visitors toggle between light and dark modes, with preferences persisted across sessions.',
@@ -116,11 +130,6 @@ const webartReactPortfolio: Project = {
       title: 'Filterable Project Gallery',
       description:
         'Projects are displayed in a responsive card grid with category-based filters, allowing recruiters and clients to quickly browse relevant work.',
-    },
-    {
-      title: 'Optimized Build & Deployment',
-      description:
-        'Vite compiles and tree-shakes the project into minimal static assets deployed to GitHub Pages, achieving fast page loads without any server infrastructure.',
     },
     {
       title: 'Fully Responsive Design',
