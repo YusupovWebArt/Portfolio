@@ -14,6 +14,12 @@ updates:
         update-types:
           - "patch"
           - "minor"
+    # Ignore major versions that introduce breaking compatibility changes
+    ignore:
+      - dependency-name: "typescript"
+        versions: [">= 7.0.0"]
+      - dependency-name: "lucide-react"
+        versions: [">= 1.0.0"]
 
   # Scan GitHub Actions workflows weekly
   - package-ecosystem: "github-actions"
