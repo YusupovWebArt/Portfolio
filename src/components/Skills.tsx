@@ -148,7 +148,7 @@ const Skills = () => {
         {
           name: 'AI-Assisted Development',
           description:
-            'My workflow centers on AI-augmented engineering, systematically integrating next-generation systems (Claude Code, Cursor, Google Antigravity) into the SDLC. I strictly follow a Spec-Driven Development (SDD) methodology: defining technical specifications first, then having AI implement and verify against them rather than improvise. I actively leverage MCP, Skills, and RAG to give models deep integration into local tools, databases, and file systems for complex architectural tasks. Using the Vibecoding methodology, I build custom educational and utility applications. By combining Context Engineering and .cursorrules, I enforce strict coding standards, automate refactoring and regression checks, and drastically compress Time-to-Market while maintaining superior code quality.',
+            'My workflow centers on AI-augmented engineering, systematically integrating next-generation systems (Claude Code, Cursor, Google Antigravity) into the SDLC. I strictly follow a Spec-Driven Development (SDD) methodology: defining technical specifications first, then having AI implement and verify against them rather than improvise. I actively leverage MCP, Skills, and RAG to give models deep integration into local tools, databases, and file systems for complex architectural tasks. I build custom educational and utility applications, and by combining Context Engineering and .cursorrules, I enforce strict coding standards, automate refactoring and regression checks, and drastically compress Time-to-Market while maintaining superior code quality.',
         },
         {
           name: 'Prompt/Context Engineering',
