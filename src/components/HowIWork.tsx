@@ -542,7 +542,7 @@ const HowIWork = () => {
           details: [
             {
               name: 'Spec-Driven Development',
-              description: 'Applying spec-driven development concepts where clean code structures are synthesized directly from formal architectural specifications.',
+              description: 'Defining technical specifications first, then having AI implement and verify against them rather than improvise, ensuring clean code structures.',
             },
             {
               name: 'AI Project Scaffolding',
@@ -565,7 +565,7 @@ const HowIWork = () => {
           details: [
             {
               name: 'Agentic Programming',
-              description: 'Developing within agentic, multi-file codebases using specialized programming agents (Claude Code, Cursor, Windsurf).',
+              description: 'Developing within agentic codebases using Claude Code, Cursor, and Google Antigravity to automate complex workflows and conduct deep research.',
             },
             {
               name: 'Context Engineering',
