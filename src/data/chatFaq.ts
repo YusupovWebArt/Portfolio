@@ -38,9 +38,9 @@ export const FAQ: FaqItem[] = [
   },
   {
     question: 'How do you use AI in your development workflow?',
-    keywords: ['ai', 'copilot', 'cursor', 'windsurf', 'artificial intelligence', 'agents', 'mcp', 'antigravity', 'ии', 'интеллект', 'нейросети'],
+    keywords: ['ai', 'copilot', 'cursor', 'windsurf', 'artificial intelligence', 'agents', 'mcp', 'antigravity', 'ии', 'интеллект', 'нейросети', 'sdd', 'spec', 'спец'],
     answer:
-      'I integrate an advanced AI ecosystem (Cursor, Windsurf, Claude Code, Devin, Antigravity) with local protocols (MCP) and agentic workflows. This increases development speed by 2x-3x, minimizes technical debt, and ensures high-quality code output.',
+      'I systematically integrate next-generation systems (Claude Code, Cursor, Google Antigravity) directly into the SDLC, following a Spec-Driven Development (SDD) methodology: defining technical specifications first, then having AI implement and verify against them rather than improvise. I also use Gemini Notebook for research, enabling automated workflows that speed up development by 3x.',
   },
   {
     question: 'What services do you offer? / Can I hire you?',
