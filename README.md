@@ -44,40 +44,6 @@ A high-performance, premium single-page application (SPA) portfolio website show
 
 ---
 
-## 💻 Local Development & Scripts
-
-To run the project locally on your machine:
-
-### 1. Clone the repository
-```bash
-git clone https://github.com/YusupovWebArt/Portfolio.git
-cd Portfolio
-```
-
-### 2. Install dependencies
-```bash
-npm install
-```
-
-### 3. Run development server
-```bash
-npm run dev
-```
-
-### 4. Build and preview production assets
-```bash
-npm run build
-npm run preview
-```
-
-### 5. Run type checks and code linting
-```bash
-npx tsc --noEmit
-npm run lint
-```
-
----
-
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
