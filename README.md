@@ -8,8 +8,6 @@ A high-performance, premium single-page application (SPA) portfolio website show
 
 🔗 **Live Website:** [https://yusupovwebart.github.io/Portfolio/](https://yusupovwebart.github.io/Portfolio/)
 
-![Artur Yusupov Portfolio Preview](https://yusupovwebart.github.io/Portfolio/images/og-image.png)
-
 ---
 
 ## 🛠️ Technology Stack
