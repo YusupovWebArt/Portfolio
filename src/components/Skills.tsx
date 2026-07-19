@@ -580,7 +580,7 @@ const Skills = () => {
             ].map((tool, index) => (
               <div
                 key={index}
-                className="group relative overflow-hidden bg-white dark:bg-slate-900 lg:bg-white/40 lg:dark:bg-slate-900/40 lg:backdrop-blur-md border border-slate-200/60 dark:border-white/5 rounded-2xl p-5 hover:bg-white/60 dark:hover:bg-slate-900/60 hover:border-slate-300 dark:hover:border-white/20 hover:scale-[1.02] hover:-translate-y-0.5 transition-all duration-300 shadow-sm"
+                className="group relative overflow-hidden bg-slate-50 dark:bg-slate-800/80 lg:bg-slate-50/40 lg:dark:bg-slate-800/40 lg:backdrop-blur-md border border-slate-200/60 dark:border-white/5 rounded-2xl p-5 hover:bg-slate-100 dark:hover:bg-slate-800 hover:border-slate-300 dark:hover:border-white/20 hover:scale-[1.02] hover:-translate-y-0.5 transition-all duration-300 shadow-sm"
               >
                 {/* Световой блик на стекле */}
                 <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-white/10 opacity-30 pointer-events-none" />
@@ -675,7 +675,7 @@ const Skills = () => {
             ].map((skill, index) => (
               <div
                 key={index}
-                className="group relative overflow-hidden rounded-3xl p-6 sm:p-8 bg-white dark:bg-slate-900 lg:bg-white/60 lg:dark:bg-slate-900/60 lg:backdrop-blur-xl border border-slate-200/80 dark:border-white/10 hover:bg-white/80 dark:hover:bg-slate-900/85 hover:border-slate-300 dark:hover:border-white/20 hover:scale-[1.02] hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-200/50 dark:hover:shadow-black/20 transition-all duration-500 ease-out"
+                className="group relative overflow-hidden rounded-3xl p-6 sm:p-8 bg-slate-50 dark:bg-slate-800/80 lg:bg-slate-50/60 lg:dark:bg-slate-800/60 lg:backdrop-blur-xl border border-slate-200/80 dark:border-white/10 hover:bg-slate-100/90 dark:hover:bg-slate-800/95 hover:border-slate-300 dark:hover:border-white/20 hover:scale-[1.02] hover:-translate-y-1 hover:shadow-xl hover:shadow-slate-200/50 dark:hover:shadow-black/20 transition-all duration-500 ease-out"
               >
                 {/* Световой блик на стекле (Specular reflection) */}
                 <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-white/10 opacity-30 pointer-events-none" />

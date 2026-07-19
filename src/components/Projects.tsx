@@ -125,7 +125,7 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
           {currentProjects.map((project) => (
             <div
               key={project.id}
-              className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg p-6 flex flex-col"
+              className="bg-white dark:bg-slate-900 rounded-2xl shadow-lg p-6 flex flex-col border border-slate-100 dark:border-white/5"
             >
               <img
                 src={project.images[0].src}
