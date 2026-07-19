@@ -161,36 +161,37 @@ const Skills = () => {
       description:
         'Modern AI tools and automation for enhanced development productivity',
       technologies: [
-        'GitHub Copilot & AI Code Assistance',
-        'Visual Studio Code with AI-extensions',
-        'Claude and Cursor for Development',
-        'AI Content Generation & SEO',
-        'Cursor AI IDE Integration',
-        'AI Image generators for Design',
-        'Figma AI Plugins & Automation',
-        'Automated Code Review Systems',
-        'AI-Powered Testing Tools',
+        'Claude Code & Google Antigravity',
+        'Cursor AI IDE & Composer Workspaces',
+        'Spec-Driven Development (SDD)',
+        'Model Context Protocol (MCP)',
+        'Context Engineering & .cursorrules',
+        'EARS (Easy Approach to Requirements Syntax)',
+        'Automated Regression & Lint Checks',
+        'TypeScript Compiler Audits (tsc --noEmit)',
+        'AI-Driven Legacy Refactoring & Upgrades',
+        'Figma AI Prototyping & Layout Synthesis',
       ],
       skillDetails: [
         {
-          name: 'AI-Assisted Development',
+          name: 'AI-Augmented Engineering (SDD)',
           description:
-            'My workflow centers on AI-augmented engineering, systematically integrating next-generation systems (Claude Code, Cursor, Google Antigravity) into the SDLC. I strictly follow a Spec-Driven Development (SDD) methodology: defining technical specifications first, then having AI implement and verify against them rather than improvise. I actively leverage MCP, Skills, and RAG to give models deep integration into local tools, databases, and file systems for complex architectural tasks. I build custom educational and utility applications, and by combining Context Engineering and .cursorrules, I enforce strict coding standards, automate refactoring and regression checks, and drastically compress Time-to-Market while maintaining superior code quality.',
+            'Integrating next-generation systems (Claude Code, Cursor, Google Antigravity) directly into the SDLC. Following a strict Spec-Driven Development (SDD) methodology: defining technical specifications first, then having AI write and verify code against them instead of improvising. Achieving up to 3x engineering velocity on routine and layout tasks.',
         },
         {
-          name: 'Prompt/Context Engineering',
+          name: 'Context & MCP Engineering',
           description:
-            'Crafting effective prompts for AI tools, understanding model limitations, and integrating AI workflows into development processes efficiently.',
+            'Formulating strict workspace rules (AGENTS.md) and reference specifications (DESIGN_SYSTEM.md, SECURITY.md, ARCHITECTURE.md). Leveraging Model Context Protocol (MCP) and custom instructions to hook AI tools into local environments, search utilities, and filesystem directories to prevent session drift and maintain architectural integrity.',
         },
         {
-          name: 'Design & Content AI',
+          name: 'Multi-File Agentic Execution',
           description:
-            'Using Midjourney, DALL-E, and Figma AI plugins for rapid prototyping, asset generation, and creative ideation in design workflows.',
+            'Running concurrent, sandboxed agents to execute complex feature updates across multiple files simultaneously. Maintaining a strong "human-in-the-loop" structure where the engineer defines system architecture, verifies criteria, and reviews agent outputs, while the agent handles rapid syntax execution.',
         },
         {
-          name: 'Automated Testing & QA',
+          name: 'Hybrid Verification & Safety',
           description:
-            'Implementing AI-powered testing tools for automated bug detection, performance optimization, and code quality assurance.',
+            'Combining strict static analysis (npx tsc --noEmit), automated lints (npm run lint), and characterization tests to capture baseline behaviors and guarantee regression safety during upgrades. Ensuring that all generated code passes rigorous compiler audits before staging.',
         },
       ],
     },
