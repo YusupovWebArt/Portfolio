@@ -46,6 +46,7 @@ const About = () => {
       year: "2024-Present",
       title: "Advanced Web Engineering & Emerging Tech",
       institution: "Focus on Scalable Ecosystems and AI Integration",
+      badge: "R&D / Tech Research",
       description: (
         <ul className="space-y-2 mt-2 list-none">
           <li className="flex items-start gap-3">
@@ -74,17 +75,40 @@ const About = () => {
     {
       year: "2016",
       title: "Specialized courses and practical classes",
-      institution:
-        "W3schools, Coursera, Udemy, Codecademy, SoloLearn, Programminghub, YouTube",
-      description:
-        "NEVER STOP LEARNING! (lifelong learning). Constantly learning, improving my knowledge and skills every day in my profession. Also, I read a lot and watch video courses with up-to-date information from related areas of interest to me. In my daily work, also use resources such as ChatGPT, Claude Code and others AI-tools. W3C, MDN, CODEX WordPress, Stack Overflow, GitHub, CodePen, Udemy, Google, YouTube.",
+      institution: "W3schools, Coursera, Udemy, Codecademy, SoloLearn, Programminghub, YouTube",
+      badge: "Continuing Education",
+      description: (
+        <div className="space-y-3">
+          <p>
+            Committed to lifelong learning. Continuously updating skills in modern web standards (W3C/MDN), accessibility compliance, and developer tools to keep pace with industry evolution.
+          </p>
+          <div className="flex flex-wrap gap-1.5 mt-2">
+            {["MDN Web Docs", "WordPress Codex", "Coursera", "Udemy", "Codecademy", "W3C"].map((tag, idx) => (
+              <span key={idx} className="px-2 py-0.5 text-[10px] font-semibold text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-md">
+                {tag}
+              </span>
+            ))}
+          </div>
+        </div>
+      ),
     },
     {
       year: "2005-2010",
       title: "National Technical University (Ukraine)",
       institution: "VNTU - Vinnitsa National Technical University (Ukraine)",
-      description:
-        "Administrative management in the field of information security with limited access in companies and in production. System Administrator.",
+      badge: "Academic Degree",
+      description: (
+        <ul className="space-y-2 mt-2 list-none">
+          <li className="flex items-start gap-2.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-purple-500 dark:bg-lime-500 mt-1.5 shrink-0"></span>
+            <span><strong className="text-slate-800 dark:text-white">Specialization:</strong> Administrative management in information security and access control.</span>
+          </li>
+          <li className="flex items-start gap-2.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-purple-500 dark:bg-lime-500 mt-1.5 shrink-0"></span>
+            <span><strong className="text-slate-800 dark:text-white">Infrastructure:</strong> Systems administration, network security protocols, and infrastructure management.</span>
+          </li>
+        </ul>
+      ),
     },
   ];
 
@@ -253,8 +277,13 @@ const About = () => {
                     </div>
                     <div className="ml-6 flex-1">
                       <div className="bg-white dark:bg-slate-700 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-600 hover:shadow-md transition-shadow">
-                        <div className="text-purple-600 dark:text-lime-500 font-bold text-sm mb-1">
-                          {item.year}
+                        <div className="flex flex-wrap items-center justify-between gap-2 mb-1.5">
+                          <span className="text-purple-600 dark:text-lime-500 font-bold text-sm">
+                            {item.year}
+                          </span>
+                          <span className="px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded">
+                            {item.badge}
+                          </span>
                         </div>
                         <h5 className="font-semibold text-slate-900 dark:text-white mb-1">
                           {item.title}
@@ -262,9 +291,9 @@ const About = () => {
                         <div className="text-blue-600 dark:text-lime-500 font-medium text-sm mb-2">
                           {item.institution}
                         </div>
-                        <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                        <div className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
                           {item.description}
-                        </p>
+                        </div>
                       </div>
                     </div>
                   </div>
