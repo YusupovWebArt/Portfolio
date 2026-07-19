@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { ThemeProvider } from './contexts/ThemeContext'
 import Header from './components/Header'
 import Hero from './components/Hero'
-import HowIWork from './components/HowIWork'
+import AiWorkflow from './components/AiWorkflow'
 import About from './components/About'
 import Projects from './components/Projects'
 import Skills from './components/Skills'
@@ -43,7 +43,7 @@ function App() {
           <main>
             <Hero />
             <About />
-            <HowIWork />
+            <AiWorkflow />
             <Projects onProjectSelect={handleProjectSelect} />
             <Skills />
             <WhyWorkWithMe />
