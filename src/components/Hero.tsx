@@ -21,13 +21,13 @@ const Hero = () => {
         <div className="space-y-6">
           {/* Pill Badges / Specializations */}
           <div className="flex flex-wrap justify-center gap-2 mb-6">
-            <span className="px-4 py-1.5 text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 dark:bg-emerald-500/10 border border-emerald-500/30 dark:border-emerald-500/20 rounded-full shadow-sm shadow-emerald-500/5">
+            <span className="px-4 py-1.5 text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-blue-600 dark:text-blue-400 bg-blue-500/10 dark:bg-blue-500/10 border border-blue-500/30 dark:border-blue-500/20 rounded-full shadow-sm shadow-blue-500/5">
               WordPress Architecture
             </span>
-            <span className="px-4 py-1.5 text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-blue-600 dark:text-blue-400 bg-blue-500/10 dark:bg-blue-500/10 border border-blue-500/30 dark:border-blue-500/20 rounded-full shadow-sm shadow-blue-500/5">
+            <span className="px-4 py-1.5 text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-sky-600 dark:text-sky-400 bg-sky-500/10 dark:bg-sky-500/10 border border-sky-500/30 dark:border-sky-500/20 rounded-full shadow-sm shadow-sky-500/5">
               React/Next.js Engineering
             </span>
-            <span className="px-4 py-1.5 text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-orange-600 dark:text-orange-400 bg-orange-500/10 dark:bg-orange-500/10 border border-orange-500/30 dark:border-orange-500/20 rounded-full shadow-sm shadow-orange-500/5">
+            <span className="px-4 py-1.5 text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 dark:bg-emerald-500/10 border border-emerald-500/30 dark:border-emerald-500/20 rounded-full shadow-sm shadow-emerald-500/5">
               Technical SEO & GEO
             </span>
             <span className="px-4 py-1.5 text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-purple-600 dark:text-purple-400 bg-purple-500/10 dark:bg-purple-500/10 border border-purple-500/30 dark:border-purple-500/20 rounded-full shadow-sm shadow-purple-500/5">
