@@ -21,16 +21,16 @@ const Hero = () => {
         <div className="space-y-6">
           {/* Pill Badges / Specializations */}
           <div className="flex flex-wrap justify-center gap-2 mb-6">
-            <span className="px-4 py-1.5 text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-300 bg-white/40 dark:bg-slate-900/40 backdrop-blur-md border border-slate-200/80 dark:border-white/10 rounded-full shadow-sm">
+            <span className="px-4 py-1.5 text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 dark:bg-emerald-500/10 border border-emerald-500/30 dark:border-emerald-500/20 rounded-full shadow-sm shadow-emerald-500/5">
               WordPress Architecture
             </span>
-            <span className="px-4 py-1.5 text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-300 bg-white/40 dark:bg-slate-900/40 backdrop-blur-md border border-slate-200/80 dark:border-white/10 rounded-full shadow-sm">
+            <span className="px-4 py-1.5 text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-blue-600 dark:text-blue-400 bg-blue-500/10 dark:bg-blue-500/10 border border-blue-500/30 dark:border-blue-500/20 rounded-full shadow-sm shadow-blue-500/5">
               React/Next.js Engineering
             </span>
-            <span className="px-4 py-1.5 text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-300 bg-white/40 dark:bg-slate-900/40 backdrop-blur-md border border-slate-200/80 dark:border-white/10 rounded-full shadow-sm">
+            <span className="px-4 py-1.5 text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-orange-600 dark:text-orange-400 bg-orange-500/10 dark:bg-orange-500/10 border border-orange-500/30 dark:border-orange-500/20 rounded-full shadow-sm shadow-orange-500/5">
               Technical SEO & GEO
             </span>
-            <span className="px-4 py-1.5 text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-300 bg-white/40 dark:bg-slate-900/40 backdrop-blur-md border border-slate-200/80 dark:border-white/10 rounded-full shadow-sm">
+            <span className="px-4 py-1.5 text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-purple-600 dark:text-purple-400 bg-purple-500/10 dark:bg-purple-500/10 border border-purple-500/30 dark:border-purple-500/20 rounded-full shadow-sm shadow-purple-500/5">
               Spec-Driven AI SDLC
             </span>
           </div>
@@ -61,7 +61,7 @@ const Hero = () => {
             <a
               href="/Portfolio/resume/Artur_Yusupov_Resume.pdf"
               download
-              className="flex items-center gap-2 px-6 py-2.5 border-2 border-purple-500 dark:border-lime-400 text-purple-600 dark:text-lime-450 font-semibold rounded-full hover:bg-purple-500 dark:hover:bg-lime-400 hover:text-white dark:hover:text-slate-900 transform hover:scale-105 transition-all duration-200 cursor-pointer"
+              className="flex items-center gap-2 px-6 py-2.5 border-2 border-purple-500 dark:border-lime-400 text-purple-600 dark:text-lime-400 font-semibold rounded-full hover:bg-purple-500 dark:hover:bg-lime-400 hover:text-white dark:hover:text-slate-900 transform hover:scale-105 transition-all duration-200 cursor-pointer"
             >
               <FaFilePdf className="w-4 h-4" />
               Download CV
