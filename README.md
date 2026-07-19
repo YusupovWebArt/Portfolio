@@ -8,8 +8,6 @@ A high-performance, premium single-page application (SPA) portfolio website show
 
 🔗 **Live Website:** [https://yusupovwebart.github.io/Portfolio/](https://yusupovwebart.github.io/Portfolio/)
 
-![Artur Yusupov Portfolio Preview](https://yusupovwebart.github.io/Portfolio/images/og-image.png)
-
 ---
 
 ## 🛠️ Technology Stack
@@ -43,40 +41,6 @@ A high-performance, premium single-page application (SPA) portfolio website show
 - **Lazy Loading:** Configured lazy loading for secondary project thumbnails and screenshot modal slides.
 - **Microdata Integration:** Page metadata is rich-structured using JSON-LD schema (Person and WebSite specifications) to optimize search rankings and Google AI Overview citations.
 - **noscript Fallback:** Built an styled HTML fallback section inside a `#seo-fallback` wrapper to ensure indexability of core project descriptions by web crawlers even when JavaScript is disabled.
-
----
-
-## 💻 Local Development & Scripts
-
-To run the project locally on your machine:
-
-### 1. Clone the repository
-```bash
-git clone https://github.com/YusupovWebArt/Portfolio.git
-cd Portfolio
-```
-
-### 2. Install dependencies
-```bash
-npm install
-```
-
-### 3. Run development server
-```bash
-npm run dev
-```
-
-### 4. Build and preview production assets
-```bash
-npm run build
-npm run preview
-```
-
-### 5. Run type checks and code linting
-```bash
-npx tsc --noEmit
-npm run lint
-```
 
 ---
 
