@@ -178,7 +178,7 @@ const About = () => {
           </li>
           <li className="flex items-start gap-2.5">
             <span className="w-1.5 h-1.5 rounded-full bg-green-500 dark:bg-lime-500 mt-1.5 shrink-0"></span>
-            <span><strong className="text-slate-800 dark:text-white">E-commerce & CRO:</strong> Built and optimized personal Shopify and Wix stores, focused on conversion rate optimization.</span>
+            <span><strong className="text-slate-800 dark:text-white">E-commerce & R&D:</strong> Created and promoted personal Shopify e-commerce stores utilizing dropshipping and Print-on-Demand (POD) methodologies, and managed commercial sales on Etsy. Personally owned full-stack execution of SEO, SMM, and digital marketing strategies.</span>
           </li>
         </ul>
       ),
@@ -376,7 +376,7 @@ const About = () => {
                         <a
                           href={item.companyUrl}
                           target="_blank"
-                          rel="noopener noreferrer"
+                          rel="noopener noreferrer nofollow"
                           className="text-teal-600 dark:text-lime-500 font-medium text-sm mb-2 hover:text-teal-700 dark:hover:text-lime-600 transition-colors underline decoration-dotted underline-offset-2"
                         >
                           {item.company}
