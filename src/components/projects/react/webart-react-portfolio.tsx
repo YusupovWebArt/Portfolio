@@ -6,29 +6,37 @@ const webartReactPortfolio: Project = {
   description:
     'Personal portfolio site of Artur Yusupov, showcasing his professional skills and completed projects as a WordPress and React developer',
   fullDescription:
-    'This portfolio website was built with React.js and TypeScript to ensure a scalable, component-based architecture, styled with Tailwind CSS for efficient and responsive design. It leverages Vite for fast development and optimized builds, with React Icons for clean, ready-to-use iconography. Version control is managed via GitHub and the site is deployed publicly through GitHub Pages.',
-  detailHeroLine: 'REACT · TYPESCRIPT · PORTFOLIO',
+    'This portfolio website is a high-performance single-page application (SPA) built with React 19, TypeScript 6.x, and Tailwind CSS v4. It showcases a strict Spec-Driven Development (SDD) process, integrating agentic AI coding environments (Claude Code, Cursor, Google Antigravity) directly into the SDLC. The project is governed by local workspace rules (AGENTS.md) and reference specifications (DESIGN_SYSTEM.md, SECURITY.md, ARCHITECTURE.md) to ensure absolute styling consistency, anti-scraping contact obfuscation, and hardened security headers (CSP).',
+  detailHeroLine: 'REACT 19 · TYPESCRIPT 6 · TAILWIND v4 · AI SDD',
   detailMetrics: [
     { value: 'React 19', label: 'UI Framework', accent: 'green' },
-    { value: 'TypeScript', label: 'Type Safety', accent: 'green' },
-    { value: 'Vite', label: 'Build Tool', accent: 'darkGreen' },
-    { value: 'GitHub Pages', label: 'Hosting', accent: 'neutral' },
+    { value: 'TS 6.x', label: 'Strict Typing', accent: 'green' },
+    { value: 'Vite 8 & Tailwind v4', label: 'Modern Build', accent: 'darkGreen' },
+    { value: 'Spec-Driven (SDD)', label: 'AI SDLC Workflow', accent: 'neutral' },
   ],
   architecture: {
     rows: [
       {
-        rowLabel: 'FRONTEND',
+        rowLabel: 'SPECIFICATION',
         steps: [
-          { label: 'React Components' },
-          { label: 'State Management', highlight: true },
-          { label: 'Tailwind CSS' },
+          { label: 'DESIGN_SYSTEM.md' },
+          { label: 'SECURITY.md', highlight: true },
+          { label: 'ARCHITECTURE.md' },
+        ],
+      },
+      {
+        rowLabel: 'DEVELOPMENT',
+        steps: [
+          { label: 'Spec-Driven AI Code' },
+          { label: 'Strict Type-Check (TSC)', highlight: true },
+          { label: 'ESLint & WPCS Audit' },
         ],
       },
       {
         rowLabel: 'DEPLOYMENT',
         steps: [
-          { label: 'GHA Commit' },
-          { label: 'CI/CD Pipeline (TSC, Lint, Audit)', highlight: true },
+          { label: 'GHA Trigger' },
+          { label: 'CI/CD Pipeline Build', highlight: true },
           { label: 'GitHub Pages Deploy' },
         ],
       },
@@ -80,36 +88,39 @@ const webartReactPortfolio: Project = {
   ],
   technologies: {
     frontend: [
-      { short: 'React.js', full: 'React 19 component-based UI with hooks for state and side-effects' },
-      { short: 'TypeScript', full: 'Static type checking across all components for safer, maintainable code' },
-      { short: 'Tailwind CSS', full: 'Utility-first CSS framework for rapid, responsive UI styling' },
-      { short: 'React Icons', full: 'Curated icon library integrated throughout the UI for visual clarity' },
-      { short: 'JavaScript (ES6+)', full: 'Modern ES6+ JavaScript powering application logic and interactions' },
+      { short: 'React 19', full: 'Component-based UI with hooks for state, effect, and context management' },
+      { short: 'TypeScript 6.x', full: 'Strict type safety across the entire application workspace' },
+      { short: 'Tailwind CSS v4', full: 'Utility-first framework utilizing CSS variables and native light/dark variants' },
+      { short: 'Lucide Icons', full: 'Vector icons integrated throughout the UI for navigation clarity' },
     ],
     contentManagement: [],
     devopsSecurity: [
-      { short: 'Vite', full: 'Next-generation build tool providing instant HMR and optimized production bundles' },
-      { short: 'GitHub Pages', full: 'Free static hosting serving the portfolio directly from the GitHub repository' },
-      { short: 'GitHub Actions', full: 'CI/CD pipeline for automated testing, type checking, security audits, and deployment' },
-      { short: 'Dependabot', full: 'Automated dependency scanning and security update PR generation' },
-      { short: 'CSP & Meta Security', full: 'Content Security Policy, Referrer-Policy, and Permissions-Policy via meta tags' },
-      { short: 'Base64 Obfuscation', full: 'Dynamic Base64 encryption and interaction-based decoding to protect contact channels from scrapers' },
-      { short: 'SSL/TLS', full: 'HTTPS encryption automatically provided by GitHub Pages' },
+      { short: 'Vite 8 & Rolldown', full: 'Ultra-fast bundler providing tree-shaking, fast HMR, and optimized chunks' },
+      { short: 'GitHub Actions', full: 'CI/CD workflow running static code tests, compilations, and deploys on push' },
+      { short: 'Workspace Rules (.agents)', full: 'AGENTS.md guidelines locking AI execution to strict specification files' },
+      { short: 'Spec-Driven Dev (SDD)', full: 'Spec-first coding pipeline utilizing Claude Code, Cursor, and Antigravity' },
+      { short: 'Base64 Obfuscation', full: 'Dynamic Base64 encryption and interaction-based decoding to prevent email and phone harvesting' },
+      { short: 'CSP & Meta Security', full: 'Content Security Policy, Referrer-Policy, and Permissions-Policy via meta headers' },
     ],
     analytics: [
       { short: 'Google Analytics 4', full: 'Visitor traffic analytics and engagement tracking integration' },
       { short: 'Search Console', full: 'Monitoring indexing status and search performance metrics' },
     ],
     seo: [
-      { short: 'Meta Tags', full: 'Custom meta title and description tags for improved search engine indexing' },
-      { short: 'Open Graph', full: 'Open Graph tags enabling rich link previews when shared on social media' },
+      { short: 'Structured Schemas', full: 'JSON-LD schema microdata optimization for Person and WebSite queries' },
+      { short: 'Open Graph & GEO', full: 'Open Graph previews and custom descriptions for search engines and AI crawlers' },
     ],
   },
   features: [
     {
-      title: 'Component-Based Architecture',
+      title: 'Spec-Driven AI Development',
       description:
-        'Built with React 19 and TypeScript, the portfolio is structured as a collection of reusable, typed components ensuring consistency and ease of future maintenance.',
+        'Every feature is built using the Spec-Driven Development (SDD) methodology, leveraging AI agents (Claude Code, Cursor, Antigravity) working inside strict boundaries defined by root specification documents.',
+    },
+    {
+      title: 'Workspace Rules (.agents)',
+      description:
+        'Ironclad workspace guidelines (AGENTS.md) that force AI tools to read DESIGN_SYSTEM.md, SECURITY.md, and ARCHITECTURE.md before proposing code changes.',
     },
     {
       title: 'CI/CD & Automated Audits',
@@ -122,30 +133,25 @@ const webartReactPortfolio: Project = {
         'Enforces local security policies via CSP/Referrer meta headers, and protects email, phone, and Telegram links with dynamic Base64 decryption on interaction.',
     },
     {
-      title: 'Light & Dark Mode',
-      description:
-        'A fully implemented theme switcher lets visitors toggle between light and dark modes, with preferences persisted across sessions.',
-    },
-    {
       title: 'Filterable Project Gallery',
       description:
         'Projects are displayed in a responsive card grid with category-based filters, allowing recruiters and clients to quickly browse relevant work.',
     },
     {
-      title: 'Fully Responsive Design',
+      title: 'Light & Dark Mode',
       description:
-        'Tailwind CSS breakpoint utilities ensure a seamless experience from mobile phones to large desktop monitors.',
+        'A fully implemented theme switcher lets visitors toggle between light and dark modes, with preferences persisted across sessions.',
     },
   ],
   challenges: [
-    'Optimizing build assets and image delivery to secure near-instant load times on static hosting platforms like GitHub Pages.',
-    'Structuring a scalable, component-based React 19 architecture that cleanly separates page sections while sharing global state.',
-    'Ensuring full EAA/ADA accessibility compliance (WCAG 2.2 AA) across interactive components, sliders, and modal views.',
+    'Configuring major package updates (e.g. TypeScript 7.0 and Lucide-React 1.0) without causing linter crashes or missing icon exports.',
+    'Managing AI context drift during prolonged programming sessions across multiple files and structures.',
+    'Maintaining a clean, custom design system using Tailwind v4 while handling dark mode class overrides.',
   ],
   solutions: [
-    'Leveraged Vite for advanced tree-shaking and asset minification, and compressed all media resources into next-generation WebP/AVIF formats.',
-    'Designed a modular component hierarchy using React context for theme management, and implemented dynamic imports for heavy detail components.',
-    'Integrated semantic HTML5 elements, configured comprehensive ARIA attributes, and verified keyboard focus trapping in modals.',
+    'Implemented custom Dependabot ignore filters to block breaking major upgrades while permitting minor/patch updates in the 0.x series.',
+    'Created a strict workspace rule (AGENTS.md) that forces AI agents to read DESIGN_SYSTEM.md, SECURITY.md, and ARCHITECTURE.md before coding.',
+    'Overrode the default dark variant in Tailwind v4 using custom CSS variant rules mapped to the .dark selector class.',
   ],
   liveUrl: 'https://yusupovwebart.github.io/Portfolio/',
   githubUrl: 'https://github.com/YusupovWebArt/Portfolio',
