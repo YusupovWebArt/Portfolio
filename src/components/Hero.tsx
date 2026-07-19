@@ -1,37 +1,10 @@
-import { useState, useEffect } from 'react'
-import { SiReact, SiWordpress, SiGoogleanalytics } from 'react-icons/si'
+import { useState } from 'react'
 import { FaFilePdf } from 'react-icons/fa'
 import { Bot } from 'lucide-react'
-import { LuBrainCircuit } from 'react-icons/lu'
 import ChatModal from './ChatModal'
 
-const texts = [
-  'Fullstack WordPress Developer',
-  'React/Next.js Developer',
-  'Technical SEO Specialist',
-  'AI-Augmented Developer',
-]
-
 const Hero = () => {
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const [blurAmount, setBlurAmount] = useState(0)
   const [chatOpen, setChatOpen] = useState(false)
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setBlurAmount(8)
-
-      setTimeout(() => {
-        setCurrentIndex((prev) => (prev + 1) % texts.length)
-
-        setTimeout(() => {
-          setBlurAmount(0)
-        }, 50)
-      }, 300)
-    }, 1400)
-
-    return () => clearInterval(interval)
-  }, [])
 
   return (
     <section
@@ -45,21 +18,21 @@ const Hero = () => {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-        <div className="space-y-4">
-          {/* Icons */}
-          <div className="flex justify-center space-x-8 mb-4">
-            <div className="p-3 bg-white/50 dark:bg-slate-800/50 rounded-full backdrop-blur-sm border border-slate-300 dark:border-slate-700">
-              <SiReact className="w-8 h-8 text-purple-600 dark:text-lime-400" />
-            </div>
-            <div className="p-3 bg-white/50 dark:bg-slate-800/50 rounded-full backdrop-blur-sm border border-slate-300 dark:border-slate-700">
-              <SiWordpress className="w-8 h-8 text-blue-600 dark:text-lime-500" />
-            </div>
-            <div className="p-3 bg-white/50 dark:bg-slate-800/50 rounded-full backdrop-blur-sm border border-slate-300 dark:border-slate-700">
-              <SiGoogleanalytics className="w-8 h-8 text-orange-500 dark:text-lime-400" />
-            </div>
-            <div className="p-3 bg-white/50 dark:bg-slate-800/50 rounded-full backdrop-blur-sm border border-slate-300 dark:border-slate-700">
-              <LuBrainCircuit className="w-8 h-8 text-orange-500 dark:text-lime-400" />
-            </div>
+        <div className="space-y-6">
+          {/* Pill Badges / Specializations */}
+          <div className="flex flex-wrap justify-center gap-2 mb-6">
+            <span className="px-4 py-1.5 text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-300 bg-white/40 dark:bg-slate-900/40 backdrop-blur-md border border-slate-200/80 dark:border-white/10 rounded-full shadow-sm">
+              WordPress Architecture
+            </span>
+            <span className="px-4 py-1.5 text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-300 bg-white/40 dark:bg-slate-900/40 backdrop-blur-md border border-slate-200/80 dark:border-white/10 rounded-full shadow-sm">
+              React/Next.js Engineering
+            </span>
+            <span className="px-4 py-1.5 text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-300 bg-white/40 dark:bg-slate-900/40 backdrop-blur-md border border-slate-200/80 dark:border-white/10 rounded-full shadow-sm">
+              Technical SEO & GEO
+            </span>
+            <span className="px-4 py-1.5 text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-slate-600 dark:text-slate-300 bg-white/40 dark:bg-slate-900/40 backdrop-blur-md border border-slate-200/80 dark:border-white/10 rounded-full shadow-sm">
+              Spec-Driven AI SDLC
+            </span>
           </div>
 
           {/* Main Content */}
@@ -69,38 +42,30 @@ const Hero = () => {
             </span>
           </h1>
 
-          <div className="text-2xl sm:text-3xl lg:text-4xl text-slate-600 dark:text-gray-300 flex items-center justify-center min-h-[4rem] sm:min-h-[5rem] lg:min-h-[6rem] w-full px-4">
-            <div className="relative w-full mx-auto h-[4rem] sm:h-[5rem] lg:h-[6rem] text-center flex items-center justify-center">
-              <div
-                className="font-semibold text-purple-600 dark:text-lime-400 transition-all duration-300 ease-in-out whitespace-nowrap text-2xl sm:text-3xl lg:text-4xl"
-                style={{
-                  filter: `blur(${blurAmount}px)`,
-                  opacity: blurAmount > 0 ? 0.4 : 1,
-                  width: 'max-content',
-                }}
-              >
-                {texts[currentIndex]}
-              </div>
-            </div>
-          </div>
+          {/* Elevator Pitch */}
+          <p className="text-base sm:text-lg lg:text-xl text-slate-650 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed mt-2 mb-8">
+            Engineering low-level custom PHP WordPress architectures and modern React/Next.js web applications using a disciplined Spec-Driven AI (SDD) workflow, optimized for Core Web Vitals and Generative Engine Search (GEO).
+          </p>
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            {/* Primary Action: Chat with AI */}
+            <button
+              onClick={() => setChatOpen(true)}
+              className="flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-purple-600 to-blue-600 dark:from-lime-500 dark:to-lime-600 text-white font-semibold rounded-full hover:from-purple-700 hover:to-blue-700 dark:hover:from-lime-600 dark:hover:to-lime-700 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-purple-500/25 dark:hover:shadow-lime-500/25 cursor-pointer"
+            >
+              <Bot className="w-4 h-4" />
+              Chat with Artur AI
+            </button>
+            {/* Secondary Action: Download CV */}
             <a
               href="/Portfolio/resume/Artur_Yusupov_Resume.pdf"
               download
-              className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-600 to-blue-600 dark:from-lime-500 dark:to-lime-600 text-white font-semibold rounded-full hover:from-purple-700 hover:to-blue-700 dark:hover:from-lime-600 dark:hover:to-lime-700 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-purple-500/25 dark:hover:shadow-lime-500/25"
+              className="flex items-center gap-2 px-6 py-2.5 border-2 border-purple-500 dark:border-lime-400 text-purple-600 dark:text-lime-450 font-semibold rounded-full hover:bg-purple-500 dark:hover:bg-lime-400 hover:text-white dark:hover:text-slate-900 transform hover:scale-105 transition-all duration-200 cursor-pointer"
             >
               <FaFilePdf className="w-4 h-4" />
               Download CV
             </a>
-            <button
-              onClick={() => setChatOpen(true)}
-              className="flex items-center gap-2 px-4 py-2 border-2 border-purple-500 dark:border-lime-400 text-purple-600 dark:text-lime-400 font-semibold rounded-full hover:bg-purple-500 dark:hover:bg-lime-400 hover:text-white dark:hover:text-slate-900 transition-all duration-200"
-            >
-              <Bot className="w-4 h-4" />
-              Ask my Chat-bot
-            </button>
             <ChatModal open={chatOpen} onClose={() => setChatOpen(false)} />
           </div>
         </div>
