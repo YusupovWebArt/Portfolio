@@ -14,6 +14,33 @@ import { SiReact, SiWordpress, SiGoogleanalytics } from 'react-icons/si'
 
 const Skills = () => {
   const [activeTab, setActiveTab] = useState(0)
+  const [expandedTabs, setExpandedTabs] = useState<Record<number, boolean>>({})
+
+  const toggleTabExpanded = (index: number) => {
+    setExpandedTabs((prev) => ({
+      ...prev,
+      [index]: !prev[index],
+    }))
+  }
+
+  const getMoreButtonClasses = (baseColor: string) => {
+    switch (baseColor) {
+      case 'blue':
+        return 'text-blue-600 dark:text-blue-400 border-blue-500/20 dark:border-blue-500/10 hover:bg-blue-500/5'
+      case 'sky':
+        return 'text-sky-650 dark:text-sky-400 border-sky-500/20 dark:border-sky-500/10 hover:bg-sky-500/5'
+      case 'violet':
+        return 'text-violet-600 dark:text-violet-400 border-violet-500/20 dark:border-violet-500/10 hover:bg-violet-500/5'
+      case 'green':
+        return 'text-emerald-600 dark:text-emerald-400 border-emerald-500/20 dark:border-emerald-500/10 hover:bg-emerald-500/5'
+      case 'indigo':
+        return 'text-indigo-600 dark:text-indigo-400 border-indigo-500/20 dark:border-indigo-500/10 hover:bg-indigo-500/5'
+      case 'pink':
+        return 'text-pink-650 dark:text-pink-400 border-pink-500/20 dark:border-pink-500/10 hover:bg-pink-500/5'
+      default:
+        return 'text-purple-600 dark:text-purple-400 border-purple-500/20 dark:border-purple-500/10 hover:bg-purple-500/5'
+    }
+  }
 
   const skillCategories = [
     {
@@ -392,9 +419,6 @@ const Skills = () => {
                   </div>
                   <div className="flex-1">
                     <div className="font-bold text-sm tracking-tight">{category.title}</div>
-                    <div className="text-xs opacity-80 font-normal mt-0.5 truncate max-w-[200px]">
-                      {category.description}
-                    </div>
                   </div>
                 </button>
               )
@@ -466,7 +490,7 @@ const Skills = () => {
                         Technologies & Knowledge
                       </h4>
                       <div className="flex flex-wrap gap-2">
-                        {category.technologies.map((tech, techIndex) => (
+                        {(expandedTabs[index] ? category.technologies : category.technologies.slice(0, 10)).map((tech, techIndex) => (
                           <div
                             key={techIndex}
                             className="inline-flex items-center space-x-1.5 px-3 py-1.5 bg-slate-100/40 dark:bg-white/5 border border-slate-200/40 dark:border-white/5 rounded-full transition-all duration-300"
@@ -477,6 +501,19 @@ const Skills = () => {
                             </span>
                           </div>
                         ))}
+                        {category.technologies.length > 10 && (
+                          <button
+                            onClick={() => toggleTabExpanded(index)}
+                            className={`inline-flex items-center space-x-1.5 px-3 py-1.5 border rounded-full transition-all duration-300 cursor-pointer text-xs font-semibold ${getMoreButtonClasses(category.baseColor)}`}
+                            type="button"
+                          >
+                            <span>
+                              {expandedTabs[index]
+                                ? 'Show less'
+                                : `+ ${category.technologies.length - 10} more`}
+                            </span>
+                          </button>
+                        )}
                       </div>
                     </div>
 
