@@ -6,26 +6,38 @@ const About = () => {
     {
       icon: <SiWordpress className="w-6 h-6" />,
       title: "WordPress Development",
-      description:
-        "Architecting high-performance, custom WordPress themes and plugins from scratch without bloated visual builders. Combining robust PHP 8.x OOP standards (WPCS/PSR-12) with headless CMS configurations (Next.js) to deliver secure, scalable, and lightning-fast enterprise-grade ecosystems.",
+      points: [
+        "Custom themes & plugins (PHP 8.x OOP / WPCS)",
+        "Headless CMS setups with React/Next.js",
+        "Zero bloated builders — pure native code",
+      ],
     },
     {
       icon: <SiReact className="w-6 h-6" />,
       title: "App Development",
-      description:
-        "Engineering production-ready React 19 and Next.js 15+ applications using TypeScript for end-to-end type safety. Developing scalable full-stack architectures with clean UX, near-zero rendering latency (Streaming/Suspense), and strict EAA/ADA accessibility compliance.",
+      points: [
+        "Production-ready React 19 & Next.js 15+ (TypeScript)",
+        "Fast rendering via Streaming & Suspense patterns",
+        "Rigid compliance with WCAG 2.2 accessibility",
+      ],
     },
     {
       icon: <SiGoogleanalytics className="w-6 h-6" />,
       title: "SEO & GEO Optimization",
-      description:
-        "Maximizing digital presence through advanced technical SEO and Generative Engine Optimization (GEO) to secure brand citations in ChatGPT and Google AI Overviews. Integrating complex JSON-LD schemas, optimizing Core Web Vitals, and deploying GDPR-compliant server-side tracking (sGTM).",
+      points: [
+        "Brand citation strategies for ChatGPT, Claude, and Gemini",
+        "Advanced JSON-LD schemas & Core Web Vitals audit",
+        "Server-side tracking deployments (sGTM)",
+      ],
     },
     {
       icon: <LuBrainCircuit className="w-6 h-6" />,
       title: "AI-Augmented Development",
-      description:
-        "Accelerating development velocity by 3x through advanced agentic AI programming environments. Operating via Spec-Driven Development (SDD): defining technical specifications first, then having AI implement and verify against it rather than improvise, shifting technical rigor to system design and robust evaluation frameworks.",
+      points: [
+        "3x engineering velocity using Claude Code & Cursor",
+        "Spec-Driven Development (SDD) execution",
+        "Rigorous automated evaluation and regression checks",
+      ],
     },
   ];
 
@@ -34,8 +46,30 @@ const About = () => {
       year: "2024-Present",
       title: "Advanced Web Engineering & Emerging Tech",
       institution: "Focus on Scalable Ecosystems and AI Integration",
-      description:
-        "I am continuously evolving my Full-stack WordPress capabilities by actively researching advanced backend architectures and mastering the engineering of custom plugins from scratch. My professional growth is driven by deepening my technical mastery within the React/Next.js ecosystem, where I am constantly exploring high-performance Server-Side Rendered (SSR) patterns and Headless CMS structures. Furthermore, I am dedicated to staying at the forefront of search evolution by studying and implementing cutting-edge SEO and GEO (Generative Engine Optimization) strategies, ensuring digital products excel in the era of AI-driven search. To achieve peak efficiency, I systematically integrate next-generation systems (Claude Code, Cursor, Google Antigravity) into the SDLC, following a Spec-Driven Development (SDD) methodology: defining technical specifications first, then having AI implement and verify against them. I build custom educational and utility applications, accelerating development cycles while continuously refining my deep, low-level understanding of WordPress core and backend engineering. Additionally, I am actively developing expertise in Telegram Mini Apps (TMA).",
+      description: (
+        <ul className="space-y-2 mt-2 list-none">
+          <li className="flex items-start gap-3">
+            <span className="w-2 h-2 rounded-full bg-blue-500 mt-1.5 shrink-0"></span>
+            <span><strong className="text-slate-800 dark:text-white">WordPress Backend:</strong> Researching custom plugin hooks, OOP standards, and low-level core architectures.</span>
+          </li>
+          <li className="flex items-start gap-3">
+            <span className="w-2 h-2 rounded-full bg-sky-500 mt-1.5 shrink-0"></span>
+            <span><strong className="text-slate-800 dark:text-white">React Ecosystem:</strong> Implementing high-performance Server-Side Rendered (SSR) patterns and headless connections.</span>
+          </li>
+          <li className="flex items-start gap-3">
+            <span className="w-2 h-2 rounded-full bg-emerald-500 mt-1.5 shrink-0"></span>
+            <span><strong className="text-slate-800 dark:text-white">SEO & GEO Evolution:</strong> Studying and deploying structured schemas for AI search citations and LLM recommendations.</span>
+          </li>
+          <li className="flex items-start gap-3">
+            <span className="w-2 h-2 rounded-full bg-purple-500 mt-1.5 shrink-0"></span>
+            <span><strong className="text-slate-800 dark:text-white">AI SDLC Automation:</strong> Integrating Claude Code, Cursor, and Antigravity into daily workflow via SDD.</span>
+          </li>
+          <li className="flex items-start gap-3">
+            <span className="w-2 h-2 rounded-full bg-amber-500 mt-1.5 shrink-0"></span>
+            <span><strong className="text-slate-800 dark:text-white">Emerging Tech:</strong> Evolving practical skills in building Telegram Mini Apps (TMA).</span>
+          </li>
+        </ul>
+      ),
     },
     {
       year: "2016",
@@ -182,9 +216,13 @@ const About = () => {
               <h3 className="font-semibold text-slate-900 dark:text-white mb-2">
                 {item.title}
               </h3>
-              <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
-                {item.description}
-              </p>
+              <ul className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed space-y-2 list-none mt-2">
+                {item.points.map((pt, i) => (
+                  <li key={i} className="relative pl-4 before:absolute before:left-0 before:top-[8px] before:w-1.5 before:h-1.5 before:bg-purple-500 dark:before:bg-lime-500 before:rounded-full">
+                    {pt}
+                  </li>
+                ))}
+              </ul>
             </div>
           ))}
         </div>
