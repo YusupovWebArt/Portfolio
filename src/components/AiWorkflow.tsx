@@ -259,9 +259,14 @@ without exposing a clickable hyperlink.`,
   return (
     <section
       id="how-i-work"
-      className="py-20 bg-slate-50 dark:bg-slate-800 transition-colors duration-300"
+      className="py-20 bg-white dark:bg-slate-950 transition-colors duration-300 relative overflow-hidden"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* Soft background technological glow */}
+      <div className="hidden lg:block absolute inset-0 pointer-events-none">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-purple-500/5 dark:bg-purple-500/10 rounded-full blur-3xl" />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Header Section */}
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white mb-6">

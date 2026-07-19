@@ -89,7 +89,7 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
   return (
     <section
       id="projects"
-      className="py-20 bg-white dark:bg-slate-900 transition-colors duration-300"
+      className="py-20 bg-slate-50 dark:bg-slate-800 transition-colors duration-300"
     >
       <div className="py-10 px-2 md:px-8 max-w-6xl mx-auto">
         <div className="text-center mb-8">
