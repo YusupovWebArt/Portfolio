@@ -67,13 +67,13 @@ const AiWorkflow = () => {
             {
               name: 'Structured EARS Example',
               description: 'Defining precise conditions and outcomes for the AI agent to verify against, rather than improvising logic:',
-              codeBlock: `WHEN пользователь наводит курсор на иконку email,
-THE система SHALL декодировать Base64-строку и подставить
-реальный mailto:-адрес в href в течение 100мс.
+              codeBlock: `WHEN the user hovers over the email icon,
+THE system SHALL decode the Base64 string and populate the
+actual mailto: link into the href attribute within 100ms.
 
-WHILE JavaScript отключён,
-THE система SHALL отображать email как текстовый индикатор
-без раскрытия кликабельной ссылки.`,
+WHILE JavaScript is disabled,
+THE system SHALL render the email as a static text element
+without exposing a clickable hyperlink.`,
             },
           ],
           techs: ['EARS Notation', 'Spec Engineering', 'Test Criteria Mapping'],
