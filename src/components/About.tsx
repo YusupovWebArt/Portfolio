@@ -118,24 +118,70 @@ const About = () => {
       title: "Front-end Developer (Remote Full-time/Part-time)",
       company: "Frontdeskhelpers",
       companyUrl: "https://frontdeskhelpers.com/",
-      description:
-        "Custom WordPress Development: Engineered high-performance, bespoke WordPress themes and websites from scratch, eliminating reliance on bloated templates to ensure superior speed and scalability. End-to-End Website Lifecycle: Managed the full development cycle, including initial site creation from scratch, long-term technical maintenance, and proactive support for international clients. Strategic Website Redesign: Led comprehensive redesign initiatives, transforming legacy websites into modern, user-centric platforms with improved UI/UX and updated codebases. Agile Methodology & Efficiency: Executed full-time development within Agile/Scrum environments, ensuring rapid delivery cycles and high-quality output for US and Spanish-speaking markets. Performance & SEO Architecture: Architected complex Website Layouts & Structures focused on Core Web Vitals, consistently achieving Lighthouse scores of 90+ to boost organic search rankings. Cross-Functional Delivery: Collaborated with international teams to deliver pixel-perfect, responsive solutions that adhere to WCAG 2.0 accessibility standards.",
+      description: (
+        <ul className="space-y-2 mt-2 list-none">
+          <li className="flex items-start gap-2.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-green-500 dark:bg-lime-500 mt-1.5 shrink-0"></span>
+            <span><strong className="text-slate-800 dark:text-white">Custom WordPress & Wix Dev:</strong> Engineered high-performance themes & plugins from scratch (PHP 8.x, OOP, WPCS) and managed advanced Wix platforms.</span>
+          </li>
+          <li className="flex items-start gap-2.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-green-500 dark:bg-lime-500 mt-1.5 shrink-0"></span>
+            <span><strong className="text-slate-800 dark:text-white">Lifecycle Management:</strong> Handled full-cycle deployment, database migrations, security patches, and support for US clients.</span>
+          </li>
+          <li className="flex items-start gap-2.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-green-500 dark:bg-lime-500 mt-1.5 shrink-0"></span>
+            <span><strong className="text-slate-800 dark:text-white">UI/UX Re-engineering:</strong> Led redesigns of legacy sites, converting them into modern, responsive frontends.</span>
+          </li>
+          <li className="flex items-start gap-2.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-green-500 dark:bg-lime-500 mt-1.5 shrink-0"></span>
+            <span><strong className="text-slate-800 dark:text-white">Performance & SEO:</strong> Optimized layout structures for Core Web Vitals, achieving stable 90+ Lighthouse scores.</span>
+          </li>
+          <li className="flex items-start gap-2.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-green-500 dark:bg-lime-500 mt-1.5 shrink-0"></span>
+            <span><strong className="text-slate-800 dark:text-white">Agile Delivery:</strong> Worked inside active Scrum environments collaborating with international cross-functional teams.</span>
+          </li>
+        </ul>
+      ),
     },
     {
       year: "2020-2021",
       title: "Front-end Developer (Remote Part-time)",
       company: "Agenturro",
       companyUrl: "https://www.agenturro.co/",
-      description:
-        "Custom WordPress Development: Engineered bespoke, high-performance WordPress themes and websites from scratch, avoiding bloated pre-made templates to ensure maximum speed and scalability. Full-Cycle Site Ownership: Managed the entire lifecycle of web projects, from initial architecture and site creation from scratch to ongoing long-term maintenance and technical support. Strategic Website Redesign: Executed comprehensive website redesigns, modernizing legacy codebases and UI/UX structures to improve user engagement and alignment with current brand standards. Performance Architecture: Architected complex layouts with a focus on Core Web Vitals, consistently achieving Lighthouse scores of 90+ through custom-coded solutions.",
+      description: (
+        <ul className="space-y-2 mt-2 list-none">
+          <li className="flex items-start gap-2.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-green-500 dark:bg-lime-500 mt-1.5 shrink-0"></span>
+            <span><strong className="text-slate-800 dark:text-white">Bespoke Theme Development:</strong> Created light, fast custom WordPress sites, completely avoiding bloated pre-made templates.</span>
+          </li>
+          <li className="flex items-start gap-2.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-green-500 dark:bg-lime-500 mt-1.5 shrink-0"></span>
+            <span><strong className="text-slate-800 dark:text-white">Full-Cycle Ownership:</strong> Owned web projects from architectural drafting to final server launch and cPanel maintenance.</span>
+          </li>
+          <li className="flex items-start gap-2.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-green-500 dark:bg-lime-500 mt-1.5 shrink-0"></span>
+            <span><strong className="text-slate-800 dark:text-white">Code Modernization:</strong> Refactored legacy codebases to improve UI responsiveness and alignment with current standards.</span>
+          </li>
+        </ul>
+      ),
     },
     {
       year: "2016-2024",
       title: "Freelance and Personal projects",
       company: "Web-developer (WordPress, Shopify, WIX), SEO-specialist.",
       companyUrl: "https://freelancehunt.com/freelancer/arsly.html",
-      description:
-        "Full-Cycle Project Delivery: Launched and managed 30+ diverse web projects on global platforms (Freelancehunt, Upwork, Freelancer), consistently maintaining high client satisfaction ratings through expert delivery of WordPress, Shopify, WIX. E-commerce & Venture Development: Engineered and scaled personal digital businesses, including dropshipping and Print-on-Demand (POD) stores on Etsy and Shopify, managing the end-to-end process from Website Layout & Structure to conversion optimization.",
+      description: (
+        <ul className="space-y-2 mt-2 list-none">
+          <li className="flex items-start gap-2.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-green-500 dark:bg-lime-500 mt-1.5 shrink-0"></span>
+            <span><strong className="text-slate-800 dark:text-white">30+ Delivered Projects:</strong> Successfully designed and launched sites on global freelancing platforms (Upwork, Freelancehunt).</span>
+          </li>
+          <li className="flex items-start gap-2.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-green-500 dark:bg-lime-500 mt-1.5 shrink-0"></span>
+            <span><strong className="text-slate-800 dark:text-white">E-commerce & CRO:</strong> Built and optimized personal Shopify and Wix stores, focused on conversion rate optimization.</span>
+          </li>
+        </ul>
+      ),
     },
   ];
 
@@ -335,9 +381,9 @@ const About = () => {
                         >
                           {item.company}
                         </a>
-                        <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                        <div className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mt-2">
                           {item.description}
-                        </p>
+                        </div>
                       </div>
                     </div>
                   </div>
