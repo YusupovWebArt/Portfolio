@@ -92,8 +92,8 @@ without exposing a clickable hyperlink.`,
           title: 'Context Engineering & Guardrails',
           details: [
             {
-              name: 'Workspace Config (.cursorrules)',
-              description: 'Establishing project-level rules (CLAUDE.md / .cursorrules / AGENTS.md) that detail architectural standards, libraries, and coding styles.',
+              name: 'Workspace Config (.agents)',
+              description: 'Establishing workspace rules (AGENTS.md) and reference specs (DESIGN_SYSTEM.md, SECURITY.md, ARCHITECTURE.md) detailing styling standards, security bounds, and system configurations.',
             },
             {
               name: 'Model Context Protocol (MCP)',
