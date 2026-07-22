@@ -5,8 +5,12 @@ const rolenConstruction: Project = {
   title: 'Rolen Construction',
   description:
     'Partner in ADUs, New Construction, and transformative Remodeling.',
+  descriptionUa:
+    'Партнер у сфері будівництва прибудов (ADU), нового будівництва та комплексного ремонту.',
   fullDescription:
     'Rolen Construction is a US-based construction services website built on a fully custom WordPress theme using ACF (Advanced Custom Fields) for flexible content management. Inner service landing pages were built with Elementor at the client\'s request, while the main theme is powered by custom CSS3 and PHP. The site features project portfolio display, a contact form, SEO optimization, and Google Maps integration for local search visibility.',
+  fullDescriptionUa:
+    'Rolen Construction — це американський вебсайт будівельних послуг, розроблений на повністю унікальній темі WordPress із використанням ACF (Advanced Custom Fields) для гнучкого управління контентом. Внутрішні посадкові сторінки послуг створені на Elementor за запитом клієнта, а основна тема працює на кастомному CSS3 та PHP. Сайт містить портфоліо проєктів, контактну форму, SEO-оптимізацію та інтеграцію з Google Maps API для підвищення локальної видимості в пошуку.',
   detailHeroLine: 'CUSTOM WORDPRESS · CONSTRUCTION SERVICES',
   detailMetrics: [
     { value: '90+', label: 'PageSpeed Score', accent: 'green' },

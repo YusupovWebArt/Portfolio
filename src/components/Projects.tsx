@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { ExternalLink, X } from 'lucide-react'
 import { Project, TechnologyItem } from './projects/project-types'
+import { useLanguage } from '../contexts/LanguageContext'
 
 interface ProjectsProps {
   onProjectSelect: (projectId: number) => void
@@ -20,19 +21,26 @@ const projects: Project[] = Object.values(modules)
   .map((mod) => mod.default)
   .sort((a, b) => b.id - a.id)
 
-const filters = [
-  { id: 'all', label: 'All Projects' },
-  { id: 'wordpress', label: 'WordPress' },
-  { id: 'nextjs', label: 'Next.js' },
-  { id: 'react', label: 'React' },
-  { id: 'javascript', label: 'Javascript' },
-  { id: 'static', label: 'Static Websites' },
-  { id: 'shopify', label: 'Shopify' },
-  { id: 'wix', label: 'Wix' },
-  { id: 'other-cms', label: 'Other CMSs' },
-]
+const getFilterLabel = (id: string, filterAllLabel: string) => {
+  if (id === 'all') return filterAllLabel
+  switch (id) {
+    case 'wordpress': return 'WordPress'
+    case 'nextjs': return 'Next.js'
+    case 'react': return 'React'
+    case 'javascript': return 'Javascript'
+    case 'static': return 'Static Websites'
+    case 'shopify': return 'Shopify'
+    case 'wix': return 'Wix'
+    case 'other-cms': return 'Other CMSs'
+    default: return id
+  }
+}
+
+const filterIds = ['all', 'wordpress', 'nextjs', 'react', 'javascript', 'static', 'shopify', 'wix', 'other-cms']
 
 const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
+  const { lang, t } = useLanguage()
+  const pr = t.projects
   const [activeFilter, setActiveFilter] = useState('all')
   const [currentPage, setCurrentPage] = useState(1)
   const projectsPerPage = 6
@@ -94,29 +102,26 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
       <div className="py-10 px-2 md:px-8 max-w-6xl mx-auto">
         <div className="text-center mb-8">
           <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white mb-4">
-            Featured Projects
+            {pr.sectionTitle}
           </h2>
           <p className="text-lg text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
-            Engineering high-performance digital products by blending
-            foundational development expertise with AI-augmented speed, from
-            custom WordPress architectures to production-ready Next.js
-            applications.
+            {pr.sectionDescription}
           </p>
         </div>
 
         <div className="flex flex-wrap gap-3 mb-8 justify-center">
-          {filters.map((filter) => (
+          {filterIds.map((id) => (
             <button
-              key={filter.id}
-              onClick={() => setActiveFilter(filter.id)}
+              key={id}
+              onClick={() => setActiveFilter(id)}
               className={`px-4 py-2 rounded-full font-medium transition ${
-                activeFilter === filter.id
+                activeFilter === id
                   ? 'bg-purple-600 text-white dark:bg-lime-500 dark:text-slate-900'
                   : 'bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-slate-200 hover:bg-purple-100 dark:hover:bg-lime-700'
               }`}
               type="button"
             >
-              {filter.label}
+              {getFilterLabel(id, pr.filterAll)}
             </button>
           ))}
         </div>
@@ -140,7 +145,7 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
                 {project.title}
               </h3>
               <p className="text-slate-600 dark:text-slate-300 mb-4 flex-1">
-                {project.description}
+                {lang === 'ua' && project.descriptionUa ? project.descriptionUa : project.description}
               </p>
               <div className="flex flex-wrap gap-2 mb-4">
                 {Array.isArray(project.technologies)
@@ -176,7 +181,7 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
                     className="inline-flex items-center gap-1 text-purple-600 dark:text-lime-400 hover:underline"
                   >
                     <ExternalLink className="w-4 h-4" />
-                    Live
+                    {pr.liveSite}
                   </a>
                 )}
                 <button
@@ -184,7 +189,7 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
                   className="ml-auto text-purple-600 dark:text-lime-400 hover:underline"
                   type="button"
                 >
-                  Learn more
+                  {pr.viewDetails}
                 </button>
               </div>
             </div>

@@ -4,8 +4,11 @@ const lashbouAcademy: Project = {
   id: 7800,
   title: 'Lashbou Academy',
   description: 'USA eyelash technician training academy website.',
+  descriptionUa: 'Вебсайт американської академії навчання майстрів з нарощування вій.',
   fullDescription:
     'Lashbou Academy is a US-based eyelash training academy offering professional lash technician courses. The site was built on Wix with Velo for pixel-perfect design control, featuring seamless app integrations, an eCommerce booking system for course enrolment, mobile-friendly optimization, and built-in SEO and analytics tools.',
+  fullDescriptionUa:
+    'Lashbou Academy — це американська академія з навчання майстрів із нарощування вій, яка пропонує професійні курси. Вебсайт розроблено на Wix із використанням Velo для піксельно точного контролю дизайну, він містить безшовні інтеграції додатків, систему eCommerce-бронювання для запису на курси, мобільну оптимізацію та вбудовані інструменти SEO й аналітики.',
   detailHeroLine: 'WIX · BEAUTY TRAINING ACADEMY',
   detailMetrics: [
     { value: '90+', label: 'PageSpeed Score', accent: 'green' },

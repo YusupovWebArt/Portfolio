@@ -5,8 +5,12 @@ const webartReactPortfolio: Project = {
   title: 'My React Portfolio Website',
   description:
     'Personal portfolio site of Artur Yusupov, showcasing his professional skills and completed projects as a WordPress and React developer',
+  descriptionUa:
+    'Особистий сайт-портфоліо Артура Юсупова, що демонструє його професійні навички та виконані проєкти як WordPress та React розробника',
   fullDescription:
     'This portfolio website is a high-performance single-page application (SPA) built with React 19, TypeScript 6.x, and Tailwind CSS v4. It showcases a strict Spec-Driven Development (SDD) process, integrating agentic AI coding environments (Claude Code, Cursor, Google Antigravity) directly into the SDLC. The project is governed by local workspace rules (AGENTS.md) and reference specifications (DESIGN_SYSTEM.md, SECURITY.md, ARCHITECTURE.md) to ensure absolute styling consistency, anti-scraping contact obfuscation, and hardened security headers (CSP).',
+  fullDescriptionUa:
+    'Цей сайт-портфоліо — це високопродуктивний односторінковий додаток (SPA), розроблений на React 19, TypeScript 6.x та Tailwind CSS v4. Він демонструє суворий процес розробки на основі специфікацій (Spec-Driven Development, SDD) з інтеграцією агентних AI-середовищ розробки (Claude Code, Cursor, Google Antigravity) безпосередньо в SDLC. Проєкт підпорядковується локальним правилам робочого простору (AGENTS.md) та еталонним специфікаціям (DESIGN_SYSTEM.md, SECURITY.md, ARCHITECTURE.md) для забезпечення абсолютної узгодженості стилів, обфускації контактів від скрапінгу та посилених заголовків безпеки (CSP).',
   detailHeroLine: 'REACT 19 · TYPESCRIPT 6 · TAILWIND v4 · AI SDD',
   detailMetrics: [
     { value: 'React 19', label: 'UI Framework', accent: 'green' },

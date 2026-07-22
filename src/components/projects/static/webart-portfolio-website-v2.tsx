@@ -4,8 +4,11 @@ const webartPortfolioWebsiteV2: Project = {
   id: 5950,
   title: 'My Portfolio Website v2',
   description: 'Personal portfolio site of Artur Yusupov.',
+  descriptionUa: 'Особистий сайт-портфоліо Артура Юсупова.',
   fullDescription:
     'The second iteration of Artur Yusupov\'s personal portfolio website, rebuilt with improved design, expanded project showcases, and enhanced JavaScript interactions. Developed using semantic HTML5, CSS3, and vanilla JavaScript, it features a multi-section layout deployed on GitHub Pages.',
+  fullDescriptionUa:
+    'Друга ітерація особистого сайту-портфоліо Артура Юсупова, перероблена з покращеним дизайном, розширеною демонстрацією проєктів та вдосконаленою інтерактивністю на JavaScript. Розроблена з використанням семантичного HTML5, CSS3 та чистого JavaScript, вона має багатосекційний макет, розміщений на GitHub Pages.',
   detailHeroLine: 'STATIC HTML · CSS3 · PORTFOLIO V2',
   detailMetrics: [
     { value: 'HTML5', label: 'Semantic Markup', accent: 'green' },

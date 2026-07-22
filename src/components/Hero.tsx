@@ -2,9 +2,11 @@ import { useState } from 'react'
 import { FaFilePdf } from 'react-icons/fa'
 import { Bot } from 'lucide-react'
 import ChatModal from './ChatModal'
+import { useLanguage } from '../contexts/LanguageContext'
 
 const Hero = () => {
   const [chatOpen, setChatOpen] = useState(false)
+  const { t } = useLanguage()
 
   return (
     <section
@@ -19,7 +21,7 @@ const Hero = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
         <div className="space-y-6">
-          {/* Pill Badges / Specializations */}
+          {/* Pill Badges / Specializations — kept in EN as they are technical terms */}
           <div className="flex flex-wrap justify-center gap-2 mb-6">
             <span className="px-4 py-1.5 text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-blue-600 dark:text-blue-400 bg-blue-500/10 dark:bg-blue-500/10 border border-blue-500/30 dark:border-blue-500/20 rounded-full shadow-sm shadow-blue-500/5">
               WordPress Architecture
@@ -28,7 +30,7 @@ const Hero = () => {
               React/Next.js Engineering
             </span>
             <span className="px-4 py-1.5 text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 dark:bg-emerald-500/10 border border-emerald-500/30 dark:border-emerald-500/20 rounded-full shadow-sm shadow-emerald-500/5">
-              Technical SEO & GEO
+              Technical SEO &amp; GEO
             </span>
             <span className="px-4 py-1.5 text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-purple-600 dark:text-purple-400 bg-purple-500/10 dark:bg-purple-500/10 border border-purple-500/30 dark:border-purple-500/20 rounded-full shadow-sm shadow-purple-500/5">
               Spec-Driven AI SDLC
@@ -44,7 +46,7 @@ const Hero = () => {
 
           {/* Elevator Pitch */}
           <p className="text-base sm:text-lg lg:text-xl text-slate-650 dark:text-slate-300 max-w-3xl mx-auto leading-relaxed mt-2 mb-8">
-            Engineering low-level custom PHP WordPress architectures and modern React/Next.js web applications using a disciplined Spec-Driven AI (SDD) workflow, optimized for Core Web Vitals and Generative Engine Search (GEO).
+            {t.hero.elevatorPitch}
           </p>
 
           {/* CTA Buttons */}
@@ -55,7 +57,7 @@ const Hero = () => {
               className="flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-purple-600 to-blue-600 dark:from-lime-500 dark:to-lime-600 text-white font-semibold rounded-full hover:from-purple-700 hover:to-blue-700 dark:hover:from-lime-600 dark:hover:to-lime-700 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-purple-500/25 dark:hover:shadow-lime-500/25 cursor-pointer"
             >
               <Bot className="w-4 h-4" />
-              Chat with Artur AI
+              {t.hero.ctaPrimary}
             </button>
             {/* Secondary Action: Download CV */}
             <a
@@ -64,7 +66,7 @@ const Hero = () => {
               className="flex items-center gap-2 px-6 py-2.5 border-2 border-purple-500 dark:border-lime-400 text-purple-600 dark:text-lime-400 font-semibold rounded-full hover:bg-purple-500 dark:hover:bg-lime-400 hover:text-white dark:hover:text-slate-900 transform hover:scale-105 transition-all duration-200 cursor-pointer"
             >
               <FaFilePdf className="w-4 h-4" />
-              Download CV
+              {t.hero.ctaSecondary}
             </a>
             <ChatModal open={chatOpen} onClose={() => setChatOpen(false)} />
           </div>

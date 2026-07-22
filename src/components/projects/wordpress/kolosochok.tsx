@@ -5,8 +5,12 @@ const kolosochok: Project = {
   title: 'Kolosochok',
   description:
     'Ukrainian private ethno-kindergarten in Kyiv offering culturally immersive preschool education.',
+  descriptionUa:
+    'Український приватний етно-садок у Києві, що пропонує культурно занурену дошкільну освіту.',
   fullDescription:
     'A custom WordPress theme built from scratch for a Ukrainian ethno-kindergarten in Kyiv, using Elementor extended with custom CSS3 and JavaScript. The site presents the kindergarten\'s philosophy, curriculum, teachers, and facilities in a warm and culturally rich design that reflects the Ukrainian ethno aesthetic, attracting Kyiv families seeking culturally immersive preschool education.',
+  fullDescriptionUa:
+    'Кастомна тема WordPress, створена з нуля для українського етно-садка в Києві з використанням Elementor, розширеного кастомними CSS3 та JavaScript. Сайт презентує філософію дитячого садка, навчальну програму, вихователів та приміщення у теплому й культурно багатому дизайні, що відображає українську етно-естетику та приваблює київські родини, які шукають культурно занурену дошкільну освіту.',
   detailHeroLine: 'CUSTOM WORDPRESS · ETHNO-KINDERGARTEN · KYIV, UKRAINE',
   detailMetrics: [
     { value: '90+', label: 'PageSpeed Score', accent: 'green' },

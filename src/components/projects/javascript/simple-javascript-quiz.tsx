@@ -4,8 +4,11 @@ const simpleJavascriptQuiz: Project = {
   id: 4950,
   title: 'Simple Javascript Quiz App',
   description: 'Pet project for learning and practicing JavaScript.',
+  descriptionUa: 'Пет-проєкт для вивчення та практики JavaScript.',
   fullDescription:
     'A lightweight quiz application built with vanilla JavaScript, HTML5, and CSS3. The app presents multiple-choice questions with immediate feedback on correct and incorrect answers, tracks the user\'s score, and displays a results summary — all implemented in pure JavaScript without any framework.',
+  fullDescriptionUa:
+    'Легкий застосунок-вікторина (Quiz), створений на чистому JavaScript, HTML5 та CSS3. Застосунок відображає питання з вибором відповідей, миттєво показує правильні та неправильні відповіді, відстежує рахунок користувача та виводить підсумкові результати — все реалізовано на чистому JavaScript без фреймворків.',
   detailHeroLine: 'VANILLA JS · HTML5 · DEMO APP',
   detailMetrics: [
     { value: 'Vanilla JS', label: 'No Framework', accent: 'green' },

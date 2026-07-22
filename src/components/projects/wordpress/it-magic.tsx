@@ -5,8 +5,12 @@ const itMagic: Project = {
   title: 'IT-Magic',
   description:
     'The IT-Magic project represents a comprehensive, end-to-end AWS and DevOps solution provider — from infrastructure design and migration to ongoing support and optimization.',
+  descriptionUa:
+    'Проєкт IT-Magic представляє комплексного провайдера AWS та DevOps рішень — від проєктування інфраструктури та міграції до постійної підтримки та оптимізації.',
   fullDescription:
     'Development of a custom-themed enterprise website for IT-Magic, highlighting the company’s AWS, DevOps, infrastructure management, and cloud consulting services. Built with a custom WordPress theme combined with Elementor for flexible template design, bespoke PHP logic, and Advanced Custom Fields (ACF). To optimize high-volume tech blogging, it implements automated call-to-action injections and Schema.org markup. For several years, served as the sole developer responsible for ongoing feature updates, technical maintenance, landing page designs, Nginx/MySQL tuning, and deep technical SEO optimizations.',
+  fullDescriptionUa:
+    'Розробка корпоративного веб-сайту з кастомною темою для IT-Magic, який висвітлює послуги компанії з AWS, DevOps, управління інфраструктурою та хмарного консалтингу. Побудовано на кастомній темі WordPress у поєднанні з Elementor, власною PHP-логікою та ACF. Кілька років виступав єдиним розробником, відповідальним за оновлення функціоналу, технічне обслуговування, дизайн лендінгів, налаштування Nginx/MySQL та глибоку SEO-оптимізацію.',
   detailHeroLine: 'CUSTOM WORDPRESS · AWS & DEVOPS SOLUTIONS PORTAL',
   detailMetrics: [
     { value: '95+', label: 'PageSpeed', accent: 'green' },

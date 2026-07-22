@@ -5,8 +5,12 @@ const serzakMarketak: Project = {
   title: 'Serzak Marketak',
   description:
     'Czech-based digital marketing agency founded and run by marketing specialist Serhiy Venhryn.',
+  descriptionUa:
+    'Чеське агентство цифрового маркетингу, засноване та кероване маркетологом Сергієм Венгрином.',
   fullDescription:
     'Serzak Marketak is a digital marketing agency website based in the Czech Republic, built on a custom WordPress theme from scratch with Elementor page builder enhanced by advanced CSS3 and JavaScript. The site showcases the agency\'s services, portfolio, and expertise, with multilingual-ready SEO and Schema.org markup to support business development across the Czech and Ukrainian markets.',
+  fullDescriptionUa:
+    'Serzak Marketak — це вебсайт агентства цифрового маркетингу в Чехії, побудований на унікальній темі WordPress з нуля з використанням конструктора сторінок Elementor, доповненого розширеним CSS3 та JavaScript. Сайт демонструє послуги, портфоліо та експертизу агентства, підтримує мультимовне SEO та розмітку Schema.org для розвитку бізнесу на ринках Чехії та України.',
   detailHeroLine: 'CUSTOM WORDPRESS · DIGITAL MARKETING AGENCY',
   detailMetrics: [
     { value: '90+', label: 'PageSpeed Score', accent: 'green' },

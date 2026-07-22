@@ -4,8 +4,11 @@ const moskitnayaSetka: Project = {
   id: 10930,
   title: 'Moskitnaya setka',
   description: 'Ukrainian Mosquito net store.',
+  descriptionUa: 'Український інтернет-магазин москітних сіток.',
   fullDescription:
     'Moskitnaya Setka is a Ukrainian WooCommerce-based online store built on a fully custom WordPress theme developed from scratch. The project included a complete product catalogue setup, responsive design, SEO optimization with Schema.org markup, and Google Maps integration to support local customer discovery.',
+  fullDescriptionUa:
+    'Moskitnaya Setka — це український інтернет-магазин на базі WooCommerce, побудований на повністю унікальній темі WordPress, розробленій з нуля. Проєкт включав повне налаштування каталогу товарів, адаптивний дизайн, SEO-оптимізацію з розміткою Schema.org та інтеграцію з Google Maps API для пошуку сайту локальними клієнтами.',
   detailHeroLine: 'CUSTOM WORDPRESS · WOOCOMMERCE STORE',
   detailMetrics: [
     { value: '90+', label: 'PageSpeed Score', accent: 'green' },

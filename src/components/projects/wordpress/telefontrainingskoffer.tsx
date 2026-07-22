@@ -4,8 +4,11 @@ const telefonTrainingskoffer: Project = {
   id: 17500,
   title: 'Telefontrainingskoffer',
   description: 'Callcenter Akademie',
+  descriptionUa: 'Академія кол-центрів',
   fullDescription:
     'Development of a custom WordPress portal for Telefontrainingskoffer, a professional German call center academy training service. Engineered a custom WordPress theme from scratch utilizing Advanced Custom Fields (ACF) and WPBakery Page Builder for dynamic layout block styling. Focused on strict German DACH market GDPR compliance for interactive contact forms and intake systems, coupled with server-side performance tuning.',
+  fullDescriptionUa:
+    'Розробка індивідуального порталу WordPress для Telefontrainingskoffer — сервісу навчання німецької академії кол-центрів. Розроблено унікальну тему WordPress з нуля з використанням Advanced Custom Fields (ACF) та WPBakery Page Builder для стилізації динамічних блоків. Особливу увагу приділено суворому дотриманню правил GDPR на ринку DACH (Німеччина) для інтерактивних контактних форм та систем прийому заявок, а також оптимізації продуктивності на стороні сервера.',
   detailHeroLine: 'CUSTOM WORDPRESS · CALL CENTER ACADEMY SYSTEM',
   detailMetrics: [
     { value: '96+', label: 'PageSpeed', accent: 'green' },

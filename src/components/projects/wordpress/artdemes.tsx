@@ -4,8 +4,11 @@ const artDemes: Project = {
   id: 10890,
   title: 'Artdemes',
   description: 'Artesania creativa. Spain store.',
+  descriptionUa: 'Креативний ремісничий магазин в Іспанії.',
   fullDescription:
     'A custom WooCommerce store built on a hand-coded WordPress theme using Elementor, extended with custom CSS3 and JavaScript for a creative artisan aesthetic. The project included full product catalog setup with crafted content and category management, serving the Spanish handmade goods market with a visually rich and SEO-optimized shopping experience.',
+  fullDescriptionUa:
+    'Кастомний магазин WooCommerce, побудований на написаній вручну темі WordPress з використанням Elementor, розширений кастомними CSS3 та JavaScript для створення ремісничої естетики. Проєкт включав повне налаштування каталогу товарів із якісним контентом та управлінням категоріями, надаючи іспанському ринку хендмейд-товарів візуально багатий та SEO-оптимізований онлайн-шопінг.',
   detailHeroLine: 'CUSTOM WORDPRESS · ARTISAN E-COMMERCE · SPAIN',
   detailMetrics: [
     { value: '90+', label: 'PageSpeed Score', accent: 'green' },

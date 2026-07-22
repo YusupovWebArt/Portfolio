@@ -4,8 +4,11 @@ const isal: Project = {
   id: 7850,
   title: 'ISAL',
   description: 'Learn English in Boston — US language school website.',
+  descriptionUa: 'Вивчення англійської в Бостоні — вебсайт мовної школи в США.',
   fullDescription:
     'ISAL (International School of Languages) is a Boston-based English language school. The site was built using Wix Velo with pixel-perfect design control, including a custom payments and fees functionality, ZOHO CRM integration for student lead management, and a blog section for language learning content.',
+  fullDescriptionUa:
+    'ISAL (International School of Languages) — це мовна школа англійської мови в Бостоні. Вебсайт створено за допомогою Wix Velo з піксельно точним контролем дизайну, включаючи кастомний функціонал оплати та розрахунку вартості навчання, інтеграцію із ZOHO CRM для управління лідами студентів і розділ блогу для матеріалів із вивчення мови.',
   detailHeroLine: 'WIX · EDUCATION & LANGUAGE SCHOOL',
   detailMetrics: [
     { value: '90+', label: 'PageSpeed Score', accent: 'green' },

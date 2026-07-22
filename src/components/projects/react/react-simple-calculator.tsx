@@ -5,8 +5,12 @@ const reactSimpleCalculator: Project = {
   title: 'Simple React calculator App',
   description:
     'Simple pet-project demonstrates fundamental React concepts such as component structure.',
+  descriptionUa:
+    'Простий пет-проєкт, що демонструє фундаментальні концепції React, такі як структура компонентів.',
   fullDescription:
     'A simple and intuitive calculator app built with React.js and Vite. It demonstrates core React concepts including functional components and useState hooks, allowing users to perform basic arithmetic operations with a clean, responsive interface deployed on GitHub Pages.',
+  fullDescriptionUa:
+    'Простий та інтуїтивно зрозумілий додаток-калькулятор, створений за допомогою React.js та Vite. Він демонструє ключові концепції React, зокрема функціональні компоненти та хук useState, дозволяючи користувачам виконувати базові арифметичні операції через чистий адаптивний інтерфейс, розгорнутий на GitHub Pages.',
   detailHeroLine: 'REACT · JAVASCRIPT · DEMO APP',
   detailMetrics: [
     { value: 'React.js', label: 'UI Library', accent: 'green' },

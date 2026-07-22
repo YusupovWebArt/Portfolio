@@ -5,8 +5,12 @@ const orozcoTrucking: Project = {
   title: 'Orozco Trucking',
   description:
     'Freight transportation company based in Elk Grove Village, Illinois.',
+  descriptionUa:
+    'Транспортно-вантажна компанія з Елк-Гров-Вілледж, Іллінойс.',
   fullDescription:
     'Orozco Trucking is a professional WordPress website for a US-based freight transportation company, built on a premium theme with extensive CSS3 and JavaScript customization. The project focused on communicating reliability and service capability, with local SEO, Google Maps integration, and Schema.org markup to drive regional business inquiries.',
+  fullDescriptionUa:
+    'Orozco Trucking — це професійний вебсайт для американської вантажної транспортної компанії, побудований на преміум-темі WordPress із розширеною кастомізацією на CSS3 та JavaScript. Основна увага була зосереджена на демонстрації надійності та послуг компанії, із реалізацією локального SEO, інтеграцією з Google Maps API та розміткою Schema.org для залучення клієнтських запитів у регіоні.',
   detailHeroLine: 'CUSTOM WORDPRESS · FREIGHT & LOGISTICS',
   detailMetrics: [
     { value: '90+', label: 'PageSpeed Score', accent: 'green' },

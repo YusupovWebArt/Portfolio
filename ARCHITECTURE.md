@@ -12,13 +12,14 @@ The application is structured as a high-performance **Single Page Application (S
 graph TD
     A[Vite Dev Server / Builder] --> B[React 19 Core App]
     B --> C[ThemeContext Provider]
-    B --> D[Header / Navigation]
+    B --> C2[LanguageContext Provider]
+    B --> D[Header / Lang & Theme Toggle]
     B --> E[Hero / Typewriter]
-    B --> F[About / Stats]
+    B --> F[About / Bio & Journey]
     B --> G[AiWorkflow Stepper]
     B --> H[Projects Section]
     B --> I[Skills / T-Shaped Specialist]
-    B --> J[Chatbot FAQ Modal]
+    B --> J[Chatbot FAQ Modal & AI Console]
     B --> K[Contact Section]
 ```
 
@@ -38,12 +39,18 @@ Portfolio/
 │   │   ├── projects/       # Individual project case study files
 │   │   ├── About.tsx       # Bio & journey timeline
 │   │   ├── AiWorkflow.tsx  # Dynamic Spec-Driven SDLC stepper
-│   │   ├── Header.tsx      # Sticky navigation & theme toggle
+│   │   ├── Header.tsx      # Sticky navigation, theme & language toggle
 │   │   ├── Skills.tsx      # T-Shaped Specialist component
 │   │   └── ChatModal.tsx   # Floating client-side FAQ bot
-│   ├── contexts/           # Theme (Dark/Light) providers
+│   ├── contexts/           # Theme (Dark/Light) & Language (i18n) providers
+│   │   ├── ThemeContext.tsx
+│   │   └── LanguageContext.tsx
 │   ├── data/
-│   │   └── chatFaq.ts      # FAQ Chatbot database
+│   │   └── chatFaq.ts      # Multilingual FAQ Chatbot database
+│   ├── locales/            # i18n Translation dictionaries & types
+│   │   ├── types.ts        # Strict Translation interface
+│   │   ├── en.ts           # English translations
+│   │   └── ua.ts           # Ukrainian translations
 │   ├── App.tsx             # Root Layout manager
 │   ├── index.css           # Tailwind v4 import & custom styles
 │   └── main.tsx            # Application entrypoint mount
@@ -61,13 +68,19 @@ Portfolio/
 - A React Context (`ThemeContext`) controls dark-mode state by toggling the `.dark` class on the root `document.documentElement` element.
 - Tailwind CSS v4 custom variant rules map the `.dark` selector to apply dark-themed styles (`dark:bg-*`, `dark:text-*`).
 
+### Internationalization (i18n) Subsystem
+- Driven by a custom `LanguageContext` providing strict type-checked translations via `useLanguage()`.
+- **Auto-Detection:** Detects visitor's browser language on first load (`navigator.language.startsWith('uk' | 'ua')`).
+- **Persistence:** Persists language preference in `localStorage.portfolio_lang`.
+- **Localization:** Supports `en` and `ua` dictionaries. Project case studies include `descriptionUa` and `fullDescriptionUa` for dynamic localized rendering.
+
 ### Smooth Scroll Navigation
 - Navigation uses standard HTML `#anchor` links mapped to section `id`s.
 - Active states are tracked via scroll event listeners on window offsets, automatically highlighting the corresponding header menu item.
 
-### Client-Side FAQ Chatbot
-- Driven by a clean keyword-matching algorithm inside `src/data/chatFaq.ts`.
-- The bot parses the user query, filters for matched keywords, and returns the pre-defined answer. If no keywords are matched, it returns a friendly suggestion list.
+### Client-Side Multilingual FAQ Chatbot
+- Driven by a keyword-matching algorithm inside `src/data/chatFaq.ts`.
+- Supports dual-language FAQ matching (`questionUa` & `answerUa`), returning localized answers via `getBotAnswer(question, lang)`.
 
 ---
 

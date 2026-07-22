@@ -5,8 +5,12 @@ const secondChanceDecor: Project = {
   title: 'Second Chance Decor',
   description:
     'Canadian sustainable home décor retailer giving discontinued items a second life.',
+  descriptionUa:
+    'Канадський інтернет-магазин екологічного декору для дому, що дає друге життя знятим з виробництва товарам.',
   fullDescription:
     'Second Chance Decor is a Canadian Shopify store built around a sustainable retail mission — offering discontinued, overstock, and pre-loved home décor items a second life. The store features a fully customized Liquid theme with an eco-conscious aesthetic, a curated product catalogue, and app integrations to support the brand\'s sustainability story.',
+  fullDescriptionUa:
+    'Second Chance Decor — це канадський інтернет-магазин на базі Shopify, побудований навколо місії сталого ритейлу — надання другого життя знятим з виробництва, надлишковим та вживаним товарам декору для дому. Магазин має повністю кастомну тему Liquid в еко-стилістиці, курований каталог товарів та інтеграції додатків для підтримки історії бренду про екологічність.',
   detailHeroLine: 'SHOPIFY · SUSTAINABLE HOME DÉCOR',
   detailMetrics: [
     { value: '90+', label: 'PageSpeed Score', accent: 'green' },

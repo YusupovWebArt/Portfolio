@@ -4,8 +4,11 @@ const bemol: Project = {
   id: 10980,
   title: 'Bemol',
   description: 'Czech plumbing and heating services provider.',
+  descriptionUa: 'Чеський постачальник сантехнічних та опалювальних послуг.',
   fullDescription:
     'A custom WordPress theme built from scratch for a Czech plumbing and heating company, using Elementor enhanced with custom CSS3, JavaScript, and PHP. The site presents the company\'s services, product offerings, and contact options in a clean, professional layout designed for local Czech trades customers searching for reliable sanitary and heating solutions.',
+  fullDescriptionUa:
+    'Кастомна тема WordPress, створена з нуля для чеської сантехнічної та опалювальної компанії з використанням Elementor, розширеного кастомними CSS3, JavaScript та PHP. Сайт презентує послуги компанії, асортимент товарів та варіанти зв’язку у чистому, професійному макеті, розробленому для місцевих чеських клієнтів, які шукають надійні рішення для сантехніки та опалення.',
   detailHeroLine: 'CUSTOM WORDPRESS · PLUMBING & HEATING SERVICES · CZECH',
   detailMetrics: [
     { value: '90+', label: 'PageSpeed Score', accent: 'green' },

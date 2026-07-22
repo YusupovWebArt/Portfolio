@@ -5,8 +5,12 @@ const awsMigrationServices: Project = {
   title: 'AWS Migration Services',
   description:
     'Specialized platform designed to assist businesses in transitioning their operations to the Amazon Web Services (AWS) cloud. The website offers a comprehensive suite of services aimed at ensuring a smooth, secure, and cost-effective migration process.',
+  descriptionUa:
+    'Спеціалізована платформа, створена для допомоги бізнесу в перенесенні операцій у хмару Amazon Web Services (AWS). Вебсайт пропонує комплексний спектр послуг, спрямованих на забезпечення плавного, безпечного та економічно ефективного процесу міграції.',
   fullDescription:
     'A high-end marketing and service platform designed to assist enterprises in migrating legacy infrastructure to the Amazon Web Services (AWS) cloud. Built with a completely custom-themed WordPress engine, bespoke PHP logic, and Advanced Custom Fields (ACF) Pro. To visually communicate complex cloud migration concepts, the site integrates custom-engineered AI graphics depicting cloud server architectures, migration pipelines, and modern security protocols.',
+  fullDescriptionUa:
+    'Преміальна маркетингова та сервісна платформа, створена для допомоги підприємствам у міграції застарілої інфраструктури в хмару Amazon Web Services (AWS). Побудована на повністю кастомній темі WordPress, унікальній логіці PHP та Advanced Custom Fields (ACF) Pro. Для наочної демонстрації складних концепцій міграції сайт інтегрує кастомно розроблені AI-графічні елементи, що зображують архітектури хмарних серверів, пайплайни міграції та сучасні протоколи безпеки.',
   detailHeroLine: 'CUSTOM WORDPRESS · CLOUD SOLUTION MARKETING',
   detailMetrics: [
     { value: '96+', label: 'PageSpeed', accent: 'green' },

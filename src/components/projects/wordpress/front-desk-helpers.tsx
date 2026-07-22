@@ -5,8 +5,12 @@ const frontDeskHelpers: Project = {
   title: 'Front Desk Helpers',
   description:
     'FDH provides skilled remote employees and advanced IT solutions to help businesses grow and thrive.',
+  descriptionUa:
+    'FDH надає кваліфікованих віддалених працівників та сучасні IT-рішення, щоб допомогти бізнесу зростати та розвиватися.',
   fullDescription:
     'Development of a corporate outsourcing and IT consulting portal for Front Desk Helpers. Built with a custom WordPress theme integrated with Elementor Pro, bespoke PHP structures, and Advanced Custom Fields (ACF). The portal localized services for US and ES markets with dynamic application/feedback forms. Implemented structured Schema.org JSON-LD definitions and technical SEO speed optimizations for maximum search visibility.',
+  fullDescriptionUa:
+    'Розробка корпоративного порталу аутсорсингу та IT-консалтингу для Front Desk Helpers. Побудовано на кастомній темі WordPress з інтеграцією Elementor Pro, кастомними PHP-структурами та ACF. Портал локалізовано для ринків США та Іспанії з динамічними формами заявок. Впроваджено структуровану мікророзмітку Schema.org JSON-LD та оптимізацію швидкості.',
   detailHeroLine: 'CUSTOM WORDPRESS · ENTERPRISE OUTSOURCING PORTAL',
   detailMetrics: [
     { value: '94+', label: 'PageSpeed', accent: 'green' },

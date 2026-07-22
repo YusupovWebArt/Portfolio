@@ -5,8 +5,12 @@ const mg911: Project = {
   title: '911mg',
   description:
     'US online health resource offering an extensive database of medications.',
+  descriptionUa:
+    'Онлайн-ресурс про здоров’я у США, який пропонує розширену базу даних лікарських препаратів.',
   fullDescription:
     'A custom WordPress theme built entirely from scratch using pure PHP, custom CSS3, and JavaScript ES6, with no page builder dependency. The site serves as a comprehensive US medication database, featuring structured drug categories, coupon listings, product detail pages, and user reviews. Full SEO optimization and Google Analytics integration were implemented to maximize organic reach.',
+  fullDescriptionUa:
+    'Кастомна тема WordPress, розроблена з нуля з використанням чистого PHP, кастомних CSS3 та JavaScript ES6 без використання конструкторів сторінок. Сайт слугує вичерпною базою даних медикаментів у США, включаючи структуровані категорії препаратів, списки купонів, детальні сторінки продуктів та відгуки користувачів. Реалізовано повну SEO-оптимізацію та інтеграцію з Google Analytics для максимального органічного охоплення.',
   detailHeroLine: 'CUSTOM WORDPRESS · HEALTH & MEDICATION DATABASE',
   detailMetrics: [
     { value: '90+', label: 'PageSpeed Score', accent: 'green' },

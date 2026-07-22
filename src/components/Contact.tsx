@@ -13,10 +13,13 @@ import {
 } from 'lucide-react'
 
 import { FAQ, getBotAnswer, Message } from '../data/chatFaq'
+import { useLanguage } from '../contexts/LanguageContext'
 
 let contactMessageIdCounter = 0
 
 const Contact = () => {
+  const { lang, t } = useLanguage()
+  const ct = t.contact
   const [emailVal, setEmailVal] = useState('web.sunline [at] gmail.com')
   const [emailLink, setEmailLink] = useState('#')
   const [phoneVal, setPhoneVal] = useState('+34 642 [at] WhatsApp')
@@ -67,7 +70,7 @@ const Contact = () => {
       glowColor: 'bg-blue-500',
       iconColor: 'text-blue-500 dark:text-blue-400',
       borderHover: 'group-hover:border-blue-500/30',
-      tag: 'For official requests & projects',
+      tag: ct.contactTags.email,
       onInteraction: handleEmailInteraction,
     },
     {
@@ -78,7 +81,7 @@ const Contact = () => {
       glowColor: 'bg-emerald-500',
       iconColor: 'text-emerald-500 dark:text-emerald-400',
       borderHover: 'group-hover:border-emerald-500/30',
-      tag: 'Best for quick chats',
+      tag: ct.contactTags.phone,
       onInteraction: handlePhoneInteraction,
     },
     {
@@ -89,7 +92,7 @@ const Contact = () => {
       glowColor: 'bg-sky-500',
       iconColor: 'text-sky-500 dark:text-sky-400',
       borderHover: 'group-hover:border-sky-500/30',
-      tag: 'Immediate response',
+      tag: ct.contactTags.telegram,
       onInteraction: handleTgInteraction,
     },
     {
@@ -137,7 +140,7 @@ const Contact = () => {
       {
         id: 'welcome',
         from: 'bot',
-        text: "Hi! I am Artur's AI assistant. 🤖 Ask me anything about his experience, skills, stack, or select one of the suggested questions below!",
+        text: ct.chatbot.welcomeMessage,
       },
     ]
   })
@@ -183,7 +186,7 @@ const Contact = () => {
       const botMsg: Message = {
         id: `bot-${++contactMessageIdCounter}`,
         from: 'bot',
-        text: getBotAnswer(textToSend),
+        text: getBotAnswer(textToSend, lang),
       }
       setMessages((prev) => [...prev, botMsg])
     }, 950)
@@ -194,13 +197,20 @@ const Contact = () => {
       {
         id: `welcome-${Date.now()}`,
         from: 'bot',
-        text: "Hi! I am Artur's AI assistant. 🤖 Ask me anything about his experience, skills, stack, or select one of the suggested questions below!",
+        text: ct.chatbot.welcomeMessage,
       },
     ])
   }
 
+  const displayedMessages = messages.map((msg) => {
+    if (msg.id === 'welcome' || msg.id.startsWith('welcome-')) {
+      return { ...msg, text: ct.chatbot.welcomeMessage }
+    }
+    return msg
+  })
+
   const activeSuggestions = FAQ.filter(
-    (faq) => !messages.some((m) => m.from === 'user' && m.text === faq.question)
+    (faq) => !messages.some((m) => m.from === 'user' && (m.text === faq.question || m.text === faq.questionUa))
   )
 
   return (
@@ -217,16 +227,16 @@ const Contact = () => {
         {/* Header */}
         <div className="text-center mb-16">
           <div className="inline-block px-6 py-2 bg-gradient-to-r from-purple-100 to-blue-100 dark:from-lime-500/10 dark:to-lime-600/10 text-purple-700 dark:text-lime-400 rounded-full text-xs font-bold uppercase tracking-wider mb-6">
-            Get In Touch
+            {ct.badge}
           </div>
           <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white mb-6">
-            Let's build something{' '}
+            {ct.title.before}{' '}
             <span className="bg-gradient-to-r from-purple-500 to-indigo-600 dark:from-lime-400 dark:to-lime-500 bg-clip-text text-transparent">
-              extraordinary
+              {ct.title.highlight}
             </span>
           </h2>
           <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
-            Ready to bring your project to life? Choose a messaging channel below or test my virtual assistant for quick answers.
+            {ct.description}
           </p>
         </div>
 
@@ -235,7 +245,7 @@ const Contact = () => {
           {/* Left Column: Apple Liquid Glass Contacts */}
           <div className="lg:col-span-6 space-y-4">
             <h3 className="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-4 px-1">
-              Direct Channels
+              {ct.directChannels}
             </h3>
             <div className="space-y-3">
               {contactInfo.map((item, index) => (
@@ -296,7 +306,7 @@ const Contact = () => {
             {/* Social Links Row */}
             <div className="pt-6 border-t border-slate-200/60 dark:border-white/5">
               <h4 className="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-4 px-1">
-                Follow Credentials
+                {ct.followCredentials}
               </h4>
               <div className="flex space-x-3">
                 {socialLinks.map((social, index) => (
@@ -318,7 +328,7 @@ const Contact = () => {
           {/* Right Column: AI Console directly on page (Option 3) */}
           <div className="lg:col-span-6 flex flex-col h-full">
             <h3 className="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-4 px-1">
-              AI Assistant Console
+              {ct.chatbot.title}
             </h3>
             
             <div className="relative overflow-hidden bg-white dark:bg-slate-900 lg:bg-white/60 lg:dark:bg-slate-900/60 lg:backdrop-blur-xl border border-slate-200/80 dark:border-white/10 rounded-3xl h-[420px] flex flex-col shadow-lg hover:border-slate-300 dark:hover:border-white/15 transition-all duration-300">
@@ -331,12 +341,12 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="font-bold text-slate-800 dark:text-white text-xs leading-none">
-                      Artur's Assistant
+                      {ct.chatbot.assistantName}
                     </h4>
                     <div className="flex items-center space-x-1.5 mt-0.5">
                       <span className="w-1 h-1 rounded-full bg-emerald-500 animate-pulse" />
                       <span className="text-[9px] font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">
-                        Live Console
+                        {ct.chatbot.liveConsole}
                       </span>
                     </div>
                   </div>
@@ -345,7 +355,7 @@ const Contact = () => {
                 <button
                   onClick={handleClearChat}
                   className="p-1.5 hover:bg-slate-100 dark:hover:bg-white/5 rounded-full text-slate-400 hover:text-slate-600 dark:hover:text-white transition-colors"
-                  title="Reset Conversation"
+                  title={ct.chatbot.clearButton}
                   type="button"
                 >
                   <Trash2 className="w-3.5 h-3.5" />
@@ -357,7 +367,7 @@ const Contact = () => {
                 ref={scrollContainerRef}
                 className="flex-1 overflow-y-auto px-5 py-4 space-y-3.5 bg-slate-50/20 dark:bg-slate-950/5 custom-scrollbar"
               >
-                {messages.map((msg) => {
+                {displayedMessages.map((msg) => {
                   const isBot = msg.from === 'bot'
                   return (
                     <div
@@ -393,20 +403,23 @@ const Contact = () => {
                 {messages.length === 1 && !isTyping && (
                   <div className="mt-4 ml-8 space-y-1.5 animate-fade-in">
                     <div className="text-[9px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-1 px-1">
-                      Frequently Asked Questions
+                      {ct.chatbot.faqHeader}
                     </div>
                     <div className="grid grid-cols-1 gap-1.5">
-                      {FAQ.slice(0, 4).map((faq, idx) => (
-                        <button
-                          key={idx}
-                          onClick={() => handleSend(faq.question)}
-                          className="text-left px-3.5 py-2 bg-white hover:bg-slate-50 dark:bg-slate-800 dark:hover:bg-slate-750 text-[11px] font-semibold text-purple-600 dark:text-lime-400 hover:text-purple-700 dark:hover:text-lime-300 rounded-xl border border-slate-200/50 dark:border-white/5 shadow-sm transition-all duration-200 active:scale-[0.99] flex items-center justify-between group"
-                          type="button"
-                        >
-                          <span>{faq.question}</span>
-                          <span className="text-slate-300 dark:text-slate-600 group-hover:translate-x-0.5 transition-transform shrink-0 ml-2">→</span>
-                        </button>
-                      ))}
+                      {FAQ.slice(0, 4).map((faq, idx) => {
+                        const questionText = lang === 'ua' ? faq.questionUa : faq.question
+                        return (
+                          <button
+                            key={idx}
+                            onClick={() => handleSend(questionText)}
+                            className="text-left px-3.5 py-2 bg-white hover:bg-slate-50 dark:bg-slate-800 dark:hover:bg-slate-750 text-[11px] font-semibold text-purple-600 dark:text-lime-400 hover:text-purple-700 dark:hover:text-lime-300 rounded-xl border border-slate-200/50 dark:border-white/5 shadow-sm transition-all duration-200 active:scale-[0.99] flex items-center justify-between group"
+                            type="button"
+                          >
+                            <span>{questionText}</span>
+                            <span className="text-slate-300 dark:text-slate-600 group-hover:translate-x-0.5 transition-transform shrink-0 ml-2">→</span>
+                          </button>
+                        )
+                      })}
                     </div>
                   </div>
                 )}
@@ -433,16 +446,19 @@ const Contact = () => {
                 {/* Active Suggestion Chips (Wrapped & Compact, max 2 items for space) */}
                 {activeSuggestions.length > 0 && messages.length > 1 && (
                   <div className="flex flex-wrap gap-1.5">
-                    {activeSuggestions.slice(0, 2).map((faq, idx) => (
-                      <button
-                        key={idx}
-                        onClick={() => handleSend(faq.question)}
-                        className="px-2.5 py-1 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700/80 text-[10px] font-semibold text-slate-500 dark:text-slate-300 rounded-full border border-slate-200/60 dark:border-white/5 hover:border-slate-300 dark:hover:border-white/10 shadow-sm transition-all active:scale-95 duration-250"
-                        type="button"
-                      >
-                        {faq.question}
-                      </button>
-                    ))}
+                    {activeSuggestions.slice(0, 2).map((faq, idx) => {
+                      const questionText = lang === 'ua' ? faq.questionUa : faq.question
+                      return (
+                        <button
+                          key={idx}
+                          onClick={() => handleSend(questionText)}
+                          className="px-2.5 py-1 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700/80 text-[10px] font-semibold text-slate-500 dark:text-slate-300 rounded-full border border-slate-200/60 dark:border-white/5 hover:border-slate-300 dark:hover:border-white/10 shadow-sm transition-all active:scale-95 duration-250"
+                          type="button"
+                        >
+                          {questionText}
+                        </button>
+                      )
+                    })}
                   </div>
                 )}
 
@@ -453,13 +469,13 @@ const Contact = () => {
                       value={input}
                       onChange={(e) => setInput(e.target.value)}
                       onKeyDown={(e) => e.key === 'Enter' && handleSend(input)}
-                      placeholder="Type your question..."
+                      placeholder={ct.chatbot.placeholder}
                     />
                   </div>
                   <button
                     onClick={() => handleSend(input)}
                     className="w-8.5 h-8.5 w-8 h-8 rounded-full bg-purple-600 hover:bg-purple-700 dark:bg-lime-500 dark:hover:bg-lime-400 text-white dark:text-slate-900 flex items-center justify-center transition-all shadow-md active:scale-95 shrink-0"
-                    title="Send to assistant"
+                    title={ct.chatbot.sendButton}
                     type="button"
                   >
                     <Send className="w-3.5 h-3.5" />

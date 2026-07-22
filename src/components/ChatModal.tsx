@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import { Send, Bot, User, X, Trash2 } from 'lucide-react'
 
 import { FAQ, getBotAnswer, Message } from '../data/chatFaq'
+import { useLanguage } from '../contexts/LanguageContext'
 
 let chatModalMessageIdCounter = 0
 
@@ -12,6 +13,8 @@ const ChatModal = ({
   open: boolean
   onClose: () => void
 }) => {
+  const { lang, t } = useLanguage()
+  const ct = t.contact.chatbot
   const [messages, setMessages] = useState<Message[]>(() => {
     const saved = sessionStorage.getItem('portfolio_chat_modal_messages')
     if (saved) {
@@ -75,7 +78,7 @@ const ChatModal = ({
       const botMessage: Message = {
         id: `bot-${++chatModalMessageIdCounter}`,
         from: 'bot',
-        text: getBotAnswer(textToSend),
+        text: getBotAnswer(textToSend, lang),
         timestamp: new Date(),
       }
       setMessages((prev) => [...prev, botMessage])
@@ -87,17 +90,24 @@ const ChatModal = ({
       {
         id: `welcome-${Date.now()}`,
         from: 'bot',
-        text: "Hi! I am Artur's AI assistant. 🤖 Feel free to ask me anything about his professional experience, skills, stack, or availability, or click one of the suggested questions below!",
+        text: ct.welcomeMessage,
         timestamp: new Date(),
       },
     ])
   }
 
+  const displayedMessages = messages.map((msg) => {
+    if (msg.id === 'welcome' || msg.id.startsWith('welcome-')) {
+      return { ...msg, text: ct.welcomeMessage }
+    }
+    return msg
+  })
+
   if (!open) return null
 
   // We only show suggestions that haven't been clicked or just show a subset of FAQs that fit in horizontal bar
   const activeSuggestions = FAQ.filter(
-    (faq) => !messages.some((m) => m.from === 'user' && m.text === faq.question)
+    (faq) => !messages.some((m) => m.from === 'user' && (m.text === faq.question || m.text === faq.questionUa))
   )
 
   return (
@@ -112,12 +122,12 @@ const ChatModal = ({
             </div>
             <div>
               <h3 className="font-bold text-slate-800 dark:text-white text-sm leading-none">
-                Artur's Assistant
+                {ct.assistantName}
               </h3>
               <div className="flex items-center space-x-1.5 mt-1">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
                 <span className="text-[10px] font-semibold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">
-                  Online
+                  {ct.online}
                 </span>
               </div>
             </div>
@@ -127,7 +137,7 @@ const ChatModal = ({
             <button
               onClick={handleClearChat}
               className="p-2 hover:bg-slate-100 dark:hover:bg-white/5 rounded-full text-slate-400 hover:text-slate-600 dark:hover:text-white transition-colors"
-              title="Clear chat"
+              title={ct.clearButton}
               type="button"
             >
               <Trash2 className="w-4 h-4" />
@@ -145,7 +155,7 @@ const ChatModal = ({
 
         {/* Message Area */}
         <div className="flex-1 overflow-y-auto px-6 py-4 space-y-4 bg-slate-50/30 dark:bg-slate-950/10 custom-scrollbar">
-          {messages.map((msg) => {
+          {displayedMessages.map((msg) => {
             const isBot = msg.from === 'bot'
             return (
               <div
@@ -183,20 +193,23 @@ const ChatModal = ({
           {messages.length === 1 && !isTyping && (
             <div className="mt-4 ml-9 space-y-2 animate-fade-in">
               <div className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-2">
-                Suggested Questions
+                {ct.faqHeader}
               </div>
               <div className="grid grid-cols-1 gap-2">
-                {FAQ.map((faq, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() => handleSend(faq.question)}
-                    className="text-left px-4 py-2.5 bg-white hover:bg-slate-50 dark:bg-slate-800 dark:hover:bg-slate-700/80 text-xs font-semibold text-purple-600 dark:text-lime-400 hover:text-purple-700 dark:hover:text-lime-300 rounded-2xl border border-slate-200/80 dark:border-white/5 shadow-sm transition-all duration-200 active:scale-[0.99] flex items-center justify-between group"
-                    type="button"
-                  >
-                    <span>{faq.question}</span>
-                    <span className="text-slate-300 dark:text-slate-600 group-hover:translate-x-1 transition-transform ml-2 shrink-0">→</span>
-                  </button>
-                ))}
+                {FAQ.map((faq, idx) => {
+                  const questionText = lang === 'ua' ? faq.questionUa : faq.question
+                  return (
+                    <button
+                      key={idx}
+                      onClick={() => handleSend(questionText)}
+                      className="text-left px-4 py-2.5 bg-white hover:bg-slate-50 dark:bg-slate-800 dark:hover:bg-slate-700/80 text-xs font-semibold text-purple-600 dark:text-lime-400 hover:text-purple-700 dark:hover:text-lime-300 rounded-2xl border border-slate-200/80 dark:border-white/5 shadow-sm transition-all duration-200 active:scale-[0.99] flex items-center justify-between group"
+                      type="button"
+                    >
+                      <span>{questionText}</span>
+                      <span className="text-slate-300 dark:text-slate-600 group-hover:translate-x-1 transition-transform ml-2 shrink-0">→</span>
+                    </button>
+                  )
+                })}
               </div>
             </div>
           )}
@@ -224,16 +237,19 @@ const ChatModal = ({
           {/* Suggestion Chips (Wrapped & Compact, only for active chats) */}
           {activeSuggestions.length > 0 && messages.length > 1 && (
             <div className="flex flex-wrap gap-2 pb-1">
-              {activeSuggestions.slice(0, 3).map((faq, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => handleSend(faq.question)}
-                  className="px-3.5 py-1.5 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700/80 text-[11px] font-semibold text-slate-600 dark:text-slate-300 rounded-full border border-slate-200 dark:border-white/5 hover:border-slate-300 dark:hover:border-white/10 shadow-sm transition-all active:scale-95 duration-200"
-                  type="button"
-                >
-                  {faq.question}
-                </button>
-              ))}
+              {activeSuggestions.slice(0, 3).map((faq, idx) => {
+                const questionText = lang === 'ua' ? faq.questionUa : faq.question
+                return (
+                  <button
+                    key={idx}
+                    onClick={() => handleSend(questionText)}
+                    className="px-3.5 py-1.5 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700/80 text-[11px] font-semibold text-slate-600 dark:text-slate-300 rounded-full border border-slate-200 dark:border-white/5 hover:border-slate-300 dark:hover:border-white/10 shadow-sm transition-all active:scale-95 duration-200"
+                    type="button"
+                  >
+                    {questionText}
+                  </button>
+                )
+              })}
             </div>
           )}
 
@@ -245,13 +261,13 @@ const ChatModal = ({
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && handleSend(input)}
-                placeholder="Type your question..."
+                placeholder={ct.placeholder}
               />
             </div>
             <button
               onClick={() => handleSend(input)}
               className="w-10 h-10 rounded-full bg-purple-600 hover:bg-purple-700 dark:bg-lime-500 dark:hover:bg-lime-400 text-white dark:text-slate-900 flex items-center justify-center transition-all shadow-md active:scale-95 shrink-0"
-              title="Send message"
+              title={ct.sendButton}
               type="button"
             >
               <Send className="w-4 h-4" />

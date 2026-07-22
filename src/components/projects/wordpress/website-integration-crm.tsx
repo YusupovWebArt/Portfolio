@@ -4,8 +4,11 @@ const websiteIntegrationCrm: Project = {
   id: 10840,
   title: 'Website integration with CRM',
   description: 'USA (+ localization Spain)',
+  descriptionUa: 'США (+ локалізація для Іспанії)',
   fullDescription:
     'Website Integration with CRM is a bilingual landing page (US English and Spanish localization) built on a custom WordPress theme from scratch using Bootstrap 5. The page demonstrates CRM integration capabilities for US businesses, featuring a modern responsive layout, lead capture form, SEO optimization, and clear service value propositions targeting both English and Spanish-speaking business audiences.',
+  fullDescriptionUa:
+    'Website Integration with CRM — це двомовна посадкова сторінка (англійська США та іспанська локалізація), побудована на унікальній темі WordPress з нуля з використанням Bootstrap 5. Сторінка демонструє можливості інтеграції сайтів із CRM для американського бізнесу, маючи сучасний адаптивний макет, форму збору лідів, SEO-оптимізацію та чіткі ціннісні пропозиції послуг для англомовної та іспаномовної аудиторій.',
   detailHeroLine: 'CUSTOM WORDPRESS · CRM INTEGRATION LANDING',
   detailMetrics: [
     { value: '90+', label: 'PageSpeed Score', accent: 'green' },

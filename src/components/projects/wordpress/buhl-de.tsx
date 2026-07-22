@@ -4,8 +4,11 @@ const buhlDe: Project = {
   id: 15500,
   title: 'Buhl WISO',
   description: 'Steuer Jetzt Geld zurückholen. Germany',
+  descriptionUa: 'Повернення податків уже зараз. Німеччина',
   fullDescription:
     'A custom WordPress theme built from scratch using pure code — no page builder — for Buhl\'s WISO tax software product, targeting the German market. Custom CSS3 and JavaScript deliver a polished, conversion-focused landing experience that communicates the software\'s key tax-return benefits and drives product downloads, aligned with the Buhl brand identity.',
+  fullDescriptionUa:
+    'Кастомна тема WordPress, створена з нуля на чистому коді — без пейдж-білдерів — для податкового програмного забезпечення WISO від Buhl, орієнтованого на німецький ринок. Кастомні CSS3 та JavaScript забезпечують елегантний, орієнтований на конверсію посадковий екран, який передає ключові переваги ПЗ для повернення податків та стимулює завантаження продукту відповідно до айдентики бренду Buhl.',
   detailHeroLine: 'CUSTOM WORDPRESS · TAX SOFTWARE · GERMANY',
   detailMetrics: [
     { value: '90+', label: 'PageSpeed Score', accent: 'green' },

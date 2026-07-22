@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useLanguage } from '../contexts/LanguageContext'
 import {
   Cpu,
   Brain,
@@ -256,6 +257,9 @@ without exposing a clickable hyperlink.`,
   const currentCategory = workflowCategories[activeTab]
   const currentStep = currentCategory.steps[activeStep]
 
+  const { t } = useLanguage()
+  const aw = t.aiWorkflow
+
   return (
     <section
       id="how-i-work"
@@ -270,13 +274,16 @@ without exposing a clickable hyperlink.`,
         {/* Header Section */}
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white mb-6">
-            AI Workflow
+            {aw.sectionTitle}
           </h2>
           <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-4xl mx-auto leading-relaxed">
-            Not vibe coding: every feature travels a strict path from written specification to compiler pass and test verification — a methodology the industry calls{' '}
-            <span className="font-semibold text-purple-600 dark:text-purple-400">Spec-Driven Development (SDD)</span>. I execute routine, architectural, and optimization tasks faster and more reliably by amplifying my expertise with specialized AI tools like{' '}
-            <span className="font-semibold text-purple-600 dark:text-purple-400">Claude Code</span> and{' '}
-            <span className="font-semibold text-sky-600 dark:text-sky-400">Google Antigravity</span>.
+            {aw.description.before}{' '}
+            <span className="font-semibold text-purple-600 dark:text-purple-400">{aw.description.methodology}</span>
+            {aw.description.middle}{' '}
+            <span className="font-semibold text-purple-600 dark:text-purple-400">{aw.description.toolClaude}</span>
+            {aw.description.between}{' '}
+            <span className="font-semibold text-sky-600 dark:text-sky-400">{aw.description.toolAntigravity}</span>
+            {aw.description.after}
           </p>
         </div>
 

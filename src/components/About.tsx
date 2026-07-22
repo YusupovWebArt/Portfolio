@@ -1,87 +1,88 @@
 import { SiReact, SiWordpress, SiGoogleanalytics } from "react-icons/si";
 import { LuBrainCircuit } from "react-icons/lu";
+import { useLanguage } from "../contexts/LanguageContext";
 
 const About = () => {
+  const { t } = useLanguage();
+  const ab = t.about;
+
   const highlights = [
     {
       icon: <SiWordpress className="w-6 h-6" />,
-      title: "WordPress Development",
-      points: [
-        "Custom themes & plugins (PHP 8.x OOP / WPCS)",
-        "Headless CMS setups with React/Next.js",
-        "Zero bloated builders — pure native code",
-      ],
+      title: ab.highlights.wpTitle,
+      points: ab.highlights.wpPoints,
     },
     {
       icon: <SiReact className="w-6 h-6" />,
-      title: "App Development",
-      points: [
-        "Production-ready React 19 & Next.js 15+ (TypeScript)",
-        "Fast rendering via Streaming & Suspense patterns",
-        "Rigid compliance with WCAG 2.2 accessibility",
-      ],
+      title: ab.highlights.appTitle,
+      points: ab.highlights.appPoints,
     },
     {
       icon: <SiGoogleanalytics className="w-6 h-6" />,
-      title: "SEO & GEO Optimization",
-      points: [
-        "Brand citation strategies for ChatGPT, Claude, and Gemini",
-        "Advanced JSON-LD schemas & Core Web Vitals audit",
-        "Server-side tracking deployments (sGTM)",
-      ],
+      title: ab.highlights.seoTitle,
+      points: ab.highlights.seoPoints,
     },
     {
       icon: <LuBrainCircuit className="w-6 h-6" />,
-      title: "AI-Augmented Development",
-      points: [
-        "3x engineering velocity using Claude Code & Cursor",
-        "Spec-Driven Development (SDD) execution",
-        "Rigorous automated evaluation and regression checks",
-      ],
+      title: ab.highlights.aiTitle,
+      points: ab.highlights.aiPoints,
     },
   ];
 
   const education = [
     {
       year: "2024-Present",
-      title: "Advanced Web Engineering & Emerging Tech",
-      institution: "Focus on Scalable Ecosystems and AI Integration",
+      title: ab.education.item0.title,
+      institution: ab.education.item0.institution,
       badge: "R&D / Tech Research",
       description: (
         <ul className="space-y-2 mt-2 list-none">
           <li className="flex items-start gap-3">
             <span className="w-2 h-2 rounded-full bg-blue-500 mt-1.5 shrink-0"></span>
-            <span><strong className="text-slate-800 dark:text-white">WordPress Backend:</strong> Researching custom plugin hooks, OOP standards, and low-level core architectures.</span>
+            <span>
+              <strong className="text-slate-800 dark:text-white">{ab.education.item0.description.wp.label}</strong>{" "}
+              {ab.education.item0.description.wp.text}
+            </span>
           </li>
           <li className="flex items-start gap-3">
             <span className="w-2 h-2 rounded-full bg-sky-500 mt-1.5 shrink-0"></span>
-            <span><strong className="text-slate-800 dark:text-white">React Ecosystem:</strong> Implementing high-performance Server-Side Rendered (SSR) patterns and headless connections.</span>
+            <span>
+              <strong className="text-slate-800 dark:text-white">{ab.education.item0.description.react.label}</strong>{" "}
+              {ab.education.item0.description.react.text}
+            </span>
           </li>
           <li className="flex items-start gap-3">
             <span className="w-2 h-2 rounded-full bg-emerald-500 mt-1.5 shrink-0"></span>
-            <span><strong className="text-slate-800 dark:text-white">SEO & GEO Evolution:</strong> Studying and deploying structured schemas for AI search citations and LLM recommendations.</span>
+            <span>
+              <strong className="text-slate-800 dark:text-white">SEO &amp; GEO Evolution:</strong>{" "}
+              Studying and deploying structured schemas for AI search citations and LLM recommendations.
+            </span>
           </li>
           <li className="flex items-start gap-3">
             <span className="w-2 h-2 rounded-full bg-purple-500 mt-1.5 shrink-0"></span>
-            <span><strong className="text-slate-800 dark:text-white">AI SDLC Automation:</strong> Integrating Claude Code, Cursor, and Antigravity into daily workflow via SDD.</span>
+            <span>
+              <strong className="text-slate-800 dark:text-white">{ab.education.item0.description.ai.label}</strong>{" "}
+              {ab.education.item0.description.ai.text}
+            </span>
           </li>
           <li className="flex items-start gap-3">
             <span className="w-2 h-2 rounded-full bg-amber-500 mt-1.5 shrink-0"></span>
-            <span><strong className="text-slate-800 dark:text-white">Emerging Tech:</strong> Evolving practical skills in building Telegram Mini Apps (TMA).</span>
+            <span>
+              <strong className="text-slate-800 dark:text-white">Emerging Tech:</strong>{" "}
+              Evolving practical skills in building Telegram Mini Apps (TMA).
+            </span>
           </li>
         </ul>
       ),
     },
     {
       year: "2016",
-      title: "Specialized courses and practical classes",
+      title: ab.education.item1.title,
       institution: "W3schools, Coursera, Udemy, Codecademy, SoloLearn, Programminghub, YouTube",
       badge: "Continuing Education",
       description: (
         <div className="space-y-3">
-          <p>
-            Committed to lifelong learning. Continuously updating skills in modern web standards (W3C/MDN), accessibility compliance, and developer tools to keep pace with industry evolution.
-          </p>
+          <p>{ab.education.item1.description.intro}</p>
           <div className="flex flex-wrap gap-1.5 mt-2">
             {["MDN Web Docs", "WordPress Codex", "Coursera", "Udemy", "Codecademy", "W3C"].map((tag, idx) => (
               <span key={idx} className="px-2 py-0.5 text-[10px] font-semibold text-slate-600 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-md">
@@ -94,18 +95,24 @@ const About = () => {
     },
     {
       year: "2005-2010",
-      title: "National Technical University (Ukraine)",
-      institution: "VNTU - Vinnitsa National Technical University (Ukraine)",
+      title: ab.education.item2.title,
+      institution: ab.education.item2.institution,
       badge: "Academic Degree",
       description: (
         <ul className="space-y-2 mt-2 list-none">
           <li className="flex items-start gap-2.5">
             <span className="w-1.5 h-1.5 rounded-full bg-purple-500 dark:bg-lime-500 mt-1.5 shrink-0"></span>
-            <span><strong className="text-slate-800 dark:text-white">Specialization:</strong> Administrative management in information security and access control.</span>
+            <span>
+              <strong className="text-slate-800 dark:text-white">{ab.education.item2.description.spec.label}</strong>{" "}
+              {ab.education.item2.description.spec.text}
+            </span>
           </li>
           <li className="flex items-start gap-2.5">
             <span className="w-1.5 h-1.5 rounded-full bg-purple-500 dark:bg-lime-500 mt-1.5 shrink-0"></span>
-            <span><strong className="text-slate-800 dark:text-white">Infrastructure:</strong> Systems administration, network security protocols, and infrastructure management.</span>
+            <span>
+              <strong className="text-slate-800 dark:text-white">{ab.education.item2.description.infra.label}</strong>{" "}
+              {ab.education.item2.description.infra.text}
+            </span>
           </li>
         </ul>
       ),
@@ -115,70 +122,100 @@ const About = () => {
   const workExperience = [
     {
       year: "2021-Present",
-      title: "Front-end Developer (Remote Full-time/Part-time)",
+      title: ab.work.item0.title,
       company: "Frontdeskhelpers",
       companyUrl: "https://frontdeskhelpers.com/",
       description: (
         <ul className="space-y-2 mt-2 list-none">
           <li className="flex items-start gap-2.5">
             <span className="w-1.5 h-1.5 rounded-full bg-green-500 dark:bg-lime-500 mt-1.5 shrink-0"></span>
-            <span><strong className="text-slate-800 dark:text-white">Custom WordPress & Wix Dev:</strong> Engineered high-performance themes & plugins from scratch (PHP 8.x, OOP, WPCS) and managed advanced Wix platforms.</span>
+            <span>
+              <strong className="text-slate-800 dark:text-white">{ab.work.item0.desc.wpWix.label}</strong>{" "}
+              {ab.work.item0.desc.wpWix.text}
+            </span>
           </li>
           <li className="flex items-start gap-2.5">
             <span className="w-1.5 h-1.5 rounded-full bg-green-500 dark:bg-lime-500 mt-1.5 shrink-0"></span>
-            <span><strong className="text-slate-800 dark:text-white">Lifecycle Management:</strong> Handled full-cycle deployment, database migrations, security patches, and support for US clients.</span>
+            <span>
+              <strong className="text-slate-800 dark:text-white">{ab.work.item0.desc.lifecycle.label}</strong>{" "}
+              {ab.work.item0.desc.lifecycle.text}
+            </span>
           </li>
           <li className="flex items-start gap-2.5">
             <span className="w-1.5 h-1.5 rounded-full bg-green-500 dark:bg-lime-500 mt-1.5 shrink-0"></span>
-            <span><strong className="text-slate-800 dark:text-white">UI/UX Re-engineering:</strong> Led redesigns of legacy sites, converting them into modern, responsive frontends.</span>
+            <span>
+              <strong className="text-slate-800 dark:text-white">{ab.work.item0.desc.uiux.label}</strong>{" "}
+              {ab.work.item0.desc.uiux.text}
+            </span>
           </li>
           <li className="flex items-start gap-2.5">
             <span className="w-1.5 h-1.5 rounded-full bg-green-500 dark:bg-lime-500 mt-1.5 shrink-0"></span>
-            <span><strong className="text-slate-800 dark:text-white">Performance & SEO:</strong> Optimized layout structures for Core Web Vitals, achieving stable 90+ Lighthouse scores.</span>
+            <span>
+              <strong className="text-slate-800 dark:text-white">{ab.work.item0.desc.perf.label}</strong>{" "}
+              {ab.work.item0.desc.perf.text}
+            </span>
           </li>
           <li className="flex items-start gap-2.5">
             <span className="w-1.5 h-1.5 rounded-full bg-green-500 dark:bg-lime-500 mt-1.5 shrink-0"></span>
-            <span><strong className="text-slate-800 dark:text-white">Agile Delivery:</strong> Worked inside active Scrum environments collaborating with international cross-functional teams.</span>
+            <span>
+              <strong className="text-slate-800 dark:text-white">{ab.work.item0.desc.agile.label}</strong>{" "}
+              {ab.work.item0.desc.agile.text}
+            </span>
           </li>
         </ul>
       ),
     },
     {
       year: "2020-2021",
-      title: "Front-end Developer (Remote Part-time)",
+      title: ab.work.item1.title,
       company: "Agenturro",
       companyUrl: "https://www.agenturro.co/",
       description: (
         <ul className="space-y-2 mt-2 list-none">
           <li className="flex items-start gap-2.5">
             <span className="w-1.5 h-1.5 rounded-full bg-green-500 dark:bg-lime-500 mt-1.5 shrink-0"></span>
-            <span><strong className="text-slate-800 dark:text-white">Bespoke Theme Development:</strong> Created light, fast custom WordPress sites, completely avoiding bloated pre-made templates.</span>
+            <span>
+              <strong className="text-slate-800 dark:text-white">{ab.work.item1.desc.bespoke.label}</strong>{" "}
+              {ab.work.item1.desc.bespoke.text}
+            </span>
           </li>
           <li className="flex items-start gap-2.5">
             <span className="w-1.5 h-1.5 rounded-full bg-green-500 dark:bg-lime-500 mt-1.5 shrink-0"></span>
-            <span><strong className="text-slate-800 dark:text-white">Full-Cycle Ownership:</strong> Owned web projects from architectural drafting to final server launch and cPanel maintenance.</span>
+            <span>
+              <strong className="text-slate-800 dark:text-white">{ab.work.item1.desc.fullCycle.label}</strong>{" "}
+              {ab.work.item1.desc.fullCycle.text}
+            </span>
           </li>
           <li className="flex items-start gap-2.5">
             <span className="w-1.5 h-1.5 rounded-full bg-green-500 dark:bg-lime-500 mt-1.5 shrink-0"></span>
-            <span><strong className="text-slate-800 dark:text-white">Code Modernization:</strong> Refactored legacy codebases to improve UI responsiveness and alignment with current standards.</span>
+            <span>
+              <strong className="text-slate-800 dark:text-white">{ab.work.item1.desc.modernization.label}</strong>{" "}
+              {ab.work.item1.desc.modernization.text}
+            </span>
           </li>
         </ul>
       ),
     },
     {
       year: "2016-2024",
-      title: "Freelance and Personal projects",
+      title: ab.work.item2.title,
       company: "Web-developer (WordPress, Shopify, WIX), SEO-specialist.",
       companyUrl: "https://freelancehunt.com/freelancer/arsly.html",
       description: (
         <ul className="space-y-2 mt-2 list-none">
           <li className="flex items-start gap-2.5">
             <span className="w-1.5 h-1.5 rounded-full bg-green-500 dark:bg-lime-500 mt-1.5 shrink-0"></span>
-            <span><strong className="text-slate-800 dark:text-white">30+ Delivered Projects:</strong> Successfully designed and launched sites on global freelancing platforms (Upwork, Freelancehunt).</span>
+            <span>
+              <strong className="text-slate-800 dark:text-white">{ab.work.item2.desc.delivered.label}</strong>{" "}
+              {ab.work.item2.desc.delivered.text}
+            </span>
           </li>
           <li className="flex items-start gap-2.5">
             <span className="w-1.5 h-1.5 rounded-full bg-green-500 dark:bg-lime-500 mt-1.5 shrink-0"></span>
-            <span><strong className="text-slate-800 dark:text-white">E-commerce & R&D:</strong> Created and promoted personal Shopify e-commerce stores utilizing dropshipping and Print-on-Demand (POD) methodologies, and managed commercial sales on Etsy. Personally owned full-stack execution of SEO, SMM, and digital marketing strategies.</span>
+            <span>
+              <strong className="text-slate-800 dark:text-white">{ab.work.item2.desc.ecommerce.label}</strong>{" "}
+              {ab.work.item2.desc.ecommerce.text}
+            </span>
           </li>
         </ul>
       ),
@@ -196,18 +233,12 @@ const About = () => {
           <div className="space-y-8">
             <div>
               <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white mb-6">
-                About Me
+                {ab.sectionTitle}
               </h2>
               <div className="space-y-5 text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-                <p>
-                  I am a results-driven Fullstack Web Engineer with 5+ years of experience engineering, scaling, and technically optimizing high-load platforms, with a deep architectural specialization in WordPress. My expertise lies at the sharp intersection of modern frontend ecosystems (React, Next.js) and enterprise-grade WordPress engineering-ranging from custom PHP 8+ architectures and secure plugin development to high-performance Headless CMS configurations and deep performance engineering.
-                </p>
-                <p>
-                  My core competitive edge is a sophisticated, AI-first engineering philosophy. Rather than treating AI as a superficial coding assistant, I systematically integrate next-generation systems - including Claude Code, Cursor, and Google Antigravity - directly into the Software Development Life Cycle (SDLC), following a Spec-Driven Development (SDD) methodology: I define the technical specification first, then have AI implement and verify against it rather than improvise. I heavily leverage AI to automate complex development workflows and conduct deep technical research. By blending my practical architectural experience with AI-augmented development, I fast-track complex refactoring, automate regression checks, and drastically compress Time-to-Market-all while enforcing strict code quality, security, and architectural integrity.
-                </p>
-                <p>
-                  Beyond core development, I actively apply this AI-first framework to continuous learning and knowledge management. I utilize advanced tools like Gemini Notebook for synthesizing complex technical documentation and accelerating research. To anchor this knowledge, I build my own custom educational and utility applications. This continuous loop of automated research, rapid prototyping, and self-directed application development allows me to master new technologies at an unprecedented pace and consistently bring cutting-edge solutions to the teams I work with.
-                </p>
+                <p>{ab.bio.p1}</p>
+                <p>{ab.bio.p2}</p>
+                <p>{ab.bio.p3}</p>
               </div>
             </div>
 
@@ -218,7 +249,7 @@ const About = () => {
                   50+
                 </div>
                 <div className="text-slate-600 dark:text-slate-300">
-                  Projects Completed
+                  {ab.stats.projects}
                 </div>
               </div>
               <div className="text-center">
@@ -226,7 +257,7 @@ const About = () => {
                   5+
                 </div>
                 <div className="text-slate-600 dark:text-slate-300">
-                  Years Experience
+                  {ab.stats.experience}
                 </div>
               </div>
             </div>
@@ -247,10 +278,10 @@ const About = () => {
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-slate-900/90 via-slate-900/50 to-transparent p-6">
                   <div className="text-white">
                     <h4 className="font-bold text-lg mb-1">Artur Yusupov</h4>
-                    <p className="text-slate-200 text-sm mb-2">Web developer</p>
+                    <p className="text-slate-200 text-sm mb-2">{ab.photoCaption.role}</p>
                     <div className="flex items-center space-x-4 text-xs text-slate-300">
-                      <span>🌍 Spain</span>
-                      <span>💼 5+ Years Experience</span>
+                      <span>{ab.photoCaption.location}</span>
+                      <span>{ab.photoCaption.experience}</span>
                     </div>
                   </div>
                 </div>
@@ -306,7 +337,7 @@ const About = () => {
             {/* Education Timeline */}
             <div>
               <h4 className="text-xl font-bold text-slate-900 dark:text-white mb-8 text-center">
-                My Education
+                {ab.educationTitle}
               </h4>
               <div className="relative">
                 <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-purple-400 to-blue-400 dark:from-lime-400 dark:to-lime-600"></div>
@@ -350,7 +381,7 @@ const About = () => {
             {/* Work Experience Timeline */}
             <div>
               <h4 className="text-xl font-bold text-slate-900 dark:text-white mb-8 text-center">
-                My Work Experience
+                {ab.workTitle}
               </h4>
               <div className="relative">
                 <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-green-400 to-teal-400 dark:from-lime-400 dark:to-lime-600"></div>

@@ -4,8 +4,11 @@ const lellex: Project = {
   id: 12500,
   title: 'Lellex',
   description: 'Video Production.',
+  descriptionUa: 'Відеопродакшн.',
   fullDescription:
     'A unique custom WordPress theme built entirely from scratch based on a Figma design layout, using hand-coded HTML, CSS3, JavaScript, and PHP for a video production company. The site showcases the studio\'s portfolio, services, and reel in a visually bold format designed to attract creative clients seeking professional video production services.',
+  fullDescriptionUa:
+    'Унікальна кастомна тема WordPress, створена повністю з нуля на основі макета з Figma, з використанням написаних вручну HTML, CSS3, JavaScript та PHP для відеопродакшн-студії. Сайт презентує портфоліо, послуги та шоуріл студії у візуально сміливому форматі, розробленому для залучення креативних клієнтів, які шукають професійні послуги з виробництва відео.',
   detailHeroLine: 'CUSTOM WORDPRESS · VIDEO PRODUCTION · FIGMA-TO-CODE',
   detailMetrics: [
     { value: '90+', label: 'PageSpeed Score', accent: 'green' },

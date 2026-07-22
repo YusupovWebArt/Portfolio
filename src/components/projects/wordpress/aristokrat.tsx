@@ -5,8 +5,12 @@ const aristokrat: Project = {
   title: 'Aristocrat Hotel & Restaurant',
   description:
     'Ukrainian hotel-restaurant complex offers guests elegant accommodation in a beautifully restored historic building.',
+  descriptionUa:
+    'Український готельно-ресторанний комплекс пропонує гостям елегантне проживання в красиво відреставрованій історичній будівлі.',
   fullDescription:
     'A custom WordPress theme built from scratch for a Ukrainian hotel-restaurant complex, featuring an integrated room booking system and immersive 3D panorama virtual tours of the venue. Custom CSS3 and JavaScript deliver refined animations and a premium visual experience that reflects the historic elegance of the property.',
+  fullDescriptionUa:
+    'Кастомна тема WordPress, створена з нуля для українського готельно-ресторанного комплексу, з інтегрованою системою бронювання номерів та інтерактивними 3D-панорамними віртуальними турами. Кастомні CSS3 та JavaScript забезпечують вишукані анімації та преміальний візуальний вигляд, який відображає історичну елегантність об’єкта.',
   detailHeroLine: 'CUSTOM WORDPRESS · HOSPITALITY & HOTEL BOOKING',
   detailMetrics: [
     { value: '90+', label: 'PageSpeed Score', accent: 'green' },

@@ -61,7 +61,9 @@ export interface Project {
   id: number
   title: string
   description: string
+  descriptionUa?: string
   fullDescription: string
+  fullDescriptionUa?: string
   /** Строка над заголовком на детальной странице, напр. «FULLSTACK · HEADLESS CMS». */
   detailHeroLine?: string
   /** До четырёх метрик; для Next.js часто PageSpeed / load / Rendering / Auto-deploy, для WordPress — свои пары. */

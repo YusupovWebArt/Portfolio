@@ -4,8 +4,11 @@ const nokyc: Project = {
   id: 5800,
   title: 'Nokyc',
   description: 'Pure HTML/CSS/JS code.',
+  descriptionUa: 'Чистий код HTML/CSS/JS.',
   fullDescription:
     'A static informational website built with pure HTML5, CSS3, and vanilla JavaScript. The site delivers a clean, fast-loading multi-section layout without any frameworks or CMS, showcasing efficient hand-coded frontend development deployed on GitHub Pages.',
+  fullDescriptionUa:
+    'Статичний інформаційний вебсайт, створений на чистому HTML5, CSS3 та JavaScript. Сайт забезпечує чистий, швидкий багатосекційний макет без будь-яких фреймворків чи CMS, демонструючи ефективну ручну frontend-розробку, розміщену на GitHub Pages.',
   detailHeroLine: 'STATIC HTML · CSS3 · JAVASCRIPT',
   detailMetrics: [
     { value: 'HTML5', label: 'Semantic Markup', accent: 'green' },

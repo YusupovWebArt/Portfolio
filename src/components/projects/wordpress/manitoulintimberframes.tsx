@@ -5,8 +5,12 @@ const manitoulinTimberFrames: Project = {
   title: 'Manitoulin Timber Frames',
   description:
     'Custom builder based on Manitoulin Island, Ontario, specializing in handcrafted timber-frame homes and structures.',
+  descriptionUa:
+    'Будівельна компанія з острова Манітулін, Онтаріо, що спеціалізується на ручному будівництві фахверкових будинків та дерев\'яних конструкцій.',
   fullDescription:
     'Manitoulin Timber Frames required a full migration from an existing Wix site to a custom WordPress theme built from scratch using Elementor, preserving the original design style as requested by the client. The project included advanced CSS3 and JavaScript enhancements, a custom contact form, SEO optimization, and Google Maps integration for local discoverability.',
+  fullDescriptionUa:
+    'Для Manitoulin Timber Frames було виконано повну міграцію з існуючого сайту на Wix на індивідуальну тему WordPress, розроблену з нуля з використанням Elementor із збереженням оригінального стилю дизайну на вимогу клієнта. Проєкт увійшов розширені покращення на CSS3 та JavaScript, індивідуальну контактну форму, SEO-оптимізацію та інтеграцію з Google Maps API для підвищення локальної видимості.',
   detailHeroLine: 'CUSTOM WORDPRESS · TIMBER FRAME BUILDER',
   detailMetrics: [
     { value: '90+', label: 'PageSpeed Score', accent: 'green' },

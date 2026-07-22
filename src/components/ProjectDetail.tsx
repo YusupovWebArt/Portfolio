@@ -15,6 +15,7 @@ import {
   X,
 } from 'lucide-react'
 import { Project, TechnologyItem } from './projects/project-types'
+import { useLanguage } from '../contexts/LanguageContext'
 
 interface ProjectDetailProps {
   projectId: number
@@ -45,6 +46,8 @@ function metricValueClass(accent?: 'green' | 'darkGreen' | 'neutral') {
 }
 
 const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
+  const { lang, t } = useLanguage()
+  const pr = t.projects
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [screenshotModal, setScreenshotModal] = useState<{
     isOpen: boolean
@@ -160,7 +163,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
             className="px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
             type="button"
           >
-            Back to Featured Projects
+            {pr.backToProjects}
           </button>
         </div>
       </div>
@@ -228,7 +231,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
         className="mb-6 md:mb-8 flex w-full items-center justify-start gap-2 text-left text-sm sm:text-base font-semibold text-purple-600 dark:text-lime-400 hover:text-purple-700 dark:hover:text-lime-300 transition-colors"
       >
         <ArrowLeft className="h-5 w-5 shrink-0" aria-hidden />
-        <span>Back to Featured Projects</span>
+        <span>{pr.backToProjects}</span>
       </button>
 
       <section className="rounded-2xl bg-neutral-100 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700 p-6 md:p-8 lg:p-10">
@@ -271,7 +274,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
                   type="button"
                 >
                   <Eye className="w-4 h-4" aria-hidden />
-                  Zoom
+                  {pr.zoom}
                 </button>
               )}
             </div>
@@ -349,7 +352,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
               {project.title}
             </h1>
             <p className="text-slate-600 dark:text-slate-300 leading-relaxed text-base">
-              {project.fullDescription}
+              {lang === 'ua' && project.fullDescriptionUa ? project.fullDescriptionUa : project.fullDescription}
             </p>
 
             {metrics.length > 0 && (
@@ -380,7 +383,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
                   rel="noopener noreferrer"
                   className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-4 py-3 text-sm font-semibold hover:bg-slate-800 dark:hover:bg-slate-100 transition"
                 >
-                  View Live
+                  {pr.liveSite}
                   <ArrowUpRight className="w-4 h-4" aria-hidden />
                 </a>
               )}
@@ -401,7 +404,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
                   className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-purple-100 hover:bg-purple-200 dark:bg-lime-500/10 dark:hover:bg-lime-500/20 text-purple-700 dark:text-lime-400 px-4 py-3 text-sm font-semibold transition"
                   type="button"
                 >
-                  Full Page Layout
+                  {pr.fullPageLayout}
                   <Eye className="w-4 h-4" aria-hidden />
                 </button>
               )}
@@ -432,7 +435,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
                   : 'border-b-2 border-transparent text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white'
               }`}
             >
-              Technical Stack
+              {pr.tabs.stack}
             </button>
             <button
               type="button"
@@ -448,7 +451,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
                   : 'border-b-2 border-transparent text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white'
               }`}
             >
-              Key Features
+              {pr.tabs.features}
             </button>
             {hasArchitecture && (
               <button
@@ -465,7 +468,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
                     : 'border-b-2 border-transparent text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white'
                 }`}
               >
-                Architecture
+                {pr.tabs.architecture}
               </button>
             )}
             {hasCaseStudy && (
@@ -483,7 +486,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
                     : 'border-b-2 border-transparent text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white'
                 }`}
               >
-                Case Study
+                {pr.tabs.caseStudy}
               </button>
             )}
           </div>

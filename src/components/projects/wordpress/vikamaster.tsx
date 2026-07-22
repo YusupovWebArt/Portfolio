@@ -5,8 +5,12 @@ const vikaMaster: Project = {
   title: 'Vikamaster',
   description:
     'Handcrafted jewelry brand based in Ukraine, offering an array of beautifully artisan-made accessories.',
+  descriptionUa:
+    'Український бренд дизайнерських прикрас ручної роботи, що пропонує широкий асортимент вишуканих аксесуарів.',
   fullDescription:
     'Vikamaster is a Ukrainian artisan jewelry online store built on a fully custom WordPress theme with WooCommerce integration. The project included setting up a complete product catalogue with handcrafted jewelry items, custom CSS3 and JavaScript styling for a premium boutique aesthetic, and SEO optimization to drive organic traffic for unique jewelry searches in Ukraine.',
+  fullDescriptionUa:
+    'Vikamaster — це український інтернет-магазин авторських прикрас, побудований на повністю унікальній темі WordPress із підтримкою WooCommerce. Проєкт включав створення повного каталогу товарів ручної роботи, кастомні стилі на CSS3 та JavaScript для створення естетики преміального бутіка, а також SEO-оптимізацію для залучення органічного трафіку за запитами унікальних прикрас в Україні.',
   detailHeroLine: 'CUSTOM WORDPRESS · ARTISAN JEWELRY STORE',
   detailMetrics: [
     { value: '90+', label: 'PageSpeed Score', accent: 'green' },

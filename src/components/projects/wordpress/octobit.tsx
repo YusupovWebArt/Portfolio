@@ -5,8 +5,12 @@ const octobit: Project = {
   title: 'Octobit',
   description:
     'Octobit is a Ukrainian informational portal focused on cryptocurrency and blockchain topics. It’s aimed both at beginners and more experienced users.',
+  descriptionUa:
+    'Octobit — український інформаційний портал, присвячений криптовалютам та блокчейну, орієнтований як на початківців, так і на досвідчених користувачів.',
   fullDescription:
     'Development of a custom cryptocurrency and blockchain news portal for Octobit. Designed and developed a bespoke WordPress theme from scratch utilizing Advanced Custom Fields (ACF Pro) for article structures and dynamic sections. Integrates live exchange API endpoints to display real-time coin values, market indexes, and interactive tables. Fully optimized for high-volume content loading, implementing server-side transients, technical SEO, and multilingual UA/RU support.',
+  fullDescriptionUa:
+    'Розробка індивідуального інформаційного порталу про криптовалюти та блокчейн для Octobit. Створено унікальну тему WordPress з нуля з використанням Advanced Custom Fields (ACF Pro) для побудови структури статей та динамічних секцій. Портал інтегровано з API бирж для відображення цін на монети в режимі реального часу, ринкових індексів та інтерактивних таблиць. Проєкт повністю оптимізований для високих навантажень завдяки серверному кешуванню (transients), технічному SEO та підтримці декількох мов (UA/RU).',
   detailHeroLine: 'CUSTOM WORDPRESS · CRYPTO & BLOCKCHAIN MEDIA PORTAL',
   detailMetrics: [
     { value: '95+', label: 'PageSpeed', accent: 'green' },

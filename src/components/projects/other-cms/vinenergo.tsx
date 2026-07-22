@@ -5,8 +5,12 @@ const vinEnergo: Project = {
   title: 'VIN Energo',
   description:
     'Ukrainian company specializing in the production and sale of Pini Kay wood and charcoal briquettes, as well as the manufacture of equipment for briquette production.',
+  descriptionUa:
+    'Українська компанія, що спеціалізується на виробництві та продажу паливних та вугільних брикетів Pini Kay, а також виготовленні обладнання для їх виробництва.',
   fullDescription:
     'A Joomla-powered corporate website for VIN Energo, a Ukrainian manufacturer and seller of Pini Kay wood and charcoal briquettes. The project delivered a fully custom Joomla template, VirtueMart eCommerce integration for the product catalog, content population, and SEO optimization, enabling the company to present its products and services professionally online.',
+  fullDescriptionUa:
+    'Корпоративний вебсайт на Joomla для VIN Energo, українського виробника та продавця паливних та вугільних брикетів Pini Kay. Проєкт забезпечив розробку кастомного шаблону Joomla, інтеграцію VirtueMart eCommerce для каталогу продукції, наповнення контентом та SEO-оптимізацію для професійної презентації компанії в мережі.',
   detailHeroLine: 'JOOMLA · ECOMMERCE · MANUFACTURING',
   detailMetrics: [
     { value: 'Joomla', label: 'CMS Platform', accent: 'green' },

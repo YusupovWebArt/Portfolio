@@ -5,8 +5,12 @@ const organicBed: Project = {
   title: 'Organic Bed',
   description:
     'RTL Israeli website offering a range of eco-friendly, organic bedding products.',
+  descriptionUa:
+    'Ізраїльський сайт із підтримкою RTL, що пропонує широкий асортимент екологічних органічних постільних речей.',
   fullDescription:
     'Organic Bed is an Israeli e-commerce store built on a custom WordPress theme from scratch with full Right-to-Left (RTL) Hebrew language support. WooCommerce powers the product catalogue and checkout, while Advanced Custom Fields enable flexible content management. The site features responsive design, SEO optimization, and WebP images for high performance in the Israeli market.',
+  fullDescriptionUa:
+    'Organic Bed — це ізраїльський інтернет-магазин, розроблений на унікальній темі WordPress з нуля з повною підтримкою івриту та напрямку письма справа наліво (RTL). WooCommerce відповідає за каталог товарів і оформлення замовлень, тоді як Advanced Custom Fields забезпечує гнучке управління контентом. Сайт підтримує адаптивний дизайн, SEO-оптимізацію та формат зображень WebP для високої швидкодії на ринку Ізраїлю.',
   detailHeroLine: 'CUSTOM WORDPRESS · RTL WOOCOMMERCE STORE',
   detailMetrics: [
     { value: '90+', label: 'PageSpeed Score', accent: 'green' },

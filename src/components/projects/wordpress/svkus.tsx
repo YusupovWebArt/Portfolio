@@ -5,8 +5,12 @@ const svkus: Project = {
   title: 'Svkus',
   description:
     'Syndicate of Taste is the online portal for a dynamic and creative group of restaurants in Ukraine.',
+  descriptionUa:
+    '«Синдикат Смаку» — це онлайн-портал динамічної та креативної мережі ресторанів в Україні.',
   fullDescription:
     'Svkus is the online portal for a Ukrainian restaurant group, built on a custom WordPress theme from scratch with e-commerce functionality for table reservations and merchandise. The project included a full content setup with menus, event listings, and restaurant profiles, styled with custom CSS3 and JavaScript to capture the brand\'s creative culinary identity.',
+  fullDescriptionUa:
+    'Svkus — це онлайн-портал для української ресторанної групи, побудований на унікальній темі WordPress з нуля з e-commerce функціоналом для бронювання столиків та купівлі фірмової продукції. Проєкт увійшов повне наповнення контентом із меню, анонсами подій та профілями ресторанів, із кастомними стилями CSS3 та JavaScript для передачі унікальної кулінарної айдентики бренду.',
   detailHeroLine: 'CUSTOM WORDPRESS · RESTAURANT GROUP PORTAL',
   detailMetrics: [
     { value: '90+', label: 'PageSpeed Score', accent: 'green' },

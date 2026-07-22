@@ -5,8 +5,12 @@ const umanTravel: Project = {
   title: 'Uman travel',
   description:
     'Historical and cultural tourism information center based in Uman, Ukraine.',
+  descriptionUa:
+    'Туристично-інформаційний центр історико-культурного туризму в Умані, Україна.',
   fullDescription:
     'A tourism information website for Uman Travel, a cultural and historical tourism center based in Uman, Ukraine. Built on Joomla CMS with a fully custom template, the site presents travel destinations, tour packages, and cultural points of interest, supported by Google Maps integration and SEO optimization for local and regional search visibility.',
+  fullDescriptionUa:
+    'Туристично-інформаційний вебсайт для Uman Travel, центру культурного та історичного туризму в Умані, Україна. Створений на Joomla CMS з унікальним кастомним шаблоном, сайт презентує туристичні локації, екскурсійні пакети та культурні пам’ятки за підтримки інтеграції Google Maps та SEO-оптимізації для локального пошуку.',
   detailHeroLine: 'JOOMLA · CUSTOM TEMPLATE · TRAVEL & TOURISM',
   detailMetrics: [
     { value: 'Joomla', label: 'CMS Platform', accent: 'green' },

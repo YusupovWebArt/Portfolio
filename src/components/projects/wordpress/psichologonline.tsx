@@ -4,8 +4,11 @@ const psichologonline: Project = {
   id: 10810,
   title: 'Psichologonline',
   description: 'Elena Grechka is a qualified Ukrainian psychologist.',
+  descriptionUa: 'Олена Гречка — кваліфікований український психолог.',
   fullDescription:
     'Psichologonline is a personal professional website for Ukrainian psychologist Elena Grechka, built on a custom WordPress theme from scratch using Elementor with advanced CSS3 and JavaScript enhancements. The site conveys trust and approachability, featuring service descriptions, an online booking inquiry form, and SEO optimization to attract Ukrainian-language counselling clients.',
+  fullDescriptionUa:
+    'Psichologonline — це персональний професійний вебсайт українського психолога Олени Гречки, створений на унікальній темі WordPress з нуля з використанням Elementor та розширеними допрацюваннями на CSS3 і JavaScript. Сайт викликає довіру, містить описи послуг, форму запису на консультацію та розширену SEO-оптимізацію для залучення україномовних клієнтів.',
   detailHeroLine: 'CUSTOM WORDPRESS · PSYCHOLOGY PRACTICE',
   detailMetrics: [
     { value: '90+', label: 'PageSpeed Score', accent: 'green' },

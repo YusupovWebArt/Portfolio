@@ -4,8 +4,11 @@ const cartooniko: Project = {
   id: 6750,
   title: 'Cartooniko',
   description: 'Custom portraits in cartoon style.',
+  descriptionUa: 'Персоналізовані портрети в мультяшному стилі.',
   fullDescription:
     'Cartooniko is a creative Shopify store offering custom cartoon-style portrait commissions. The store was fully set up with a branded Liquid theme, a product catalogue for portrait packages, and integrated apps to handle orders and customer communication.',
+  fullDescriptionUa:
+    'Cartooniko — це креативний інтернет-магазин на базі Shopify, який пропонує створення кастомних портретів у мультяшному стилі на замовлення. Магазин повністю налаштовано з фірмовою темою Liquid, каталогом портретних пакетів та інтегрованими додатками для обробки замовлень і комунікації з клієнтами.',
   detailHeroLine: 'SHOPIFY · CUSTOM ART STORE',
   detailMetrics: [
     { value: '90+', label: 'PageSpeed Score', accent: 'green' },

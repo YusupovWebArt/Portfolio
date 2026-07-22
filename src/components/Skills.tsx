@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useLanguage } from '../contexts/LanguageContext'
 import {
   Layout,
   Palette,
@@ -13,6 +14,8 @@ import {
 import { SiReact, SiWordpress, SiGoogleanalytics } from 'react-icons/si'
 
 const Skills = () => {
+  const { t } = useLanguage()
+  const sk = t.skills
   const [activeTab, setActiveTab] = useState(0)
   const [expandedTabs, setExpandedTabs] = useState<Record<number, boolean>>({})
 
@@ -48,7 +51,7 @@ const Skills = () => {
       icon: <SiWordpress className="w-6 h-6" />,
       color: 'from-blue-400 to-blue-600',
       baseColor: 'blue',
-      description: 'Custom Themes & Plugins. Ecommerce.',
+      description: sk.categories.wp.description,
       technologies: [
         'Hosting & Google App Engine (GAE) management',
         'WordPress (Custom Themes & Plugins)',
@@ -79,26 +82,10 @@ const Skills = () => {
         'Accessibility Standards (WCAG Compliance)',
       ],
       skillDetails: [
-        {
-          name: 'WordPress Development',
-          description:
-            'Custom theme development, plugin architecture, WordPress REST API, custom post types, and advanced customizer implementations.',
-        },
-        {
-          name: 'PHP & MySQL',
-          description:
-            'Object-oriented PHP programming, database design, query optimization, and secure coding practices for robust backend systems.',
-        },
-        {
-          name: 'API Development',
-          description:
-            'RESTful API design, authentication systems, data validation, and integration with third-party services and databases.',
-        },
-        {
-          name: 'Server Management',
-          description:
-            'Linux server administration, deployment strategies, performance monitoring, and security best practices for web applications.',
-        },
+        { name: sk.categories.wp.skillDetails[0].name, description: sk.categories.wp.skillDetails[0].description },
+        { name: sk.categories.wp.skillDetails[1].name, description: sk.categories.wp.skillDetails[1].description },
+        { name: sk.categories.wp.skillDetails[2].name, description: sk.categories.wp.skillDetails[2].description },
+        { name: sk.categories.wp.skillDetails[3].name, description: sk.categories.wp.skillDetails[3].description },
       ],
     },
     {
@@ -107,7 +94,7 @@ const Skills = () => {
       color: 'from-sky-300 to-sky-500',
       baseColor: 'sky',
       description:
-        'Building fast, scalable web applications using React, Next.js, TypeScript, and Tailwind CSS — combining modern tools for clean code, optimized performance, and responsive design.',
+        sk.categories.app.description,
       technologies: [
         'React (Hooks, Context, Redux)',
         'Next.js (App Router, Server Components)',
@@ -131,26 +118,10 @@ const Skills = () => {
         'Figma to Code (UI Handoff & Prototyping)',
       ],
       skillDetails: [
-        {
-          name: 'React Ecosystem',
-          description:
-            'Deep expertise in React hooks, context API, Redux for state management, and modern React patterns for building scalable applications.',
-        },
-        {
-          name: 'TypeScript Mastery',
-          description:
-            'Strong typing, interface design, generic programming, and leveraging TypeScript for better code quality and developer experience.',
-        },
-        {
-          name: 'Modern CSS',
-          description:
-            'Advanced CSS3 features, animations, Grid/Flexbox layouts, custom properties, and CSS-in-JS solutions for dynamic styling.',
-        },
-        {
-          name: 'Performance Optimization',
-          description:
-            'Code splitting, lazy loading, memoization techniques, and bundle optimization for fast-loading React applications.',
-        },
+        { name: sk.categories.app.skillDetails[0].name, description: sk.categories.app.skillDetails[0].description },
+        { name: sk.categories.app.skillDetails[1].name, description: sk.categories.app.skillDetails[1].description },
+        { name: sk.categories.app.skillDetails[2].name, description: sk.categories.app.skillDetails[2].description },
+        { name: sk.categories.app.skillDetails[3].name, description: sk.categories.app.skillDetails[3].description },
       ],
     },
     {
@@ -159,7 +130,7 @@ const Skills = () => {
       color: 'from-violet-400 to-violet-600',
       baseColor: 'violet',
       description:
-        'Modern AI tools and automation for enhanced development productivity',
+        sk.categories.ai.description,
       technologies: [
         'Claude Code & Google Antigravity',
         'Cursor AI IDE & Composer Workspaces',
@@ -173,26 +144,10 @@ const Skills = () => {
         'Figma AI Prototyping & Layout Synthesis',
       ],
       skillDetails: [
-        {
-          name: 'AI-Augmented Engineering (SDD)',
-          description:
-            'Integrating next-generation systems (Claude Code, Cursor, Google Antigravity) directly into the SDLC. Following a strict Spec-Driven Development (SDD) methodology: defining technical specifications first, then having AI write and verify code against them instead of improvising. Achieving up to 3x engineering velocity on routine and layout tasks.',
-        },
-        {
-          name: 'Context & MCP Engineering',
-          description:
-            'Formulating strict workspace rules (AGENTS.md) and reference specifications (DESIGN_SYSTEM.md, SECURITY.md, ARCHITECTURE.md). Leveraging Model Context Protocol (MCP) and custom instructions to hook AI tools into local environments, search utilities, and filesystem directories to prevent session drift and maintain architectural integrity.',
-        },
-        {
-          name: 'Multi-File Agentic Execution',
-          description:
-            'Running concurrent, sandboxed agents to execute complex feature updates across multiple files simultaneously. Maintaining a strong "human-in-the-loop" structure where the engineer defines system architecture, verifies criteria, and reviews agent outputs, while the agent handles rapid syntax execution.',
-        },
-        {
-          name: 'Hybrid Verification & Safety',
-          description:
-            'Combining strict static analysis (npx tsc --noEmit), automated lints (npm run lint), and characterization tests to capture baseline behaviors and guarantee regression safety during upgrades. Ensuring that all generated code passes rigorous compiler audits before staging.',
-        },
+        { name: sk.categories.ai.skillDetails[0].name, description: sk.categories.ai.skillDetails[0].description },
+        { name: sk.categories.ai.skillDetails[1].name, description: sk.categories.ai.skillDetails[1].description },
+        { name: sk.categories.ai.skillDetails[2].name, description: sk.categories.ai.skillDetails[2].description },
+        { name: sk.categories.ai.skillDetails[3].name, description: sk.categories.ai.skillDetails[3].description },
       ],
     },
     {
@@ -200,7 +155,7 @@ const Skills = () => {
       icon: <SiGoogleanalytics className="w-6 h-6" />,
       color: 'from-green-400 to-green-600',
       baseColor: 'green',
-      description: 'Search engine optimization and web performance enhancement',
+      description: sk.categories.seo.description,
       technologies: [
         'Technical SEO Auditing',
         'Core Web Vitals Optimization',
@@ -212,26 +167,10 @@ const Skills = () => {
         'Mobile-First Indexing',
       ],
       skillDetails: [
-        {
-          name: 'Technical SEO',
-          description:
-            'Site structure optimization, crawlability improvements, meta tag optimization, and technical audits for better search visibility.',
-        },
-        {
-          name: 'Performance Optimization',
-          description:
-            'Core Web Vitals improvement, image optimization, lazy loading, caching strategies, and resource optimization for faster load times.',
-        },
-        {
-          name: 'Analytics & Tracking',
-          description:
-            'Google Analytics setup, conversion tracking, user behavior analysis, and data-driven optimization strategies.',
-        },
-        {
-          name: 'Schema Implementation',
-          description:
-            'Structured data markup, rich snippets optimization, and semantic HTML for enhanced search engine understanding.',
-        },
+        { name: sk.categories.seo.skillDetails[0].name, description: sk.categories.seo.skillDetails[0].description },
+        { name: sk.categories.seo.skillDetails[1].name, description: sk.categories.seo.skillDetails[1].description },
+        { name: sk.categories.seo.skillDetails[2].name, description: sk.categories.seo.skillDetails[2].description },
+        { name: sk.categories.seo.skillDetails[3].name, description: sk.categories.seo.skillDetails[3].description },
       ],
     },
     {
@@ -239,7 +178,7 @@ const Skills = () => {
       icon: <Layout className="w-6 h-6" />,
       color: 'from-indigo-400 to-indigo-600',
       baseColor: 'indigo',
-      description: 'Modern layout systems and responsive design architecture',
+      description: sk.categories.layout.description,
       technologies: [
         'CSS Grid & Flexbox Mastery',
         'Mobile-First Design Approach',
@@ -251,26 +190,10 @@ const Skills = () => {
         'Accessibility Standards (WCAG)',
       ],
       skillDetails: [
-        {
-          name: 'CSS Grid & Flexbox',
-          description:
-            'Advanced layout techniques, complex grid systems, flexible layouts, and modern CSS layout methods for responsive design.',
-        },
-        {
-          name: 'Responsive Design',
-          description:
-            'Mobile-first approach, breakpoint strategies, fluid typography, and adaptive layouts that work across all device sizes.',
-        },
-        {
-          name: 'Layout Architecture',
-          description:
-            'Scalable CSS architecture, component-based styling, design system implementation, and maintainable code organization.',
-        },
-        {
-          name: 'Accessibility',
-          description:
-            'WCAG compliance, semantic HTML, keyboard navigation, screen reader optimization, and inclusive design practices.',
-        },
+        { name: sk.categories.layout.skillDetails[0].name, description: sk.categories.layout.skillDetails[0].description },
+        { name: sk.categories.layout.skillDetails[1].name, description: sk.categories.layout.skillDetails[1].description },
+        { name: sk.categories.layout.skillDetails[2].name, description: sk.categories.layout.skillDetails[2].description },
+        { name: sk.categories.layout.skillDetails[3].name, description: sk.categories.layout.skillDetails[3].description },
       ],
     },
     {
@@ -278,7 +201,7 @@ const Skills = () => {
       icon: <Palette className="w-6 h-6" />,
       color: 'from-pink-400 to-pink-600',
       baseColor: 'pink',
-      description: 'Visual design principles and user experience optimization',
+      description: sk.categories.design.description,
       technologies: [
         'Design Systems & Style Guides',
         'Typography & Font Pairing',
@@ -290,26 +213,10 @@ const Skills = () => {
         'Brand Identity Implementation',
       ],
       skillDetails: [
-        {
-          name: 'Visual Design Principles',
-          description:
-            'Understanding of balance, contrast, hierarchy, and composition to create visually appealing and effective user interfaces.',
-        },
-        {
-          name: 'Typography & Color',
-          description:
-            'Font selection, pairing strategies, color theory application, accessibility considerations, and creating cohesive visual systems.',
-        },
-        {
-          name: 'UI/UX Patterns',
-          description:
-            'Common interface patterns, user flow optimization, interaction design, and creating intuitive user experiences.',
-        },
-        {
-          name: 'Design Systems',
-          description:
-            'Creating and maintaining design systems, component libraries, style guides, and ensuring design consistency across projects.',
-        },
+        { name: sk.categories.design.skillDetails[0].name, description: sk.categories.design.skillDetails[0].description },
+        { name: sk.categories.design.skillDetails[1].name, description: sk.categories.design.skillDetails[1].description },
+        { name: sk.categories.design.skillDetails[2].name, description: sk.categories.design.skillDetails[2].description },
+        { name: sk.categories.design.skillDetails[3].name, description: sk.categories.design.skillDetails[3].description },
       ],
     },
   ]
@@ -344,14 +251,10 @@ const Skills = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white mb-6">
-            T-Shaped Specialist
+            {sk.sectionTitle}
           </h2>
           <p className="text-lg text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
-            Skills & Expertise a multi-disciplinary skill set focused on
-            building high-performance web ecosystems. From Full-stack WordPress
-            and React/Next.js engineering to AI-augmented workflows, I combine
-            clean architecture with SEO-driven strategies to deliver scalable,
-            future-proof digital solutions.
+            {sk.sectionDescription}
           </p>
         </div>
 
@@ -463,7 +366,7 @@ const Skills = () => {
                     {/* Верхняя секция: Key Skills & Expertise в виде сетки из 2 колонок */}
                     <div>
                       <h4 className="text-xs font-semibold tracking-wider text-slate-400 dark:text-slate-500 uppercase mb-4">
-                        Key Skills & Expertise
+                        {sk.keySkillsLabel}
                       </h4>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         {category.skillDetails.map((detail, detailIndex) => (
@@ -488,7 +391,7 @@ const Skills = () => {
                     {/* Нижня секция: Technologies & Knowledge во всю ширину */}
                     <div>
                       <h4 className="text-xs font-semibold tracking-wider text-slate-400 dark:text-slate-500 uppercase mb-4">
-                        Technologies & Knowledge
+                        {sk.technologiesLabel}
                       </h4>
                       <div className="flex flex-wrap gap-2">
                         {(expandedTabs[index] ? category.technologies : category.technologies.slice(0, 10)).map((tech, techIndex) => (
@@ -510,8 +413,8 @@ const Skills = () => {
                           >
                             <span>
                               {expandedTabs[index]
-                                ? 'Show less'
-                                : `+ ${category.technologies.length - 10} more`}
+                                ? sk.showLess
+                                : sk.showMore.replace('{n}', String(category.technologies.length - 10))}
                             </span>
                           </button>
                         )}
@@ -530,10 +433,10 @@ const Skills = () => {
         <div className="mt-20">
           <div className="text-center mb-10">
             <span className="text-xs font-semibold tracking-wider text-purple-600 dark:text-lime-400 uppercase">
-              Work Environment
+              {sk.workTools.sectionLabel}
             </span>
             <h3 className="text-2xl lg:text-3xl font-bold text-slate-900 dark:text-white mt-1">
-              Work Organization Tools
+              {sk.workTools.sectionTitle}
             </h3>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -611,63 +514,57 @@ const Skills = () => {
         <div className="mt-20">
           <div className="text-center mb-12">
             <span className="text-xs font-semibold tracking-wider text-purple-600 dark:text-lime-400 uppercase">
-              Personal Attributes
+              {sk.softSkills.sectionLabel}
             </span>
             <h3 className="text-3xl lg:text-4xl font-bold text-slate-900 dark:text-white mt-2">
-              Soft Skills
+              {sk.softSkills.sectionTitle}
             </h3>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
               {
-                name: 'Problem Solving',
-                description:
-                  'Analytical thinking and creative solutions for complex technical challenges',
+                name: sk.softSkills.items[0].name,
+                description: sk.softSkills.items[0].description,
                 icon: <Target className="w-6 h-6" />,
                 gradient: 'from-purple-500 to-indigo-600',
                 iconColor: 'text-purple-600 dark:text-purple-400',
                 hoverBorder: 'group-hover:border-purple-500/50',
               },
               {
-                name: 'Communication',
-                description:
-                  'Clear technical communication with clients, teams, and stakeholders',
+                name: sk.softSkills.items[1].name,
+                description: sk.softSkills.items[1].description,
                 icon: <MessageSquare className="w-6 h-6" />,
                 gradient: 'from-blue-500 to-cyan-600',
                 iconColor: 'text-blue-600 dark:text-blue-400',
                 hoverBorder: 'group-hover:border-blue-500/50',
               },
               {
-                name: 'Project Management',
-                description:
-                  'Agile methodologies, timeline management, and deliverable coordination',
+                name: sk.softSkills.items[2].name,
+                description: sk.softSkills.items[2].description,
                 icon: <ClipboardCheck className="w-6 h-6" />,
                 gradient: 'from-green-500 to-emerald-600',
                 iconColor: 'text-green-600 dark:text-green-400',
                 hoverBorder: 'group-hover:border-green-500/50',
               },
               {
-                name: 'Adaptability',
-                description:
-                  'Quick learning of new technologies and adapting to changing requirements',
+                name: sk.softSkills.items[3].name,
+                description: sk.softSkills.items[3].description,
                 icon: <TrendingUp className="w-6 h-6" />,
                 gradient: 'from-orange-500 to-red-600',
                 iconColor: 'text-orange-600 dark:text-orange-400',
                 hoverBorder: 'group-hover:border-orange-500/50',
               },
               {
-                name: 'Client Relations',
-                description:
-                  'Building trust, managing expectations, and delivering exceptional service',
+                name: sk.softSkills.items[4].name,
+                description: sk.softSkills.items[4].description,
                 icon: <Handshake className="w-6 h-6" />,
                 gradient: 'from-pink-500 to-rose-600',
                 iconColor: 'text-pink-600 dark:text-pink-400',
                 hoverBorder: 'group-hover:border-pink-500/50',
               },
               {
-                name: 'Team Collaboration',
-                description:
-                  'Cross-functional teamwork, mentoring, and knowledge sharing',
+                name: sk.softSkills.items[5].name,
+                description: sk.softSkills.items[5].description,
                 icon: <Users className="w-6 h-6" />,
                 gradient: 'from-teal-500 to-cyan-600',
                 iconColor: 'text-teal-600 dark:text-teal-400',

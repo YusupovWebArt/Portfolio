@@ -4,8 +4,11 @@ const fluffyNinja: Project = {
   id: 10910,
   title: 'Fluffy Ninja',
   description: 'Creative cloth store. France',
+  descriptionUa: 'Магазин креативного одягу. Франція',
   fullDescription:
     'A custom WooCommerce store built on a hand-coded WordPress theme for a French creative clothing brand. Custom CSS3, JavaScript, and PHP deliver a playful and unique visual identity, while WooCommerce provides the full e-commerce infrastructure — product catalog, cart, and checkout. Full SEO optimization and Schema.org markup support organic search visibility in the French fashion market.',
+  fullDescriptionUa:
+    'Кастомний магазин WooCommerce, побудований на написаній вручну темі WordPress для французького бренду креативного одягу. Кастомні CSS3, JavaScript та PHP забезпечують грайливу й унікальну візуальну айдентику, тоді як WooCommerce надає повну e-commerce інфраструктуру — каталог товарів, кошик та оформлення замовлення. Повна SEO-оптимізація та мікророзмітка Schema.org підтримують видимість в органічному пошуку на французькому ринку моди.',
   detailHeroLine: 'CUSTOM WORDPRESS · CREATIVE FASHION · E-COMMERCE · FRANCE',
   detailMetrics: [
     { value: '90+', label: 'PageSpeed Score', accent: 'green' },

@@ -5,8 +5,12 @@ const awsSecurityService: Project = {
   title: 'AWS Security Services',
   description:
     'Specialized platform focused on securing cloud infrastructures built on Amazon Web Services (AWS). The site provides end-to-end solutions for compliance, threat detection, monitoring, and proactive defense to help businesses safeguard their data and operations.',
+  descriptionUa:
+    'Спеціалізована платформа, зосереджена на захисті хмарних інфраструктур на базі Amazon Web Services (AWS). Сайт надає комплексні рішення для відповідності стандартам (compliance), виявлення загроз, моніторингу та проактивного захисту, допомагаючи бізнесу убезпечити свої дані й операції.',
   fullDescription:
     'A fully custom-coded WordPress theme developed without a page builder, using Advanced Custom Fields (ACF) for structured content management, custom CSS3 and JavaScript for a technical, trustworthy aesthetic, and AI-generated imagery to visualize cybersecurity concepts. The platform positions AWS security services with clear solution pages, compliance guidance, and proactive threat monitoring offerings.',
+  fullDescriptionUa:
+    'Повністю кастомна тема WordPress, розроблена без пейдж-білдерів, із використанням Advanced Custom Fields (ACF) для структурованого управління контентом, кастомними CSS3 та JavaScript для технічної та надійної естетики, а також AI-згенерованими зображеннями для візуалізації концепцій кібербезпеки. Платформа позиціонує послуги безпеки AWS завдяки зрозумілим сторінкам рішень, рекомендаціям із відповідності стандартам та пропозиціям проактивного моніторингу загроз.',
   detailHeroLine: 'CUSTOM WORDPRESS · AWS CLOUD · SECURITY SERVICES',
   detailMetrics: [
     { value: '90+', label: 'PageSpeed Score', accent: 'green' },

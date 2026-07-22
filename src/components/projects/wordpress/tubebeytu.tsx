@@ -5,8 +5,12 @@ const tuBebeYTu: Project = {
   title: 'Tu bebe y tu',
   description:
     'Spanish online store specializing in products for babies and mothers.',
+  descriptionUa:
+    'Іспанський інтернет-магазин, що спеціалізується на товарах для немовлят та матерів.',
   fullDescription:
     'Tu bebe y tu is a Spanish WooCommerce online store for baby and mother products, built on a custom WordPress theme with a fully populated product catalogue. The project included adding all product listings with descriptions and images, responsive design, SEO optimization for the Spanish market, and Google Maps integration for store location visibility.',
+  fullDescriptionUa:
+    'Tu bebe y tu — це іспанський інтернет-магазин на WooCommerce з товарами для немовлят і матерів, побудований на унікальній темі WordPress із повністю наповненим каталогом. Проєкт передбачав додавання всіх товарних позицій з описами та зображеннями, адаптивний дизайн, SEO-оптимізацію під іспанський ринок та інтеграцію з Google Maps API для відображення розташування магазину.',
   detailHeroLine: 'CUSTOM WORDPRESS · BABY & MOTHER STORE',
   detailMetrics: [
     { value: '90+', label: 'PageSpeed Score', accent: 'green' },

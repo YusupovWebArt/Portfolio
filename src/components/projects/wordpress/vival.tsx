@@ -5,8 +5,12 @@ const vival: Project = {
   title: 'Vival',
   description:
     'Ukrainian online store specializing in premium construction materials, particularly for roofing and industrial flooring.',
+  descriptionUa:
+    'Український інтернет-магазин, що спеціалізується на преміальних будівельних матеріалах, зокрема для покрівлі та промислових підлог.',
   fullDescription:
     'Vival is a Ukrainian WooCommerce online store for premium construction materials including roofing and industrial flooring products. Built on a fully custom WordPress theme from scratch, the project included a complete product catalogue setup, responsive design, and SEO optimization with Schema.org markup to drive organic traffic for construction material searches across Ukraine.',
+  fullDescriptionUa:
+    'Vival — це український інтернет-магазин на базі WooCommerce із преміальними будівельними матеріалами, включаючи товари для покрівлі та промислових підлог. Розроблений на повністю унікальній темі WordPress з нуля, проєкт охоплював повне налаштування каталогу товарів, адаптивний дизайн та SEO-оптимізацію з розміткою Schema.org для залучення органічного трафіку на ринку України.',
   detailHeroLine: 'CUSTOM WORDPRESS · CONSTRUCTION MATERIALS STORE',
   detailMetrics: [
     { value: '90+', label: 'PageSpeed Score', accent: 'green' },

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { ThemeProvider } from './contexts/ThemeContext'
+import { LanguageProvider } from './contexts/LanguageContext'
 import Header from './components/Header'
 import Hero from './components/Hero'
 import AiWorkflow from './components/AiWorkflow'
@@ -30,30 +31,32 @@ function App() {
   }
 
   return (
-    <ThemeProvider>
-      <div className="min-h-screen bg-white dark:bg-slate-900 transition-colors duration-300">
-        <Header />
-        {selectedProject !== null ? (
-          <ProjectDetail
-            key={selectedProject}
-            projectId={selectedProject}
-            onBack={handleBackToProjects}
-          />
-        ) : (
-          <main>
-            <Hero />
-            <About />
-            <AiWorkflow />
-            <Projects onProjectSelect={handleProjectSelect} />
-            <Skills />
-            <WhyWorkWithMe />
-            <Contact />
-          </main>
-        )}
-        <Footer />
-        {selectedProject === null && <ScrollToTopButton />}
-      </div>
-    </ThemeProvider>
+    <LanguageProvider>
+      <ThemeProvider>
+        <div className="min-h-screen bg-white dark:bg-slate-900 transition-colors duration-300">
+          <Header />
+          {selectedProject !== null ? (
+            <ProjectDetail
+              key={selectedProject}
+              projectId={selectedProject}
+              onBack={handleBackToProjects}
+            />
+          ) : (
+            <main>
+              <Hero />
+              <About />
+              <AiWorkflow />
+              <Projects onProjectSelect={handleProjectSelect} />
+              <Skills />
+              <WhyWorkWithMe />
+              <Contact />
+            </main>
+          )}
+          <Footer />
+          {selectedProject === null && <ScrollToTopButton />}
+        </div>
+      </ThemeProvider>
+    </LanguageProvider>
   )
 }
 
