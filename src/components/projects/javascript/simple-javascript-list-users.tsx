@@ -5,10 +5,13 @@ const simpleJavascriptListUsers: Project = {
   title: 'Javascript Simple List of Users',
   description: 'Pet project for learning and practicing JavaScript.',
   descriptionUa: 'Пет-проєкт для вивчення та практики JavaScript.',
+  descriptionEs: 'Proyecto personal para el aprendizaje y la práctica de JavaScript.',
   fullDescription:
     'A lightweight user list application built with vanilla JavaScript, HTML5, and CSS3. The app fetches and renders a list of users, demonstrating core JavaScript skills including array iteration, DOM manipulation, and dynamic HTML generation from data objects.',
   fullDescriptionUa:
     'Легкий застосунок списку користувачів, створений на чистому JavaScript, HTML5 та CSS3. Застосунок отримує та рендерить список користувачів, демонструючи ключові навички JavaScript, включаючи ітерацію масивів, маніпуляції з DOM та динамічну генерацію HTML з об’єктів даних.',
+  fullDescriptionEs:
+    'Una aplicación ligera de lista de usuarios construida con JavaScript puro, HTML5 y CSS3. La app obtiene y renderiza una lista de usuarios, demostrando habilidades esenciales de JavaScript como la iteración de arrays, la manipulación del DOM y la generación dinámica de HTML a partir de objetos de datos.',
   detailHeroLine: 'VANILLA JS · HTML5 · DEMO APP',
   detailMetrics: [
     { value: 'Vanilla JS', label: 'No Framework', accent: 'green' },

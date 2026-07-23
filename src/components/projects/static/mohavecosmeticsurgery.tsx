@@ -7,10 +7,14 @@ const mohaveCosmeticSurgery: Project = {
     'Las Vegas-based practice led by board-certified plastic surgeon Dr. Bryson Richards.',
   descriptionUa:
     'Клініка в Лас-Вегасі під керівництвом сертифікованого пластичного хірурга доктора Брайсона Річардса.',
+  descriptionEs:
+    'Clínica en Las Vegas dirigida por el cirujano plástico certificado Dr. Bryson Richards.',
   fullDescription:
     'A professional website for Mohave Cosmetic Surgery, a Las Vegas-based plastic surgery practice led by board-certified surgeon Dr. Bryson Richards. Built with semantic HTML5, CSS3, and vanilla JavaScript, the site presents surgical procedures, patient information, and contact details in a clean, trustworthy design optimized for medical lead generation.',
   fullDescriptionUa:
     'Професійний вебсайт для Mohave Cosmetic Surgery, клініки пластичної хірургії в Лас-Вегасі під керівництвом сертифікованого хірурга доктора Брайсона Річардса. Створений за допомогою семантичного HTML5, CSS3 та чистого JavaScript, сайт представляє хірургічні процедури, інформацію для пацієнтів та контактні дані у чистому, надійному дизайні, оптимізованому для залучення медичних лідів.',
+  fullDescriptionEs:
+    'Sitio web profesional para Mohave Cosmetic Surgery, una clínica de cirugía plástica en Las Vegas dirigida por el cirujano certificado Dr. Bryson Richards. Desarrollado con HTML5 semántico, CSS3 y JavaScript puro, el sitio presenta los procedimientos quirúrgicos, información para pacientes y datos de contacto en un diseño limpio y de confianza optimizado para la captación de leads médicos.',
   detailHeroLine: 'STATIC HTML · MEDICAL PRACTICE · LAS VEGAS',
   detailMetrics: [
     { value: 'HTML5', label: 'Semantic Markup', accent: 'green' },

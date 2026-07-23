@@ -7,10 +7,14 @@ const technicalsupport: Project = {
     'U.S.-based web development and digital marketing agency founded in 2015.',
   descriptionUa:
     'Американська агенція з веб-розробки та цифрового маркетингу, заснована у 2015 році.',
+  descriptionEs:
+    'Agencia estadounidense de desarrollo web y marketing digital fundada en 2015.',
   fullDescription:
     'TST (Technical Support Team) is a US-based web development and digital marketing agency founded in 2015. The agency website was built on Wix with Velo for pixel-perfect design control, featuring seamless app integrations, lead capture contact forms, SEO configuration, and site analytics to support the agency\'s own digital marketing efforts.',
   fullDescriptionUa:
     'TST (Technical Support Team) — це американська агенція з веб-розробки та цифрового маркетингу, заснована у 2015 році. Вебсайт агенції розроблено на Wix із використанням Velo для піксельно точного контролю дизайну, з безшовними інтеграціями додатків, формами збору лідів, налаштуванням SEO та аналітикою для підтримки власних маркетингових зусиль агенції.',
+  fullDescriptionEs:
+    'TST (Technical Support Team) es una agencia estadounidense de desarrollo web y marketing digital fundada en 2015. El sitio web de la agencia se construyó en Wix con Velo para un control de diseño milimétrico, ofreciendo integraciones fluidas de aplicaciones, formularios de captación de clientes potenciales, configuración SEO y analítica web.',
   detailHeroLine: 'WIX · DIGITAL AGENCY WEBSITE',
   detailMetrics: [
     { value: '90+', label: 'PageSpeed Score', accent: 'green' },

@@ -5,10 +5,13 @@ const bezalel: Project = {
   title: 'Bezalel Care Management',
   description: 'Care coordination agency located in New York City.',
   descriptionUa: 'Агентство з координації догляду, розташоване в Нью-Йорку.',
+  descriptionEs: 'Agencia de coordinación de cuidados con sede en Nueva York.',
   fullDescription:
     'A custom WordPress theme built from scratch for a New York City care coordination agency, using Elementor enhanced with custom CSS3, JavaScript, and PHP. The site clearly presents care management services, provider information, and contact channels to families and individuals seeking professional care coordination support in the NYC area.',
   fullDescriptionUa:
     'Кастомна тема WordPress, створена з нуля для нью-йоркського агентства з координації догляду, з використанням Elementor, доповненого кастомними CSS3, JavaScript та PHP. Сайт чітко представляє послуги з управління доглядом, інформацію про спеціалістів та канали зв’язку для родин і приватних осіб, які шукають професійну підтримку з координації догляду в районі Нью-Йорка.',
+  fullDescriptionEs:
+    'Tema WordPress personalizada construida desde cero para una agencia de coordinación de cuidados en Nueva York, utilizando Elementor ampliado con CSS3, JavaScript y PHP propios. El sitio presenta con claridad los servicios de gestión de cuidados, la información sobre los profesionales y los canales de contacto para familias e individuos que buscan apoyo profesional en coordinación de cuidados en el área de Nueva York.',
   detailHeroLine: 'CUSTOM WORDPRESS · CARE MANAGEMENT · NEW YORK CITY',
   detailMetrics: [
     { value: '90+', label: 'PageSpeed Score', accent: 'green' },

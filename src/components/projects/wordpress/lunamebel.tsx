@@ -5,10 +5,13 @@ const lunaMebel: Project = {
   title: 'Lunamebel',
   description: 'Ukrainian online furniture store.',
   descriptionUa: 'Український інтернет-магазин меблів.',
+  descriptionEs: 'Tienda de muebles en línea ucraniana.',
   fullDescription:
     'Lunamebel is a Ukrainian online furniture store built on WordPress with WooCommerce, featuring a fully customized premium theme, a complete product catalogue, and secure checkout. The project included adding all product data and content, with SEO optimization and Google Maps integration to drive local traffic.',
   fullDescriptionUa:
     'Lunamebel — це український інтернет-магазин меблів, розроблений на WordPress із використанням WooCommerce, який має повністю кастомізовану преміум-тему, повний каталог товарів та безпечне оформлення замовлення. Проєкт включав наповнення сайту всіма даними про товари та контентом, SEO-оптимізацію та інтеграцію з Google Maps API для залучення локального трафіку.',
+  fullDescriptionEs:
+    'Lunamebel es una tienda de muebles en línea ucraniana desarrollada en WordPress con WooCommerce, con un tema premium completamente personalizado, un catálogo de productos completo y un proceso de pago seguro. El proyecto incluyó la carga de todos los datos de productos y contenido, optimización SEO e integración con Google Maps API para atraer tráfico local.',
   detailHeroLine: 'CUSTOM WORDPRESS · WOOCOMMERCE STORE',
   detailMetrics: [
     { value: '90+', label: 'PageSpeed Score', accent: 'green' },

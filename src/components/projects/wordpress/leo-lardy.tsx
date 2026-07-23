@@ -5,10 +5,13 @@ const leoLardy: Project = {
   title: 'Leo Lardy',
   description: 'French visually driven creative platform.',
   descriptionUa: 'Французька візуальна креативна платформа.',
+  descriptionEs: 'Plataforma creativa francesa de carácter visual.',
   fullDescription:
     'Leo Lardy is a premium French creative platform built on WordPress with a fully customized theme, bespoke CSS3 animations, and JavaScript-driven interactions. The site reflects a high-end visual identity with fast load times, SEO best practices, and Google Maps integration for location-aware content.',
   fullDescriptionUa:
     'Leo Lardy — це преміальна французька креативна платформа, створена на WordPress із повністю кастомізованою темою, унікальними CSS3-анімаціями та інтерактивними елементами на JavaScript. Сайт відображає вишукану візуальну айдентику, забезпечує високу швидкість завантаження, відповідає кращим SEO-практикам та інтегрований з Google Maps API для відображення геолокаційного контенту.',
+  fullDescriptionEs:
+    'Leo Lardy es una plataforma creativa francesa premium desarrollada en WordPress con un tema completamente personalizado, animaciones CSS3 exclusivas e interacciones basadas en JavaScript. El sitio refleja una identidad visual de alto nivel, con tiempos de carga reducidos, buenas prácticas de SEO e integración con Google Maps API para contenido con información de ubicación.',
   detailHeroLine: 'CUSTOM WORDPRESS · CREATIVE PLATFORM',
   detailMetrics: [
     { value: '90+', label: 'PageSpeed Score', accent: 'green' },

@@ -7,10 +7,14 @@ const sportpit24: Project = {
     'Ukrainian online store specializing in high-quality sports nutrition and fitness supplements.',
   descriptionUa:
     'Український інтернет-магазин високоякісного спортивного харчування та добавок для фітнесу.',
+  descriptionEs:
+    'Tienda online ucraniana especializada en nutrición deportiva y suplementos de fitness de alta calidad.',
   fullDescription:
     'A fully custom OpenCart-powered online store for Sportpit24, a Ukrainian sports nutrition retailer. The project involved custom theme development tailored to the brand, complete eCommerce configuration including product catalog management, multi-language support, payment gateway integration, and SEO optimization for improved organic search visibility.',
   fullDescriptionUa:
     'Кастомний інтернет-магазин на OpenCart для Sportpit24, українського ритейлера спортивного харчування. Проєкт включав розробку унікальної теми під бренд, повне налаштування eCommerce, включаючи управління каталогом товарів, багатомовність, інтеграцію платіжних систем та SEO-оптимізацію для підвищення видимості в органічному пошуку.',
+  fullDescriptionEs:
+    'Una tienda online completamente personalizada en OpenCart para Sportpit24, minorista ucraniano de nutrición deportiva. El proyecto incluyó el desarrollo de un tema personalizado adaptado a la marca, la configuración completa del eCommerce —incluyendo la gestión del catálogo de productos, soporte multilingüe, integración de pasarelas de pago— y la optimización SEO para mejorar la visibilidad en búsqueda orgánica.',
   detailHeroLine: 'OPENCART · ECOMMERCE · SPORTS NUTRITION',
   detailMetrics: [
     { value: 'OpenCart', label: 'CMS Platform', accent: 'green' },

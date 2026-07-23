@@ -5,10 +5,13 @@ const kidzely: Project = {
   title: 'Kidzely',
   description: 'USA-based online store for baby products.',
   descriptionUa: 'Американський інтернет-магазин товарів для немовлят та дітей.',
+  descriptionEs: 'Tienda online estadounidense de productos para bebés y niños.',
   fullDescription:
     'Kidzely is a US-based Shopify store specializing in baby and kids products. The store was built with a warm, family-friendly custom Liquid theme, a full product catalogue with size and colour variants, and app integrations for marketing and customer engagement.',
   fullDescriptionUa:
     'Kidzely — це американський інтернет-магазин на базі Shopify, що спеціалізується на товарах для немовлят та дітей. Магазин створено з теплою, сімейною кастомною темою Liquid, повним каталогом товарів із варіантами розмірів і кольорів, а також інтеграціями додатків для маркетингу та залучення клієнтів.',
+  fullDescriptionEs:
+    'Kidzely es una tienda Shopify con sede en Estados Unidos especializada en productos para bebés y niños. La tienda fue desarrollada con un tema Liquid personalizado de ambiente cálido y familiar, un catálogo de productos completo con variantes de talla y color, e integraciones de aplicaciones para marketing y captación de clientes.',
   detailHeroLine: 'SHOPIFY · BABY & KIDS STORE',
   detailMetrics: [
     { value: '90+', label: 'PageSpeed Score', accent: 'green' },

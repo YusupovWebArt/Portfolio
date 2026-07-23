@@ -5,10 +5,13 @@ const eliteHealthWarrior: Project = {
   title: 'Elite Health Warrior',
   description: 'US-based Health and Wellness',
   descriptionUa: 'Американський бренд товарів для здоров’я та самопочуття',
+  descriptionEs: 'Marca estadounidense de salud y bienestar',
   fullDescription:
     'A custom Joomla-powered health and wellness website for a US-based brand, featuring a fully custom-built template, VirtueMart eCommerce integration, product catalog management, and SEO optimization. The project involved complete template development, CSS/JS customization, and ongoing content population.',
   fullDescriptionUa:
     'Вебсайт на Joomla для американського бренду товарів для здоров’я та самопочуття, що включає повністю кастомний шаблон, інтеграцію VirtueMart eCommerce, управління каталогом товарів та SEO-оптимізацію. Проєкт охоплював повну розробку шаблону, налаштування CSS/JS та наповнення контентом.',
+  fullDescriptionEs:
+    'Un sitio web de salud y bienestar desarrollado con Joomla para una marca estadounidense, con una plantilla completamente personalizada, integración de eCommerce con VirtueMart, gestión del catálogo de productos y optimización SEO. El proyecto incluyó el desarrollo íntegro de la plantilla, la personalización de CSS/JS y la carga de contenido.',
   detailHeroLine: 'JOOMLA · ECOMMERCE · HEALTH & WELLNESS',
   detailMetrics: [
     { value: 'Joomla', label: 'CMS Platform', accent: 'green' },

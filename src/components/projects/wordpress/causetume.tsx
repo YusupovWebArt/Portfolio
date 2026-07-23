@@ -5,10 +5,13 @@ const causetume: Project = {
   title: 'Causetume',
   description: 'Knitwear Brand. Cloth store',
   descriptionUa: 'Бренд трикотажного одягу. Магазин одягу',
+  descriptionEs: 'Marca de ropa de punto. Tienda de moda.',
   fullDescription:
     'A WooCommerce online store built on a premium WordPress theme, customized with CSS3 and JavaScript to match the Causetume knitwear brand identity. Full product catalog setup including product content, images, categories, and variant configuration was completed, giving the brand a polished e-commerce presence for their knitwear collections.',
   fullDescriptionUa:
     'Онлайн-магазин WooCommerce, побудований на преміальній темі WordPress та адаптований за допомогою CSS3 і JavaScript відповідно до айдентики бренду трикотажного одягу Causetume. Виконано повне налаштування каталогу товарів, включаючи контент, зображення, категорії та конфігурацію варіантів, що забезпечило бренду елегантну e-commerce присутність для їхніх трикотажних колекцій.',
+  fullDescriptionEs:
+    'Tienda online WooCommerce construida sobre un tema premium de WordPress y personalizada con CSS3 y JavaScript para reflejar la identidad de la marca de ropa de punto Causetume. Se completó la configuración íntegra del catálogo de productos, incluyendo contenido, imágenes, categorías y configuración de variantes, dotando a la marca de una presencia de e-commerce elegante para sus colecciones de punto.',
   detailHeroLine: 'PREMIUM WORDPRESS · KNITWEAR · E-COMMERCE STORE',
   detailMetrics: [
     { value: '90+', label: 'PageSpeed Score', accent: 'green' },

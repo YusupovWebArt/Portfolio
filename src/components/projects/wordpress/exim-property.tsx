@@ -7,10 +7,14 @@ const eximProperty: Project = {
     'Real estate services company based in Thailand, with a focus on helping foreign buyers-especially clients-discover, evaluate, and acquire property in Thailand.',
   descriptionUa:
     'Компанія з нерухомості в Таїланді, що спеціалізується на допомозі іноземним покупцям знаходити, оцінювати та купувати нерухомість у Таїланді.',
+  descriptionEs:
+    'Empresa inmobiliaria con sede en Tailandia especializada en ayudar a compradores extranjeros —especialmente clientes internacionales— a descubrir, evaluar y adquirir propiedades en Tailandia.',
   fullDescription:
     'A custom Gutenberg blocks-based WordPress theme for a Thailand real estate agency serving international buyers. The project included multi-language support, a BookingPress appointment scheduling system, bespoke service pages, PDF export functionality for property listings, and comprehensive SEO — delivering a feature-rich platform tailored for cross-border property acquisition.',
   fullDescriptionUa:
     'Кастомна тема WordPress на основі блоків Gutenberg для агентства нерухомості в Таїланді, що обслуговує міжнародних покупців. Проєкт включав багатомовну підтримку, систему планування зустрічей BookingPress, індивідуальні сторінки послуг, функціонал експорту об’єктів нерухомості в PDF та комплексне SEO, забезпечуючи багатофункціональну платформу для міжнародної купівлі нерухомості.',
+  fullDescriptionEs:
+    'Tema WordPress personalizada basada en bloques Gutenberg para una agencia inmobiliaria en Tailandia que atiende a compradores internacionales. El proyecto incluyó soporte multilingüe, un sistema de programación de citas con BookingPress, páginas de servicios a medida, funcionalidad de exportación de listados de propiedades a PDF y un SEO integral, proporcionando una plataforma completa y enriquecida para la adquisición de propiedades transfronteriza.',
   detailHeroLine: 'CUSTOM WORDPRESS · REAL ESTATE · THAILAND',
   detailMetrics: [
     { value: '90+', label: 'PageSpeed Score', accent: 'green' },

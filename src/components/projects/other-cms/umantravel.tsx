@@ -7,10 +7,14 @@ const umanTravel: Project = {
     'Historical and cultural tourism information center based in Uman, Ukraine.',
   descriptionUa:
     'Туристично-інформаційний центр історико-культурного туризму в Умані, Україна.',
+  descriptionEs:
+    'Centro de información turística histórica y cultural ubicado en Uman, Ucrania.',
   fullDescription:
     'A tourism information website for Uman Travel, a cultural and historical tourism center based in Uman, Ukraine. Built on Joomla CMS with a fully custom template, the site presents travel destinations, tour packages, and cultural points of interest, supported by Google Maps integration and SEO optimization for local and regional search visibility.',
   fullDescriptionUa:
     'Туристично-інформаційний вебсайт для Uman Travel, центру культурного та історичного туризму в Умані, Україна. Створений на Joomla CMS з унікальним кастомним шаблоном, сайт презентує туристичні локації, екскурсійні пакети та культурні пам’ятки за підтримки інтеграції Google Maps та SEO-оптимізації для локального пошуку.',
+  fullDescriptionEs:
+    'Un sitio web de información turística para Uman Travel, centro de turismo cultural e histórico ubicado en Uman, Ucrania. Desarrollado en Joomla CMS con una plantilla completamente personalizada, el sitio presenta destinos de viaje, paquetes turísticos y puntos de interés cultural, respaldado por la integración de Google Maps y la optimización SEO para búsquedas locales y regionales.',
   detailHeroLine: 'JOOMLA · CUSTOM TEMPLATE · TRAVEL & TOURISM',
   detailMetrics: [
     { value: 'Joomla', label: 'CMS Platform', accent: 'green' },

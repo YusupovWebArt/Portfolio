@@ -5,10 +5,13 @@ const simpleJavascriptDateTime: Project = {
   title: 'Javascript Date and time app',
   description: 'Pet project for learning and practicing JavaScript.',
   descriptionUa: 'Пет-проєкт для вивчення та практики JavaScript.',
+  descriptionEs: 'Proyecto personal para el aprendizaje y la práctica de JavaScript.',
   fullDescription:
     'A lightweight date and time display application built with vanilla JavaScript, HTML5, and CSS3. The app shows the current date and time with live updates every second, practising the JavaScript Date object, setInterval, and real-time DOM manipulation.',
   fullDescriptionUa:
     'Легкий застосунок для відображення дати та часу, створений на чистому JavaScript, HTML5 та CSS3. Застосунок показує поточну дату та час з оновленням щосекунди, практикуючи роботу з об’єктом JavaScript Date, setInterval та маніпуляціями з DOM у реальному часі.',
+  fullDescriptionEs:
+    'Una aplicación ligera de visualización de fecha y hora construida con JavaScript puro, HTML5 y CSS3. La app muestra la fecha y hora actuales con actualizaciones en vivo cada segundo, practicando el objeto JavaScript Date, setInterval y la manipulación del DOM en tiempo real.',
   detailHeroLine: 'VANILLA JS · HTML5 · DEMO APP',
   detailMetrics: [
     { value: 'Vanilla JS', label: 'No Framework', accent: 'green' },

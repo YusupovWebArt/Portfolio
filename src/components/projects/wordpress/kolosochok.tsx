@@ -7,10 +7,14 @@ const kolosochok: Project = {
     'Ukrainian private ethno-kindergarten in Kyiv offering culturally immersive preschool education.',
   descriptionUa:
     'Український приватний етно-садок у Києві, що пропонує культурно занурену дошкільну освіту.',
+  descriptionEs:
+    'Jardín de infancia privado etno-ucraniano en Kiev que ofrece educación preescolar con inmersión cultural.',
   fullDescription:
     'A custom WordPress theme built from scratch for a Ukrainian ethno-kindergarten in Kyiv, using Elementor extended with custom CSS3 and JavaScript. The site presents the kindergarten\'s philosophy, curriculum, teachers, and facilities in a warm and culturally rich design that reflects the Ukrainian ethno aesthetic, attracting Kyiv families seeking culturally immersive preschool education.',
   fullDescriptionUa:
     'Кастомна тема WordPress, створена з нуля для українського етно-садка в Києві з використанням Elementor, розширеного кастомними CSS3 та JavaScript. Сайт презентує філософію дитячого садка, навчальну програму, вихователів та приміщення у теплому й культурно багатому дизайні, що відображає українську етно-естетику та приваблює київські родини, які шукають культурно занурену дошкільну освіту.',
+  fullDescriptionEs:
+    'Tema WordPress personalizada construida desde cero para un jardín de infancia etno-ucraniano en Kiev, utilizando Elementor ampliado con CSS3 y JavaScript propios. El sitio presenta la filosofía del jardín de infancia, el currículo, los educadores y las instalaciones en un diseño cálido y culturalmente rico que refleja la estética etno-ucraniana, atrayendo a las familias de Kiev que buscan una educación preescolar con inmersión cultural.',
   detailHeroLine: 'CUSTOM WORDPRESS · ETHNO-KINDERGARTEN · KYIV, UKRAINE',
   detailMetrics: [
     { value: '90+', label: 'PageSpeed Score', accent: 'green' },

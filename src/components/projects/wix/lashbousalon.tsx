@@ -5,10 +5,13 @@ const lashbouSalon: Project = {
   title: 'Lashbousalon',
   description: 'U.S.-based eyelash salon in Arlington, Texas.',
   descriptionUa: 'Американський салон краси з нарощування вій в Арлінгтоні, Техас.',
+  descriptionEs: 'Salón de extensión de pestañas en Arlington, Texas, EE.UU.',
   fullDescription:
     'Lashbou Salon is a US-based eyelash salon located in Arlington, Texas. The site was built on Wix with Velo for pixel-perfect control, featuring seamless app integrations for appointment booking, an eCommerce section for lash product sales, mobile-friendly optimization, and built-in SEO and site analytics.',
   fullDescriptionUa:
     'Lashbou Salon — це американський салон з нарощування вій, розташований в Арлінгтоні, Техас. Вебсайт розроблено на Wix із використанням Velo для піксельно точного контролю, він включає інтеграцію додатків для запису на прийом, eCommerce-розділ для продажу матеріалів для вій, мобільну оптимізацію та вбудовані інструменти SEO й аналітики.',
+  fullDescriptionEs:
+    'Lashbou Salon es un salón de belleza especializado en extensión de pestañas ubicado en Arlington, Texas. El sitio web fue construido en Wix con Velo para un control preciso de diseño, contando con integraciones fluidas de aplicaciones para reserva de citas, sección de eCommerce para venta de productos, optimización móvil y herramientas integradas de SEO y analítica.',
   detailHeroLine: 'WIX · BEAUTY SALON',
   detailMetrics: [
     { value: '90+', label: 'PageSpeed Score', accent: 'green' },

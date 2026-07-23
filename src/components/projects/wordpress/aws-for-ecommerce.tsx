@@ -7,10 +7,14 @@ const awsForEcommerce: Project = {
     'Website specialized platform designed to help businesses build, scale, and secure their online retail operations using Amazon Web Services (AWS). The site offers a comprehensive suite of solutions tailored for e-commerce, focusing on performance, security, scalability, and AI-driven personalization.',
   descriptionUa:
     'Спеціалізована вебплатформа, створена для допомоги бізнесу будувати, масштабувати та захищати онлайн-торгівлю за допомогою Amazon Web Services (AWS). Сайт пропонує комплексний набір рішень для e-commerce, зосереджених на продуктивності, безпеці, масштабованості та персоніфікації на основі AI.',
+  descriptionEs:
+    'Plataforma web especializada diseñada para ayudar a las empresas a construir, escalar y proteger sus operaciones de comercio en línea mediante Amazon Web Services (AWS). El sitio ofrece un conjunto integral de soluciones para e-commerce centradas en el rendimiento, la seguridad, la escalabilidad y la personalización basada en IA.',
   fullDescription:
     'A custom WordPress site developed using Elementor enhanced with custom CSS3, JavaScript, and PHP to create a visually distinctive platform promoting AWS e-commerce solutions. AI-generated imagery was integrated throughout the design to illustrate cloud infrastructure concepts, and full SEO optimization positions the site for cloud and e-commerce solution search traffic.',
   fullDescriptionUa:
     'Кастомний сайт на WordPress, розроблений за допомогою Elementor і розширений кастомними CSS3, JavaScript та PHP для створення візуально виразної платформи, що просуває e-commerce рішення AWS. Згенеровані AI зображення інтегровані в дизайн для наочної демонстрації концепцій хмарної інфраструктури, а повна SEO-оптимізація позиціонує сайт для пошукового трафіку хмарних та e-commerce рішень.',
+  fullDescriptionEs:
+    'Sitio WordPress personalizado desarrollado con Elementor y ampliado con CSS3, JavaScript y PHP propios para crear una plataforma visualmente distintiva que promueve soluciones de e-commerce en AWS. Se integraron imágenes generadas por IA para ilustrar conceptos de infraestructura en la nube, y una optimización SEO completa posiciona el sitio para el tráfico de búsqueda relacionado con soluciones cloud y de e-commerce.',
   detailHeroLine: 'CUSTOM WORDPRESS · AWS CLOUD · E-COMMERCE SOLUTIONS',
   detailMetrics: [
     { value: '90+', label: 'PageSpeed Score', accent: 'green' },

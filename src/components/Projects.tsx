@@ -145,7 +145,7 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
                 {project.title}
               </h3>
               <p className="text-slate-600 dark:text-slate-300 mb-4 flex-1">
-                {lang === 'ua' && project.descriptionUa ? project.descriptionUa : project.description}
+                {lang === 'ua' && project.descriptionUa ? project.descriptionUa : lang === 'es' && project.descriptionEs ? project.descriptionEs : project.description}
               </p>
               <div className="flex flex-wrap gap-2 mb-4">
                 {Array.isArray(project.technologies)

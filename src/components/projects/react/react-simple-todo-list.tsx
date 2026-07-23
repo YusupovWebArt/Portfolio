@@ -5,10 +5,13 @@ const reactSimpleTodoList: Project = {
   title: 'Simple To-Do App',
   description: 'In the process of learning React.js technology.',
   descriptionUa: 'Створено в процесі вивчення технології React.js.',
+  descriptionEs: 'Desarrollado durante el proceso de aprendizaje de la tecnología React.js.',
   fullDescription:
     'A beginner-friendly To-Do application built with React.js, Bootstrap 5, and Vite. The app lets users add, complete, and remove tasks in real time, practising core React concepts such as component composition, useState hooks, and React-Bootstrap UI integration.',
   fullDescriptionUa:
     'Зрозумілий для початківців To-Do додаток, створений за допомогою React.js, Bootstrap 5 та Vite. Додаток дозволяє користувачам додавати, відмічати виконаними та видаляти завдання в реальному часі, практикуючи основні концепції React, такі як композиція компонентів, хук useState та інтеграція React-Bootstrap UI.',
+  fullDescriptionEs:
+    'Una aplicación To-Do accesible para principiantes, desarrollada con React.js, Bootstrap 5 y Vite. La app permite a los usuarios añadir, completar y eliminar tareas en tiempo real, practicando conceptos esenciales de React como la composición de componentes, el hook useState y la integración de la interfaz React-Bootstrap.',
   detailHeroLine: 'REACT · BOOTSTRAP · TASK MANAGER',
   detailMetrics: [
     { value: 'React.js', label: 'UI Library', accent: 'green' },

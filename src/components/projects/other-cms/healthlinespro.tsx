@@ -5,10 +5,13 @@ const healthLinesPro: Project = {
   title: 'Health Linespro',
   description: 'US-based Wellness Hub',
   descriptionUa: 'Американський велнес-хаб',
+  descriptionEs: 'Hub de bienestar estadounidense',
   fullDescription:
     'A custom Joomla-powered wellness hub website for a US-based health brand. The project included full custom template development, eCommerce integration for health products, SEO optimization, and ongoing content management — delivering a professional, conversion-focused wellness platform.',
   fullDescriptionUa:
     'Велнес-хаб на Joomla для американського бренду товарів для здоров’я. Проєкт включав розробку унікального шаблону, інтеграцію eCommerce для товарів для здоров’я, SEO-оптимізацію та контент-менеджмент, що забезпечило створення професійної платформи, орієнтованої на конверсію.',
+  fullDescriptionEs:
+    'Un sitio web hub de bienestar desarrollado con Joomla para una marca de salud estadounidense. El proyecto incluyó el desarrollo íntegro de una plantilla personalizada, la integración de eCommerce para productos de salud, la optimización SEO y la gestión de contenido, dando como resultado una plataforma profesional orientada a la conversión.',
   detailHeroLine: 'JOOMLA · ECOMMERCE · WELLNESS HUB',
   detailMetrics: [
     { value: 'Joomla', label: 'CMS Platform', accent: 'green' },

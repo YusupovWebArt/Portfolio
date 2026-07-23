@@ -5,10 +5,13 @@ const prezentify: Project = {
   title: 'Prezentify',
   description: 'Polish online store specializing in personalized gifts.',
   descriptionUa: 'Польський інтернет-магазин персоналізованих подарунків.',
+  descriptionEs: 'Tienda online polaca especializada en regalos personalizados.',
   fullDescription:
     'Prezentify is a Polish Shopify store offering a wide range of personalized gift products. The store was built with a fully customized Liquid theme reflecting a warm gifting aesthetic, complete product catalogue with personalization options, and app integrations for marketing and customer engagement in the Polish market.',
   fullDescriptionUa:
     'Prezentify — це польський інтернет-магазин на базі Shopify, який пропонує широкий асортимент персоналізованих подарунків. Магазин створено з повністю кастомною темою Liquid у затишній подарунковій естетиці, повним каталогом товарів із опціями персоналізації та інтеграціями додатків для маркетингу й взаємодії з клієнтами на польському ринку.',
+  fullDescriptionEs:
+    'Prezentify es una tienda polaca en Shopify que ofrece una amplia gama de productos de regalo personalizados. La tienda fue desarrollada con un tema Liquid completamente personalizado que refleja una estética cálida de regalo, un catálogo de productos completo con opciones de personalización, e integraciones de aplicaciones para marketing y captación de clientes en el mercado polaco.',
   detailHeroLine: 'SHOPIFY · PERSONALIZED GIFTS STORE',
   detailMetrics: [
     { value: '90+', label: 'PageSpeed Score', accent: 'green' },

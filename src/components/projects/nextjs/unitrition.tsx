@@ -7,10 +7,14 @@ const unitrition: Project = {
     'Choosing the right foods for a specific diet is confusing — Unitrition makes it instant. Pick a diet plan, add foods, and the app shows a clear nutritional comparison: what fits your goals and what doesn\'t. Built as a fullstack headless WordPress + Next.js application with diet-specific scoring, custom nutrition data, and a Bread Units Calculator integrated with the USDA FoodData API.',
   descriptionUa:
     'Вибір правильних продуктів для певної дієти буває заплутаним — Unitrition робить його миттєвим. Оберіть дієтичний план, додайте продукти, і додаток покаже чітке порівняння поживних речовин: що відповідає вашим цілям, а що ні. Побудовано як fullstack headless WordPress + Next.js застосунок з підрахунком балів під конкретні дієти, даними про харчування та калькулятором хлібних одиниць з інтеграцією USDA FoodData API.',
+  descriptionEs:
+    'Elegir los alimentos adecuados para una dieta específica puede resultar confuso — Unitrition lo hace instantáneo. Seleccione un plan dietético, añada alimentos y la aplicación mostrará una comparativa nutricional clara: qué se ajusta a sus objetivos y qué no. Desarrollada como una aplicación fullstack headless WordPress + Next.js con puntuación específica por dieta, datos nutricionales personalizados y una Calculadora de Unidades de Pan integrada con la API USDA FoodData.',
   fullDescription:
     "A smart nutrition tool that helps users find the right foods for their diet — pick a plan, add foods, and get an instant comparison of what fits and what doesn't. Built with headless WordPress as CMS and a Next.js App Router frontend. Bread Units Calculator also integrates real-time data from the USDA FoodData API.",
   fullDescriptionUa:
     'Розумний сервіс харчування, який допомагає користувачам підбирати правильні продукти для дієти — оберіть план, додайте продукти та отримайте миттєве порівняння. Створено з використанням Headless WordPress як CMS та фронтенду на Next.js App Router. Калькулятор хлібних одиниць також інтегрує дані в реальному часі з USDA FoodData API.',
+  fullDescriptionEs:
+    'Una herramienta de nutrición inteligente que ayuda a los usuarios a encontrar los alimentos adecuados para su dieta: elija un plan, añada alimentos y obtenga una comparativa instantánea de qué encaja y qué no. Desarrollada con headless WordPress como CMS y un frontend en Next.js App Router. La Calculadora de Unidades de Pan también integra datos en tiempo real desde la API USDA FoodData.',
   detailHeroLine: 'FULLSTACK · HEADLESS CMS',
   detailMetrics: [
     { value: '95+', label: 'PageSpeed', accent: 'green' },

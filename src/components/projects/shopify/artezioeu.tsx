@@ -5,10 +5,13 @@ const artezioeu: Project = {
   title: 'Artezioeu',
   description: 'Spain-based painting by numbers store.',
   descriptionUa: 'Іспанський інтернет-магазин картин за номерами.',
+  descriptionEs: 'Tienda española de kits de pintura por números.',
   fullDescription:
     'Artezioeu is a Spain-based Shopify e-commerce store specializing in painting-by-numbers kits. The store was built with a fully customized Shopify theme using Liquid templating, with all products, content pages, and app integrations configured for a smooth customer experience.',
   fullDescriptionUa:
     'Artezioeu — це іспанський інтернет-магазин на базі Shopify, що спеціалізується на наборах картин за номерами. Магазин створено з використанням повністю кастомної теми Shopify на шаблонізаторі Liquid, а всі товари, контентні сторінки та інтеграції додатків налаштовано для забезпечення зручної взаємодії з клієнтами.',
+  fullDescriptionEs:
+    'Artezioeu es una tienda de comercio electrónico en Shopify con sede en España, especializada en kits de pintura por números. La tienda fue desarrollada con un tema Shopify completamente personalizado mediante plantillas Liquid, con todos los productos, páginas de contenido e integraciones de aplicaciones configuradas para ofrecer una experiencia de compra fluida.',
   detailHeroLine: 'SHOPIFY · E-COMMERCE STORE',
   detailMetrics: [
     { value: '90+', label: 'PageSpeed Score', accent: 'green' },

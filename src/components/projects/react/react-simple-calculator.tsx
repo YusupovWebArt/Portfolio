@@ -7,10 +7,14 @@ const reactSimpleCalculator: Project = {
     'Simple pet-project demonstrates fundamental React concepts such as component structure.',
   descriptionUa:
     'Простий пет-проєкт, що демонструє фундаментальні концепції React, такі як структура компонентів.',
+  descriptionEs:
+    'Sencillo proyecto personal que demuestra conceptos fundamentales de React, como la estructura de componentes.',
   fullDescription:
     'A simple and intuitive calculator app built with React.js and Vite. It demonstrates core React concepts including functional components and useState hooks, allowing users to perform basic arithmetic operations with a clean, responsive interface deployed on GitHub Pages.',
   fullDescriptionUa:
     'Простий та інтуїтивно зрозумілий додаток-калькулятор, створений за допомогою React.js та Vite. Він демонструє ключові концепції React, зокрема функціональні компоненти та хук useState, дозволяючи користувачам виконувати базові арифметичні операції через чистий адаптивний інтерфейс, розгорнутий на GitHub Pages.',
+  fullDescriptionEs:
+    'Una aplicación de calculadora sencilla e intuitiva construida con React.js y Vite. Demuestra conceptos esenciales de React, incluidos los componentes funcionales y el hook useState, permitiendo a los usuarios realizar operaciones aritméticas básicas mediante una interfaz limpia y responsiva desplegada en GitHub Pages.',
   detailHeroLine: 'REACT · JAVASCRIPT · DEMO APP',
   detailMetrics: [
     { value: 'React.js', label: 'UI Library', accent: 'green' },

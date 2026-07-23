@@ -5,10 +5,13 @@ const simpleVanillaCalculator: Project = {
   title: 'Vanilla Javascript Simple Calculator',
   description: 'Pet project for learning and practicing JavaScript.',
   descriptionUa: 'Пет-проєкт для вивчення та практики JavaScript.',
+  descriptionEs: 'Proyecto personal para el aprendizaje y la práctica de JavaScript.',
   fullDescription:
     'A simple calculator application built with vanilla JavaScript, HTML5, and CSS3. Performs standard arithmetic operations with a straightforward button interface and real-time display — a focused learning project practising event listeners, operator logic, and DOM manipulation in pure JavaScript.',
   fullDescriptionUa:
     'Простий застосунок-калькулятор, створений на чистому JavaScript, HTML5 та CSS3. Виконує стандартні арифметичні операції зі зручним кнопковим інтерфейсом та відображенням у реальному часі — навчальний проєкт для практики слухачів подій, операторної логіки та маніпуляцій з DOM на чистому JavaScript.',
+  fullDescriptionEs:
+    'Una sencilla aplicación de calculadora construida con JavaScript puro, HTML5 y CSS3. Realiza operaciones aritméticas estándar mediante una interfaz de botones directa y visualización en tiempo real — un proyecto de aprendizaje centrado en la práctica de event listeners, la lógica de operadores y la manipulación del DOM en JavaScript puro.',
   detailHeroLine: 'VANILLA JS · HTML5 · DEMO APP',
   detailMetrics: [
     { value: 'Vanilla JS', label: 'No Framework', accent: 'green' },

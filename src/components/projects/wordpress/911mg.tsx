@@ -7,10 +7,14 @@ const mg911: Project = {
     'US online health resource offering an extensive database of medications.',
   descriptionUa:
     'Онлайн-ресурс про здоров’я у США, який пропонує розширену базу даних лікарських препаратів.',
+  descriptionEs:
+    'Recurso de salud en línea de EE.UU. que ofrece una amplia base de datos de medicamentos.',
   fullDescription:
     'A custom WordPress theme built entirely from scratch using pure PHP, custom CSS3, and JavaScript ES6, with no page builder dependency. The site serves as a comprehensive US medication database, featuring structured drug categories, coupon listings, product detail pages, and user reviews. Full SEO optimization and Google Analytics integration were implemented to maximize organic reach.',
   fullDescriptionUa:
     'Кастомна тема WordPress, розроблена з нуля з використанням чистого PHP, кастомних CSS3 та JavaScript ES6 без використання конструкторів сторінок. Сайт слугує вичерпною базою даних медикаментів у США, включаючи структуровані категорії препаратів, списки купонів, детальні сторінки продуктів та відгуки користувачів. Реалізовано повну SEO-оптимізацію та інтеграцію з Google Analytics для максимального органічного охоплення.',
+  fullDescriptionEs:
+    'Un tema de WordPress personalizado construido completamente desde cero utilizando PHP puro, CSS3 y JavaScript ES6, sin dependencia de constructores de páginas. El sitio sirve como una base de datos de medicamentos completa en EE.UU., con categorías estructuradas, listados de cupones, páginas de detalles de productos y opiniones de usuarios. Se implementó una optimización SEO completa e integración con Google Analytics para maximizar el alcance orgánico.',
   detailHeroLine: 'CUSTOM WORDPRESS · HEALTH & MEDICATION DATABASE',
   detailMetrics: [
     { value: '90+', label: 'PageSpeed Score', accent: 'green' },

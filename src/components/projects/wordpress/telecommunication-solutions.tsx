@@ -5,10 +5,13 @@ const telecommunicationSolutions: Project = {
   title: 'Telecommunication Solutions for Business',
   description: 'USA (+ localization Spain).',
   descriptionUa: 'США (+ локалізація для Іспанії).',
+  descriptionEs: 'EE. UU. (+ localización para España).',
   fullDescription:
     'Telecommunication Solutions for Business is a bilingual landing page (US English and Spanish localization) built on a custom WordPress theme from scratch using the Bootstrap 5 CSS framework. The project targeted US businesses with virtual telecommunication services, featuring a modern responsive layout, SEO optimization, and a lead-generation contact form.',
   fullDescriptionUa:
     'Telecommunication Solutions for Business — це двомовна посадкова сторінка (англійська США та іспанська локалізація), побудована на унікальній темі WordPress з нуля з використанням CSS-фреймворку Bootstrap 5. Проєкт орієнтований на компанії в США, що потребують віртуальних телекомунікаційних послуг, та має сучасний адаптивний макет, SEO-оптимізацію та форму генерації лідів.',
+  fullDescriptionEs:
+    'Telecommunication Solutions for Business es una página de aterrizaje bilingüe (inglés de EE. UU. y localización en español) construida sobre un tema de WordPress personalizado desde cero con el framework CSS Bootstrap 5. El proyecto está orientado a empresas estadounidenses con necesidades de servicios de telecomunicación virtual, con un diseño responsivo moderno, optimización SEO y un formulario de captación de leads.',
   detailHeroLine: 'CUSTOM WORDPRESS · TELECOM LANDING PAGE',
   detailMetrics: [
     { value: '90+', label: 'PageSpeed Score', accent: 'green' },

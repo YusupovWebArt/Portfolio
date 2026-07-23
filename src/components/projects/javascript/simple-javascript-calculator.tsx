@@ -5,10 +5,13 @@ const simpleJavascriptCalculator: Project = {
   title: 'Modern Simple Javascript Calculator',
   description: 'Pet project for learning and practicing JavaScript.',
   descriptionUa: 'Пет-проєкт для вивчення та практики JavaScript.',
+  descriptionEs: 'Proyecto personal para el aprendizaje y la práctica de JavaScript.',
   fullDescription:
     'A modern-styled calculator built with vanilla JavaScript, HTML5, and CSS3. Supports all basic arithmetic operations with a clean, responsive interface and real-time display updates. A focused learning project demonstrating event handling and arithmetic logic in pure JavaScript.',
   fullDescriptionUa:
     'Сучасний калькулятор, створений на чистому JavaScript, HTML5 та CSS3. Підтримує всі базові арифметичні операції з чистим, адаптивним інтерфейсом та оновленням дисплея в реальному часі. Навчальний проєкт для практики обробки подій та арифметичної логіки на чистому JavaScript.',
+  fullDescriptionEs:
+    'Una calculadora de diseño moderno construida con JavaScript puro, HTML5 y CSS3. Soporta todas las operaciones aritméticas básicas con una interfaz limpia y responsiva, y actualizaciones de pantalla en tiempo real. Un proyecto de aprendizaje centrado en la gestión de eventos y la lógica aritmética en JavaScript puro.',
   detailHeroLine: 'VANILLA JS · HTML5 · DEMO APP',
   detailMetrics: [
     { value: 'Vanilla JS', label: 'No Framework', accent: 'green' },

@@ -5,10 +5,13 @@ const jsVanillaSimpleTodoList: Project = {
   title: 'Javascript Simple To-Do List',
   description: 'Pet project for learning and practicing JavaScript.',
   descriptionUa: 'Пет-проєкт для вивчення та практики JavaScript.',
+  descriptionEs: 'Proyecto personal para el aprendizaje y la práctica de JavaScript.',
   fullDescription:
     'A lightweight To-Do List application built with vanilla JavaScript, HTML5, and CSS3. Users can add tasks, mark them as complete, and remove them — all without a framework. A clean learning project demonstrating DOM manipulation and event-driven programming with ES6+.',
   fullDescriptionUa:
     'Легкий застосунок Список справ (To-Do List), створений на чистому JavaScript, HTML5 та CSS3. Користувачі можуть додавати завдання, позначати їх як виконані та видаляти їх — все це без використання фреймворків. Навчальний проєкт, що демонструє маніпуляції з DOM та подійно-орієнтоване програмування на ES6+.',
+  fullDescriptionEs:
+    'Una aplicación To-Do List ligera desarrollada con JavaScript puro, HTML5 y CSS3. Los usuarios pueden añadir tareas, marcarlas como completadas y eliminarlas, todo ello sin necesidad de un framework. Un proyecto de aprendizaje limpio que demuestra la manipulación del DOM y la programación orientada a eventos con ES6+.',
   detailHeroLine: 'VANILLA JS · HTML5 · DEMO APP',
   detailMetrics: [
     { value: 'Vanilla JS', label: 'No Framework', accent: 'green' },

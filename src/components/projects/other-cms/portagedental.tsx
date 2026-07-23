@@ -5,10 +5,13 @@ const portageDental: Project = {
   title: 'Portage',
   description: 'US-based Dental Clinic',
   descriptionUa: 'Стоматологічна клініка в США',
+  descriptionEs: 'Clínica dental en Estados Unidos',
   fullDescription:
     'A professional website for a US-based dental clinic, built on Joomla CMS with a fully custom template. The project delivered a clean, patient-friendly digital presence with service pages, doctor information, appointment contact points, Google Maps integration, and on-page SEO optimization.',
   fullDescriptionUa:
     'Професійний вебсайт для стоматологічної клініки в США, створений на Joomla CMS з унікальним кастомним шаблоном. Проєкт забезпечив чисту, зручну для пацієнтів онлайн-присутність із сторінками послуг, інформацією про лікарів, формою запису на прийом, інтеграцією Google Maps та внутрішньою SEO-оптимізацією.',
+  fullDescriptionEs:
+    'Un sitio web profesional para una clínica dental estadounidense, construido en Joomla CMS con una plantilla completamente personalizada. El proyecto proporcionó una presencia digital limpia y amigable para el paciente, con páginas de servicios, información sobre los doctores, puntos de contacto para citas, integración de Google Maps y optimización SEO on-page.',
   detailHeroLine: 'JOOMLA · CUSTOM TEMPLATE · DENTAL CLINIC',
   detailMetrics: [
     { value: 'Joomla', label: 'CMS Platform', accent: 'green' },

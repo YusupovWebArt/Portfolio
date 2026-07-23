@@ -5,10 +5,13 @@ const solaDentalSpa: Project = {
   title: 'Sola Dental Spa',
   description: 'Cosmetic Dental Clinic in Staten Island, NY',
   descriptionUa: 'Клініка естетичної стоматології в Стейтен-Айленді, Нью-Йорк.',
+  descriptionEs: 'Clínica de odontología estética en Staten Island, Nueva York.',
   fullDescription:
     'Sola Dental Spa is a cosmetic dentistry website for a clinic in Staten Island, New York, built on a custom WordPress theme from scratch using the WPBakery page builder. The project included full content writing, custom CSS3/JS styling, SEO optimization, and Google Maps integration to drive local patient acquisition in the New York metropolitan area.',
   fullDescriptionUa:
     'Sola Dental Spa — це вебсайт естетичної стоматології для клініки в Стейтен-Айленді, Нью-Йорк, створений на унікальній темі WordPress з нуля за допомогою конструктора сторінок WPBakery. Проєкт включав повний написання контенту, кастомні стилі на CSS3/JS, SEO-оптимізацію та інтеграцію з Google Maps API для залучення пацієнтів у нью-йоркському регіоні.',
+  fullDescriptionEs:
+    'Sola Dental Spa es el sitio web de una clínica de odontología estética en Staten Island, Nueva York, construido sobre un tema de WordPress personalizado desde cero con el constructor de páginas WPBakery. El proyecto incluyó la redacción completa del contenido, estilos personalizados en CSS3/JS, optimización SEO e integración con Google Maps API para atraer pacientes en el área metropolitana de Nueva York.',
   detailHeroLine: 'CUSTOM WORDPRESS · COSMETIC DENTAL CLINIC',
   detailMetrics: [
     { value: '90+', label: 'PageSpeed Score', accent: 'green' },

@@ -7,10 +7,14 @@ const adwoodsDesign: Project = {
     '3D Artists with experience in construction, architecture, and design, present ideas in visual language.',
   descriptionUa:
     '3D-художники з досвідом у будівництві, архітектурі та дизайні презентують ідеї візуальною мовою.',
+  descriptionEs:
+    'Artistas 3D con experiencia en construcción, arquitectura y diseño que presentan ideas en lenguaje visual.',
   fullDescription:
     'A custom WordPress theme built from scratch using the Divi page builder at the client\'s request, enhanced with custom CSS3, JavaScript, and PHP for unique styling and extended functionality. The site showcases architectural 3D visualization work through a custom gallery, blog, and a multi-step contact form designed to streamline client inquiries.',
   fullDescriptionUa:
     'Кастомна тема WordPress, створена з нуля з використанням пейдж-білдера Divi на прохання клієнта та доповнена кастомними CSS3, JavaScript і PHP для унікального стилю та розширеної функціональності. Сайт презентує роботи з архітектурної 3D-візуалізації через кастомну галерею, блог та багатокрокову контактну форму для зручного прийому заявок клієнтів.',
+  fullDescriptionEs:
+    'Un tema de WordPress personalizado construido desde cero utilizando el maquetador Divi a petición del cliente, mejorado con CSS3, JavaScript y PHP personalizados para un estilo único y funcionalidad extendida. El sitio exhibe trabajos de visualización 3D arquitectónica a través de una galería personalizada, blog y un formulario de contacto de varios pasos diseñado para agilizar las consultas de los clientes.',
   detailHeroLine: 'CUSTOM WORDPRESS · ARCHITECTURE & 3D VISUALIZATION',
   detailMetrics: [
     { value: '90+', label: 'PageSpeed Score', accent: 'green' },

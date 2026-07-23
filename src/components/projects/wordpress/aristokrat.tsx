@@ -7,10 +7,14 @@ const aristokrat: Project = {
     'Ukrainian hotel-restaurant complex offers guests elegant accommodation in a beautifully restored historic building.',
   descriptionUa:
     'Український готельно-ресторанний комплекс пропонує гостям елегантне проживання в красиво відреставрованій історичній будівлі.',
+  descriptionEs:
+    'Complejo hotelero-restaurante ucraniano que ofrece a sus huéspedes un alojamiento elegante en un edificio histórico bellamente restaurado.',
   fullDescription:
     'A custom WordPress theme built from scratch for a Ukrainian hotel-restaurant complex, featuring an integrated room booking system and immersive 3D panorama virtual tours of the venue. Custom CSS3 and JavaScript deliver refined animations and a premium visual experience that reflects the historic elegance of the property.',
   fullDescriptionUa:
     'Кастомна тема WordPress, створена з нуля для українського готельно-ресторанного комплексу, з інтегрованою системою бронювання номерів та інтерактивними 3D-панорамними віртуальними турами. Кастомні CSS3 та JavaScript забезпечують вишукані анімації та преміальний візуальний вигляд, який відображає історичну елегантність об’єкта.',
+  fullDescriptionEs:
+    'Tema WordPress completamente personalizada, construida desde cero para un complejo hotelero-restaurante ucraniano, con un sistema integrado de reserva de habitaciones y tours virtuales panorámicos 3D inmersivos. CSS3 y JavaScript personalizados proporcionan animaciones refinadas y una experiencia visual premium que refleja la elegancia histórica del establecimiento.',
   detailHeroLine: 'CUSTOM WORDPRESS · HOSPITALITY & HOTEL BOOKING',
   detailMetrics: [
     { value: '90+', label: 'PageSpeed Score', accent: 'green' },

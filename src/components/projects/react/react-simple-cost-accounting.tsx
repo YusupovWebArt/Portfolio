@@ -5,10 +5,13 @@ const reactSimpleCostAccounting: Project = {
   title: 'Simple React Cost Accounting App',
   description: 'Pet project for learning and practicing React.js.',
   descriptionUa: 'Пет-проєкт для вивчення та практики React.js.',
+  descriptionEs: 'Proyecto personal para el aprendizaje y la práctica de React.js.',
   fullDescription:
     'A beginner-friendly React cost accounting app that allows users to track income and expenses, calculate balances, and manage financial entries. Built with React.js and Vite to practice component-based architecture and state management with hooks.',
   fullDescriptionUa:
     'Зрозумілий для початківців додаток обліку витрат на React, який дозволяє користувачам відстежувати доходи та витрати, розраховувати баланс і керувати фінансовими записами. Створений на React.js та Vite для практики компонентної архітектури та управління станом за допомогою хуків.',
+  fullDescriptionEs:
+    'Una aplicación de contabilidad de costes en React accesible para principiantes, que permite a los usuarios registrar ingresos y gastos, calcular saldos y gestionar asientos financieros. Desarrollada con React.js y Vite para practicar la arquitectura basada en componentes y la gestión del estado con hooks.',
   detailHeroLine: 'REACT · JAVASCRIPT · FINANCE DEMO',
   detailMetrics: [
     { value: 'React.js', label: 'UI Library', accent: 'green' },

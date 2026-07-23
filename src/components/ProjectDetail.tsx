@@ -352,7 +352,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
               {project.title}
             </h1>
             <p className="text-slate-600 dark:text-slate-300 leading-relaxed text-base">
-              {lang === 'ua' && project.fullDescriptionUa ? project.fullDescriptionUa : project.fullDescription}
+              {lang === 'ua' && project.fullDescriptionUa ? project.fullDescriptionUa : lang === 'es' && project.fullDescriptionEs ? project.fullDescriptionEs : project.fullDescription}
             </p>
 
             {metrics.length > 0 && (

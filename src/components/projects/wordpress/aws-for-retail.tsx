@@ -7,10 +7,14 @@ const awsForRetail: Project = {
     'Website focused on promoting retail-oriented cloud solutions and services built on Amazon Web Services (AWS). It positions AWS not just as infrastructure, but as a strategic backbone for retail businesses to modernize operations, scale dynamically, and provide seamless customer experiences.',
   descriptionUa:
     'Сайт, орієнтований на просування хмарних рішень та послуг для роздрібної торгівлі на базі Amazon Web Services (AWS). Він позиціонує AWS не просто як інфраструктуру, а як стратегічну основу для модернізації операцій, динамічного масштабування та забезпечення бездоганного клієнтського досвіду ритейлерів.',
+  descriptionEs:
+    'Sitio web orientado a promover soluciones y servicios cloud para el comercio minorista basados en Amazon Web Services (AWS). Posiciona AWS no solo como infraestructura, sino como pilar estratégico para que las empresas del retail modernicen sus operaciones, escalen dinámicamente y ofrezcan experiencias de cliente excepcionales.',
   fullDescription:
     'A custom WordPress site built with Elementor and extended with custom CSS3, JavaScript, and PHP to showcase AWS retail cloud solutions. AI-generated imagery communicates complex cloud concepts visually, while a full SEO strategy drives organic traffic from retail businesses evaluating cloud modernization options.',
   fullDescriptionUa:
     'Кастомний сайт на WordPress, побудований за допомогою Elementor та розширений кастомними CSS3, JavaScript і PHP для демонстрації хмарних рішень AWS для ритейлу. Згенеровані AI зображення візуально передають складні хмарні концепції, а комплексна SEO-стратегія залучає органічний трафік від компаній роздрібної торгівлі, які оцінюють варіанти хмарної модернізації.',
+  fullDescriptionEs:
+    'Sitio WordPress personalizado construido con Elementor y ampliado con CSS3, JavaScript y PHP propios para presentar soluciones cloud de AWS orientadas al retail. Las imágenes generadas por IA comunican visualmente conceptos cloud complejos, mientras que una estrategia SEO completa atrae tráfico orgánico de empresas minoristas que evalúan opciones de modernización en la nube.',
   detailHeroLine: 'CUSTOM WORDPRESS · AWS CLOUD · RETAIL SOLUTIONS',
   detailMetrics: [
     { value: '90+', label: 'PageSpeed Score', accent: 'green' },

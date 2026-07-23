@@ -1,16 +1,10 @@
-import { useState, useEffect } from 'react'
-import { Menu, X, Github, Linkedin, Sun, Moon } from 'lucide-react'
+import { useState, useEffect, useRef } from 'react'
+import { Menu, X, Github, Linkedin, Sun, Moon, ChevronDown } from 'lucide-react'
 import { useTheme } from '../contexts/ThemeContext'
 import { useLanguage } from '../contexts/LanguageContext'
 import type { Lang } from '../contexts/LanguageContext'
 
-// Extracted outside to satisfy react-hooks/static-components rule
-interface LangToggleBtnProps {
-  compact?: boolean
-  lang: Lang
-  label: string
-  onClick: () => void
-}
+// --- Flag SVG components (cross-platform, Windows-safe) ---
 
 const UkFlag = () => (
   <svg className="w-4 h-4 rounded-full overflow-hidden shrink-0 shadow-xs" viewBox="0 0 640 480" aria-hidden="true">
@@ -29,23 +23,93 @@ const UaFlag = () => (
   </svg>
 )
 
-const LangToggleBtn = ({ compact = false, lang, label, onClick }: LangToggleBtnProps) => (
-  <button
-    type="button"
-    id="lang-toggle-btn"
-    onClick={onClick}
-    aria-label={label}
-    title={label}
-    className={`flex items-center gap-1.5 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all duration-200 font-semibold text-xs ${
-      compact
-        ? 'px-2 py-1.5'
-        : 'px-3 py-2 w-full justify-center'
-    }`}
-  >
-    {lang === 'en' ? <UkFlag /> : <UaFlag />}
-    <span className="tracking-wide">{lang === 'en' ? 'EN' : 'UA'}</span>
-  </button>
+const EsFlag = () => (
+  <svg className="w-4 h-4 rounded-full overflow-hidden shrink-0 shadow-xs border border-slate-200/40 dark:border-slate-700/40" viewBox="0 0 640 480" aria-hidden="true">
+    <path fill="#AA151B" d="M0 0h640v480H0z"/>
+    <path fill="#F1BF00" d="M0 120h640v240H0z"/>
+  </svg>
 )
+
+const FLAGS: Record<Lang, { component: React.FC; code: string }> = {
+  en: { component: UkFlag, code: 'EN' },
+  ua: { component: UaFlag, code: 'UA' },
+  es: { component: EsFlag, code: 'ES' },
+}
+
+// --- Language Dropdown component ---
+
+interface LangDropdownProps {
+  lang: Lang
+  label: string
+  onSelect: (lang: Lang) => void
+  compact?: boolean
+}
+
+const LangDropdown = ({ lang, label, onSelect, compact = false }: LangDropdownProps) => {
+  const [open, setOpen] = useState(false)
+  const ref = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (ref.current && !ref.current.contains(e.target as Node)) {
+        setOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
+  }, [])
+
+  const CurrentFlag = FLAGS[lang].component
+
+  return (
+    <div ref={ref} className="relative">
+      <button
+        type="button"
+        id="lang-dropdown-btn"
+        onClick={() => setOpen((prev) => !prev)}
+        aria-label={label}
+        title={label}
+        className={`flex items-center gap-1.5 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all duration-200 font-semibold text-xs ${
+          compact ? 'px-2 py-1.5' : 'px-3 py-2 w-full justify-center'
+        }`}
+      >
+        <CurrentFlag />
+        <span className="tracking-wide">{FLAGS[lang].code}</span>
+        <ChevronDown
+          size={12}
+          className={`transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
+        />
+      </button>
+
+      {open && (
+        <div className="absolute right-0 mt-1.5 w-28 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl shadow-xl overflow-hidden z-50 animate-fade-in">
+          {(Object.entries(FLAGS) as [Lang, { component: React.FC; code: string }][]).map(
+            ([code, { component: FlagComponent, code: label }]) => (
+              <button
+                key={code}
+                type="button"
+                onClick={() => {
+                  onSelect(code)
+                  setOpen(false)
+                }}
+                className={`flex items-center gap-2.5 w-full px-3 py-2 text-xs font-semibold transition-colors duration-150 ${
+                  lang === code
+                    ? 'bg-slate-100 dark:bg-slate-800 text-purple-600 dark:text-lime-400'
+                    : 'text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800'
+                }`}
+              >
+                <FlagComponent />
+                <span>{label}</span>
+              </button>
+            )
+          )}
+        </div>
+      )}
+    </div>
+  )
+}
+
+// --- Main Header ---
 
 const Header = () => {
   const { isDark, toggleTheme } = useTheme()
@@ -88,11 +152,6 @@ const Header = () => {
       element.scrollIntoView({ behavior: 'smooth' })
     }
     setIsMenuOpen(false)
-  }
-
-  const toggleLang = () => {
-    const next: Lang = lang === 'en' ? 'ua' : 'en'
-    setLang(next)
   }
 
   return (
@@ -149,9 +208,9 @@ const Header = () => {
               <Linkedin size={20} />
             </a>
 
-            {/* Language Toggle - Rightmost position with extra spacing and divider */}
+            {/* Language Dropdown - Rightmost position with divider */}
             <div className="pl-4 ml-2 border-l border-slate-200 dark:border-slate-800 flex items-center">
-              <LangToggleBtn compact lang={lang} label={t.header.langToggle} onClick={toggleLang} />
+              <LangDropdown compact lang={lang} label={t.header.langToggle} onSelect={setLang} />
             </div>
           </div>
 
@@ -209,8 +268,8 @@ const Header = () => {
                   <Linkedin size={20} />
                 </a>
 
-                {/* Language Toggle in mobile - Rightmost position */}
-                <LangToggleBtn compact lang={lang} label={t.header.langToggle} onClick={toggleLang} />
+                {/* Language Dropdown in mobile menu */}
+                <LangDropdown compact lang={lang} label={t.header.langToggle} onSelect={setLang} />
               </div>
             </div>
           </div>

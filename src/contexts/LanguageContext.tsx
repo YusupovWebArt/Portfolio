@@ -2,8 +2,9 @@ import React, { createContext, useContext, useState } from 'react'
 import type { Translation } from '../locales/types'
 import { en } from '../locales/en'
 import { ua } from '../locales/ua'
+import { es } from '../locales/es'
 
-export type Lang = 'en' | 'ua'
+export type Lang = 'en' | 'ua' | 'es'
 
 interface LanguageContextType {
   lang: Lang
@@ -11,15 +12,16 @@ interface LanguageContextType {
   t: Translation
 }
 
-const translations: Record<Lang, Translation> = { en, ua }
+const translations: Record<Lang, Translation> = { en, ua, es }
 
 /** Detect initial language: localStorage → browser language → fallback EN */
 const getInitialLang = (): Lang => {
   try {
     const saved = localStorage.getItem('portfolio_lang')
-    if (saved === 'en' || saved === 'ua') return saved
+    if (saved === 'en' || saved === 'ua' || saved === 'es') return saved
     const browserLang = navigator.language?.toLowerCase() ?? 'en'
     if (browserLang.startsWith('uk') || browserLang.startsWith('ua')) return 'ua'
+    if (browserLang.startsWith('es')) return 'es'
   } catch {
     // localStorage may be unavailable in some environments
   }

@@ -7,10 +7,14 @@ const frontDeskHelpers: Project = {
     'FDH provides skilled remote employees and advanced IT solutions to help businesses grow and thrive.',
   descriptionUa:
     'FDH надає кваліфікованих віддалених працівників та сучасні IT-рішення, щоб допомогти бізнесу зростати та розвиватися.',
+  descriptionEs:
+    'FDH proporciona empleados remotos cualificados y soluciones IT avanzadas para ayudar a las empresas a crecer y prosperar.',
   fullDescription:
     'Development of a corporate outsourcing and IT consulting portal for Front Desk Helpers. Built with a custom WordPress theme integrated with Elementor Pro, bespoke PHP structures, and Advanced Custom Fields (ACF). The portal localized services for US and ES markets with dynamic application/feedback forms. Implemented structured Schema.org JSON-LD definitions and technical SEO speed optimizations for maximum search visibility.',
   fullDescriptionUa:
     'Розробка корпоративного порталу аутсорсингу та IT-консалтингу для Front Desk Helpers. Побудовано на кастомній темі WordPress з інтеграцією Elementor Pro, кастомними PHP-структурами та ACF. Портал локалізовано для ринків США та Іспанії з динамічними формами заявок. Впроваджено структуровану мікророзмітку Schema.org JSON-LD та оптимізацію швидкості.',
+  fullDescriptionEs:
+    'Desarrollo de un portal corporativo de outsourcing y consultoría IT para Front Desk Helpers. Construido con un tema WordPress personalizado integrado con Elementor Pro, estructuras PHP propias y Advanced Custom Fields (ACF). El portal fue localizado para los mercados de EE. UU. y España con formularios dinámicos de solicitud y retroalimentación. Se implementaron definiciones estructuradas Schema.org JSON-LD y optimizaciones técnicas de velocidad para maximizar la visibilidad en buscadores.',
   detailHeroLine: 'CUSTOM WORDPRESS · ENTERPRISE OUTSOURCING PORTAL',
   detailMetrics: [
     { value: '94+', label: 'PageSpeed', accent: 'green' },

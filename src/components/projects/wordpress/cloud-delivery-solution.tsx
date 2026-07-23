@@ -7,10 +7,14 @@ const cloudDeliverySolution: Project = {
     'System for dispatching, planning, and tracking your deliveries and courier.',
   descriptionUa:
     'Система для диспетчеризації, планування та відстеження ваших доставок і кур’єрів.',
+  descriptionEs:
+    'Sistema para la gestión, planificación y seguimiento de sus entregas y mensajeros.',
   fullDescription:
     'A WordPress landing page for the FDH Cloud Delivery Solution, built using the Bootstrap 5 CSS framework for a responsive, mobile-first layout. Custom CSS3 and JavaScript were added for tailored styling and interactivity, presenting the dispatch, planning, and courier tracking capabilities in a clear, conversion-focused single-page format.',
   fullDescriptionUa:
     'Лендінг на WordPress для FDH Cloud Delivery Solution, побудований з використанням CSS-фреймворку Bootstrap 5 для створення адаптивного mobile-first макета. Кастомні CSS3 та JavaScript додані для індивідуального стилю та інтерактивності, представляючи можливості диспетчеризації, планування та відстеження кур’єрів у зрозумілому, орієнтованому на конверсію односторінковому форматі.',
+  fullDescriptionEs:
+    'Landing page en WordPress para FDH Cloud Delivery Solution, construida con el framework CSS Bootstrap 5 para una maquetación responsive y mobile-first. Se añadieron CSS3 y JavaScript personalizados para un estilo propio e interactividad, presentando las capacidades de gestión de envíos, planificación y seguimiento de mensajeros en un formato de página única claro y orientado a la conversión.',
   detailHeroLine: 'CUSTOM WORDPRESS · CLOUD DELIVERY · SAAS LANDING PAGE',
   detailMetrics: [
     { value: '90+', label: 'PageSpeed Score', accent: 'green' },

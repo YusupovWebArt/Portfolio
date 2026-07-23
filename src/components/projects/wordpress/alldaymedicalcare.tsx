@@ -7,10 +7,14 @@ const alldayMedicalcare: Project = {
     'Healthcare provider focused on offering a wide range of medical services.',
   descriptionUa:
     'Медична установа, що спеціалізується на наданні широкого спектра медичних послуг.',
+  descriptionEs:
+    'Proveedor de atención médica centrado en ofrecer una amplia gama de servicios médicos.',
   fullDescription:
     'A custom WordPress theme developed on top of an existing client theme using Elementor enhanced with custom HTML, CSS3, JavaScript, and PHP. Advanced Custom Fields (ACF) power flexible content management, while a bespoke PHP-based doctor directory template enables dynamic filtering of providers by specialty, location, and other parameters — giving patients fast access to the right care.',
   fullDescriptionUa:
     'Кастомна тема WordPress, розроблена на основі існуючої теми клієнта з використанням Elementor, розширеного кастомними HTML, CSS3, JavaScript та PHP. Advanced Custom Fields (ACF) забезпечує гнучке управління контентом, а кастомний PHP-шаблон каталогу лікарів дозволяє динамічно фільтрувати фахівців за спеціальністю, локацією та іншими параметрами, забезпечуючи пацієнтам швидкий доступ до потрібної медичної допомоги.',
+  fullDescriptionEs:
+    'Un tema de WordPress personalizado desarrollado sobre un tema existente del cliente utilizando Elementor mejorado con HTML, CSS3, JavaScript y PHP personalizados. Advanced Custom Fields (ACF) impulsa una gestión de contenidos flexible, mientras que una plantilla de directorio médico personalizada basada en PHP permite el filtrado dinámico de profesionales por especialidad, ubicación y otros parámetros.',
   detailHeroLine: 'CUSTOM WORDPRESS · HEALTHCARE & MEDICAL SERVICES',
   detailMetrics: [
     { value: '90+', label: 'PageSpeed Score', accent: 'green' },

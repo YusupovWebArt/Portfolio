@@ -5,10 +5,13 @@ const LueirisLashes: Project = {
   title: 'Lueiris lashes',
   description: 'US-based lashes beauty store.',
   descriptionUa: "Американський інтернет-магазин б'юті-товарів для вій.",
+  descriptionEs: 'Tienda de belleza online estadounidense especializada en productos para pestañas.',
   fullDescription:
     'Lueiris Lashes is a US-based Shopify beauty store specializing in eyelash products and accessories. The store features a sleek, beauty-focused custom Liquid theme, a curated product catalogue with detailed variant options, and app integrations for customer engagement and marketing.',
   fullDescriptionUa:
     "Lueiris Lashes — це американський б'юті-магазин на базі Shopify, який спеціалізується на продуктах для вій та аксесуарах. Магазин має елегантну кастомну тему Liquid у б'юті-стилі, підібраний каталог товарів із детальними варіантами, а також інтеграції додатків для залучення клієнтів і маркетингу.",
+  fullDescriptionEs:
+    'Lueiris Lashes es una tienda de belleza Shopify con sede en Estados Unidos especializada en productos y accesorios para pestañas. La tienda cuenta con un tema Liquid personalizado y elegante con estética beauty, un catálogo de productos cuidadosamente seleccionado con opciones de variantes detalladas, e integraciones de aplicaciones para la captación de clientes y el marketing.',
   detailHeroLine: 'SHOPIFY · BEAUTY & LASHES STORE',
   detailMetrics: [
     { value: '90+', label: 'PageSpeed Score', accent: 'green' },

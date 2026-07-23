@@ -107,7 +107,7 @@ const ChatModal = ({
 
   // We only show suggestions that haven't been clicked or just show a subset of FAQs that fit in horizontal bar
   const activeSuggestions = FAQ.filter(
-    (faq) => !messages.some((m) => m.from === 'user' && (m.text === faq.question || m.text === faq.questionUa))
+    (faq) => !messages.some((m) => m.from === 'user' && (m.text === faq.question || m.text === faq.questionUa || m.text === faq.questionEs))
   )
 
   return (
@@ -197,7 +197,7 @@ const ChatModal = ({
               </div>
               <div className="grid grid-cols-1 gap-2">
                 {FAQ.map((faq, idx) => {
-                  const questionText = lang === 'ua' ? faq.questionUa : faq.question
+                  const questionText = lang === 'ua' ? faq.questionUa : lang === 'es' ? faq.questionEs : faq.question
                   return (
                     <button
                       key={idx}
@@ -238,7 +238,7 @@ const ChatModal = ({
           {activeSuggestions.length > 0 && messages.length > 1 && (
             <div className="flex flex-wrap gap-2 pb-1">
               {activeSuggestions.slice(0, 3).map((faq, idx) => {
-                const questionText = lang === 'ua' ? faq.questionUa : faq.question
+                const questionText = lang === 'ua' ? faq.questionUa : lang === 'es' ? faq.questionEs : faq.question
                 return (
                   <button
                     key={idx}

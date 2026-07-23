@@ -7,10 +7,14 @@ const itMagic: Project = {
     'The IT-Magic project represents a comprehensive, end-to-end AWS and DevOps solution provider — from infrastructure design and migration to ongoing support and optimization.',
   descriptionUa:
     'Проєкт IT-Magic представляє комплексного провайдера AWS та DevOps рішень — від проєктування інфраструктури та міграції до постійної підтримки та оптимізації.',
+  descriptionEs:
+    'El proyecto IT-Magic representa un proveedor integral de soluciones AWS y DevOps, desde el diseño de infraestructuras y la migración hasta el soporte continuo y la optimización.',
   fullDescription:
     'Development of a custom-themed enterprise website for IT-Magic, highlighting the company’s AWS, DevOps, infrastructure management, and cloud consulting services. Built with a custom WordPress theme combined with Elementor for flexible template design, bespoke PHP logic, and Advanced Custom Fields (ACF). To optimize high-volume tech blogging, it implements automated call-to-action injections and Schema.org markup. For several years, served as the sole developer responsible for ongoing feature updates, technical maintenance, landing page designs, Nginx/MySQL tuning, and deep technical SEO optimizations.',
   fullDescriptionUa:
     'Розробка корпоративного веб-сайту з кастомною темою для IT-Magic, який висвітлює послуги компанії з AWS, DevOps, управління інфраструктурою та хмарного консалтингу. Побудовано на кастомній темі WordPress у поєднанні з Elementor, власною PHP-логікою та ACF. Кілька років виступав єдиним розробником, відповідальним за оновлення функціоналу, технічне обслуговування, дизайн лендінгів, налаштування Nginx/MySQL та глибоку SEO-оптимізацію.',
+  fullDescriptionEs:
+    'Desarrollo del sitio web corporativo con tema personalizado para IT-Magic, que destaca los servicios de la empresa en AWS, DevOps, gestión de infraestructuras y consultoría cloud. Construido con un tema WordPress personalizado combinado con Elementor, lógica PHP propia y Advanced Custom Fields (ACF). Para optimizar un blog técnico de alto volumen, implementa inyecciones automáticas de llamadas a la acción y marcado Schema.org. Durante varios años actuó como único desarrollador responsable de las actualizaciones de funcionalidades, el mantenimiento técnico, los diseños de landing pages, la configuración de Nginx/MySQL y las optimizaciones SEO técnicas en profundidad.',
   detailHeroLine: 'CUSTOM WORDPRESS · AWS & DEVOPS SOLUTIONS PORTAL',
   detailMetrics: [
     { value: '95+', label: 'PageSpeed', accent: 'green' },
