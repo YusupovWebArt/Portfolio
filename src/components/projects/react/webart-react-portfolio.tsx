@@ -4,22 +4,22 @@ const webartReactPortfolio: Project = {
   id: 3950,
   title: 'My React Portfolio Website',
   description:
-    'Personal portfolio site of Artur Yusupov, showcasing his professional skills and completed projects as a WordPress and React developer',
+    'High-performance single-page portfolio application built with React 19, TypeScript 6, Tailwind CSS v4, and a 3-language i18n engine (EN/UA/ES) using a Spec-Driven AI (SDD) workflow.',
   descriptionUa:
-    'Особистий сайт-портфоліо Артура Юсупова, що демонструє його професійні навички та виконані проєкти як WordPress та React розробника',
+    'Високопродуктивний односторінковий сайт-портфоліо на React 19, TypeScript 6, Tailwind CSS v4 та 3-мовною i18n екосистемою (EN/UA/ES) із застосуванням методології Spec-Driven AI (SDD).',
   descriptionEs:
-    'Sitio web de portfolio personal de Artur Yusupov, que muestra sus habilidades profesionales y proyectos realizados como desarrollador de WordPress y React',
+    'Aplicación de portfolio SPA de alto rendimiento construida con React 19, TypeScript 6, Tailwind CSS v4 y motor i18n trilingüe (EN/UA/ES) siguiendo la metodología Spec-Driven AI (SDD).',
   fullDescription:
-    'This portfolio website is a high-performance single-page application (SPA) built with React 19, TypeScript 6.x, and Tailwind CSS v4. It showcases a strict Spec-Driven Development (SDD) process, integrating agentic AI coding environments (Claude Code, Cursor, Google Antigravity) directly into the SDLC. The project is governed by local workspace rules (AGENTS.md) and reference specifications (DESIGN_SYSTEM.md, SECURITY.md, ARCHITECTURE.md) to ensure absolute styling consistency, anti-scraping contact obfuscation, and hardened security headers (CSP).',
+    'This portfolio website is a high-performance single-page application (SPA) built with React 19, TypeScript 6.x, Tailwind CSS v4, and a complete 3-language internationalization system (English, Ukrainian, Spanish). It showcases a strict Spec-Driven Development (SDD) process, integrating agentic AI coding environments (Claude Code, Cursor, Google Antigravity) directly into the SDLC. The project features an interactive 3-language dropdown switcher, a trilingual client-side AI FAQ chatbot, Base64 contact obfuscation, hardened security headers (CSP), and a 69-project interactive showcase.',
   fullDescriptionUa:
-    'Цей сайт-портфоліо — це високопродуктивний односторінковий додаток (SPA), розроблений на React 19, TypeScript 6.x та Tailwind CSS v4. Він демонструє суворий процес розробки на основі специфікацій (Spec-Driven Development, SDD) з інтеграцією агентних AI-середовищ розробки (Claude Code, Cursor, Google Antigravity) безпосередньо в SDLC. Проєкт підпорядковується локальним правилам робочого простору (AGENTS.md) та еталонним специфікаціям (DESIGN_SYSTEM.md, SECURITY.md, ARCHITECTURE.md) для забезпечення абсолютної узгодженості стилів, обфускації контактів від скрапінгу та посилених заголовків безпеки (CSP).',
+    'Цей сайт-портфоліо — це високопродуктивний односторінковий додаток (SPA), розроблений на React 19, TypeScript 6.x, Tailwind CSS v4 та повній 3-мовній системі інтернаціоналізації (англійська, українська, іспанська). Він демонструє суворий процес розробки на основі специфікацій (Spec-Driven Development, SDD) з інтеграцією агентних AI-середовищ (Claude Code, Cursor, Google Antigravity) у SDLC. Проєкт включає інтерактивний 3-мовний перемикач мов, тримовного клієнтського AI FAQ асистента, обфускацію контактів Base64, посилені заголовки безпеки (CSP) та портфоліо з 69 проєктів.',
   fullDescriptionEs:
-    'Este sitio web de portfolio es una aplicación de página única (SPA) de alto rendimiento construida con React 19, TypeScript 6.x y Tailwind CSS v4. Demuestra un riguroso proceso de Spec-Driven Development (SDD), integrando entornos de codificación con IA agéntica (Claude Code, Cursor, Google Antigravity) directamente en el SDLC. El proyecto está gobernado por reglas de workspace locales (AGENTS.md) y especificaciones de referencia (DESIGN_SYSTEM.md, SECURITY.md, ARCHITECTURE.md) para garantizar una coherencia de estilos absoluta, la ofuscación de contactos anti-scraping y cabeceras de seguridad reforzadas (CSP).',
-  detailHeroLine: 'REACT 19 · TYPESCRIPT 6 · TAILWIND v4 · AI SDD',
+    'Este sitio web de portfolio es una aplicación de página única (SPA) de alto rendimiento construida con React 19, TypeScript 6.x, Tailwind CSS v4 y un sistema completo de internacionalización en 3 idiomas (inglés, ucraniano, español). Demuestra un riguroso proceso de Spec-Driven Development (SDD), integrando entornos de codificación agéntica (Claude Code, Cursor, Google Antigravity) en el SDLC. Incluye un selector desplegable de 3 idiomas, un chatbot FAQ con IA trilingüe, ofuscación de contactos Base64, cabeceras de seguridad (CSP) y un escaparate interactivo de 69 proyectos.',
+  detailHeroLine: 'REACT 19 · TYPESCRIPT 6 · TAILWIND v4 · TRILINGUAL i18n (EN/UA/ES) · AI SDD',
   detailMetrics: [
     { value: 'React 19', label: 'UI Framework', accent: 'green' },
     { value: 'TS 6.x', label: 'Strict Typing', accent: 'green' },
-    { value: 'Vite 8 & Tailwind v4', label: 'Modern Build', accent: 'darkGreen' },
+    { value: 'EN / UA / ES', label: 'Trilingual i18n', accent: 'darkGreen' },
     { value: 'Spec-Driven (SDD)', label: 'AI SDLC Workflow', accent: 'neutral' },
   ],
   architecture: {
@@ -50,7 +50,7 @@ const webartReactPortfolio: Project = {
       },
     ],
     description:
-      'The portfolio is built as a React SPA with TypeScript. The CI/CD pipeline triggers on push to master, running security audits, TypeScript checks, and lints before deploying to GitHub Pages.',
+      'The portfolio is built as a React SPA with TypeScript and i18n subsystem. The CI/CD pipeline triggers on push to master, running security audits, TypeScript checks, and lints before deploying to GitHub Pages.',
   },
   image:
     '/Portfolio/images/portfolio/thumbs/react/webart-react-portfolio_thumb.webp',
@@ -99,6 +99,7 @@ const webartReactPortfolio: Project = {
       { short: 'React 19', full: 'Component-based UI with hooks for state, effect, and context management' },
       { short: 'TypeScript 6.x', full: 'Strict type safety across the entire application workspace' },
       { short: 'Tailwind CSS v4', full: 'Utility-first framework utilizing CSS variables and native light/dark variants' },
+      { short: 'Trilingual i18n (EN/UA/ES)', full: 'Custom React LanguageContext with browser auto-detection and localStorage persistence' },
       { short: 'Lucide Icons', full: 'Vector icons integrated throughout the UI for navigation clarity' },
     ],
     contentManagement: [],
@@ -121,9 +122,19 @@ const webartReactPortfolio: Project = {
   },
   features: [
     {
-      title: 'Spec-Driven AI Development',
+      title: 'Spec-Driven AI Development (SDD)',
       description:
         'Every feature is built using the Spec-Driven Development (SDD) methodology, leveraging AI agents (Claude Code, Cursor, Antigravity) working inside strict boundaries defined by root specification documents.',
+    },
+    {
+      title: 'Trilingual i18n Engine & Dropdown',
+      description:
+        'Full support for English, Ukrainian, and Spanish across all site sections, interactive chatbot FAQs, and 69 project case studies, complete with custom SVG flags and browser auto-detection.',
+    },
+    {
+      title: 'Multilingual AI FAQ Chatbot',
+      description:
+        'Interactive virtual assistant powered by client-side keyword matching algorithms, serving instantaneous localized responses in English, Ukrainian, and Spanish with interactive suggestion chips.',
     },
     {
       title: 'Workspace Rules (.agents)',
@@ -141,9 +152,9 @@ const webartReactPortfolio: Project = {
         'Enforces local security policies via CSP/Referrer meta headers, and protects email, phone, and Telegram links with dynamic Base64 decryption on interaction.',
     },
     {
-      title: 'Filterable Project Gallery',
+      title: 'Filterable 69-Project Showcase',
       description:
-        'Projects are displayed in a responsive card grid with category-based filters, allowing recruiters and clients to quickly browse relevant work.',
+        '69 projects displayed in a responsive card grid with category-based filters and comprehensive modal case studies, allowing recruiters to quickly evaluate technical depth.',
     },
     {
       title: 'Light & Dark Mode',
@@ -152,14 +163,14 @@ const webartReactPortfolio: Project = {
     },
   ],
   challenges: [
-    'Configuring major package updates (e.g. TypeScript 7.0 and Lucide-React 1.0) without causing linter crashes or missing icon exports.',
+    'Configuring major package updates without causing linter crashes or missing icon exports.',
     'Managing AI context drift during prolonged programming sessions across multiple files and structures.',
-    'Maintaining a clean, custom design system using Tailwind v4 while handling dark mode class overrides.',
+    'Maintaining a clean, custom design system using Tailwind v4 while handling dark mode class overrides and trilingual layouts.',
   ],
   solutions: [
     'Implemented custom Dependabot ignore filters to block breaking major upgrades while permitting minor/patch updates in the 0.x series.',
     'Created a strict workspace rule (AGENTS.md) that forces AI agents to read DESIGN_SYSTEM.md, SECURITY.md, and ARCHITECTURE.md before coding.',
-    'Overrode the default dark variant in Tailwind v4 using custom CSS variant rules mapped to the .dark selector class.',
+    'Overrode the default dark variant in Tailwind v4 using custom CSS variant rules mapped to the .dark selector class, and implemented dynamic language state routing.',
   ],
   liveUrl: 'https://yusupovwebart.github.io/Portfolio/',
   githubUrl: 'https://github.com/YusupovWebArt/Portfolio',
