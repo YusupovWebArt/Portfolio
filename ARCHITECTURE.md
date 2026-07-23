@@ -50,7 +50,8 @@ Portfolio/
 │   ├── locales/            # i18n Translation dictionaries & types
 │   │   ├── types.ts        # Strict Translation interface
 │   │   ├── en.ts           # English translations
-│   │   └── ua.ts           # Ukrainian translations
+│   │   ├── ua.ts           # Ukrainian translations
+│   │   └── es.ts           # Spanish translations
 │   ├── App.tsx             # Root Layout manager
 │   ├── index.css           # Tailwind v4 import & custom styles
 │   └── main.tsx            # Application entrypoint mount
@@ -70,9 +71,11 @@ Portfolio/
 
 ### Internationalization (i18n) Subsystem
 - Driven by a custom `LanguageContext` providing strict type-checked translations via `useLanguage()`.
-- **Auto-Detection:** Detects visitor's browser language on first load (`navigator.language.startsWith('uk' | 'ua')`).
+- **Supported Languages:** 3 languages — English (`en`), Ukrainian (`ua`), and Spanish (`es`).
+- **Header Language Switcher:** A 3-language interactive dropdown menu (`🇬🇧 EN`, `🇺🇦 UA`, `🇪🇸 ES`) with custom SVG flag icons and click-outside dismissal.
+- **Auto-Detection:** Detects visitor's browser language on first load (`navigator.language` matching `uk`/`ua` → `ua`, `es` → `es`).
 - **Persistence:** Persists language preference in `localStorage.portfolio_lang`.
-- **Localization:** Supports `en` and `ua` dictionaries. Project case studies include `descriptionUa` and `fullDescriptionUa` for dynamic localized rendering.
+- **Localization:** Supports `en.ts`, `ua.ts`, and `es.ts` translation dictionaries. Project case studies include `descriptionUa`/`descriptionEs` and `fullDescriptionUa`/`fullDescriptionEs` for dynamic localized rendering.
 
 ### Smooth Scroll Navigation
 - Navigation uses standard HTML `#anchor` links mapped to section `id`s.
@@ -80,7 +83,7 @@ Portfolio/
 
 ### Client-Side Multilingual FAQ Chatbot
 - Driven by a keyword-matching algorithm inside `src/data/chatFaq.ts`.
-- Supports dual-language FAQ matching (`questionUa` & `answerUa`), returning localized answers via `getBotAnswer(question, lang)`.
+- Supports trilingual FAQ matching (`question`, `questionUa`, `questionEs` & `answer`, `answerUa`, `answerEs`), returning localized answers via `getBotAnswer(question, lang)`.
 
 ---
 
