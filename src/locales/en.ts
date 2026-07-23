@@ -462,7 +462,7 @@ export const en: Translation = {
     },
   },
   footer: {
-    tagline: 'Crafting digital experiences with passion and precision',
+    tagline: 'Engineering high-performance web products with AI-augmented velocity.',
     copyright: 'All rights reserved.',
     madeWith: 'Made',
   },

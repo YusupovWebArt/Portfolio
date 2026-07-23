@@ -12,6 +12,23 @@ interface LangToggleBtnProps {
   onClick: () => void
 }
 
+const UkFlag = () => (
+  <svg className="w-4 h-4 rounded-full overflow-hidden shrink-0 shadow-xs" viewBox="0 0 640 480" aria-hidden="true">
+    <path fill="#012169" d="M0 0h640v480H0z"/>
+    <path fill="#FFF" d="m75 0 245 180L565 0h75v55L415 240l225 185v55h-75L320 300 75 480H0v-55l225-185L0 55V0h75z"/>
+    <path fill="#C8102E" d="m424 281 216 159v40l-216-159h0zm-208 0L0 440v40l243-179h-27zm208-82L640 40V0l-243 179h27zM216 199 0 40V0l216 159h0z"/>
+    <path fill="#FFF" d="M240 0v480h160V0H240zM0 160v160h640V160H0z"/>
+    <path fill="#C8102E" d="M267 0v480h106V0H267zM0 187v106h640V187H0z"/>
+  </svg>
+)
+
+const UaFlag = () => (
+  <svg className="w-4 h-4 rounded-full overflow-hidden shrink-0 shadow-xs border border-slate-200/40 dark:border-slate-700/40" viewBox="0 0 640 480" aria-hidden="true">
+    <path fill="#0057B7" d="M0 0h640v240H0z"/>
+    <path fill="#FFD700" d="M0 240h640v240H0z"/>
+  </svg>
+)
+
 const LangToggleBtn = ({ compact = false, lang, label, onClick }: LangToggleBtnProps) => (
   <button
     type="button"
@@ -25,7 +42,7 @@ const LangToggleBtn = ({ compact = false, lang, label, onClick }: LangToggleBtnP
         : 'px-3 py-2 w-full justify-center'
     }`}
   >
-    <span className="text-base leading-none">{lang === 'en' ? '🇬🇧' : '🇺🇦'}</span>
+    {lang === 'en' ? <UkFlag /> : <UaFlag />}
     <span className="tracking-wide">{lang === 'en' ? 'EN' : 'UA'}</span>
   </button>
 )
