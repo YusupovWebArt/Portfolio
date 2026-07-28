@@ -46,11 +46,22 @@ const Footer = () => {
               {t.header.nav.skills}
             </a>
             <a
+              href="#b2b-services"
+              className="text-slate-300 dark:text-slate-400 hover:text-white transition-colors"
+            >
+              {t.b2bServices.badge}
+            </a>
+            <a
               href="#contact"
               className="text-slate-300 dark:text-slate-400 hover:text-white transition-colors"
             >
               {t.header.nav.contact}
             </a>
+          </div>
+
+          {/* Legal Footprint Notice */}
+          <div className="mb-6 max-w-3xl mx-auto px-4 py-2.5 rounded-2xl bg-slate-800/40 dark:bg-slate-900/40 border border-slate-800 dark:border-white/5 text-xs text-slate-400 dark:text-slate-400">
+            {t.footer.legalNotice}
           </div>
 
           {/* Divider */}

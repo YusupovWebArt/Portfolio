@@ -221,27 +221,39 @@ export interface Translation {
       caseStudy: string
     }
   }
-  whyMe: {
+  b2bServices: {
     badge: string
     title: {
       before: string
       highlight: string
       after: string
     }
-    description: string
-    card1: {
-      title: string
-      subtitle: string
-      body: string
-      keyAreasLabel: string
-      items: [string, string, string]
+    subtitle: string
+    tabs: {
+      pymes: string
+      agencies: string
     }
-    card2: {
+    pymesContent: {
       title: string
       subtitle: string
-      body: string
-      keyAreasLabel: string
-      items: [string, string, string]
+      cards: Array<{
+        title: string
+        subtitle: string
+        body: string
+        benefitLabel: string
+        benefit: string
+      }>
+    }
+    agenciesContent: {
+      title: string
+      subtitle: string
+      cards: Array<{
+        title: string
+        subtitle: string
+        body: string
+        benefitLabel: string
+        benefit: string
+      }>
     }
   }
   contact: {
@@ -272,6 +284,7 @@ export interface Translation {
   }
   footer: {
     tagline: string
+    legalNotice: string
     copyright: string
     madeWith: string
   }

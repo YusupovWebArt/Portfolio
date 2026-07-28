@@ -402,35 +402,105 @@ export const en: Translation = {
       caseStudy: 'Case Study',
     },
   },
-  whyMe: {
-    badge: 'Why Choose Me',
+  b2bServices: {
+    badge: 'B2B Services & Partnering',
     title: {
-      before: 'Why it is',
-      highlight: 'profitable',
-      after: 'to work with me',
+      before: 'Digital Solutions &',
+      highlight: 'White Label Partnering',
+      after: 'in Spain',
     },
-    description:
-      'Partnering with me is a strategic investment in speed, compliance, and future-proof positioning. Here is how I deliver tangible business value to your digital products:',
-    card1: {
-      title: 'Business-First Development Velocity',
-      subtitle: 'Agentic Engineering & 3x Shorter Time-to-Market',
-      body: 'I leverage advanced agentic AI environments to accelerate development cycles by 3x. By automating routine syntax generation, I shift engineering focus to system architecture, thorough code reviews, and robust error handling — drastically reducing development costs and delivery time.',
-      keyAreasLabel: 'Key Focus Areas',
-      items: [
-        '3x faster feature deployment using Claude Code & Antigravity',
-        'Relocated technical rigor on security, scalability & failover paths',
-        'Spec-driven development for predictable, clean, and modular code',
+    subtitle: 'From web modernization to AI automation: delivering tangible business ROI for small businesses, local services, and digital agencies across Spain.',
+    tabs: {
+      pymes: 'For SMEs & Freelancers',
+      agencies: 'For Digital Agencies (White Label)',
+    },
+    pymesContent: {
+      title: 'High-Performance Web Solutions for Your Business',
+      subtitle: 'Transforming your web presence (clinics, workshops, woodworking, local services) into a reliable source of inquiries and booked appointments.',
+      cards: [
+        {
+          title: 'Web Redesign & Modernization',
+          subtitle: 'Higher Visitor-to-Client Conversion',
+          body: 'We convert outdated legacy websites into sleek, mobile-first digital storefronts that build immediate consumer trust and convert casual visitors into active phone calls and appointment bookings.',
+          benefitLabel: 'Key Business Benefit',
+          benefit: 'Increased conversion rate and higher volume of real client inquiries.',
+        },
+        {
+          title: 'Speed & Google Ads Optimization',
+          subtitle: 'Sub-second Load Times (PageSpeed 95+)',
+          body: 'We accelerate your website to load in under 1 second. This improves your Quality Score in Google Ads, reducing cost-per-click while preventing mobile visitors from bouncing to competitors.',
+          benefitLabel: 'Key Business Benefit',
+          benefit: 'Lower ad campaign costs & zero lost mobile leads due to slowness.',
+        },
+        {
+          title: 'AI Integration & Automation',
+          subtitle: '24/7 Virtual Assistants & Online Booking',
+          body: 'We deploy AI-powered virtual assistants and automated booking widgets (WhatsApp / Doctoralia). Your site handles client inquiries and logs reservations 24/7 without staff intervention.',
+          benefitLabel: 'Key Business Benefit',
+          benefit: 'Automated 24/7 client booking and instant lead qualification.',
+        },
+        {
+          title: 'Local SEO & AI Search Visibility',
+          subtitle: 'Top Google Maps & AI Answer Engine Ranking',
+          body: 'We embed structured JSON-LD data to rank your business at the top of Google Maps and AI search engines (ChatGPT, Claude, Google AI Overviews) for local queries in your city.',
+          benefitLabel: 'Key Business Benefit',
+          benefit: 'High local visibility when clients search for services in your area.',
+        },
+        {
+          title: 'E-Commerce & Online Stores',
+          subtitle: 'Seamless Checkout & Payment Gateways',
+          body: 'We build ultra-fast online stores (Shopify / WordPress) with integrated payment processing, product catalogs, and automated order fulfillment to sell products or services continuously.',
+          benefitLabel: 'Key Business Benefit',
+          benefit: 'Automated digital sales and frictionless online customer checkout.',
+        },
+        {
+          title: 'RGPD & LOPDGDD Legal Compliance',
+          subtitle: '100% Spanish AEPD Data Privacy Protection',
+          body: 'We adapt your website to full Spanish data privacy regulations (encrypted forms, cookie consent banners, legal notices), protecting your business from costly AEPD fines.',
+          benefitLabel: 'Key Business Benefit',
+          benefit: 'Total peace of mind and complete protection against data privacy penalties.',
+        },
       ],
     },
-    card2: {
-      title: 'Future-Proof Compliance & GEO',
-      subtitle: 'EAA Accessibility, GDPR Privacy & AI Search Ready',
-      body: 'I ensure your digital products comply with strict global regulations. I build with EAA/ADA accessibility (WCAG 2.2 AA) to eliminate legal risks and implement server-side tracking (sGTM) for privacy. I also optimize content density for Generative Engine Optimization (GEO) to secure brand citations in AI responses.',
-      keyAreasLabel: 'Key Focus Areas',
-      items: [
-        'Strict EAA/ADA compliance (screen readers & keyboard navigation)',
-        'Server-Side Tracking (sGTM) & cookieless analytics for GDPR compliance',
-        'GEO strategies (fact density, sameAs) for Google AI Overviews & ChatGPT',
+    agenciesContent: {
+      title: 'Senior White Label Technical Partner for Agencies',
+      subtitle: 'Expand your agency capacity with senior-level engineering under your brand — zero fixed payroll overhead.',
+      cards: [
+        {
+          title: 'White Label Custom Dev (NDA)',
+          subtitle: '100% Confidentiality & Zero Client Contact',
+          body: 'We execute full-cycle web projects under your agency corporate identity. Strict NDA compliance guarantee and zero direct contact with your end client.',
+          benefitLabel: 'Agency Benefit',
+          benefit: 'Deliver complex senior projects under your brand with complete privacy.',
+        },
+        {
+          title: 'Code Modernization & Refactoring',
+          subtitle: 'Clean React 19 & Custom WordPress Stack',
+          body: 'We refactor bloated client websites into clean, modern architectures without slow page builders, delivering code that is fast, secure, and easy for your team to maintain.',
+          benefitLabel: 'Agency Benefit',
+          benefit: 'High-performing codebases that enhance your agency technical reputation.',
+        },
+        {
+          title: 'AI Solutions for Agency Clients',
+          subtitle: 'New High-Margin Service Offering',
+          body: 'Add AI assistant integration to your agency service catalog. We build custom AI chatbots and lead automation tools for your clients, boosting your average contract value.',
+          benefitLabel: 'Agency Benefit',
+          benefit: 'Expand your revenue catalog with lucrative cutting-edge AI services.',
+        },
+        {
+          title: 'Technical Audits & Core Web Vitals',
+          subtitle: 'Lighthouse 90+ Optimization',
+          body: 'We resolve deep technical SEO, page speed, and accessibility bottlenecks across your agency client portfolio, ensuring top performance benchmarks.',
+          benefitLabel: 'Agency Benefit',
+          benefit: 'Fix legacy client performance issues effortlessly without in-house stress.',
+        },
+        {
+          title: 'Flexible Collaboration & Fast Estimates',
+          subtitle: 'Protecting Agency Profit Margins',
+          body: 'Complete flexibility in work arrangements — hourly packages, fixed-price project quotes, or continuous sprint execution — with turnaround estimates delivered in 24–48 hours.',
+          benefitLabel: 'Agency Benefit',
+          benefit: 'Predictable costs and flexible models tailored to protect your agency margins.',
+        },
       ],
     },
   },
@@ -463,6 +533,7 @@ export const en: Translation = {
   },
   footer: {
     tagline: 'Engineering high-performance web products with AI-augmented velocity.',
+    legalNotice: '🛡️ Invoicing compliant with EU regulations for professionals and businesses. Adherence to GDPR & LOPDGDD standards.',
     copyright: 'All rights reserved.',
     madeWith: 'Made',
   },

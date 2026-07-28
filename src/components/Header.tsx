@@ -123,7 +123,7 @@ const Header = () => {
     { id: 'how-i-work', label: t.header.nav.aiWorkflow },
     { id: 'projects', label: t.header.nav.projects },
     { id: 'skills', label: t.header.nav.skills },
-    { id: 'why-work-with-me', label: t.header.nav.whyMe },
+    { id: 'b2b-services', label: t.b2bServices.badge },
     { id: 'contact', label: t.header.nav.contact },
   ]
 

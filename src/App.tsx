@@ -8,7 +8,7 @@ import About from './components/About'
 import Projects from './components/Projects'
 import Skills from './components/Skills'
 import ProjectDetail from './components/ProjectDetail'
-import WhyWorkWithMe from './components/WhyWorkWithMe'
+import B2bServices from './components/B2bServices'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import ScrollToTopButton from './components/ScrollToTopButton'
@@ -48,7 +48,7 @@ function App() {
               <AiWorkflow />
               <Projects onProjectSelect={handleProjectSelect} />
               <Skills />
-              <WhyWorkWithMe />
+              <B2bServices />
               <Contact />
             </main>
           )}
