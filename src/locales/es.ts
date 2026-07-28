@@ -532,6 +532,7 @@ export const es: Translation = {
   },
   footer: {
     tagline: 'Ingeniería de productos web de alto rendimiento con velocidad potenciada por IA.',
+    legalNotice: '🛡️ Facturación adaptada a profesionales y empresas en la Unión Europea. Cumplimiento normativo adaptado al RGPD y LOPDGDD.',
     copyright: 'Todos los derechos reservados.',
     madeWith: 'Hecho',
   },
