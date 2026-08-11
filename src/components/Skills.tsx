@@ -134,7 +134,7 @@ const Skills = () => {
       technologies: [
         'Claude Code & Google Antigravity',
         'Cursor AI IDE & Composer Workspaces',
-        'Spec-Driven Development (SDD)',
+        'AI Agent Harnessing & SDD',
         'Model Context Protocol (MCP)',
         'Context Engineering & .cursorrules',
         'EARS (Easy Approach to Requirements Syntax)',

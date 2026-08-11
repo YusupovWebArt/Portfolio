@@ -56,7 +56,7 @@ export const es: Translation = {
       aiTitle: 'Desarrollo potenciado por IA',
       aiPoints: [
         'Velocidad de desarrollo 3x con Claude Code y Cursor',
-        'Ejecución de Spec-Driven Development (SDD)',
+        'Ejecución de Spec-Driven AI Harnessing & SDD',
         'Análisis automatizado riguroso y pruebas de regresión',
       ],
     },

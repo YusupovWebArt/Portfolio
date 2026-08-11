@@ -56,7 +56,7 @@ export const en: Translation = {
       aiTitle: 'AI-Augmented Development',
       aiPoints: [
         '3x engineering velocity using Claude Code & Cursor',
-        'Spec-Driven Development (SDD) execution',
+        'Spec-Driven AI Harnessing & SDD execution',
         'Rigorous automated evaluation and regression checks',
       ],
     },

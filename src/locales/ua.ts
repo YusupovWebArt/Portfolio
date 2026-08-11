@@ -56,7 +56,7 @@ export const ua: Translation = {
       aiTitle: 'AI-посилена розробка',
       aiPoints: [
         '3x швидкість розробки завдяки Claude Code & Cursor',
-        'Виконання Spec-Driven Development (SDD)',
+        'Виконання Spec-Driven AI Harnessing & SDD',
         'Суворий автоматизований аналіз та регресійні перевірки',
       ],
     },

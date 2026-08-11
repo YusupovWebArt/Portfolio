@@ -70,11 +70,11 @@ export const FAQ: FaqItem[] = [
     questionEs: '¿Cómo usas la IA en tu flujo de trabajo de desarrollo?',
     keywords: ['ai', 'copilot', 'cursor', 'windsurf', 'artificial intelligence', 'agents', 'mcp', 'antigravity', 'ии', 'интеллект', 'нейросети', 'sdd', 'spec', 'спец', 'штучний', 'inteligencia artificial', 'ia', 'flujo', 'workflow'],
     answer:
-      'I systematically integrate next-generation systems (Claude Code, Cursor, Google Antigravity) directly into the SDLC, following a Spec-Driven Development (SDD) methodology: defining technical specifications first, then having AI implement and verify against them rather than improvise. I also use Gemini Notebook for research, enabling automated workflows that speed up development by 3x.',
+      'I systematically integrate next-generation systems (Claude Code, Cursor, Google Antigravity) directly into the SDLC, following a Spec-Driven AI Harnessing (SDD) methodology: defining technical specifications first, then having AI implement and verify against them rather than improvise. I also use Gemini Notebook for research, enabling automated workflows that speed up development by 3x.',
     answerUa:
-      'Я системно інтегрую інструменти нового покоління (Claude Code, Cursor, Google Antigravity) у SDLC за методологією Spec-Driven Development (SDD): спочатку створюю специфікації, а потім AI реалізує та перевіряє код за ними. Це прискорює розробку у 3 рази.',
+      'Я системно інтегрую інструменти нового покоління (Claude Code, Cursor, Google Antigravity) у SDLC за методологією Spec-Driven AI Harnessing (SDD): спочатку створюю специфікації, а потім AI реалізує та перевіряє код за ними. Це прискорює розробку у 3 рази.',
     answerEs:
-      'Integro sistemáticamente sistemas de próxima generación (Claude Code, Cursor, Google Antigravity) directamente en el SDLC, siguiendo una metodología de Spec-Driven Development (SDD): primero defino las especificaciones técnicas y luego la IA implementa y verifica contra ellas. Esto acelera el desarrollo 3 veces.',
+      'Integro sistemáticamente sistemas de próxima generación (Claude Code, Cursor, Google Antigravity) directamente en el SDLC, siguiendo una metodología de Spec-Driven AI Harnessing (SDD): primero defino las especificaciones técnicas y luego la IA implementa y verifica contra ellas. Esto acelera el desarrollo 3 veces.',
   },
   {
     question: 'What services do you offer? / Can I hire you?',
