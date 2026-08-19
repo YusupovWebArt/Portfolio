@@ -96,3 +96,33 @@ Portfolio/
   3. Checks types (`npx tsc --noEmit`) and lints (`npm run lint`).
   4. Compiles the bundle (`npm run build`).
   5. Automatically commits and deploys the `dist` folder to the `gh-pages` branch, making changes live instantly.
+
+---
+
+## 🔮 5. Future Roadmap: Hybrid RAG AI Chatbot Architecture
+
+A planned upgrade to transition the current client-side keyword matching FAQ chatbot into an enterprise **Hybrid RAG (Retrieval-Augmented Generation)** assistant while preserving 100% of the existing UI/UX:
+
+```mermaid
+graph TD
+    User([Website Visitor]) --> Choice{Interaction Method}
+    Choice -- Quick FAQ Button Click --> LocalFAQ[Instant Local chatFaq.ts Matching 0ms]
+    Choice -- Free-Text Query --> EdgeRAG[Cloudflare Serverless Worker /api/chat]
+    
+    subgraph RAG Pipeline
+        EdgeRAG --> VectorDB[Vector Knowledge Base: 69 Projects, Resume, Specs]
+        VectorDB --> TopKContext[Top 3-5 Relevant Markdown Chunks]
+        TopKContext --> LLM[GPT-4o-mini / Gemini Flash Streaming]
+    end
+    
+    LLM -- SSE Token Stream --> ChatUI[ChatModal.tsx Console Bubble]
+    LocalFAQ --> ChatUI
+    EdgeRAG -. Failure / Network Timeout .-> LocalFAQ
+```
+
+### Key Milestones:
+1. **Knowledge Extraction & Vectorization:** Chunking 69 project case studies, resume data, and spec contracts into semantic vector embeddings.
+2. **Serverless Edge Microservice:** Cloudflare Worker endpoint handling semantic search and streaming LLM responses.
+3. **Frontend Progressive Adapter:** `src/services/chatService.ts` providing feature-flagged hybrid routing with seamless fallback to static FAQ.
+4. **Security Enforcement:** Full compliance with the 6-tier security roadmap defined in [**`SECURITY.md` (Section 5)**](file:///d:/PORTFOLIO/Portfolio/SECURITY.md#5-future-rag-architecture-security-roadmap-ai-chatbot-upgrade).
+
