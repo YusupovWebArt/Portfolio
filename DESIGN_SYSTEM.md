@@ -75,3 +75,20 @@ Interactive elements follow rigid behavior patterns to guarantee stability and p
   - **Next Button:** Disabled when `activeStep === currentCategory.steps.length - 1`.
   - **Prev Button:** Disabled when `activeStep === 0`.
   - **Progress Bar width:** Calculated dynamically as `((activeStep + 1) / currentCategory.steps.length) * 100`.
+
+---
+
+## 🏢 6. B2B Services & Tabbed Navigation Component (`B2bServices.tsx`)
+
+The B2B services component provides dedicated audience switching between small businesses (**Pymes / Autónomos**) and digital agencies (**Marca Blanca**):
+
+### Tab Segment Switcher
+- **Container:** `inline-flex p-1.5 rounded-2xl bg-slate-200/80 dark:bg-slate-800/80 backdrop-blur-md border border-slate-300/50 dark:border-white/10`.
+- **Active State:** `bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-lg border border-slate-200 dark:border-white/10`.
+- **Inactive State:** `text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white`.
+
+### Value-Proposition Cards
+- **Glassmorphism Base:** `bg-white/60 dark:bg-slate-900/60 backdrop-blur-xl border border-slate-200/80 dark:border-white/10 rounded-2xl p-6`.
+- **Hover Micro-Interactions:** `hover:border-purple-500/40 dark:hover:border-lime-400/40 hover:shadow-2xl transition-all duration-300`.
+- **Benefit Badges:** Colored pill tags categorizing each service ROI (`text-purple-600 dark:text-lime-400 bg-purple-50 dark:bg-lime-950/30`).
+

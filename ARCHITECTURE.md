@@ -17,10 +17,12 @@ graph TD
     B --> E[Hero / Typewriter]
     B --> F[About / Bio & Journey]
     B --> G[AiWorkflow Stepper]
-    B --> H[Projects Section]
+    B --> H[Projects Section 69 Case Studies]
     B --> I[Skills / T-Shaped Specialist]
-    B --> J[Chatbot FAQ Modal & AI Console]
+    B --> J[B2bServices / Pymes & Marca Blanca]
     B --> K[Contact Section]
+    B --> L[ChatModal FAQ & AI Console]
+    B --> M[Footer / RGPD Legal Line]
 ```
 
 ---
@@ -31,22 +33,28 @@ The core files and components are structured as follows:
 
 ```text
 Portfolio/
-├── .github/workflows/
-│   └── deploy.yml          # CI/CD Deployment Workflow
+├── .agents/
+│   └── AGENTS.md           # Workspace Rules & AI Harness Constraints
+├── .github/
+│   ├── dependabot.yml      # Automated Dependency Governance
+│   └── workflows/
+│       └── deploy.yml      # CI/CD Automated Security & Deploy Workflow
 ├── src/
 │   ├── assets/             # Global visual resources and images
 │   ├── components/         # Modular React Components
-│   │   ├── projects/       # Individual project case study files
+│   │   ├── projects/       # 69 Individual project case study files
 │   │   ├── About.tsx       # Bio & journey timeline
 │   │   ├── AiWorkflow.tsx  # Dynamic Spec-Driven SDLC stepper
-│   │   ├── Header.tsx      # Sticky navigation, theme & language toggle
+│   │   ├── B2bServices.tsx # Dual-tab B2B services (Pymes & White-Label)
+│   │   ├── Header.tsx      # Sticky navigation, theme & 3-lang dropdown
 │   │   ├── Skills.tsx      # T-Shaped Specialist component
-│   │   └── ChatModal.tsx   # Floating client-side FAQ bot
+│   │   ├── ChatModal.tsx   # Floating client-side FAQ bot & console
+│   │   └── Footer.tsx      # Legal RGPD notice & footer links
 │   ├── contexts/           # Theme (Dark/Light) & Language (i18n) providers
 │   │   ├── ThemeContext.tsx
 │   │   └── LanguageContext.tsx
 │   ├── data/
-│   │   └── chatFaq.ts      # Multilingual FAQ Chatbot database
+│   │   └── chatFaq.ts      # Multilingual FAQ Chatbot database (EN/UA/ES)
 │   ├── locales/            # i18n Translation dictionaries & types
 │   │   ├── types.ts        # Strict Translation interface
 │   │   ├── en.ts           # English translations
