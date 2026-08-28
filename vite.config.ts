@@ -20,6 +20,9 @@ export default defineConfig({
             }
             return 'vendor'
           }
+          if (id.includes('src/components/projects/')) {
+            return 'projects-data'
+          }
         },
       },
     },
