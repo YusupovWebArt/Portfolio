@@ -15,12 +15,13 @@ A high-performance, enterprise-grade Single Page Application (SPA) portfolio web
 ## 🛠️ Technology Stack
 
 - **Core Framework:** React 19 (SPA Architecture)
+- **Runtime:** Node.js 24 LTS
 - **Programming Language:** TypeScript 6.x (Strict Type Safety, Zero-`any` Policy)
 - **Styling & Design System:** Tailwind CSS v4 (Modern CSS variables, native variants, dark/light glassmorphism)
 - **Build Tool & Bundler:** Vite 8.x (Rolldown bundler for optimized code-splitting and sub-second HMR)
 - **Internationalization (i18n):** Custom type-safe 3-language engine (`en`, `ua`, `es`) with browser auto-detection
 - **Icons:** React Icons & Lucide Icons
-- **DevSecOps & CI/CD:** GitHub Actions (Automated SAST/SCA security gates, minutes-optimized path filtering)
+- **DevSecOps & CI/CD:** GitHub Actions on Node 24 (Automated SAST/SCA security gates, minutes-optimized path filtering)
 - **Dependency Governance:** Dependabot (Automated weekly CVE patching with breaking-version guardrails)
 
 ---

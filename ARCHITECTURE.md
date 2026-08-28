@@ -6,7 +6,7 @@ A technical overview of the directory structure, build system, deployment mechan
 
 ## 🏗️ 1. System Architecture
 
-The application is structured as a high-performance **Single Page Application (SPA)** using React 19, TypeScript, and Vite.
+The application is structured as a high-performance **Single Page Application (SPA)** using React 19, TypeScript, and Vite, running on **Node.js 24 LTS**.
 
 ```mermaid
 graph TD
