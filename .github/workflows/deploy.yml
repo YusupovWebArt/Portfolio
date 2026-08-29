@@ -59,8 +59,10 @@ jobs:
         if: github.ref == 'refs/heads/master' && github.event_name == 'push'
         uses: JamesIves/github-pages-deploy-action@v4
         with:
+          token: ${{ secrets.GITHUB_TOKEN }}
           folder: dist
           branch: gh-pages
           clean: true
+          commit-message: "deploy: automated build for GitHub Pages [skip ci]"
 
 
