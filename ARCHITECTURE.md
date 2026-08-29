@@ -100,6 +100,10 @@ Portfolio/
 - **Hardware GPU Morphing:** `viewTransitionName: 'project-thumb-${project.id}'` seamlessly morphs thumbnails into full case study banners at 120 FPS with 0 KB external library overhead.
 - **Project Card Architecture:** Displays curated top 4 technologies with an interactive `+N` / `- less` toggle per card, fixed 3-line description clamping (`line-clamp-3`), and sticky bottom CTA alignment.
 
+### Progressive Web App (PWA) & Offline Subsystem
+- **Web App Manifest (`public/manifest.webmanifest`):** Declares standalone display mode, orientation, brand colors (`#0f172a` / `#7c3aed`), and 192x192/512x512/maskable app icons for native mobile (iOS/Android) and desktop home-screen installation.
+- **Service Worker (`public/sw.js`):** Implements a **Stale-While-Revalidate** caching strategy with CacheStorage API, enabling instant sub-second page loads and offline case study navigation with automated background cache invalidation.
+
 ### Spec-Driven AI Harness Engineering (SDD)
 - **Harness Constraints:** The development lifecycle integrates AI coding agents (Claude Code, Cursor, Antigravity) strictly bound to root specification contracts (`DESIGN_SYSTEM.md`, `SECURITY.md`, `ARCHITECTURE.md`, `AGENTS.md`).
 - **Deterministic Verification:** Every automated step enforces SAST (TypeScript strict compilation, ESLint 10), SCA (production dependency audits), and sub-second bundle budget guardrails.

@@ -9,8 +9,9 @@ This document maintains the technical and business roadmap for the Artur Yusupov
 | Item | Priority | Category | Status |
 | :--- | :--- | :--- | :--- |
 | **Code-Splitting & Bundle Optimization** | 🔴 High | Performance | 🟢 **Completed (196 KB main bundle)** |
-| **Native View Transitions API (Card Morphing)** | 🔴 High | UI/UX & Motion | 💬 **In Discussion** |
-| **Floating WhatsApp Direct Button** | 🔴 High | Conversion & B2B | 🟡 Queued |
+| **Native View Transitions API (Card Morphing)** | 🔴 High | UI/UX & Motion | 🟢 **Completed (120 FPS GPU)** |
+| **Progressive Web App (PWA) + Offline Mode** | 🟢 Low | Web Standards 2026 | 🟢 **Completed (Manifest & SW)** |
+| **Floating WhatsApp Direct Button** | 🔴 High | Conversion & B2B | 🟡 Next Up |
 | **Interactive Project Cost & Timeline Estimator** | 🔴 High | Lead Generation | 📋 Planned |
 | **Public Repository Switch (Unlimited Actions)** | 🔴 High | DevOps & Cost | 🟡 Pending User Action |
 | **Interactive Spec-Driven SDLC Pipeline Visualizer** | 🟡 Medium | AI & Architecture | 📋 Planned |
@@ -19,7 +20,6 @@ This document maintains the technical and business roadmap for the Artur Yusupov
 | **Serverless Hybrid RAG AI Chatbot (with Project Matchmaker)** | 🟡 Medium | AI Architecture | 📝 Fully Specified |
 | **Free 2-Minute Loom Video Audit Modal** | 🟡 Medium | Lead Generation | 📋 Planned |
 | **Live CI/CD Pipeline & Health Status in Footer** | 🟡 Medium | DevOps & Trust | 📋 Planned |
-| **Progressive Web App (PWA) + Offline Portfolio** | 🟢 Low | Web Standards 2026 | 📋 Planned |
 | **Dynamic Client-Side CV/Resume PDF Generator** | 🟢 Low | Utility | 📋 Planned |
 | **B2B Cold Outreach Email Templates (ES)** | 🟢 Low | Marketing & Sales | 📋 Planned |
 

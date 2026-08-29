@@ -10,16 +10,16 @@ const webartReactPortfolio: Project = {
   descriptionEs:
     'Aplicación de portfolio SPA de alto rendimiento construida con React 19, TypeScript 6, Tailwind CSS v4 y motor i18n trilingüe (EN/UA/ES) siguiendo la metodología Spec-Driven AI Harnessing (SDD).',
   fullDescription:
-    'This portfolio website is a high-performance single-page application (SPA) built with React 19, TypeScript 6.x, Tailwind CSS v4, the native W3C View Transitions API for GPU-accelerated card morphing, and a complete 3-language internationalization system (English, Ukrainian, Spanish). It showcases a strict Spec-Driven AI Harness Architecture (SDD), integrating agentic AI coding environments (Claude Code, Cursor, Google Antigravity) directly into the SDLC. The project features an interactive 3-language dropdown switcher, a trilingual client-side AI FAQ chatbot, Base64 contact obfuscation, hardened security headers (CSP), and a 69-project interactive showcase.',
+    'This portfolio website is a high-performance single-page application (SPA) and Progressive Web App (PWA) built with React 19, TypeScript 6.x, Tailwind CSS v4, the native W3C View Transitions API for GPU-accelerated card morphing, and a complete 3-language internationalization system (English, Ukrainian, Spanish). It features an offline-capable Service Worker with Stale-While-Revalidate caching, standalone app installation across iOS, Android, and Desktop, a strict Spec-Driven AI Harness Architecture (SDD), Base64 contact obfuscation, hardened security headers (CSP), and an interactive 69-project showcase.',
   fullDescriptionUa:
-    'Цей сайт-портфоліо - це високопродуктивний односторінковий додаток (SPA), розроблений на React 19, TypeScript 6.x, Tailwind CSS v4, нативному W3C View Transitions API для апаратного GPU-морфінгу карток та повній 3-мовній системі інтернаціоналізації (англійська, українська, іспанська). Він демонструє суворий процес розробки на основі специфікацій та упряжі AI-агентів (Spec-Driven AI Harness Architecture, SDD) з інтеграцією агентних AI-середовищ (Claude Code, Cursor, Google Antigravity) у SDLC. Проєкт включає інтерактивний 3-мовний перемикач мов, тримовного клієнтського AI FAQ асистента, обфускацію контактів Base64, посилені заголовки безпеки (CSP) та портфоліо з 69 проєктів.',
+    'Цей сайт-портфоліо - це високопродуктивний односторінковий додаток (SPA) та Progressive Web App (PWA), розроблений на React 19, TypeScript 6.x, Tailwind CSS v4, нативному W3C View Transitions API для апаратного GPU-морфінгу карток та повній 3-мовній системі інтернаціоналізації (англійська, українська, іспанська). Включає автономний Service Worker із кэшуванням Stale-While-Revalidate, встановлення на iOS, Android та Desktop як нативного застосунку, процес розробки Spec-Driven AI Harness Architecture (SDD), обфускацію контактів Base64, посилені заголовки безпеки (CSP) та портфоліо з 69 проєктів.',
   fullDescriptionEs:
-    'Este sitio web de portfolio es una aplicación de página única (SPA) de alto rendimiento construida con React 19, TypeScript 6.x, Tailwind CSS v4, la API nativa W3C View Transitions para el morphing acelerado por GPU de tarjetas y un sistema completo de internacionalización en 3 idiomas (inglés, ucraniano, español). Demuestra un riguroso proceso de Spec-Driven AI Harness Architecture (SDD), integrando entornos de codificación agéntica (Claude Code, Cursor, Google Antigravity) en el SDLC. Incluye un selector desplegable de 3 idiomas, un chatbot FAQ con IA trilingüe, ofuscación de contactos Base64, cabeceras de seguridad (CSP) y un escaparate interactivo de 69 proyectos.',
-  detailHeroLine: 'REACT 19 · TYPESCRIPT 6 · VIEW TRANSITIONS API · TAILWIND v4 · TRILINGUAL i18n · AI SDD',
+    'Este sitio web de portfolio es una aplicación de página única (SPA) y Progressive Web App (PWA) de alto rendimiento construida con React 19, TypeScript 6.x, Tailwind CSS v4, la API nativa W3C View Transitions para el morphing acelerado por GPU de tarjetas y un sistema completo de internacionalización en 3 idiomas (inglés, ucraniano, español). Cuenta con un Service Worker con soporte offline mediante almacenamiento en caché Stale-While-Revalidate, instalación standalone en iOS, Android y Desktop, metodología Spec-Driven AI Harness Architecture (SDD), ofuscación de contactos Base64, cabeceras de seguridad (CSP) y un escaparate interactivo de 69 proyectos.',
+  detailHeroLine: 'REACT 19 · TYPESCRIPT 6 · PWA & SERVICE WORKER · VIEW TRANSITIONS API · TRILINGUAL i18n · AI SDD',
   detailMetrics: [
     { value: 'React 19', label: 'UI Framework', accent: 'green' },
-    { value: 'View Transitions', label: 'W3C Standard', accent: 'green' },
-    { value: 'EN / UA / ES', label: 'Trilingual i18n', accent: 'darkGreen' },
+    { value: 'PWA / Offline', label: 'Web App Standard', accent: 'green' },
+    { value: 'View Transitions', label: 'W3C Standard', accent: 'darkGreen' },
     { value: 'Spec-Driven (SDD)', label: 'AI SDLC Workflow', accent: 'neutral' },
   ],
   architecture: {
@@ -98,6 +98,7 @@ const webartReactPortfolio: Project = {
     frontend: [
       { short: 'React 19', full: 'Component-based UI with hooks for state, effect, and context management' },
       { short: 'TypeScript 6.x', full: 'Strict type safety across the entire application workspace' },
+      { short: 'PWA & Service Worker', full: 'Progressive Web App standard with offline support, CacheStorage precaching, and native app installation' },
       { short: 'View Transitions API', full: 'Native W3C View Transitions API for 120 FPS hardware-accelerated card morphing and seamless page state transitions without external animation libraries' },
       { short: 'Tailwind CSS v4', full: 'Utility-first framework utilizing CSS variables and native light/dark variants' },
       { short: 'Trilingual i18n (EN/UA/ES)', full: 'Custom React LanguageContext with browser auto-detection and localStorage persistence' },
@@ -122,6 +123,11 @@ const webartReactPortfolio: Project = {
     ],
   },
   features: [
+    {
+      title: 'Progressive Web App (PWA) & Offline Mode',
+      description:
+        'Engineered full PWA capabilities with Web App Manifest and custom Service Worker caching (Stale-While-Revalidate), enabling 0ms instant loading, standalone mobile/desktop installation, and offline case study browsing.',
+    },
     {
       title: 'Native View Transitions API',
       description:
