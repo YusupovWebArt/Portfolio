@@ -92,3 +92,23 @@ The B2B services component provides dedicated audience switching between small b
 - **Hover Micro-Interactions:** `hover:border-purple-500/40 dark:hover:border-lime-400/40 hover:shadow-2xl transition-all duration-300`.
 - **Benefit Badges:** Colored pill tags categorizing each service ROI (`text-purple-600 dark:text-lime-400 bg-purple-50 dark:bg-lime-950/30`).
 
+---
+
+## 🗂️ 7. Project Card Grid Component (`Projects.tsx`)
+
+The portfolio showcase utilizes a symmetrical, clean card layout:
+
+### Image & Navigation
+- **Thumbnail:** `w-full h-48 object-cover rounded-xl mb-4` with `viewTransitionName: 'project-thumb-${project.id}'` for native W3C View Transitions.
+- **Title:** `text-xl font-bold text-slate-900 dark:text-white mb-2`.
+- **Description:** `text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-4 line-clamp-3 min-h-[4.2rem]` for height symmetry across columns.
+
+### Interactive Tags Subsystem
+- **Visible Stack:** Shows top 4 technology badges (`text-[11px] font-medium bg-slate-100 dark:bg-slate-800 border border-slate-200/70 dark:border-slate-700/60`).
+- **Expandable Toggle:** When items exceed 4, an interactive `+{remainingCount}` button enables expanding all badges in-place, switching to `- less` for collapsing.
+
+### Sticky Bottom CTA
+- **Layout:** `mt-auto pt-4 border-t border-slate-100 dark:border-white/5 flex items-center justify-between gap-3`.
+- **Details Link:** `inline-flex items-center gap-1.5 text-sm font-semibold text-purple-600 dark:text-lime-400`.
+- **Live Demo Link:** `text-xs font-medium text-slate-500 dark:text-slate-400 hover:text-purple-600 dark:hover:text-lime-400`.
+

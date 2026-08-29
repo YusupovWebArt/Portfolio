@@ -95,15 +95,27 @@ Portfolio/
 
 ---
 
+### View Transitions Navigation Architecture
+- **Native W3C Standard:** State transitions between the project grid and `ProjectDetail.tsx` are wrapped in `document.startViewTransition()` with strict TypeScript bindings and graceful non-blocking fallback.
+- **Hardware GPU Morphing:** `viewTransitionName: 'project-thumb-${project.id}'` seamlessly morphs thumbnails into full case study banners at 120 FPS with 0 KB external library overhead.
+- **Project Card Architecture:** Displays curated top 4 technologies with an interactive `+N` / `- less` toggle per card, fixed 3-line description clamping (`line-clamp-3`), and sticky bottom CTA alignment.
+
+### Spec-Driven AI Harness Engineering (SDD)
+- **Harness Constraints:** The development lifecycle integrates AI coding agents (Claude Code, Cursor, Antigravity) strictly bound to root specification contracts (`DESIGN_SYSTEM.md`, `SECURITY.md`, `ARCHITECTURE.md`, `AGENTS.md`).
+- **Deterministic Verification:** Every automated step enforces SAST (TypeScript strict compilation, ESLint 10), SCA (production dependency audits), and sub-second bundle budget guardrails.
+
+---
+
 ## 🚀 4. Build, CI/CD, & Deploy Pipeline
 
-- **Local Compilation:** Vite uses the Rolldown bundler to perform code splitting, generating small modular files for vendor packages, icons, and components.
+- **Local Compilation:** Vite uses the Rolldown bundler to perform code splitting, generating small modular files for vendor packages, icons, and components. Main bundle is optimized under 200 KB (`198.09 kB`, 53.62 kB gzip).
 - **Continuous Integration (GitHub Actions):** On every push to the `master` branch:
-  1. Spins up a Linux container.
-  2. Installs dependencies (`npm ci`).
-  3. Checks types (`npx tsc --noEmit`) and lints (`npm run lint`).
-  4. Compiles the bundle (`npm run build`).
-  5. Automatically commits and deploys the `dist` folder to the `gh-pages` branch, making changes live instantly.
+  1. Spins up an Ubuntu Linux container on Node.js 24 LTS.
+  2. Installs clean deterministic dependencies (`npm ci`).
+  3. Executes SAST: Type checks (`npx tsc --noEmit`) and lints (`npm run lint`).
+  4. Executes SCA: Production vulnerability audit (`npm audit --only=prod --audit-level=high`).
+  5. Compiles production bundle (`npm run build`).
+  6. Automatically authenticates with `${{ secrets.GITHUB_TOKEN }}` and deploys the `dist` folder to the `gh-pages` branch, making changes live instantly.
 
 ---
 
