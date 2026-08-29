@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { ExternalLink, X, ArrowRight, Eye } from 'lucide-react'
+import { ExternalLink, X, ArrowRight } from 'lucide-react'
 import { Project, TechnologyItem } from './projects/project-types'
 import { useLanguage } from '../contexts/LanguageContext'
 
@@ -26,21 +26,6 @@ const getProjectTechList = (project: Project): TechnologyItem[] => {
   if (techObj.devopsSecurity) list.push(...techObj.devopsSecurity)
   if (techObj.aiTools) list.push(...techObj.aiTools)
   return list
-}
-
-const getCategoryBadge = (category: string[]) => {
-  const cat = category[0] || 'web'
-  switch (cat) {
-    case 'nextjs': return 'Next.js'
-    case 'wordpress': return 'WordPress'
-    case 'react': return 'React'
-    case 'javascript': return 'Vanilla JS'
-    case 'shopify': return 'Shopify'
-    case 'wix': return 'Wix'
-    case 'static': return 'Static'
-    case 'other-cms': return 'CMS'
-    default: return 'Fullstack'
-  }
 }
 
 const modules = import.meta.glob<{ default: Project }>('./projects/**/*.tsx', {
@@ -73,6 +58,7 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
   const pr = t.projects
   const [activeFilter, setActiveFilter] = useState('all')
   const [currentPage, setCurrentPage] = useState(1)
+  const [expandedTechProjects, setExpandedTechProjects] = useState<Record<number, boolean>>({})
   const projectsPerPage = 6
   const [screenshotModal, setScreenshotModal] = useState<{
     isOpen: boolean
@@ -124,6 +110,14 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
     setScreenshotModal({ isOpen: false, image: '', title: '' })
   }
 
+  const toggleTechExpanded = (projectId: number, e: React.MouseEvent) => {
+    e.stopPropagation()
+    setExpandedTechProjects((prev) => ({
+      ...prev,
+      [projectId]: !prev[projectId],
+    }))
+  }
+
   return (
     <section
       id="projects"
@@ -161,46 +155,30 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
             const allTech = getProjectTechList(project)
             const visibleTech = allTech.slice(0, 4)
             const remainingCount = allTech.length - visibleTech.length
+            const isTechExpanded = Boolean(expandedTechProjects[project.id])
+            const displayedTech = isTechExpanded ? allTech : visibleTech
 
             return (
               <div
                 key={project.id}
-                className="group bg-white dark:bg-slate-900/90 rounded-2xl shadow-md hover:shadow-xl hover:-translate-y-1 p-5 flex flex-col border border-slate-200/80 dark:border-slate-800 hover:border-purple-500/40 dark:hover:border-lime-500/40 transition-all duration-300"
+                className="bg-white dark:bg-slate-900 rounded-2xl shadow-md p-5 flex flex-col border border-slate-200/80 dark:border-slate-800 transition-colors duration-300"
               >
-                {/* Image Container with Floating Badge & Zoom overlay */}
-                <div className="relative overflow-hidden rounded-xl mb-4 bg-slate-100 dark:bg-slate-800">
-                  <div className="absolute top-2.5 left-2.5 z-10 px-2.5 py-1 rounded-full bg-slate-900/75 dark:bg-slate-950/85 backdrop-blur-md border border-white/15 text-white text-[10px] font-bold tracking-wider uppercase shadow-xs">
-                    {getCategoryBadge(project.category)}
-                  </div>
-
-                  <img
-                    src={project.images[0].src}
-                    alt={project.images[0].caption || project.title}
-                    loading="lazy"
-                    style={{
-                      viewTransitionName: `project-thumb-${project.id}`,
-                    }}
-                    className="w-full h-48 object-cover cursor-pointer group-hover:scale-105 transition-transform duration-300"
-                    onClick={() =>
-                      openScreenshotModal(project.images[0].src, project.title)
-                    }
-                  />
-
-                  <button
-                    type="button"
-                    onClick={() =>
-                      openScreenshotModal(project.images[0].src, project.title)
-                    }
-                    className="absolute bottom-2.5 right-2.5 p-1.5 rounded-lg bg-slate-900/70 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-200 hover:bg-slate-900"
-                    title="Zoom screenshot"
-                    aria-label="Zoom screenshot"
-                  >
-                    <Eye className="w-4 h-4" />
-                  </button>
-                </div>
+                {/* Image without badge or zoom hover */}
+                <img
+                  src={project.images[0].src}
+                  alt={project.images[0].caption || project.title}
+                  loading="lazy"
+                  style={{
+                    viewTransitionName: `project-thumb-${project.id}`,
+                  }}
+                  className="w-full h-48 object-cover rounded-xl mb-4 cursor-pointer"
+                  onClick={() =>
+                    openScreenshotModal(project.images[0].src, project.title)
+                  }
+                />
 
                 {/* Title */}
-                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2 group-hover:text-purple-600 dark:group-hover:text-lime-400 transition-colors">
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
                   {project.title}
                 </h3>
 
@@ -213,9 +191,9 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
                     : project.description}
                 </p>
 
-                {/* Streamlined Technology Badges (Top 4 + More Counter) */}
+                {/* Interactive Technology Badges (Top 4 + Expandable on click) */}
                 <div className="flex flex-wrap items-center gap-1.5 mb-5">
-                  {visibleTech.map((tech, idx) => (
+                  {displayedTech.map((tech, idx) => (
                     <span
                       key={idx}
                       title={getTechFull(tech)}
@@ -224,13 +202,25 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
                       {getTechShort(tech)}
                     </span>
                   ))}
-                  {remainingCount > 0 && (
-                    <span
-                      title={`${remainingCount} more technologies in case study`}
-                      className="bg-purple-50 dark:bg-purple-950/40 text-purple-700 dark:text-lime-400 border border-purple-200/60 dark:border-lime-500/20 px-2 py-0.5 rounded-md text-[11px] font-semibold"
+                  {remainingCount > 0 && !isTechExpanded && (
+                    <button
+                      type="button"
+                      onClick={(e) => toggleTechExpanded(project.id, e)}
+                      title={`Show all ${allTech.length} technologies`}
+                      className="bg-purple-50 dark:bg-purple-950/50 hover:bg-purple-100 dark:hover:bg-purple-900/70 text-purple-700 dark:text-lime-400 border border-purple-200/60 dark:border-lime-500/30 px-2 py-0.5 rounded-md text-[11px] font-semibold cursor-pointer transition-colors"
                     >
                       +{remainingCount}
-                    </span>
+                    </button>
+                  )}
+                  {remainingCount > 0 && isTechExpanded && (
+                    <button
+                      type="button"
+                      onClick={(e) => toggleTechExpanded(project.id, e)}
+                      title="Collapse technologies"
+                      className="bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-200 border border-slate-300 dark:border-slate-600 px-2 py-0.5 rounded-md text-[11px] font-medium cursor-pointer transition-colors"
+                    >
+                      - less
+                    </button>
                   )}
                 </div>
 
@@ -238,11 +228,11 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
                 <div className="mt-auto pt-4 border-t border-slate-100 dark:border-white/5 flex items-center justify-between gap-3">
                   <button
                     onClick={() => onProjectSelect(project.id)}
-                    className="inline-flex items-center gap-1.5 text-sm font-semibold text-purple-600 dark:text-lime-400 hover:text-purple-700 dark:hover:text-lime-300 group/btn transition-colors"
+                    className="inline-flex items-center gap-1.5 text-sm font-semibold text-purple-600 dark:text-lime-400 hover:text-purple-700 dark:hover:text-lime-300 transition-colors"
                     type="button"
                   >
                     <span>{pr.viewDetails}</span>
-                    <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
+                    <ArrowRight className="w-4 h-4" />
                   </button>
 
                   {project.liveUrl && project.liveUrl !== '#' && (
