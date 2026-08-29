@@ -4,18 +4,18 @@ const unitrition: Project = {
   id: 29000,
   title: 'Unitrition',
   description:
-    'A full-stack nutrition platform that helps users find the right foods for their specific dietary plans — pick a plan, search foods, and get an instant color-coded comparison of what fits and what doesn\'t. Built with headless WordPress as CMS, a Next.js 19 App Router frontend, Supabase authentication, and a custom Bread Units Calculator integrated with the USDA FoodData Central API. Supports 10 diet frameworks, bilingual content (EN/ES), and an educational nutrition blog with Schema.org markup.',
+    'A full-stack nutrition platform that helps users find the right foods for their specific dietary plans - pick a plan, search foods, and get an instant color-coded comparison of what fits and what doesn\'t. Built with headless WordPress as CMS, a Next.js 16 (React 19) App Router frontend, Supabase authentication, and a custom Bread Units Calculator integrated with the USDA FoodData Central API. Supports 10 diet frameworks, bilingual content (EN/ES), and an educational nutrition blog with Schema.org markup.',
   descriptionUa:
-    'Full-stack платформа для підбору продуктів під 10 спеціалізованих дієтичних планів. Створена на базі Headless WordPress, Next.js 19 App Router, Supabase Auth та калькулятора Хлібних Одиниць з інтеграцією USDA FoodData Central API. Включає кольорове скорингове кодування, двомовність EN/ES та освітній блог про харчування з розміткою Schema.org.',
+    'Full-stack платформа для підбору продуктів під 10 спеціалізованих дієтичних планів. Створена на базі Headless WordPress, Next.js 16 (React 19) App Router, Supabase Auth та калькулятора Хлібних Одиниць з інтеграцією USDA FoodData Central API. Включає кольорове скорингове кодування, двомовність EN/ES та освітній блог про харчування з розміткою Schema.org.',
   descriptionEs:
-    'Plataforma de nutrición full-stack para encontrar alimentos adecuados según planes dietéticos específicos: elija un plan, busque alimentos y obtenga comparación instantánea por colores. Desarrollada con Headless WordPress, Next.js 19 App Router, Supabase Auth y Calculadora de Unidades de Pan con API USDA FoodData Central. Incluye 10 dietas, soporte bilingüe EN/ES y blog educativo de nutrición con Schema.org.',
+    'Plataforma de nutrición full-stack para encontrar alimentos adecuados según planes dietéticos específicos: elija un plan, busque alimentos y obtenga comparación instantánea por colores. Desarrollada con Headless WordPress, Next.js 16 (React 19) App Router, Supabase Auth y Calculadora de Unidades de Pan con API USDA FoodData Central. Incluye 10 dietas, soporte bilingüe EN/ES y blog educativo de nutrición con Schema.org.',
   fullDescription:
-    'An educational nutrition and dietary self-monitoring platform engineered for precision nutritional modeling. Powered by Headless WordPress as CMS, Next.js 19 (App Router with Server Components), Supabase authentication with PostgreSQL, and real-time USDA FoodData Central API integration for precise Bread Units calculation. Supports 10 specialized dietary frameworks, CGM glycemic curve simulations, dynamic PDF reports, and bilingual (EN/ES) content architecture.',
+    'An educational nutrition and dietary self-monitoring platform engineered for precision nutritional modeling. Powered by Headless WordPress as CMS, Next.js 16 (React 19 with Server Components), Supabase authentication with PostgreSQL, and real-time USDA FoodData Central API integration for precise Bread Units calculation. Supports 10 specialized dietary frameworks, CGM glycemic curve simulations, dynamic PDF reports, and bilingual (EN/ES) content architecture.',
   fullDescriptionUa:
-    'Освітня платформа харчування та дієтичного самоконтролю для моделювання персонального раціону. Працює на Headless WordPress як CMS, Next.js 19 (App Router з Server Components), Supabase авторизації з PostgreSQL та інтеграції USDA FoodData Central API для точного розрахунку Хлібних Одиниць (ХО). Підтримує 10 спеціалізованих дієтичних планів, візуалізацію глікемічних кривих CGM, експорт у PDF та двомовну архітектуру EN/ES.',
+    'Освітня платформа харчування та дієтичного самоконтролю для моделювання персонального раціону. Працює на Headless WordPress як CMS, Next.js 16 (React 19 з Server Components), Supabase авторизації з PostgreSQL та інтеграції USDA FoodData Central API для точного розрахунку Хлібних Одиниць (ХО). Підтримує 10 спеціалізованих дієтичних планів, візуалізацію глікемічних кривих CGM, експорт у PDF та двомовну архітектуру EN/ES.',
   fullDescriptionEs:
-    'Plataforma educativa de nutrición y automonitorización dietética diseñada para el modelado nutricional personalizado. Desarrollada con Headless WordPress como CMS, Next.js 19 (App Router con Server Components), autenticación Supabase con PostgreSQL e integración en tiempo real con la API USDA FoodData Central para el cálculo de Unidades de Pan. Soporta 10 marcos dietéticos, visualización de curvas glucémicas CGM, exportación a PDF y arquitectura bilingüe EN/ES.',
-  detailHeroLine: 'FULLSTACK · HEADLESS CMS · AI-ASSISTED',
+    'Plataforma educativa de nutrición y automonitorización dietética diseñada para el modelado nutricional personalizado. Desarrollada con Headless WordPress como CMS, Next.js 16 (React 19 con Server Components), autenticación Supabase con PostgreSQL e integración en tiempo real con la API USDA FoodData Central para el cálculo de Unidades de Pan. Soporta 10 marcos dietéticos, visualización de curvas glucémicas CGM, exportación a PDF y arquitectura bilingüe EN/ES.',
+  detailHeroLine: 'FULLSTACK · HEADLESS CMS · Spec-Driven AI SDLC',
   detailMetrics: [
     { value: '95+', label: 'PageSpeed', accent: 'green' },
     { value: '<1s', label: 'Page load', accent: 'green' },
@@ -60,7 +60,7 @@ const unitrition: Project = {
       },
     ],
     description:
-      'Two primary data streams converge at Next.js — educational nutrition content from headless WordPress and nutritional data from USDA API via a custom Express service. User authentication and dietary preferences are securely managed by Supabase (PostgreSQL). All requests are proxied via Cloudflare for edge caching, SSL enforcement, and DDoS protection.',
+      'Two primary data streams converge at Next.js - educational nutrition content from headless WordPress and nutritional data from USDA API via a custom Express service. User authentication and dietary preferences are securely managed by Supabase (PostgreSQL). All requests are proxied via Cloudflare for edge caching, SSL enforcement, and DDoS protection.',
   },
   image:
     '/Portfolio/images/portfolio/thumbs/nextjs/unitrition/unitrition_thumb.webp',
@@ -97,11 +97,11 @@ const unitrition: Project = {
       },
       {
         short: 'React 19',
-        full: 'React 19 — latest stable with Server Actions and React Server Components',
+        full: 'React 19 - latest stable with Server Actions and React Server Components',
       },
       {
         short: 'TypeScript 5.9',
-        full: 'TypeScript 5.9 — strict type safety across all frontend and API layers',
+        full: 'TypeScript 5.9 - strict type safety across all frontend and API layers',
       },
       {
         short: 'Tailwind CSS',
@@ -109,7 +109,7 @@ const unitrition: Project = {
       },
       {
         short: 'Recharts 3',
-        full: 'Recharts 3 — blood glucose CGM glycemic curve simulation and macro/micro nutrition charts',
+        full: 'Recharts 3 - blood glucose CGM glycemic curve simulation and macro/micro nutrition charts',
       },
       {
         short: 'Node.js 24 LTS',
@@ -119,7 +119,7 @@ const unitrition: Project = {
     backend: [
       {
         short: 'Node.js + Express',
-        full: 'Node.js & Express — dedicated microservice for nutritional scoring and data aggregation',
+        full: 'Node.js & Express - dedicated microservice for nutritional scoring and data aggregation',
       },
       {
         short: 'Supabase (PostgreSQL)',
@@ -129,11 +129,11 @@ const unitrition: Project = {
     api: [
       {
         short: 'USDA FoodData API',
-        full: 'USDA FoodData Central API — real-time food nutrition database access across 500,000+ foods',
+        full: 'USDA FoodData Central API - real-time food nutrition database access across 500,000+ foods',
       },
       {
         short: 'WP REST API',
-        full: 'WordPress REST API — headless content delivery for articles, categories, and media',
+        full: 'WordPress REST API - headless content delivery for articles, categories, and media',
       },
       {
         short: 'Internal REST API',
@@ -172,8 +172,8 @@ const unitrition: Project = {
     ],
     aiTools: [
       {
-        short: 'Cursor',
-        full: 'Cursor AI with Spec-Driven Development (SDD) methodology for core architecture and structural development',
+        short: 'Claude Code',
+        full: 'Claude Code with Spec-Driven Development (SDD) methodology for core architecture and structural development',
       },
       {
         short: 'Google Gemini',
@@ -233,37 +233,37 @@ const unitrition: Project = {
   },
   features: [
     {
-      title: '🥗 Diet-Specific Scoring Engine',
+      title: 'Diet-Specific Scoring Engine',
       description:
         'Nutritional scoring across 10 specialized diet frameworks (Diabetes/BU, Renal, Keto, DASH, Mediterranean, Paleo, Vegan, AIP, Cardiac, General Wellness) with per-nutrient traffic-light indicators.',
     },
     {
-      title: '🧮 Bread Units Calculator',
+      title: 'Bread Units Calculator',
       description:
         'Real-time USDA FoodData Central API integration for precise Bread Units (BU/ХО) calculation with product selector and fuzzy search across 500k+ foods and UPF badge detection.',
     },
     {
-      title: '🍽️ Meal Builder',
+      title: 'Meal Builder',
       description:
         'Add foods to a meal session to see cumulative nutrition totals vs diet thresholds in real-time, natural language AI meal input (AiMealInputModal), A4 PDF export with macro/micro charts, and meal sharing.',
     },
     {
-      title: '📊 CGM Spike Visualization',
+      title: 'CGM Spike Visualization',
       description:
         'Blood glucose glycemic curve simulation (CgmSpikeChart) per food or meal powered by Recharts SVG charts.',
     },
     {
-      title: '📚 Educational Nutrition Blog Engine',
+      title: 'Educational Nutrition Blog Engine',
       description:
         'Headless WordPress integration with WP REST API, dynamic SSR blog/[slug] routes, auto-generated Table of Contents, view counter, reading time, authoritative citations (PubMed, USDA, ADA, KDIGO), and Schema.org Article + BreadcrumbList.',
     },
     {
-      title: '🔐 Authentication',
+      title: 'Authentication',
       description:
         'Supabase email/password login, session persistence, protected dashboard route, and paywall modal for Pro features.',
     },
     {
-      title: '🌍 Bilingual Support (i18n)',
+      title: 'Bilingual Support (i18n)',
       description:
         'Full EN/ES translations via LanguageContext, localized URLs, hreflang, and dynamic metadata.',
     },
@@ -271,7 +271,7 @@ const unitrition: Project = {
   challenges: [],
   solutions: [],
   liveUrl: 'https://www.unitrition.info',
-  githubUrl: 'https://github.com/YusupovWebArt/unitrition-frontend',
+  githubUrl: '#',
   category: ['nextjs', 'wordpress'],
 }
 

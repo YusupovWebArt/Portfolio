@@ -20,3 +20,5 @@ Before designing, refactoring, writing code, or suggesting modifications, the ag
 - **Linting Compliance:** Run `npm run lint` on all changed files and fix all errors before committing.
 - **Maintain Obfuscation:** Never store raw email, phone numbers, or social usernames in standard text formats on the main layout. Obfuscate them to Base64 format to align with `SECURITY.md`.
 - **Incremental Refactoring:** When updating files (especially upgraded components or case studies), do not rewrite from scratch unless explicitly requested. Preserve code history and documentation comments.
+- **No Em Dashes:** Never use em dashes `—` in texts, descriptions, UI labels, or code comments; always use standard hyphens `-`.
+- **No Emojis in Project Data:** Never use emojis in project titles, feature names, or technology descriptions.
