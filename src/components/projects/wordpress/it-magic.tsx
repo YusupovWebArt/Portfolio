@@ -4,9 +4,9 @@ const itMagic: Project = {
   id: 19500,
   title: 'IT-Magic',
   description:
-    'The IT-Magic project represents a comprehensive, end-to-end AWS and DevOps solution provider — from infrastructure design and migration to ongoing support and optimization.',
+    'The IT-Magic project represents a comprehensive, end-to-end AWS and DevOps solution provider - from infrastructure design and migration to ongoing support and optimization.',
   descriptionUa:
-    'Проєкт IT-Magic представляє комплексного провайдера AWS та DevOps рішень — від проєктування інфраструктури та міграції до постійної підтримки та оптимізації.',
+    'Проєкт IT-Magic представляє комплексного провайдера AWS та DevOps рішень - від проєктування інфраструктури та міграції до постійної підтримки та оптимізації.',
   descriptionEs:
     'El proyecto IT-Magic representa un proveedor integral de soluciones AWS y DevOps, desde el diseño de infraestructuras y la migración hasta el soporte continuo y la optimización.',
   fullDescription:

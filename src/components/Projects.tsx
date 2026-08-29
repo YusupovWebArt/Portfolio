@@ -182,8 +182,8 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
                   {project.title}
                 </h3>
 
-                {/* Description (clamped to 3 uniform lines) */}
-                <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-4 line-clamp-3 min-h-[4.2rem]">
+                {/* Description (full readable text) */}
+                <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-4">
                   {lang === 'ua' && project.descriptionUa
                     ? project.descriptionUa
                     : lang === 'es' && project.descriptionEs

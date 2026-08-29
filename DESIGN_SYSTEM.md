@@ -101,7 +101,7 @@ The portfolio showcase utilizes a symmetrical, clean card layout:
 ### Image & Navigation
 - **Thumbnail:** `w-full h-48 object-cover rounded-xl mb-4` with `viewTransitionName: 'project-thumb-${project.id}'` for native W3C View Transitions.
 - **Title:** `text-xl font-bold text-slate-900 dark:text-white mb-2`.
-- **Description:** `text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-4 line-clamp-3 min-h-[4.2rem]` for height symmetry across columns.
+- **Description:** `text-slate-600 dark:text-slate-300 text-sm leading-relaxed mb-4` rendering full readable descriptions without truncation.
 
 ### Interactive Tags Subsystem
 - **Visible Stack:** Shows top 4 technology badges (`text-[11px] font-medium bg-slate-100 dark:bg-slate-800 border border-slate-200/70 dark:border-slate-700/60`).
