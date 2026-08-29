@@ -63,30 +63,37 @@ const unitrition: Project = {
       'Two primary data streams converge at Next.js - educational nutrition content from headless WordPress and nutritional data from USDA API via a custom Express service. User authentication and dietary preferences are securely managed by Supabase (PostgreSQL). All requests are proxied via Cloudflare for edge caching, SSL enforcement, and DDoS protection.',
   },
   image:
-    '/Portfolio/images/portfolio/thumbs/nextjs/unitrition/unitrition_thumb.webp',
+    '/Portfolio/images/portfolio/thumbs/nextjs/unitrition/unitrition-hero-section.webp',
   fullScreenshot:
-    '/Portfolio/images/portfolio/thumbs/nextjs/unitrition/unitrition_thumb.webp',
+    '/Portfolio/images/portfolio/projects/nextjs/unitrition/screenshot-unitrition.webp',
   images: [
     {
-      src: '/Portfolio/images/portfolio/thumbs/nextjs/unitrition/unitrition_thumb.webp',
-      caption: 'General view of the application Unitrition',
+      src: '/Portfolio/images/portfolio/sliders/nextjs/unitrition/unitrition-hero-section.webp',
+      caption: 'Unitrition Hero Section - Precision Dietary Modeling and Nutrition Platform',
     },
     {
-      src: '/Portfolio/images/portfolio/sliders/nextjs/unitrition/diet-exchanger.webp',
-      caption:
-        'Interface for each diet counting elements for selected products',
+      src: '/Portfolio/images/portfolio/sliders/nextjs/unitrition/unitrition-diets.webp',
+      caption: 'Interactive 10-Diet Framework Selector with Real-Time Nutrient Compatibility Scoring',
     },
     {
-      src: '/Portfolio/images/portfolio/sliders/nextjs/unitrition/bread-units.webp',
-      caption: 'Bread Units Calculator with USDA FoodData API',
+      src: '/Portfolio/images/portfolio/sliders/nextjs/unitrition/unitrition-carb-units.webp',
+      caption: 'Bread Units Calculator with USDA FoodData Central Real-Time API Integration',
     },
     {
-      src: '/Portfolio/images/portfolio/sliders/nextjs/unitrition/unitrition_slide3.webp',
-      caption: 'Blog page with posts from Headless WordPress',
+      src: '/Portfolio/images/portfolio/sliders/nextjs/unitrition/unitrition-ai-meal-plate-builder.webp',
+      caption: 'AI Meal Plate Builder - Dynamic Macro Balancing and Visual Portion Modeling',
     },
     {
-      src: '/Portfolio/images/portfolio/sliders/nextjs/unitrition/unitrition_slide4.webp',
-      caption: 'Custom article page with content from Headless WordPress',
+      src: '/Portfolio/images/portfolio/sliders/nextjs/unitrition/unitrition-ai-meal-plate-builder-page.webp',
+      caption: 'Complete AI Meal Plate Builder Page with CGM Glycemic Curve Simulation',
+    },
+    {
+      src: '/Portfolio/images/portfolio/sliders/nextjs/unitrition/unitrition-blog.webp',
+      caption: 'Headless WordPress Nutrition Blog Feed with Schema.org Educational Content',
+    },
+    {
+      src: '/Portfolio/images/portfolio/sliders/nextjs/unitrition/unitrition-article-page.webp',
+      caption: 'Educational Nutrition Article View with Dynamic Medical Disclaimer and Next.js Typography',
     },
   ],
   technologies: {
