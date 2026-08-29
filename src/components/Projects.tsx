@@ -136,6 +136,9 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
                 src={project.images[0].src}
                 alt={project.images[0].caption || project.title}
                 loading="lazy"
+                style={{
+                  viewTransitionName: `project-thumb-${project.id}`,
+                }}
                 className="rounded-xl mb-4 h-48 object-cover cursor-pointer"
                 onClick={() =>
                   openScreenshotModal(project.images[0].src, project.title)

@@ -10,15 +10,15 @@ const webartReactPortfolio: Project = {
   descriptionEs:
     'Aplicación de portfolio SPA de alto rendimiento construida con React 19, TypeScript 6, Tailwind CSS v4 y motor i18n trilingüe (EN/UA/ES) siguiendo la metodología Spec-Driven AI Harnessing (SDD).',
   fullDescription:
-    'This portfolio website is a high-performance single-page application (SPA) built with React 19, TypeScript 6.x, Tailwind CSS v4, and a complete 3-language internationalization system (English, Ukrainian, Spanish). It showcases a strict Spec-Driven AI Harness Architecture (SDD), integrating agentic AI coding environments (Claude Code, Cursor, Google Antigravity) directly into the SDLC. The project features an interactive 3-language dropdown switcher, a trilingual client-side AI FAQ chatbot, Base64 contact obfuscation, hardened security headers (CSP), and a 69-project interactive showcase.',
+    'This portfolio website is a high-performance single-page application (SPA) built with React 19, TypeScript 6.x, Tailwind CSS v4, the native W3C View Transitions API for GPU-accelerated card morphing, and a complete 3-language internationalization system (English, Ukrainian, Spanish). It showcases a strict Spec-Driven AI Harness Architecture (SDD), integrating agentic AI coding environments (Claude Code, Cursor, Google Antigravity) directly into the SDLC. The project features an interactive 3-language dropdown switcher, a trilingual client-side AI FAQ chatbot, Base64 contact obfuscation, hardened security headers (CSP), and a 69-project interactive showcase.',
   fullDescriptionUa:
-    'Цей сайт-портфоліо — це високопродуктивний односторінковий додаток (SPA), розроблений на React 19, TypeScript 6.x, Tailwind CSS v4 та повній 3-мовній системі інтернаціоналізації (англійська, українська, іспанська). Він демонструє суворий процес розробки на основі специфікацій та упряжі ІІ-агентів (Spec-Driven AI Harness Architecture, SDD) з інтеграцією агентних AI-середовищ (Claude Code, Cursor, Google Antigravity) у SDLC. Проєкт включає інтерактивний 3-мовний перемикач мов, тримовного клієнтського AI FAQ асистента, обфускацію контактів Base64, посилені заголовки безпеки (CSP) та портфоліо з 69 проєктів.',
+    'Цей сайт-портфоліо - це високопродуктивний односторінковий додаток (SPA), розроблений на React 19, TypeScript 6.x, Tailwind CSS v4, нативному W3C View Transitions API для апаратного GPU-морфінгу карток та повній 3-мовній системі інтернаціоналізації (англійська, українська, іспанська). Він демонструє суворий процес розробки на основі специфікацій та упряжі AI-агентів (Spec-Driven AI Harness Architecture, SDD) з інтеграцією агентних AI-середовищ (Claude Code, Cursor, Google Antigravity) у SDLC. Проєкт включає інтерактивний 3-мовний перемикач мов, тримовного клієнтського AI FAQ асистента, обфускацію контактів Base64, посилені заголовки безпеки (CSP) та портфоліо з 69 проєктів.',
   fullDescriptionEs:
-    'Este sitio web de portfolio es una aplicación de página única (SPA) de alto rendimiento construida con React 19, TypeScript 6.x, Tailwind CSS v4 y un sistema completo de internacionalización en 3 idiomas (inglés, ucraniano, español). Demuestra un riguroso proceso de Spec-Driven AI Harness Architecture (SDD), integrando entornos de codificación agéntica (Claude Code, Cursor, Google Antigravity) en el SDLC. Incluye un selector desplegable de 3 idiomas, un chatbot FAQ con IA trilingüe, ofuscación de contactos Base64, cabeceras de seguridad (CSP) y un escaparate interactivo de 69 proyectos.',
-  detailHeroLine: 'REACT 19 · TYPESCRIPT 6 · TAILWIND v4 · TRILINGUAL i18n (EN/UA/ES) · AI SDD',
+    'Este sitio web de portfolio es una aplicación de página única (SPA) de alto rendimiento construida con React 19, TypeScript 6.x, Tailwind CSS v4, la API nativa W3C View Transitions para el morphing acelerado por GPU de tarjetas y un sistema completo de internacionalización en 3 idiomas (inglés, ucraniano, español). Demuestra un riguroso proceso de Spec-Driven AI Harness Architecture (SDD), integrando entornos de codificación agéntica (Claude Code, Cursor, Google Antigravity) en el SDLC. Incluye un selector desplegable de 3 idiomas, un chatbot FAQ con IA trilingüe, ofuscación de contactos Base64, cabeceras de seguridad (CSP) y un escaparate interactivo de 69 proyectos.',
+  detailHeroLine: 'REACT 19 · TYPESCRIPT 6 · VIEW TRANSITIONS API · TAILWIND v4 · TRILINGUAL i18n · AI SDD',
   detailMetrics: [
     { value: 'React 19', label: 'UI Framework', accent: 'green' },
-    { value: 'TS 6.x', label: 'Strict Typing', accent: 'green' },
+    { value: 'View Transitions', label: 'W3C Standard', accent: 'green' },
     { value: 'EN / UA / ES', label: 'Trilingual i18n', accent: 'darkGreen' },
     { value: 'Spec-Driven (SDD)', label: 'AI SDLC Workflow', accent: 'neutral' },
   ],
@@ -98,6 +98,7 @@ const webartReactPortfolio: Project = {
     frontend: [
       { short: 'React 19', full: 'Component-based UI with hooks for state, effect, and context management' },
       { short: 'TypeScript 6.x', full: 'Strict type safety across the entire application workspace' },
+      { short: 'View Transitions API', full: 'Native W3C View Transitions API for 120 FPS hardware-accelerated card morphing and seamless page state transitions without external animation libraries' },
       { short: 'Tailwind CSS v4', full: 'Utility-first framework utilizing CSS variables and native light/dark variants' },
       { short: 'Trilingual i18n (EN/UA/ES)', full: 'Custom React LanguageContext with browser auto-detection and localStorage persistence' },
       { short: 'Lucide Icons', full: 'Vector icons integrated throughout the UI for navigation clarity' },
@@ -121,6 +122,11 @@ const webartReactPortfolio: Project = {
     ],
   },
   features: [
+    {
+      title: 'Native View Transitions API',
+      description:
+        'Implemented the official W3C View Transitions API standard, enabling hardware-accelerated GPU card morphing from grid thumbnails into full case studies without third-party library overhead.',
+    },
     {
       title: 'Spec-Driven AI Development (SDD)',
       description:

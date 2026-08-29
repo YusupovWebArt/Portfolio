@@ -242,6 +242,9 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
                 src={project.images[currentImageIndex].src}
                 alt={`${project.title} screenshot ${currentImageIndex + 1}`}
                 loading="lazy"
+                style={{
+                  viewTransitionName: `project-thumb-${project.id}`,
+                }}
                 className="w-full h-80 md:h-96 object-cover"
               />
 

@@ -18,17 +18,39 @@ function App() {
   const [selectedProject, setSelectedProject] = useState<number | null>(null)
 
   const handleProjectSelect = (projectId: number) => {
-    setSelectedProject(projectId)
+    if ('startViewTransition' in document) {
+      const doc = document as Document & {
+        startViewTransition: (callback: () => void) => void
+      }
+      doc.startViewTransition(() => {
+        setSelectedProject(projectId)
+      })
+    } else {
+      setSelectedProject(projectId)
+    }
   }
 
   const handleBackToProjects = () => {
-    setSelectedProject(null)
-    // Scroll to projects section
-    setTimeout(() => {
-      document
-        .getElementById('projects')
-        ?.scrollIntoView({ behavior: 'smooth' })
-    }, 100)
+    if ('startViewTransition' in document) {
+      const doc = document as Document & {
+        startViewTransition: (callback: () => void) => void
+      }
+      doc.startViewTransition(() => {
+        setSelectedProject(null)
+        setTimeout(() => {
+          document
+            .getElementById('projects')
+            ?.scrollIntoView({ behavior: 'smooth' })
+        }, 80)
+      })
+    } else {
+      setSelectedProject(null)
+      setTimeout(() => {
+        document
+          .getElementById('projects')
+          ?.scrollIntoView({ behavior: 'smooth' })
+      }, 80)
+    }
   }
 
   return (
