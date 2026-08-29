@@ -4,18 +4,18 @@ const unitrition: Project = {
   id: 29000,
   title: 'Unitrition',
   description:
-    'Choosing the right foods for a specific diet is confusing — Unitrition makes it instant. Pick a diet plan, add foods, and the app shows a clear nutritional comparison: what fits your goals and what doesn\'t. Built as a fullstack headless WordPress + Next.js application with diet-specific scoring, custom nutrition data, and a Bread Units Calculator integrated with the USDA FoodData API.',
+    'A full-stack nutrition platform that helps users find the right foods for their specific dietary plans — pick a plan, search foods, and get an instant color-coded comparison of what fits and what doesn\'t. Built with headless WordPress as CMS, a Next.js 19 App Router frontend, Supabase authentication, and a custom Bread Units Calculator integrated with the USDA FoodData Central API. Supports 10 diet frameworks, bilingual content (EN/ES), and an educational nutrition blog with Schema.org markup.',
   descriptionUa:
-    'Вибір правильних продуктів для певної дієти буває заплутаним — Unitrition робить його миттєвим. Оберіть дієтичний план, додайте продукти, і додаток покаже чітке порівняння поживних речовин: що відповідає вашим цілям, а що ні. Побудовано як fullstack headless WordPress + Next.js застосунок з підрахунком балів під конкретні дієти, даними про харчування та калькулятором хлібних одиниць з інтеграцією USDA FoodData API.',
+    'Full-stack платформа для підбору продуктів під 10 спеціалізованих дієтичних планів. Створена на базі Headless WordPress, Next.js 19 App Router, Supabase Auth та калькулятора Хлібних Одиниць з інтеграцією USDA FoodData Central API. Включає кольорове скорингове кодування, двомовність EN/ES та освітній блог про харчування з розміткою Schema.org.',
   descriptionEs:
-    'Elegir los alimentos adecuados para una dieta específica puede resultar confuso — Unitrition lo hace instantáneo. Seleccione un plan dietético, añada alimentos y la aplicación mostrará una comparativa nutricional clara: qué se ajusta a sus objetivos y qué no. Desarrollada como una aplicación fullstack headless WordPress + Next.js con puntuación específica por dieta, datos nutricionales personalizados y una Calculadora de Unidades de Pan integrada con la API USDA FoodData.',
+    'Plataforma de nutrición full-stack para encontrar alimentos adecuados según planes dietéticos específicos: elija un plan, busque alimentos y obtenga comparación instantánea por colores. Desarrollada con Headless WordPress, Next.js 19 App Router, Supabase Auth y Calculadora de Unidades de Pan con API USDA FoodData Central. Incluye 10 dietas, soporte bilingüe EN/ES y blog educativo de nutrición con Schema.org.',
   fullDescription:
-    "A smart nutrition tool that helps users find the right foods for their diet — pick a plan, add foods, and get an instant comparison of what fits and what doesn't. Built with headless WordPress as CMS and a Next.js App Router frontend. Bread Units Calculator also integrates real-time data from the USDA FoodData API.",
+    'An educational nutrition and dietary self-monitoring platform engineered for precision nutritional modeling. Powered by Headless WordPress as CMS, Next.js 19 (App Router with Server Components), Supabase authentication with PostgreSQL, and real-time USDA FoodData Central API integration for precise Bread Units calculation. Supports 10 specialized dietary frameworks, CGM glycemic curve simulations, dynamic PDF reports, and bilingual (EN/ES) content architecture.',
   fullDescriptionUa:
-    'Розумний сервіс харчування, який допомагає користувачам підбирати правильні продукти для дієти — оберіть план, додайте продукти та отримайте миттєве порівняння. Створено з використанням Headless WordPress як CMS та фронтенду на Next.js App Router. Калькулятор хлібних одиниць також інтегрує дані в реальному часі з USDA FoodData API.',
+    'Освітня платформа харчування та дієтичного самоконтролю для моделювання персонального раціону. Працює на Headless WordPress як CMS, Next.js 19 (App Router з Server Components), Supabase авторизації з PostgreSQL та інтеграції USDA FoodData Central API для точного розрахунку Хлібних Одиниць (ХО). Підтримує 10 спеціалізованих дієтичних планів, візуалізацію глікемічних кривих CGM, експорт у PDF та двомовну архітектуру EN/ES.',
   fullDescriptionEs:
-    'Una herramienta de nutrición inteligente que ayuda a los usuarios a encontrar los alimentos adecuados para su dieta: elija un plan, añada alimentos y obtenga una comparativa instantánea de qué encaja y qué no. Desarrollada con headless WordPress como CMS y un frontend en Next.js App Router. La Calculadora de Unidades de Pan también integra datos en tiempo real desde la API USDA FoodData.',
-  detailHeroLine: 'FULLSTACK · HEADLESS CMS',
+    'Plataforma educativa de nutrición y automonitorización dietética diseñada para el modelado nutricional personalizado. Desarrollada con Headless WordPress como CMS, Next.js 19 (App Router con Server Components), autenticación Supabase con PostgreSQL e integración en tiempo real con la API USDA FoodData Central para el cálculo de Unidades de Pan. Soporta 10 marcos dietéticos, visualización de curvas glucémicas CGM, exportación a PDF y arquitectura bilingüe EN/ES.',
+  detailHeroLine: 'FULLSTACK · HEADLESS CMS · AI-ASSISTED',
   detailMetrics: [
     { value: '95+', label: 'PageSpeed', accent: 'green' },
     { value: '<1s', label: 'Page load', accent: 'green' },
@@ -29,21 +29,38 @@ const unitrition: Project = {
         steps: [
           { label: 'WordPress CMS' },
           { label: 'WP REST API' },
-          { label: 'Next.js SSR', highlight: true },
+          { label: 'Next.js SSR / RSC', highlight: true },
           { label: 'Vercel CDN' },
         ],
       },
       {
         rowLabel: 'DATA',
         steps: [
-          { label: 'USDA API' },
-          { label: 'Node / Express' },
+          { label: 'USDA FoodData API' },
+          { label: 'Node / Express API' },
           { label: 'Next.js SSR', highlight: true },
+        ],
+      },
+      {
+        rowLabel: 'AUTH',
+        steps: [
+          { label: 'Supabase Auth' },
+          { label: 'PostgreSQL DB' },
+          { label: 'Next.js Middleware', highlight: true },
+          { label: 'Protected Dashboard' },
+        ],
+      },
+      {
+        rowLabel: 'DEPLOY',
+        steps: [
+          { label: 'GitHub CI/CD' },
+          { label: 'Vercel Edge' },
+          { label: 'Cloudflare WAF / SSL', highlight: true },
         ],
       },
     ],
     description:
-      'Two data streams converge at Next.js — editorial content from headless WordPress and nutritional data from a custom Express API. Both server-side rendered for maximum SEO and Core Web Vitals performance.',
+      'Two primary data streams converge at Next.js — educational nutrition content from headless WordPress and nutritional data from USDA API via a custom Express service. User authentication and dietary preferences are securely managed by Supabase (PostgreSQL). All requests are proxied via Cloudflare for edge caching, SSL enforcement, and DDoS protection.',
   },
   image:
     '/Portfolio/images/portfolio/thumbs/nextjs/unitrition/unitrition_thumb.webp',
@@ -61,7 +78,7 @@ const unitrition: Project = {
     },
     {
       src: '/Portfolio/images/portfolio/sliders/nextjs/unitrition/bread-units.webp',
-      caption: 'Bread Units Calculator',
+      caption: 'Bread Units Calculator with USDA FoodData API',
     },
     {
       src: '/Portfolio/images/portfolio/sliders/nextjs/unitrition/unitrition_slide3.webp',
@@ -75,163 +92,186 @@ const unitrition: Project = {
   technologies: {
     frontend: [
       {
-        short: 'Next.js (App Router)',
-        full: 'Next.js App Router architecture for performance and SEO',
+        short: 'Next.js 16',
+        full: 'Next.js 16 (App Router) with Server Components (RSC), SSR, and generateMetadata()',
       },
       {
-        short: 'TypeScript',
-        full: 'TypeScript',
+        short: 'React 19',
+        full: 'React 19 — latest stable with Server Actions and React Server Components',
+      },
+      {
+        short: 'TypeScript 5.9',
+        full: 'TypeScript 5.9 — strict type safety across all frontend and API layers',
       },
       {
         short: 'Tailwind CSS',
-        full: 'Tailwind CSS',
+        full: 'Tailwind CSS 3.4 with @tailwindcss/typography plugin for clean article formatting',
+      },
+      {
+        short: 'Recharts 3',
+        full: 'Recharts 3 — blood glucose CGM glycemic curve simulation and macro/micro nutrition charts',
+      },
+      {
+        short: 'Node.js 24 LTS',
+        full: 'Node.js 24 LTS runtime environment for builds and server-side execution',
       },
     ],
     backend: [
       {
-        short: 'Node.js',
-        full: 'Node.js & Express.js',
+        short: 'Node.js + Express',
+        full: 'Node.js & Express — dedicated microservice for nutritional scoring and data aggregation',
+      },
+      {
+        short: 'Supabase (PostgreSQL)',
+        full: 'Supabase managed PostgreSQL database for user preferences, custom meal logs, and diet settings',
       },
     ],
     api: [
       {
-        short: 'Express.js',
-        full: 'Scalable API for nutritional data and analytics queries',
+        short: 'USDA FoodData API',
+        full: 'USDA FoodData Central API — real-time food nutrition database access across 500,000+ foods',
       },
       {
-        short: 'REST API',
-        full: 'REST API',
+        short: 'WP REST API',
+        full: 'WordPress REST API — headless content delivery for articles, categories, and media',
       },
       {
-        short: 'USDA API',
-        full: 'USDA FoodData Central API',
+        short: 'Internal REST API',
+        full: 'Internal Next.js API route handlers (/api/blog/views, /api/auth, /api/calculator)',
       },
     ],
     contentManagement: [
       {
         short: 'Headless WordPress',
-        full: 'Headless WordPress for content management of posts and custom nutrition articles, with REST API–driven content delivery.',
+        full: 'Headless WordPress CMS managing nutrition articles, authoritative references, categories, and media assets.',
       },
     ],
     devopsSecurity: [
       {
         short: 'GitHub (CI/CD)',
-        full: 'GitHub (CI/CD)',
+        full: 'GitHub version control with automated CI/CD branch deployment workflows',
       },
       {
-        short: 'Vercel deployment',
-        full: 'Vercel deployment',
+        short: 'Vercel Deployment',
+        full: 'Vercel automated deployment pipeline, Edge Network, and Serverless compute',
       },
       {
-        short: 'Cloudflare',
-        full: 'Cloudflare integration for CDN, DDoS protection, and performance optimization',
+        short: 'Cloudflare WAF',
+        full: 'Cloudflare CDN, DDoS mitigation, SSL/TLS encryption, and HTTP edge security headers',
       },
-      { short: 'SSL', full: 'HTTPS encryption for all traffic' },
       {
         short: 'OWASP Security',
-        full: 'OWASP-aligned input/output and rate limits',
+        full: 'OWASP-aligned input validation, parameterized database queries, and endpoint rate limiting',
       },
     ],
     analytics: [
       {
-        short: 'Google Analytics',
-        full: 'Google Analytics was integrated to track user sessions, event conversions and behavior flows',
+        short: 'Google Analytics 4',
+        full: 'GA4 integration tracking user journeys, diet selection conversions, and engagement funnels',
       },
     ],
     aiTools: [
       {
         short: 'Cursor',
-        full: 'Used Cursor to architect the core application skeleton and manage complex structural development from the ground up',
-      },
-      {
-        short: 'GitHub Copilot',
-        full: 'GitHub Copilot for continuous feature development, AI-assisted code generation, and significant acceleration of the refactoring process and the implementation of new features',
+        full: 'Cursor AI with Spec-Driven Development (SDD) methodology for core architecture and structural development',
       },
       {
         short: 'Google Gemini',
-        full: 'Leveraging Google Gemini (Deep Research) for strategic brainstorming, professional copywriting, and AI-driven visual asset generation to accelerate the creative process.',
+        full: 'Google Gemini (Deep Research) for strategy, nutritional copywriting, and AI-driven visual asset generation',
+      },
+      {
+        short: 'Claude',
+        full: 'Claude for advanced reasoning for complex architectural decisions and data validation',
       },
     ],
     seo: [
       {
-        short: 'Next.js SEO',
-        full: 'Next.js built-in SEO features including meta tags, structured data, and server-side rendering for optimal search engine visibility',
+        short: 'Schema.org JSON-LD',
+        full: 'Rich Schema.org structured data (Article, BreadcrumbList, FAQPage, WebSite) for AI Overviews and Google rich snippets',
       },
       {
-        short: 'Schema.org markup',
-        full: 'Schema.org structured data markup for rich snippets and enhanced search results',
+        short: 'Next.js Metadata API',
+        full: 'Dynamic Open Graph, Twitter Cards, canonical tags, and auto-generated social metadata',
+      },
+      {
+        short: 'Hreflang (EN/ES)',
+        full: 'Bilingual hreflang alternate headers for seamless English and Spanish multi-region indexing',
+      },
+      {
+        short: 'Sitemap & robots.ts',
+        full: 'Dynamic XML sitemap with 1-hour revalidation and programmatic robots.txt configuration',
       },
     ],
     technicalOptimization: [
       {
-        short: 'Lighthouse',
-        full: 'Google Lighthouse for performance auditing and optimization recommendations',
+        short: 'Lighthouse 95+',
+        full: 'Optimized to achieve 95+ PageSpeed scores and sub-second Largest Contentful Paint (LCP)',
       },
       {
-        short: 'Image optimization',
-        full: 'Next.js Image component with automatic WebP conversion and lazy loading for optimal performance',
+        short: 'Image Optimization',
+        full: 'Next.js Image component with WebP conversion, responsive sizes, and lazy loading',
       },
       {
-        short: 'Code splitting',
-        full: 'Automatic code splitting and dynamic imports to reduce initial bundle size',
+        short: 'Code Splitting & RSC',
+        full: 'Route-based code splitting and React Server Components reducing client JavaScript payload',
       },
     ],
     digitalMarketing: [
       {
         short: 'AI Content Generation',
-        full: 'AI-powered content creation using Claude and Google Gemini for articles, descriptions, and marketing copy',
+        full: 'AI-assisted copywriting for diet comparisons, educational articles, and informational guides',
       },
       {
-        short: 'Copywriting',
-        full: 'Professional copywriting for landing pages, emails, and promotional materials to drive conversions',
+        short: 'Professional Copywriting',
+        full: 'Evidence-based nutrition copywriting citing authoritative sources (PubMed, USDA, ADA, KDIGO)',
       },
       {
-        short: 'Social Media Strategy',
+        short: 'Social Strategy',
         full: 'Strategic content planning and posting across social platforms to build audience and engagement',
       },
     ],
   },
   features: [
     {
-      title: 'AI-Driven Development Workflow',
+      title: '🥗 Diet-Specific Scoring Engine',
       description:
-        'Engineered the entire application lifecycle using advanced AI-augmented workflows, significantly accelerating time-to-market while maintaining high code quality and architectural integrity.',
+        'Nutritional scoring across 10 specialized diet frameworks (Diabetes/BU, Renal, Keto, DASH, Mediterranean, Paleo, Vegan, AIP, Cardiac, General Wellness) with per-nutrient traffic-light indicators.',
     },
     {
-      title: 'Seamless Headless Integration',
+      title: '🧮 Bread Units Calculator',
       description:
-        'Successfully decoupled the backend (WordPress) from the frontend (Next.js), ensuring sub-second page loads and superior SEO performance through Server-Side Rendering (SSR).',
+        'Real-time USDA FoodData Central API integration for precise Bread Units (BU/ХО) calculation with product selector and fuzzy search across 500k+ foods and UPF badge detection.',
     },
     {
-      title: 'Complex Data Processing',
+      title: '🍽️ Meal Builder',
       description:
-        'Developed a custom Node.js/Express API to fetch, process, and synchronize nutritional data from multiple internal and external sources.',
+        'Add foods to a meal session to see cumulative nutrition totals vs diet thresholds in real-time, natural language AI meal input (AiMealInputModal), A4 PDF export with macro/micro charts, and meal sharing.',
     },
     {
-      title: 'Performance-First Architecture',
+      title: '📊 CGM Spike Visualization',
       description:
-        'Achieved optimal Core Web Vitals via Vercel-automated deployments and efficient TypeScript type-safety across the entire stack.',
+        'Blood glucose glycemic curve simulation (CgmSpikeChart) per food or meal powered by Recharts SVG charts.',
     },
     {
-      title: 'Version Control & CI/CD',
+      title: '📚 Educational Nutrition Blog Engine',
       description:
-        'Source code is managed with GitHub using branches, pull requests, and CI/CD workflows.',
+        'Headless WordPress integration with WP REST API, dynamic SSR blog/[slug] routes, auto-generated Table of Contents, view counter, reading time, authoritative citations (PubMed, USDA, ADA, KDIGO), and Schema.org Article + BreadcrumbList.',
     },
     {
-      title: 'Automated Deployment',
+      title: '🔐 Authentication',
       description:
-        'Automatically deployed on Vercel, ensuring smooth updates and optimized performance for Next.js apps.',
+        'Supabase email/password login, session persistence, protected dashboard route, and paywall modal for Pro features.',
     },
     {
-      title: 'Analytics & Monitoring',
+      title: '🌍 Bilingual Support (i18n)',
       description:
-        'Integrated Google Analytics to monitor user interactions, page views, and engagement patterns.',
+        'Full EN/ES translations via LanguageContext, localized URLs, hreflang, and dynamic metadata.',
     },
   ],
   challenges: [],
   solutions: [],
-  liveUrl: 'https://unitrition.info/',
-  githubUrl: '#',
+  liveUrl: 'https://www.unitrition.info',
+  githubUrl: 'https://github.com/YusupovWebArt/unitrition-frontend',
   category: ['nextjs', 'wordpress'],
 }
 
