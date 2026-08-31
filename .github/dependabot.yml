@@ -26,3 +26,8 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+    ignore:
+      - dependency-name: "actions/checkout"
+        versions: [">= 5.0.0"]
+      - dependency-name: "actions/setup-node"
+        versions: [">= 5.0.0"]

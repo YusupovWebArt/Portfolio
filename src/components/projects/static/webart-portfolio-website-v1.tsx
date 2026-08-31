@@ -44,7 +44,7 @@ const webartPortfolioWebsiteV1: Project = {
   image:
     '/Portfolio/images/portfolio/thumbs/html-css-js/webart_old-version_thumb.webp',
   fullScreenshot:
-    '/Portfolio/images/portfolio/projects/html-css-js/webart_old-version_thumb.webp',
+    '/Portfolio/images/portfolio/thumbs/html-css-js/webart_old-version_thumb.webp',
   images: [
     {
       src: '/Portfolio/images/portfolio/thumbs/html-css-js/webart_old-version_thumb.webp',

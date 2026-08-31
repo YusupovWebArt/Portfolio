@@ -42,12 +42,12 @@ const webartPortfolioWebsiteV2: Project = {
       'A pure static architecture with no build tooling — semantic HTML5 defines the structure, custom CSS3 drives the responsive multi-column layout, and vanilla JavaScript handles all interactivity. The site is deployed directly to GitHub Pages for instant global access.',
   },
   image:
-    '/Portfolio/images/portfolio/thumbs/html-css-js/webart_portfolio-website-v2_thumb.webp',
+    '/Portfolio/images/portfolio/thumbs/html-css-js/webart_old-version_thumb.webp',
   fullScreenshot:
-    '/Portfolio/images/portfolio/projects/html-css-js/webart_portfolio-website-v2_thumb.webp',
+    '/Portfolio/images/portfolio/thumbs/html-css-js/webart_old-version_thumb.webp',
   images: [
     {
-      src: '/Portfolio/images/portfolio/thumbs/html-css-js/webart_portfolio-website-v2_thumb.webp',
+      src: '/Portfolio/images/portfolio/thumbs/html-css-js/webart_old-version_thumb.webp',
       caption: 'Hero section and headline of the v2 portfolio homepage',
     },
     {

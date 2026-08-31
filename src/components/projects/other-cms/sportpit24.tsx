@@ -46,7 +46,7 @@ const sportpit24: Project = {
   },
   image: '/Portfolio/images/portfolio/thumbs/other-cms/sportpit24_thumb.webp',
   fullScreenshot:
-    '/Portfolio/images/portfolio/projects/other-cms/sportpit24_thumb.webp',
+    '/Portfolio/images/portfolio/thumbs/other-cms/sportpit24_thumb.webp',
   images: [
     {
       src: '/Portfolio/images/portfolio/thumbs/other-cms/sportpit24_thumb.webp',

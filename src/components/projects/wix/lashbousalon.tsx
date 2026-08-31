@@ -43,7 +43,7 @@ const lashbouSalon: Project = {
   },
   image: '/Portfolio/images/portfolio/thumbs/wix/lashbousalon_thumb.webp',
   fullScreenshot:
-    '/Portfolio/images/portfolio/projects/wix/lashbousalon_thumb.webp',
+    '/Portfolio/images/portfolio/thumbs/wix/lashbousalon_thumb.webp',
   images: [
     {
       src: '/Portfolio/images/portfolio/thumbs/wix/lashbousalon_thumb.webp',

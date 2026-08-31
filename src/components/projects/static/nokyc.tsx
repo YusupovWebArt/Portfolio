@@ -43,7 +43,7 @@ const nokyc: Project = {
   },
   image: '/Portfolio/images/portfolio/thumbs/html-css-js/nokyc_thumb.webp',
   fullScreenshot:
-    '/Portfolio/images/portfolio/projects/html-css-js/nokyc_thumb.webp',
+    '/Portfolio/images/portfolio/thumbs/html-css-js/nokyc_thumb.webp',
   images: [
     {
       src: '/Portfolio/images/portfolio/thumbs/html-css-js/nokyc_thumb.webp',

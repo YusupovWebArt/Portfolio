@@ -43,7 +43,7 @@ const kidzely: Project = {
   },
   image: '/Portfolio/images/portfolio/thumbs/shopify/kidzely_thumb.webp',
   fullScreenshot:
-    '/Portfolio/images/portfolio/projects/shopify/kidzely_thumb.webp',
+    '/Portfolio/images/portfolio/thumbs/shopify/kidzely_thumb.webp',
   images: [
     {
       src: '/Portfolio/images/portfolio/thumbs/shopify/kidzely_thumb.webp',

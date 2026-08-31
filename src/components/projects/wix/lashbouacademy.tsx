@@ -43,7 +43,7 @@ const lashbouAcademy: Project = {
   },
   image: '/Portfolio/images/portfolio/thumbs/wix/lashbouacademy_thumb.webp',
   fullScreenshot:
-    '/Portfolio/images/portfolio/projects/wix/lashbouacademy_thumb.webp',
+    '/Portfolio/images/portfolio/thumbs/wix/lashbouacademy_thumb.webp',
   images: [
     {
       src: '/Portfolio/images/portfolio/thumbs/wix/lashbouacademy_thumb.webp',

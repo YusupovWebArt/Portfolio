@@ -42,7 +42,7 @@ const isal: Project = {
       'ISAL is powered by Wix with Velo custom code enabling advanced functionality beyond standard Wix capabilities — including dynamic payments logic and ZOHO CRM integration for student lead capture. The Wix App Market extends functionality with contact forms and marketing tools. All content is served via Wix\'s managed hosting and CDN with SSL encryption.',
   },
   image: '/Portfolio/images/portfolio/thumbs/wix/isal_thumb.webp',
-  fullScreenshot: '/Portfolio/images/portfolio/projects/wix/isal_thumb.webp',
+  fullScreenshot: '/Portfolio/images/portfolio/thumbs/wix/isal_thumb.webp',
   images: [
     {
       src: '/Portfolio/images/portfolio/thumbs/wix/isal_thumb.webp',

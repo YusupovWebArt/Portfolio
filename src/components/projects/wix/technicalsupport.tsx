@@ -46,7 +46,7 @@ const technicalsupport: Project = {
   },
   image: '/Portfolio/images/portfolio/thumbs/wix/technicalsupport_thumb.webp',
   fullScreenshot:
-    '/Portfolio/images/portfolio/projects/wix/technicalsupport_thumb.webp',
+    '/Portfolio/images/portfolio/thumbs/wix/technicalsupport_thumb.webp',
   images: [
     {
       src: '/Portfolio/images/portfolio/thumbs/wix/technicalsupport_thumb.webp',

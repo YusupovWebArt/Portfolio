@@ -43,7 +43,7 @@ const prezentify: Project = {
   },
   image: '/Portfolio/images/portfolio/thumbs/shopify/prezentify_thumb.webp',
   fullScreenshot:
-    '/Portfolio/images/portfolio/projects/shopify/prezentify_thumb.webp',
+    '/Portfolio/images/portfolio/thumbs/shopify/prezentify_thumb.webp',
   images: [
     {
       src: '/Portfolio/images/portfolio/thumbs/shopify/prezentify_thumb.webp',

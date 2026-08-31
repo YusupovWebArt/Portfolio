@@ -46,7 +46,7 @@ const octobit: Project = {
   },
   image: '/Portfolio/images/portfolio/thumbs/wordpress/octobit_thumb.webp',
   fullScreenshot:
-    '/Portfolio/images/portfolio/projects/wordpress/octobit.webp',
+    '/Portfolio/images/portfolio/thumbs/wordpress/octobit_thumb.webp',
   images: [
     {
       src: '/Portfolio/images/portfolio/thumbs/wordpress/octobit_thumb.webp',

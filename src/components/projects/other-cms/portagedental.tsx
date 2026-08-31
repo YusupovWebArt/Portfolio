@@ -44,7 +44,7 @@ const portageDental: Project = {
   image:
     '/Portfolio/images/portfolio/thumbs/other-cms/portagedental_thumb.webp',
   fullScreenshot:
-    '/Portfolio/images/portfolio/projects/other-cms/portagedental_thumb.webp',
+    '/Portfolio/images/portfolio/thumbs/other-cms/portagedental_thumb.webp',
   images: [
     {
       src: '/Portfolio/images/portfolio/thumbs/other-cms/portagedental_thumb.webp',

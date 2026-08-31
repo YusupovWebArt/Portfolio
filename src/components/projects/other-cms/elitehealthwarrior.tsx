@@ -44,7 +44,7 @@ const eliteHealthWarrior: Project = {
   image:
     '/Portfolio/images/portfolio/thumbs/other-cms/elitehealthwarrior_thumb.webp',
   fullScreenshot:
-    '/Portfolio/images/portfolio/projects/other-cms/elitehealthwarrior_thumb.webp',
+    '/Portfolio/images/portfolio/thumbs/other-cms/elitehealthwarrior_thumb.webp',
   images: [
     {
       src: '/Portfolio/images/portfolio/thumbs/other-cms/elitehealthwarrior_thumb.webp',

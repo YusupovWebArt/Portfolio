@@ -43,7 +43,7 @@ const artezioeu: Project = {
   },
   image: '/Portfolio/images/portfolio/thumbs/shopify/artezioeu_thumb.webp',
   fullScreenshot:
-    '/Portfolio/images/portfolio/projects/shopify/artezioeu_thumb.webp',
+    '/Portfolio/images/portfolio/thumbs/shopify/artezioeu_thumb.webp',
   images: [
     {
       src: '/Portfolio/images/portfolio/thumbs/shopify/artezioeu_thumb.webp',

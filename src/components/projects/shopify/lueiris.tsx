@@ -43,7 +43,7 @@ const LueirisLashes: Project = {
   },
   image: '/Portfolio/images/portfolio/thumbs/shopify/lueirislashes_thumb.webp',
   fullScreenshot:
-    '/Portfolio/images/portfolio/projects/shopify/lueirislashes_thumb.webp',
+    '/Portfolio/images/portfolio/thumbs/shopify/lueirislashes_thumb.webp',
   images: [
     {
       src: '/Portfolio/images/portfolio/thumbs/shopify/lueirislashes_thumb.webp',
