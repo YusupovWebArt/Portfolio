@@ -12,13 +12,13 @@ Security is integrated across the entire Software Development Life Cycle (SDLC),
 graph LR
     subgraph Development [1. Code & Local Gates]
         Agent[Developer / AI Agent] --> Lint[ESLint SAST]
-        Agent --> TypeCheck[TypeScript Compiler tsc --noEmit]
+        Agent --> TypeCheck[TypeScript Compiler pnpm exec tsc --noEmit]
         Agent --> Obfuscate[Base64 Contact Obfuscation]
     end
 
     subgraph Pipeline [2. CI/CD Security Gating]
-        Push[Git Push to master] --> Lockfile[Deterministic npm ci]
-        Lockfile --> SCA[npm audit SCA Scan]
+        Push[Git Push to master] --> Lockfile[Deterministic pnpm install --frozen-lockfile]
+        Lockfile --> SCA[pnpm audit SCA Scan]
         SCA --> StrictSAST[Type Check & Lint Gate]
         StrictSAST --> Build[Vite Build dist]
     end
@@ -43,7 +43,7 @@ graph LR
 
 ## 🔍 2. Static Application Security Testing (SAST) & Type Safety
 
-- **Strict Type Checking (Zero `any` Policy):** All components, props, state, and utility functions must be strictly typed. Proposal of new code additions requires passing `npx tsc --noEmit` with zero errors.
+- **Strict Type Checking (Zero `any` Policy):** All components, props, state, and utility functions must be strictly typed. Proposal of new code additions requires passing `pnpm exec tsc --noEmit` with zero errors.
 - **Linting & React Hooks Guardrails:** `eslint` validates adherence to modern ECMAScript standards and enforces React Hook rules (`eslint-plugin-react-hooks`).
 - **AI Agent Workspace Harness:** The project rules defined in `.agents/AGENTS.md` force all AI coding assistants (Antigravity, Claude Code, Cursor) to run static analysis and linting before proposing or merging modifications.
 
@@ -51,7 +51,7 @@ graph LR
 
 ## 📦 3. Software Composition Analysis (SCA) & Dependency Governance
 
-- **Continuous Vulnerability Scanning:** Every package installation and CI run audits the dependency tree via `npm audit --only=prod --audit-level=high` (Targeting 0 production vulnerabilities).
+- **Continuous Vulnerability Scanning:** Every package installation and CI run audits the dependency tree via `pnpm audit --prod --audit-level=high` (Targeting 0 production vulnerabilities).
 - **Automated Dependabot Lifecycle:** Configured in [`.github/dependabot.yml`](file:///.github/dependabot.yml) to scan weekly:
   - **Grouped Updates:** Minor and patch updates are grouped into unified PRs to prevent dependency drift.
   - **Breaking Change Pinning:** Core compilers and layout dependencies with breaking migrations (e.g., `typescript >= 7.0.0`, `lucide-react >= 1.0.0`) are pinned to preserve build stability.

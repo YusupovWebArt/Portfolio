@@ -19,9 +19,10 @@ A high-performance, enterprise-grade Single Page Application (SPA) portfolio web
 - **Programming Language:** TypeScript 6.x (Strict Type Safety, Zero-`any` Policy)
 - **Styling & Design System:** Tailwind CSS v4 (Modern CSS variables, native variants, dark/light glassmorphism)
 - **Build Tool & Bundler:** Vite 8.x (Rolldown bundler for optimized code-splitting and sub-second HMR)
+- **Package Manager:** pnpm 11.x (Fast, disk space-efficient with global NTFS content-addressable store)
 - **Internationalization (i18n):** Custom type-safe 3-language engine (`en`, `ua`, `es`) with browser auto-detection
 - **Icons:** React Icons & Lucide Icons
-- **DevSecOps & CI/CD:** GitHub Actions on Node 24 (Automated SAST/SCA security gates, minutes-optimized path filtering)
+- **DevSecOps & CI/CD:** GitHub Actions on Node 24 & pnpm (Automated SAST/SCA security gates, minutes-optimized path filtering)
 - **Dependency Governance:** Dependabot (Automated weekly CVE patching with breaking-version guardrails)
 
 ---
@@ -52,8 +53,8 @@ A high-performance, enterprise-grade Single Page Application (SPA) portfolio web
 - **Hybrid RAG Evolution Roadmap:** Pre-architected to seamlessly transition to a serverless **Hybrid RAG (Retrieval-Augmented Generation)** backend on Cloudflare Workers without touching the frontend UI.
 
 ### 🛡️ 5. DevSecOps & Hardened Web Security
-- **SCA Clean:** 0 known vulnerabilities verified via `npm audit` on every build.
-- **SAST Gating:** Strict static analysis via `npx tsc --noEmit` and `eslint` enforced in CI.
+- **SCA Clean:** 0 known vulnerabilities verified via `pnpm audit` on every build.
+- **SAST Gating:** Strict static analysis via `pnpm exec tsc --noEmit` and `pnpm lint` enforced in CI.
 - **HTTP Security Headers:** Sandboxed Content Security Policy (CSP), Permissions-Policy (`camera=(), microphone=(), geolocation=()`), and Referrer-Policy (`strict-origin-when-cross-origin`).
 - **Anti-Scraping Obfuscation:** Dynamic Base64 runtime decryption for email and phone numbers, preventing automated spam harvesting.
 - **RGPD / LOPDGDD Compliance:** Cookie-free, privacy-first architecture with legal EU invoicing transparency.
@@ -99,19 +100,19 @@ Portfolio/
 git clone https://github.com/YusupovWebArt/Portfolio.git
 
 # 2. Install dependencies
-npm install
+pnpm install
 
 # 3. Start local development server
-npm run dev
+pnpm dev
 
 # 4. Run static type checking
-npx tsc --noEmit
+pnpm exec tsc --noEmit
 
 # 5. Run ESLint code quality checks
-npm run lint
+pnpm lint
 
 # 6. Build production bundle
-npm run build
+pnpm build
 ```
 
 ---

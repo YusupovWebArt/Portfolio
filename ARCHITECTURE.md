@@ -113,12 +113,13 @@ Portfolio/
 ## 🚀 4. Build, CI/CD, & Deploy Pipeline
 
 - **Local Compilation:** Vite uses the Rolldown bundler to perform code splitting, generating small modular files for vendor packages, icons, and components. Main bundle is optimized under 200 KB (`198.09 kB`, 53.62 kB gzip).
+- **Package Management:** Managed via **pnpm 11** with global NTFS content-addressable storage (`D:\.pnpm-store`), ensuring zero-duplication hard links and strict non-flat node_modules resolution.
 - **Continuous Integration (GitHub Actions):** On every push to the `master` branch:
-  1. Spins up an Ubuntu Linux container on Node.js 24 LTS.
-  2. Installs clean deterministic dependencies (`npm ci`).
-  3. Executes SAST: Type checks (`npx tsc --noEmit`) and lints (`npm run lint`).
-  4. Executes SCA: Production vulnerability audit (`npm audit --only=prod --audit-level=high`).
-  5. Compiles production bundle (`npm run build`).
+  1. Spins up an Ubuntu Linux container on Node.js 24 LTS and sets up `pnpm/action-setup@v4`.
+  2. Installs clean deterministic dependencies (`pnpm install --frozen-lockfile`).
+  3. Executes SAST: Type checks (`pnpm exec tsc --noEmit`) and lints (`pnpm lint`).
+  4. Executes SCA: Production vulnerability audit (`pnpm audit --prod --audit-level=high`).
+  5. Compiles production bundle (`pnpm build`).
   6. Automatically authenticates with `${{ secrets.GITHUB_TOKEN }}` and deploys the `dist` folder to the `gh-pages` branch, making changes live instantly.
 
 ---
