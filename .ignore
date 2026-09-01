@@ -1,0 +1,33 @@
+# Package manager lockfiles (critical for CI, excluded from code search)
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+
+# Media, vector graphics, icons, and web fonts
+public/images/
+public/flags/
+public/*.png
+public/*.jpg
+public/*.jpeg
+public/*.webp
+public/*.svg
+public/*.ico
+public/*.woff
+public/*.woff2
+public/*.ttf
+
+# Test artifacts and tool caches
+.husky/
+test-results/
+playwright-report/
+.playwright/
+coverage/
+
+# Build artifacts and dependencies
+dist/
+dist-ssr/
+build/
+.next/
+node_modules/
+.pnpm-store/
+

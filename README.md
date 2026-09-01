@@ -41,6 +41,7 @@ A high-performance, enterprise-grade Single Page Application (SPA) portfolio web
   - [**`SECURITY.md`**](SECURITY.md) — DevSecOps architecture, CSP sandbox, Base64 anti-scraping, and RAG security roadmap.
   - [**`ARCHITECTURE.md`**](ARCHITECTURE.md) — System directory structure, runtime logic, and deployment workflows.
   - [**`.agents/AGENTS.md`**](.agents/AGENTS.md) — AI agent workspace harness enforcing zero-`any` rules and static validation before commit.
+  - [**`docs/OPTIMIZATION.md`**](docs/OPTIMIZATION.md) — Search indexing optimization, `.ignore` engine rules, and token economics.
 - Delivers **3x faster engineering velocity** while guaranteeing zero architectural drift or regressions.
 
 ### 💼 3. B2B Services & Strategic Alliances (`B2bServices.tsx`)
