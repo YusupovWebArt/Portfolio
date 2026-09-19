@@ -19,7 +19,7 @@ export const en: Translation = {
   },
   hero: {
     elevatorPitch:
-      'Engineering low-level custom PHP WordPress architectures and modern React/Next.js web applications using a disciplined Spec-Driven AI (SDD) workflow, optimized for Core Web Vitals and Generative Engine Search (GEO).',
+      'Engineering Headless WordPress & Jamstack architectures alongside modern React/Next.js applications, using a disciplined Test-Driven (TDD) & Spec-Driven AI workflow optimized for sub-second Core Web Vitals and Generative Engine Optimization (GEO).',
     ctaPrimary: 'Chat with Artur AI',
     ctaSecondary: 'Download CV',
   },

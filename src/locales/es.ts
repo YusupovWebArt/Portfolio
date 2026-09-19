@@ -19,7 +19,7 @@ export const es: Translation = {
   },
   hero: {
     elevatorPitch:
-      'Desarrollo arquitecturas PHP personalizadas de bajo nivel para WordPress y aplicaciones web modernas con React/Next.js, siguiendo un flujo de trabajo disciplinado de IA orientada a especificaciones (SDD), optimizado para Core Web Vitals y búsqueda en motores generativos (GEO).',
+      'Desarrollo arquitecturas Headless WordPress & Jamstack y aplicaciones modernas con React/Next.js, siguiendo un flujo de trabajo disciplinado Test-Driven (TDD) y Spec-Driven AI, optimizado para Core Web Vitals de carga instantánea y optimización en motores generativos (GEO).',
     ctaPrimary: 'Chat con Artur AI',
     ctaSecondary: 'Descargar CV',
   },

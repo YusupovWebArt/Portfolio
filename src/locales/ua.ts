@@ -19,7 +19,7 @@ export const ua: Translation = {
   },
   hero: {
     elevatorPitch:
-      'Розробляю низькорівневі кастомні PHP WordPress-архітектури та сучасні React/Next.js веб-застосунки з використанням дисциплінованого Spec-Driven AI (SDD) процесу, оптимізованого під Core Web Vitals та пошук у генеративних системах (GEO).',
+      'Створюю архітектури Headless WordPress & Jamstack та сучасні React/Next.js застосунки за дисциплінованим Test-Driven (TDD) і Spec-Driven AI процесом, оптимізованим під субсекундні Core Web Vitals та пошук у генеративних системах (GEO).',
     ctaPrimary: 'Чат з Artur AI',
     ctaSecondary: 'Завантажити CV',
   },
