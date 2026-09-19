@@ -52,13 +52,16 @@ jobs:
       - name: 2. SAST - ESLint Code Quality Guardrails
         run: pnpm lint
 
-      - name: 3. SCA - Production Vulnerability Audit
+      - name: 3. TDD - Automated Unit & Component Tests
+        run: pnpm test
+
+      - name: 4. SCA - Production Vulnerability Audit
         run: pnpm audit --prod --audit-level=high
 
-      - name: 4. Build Production Bundle
+      - name: 5. Build Production Bundle
         run: pnpm build
 
-      - name: 5. Deploy to GitHub Pages (Master Only)
+      - name: 6. Deploy to GitHub Pages (Master Only)
         if: github.ref == 'refs/heads/master' && github.event_name == 'push'
         uses: JamesIves/github-pages-deploy-action@v4
         with:
