@@ -4,53 +4,55 @@ const webartReactPortfolio: Project = {
   id: 3950,
   title: 'My React Portfolio Website',
   description:
-    'High-performance single-page portfolio application built with React 19, TypeScript 6, Tailwind CSS v4, and a 3-language i18n engine (EN/UA/ES) using a Spec-Driven AI Harness Architecture (SDD).',
+    'High-performance single-page portfolio application built with React 19, TypeScript 6, Tailwind CSS v4, and a 3-language i18n engine (EN/UA/ES) powered by a 4-layer 2026 AI Harness (SDD + SDLC + TDD) with Vitest, Playwright axe-core (WCAG 2.2 AA), and Lighthouse CI.',
   descriptionUa:
-    'Високопродуктивний односторінковий сайт-портфоліо на React 19, TypeScript 6, Tailwind CSS v4 та 3-мовною i18n екосистемою (EN/UA/ES) із застосуванням методології Spec-Driven AI Harnessing (SDD).',
+    'Високопродуктивний односторінковий застосунок-портфоліо на React 19, TypeScript 6, Tailwind CSS v4 та 3-мовній i18n екосистемі (EN/UA/ES), створений за 4-шаровою методологією AI-харнеса 2026 року (SDD + SDLC + TDD) із Vitest, Playwright axe-core (WCAG 2.2 AA) та Lighthouse CI.',
   descriptionEs:
-    'Aplicación de portfolio SPA de alto rendimiento construida con React 19, TypeScript 6, Tailwind CSS v4 y motor i18n trilingüe (EN/UA/ES) siguiendo la metodología Spec-Driven AI Harnessing (SDD).',
+    'Aplicación SPA de portfolio de alto rendimiento construida con React 19, TypeScript 6, Tailwind CSS v4 y motor i18n trilingüe (EN/UA/ES), impulsada por un AI Harness de 4 capas (SDD + SDLC + TDD) con Vitest, Playwright axe-core (WCAG 2.2 AA) y Lighthouse CI.',
   fullDescription:
-    'This portfolio website is a high-performance single-page application (SPA) and Progressive Web App (PWA) built with React 19, TypeScript 6.x, Tailwind CSS v4, the native W3C View Transitions API for GPU-accelerated card morphing, and a complete 3-language internationalization system (English, Ukrainian, Spanish). It features an offline-capable Service Worker with Stale-While-Revalidate caching, standalone app installation across iOS, Android, and Desktop, a strict Spec-Driven AI Harness Architecture (SDD), Base64 contact obfuscation, hardened security headers (CSP), and an interactive 69-project showcase.',
+    'This portfolio website is a high-performance single-page application (SPA) and Progressive Web App (PWA) built with React 19, TypeScript 6.x, Tailwind CSS v4, the native W3C View Transitions API for GPU-accelerated card morphing, and a complete 3-language internationalization system (English, Ukrainian, Spanish). Developed following the 2026 AI-Harness methodology (SDD + SDLC + TDD), it incorporates an immutable project Constitution, specialized Antigravity agent skills, a full Vitest and React Testing Library unit suite, automated Playwright and axe-core accessibility audits for European Accessibility Act (EAA 2026 / WCAG 2.2 AA) compliance, and a 9-step GitHub Actions CI/CD deployment pipeline with Lighthouse CI Core Web Vitals performance budgets.',
   fullDescriptionUa:
-    'Цей сайт-портфоліо - це високопродуктивний односторінковий додаток (SPA) та Progressive Web App (PWA), розроблений на React 19, TypeScript 6.x, Tailwind CSS v4, нативному W3C View Transitions API для апаратного GPU-морфінгу карток та повній 3-мовній системі інтернаціоналізації (англійська, українська, іспанська). Включає автономний Service Worker із кэшуванням Stale-While-Revalidate, встановлення на iOS, Android та Desktop як нативного застосунку, процес розробки Spec-Driven AI Harness Architecture (SDD), обфускацію контактів Base64, посилені заголовки безпеки (CSP) та портфоліо з 69 проєктів.',
+    'Цей сайт-портфоліо - це високопродуктивний односторінковий застосунок (SPA) та Progressive Web App (PWA), розроблений на React 19, TypeScript 6.x, Tailwind CSS v4, нативному W3C View Transitions API для апаратного GPU-морфінгу карток та повній 3-мовній системі інтернаціоналізації (англійська, українська, іспанська). Створений за методологією AI-харнеса 2026 року (SDD + SDLC + TDD), він містить незмінну Конституцію проєкту, спеціалізовані скіли агентів Antigravity, повний набір модульних тестів на Vitest і React Testing Library, автоматизовані аудити доступності Playwright і axe-core на відповідність European Accessibility Act (EAA 2026 / WCAG 2.2 AA), а також 9-етапний CI/CD пайплайн у GitHub Actions із контролем бюджетів продуктивності Core Web Vitals через Lighthouse CI.',
   fullDescriptionEs:
-    'Este sitio web de portfolio es una aplicación de página única (SPA) y Progressive Web App (PWA) de alto rendimiento construida con React 19, TypeScript 6.x, Tailwind CSS v4, la API nativa W3C View Transitions para el morphing acelerado por GPU de tarjetas y un sistema completo de internacionalización en 3 idiomas (inglés, ucraniano, español). Cuenta con un Service Worker con soporte offline mediante almacenamiento en caché Stale-While-Revalidate, instalación standalone en iOS, Android y Desktop, metodología Spec-Driven AI Harness Architecture (SDD), ofuscación de contactos Base64, cabeceras de seguridad (CSP) y un escaparate interactivo de 69 proyectos.',
-  detailHeroLine: 'REACT 19 · TYPESCRIPT 6 · PWA & SERVICE WORKER · VIEW TRANSITIONS API · TRILINGUAL i18n · AI SDD',
+    'Este sitio web de portfolio es una aplicación de página única (SPA) y Progressive Web App (PWA) de alto rendimiento construida con React 19, TypeScript 6.x, Tailwind CSS v4, la API nativa W3C View Transitions para el morphing acelerado por GPU de tarjetas y un sistema completo de internacionalización en 3 idiomas (inglés, ucraniano, español). Desarrollado siguiendo la metodología AI-Harness 2026 (SDD + SDLC + TDD), incorpora una Constitución de proyecto inmutable, habilidades especializadas para agentes Antigravity, una suite completa de pruebas unitarias con Vitest y React Testing Library, auditorías automatizadas de accesibilidad con Playwright y axe-core para el cumplimiento de la European Accessibility Act (EAA 2026 / WCAG 2.2 AA), y un pipeline CI/CD de 9 pasos en GitHub Actions con presupuestos de rendimiento Core Web Vitals mediante Lighthouse CI.',
+  detailHeroLine: 'REACT 19 · TYPESCRIPT 6 · 2026 AI HARNESS (SDD + TDD) · VITEST · PLAYWRIGHT WCAG 2.2 AA · LIGHTHOUSE CI · PWA',
   detailMetrics: [
     { value: 'React 19', label: 'UI Framework', accent: 'green' },
-    { value: 'PWA / Offline', label: 'Web App Standard', accent: 'green' },
-    { value: 'View Transitions', label: 'W3C Standard', accent: 'darkGreen' },
-    { value: 'Spec-Driven (SDD)', label: 'AI SDLC Workflow', accent: 'neutral' },
+    { value: 'WCAG 2.2 AA', label: 'A11y (EAA 2026)', accent: 'green' },
+    { value: 'TDD & E2E', label: 'Vitest & Playwright', accent: 'darkGreen' },
+    { value: 'AI Harness (SDD)', label: 'Antigravity SDLC', accent: 'neutral' },
   ],
   architecture: {
     rows: [
       {
-        rowLabel: 'SPECIFICATION',
+        rowLabel: 'SPECIFICATION & HARNESS',
         steps: [
+          { label: 'Constitution (.specify)' },
+          { label: 'Agent Skills (.agents/skills)', highlight: true },
           { label: 'DESIGN_SYSTEM.md' },
-          { label: 'SECURITY.md', highlight: true },
-          { label: 'ARCHITECTURE.md' },
+          { label: 'SECURITY.md' },
         ],
       },
       {
-        rowLabel: 'DEVELOPMENT',
+        rowLabel: 'TDD & VERIFICATION',
         steps: [
-          { label: 'Spec-Driven AI Code' },
-          { label: 'Strict Type-Check (TSC)', highlight: true },
-          { label: 'ESLint & WPCS Audit' },
+          { label: 'Vitest Unit & RTL' },
+          { label: 'Playwright & axe-core (WCAG 2.2 AA)', highlight: true },
+          { label: 'Strict Zero-any (TSC)' },
+          { label: 'ESLint Guardrails' },
         ],
       },
       {
-        rowLabel: 'DEPLOYMENT',
+        rowLabel: 'CI/CD & QUALITY GATES',
         steps: [
-          { label: 'GHA Trigger' },
-          { label: 'CI/CD Pipeline Build', highlight: true },
-          { label: 'GitHub Pages Deploy' },
+          { label: 'SCA Audit (pnpm audit)' },
+          { label: 'Lighthouse CI (CWV Budgets)', highlight: true },
+          { label: 'GitHub Pages Automated Deploy' },
         ],
       },
     ],
     description:
-      'The portfolio is built as a React SPA with TypeScript and i18n subsystem. The CI/CD pipeline triggers on push to master, running security audits, TypeScript checks, and lints before deploying to GitHub Pages.',
+      'The portfolio is engineered with a 4-layer 2026 AI-Harness: Spec-Driven Development (SDD) backed by an immutable Constitution and specialized Antigravity agent skills, a full TDD suite with Vitest and React Testing Library, automated browser accessibility audits via Playwright and axe-core (WCAG 2.2 AA / EAA 2026), and a 9-step GitHub Actions CI/CD deployment pipeline with Lighthouse CI Core Web Vitals performance budgets.',
   },
   image:
     '/Portfolio/images/portfolio/thumbs/react/webart-react-portfolio_thumb.webp',
@@ -96,33 +98,66 @@ const webartReactPortfolio: Project = {
   ],
   technologies: {
     frontend: [
-      { short: 'React 19', full: 'Component-based UI with hooks for state, effect, and context management' },
-      { short: 'TypeScript 6.x', full: 'Strict type safety across the entire application workspace' },
-      { short: 'PWA & Service Worker', full: 'Progressive Web App standard with offline support, CacheStorage precaching, and native app installation' },
-      { short: 'View Transitions API', full: 'Native W3C View Transitions API for 120 FPS hardware-accelerated card morphing and seamless page state transitions without external animation libraries' },
-      { short: 'Tailwind CSS v4', full: 'Utility-first framework utilizing CSS variables and native light/dark variants' },
-      { short: 'Trilingual i18n (EN/UA/ES)', full: 'Custom React LanguageContext with browser auto-detection and localStorage persistence' },
-      { short: 'Lucide Icons', full: 'Vector icons integrated throughout the UI for navigation clarity' },
+      { short: 'React 19', full: 'Component-based UI with modern hooks for state, effect, and context management' },
+      { short: 'TypeScript 6.x', full: 'Strict type safety with zero-any compiler enforcement across the entire workspace' },
+      { short: 'PWA & Service Worker', full: 'Progressive Web App standard with offline support, Stale-While-Revalidate caching, and native app installation' },
+      { short: 'View Transitions API', full: 'Native W3C View Transitions API for 120 FPS hardware-accelerated card morphing and seamless transitions' },
+      { short: 'Tailwind CSS v4', full: 'Utility-first styling utilizing modern CSS variables and native light/dark selector variants' },
+      { short: 'Trilingual i18n (EN/UA/ES)', full: 'Custom React LanguageContext with browser language auto-detection and localStorage persistence' },
+      { short: 'Lucide & React Icons', full: 'Accessible vector iconography with aria-hidden wrappers and strict SVG contrast ratios' },
     ],
     contentManagement: [],
     devopsSecurity: [
-      { short: 'Vite 8 & Rolldown', full: 'Ultra-fast bundler providing tree-shaking, fast HMR, and optimized chunks' },
-      { short: 'GitHub Actions', full: 'CI/CD workflow running static code tests, compilations, and deploys on push' },
-      { short: 'Workspace Rules (.agents)', full: 'AGENTS.md guidelines locking AI execution to strict specification files' },
-      { short: 'Spec-Driven Dev (SDD)', full: 'Spec-first coding pipeline utilizing Claude Code, Cursor, and Antigravity' },
-      { short: 'Base64 Obfuscation', full: 'Dynamic Base64 encryption and interaction-based decoding to prevent email and phone harvesting' },
-      { short: 'CSP & Meta Security', full: 'Content Security Policy, Referrer-Policy, and Permissions-Policy via meta headers' },
+      { short: '2026 AI-Harness (SDD)', full: 'Spec-first coding pipeline guided by an immutable Constitution and specialized Antigravity agent skills' },
+      { short: 'GitHub Actions 9-Step CI/CD', full: 'Automated CI/CD workflow executing SAST, SCA, TDD, E2E, and Lighthouse CI gates before deployment' },
+      { short: 'Unified Verification Gate', full: 'Single-command verification pipeline (pnpm verify) chaining compiler, linter, tests, audits, and bundle builds' },
+      { short: 'Base64 Contact Obfuscation', full: 'Client-side Base64 encryption and interaction-based decoding to protect contact channels from web scrapers' },
+      { short: 'Hardened CSP & Meta Security', full: 'Strict Content Security Policy, Referrer-Policy, and sandboxed Permissions-Policy meta headers' },
+      { short: 'Vite 8 & Rolldown', full: 'Next-generation bundler delivering high-velocity HMR, automatic code-splitting, and optimized production chunks' },
+    ],
+    technicalOptimization: [
+      { short: 'Vitest & RTL (TDD)', full: 'Automated unit and component test suite running under isolated JSDOM environments' },
+      { short: 'Playwright & axe-core', full: 'Automated end-to-end browser tests verifying navigation, language mutation, and WCAG 2.2 AA compliance' },
+      { short: 'Lighthouse CI CWV Budgets', full: 'Automated performance assertion engine validating LCP, FCP, CLS, accessibility, and SEO thresholds' },
+      { short: 'WCAG 2.2 Level AA / EAA 2026', full: 'Compliance with European Accessibility Act standards, 4.5:1 contrast ratios, and 24x24px minimum touch targets' },
+      { short: 'WebP Image Pipeline', full: 'Next-gen responsive media assets with explicit dimensions preventing cumulative layout shifts (CLS 0.00)' },
+    ],
+    aiTools: [
+      { short: 'Google Antigravity', full: 'Advanced agentic IDE harness orchestrating multi-agent SDLC workflows and custom agent skills' },
+      { short: 'Claude Code', full: 'Autonomous agentic system utilized for architectural specifications, refactoring, and code analysis' },
+      { short: 'Cursor Composer', full: 'Context-engineered IDE workspace enforcing strict project boundaries and .agents rules' },
+      { short: 'Interactive AI FAQ Chatbot', full: 'Client-side algorithmic matching engine providing localized answers with interactive suggestion chips' },
     ],
     analytics: [
-      { short: 'Google Analytics 4', full: 'Visitor traffic analytics and engagement tracking integration' },
-      { short: 'Search Console', full: 'Monitoring indexing status and search performance metrics' },
+      { short: 'Google Analytics 4', full: 'Privacy-compliant visitor engagement tracking and performance telemetry' },
+      { short: 'Google Search Console', full: 'Monitoring indexing status, crawl diagnostics, and search visibility' },
     ],
     seo: [
-      { short: 'Structured Schemas', full: 'JSON-LD schema microdata optimization for Person and WebSite queries' },
-      { short: 'Open Graph & GEO', full: 'Open Graph previews and custom descriptions for search engines and AI crawlers' },
+      { short: 'JSON-LD Structured Data', full: 'Schema.org microdata implementation for Person, WebSite, and ProfessionalService indexing' },
+      { short: 'Open Graph & GEO Optimization', full: 'Rich metadata and structured content engineered for discovery by modern generative AI search engines' },
     ],
   },
   features: [
+    {
+      title: '2026 AI-Harness (SDD + SDLC + TDD)',
+      description:
+        'Engineered following the 2026 AI-Harness methodology: development is driven by an immutable Constitution (.specify/memory/constitution.md) and 5 specialized Antigravity agent skills (.agents/skills/), ensuring deterministic, regression-free AI code generation.',
+    },
+    {
+      title: 'European Accessibility Act (EAA 2026) & WCAG 2.2 AA',
+      description:
+        'Fully audited with Playwright and axe-core to achieve zero critical or serious accessibility violations, meeting European Accessibility Act (EN 301 549) standards with 4.5:1 text contrast ratios and 24x24px minimum target sizes.',
+    },
+    {
+      title: 'Automated TDD Unit Test Suite (Vitest & RTL)',
+      description:
+        'Comprehensive unit and component test coverage built with Vitest and React Testing Library, validating theme toggles, trilingual state persistence, and catalog filtering across isolated test environments.',
+    },
+    {
+      title: 'Core Web Vitals Budgets & Lighthouse CI Gate',
+      description:
+        'Continuous performance enforcement with Lighthouse CI (.lighthouserc.json) asserting 95+ Accessibility, 95+ SEO, 90+ Best Practices, and sub-second Core Web Vitals thresholds (LCP, CLS, FCP) in automated deployment pipelines.',
+    },
     {
       title: 'Progressive Web App (PWA) & Offline Mode',
       description:
@@ -134,55 +169,45 @@ const webartReactPortfolio: Project = {
         'Implemented the official W3C View Transitions API standard, enabling hardware-accelerated GPU card morphing from grid thumbnails into full case studies without third-party library overhead.',
     },
     {
-      title: 'Spec-Driven AI Development (SDD)',
+      title: 'Trilingual i18n Engine & Locale Persistence',
       description:
-        'Every feature is built using the Spec-Driven Development (SDD) methodology, leveraging AI agents (Claude Code, Cursor, Antigravity) working inside strict boundaries defined by root specification documents.',
+        'Full support for English, Ukrainian, and Spanish across all site sections, interactive chatbot FAQs, and 69 project case studies, complete with custom SVG flags, browser auto-detection, and document lang mutation.',
     },
     {
-      title: 'Trilingual i18n Engine & Dropdown',
+      title: 'Interactive Multilingual AI FAQ Chatbot',
       description:
-        'Full support for English, Ukrainian, and Spanish across all site sections, interactive chatbot FAQs, and 69 project case studies, complete with custom SVG flags and browser auto-detection.',
+        'Client-side virtual assistant powered by localized keyword matching algorithms, serving instantaneous responses in English, Ukrainian, and Spanish with interactive suggestion chips and zero external API dependencies.',
     },
     {
-      title: 'Multilingual AI FAQ Chatbot',
+      title: '9-Step CI/CD Quality Pipeline with pnpm verify',
       description:
-        'Interactive virtual assistant powered by client-side keyword matching algorithms, serving instantaneous localized responses in English, Ukrainian, and Spanish with interactive suggestion chips.',
+        'Robust GitHub Actions deployment pipeline executing TypeScript type verification, ESLint guardrails, Vitest unit specs, SCA security audit, bundle build, Playwright browser a11y tests, and Lighthouse CI before deploying to GitHub Pages.',
     },
     {
-      title: 'Workspace Rules (.agents)',
+      title: 'Base64 Contact Obfuscation & Hardened CSP',
       description:
-        'Ironclad workspace guidelines (AGENTS.md) that force AI tools to read DESIGN_SYSTEM.md, SECURITY.md, and ARCHITECTURE.md before proposing code changes.',
+        'Protects developer email, phone, and messaging links via client-side Base64 encryption and interaction-based decryption to defeat automated scrapers, backed by sandboxed Content Security Policy meta headers.',
     },
     {
-      title: 'CI/CD & Automated Audits',
+      title: 'Filterable 69-Project Showcase Grid',
       description:
-        'Features automated weekly dependency audits via Dependabot and a GitHub Actions pipeline that verifies types, lints code, and runs security checks before deploying.',
+        '69 commercial and architectural projects displayed in a responsive card grid with multi-category filters, full screenshots, tech stacks, and comprehensive modal case studies.',
     },
     {
-      title: 'Contact Obfuscation & Security Headers',
+      title: 'Synchronized Dark & Light Theme System',
       description:
-        'Enforces local security policies via CSP/Referrer meta headers, and protects email, phone, and Telegram links with dynamic Base64 decryption on interaction.',
-    },
-    {
-      title: 'Filterable 69-Project Showcase',
-      description:
-        '69 projects displayed in a responsive card grid with category-based filters and comprehensive modal case studies, allowing recruiters to quickly evaluate technical depth.',
-    },
-    {
-      title: 'Light & Dark Mode',
-      description:
-        'A fully implemented theme switcher lets visitors toggle between light and dark modes, with preferences persisted across sessions.',
+        'Complete dark and light mode styling with Tailwind v4 CSS variables, automated system preference detection, smooth color transitions, and persistent user preference storage.',
     },
   ],
   challenges: [
-    'Configuring major package updates without causing linter crashes or missing icon exports.',
-    'Managing AI context drift during prolonged programming sessions across multiple files and structures.',
-    'Maintaining a clean, custom design system using Tailwind v4 while handling dark mode class overrides and trilingual layouts.',
+    'Maintaining strict zero-any type safety, architectural integrity, and regression-free delivery during rapid AI-assisted development cycles.',
+    'Ensuring full legal and technical accessibility compliance under the European Accessibility Act (EAA 2026 / EN 301 549) and WCAG 2.2 Level AA across both dark and light modes.',
+    'Enforcing sub-second performance budgets and preventing Core Web Vitals regressions in CI/CD without manual testing.',
   ],
   solutions: [
-    'Implemented custom Dependabot ignore filters to block breaking major upgrades while permitting minor/patch updates in the 0.x series.',
-    'Created a strict workspace rule (AGENTS.md) that forces AI agents to read DESIGN_SYSTEM.md, SECURITY.md, and ARCHITECTURE.md before coding.',
-    'Overrode the default dark variant in Tailwind v4 using custom CSS variant rules mapped to the .dark selector class, and implemented dynamic language state routing.',
+    'Implemented a 4-layer 2026 AI-Harness featuring an immutable project Constitution, 5 specialized Antigravity agent skills (.agents/skills), and a unified pre-push quality gate (pnpm verify).',
+    'Integrated Playwright with @axe-core/playwright to automatically audit DOM landmarks, color contrast ratios (>= 4.5:1), interactive target sizes (>= 24x24px), and decorative SVG accessibility on every build.',
+    'Configured Lighthouse CI (.lighthouserc.json) with automated assertions on LCP, CLS, and FCP, combined with a Stale-While-Revalidate Service Worker and next-gen WebP image pipeline.',
   ],
   liveUrl: 'https://yusupovwebart.github.io/Portfolio/',
   githubUrl: 'https://github.com/YusupovWebArt/Portfolio',
