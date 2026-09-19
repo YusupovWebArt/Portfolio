@@ -8,22 +8,22 @@ const About = () => {
 
   const highlights = [
     {
-      icon: <SiWordpress className="w-6 h-6" />,
+      icon: <SiWordpress aria-hidden="true" className="w-6 h-6" />,
       title: ab.highlights.wpTitle,
       points: ab.highlights.wpPoints,
     },
     {
-      icon: <SiReact className="w-6 h-6" />,
+      icon: <SiReact aria-hidden="true" className="w-6 h-6" />,
       title: ab.highlights.appTitle,
       points: ab.highlights.appPoints,
     },
     {
-      icon: <SiGoogleanalytics className="w-6 h-6" />,
+      icon: <SiGoogleanalytics aria-hidden="true" className="w-6 h-6" />,
       title: ab.highlights.seoTitle,
       points: ab.highlights.seoPoints,
     },
     {
-      icon: <LuBrainCircuit className="w-6 h-6" />,
+      icon: <LuBrainCircuit aria-hidden="true" className="w-6 h-6" />,
       title: ab.highlights.aiTitle,
       points: ab.highlights.aiPoints,
     },
@@ -293,7 +293,7 @@ const About = () => {
             <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-br from-blue-400 to-purple-400 dark:from-lime-500 dark:to-lime-400 rounded-full opacity-60 blur-sm"></div>
 
             {/* Status Badge */}
-            <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 bg-green-500 text-white px-4 py-1 rounded-full text-xs font-medium shadow-lg">
+            <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 bg-emerald-700 text-white px-4 py-1 rounded-full text-xs font-semibold shadow-lg">
               Available for Projects
             </div>
 
@@ -311,7 +311,7 @@ const About = () => {
               key={index}
               className="p-6 bg-white dark:bg-slate-700 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 border border-slate-200 dark:border-slate-600 hover:border-lime-200 dark:hover:border-purple-200 group"
             >
-              <div className="w-12 h-12 bg-gradient-to-br from-purple-100 to-blue-100 dark:from-lime-100 dark:to-lime-200 rounded-xl flex items-center justify-center text-purple-600 dark:text-lime-600 mb-4 group-hover:scale-110 transition-transform duration-200">
+              <div aria-hidden="true" className="w-12 h-12 bg-gradient-to-br from-purple-100 to-blue-100 dark:from-lime-100 dark:to-lime-200 rounded-xl flex items-center justify-center text-purple-600 dark:text-lime-600 mb-4 group-hover:scale-110 transition-transform duration-200">
                 {item.icon}
               </div>
               <h3 className="font-semibold text-slate-900 dark:text-white mb-2">
@@ -358,7 +358,7 @@ const About = () => {
                           <span className="text-purple-600 dark:text-lime-500 font-bold text-sm">
                             {item.year}
                           </span>
-                          <span className="px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded">
+                          <span className="px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded">
                             {item.badge}
                           </span>
                         </div>
@@ -398,7 +398,7 @@ const About = () => {
                     </div>
                     <div className="ml-6 flex-1">
                       <div className="bg-white dark:bg-slate-700 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-600 hover:shadow-md transition-shadow">
-                        <div className="text-green-600 dark:text-lime-500 font-bold text-sm mb-1">
+                        <div className="text-emerald-700 dark:text-lime-400 font-bold text-sm mb-1">
                           {item.year}
                         </div>
                         <h5 className="font-semibold text-slate-900 dark:text-white mb-1">
@@ -408,7 +408,7 @@ const About = () => {
                           href={item.companyUrl}
                           target="_blank"
                           rel="noopener noreferrer nofollow"
-                          className="text-teal-600 dark:text-lime-500 font-medium text-sm mb-2 hover:text-teal-700 dark:hover:text-lime-600 transition-colors underline decoration-dotted underline-offset-2"
+                          className="text-teal-700 dark:text-lime-400 font-medium text-sm mb-2 hover:text-teal-800 dark:hover:text-lime-300 transition-colors underline decoration-dotted underline-offset-2"
                         >
                           {item.company}
                         </a>

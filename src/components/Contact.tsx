@@ -244,7 +244,7 @@ const Contact = () => {
           
           {/* Left Column: Apple Liquid Glass Contacts */}
           <div className="lg:col-span-6 space-y-4">
-            <h3 className="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-4 px-1">
+            <h3 className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-4 px-1">
               {ct.directChannels}
             </h3>
             <div className="space-y-3">
@@ -288,10 +288,10 @@ const Contact = () => {
 
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center justify-between">
-                      <span className="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider">
+                      <span className="text-xs font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wider">
                         {item.label}
                       </span>
-                      <span className="text-[10px] text-slate-400 dark:text-slate-500 bg-slate-100/55 dark:bg-slate-950/30 px-2 py-0.5 rounded-full font-medium shrink-0">
+                      <span className="text-[10px] text-slate-700 dark:text-slate-300 bg-slate-100/55 dark:bg-slate-950/30 px-2 py-0.5 rounded-full font-medium shrink-0">
                         {item.tag}
                       </span>
                     </div>
@@ -305,7 +305,7 @@ const Contact = () => {
 
             {/* Social Links Row */}
             <div className="pt-6 border-t border-slate-200/60 dark:border-white/5">
-              <h4 className="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-4 px-1">
+              <h4 className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-4 px-1">
                 {ct.followCredentials}
               </h4>
               <div className="flex space-x-3">
@@ -315,6 +315,7 @@ const Contact = () => {
                     href={social.url}
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label={social.label}
                     className={`p-3 bg-white dark:bg-slate-900 lg:bg-white/40 lg:dark:bg-slate-900/40 lg:backdrop-blur-md border border-slate-200/60 dark:border-white/5 rounded-full text-slate-500 dark:text-slate-400 ${social.hoverColor} transition-all duration-300 hover:scale-110 hover:shadow-sm`}
                     title={social.label}
                   >
@@ -327,7 +328,7 @@ const Contact = () => {
 
           {/* Right Column: AI Console directly on page (Option 3) */}
           <div className="lg:col-span-6 flex flex-col h-full">
-            <h3 className="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-4 px-1">
+            <h3 className="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-4 px-1">
               {ct.chatbot.title}
             </h3>
             
@@ -345,7 +346,7 @@ const Contact = () => {
                     </h4>
                     <div className="flex items-center space-x-1.5 mt-0.5">
                       <span className="w-1 h-1 rounded-full bg-emerald-500 animate-pulse" />
-                      <span className="text-[9px] font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">
+                      <span className="text-[9px] font-bold text-emerald-800 dark:text-emerald-400 uppercase tracking-wider">
                         {ct.chatbot.liveConsole}
                       </span>
                     </div>
@@ -402,7 +403,7 @@ const Contact = () => {
                 {/* Local FAQ list inside chat log when only welcome message exists */}
                 {messages.length === 1 && !isTyping && (
                   <div className="mt-4 ml-8 space-y-1.5 animate-fade-in">
-                    <div className="text-[9px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-1 px-1">
+                    <div className="text-[9px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1 px-1">
                       {ct.chatbot.faqHeader}
                     </div>
                     <div className="grid grid-cols-1 gap-1.5">

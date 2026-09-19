@@ -278,11 +278,11 @@ without exposing a clickable hyperlink.`,
           </h2>
           <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-4xl mx-auto leading-relaxed">
             {aw.description.before}{' '}
-            <span className="font-semibold text-purple-600 dark:text-purple-400">{aw.description.methodology}</span>
+            <span className="font-semibold text-purple-700 dark:text-purple-400">{aw.description.methodology}</span>
             {aw.description.middle}{' '}
-            <span className="font-semibold text-purple-600 dark:text-purple-400">{aw.description.toolClaude}</span>
+            <span className="font-semibold text-purple-700 dark:text-purple-400">{aw.description.toolClaude}</span>
             {aw.description.between}{' '}
-            <span className="font-semibold text-sky-600 dark:text-sky-400">{aw.description.toolAntigravity}</span>
+            <span className="font-semibold text-sky-700 dark:text-sky-400">{aw.description.toolAntigravity}</span>
             {aw.description.after}
           </p>
         </div>
@@ -431,14 +431,18 @@ without exposing a clickable hyperlink.`,
                     <button
                       key={stepIdx}
                       onClick={() => setActiveStep(stepIdx)}
-                      className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                        activeStep === stepIdx
-                          ? `bg-gradient-to-r ${currentCategory.color} w-4 scale-105 shadow-sm`
-                          : 'bg-slate-300 dark:bg-slate-700 hover:bg-slate-400 dark:hover:bg-slate-600'
-                      }`}
+                      className="min-w-[24px] min-h-[24px] flex items-center justify-center p-1 rounded-full focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-purple-500"
                       aria-label={`Go to step ${stepIdx + 1}`}
                       type="button"
-                    />
+                    >
+                      <span
+                        className={`h-2 rounded-full transition-all duration-300 ${
+                          activeStep === stepIdx
+                            ? `bg-gradient-to-r ${currentCategory.color} w-4 scale-105 shadow-sm`
+                            : 'w-2 bg-slate-300 dark:bg-slate-700 hover:bg-slate-400 dark:hover:bg-slate-600'
+                        }`}
+                      />
+                    </button>
                   ))}
                 </div>
 

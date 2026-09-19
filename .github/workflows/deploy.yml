@@ -28,7 +28,7 @@ concurrency:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    timeout-minutes: 5 # Protects against hanging processes consuming billing minutes
+    timeout-minutes: 10 # Protects against hanging processes consuming billing minutes
 
     steps:
       - name: Checkout Repository
@@ -61,7 +61,13 @@ jobs:
       - name: 5. Build Production Bundle
         run: pnpm build
 
-      - name: 6. Deploy to GitHub Pages (Master Only)
+      - name: 6. Install Playwright Chromium
+        run: pnpm exec playwright install --with-deps chromium
+
+      - name: 7. A11y & E2E - WCAG 2.2 AA & Browser Flows
+        run: pnpm test:e2e
+
+      - name: 8. Deploy to GitHub Pages (Master Only)
         if: github.ref == 'refs/heads/master' && github.event_name == 'push'
         uses: JamesIves/github-pages-deploy-action@v4
         with:

@@ -195,17 +195,19 @@ const Header = () => {
               href="https://github.com/YusupovWebArt"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="GitHub Profile"
               className="text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white transition-colors"
             >
-              <Github size={20} />
+              <Github size={20} aria-hidden="true" />
             </a>
             <a
               href="https://www.linkedin.com/in/artur-iusupov/"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="LinkedIn Profile"
               className="text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white transition-colors"
             >
-              <Linkedin size={20} />
+              <Linkedin size={20} aria-hidden="true" />
             </a>
 
             {/* Language Dropdown - Rightmost position with divider */}
@@ -255,17 +257,19 @@ const Header = () => {
                   href="https://github.com/YusupovWebArt"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="GitHub Profile"
                   className="text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white transition-colors"
                 >
-                  <Github size={20} />
+                  <Github size={20} aria-hidden="true" />
                 </a>
                 <a
                   href="https://www.linkedin.com/in/artur-iusupov/"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="LinkedIn Profile"
                   className="text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white transition-colors"
                 >
-                  <Linkedin size={20} />
+                  <Linkedin size={20} aria-hidden="true" />
                 </a>
 
                 {/* Language Dropdown in mobile menu */}

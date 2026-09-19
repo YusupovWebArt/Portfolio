@@ -48,7 +48,7 @@ const Skills = () => {
   const skillCategories = [
     {
       title: 'WordPress Development',
-      icon: <SiWordpress className="w-6 h-6" />,
+      icon: <SiWordpress aria-hidden="true" className="w-6 h-6" />,
       color: 'from-blue-400 to-blue-600',
       baseColor: 'blue',
       description: sk.categories.wp.description,
@@ -90,7 +90,7 @@ const Skills = () => {
     },
     {
       title: 'App Development',
-      icon: <SiReact className="w-6 h-6" />,
+      icon: <SiReact aria-hidden="true" className="w-6 h-6" />,
       color: 'from-sky-300 to-sky-500',
       baseColor: 'sky',
       description:
@@ -126,7 +126,7 @@ const Skills = () => {
     },
     {
       title: 'AI Tools & Automation',
-      icon: <Brain className="w-6 h-6" />,
+      icon: <Brain aria-hidden="true" className="w-6 h-6" />,
       color: 'from-violet-400 to-violet-600',
       baseColor: 'violet',
       description:
@@ -152,7 +152,7 @@ const Skills = () => {
     },
     {
       title: 'SEO & Performance',
-      icon: <SiGoogleanalytics className="w-6 h-6" />,
+      icon: <SiGoogleanalytics aria-hidden="true" className="w-6 h-6" />,
       color: 'from-green-400 to-green-600',
       baseColor: 'green',
       description: sk.categories.seo.description,
@@ -175,7 +175,7 @@ const Skills = () => {
     },
     {
       title: 'Website Layout & Structure',
-      icon: <Layout className="w-6 h-6" />,
+      icon: <Layout aria-hidden="true" className="w-6 h-6" />,
       color: 'from-indigo-400 to-indigo-600',
       baseColor: 'indigo',
       description: sk.categories.layout.description,
@@ -198,7 +198,7 @@ const Skills = () => {
     },
     {
       title: 'Design Understanding',
-      icon: <Palette className="w-6 h-6" />,
+      icon: <Palette aria-hidden="true" className="w-6 h-6" />,
       color: 'from-pink-400 to-pink-600',
       baseColor: 'pink',
       description: sk.categories.design.description,
@@ -287,7 +287,7 @@ const Skills = () => {
                     `}
                     type="button"
                   >
-                    <span className={`scale-75 -mx-0.5 flex-shrink-0 ${isActive ? 'text-white' : 'text-slate-500 dark:text-slate-400'}`}>
+                    <span aria-hidden="true" className={`scale-75 -mx-0.5 flex-shrink-0 ${isActive ? 'text-white' : 'text-slate-500 dark:text-slate-400'}`}>
                       {category.icon}
                     </span>
                     <span>{category.title}</span>
@@ -311,6 +311,7 @@ const Skills = () => {
                   type="button"
                 >
                   <div
+                    aria-hidden="true"
                     className={`w-10 h-10 rounded-full shrink-0 flex items-center justify-center transition-all duration-300
                       ${
                         isActive
@@ -347,7 +348,7 @@ const Skills = () => {
 
                   {/* Заголовок панели */}
                   <div className="relative z-10 flex items-center space-x-4 mb-6 pb-6 border-b border-slate-200/80 dark:border-slate-800">
-                    <div className={`w-12 h-12 rounded-full shrink-0 flex items-center justify-center bg-gradient-to-br ${category.color} text-white shadow-lg`}>
+                    <div aria-hidden="true" className={`w-12 h-12 rounded-full shrink-0 flex items-center justify-center bg-gradient-to-br ${category.color} text-white shadow-lg`}>
                       {category.icon}
                     </div>
                     <div>

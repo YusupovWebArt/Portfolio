@@ -56,7 +56,7 @@ const Hero = () => {
               onClick={() => setChatOpen(true)}
               className="flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-purple-600 to-blue-600 dark:from-lime-500 dark:to-lime-600 text-white font-semibold rounded-full hover:from-purple-700 hover:to-blue-700 dark:hover:from-lime-600 dark:hover:to-lime-700 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-purple-500/25 dark:hover:shadow-lime-500/25 cursor-pointer"
             >
-              <Bot className="w-4 h-4" />
+              <Bot aria-hidden="true" className="w-4 h-4" />
               {t.hero.ctaPrimary}
             </button>
             {/* Secondary Action: Download CV */}
@@ -65,7 +65,7 @@ const Hero = () => {
               download
               className="flex items-center gap-2 px-6 py-2.5 border-2 border-purple-500 dark:border-lime-400 text-purple-600 dark:text-lime-400 font-semibold rounded-full hover:bg-purple-500 dark:hover:bg-lime-400 hover:text-white dark:hover:text-slate-900 transform hover:scale-105 transition-all duration-200 cursor-pointer"
             >
-              <FaFilePdf className="w-4 h-4" />
+              <FaFilePdf aria-hidden="true" className="w-4 h-4" />
               {t.hero.ctaSecondary}
             </a>
             <ChatModal open={chatOpen} onClose={() => setChatOpen(false)} />

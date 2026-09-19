@@ -14,7 +14,7 @@ const Footer = () => {
             <h3 className="text-2xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 dark:from-lime-400 dark:to-lime-500 bg-clip-text text-transparent">
               Artur Yusupov
             </h3>
-            <p className="text-slate-400 dark:text-slate-500 mt-2">
+            <p className="text-slate-400 dark:text-slate-400 mt-2">
               {t.footer.tagline}
             </p>
           </div>
@@ -71,11 +71,11 @@ const Footer = () => {
 
           {/* Copyright */}
           <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
-            <div className="flex items-center space-x-2 text-slate-400 dark:text-slate-500 text-sm">
+            <div className="flex items-center space-x-2 text-slate-400 dark:text-slate-400 text-sm">
               <span>© {currentYear} Artur Yusupov. {t.footer.copyright}</span>
             </div>
 
-            <div className="flex items-center space-x-2 text-slate-400 dark:text-slate-500 text-sm">
+            <div className="flex items-center space-x-2 text-slate-400 dark:text-slate-400 text-sm">
               <span>{t.footer.madeWith}</span>
               <Code className="w-4 h-4 text-lime-400 dark:text-purple-400" />
               <span>using React &amp; TypeScript. Tailwind CSS</span>

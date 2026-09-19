@@ -435,7 +435,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
               className={`min-w-0 flex-1 px-4 py-3.5 text-center text-sm font-semibold transition-colors sm:text-base ${
                 detailTab === 'stack'
                   ? 'border-b-2 border-purple-600 text-purple-600 dark:border-lime-400 dark:text-lime-400'
-                  : 'border-b-2 border-transparent text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white'
+                  : 'border-b-2 border-transparent text-slate-600 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white'
               }`}
             >
               {pr.tabs.stack}
@@ -451,7 +451,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
               className={`min-w-0 flex-1 px-4 py-3.5 text-center text-sm font-semibold transition-colors sm:text-base ${
                 detailTab === 'features'
                   ? 'border-b-2 border-purple-600 text-purple-600 dark:border-lime-400 dark:text-lime-400'
-                  : 'border-b-2 border-transparent text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white'
+                  : 'border-b-2 border-transparent text-slate-600 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white'
               }`}
             >
               {pr.tabs.features}
@@ -468,7 +468,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
                 className={`min-w-0 flex-1 px-4 py-3.5 text-center text-sm font-semibold transition-colors sm:text-base ${
                   detailTab === 'architecture'
                     ? 'border-b-2 border-purple-600 text-purple-600 dark:border-lime-400 dark:text-lime-400'
-                    : 'border-b-2 border-transparent text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white'
+                    : 'border-b-2 border-transparent text-slate-600 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white'
                 }`}
               >
                 {pr.tabs.architecture}
@@ -486,7 +486,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
                 className={`min-w-0 flex-1 px-4 py-3.5 text-center text-sm font-semibold transition-colors sm:text-base ${
                   detailTab === 'case-study'
                     ? 'border-b-2 border-purple-600 text-purple-600 dark:border-lime-400 dark:text-lime-400'
-                    : 'border-b-2 border-transparent text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white'
+                    : 'border-b-2 border-transparent text-slate-600 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white'
                 }`}
               >
                 {pr.tabs.caseStudy}
