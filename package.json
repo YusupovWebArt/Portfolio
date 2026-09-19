@@ -16,6 +16,9 @@
     "test:watch": "vitest",
     "test:e2e": "playwright test",
     "test:a11y": "playwright test e2e/accessibility.spec.ts",
+    "test:all": "pnpm test && pnpm test:e2e",
+    "audit:lhci": "lhci autorun",
+    "verify": "pnpm exec tsc --noEmit && pnpm lint && pnpm test:all && pnpm audit --prod --audit-level=high && pnpm build",
     "preview": "vite preview",
     "deploy": "gh-pages -d dist"
   },
@@ -28,6 +31,7 @@
   "devDependencies": {
     "@axe-core/playwright": "^4.13.0",
     "@eslint/js": "^10.0.1",
+    "@lhci/cli": "^0.15.1",
     "@playwright/test": "^1.63.0",
     "@tailwindcss/postcss": "^4.3.3",
     "@testing-library/jest-dom": "^7.0.1",

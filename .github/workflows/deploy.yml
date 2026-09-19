@@ -67,7 +67,10 @@ jobs:
       - name: 7. A11y & E2E - WCAG 2.2 AA & Browser Flows
         run: pnpm test:e2e
 
-      - name: 8. Deploy to GitHub Pages (Master Only)
+      - name: 8. LHCI - Core Web Vitals & Quality Audit
+        run: pnpm audit:lhci
+
+      - name: 9. Deploy to GitHub Pages (Master Only)
         if: github.ref == 'refs/heads/master' && github.event_name == 'push'
         uses: JamesIves/github-pages-deploy-action@v4
         with:
