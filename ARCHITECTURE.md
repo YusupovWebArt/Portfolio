@@ -104,8 +104,11 @@ Portfolio/
 - **Web App Manifest (`public/manifest.webmanifest`):** Declares standalone display mode, orientation, brand colors (`#0f172a` / `#7c3aed`), and 192x192/512x512/maskable app icons for native mobile (iOS/Android) and desktop home-screen installation.
 - **Service Worker (`public/sw.js`):** Implements a **Stale-While-Revalidate** caching strategy with CacheStorage API, enabling instant sub-second page loads and offline case study navigation with automated background cache invalidation.
 
-### Spec-Driven AI Harness Engineering (SDD)
-- **Harness Constraints:** The development lifecycle integrates AI coding agents (Claude Code, Cursor, Antigravity) strictly bound to root specification contracts (`DESIGN_SYSTEM.md`, `SECURITY.md`, `ARCHITECTURE.md`, `AGENTS.md`).
+### Spec-Driven AI Harness Engineering (SDD 2026 Architecture)
+- **Immutable Constitution:** Governed by [`.specify/memory/constitution.md`](file:///d:/PORTFOLIO/Portfolio/.specify/memory/constitution.md), establishing permanent non-negotiable standards (Zero-`any`, Base64 security, CWV budgets, i18n parity, WCAG 2.2 AA / EAA 2026).
+- **Rules Layer:** Always-active workspace boundaries in [`.agents/rules/project-context.md`](file:///d:/PORTFOLIO/Portfolio/.agents/rules/project-context.md) and [`.agents/rules/code-style.md`](file:///d:/PORTFOLIO/Portfolio/.agents/rules/code-style.md).
+- **Modular Skills Catalog:** On-demand procedural modules in [`.agents/skills/`](file:///d:/PORTFOLIO/Portfolio/.agents/skills/) (`tdd-react`, `a11y-wcag22`, `perf-cwv`, `i18n-locales`, `seo-pseo`) compatible across Antigravity, Claude Code, and Cursor.
+- **Isolated Feature Specs:** Lifecycle-governed feature development managed in `specs/<feature-slug>/` (`spec.md`, `plan.md`, `tasks.md`, `analysis.md`).
 - **Deterministic Verification:** Every automated step enforces SAST (TypeScript strict compilation, ESLint 10), SCA (production dependency audits), and sub-second bundle budget guardrails.
 
 ---

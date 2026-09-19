@@ -35,13 +35,15 @@ A high-performance, enterprise-grade Single Page Application (SPA) portfolio web
 - **Smart Auto-Detection:** Automatically detects visitor browser locale (`navigator.language`) and persists choice in `localStorage`.
 - **69 Localized Case Studies:** All 69 projects feature full trilingual descriptions, technical highlights, and architecture diagrams.
 
-### 🤖 2. Spec-Driven AI Harness Architecture (SDD)
+### 🤖 2. Spec-Driven AI Harness Architecture (SDD 2026)
 - Built following an **AI-first engineering philosophy governed by strict specification contracts**:
-  - [**`DESIGN_SYSTEM.md`**](DESIGN_SYSTEM.md) — Visual constraints, spacing, color tokens, and stepper logic.
-  - [**`SECURITY.md`**](SECURITY.md) — DevSecOps architecture, CSP sandbox, Base64 anti-scraping, and RAG security roadmap.
-  - [**`ARCHITECTURE.md`**](ARCHITECTURE.md) — System directory structure, runtime logic, and deployment workflows.
-  - [**`.agents/AGENTS.md`**](.agents/AGENTS.md) — AI agent workspace harness enforcing zero-`any` rules and static validation before commit.
-  - [**`docs/OPTIMIZATION.md`**](docs/OPTIMIZATION.md) — Search indexing optimization, `.ignore` engine rules, and token economics.
+  - [**`constitution.md`**](.specify/memory/constitution.md) - Immutable project principles (Zero-`any`, security, CWV budgets, i18n parity, EAA/WCAG 2.2 AA).
+  - [**`DESIGN_SYSTEM.md`**](DESIGN_SYSTEM.md) - Visual constraints, spacing, color tokens, and stepper logic.
+  - [**`SECURITY.md`**](SECURITY.md) - DevSecOps architecture, CSP sandbox, Base64 anti-scraping, and RAG security roadmap.
+  - [**`ARCHITECTURE.md`**](ARCHITECTURE.md) - System directory structure, runtime logic, and deployment workflows.
+  - [**`.agents/AGENTS.md`**](.agents/AGENTS.md) - AI agent workspace harness enforcing zero-`any` rules and static validation before commit.
+  - [**`docs/OPTIMIZATION.md`**](docs/OPTIMIZATION.md) - Search indexing optimization, `.ignore` engine rules, and token economics.
+  - [**`.agents/skills/`**](.agents/skills/) - Modular procedural skills (`tdd-react`, `a11y-wcag22`, `perf-cwv`, `i18n-locales`, `seo-pseo`).
 - Delivers **3x faster engineering velocity** while guaranteeing zero architectural drift or regressions.
 
 ### 💼 3. B2B Services & Strategic Alliances (`B2bServices.tsx`)
