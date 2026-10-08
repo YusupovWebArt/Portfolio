@@ -94,7 +94,7 @@
 ## Phase 2: Cookie Consent Management for GA4 (TDD)
 
 ### Task 2.1: ConsentContext & Storage Unit Specification (Red)
-- **Status**: TODO
+- **Status**: DONE
 - **Dependencies**: Phase 1
 - **Red Test File**: `src/contexts/ConsentContext.test.tsx`
 - **Red Failure Proof**:
@@ -107,7 +107,9 @@
   - `src/lib/analytics.ts`
 - **Green Verification Proof**:
   ```text
-  [To be recorded]
+  ✓ src/contexts/ConsentContext.test.tsx (8 tests) 877ms
+  Test Files  1 passed (1)
+  Tests  8 passed (8)
   ```
 
 ### Task 2.2: Consent Banner Component & E2E Analytics Blocking (Red)
