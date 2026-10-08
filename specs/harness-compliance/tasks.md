@@ -60,7 +60,10 @@
 - **Red Test Case**: `it('should detect and fail if raw email or telephone exists in index.html outside Base64', ...)`
 - **Red Failure Proof**:
   ```text
-  [To be recorded upon execution]
+  FAIL src/security/contacts.test.ts > Security & Privacy: Contact Obfuscation Specification > should not expose raw telephone or personal email in index.html outside Base64
+  AssertionError: Raw phone number found in index.html: +34642413967: expected [ '+34642413967', index: 4292, ... ] to be null
+  - Expected: null
+  + Received: ["+34642413967"]
   ```
 - **Green Implementation**:
   - Files modified: `index.html` (remove raw telephone from JSON-LD schema)
