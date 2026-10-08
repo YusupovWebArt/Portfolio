@@ -116,9 +116,20 @@
 - **Status**: TODO
 - **Dependencies**: Task 2.1
 - **Red Test File**: `e2e/analytics-consent.spec.ts`
+- **Red Failure Proof**:
+  ```text
+  1) [chromium] › e2e/analytics-consent.spec.ts:5:3 › should not make any network requests to Google Analytics before explicit user consent
+     Error: Unexpected tracking requests before consent: https://www.googletagmanager.com/gtag/js?id=G-1Q3H7DDTSG, https://region1.google-analytics.com/g/collect?...
+     Expected length: 0
+     Received length: 2
+  2) [chromium] › e2e/analytics-consent.spec.ts:35:3 › should pass axe-core accessibility audit on consent banner
+     Error: No elements found for include in page Context: [data-testid="consent-banner"]
+  ```
 - **Green Implementation**:
   - `src/components/ConsentBanner.tsx`
+  - `src/components/CookiePolicyModal.tsx`
   - `src/components/Footer.tsx` (settings trigger)
+  - `src/App.tsx` (mount ConsentProvider and ConsentBanner)
   - `index.html` (remove inline gtag.js)
 
 ---
