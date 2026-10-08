@@ -236,9 +236,22 @@
 ## Phase 5: Quality Gate Automation
 
 ### Task 5.1: Agent Stop Hook & Git Hooks
-- **Status**: TODO
+- **Status**: DONE
 - **Dependencies**: Phase 4
 - **Objective**: Implement `.agents/hooks.json` Stop hook and coverage ratchets.
+- **Implementation**:
+  - Created `.agents/hooks.json` mapping `Stop` event to `.agents/hooks/quality-gate.mjs`.
+  - Created `.agents/hooks/quality-gate.mjs` verifying clean TypeScript compile and zero em dashes before loop exit.
+  - Added coverage ratchets (statements: 30%, branches: 15%, functions: 14%, lines: 30%) in `vitest.config.ts`.
+- **Verification Proof**:
+  ```text
+  $ node .agents/hooks/quality-gate.mjs
+  {"decision":"approve"}
+  ```
+- **Review Check**:
+  - [x] Strict type safety (zero `any`).
+  - [x] Zero em dashes in code or comments.
+  - [x] Passes quality-gate Stop hook.
 
 ---
 
