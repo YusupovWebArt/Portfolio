@@ -1,6 +1,6 @@
 import { useState, lazy, Suspense } from 'react'
 import { ThemeProvider } from './contexts/ThemeContext'
-import { LanguageProvider } from './contexts/LanguageContext'
+import { LanguageProvider, useLanguage } from './contexts/LanguageContext'
 import { ConsentProvider } from './contexts/ConsentContext'
 import Header from './components/Header'
 import Hero from './components/Hero'
@@ -15,6 +15,20 @@ import ScrollToTopButton from './components/ScrollToTopButton'
 import ConsentBanner from './components/ConsentBanner'
 
 const ProjectDetail = lazy(() => import('./components/ProjectDetail'))
+
+function ProjectLoadingFallback() {
+  const { t } = useLanguage()
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-white dark:bg-slate-900 transition-colors duration-300">
+      <div className="text-center">
+        <div className="inline-block w-12 h-12 border-4 border-purple-500/20 border-t-purple-600 rounded-full animate-spin mb-4" />
+        <p className="text-slate-600 dark:text-slate-400 text-sm font-medium">
+          {t.app.loadingDetails}
+        </p>
+      </div>
+    </div>
+  )
+}
 
 function App() {
   const [selectedProject, setSelectedProject] = useState<number | null>(null)
@@ -62,18 +76,7 @@ function App() {
           <div className="min-h-screen bg-white dark:bg-slate-900 transition-colors duration-300">
             <Header />
             {selectedProject !== null ? (
-              <Suspense
-                fallback={
-                  <div className="min-h-screen flex items-center justify-center bg-white dark:bg-slate-900 transition-colors duration-300">
-                    <div className="text-center">
-                      <div className="inline-block w-12 h-12 border-4 border-purple-500/20 border-t-purple-600 rounded-full animate-spin mb-4" />
-                      <p className="text-slate-600 dark:text-slate-400 text-sm font-medium">
-                        Loading project details...
-                      </p>
-                    </div>
-                  </div>
-                }
-              >
+              <Suspense fallback={<ProjectLoadingFallback />}>
                 <ProjectDetail
                   key={selectedProject}
                   projectId={selectedProject}

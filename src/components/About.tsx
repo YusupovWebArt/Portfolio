@@ -294,7 +294,7 @@ const About = () => {
 
             {/* Status Badge */}
             <div className="absolute -top-2 left-1/2 transform -translate-x-1/2 bg-emerald-700 text-white px-4 py-1 rounded-full text-xs font-semibold shadow-lg">
-              Available for Projects
+              {ab.availableForProjects}
             </div>
 
             {/* Decorative Elements */}
@@ -331,7 +331,7 @@ const About = () => {
         {/* My Journey - Education and Work Experience */}
         <div className="mt-20">
           <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-12 text-center">
-            My Journey
+            {ab.myJourney}
           </h3>
           <div className="grid lg:grid-cols-2 gap-16">
             {/* Education Timeline */}

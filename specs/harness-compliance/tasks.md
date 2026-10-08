@@ -149,7 +149,7 @@
 ## Phase 3: Trilingual Localization Parity (i18n)
 
 ### Task 3.1: Hardcoded Text Scanner & Dictionary Expansion
-- **Status**: TODO
+- **Status**: DONE
 - **Dependencies**: Phase 2
 - **Red Test File**: `src/locales/i18n-scanner.test.ts`
 - **Red Failure Proof**:
@@ -162,9 +162,20 @@
   5) should contain zero em dashes across all locale dictionary files: found 6 em dashes in locales/en.ts
   ```
 - **Green Implementation**:
-  - `src/locales/types.ts`: add `app.loadingDetails`, `about.availableForProjects`, `about.myJourney`, `skills.chooseSpecialization`, `skills.swipe`, `footer.techUsing`, `aiWorkflow.categories`.
-  - `src/locales/en.ts`, `ua.ts`, `es.ts`: complete translations, purge all em dashes.
-  - `src/components/Skills.tsx`, `About.tsx`, `Footer.tsx`, `App.tsx`, `AiWorkflow.tsx`: wire localized keys.
+  - `src/locales/types.ts`: added `app.loadingDetails`, `about.availableForProjects`, `about.myJourney`, `skills.chooseSpecialization`, `skills.swipe`, `footer.techUsing`, `aiWorkflow.categories`.
+  - `src/locales/en.ts`, `ua.ts`, `es.ts`: completed translations across all 3 languages, purged all em dashes.
+  - `src/components/Skills.tsx`, `About.tsx`, `Footer.tsx`, `App.tsx`, `AiWorkflow.tsx`: wired localized keys dynamically.
+- **Green Verification Proof**:
+  ```text
+  ✓ src/locales/i18n.test.ts (4 tests) 38ms
+  ✓ src/locales/i18n-scanner.test.ts (5 tests) 20ms
+  Test Files  2 passed (2)
+  Tests  9 passed (9)
+  ```
+- **Review Check**:
+  - [x] Strict type safety (zero `any`).
+  - [x] Zero em dashes in code, dictionaries, or comments.
+  - [x] Passes `pnpm test`, `pnpm exec tsc --noEmit`, and `pnpm lint`.
 
 ---
 

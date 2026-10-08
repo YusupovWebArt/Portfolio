@@ -1,5 +1,8 @@
 // Translation type definition - strict interface guaranteeing all languages are always in sync
 export interface Translation {
+  app: {
+    loadingDetails: string
+  }
   header: {
     nav: {
       home: string
@@ -23,6 +26,8 @@ export interface Translation {
   }
   about: {
     sectionTitle: string
+    availableForProjects: string
+    myJourney: string
     bio: {
       p1: string
       p2: string
@@ -120,10 +125,23 @@ export interface Translation {
       step: string
       of: string
     }
+    categories: Array<{
+      title: string
+      description: string
+      steps: Array<{
+        title: string
+        details: Array<{
+          name: string
+          description: string
+        }>
+      }>
+    }>
   }
   skills: {
     sectionTitle: string
     sectionDescription: string
+    chooseSpecialization: string
+    swipe: string
     keySkillsLabel: string
     technologiesLabel: string
     showMore: string
@@ -287,6 +305,7 @@ export interface Translation {
     legalNotice: string
     copyright: string
     madeWith: string
+    techUsing: string
     cookieSettings: string
   }
   consent: {

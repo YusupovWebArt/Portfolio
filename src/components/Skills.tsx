@@ -265,10 +265,10 @@ const Skills = () => {
           <div className="lg:hidden w-full mb-6">
             <div className="flex items-center justify-between mb-3 px-1">
               <span className="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
-                Choose Specialization:
+                {sk.chooseSpecialization}
               </span>
               <span className="text-[10px] text-slate-400 dark:text-slate-500 flex items-center space-x-1 animate-pulse">
-                <span>Swipe</span>
+                <span>{sk.swipe}</span>
                 <span>→</span>
               </span>
             </div>

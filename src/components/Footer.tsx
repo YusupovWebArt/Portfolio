@@ -89,7 +89,7 @@ const Footer = () => {
             <div className="flex items-center space-x-2 text-slate-400 dark:text-slate-400 text-sm">
               <span>{t.footer.madeWith}</span>
               <Code className="w-4 h-4 text-lime-400 dark:text-purple-400" />
-              <span>using React &amp; TypeScript. Tailwind CSS</span>
+              <span>{t.footer.techUsing}</span>
             </div>
           </div>
         </div>

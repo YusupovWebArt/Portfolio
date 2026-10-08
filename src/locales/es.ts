@@ -1,6 +1,9 @@
 import type { Translation } from './types'
 
 export const es: Translation = {
+  app: {
+    loadingDetails: 'Cargando detalles del proyecto...',
+  },
   header: {
     nav: {
       home: 'Inicio',
@@ -25,6 +28,8 @@ export const es: Translation = {
   },
   about: {
     sectionTitle: 'Sobre mí',
+    availableForProjects: 'Disponible para proyectos',
+    myJourney: 'Mi trayectoria',
     bio: {
       p1: 'Soy un ingeniero web Fullstack orientado a resultados con más de 5 años de experiencia en el desarrollo, escalado y optimización técnica de plataformas de alta carga, con una profunda especialización arquitectónica en WordPress. Mi experiencia se sitúa en la intersección de los ecosistemas frontend modernos (React, Next.js) y la ingeniería empresarial de WordPress - desde arquitecturas PHP 8+ personalizadas y desarrollo seguro de plugins hasta configuraciones Headless CMS de alto rendimiento y optimización profunda del rendimiento.',
       p2: 'Mi principal ventaja competitiva es una sofisticada filosofía de ingeniería centrada en la IA. En lugar de tratar la IA como un simple asistente de código, integro sistemáticamente sistemas de próxima generación - incluyendo Claude Code, Cursor y Google Antigravity - directamente en el ciclo de vida del desarrollo de software (SDLC), siguiendo una metodología de Desarrollo Orientado a Especificaciones (SDD): primero defino la especificación técnica y luego la IA implementa y verifica contra ella en lugar de improvisar. Utilizo ampliamente la IA para automatizar flujos de trabajo de desarrollo complejos y realizar investigaciones técnicas profundas. Al combinar mi experiencia arquitectónica práctica con el desarrollo potenciado por IA, acelero refactorizaciones complejas, automatizo pruebas de regresión y comprimo drásticamente el tiempo de comercialización - todo ello manteniendo una estricta calidad del código, seguridad e integridad arquitectónica.',
@@ -39,7 +44,7 @@ export const es: Translation = {
       wpPoints: [
         'Temas y plugins personalizados (PHP 8.x OOP / WPCS)',
         'Configuraciones Headless CMS con React/Next.js',
-        'Cero constructores sobrecargados — código nativo puro',
+        'Cero constructores sobrecargados - código nativo puro',
       ],
       appTitle: 'Desarrollo de aplicaciones',
       appPoints: [
@@ -94,7 +99,7 @@ export const es: Translation = {
       },
       item2: {
         title: 'Universidad Técnica Nacional (Ucrania)',
-        institution: 'VNTU — Universidad Técnica Nacional de Vinnytsia (Ucrania)',
+        institution: 'VNTU - Universidad Técnica Nacional de Vinnytsia (Ucrania)',
         description: {
           spec: {
             label: 'Especialización:',
@@ -169,7 +174,7 @@ export const es: Translation = {
   aiWorkflow: {
     sectionTitle: 'AI Workflow',
     description: {
-      before: 'No es programación por intuición: cada funcionalidad recorre un camino estricto desde la especificación escrita hasta la compilación y verificación mediante pruebas — una metodología que la industria denomina',
+      before: 'No es programación por intuición: cada funcionalidad recorre un camino estricto desde la especificación escrita hasta la compilación y verificación mediante pruebas - una metodología que la industria denomina',
       methodology: 'Spec-Driven Development (SDD)',
       middle: '. Ejecuto tareas rutinarias, arquitectónicas y de optimización de forma más rápida y fiable, potenciando mi experiencia con herramientas de IA especializadas como',
       toolClaude: 'Claude Code',
@@ -183,11 +188,156 @@ export const es: Translation = {
       step: 'Paso',
       of: 'de',
     },
+    categories: [
+      {
+        title: 'Ingeniería de especificaciones (Spec Engineering)',
+        description: 'Arquitectura de sistemas, requisitos precisos y diseño de verificación estricta',
+        steps: [
+          {
+            title: 'Auditoría de requisitos y contexto',
+            details: [
+              {
+                name: 'Recopilación y análisis',
+                description: 'Captura de requisitos del usuario y auditoría a bajo nivel de la base de código, dependencias y endpoints de API antes de redactar instrucciones.',
+              },
+              {
+                name: 'Prevención de alucinaciones',
+                description: 'Perfilado explícito de restricciones y condiciones de contorno. La falta de guía arquitectónica humana en este paso es la causa principal de errores lógicos de la IA.',
+              },
+            ],
+          },
+          {
+            title: 'Criterios de aceptación ejecutables (EARS)',
+            details: [
+              {
+                name: 'Del texto a la verificación',
+                description: 'Conversión de especificaciones ambiguas al formato EARS (Easy Approach to Requirements Syntax), estableciendo pautas claras compilables en pruebas automatizadas.',
+              },
+              {
+                name: 'Ejemplo estructurado EARS',
+                description: 'Definición de condiciones y resultados precisos para que el agente de IA los verifique, eliminando cualquier improvisación lógica.',
+              },
+            ],
+          },
+        ],
+      },
+      {
+        title: 'Ejecución agéntica (Agentic Execution)',
+        description: 'Síntesis agéntica de código dentro de límites estrictos preconfigurados',
+        steps: [
+          {
+            title: 'Ingeniería de contexto y salvaguardas',
+            details: [
+              {
+                name: 'Configuración del entorno (.agents)',
+                description: 'Definición de reglas del espacio de trabajo (AGENTS.md) y especificaciones base (DESIGN_SYSTEM.md, SECURITY.md, ARCHITECTURE.md) con estándares de estilo, seguridad y configuración.',
+              },
+              {
+                name: 'Protocolo de contexto de modelos (MCP)',
+                description: 'Conexión directa de agentes con bases de datos, utilidades de búsqueda de código y APIs del entorno, manteniendo alineación y evitando la pérdida de contexto en sesiones largas.',
+              },
+            ],
+          },
+          {
+            title: 'Codificación agéntica multifichero',
+            details: [
+              {
+                name: 'Desarrollo en ramas paralelas',
+                description: 'Ejecución de cambios complejos en múltiples ficheros de forma simultánea mediante agentes en entornos aislados sobre ramas concurrentes.',
+              },
+              {
+                name: 'Supervisión humana continua (Human-in-the-Loop)',
+                description: 'Separación estricta de roles: Artur diseña el sistema y aprueba los criterios, mientras la IA acelera la sintaxis y el código repetitivo.',
+              },
+            ],
+          },
+          {
+            title: 'Migración de código heredado',
+            details: [
+              {
+                name: 'Actualizaciones incrementales',
+                description: 'Modernización de sistemas backend heredados (p. ej., scripts PHP 7) hacia estándares actuales (PHP 8+, React 19) en pasos pequeños y verificables.',
+              },
+              {
+                name: 'Red de seguridad para refactorización',
+                description: 'Creación de pruebas de caracterización para congelar el comportamiento base antes de refactorizar, eliminando riesgos de regresión.',
+              },
+            ],
+          },
+        ],
+      },
+      {
+        title: 'Verificación híbrida (Hybrid Verification)',
+        description: 'Análisis estático riguroso, fases de compilación y ciclos de pruebas automatizadas',
+        steps: [
+          {
+            title: 'Análisis estático y chequeos del compilador',
+            details: [
+              {
+                name: 'Modo estricto de TypeScript',
+                description: 'Ejecución de auditorías del compilador (tsc --noEmit) para detectar discrepancias de tipos, valores nulos y errores de parámetros de inmediato.',
+              },
+              {
+                name: 'Barreras de calidad con linters',
+                description: 'Aplicación estricta de reglas de limpieza mediante ESLint y estándares específicos (como WordPress Coding Standards) sin excepciones para el código generado por IA.',
+              },
+            ],
+          },
+          {
+            title: 'Auditoría de seguridad y cobertura de pruebas',
+            details: [
+              {
+                name: 'Auditoría de dependencias y SAST',
+                description: 'Escaneo de vulnerabilidades conocidas (pnpm audit) y análisis estático de seguridad para certificar la ausencia absoluta de claves o secretos en los commits.',
+              },
+              {
+                name: 'Ejecución de pruebas agénticas',
+                description: 'Creación de pruebas de regresión y automatización de navegadores (Playwright) para validar el renderizado y los flujos de usuario.',
+              },
+            ],
+          },
+        ],
+      },
+      {
+        title: 'Optimización y despliegue (Optimization & Deploy)',
+        description: 'Ajuste de Core Web Vitals, indexación semántica y canalizaciones automatizadas',
+        steps: [
+          {
+            title: 'Core Web Vitals y SEO semántico',
+            details: [
+              {
+                name: 'Optimización del rendimiento',
+                description: 'Compresión a WebP, división de código (code splitting) y precarga de recursos clave para lograr tiempos de carga inferiores a un segundo (TTFB/LCP).',
+              },
+              {
+                name: 'Optimización para rastreadores de IA',
+                description: 'Implementación de esquemas JSON-LD y configuración de llms.txt para suministrar contexto directo a motores de búsqueda con IA (GEO).',
+              },
+            ],
+          },
+          {
+            title: 'Despliegue y telemetría',
+            details: [
+              {
+                name: 'Canalizaciones CI/CD automatizadas',
+                description: 'Ejecución de hooks locales previos al commit para descartar sintaxis no válida y GitHub Actions para desplegar compilaciones verificadas de master.',
+              },
+              {
+                name: 'Auditorías posteriores al lanzamiento',
+                description: 'Monitorización de métricas de rendimiento en vivo, eventos en el servidor y analítica conforme al RGPD para certificar los resultados frente a la especificación.',
+              },
+            ],
+          },
+        ],
+      },
+    ],
   },
   skills: {
     sectionTitle: 'Especialista T-Shaped',
     sectionDescription:
-      'Habilidades y experiencia — un conjunto de competencias multidisciplinar orientado a la construcción de ecosistemas web de alto rendimiento. Desde la ingeniería Full-stack con WordPress y React/Next.js hasta flujos de trabajo potenciados por IA, combino arquitectura limpia con estrategias orientadas al SEO para ofrecer soluciones digitales escalables y preparadas para el futuro.',
+      'Habilidades y experiencia - un conjunto de competencias multidisciplinar orientado a la construcción de ecosistemas web de alto rendimiento. Desde la ingeniería Full-stack con WordPress y React/Next.js hasta flujos de trabajo potenciados por IA, combino arquitectura limpia con estrategias orientadas al SEO para ofrecer soluciones digitales escalables y preparadas para el futuro.',
+    chooseSpecialization: 'Elija especialización:',
+    swipe: 'Deslizar',
     keySkillsLabel: 'Habilidades clave y experiencia',
     technologiesLabel: 'Tecnologías y conocimientos',
     showMore: '+ {n} más',
@@ -463,7 +613,7 @@ export const es: Translation = {
     },
     agenciesContent: {
       title: 'Partner Técnico Senior en Marca Blanca para Agencias',
-      subtitle: 'Amplía la capacidad técnica de tu agencia con ingeniería de alto nivel bajo tu marca — sin costes fijos de nómina.',
+      subtitle: 'Amplía la capacidad técnica de tu agencia con ingeniería de alto nivel bajo tu marca - sin costes fijos de nómina.',
       cards: [
         {
           title: 'Desarrollo a Medida bajo NDA (Marca Blanca)',
@@ -535,6 +685,7 @@ export const es: Translation = {
     legalNotice: '🛡️ Facturación adaptada a profesionales y empresas en la Unión Europea. Cumplimiento normativo adaptado al RGPD y LOPDGDD.',
     copyright: 'Todos los derechos reservados.',
     madeWith: 'Hecho',
+    techUsing: 'con React & TypeScript. Tailwind CSS',
     cookieSettings: 'Configuración de cookies',
   },
   consent: {

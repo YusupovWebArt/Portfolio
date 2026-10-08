@@ -1,6 +1,9 @@
 import type { Translation } from './types'
 
 export const en: Translation = {
+  app: {
+    loadingDetails: 'Loading project details...',
+  },
   header: {
     nav: {
       home: 'Home',
@@ -25,6 +28,8 @@ export const en: Translation = {
   },
   about: {
     sectionTitle: 'About Me',
+    availableForProjects: 'Available for Projects',
+    myJourney: 'My Journey',
     bio: {
       p1: 'I am a results-driven Fullstack Web Engineer with 5+ years of experience engineering, scaling, and technically optimizing high-load platforms, with a deep architectural specialization in WordPress. My expertise lies at the sharp intersection of modern frontend ecosystems (React, Next.js) and enterprise-grade WordPress engineering - ranging from custom PHP 8+ architectures and secure plugin development to high-performance Headless CMS configurations and deep performance engineering.',
       p2: 'My core competitive edge is a sophisticated, AI-first engineering philosophy. Rather than treating AI as a superficial coding assistant, I systematically integrate next-generation systems - including Claude Code, Cursor, and Google Antigravity - directly into the Software Development Life Cycle (SDLC), following a Spec-Driven Development (SDD) methodology: I define the technical specification first, then have AI implement and verify against it rather than improvise. I heavily leverage AI to automate complex development workflows and conduct deep technical research. By blending my practical architectural experience with AI-augmented development, I fast-track complex refactoring, automate regression checks, and drastically compress Time-to-Market - all while enforcing strict code quality, security, and architectural integrity.',
@@ -39,7 +44,7 @@ export const en: Translation = {
       wpPoints: [
         'Custom themes & plugins (PHP 8.x OOP / WPCS)',
         'Headless CMS setups with React/Next.js',
-        'Zero bloated builders — pure native code',
+        'Zero bloated builders - pure native code',
       ],
       appTitle: 'App Development',
       appPoints: [
@@ -170,7 +175,7 @@ export const en: Translation = {
   aiWorkflow: {
     sectionTitle: 'AI Workflow',
     description: {
-      before: 'Not vibe coding: every feature travels a strict path from written specification to compiler pass and test verification — a methodology the industry calls',
+      before: 'Not vibe coding: every feature travels a strict path from written specification to compiler pass and test verification - a methodology the industry calls',
       methodology: 'Spec-Driven Development (SDD)',
       middle: '. I execute routine, architectural, and optimization tasks faster and more reliably by amplifying my expertise with specialized AI tools like',
       toolClaude: 'Claude Code',
@@ -184,11 +189,156 @@ export const en: Translation = {
       step: 'Step',
       of: 'of',
     },
+    categories: [
+      {
+        title: 'Spec Engineering',
+        description: 'System architecture, precise requirements, and strict verification design',
+        steps: [
+          {
+            title: 'Requirements & Context Auditing',
+            details: [
+              {
+                name: 'Sourcing & Discovery',
+                description: 'Gathering raw user requirements and conducting a low-level audit of the existing codebase, dependencies, and API endpoints before formulating instructions.',
+              },
+              {
+                name: 'Preventing Hallucinations',
+                description: 'Explicitly profiling constraints and boundary conditions. A lack of human architectural guidance on this step is the primary cause of AI logic errors.',
+              },
+            ],
+          },
+          {
+            title: 'Executable Acceptance Criteria (EARS)',
+            details: [
+              {
+                name: 'From Text to Verification',
+                description: 'Translating loose specifications into EARS (Easy Approach to Requirements Syntax) format, providing unambiguous guidelines that can be compiled directly into automated tests.',
+              },
+              {
+                name: 'Structured EARS Example',
+                description: 'Defining precise conditions and outcomes for the AI agent to verify against, rather than improvising logic.',
+              },
+            ],
+          },
+        ],
+      },
+      {
+        title: 'Agentic Execution',
+        description: 'Agentic code synthesis inside strict pre-configured system boundaries',
+        steps: [
+          {
+            title: 'Context Engineering & Guardrails',
+            details: [
+              {
+                name: 'Workspace Config (.agents)',
+                description: 'Establishing workspace rules (AGENTS.md) and reference specs (DESIGN_SYSTEM.md, SECURITY.md, ARCHITECTURE.md) detailing styling standards, security bounds, and system configurations.',
+              },
+              {
+                name: 'Model Context Protocol (MCP)',
+                description: 'Plugging agents directly into databases, code search utilities, and environment APIs. This keeps models aligned and stops context drift over long sessions.',
+              },
+            ],
+          },
+          {
+            title: 'Multi-File Agentic Coding',
+            details: [
+              {
+                name: 'Parallel Branch Writing',
+                description: 'Executing complex feature updates across multiple files simultaneously, leveraging sandboxed agents working in concurrent branches.',
+              },
+              {
+                name: 'Human-in-the-Loop Supervision',
+                description: 'Maintaining clear role separation: Artur designs the system and signs off on criteria, while AI speeds up syntax and boilerplate generation.',
+              },
+            ],
+          },
+          {
+            title: 'Legacy Code Migration',
+            details: [
+              {
+                name: 'Incremental Upgrades',
+                description: 'Migrating legacy backend systems (e.g. PHP 7 custom scripts) to modern standards (PHP 8+, React 19) in small, testable chunks.',
+              },
+              {
+                name: 'Refactoring Safety Nets',
+                description: 'Writing quick characterization tests to capture the baseline behavior before refactoring begins, eliminating regression risks.',
+              },
+            ],
+          },
+        ],
+      },
+      {
+        title: 'Hybrid Verification',
+        description: 'Strict static checks, compiler passes, and automated test loops',
+        steps: [
+          {
+            title: 'Static Analysis & Compiler Checks',
+            details: [
+              {
+                name: 'TypeScript Strict Mode',
+                description: 'Running compiler audits (tsc --noEmit) to catch type mismatches, null values, and parameter mismatches instantly.',
+              },
+              {
+                name: 'Linter Standard Gates',
+                description: 'Enforcing strict code cleanliness rules using ESLint and custom coding standards (like WordPress Coding Standards) with no exemptions for AI code.',
+              },
+            ],
+          },
+          {
+            title: 'Security Auditing & Test Coverage',
+            details: [
+              {
+                name: 'Dependency & SAST Audits',
+                description: 'Scanning packages for known vulnerabilities (pnpm audit) and running static security analyzers to ensure zero secret/key leakage in commits.',
+              },
+              {
+                name: 'Agentic Test Runs',
+                description: 'Writing regression tests and running browser automation scripts (Playwright) to capture screen execution and verify user flows.',
+              },
+            ],
+          },
+        ],
+      },
+      {
+        title: 'Optimization & Deploy',
+        description: 'Core Web Vitals tuning, semantic indexing, and automated pipelines',
+        steps: [
+          {
+            title: 'Core Web Vitals & Semantic SEO',
+            details: [
+              {
+                name: 'Performance Tuning',
+                description: 'Compressing assets to WebP, enabling code splitting, and preloading hero assets to achieve sub-second loading speeds (TTFB/LCP).',
+              },
+              {
+                name: 'AI-Crawler Optimization',
+                description: 'Deploying structured JSON-LD schemas and configuring optimized llms.txt endpoints to feed context directly to AI search engines (GEO).',
+              },
+            ],
+          },
+          {
+            title: 'Deployment & Telemetry',
+            details: [
+              {
+                name: 'Automated CI/CD Pipelines',
+                description: 'Running pre-commit hooks locally to reject invalid syntax and using GitHub Actions to automatically deploy verified master builds.',
+              },
+              {
+                name: 'Post-Launch Audits',
+                description: 'Tracking live performance baselines, server-side events, and GDPR-compliant analytics to verify optimization results against specs.',
+              },
+            ],
+          },
+        ],
+      },
+    ],
   },
   skills: {
     sectionTitle: 'T-Shaped Specialist',
     sectionDescription:
-      'Skills & Expertise — a multi-disciplinary skill set focused on building high-performance web ecosystems. From Full-stack WordPress and React/Next.js engineering to AI-augmented workflows, I combine clean architecture with SEO-driven strategies to deliver scalable, future-proof digital solutions.',
+      'Skills & Expertise - a multi-disciplinary skill set focused on building high-performance web ecosystems. From Full-stack WordPress and React/Next.js engineering to AI-augmented workflows, I combine clean architecture with SEO-driven strategies to deliver scalable, future-proof digital solutions.',
+    chooseSpecialization: 'Choose Specialization:',
+    swipe: 'Swipe',
     keySkillsLabel: 'Key Skills & Expertise',
     technologiesLabel: 'Technologies & Knowledge',
     showMore: '+ {n} more',
@@ -464,7 +614,7 @@ export const en: Translation = {
     },
     agenciesContent: {
       title: 'Senior White Label Technical Partner for Agencies',
-      subtitle: 'Expand your agency capacity with senior-level engineering under your brand — zero fixed payroll overhead.',
+      subtitle: 'Expand your agency capacity with senior-level engineering under your brand - zero fixed payroll overhead.',
       cards: [
         {
           title: 'White Label Custom Dev (NDA)',
@@ -497,7 +647,7 @@ export const en: Translation = {
         {
           title: 'Flexible Collaboration & Fast Estimates',
           subtitle: 'Protecting Agency Profit Margins',
-          body: 'Complete flexibility in work arrangements — hourly packages, fixed-price project quotes, or continuous sprint execution — with turnaround estimates delivered in 24–48 hours.',
+          body: 'Complete flexibility in work arrangements - hourly packages, fixed-price project quotes, or continuous sprint execution - with turnaround estimates delivered in 24-48 hours.',
           benefitLabel: 'Agency Benefit',
           benefit: 'Predictable costs and flexible models tailored to protect your agency margins.',
         },
@@ -536,6 +686,7 @@ export const en: Translation = {
     legalNotice: '🛡️ Invoicing compliant with EU regulations for professionals and businesses. Adherence to GDPR & LOPDGDD standards.',
     copyright: 'All rights reserved.',
     madeWith: 'Made',
+    techUsing: 'using React & TypeScript. Tailwind CSS',
     cookieSettings: 'Cookie Settings',
   },
   consent: {

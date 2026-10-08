@@ -32,189 +32,110 @@ interface WorkflowCategory {
 }
 
 const AiWorkflow = () => {
+  const { t } = useLanguage()
+  const aw = t.aiWorkflow
   const [activeTab, setActiveTab] = useState(0)
   const [activeStep, setActiveStep] = useState(0)
 
-  const workflowCategories: WorkflowCategory[] = [
-    {
-      title: 'Spec Engineering',
-      icon: <Cpu className="w-5 h-5" />,
-      color: 'from-violet-400 to-violet-600',
-      baseColor: 'violet',
-      description: 'System architecture, precise requirements, and strict verification design',
-      steps: [
-        {
-          title: 'Requirements & Context Auditing',
-          details: [
-            {
-              name: 'Sourcing & Discovery',
-              description: 'Gathering raw user requirements and conducting a low-level audit of the existing codebase, dependencies, and api endpoints before formulate instructions.',
-            },
-            {
-              name: 'Preventing Hallucinations',
-              description: 'Explicitly profiling constraints and boundary conditions. A lack of human architectural guidance on this step is the primary cause of AI logic errors.',
-            },
-          ],
-          techs: ['Context Auditing', 'Structural Profiling', 'Codebase Discovery'],
-          aiTools: ['Gemini Notebook (Documentation Synthesis)'],
-        },
-        {
-          title: 'Executable Acceptance Criteria (EARS)',
-          details: [
-            {
-              name: 'From Text to Verification',
-              description: 'Translating loose specifications into EARS (Easy Approach to Requirements Syntax) format, providing unambiguous guidelines that can be compiled directly into automated tests.',
-            },
-            {
-              name: 'Structured EARS Example',
-              description: 'Defining precise conditions and outcomes for the AI agent to verify against, rather than improvising logic:',
-              codeBlock: `WHEN the user hovers over the email icon,
+  const earsCodeBlock = `WHEN the user hovers over the email icon,
 THE system SHALL decode the Base64 string and populate the
 actual mailto: link into the href attribute within 100ms.
 
 WHILE JavaScript is disabled,
 THE system SHALL render the email as a static text element
-without exposing a clickable hyperlink.`,
-            },
-          ],
+without exposing a clickable hyperlink.`
+
+  const categoryMeta = [
+    {
+      icon: <Cpu className="w-5 h-5" />,
+      color: 'from-violet-400 to-violet-600',
+      baseColor: 'violet',
+      steps: [
+        {
+          techs: ['Context Auditing', 'Structural Profiling', 'Codebase Discovery'],
+          aiTools: ['Gemini Notebook (Documentation Synthesis)'],
+        },
+        {
           techs: ['EARS Notation', 'Spec Engineering', 'Test Criteria Mapping'],
           aiTools: ['Claude (Spec Refinement)'],
+          codeBlock: earsCodeBlock,
         },
       ],
     },
     {
-      title: 'Agentic Execution',
       icon: <Brain className="w-5 h-5" />,
       color: 'from-blue-400 to-blue-600',
       baseColor: 'blue',
-      description: 'Agentic code synthesis inside strict pre-configured system boundaries',
       steps: [
         {
-          title: 'Context Engineering & Guardrails',
-          details: [
-            {
-              name: 'Workspace Config (.agents)',
-              description: 'Establishing workspace rules (AGENTS.md) and reference specs (DESIGN_SYSTEM.md, SECURITY.md, ARCHITECTURE.md) detailing styling standards, security bounds, and system configurations.',
-            },
-            {
-              name: 'Model Context Protocol (MCP)',
-              description: 'Plugging agents directly into databases, code search utilities, and environment APIs. This keeps models aligned and stops context drift over long sessions.',
-            },
-          ],
           techs: ['Context Engineering', 'MCP Integration', 'Environment Tuning'],
           aiTools: ['Cursor Rules Configurator', 'MCP Tools'],
         },
         {
-          title: 'Multi-File Agentic Coding',
-          details: [
-            {
-              name: 'Parallel Branch Writing',
-              description: 'Executing complex feature updates across multiple files simultaneously, leveraging sandboxed agents working in concurrent branches.',
-            },
-            {
-              name: 'Human-in-the-Loop Supervision',
-              description: 'Maintaining clear role separation: Artur designs the system and signs off on criteria, while AI speeds up syntax and boilerplate generation.',
-            },
-          ],
           techs: ['Agentic Workspaces', 'Branch Management', 'Refactoring Workflows'],
           aiTools: ['Claude Code', 'Cursor Composer', 'Google Antigravity'],
         },
         {
-          title: 'Legacy Code Migration',
-          details: [
-            {
-              name: 'Incremental Upgrades',
-              description: 'Migrating legacy backend systems (e.g. PHP 7 custom scripts) to modern standards (PHP 8+, React 19) in small, testable chunks.',
-            },
-            {
-              name: 'Refactoring Safety Nets',
-              description: 'Writing quick characterization tests to capture the baseline behavior before refactoring begins, eliminating regression risks.',
-            },
-          ],
           techs: ['Legacy Refactoring', 'Characterization Testing', 'Version Upgrades'],
           aiTools: ['Claude Refactor Agent', 'Google Antigravity'],
         },
       ],
     },
     {
-      title: 'Hybrid Verification',
       icon: <Shield className="w-5 h-5" />,
       color: 'from-emerald-400 to-emerald-600',
       baseColor: 'emerald',
-      description: 'Strict static checks, compiler passes, and automated test loops',
       steps: [
         {
-          title: 'Static Analysis & Compiler Checks',
-          details: [
-            {
-              name: 'TypeScript Strict Mode',
-              description: 'Running compiler audits (npx tsc --noEmit) to catch type mismatches, null values, and parameter mismatches instantly.',
-            },
-            {
-              name: 'Linter Standard Gates',
-              description: 'Enforcing strict code cleanliness rules using ESLint and custom coding standards (like WordPress Coding Standards) with no exemptions for AI code.',
-            },
-          ],
           techs: ['TypeScript Compiler', 'ESLint Audits', 'WPCS Rules'],
           aiTools: ['TypeScript Compiler Diagnostics'],
         },
         {
-          title: 'Security Auditing & Test Coverage',
-          details: [
-            {
-              name: 'Dependency & SAST Audits',
-              description: 'Scanning packages for known vulnerabilities (npm audit) and running static security analyzers to ensure zero secret/key leakage in commits.',
-            },
-            {
-              name: 'Agentic Test Runs',
-              description: 'Writing regression tests and running browser automation scripts (Playwright) to capture screen execution and verify user flows.',
-            },
-          ],
           techs: ['SAST Security Scanning', 'Regression Testing', 'Playwright Automation'],
           aiTools: ['Playwright Codegen', 'Automated Test Runners'],
         },
       ],
     },
     {
-      title: 'Optimization & Deploy',
       icon: <Zap className="w-5 h-5" />,
       color: 'from-orange-400 to-orange-600',
       baseColor: 'orange',
-      description: 'Core Web Vitals tuning, semantic indexing, and automated pipelines',
       steps: [
         {
-          title: 'Core Web Vitals & Semantic SEO',
-          details: [
-            {
-              name: 'Performance Tuning',
-              description: 'Compressing assets to WebP, enabling code splitting, and preloading hero assets to achieve sub-second loading speeds (TTFB/LCP).',
-            },
-            {
-              name: 'AI-Crawler Optimization',
-              description: 'Deploying structured JSON-LD schemas and configuring optimized llms.txt endpoints to feed context directly to AI search engines (GEO).',
-            },
-          ],
           techs: ['Web Performance', 'JSON-LD Schema', 'llms.txt Config', 'GEO Optimization'],
           aiTools: ['Lighthouse Audits', 'SEO Schema Generators'],
         },
         {
-          title: 'Deployment & Telemetry',
-          details: [
-            {
-              name: 'Automated CI/CD Pipelines',
-              description: 'Running pre-commit hooks (Husky) locally to reject invalid syntax and using GitHub Actions to automatically deploy verified master builds.',
-            },
-            {
-              name: 'Post-Launch Audits',
-              description: 'Tracking live performance baselines, server-side events, and gdpr-compliant analytics to verify optimization results against specs.',
-            },
-          ],
           techs: ['GitHub Actions', 'Husky Hooks', 'Server-Side Analytics (sGTM)'],
           aiTools: ['Performance Baseline Analyzers'],
         },
       ],
     },
   ]
+
+  const workflowCategories: WorkflowCategory[] = aw.categories.map((cat, catIdx) => {
+    const meta = categoryMeta[catIdx]
+    return {
+      title: cat.title,
+      icon: meta.icon,
+      color: meta.color,
+      baseColor: meta.baseColor,
+      description: cat.description,
+      steps: cat.steps.map((st, stIdx) => {
+        const stepMeta = meta.steps[stIdx]
+        return {
+          title: st.title,
+          details: st.details.map((d, dIdx) => ({
+            name: d.name,
+            description: d.description,
+            codeBlock: dIdx === 1 && stepMeta.codeBlock ? stepMeta.codeBlock : undefined,
+          })),
+          techs: stepMeta.techs,
+          aiTools: stepMeta.aiTools,
+        }
+      }),
+    }
+  })
 
   const handleTabChange = (index: number) => {
     setActiveTab(index)
@@ -256,9 +177,6 @@ without exposing a clickable hyperlink.`,
 
   const currentCategory = workflowCategories[activeTab]
   const currentStep = currentCategory.steps[activeStep]
-
-  const { t } = useLanguage()
-  const aw = t.aiWorkflow
 
   return (
     <section
@@ -338,7 +256,7 @@ without exposing a clickable hyperlink.`,
                 </div>
                 <div className="flex-1 min-w-0">
                   <span className="text-[10px] sm:text-xs font-semibold tracking-widest text-slate-400 dark:text-slate-500 uppercase">
-                    {currentCategory.title} — Step {activeStep + 1} of {currentCategory.steps.length}
+                    {currentCategory.title} - {aw.tabs.step} {activeStep + 1} {aw.tabs.of} {currentCategory.steps.length}
                   </span>
                   <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-slate-900 dark:text-white tracking-tight mt-0.5 truncate">
                     {currentStep.title}
@@ -432,7 +350,7 @@ without exposing a clickable hyperlink.`,
                       key={stepIdx}
                       onClick={() => setActiveStep(stepIdx)}
                       className="min-w-[24px] min-h-[24px] flex items-center justify-center p-1 rounded-full focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-purple-500"
-                      aria-label={`Go to step ${stepIdx + 1}`}
+                      aria-label={`${aw.tabs.step} ${stepIdx + 1}`}
                       type="button"
                     >
                       <span
@@ -456,7 +374,7 @@ without exposing a clickable hyperlink.`,
                         ? 'border-slate-200 dark:border-slate-800 text-slate-300 dark:text-slate-700 cursor-not-allowed opacity-40'
                         : 'border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-850 hover:scale-105 active:scale-95'
                     }`}
-                    aria-label="Previous workflow step"
+                    aria-label={aw.tabs.prevStep}
                     type="button"
                   >
                     <ChevronLeft className="w-5 h-5" />
@@ -469,7 +387,7 @@ without exposing a clickable hyperlink.`,
                         ? 'border-slate-200 dark:border-slate-800 text-slate-300 dark:text-slate-700 cursor-not-allowed opacity-40'
                         : 'border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-850 hover:scale-105 active:scale-95 shadow-sm'
                     }`}
-                    aria-label="Next workflow step"
+                    aria-label={aw.tabs.nextStep}
                     type="button"
                   >
                     <ChevronRight className="w-5 h-5" />
