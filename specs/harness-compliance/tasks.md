@@ -54,7 +54,7 @@
 ## Phase 1: Security & Documentation Honesty
 
 ### Task 1.1: Automated Contact Credential Scanner Test
-- **Status**: TODO
+- **Status**: DONE
 - **Dependencies**: Phase 0
 - **Red Test File**: `src/security/contacts.test.ts`
 - **Red Test Case**: `it('should detect and fail if raw email or telephone exists in index.html outside Base64', ...)`
@@ -66,15 +66,17 @@
   + Received: ["+34642413967"]
   ```
 - **Green Implementation**:
-  - Files modified: `index.html` (remove raw telephone from JSON-LD schema)
+  - Files modified: `index.html` (removed raw telephone from JSON-LD schema and noscript section)
 - **Green Verification Proof**:
   ```text
-  [To be recorded upon execution]
+  ✓ src/security/contacts.test.ts (2 tests) 138ms
+  Test Files  1 passed (1)
+  Tests  2 passed (2)
   ```
 - **Review Check**:
-  - [ ] Strict type safety (zero `any`).
-  - [ ] Zero em dashes in code or comments.
-  - [ ] Passes `pnpm test`.
+  - [x] Strict type safety (zero `any`).
+  - [x] Zero em dashes in code or comments.
+  - [x] Passes `pnpm test`.
 
 ### Task 1.2: Documentation and Showcase Honesty Alignment
 - **Status**: TODO
