@@ -99,7 +99,8 @@
 - **Red Test File**: `src/contexts/ConsentContext.test.tsx`
 - **Red Failure Proof**:
   ```text
-  [To be recorded]
+  FAIL src/contexts/ConsentContext.test.tsx [ src/contexts/ConsentContext.test.tsx ]
+  Error: Failed to resolve import "./ConsentContext" from "src/contexts/ConsentContext.test.tsx". Does the file exist?
   ```
 - **Green Implementation**:
   - `src/contexts/ConsentContext.tsx`
