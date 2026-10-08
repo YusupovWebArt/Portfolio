@@ -1,9 +1,11 @@
-import { Code } from "lucide-react";
+import { Code, Cookie } from "lucide-react";
 import { useLanguage } from "../contexts/LanguageContext";
+import { useConsent } from "../contexts/ConsentContext";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   const { t } = useLanguage();
+  const { openSettings } = useConsent();
 
   return (
     <footer className="bg-slate-900 dark:bg-slate-950 text-white py-12 transition-colors duration-300">
@@ -69,10 +71,19 @@ const Footer = () => {
           {/* Divider */}
           <div className="w-full h-px bg-slate-800 dark:bg-slate-900 mb-8"></div>
 
-          {/* Copyright */}
+          {/* Copyright & Settings */}
           <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
-            <div className="flex items-center space-x-2 text-slate-400 dark:text-slate-400 text-sm">
+            <div className="flex items-center space-x-3 text-slate-400 dark:text-slate-400 text-sm">
               <span>© {currentYear} Artur Yusupov. {t.footer.copyright}</span>
+              <span className="text-slate-600 dark:text-slate-600">•</span>
+              <button
+                type="button"
+                onClick={openSettings}
+                className="inline-flex items-center space-x-1.5 hover:text-white transition-colors focus:outline-none focus:underline"
+              >
+                <Cookie className="w-3.5 h-3.5" aria-hidden="true" />
+                <span>{t.footer.cookieSettings}</span>
+              </button>
             </div>
 
             <div className="flex items-center space-x-2 text-slate-400 dark:text-slate-400 text-sm">

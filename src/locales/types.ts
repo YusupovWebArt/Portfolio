@@ -1,4 +1,4 @@
-// Translation type definition — strict interface guaranteeing both languages are always in sync
+// Translation type definition - strict interface guaranteeing all languages are always in sync
 export interface Translation {
   header: {
     nav: {
@@ -287,5 +287,38 @@ export interface Translation {
     legalNotice: string
     copyright: string
     madeWith: string
+    cookieSettings: string
+  }
+  consent: {
+    bannerTitle: string
+    bannerText: string
+    acceptAll: string
+    decline: string
+    cookiePolicy: string
+    cookieSettings: string
+    bannerAriaLabel: string
+    policyModal: {
+      title: string
+      subtitle: string
+      purposeHeader: string
+      purposeText: string
+      tableHeaders: {
+        cookie: string
+        provider: string
+        purpose: string
+        expiry: string
+        type: string
+      }
+      gaRow: {
+        cookie: string
+        provider: string
+        purpose: string
+        expiry: string
+        type: string
+      }
+      rightsHeader: string
+      rightsText: string
+      closeButton: string
+    }
   }
 }

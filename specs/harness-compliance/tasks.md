@@ -113,7 +113,7 @@
   ```
 
 ### Task 2.2: Consent Banner Component & E2E Analytics Blocking (Red)
-- **Status**: TODO
+- **Status**: DONE
 - **Dependencies**: Task 2.1
 - **Red Test File**: `e2e/analytics-consent.spec.ts`
 - **Red Failure Proof**:
@@ -130,7 +130,19 @@
   - `src/components/CookiePolicyModal.tsx`
   - `src/components/Footer.tsx` (settings trigger)
   - `src/App.tsx` (mount ConsentProvider and ConsentBanner)
-  - `index.html` (remove inline gtag.js)
+  - `index.html` (removed inline gtag.js)
+- **Green Verification Proof**:
+  ```text
+  ok 4 [chromium] › e2e/analytics-consent.spec.ts:5:3 › should not make any network requests before consent (986ms)
+  ok 5 [chromium] › e2e/analytics-consent.spec.ts:35:3 › should pass axe-core accessibility audit on consent banner (2.6s)
+  ok 6 [chromium] › e2e/analytics-consent.spec.ts:54:3 › should load Google Analytics when visitor clicks Accept (3.6s)
+  ok 7 [chromium] › e2e/analytics-consent.spec.ts:89:3 › should not load Google Analytics when Decline and allow revoking (1.5s)
+  4 passed (15.8s)
+  ```
+- **Review Check**:
+  - [x] Strict type safety (zero `any`).
+  - [x] Zero em dashes in code or comments.
+  - [x] Passes `pnpm test:all` (6 unit suites, 11 e2e tests).
 
 ---
 

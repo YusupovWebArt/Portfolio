@@ -36,45 +36,40 @@ export const useConsent = (): ConsentContextType => {
   return context;
 };
 
+function getInitialConsentRecord(): ConsentRecord | null {
+  if (typeof window === 'undefined') return null;
+  try {
+    const stored = localStorage.getItem(CONSENT_STORAGE_KEY);
+    if (!stored) return null;
+    const parsed: ConsentRecord = JSON.parse(stored);
+    const isExpired = Date.now() - parsed.timestamp > MAX_CONSENT_AGE_MS;
+    const isOutdatedVersion = parsed.policyVersion !== CURRENT_POLICY_VERSION;
+    if (isExpired || isOutdatedVersion) return null;
+    return parsed;
+  } catch {
+    return null;
+  }
+}
+
 export const ConsentProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [status, setStatus] = useState<ConsentStatus>('undecided');
-  const [isBannerOpen, setIsBannerOpen] = useState<boolean>(false);
+  const [status, setStatus] = useState<ConsentStatus>(() => {
+    const record = getInitialConsentRecord();
+    return record ? record.status : 'undecided';
+  });
+  const [isBannerOpen, setIsBannerOpen] = useState<boolean>(() => {
+    const record = getInitialConsentRecord();
+    return !record;
+  });
   const [isPolicyModalOpen, setIsPolicyModalOpen] = useState<boolean>(false);
 
-  // Read stored preference on mount
+  // Synchronize analytics loader based on status
   useEffect(() => {
-    try {
-      const stored = localStorage.getItem(CONSENT_STORAGE_KEY);
-      if (!stored) {
-        setStatus('undecided');
-        setIsBannerOpen(true);
-        return;
-      }
-
-      const parsed: ConsentRecord = JSON.parse(stored);
-      const isExpired = Date.now() - parsed.timestamp > MAX_CONSENT_AGE_MS;
-      const isOutdatedVersion = parsed.policyVersion !== CURRENT_POLICY_VERSION;
-
-      if (isExpired || isOutdatedVersion) {
-        setStatus('undecided');
-        setIsBannerOpen(true);
-        return;
-      }
-
-      setStatus(parsed.status);
-      setIsBannerOpen(false);
-
-      if (parsed.status === 'granted') {
-        initGoogleAnalytics();
-      } else {
-        purgeAnalyticsCookies();
-      }
-    } catch {
-      // JSON parse error or security exception
-      setStatus('undecided');
-      setIsBannerOpen(true);
+    if (status === 'granted') {
+      initGoogleAnalytics();
+    } else if (status === 'denied') {
+      purgeAnalyticsCookies();
     }
-  }, []);
+  }, [status]);
 
   const acceptCookies = useCallback(() => {
     const record: ConsentRecord = {
