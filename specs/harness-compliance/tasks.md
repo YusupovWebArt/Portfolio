@@ -151,7 +151,20 @@
 ### Task 3.1: Hardcoded Text Scanner & Dictionary Expansion
 - **Status**: TODO
 - **Dependencies**: Phase 2
-- **Components to Localize**: `Skills.tsx`, `About.tsx`, `Footer.tsx`, `App.tsx`, `AiWorkflow.tsx`.
+- **Red Test File**: `src/locales/i18n-scanner.test.ts`
+- **Red Failure Proof**:
+  ```text
+  FAIL src/locales/i18n-scanner.test.ts (5 failed)
+  1) should define required UI keys in all 3 language dictionaries: Missing skills.chooseSpecialization in en
+  2) should not contain hardcoded strings in Skills.tsx: found "Choose Specialization:" and "Swipe"
+  3) should not contain hardcoded strings in About.tsx: found "Available for Projects" and "My Journey"
+  4) should not contain hardcoded loading string in App.tsx: found "Loading project details..."
+  5) should contain zero em dashes across all locale dictionary files: found 6 em dashes in locales/en.ts
+  ```
+- **Green Implementation**:
+  - `src/locales/types.ts`: add `app.loadingDetails`, `about.availableForProjects`, `about.myJourney`, `skills.chooseSpecialization`, `skills.swipe`, `footer.techUsing`, `aiWorkflow.categories`.
+  - `src/locales/en.ts`, `ua.ts`, `es.ts`: complete translations, purge all em dashes.
+  - `src/components/Skills.tsx`, `About.tsx`, `Footer.tsx`, `App.tsx`, `AiWorkflow.tsx`: wire localized keys.
 
 ---
 
