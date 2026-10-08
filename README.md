@@ -1,8 +1,10 @@
 # Artur Yusupov - Professional Portfolio Website
 
 [![CI/CD & Deploy to GitHub Pages](https://github.com/YusupovWebArt/Portfolio/actions/workflows/deploy.yml/badge.svg)](https://github.com/YusupovWebArt/Portfolio/actions/workflows/deploy.yml)
-[![TDD Vitest](https://img.shields.io/badge/Vitest%20TDD-14%20Passing-brightgreen.svg)](https://vitest.dev/)
+[![TDD Vitest](https://img.shields.io/badge/Vitest%20TDD-29%20Passing%20(7%20Suites)-brightgreen.svg)](https://vitest.dev/)
+[![E2E Playwright](https://img.shields.io/badge/Playwright%20E2E-11%20Passing-blue.svg)](https://playwright.dev/)
 [![A11y WCAG 2.2 AA](https://img.shields.io/badge/A11y-WCAG%202.2%20AA%20%7C%20EAA%202026-blue.svg)](https://www.w3.org/TR/WCAG22/)
+[![Bundle Budget](https://img.shields.io/badge/Bundle%20Budget-Passed%20(-50.3%25)-brightgreen.svg)](scripts/check-bundle-budget.mjs)
 [![Lighthouse CI](https://img.shields.io/badge/Lighthouse%20CI-CWV%20Budgets-orange.svg)](https://github.com/GoogleChrome/lighthouse-ci)
 [![TypeScript 6](https://img.shields.io/badge/TypeScript-Strict%20Zero--Any-blue.svg)](https://www.typescriptlang.org/)
 [![DevSecOps Clean](https://img.shields.io/badge/DevSecOps-0%20Vulnerabilities-brightgreen.svg)](https://github.com/YusupovWebArt/Portfolio)
@@ -23,13 +25,13 @@ A high-performance, enterprise-grade Single Page Application (SPA) and Progressi
 - **Build Tool & Bundler:** Vite 8.x (Rolldown engine for optimized code-splitting and sub-second HMR)
 - **Progressive Web App:** Web App Manifest & Service Worker with Stale-While-Revalidate caching
 - **Native Animation:** W3C View Transitions API for 120 FPS hardware-accelerated card morphing
-- **Unit & Component Testing (TDD):** Vitest 5.x & React Testing Library 16.x (JSDOM environment)
-- **Browser E2E & Accessibility:** Playwright 1.63.x & `@axe-core/playwright` (WCAG 2.2 Level AA audits)
-- **Performance Budget Engine:** Lighthouse CI (`@lhci/cli`) with automated CWV threshold assertions
+- **Unit & Component Testing (TDD):** Vitest 5.x & React Testing Library 16.x (JSDOM environment, 29 specs)
+- **Browser E2E & Accessibility:** Playwright 1.63.x & `@axe-core/playwright` (11 specs, WCAG 2.2 Level AA audits)
+- **Performance Budget Engine:** Lighthouse CI (`@lhci/cli`) & custom bundle budget checker (`scripts/check-bundle-budget.mjs`)
 - **Package Manager:** pnpm 11.x (Fast, disk space-efficient with global NTFS content-addressable store)
 - **Internationalization (i18n):** Custom type-safe 3-language engine (`en`, `ua`, `es`) with browser auto-detection
 - **Icons:** React Icons & Lucide Icons (with `aria-hidden` wrappers and compliant SVG contrast)
-- **DevSecOps & CI/CD:** GitHub Actions 9-step automated quality and deployment pipeline
+- **DevSecOps & CI/CD:** GitHub Actions automated quality and deployment pipeline
 
 ---
 
@@ -40,20 +42,21 @@ flowchart TD
     subgraph L1["Layer 1: Architectural Framework & Skills"]
         Const[".specify/memory/constitution.md\n7 Immutable Core Principles"]
         Rules[".agents/rules/\nproject-context.md | code-style.md"]
-        Skills[".agents/skills/\ntdd-react | a11y-wcag22 | perf-cwv | i18n-locales | seo-pseo"]
+        Skills[".agents/skills/\nsdd-workflow | tdd-react | a11y-wcag22 | perf-cwv | i18n-locales | seo-pseo"]
     end
 
     subgraph L2["Layer 2: TDD & Unit Test Suite"]
-        Vitest["Vitest 5 + RTL 16\n14 Automated Component Specs"]
+        Vitest["Vitest 5 + RTL 16\n29 Automated Specs (7 Suites)\nCoverage Ratchets Enforced"]
     end
 
     subgraph L3["Layer 3: A11y & E2E Browser Verification"]
-        Playwright["Playwright 1.63 + axe-core\nWCAG 2.2 AA / EAA 2026 Audits & Critical Flows"]
+        Playwright["Playwright 1.63 + axe-core\n11 Browser Specs (EAA 2026 / WCAG 2.2 AA / Consent Mode)"]
     end
 
     subgraph L4["Layer 4: CI/CD Hardening & Performance Budgets"]
+        Budget["check-bundle-budget.mjs\nInitial JS < 450 KB (-50.3%)"]
         LHCI["Lighthouse CI (.lighthouserc.json)\nCore Web Vitals Assertions"]
-        Pipeline["9-Step GitHub Actions Pipeline\npnpm verify Gate"]
+        Pipeline["GitHub Actions Pipeline\npnpm verify Gate"]
     end
 
     L1 --> L2 --> L3 --> L4
@@ -72,10 +75,17 @@ flowchart TD
 
 ### 🧪 2. Automated TDD & Unit Testing Layer (Vitest)
 - **Framework:** Vitest 5 with isolated JSDOM testing environments.
-- **Test Suite:** 14 automated unit/component specifications covering:
-  - Theme toggling, document root class mutation, and localStorage state persistence.
-  - Trilingual dictionary synchronization, key parity, and browser locale auto-detection.
-  - Project showcase category filtering and modal selection triggers.
+- **Test Suite:** 29 automated unit and component specifications across 7 test suites covering:
+  - Theme toggling, document root class mutation, and localStorage state persistence (`ThemeContext.test.tsx`).
+  - Trilingual dictionary synchronization, key parity, and translation scanner (`i18n.test.ts`, `i18n-scanner.test.ts`).
+  - Project showcase category filtering and modal selection triggers (`Projects.test.tsx`).
+  - Security contact credential obfuscation and zero-raw-secret detection (`contacts.test.ts`).
+  - Opt-in Cookie Consent Mode v2 Basic state management, modal lifecycle, and GA4 tag loader (`ConsentContext.test.tsx`).
+- **Coverage Ratchets:** Strict thresholds enforced via `@vitest/coverage-v8` in `vitest.config.ts`:
+  - Statements: `>= 30.00%` (actual: 30.47%)
+  - Branches: `>= 15.00%` (actual: 16.66%)
+  - Functions: `>= 14.00%` (actual: 15.29%)
+  - Lines: `>= 30.00%` (actual: 31.50%)
 
 ### ♿ 3. European Accessibility Act (EAA 2026) & WCAG 2.2 Level AA
 - **Automated Scanning:** Integrated Playwright with `@axe-core/playwright` to test the full DOM tree across all viewports and color themes.
@@ -85,8 +95,13 @@ flowchart TD
   - Target Size Minimum (SC 2.5.8): All interactive buttons and stepper controls meet >= 24x24px.
   - Decorative SVGs isolated with `aria-hidden="true"` to prevent screen reader clutter.
 
-### 🚀 4. Core Web Vitals & Lighthouse CI Integration
-- **Configured Thresholds:** [`.lighthouserc.json`](.lighthouserc.json) asserts quality on every build:
+### 🚀 4. Core Web Vitals, Code-Splitting & Performance Budgets
+- **Automated Bundle Budget Gate:** `scripts/check-bundle-budget.mjs` strictly asserts bundle sizes on every production build:
+  - **Main Entry (`index-*.js`):** 116.18 KB raw / 27.26 KB gzip (budget limit: `< 200 KB`).
+  - **Total Initial Eager JS:** 418.54 KB raw / 124.43 KB gzip (budget limit: `< 450 KB` / `< 130 KB` gz). Slashed by **50.3%** from the 842.95 KB baseline.
+  - **Projects Data Chunk:** Deferred / lazy-loaded (423.55 KB) on demand, removing 423 KB of blocking parse overhead from initial page boot.
+  - **Locales Chunk:** Split into standalone chunk (96.76 KB raw / 31.28 KB gzip).
+- **Lighthouse CI Thresholds:** [`.lighthouserc.json`](.lighthouserc.json) asserts quality on every build:
   - Accessibility: `>= 0.95`
   - SEO: `>= 0.95`
   - Best Practices: `>= 0.90`
@@ -100,10 +115,11 @@ flowchart TD
 - **69 Localized Case Studies:** Complete parity across all 69 project case studies with technical architecture diagrams.
 
 ### 🛡️ 6. DevSecOps & Security Hardening
-- **Zero Secrets Policy:** Zero API keys, tokens, or credentials stored in source control.
-- **Anti-Scraping Obfuscation:** Personal contact channels (email, phone, Telegram, WhatsApp) are stored in Base64 format and decrypted on client interaction.
+- **Zero Secrets Policy:** Zero API keys, tokens, or personal contact credentials in raw text. Verified by automated scanner `src/security/contacts.test.ts`.
+- **Anti-Scraping Obfuscation:** Personal contact channels (email, phone, Telegram, WhatsApp) are stored in Base64 format and decrypted only on client interaction.
 - **Security Headers:** Strict Content Security Policy (CSP), Permissions-Policy (`camera=(), microphone=(), geolocation=()`), and Referrer-Policy (`strict-origin-when-cross-origin`).
-- **Consent-Based Telemetry:** Google Analytics 4 operated under Consent Mode v2 Basic mode with opt-in cookie banner and footer settings revocation.
+- **Consent-Based Telemetry:** Google Analytics 4 operates strictly under **Consent Mode v2 Basic mode** (`src/lib/analytics.ts` and `src/contexts/ConsentContext.tsx`). Zero network requests to Google Analytics servers until the user explicitly clicks "Accept All". Includes instant revocation via the footer "Cookie Settings" trigger.
+- **AI Harness Stop Hook:** `.agents/hooks/quality-gate.mjs` automatically validates that no em dashes exist in touched files and TypeScript compiles with zero errors before completion.
 - **SCA Clean:** Zero known vulnerabilities via `pnpm audit --prod --audit-level=high`.
 
 ---
@@ -113,6 +129,9 @@ flowchart TD
 ```text
 Portfolio/
 ├── .agents/
+│   ├── hooks/
+│   │   └── quality-gate.mjs      # Stop hook verifying zero em dashes and zero TypeScript errors
+│   ├── hooks.json                # Harness hook configuration
 │   ├── rules/
 │   │   ├── code-style.md         # Coding style constraints and rules
 │   │   └── project-context.md    # Active architectural context and tools
@@ -120,32 +139,41 @@ Portfolio/
 │   │   ├── a11y-wcag22/          # WCAG 2.2 AA & EAA 2026 procedures
 │   │   ├── i18n-locales/         # Trilingual synchronization rules
 │   │   ├── perf-cwv/             # Core Web Vitals budgets and pipeline
+│   │   ├── sdd-workflow/         # SDD lifecycle procedures and quality gates
 │   │   ├── seo-pseo/             # Schema.org JSON-LD structured data
 │   │   └── tdd-react/            # TDD Red-Green-Refactor test standards
 │   └── AGENTS.md                 # Root AI harness guidelines & rules
 ├── .github/
 │   ├── dependabot.yml            # Automated weekly dependency governance
 │   └── workflows/
-│       └── deploy.yml            # 9-step CI/CD automated deploy pipeline
+│       └── deploy.yml            # Automated CI/CD deploy pipeline
 ├── .specify/
-│   └── memory/
-│       └── constitution.md       # 7 Non-negotiable immutable project principles
+│   ├── memory/
+│   │   └── constitution.md       # 7 Non-negotiable immutable project principles
+│   └── templates/                # SDD spec, plan, tasks, and analysis templates
 ├── e2e/
 │   ├── accessibility.spec.ts     # Playwright + axe-core WCAG 2.2 AA audit suite
+│   ├── analytics-consent.spec.ts # Consent Mode v2 Basic E2E verification
 │   └── critical-flows.spec.ts    # Playwright browser E2E flows (i18n, themes, nav)
-├── specs/                        # Spec-Driven Development (SDD) feature specs
+├── scripts/
+│   └── check-bundle-budget.mjs   # Automated production bundle size budget verifier
+├── specs/
+│   └── harness-compliance/       # Full SDD feature specs (spec, plan, tasks, analysis)
 ├── src/
 │   ├── components/               # React UI components (Hero, About, Skills, etc.)
 │   │   └── projects/             # 69 Detailed Project Case Studies
-│   ├── contexts/                 # ThemeContext & LanguageContext providers
+│   ├── contexts/                 # ThemeContext, LanguageContext, ConsentContext providers
 │   ├── data/                     # Localized AI chatbot FAQ knowledge base
+│   ├── lib/
+│   │   └── analytics.ts          # GA4 Consent Mode v2 dynamic loader & cookie purger
 │   ├── locales/                  # Trilingual dictionaries (en.ts, ua.ts, es.ts)
+│   ├── security/                 # Automated contact credential security scanner
 │   ├── test/                     # Vitest test setup and matchers
-│   ├── App.tsx                   # Main layout component
+│   ├── App.tsx                   # Main layout component with lazy project loading
 │   └── main.tsx                  # Application entrypoint
 ├── .lighthouserc.json            # Lighthouse CI performance & quality assertions
 ├── playwright.config.ts          # Playwright test configuration
-├── vitest.config.ts              # Vitest test configuration
+├── vitest.config.ts              # Vitest test configuration with coverage ratchets
 ├── ARCHITECTURE.md               # Architecture and system documentation
 ├── DESIGN_SYSTEM.md              # UI/UX design tokens and constraints
 ├── SECURITY.md                   # DevSecOps policy and security specs
@@ -169,16 +197,22 @@ pnpm dev
 # 4. Run automated TDD unit & component specs
 pnpm test
 
-# 5. Run Playwright E2E & WCAG 2.2 AA accessibility audits
+# 5. Run test coverage with ratchet verification
+pnpm test:coverage
+
+# 6. Run Playwright E2E, Consent Mode & WCAG 2.2 AA accessibility audits
 pnpm test:e2e
 
-# 6. Run Lighthouse CI performance audit
+# 7. Check bundle size budgets
+pnpm check:budget
+
+# 8. Run Lighthouse CI performance audit
 pnpm audit:lhci
 
-# 7. Run unified complete quality gate (SAST + TDD + E2E + SCA + Build)
+# 9. Run unified complete quality gate (SAST + TDD + E2E + SCA + Build + Budget)
 pnpm verify
 
-# 8. Build production bundle
+# 10. Build production bundle
 pnpm build
 ```
 
@@ -186,17 +220,18 @@ pnpm build
 
 ## 🚦 GitHub Actions CI/CD Pipeline
 
-Every push to `master` triggers an automated 9-step pipeline:
+Every push to `master` triggers an automated quality and deployment pipeline:
 
 1. **SAST Type Verification:** `pnpm exec tsc --noEmit`
 2. **SAST ESLint Guardrails:** `pnpm lint`
-3. **TDD Automated Tests:** `pnpm test` (Vitest unit suite)
+3. **TDD Automated Tests:** `pnpm test` (29 Vitest specs)
 4. **SCA Vulnerability Audit:** `pnpm audit --prod --audit-level=high`
 5. **Build Production Bundle:** `pnpm build`
-6. **Install Playwright Chromium:** `pnpm exec playwright install --with-deps chromium`
-7. **A11y & E2E Audits:** `pnpm test:e2e` (Playwright & axe-core)
-8. **Lighthouse CI Audit:** `pnpm audit:lhci` (CWV budgets)
-9. **Deploy to GitHub Pages:** Automated deploy of verified `dist/` to `gh-pages`
+6. **Bundle Budget Verification:** `pnpm check:budget` (Main < 200 KB, Initial < 450 KB)
+7. **Install Playwright Chromium:** `pnpm exec playwright install --with-deps chromium`
+8. **A11y & E2E Audits:** `pnpm test:e2e` (11 Playwright & axe-core specs)
+9. **Lighthouse CI Audit:** `pnpm audit:lhci` (CWV budgets)
+10. **Deploy to GitHub Pages:** Automated deploy of verified `dist/` to `gh-pages`
 
 ---
 
