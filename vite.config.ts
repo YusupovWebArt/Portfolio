@@ -23,6 +23,9 @@ export default defineConfig({
           if (id.includes('src/components/projects/')) {
             return 'projects-data'
           }
+          if (id.includes('src/locales/')) {
+            return 'locales'
+          }
         },
       },
     },

@@ -182,9 +182,54 @@
 ## Phase 4: Performance & Project Code-Splitting
 
 ### Task 4.1: Bundle Budget Analyzer & Project Data Code-Splitting
-- **Status**: TODO
+- **Status**: DONE
 - **Dependencies**: Phase 3
 - **Objective**: Defer 433 KB `projects-data` from initial load to slash TBT below 200ms.
+- **Red Test File**: `scripts/check-bundle-budget.mjs`
+- **Red Failure Proof**:
+  ```text
+  --- Initial Eager JavaScript Chunks (Boot Path) ---
+  - index-DbVpZcSh.js: 222.50 KB raw | 61.00 KB gz
+  - rolldown-runtime-hePW80VL.js: 0.70 KB raw | 0.42 KB gz
+  - vendor-CbYonmBs.js: 185.15 KB raw | 57.57 KB gz
+  - vendor-icons-Bw4cq9JS.js: 19.75 KB raw | 7.90 KB gz
+  - projects-data-BAlC_vWF.js: 423.55 KB raw | 92.73 KB gz
+  ----------------------------------------------------
+  Total Initial JS: 851.65 KB raw | 219.61 KB gzip
+  Main Entry JS:    222.50 KB raw | 61.00 KB gzip
+  ----------------------------------------------------
+
+  ❌ BUNDLE BUDGET CHECKS FAILED:
+    - Violation: projects-data chunk is eagerly preloaded in index.html boot path. Must be deferred/code-split.
+    - Violation: Total initial JS raw size (851.65 KB) exceeds budget of 450.00 KB.
+    - Violation: Total initial JS gzip size (219.61 KB) exceeds budget of 130.00 KB.
+    - Violation: Main entry chunk raw size (222.50 KB) exceeds budget of 200.00 KB.
+  ```
+- **Green Implementation**:
+  - `src/App.tsx`: lazily loaded `Projects.tsx` with Suspense spinner fallback.
+  - `vite.config.ts`: added manual chunking for `src/locales/` (`locales` chunk, 96.76 KB raw / 31.28 KB gzip).
+  - `scripts/check-bundle-budget.mjs`: added deterministic budget analyzer script.
+  - `package.json`: added `"check:budget"` and integrated into `"verify"`.
+- **Green Verification Proof**:
+  ```text
+  --- Initial Eager JavaScript Chunks (Boot Path) ---
+  - index-CoBzjqT4.js: 116.18 KB raw | 27.26 KB gz
+  - rolldown-runtime-hePW80VL.js: 0.70 KB raw | 0.42 KB gz
+  - vendor-CbYonmBs.js: 185.15 KB raw | 57.57 KB gz
+  - locales-B7_L73se.js: 96.76 KB raw | 31.28 KB gz
+  - vendor-icons-Bw4cq9JS.js: 19.75 KB raw | 7.90 KB gz
+  ----------------------------------------------------
+  Total Initial JS: 418.54 KB raw | 124.43 KB gzip
+  Main Entry JS:    116.18 KB raw | 27.26 KB gzip
+  ----------------------------------------------------
+
+  ✅ ALL BUNDLE BUDGET CHECKS PASSED!
+  ```
+- **Review Check**:
+  - [x] Strict type safety (zero `any`).
+  - [x] Zero em dashes in code or comments.
+  - [x] Passes `pnpm test:all` (29 unit tests, 11 e2e tests).
+  - [x] Passes `pnpm check:budget`.
 
 ---
 

@@ -19,7 +19,8 @@
     "test:a11y": "playwright test e2e/accessibility.spec.ts",
     "test:all": "pnpm test && pnpm test:e2e",
     "audit:lhci": "lhci autorun",
-    "verify": "pnpm exec tsc --noEmit && pnpm lint && pnpm test:all && pnpm audit --prod --audit-level=high && pnpm build",
+    "check:budget": "node scripts/check-bundle-budget.mjs",
+    "verify": "pnpm exec tsc --noEmit && pnpm lint && pnpm test:all && pnpm audit --prod --audit-level=high && pnpm build && pnpm check:budget",
     "preview": "vite preview",
     "deploy": "gh-pages -d dist"
   },
