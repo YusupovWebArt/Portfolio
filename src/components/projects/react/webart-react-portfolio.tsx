@@ -129,7 +129,7 @@ const webartReactPortfolio: Project = {
       { short: 'Interactive AI FAQ Chatbot', full: 'Client-side algorithmic matching engine providing localized answers with interactive suggestion chips' },
     ],
     analytics: [
-      { short: 'Google Analytics 4', full: 'Privacy-compliant visitor engagement tracking and performance telemetry' },
+      { short: 'Google Analytics 4', full: 'Privacy-compliant visitor engagement telemetry operated under Consent Mode v2 Basic mode' },
       { short: 'Google Search Console', full: 'Monitoring indexing status, crawl diagnostics, and search visibility' },
     ],
     seo: [
@@ -156,7 +156,7 @@ const webartReactPortfolio: Project = {
     {
       title: 'Core Web Vitals Budgets & Lighthouse CI Gate',
       description:
-        'Continuous performance enforcement with Lighthouse CI (.lighthouserc.json) asserting 95+ Accessibility, 95+ SEO, 90+ Best Practices, and sub-second Core Web Vitals thresholds (LCP, CLS, FCP) in automated deployment pipelines.',
+        'Continuous performance enforcement with Lighthouse CI (.lighthouserc.json) asserting 95+ Accessibility, 95+ SEO, 90+ Best Practices, and Core Web Vitals threshold assertions (LCP, CLS, FCP) in automated deployment pipelines.',
     },
     {
       title: 'Progressive Web App (PWA) & Offline Mode',
@@ -202,10 +202,10 @@ const webartReactPortfolio: Project = {
   challenges: [
     'Maintaining strict zero-any type safety, architectural integrity, and regression-free delivery during rapid AI-assisted development cycles.',
     'Ensuring full legal and technical accessibility compliance under the European Accessibility Act (EAA 2026 / EN 301 549) and WCAG 2.2 Level AA across both dark and light modes.',
-    'Enforcing sub-second performance budgets and preventing Core Web Vitals regressions in CI/CD without manual testing.',
+    'Enforcing rigorous performance budgets and preventing Core Web Vitals regressions in CI/CD without manual testing.',
   ],
   solutions: [
-    'Implemented a 4-layer 2026 AI-Harness featuring an immutable project Constitution, 5 specialized Antigravity agent skills (.agents/skills), and a unified pre-push quality gate (pnpm verify).',
+    'Implemented a 4-layer 2026 AI-Harness featuring an immutable project Constitution, specialized Antigravity agent skills (.agents/skills), and a unified pre-push quality gate (pnpm verify).',
     'Integrated Playwright with @axe-core/playwright to automatically audit DOM landmarks, color contrast ratios (>= 4.5:1), interactive target sizes (>= 24x24px), and decorative SVG accessibility on every build.',
     'Configured Lighthouse CI (.lighthouserc.json) with automated assertions on LCP, CLS, and FCP, combined with a Stale-While-Revalidate Service Worker and next-gen WebP image pipeline.',
   ],

@@ -134,7 +134,7 @@ When upgrading the client-side FAQ chatbot to a serverless **Hybrid RAG (Retriev
 
 ## ⚖️ 8. European Regulatory & Privacy Compliance (RGPD / LOPDGDD)
 
-- **Cookie-Free Architecture:** The site operates without intrusive tracking cookies or unauthorized fingerprinting scripts.
+- **Privacy & Consent Architecture:** The site operates without non-essential tracking cookies until explicit opt-in consent is provided. Google Analytics (GA4) runs strictly under Consent Mode v2 Basic mode.
 - **Anonymized Analytics:** Google Analytics (GA4) is configured with IP anonymization and respects user privacy preferences.
 - **EU Invoicing & Legal Footprint:** The footer explicitly declares business and tax invoicing compatibility for professionals and companies in Spain and the European Union.
 

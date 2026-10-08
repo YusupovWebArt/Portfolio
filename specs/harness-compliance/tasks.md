@@ -79,15 +79,15 @@
   - [x] Passes `pnpm test`.
 
 ### Task 1.2: Documentation and Showcase Honesty Alignment
-- **Status**: TODO
+- **Status**: DONE
 - **Dependencies**: Task 1.1
-- **Files Modified**: `README.md`, `src/components/projects/react/webart-react-portfolio.tsx`
+- **Files Modified**: `README.md`, `src/components/projects/react/webart-react-portfolio.tsx`, `SECURITY.md`
 - **Scope**:
-  - Remove unverified "sub-second Core Web Vitals" and "cookie-free" claims.
-  - Replace with accurate description of current architecture and opt-in Consent Mode v2.
+  - Removed unverified "sub-second Core Web Vitals" and "cookie-free" claims.
+  - Replaced with accurate description of current architecture and opt-in Consent Mode v2 Basic mode.
 - **Review Check**:
-  - [ ] Zero em dashes in updated markdown or TSX strings.
-  - [ ] Passes `pnpm exec tsc --noEmit` and `pnpm lint`.
+  - [x] Zero em dashes in updated markdown or TSX strings.
+  - [x] Passes `pnpm exec tsc --noEmit` and `pnpm lint`.
 
 ---
 

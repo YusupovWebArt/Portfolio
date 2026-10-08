@@ -8,7 +8,7 @@
 [![DevSecOps Clean](https://img.shields.io/badge/DevSecOps-0%20Vulnerabilities-brightgreen.svg)](https://github.com/YusupovWebArt/Portfolio)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-A high-performance, enterprise-grade Single Page Application (SPA) and Progressive Web App (PWA) built with **React 19**, **TypeScript 6.x**, and **Tailwind CSS v4**, engineered using the **2026 AI-Harness methodology (SDD + SDLC + TDD)**. Fully internationalized across 3 languages (**English**, **Ukrainian**, and **Spanish**), audited for European Accessibility Act (**EAA 2026 / WCAG 2.2 Level AA**) compliance, optimized for sub-second Core Web Vitals, and hardened with a **9-step CI/CD DevSecOps** deployment pipeline.
+A high-performance, enterprise-grade Single Page Application (SPA) and Progressive Web App (PWA) built with **React 19**, **TypeScript 6.x**, and **Tailwind CSS v4**, engineered using the **2026 AI-Harness methodology (SDD + SDLC + TDD)**. Fully internationalized across 3 languages (**English**, **Ukrainian**, and **Spanish**), audited for European Accessibility Act (**EAA 2026 / WCAG 2.2 Level AA**) compliance, aligned with strict **Core Web Vitals budgets**, and hardened with a **9-step CI/CD DevSecOps** deployment pipeline.
 
 🔗 **Live Website:** [https://yusupovwebart.github.io/Portfolio/](https://yusupovwebart.github.io/Portfolio/)
 
@@ -61,7 +61,8 @@ flowchart TD
 
 ### 🤖 1. 2026 AI-Harness Architecture (SDD + SDLC + TDD)
 - **Immutable Constitution:** Governed by [`.specify/memory/constitution.md`](.specify/memory/constitution.md) enforcing strict zero-`any` typing, DevSecOps obfuscation, trilingual parity, and WCAG 2.2 AA accessibility.
-- **Antigravity Custom Agent Skills:** 5 domain-specific skills inside [`.agents/skills/`](.agents/skills/):
+- **Antigravity Custom Agent Skills:** Specialized agent skills inside [`.agents/skills/`](.agents/skills/):
+  - `sdd-workflow`: Spec-Driven Development (SDD) 7-stage lifecycle and stop-gates.
   - `tdd-react`: Red-Green-Refactor test cycle and semantic RTL queries.
   - `a11y-wcag22`: European Accessibility Act (EAA 2026 / EN 301 549) and WCAG 2.2 Level AA guidelines.
   - `perf-cwv`: Core Web Vitals budgets (LCP <= 1.2s, CLS 0.00, FCP <= 0.8s), WebP media pipeline.
@@ -102,6 +103,7 @@ flowchart TD
 - **Zero Secrets Policy:** Zero API keys, tokens, or credentials stored in source control.
 - **Anti-Scraping Obfuscation:** Personal contact channels (email, phone, Telegram, WhatsApp) are stored in Base64 format and decrypted on client interaction.
 - **Security Headers:** Strict Content Security Policy (CSP), Permissions-Policy (`camera=(), microphone=(), geolocation=()`), and Referrer-Policy (`strict-origin-when-cross-origin`).
+- **Consent-Based Telemetry:** Google Analytics 4 operated under Consent Mode v2 Basic mode with opt-in cookie banner and footer settings revocation.
 - **SCA Clean:** Zero known vulnerabilities via `pnpm audit --prod --audit-level=high`.
 
 ---
