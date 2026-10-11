@@ -13,7 +13,7 @@ import ConsentBanner from '../../src/components/ConsentBanner'
 import ScrollToTopButton from '../../src/components/ScrollToTopButton'
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://arturyusupov.dev'),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://yusupovartur.com'),
   title: 'Artur Yusupov - Professional Portfolio Website',
   description:
     'Fullstack WordPress Developer and Next.js / React Engineer with over 5+ years of commercial web development experience.',

@@ -1,6 +1,6 @@
 import { Project } from '../components/projects/project-types'
 
-const baseUrl = 'https://yusupovwebart.github.io/Portfolio'
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://yusupovartur.com'
 
 export interface ProjectJsonLd {
   '@context': string
