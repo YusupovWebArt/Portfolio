@@ -78,38 +78,68 @@
 ## Phase 2: Next.js 16 App Router Scaffolding and Core UI Migration
 
 ### Task 2.1: Next.js 16 Configuration & Package Migration
-- **Status**: TODO
+- **Status**: DONE
 - **Dependencies**: Phase 1
 - **Red Test File**: `src/test/next-config.test.ts`
 - **Red Test Case**: `it('should validate Next.js 16 configuration with Turbopack and security headers', ...)`
 - **Red Failure Proof**:
   ```text
-  [Pending Red Execution]
+  FAIL  src/test/next-config.test.ts > Next.js 16 Configuration & Package Specification (TDD)
+  AssertionError: expected false to be true
+   ❯ src/test/next-config.test.ts:8:39
+        8|     expect(fs.existsSync(configPath)).toBe(true)
+  AssertionError: expected undefined to be defined
+   ❯ src/test/next-config.test.ts:21:35
+       21|     expect(pkg.dependencies.next).toBeDefined()
+  Test Files  1 failed (1)
+  Tests  2 failed (2)
   ```
 - **Green Implementation**:
-  - Files created/modified: `package.json`, `next.config.ts`, `tsconfig.json`
-  - Implementation summary: Configure `next@16.4.0`, `react@19.3.0`, `ai@7.x`, `@ai-sdk/openai`, and `@ai-sdk/react`.
+  - Files created/modified: `package.json`, `next.config.ts`, `src/test/next-config.test.ts`
+  - Implementation summary: Installed `next@16.4.0`, `ai@7.0.137`, `@ai-sdk/openai`, `@ai-sdk/react`, `zod`, and created `next.config.ts` with strict security headers (CSP, HSTS, X-Frame-Options) and zero em dashes.
+- **Green Verification Proof**:
+  ```text
+  ✓ src/test/next-config.test.ts (2 tests) 12ms
+  Test Files  1 passed (1)
+  Tests  2 passed (2)
+  Duration  3.10s
+  ```
 - **Review Check**:
-  - [ ] Strict type safety (zero `any`).
-  - [ ] Zero em dashes in code or comments.
-  - [ ] Passes `pnpm exec tsc --noEmit`.
+  - [x] Strict type safety (zero `any`).
+  - [x] Zero em dashes in code or comments.
+  - [x] Passes `pnpm exec tsc --noEmit`.
 
 ### Task 2.2: Root Layout, Providers, and Landing Page
-- **Status**: TODO
+- **Status**: DONE
 - **Dependencies**: Task 2.1
 - **Red Test File**: `src/test/landing-layout.test.tsx`
 - **Red Test Case**: `it('should render root layout with LanguageContext, ThemeContext, and ConsentContext', ...)`
 - **Red Failure Proof**:
   ```text
-  [Pending Red Execution]
+  FAIL  src/test/landing-layout.test.tsx > Next.js 16 Root Layout & Landing Page Specification (TDD)
+  AssertionError: expected false to be true
+   ❯ src/test/landing-layout.test.tsx:8:39
+        8|     expect(fs.existsSync(layoutPath)).toBe(true)
+  AssertionError: expected false to be true
+   ❯ src/test/landing-layout.test.tsx:21:37
+       21|     expect(fs.existsSync(pagePath)).toBe(true)
+  Test Files  1 failed (1)
+  Tests  2 failed (2)
   ```
 - **Green Implementation**:
-  - Files created/modified: `app/[locale]/layout.tsx`, `app/[locale]/page.tsx`, `app/globals.css`
-  - Implementation summary: Migrate landing page sections (Hero, About, Skills, ProjectsGrid, Contact, Footer) preserving styling and context providers.
+  - Files created/modified: `app/[locale]/layout.tsx`, `app/[locale]/page.tsx`, `app/globals.css`, `src/components/Providers.tsx`, `src/test/landing-layout.test.tsx`
+  - Implementation summary: Built Next.js 16 App Router root layout with Providers wrapper, Header, Footer, ConsentBanner, ScrollToTopButton, and landing page with Hero, About, AiWorkflow, Projects, Skills, B2bServices, and Contact.
+- **Green Verification Proof**:
+  ```text
+  ✓ src/test/landing-layout.test.tsx (2 tests) 13ms
+  Test Files  11 passed (11)
+  Tests  44 passed (44)
+  Duration  23.29s
+  ```
 - **Review Check**:
-  - [ ] Strict type safety (zero `any`).
-  - [ ] Zero em dashes in code or comments.
-  - [ ] Passes `pnpm exec tsc --noEmit`.
+  - [x] Strict type safety (zero `any`).
+  - [x] Zero em dashes in code or comments.
+  - [x] Passes `pnpm exec tsc --noEmit`.
 
 ---
 
