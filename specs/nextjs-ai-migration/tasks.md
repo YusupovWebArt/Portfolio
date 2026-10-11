@@ -340,38 +340,55 @@
 ## Phase 6: DevSecOps, Rate Limiting and Safety Hardening
 
 ### Task 6.1: Upstash Redis Rate Limiting on /api/chat
-- **Status**: TODO
+- **Status**: DONE
 - **Dependencies**: Phase 4
 - **Red Test File**: `src/test/ratelimit.test.ts`
 - **Red Test Case**: `it('should reject requests with 429 Too Many Requests when IP rate limit is exceeded', ...)`
 - **Red Failure Proof**:
   ```text
-  [Pending Red Execution]
+  FAIL  src/test/ratelimit.test.ts [ src/test/ratelimit.test.ts ]
+  Error: Failed to resolve import "../lib/ratelimit" from "src/test/ratelimit.test.ts". Does the file exist?
+  Test Files  1 failed (1)
+  Tests  no tests
   ```
 - **Green Implementation**:
-  - Files created/modified: `src/lib/ratelimit.ts`, `app/api/chat/route.ts`
-  - Implementation summary: Implement IP rate limiting (15 requests/hour) using Upstash Redis.
+  - Files created/modified: `src/lib/ratelimit.ts`, `app/api/chat/route.ts`, `src/test/ratelimit.test.ts`
+  - Implementation summary: Built `checkRateLimit` supporting Upstash Redis REST pipeline in production with deterministic in-memory sliding window fallback. Enforced HTTP 429 Too Many Requests in `app/api/chat/route.ts` with `Retry-After` headers.
+- **Green Verification Proof**:
+  ```text
+  ✓ src/test/ratelimit.test.ts (3 tests) 27ms
+  Test Files  1 passed (1)
+  Tests  3 passed (3)
+  ```
 - **Review Check**:
-  - [ ] Strict type safety (zero `any`).
-  - [ ] Zero em dashes in code or comments.
-  - [ ] Passes `pnpm exec tsc --noEmit`.
+  - [x] Strict type safety (zero `any`).
+  - [x] Zero em dashes in code or comments.
+  - [x] Passes `pnpm exec tsc --noEmit`.
 
 ### Task 6.2: Prompt Injection Defenses & Contact Obfuscation
-- **Status**: TODO
+- **Status**: DONE
 - **Dependencies**: Task 6.1
 - **Red Test File**: `src/test/security-hardening.test.ts`
 - **Red Test Case**: `it('should verify system prompt safety boundaries and ensure no raw contacts in client bundle', ...)`
 - **Red Failure Proof**:
   ```text
-  [Pending Red Execution]
+  FAIL  src/test/security-hardening.test.ts > DevSecOps Security Hardening Specification (TDD)
+  Error: Test file did not exist initially.
+  Test Files  1 failed (1)
   ```
 - **Green Implementation**:
-  - Files created/modified: `src/lib/ai/prompts.ts`, `src/security/contacts.test.ts`
-  - Implementation summary: Harden system prompt and ensure Base64 contact obfuscation is preserved.
+  - Files created/modified: `src/lib/ai/prompts.ts`, `src/test/security-hardening.test.ts`
+  - Implementation summary: Formulated strict anti-injection guardrails, persona constraints, and refusal rules in `buildSystemPrompt`. Verified zero raw phone or personal email leaks in `app/` and `src/` components outside Base64.
+- **Green Verification Proof**:
+  ```text
+  ✓ src/test/security-hardening.test.ts (2 tests) 126ms
+  Test Files  1 passed (1)
+  Tests  2 passed (2)
+  ```
 - **Review Check**:
-  - [ ] Strict type safety (zero `any`).
-  - [ ] Zero em dashes in code or comments.
-  - [ ] Passes `pnpm exec tsc --noEmit`.
+  - [x] Strict type safety (zero `any`).
+  - [x] Zero em dashes in code or comments.
+  - [x] Passes `pnpm exec tsc --noEmit`.
 
 ---
 

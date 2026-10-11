@@ -3,6 +3,7 @@ import { streamText } from 'ai'
 import { retrieveKnowledge, formatContextForLLM } from '../../../src/lib/ai/rag'
 import { buildSystemPrompt } from '../../../src/lib/ai/prompts'
 import { aiTools } from '../../../src/lib/ai/tools'
+import { checkRateLimit } from '../../../src/lib/ratelimit'
 
 export const dynamic = 'force-dynamic'
 
@@ -27,6 +28,35 @@ export async function POST(req: Request) {
         status: 400,
         headers: { 'Content-Type': 'application/json' },
       })
+    }
+
+    // IP-based rate limiting (15 requests/hour)
+    const ip =
+      req.headers.get('x-forwarded-for')?.split(',')[0].trim() ||
+      req.headers.get('x-real-ip') ||
+      '127.0.0.1'
+
+    const rateLimit = await checkRateLimit(ip, {
+      maxRequests: 15,
+      windowMs: 60 * 60 * 1000,
+    })
+
+    if (!rateLimit.success) {
+      return new Response(
+        JSON.stringify({
+          error: 'Too many requests. Please try again later or contact Artur directly.',
+          reset: rateLimit.reset,
+        }),
+        {
+          status: 429,
+          headers: {
+            'Content-Type': 'application/json',
+            'Retry-After': String(
+              Math.max(1, Math.ceil((rateLimit.reset - Date.now()) / 1000)),
+            ),
+          },
+        },
+      )
     }
 
     // Extract the latest user query for hybrid RAG retrieval
