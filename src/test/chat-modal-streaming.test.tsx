@@ -62,8 +62,8 @@ describe('ChatModal Client-side Streaming & Fallback Specification (TDD)', () =>
       )
     })
 
-    const fetchCall = (global.fetch as any).mock.calls[0]
-    const parsedBody = JSON.parse(fetchCall[1].body)
+    const fetchCall = vi.mocked(global.fetch).mock.calls[0]
+    const parsedBody = JSON.parse(fetchCall[1]?.body as string)
     expect(parsedBody.projectSlug).toBe('it-magic')
     expect(parsedBody.messages[0].content).toBe(
       'What architecture is used in IT-Magic?',

@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { getAllProjectEntries, getProjectBySlug } from '../../../../src/lib/projects'

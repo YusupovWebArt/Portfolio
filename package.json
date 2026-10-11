@@ -11,6 +11,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "dev:next": "next dev",
+    "build:next": "next build",
+    "start:next": "next start",
     "lint": "eslint .",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",

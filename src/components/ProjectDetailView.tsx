@@ -6,8 +6,6 @@ import {
   ArrowLeft,
   ExternalLink,
   Github,
-  Layers,
-  Sparkles,
   CheckCircle,
   AlertTriangle,
   Lightbulb,

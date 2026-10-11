@@ -12,6 +12,20 @@ export interface ProjectChatContextDetail {
 
 let chatModalMessageIdCounter = 0
 
+async function readStreamText(
+  reader: ReadableStreamDefaultReader<Uint8Array>,
+  onUpdate: (fullText: string) => void,
+): Promise<void> {
+  const decoder = new TextDecoder()
+  let accumulated = ''
+  while (true) {
+    const { done, value } = await reader.read()
+    if (done) break
+    accumulated += decoder.decode(value, { stream: true })
+    onUpdate(accumulated)
+  }
+}
+
 const ChatModal = ({
   open,
   onClose,
@@ -148,8 +162,6 @@ const ChatModal = ({
 
       if (response.body) {
         const reader = response.body.getReader()
-        const decoder = new TextDecoder()
-        let accumulated = ''
 
         setMessages((prev) => [
           ...prev,
@@ -161,16 +173,13 @@ const ChatModal = ({
           },
         ])
 
-        while (true) {
-          const { done, value } = await reader.read()
-          if (done) break
-          accumulated += decoder.decode(value, { stream: true })
+        await readStreamText(reader, (latestText) => {
           setMessages((prev) =>
             prev.map((msg) =>
-              msg.id === botMessageId ? { ...msg, text: accumulated } : msg,
+              msg.id === botMessageId ? { ...msg, text: latestText } : msg,
             ),
           )
-        }
+        })
       } else {
         const text = await response.text()
         setMessages((prev) => [
