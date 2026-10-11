@@ -92,7 +92,9 @@ const ChatModal = ({
   }, [messages])
 
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
+    if (typeof messagesEndRef.current?.scrollIntoView === 'function') {
+      messagesEndRef.current.scrollIntoView({ behavior: 'smooth' })
+    }
   }
 
   useEffect(() => {
@@ -101,7 +103,7 @@ const ChatModal = ({
     }
   }, [messages, isTyping, isModalOpen])
 
-  const handleSend = (textToSend: string) => {
+  const handleSend = async (textToSend: string) => {
     if (!textToSend.trim()) return
 
     const userMessage: Message = {
@@ -115,17 +117,84 @@ const ChatModal = ({
     setInput('')
     setIsTyping(true)
 
-    // Simulate natural AI thinking delay
-    setTimeout(() => {
-      setIsTyping(false)
-      const botMessage: Message = {
-        id: `bot-${++chatModalMessageIdCounter}`,
-        from: 'bot',
-        text: getBotAnswer(textToSend, lang),
-        timestamp: new Date(),
+    try {
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          messages: [
+            ...messages
+              .filter((m) => !m.id.startsWith('welcome') && m.id !== 'welcome')
+              .map((m) => ({
+                role: m.from === 'user' ? 'user' : 'assistant',
+                content: m.text,
+              })),
+            { role: 'user', content: textToSend },
+          ],
+          projectSlug: projectContext?.projectSlug,
+          projectTitle: projectContext?.projectTitle,
+        }),
+      })
+
+      if (!response.ok) {
+        throw new Error(`Server returned ${response.status}`)
       }
-      setMessages((prev) => [...prev, botMessage])
-    }, 900)
+
+      const botMessageId = `bot-${++chatModalMessageIdCounter}`
+      setIsTyping(false)
+
+      if (response.body) {
+        const reader = response.body.getReader()
+        const decoder = new TextDecoder()
+        let accumulated = ''
+
+        setMessages((prev) => [
+          ...prev,
+          {
+            id: botMessageId,
+            from: 'bot',
+            text: '',
+            timestamp: new Date(),
+          },
+        ])
+
+        while (true) {
+          const { done, value } = await reader.read()
+          if (done) break
+          accumulated += decoder.decode(value, { stream: true })
+          setMessages((prev) =>
+            prev.map((msg) =>
+              msg.id === botMessageId ? { ...msg, text: accumulated } : msg,
+            ),
+          )
+        }
+      } else {
+        const text = await response.text()
+        setMessages((prev) => [
+          ...prev,
+          {
+            id: botMessageId,
+            from: 'bot',
+            text,
+            timestamp: new Date(),
+          },
+        ])
+      }
+    } catch {
+      // Fallback to local static FAQ engine as specified in SECURITY.md
+      setTimeout(() => {
+        setIsTyping(false)
+        const botMessage: Message = {
+          id: `bot-${++chatModalMessageIdCounter}`,
+          from: 'bot',
+          text: getBotAnswer(textToSend, lang),
+          timestamp: new Date(),
+        }
+        setMessages((prev) => [...prev, botMessage])
+      }, 300)
+    }
   }
 
   const handleClearChat = () => {

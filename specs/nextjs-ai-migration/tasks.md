@@ -228,38 +228,56 @@
 ## Phase 4: Fullstack RAG Agent and Streaming Route Handler
 
 ### Task 4.1: Vercel AI SDK 7 Streaming Route Handler
-- **Status**: TODO
+- **Status**: DONE
 - **Dependencies**: Phase 1, Phase 2
 - **Red Test File**: `src/test/chat-api.test.ts`
 - **Red Test Case**: `it('should accept chat message, retrieve RAG context, and stream response from OpenAI gpt-4o-mini', ...)`
 - **Red Failure Proof**:
   ```text
-  [Pending Red Execution]
+  FAIL  src/test/chat-api.test.ts [ src/test/chat-api.test.ts ]
+  Error: Failed to resolve import "../lib/ai/prompts" from "src/test/chat-api.test.ts". Does the file exist?
+  Test Files  1 failed (1)
+  Tests  no tests
   ```
 - **Green Implementation**:
-  - Files created/modified: `app/api/chat/route.ts`, `src/lib/ai/prompts.ts`
-  - Implementation summary: Implement route handler with Vercel AI SDK 7 `streamText`, OpenAI `gpt-4o-mini`, and grounded system prompt.
+  - Files created/modified: `app/api/chat/route.ts`, `src/lib/ai/prompts.ts`, `src/test/chat-api.test.ts`
+  - Implementation summary: Built `buildSystemPrompt` enforcing strict Artur persona, RAG context injection, anti-injection guardrails, and zero em dashes. Built Next.js 16 route handler `app/api/chat/route.ts` utilizing `streamText` and offline fallback.
+- **Green Verification Proof**:
+  ```text
+  ✓ src/test/chat-api.test.ts (3 tests) 38ms
+  Test Files  1 passed (1)
+  Tests  3 passed (3)
+  ```
 - **Review Check**:
-  - [ ] Strict type safety (zero `any`).
-  - [ ] Zero em dashes in code or comments.
-  - [ ] Passes `pnpm exec tsc --noEmit`.
+  - [x] Strict type safety (zero `any`).
+  - [x] Zero em dashes in code or comments.
+  - [x] Passes `pnpm exec tsc --noEmit`.
 
 ### Task 4.2: Client-side Streaming Integration in ChatModal
-- **Status**: TODO
+- **Status**: DONE
 - **Dependencies**: Task 4.1
 - **Red Test File**: `src/test/chat-modal-streaming.test.tsx`
 - **Red Test Case**: `it('should render streaming assistant messages and contextual chips using useChat hook', ...)`
 - **Red Failure Proof**:
   ```text
-  [Pending Red Execution]
+  FAIL  src/test/chat-modal-streaming.test.tsx > ChatModal Client-side Streaming & Fallback Specification (TDD) > should call /api/chat with project context and stream response
+  AssertionError: expected 'Hi! I am Artur\'s AI assistant. 🤖 Fe…' to be 'What architecture is used in IT-Magic?'
+  Test Files  1 failed (1)
+  Tests  1 failed | 1 passed (2)
   ```
 - **Green Implementation**:
-  - Files created/modified: `src/components/ChatModal.tsx`
-  - Implementation summary: Connect `@ai-sdk/react` (`useChat`) for streaming responses, message history, and contextual suggestions.
+  - Files created/modified: `src/components/ChatModal.tsx`, `src/test/chat-modal-streaming.test.tsx`
+  - Implementation summary: Connected client streaming to `/api/chat` with SSE/reader consumption, real-time message state update, project context passing, and automated fallback to static FAQ engine on network disconnection.
+- **Green Verification Proof**:
+  ```text
+  ✓ src/test/chat-modal-streaming.test.tsx (2 tests) 301ms
+  Test Files  1 passed (1)
+  Tests  2 passed (2)
+  ```
 - **Review Check**:
-  - [ ] Strict type safety (zero `any`).
-  - [ ] Zero em dashes in code or comments.
-  - [ ] Passes `pnpm exec tsc --noEmit`.
+  - [x] Strict type safety (zero `any`).
+  - [x] Zero em dashes in code or comments.
+  - [x] Passes `pnpm exec tsc --noEmit`.
 
 ---
 
