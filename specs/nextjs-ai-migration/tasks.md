@@ -146,55 +146,82 @@
 ## Phase 3: Standalone 69 SSG Project Pages and SEO/GEO Optimization
 
 ### Task 3.1: Dynamic SSG Route Implementation
-- **Status**: TODO
+- **Status**: DONE
 - **Dependencies**: Phase 2
 - **Red Test File**: `src/test/project-ssg.test.ts`
 - **Red Test Case**: `it('should generate static params for all 69 projects across en, ua, and es locales', ...)`
 - **Red Failure Proof**:
   ```text
-  [Pending Red Execution]
+  FAIL  src/test/project-ssg.test.ts > Standalone SSG Project Pages Specification (TDD)
+  Error: Cannot find module '../../src/lib/projects'
+  Test Files  1 failed (1)
+  Tests  3 failed (3)
   ```
 - **Green Implementation**:
-  - Files created/modified: `app/[locale]/projects/[slug]/page.tsx`, `src/components/ProjectDetailView.tsx`
-  - Implementation summary: Build dedicated standalone case study page layout with async `params` resolution for Next.js 16.
+  - Files created/modified: `src/lib/projects.ts`, `app/[locale]/projects/[slug]/page.tsx`, `src/components/ProjectDetailView.tsx`
+  - Implementation summary: Built dynamic route for all 69 project case studies across `en`, `ua`, `es` generating 207 static SSG paths using async `params` resolution in Next.js 16.
+- **Green Verification Proof**:
+  ```text
+  ✓ src/test/project-ssg.test.ts (3 tests) 553ms
+  Test Files  1 passed (1)
+  Tests  3 passed (3)
+  ```
 - **Review Check**:
-  - [ ] Strict type safety (zero `any`).
-  - [ ] Zero em dashes in code or comments.
-  - [ ] Passes `pnpm exec tsc --noEmit`.
+  - [x] Strict type safety (zero `any`).
+  - [x] Zero em dashes in code or comments.
+  - [x] Passes `pnpm exec tsc --noEmit`.
 
 ### Task 3.2: Automated Project SEO/GEO Metadata & Schema.org JSON-LD
-- **Status**: TODO
+- **Status**: DONE
 - **Dependencies**: Task 3.1
 - **Red Test File**: `src/test/project-seo.test.ts`
 - **Red Test Case**: `it('should generate valid localized metadata, hreflang tags, and Schema.org CaseStudy microdata', ...)`
 - **Red Failure Proof**:
   ```text
-  [Pending Red Execution]
+  FAIL  src/test/project-seo.test.ts > Automated Project SEO/GEO Metadata Specification (TDD)
+  Error: Cannot find module '../lib/seo'
+  Test Files  1 failed (1)
+  Tests  2 failed (2)
   ```
 - **Green Implementation**:
-  - Files created/modified: `app/[locale]/projects/[slug]/page.tsx`, `src/lib/seo.ts`
-  - Implementation summary: Implement `generateMetadata` delivering unique title, description, canonical, hreflang, and JSON-LD structured data.
+  - Files created/modified: `src/lib/seo.ts`, `app/[locale]/projects/[slug]/page.tsx`
+  - Implementation summary: Built `buildProjectJsonLd` and `buildProjectBreadcrumbsJsonLd` providing Schema.org `TechArticle`, `SoftwareApplication`, and `BreadcrumbList` structured data, along with localized hreflang tags and Open Graph cards.
+- **Green Verification Proof**:
+  ```text
+  ✓ src/test/project-seo.test.ts (2 tests) 17ms
+  Test Files  1 passed (1)
+  Tests  2 passed (2)
+  ```
 - **Review Check**:
-  - [ ] Strict type safety (zero `any`).
-  - [ ] Zero em dashes in code or comments.
-  - [ ] Passes `pnpm exec tsc --noEmit`.
+  - [x] Strict type safety (zero `any`).
+  - [x] Zero em dashes in code or comments.
+  - [x] Passes `pnpm exec tsc --noEmit`.
 
 ### Task 3.3: Contextual Project AI Chat Trigger CTA
-- **Status**: TODO
+- **Status**: DONE
 - **Dependencies**: Task 3.1
 - **Red Test File**: `src/test/project-chat-cta.test.tsx`
 - **Red Test Case**: `it('should dispatch project context payload to ChatModal when contextual CTA is clicked', ...)`
 - **Red Failure Proof**:
   ```text
-  [Pending Red Execution]
+  FAIL  src/test/project-chat-cta.test.tsx > Contextual Project AI Chat Trigger Specification (TDD) > should listen to open-ai-chat-context event in ChatModal and show project-specific chips
+  TestingLibraryElementError: Unable to find an element with the text: /Ask about IT-Magic/i
+  Test Files  1 failed (1)
+  Tests  1 failed | 1 passed (2)
   ```
 - **Green Implementation**:
-  - Files created/modified: `src/components/ProjectChatTrigger.tsx`, `src/components/ChatModal.tsx`
-  - Implementation summary: Prominent CTA button on project page that opens chat with active project context and tailored suggestion chips.
+  - Files created/modified: `src/components/ProjectChatTrigger.tsx`, `src/components/ChatModal.tsx`, `src/components/ProjectDetailView.tsx`
+  - Implementation summary: Connected `open-ai-chat-context` event emitter and listener, dynamically revealing tailored question chips for the active project case study inside `ChatModal`.
+- **Green Verification Proof**:
+  ```text
+  ✓ src/test/project-chat-cta.test.tsx (2 tests) 370ms
+  Test Files  1 passed (1)
+  Tests  2 passed (2)
+  ```
 - **Review Check**:
-  - [ ] Strict type safety (zero `any`).
-  - [ ] Zero em dashes in code or comments.
-  - [ ] Passes `pnpm exec tsc --noEmit`.
+  - [x] Strict type safety (zero `any`).
+  - [x] Zero em dashes in code or comments.
+  - [x] Passes `pnpm exec tsc --noEmit`.
 
 ---
 

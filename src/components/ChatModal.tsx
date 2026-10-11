@@ -4,17 +4,60 @@ import { Send, Bot, User, X, Trash2 } from 'lucide-react'
 import { FAQ, getBotAnswer, Message } from '../data/chatFaq'
 import { useLanguage } from '../contexts/LanguageContext'
 
+export interface ProjectChatContextDetail {
+  projectSlug: string
+  projectTitle: string
+}
+
 let chatModalMessageIdCounter = 0
 
 const ChatModal = ({
   open,
   onClose,
 }: {
-  open: boolean
-  onClose: () => void
+  open?: boolean
+  onClose?: () => void
 }) => {
   const { lang, t } = useLanguage()
   const ct = t.contact.chatbot
+  const [internalOpen, setInternalOpen] = useState(false)
+  const [projectContext, setProjectContext] = useState<ProjectChatContextDetail | null>(null)
+
+  const isModalOpen = (open ?? false) || internalOpen
+
+  useEffect(() => {
+    const handleContextEvent = (event: Event) => {
+      const customEvent = event as CustomEvent<ProjectChatContextDetail>
+      if (customEvent.detail) {
+        setProjectContext(customEvent.detail)
+        setInternalOpen(true)
+      }
+    }
+
+    const handleOpenChat = () => {
+      setInternalOpen(true)
+    }
+
+    window.addEventListener('open-ai-chat-context', handleContextEvent)
+    window.addEventListener('open-ai-chat', handleOpenChat)
+
+    return () => {
+      window.removeEventListener('open-ai-chat-context', handleContextEvent)
+      window.removeEventListener('open-ai-chat', handleOpenChat)
+    }
+  }, [])
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && isModalOpen) {
+        setInternalOpen(false)
+        onClose?.()
+      }
+    }
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [isModalOpen, onClose])
+
   const [messages, setMessages] = useState<Message[]>(() => {
     const saved = sessionStorage.getItem('portfolio_chat_modal_messages')
     if (saved) {
@@ -53,10 +96,10 @@ const ChatModal = ({
   }
 
   useEffect(() => {
-    if (open) {
+    if (isModalOpen) {
       setTimeout(scrollToBottom, 50)
     }
-  }, [messages, isTyping, open])
+  }, [messages, isTyping, isModalOpen])
 
   const handleSend = (textToSend: string) => {
     if (!textToSend.trim()) return
@@ -103,7 +146,20 @@ const ChatModal = ({
     return msg
   })
 
-  if (!open) return null
+  const handleClose = () => {
+    setInternalOpen(false)
+    onClose?.()
+  }
+
+  if (!isModalOpen) return null
+
+  const projectChips = projectContext
+    ? [
+        `Ask about ${projectContext.projectTitle}: What tech stack was used?`,
+        `Ask about ${projectContext.projectTitle}: What were the main features?`,
+        `Ask about ${projectContext.projectTitle}: Tell me about the architecture.`,
+      ]
+    : []
 
   // We only show suggestions that haven't been clicked or just show a subset of FAQs that fit in horizontal bar
   const activeSuggestions = FAQ.filter(
@@ -143,7 +199,7 @@ const ChatModal = ({
               <Trash2 className="w-4 h-4" />
             </button>
             <button
-              onClick={onClose}
+              onClick={handleClose}
               className="p-2 hover:bg-slate-100 dark:hover:bg-white/5 rounded-full text-slate-400 hover:text-slate-600 dark:hover:text-white transition-colors"
               title="Close chat"
               type="button"
@@ -188,6 +244,27 @@ const ChatModal = ({
               </div>
             )
           })}
+
+          {/* Project Context Box inside chat log */}
+          {projectContext && (
+            <div className="mt-2 ml-9 p-3 bg-purple-50/70 dark:bg-purple-950/20 border border-purple-200/60 dark:border-purple-800/40 rounded-2xl animate-fade-in space-y-2">
+              <div className="text-[10px] font-bold text-purple-600 dark:text-purple-300 uppercase tracking-wider flex items-center justify-between">
+                <span>Active Context: {projectContext.projectTitle}</span>
+              </div>
+              <div className="grid grid-cols-1 gap-1.5">
+                {projectChips.map((chip, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => handleSend(chip)}
+                    className="text-left px-3.5 py-2 bg-white hover:bg-purple-50/50 dark:bg-slate-800 dark:hover:bg-slate-700 text-xs font-medium text-purple-700 dark:text-purple-300 rounded-xl border border-purple-100 dark:border-purple-900/50 shadow-sm transition-all"
+                    type="button"
+                  >
+                    {chip}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* Initial FAQ List inside the chat log */}
           {messages.length === 1 && !isTyping && (
