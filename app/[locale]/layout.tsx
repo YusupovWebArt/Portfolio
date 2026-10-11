@@ -35,7 +35,7 @@ export default async function RootLocaleLayout({
   return (
     <html lang={locale || 'en'} suppressHydrationWarning>
       <body className="min-h-screen bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 transition-colors duration-300">
-        <Providers>
+        <Providers initialLang={locale as 'en' | 'ua' | 'es'}>
           <Header />
           {children}
           <Footer />

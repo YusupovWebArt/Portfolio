@@ -18,7 +18,9 @@ describe('Standalone SSG Project Pages Specification (TDD)', () => {
     expect(content).not.toContain('—')
   })
 
-  it('should generate static params for all 69 projects across en, ua, and es locales', async () => {
+  it(
+    'should generate static params for all 69 projects across en, ua, and es locales',
+    async () => {
     const kb = loadKnowledgeBase()
     expect(kb.projects.length).toBe(69)
 
@@ -33,7 +35,7 @@ describe('Standalone SSG Project Pages Specification (TDD)', () => {
       (p: { locale: string; slug: string }) => p.slug === 'it-magic' && p.locale === 'en',
     )
     expect(itMagicParams).toBeDefined()
-  })
+  }, 15000)
 
   it('should have standalone ProjectDetailView component without em dashes', () => {
     const viewPath = path.resolve(

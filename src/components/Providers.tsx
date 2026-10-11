@@ -2,12 +2,18 @@
 
 import React from 'react'
 import { ThemeProvider } from '../contexts/ThemeContext'
-import { LanguageProvider } from '../contexts/LanguageContext'
+import { LanguageProvider, type Lang } from '../contexts/LanguageContext'
 import { ConsentProvider } from '../contexts/ConsentContext'
 
-export function Providers({ children }: { children: React.ReactNode }) {
+export function Providers({
+  children,
+  initialLang,
+}: {
+  children: React.ReactNode
+  initialLang?: Lang
+}) {
   return (
-    <LanguageProvider>
+    <LanguageProvider initialLang={initialLang}>
       <ThemeProvider>
         <ConsentProvider>{children}</ConsentProvider>
       </ThemeProvider>

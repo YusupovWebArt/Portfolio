@@ -69,11 +69,11 @@ export default function ProjectDetailView({
       {/* Breadcrumb Navigation */}
       <nav aria-label="Breadcrumb" className="mb-6 flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400">
         <Link href={`/${locale}`} className="hover:text-purple-600 dark:hover:text-lime-400 transition-colors">
-          Home
+          {locale === 'ua' ? 'Головна' : locale === 'es' ? 'Inicio' : 'Home'}
         </Link>
         <span>/</span>
         <Link href={`/${locale}#projects`} className="hover:text-purple-600 dark:hover:text-lime-400 transition-colors">
-          Projects
+          {locale === 'ua' ? 'Проєкти' : locale === 'es' ? 'Proyectos' : 'Projects'}
         </Link>
         <span>/</span>
         <span className="font-semibold text-slate-800 dark:text-slate-200 truncate max-w-[200px] sm:max-w-none">
@@ -87,7 +87,13 @@ export default function ProjectDetailView({
         className="mb-8 inline-flex items-center gap-2 text-sm sm:text-base font-semibold text-purple-600 dark:text-lime-400 hover:text-purple-700 dark:hover:text-lime-300 transition-colors"
       >
         <ArrowLeft className="h-4 w-4" aria-hidden />
-        <span>Back to Projects</span>
+        <span>
+          {locale === 'ua'
+            ? 'Назад до проєктів'
+            : locale === 'es'
+              ? 'Volver a proyectos'
+              : 'Back to Projects'}
+        </span>
       </Link>
 
       <div className="rounded-2xl bg-neutral-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-700 p-6 md:p-8 lg:p-10 shadow-sm">

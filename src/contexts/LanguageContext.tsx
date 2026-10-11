@@ -16,10 +16,18 @@ interface LanguageContextType {
 
 const translations: Record<Lang, Translation> = { en, ua, es }
 
-/** Detect initial language: localStorage → browser language → fallback EN */
-const getInitialLang = (): Lang => {
+/** Detect initial language: initial prop -> URL pathname -> localStorage -> browser language -> fallback EN */
+const getInitialLang = (initialLang?: Lang): Lang => {
+  if (initialLang && (initialLang === 'en' || initialLang === 'ua' || initialLang === 'es')) {
+    return initialLang
+  }
   if (typeof window === 'undefined') return 'en'
   try {
+    const path = window.location.pathname
+    const match = path.match(/^\/(en|ua|es)(\/|$)/)
+    if (match) {
+      return match[1] as Lang
+    }
     const saved = localStorage.getItem('portfolio_lang')
     if (saved === 'en' || saved === 'ua' || saved === 'es') return saved
     const browserLang = navigator.language?.toLowerCase() ?? 'en'
@@ -40,8 +48,16 @@ export const useLanguage = (): LanguageContextType => {
   return ctx
 }
 
-export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [lang, setLangState] = useState<Lang>(getInitialLang)
+export interface LanguageProviderProps {
+  children: React.ReactNode
+  initialLang?: Lang
+}
+
+export const LanguageProvider: React.FC<LanguageProviderProps> = ({
+  children,
+  initialLang,
+}) => {
+  const [lang, setLangState] = useState<Lang>(() => getInitialLang(initialLang))
 
   const setLang = (newLang: Lang) => {
     setLangState(newLang)
@@ -49,6 +65,17 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
       localStorage.setItem('portfolio_lang', newLang)
     } catch {
       // Ignore localStorage errors
+    }
+
+    if (typeof window !== 'undefined') {
+      const path = window.location.pathname
+      const hash = window.location.hash || ''
+      const match = path.match(/^\/(en|ua|es)(.*)/)
+      if (match && match[1] !== newLang) {
+        const remainingPath = match[2] || ''
+        const newUrl = `/${newLang}${remainingPath}${hash}`
+        window.location.assign(newUrl)
+      }
     }
   }
 

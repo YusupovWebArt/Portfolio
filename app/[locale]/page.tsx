@@ -1,6 +1,7 @@
 'use client'
 
 import React, { Suspense } from 'react'
+import { useRouter, useParams } from 'next/navigation'
 import Hero from '../../src/components/Hero'
 import About from '../../src/components/About'
 import AiWorkflow from '../../src/components/AiWorkflow'
@@ -8,15 +9,18 @@ import Skills from '../../src/components/Skills'
 import B2bServices from '../../src/components/B2bServices'
 import Contact from '../../src/components/Contact'
 import Projects from '../../src/components/Projects'
+import { getAllProjectEntries } from '../../src/lib/projects'
 
 export default function LandingPage() {
+  const router = useRouter()
+  const params = useParams()
+  const locale = (params?.locale as string) || 'en'
+
   const handleProjectSelect = (projectId: number) => {
-    // In Next.js, navigation can also happen to dedicated project route
-    if (typeof window !== 'undefined') {
-      const el = document.getElementById(`project-${projectId}`)
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth' })
-      }
+    const entries = getAllProjectEntries()
+    const entry = entries.find((e) => e.project.id === projectId)
+    if (entry) {
+      router.push(`/${locale}/projects/${entry.slug}`)
     }
   }
 
