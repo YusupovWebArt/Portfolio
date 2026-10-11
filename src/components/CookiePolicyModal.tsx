@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useEffect, useRef } from 'react';
 import { X, ShieldCheck } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';

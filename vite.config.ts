@@ -18,9 +18,12 @@ export default defineConfig({
             if (id.includes('react-icons') || id.includes('lucide-react')) {
               return 'vendor-icons'
             }
+            if (id.includes('ai') || id.includes('@ai-sdk')) {
+              return 'vendor-ai'
+            }
             return 'vendor'
           }
-          if (id.includes('src/components/projects/')) {
+          if (id.includes('src/components/projects/') || id.includes('src/lib/projectRegistry')) {
             return 'projects-data'
           }
           if (id.includes('src/locales/')) {

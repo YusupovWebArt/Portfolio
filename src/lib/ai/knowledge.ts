@@ -65,21 +65,14 @@ const extractTechList = (project: Project): string[] => {
   return list
 }
 
-const projectModules = import.meta.glob<{ default: Project }>(
-  '../../components/projects/*/*.tsx',
-  { eager: true },
-)
+import { projectRegistry } from '../projectRegistry'
 
 const buildProjectChunks = (): KnowledgeChunk[] => {
   const chunks: KnowledgeChunk[] = []
 
-  for (const [path, mod] of Object.entries(projectModules)) {
-    const project = mod.default
+  for (const { slug, project } of projectRegistry) {
     if (!project || !project.title) continue
 
-    // Derive slug from filename: e.g. "../../components/projects/wordpress/it-magic.tsx" -> "it-magic"
-    const rawFileName = path.split('/').pop() || ''
-    const slug = rawFileName.replace(/\.tsx$/, '').trim().toLowerCase()
     const techList = extractTechList(project)
     const metricsMap: Record<string, string> = {}
     if (project.detailMetrics) {

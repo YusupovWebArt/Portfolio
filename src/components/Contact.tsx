@@ -1,3 +1,5 @@
+'use client'
+
 import { useState, useEffect, useRef } from 'react'
 import {
   Mail,
@@ -124,16 +126,18 @@ const Contact = () => {
 
   // States for embedded AI console
   const [messages, setMessages] = useState<Message[]>(() => {
-    const saved = sessionStorage.getItem('portfolio_chat_contact_messages')
-    if (saved) {
-      try {
-        const parsed = JSON.parse(saved) as Array<Omit<Message, 'timestamp'> & { timestamp?: string }>
-        return parsed.map((m) => ({
-          ...m,
-          timestamp: m.timestamp ? new Date(m.timestamp) : undefined,
-        }))
-      } catch {
-        // Fallback to default
+    if (typeof window !== 'undefined') {
+      const saved = sessionStorage.getItem('portfolio_chat_contact_messages')
+      if (saved) {
+        try {
+          const parsed = JSON.parse(saved) as Array<Omit<Message, 'timestamp'> & { timestamp?: string }>
+          return parsed.map((m) => ({
+            ...m,
+            timestamp: m.timestamp ? new Date(m.timestamp) : undefined,
+          }))
+        } catch {
+          // Fallback to default
+        }
       }
     }
     return [

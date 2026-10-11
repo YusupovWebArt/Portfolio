@@ -1,3 +1,5 @@
+'use client'
+
 import { Code, Cookie } from "lucide-react";
 import { useLanguage } from "../contexts/LanguageContext";
 import { useConsent } from "../contexts/ConsentContext";

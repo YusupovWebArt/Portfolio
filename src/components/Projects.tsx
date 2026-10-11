@@ -28,13 +28,9 @@ const getProjectTechList = (project: Project): TechnologyItem[] => {
   return list
 }
 
-const modules = import.meta.glob<{ default: Project }>('./projects/**/*.tsx', {
-  eager: true,
-})
+import { allProjects } from '../lib/projectRegistry'
 
-const projects: Project[] = Object.values(modules)
-  .map((mod) => mod.default)
-  .sort((a, b) => b.id - a.id)
+const projects: Project[] = allProjects
 
 const getFilterLabel = (id: string, filterAllLabel: string) => {
   if (id === 'all') return filterAllLabel

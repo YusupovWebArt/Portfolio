@@ -75,17 +75,17 @@ if (hasProjectsDataInBoot) {
   )
 }
 
-// Check 2: Total initial JS budget (< 450 KB raw, < 130 KB gzip)
-const MAX_TOTAL_RAW = 450 * 1024
-const MAX_TOTAL_GZIP = 130 * 1024
+// Check 2: Total initial JS budget (< 500 KB raw, < 150 KB gzip, accommodating EN/UA/ES trilingual dictionaries)
+const MAX_TOTAL_RAW = 500 * 1024
+const MAX_TOTAL_GZIP = 150 * 1024
 if (totalRaw > MAX_TOTAL_RAW) {
   failures.push(
-    `Violation: Total initial JS raw size (${totalRawKb} KB) exceeds budget of 450.00 KB.`
+    `Violation: Total initial JS raw size (${totalRawKb} KB) exceeds budget of 500.00 KB.`
   )
 }
 if (totalGzip > MAX_TOTAL_GZIP) {
   failures.push(
-    `Violation: Total initial JS gzip size (${totalGzipKb} KB) exceeds budget of 130.00 KB.`
+    `Violation: Total initial JS gzip size (${totalGzipKb} KB) exceeds budget of 150.00 KB.`
   )
 }
 

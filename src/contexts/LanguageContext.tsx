@@ -1,3 +1,5 @@
+'use client'
+
 import React, { createContext, useContext, useState } from 'react'
 import type { Translation } from '../locales/types'
 import { en } from '../locales/en'
@@ -16,6 +18,7 @@ const translations: Record<Lang, Translation> = { en, ua, es }
 
 /** Detect initial language: localStorage → browser language → fallback EN */
 const getInitialLang = (): Lang => {
+  if (typeof window === 'undefined') return 'en'
   try {
     const saved = localStorage.getItem('portfolio_lang')
     if (saved === 'en' || saved === 'ua' || saved === 'es') return saved
