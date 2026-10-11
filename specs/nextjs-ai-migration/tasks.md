@@ -284,38 +284,56 @@
 ## Phase 5: Tool Calling and Generative UI in Chat
 
 ### Task 5.1: Agent Tool Definitions (showProjects & getContactInfo)
-- **Status**: TODO
+- **Status**: DONE
 - **Dependencies**: Phase 4
 - **Red Test File**: `src/test/ai-tools.test.ts`
 - **Red Test Case**: `it('should define showProjects and getContactInfo tools with strict Zod validation schemas', ...)`
 - **Red Failure Proof**:
   ```text
-  [Pending Red Execution]
+  FAIL  src/test/ai-tools.test.ts [ src/test/ai-tools.test.ts ]
+  Error: Failed to resolve import "../lib/ai/tools" from "src/test/ai-tools.test.ts". Does the file exist?
+  Test Files  1 failed (1)
+  Tests  no tests
   ```
 - **Green Implementation**:
-  - Files created/modified: `src/lib/ai/tools.ts`, `app/api/chat/route.ts`
-  - Implementation summary: Tool calling schemas using `zod` for `showProjects` and `getContactInfo`.
+  - Files created/modified: `src/lib/ai/tools.ts`, `app/api/chat/route.ts`, `src/data/chatFaq.ts`
+  - Implementation summary: Built `showProjectsTool` (filters by technology, category, slug across 69 case studies) and `getContactInfoTool` (runtime Base64 decoding, preventing plaintext leak). Connected tools and `maxSteps: 3` into `app/api/chat/route.ts`.
+- **Green Verification Proof**:
+  ```text
+  ✓ src/test/ai-tools.test.ts (3 tests) 18ms
+  Test Files  1 passed (1)
+  Tests  3 passed (3)
+  ```
 - **Review Check**:
-  - [ ] Strict type safety (zero `any`).
-  - [ ] Zero em dashes in code or comments.
-  - [ ] Passes `pnpm exec tsc --noEmit`.
+  - [x] Strict type safety (zero `any`).
+  - [x] Zero em dashes in code or comments.
+  - [x] Passes `pnpm exec tsc --noEmit`.
 
 ### Task 5.2: Generative UI Project Cards in Chat Stream
-- **Status**: TODO
+- **Status**: DONE
 - **Dependencies**: Task 5.1
 - **Red Test File**: `src/test/chat-generative-ui.test.tsx`
 - **Red Test Case**: `it('should render interactive project card components when model invokes showProjects tool', ...)`
 - **Red Failure Proof**:
   ```text
-  [Pending Red Execution]
+  FAIL  src/test/chat-generative-ui.test.tsx [ src/test/chat-generative-ui.test.tsx ]
+  Error: Failed to resolve import "../components/chat/ProjectToolCard" from "src/test/chat-generative-ui.test.tsx". Does the file exist?
+  Test Files  1 failed (1)
+  Tests  no tests
   ```
 - **Green Implementation**:
-  - Files created/modified: `src/components/chat/ProjectToolCard.tsx`, `src/components/ChatModal.tsx`
-  - Implementation summary: Render interactive cards with thumbnail, tech pills, and link to case study inside chat message stream.
+  - Files created/modified: `src/components/chat/ProjectToolCard.tsx`, `src/components/ChatModal.tsx`, `src/test/chat-generative-ui.test.tsx`
+  - Implementation summary: Built responsive Generative UI `ProjectToolCard` with lazy-loaded thumbnails, category pills, case study direct link, and external links. Integrated project card array rendering directly in `ChatModal` message bubbles.
+- **Green Verification Proof**:
+  ```text
+  ✓ src/test/chat-generative-ui.test.tsx (1 test) 431ms
+  Test Files  1 passed (1)
+  Tests  1 passed (1)
+  ```
 - **Review Check**:
-  - [ ] Strict type safety (zero `any`).
-  - [ ] Zero em dashes in code or comments.
-  - [ ] Passes `pnpm exec tsc --noEmit`.
+  - [x] Strict type safety (zero `any`).
+  - [x] Zero em dashes in code or comments.
+  - [x] Passes `pnpm exec tsc --noEmit`.
 
 ---
 

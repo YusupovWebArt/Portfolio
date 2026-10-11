@@ -2,6 +2,7 @@ import { openai } from '@ai-sdk/openai'
 import { streamText } from 'ai'
 import { retrieveKnowledge, formatContextForLLM } from '../../../src/lib/ai/rag'
 import { buildSystemPrompt } from '../../../src/lib/ai/prompts'
+import { aiTools } from '../../../src/lib/ai/tools'
 
 export const dynamic = 'force-dynamic'
 
@@ -70,6 +71,8 @@ export async function POST(req: Request) {
         role: m.role,
         content: m.content,
       })),
+      tools: aiTools,
+      maxSteps: 3,
     })
 
     return result.toUIMessageStreamResponse()

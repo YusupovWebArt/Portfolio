@@ -3,6 +3,7 @@ import { Send, Bot, User, X, Trash2 } from 'lucide-react'
 
 import { FAQ, getBotAnswer, Message } from '../data/chatFaq'
 import { useLanguage } from '../contexts/LanguageContext'
+import ProjectToolCard from './chat/ProjectToolCard'
 
 export interface ProjectChatContextDetail {
   projectSlug: string
@@ -309,6 +310,13 @@ const ChatModal = ({
                   }`}
                 >
                   {msg.text}
+                  {msg.projects && msg.projects.length > 0 && (
+                    <div className="mt-2 space-y-2">
+                      {msg.projects.map((proj) => (
+                        <ProjectToolCard key={proj.slug} project={proj} locale={lang} />
+                      ))}
+                    </div>
+                  )}
                 </div>
               </div>
             )

@@ -13,6 +13,15 @@ export type Message = {
   from: 'user' | 'bot'
   text: string
   timestamp?: Date
+  projects?: {
+    slug: string
+    title: string
+    description: string
+    image: string
+    category: string
+    liveUrl?: string
+    githubUrl?: string
+  }[]
 }
 
 export const FAQ: FaqItem[] = [
@@ -24,7 +33,7 @@ export const FAQ: FaqItem[] = [
     answer:
       'Artur Yusupov is a Fullstack WordPress Developer and React/Next.js Engineer with over 5+ years of professional experience. Currently based in Seville, Spain, he specializes in high-performance web engineering, custom themes/plugins, and AI-augmented development.',
     answerUa:
-      'Артур Юсупов — Fullstack WordPress-розробник та React/Next.js інженер із понад 5 роками професійного досвіду. Зараз проживає в Севільї (Іспанія) та спеціалізується на розробці високопродуктивних сайтів, кастомних тем/плагінів та розробці з використанням AI.',
+      'Артур Юсупов - Fullstack WordPress-розробник та React/Next.js інженер із понад 5 роками професійного досвіду. Зараз проживає в Севільї (Іспанія) та спеціалізується на розробці високопродуктивних сайтів, кастомних тем/плагінів та розробці з використанням AI.',
     answerEs:
       'Artur Yusupov es un desarrollador Fullstack de WordPress e ingeniero React/Next.js con más de 5 años de experiencia profesional. Actualmente reside en Sevilla, España, y se especializa en ingeniería web de alto rendimiento, temas y plugins personalizados, y desarrollo potenciado por IA.',
   },
@@ -48,7 +57,7 @@ export const FAQ: FaqItem[] = [
     answer:
       'I have over 5+ years of professional experience in web development, working on 50+ completed projects ranging from custom business websites to international enterprise applications (e.g. Agenturro, Frontdeskhelpers).',
     answerUa:
-      'Маю понад 5 років професійного досвіду у веб-розробці та 50+ реалізованих проєктів — від кастомних корпоративних сайтів до міжнародних enterprise-проєктів (наприклад, Agenturro, Frontdeskhelpers).',
+      'Маю понад 5 років професійного досвіду у веб-розробці та 50+ реалізованих проєктів - від кастомних корпоративних сайтів до міжнародних enterprise-проєктів (наприклад, Agenturro, Frontdeskhelpers).',
     answerEs:
       'Tengo más de 5 años de experiencia profesional en desarrollo web, con más de 50 proyectos completados, desde sitios web corporativos personalizados hasta aplicaciones empresariales internacionales (como Agenturro y Frontdeskhelpers).',
   },
@@ -120,7 +129,7 @@ export const FAQ: FaqItem[] = [
     answer:
       'My English level is Upper-Intermediate (B2). I am fully comfortable participating in video calls, writing documentation, and conducting daily technical discussions.',
     answerUa:
-      'Мій рівень англійської — Upper-Intermediate (B2). Я вільно беру участь у відеодзвінках, отримую та складаю ТЗ, веду щоденні технічні обговорення.',
+      'Мій рівень англійської - Upper-Intermediate (B2). Я вільно беру участь у відеодзвінках, отримую та складаю ТЗ, веду щоденні технічні обговорення.',
     answerEs:
       'Mi nivel de inglés es Upper-Intermediate (B2). Me siento completamente cómodo participando en videollamadas, redactando documentación y manteniendo conversaciones técnicas diarias.',
   },
