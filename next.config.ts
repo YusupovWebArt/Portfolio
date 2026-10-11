@@ -52,6 +52,14 @@ const nextConfig: NextConfig = {
       },
     ]
   },
+  async rewrites() {
+    return [
+      {
+        source: '/Portfolio/:path*',
+        destination: '/:path*',
+      },
+    ]
+  },
 }
 
 export default nextConfig
