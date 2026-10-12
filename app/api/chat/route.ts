@@ -1,6 +1,10 @@
 import { openai } from '@ai-sdk/openai'
 import { streamText } from 'ai'
-import { retrieveKnowledge, formatContextForLLM } from '../../../src/lib/ai/rag'
+import {
+  retrieveKnowledge,
+  formatContextForLLM,
+  synthesizeLocalRagAnswer,
+} from '../../../src/lib/ai/rag'
 import { buildSystemPrompt } from '../../../src/lib/ai/prompts'
 import { aiTools } from '../../../src/lib/ai/tools'
 import { checkRateLimit } from '../../../src/lib/ratelimit'
@@ -16,12 +20,13 @@ interface ChatRequestBody {
   messages: ChatRequestMessage[]
   projectSlug?: string
   projectTitle?: string
+  locale?: 'en' | 'ua' | 'es'
 }
 
 export async function POST(req: Request) {
   try {
     const body = (await req.json()) as ChatRequestBody
-    const { messages, projectSlug, projectTitle } = body
+    const { messages, projectSlug, projectTitle, locale } = body
 
     if (!messages || !Array.isArray(messages) || messages.length === 0) {
       return new Response(JSON.stringify({ error: 'Messages array is required' }), {
@@ -68,7 +73,7 @@ export async function POST(req: Request) {
 
     const retrievedChunks = retrieveKnowledge(lastUserMessage, {
       currentProjectSlug: projectSlug,
-      limit: 5,
+      topK: 5,
     })
 
     const formattedContext = formatContextForLLM(retrievedChunks)
@@ -77,23 +82,15 @@ export async function POST(req: Request) {
       currentProjectTitle: projectTitle,
     })
 
-    // Offline / testing fallback if OPENAI_API_KEY is not configured
+    // Autonomous local RAG synthesis when OPENAI_API_KEY is not configured
     if (!process.env.OPENAI_API_KEY) {
-      let mockResponse = ''
-      if (projectTitle && retrievedChunks.length > 0) {
-        const matchingChunk =
-          retrievedChunks.find((c) =>
-            c.title.toLowerCase().includes(projectTitle.toLowerCase()),
-          ) || retrievedChunks[0]
-        mockResponse = `I am Artur's AI engineering assistant.\n\nProject: ${projectTitle}\nOverview: ${matchingChunk.snippet}\n\n(Live generative dialogue will be activated once OPENAI_API_KEY is configured in Vercel Environment Variables).`
-      } else {
-        const topSnippet =
-          retrievedChunks[0]?.snippet ||
-          'Artur Yusupov is a Fullstack WordPress Developer and Next.js / React Engineer with 5+ years of commercial experience.'
-        mockResponse = `I am Artur's AI engineering assistant. Based on Artur's verified portfolio:\n${topSnippet}\n\n(Live generative dialogue will be activated once OPENAI_API_KEY is configured in Vercel Environment Variables).`
-      }
+      const localAnswer = synthesizeLocalRagAnswer(lastUserMessage, {
+        projectSlug,
+        projectTitle,
+        locale,
+      })
 
-      return new Response(mockResponse, {
+      return new Response(localAnswer, {
         status: 200,
         headers: {
           'Content-Type': 'text/plain; charset=utf-8',

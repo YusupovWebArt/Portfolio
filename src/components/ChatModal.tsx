@@ -154,6 +154,7 @@ const ChatModal = ({
           ],
           projectSlug: projectContext?.projectSlug,
           projectTitle: projectContext?.projectTitle,
+          locale: lang,
         }),
       })
 
@@ -237,11 +238,23 @@ const ChatModal = ({
   if (!isModalOpen) return null
 
   const projectChips = projectContext
-    ? [
-        `Ask about ${projectContext.projectTitle}: What tech stack was used?`,
-        `Ask about ${projectContext.projectTitle}: What were the main features?`,
-        `Ask about ${projectContext.projectTitle}: Tell me about the architecture.`,
-      ]
+    ? lang === 'es'
+      ? [
+          `Ask about ${projectContext.projectTitle}: ¿Qué stack tecnológico se utilizó?`,
+          `Ask about ${projectContext.projectTitle}: ¿Cuáles fueron las funciones principales?`,
+          `Ask about ${projectContext.projectTitle}: Háblame de la arquitectura.`,
+        ]
+      : lang === 'ua'
+        ? [
+            `Ask about ${projectContext.projectTitle}: Який стек технологій використовувався?`,
+            `Ask about ${projectContext.projectTitle}: Які основні функції реалізовано?`,
+            `Ask about ${projectContext.projectTitle}: Розкажи про архітектуру проєкту.`,
+          ]
+        : [
+            `Ask about ${projectContext.projectTitle}: What tech stack was used?`,
+            `Ask about ${projectContext.projectTitle}: What were the main features?`,
+            `Ask about ${projectContext.projectTitle}: Tell me about the architecture.`,
+          ]
     : []
 
   // We only show suggestions that haven't been clicked or just show a subset of FAQs that fit in horizontal bar
