@@ -20,7 +20,6 @@ import { Project, TechnologyItem } from './projects/project-types'
 import { useLanguage } from '../contexts/LanguageContext'
 import { projectRegistry } from '../lib/projectRegistry'
 import ProjectChatTrigger from './ProjectChatTrigger'
-import ChatModal from './ChatModal'
 
 interface ProjectDetailProps {
   projectId?: number
@@ -1035,7 +1034,6 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
           ></div>
         </div>
       )}
-      <ChatModal />
     </div>
   )
 }

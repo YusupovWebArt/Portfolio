@@ -11,6 +11,7 @@ import Header from '../../src/components/Header'
 import Footer from '../../src/components/Footer'
 import ConsentBanner from '../../src/components/ConsentBanner'
 import ScrollToTopButton from '../../src/components/ScrollToTopButton'
+import ChatModal from '../../src/components/ChatModal'
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://yusupovartur.com'),
@@ -41,6 +42,7 @@ export default async function RootLocaleLayout({
           <Footer />
           <ConsentBanner />
           <ScrollToTopButton />
+          <ChatModal />
         </Providers>
       </body>
     </html>

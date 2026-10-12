@@ -1,145 +1,181 @@
 'use client'
 
-import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
-import { initGoogleAnalytics, purgeAnalyticsCookies } from '../lib/analytics';
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  useCallback,
+  useSyncExternalStore,
+} from 'react'
+import { initGoogleAnalytics, purgeAnalyticsCookies } from '../lib/analytics'
 
-export type ConsentStatus = 'granted' | 'denied' | 'undecided';
+export type ConsentStatus = 'granted' | 'denied' | 'undecided'
 
 export interface ConsentRecord {
-  status: 'granted' | 'denied';
-  timestamp: number;
-  policyVersion: string;
+  status: 'granted' | 'denied'
+  timestamp: number
+  policyVersion: string
 }
 
-export const CURRENT_POLICY_VERSION = '1.0';
-export const CONSENT_STORAGE_KEY = 'cookie_consent';
+export const CURRENT_POLICY_VERSION = '1.0'
+export const CONSENT_STORAGE_KEY = 'cookie_consent'
 // 24 months (in milliseconds) as recommended by European DPA (AEPD/GDPR)
-export const MAX_CONSENT_AGE_MS = 24 * 30 * 24 * 60 * 60 * 1000;
+export const MAX_CONSENT_AGE_MS = 24 * 30 * 24 * 60 * 60 * 1000
 
 export interface ConsentContextType {
-  status: ConsentStatus;
-  isBannerOpen: boolean;
-  isPolicyModalOpen: boolean;
-  acceptCookies: () => void;
-  declineCookies: () => void;
-  openSettings: () => void;
-  openPolicyModal: () => void;
-  closePolicyModal: () => void;
+  status: ConsentStatus
+  isBannerOpen: boolean
+  isPolicyModalOpen: boolean
+  acceptCookies: () => void
+  declineCookies: () => void
+  openSettings: () => void
+  openPolicyModal: () => void
+  closePolicyModal: () => void
 }
 
-const ConsentContext = createContext<ConsentContextType | undefined>(undefined);
+const ConsentContext = createContext<ConsentContextType | undefined>(undefined)
 
 // eslint-disable-next-line react-refresh/only-export-components
 export const useConsent = (): ConsentContextType => {
-  const context = useContext(ConsentContext);
+  const context = useContext(ConsentContext)
   if (!context) {
-    throw new Error('useConsent must be used within a ConsentProvider');
+    throw new Error('useConsent must be used within a ConsentProvider')
   }
-  return context;
-};
+  return context
+}
 
-function getInitialConsentRecord(): ConsentRecord | null {
-  if (typeof window === 'undefined') return null;
-  try {
-    const stored = localStorage.getItem(CONSENT_STORAGE_KEY);
-    if (!stored) return null;
-    const parsed: ConsentRecord = JSON.parse(stored);
-    const isExpired = Date.now() - parsed.timestamp > MAX_CONSENT_AGE_MS;
-    const isOutdatedVersion = parsed.policyVersion !== CURRENT_POLICY_VERSION;
-    if (isExpired || isOutdatedVersion) return null;
-    return parsed;
-  } catch {
-    return null;
+// Global subscriber set for cross-component consent state synchronization
+const consentListeners = new Set<() => void>()
+
+function subscribeConsent(callback: () => void) {
+  consentListeners.add(callback)
+  if (typeof window !== 'undefined') {
+    window.addEventListener('storage', callback)
+  }
+  return () => {
+    consentListeners.delete(callback)
+    if (typeof window !== 'undefined') {
+      window.removeEventListener('storage', callback)
+    }
   }
 }
 
-export const ConsentProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [status, setStatus] = useState<ConsentStatus>(() => {
-    const record = getInitialConsentRecord();
-    return record ? record.status : 'undecided';
-  });
-  const [isBannerOpen, setIsBannerOpen] = useState<boolean>(() => {
-    const record = getInitialConsentRecord();
-    return !record;
-  });
-  const [isPolicyModalOpen, setIsPolicyModalOpen] = useState<boolean>(false);
-
-  // Sync on client mount to handle SSR vs client discrepancy
-  useEffect(() => {
-    const record = getInitialConsentRecord();
-    if (record) {
-      const timer = setTimeout(() => {
-        setStatus(record.status);
-        setIsBannerOpen(false);
-      }, 0);
-      return () => clearTimeout(timer);
+function notifyConsentChange() {
+  consentListeners.forEach((listener) => {
+    try {
+      listener()
+    } catch {
+      // Safe listener execution
     }
-  }, []);
+  })
+}
+
+function getStoredConsentString(): string {
+  if (typeof window === 'undefined') return ''
+  try {
+    return localStorage.getItem(CONSENT_STORAGE_KEY) || ''
+  } catch {
+    return ''
+  }
+}
+
+function parseConsentRecord(stored: string): ConsentRecord | null {
+  if (!stored) return null
+  try {
+    const parsed: ConsentRecord = JSON.parse(stored)
+    const isExpired = Date.now() - parsed.timestamp > MAX_CONSENT_AGE_MS
+    const isOutdatedVersion = parsed.policyVersion !== CURRENT_POLICY_VERSION
+    if (isExpired || isOutdatedVersion) return null
+    return parsed
+  } catch {
+    return null
+  }
+}
+
+export const ConsentProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
+  // Sync with localStorage via useSyncExternalStore without hydration mismatches
+  const rawStorage = useSyncExternalStore(
+    subscribeConsent,
+    getStoredConsentString,
+    () => '', // server snapshot
+  )
+
+  const activeRecord = parseConsentRecord(rawStorage)
+  const status: ConsentStatus = activeRecord ? activeRecord.status : 'undecided'
+
+  const [isSettingsOpen, setIsSettingsOpen] = useState<boolean>(false)
+  const [isPolicyModalOpen, setIsPolicyModalOpen] = useState<boolean>(false)
+
+  // Banner is open if user opened settings OR if no valid consent record exists
+  const isBannerOpen = isSettingsOpen || !activeRecord
 
   // Synchronize analytics loader based on status
   useEffect(() => {
     try {
       if (status === 'granted') {
-        initGoogleAnalytics();
+        initGoogleAnalytics()
       } else if (status === 'denied') {
-        purgeAnalyticsCookies();
+        purgeAnalyticsCookies()
       }
     } catch {
       // Ignore analytics loader errors
     }
-  }, [status]);
+  }, [status])
 
   const acceptCookies = useCallback(() => {
     const record: ConsentRecord = {
       status: 'granted',
       timestamp: Date.now(),
       policyVersion: CURRENT_POLICY_VERSION,
-    };
+    }
     try {
-      localStorage.setItem(CONSENT_STORAGE_KEY, JSON.stringify(record));
+      localStorage.setItem(CONSENT_STORAGE_KEY, JSON.stringify(record))
     } catch {
       // Storage unavailable fallback
     }
-    setStatus('granted');
-    setIsBannerOpen(false);
+    setIsSettingsOpen(false)
+    notifyConsentChange()
     try {
-      initGoogleAnalytics();
+      initGoogleAnalytics()
     } catch {
       // Analytics error should not block UI state
     }
-  }, []);
+  }, [])
 
   const declineCookies = useCallback(() => {
     const record: ConsentRecord = {
       status: 'denied',
       timestamp: Date.now(),
       policyVersion: CURRENT_POLICY_VERSION,
-    };
+    }
     try {
-      localStorage.setItem(CONSENT_STORAGE_KEY, JSON.stringify(record));
+      localStorage.setItem(CONSENT_STORAGE_KEY, JSON.stringify(record))
     } catch {
       // Storage unavailable fallback
     }
-    setStatus('denied');
-    setIsBannerOpen(false);
+    setIsSettingsOpen(false)
+    notifyConsentChange()
     try {
-      purgeAnalyticsCookies();
+      purgeAnalyticsCookies()
     } catch {
       // Analytics purge error should not block UI state
     }
-  }, []);
+  }, [])
 
   const openSettings = useCallback(() => {
-    setIsBannerOpen(true);
-  }, []);
+    setIsSettingsOpen(true)
+  }, [])
 
   const openPolicyModal = useCallback(() => {
-    setIsPolicyModalOpen(true);
-  }, []);
+    setIsPolicyModalOpen(true)
+  }, [])
 
   const closePolicyModal = useCallback(() => {
-    setIsPolicyModalOpen(false);
-  }, []);
+    setIsPolicyModalOpen(false)
+  }, [])
 
   return (
     <ConsentContext.Provider
@@ -156,5 +192,5 @@ export const ConsentProvider: React.FC<{ children: React.ReactNode }> = ({ child
     >
       {children}
     </ConsentContext.Provider>
-  );
-};
+  )
+}

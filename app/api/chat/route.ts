@@ -79,11 +79,19 @@ export async function POST(req: Request) {
 
     // Offline / testing fallback if OPENAI_API_KEY is not configured
     if (!process.env.OPENAI_API_KEY) {
-      const topSnippet =
-        retrievedChunks[0]?.snippet ||
-        'Artur Yusupov is a Fullstack WordPress Developer and Next.js / React Engineer with 5+ years of commercial experience.'
-
-      const mockResponse = `I am Artur's AI engineering assistant. Based on Artur's verified portfolio: ${topSnippet}`
+      let mockResponse = ''
+      if (projectTitle && retrievedChunks.length > 0) {
+        const matchingChunk =
+          retrievedChunks.find((c) =>
+            c.title.toLowerCase().includes(projectTitle.toLowerCase()),
+          ) || retrievedChunks[0]
+        mockResponse = `I am Artur's AI engineering assistant.\n\nProject: ${projectTitle}\nOverview: ${matchingChunk.snippet}\n\n(Live generative dialogue will be activated once OPENAI_API_KEY is configured in Vercel Environment Variables).`
+      } else {
+        const topSnippet =
+          retrievedChunks[0]?.snippet ||
+          'Artur Yusupov is a Fullstack WordPress Developer and Next.js / React Engineer with 5+ years of commercial experience.'
+        mockResponse = `I am Artur's AI engineering assistant. Based on Artur's verified portfolio:\n${topSnippet}\n\n(Live generative dialogue will be activated once OPENAI_API_KEY is configured in Vercel Environment Variables).`
+      }
 
       return new Response(mockResponse, {
         status: 200,
