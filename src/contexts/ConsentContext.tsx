@@ -64,12 +64,28 @@ export const ConsentProvider: React.FC<{ children: React.ReactNode }> = ({ child
   });
   const [isPolicyModalOpen, setIsPolicyModalOpen] = useState<boolean>(false);
 
+  // Sync on client mount to handle SSR vs client discrepancy
+  useEffect(() => {
+    const record = getInitialConsentRecord();
+    if (record) {
+      const timer = setTimeout(() => {
+        setStatus(record.status);
+        setIsBannerOpen(false);
+      }, 0);
+      return () => clearTimeout(timer);
+    }
+  }, []);
+
   // Synchronize analytics loader based on status
   useEffect(() => {
-    if (status === 'granted') {
-      initGoogleAnalytics();
-    } else if (status === 'denied') {
-      purgeAnalyticsCookies();
+    try {
+      if (status === 'granted') {
+        initGoogleAnalytics();
+      } else if (status === 'denied') {
+        purgeAnalyticsCookies();
+      }
+    } catch {
+      // Ignore analytics loader errors
     }
   }, [status]);
 
@@ -86,7 +102,11 @@ export const ConsentProvider: React.FC<{ children: React.ReactNode }> = ({ child
     }
     setStatus('granted');
     setIsBannerOpen(false);
-    initGoogleAnalytics();
+    try {
+      initGoogleAnalytics();
+    } catch {
+      // Analytics error should not block UI state
+    }
   }, []);
 
   const declineCookies = useCallback(() => {
@@ -102,7 +122,11 @@ export const ConsentProvider: React.FC<{ children: React.ReactNode }> = ({ child
     }
     setStatus('denied');
     setIsBannerOpen(false);
-    purgeAnalyticsCookies();
+    try {
+      purgeAnalyticsCookies();
+    } catch {
+      // Analytics purge error should not block UI state
+    }
   }, []);
 
   const openSettings = useCallback(() => {

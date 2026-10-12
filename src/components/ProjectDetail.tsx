@@ -1,3 +1,5 @@
+'use client'
+
 import React, {
   useState,
   useEffect,
@@ -16,20 +18,21 @@ import {
 } from 'lucide-react'
 import { Project, TechnologyItem } from './projects/project-types'
 import { useLanguage } from '../contexts/LanguageContext'
+import { projectRegistry } from '../lib/projectRegistry'
+import ProjectChatTrigger from './ProjectChatTrigger'
+import ChatModal from './ChatModal'
 
 interface ProjectDetailProps {
-  projectId: number
-  onBack: () => void
+  projectId?: number
+  slug?: string
+  initialProject?: Project
+  onBack?: () => void
 }
 
-// Автоматический импорт всех проектов
-const projectModules = import.meta.glob<{ default: Project }>(
-  './projects/*/*.tsx',
-  { eager: true },
-)
-const projects: Project[] = Object.values(projectModules).map(
-  (mod) => mod.default,
-)
+const projects: Project[] = projectRegistry.map((item) => item.project)
+
+const useIsomorphicLayoutEffect =
+  typeof window !== 'undefined' ? useLayoutEffect : useEffect
 
 const getTechFull = (tech: TechnologyItem): string =>
   typeof tech === 'string' ? tech : tech.full || tech.short
@@ -45,7 +48,12 @@ function metricValueClass(accent?: 'green' | 'darkGreen' | 'neutral') {
   }
 }
 
-const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
+const ProjectDetail: React.FC<ProjectDetailProps> = ({
+  projectId,
+  slug,
+  initialProject,
+  onBack,
+}) => {
   const { lang, t } = useLanguage()
   const pr = t.projects
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
@@ -120,7 +128,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
     }
   }, [projectId, updateThumbScrollState])
 
-  /** Только горизонталь внутри ленты — scrollIntoView тянул весь document и уводил вниз к блоку со стеком. */
+  /** Только горизонталь внутри ленты - scrollIntoView тянул весь document и уводил вниз к блоку со стеком. */
   const scrollActiveThumbHorizontal = useCallback(() => {
     const container = thumbnailScrollRef.current
     if (!container) return
@@ -140,16 +148,28 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
   useEffect(() => {
     const id = requestAnimationFrame(() => scrollActiveThumbHorizontal())
     return () => cancelAnimationFrame(id)
-  }, [currentImageIndex, projectId, scrollActiveThumbHorizontal])
+  }, [currentImageIndex, projectId, slug, scrollActiveThumbHorizontal])
 
-  // Сразу вверх без smooth — иначе scrollIntoView/предыдущая позиция страницы конфликтуют с прокруткой к заголовку
-  useLayoutEffect(() => {
+  // Scroll immediately to top on project mount
+  useIsomorphicLayoutEffect(() => {
     window.scrollTo(0, 0)
     const strip = thumbnailScrollRef.current
     if (strip) strip.scrollLeft = 0
-  }, [projectId])
+  }, [projectId, slug])
 
-  const project = projects.find((p) => p.id === projectId)
+  const defaultOnBack = useCallback(() => {
+    if (typeof window !== 'undefined') {
+      window.location.assign(`/${lang}#projects`)
+    }
+  }, [lang])
+
+  const handleBack = onBack || defaultOnBack
+
+  const project =
+    initialProject ||
+    (slug
+      ? projectRegistry.find((p) => p.slug === slug.toLowerCase())?.project
+      : projects.find((p) => p.id === projectId))
 
   if (!project) {
     return (
@@ -159,7 +179,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
             Project not found
           </h2>
           <button
-            onClick={onBack}
+            onClick={handleBack}
             className="px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
             type="button"
           >
@@ -224,11 +244,26 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
 
   return (
     <div className="max-w-7xl mx-auto px-2 md:px-8 pt-24 pb-10">
-      {/* Отступ pt-24 — под фиксированный Header (h-16), иначе кнопка оказывается под шапкой */}
+      {/* Breadcrumb Navigation */}
+      <nav aria-label="Breadcrumb" className="mb-4 flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400">
+        <a href={`/${lang}`} className="hover:text-purple-600 dark:hover:text-lime-400 transition-colors">
+          {lang === 'ua' ? 'Головна' : lang === 'es' ? 'Inicio' : 'Home'}
+        </a>
+        <span>/</span>
+        <a href={`/${lang}#projects`} className="hover:text-purple-600 dark:hover:text-lime-400 transition-colors">
+          {lang === 'ua' ? 'Проєкти' : lang === 'es' ? 'Proyectos' : 'Projects'}
+        </a>
+        <span>/</span>
+        <span className="font-semibold text-slate-800 dark:text-slate-200 truncate max-w-[200px] sm:max-w-none">
+          {project.title}
+        </span>
+      </nav>
+
+      {/* Back button */}
       <button
-        onClick={onBack}
+        onClick={handleBack}
         type="button"
-        className="mb-6 md:mb-8 flex w-full items-center justify-start gap-2 text-left text-sm sm:text-base font-semibold text-purple-600 dark:text-lime-400 hover:text-purple-700 dark:hover:text-lime-300 transition-colors"
+        className="mb-6 md:mb-8 flex w-full items-center justify-start gap-2 text-left text-sm sm:text-base font-semibold text-purple-600 dark:text-lime-400 hover:text-purple-700 dark:hover:text-lime-300 transition-colors cursor-pointer"
       >
         <ArrowLeft className="h-5 w-5 shrink-0" aria-hidden />
         <span>{pr.backToProjects}</span>
@@ -411,12 +446,16 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
                   <Eye className="w-4 h-4" aria-hidden />
                 </button>
               )}
+              <ProjectChatTrigger
+                projectSlug={slug || project.title.toLowerCase().replace(/\s+/g, '-')}
+                projectTitle={project.title}
+              />
             </div>
           </div>
         </div>
       </section>
 
-      {/* Секция: Technical Stack / Key Features — табы */}
+      {/* Секция: Technical Stack / Key Features - табы */}
       <section className="mt-12">
         <div className="overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-sm dark:border-slate-600 dark:bg-slate-700">
           <div
@@ -996,6 +1035,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({ projectId, onBack }) => {
           ></div>
         </div>
       )}
+      <ChatModal />
     </div>
   )
 }
