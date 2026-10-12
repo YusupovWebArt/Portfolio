@@ -22,8 +22,8 @@ export const es: Translation = {
   },
   hero: {
     elevatorPitch:
-      'Desarrollo arquitecturas Headless WordPress & Jamstack y aplicaciones modernas con React/Next.js, siguiendo un flujo de trabajo disciplinado Test-Driven (TDD) y Spec-Driven AI, optimizado para Core Web Vitals de carga instantánea y optimización en motores generativos (GEO).',
-    ctaPrimary: 'Chat con Artur AI',
+      'Desarrollo arquitecturas Headless WordPress & Jamstack, aplicaciones modernas con React/Next.js y asistentes de IA con arquitectura Hybrid RAG, siguiendo un flujo de trabajo disciplinado Test-Driven (TDD) y Spec-Driven AI, optimizado para Core Web Vitals de carga instantánea y optimización en motores generativos (GEO).',
+    ctaPrimary: 'Chat con Asistente RAG IA',
     ctaSecondary: 'Descargar CV',
   },
   about: {
@@ -32,7 +32,7 @@ export const es: Translation = {
     myJourney: 'Mi trayectoria',
     bio: {
       p1: 'Soy un ingeniero web Fullstack orientado a resultados con más de 5 años de experiencia en el desarrollo, escalado y optimización técnica de plataformas de alta carga, con una profunda especialización arquitectónica en WordPress. Mi experiencia se sitúa en la intersección de los ecosistemas frontend modernos (React, Next.js) y la ingeniería empresarial de WordPress - desde arquitecturas PHP 8+ personalizadas y desarrollo seguro de plugins hasta configuraciones Headless CMS de alto rendimiento y optimización profunda del rendimiento.',
-      p2: 'Mi principal ventaja competitiva es una sofisticada filosofía de ingeniería centrada en la IA. En lugar de tratar la IA como un simple asistente de código, integro sistemáticamente sistemas de próxima generación - incluyendo Claude Code, Cursor y Google Antigravity - directamente en el ciclo de vida del desarrollo de software (SDLC), siguiendo una metodología de Desarrollo Orientado a Especificaciones (SDD): primero defino la especificación técnica y luego la IA implementa y verifica contra ella en lugar de improvisar. Utilizo ampliamente la IA para automatizar flujos de trabajo de desarrollo complejos y realizar investigaciones técnicas profundas. Al combinar mi experiencia arquitectónica práctica con el desarrollo potenciado por IA, acelero refactorizaciones complejas, automatizo pruebas de regresión y comprimo drásticamente el tiempo de comercialización - todo ello manteniendo una estricta calidad del código, seguridad e integridad arquitectónica.',
+      p2: 'Mi principal ventaja competitiva es una sofisticada filosofía de ingeniería centrada en la IA. En lugar de tratar la IA como un simple asistente de código, integro sistemáticamente sistemas de próxima generación - incluyendo Claude Code, Cursor, Google Antigravity y pipelines personalizados de Retrieval-Augmented Generation (RAG) - directamente en el ciclo de vida del desarrollo de software (SDLC), siguiendo una metodología de Desarrollo Orientado a Especificaciones (SDD): primero defino la especificación técnica y luego la IA implementa y verifica contra ella en lugar de improvisar. Utilizo ampliamente la IA para crear asistentes RAG contextuales, automatizar flujos de trabajo de desarrollo complejos y realizar investigaciones técnicas profundas. Al combinar mi experiencia arquitectónica práctica con el desarrollo potenciado por IA, acelero refactorizaciones complejas, automatizo pruebas de regresión y comprimo drásticamente el tiempo de comercialización - todo ello manteniendo una estricta calidad del código, seguridad e integridad arquitectónica.',
       p3: 'Más allá del desarrollo principal, aplico activamente este marco de trabajo centrado en la IA al aprendizaje continuo y la gestión del conocimiento. Utilizo herramientas avanzadas como Gemini Notebook para sintetizar documentación técnica compleja y acelerar la investigación. Para consolidar este conocimiento, desarrollo mis propias aplicaciones educativas y de utilidad. Este ciclo continuo de investigación automatizada, prototipado rápido y desarrollo de aplicaciones autodidacta me permite dominar nuevas tecnologías a un ritmo sin precedentes y aportar constantemente soluciones de vanguardia a los equipos con los que trabajo.',
     },
     stats: {
@@ -48,7 +48,7 @@ export const es: Translation = {
       ],
       appTitle: 'Desarrollo de aplicaciones',
       appPoints: [
-        'React 19 y Next.js 15+ listo para producción (TypeScript)',
+        'React 19 y Next.js 16 listo para producción (TypeScript)',
         'Renderizado rápido mediante patrones Streaming y Suspense',
         'Cumplimiento estricto de accesibilidad WCAG 2.2',
       ],
@@ -58,11 +58,11 @@ export const es: Translation = {
         'Esquemas JSON-LD avanzados y auditoría de Core Web Vitals',
         'Implementaciones de seguimiento del lado del servidor (sGTM)',
       ],
-      aiTitle: 'Desarrollo potenciado por IA',
+      aiTitle: 'Ingeniería IA y RAG',
       aiPoints: [
+        'Pipelines Hybrid RAG personalizados y asistentes de IA contextuales',
         'Velocidad de desarrollo 3x con Claude Code y Cursor',
-        'Ejecución de Spec-Driven AI Harnessing & SDD',
-        'Análisis automatizado riguroso y pruebas de regresión',
+        'Ejecución de Spec-Driven AI Harnessing (SDD) y pruebas TDD',
       ],
     },
     photoCaption: {
@@ -85,8 +85,8 @@ export const es: Translation = {
             text: 'Implementación de patrones SSR de alto rendimiento y conexiones headless.',
           },
           ai: {
-            label: 'AI SDLC Integration:',
-            text: 'Diseño de flujos de trabajo Spec-Driven utilizando Claude Code, Antigravity y MCP.',
+            label: 'RAG & AI SDLC Integration:',
+            text: 'Diseño de motores de conocimiento Hybrid RAG y flujos Spec-Driven con Claude Code, Antigravity y MCP.',
           },
         },
       },
@@ -403,9 +403,9 @@ export const es: Translation = {
               'Integración de sistemas de próxima generación (Claude Code, Cursor, Google Antigravity) directamente en el SDLC. Aplicación de una metodología estricta de Spec-Driven Development (SDD): primero se definen las especificaciones técnicas y luego la IA escribe y verifica el código contra ellas, en lugar de improvisar. Se logra hasta 3x de velocidad de desarrollo en tareas rutinarias y de maquetación.',
           },
           {
-            name: 'Context y MCP Engineering',
+            name: 'Arquitectura RAG y Context Engineering',
             description:
-              'Definición de reglas estrictas del espacio de trabajo (AGENTS.md) y especificaciones de referencia (DESIGN_SYSTEM.md, SECURITY.md, ARCHITECTURE.md). Uso del Model Context Protocol (MCP) e instrucciones personalizadas para conectar herramientas de IA a entornos locales, utilidades de búsqueda y directorios del sistema de archivos, evitando la deriva de sesión y manteniendo la integridad arquitectónica.',
+              'Diseño de pipelines Hybrid RAG (Retrieval-Augmented Generation) personalizados con puntuación léxica y vectorial, priorización contextual y barreras contra alucinaciones. Uso del Model Context Protocol (MCP) y especificaciones estrictas (AGENTS.md, DESIGN_SYSTEM.md, SECURITY.md) para mantener los sistemas de IA anclados en datos verificados.',
           },
           {
             name: 'Ejecución agéntica multifichero',
@@ -582,11 +582,11 @@ export const es: Translation = {
           benefit: 'Menor coste publicitario y cero fuga de clientes móviles por lentitud.',
         },
         {
-          title: 'Integración de IA y Automatización',
-          subtitle: 'Asistentes Virtuales 24/7 y Reservas Directas',
-          body: 'Implementamos asistentes virtuales de Inteligencia Artificial y widgets de reserva directa (WhatsApp / Doctoralia). Tu web atiende dudas y registra citas las 24 horas del día sin intervención humana.',
+          title: 'Asistentes IA con RAG y Automatización',
+          subtitle: 'Asistentes Contextuales 24/7 y Reservas Directas',
+          body: 'Implementamos asistentes virtuales de IA con arquitectura RAG entrenados con el catálogo real de servicios y tarifas de tu negocio (cero alucinaciones), junto con widgets de reserva directa (WhatsApp / Doctoralia) 24/7.',
           benefitLabel: 'Beneficio Clave para Tu Negocio',
-          benefit: 'Captación automática de clientes 24/7 y respuesta inmediata.',
+          benefit: 'Captación automática de clientes 24/7 y calificación precisa con RAG.',
         },
         {
           title: 'SEO Local y Búsqueda con IA',
@@ -630,11 +630,11 @@ export const es: Translation = {
           benefit: 'Entregables de alto rendimiento que elevan el prestigio de tu agencia.',
         },
         {
-          title: 'Soluciones de IA para los Clientes de tu Agencia',
+          title: 'Soluciones RAG e IA para Clientes de tu Agencia',
           subtitle: 'Nueva Oferta de Servicios de Alto Margen',
-          body: 'Añade la integración de asistentes de IA al catálogo de tu agencia. Creamos chatbots personalizados y herramientas de automatización de leads para tus clientes, aumentando tu ticket medio.',
+          body: 'Añade asistentes de IA con arquitectura RAG al catálogo de tu agencia. Creamos chatbots basados en los datos reales de tus clientes y herramientas de automatización de leads, aumentando tu ticket medio.',
           benefitLabel: 'Beneficio para Tu Agencia',
-          benefit: 'Amplía tu catálogo con servicios innovadores de alta rentabilidad.',
+          benefit: 'Amplía tu catálogo con servicios RAG IA innovadores de alta rentabilidad.',
         },
         {
           title: 'Auditoría Técnica y Core Web Vitals',
@@ -646,7 +646,7 @@ export const es: Translation = {
         {
           title: 'Modelos de Colaboración Flexibles y Presupuestos Rápidos',
           subtitle: 'Protección de Márgenes de Beneficio',
-          body: 'Flexibilidad total de trabajo (bolsas de horas, proyectos a precio cerrado o colaboración continuada por sprints) con estimaciones de presupuesto entregadas en 24–48 horas.',
+          body: 'Flexibilidad total de trabajo (bolsas de horas, proyectos a precio cerrado o colaboración continuada por sprints) con estimaciones de presupuesto entregadas en 24-48 horas.',
           benefitLabel: 'Beneficio para Tu Agencia',
           benefit: 'Modelos adaptables y costes predecibles diseñados para proteger tus márgenes.',
         },
@@ -660,7 +660,7 @@ export const es: Translation = {
       highlight: 'extraordinario',
     },
     description:
-      '¿Listo para dar vida a su proyecto? Elija un canal de comunicación a continuación o pruebe mi asistente virtual para obtener respuestas rápidas.',
+      '¿Listo para dar vida a su proyecto? Elija un canal de comunicación a continuación o pruebe mi asistente Hybrid RAG IA entrenado con los 70 proyectos del portfolio.',
     directChannels: 'Canales directos',
     followCredentials: 'Redes sociales y perfiles',
     contactTags: {
@@ -669,15 +669,15 @@ export const es: Translation = {
       telegram: 'Mensajería asíncrona rápida',
     },
     chatbot: {
-      title: 'Consola AI Assistant',
+      title: 'Consola RAG AI Assistant',
       placeholder: 'Escriba su pregunta...',
       clearButton: 'Limpiar',
       sendButton: 'Enviar',
-      welcomeMessage: '¡Hola! Soy el asistente de IA de Artur. 🤖 Pregúnteme sobre su experiencia, habilidades, stack tecnológico o seleccione una de las preguntas sugeridas a continuación.',
-      assistantName: 'Asistente de Artur',
-      liveConsole: 'Consola en vivo',
+      welcomeMessage: '¡Hola! Soy el asistente de IA de Artur impulsado por un motor Hybrid RAG propio. 🤖 He indexado los 70 casos de estudio del portfolio, arquitecturas y stacks tecnológicos. ¡Pregúnteme sobre cualquier proyecto, habilidad o experiencia!',
+      assistantName: 'Asistente RAG IA de Artur',
+      liveConsole: 'Hybrid RAG · 70 proyectos indexados',
       faqHeader: 'Preguntas frecuentes',
-      online: 'En línea',
+      online: 'EN LÍNEA · Hybrid RAG · 70 Proyectos',
     },
   },
   footer: {

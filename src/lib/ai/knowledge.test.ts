@@ -7,13 +7,13 @@ import {
 } from './knowledge'
 
 describe('RAG Knowledge Base Specification (TDD)', () => {
-  it('should load structured knowledge base containing exactly 69 project case studies', () => {
+  it('should load structured knowledge base containing all 70 project case studies', () => {
     const kb = loadKnowledgeBase()
 
     expect(kb).toBeDefined()
     expect(kb.version).toBeDefined()
     expect(kb.author.name).toBe('Artur Yusupov')
-    expect(kb.projects).toHaveLength(69)
+    expect(kb.projects).toHaveLength(70)
   })
 
   it('should contain valid schema for all project knowledge chunks', () => {

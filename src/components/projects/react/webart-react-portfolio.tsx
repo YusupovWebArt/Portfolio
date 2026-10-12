@@ -192,17 +192,17 @@ const webartReactPortfolio: Project = {
     {
       title: 'Trilingual i18n Engine & Locale Persistence',
       description:
-        'Full support for English, Ukrainian, and Spanish across all site sections, interactive chatbot FAQs, and 69 project case studies, complete with custom SVG flags, browser auto-detection, and document lang mutation.',
+        'Full support for English, Ukrainian, and Spanish across all site sections, interactive chatbot FAQs, and 70 project case studies, complete with custom SVG flags, browser auto-detection, and document lang mutation.',
     },
     {
-      title: 'Interactive Multilingual AI FAQ Chatbot',
+      title: 'Interactive Multilingual AI & RAG-Ready Chatbot',
       description:
-        'Client-side virtual assistant powered by localized keyword matching algorithms, serving instantaneous responses in English, Ukrainian, and Spanish with interactive suggestion chips and zero external API dependencies.',
+        'Virtual assistant powered by localized keyword matching and Hybrid RAG knowledge indexing, serving instantaneous responses in English, Ukrainian, and Spanish with interactive suggestion chips and zero external API dependencies.',
     },
     {
       title: '10-Step CI/CD Quality Pipeline with pnpm verify',
       description:
-        'Robust GitHub Actions deployment pipeline executing TypeScript type verification, ESLint guardrails, 29 Vitest specs, SCA security audit, bundle build, bundle budget verification, Playwright browser a11y tests, and Lighthouse CI before deploying to GitHub Pages.',
+        'Robust GitHub Actions deployment pipeline executing TypeScript type verification, ESLint guardrails, Vitest specs, SCA security audit, bundle build, bundle budget verification, Playwright browser a11y tests, and Lighthouse CI before deploying to GitHub Pages.',
     },
     {
       title: 'Base64 Contact Obfuscation & Hardened CSP',
@@ -210,9 +210,9 @@ const webartReactPortfolio: Project = {
         'Protects developer email, phone, and messaging links via client-side Base64 encryption and interaction-based decryption to defeat automated scrapers, backed by sandboxed Content Security Policy meta headers and contacts.test.ts scanner.',
     },
     {
-      title: 'Filterable 69-Project Showcase Grid',
+      title: 'Filterable 70-Project Showcase Grid',
       description:
-        '69 commercial and architectural projects displayed in a responsive card grid with multi-category filters, full screenshots, tech stacks, and comprehensive modal case studies.',
+        '70 commercial and architectural projects (WordPress, Next.js, React, Shopify, Wix, Static, JS, and CMS platforms) displayed in a responsive card grid with multi-category filters, full screenshots, tech stacks, and comprehensive case studies.',
     },
     {
       title: 'Synchronized Dark & Light Theme System',

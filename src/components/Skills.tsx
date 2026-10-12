@@ -132,6 +132,9 @@ const Skills = () => {
       description:
         sk.categories.ai.description,
       technologies: [
+        'RAG (Retrieval-Augmented Generation) Pipelines',
+        'Hybrid Vector & Lexical Search Engines',
+        'Vercel AI SDK & Streaming Route Handlers',
         'Claude Code & Google Antigravity',
         'Cursor AI IDE & Composer Workspaces',
         'AI Agent Harnessing & SDD',

@@ -12,6 +12,7 @@ export type Message = {
   id: string
   from: 'user' | 'bot'
   text: string
+  source?: string
   timestamp?: Date
   projects?: {
     slug: string
@@ -31,11 +32,11 @@ export const FAQ: FaqItem[] = [
     questionEs: '¿Quién es Artur? / Háblame de ti',
     keywords: ['who is', 'who are you', 'about artur', 'about yourself', 'bio', 'yourself', 'introduce', 'artur', 'кто', 'артур', 'о себе', 'расскажи', 'хто', 'розкажи', 'про себе', 'хто такий', 'quién', 'sobre ti', 'sobre artur', 'preséntate'],
     answer:
-      'Artur Yusupov is a Fullstack WordPress Developer and React/Next.js Engineer with over 5+ years of professional experience. Currently based in Seville, Spain, he specializes in high-performance web engineering, custom themes/plugins, and AI-augmented development.',
+      'Artur Yusupov is a Fullstack WordPress Developer and React/Next.js Engineer with over 5+ years of professional experience. Currently based in Seville, Spain, he specializes in high-performance web engineering, custom themes/plugins, Hybrid RAG AI assistants, and Spec-Driven AI development.',
     answerUa:
-      'Артур Юсупов - Fullstack WordPress-розробник та React/Next.js інженер із понад 5 роками професійного досвіду. Зараз проживає в Севільї (Іспанія) та спеціалізується на розробці високопродуктивних сайтів, кастомних тем/плагінів та розробці з використанням AI.',
+      'Артур Юсупов - Fullstack WordPress-розробник та React/Next.js інженер із понад 5 роками професійного досвіду. Зараз проживає в Севільї (Іспанія) та спеціалізується на розробці високопродуктивних сайтів, кастомних тем/плагінів, Hybrid RAG AI-асистентів та розробці за методологією SDD.',
     answerEs:
-      'Artur Yusupov es un desarrollador Fullstack de WordPress e ingeniero React/Next.js con más de 5 años de experiencia profesional. Actualmente reside en Sevilla, España, y se especializa en ingeniería web de alto rendimiento, temas y plugins personalizados, y desarrollo potenciado por IA.',
+      'Artur Yusupov es un desarrollador Fullstack de WordPress e ingeniero React/Next.js con más de 5 años de experiencia profesional. Actualmente reside en Sevilla, España, y se especializa en ingeniería web de alto rendimiento, temas y plugins personalizados, asistentes IA con arquitectura Hybrid RAG y desarrollo potenciado por IA.',
   },
   {
     question: 'What technologies do you specialize in?',
@@ -43,11 +44,11 @@ export const FAQ: FaqItem[] = [
     questionEs: '¿En qué tecnologías te especializas?',
     keywords: ['technologies', 'stack', 'specialize', 'skills', 'tools', 'frontend', 'backend', 'технологии', 'стек', 'навыки', 'технології', 'tecnologías', 'habilidades', 'herramientas', 'especializ'],
     answer:
-      'My core stack includes WordPress (custom themes/plugins), React, Next.js, TypeScript, Node.js, and PHP. I am also proficient with Tailwind CSS, REST APIs, and modern AI development tooling.',
+      'My core stack includes WordPress (custom themes/plugins, WooCommerce), React 19, Next.js 16 (App Router), TypeScript, Node.js, and PHP 8+. I also engineer custom Hybrid RAG (Retrieval-Augmented Generation) pipelines, Tailwind CSS interfaces, and REST/GraphQL APIs.',
     answerUa:
-      'Мій основний стек включає WordPress (кастомні теми та плагіни), React, Next.js, TypeScript, Node.js та PHP. Також я вільно володію Tailwind CSS, REST API та сучасними інструментами розробки з AI.',
+      'Мій основний стек включає WordPress (кастомні теми та плагіни, WooCommerce), React 19, Next.js 16 (App Router), TypeScript, Node.js та PHP 8+. Також я проєктую кастомні Hybrid RAG (Retrieval-Augmented Generation) пайплайни, інтерфейси на Tailwind CSS та REST/GraphQL API.',
     answerEs:
-      'Mi stack principal incluye WordPress (temas y plugins personalizados), React, Next.js, TypeScript, Node.js y PHP. También domino Tailwind CSS, REST APIs y las herramientas modernas de desarrollo con IA.',
+      'Mi stack principal incluye WordPress (temas y plugins personalizados, WooCommerce), React 19, Next.js 16 (App Router), TypeScript, Node.js y PHP 8+. También desarrollo pipelines Hybrid RAG (Retrieval-Augmented Generation) personalizados, interfaces con Tailwind CSS y APIs REST/GraphQL.',
   },
   {
     question: 'How many years of development experience do you have?',
@@ -55,11 +56,11 @@ export const FAQ: FaqItem[] = [
     questionEs: '¿Cuántos años de experiencia en desarrollo tienes?',
     keywords: ['years', 'experience', 'develop', 'how long', 'work', 'опыт', 'лет', 'разработке', 'досвід', 'років', 'años', 'experiencia', 'cuántos'],
     answer:
-      'I have over 5+ years of professional experience in web development, working on 50+ completed projects ranging from custom business websites to international enterprise applications (e.g. Agenturro, Frontdeskhelpers).',
+      'I have over 5+ years of professional experience in web development, having delivered 70+ completed projects ranging from custom business websites to international enterprise applications (e.g. IT-Magic, Unitrition, Frontdeskhelpers).',
     answerUa:
-      'Маю понад 5 років професійного досвіду у веб-розробці та 50+ реалізованих проєктів - від кастомних корпоративних сайтів до міжнародних enterprise-проєктів (наприклад, Agenturro, Frontdeskhelpers).',
+      'Маю понад 5 років професійного досвіду у веб-розробці та 70+ реалізованих проєктів - від кастомних корпоративних сайтів до міжнародних enterprise-проєктів (наприклад, IT-Magic, Unitrition, Frontdeskhelpers).',
     answerEs:
-      'Tengo más de 5 años de experiencia profesional en desarrollo web, con más de 50 proyectos completados, desde sitios web corporativos personalizados hasta aplicaciones empresariales internacionales (como Agenturro y Frontdeskhelpers).',
+      'Tengo más de 5 años de experiencia profesional en desarrollo web, con más de 70 proyectos completados, desde sitios web corporativos personalizados hasta aplicaciones empresariales internacionales (como IT-Magic, Unitrition y Frontdeskhelpers).',
   },
   {
     question: 'What projects have you completed? / Tell me about your work',
@@ -67,23 +68,23 @@ export const FAQ: FaqItem[] = [
     questionEs: '¿Qué proyectos has completado? / Cuéntame sobre tu trabajo',
     keywords: ['projects', 'portfolio', 'completed', 'examples', 'websites you made', 'done', 'show me', 'проєкты', 'портфолио', 'работы', 'проєкти', 'proyectos', 'portafolio', 'trabajo', 'ejemplos'],
     answer:
-      'I have launched over 50+ web projects. You can explore some of my featured work in the "Featured Projects" section on this page, including custom WordPress integrations and Next.js applications.',
+      'I have launched 70+ web projects indexed directly in this Hybrid RAG assistant! You can explore them in the "Featured Projects" section or ask me about any specific project (e.g. "Tell me about IT-Magic" or "Unitrition tech stack").',
     answerUa:
-      'Я запустив понад 50+ веб-проєктів. Ви можете переглянути мої вибрані роботи у секції "Вибрані проєкти" на цій сторінці, включаючи кастомні інтеграції WordPress та додатки на Next.js.',
+      'Я запустив понад 70 веб-проєктів, і всі вони проіндексовані прямо в цьому Hybrid RAG асистенті! Ви можете переглянути їх у секції "Вибрані проєкти" або запитати мене про будь-який конкретний проєкт (наприклад, про IT-Magic або Unitrition).',
     answerEs:
-      'He lanzado más de 50 proyectos web. Puede explorar algunos de mis trabajos destacados en la sección "Proyectos destacados" de esta página, incluyendo integraciones personalizadas de WordPress y aplicaciones Next.js.',
+      '¡He lanzado más de 70 proyectos web indexados directamente en este asistente Hybrid RAG! Puede explorarlos en la sección "Proyectos destacados" o preguntarme por cualquier proyecto específico (por ejemplo, IT-Magic o Unitrition).',
   },
   {
-    question: 'How do you use AI in your development workflow?',
-    questionUa: 'Як ви використовуєте AI у розробці?',
-    questionEs: '¿Cómo usas la IA en tu flujo de trabajo de desarrollo?',
-    keywords: ['ai', 'copilot', 'cursor', 'windsurf', 'artificial intelligence', 'agents', 'mcp', 'antigravity', 'ии', 'интеллект', 'нейросети', 'sdd', 'spec', 'спец', 'штучний', 'inteligencia artificial', 'ia', 'flujo', 'workflow'],
+    question: 'How do you use AI & RAG in your workflow?',
+    questionUa: 'Як ви використовуєте AI та RAG у розробці?',
+    questionEs: '¿Cómo usas la IA y RAG en tu flujo de desarrollo?',
+    keywords: ['ai', 'rag', 'retrieval', 'copilot', 'cursor', 'windsurf', 'artificial intelligence', 'agents', 'mcp', 'antigravity', 'ии', 'интеллект', 'нейросети', 'sdd', 'spec', 'спец', 'штучний', 'inteligencia artificial', 'ia', 'flujo', 'workflow'],
     answer:
-      'I systematically integrate next-generation systems (Claude Code, Cursor, Google Antigravity) directly into the SDLC, following a Spec-Driven AI Harnessing (SDD) methodology: defining technical specifications first, then having AI implement and verify against them rather than improvise. I also use Gemini Notebook for research, enabling automated workflows that speed up development by 3x.',
+      'I build custom Hybrid RAG (Retrieval-Augmented Generation) systems - including this very portfolio assistant that indexes 70 case studies with lexical and cosine scoring. In development, I integrate Claude Code, Cursor, and Google Antigravity into a strict Spec-Driven Development (SDD) + TDD pipeline, accelerating delivery by 3x with zero hallucinations.',
     answerUa:
-      'Я системно інтегрую інструменти нового покоління (Claude Code, Cursor, Google Antigravity) у SDLC за методологією Spec-Driven AI Harnessing (SDD): спочатку створюю специфікації, а потім AI реалізує та перевіряє код за ними. Це прискорює розробку у 3 рази.',
+      'Я створюю кастомні системи Hybrid RAG (Retrieval-Augmented Generation) - включно з цим самим асистентом портфоліо, який індексує 70 кейсів із лексичним та косинусним скорингом. У розробці я інтегрую Claude Code, Cursor та Google Antigravity у строгий процес Spec-Driven Development (SDD) + TDD, що прискорює розробку в 3 рази без галюцинацій.',
     answerEs:
-      'Integro sistemáticamente sistemas de próxima generación (Claude Code, Cursor, Google Antigravity) directamente en el SDLC, siguiendo una metodología de Spec-Driven AI Harnessing (SDD): primero defino las especificaciones técnicas y luego la IA implementa y verifica contra ellas. Esto acelera el desarrollo 3 veces.',
+      'Desarrollo sistemas Hybrid RAG (Retrieval-Augmented Generation) personalizados, incluido este mismo asistente de portfolio que indexa 70 casos de estudio mediante puntuación léxica y similitud de coseno. En el desarrollo, integro Claude Code, Cursor y Google Antigravity bajo una metodología Spec-Driven Development (SDD) + TDD que acelera la entrega 3 veces sin alucinaciones.',
   },
   {
     question: 'What services do you offer? / Can I hire you?',
@@ -91,11 +92,11 @@ export const FAQ: FaqItem[] = [
     questionEs: '¿Qué servicios ofreces? / ¿Puedo contratarte?',
     keywords: ['services', 'offer', 'hire', 'rates', 'price', 'freelance', 'contract', 'collaboration', 'услуги', 'нанять', 'цена', 'стоимость', 'работать', 'послуги', 'найняти', 'servicios', 'contratar', 'precio', 'colaboración'],
     answer:
-      'I am fully open to remote full-time, part-time, or contract roles. My services include custom React/Next.js app engineering, custom WordPress architecture (built from scratch), Core Web Vitals optimization, and AI automation.',
+      'I am fully open to remote full-time, part-time, or contract roles. My services include custom React/Next.js 16 app engineering, custom WordPress architecture from scratch, custom RAG AI chatbot development grounded in business data, and Core Web Vitals optimization.',
     answerUa:
-      'Я відкритий до дистанційної роботи (Full-time, Part-time або контракт). Мої послуги включають розробку додатків на React/Next.js, кастомну архітектуру WordPress з нуля, оптимізацію Core Web Vitals та AI-автоматизацію.',
+      'Я відкритий до дистанційної роботи (Full-time, Part-time або контракт). Мої послуги включають розробку додатків на React/Next.js 16, кастомну архітектуру WordPress з нуля, створення RAG AI-чатботів на базі даних вашого бізнесу та оптимізацію Core Web Vitals.',
     answerEs:
-      'Estoy completamente abierto a roles remotos a tiempo completo, parcial o por contrato. Mis servicios incluyen ingeniería de aplicaciones React/Next.js personalizadas, arquitectura WordPress desde cero, optimización de Core Web Vitals y automatización con IA.',
+      'Estoy completamente abierto a roles remotos a tiempo completo, parcial o por contrato. Mis servicios incluyen ingeniería de aplicaciones React/Next.js 16 personalizadas, arquitectura WordPress desde cero, desarrollo de asistentes IA con RAG basados en datos de negocio y optimización de Core Web Vitals.',
   },
   {
     question: 'Can you describe your experience with SEO?',

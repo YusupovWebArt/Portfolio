@@ -32,6 +32,9 @@ const Hero = () => {
             <span className="px-4 py-1.5 text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-purple-600 dark:text-purple-400 bg-purple-500/10 dark:bg-purple-500/10 border border-purple-500/30 dark:border-purple-500/20 rounded-full shadow-sm shadow-purple-500/5">
               TDD &amp; Spec-Driven AI SDLC
             </span>
+            <span className="px-4 py-1.5 text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-amber-600 dark:text-lime-400 bg-amber-500/10 dark:bg-lime-500/10 border border-amber-500/30 dark:border-lime-500/25 rounded-full shadow-sm shadow-amber-500/5">
+              Hybrid RAG &amp; AI Agents
+            </span>
             <span className="px-4 py-1.5 text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 dark:bg-emerald-500/10 border border-emerald-500/30 dark:border-emerald-500/20 rounded-full shadow-sm shadow-emerald-500/5">
               Technical SEO &amp; GEO
             </span>

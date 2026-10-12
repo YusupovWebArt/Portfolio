@@ -32,10 +32,15 @@ export default function ProjectChatTrigger({
       type="button"
       onClick={handleClick}
       aria-label={`Ask AI about ${projectTitle}`}
-      className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl font-medium text-sm sm:text-base bg-purple-600/10 hover:bg-purple-600/20 text-purple-600 dark:text-purple-400 border border-purple-500/30 hover:border-purple-500/50 shadow-sm transition-all duration-200"
+      className="inline-flex w-full items-center justify-between gap-2 px-4 py-3 rounded-xl font-semibold text-sm bg-purple-600/10 hover:bg-purple-600/20 dark:bg-lime-500/10 dark:hover:bg-lime-500/20 text-purple-700 dark:text-lime-400 border border-purple-500/30 hover:border-purple-500/50 dark:border-lime-500/30 dark:hover:border-lime-500/50 shadow-sm transition-all duration-200 cursor-pointer"
     >
-      <Sparkles className="w-4 h-4 text-purple-600 dark:text-purple-400" aria-hidden />
-      <span>{label || `Ask AI about ${projectTitle}`}</span>
+      <span className="inline-flex items-center gap-2 min-w-0 text-left">
+        <Sparkles className="w-4 h-4 shrink-0 text-purple-600 dark:text-lime-400" aria-hidden />
+        <span className="truncate">{label || `Explore ${projectTitle} with RAG AI`}</span>
+      </span>
+      <span className="shrink-0 rounded-full bg-purple-600/15 dark:bg-lime-500/20 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-purple-700 dark:text-lime-300 border border-purple-500/20 dark:border-lime-400/30">
+        Context-Aware RAG
+      </span>
     </button>
   )
 }

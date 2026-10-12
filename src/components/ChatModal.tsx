@@ -1,9 +1,10 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
-import { Send, Bot, User, X, Trash2 } from 'lucide-react'
+import { Send, Bot, User, X, Trash2, Sparkles, Database } from 'lucide-react'
 
-import { FAQ, getBotAnswer, Message } from '../data/chatFaq'
+import { FAQ, Message } from '../data/chatFaq'
+import { synthesizeLocalRagAnswer, getRagSourceLabel } from '../lib/ai/rag'
 import { useLanguage } from '../contexts/LanguageContext'
 import ProjectToolCard from './chat/ProjectToolCard'
 
@@ -94,7 +95,8 @@ const ChatModal = ({
       {
         id: 'welcome',
         from: 'bot',
-        text: "Hi! I am Artur's AI assistant. 🤖 Feel free to ask me anything about his professional experience, skills, stack, or availability, or click one of the suggested questions below!",
+        text: "Hi! I am Artur's AI assistant powered by a custom Hybrid RAG engine. 🤖 I have indexed all 70 portfolio case studies, architectures, and tech stacks. Ask me about any project, skill, or experience!",
+        source: 'Hybrid RAG · 70-Project Knowledge Base',
         timestamp: new Date(),
       },
     ]
@@ -131,6 +133,12 @@ const ChatModal = ({
       text: textToSend,
       timestamp: new Date(),
     }
+
+    const sourceLabel = getRagSourceLabel(textToSend, {
+      projectSlug: projectContext?.projectSlug,
+      projectTitle: projectContext?.projectTitle,
+      locale: lang,
+    })
 
     setMessages((prev) => [...prev, userMessage])
     setInput('')
@@ -174,6 +182,7 @@ const ChatModal = ({
             id: botMessageId,
             from: 'bot',
             text: '',
+            source: sourceLabel,
             timestamp: new Date(),
           },
         ])
@@ -193,18 +202,24 @@ const ChatModal = ({
             id: botMessageId,
             from: 'bot',
             text,
+            source: sourceLabel,
             timestamp: new Date(),
           },
         ])
       }
     } catch {
-      // Fallback to local static FAQ engine as specified in SECURITY.md
+      // Fallback to local autonomous RAG synthesis engine
       setTimeout(() => {
         setIsTyping(false)
         const botMessage: Message = {
           id: `bot-${++chatModalMessageIdCounter}`,
           from: 'bot',
-          text: getBotAnswer(textToSend, lang),
+          text: synthesizeLocalRagAnswer(textToSend, {
+            projectSlug: projectContext?.projectSlug,
+            projectTitle: projectContext?.projectTitle,
+            locale: lang,
+          }),
+          source: sourceLabel,
           timestamp: new Date(),
         }
         setMessages((prev) => [...prev, botMessage])
@@ -218,6 +233,7 @@ const ChatModal = ({
         id: `welcome-${Date.now()}`,
         from: 'bot',
         text: ct.welcomeMessage,
+        source: 'Hybrid RAG · 70-Project Knowledge Base',
         timestamp: new Date(),
       },
     ])
@@ -225,7 +241,11 @@ const ChatModal = ({
 
   const displayedMessages = messages.map((msg) => {
     if (msg.id === 'welcome' || msg.id.startsWith('welcome-')) {
-      return { ...msg, text: ct.welcomeMessage }
+      return {
+        ...msg,
+        text: ct.welcomeMessage,
+        source: msg.source || 'Hybrid RAG · 70-Project Knowledge Base',
+      }
     }
     return msg
   })
@@ -264,28 +284,34 @@ const ChatModal = ({
 
   return (
     <div className="fixed inset-0 bg-slate-900/40 dark:bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4 transition-all duration-300">
-      <div className="relative w-full max-w-xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border border-slate-200/80 dark:border-white/10 rounded-3xl shadow-2xl flex flex-col h-[550px] overflow-hidden transition-all duration-300">
+      <div className="relative w-full max-w-xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border border-slate-200/80 dark:border-white/10 rounded-3xl shadow-2xl flex flex-col h-[580px] max-h-[90vh] overflow-hidden transition-all duration-300">
         
         {/* Header */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-slate-200/60 dark:border-white/5 bg-slate-50/50 dark:bg-slate-950/20">
-          <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 rounded-full bg-purple-100 dark:bg-lime-500/10 flex items-center justify-center text-purple-600 dark:text-lime-400 shrink-0">
+          <div className="flex items-center space-x-3 min-w-0">
+            <div className="w-10 h-10 rounded-full bg-purple-100 dark:bg-lime-500/10 flex items-center justify-center text-purple-600 dark:text-lime-400 shrink-0 border border-purple-200/50 dark:border-lime-500/20">
               <Bot className="w-5 h-5" />
             </div>
-            <div>
-              <h3 className="font-bold text-slate-800 dark:text-white text-sm leading-none">
-                {ct.assistantName}
-              </h3>
+            <div className="min-w-0">
+              <div className="flex items-center gap-2 flex-wrap">
+                <h3 className="font-bold text-slate-800 dark:text-white text-sm leading-none truncate">
+                  {ct.assistantName}
+                </h3>
+                <span className="inline-flex items-center gap-1 rounded-full bg-purple-100 dark:bg-lime-500/15 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-purple-700 dark:text-lime-400 border border-purple-200/60 dark:border-lime-500/30">
+                  <Database className="w-2.5 h-2.5" aria-hidden />
+                  RAG Engine
+                </span>
+              </div>
               <div className="flex items-center space-x-1.5 mt-1">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                <span className="text-[10px] font-semibold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse shrink-0" />
+                <span className="text-[10px] font-semibold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider truncate">
                   {ct.online}
                 </span>
               </div>
             </div>
           </div>
           
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-2 shrink-0">
             <button
               onClick={handleClearChat}
               className="p-2 hover:bg-slate-100 dark:hover:bg-white/5 rounded-full text-slate-400 hover:text-slate-600 dark:hover:text-white transition-colors"
@@ -304,6 +330,25 @@ const ChatModal = ({
             </button>
           </div>
         </div>
+
+        {/* Pinned Active Project Context Bar */}
+        {projectContext && (
+          <div className="flex items-center justify-between px-6 py-2 bg-purple-50/90 dark:bg-lime-500/10 border-b border-purple-200/60 dark:border-lime-500/20 text-xs">
+            <div className="flex items-center gap-1.5 font-semibold text-purple-700 dark:text-lime-300 truncate">
+              <Sparkles className="w-3.5 h-3.5 shrink-0" aria-hidden />
+              <span className="truncate">Active RAG Context: {projectContext.projectTitle}</span>
+            </div>
+            <button
+              type="button"
+              onClick={() => setProjectContext(null)}
+              className="ml-2 inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-semibold text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white bg-white/80 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 transition"
+              title="Clear project context"
+            >
+              <span>Reset</span>
+              <X className="w-3 h-3" aria-hidden />
+            </button>
+          </div>
+        )}
 
         {/* Message Area */}
         <div className="flex-1 overflow-y-auto px-6 py-4 space-y-4 bg-slate-50/30 dark:bg-slate-950/10 custom-scrollbar">
@@ -329,13 +374,13 @@ const ChatModal = ({
 
                 {/* Message Bubble */}
                 <div
-                  className={`px-4 py-2.5 rounded-2xl max-w-[80%] text-sm shadow-sm leading-relaxed ${
+                  className={`px-4 py-2.5 rounded-2xl max-w-[85%] text-sm shadow-sm leading-relaxed ${
                     isBot
                       ? 'bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 rounded-tl-sm border border-slate-200/50 dark:border-white/5'
                       : 'bg-purple-600 dark:bg-lime-500 text-white dark:text-slate-900 rounded-tr-sm font-medium'
                   }`}
                 >
-                  {msg.text}
+                  <div className="whitespace-pre-line">{msg.text}</div>
                   {msg.projects && msg.projects.length > 0 && (
                     <div className="mt-2 space-y-2">
                       {msg.projects.map((proj) => (
@@ -343,23 +388,29 @@ const ChatModal = ({
                       ))}
                     </div>
                   )}
+                  {isBot && msg.source && (
+                    <div className="mt-2 pt-1.5 border-t border-slate-100 dark:border-white/5 flex items-center gap-1.5 text-[10px] font-medium text-slate-400 dark:text-slate-400">
+                      <Database className="w-3 h-3 text-purple-500 dark:text-lime-400 shrink-0" aria-hidden />
+                      <span>{msg.source}</span>
+                    </div>
+                  )}
                 </div>
               </div>
             )
           })}
 
-          {/* Project Context Box inside chat log */}
+          {/* Project Context Quick Prompts inside chat log */}
           {projectContext && (
-            <div className="mt-2 ml-9 p-3 bg-purple-50/70 dark:bg-purple-950/20 border border-purple-200/60 dark:border-purple-800/40 rounded-2xl animate-fade-in space-y-2">
-              <div className="text-[10px] font-bold text-purple-600 dark:text-purple-300 uppercase tracking-wider flex items-center justify-between">
-                <span>Active Context: {projectContext.projectTitle}</span>
+            <div className="mt-2 ml-9 p-3 bg-purple-50/70 dark:bg-slate-800/70 border border-purple-200/60 dark:border-lime-500/25 rounded-2xl animate-fade-in space-y-2">
+              <div className="text-[10px] font-bold text-purple-600 dark:text-lime-400 uppercase tracking-wider flex items-center justify-between">
+                <span>Quick RAG Queries: {projectContext.projectTitle}</span>
               </div>
               <div className="grid grid-cols-1 gap-1.5">
                 {projectChips.map((chip, idx) => (
                   <button
                     key={idx}
                     onClick={() => handleSend(chip)}
-                    className="text-left px-3.5 py-2 bg-white hover:bg-purple-50/50 dark:bg-slate-800 dark:hover:bg-slate-700 text-xs font-medium text-purple-700 dark:text-purple-300 rounded-xl border border-purple-100 dark:border-purple-900/50 shadow-sm transition-all"
+                    className="text-left px-3.5 py-2 bg-white hover:bg-purple-50/50 dark:bg-slate-900 dark:hover:bg-slate-800 text-xs font-medium text-purple-700 dark:text-lime-400 rounded-xl border border-purple-100 dark:border-lime-500/20 shadow-sm transition-all"
                     type="button"
                   >
                     {chip}
@@ -369,24 +420,24 @@ const ChatModal = ({
             </div>
           )}
 
-          {/* Initial FAQ List inside the chat log */}
+          {/* Initial FAQ Grid inside the chat log (2-column compact layout so welcome message stays visible) */}
           {messages.length === 1 && !isTyping && (
-            <div className="mt-4 ml-9 space-y-2 animate-fade-in">
-              <div className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-2">
+            <div className="mt-3 ml-9 space-y-2 animate-fade-in">
+              <div className="text-[10px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-1.5">
                 {ct.faqHeader}
               </div>
-              <div className="grid grid-cols-1 gap-2">
-                {FAQ.map((faq, idx) => {
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                {FAQ.slice(0, 8).map((faq, idx) => {
                   const questionText = lang === 'ua' ? faq.questionUa : lang === 'es' ? faq.questionEs : faq.question
                   return (
                     <button
                       key={idx}
                       onClick={() => handleSend(questionText)}
-                      className="text-left px-4 py-2.5 bg-white hover:bg-slate-50 dark:bg-slate-800 dark:hover:bg-slate-700/80 text-xs font-semibold text-purple-600 dark:text-lime-400 hover:text-purple-700 dark:hover:text-lime-300 rounded-2xl border border-slate-200/80 dark:border-white/5 shadow-sm transition-all duration-200 active:scale-[0.99] flex items-center justify-between group"
+                      className="text-left px-3.5 py-2 bg-white hover:bg-slate-50 dark:bg-slate-800 dark:hover:bg-slate-700/80 text-[11px] font-semibold text-purple-600 dark:text-lime-400 hover:text-purple-700 dark:hover:text-lime-300 rounded-xl border border-slate-200/80 dark:border-white/5 shadow-sm transition-all duration-200 active:scale-[0.99] flex items-center justify-between group"
                       type="button"
                     >
-                      <span>{questionText}</span>
-                      <span className="text-slate-300 dark:text-slate-600 group-hover:translate-x-1 transition-transform ml-2 shrink-0">→</span>
+                      <span className="line-clamp-2">{questionText}</span>
+                      <span className="text-slate-300 dark:text-slate-600 group-hover:translate-x-0.5 transition-transform ml-1.5 shrink-0">→</span>
                     </button>
                   )
                 })}

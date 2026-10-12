@@ -12,10 +12,12 @@ import {
   Bot,
   User,
   Trash2,
+  Database,
 } from 'lucide-react'
 
-import { FAQ, getBotAnswer, Message } from '../data/chatFaq'
+import { FAQ, Message } from '../data/chatFaq'
 import { useLanguage } from '../contexts/LanguageContext'
+import { synthesizeLocalRagAnswer, getRagSourceLabel } from '../lib/ai/rag'
 
 let contactMessageIdCounter = 0
 
@@ -190,7 +192,8 @@ const Contact = () => {
       const botMsg: Message = {
         id: `bot-${++contactMessageIdCounter}`,
         from: 'bot',
-        text: getBotAnswer(textToSend, lang),
+        text: synthesizeLocalRagAnswer(textToSend, { locale: lang }),
+        source: getRagSourceLabel(textToSend, { locale: lang }),
       }
       setMessages((prev) => [...prev, botMsg])
     }, 950)
@@ -345,9 +348,14 @@ const Contact = () => {
                     <Bot className="w-4 h-4" />
                   </div>
                   <div>
-                    <h4 className="font-bold text-slate-800 dark:text-white text-xs leading-none">
-                      {ct.chatbot.assistantName}
-                    </h4>
+                    <div className="flex items-center gap-1.5 flex-wrap">
+                      <h4 className="font-bold text-slate-800 dark:text-white text-xs leading-none">
+                        {ct.chatbot.assistantName}
+                      </h4>
+                      <span className="px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wider bg-purple-100 dark:bg-lime-500/15 text-purple-700 dark:text-lime-400 rounded-md border border-purple-200/60 dark:border-lime-500/30">
+                        RAG Engine
+                      </span>
+                    </div>
                     <div className="flex items-center space-x-1.5 mt-0.5">
                       <span className="w-1 h-1 rounded-full bg-emerald-500 animate-pulse" />
                       <span className="text-[9px] font-bold text-emerald-800 dark:text-emerald-400 uppercase tracking-wider">
@@ -398,7 +406,13 @@ const Contact = () => {
                             : 'bg-purple-600 dark:bg-lime-500 text-white dark:text-slate-900 rounded-tr-sm font-medium'
                         }`}
                       >
-                        {msg.text}
+                        <div className="whitespace-pre-line">{msg.text}</div>
+                        {isBot && msg.source && (
+                          <div className="mt-2 pt-1.5 border-t border-slate-200/60 dark:border-white/10 flex items-center gap-1.5 text-[10px] font-medium text-purple-600 dark:text-lime-400">
+                            <Database className="w-2.5 h-2.5 shrink-0" />
+                            <span>{msg.source}</span>
+                          </div>
+                        )}
                       </div>
                     </div>
                   )
@@ -406,22 +420,22 @@ const Contact = () => {
 
                 {/* Local FAQ list inside chat log when only welcome message exists */}
                 {messages.length === 1 && !isTyping && (
-                  <div className="mt-4 ml-8 space-y-1.5 animate-fade-in">
+                  <div className="mt-3 ml-8 space-y-1.5 animate-fade-in">
                     <div className="text-[9px] font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1 px-1">
                       {ct.chatbot.faqHeader}
                     </div>
-                    <div className="grid grid-cols-1 gap-1.5">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
                       {FAQ.slice(0, 4).map((faq, idx) => {
                         const questionText = lang === 'ua' ? faq.questionUa : lang === 'es' ? faq.questionEs : faq.question
                         return (
                           <button
                             key={idx}
                             onClick={() => handleSend(questionText)}
-                            className="text-left px-3.5 py-2 bg-white hover:bg-slate-50 dark:bg-slate-800 dark:hover:bg-slate-750 text-[11px] font-semibold text-purple-600 dark:text-lime-400 hover:text-purple-700 dark:hover:text-lime-300 rounded-xl border border-slate-200/50 dark:border-white/5 shadow-sm transition-all duration-200 active:scale-[0.99] flex items-center justify-between group"
+                            className="text-left px-3 py-1.5 bg-white hover:bg-slate-50 dark:bg-slate-800 dark:hover:bg-slate-750 text-[10px] font-semibold text-purple-600 dark:text-lime-400 hover:text-purple-700 dark:hover:text-lime-300 rounded-xl border border-slate-200/50 dark:border-white/5 shadow-sm transition-all duration-200 active:scale-[0.99] flex items-center justify-between group"
                             type="button"
                           >
-                            <span>{questionText}</span>
-                            <span className="text-slate-300 dark:text-slate-600 group-hover:translate-x-0.5 transition-transform shrink-0 ml-2">→</span>
+                            <span className="line-clamp-2">{questionText}</span>
+                            <span className="text-slate-300 dark:text-slate-600 group-hover:translate-x-0.5 transition-transform shrink-0 ml-1.5">→</span>
                           </button>
                         )
                       })}

@@ -22,8 +22,8 @@ export const en: Translation = {
   },
   hero: {
     elevatorPitch:
-      'Engineering Headless WordPress & Jamstack architectures alongside modern React/Next.js applications, using a disciplined Test-Driven (TDD) & Spec-Driven AI workflow optimized for sub-second Core Web Vitals and Generative Engine Optimization (GEO).',
-    ctaPrimary: 'Chat with Artur AI',
+      'Engineering Headless WordPress & Jamstack architectures alongside modern React/Next.js applications and custom Hybrid RAG AI assistants, using a disciplined Test-Driven (TDD) & Spec-Driven AI workflow optimized for sub-second Core Web Vitals and Generative Engine Optimization (GEO).',
+    ctaPrimary: 'Chat with RAG AI Assistant',
     ctaSecondary: 'Download CV',
   },
   about: {
@@ -32,7 +32,7 @@ export const en: Translation = {
     myJourney: 'My Journey',
     bio: {
       p1: 'I am a results-driven Fullstack Web Engineer with 5+ years of experience engineering, scaling, and technically optimizing high-load platforms, with a deep architectural specialization in WordPress. My expertise lies at the sharp intersection of modern frontend ecosystems (React, Next.js) and enterprise-grade WordPress engineering - ranging from custom PHP 8+ architectures and secure plugin development to high-performance Headless CMS configurations and deep performance engineering.',
-      p2: 'My core competitive edge is a sophisticated, AI-first engineering philosophy. Rather than treating AI as a superficial coding assistant, I systematically integrate next-generation systems - including Claude Code, Cursor, and Google Antigravity - directly into the Software Development Life Cycle (SDLC), following a Spec-Driven Development (SDD) methodology: I define the technical specification first, then have AI implement and verify against it rather than improvise. I heavily leverage AI to automate complex development workflows and conduct deep technical research. By blending my practical architectural experience with AI-augmented development, I fast-track complex refactoring, automate regression checks, and drastically compress Time-to-Market - all while enforcing strict code quality, security, and architectural integrity.',
+      p2: 'My core competitive edge is a sophisticated, AI-first engineering philosophy. Rather than treating AI as a superficial coding assistant, I systematically integrate next-generation systems - including Claude Code, Cursor, Google Antigravity, and custom Retrieval-Augmented Generation (RAG) pipelines - directly into the Software Development Life Cycle (SDLC), following a Spec-Driven Development (SDD) methodology: I define the technical specification first, then have AI implement and verify against it rather than improvise. I heavily leverage AI to build context-aware RAG assistants, automate complex development workflows, and conduct deep technical research. By blending my practical architectural experience with AI-augmented development, I fast-track complex refactoring, automate regression checks, and drastically compress Time-to-Market - all while enforcing strict code quality, security, and architectural integrity.',
       p3: 'Beyond core development, I actively apply this AI-first framework to continuous learning and knowledge management. I utilize advanced tools like Gemini Notebook for synthesizing complex technical documentation and accelerating research. To anchor this knowledge, I build my own custom educational and utility applications. This continuous loop of automated research, rapid prototyping, and self-directed application development allows me to master new technologies at an unprecedented pace and consistently bring cutting-edge solutions to the teams I work with.',
     },
     stats: {
@@ -48,7 +48,7 @@ export const en: Translation = {
       ],
       appTitle: 'App Development',
       appPoints: [
-        'Production-ready React 19 & Next.js 15+ (TypeScript)',
+        'Production-ready React 19 & Next.js 16 (TypeScript)',
         'Fast rendering via Streaming & Suspense patterns',
         'Rigid compliance with WCAG 2.2 accessibility',
       ],
@@ -58,11 +58,11 @@ export const en: Translation = {
         'Advanced JSON-LD schemas & Core Web Vitals audit',
         'Server-side tracking deployments (sGTM)',
       ],
-      aiTitle: 'AI-Augmented Development',
+      aiTitle: 'AI & RAG Engineering',
       aiPoints: [
+        'Custom Hybrid RAG pipelines & context-aware AI assistants',
         '3x engineering velocity using Claude Code & Cursor',
-        'Spec-Driven AI Harnessing & SDD execution',
-        'Rigorous automated evaluation and regression checks',
+        'Spec-Driven AI Harnessing (SDD) & automated TDD checks',
       ],
     },
     photoCaption: {
@@ -85,8 +85,8 @@ export const en: Translation = {
             text: 'Implementing high-performance Server-Side Rendered (SSR) patterns and headless connections.',
           },
           ai: {
-            label: 'AI SDLC Integration:',
-            text: 'Engineering Spec-Driven workflows using Claude Code, Antigravity, and MCP.',
+            label: 'RAG & AI SDLC Integration:',
+            text: 'Engineering Hybrid RAG knowledge engines and Spec-Driven workflows using Claude Code, Antigravity, and MCP.',
           },
         },
       },
@@ -404,9 +404,9 @@ export const en: Translation = {
               'Integrating next-generation systems (Claude Code, Cursor, Google Antigravity) directly into the SDLC. Following a strict Spec-Driven Development (SDD) methodology: defining technical specifications first, then having AI write and verify code against them instead of improvising. Achieving up to 3x engineering velocity on routine and layout tasks.',
           },
           {
-            name: 'Context & MCP Engineering',
+            name: 'RAG Architecture & Context Engineering',
             description:
-              'Formulating strict workspace rules (AGENTS.md) and reference specifications (DESIGN_SYSTEM.md, SECURITY.md, ARCHITECTURE.md). Leveraging Model Context Protocol (MCP) and custom instructions to hook AI tools into local environments, search utilities, and filesystem directories to prevent session drift and maintain architectural integrity.',
+              'Engineering custom Hybrid RAG (Retrieval-Augmented Generation) pipelines with lexical and vector scoring, active context boosting, and deterministic anti-hallucination guardrails. Leveraging Model Context Protocol (MCP) and strict workspace specs (AGENTS.md, DESIGN_SYSTEM.md, SECURITY.md) to keep AI systems grounded in verified data.',
           },
           {
             name: 'Multi-File Agentic Execution',
@@ -583,11 +583,11 @@ export const en: Translation = {
           benefit: 'Lower ad campaign costs & zero lost mobile leads due to slowness.',
         },
         {
-          title: 'AI Integration & Automation',
-          subtitle: '24/7 Virtual Assistants & Online Booking',
-          body: 'We deploy AI-powered virtual assistants and automated booking widgets (WhatsApp / Doctoralia). Your site handles client inquiries and logs reservations 24/7 without staff intervention.',
+          title: 'RAG AI Assistants & Automation',
+          subtitle: '24/7 Context-Aware Assistants & Online Booking',
+          body: 'We deploy custom RAG AI virtual assistants grounded in your real service catalog and pricing (zero hallucinations) alongside automated booking widgets (WhatsApp / Doctoralia) that handle client inquiries 24/7.',
           benefitLabel: 'Key Business Benefit',
-          benefit: 'Automated 24/7 client booking and instant lead qualification.',
+          benefit: 'Automated 24/7 client booking and accurate RAG lead qualification.',
         },
         {
           title: 'Local SEO & AI Search Visibility',
@@ -631,11 +631,11 @@ export const en: Translation = {
           benefit: 'High-performing codebases that enhance your agency technical reputation.',
         },
         {
-          title: 'AI Solutions for Agency Clients',
+          title: 'RAG & AI Solutions for Agency Clients',
           subtitle: 'New High-Margin Service Offering',
-          body: 'Add AI assistant integration to your agency service catalog. We build custom AI chatbots and lead automation tools for your clients, boosting your average contract value.',
+          body: 'Add custom RAG AI assistants to your agency service catalog. We build knowledge-grounded AI chatbots and lead automation tools trained on your clients\' business data, boosting your average contract value.',
           benefitLabel: 'Agency Benefit',
-          benefit: 'Expand your revenue catalog with lucrative cutting-edge AI services.',
+          benefit: 'Expand your revenue catalog with lucrative cutting-edge RAG AI services.',
         },
         {
           title: 'Technical Audits & Core Web Vitals',
@@ -661,7 +661,7 @@ export const en: Translation = {
       highlight: 'extraordinary',
     },
     description:
-      'Ready to bring your project to life? Choose a messaging channel below or test my virtual assistant for quick answers.',
+      'Ready to bring your project to life? Choose a messaging channel below or test my Hybrid RAG AI assistant trained on all 70 portfolio projects.',
     directChannels: 'Direct Channels',
     followCredentials: 'Follow Credentials',
     contactTags: {
@@ -670,15 +670,15 @@ export const en: Translation = {
       telegram: 'Fast async messaging',
     },
     chatbot: {
-      title: 'AI Assistant Console',
+      title: 'RAG AI Assistant Console',
       placeholder: 'Type a question...',
       clearButton: 'Clear',
       sendButton: 'Send',
-      welcomeMessage: "Hi! I am Artur's AI assistant. 🤖 Ask me anything about his experience, skills, stack, or select one of the suggested questions below!",
-      assistantName: "Artur's Assistant",
-      liveConsole: 'Live Console',
+      welcomeMessage: "Hi! I am Artur's AI assistant powered by a custom Hybrid RAG engine. 🤖 I have indexed all 70 portfolio case studies, architectures, and tech stacks. Ask me about any project, skill, or experience!",
+      assistantName: "Artur's RAG AI Assistant",
+      liveConsole: 'Hybrid RAG · 70 Case Studies Indexed',
       faqHeader: 'Frequently Asked Questions',
-      online: 'Online',
+      online: 'ONLINE · Hybrid RAG · 70 Projects DB',
     },
   },
   footer: {

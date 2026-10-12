@@ -421,3 +421,34 @@ export function synthesizeLocalRagAnswer(
 
   return getBotAnswer(query, lang).replace(/[\u2014\u2013]/g, '-')
 }
+
+export function getRagSourceLabel(
+  query: string,
+  options: LocalSynthesisOptions = {},
+): string {
+  const lower = query.toLowerCase().trim()
+
+  if (options.projectTitle) {
+    return `Hybrid RAG · ${options.projectTitle} Case Study`
+  }
+  if (options.projectSlug) {
+    const found = projectRegistry.find(
+      (p) => p.slug.toLowerCase() === options.projectSlug?.toLowerCase(),
+    )
+    if (found) {
+      return `Hybrid RAG · ${found.project.title} Case Study`
+    }
+  }
+
+  const byQuery = projectRegistry.find(
+    (p) =>
+      lower.includes(p.project.title.toLowerCase()) ||
+      (p.slug.length > 3 && lower.includes(p.slug.toLowerCase())),
+  )
+  if (byQuery) {
+    return `Hybrid RAG · ${byQuery.project.title} Case Study`
+  }
+
+  return 'Hybrid RAG · 70-Project Knowledge Base'
+}
+
