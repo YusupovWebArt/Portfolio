@@ -19,17 +19,17 @@ describe('Standalone SSG Project Pages Specification (TDD)', () => {
   })
 
   it(
-    'should generate static params for all 69 projects across en, ua, and es locales',
+    'should generate static params for all 70 projects across en, ua, and es locales',
     async () => {
     const kb = loadKnowledgeBase()
-    expect(kb.projects.length).toBe(69)
+    expect(kb.projects.length).toBe(70)
 
     // Dynamic import to verify generateStaticParams output
     const mod = await import('../../app/[locale]/projects/[slug]/page')
     const paramsList = await mod.generateStaticParams()
 
-    // 69 projects * 3 locales = 207 pre-rendered paths
-    expect(paramsList).toHaveLength(207)
+    // 70 projects * 3 locales = 210 pre-rendered paths
+    expect(paramsList).toHaveLength(210)
 
     const itMagicParams = paramsList.find(
       (p: { locale: string; slug: string }) => p.slug === 'it-magic' && p.locale === 'en',
