@@ -495,6 +495,7 @@ const Contact = () => {
                     onClick={() => handleSend(input)}
                     className="w-8.5 h-8.5 w-8 h-8 rounded-full bg-purple-600 hover:bg-purple-700 dark:bg-lime-500 dark:hover:bg-lime-400 text-white dark:text-slate-900 flex items-center justify-center transition-all shadow-md active:scale-95 shrink-0"
                     title={ct.chatbot.sendButton}
+                    aria-label={ct.chatbot.sendButton || 'Send message'}
                     type="button"
                   >
                     <Send className="w-3.5 h-3.5" />

@@ -9,6 +9,9 @@ export interface ProjectJsonLd {
   description: string
   image: string
   url: string
+  datePublished?: string
+  dateModified?: string
+  inLanguage?: string
   author: {
     '@type': string
     name: string
@@ -52,6 +55,9 @@ export function buildProjectJsonLd(
     description: desc.replace(/—/g, '-'),
     image: project.image,
     url: `${baseUrl}/${locale}/projects/${slug}`,
+    datePublished: '2026-01-15T00:00:00Z',
+    dateModified: '2026-10-12T00:00:00Z',
+    inLanguage: locale,
     author: {
       '@type': 'Person',
       name: 'Artur Yusupov',

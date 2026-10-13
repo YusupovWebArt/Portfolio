@@ -65,13 +65,51 @@ const ChatModal = ({
     }
   }, [])
 
+  const modalRef = useRef<HTMLDivElement>(null)
+  const previousFocusRef = useRef<HTMLElement | null>(null)
+
   useEffect(() => {
+    if (isModalOpen) {
+      previousFocusRef.current = document.activeElement as HTMLElement | null
+    } else if (previousFocusRef.current) {
+      previousFocusRef.current.focus()
+      previousFocusRef.current = null
+    }
+  }, [isModalOpen])
+
+  useEffect(() => {
+    if (!isModalOpen) return
+
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && isModalOpen) {
+      if (e.key === 'Escape') {
         setInternalOpen(false)
         onClose?.()
+        return
+      }
+
+      if (e.key === 'Tab' && modalRef.current) {
+        const focusableElements = modalRef.current.querySelectorAll<HTMLElement>(
+          'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])',
+        )
+        if (focusableElements.length === 0) return
+
+        const firstElement = focusableElements[0]
+        const lastElement = focusableElements[focusableElements.length - 1]
+
+        if (e.shiftKey) {
+          if (document.activeElement === firstElement || !modalRef.current.contains(document.activeElement)) {
+            e.preventDefault()
+            lastElement.focus()
+          }
+        } else {
+          if (document.activeElement === lastElement || !modalRef.current.contains(document.activeElement)) {
+            e.preventDefault()
+            firstElement.focus()
+          }
+        }
       }
     }
+
     window.addEventListener('keydown', handleKeyDown)
     return () => window.removeEventListener('keydown', handleKeyDown)
   }, [isModalOpen, onClose])
@@ -143,6 +181,31 @@ const ChatModal = ({
     setMessages((prev) => [...prev, userMessage])
     setInput('')
     setIsTyping(true)
+
+    const isStaticHosting =
+      typeof window !== 'undefined' &&
+      (window.location.hostname.includes('github.io') ||
+        window.location.pathname.startsWith('/Portfolio'))
+
+    if (isStaticHosting) {
+      // Direct autonomous local RAG synthesis without network /api/chat 404 on static hosting
+      setTimeout(() => {
+        setIsTyping(false)
+        const botMessage: Message = {
+          id: `bot-${++chatModalMessageIdCounter}`,
+          from: 'bot',
+          text: synthesizeLocalRagAnswer(textToSend, {
+            projectSlug: projectContext?.projectSlug,
+            projectTitle: projectContext?.projectTitle,
+            locale: lang,
+          }),
+          source: sourceLabel,
+          timestamp: new Date(),
+        }
+        setMessages((prev) => [...prev, botMessage])
+      }, 350)
+      return
+    }
 
     try {
       const response = await fetch('/api/chat', {
@@ -284,7 +347,13 @@ const ChatModal = ({
 
   return (
     <div className="fixed inset-0 bg-slate-900/40 dark:bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4 transition-all duration-300">
-      <div className="relative w-full max-w-xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border border-slate-200/80 dark:border-white/10 rounded-3xl shadow-2xl flex flex-col h-[580px] max-h-[90vh] overflow-hidden transition-all duration-300">
+      <div
+        ref={modalRef}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="chat-modal-title"
+        className="relative w-full max-w-xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border border-slate-200/80 dark:border-white/10 rounded-3xl shadow-2xl flex flex-col h-[580px] max-h-[90vh] overflow-hidden transition-all duration-300"
+      >
         
         {/* Header */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-slate-200/60 dark:border-white/5 bg-slate-50/50 dark:bg-slate-950/20">
@@ -294,7 +363,7 @@ const ChatModal = ({
             </div>
             <div className="min-w-0">
               <div className="flex items-center gap-2 flex-wrap">
-                <h3 className="font-bold text-slate-800 dark:text-white text-sm leading-none truncate">
+                <h3 id="chat-modal-title" className="font-bold text-slate-800 dark:text-white text-sm leading-none truncate">
                   {ct.assistantName}
                 </h3>
                 <span className="inline-flex items-center gap-1 rounded-full bg-purple-100 dark:bg-lime-500/15 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-purple-700 dark:text-lime-400 border border-purple-200/60 dark:border-lime-500/30">
@@ -316,6 +385,7 @@ const ChatModal = ({
               onClick={handleClearChat}
               className="p-2 hover:bg-slate-100 dark:hover:bg-white/5 rounded-full text-slate-400 hover:text-slate-600 dark:hover:text-white transition-colors"
               title={ct.clearButton}
+              aria-label={ct.clearButton}
               type="button"
             >
               <Trash2 className="w-4 h-4" />
@@ -324,6 +394,7 @@ const ChatModal = ({
               onClick={handleClose}
               className="p-2 hover:bg-slate-100 dark:hover:bg-white/5 rounded-full text-slate-400 hover:text-slate-600 dark:hover:text-white transition-colors"
               title="Close chat"
+              aria-label="Close chat"
               type="button"
             >
               <X className="w-5 h-5" />
@@ -499,6 +570,7 @@ const ChatModal = ({
               onClick={() => handleSend(input)}
               className="w-10 h-10 rounded-full bg-purple-600 hover:bg-purple-700 dark:bg-lime-500 dark:hover:bg-lime-400 text-white dark:text-slate-900 flex items-center justify-center transition-all shadow-md active:scale-95 shrink-0"
               title={ct.sendButton}
+              aria-label={ct.sendButton || 'Send message'}
               type="button"
             >
               <Send className="w-4 h-4" />

@@ -793,16 +793,37 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                 }
 
                 if (isProjectFeature(feature)) {
+                  const feat = feature as unknown as {
+                    title: string
+                    titleUa?: string
+                    titleEs?: string
+                    description: string
+                    descriptionUa?: string
+                    descriptionEs?: string
+                  }
+                  const fTitle =
+                    lang === 'ua' && feat.titleUa
+                      ? feat.titleUa
+                      : lang === 'es' && feat.titleEs
+                        ? feat.titleEs
+                        : feat.title
+                  const fDesc =
+                    lang === 'ua' && feat.descriptionUa
+                      ? feat.descriptionUa
+                      : lang === 'es' && feat.descriptionEs
+                        ? feat.descriptionEs
+                        : feat.description
+
                   return (
                     <li key={index} className="space-y-2">
                       <div className="flex items-start space-x-3">
                         <span className="w-2 h-2 rounded-full bg-purple-500 dark:bg-lime-500 mt-2 flex-shrink-0"></span>
                         <div className="flex-1">
                           <h4 className="font-semibold text-slate-900 dark:text-white mb-1">
-                            {feature.title}
+                            {fTitle}
                           </h4>
                           <p className="text-slate-600 dark:text-slate-300 leading-relaxed">
-                            {feature.description}
+                            {fDesc}
                           </p>
                         </div>
                       </div>
@@ -848,7 +869,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                         <React.Fragment key={`${rowIdx}-${stepIdx}`}>
                           {stepIdx > 0 && (
                             <span
-                              className="text-slate-400 dark:text-slate-500"
+                              className="text-slate-400 dark:text-slate-400"
                               aria-hidden
                             >
                               →
@@ -869,7 +890,11 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                   </div>
                 ))}
                 <div className="rounded-xl border border-slate-200 bg-slate-50 p-4 text-sm leading-relaxed text-slate-700 dark:border-slate-600 dark:bg-slate-800/80 dark:text-slate-300">
-                  {project.architecture.description}
+                  {lang === 'ua' && project.architecture.descriptionUa
+                    ? project.architecture.descriptionUa
+                    : lang === 'es' && project.architecture.descriptionEs
+                      ? project.architecture.descriptionEs
+                      : project.architecture.description}
                 </div>
               </div>
             )}
@@ -881,40 +906,59 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                 aria-labelledby="tab-project-case-study"
                 className="space-y-6 animate-fade-in"
               >
-                {project.challenges && project.challenges.length > 0 && (
-                  <div>
-                    <h4 className="font-semibold text-slate-900 dark:text-white mb-3 text-sm uppercase tracking-wider text-slate-500 dark:text-slate-400">
-                      Challenges Faced:
-                    </h4>
-                    <ul className="space-y-2">
-                      {project.challenges.map((challenge, index) => (
-                        <li key={index} className="flex items-start space-x-3">
-                          <div className="w-2 h-2 rounded-full bg-red-500 dark:bg-orange-500 mt-2 flex-shrink-0"></div>
-                          <span className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
-                            {challenge}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-                {project.solutions && project.solutions.length > 0 && (
-                  <div className="pt-2">
-                    <h4 className="font-semibold text-slate-900 dark:text-white mb-3 text-sm uppercase tracking-wider text-slate-500 dark:text-slate-400">
-                      Solutions Implemented:
-                    </h4>
-                    <ul className="space-y-2">
-                      {project.solutions.map((solution, index) => (
-                        <li key={index} className="flex items-start space-x-3">
-                          <div className="w-2 h-2 rounded-full bg-blue-500 dark:bg-lime-500 mt-2 flex-shrink-0"></div>
-                          <span className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
-                            {solution}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
+                {(() => {
+                  const challengesList =
+                    lang === 'ua' && project.challengesUa
+                      ? project.challengesUa
+                      : lang === 'es' && project.challengesEs
+                        ? project.challengesEs
+                        : project.challenges
+                  const solutionsList =
+                    lang === 'ua' && project.solutionsUa
+                      ? project.solutionsUa
+                      : lang === 'es' && project.solutionsEs
+                        ? project.solutionsEs
+                        : project.solutions
+
+                  return (
+                    <>
+                      {challengesList && challengesList.length > 0 && (
+                        <div>
+                          <h4 className="font-semibold text-slate-900 dark:text-white mb-3 text-sm uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                            {lang === 'ua' ? 'Виклики:' : lang === 'es' ? 'Desafíos afrontados:' : 'Challenges Faced:'}
+                          </h4>
+                          <ul className="space-y-2">
+                            {challengesList.map((challenge, index) => (
+                              <li key={index} className="flex items-start space-x-3">
+                                <div className="w-2 h-2 rounded-full bg-red-500 dark:bg-orange-500 mt-2 flex-shrink-0"></div>
+                                <span className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                                  {challenge}
+                                </span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                      {solutionsList && solutionsList.length > 0 && (
+                        <div className="pt-2">
+                          <h4 className="font-semibold text-slate-900 dark:text-white mb-3 text-sm uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                            {lang === 'ua' ? 'Реалізовані рішення:' : lang === 'es' ? 'Soluciones implementadas:' : 'Solutions Implemented:'}
+                          </h4>
+                          <ul className="space-y-2">
+                            {solutionsList.map((solution, index) => (
+                              <li key={index} className="flex items-start space-x-3">
+                                <div className="w-2 h-2 rounded-full bg-blue-500 dark:bg-lime-500 mt-2 flex-shrink-0"></div>
+                                <span className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+                                  {solution}
+                                </span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                    </>
+                  )
+                })()}
               </div>
             )}
           </div>
@@ -931,9 +975,10 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
             
             {/* Close Button inside Modal Card (top-right) */}
             <button
-              className="absolute top-3 right-3 md:top-4 md:right-4 text-slate-400 hover:text-slate-600 dark:text-slate-500 dark:hover:text-slate-300 p-1.5 md:p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800/80 transition z-50"
+              className="absolute top-3 right-3 md:top-4 md:right-4 text-slate-400 hover:text-slate-600 dark:text-slate-400 dark:hover:text-slate-200 p-1.5 md:p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800/80 transition z-50"
               onClick={closeScreenshotModal}
               title="Close"
+              aria-label="Close"
               type="button"
             >
               <X size={20} />

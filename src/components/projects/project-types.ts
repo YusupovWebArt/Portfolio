@@ -7,7 +7,11 @@ export interface ProjectImage {
 
 export interface ProjectFeature {
   title: string
+  titleUa?: string
+  titleEs?: string
   description: string
+  descriptionUa?: string
+  descriptionEs?: string
 }
 
 export type TechnologyItem =
@@ -55,6 +59,8 @@ export interface ProjectArchitectureRow {
 export interface ProjectArchitecture {
   rows: ProjectArchitectureRow[]
   description: string
+  descriptionUa?: string
+  descriptionEs?: string
 }
 
 export interface Project {
@@ -68,17 +74,21 @@ export interface Project {
   fullDescriptionEs?: string
   /** Строка над заголовком на детальной странице, напр. «FULLSTACK · HEADLESS CMS». */
   detailHeroLine?: string
-  /** До четырёх метрик; для Next.js часто PageSpeed / load / Rendering / Auto-deploy, для WordPress — свои пары. */
+  /** До четырёх метрик; для Next.js часто PageSpeed / load / Rendering / Auto-deploy, для WordPress - свои пары. */
   detailMetrics?: ProjectDetailMetric[]
-  /** Диаграмма архитектуры на вкладке; если не задано — вкладка скрыта. */
+  /** Диаграмма архитектуры на вкладке; если не задано - вкладка скрыта. */
   architecture?: ProjectArchitecture
   image: string
   fullScreenshot: string
   images: ProjectImage[]
   technologies: ProjectTechnologies | string[]
   features: (string | React.ReactNode | ProjectFeature)[]
-  challenges: string[]
-  solutions: string[]
+  challenges?: string[]
+  challengesUa?: string[]
+  challengesEs?: string[]
+  solutions?: string[]
+  solutionsUa?: string[]
+  solutionsEs?: string[]
   liveUrl: string
   githubUrl: string
   category: string[]
