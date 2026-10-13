@@ -25,7 +25,7 @@ export default function LandingPage() {
   }
 
   return (
-    <main>
+    <main id="main-content">
       <Hero />
       <About />
       <AiWorkflow />

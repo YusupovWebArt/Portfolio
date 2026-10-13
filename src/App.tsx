@@ -76,15 +76,17 @@ function App() {
           <div className="min-h-screen bg-white dark:bg-slate-900 transition-colors duration-300">
             <Header />
             {selectedProject !== null ? (
-              <Suspense fallback={<ProjectLoadingFallback />}>
-                <ProjectDetail
-                  key={selectedProject}
-                  projectId={selectedProject}
-                  onBack={handleBackToProjects}
-                />
-              </Suspense>
+              <main id="main-content">
+                <Suspense fallback={<ProjectLoadingFallback />}>
+                  <ProjectDetail
+                    key={selectedProject}
+                    projectId={selectedProject}
+                    onBack={handleBackToProjects}
+                  />
+                </Suspense>
+              </main>
             ) : (
-              <main>
+              <main id="main-content">
                 <Hero />
                 <About />
                 <AiWorkflow />

@@ -2,6 +2,7 @@
 export interface Translation {
   app: {
     loadingDetails: string
+    skipToContent: string
   }
   header: {
     nav: {

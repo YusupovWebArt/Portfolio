@@ -97,7 +97,9 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbsJsonLd) }}
       />
-      <ProjectDetailView project={project} slug={slug} locale={locale} />
+      <main id="main-content">
+        <ProjectDetailView project={project} slug={slug} locale={locale} />
+      </main>
     </>
   )
 }

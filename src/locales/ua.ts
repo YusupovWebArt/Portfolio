@@ -3,6 +3,7 @@ import type { Translation } from './types'
 export const ua: Translation = {
   app: {
     loadingDetails: 'Завантаження деталей проєкту...',
+    skipToContent: 'Перейти до основного вмісту',
   },
   header: {
     nav: {
