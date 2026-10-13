@@ -26,10 +26,12 @@ export const MAX_CONSENT_AGE_MS = 24 * 30 * 24 * 60 * 60 * 1000
 export interface ConsentContextType {
   status: ConsentStatus
   isBannerOpen: boolean
+  isSettingsOpen: boolean
   isPolicyModalOpen: boolean
   acceptCookies: () => void
   declineCookies: () => void
   openSettings: () => void
+  closeSettings: () => void
   openPolicyModal: () => void
   closePolicyModal: () => void
 }
@@ -169,6 +171,10 @@ export const ConsentProvider: React.FC<{ children: React.ReactNode }> = ({
     setIsSettingsOpen(true)
   }, [])
 
+  const closeSettings = useCallback(() => {
+    setIsSettingsOpen(false)
+  }, [])
+
   const openPolicyModal = useCallback(() => {
     setIsPolicyModalOpen(true)
   }, [])
@@ -182,10 +188,12 @@ export const ConsentProvider: React.FC<{ children: React.ReactNode }> = ({
       value={{
         status,
         isBannerOpen,
+        isSettingsOpen,
         isPolicyModalOpen,
         acceptCookies,
         declineCookies,
         openSettings,
+        closeSettings,
         openPolicyModal,
         closePolicyModal,
       }}

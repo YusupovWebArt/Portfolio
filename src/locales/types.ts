@@ -232,6 +232,15 @@ export interface Translation {
     backToProjects: string
     zoom: string
     fullPageLayout: string
+    breadcrumb: string
+    home: string
+    tabsLabel: string
+    close: string
+    previousImage: string
+    nextImage: string
+    screenshot: string
+    scrollThumbsLeft: string
+    scrollThumbsRight: string
     tabs: {
       stack: string
       features: string
@@ -306,6 +315,14 @@ export interface Translation {
       quickQueryStack: string
       quickQueryFeatures: string
       quickQueryArchitecture: string
+      a11y: {
+        inputLabel: string
+        typing: string
+        assistantLabel: string
+        userLabel: string
+        logLabel: string
+        cleared: string
+      }
     }
   }
   footer: {

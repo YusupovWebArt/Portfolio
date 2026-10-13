@@ -19,6 +19,7 @@ import {
 import { Project, TechnologyItem } from './projects/project-types'
 import { useLanguage } from '../contexts/LanguageContext'
 import { projectRegistry } from '../lib/projectRegistry'
+import { useDialogA11y } from '../hooks/useDialogA11y'
 import ProjectChatTrigger from './ProjectChatTrigger'
 
 interface ProjectDetailProps {
@@ -79,6 +80,18 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
     }
   }, [screenshotModal.isOpen])
 
+  const screenshotModalRef = useRef<HTMLDivElement>(null)
+
+  const closeScreenshotModal = useCallback(() => {
+    setScreenshotModal({ isOpen: false, image: '', title: '', caption: '' })
+  }, [])
+
+  useDialogA11y({
+    isOpen: screenshotModal.isOpen,
+    onClose: closeScreenshotModal,
+    dialogRef: screenshotModalRef,
+  })
+
   const thumbnailScrollRef = useRef<HTMLDivElement>(null)
   const [thumbScrollState, setThumbScrollState] = useState({
     canLeft: false,
@@ -118,11 +131,11 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
     const el = thumbnailScrollRef.current
     if (!el) return
     updateThumbScrollState()
-    const ro = new ResizeObserver(() => updateThumbScrollState())
-    ro.observe(el)
+    const ro = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(() => updateThumbScrollState()) : null
+    ro?.observe(el)
     el.addEventListener('scroll', updateThumbScrollState, { passive: true })
     return () => {
-      ro.disconnect()
+      ro?.disconnect()
       el.removeEventListener('scroll', updateThumbScrollState)
     }
   }, [projectId, updateThumbScrollState])
@@ -227,10 +240,6 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
     })
   }
 
-  const closeScreenshotModal = () => {
-    setScreenshotModal({ isOpen: false, image: '', title: '', caption: '' })
-  }
-
   const hasGithub = Boolean(project.githubUrl && project.githubUrl !== '#')
   const metrics = project.detailMetrics ?? []
   const hasArchitecture = Boolean(
@@ -241,21 +250,65 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
     project.challenges?.length || project.solutions?.length,
   )
 
+  const activeTab =
+    detailTab === 'architecture' && !hasArchitecture
+      ? 'stack'
+      : detailTab === 'case-study' && !hasCaseStudy
+        ? 'stack'
+        : detailTab
+
+  const handleTabKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    const tabOrder: Array<'stack' | 'features' | 'architecture' | 'case-study'> = [
+      'stack',
+      'features',
+      ...(hasArchitecture ? (['architecture'] as const) : []),
+      ...(hasCaseStudy ? (['case-study'] as const) : []),
+    ]
+    const currentIndex = tabOrder.indexOf(activeTab)
+    let targetIndex = -1
+
+    if (e.key === 'ArrowRight') {
+      targetIndex = (currentIndex + 1) % tabOrder.length
+    } else if (e.key === 'ArrowLeft') {
+      targetIndex = (currentIndex - 1 + tabOrder.length) % tabOrder.length
+    } else if (e.key === 'Home') {
+      targetIndex = 0
+    } else if (e.key === 'End') {
+      targetIndex = tabOrder.length - 1
+    }
+
+    if (targetIndex !== -1) {
+      e.preventDefault()
+      const targetTab = tabOrder[targetIndex]
+      setDetailTab(targetTab)
+      const tabBtn = document.getElementById(`tab-project-${targetTab}`)
+      tabBtn?.focus()
+    }
+  }
+
   return (
     <div className="max-w-7xl mx-auto px-2 md:px-8 pt-24 pb-10">
       {/* Breadcrumb Navigation */}
-      <nav aria-label="Breadcrumb" className="mb-4 flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400">
-        <a href={`/${lang}`} className="hover:text-purple-600 dark:hover:text-lime-400 transition-colors">
-          {lang === 'ua' ? 'Головна' : lang === 'es' ? 'Inicio' : 'Home'}
-        </a>
-        <span>/</span>
-        <a href={`/${lang}#projects`} className="hover:text-purple-600 dark:hover:text-lime-400 transition-colors">
-          {lang === 'ua' ? 'Проєкти' : lang === 'es' ? 'Proyectos' : 'Projects'}
-        </a>
-        <span>/</span>
-        <span className="font-semibold text-slate-800 dark:text-slate-200 truncate max-w-[200px] sm:max-w-none">
-          {project.title}
-        </span>
+      <nav aria-label={pr.breadcrumb} className="mb-4">
+        <ol className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
+          <li className="flex items-center gap-2">
+            <a href={`/${lang}`} className="hover:text-purple-600 dark:hover:text-lime-400 transition-colors">
+              {pr.home}
+            </a>
+            <span aria-hidden="true">/</span>
+          </li>
+          <li className="flex items-center gap-2">
+            <a href={`/${lang}#projects`} className="hover:text-purple-600 dark:hover:text-lime-400 transition-colors">
+              {pr.sectionTitle}
+            </a>
+            <span aria-hidden="true">/</span>
+          </li>
+          <li className="flex items-center">
+            <span aria-current="page" className="font-semibold text-slate-800 dark:text-slate-200 truncate max-w-[200px] sm:max-w-none">
+              {project.title}
+            </span>
+          </li>
+        </ol>
       </nav>
 
       {/* Back button */}
@@ -286,19 +339,19 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                 <>
                   <button
                     onClick={prevImage}
-                    className="absolute left-3 top-1/2 -translate-y-1/2 bg-white/95 dark:bg-slate-800/95 text-slate-700 dark:text-slate-200 p-2 rounded-full shadow-md transition hover:scale-105"
+                    className="absolute left-3 top-1/2 -translate-y-1/2 bg-white/95 dark:bg-slate-800/95 text-slate-700 dark:text-slate-200 p-2 rounded-full shadow-md transition hover:scale-105 cursor-pointer"
                     type="button"
-                    aria-label="Previous image"
+                    aria-label={pr.previousImage}
                   >
-                    <ChevronLeft size={20} />
+                    <ChevronLeft size={20} aria-hidden="true" />
                   </button>
                   <button
                     onClick={nextImage}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 bg-white/95 dark:bg-slate-800/95 text-slate-700 dark:text-slate-200 p-2 rounded-full shadow-md transition hover:scale-105"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 bg-white/95 dark:bg-slate-800/95 text-slate-700 dark:text-slate-200 p-2 rounded-full shadow-md transition hover:scale-105 cursor-pointer"
                     type="button"
-                    aria-label="Next image"
+                    aria-label={pr.nextImage}
                   >
-                    <ChevronRight size={20} />
+                    <ChevronRight size={20} aria-hidden="true" />
                   </button>
                 </>
               )}
@@ -306,11 +359,11 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
               {project.images.length > 0 && (
                 <button
                   onClick={openScreenshotModal}
-                  className="absolute bottom-3 right-3 inline-flex items-center gap-1.5 bg-white dark:bg-slate-100 text-slate-800 px-3 py-1.5 rounded-full text-sm font-medium shadow border border-slate-200 dark:border-slate-300 hover:bg-slate-50 dark:hover:bg-white transition"
+                  className="absolute bottom-3 right-3 inline-flex items-center gap-1.5 bg-white dark:bg-slate-100 text-slate-800 px-3 py-1.5 rounded-full text-sm font-medium shadow border border-slate-200 dark:border-slate-300 hover:bg-slate-50 dark:hover:bg-white transition cursor-pointer"
                   title="Zoom"
                   type="button"
                 >
-                  <Eye className="w-4 h-4" aria-hidden />
+                  <Eye className="w-4 h-4" aria-hidden="true" />
                   {pr.zoom}
                 </button>
               )}
@@ -321,16 +374,16 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                 {thumbScrollState.hasOverflow && (
                   <button
                     type="button"
-                    aria-label="Scroll thumbnails left"
-                    disabled={!thumbScrollState.canLeft}
-                    onClick={() => scrollThumbnails('left')}
+                    aria-label={pr.scrollThumbsLeft}
+                    aria-disabled={!thumbScrollState.canLeft}
+                    onClick={() => thumbScrollState.canLeft && scrollThumbnails('left')}
                     className={`flex h-14 w-8 shrink-0 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-700 shadow-sm transition dark:border-slate-600 dark:bg-slate-800 dark:text-slate-200 sm:h-16 sm:w-9 ${
                       thumbScrollState.canLeft
-                        ? 'hover:bg-slate-50 dark:hover:bg-slate-700'
+                        ? 'hover:bg-slate-50 dark:hover:bg-slate-700 cursor-pointer'
                         : 'cursor-not-allowed opacity-35'
                     }`}
                   >
-                    <ChevronLeft className="h-5 w-5" aria-hidden />
+                    <ChevronLeft className="h-5 w-5" aria-hidden="true" />
                   </button>
                 )}
                 <div
@@ -343,12 +396,13 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                       type="button"
                       data-thumb-index={index}
                       onClick={() => setCurrentImageIndex(index)}
-                      className={`relative shrink-0 overflow-hidden rounded-lg border-2 transition-colors duration-200 ${
+                      className={`relative shrink-0 overflow-hidden rounded-lg border-2 transition-colors duration-200 cursor-pointer ${
                         index === currentImageIndex
                           ? 'border-blue-500 dark:border-sky-400'
                           : 'border-slate-300/60 hover:border-slate-400 dark:border-slate-600 dark:hover:border-slate-500'
                       }`}
-                      aria-label={`Screenshot ${index + 1}`}
+                      aria-label={`${pr.screenshot} ${index + 1}`}
+                      aria-current={index === currentImageIndex ? 'true' : undefined}
                     >
                       <img
                         src={img.src}
@@ -363,16 +417,16 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                 {thumbScrollState.hasOverflow && (
                   <button
                     type="button"
-                    aria-label="Scroll thumbnails right"
-                    disabled={!thumbScrollState.canRight}
-                    onClick={() => scrollThumbnails('right')}
+                    aria-label={pr.scrollThumbsRight}
+                    aria-disabled={!thumbScrollState.canRight}
+                    onClick={() => thumbScrollState.canRight && scrollThumbnails('right')}
                     className={`flex h-14 w-8 shrink-0 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-700 shadow-sm transition dark:border-slate-600 dark:bg-slate-800 dark:text-slate-200 sm:h-16 sm:w-9 ${
                       thumbScrollState.canRight
-                        ? 'hover:bg-slate-50 dark:hover:bg-slate-700'
+                        ? 'hover:bg-slate-50 dark:hover:bg-slate-700 cursor-pointer'
                         : 'cursor-not-allowed opacity-35'
                     }`}
                   >
-                    <ChevronRight className="h-5 w-5" aria-hidden />
+                    <ChevronRight className="h-5 w-5" aria-hidden="true" />
                   </button>
                 )}
               </div>
@@ -381,7 +435,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
 
           <div className="flex flex-col gap-6 min-w-0">
             {project.detailHeroLine && (
-              <p className="text-xs sm:text-sm font-medium tracking-wide text-slate-500 dark:text-slate-400 uppercase">
+              <p className="text-xs sm:text-sm font-medium tracking-wide text-slate-600 dark:text-slate-400 uppercase">
                 {project.detailHeroLine}
               </p>
             )}
@@ -404,7 +458,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                     >
                       {m.value}
                     </p>
-                    <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
+                    <p className="text-xs text-slate-600 dark:text-slate-400 mt-1">
                       {m.label}
                     </p>
                   </div>
@@ -460,18 +514,19 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
           <div
             className="flex border-b border-slate-200 dark:border-slate-600"
             role="tablist"
-            aria-label="Project details"
+            aria-label={pr.tabsLabel}
+            onKeyDown={handleTabKeyDown}
           >
             <button
               type="button"
               role="tab"
               id="tab-project-stack"
-              aria-selected={detailTab === 'stack'}
+              aria-selected={activeTab === 'stack'}
               aria-controls="panel-project-stack"
-              tabIndex={detailTab === 'stack' ? 0 : -1}
+              tabIndex={activeTab === 'stack' ? 0 : -1}
               onClick={() => setDetailTab('stack')}
-              className={`min-w-0 flex-1 px-4 py-3.5 text-center text-sm font-semibold transition-colors sm:text-base ${
-                detailTab === 'stack'
+              className={`min-w-0 flex-1 px-4 py-3.5 text-center text-sm font-semibold transition-colors sm:text-base cursor-pointer ${
+                activeTab === 'stack'
                   ? 'border-b-2 border-purple-600 text-purple-600 dark:border-lime-400 dark:text-lime-400'
                   : 'border-b-2 border-transparent text-slate-600 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white'
               }`}
@@ -482,12 +537,12 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
               type="button"
               role="tab"
               id="tab-project-features"
-              aria-selected={detailTab === 'features'}
+              aria-selected={activeTab === 'features'}
               aria-controls="panel-project-features"
-              tabIndex={detailTab === 'features' ? 0 : -1}
+              tabIndex={activeTab === 'features' ? 0 : -1}
               onClick={() => setDetailTab('features')}
-              className={`min-w-0 flex-1 px-4 py-3.5 text-center text-sm font-semibold transition-colors sm:text-base ${
-                detailTab === 'features'
+              className={`min-w-0 flex-1 px-4 py-3.5 text-center text-sm font-semibold transition-colors sm:text-base cursor-pointer ${
+                activeTab === 'features'
                   ? 'border-b-2 border-purple-600 text-purple-600 dark:border-lime-400 dark:text-lime-400'
                   : 'border-b-2 border-transparent text-slate-600 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white'
               }`}
@@ -499,12 +554,12 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                 type="button"
                 role="tab"
                 id="tab-project-architecture"
-                aria-selected={detailTab === 'architecture'}
+                aria-selected={activeTab === 'architecture'}
                 aria-controls="panel-project-architecture"
-                tabIndex={detailTab === 'architecture' ? 0 : -1}
+                tabIndex={activeTab === 'architecture' ? 0 : -1}
                 onClick={() => setDetailTab('architecture')}
-                className={`min-w-0 flex-1 px-4 py-3.5 text-center text-sm font-semibold transition-colors sm:text-base ${
-                  detailTab === 'architecture'
+                className={`min-w-0 flex-1 px-4 py-3.5 text-center text-sm font-semibold transition-colors sm:text-base cursor-pointer ${
+                  activeTab === 'architecture'
                     ? 'border-b-2 border-purple-600 text-purple-600 dark:border-lime-400 dark:text-lime-400'
                     : 'border-b-2 border-transparent text-slate-600 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white'
                 }`}
@@ -517,12 +572,12 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                 type="button"
                 role="tab"
                 id="tab-project-case-study"
-                aria-selected={detailTab === 'case-study'}
+                aria-selected={activeTab === 'case-study'}
                 aria-controls="panel-project-case-study"
-                tabIndex={detailTab === 'case-study' ? 0 : -1}
+                tabIndex={activeTab === 'case-study' ? 0 : -1}
                 onClick={() => setDetailTab('case-study')}
-                className={`min-w-0 flex-1 px-4 py-3.5 text-center text-sm font-semibold transition-colors sm:text-base ${
-                  detailTab === 'case-study'
+                className={`min-w-0 flex-1 px-4 py-3.5 text-center text-sm font-semibold transition-colors sm:text-base cursor-pointer ${
+                  activeTab === 'case-study'
                     ? 'border-b-2 border-purple-600 text-purple-600 dark:border-lime-400 dark:text-lime-400'
                     : 'border-b-2 border-transparent text-slate-600 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white'
                 }`}
@@ -533,11 +588,13 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
           </div>
 
           <div className="p-6 sm:p-8">
-            {detailTab === 'stack' && (
+            {activeTab === 'stack' && (
               <div
                 id="panel-project-stack"
                 role="tabpanel"
+                tabIndex={0}
                 aria-labelledby="tab-project-stack"
+                className="focus:outline-none"
               >
                 {/* Проверяем, используется ли новая структура с категориями */}
                 {Array.isArray(project.technologies) ? (
@@ -770,11 +827,13 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
               </div>
             )}
 
-            {detailTab === 'features' && (
+            {activeTab === 'features' && (
               <div
                 id="panel-project-features"
                 role="tabpanel"
+                tabIndex={0}
                 aria-labelledby="tab-project-features"
+                className="focus:outline-none"
               >
                 <ul className="space-y-4">
                   {project.features.map((feature, index) => {
@@ -849,12 +908,13 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
               </div>
             )}
 
-            {detailTab === 'architecture' && hasArchitecture && project.architecture && (
+            {activeTab === 'architecture' && hasArchitecture && project.architecture && (
               <div
                 id="panel-project-architecture"
                 role="tabpanel"
+                tabIndex={0}
                 aria-labelledby="tab-project-architecture"
-                className="space-y-6"
+                className="space-y-6 focus:outline-none"
               >
                 {project.architecture.rows.map((row, rowIdx) => (
                   <div
@@ -899,12 +959,13 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
               </div>
             )}
 
-            {detailTab === 'case-study' && hasCaseStudy && (
+            {activeTab === 'case-study' && hasCaseStudy && (
               <div
                 id="panel-project-case-study"
                 role="tabpanel"
+                tabIndex={0}
                 aria-labelledby="tab-project-case-study"
-                className="space-y-6 animate-fade-in"
+                className="space-y-6 animate-fade-in focus:outline-none"
               >
                 {(() => {
                   const challengesList =
@@ -969,19 +1030,28 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
   Screenshot Modal
 */}
       {screenshotModal.isOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70 p-4">
-          
-          <div className="relative bg-white dark:bg-slate-900 rounded-2xl shadow-2xl w-full max-w-5xl overflow-hidden flex flex-col">
-            
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4"
+          onClick={closeScreenshotModal}
+        >
+          <div
+            ref={screenshotModalRef}
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="screenshot-modal-title"
+            tabIndex={-1}
+            onClick={(e) => e.stopPropagation()}
+            className="relative bg-white dark:bg-slate-900 rounded-2xl shadow-2xl w-full max-w-5xl overflow-hidden flex flex-col focus:outline-none"
+          >
             {/* Close Button inside Modal Card (top-right) */}
             <button
-              className="absolute top-3 right-3 md:top-4 md:right-4 text-slate-400 hover:text-slate-600 dark:text-slate-400 dark:hover:text-slate-200 p-1.5 md:p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800/80 transition z-50"
+              className="absolute top-3 right-3 md:top-4 md:right-4 text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200 p-1.5 md:p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800/80 transition z-50 cursor-pointer"
               onClick={closeScreenshotModal}
-              title="Close"
-              aria-label="Close"
+              title={pr.close}
+              aria-label={pr.close}
               type="button"
             >
-              <X size={20} />
+              <X size={20} aria-hidden="true" />
             </button>
 
             {/* Navigation Arrows (Only show when viewing carousel slides, not full screenshot) */}
@@ -1004,10 +1074,11 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                       }
                     })
                   }
-                  className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/95 dark:bg-slate-800/95 text-slate-700 dark:text-slate-200 p-2.5 rounded-full shadow-lg border border-slate-200/50 dark:border-white/5 transition hover:scale-110 z-30"
+                  className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/95 dark:bg-slate-800/95 text-slate-700 dark:text-slate-200 p-2.5 rounded-full shadow-lg border border-slate-200/50 dark:border-white/5 transition hover:scale-110 z-30 cursor-pointer"
                   type="button"
+                  aria-label={pr.previousImage}
                 >
-                  <ChevronLeft size={24} />
+                  <ChevronLeft size={24} aria-hidden="true" />
                 </button>
                 <button
                   onClick={() =>
@@ -1025,10 +1096,11 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                       }
                     })
                   }
-                  className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/95 dark:bg-slate-800/95 text-slate-700 dark:text-slate-200 p-2.5 rounded-full shadow-lg border border-slate-200/50 dark:border-white/5 transition hover:scale-110 z-30"
+                  className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/95 dark:bg-slate-800/95 text-slate-700 dark:text-slate-200 p-2.5 rounded-full shadow-lg border border-slate-200/50 dark:border-white/5 transition hover:scale-110 z-30 cursor-pointer"
                   type="button"
+                  aria-label={pr.nextImage}
                 >
-                  <ChevronRight size={24} />
+                  <ChevronRight size={24} aria-hidden="true" />
                 </button>
               </>
             )}
@@ -1061,22 +1133,17 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
 
             {/* Title & Caption - Statically positioned footer (No overlay!) */}
             <div className="px-4 md:px-6 py-4 border-t border-slate-100 dark:border-white/5 bg-slate-50/50 dark:bg-slate-950/20 text-left">
-              <h3 className="text-slate-900 dark:text-white text-base font-bold">
+              <h3 id="screenshot-modal-title" className="text-slate-900 dark:text-white text-base font-bold">
                 {screenshotModal.title}
               </h3>
               {screenshotModal.caption && (
-                <p className="text-slate-500 dark:text-slate-400 text-xs mt-1">
+                <p className="text-slate-600 dark:text-slate-400 text-xs mt-1">
                   {screenshotModal.caption}
                 </p>
               )}
             </div>
 
           </div>
-          {/* Click outside to close */}
-          <div
-            className="absolute inset-0 -z-10"
-            onClick={closeScreenshotModal}
-          ></div>
         </div>
       )}
     </div>

@@ -14,10 +14,12 @@ function ConsentConsumer() {
   const {
     status,
     isBannerOpen,
+    isSettingsOpen,
     isPolicyModalOpen,
     acceptCookies,
     declineCookies,
     openSettings,
+    closeSettings,
     openPolicyModal,
     closePolicyModal,
   } = useConsent();
@@ -26,10 +28,12 @@ function ConsentConsumer() {
     <div>
       <span data-testid="consent-status">{status}</span>
       <span data-testid="banner-visibility">{isBannerOpen ? 'banner-visible' : 'banner-hidden'}</span>
+      <span data-testid="settings-visibility">{isSettingsOpen ? 'settings-open' : 'settings-closed'}</span>
       <span data-testid="modal-visibility">{isPolicyModalOpen ? 'modal-visible' : 'modal-hidden'}</span>
       <button onClick={acceptCookies}>Accept Cookies</button>
       <button onClick={declineCookies}>Decline Cookies</button>
       <button onClick={openSettings}>Open Settings</button>
+      <button onClick={closeSettings}>Close Settings</button>
       <button onClick={openPolicyModal}>Open Policy</button>
       <button onClick={closePolicyModal}>Close Policy</button>
     </div>
@@ -173,6 +177,10 @@ describe('ConsentContext Specification (TDD)', () => {
 
     await user.click(screen.getByRole('button', { name: /open settings/i }));
     expect(screen.getByTestId('banner-visibility')).toHaveTextContent('banner-visible');
+    expect(screen.getByTestId('settings-visibility')).toHaveTextContent('settings-open');
+
+    await user.click(screen.getByRole('button', { name: /close settings/i }));
+    expect(screen.getByTestId('settings-visibility')).toHaveTextContent('settings-closed');
   });
 
   it('should toggle policy modal visibility via openPolicyModal and closePolicyModal', async () => {

@@ -71,8 +71,8 @@ describe('ChatModal Client-side Streaming & Fallback Specification (TDD)', () =>
 
     await waitFor(() => {
       expect(
-        screen.getByText(/IT-Magic used Next.js, AWS ECS, and Docker/i),
-      ).toBeDefined()
+        screen.getAllByText(/IT-Magic used Next.js, AWS ECS, and Docker/i).length,
+      ).toBeGreaterThan(0)
     })
   })
 

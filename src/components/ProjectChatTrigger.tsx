@@ -31,6 +31,7 @@ export default function ProjectChatTrigger({
     <button
       type="button"
       onClick={handleClick}
+      aria-haspopup="dialog"
       aria-label={`Ask AI about ${projectTitle}`}
       className="inline-flex w-full items-center justify-between gap-2 px-4 py-3 rounded-xl font-semibold text-sm bg-purple-600/10 hover:bg-purple-600/20 dark:bg-lime-500/10 dark:hover:bg-lime-500/20 text-purple-700 dark:text-lime-400 border border-purple-500/30 hover:border-purple-500/50 dark:border-lime-500/30 dark:hover:border-lime-500/50 shadow-sm transition-all duration-200 cursor-pointer"
     >

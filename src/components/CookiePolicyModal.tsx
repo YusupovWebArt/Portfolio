@@ -1,8 +1,9 @@
 'use client'
 
-import React, { useEffect, useRef } from 'react';
+import React, { useRef } from 'react';
 import { X, ShieldCheck } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
+import { useDialogA11y } from '../hooks/useDialogA11y';
 
 interface CookiePolicyModalProps {
   isOpen: boolean;
@@ -14,32 +15,26 @@ export const CookiePolicyModal: React.FC<CookiePolicyModalProps> = ({ isOpen, on
   const pm = t.consent.policyModal;
   const modalRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    if (!isOpen) return;
-
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        onClose();
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isOpen, onClose]);
+  useDialogA11y({
+    isOpen,
+    onClose,
+    dialogRef: modalRef,
+  });
 
   if (!isOpen) return null;
 
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-sm animate-fade-in"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="cookie-policy-title"
       onClick={onClose}
     >
       <div
         ref={modalRef}
-        className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-2xl p-6 sm:p-8 text-slate-800 dark:text-slate-100"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="cookie-policy-title"
+        tabIndex={-1}
+        className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-2xl p-6 sm:p-8 text-slate-800 dark:text-slate-100 focus:outline-none"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
