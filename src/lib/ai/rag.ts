@@ -2,6 +2,13 @@ import { getAllKnowledgeChunks, KnowledgeChunk } from './knowledge'
 import { projectRegistry } from '../projectRegistry'
 import { FAQ, getBotAnswer } from '../../data/chatFaq'
 import type { Project, TechnologyItem } from '../../components/projects/project-types'
+import {
+  tokenize,
+  expandTokens,
+  detectLanguage,
+  foldForSearch,
+  stripEmDashes,
+} from './text'
 
 export interface RetrievalOptions {
   topK?: number
@@ -21,6 +28,17 @@ export interface LocalSynthesisOptions {
   locale?: 'en' | 'ua' | 'es'
 }
 
+export type QueryIntent =
+  | 'service'
+  | 'profile'
+  | 'contact'
+  | 'methodology'
+  | 'project-aspect'
+  | 'general'
+
+/**
+ * Calculates cosine similarity between two dense numeric vectors.
+ */
 export function calculateCosineSimilarity(vecA: number[], vecB: number[]): number {
   if (vecA.length === 0 || vecB.length === 0 || vecA.length !== vecB.length) return 0
 
@@ -40,86 +58,255 @@ export function calculateCosineSimilarity(vecA: number[], vecB: number[]): numbe
   return dotProduct / denominator
 }
 
-function tokenize(text: string): string[] {
-  return text
-    .toLowerCase()
-    .replace(/[^\w\s-]/g, ' ')
-    .split(/\s+/)
-    .filter((t) => t.length > 1)
+/**
+ * Classifies high-level user intent to prevent project context hijacking.
+ */
+export function detectQueryIntent(query: string): QueryIntent {
+  const lower = foldForSearch(query)
+
+  if (
+    /(service|services|pricing|price|rates|cost|hire|b2b|offer|послуг|цін|вартіст|цена|стоимост|servicios|servicio|precio|contratar|tarifas)/i.test(
+      lower,
+    )
+  ) {
+    return 'service'
+  }
+
+  if (
+    /(who\s+is|who\s+are\s+you|about\s+artur|about\s+yourself|bio|developer|engineer|experience|years\s+of|location|spain|seville|хто|про\s+себе|досвід|опыт|quien|sobre\s+ti|experiencia|donde)/i.test(
+      lower,
+    )
+  ) {
+    return 'profile'
+  }
+
+  if (
+    /(contact|email|phone|whatsapp|telegram|linkedin|reach|call|контакт|зв'язат|написат|contacto|escribir)/i.test(
+      lower,
+    )
+  ) {
+    return 'contact'
+  }
+
+  if (
+    /(methodology|sdd|tdd|vitest|playwright|wcag|eaa|accessibility|devsecops|quality|ai-harness|методолог|тест)/i.test(
+      lower,
+    )
+  ) {
+    return 'methodology'
+  }
+
+  if (
+    /(tech\s*stack|stack|technologies|features|architecture|challenges|solutions|case\s*study|стек|функці|архітектур|funciones|arquitectura)/i.test(
+      lower,
+    )
+  ) {
+    return 'project-aspect'
+  }
+
+  return 'general'
 }
 
+interface IndexedChunk {
+  chunk: KnowledgeChunk
+  docLength: number
+  termFrequencies: Map<string, number>
+}
+
+interface BM25Index {
+  indexedChunks: IndexedChunk[]
+  docFrequencies: Map<string, number>
+  totalDocs: number
+  avgDocLength: number
+}
+
+let cachedIndex: BM25Index | null = null
+
+function buildBM25Index(chunks: KnowledgeChunk[]): BM25Index {
+  const indexedChunks: IndexedChunk[] = []
+  const docFrequencies = new Map<string, number>()
+  let totalLength = 0
+
+  for (const chunk of chunks) {
+    const combinedText = [
+      chunk.title,
+      chunk.content,
+      chunk.contentUa || '',
+      chunk.contentEs || '',
+      chunk.technologies?.join(' ') || '',
+      chunk.category || '',
+      chunk.metadata?.keywords?.join(' ') || '',
+    ].join(' ')
+
+    const tokens = tokenize(combinedText)
+    const termFrequencies = new Map<string, number>()
+    const seenInDoc = new Set<string>()
+
+    for (const token of tokens) {
+      termFrequencies.set(token, (termFrequencies.get(token) || 0) + 1)
+      if (!seenInDoc.has(token)) {
+        seenInDoc.add(token)
+        docFrequencies.set(token, (docFrequencies.get(token) || 0) + 1)
+      }
+    }
+
+    const docLength = tokens.length
+    totalLength += docLength
+
+    indexedChunks.push({
+      chunk,
+      docLength,
+      termFrequencies,
+    })
+  }
+
+  const totalDocs = chunks.length
+  const avgDocLength = totalDocs > 0 ? totalLength / totalDocs : 1
+
+  return {
+    indexedChunks,
+    docFrequencies,
+    totalDocs,
+    avgDocLength,
+  }
+}
+
+function getBM25Index(): BM25Index {
+  if (!cachedIndex) {
+    const chunks = getAllKnowledgeChunks()
+    cachedIndex = buildBM25Index(chunks)
+  }
+  return cachedIndex
+}
+
+/**
+ * Resets BM25 index cache (useful during test teardown).
+ */
+export function resetBM25Index(): void {
+  cachedIndex = null
+}
+
+/**
+ * Legitimate BM25 information retrieval pipeline with:
+ * - Inverse Document Frequency (IDF)
+ * - Document length normalization (k1=1.2, b=0.75)
+ * - Multilingual query expansion across EN/UA/ES
+ * - Intent-gated active project context boosting
+ */
 export function retrieveKnowledge(
   query: string,
   options: RetrievalOptions = {},
 ): RetrievalResult[] {
+  const trimmed = query ? query.trim() : ''
+  if (!trimmed) {
+    return []
+  }
+
   const { topK = 4, currentProjectSlug, minScore = 0.1 } = options
-  const allChunks = getAllKnowledgeChunks()
-  const queryTokens = tokenize(query)
-  const lowerQuery = query.toLowerCase()
+  const index = getBM25Index()
+  const intent = detectQueryIntent(trimmed)
+
+  // 1. Multilingual tokenization and synonym expansion
+  const baseTokens = tokenize(trimmed)
+  if (baseTokens.length === 0) {
+    return []
+  }
+  const queryTokens = expandTokens(baseTokens)
+  const lowerQuery = foldForSearch(trimmed)
+
+  // BM25 parameters
+  const k1 = 1.2
+  const b = 0.75
 
   const results: RetrievalResult[] = []
 
-  for (const chunk of allChunks) {
+  // Check if query explicitly mentions the current project or other project titles
+  const isQuerySpecificallyAboutCurrentProject =
+    Boolean(currentProjectSlug) &&
+    (lowerQuery.includes(currentProjectSlug!.toLowerCase()) ||
+      intent === 'project-aspect')
+
+  // Check if query is an intent that should NOT be hijacked by active project
+  const isGeneralIntentQuery =
+    intent === 'service' ||
+    intent === 'profile' ||
+    intent === 'contact' ||
+    intent === 'methodology'
+
+  for (const { chunk, docLength, termFrequencies } of index.indexedChunks) {
     let score = 0
     const matchReasons: string[] = []
 
-    // 1. Active project context boost
-    if (currentProjectSlug && chunk.slug?.toLowerCase() === currentProjectSlug.toLowerCase()) {
-      score += 15.0
-      matchReasons.push('active-project-context')
-    }
+    // 2. Legitimate BM25 scoring across all query tokens
+    for (const token of queryTokens) {
+      const tf = termFrequencies.get(token) || 0
+      if (tf > 0) {
+        const df = index.docFrequencies.get(token) || 1
+        // Standard Robertson-Sparck Jones BM25 IDF
+        const idf = Math.log(
+          (index.totalDocs - df + 0.5) / (df + 0.5) + 1,
+        )
 
-    // 2. Exact Title Match
-    const lowerTitle = chunk.title.toLowerCase()
-    if (lowerQuery.includes(lowerTitle) || lowerTitle.includes(lowerQuery)) {
-      score += 6.0
-      matchReasons.push('title-match')
-    }
+        const lengthNorm = 1 - b + b * (docLength / index.avgDocLength)
+        const termScore = idf * ((tf * (k1 + 1)) / (tf + k1 * lengthNorm))
 
-    // 3. Technology Match
-    if (chunk.technologies && chunk.technologies.length > 0) {
-      for (const tech of chunk.technologies) {
-        const lowerTech = tech.toLowerCase()
-        if (lowerQuery.includes(lowerTech)) {
-          score += 4.0
-          matchReasons.push(`tech-match:${tech}`)
+        score += termScore
+        if (!matchReasons.includes(`bm25-match:${token}`)) {
+          matchReasons.push(`bm25-match:${token}`)
         }
       }
     }
 
-    // 4. Intent & Profile Match
+    // 3. Intent-Gated Active Project Boost (resolves Finding C)
     if (
-      chunk.type === 'profile' &&
-      /(who\s+is|about|artur|yusupov|bio|experience|location|developer|engineer|кто|про себе)/i.test(
-        lowerQuery,
-      )
+      currentProjectSlug &&
+      chunk.slug?.toLowerCase() === currentProjectSlug.toLowerCase()
     ) {
-      score += 5.0
-      matchReasons.push('profile-intent')
-    }
-
-    // 5. Service & Pricing Match
-    if (
-      chunk.type === 'service' &&
-      /(service|cost|price|hire|b2b|offer|услуг|цін|precio|contratar)/i.test(lowerQuery)
-    ) {
-      score += 5.0
-      matchReasons.push('service-intent')
-    }
-
-    // 6. Token overlap with content
-    const lowerContent = chunk.content.toLowerCase()
-    let tokenOverlapCount = 0
-    for (const token of queryTokens) {
-      if (lowerContent.includes(token)) {
-        tokenOverlapCount++
+      if (!isGeneralIntentQuery || isQuerySpecificallyAboutCurrentProject) {
+        const boost = isQuerySpecificallyAboutCurrentProject ? 4.0 : 2.5
+        score += boost
+        matchReasons.push('active-project-context')
       }
     }
 
-    if (tokenOverlapCount > 0) {
-      const overlapScore = (tokenOverlapCount / Math.max(queryTokens.length, 1)) * 3.0
-      score += overlapScore
-      matchReasons.push(`token-overlap:${tokenOverlapCount}`)
+    // 4. Exact Title Match (non-empty query tokens)
+    const lowerTitle = foldForSearch(chunk.title)
+    if (lowerTitle.includes(lowerQuery) || (lowerQuery.length > 3 && lowerTitle.includes(lowerQuery))) {
+      score += 3.5
+      matchReasons.push('title-match')
+    }
+
+    // 5. Technology Match (capped bonus)
+    if (chunk.technologies && chunk.technologies.length > 0) {
+      let matchedTechCount = 0
+      for (const tech of chunk.technologies) {
+        const lowerTech = foldForSearch(tech)
+        if (lowerTech.length >= 2 && lowerQuery.includes(lowerTech)) {
+          matchedTechCount++
+          if (matchedTechCount <= 2) {
+            score += 1.5
+            matchReasons.push(`tech-match:${tech}`)
+          }
+        }
+      }
+    }
+
+    // 6. Profile Intent Match
+    if (chunk.type === 'profile' && intent === 'profile') {
+      score += 6.0
+      matchReasons.push('profile-intent')
+    }
+
+    // 7. Service & Pricing Intent Match
+    if (chunk.type === 'service' && intent === 'service') {
+      score += 6.0
+      matchReasons.push('service-intent')
+    }
+
+    // 8. Methodology Intent Match
+    if (chunk.type === 'methodology' && intent === 'methodology') {
+      score += 6.0
+      matchReasons.push('methodology-intent')
     }
 
     if (score >= minScore) {
@@ -131,21 +318,42 @@ export function retrieveKnowledge(
     }
   }
 
-  // Sort descending by score
+  // Sort descending by relevance score
   results.sort((a, b) => b.score - a.score)
 
-  return results.slice(0, topK)
+  // Deduplicate faceted chunks if parent is already included
+  const finalResults: RetrievalResult[] = []
+  const seenSlugsOrIds = new Set<string>()
+
+  for (const item of results) {
+    const key = item.chunk.parentId || item.chunk.id
+    if (!seenSlugsOrIds.has(key) || finalResults.length < 2) {
+      finalResults.push(item)
+      seenSlugsOrIds.add(key)
+    }
+    if (finalResults.length >= topK) break
+  }
+
+  return finalResults
 }
 
-export function formatContextForLLM(results: RetrievalResult[], maxChars = 4000): string {
+/**
+ * Formats retrieved knowledge chunks into clean, injection-safe markdown
+ * for LLM system prompts with strict token budgets and zero em dashes.
+ */
+export function formatContextForLLM(
+  results: RetrievalResult[],
+  maxChars = 3500,
+): string {
   if (results.length === 0) return ''
 
   const lines: string[] = ['### Relevant Knowledge Base Chunks:']
   let currentLength = lines[0].length
 
   for (const item of results) {
+    const facetInfo = item.chunk.facet ? ` · ${item.chunk.facet.toUpperCase()}` : ''
     const chunkBlock = `
-#### [${item.chunk.type.toUpperCase()}] ${item.chunk.title} (Relevance Score: ${item.score})
+#### [${item.chunk.type.toUpperCase()}${facetInfo}] ${item.chunk.title} (Relevance Score: ${item.score})
 ${item.chunk.content}
 `
     if (currentLength + chunkBlock.length > maxChars) {
@@ -155,8 +363,7 @@ ${item.chunk.content}
     currentLength += chunkBlock.length
   }
 
-  // Enforce zero em dashes
-  return lines.join('\n').replace(/[\u2014\u2013]/g, '-')
+  return stripEmDashes(lines.join('\n'))
 }
 
 function formatTechItems(items?: TechnologyItem[]): string {
@@ -316,28 +523,22 @@ export function synthesizeLocalRagAnswer(
   query: string,
   options: LocalSynthesisOptions = {},
 ): string {
-  const lower = query.toLowerCase().trim()
+  const trimmed = query ? query.trim() : ''
+  const lower = foldForSearch(trimmed)
+  const lang = options.locale || detectLanguage(trimmed)
 
-  // 1. Detect effective language
-  let lang: 'en' | 'ua' | 'es' = options.locale || 'en'
-  if (/[а-яіїєґё]/i.test(query)) {
-    lang = 'ua'
-  } else if (/[¿¡áéíóúñ]|\b(qué|cuáles|háblame|sobre|tecnológico|funciones|arquitectura)\b/i.test(query)) {
-    lang = 'es'
-  }
-
-  // 2. Check if query is an exact click on one of the general FAQ questions
+  // 1. Check if query is an exact match for one of the general FAQ questions
   for (const item of FAQ) {
     if (
-      lower === item.question.toLowerCase() ||
-      lower === item.questionUa.toLowerCase() ||
-      lower === item.questionEs.toLowerCase()
+      lower === foldForSearch(item.question) ||
+      lower === foldForSearch(item.questionUa) ||
+      lower === foldForSearch(item.questionEs)
     ) {
-      return getBotAnswer(query, lang).replace(/[\u2014\u2013]/g, '-')
+      return stripEmDashes(getBotAnswer(trimmed, lang))
     }
   }
 
-  // 3. Resolve target project from options or query text
+  // 2. Resolve target project from options or query text
   let matchedProject: Project | undefined
 
   if (options.projectSlug) {
@@ -354,7 +555,7 @@ export function synthesizeLocalRagAnswer(
     // Check if query explicitly mentions any project title or slug
     const byQuery = projectRegistry.find(
       (p) =>
-        lower.includes(p.project.title.toLowerCase()) ||
+        lower.includes(foldForSearch(p.project.title)) ||
         (p.slug.length > 3 && lower.includes(p.slug.toLowerCase())),
     )
     if (byQuery) {
@@ -362,42 +563,42 @@ export function synthesizeLocalRagAnswer(
     }
   }
 
-  // 4. If a project is targeted and the query is not a general profile/bio question
-  const isGeneralProfileQuestion =
-    /(who is artur|about yourself|quién es artur|хто такий артур|how many years|скільки років|cuántos años|where are you located|де ви знаходитесь|dónde estás)/i.test(
+  // 3. If a project is targeted and the query is not a general profile/services question
+  const isGeneralProfileOrServiceQuestion =
+    /(who is artur|about yourself|quién es artur|хто такий артур|how many years|скільки років|cuántos años|where are you located|де ви знаходитесь|dónde estás|services|rates|cost|послуги|ціни|precio)/i.test(
       lower,
     )
 
-  if (matchedProject && !isGeneralProfileQuestion) {
+  if (matchedProject && !isGeneralProfileOrServiceQuestion) {
     if (/(tech\s*stack|technologies|stack|used|built with|tecnolog|стек|технолог)/i.test(lower)) {
-      return formatProjectStack(matchedProject, lang).replace(/[\u2014\u2013]/g, '-')
+      return stripEmDashes(formatProjectStack(matchedProject, lang))
     }
     if (
       /(feature|main features|functionality|funciones|características|фіч|функці|можливост|возможност|особенност)/i.test(
         lower,
       )
     ) {
-      return formatProjectFeatures(matchedProject, lang).replace(/[\u2014\u2013]/g, '-')
+      return stripEmDashes(formatProjectFeatures(matchedProject, lang))
     }
     if (
       /(architect|arquitectura|архітектур|архитектур|challenge|solution|case study|how it works|как устроен|як влаштован)/i.test(
         lower,
       )
     ) {
-      return formatProjectArchitecture(matchedProject, lang).replace(/[\u2014\u2013]/g, '-')
+      return stripEmDashes(formatProjectArchitecture(matchedProject, lang))
     }
-    return formatProjectOverview(matchedProject, lang).replace(/[\u2014\u2013]/g, '-')
+    return stripEmDashes(formatProjectOverview(matchedProject, lang))
   }
 
-  // 5. General FAQ keyword matching
+  // 4. General FAQ keyword matching
   for (const item of FAQ) {
-    if (item.keywords.some((kw) => lower.includes(kw))) {
-      return getBotAnswer(query, lang).replace(/[\u2014\u2013]/g, '-')
+    if (item.keywords.some((kw) => lower.includes(foldForSearch(kw)))) {
+      return stripEmDashes(getBotAnswer(trimmed, lang))
     }
   }
 
-  // 6. Hybrid RAG retrieval across all chunks
-  const retrieved = retrieveKnowledge(query, {
+  // 5. Hybrid RAG retrieval across all chunks
+  const retrieved = retrieveKnowledge(trimmed, {
     currentProjectSlug: options.projectSlug,
     topK: 2,
   })
@@ -407,7 +608,7 @@ export function synthesizeLocalRagAnswer(
     if (top.type === 'project' && top.slug) {
       const proj = projectRegistry.find((p) => p.slug === top.slug)?.project
       if (proj) {
-        return formatProjectOverview(proj, lang).replace(/[\u2014\u2013]/g, '-')
+        return stripEmDashes(formatProjectOverview(proj, lang))
       }
     }
     const text =
@@ -416,39 +617,38 @@ export function synthesizeLocalRagAnswer(
         : lang === 'ua' && top.contentUa
           ? top.contentUa
           : top.content
-    return text.replace(/[\u2014\u2013]/g, '-')
+    return stripEmDashes(text)
   }
 
-  return getBotAnswer(query, lang).replace(/[\u2014\u2013]/g, '-')
+  return stripEmDashes(getBotAnswer(trimmed, lang))
 }
 
 export function getRagSourceLabel(
   query: string,
   options: LocalSynthesisOptions = {},
 ): string {
-  const lower = query.toLowerCase().trim()
+  const lower = foldForSearch(query)
 
   if (options.projectTitle) {
-    return `Hybrid RAG · ${options.projectTitle} Case Study`
+    return `Hybrid RAG · ${stripEmDashes(options.projectTitle)} Case Study`
   }
   if (options.projectSlug) {
     const found = projectRegistry.find(
       (p) => p.slug.toLowerCase() === options.projectSlug?.toLowerCase(),
     )
     if (found) {
-      return `Hybrid RAG · ${found.project.title} Case Study`
+      return `Hybrid RAG · ${stripEmDashes(found.project.title)} Case Study`
     }
   }
 
   const byQuery = projectRegistry.find(
     (p) =>
-      lower.includes(p.project.title.toLowerCase()) ||
+      lower.includes(foldForSearch(p.project.title)) ||
       (p.slug.length > 3 && lower.includes(p.slug.toLowerCase())),
   )
   if (byQuery) {
-    return `Hybrid RAG · ${byQuery.project.title} Case Study`
+    return `Hybrid RAG · ${stripEmDashes(byQuery.project.title)} Case Study`
   }
 
   return 'Hybrid RAG · 70-Project Knowledge Base'
 }
-

@@ -298,6 +298,14 @@ export interface Translation {
       liveConsole: string
       faqHeader: string
       online: string
+      closeChat: string
+      activeContext: string
+      clearContext: string
+      resetContext: string
+      quickQueriesHeader: string
+      quickQueryStack: string
+      quickQueryFeatures: string
+      quickQueryArchitecture: string
     }
   }
   footer: {

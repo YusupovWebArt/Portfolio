@@ -321,22 +321,22 @@ const ChatModal = ({
   if (!isModalOpen) return null
 
   const projectChips = projectContext
-    ? lang === 'es'
+    ? lang === 'ua'
       ? [
-          `Ask about ${projectContext.projectTitle}: ¿Qué stack tecnológico se utilizó?`,
-          `Ask about ${projectContext.projectTitle}: ¿Cuáles fueron las funciones principales?`,
-          `Ask about ${projectContext.projectTitle}: Háblame de la arquitectura.`,
+          `Запитати про ${projectContext.projectTitle}: ${ct.quickQueryStack}`,
+          `Запитати про ${projectContext.projectTitle}: ${ct.quickQueryFeatures}`,
+          `Запитати про ${projectContext.projectTitle}: ${ct.quickQueryArchitecture}`,
         ]
-      : lang === 'ua'
+      : lang === 'es'
         ? [
-            `Ask about ${projectContext.projectTitle}: Який стек технологій використовувався?`,
-            `Ask about ${projectContext.projectTitle}: Які основні функції реалізовано?`,
-            `Ask about ${projectContext.projectTitle}: Розкажи про архітектуру проєкту.`,
+            `Preguntar sobre ${projectContext.projectTitle}: ${ct.quickQueryStack}`,
+            `Preguntar sobre ${projectContext.projectTitle}: ${ct.quickQueryFeatures}`,
+            `Preguntar sobre ${projectContext.projectTitle}: ${ct.quickQueryArchitecture}`,
           ]
         : [
-            `Ask about ${projectContext.projectTitle}: What tech stack was used?`,
-            `Ask about ${projectContext.projectTitle}: What were the main features?`,
-            `Ask about ${projectContext.projectTitle}: Tell me about the architecture.`,
+            `Ask about ${projectContext.projectTitle}: ${ct.quickQueryStack}`,
+            `Ask about ${projectContext.projectTitle}: ${ct.quickQueryFeatures}`,
+            `Ask about ${projectContext.projectTitle}: ${ct.quickQueryArchitecture}`,
           ]
     : []
 
@@ -393,8 +393,8 @@ const ChatModal = ({
             <button
               onClick={handleClose}
               className="p-2 hover:bg-slate-100 dark:hover:bg-white/5 rounded-full text-slate-400 hover:text-slate-600 dark:hover:text-white transition-colors"
-              title="Close chat"
-              aria-label="Close chat"
+              title={ct.closeChat}
+              aria-label={ct.closeChat}
               type="button"
             >
               <X className="w-5 h-5" />
@@ -407,15 +407,15 @@ const ChatModal = ({
           <div className="flex items-center justify-between px-6 py-2 bg-purple-50/90 dark:bg-lime-500/10 border-b border-purple-200/60 dark:border-lime-500/20 text-xs">
             <div className="flex items-center gap-1.5 font-semibold text-purple-700 dark:text-lime-300 truncate">
               <Sparkles className="w-3.5 h-3.5 shrink-0" aria-hidden />
-              <span className="truncate">Active RAG Context: {projectContext.projectTitle}</span>
+              <span className="truncate">{ct.activeContext}: {projectContext.projectTitle}</span>
             </div>
             <button
               type="button"
               onClick={() => setProjectContext(null)}
               className="ml-2 inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-semibold text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white bg-white/80 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 transition"
-              title="Clear project context"
+              title={ct.clearContext}
             >
-              <span>Reset</span>
+              <span>{ct.resetContext}</span>
               <X className="w-3 h-3" aria-hidden />
             </button>
           </div>
@@ -474,7 +474,7 @@ const ChatModal = ({
           {projectContext && (
             <div className="mt-2 ml-9 p-3 bg-purple-50/70 dark:bg-slate-800/70 border border-purple-200/60 dark:border-lime-500/25 rounded-2xl animate-fade-in space-y-2">
               <div className="text-[10px] font-bold text-purple-600 dark:text-lime-400 uppercase tracking-wider flex items-center justify-between">
-                <span>Quick RAG Queries: {projectContext.projectTitle}</span>
+                <span>{ct.quickQueriesHeader}: {projectContext.projectTitle}</span>
               </div>
               <div className="grid grid-cols-1 gap-1.5">
                 {projectChips.map((chip, idx) => (

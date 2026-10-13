@@ -1,6 +1,7 @@
 import { tool } from 'ai'
 import { z } from 'zod'
 import { getAllProjectEntries } from '../projects'
+import { getDecodedContactInfo } from '../contacts'
 
 export interface ProjectToolOutput {
   slug: string
@@ -70,8 +71,8 @@ export const showProjectsTool = tool({
 
     const projects: ProjectToolOutput[] = selected.map(({ slug, project }) => ({
       slug,
-      title: project.title.replace(/—/g, '-'),
-      description: project.description.replace(/—/g, '-'),
+      title: project.title.replace(/[\u2013\u2014]/g, '-'),
+      description: project.description.replace(/[\u2013\u2014]/g, '-'),
       image: project.image,
       category: project.category?.[0] || 'WebDevelopment',
       liveUrl: project.liveUrl,
@@ -90,26 +91,7 @@ export const getContactInfoTool = tool({
     "Retrieve verified contact channels and direct links for hiring or contracting Artur Yusupov.",
   parameters: z.object({}),
   execute: async () => {
-    // Decode contact links at runtime to prevent static scraper leaks and comply with SECURITY.md
-    const decode = (b64: string): string => {
-      if (typeof atob === 'function') {
-        return atob(b64)
-      }
-      return Buffer.from(b64, 'base64').toString('utf-8')
-    }
-
-    return {
-      name: 'Artur Yusupov',
-      role: 'Fullstack WordPress Developer & Next.js / React Engineer',
-      location: 'Spain / Remote Worldwide',
-      email: decode('d2ViLnN1bmxpbmVAZ21haWwuY29t'),
-      emailUrl: decode('bWFpbHRvOndlYi5zdW5saW5lQGdtYWlsLmNvbQ=='),
-      telegram: decode('QGRldmVsb3BfY3JlYXRl'),
-      telegramUrl: decode('aHR0cHM6Ly90Lm1lL2RldmVsb3BfY3JlYXRl'),
-      whatsappUrl: decode('aHR0cHM6Ly93YS5tZS8zNDY0MjQxMzk2Nw=='),
-      githubUrl: 'https://github.com/YusupovWebArt',
-      linkedinUrl: 'https://www.linkedin.com/in/artur-yusupov/',
-    }
+    return getDecodedContactInfo()
   },
 })
 

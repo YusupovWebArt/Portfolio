@@ -18,6 +18,7 @@ import {
 import { FAQ, Message } from '../data/chatFaq'
 import { useLanguage } from '../contexts/LanguageContext'
 import { synthesizeLocalRagAnswer, getRagSourceLabel } from '../lib/ai/rag'
+import { OBFUSCATED_CONTACTS, PUBLIC_PROFILES, decodeContact } from '../lib/contacts'
 
 let contactMessageIdCounter = 0
 
@@ -34,34 +35,34 @@ const Contact = () => {
   useEffect(() => {
     // Decode contact info after mount to prevent static HTML scrapers / SSR leaks
     const timer = setTimeout(() => {
-      setEmailVal(atob('d2ViLnN1bmxpbmVAZ21haWwuY29t'))
-      setEmailLink(atob('bWFpbHRvOndlYi5zdW5saW5lQGdtYWlsLmNvbQ=='))
-      setPhoneVal(atob('KzM0NjQyNDEzOTY3'))
-      setPhoneLink(atob('aHR0cHM6Ly93YS5tZS8zNDY0MjQxMzk2Nw=='))
-      setTgVal(atob('QGRldmVsb3BfY3JlYXRl'))
-      setTgLink(atob('aHR0cHM6Ly90Lm1lL2RldmVsb3BfY3JlYXRl'))
+      setEmailVal(decodeContact(OBFUSCATED_CONTACTS.email))
+      setEmailLink(decodeContact(OBFUSCATED_CONTACTS.emailMailto))
+      setPhoneVal(decodeContact(OBFUSCATED_CONTACTS.phone))
+      setPhoneLink(decodeContact(OBFUSCATED_CONTACTS.whatsappUrl))
+      setTgVal(decodeContact(OBFUSCATED_CONTACTS.telegram))
+      setTgLink(decodeContact(OBFUSCATED_CONTACTS.telegramUrl))
     }, 400)
     return () => clearTimeout(timer)
   }, [])
 
   const handleEmailInteraction = () => {
     if (emailLink === '#') {
-      setEmailVal(atob('d2ViLnN1bmxpbmVAZ21haWwuY29t'))
-      setEmailLink(atob('bWFpbHRvOndlYi5zdW5saW5lQGdtYWlsLmNvbQ=='))
+      setEmailVal(decodeContact(OBFUSCATED_CONTACTS.email))
+      setEmailLink(decodeContact(OBFUSCATED_CONTACTS.emailMailto))
     }
   }
 
   const handlePhoneInteraction = () => {
     if (phoneLink === '#') {
-      setPhoneVal(atob('KzM0NjQyNDEzOTY3'))
-      setPhoneLink(atob('aHR0cHM6Ly93YS5tZS8zNDY0MjQxMzk2Nw=='))
+      setPhoneVal(decodeContact(OBFUSCATED_CONTACTS.phone))
+      setPhoneLink(decodeContact(OBFUSCATED_CONTACTS.whatsappUrl))
     }
   }
 
   const handleTgInteraction = () => {
     if (tgLink === '#') {
-      setTgVal(atob('QGRldmVsb3BfY3JlYXRl'))
-      setTgLink(atob('aHR0cHM6Ly90Lm1lL2RldmVsb3BfY3JlYXRl'))
+      setTgVal(decodeContact(OBFUSCATED_CONTACTS.telegram))
+      setTgLink(decodeContact(OBFUSCATED_CONTACTS.telegramUrl))
     }
   }
 
@@ -121,7 +122,7 @@ const Contact = () => {
     {
       icon: <Linkedin className="w-5 h-5" />,
       label: 'LinkedIn',
-      url: 'https://www.linkedin.com/in/artur-iusupov/',
+      url: PUBLIC_PROFILES.linkedinUrl,
       hoverColor: 'hover:text-purple-600 dark:hover:text-lime-400 hover:border-purple-500/40 dark:hover:border-lime-500/40',
     },
   ]
@@ -268,17 +269,17 @@ const Contact = () => {
                     }
                     if (item.label === 'Email' && emailLink === '#') {
                       e.preventDefault();
-                      const decoded = atob('bWFpbHRvOndlYi5zdW5saW5lQGdtYWlsLmNvbQ==');
+                      const decoded = decodeContact(OBFUSCATED_CONTACTS.emailMailto);
                       window.location.href = decoded;
                     }
                     if (item.label === 'Phone/WhatsApp' && phoneLink === '#') {
                       e.preventDefault();
-                      const decoded = atob('aHR0cHM6Ly93YS5tZS8zNDY0MjQxMzk2Nw==');
+                      const decoded = decodeContact(OBFUSCATED_CONTACTS.whatsappUrl);
                       window.open(decoded, '_blank', 'noopener,noreferrer');
                     }
                     if (item.label === 'Telegram' && tgLink === '#') {
                       e.preventDefault();
-                      const decoded = atob('aHR0cHM6Ly90Lm1lL2RldmVsb3BfY3JlYXRl');
+                      const decoded = decodeContact(OBFUSCATED_CONTACTS.telegramUrl);
                       window.open(decoded, '_blank', 'noopener,noreferrer');
                     }
                   }}

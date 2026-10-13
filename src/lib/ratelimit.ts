@@ -1,3 +1,5 @@
+import crypto from 'crypto'
+
 export interface RateLimitOptions {
   maxRequests?: number
   windowMs?: number
@@ -20,6 +22,18 @@ export function resetRateLimits(): void {
   memoryStore.clear()
 }
 
+/**
+ * Deterministically hashes client IP with SHA-256 to protect user privacy
+ * and prevent raw IP leakage into logs, caches, or third-party Redis stores.
+ */
+export function hashIp(ip: string): string {
+  try {
+    return crypto.createHash('sha256').update(ip || '127.0.0.1').digest('hex').slice(0, 32)
+  } catch {
+    return ip || '127.0.0.1'
+  }
+}
+
 export async function checkRateLimit(
   ip: string,
   options?: RateLimitOptions,
@@ -27,6 +41,7 @@ export async function checkRateLimit(
   const maxRequests = options?.maxRequests ?? 15
   const windowMs = options?.windowMs ?? 60 * 60 * 1000 // 1 hour default
   const now = Date.now()
+  const hashedKey = hashIp(ip)
 
   // Production Upstash Redis REST check if credentials are provided
   const upstashUrl = process.env.UPSTASH_REDIS_REST_URL
@@ -34,7 +49,7 @@ export async function checkRateLimit(
 
   if (upstashUrl && upstashToken) {
     try {
-      const key = `ratelimit:chat:${ip}`
+      const key = `ratelimit:chat:${hashedKey}`
       const response = await fetch(`${upstashUrl}/pipeline`, {
         method: 'POST',
         headers: {
@@ -72,10 +87,10 @@ export async function checkRateLimit(
   }
 
   // Reliable sliding window in-memory fallback (local dev, test suite, CI)
-  const record = memoryStore.get(ip)
+  const record = memoryStore.get(hashedKey)
 
   if (!record || now > record.resetAt) {
-    memoryStore.set(ip, {
+    memoryStore.set(hashedKey, {
       count: 1,
       resetAt: now + windowMs,
     })

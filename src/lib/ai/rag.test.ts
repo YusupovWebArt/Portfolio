@@ -60,4 +60,34 @@ describe('Hybrid RAG Retriever Specification (TDD)', () => {
     expect(formatted).not.toContain('—')
     expect(formatted.length).toBeGreaterThan(50)
   })
+
+  it('should return empty results for empty or whitespace query without crashing (Finding H)', () => {
+    expect(retrieveKnowledge('')).toEqual([])
+    expect(retrieveKnowledge('   ')).toEqual([])
+  })
+
+  it('should retrieve Ukrainian Cyrillic queries with high accuracy (Finding B)', () => {
+    const results = retrieveKnowledge('Який стек технологій використовувався в IT-Magic?')
+    expect(results.length).toBeGreaterThan(0)
+    const topResult = results[0]
+    expect(topResult.chunk.slug).toBe('it-magic')
+  })
+
+  it('should prevent project context from hijacking general service inquiries (Finding C)', () => {
+    const results = retrieveKnowledge('What are your services, pricing, and contract rates?', {
+      currentProjectSlug: 'it-magic',
+      topK: 3,
+    })
+
+    expect(results.length).toBeGreaterThan(0)
+    const hasService = results.some((r) => r.chunk.type === 'service')
+    expect(hasService).toBe(true)
+    expect(results[0].chunk.type).toBe('service')
+  })
+
+  it('should retrieve projects for Spanish queries with accented terms', () => {
+    const results = retrieveKnowledge('¿Cuáles son las características principales de Unitrition?')
+    expect(results.length).toBeGreaterThan(0)
+    expect(results.some((r) => r.chunk.slug === 'unitrition')).toBe(true)
+  })
 })
