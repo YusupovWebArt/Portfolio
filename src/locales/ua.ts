@@ -673,6 +673,13 @@ export const ua: Translation = {
       'Готові втілити ваш проєкт у життя? Оберіть зручний канал зв\'язку нижче або протестуйте мого Hybrid RAG AI-асистента, навченого на всіх 70 проєктах портфоліо.',
     directChannels: "Прямі канали зв'язку",
     followCredentials: 'Соціальні мережі та профілі',
+    reveal: {
+      email: 'Натисніть, щоб показати email',
+      phone: 'Натисніть, щоб показати WhatsApp',
+      telegram: 'Натисніть, щоб показати Telegram',
+      revealLabel: 'Показати контакт',
+      noscript: 'Для відображення прямих контактів потрібен JavaScript. Ви можете звʼязатися через LinkedIn: linkedin.com/in/artur-iusupov/',
+    },
     contactTags: {
       email: 'Для офіційних запитів та проєктів',
       phone: 'Найкраще для швидких розмов',

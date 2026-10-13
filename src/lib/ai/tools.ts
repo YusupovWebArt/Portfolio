@@ -1,7 +1,7 @@
 import { tool } from 'ai'
 import { z } from 'zod'
 import { getAllProjectEntries } from '../projects'
-import { getDecodedContactInfo } from '../contacts'
+import { PUBLIC_PROFILES } from '../profiles'
 
 export interface ProjectToolOutput {
   slug: string
@@ -88,10 +88,19 @@ export const showProjectsTool = tool({
 
 export const getContactInfoTool = tool({
   description:
-    "Retrieve verified contact channels and direct links for hiring or contracting Artur Yusupov.",
+    "Retrieve verified public profiles and messaging channels for contacting Artur Yusupov.",
   parameters: z.object({}),
   execute: async () => {
-    return getDecodedContactInfo()
+    return {
+      name: PUBLIC_PROFILES.name,
+      role: PUBLIC_PROFILES.role,
+      location: PUBLIC_PROFILES.location,
+      githubUrl: PUBLIC_PROFILES.githubUrl,
+      linkedinUrl: PUBLIC_PROFILES.linkedinUrl,
+      telegramUrl: 'https://t.me/develop_create',
+      contactNote:
+        'Direct email and WhatsApp channels can be revealed on-demand in the Contact section of this website.',
+    }
   },
 })
 

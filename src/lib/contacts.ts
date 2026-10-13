@@ -20,14 +20,15 @@ export const OBFUSCATED_CONTACTS = {
   telegramUrl: 'aHR0cHM6Ly90Lm1lL2RldmVsb3BfY3JlYXRl',
 } as const
 
-export const PUBLIC_PROFILES = {
-  name: 'Artur Yusupov',
-  role: 'Fullstack WordPress Developer & Next.js / React Engineer',
-  location: 'Spain, Seville / Remote Worldwide',
-  experience: '5+ years commercial experience',
-  githubUrl: 'https://github.com/YusupovWebArt',
-  linkedinUrl: 'https://www.linkedin.com/in/artur-iusupov/',
-} as const
+import { PUBLIC_PROFILES } from './profiles'
+export { PUBLIC_PROFILES }
+
+export type ContactKind = 'email' | 'phone' | 'telegram'
+
+export interface RevealedContact {
+  label: string
+  href: string
+}
 
 /**
  * Safe runtime Base64 decoder compatible with both Browser (atob) and Node.js environments.
@@ -37,6 +38,29 @@ export function decodeContact(b64: string): string {
     return atob(b64)
   }
   return Buffer.from(b64, 'base64').toString('utf-8')
+}
+
+/**
+ * Reveal verified contact details on user demand.
+ */
+export function revealContact(kind: ContactKind): RevealedContact {
+  switch (kind) {
+    case 'email':
+      return {
+        label: decodeContact(OBFUSCATED_CONTACTS.email),
+        href: decodeContact(OBFUSCATED_CONTACTS.emailMailto),
+      }
+    case 'phone':
+      return {
+        label: decodeContact(OBFUSCATED_CONTACTS.phone),
+        href: decodeContact(OBFUSCATED_CONTACTS.whatsappUrl),
+      }
+    case 'telegram':
+      return {
+        label: decodeContact(OBFUSCATED_CONTACTS.telegram),
+        href: decodeContact(OBFUSCATED_CONTACTS.telegramUrl),
+      }
+  }
 }
 
 export interface DecodedContactInfo {

@@ -1,7 +1,7 @@
 import { Project, TechnologyItem } from '../../components/projects/project-types'
 import { projectRegistry } from '../projectRegistry'
 import { stripEmDashes } from './text'
-import { OBFUSCATED_CONTACTS, PUBLIC_PROFILES } from '../contacts'
+import { PUBLIC_PROFILES } from '../profiles'
 
 export type ProjectFacet = 'overview' | 'stack' | 'features' | 'architecture' | 'case-study'
 
@@ -34,7 +34,6 @@ export interface KnowledgeBase {
     title: string
     location: string
     experience: string
-    emailObfuscated: string
     github: string
     linkedin: string
   }
@@ -337,7 +336,6 @@ export const loadKnowledgeBase = (): KnowledgeBase => {
       title: 'Senior Fullstack WordPress & Next.js/React Engineer',
       location: PUBLIC_PROFILES.location,
       experience: PUBLIC_PROFILES.experience,
-      emailObfuscated: OBFUSCATED_CONTACTS.email,
       github: PUBLIC_PROFILES.githubUrl,
       linkedin: PUBLIC_PROFILES.linkedinUrl,
     },

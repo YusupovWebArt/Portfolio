@@ -1,10 +1,18 @@
-import { describe, it, expect, beforeEach } from 'vitest'
-import { checkRateLimit, resetRateLimits } from '../lib/ratelimit'
+import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
+import { checkRateLimit, resetRateLimits, getMemoryStoreSize } from '../lib/ratelimit'
 import { POST } from '../../app/api/chat/route'
+
+const BASE = 'https://example.upstash.io'
 
 describe('DevSecOps Rate Limiting Specification (TDD)', () => {
   beforeEach(() => {
     resetRateLimits()
+  })
+
+  afterEach(() => {
+    vi.unstubAllEnvs()
+    vi.unstubAllGlobals()
+    vi.restoreAllMocks()
   })
 
   it('should allow requests within limit and track remaining tokens', async () => {
@@ -53,5 +61,56 @@ describe('DevSecOps Rate Limiting Specification (TDD)', () => {
     const data = await response.json()
     expect(data.error).toContain('Too many requests')
     expect(JSON.stringify(data)).not.toContain('—')
+  })
+
+  it('does not fail open on a malformed Upstash payload and degrades to memory fallback', async () => {
+    vi.stubEnv('UPSTASH_REDIS_REST_URL', BASE)
+    vi.stubEnv('UPSTASH_REDIS_REST_TOKEN', 'test_token')
+    vi.spyOn(console, 'warn').mockImplementation(() => undefined)
+    vi.stubGlobal('fetch', vi.fn(async () => new Response(JSON.stringify({ result: 'OK' }))))
+
+    let allowed = 0
+    for (let i = 0; i < 30; i++) {
+      if ((await checkRateLimit('malformed-test-id')).success) allowed++
+    }
+    expect(allowed).toBe(15)
+  })
+
+  it('falls back within the timeout budget when Upstash hangs', async () => {
+    vi.stubEnv('UPSTASH_REDIS_REST_URL', BASE)
+    vi.stubEnv('UPSTASH_REDIS_REST_TOKEN', 'test_token')
+    vi.spyOn(console, 'warn').mockImplementation(() => undefined)
+    vi.stubGlobal(
+      'fetch',
+      vi.fn(
+        (_url: string, init?: RequestInit) =>
+          new Promise<Response>((_resolve, reject) => {
+            init?.signal?.addEventListener('abort', () => reject(new Error('timeout')))
+          }),
+      ),
+    )
+
+    const started = Date.now()
+    const result = await checkRateLimit('hang-test-id', { upstashTimeoutMs: 50 })
+    expect(result.backend).toBe('memory')
+    expect(Date.now() - started).toBeLessThan(500)
+  })
+
+  it('never puts the identifier into the request URL path', async () => {
+    vi.stubEnv('UPSTASH_REDIS_REST_URL', BASE)
+    vi.stubEnv('UPSTASH_REDIS_REST_TOKEN', 'test_token')
+    const spy = vi.fn(async () => new Response(JSON.stringify({ result: [1, 3_600_000] })))
+    vi.stubGlobal('fetch', spy)
+
+    await checkRateLimit('203.0.113.9/1?x=y')
+    expect(String(spy.mock.calls[0]?.[0])).toBe(BASE)
+  })
+
+  it('bounds memory consumption under aggressive key rotation floods', async () => {
+    vi.stubEnv('UPSTASH_REDIS_REST_URL', '')
+    for (let i = 0; i < 12_000; i++) {
+      await checkRateLimit(`key-rotation-${i}`)
+    }
+    expect(getMemoryStoreSize()).toBeLessThanOrEqual(10_000)
   })
 })

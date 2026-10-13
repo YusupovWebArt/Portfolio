@@ -293,6 +293,13 @@ export interface Translation {
     description: string
     directChannels: string
     followCredentials: string
+    reveal: {
+      email: string
+      phone: string
+      telegram: string
+      revealLabel: string
+      noscript: string
+    }
     contactTags: {
       email: string
       phone: string

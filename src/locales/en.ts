@@ -674,6 +674,13 @@ export const en: Translation = {
       'Ready to bring your project to life? Choose a messaging channel below or test my Hybrid RAG AI assistant trained on all 70 portfolio projects.',
     directChannels: 'Direct Channels',
     followCredentials: 'Follow Credentials',
+    reveal: {
+      email: 'Click to reveal email',
+      phone: 'Click to reveal WhatsApp',
+      telegram: 'Click to reveal Telegram',
+      revealLabel: 'Click to reveal',
+      noscript: 'JavaScript is required to display direct contact links. You can reach out directly via LinkedIn: linkedin.com/in/artur-iusupov/',
+    },
     contactTags: {
       email: 'For official requests & projects',
       phone: 'Best for quick chats',

@@ -673,6 +673,13 @@ export const es: Translation = {
       '¿Listo para dar vida a su proyecto? Elija un canal de comunicación a continuación o pruebe mi asistente Hybrid RAG IA entrenado con los 70 proyectos del portfolio.',
     directChannels: 'Canales directos',
     followCredentials: 'Redes sociales y perfiles',
+    reveal: {
+      email: 'Haga clic para mostrar el email',
+      phone: 'Haga clic para mostrar WhatsApp',
+      telegram: 'Haga clic para mostrar Telegram',
+      revealLabel: 'Mostrar contacto',
+      noscript: 'Se requiere JavaScript para mostrar enlaces de contacto directo. Puede contactar a traves de LinkedIn: linkedin.com/in/artur-iusupov/',
+    },
     contactTags: {
       email: 'Para solicitudes oficiales y proyectos',
       phone: 'Ideal para conversaciones rápidas',

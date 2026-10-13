@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useCallback } from 'react'
 import {
   Mail,
   Phone,
@@ -18,89 +18,62 @@ import {
 import { FAQ, Message } from '../data/chatFaq'
 import { useLanguage } from '../contexts/LanguageContext'
 import { synthesizeLocalRagAnswer, getRagSourceLabel } from '../lib/ai/rag'
-import { OBFUSCATED_CONTACTS, PUBLIC_PROFILES, decodeContact } from '../lib/contacts'
+import { PUBLIC_PROFILES } from '../lib/profiles'
+import type { ContactKind, RevealedContact } from '../lib/contacts'
 
 let contactMessageIdCounter = 0
 
 const Contact = () => {
   const { lang, t } = useLanguage()
   const ct = t.contact
-  const [emailVal, setEmailVal] = useState('web.sunline [at] gmail.com')
-  const [emailLink, setEmailLink] = useState('#')
-  const [phoneVal, setPhoneVal] = useState('+34 642 [at] WhatsApp')
-  const [phoneLink, setPhoneLink] = useState('#')
-  const [tgVal, setTgVal] = useState('@develop [at] Telegram')
-  const [tgLink, setTgLink] = useState('#')
 
-  useEffect(() => {
-    // Decode contact info after mount to prevent static HTML scrapers / SSR leaks
-    const timer = setTimeout(() => {
-      setEmailVal(decodeContact(OBFUSCATED_CONTACTS.email))
-      setEmailLink(decodeContact(OBFUSCATED_CONTACTS.emailMailto))
-      setPhoneVal(decodeContact(OBFUSCATED_CONTACTS.phone))
-      setPhoneLink(decodeContact(OBFUSCATED_CONTACTS.whatsappUrl))
-      setTgVal(decodeContact(OBFUSCATED_CONTACTS.telegram))
-      setTgLink(decodeContact(OBFUSCATED_CONTACTS.telegramUrl))
-    }, 400)
-    return () => clearTimeout(timer)
+  const [revealed, setRevealed] = useState<Partial<Record<ContactKind, RevealedContact>>>({})
+
+  const reveal = useCallback(async (kind: ContactKind): Promise<void> => {
+    const { revealContact } = await import('../lib/contacts')
+    const contact = revealContact(kind)
+    setRevealed((prev) => ({ ...prev, [kind]: contact }))
   }, [])
 
-  const handleEmailInteraction = () => {
-    if (emailLink === '#') {
-      setEmailVal(decodeContact(OBFUSCATED_CONTACTS.email))
-      setEmailLink(decodeContact(OBFUSCATED_CONTACTS.emailMailto))
-    }
-  }
-
-  const handlePhoneInteraction = () => {
-    if (phoneLink === '#') {
-      setPhoneVal(decodeContact(OBFUSCATED_CONTACTS.phone))
-      setPhoneLink(decodeContact(OBFUSCATED_CONTACTS.whatsappUrl))
-    }
-  }
-
-  const handleTgInteraction = () => {
-    if (tgLink === '#') {
-      setTgVal(decodeContact(OBFUSCATED_CONTACTS.telegram))
-      setTgLink(decodeContact(OBFUSCATED_CONTACTS.telegramUrl))
-    }
-  }
+  const cardValue = (kind: ContactKind, neutral: string): string => revealed[kind]?.label ?? neutral
+  const cardLink = (kind: ContactKind): string => revealed[kind]?.href ?? '#'
 
   const contactInfo = [
     {
+      kind: 'email' as const,
       icon: <Mail className="w-5 h-5" />,
       label: 'Email',
-      value: emailVal,
-      link: emailLink,
+      value: cardValue('email', ct.reveal.email),
+      link: cardLink('email'),
       glowColor: 'bg-blue-500',
       iconColor: 'text-blue-500 dark:text-blue-400',
       borderHover: 'group-hover:border-blue-500/30',
       tag: ct.contactTags.email,
-      onInteraction: handleEmailInteraction,
     },
     {
+      kind: 'phone' as const,
       icon: <Phone className="w-5 h-5" />,
       label: 'Phone/WhatsApp',
-      value: phoneVal,
-      link: phoneLink,
+      value: cardValue('phone', ct.reveal.phone),
+      link: cardLink('phone'),
       glowColor: 'bg-emerald-500',
       iconColor: 'text-emerald-500 dark:text-emerald-400',
       borderHover: 'group-hover:border-emerald-500/30',
       tag: ct.contactTags.phone,
-      onInteraction: handlePhoneInteraction,
     },
     {
+      kind: 'telegram' as const,
       icon: <MessageCircle className="w-5 h-5" />,
       label: 'Telegram',
-      value: tgVal,
-      link: tgLink,
+      value: cardValue('telegram', ct.reveal.telegram),
+      link: cardLink('telegram'),
       glowColor: 'bg-sky-500',
       iconColor: 'text-sky-500 dark:text-sky-400',
       borderHover: 'group-hover:border-sky-500/30',
       tag: ct.contactTags.telegram,
-      onInteraction: handleTgInteraction,
     },
     {
+      kind: undefined,
       icon: <MapPin className="w-5 h-5" />,
       label: 'Location',
       value: 'Spain, Seville',
@@ -127,33 +100,39 @@ const Contact = () => {
     },
   ]
 
-  // States for embedded AI console
-  const [messages, setMessages] = useState<Message[]>(() => {
-    if (typeof window !== 'undefined') {
-      const saved = sessionStorage.getItem('portfolio_chat_contact_messages')
-      if (saved) {
-        try {
-          const parsed = JSON.parse(saved) as Array<Omit<Message, 'timestamp'> & { timestamp?: string }>
-          return parsed.map((m) => ({
-            ...m,
-            timestamp: m.timestamp ? new Date(m.timestamp) : undefined,
-          }))
-        } catch {
-          // Fallback to default
-        }
-      }
-    }
-    return [
-      {
-        id: 'welcome',
-        from: 'bot',
-        text: ct.chatbot.welcomeMessage,
-      },
-    ]
-  })
+  // States for embedded AI console with safe SSR initial state
+  const [messages, setMessages] = useState<Message[]>([
+    {
+      id: 'welcome',
+      from: 'bot',
+      text: ct.chatbot.welcomeMessage,
+      source: 'Direct FAQ',
+    },
+  ])
   const [input, setInput] = useState('')
   const [isTyping, setIsTyping] = useState(false)
   const scrollContainerRef = useRef<HTMLDivElement>(null)
+
+  // Hydrate chat messages from sessionStorage asynchronously after mount
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      try {
+        const saved = sessionStorage.getItem('portfolio_chat_contact_messages')
+        if (saved) {
+          const parsed = JSON.parse(saved) as Array<Omit<Message, 'timestamp'> & { timestamp?: string }>
+          setMessages(
+            parsed.map((m) => ({
+              ...m,
+              timestamp: m.timestamp ? new Date(m.timestamp) : undefined,
+            })),
+          )
+        }
+      } catch {
+        // Ignore sessionStorage read errors
+      }
+    }, 0)
+    return () => clearTimeout(timer)
+  }, [])
 
   useEffect(() => {
     sessionStorage.setItem(
@@ -262,25 +241,11 @@ const Contact = () => {
                   href={item.link}
                   target={item.link === '#' || item.link.startsWith('#') ? undefined : '_blank'}
                   rel="noopener noreferrer"
-                  onMouseEnter={item.onInteraction}
+                  aria-label={item.kind && !revealed[item.kind] ? `${item.label}: ${ct.reveal.revealLabel}` : undefined}
                   onClick={(e) => {
-                    if (item.onInteraction) {
-                      item.onInteraction();
-                    }
-                    if (item.label === 'Email' && emailLink === '#') {
-                      e.preventDefault();
-                      const decoded = decodeContact(OBFUSCATED_CONTACTS.emailMailto);
-                      window.location.href = decoded;
-                    }
-                    if (item.label === 'Phone/WhatsApp' && phoneLink === '#') {
-                      e.preventDefault();
-                      const decoded = decodeContact(OBFUSCATED_CONTACTS.whatsappUrl);
-                      window.open(decoded, '_blank', 'noopener,noreferrer');
-                    }
-                    if (item.label === 'Telegram' && tgLink === '#') {
-                      e.preventDefault();
-                      const decoded = decodeContact(OBFUSCATED_CONTACTS.telegramUrl);
-                      window.open(decoded, '_blank', 'noopener,noreferrer');
+                    if (item.kind && !revealed[item.kind]) {
+                      e.preventDefault()
+                      void reveal(item.kind)
                     }
                   }}
                   className="group flex items-center space-x-4 p-4 bg-white dark:bg-slate-900 lg:bg-white/40 lg:dark:bg-slate-900/40 lg:backdrop-blur-md border border-slate-200/60 dark:border-white/5 rounded-2xl hover:bg-white/70 dark:hover:bg-slate-900/80 hover:border-slate-300 dark:hover:border-white/10 hover:scale-[1.01] hover:-translate-y-0.5 transition-all duration-300 shadow-sm relative overflow-hidden"
@@ -303,13 +268,23 @@ const Contact = () => {
                         {item.tag}
                       </span>
                     </div>
-                    <div className="font-bold text-slate-900 dark:text-white text-sm mt-0.5 truncate">
+                    <div
+                      role="status"
+                      aria-live="polite"
+                      className="font-bold text-slate-900 dark:text-white text-sm mt-0.5 truncate"
+                    >
                       {item.value}
                     </div>
                   </div>
                 </a>
               ))}
             </div>
+
+            <noscript>
+              <div className="mt-3 p-3 rounded-lg bg-amber-500/10 border border-amber-500/20 text-xs text-amber-900 dark:text-amber-200">
+                {ct.reveal.noscript}
+              </div>
+            </noscript>
 
             {/* Social Links Row */}
             <div className="pt-6 border-t border-slate-200/60 dark:border-white/5">
