@@ -76,6 +76,20 @@
     <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
     <link rel="dns-prefetch" href="https://www.google-analytics.com" />
 
+    <!-- GitHub Pages Single Page Application redirect parser -->
+    <script>
+      (function(l) {
+        if (l.search[1] === '/' ) {
+          var decoded = l.search.slice(1).split('&').map(function(s) { 
+            return s.replace(/~and~/g, '&')
+          }).join('?');
+          window.history.replaceState(null, null,
+              l.pathname.slice(0, -1) + decoded + l.hash
+          );
+        }
+      }(window.location))
+    </script>
+
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">
     {
@@ -132,13 +146,13 @@
     <script>
       document.documentElement.classList.add('js');
     </script>
-    <script type="module" crossorigin src="/Portfolio/assets/index-DTeI9q-K.js"></script>
+    <script type="module" crossorigin src="/Portfolio/assets/index-CzKU40lt.js"></script>
     <link rel="modulepreload" crossorigin href="/Portfolio/assets/rolldown-runtime-CbXtAM7H.js">
     <link rel="modulepreload" crossorigin href="/Portfolio/assets/vendor-C6rCjk5o.js">
     <link rel="modulepreload" crossorigin href="/Portfolio/assets/locales-C1iFKtme.js">
     <link rel="modulepreload" crossorigin href="/Portfolio/assets/vendor-icons-BJkwBrZ7.js">
-    <link rel="modulepreload" crossorigin href="/Portfolio/assets/projects-data-D-Y7iZwN.js">
-    <link rel="stylesheet" crossorigin href="/Portfolio/assets/index-D93I4eGh.css">
+    <link rel="modulepreload" crossorigin href="/Portfolio/assets/projects-data-YYrbusFa.js">
+    <link rel="stylesheet" crossorigin href="/Portfolio/assets/index-CSBqIOFN.css">
   </head>
   <body>
     <div id="root">
