@@ -1,8 +1,9 @@
-import { useState } from 'react'
+import { useState, lazy, Suspense } from 'react'
 import { FaFilePdf } from 'react-icons/fa'
 import { Bot } from 'lucide-react'
-import ChatModal from './ChatModal'
 import { useLanguage } from '../contexts/LanguageContext'
+
+const ChatModal = lazy(() => import('./ChatModal'))
 
 const Hero = () => {
   const [chatOpen, setChatOpen] = useState(false)
@@ -71,7 +72,9 @@ const Hero = () => {
               <FaFilePdf aria-hidden="true" className="w-4 h-4" />
               {t.hero.ctaSecondary}
             </a>
-            <ChatModal open={chatOpen} onClose={() => setChatOpen(false)} />
+            <Suspense fallback={null}>
+              <ChatModal open={chatOpen} onClose={() => setChatOpen(false)} />
+            </Suspense>
           </div>
         </div>
       </div>

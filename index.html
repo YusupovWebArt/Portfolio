@@ -13,8 +13,6 @@
     <link rel="apple-touch-icon" href="/Portfolio/images/icons/icon-192x192.png" />
     <!-- Security Headers -->
     <meta name="referrer" content="strict-origin-when-cross-origin" />
-    <meta http-equiv="Permissions-Policy" content="camera=(), microphone=(), geolocation=()" />
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https://yusupovwebart.github.io https://www.google-analytics.com https://*.google-analytics.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; frame-src 'none'; object-src 'none'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests;" />
     <meta
       name="description"
       content="Artur Yusupov - Full-stack WordPress Developer. React/Next.js Developer specializing in SEO optimization, and AI Tools. Creating modern, high-performance web applications."
@@ -68,27 +66,6 @@
 
     <link rel="canonical" href="https://yusupovwebart.github.io/Portfolio/" />
     <link rel="preload" href="/Portfolio/images/hero-pic.webp" as="image" type="image/webp" />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preconnect" href="https://www.googletagmanager.com" />
-    <link rel="preconnect" href="https://www.google-analytics.com" />
-    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-    <link rel="dns-prefetch" href="https://www.google-analytics.com" />
-
-    <!-- GitHub Pages Single Page Application redirect parser -->
-    <script>
-      (function(l) {
-        if (l.search[1] === '/' ) {
-          var decoded = l.search.slice(1).split('&').map(function(s) { 
-            return s.replace(/~and~/g, '&')
-          }).join('?');
-          window.history.replaceState(null, null,
-              l.pathname.slice(0, -1) + decoded + l.hash
-          );
-        }
-      }(window.location))
-    </script>
 
     <!-- JSON-LD Structured Data -->
     <script type="application/ld+json">

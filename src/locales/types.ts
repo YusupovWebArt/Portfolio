@@ -349,6 +349,15 @@ export interface Translation {
     cookiePolicy: string
     cookieSettings: string
     bannerAriaLabel: string
+    settingsTitle: string
+    settingsDesc: string
+    essentialCookies: string
+    essentialCookiesDesc: string
+    alwaysActive: string
+    analyticsCookies: string
+    analyticsCookiesDesc: string
+    savePreferences: string
+    closeSettings: string
     policyModal: {
       title: string
       subtitle: string

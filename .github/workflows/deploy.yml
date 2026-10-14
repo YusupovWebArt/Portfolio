@@ -61,6 +61,9 @@ jobs:
       - name: 5. Build Production Bundle
         run: pnpm build
 
+      - name: 5b. Contact leak scan (built output)
+        run: node scripts/check-contact-leak.mjs
+
       - name: 6. Install Playwright Chromium
         run: pnpm exec playwright install --with-deps chromium
 

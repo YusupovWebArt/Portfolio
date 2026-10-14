@@ -111,8 +111,9 @@ export async function POST(req: Request) {
 
     // 5. IP-based rate limiting (15 requests/hour, hashed IP in storage)
     const ip =
-      req.headers.get('x-forwarded-for')?.split(',')[0].trim() ||
-      req.headers.get('x-real-ip') ||
+      req.headers.get('x-real-ip')?.trim() ||
+      req.headers.get('x-vercel-ip')?.trim() ||
+      req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||
       '127.0.0.1'
 
     const rateLimit = await checkRateLimit(ip, {

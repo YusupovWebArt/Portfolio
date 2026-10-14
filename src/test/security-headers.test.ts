@@ -1,4 +1,4 @@
-import { readFileSync } from 'node:fs'
+import { readFileSync, existsSync } from 'node:fs'
 import { describe, expect, it } from 'vitest'
 import nextConfig from '../../next.config'
 
@@ -16,13 +16,14 @@ describe('DevSecOps Security Headers Specification (TDD)', () => {
     expect(get('X-Frame-Options')).toBe('DENY')
   })
 
-  it('index.html meta CSP forbids unsafe-eval and plugins', () => {
-    const html = readFileSync('index.html', 'utf8')
-    const csp = html.match(/http-equiv="Content-Security-Policy"\s+content="([^"]+)"/)?.[1] ?? ''
+  it('built SPA index.html or vite config enforces strict CSP without unsafe-eval', () => {
+    const targetFile = existsSync('dist/index.html') ? 'dist/index.html' : 'vite.config.ts'
+    const rawContent = readFileSync(targetFile, 'utf8')
+    const content = rawContent.replace(/&#39;/g, "'").replace(/&quot;/g, '"')
 
-    expect(csp).toContain("object-src 'none'")
-    expect(csp).toContain("base-uri 'self'")
-    expect(csp).toContain("form-action 'self'")
-    expect(csp).not.toMatch(/unsafe-eval/)
+    expect(content).toContain("object-src 'none'")
+    expect(content).toContain("base-uri 'self'")
+    expect(content).toContain("form-action 'self'")
+    expect(content).not.toMatch(/unsafe-eval/)
   })
 })

@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest'
 import * as fs from 'fs'
 import * as path from 'path'
+import nextConfig from '../../next.config'
 
 describe('Production Deployment & Vercel Configuration Specification (TDD)', () => {
   const rootDir = path.resolve(__dirname, '../../')
@@ -8,21 +9,24 @@ describe('Production Deployment & Vercel Configuration Specification (TDD)', () 
   const packageJsonPath = path.resolve(rootDir, 'package.json')
   const chatRoutePath = path.resolve(rootDir, 'app/api/chat/route.ts')
 
-  it('should verify vercel.json contains framework and strict security headers', () => {
+  it('should verify vercel.json contains framework and clean config delegating headers to next.config.ts', async () => {
     expect(fs.existsSync(vercelJsonPath)).toBe(true)
     const vercelConfig = JSON.parse(fs.readFileSync(vercelJsonPath, 'utf-8'))
 
     expect(vercelConfig.framework).toBe('nextjs')
     expect(vercelConfig.buildCommand).toBe('pnpm build:next')
-    expect(Array.isArray(vercelConfig.headers)).toBe(true)
+    // Headers must not be duplicated in vercel.json; next.config.ts is the single source of truth
+    expect(vercelConfig.headers).toBeUndefined()
 
-    const headerKeys = vercelConfig.headers[0].headers.map(
-      (h: { key: string }) => h.key,
-    )
+    const headers = (await nextConfig.headers?.()) ?? []
+    const rootHeaders = headers.find((h) => h.source === '/:path*')?.headers ?? []
+    const headerKeys = rootHeaders.map((h) => h.key)
+
     expect(headerKeys).toContain('X-Content-Type-Options')
     expect(headerKeys).toContain('X-Frame-Options')
     expect(headerKeys).toContain('Referrer-Policy')
     expect(headerKeys).toContain('Permissions-Policy')
+    expect(headerKeys).toContain('Content-Security-Policy')
   })
 
   it('should verify package.json has Next.js 16 build scripts and AI SDK dependencies', () => {

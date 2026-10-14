@@ -17,7 +17,6 @@ import {
 
 import { FAQ, Message } from '../data/chatFaq'
 import { useLanguage } from '../contexts/LanguageContext'
-import { synthesizeLocalRagAnswer, getRagSourceLabel } from '../lib/ai/rag'
 import { PUBLIC_PROFILES } from '../lib/profiles'
 import type { ContactKind, RevealedContact } from '../lib/contacts'
 
@@ -142,7 +141,7 @@ const Contact = () => {
   }, [messages])
 
   const scrollToBottom = () => {
-    if (scrollContainerRef.current) {
+    if (scrollContainerRef.current && typeof scrollContainerRef.current.scrollTo === 'function') {
       scrollContainerRef.current.scrollTo({
         top: scrollContainerRef.current.scrollHeight,
         behavior: 'smooth',
@@ -167,16 +166,20 @@ const Contact = () => {
     setInput('')
     setIsTyping(true)
 
-    setTimeout(() => {
+    void import('../lib/ai/rag').then(({ synthesizeLocalRagAnswer, getRagSourceLabel }) => {
+      setTimeout(() => {
+        setIsTyping(false)
+        const botMsg: Message = {
+          id: `bot-${++contactMessageIdCounter}`,
+          from: 'bot',
+          text: synthesizeLocalRagAnswer(textToSend, { locale: lang }),
+          source: getRagSourceLabel(textToSend, { locale: lang }),
+        }
+        setMessages((prev) => [...prev, botMsg])
+      }, 950)
+    }).catch(() => {
       setIsTyping(false)
-      const botMsg: Message = {
-        id: `bot-${++contactMessageIdCounter}`,
-        from: 'bot',
-        text: synthesizeLocalRagAnswer(textToSend, { locale: lang }),
-        source: getRagSourceLabel(textToSend, { locale: lang }),
-      }
-      setMessages((prev) => [...prev, botMsg])
-    }, 950)
+    })
   }
 
   const handleClearChat = () => {
@@ -469,7 +472,7 @@ const Contact = () => {
                   </div>
                   <button
                     onClick={() => handleSend(input)}
-                    className="w-8.5 h-8.5 w-8 h-8 rounded-full bg-purple-600 hover:bg-purple-700 dark:bg-lime-500 dark:hover:bg-lime-400 text-white dark:text-slate-900 flex items-center justify-center transition-all shadow-md active:scale-95 shrink-0"
+                    className="w-8 h-8 rounded-full bg-purple-600 hover:bg-purple-700 dark:bg-lime-500 dark:hover:bg-lime-400 text-white dark:text-slate-900 flex items-center justify-center transition-all shadow-md active:scale-95 shrink-0"
                     title={ct.chatbot.sendButton}
                     aria-label={ct.chatbot.sendButton || 'Send message'}
                     type="button"

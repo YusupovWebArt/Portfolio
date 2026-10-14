@@ -4,7 +4,6 @@ import { useState, useEffect, useRef, useCallback } from 'react'
 import { Send, Bot, User, X, Trash2, Sparkles, Database } from 'lucide-react'
 
 import { FAQ, Message } from '../data/chatFaq'
-import { synthesizeLocalRagAnswer, getRagSourceLabel } from '../lib/ai/rag'
 import { useLanguage } from '../contexts/LanguageContext'
 import { useDialogA11y } from '../hooks/useDialogA11y'
 import ProjectToolCard from './chat/ProjectToolCard'
@@ -140,6 +139,8 @@ const ChatModal = ({
       text: textToSend,
       timestamp: new Date(),
     }
+
+    const { synthesizeLocalRagAnswer, getRagSourceLabel } = await import('../lib/ai/rag')
 
     const sourceLabel = getRagSourceLabel(textToSend, {
       projectSlug: projectContext?.projectSlug,

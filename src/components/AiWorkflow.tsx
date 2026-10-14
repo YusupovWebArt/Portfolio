@@ -37,13 +37,13 @@ const AiWorkflow = () => {
   const [activeTab, setActiveTab] = useState(0)
   const [activeStep, setActiveStep] = useState(0)
 
-  const earsCodeBlock = `WHEN the user hovers over the email icon,
-THE system SHALL decode the Base64 string and populate the
-actual mailto: link into the href attribute within 100ms.
+  const earsCodeBlock = `WHEN the user clicks the reveal button for a contact channel,
+THE system SHALL dynamically load the isolated credentials chunk
+and populate the verified link into the href attribute.
 
 WHILE JavaScript is disabled,
-THE system SHALL render the email as a static text element
-without exposing a clickable hyperlink.`
+THE system SHALL render the fallback guidance notice
+without exposing any plaintext credentials or scraper tokens.`
 
   const categoryMeta = [
     {

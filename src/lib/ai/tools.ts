@@ -2,6 +2,7 @@ import { tool } from 'ai'
 import { z } from 'zod'
 import { getAllProjectEntries } from '../projects'
 import { PUBLIC_PROFILES } from '../profiles'
+import { revealContact } from '../contacts'
 
 export interface ProjectToolOutput {
   slug: string
@@ -97,7 +98,7 @@ export const getContactInfoTool = tool({
       location: PUBLIC_PROFILES.location,
       githubUrl: PUBLIC_PROFILES.githubUrl,
       linkedinUrl: PUBLIC_PROFILES.linkedinUrl,
-      telegramUrl: 'https://t.me/develop_create',
+      telegramUrl: revealContact('telegram').href,
       contactNote:
         'Direct email and WhatsApp channels can be revealed on-demand in the Contact section of this website.',
     }

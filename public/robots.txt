@@ -1,34 +1,50 @@
 # Allow all search engines and crawlers
 User-agent: *
 Allow: /
+Disallow: /api/
 
-# Explicitly allow AI crawlers and bots
+# OpenAI bots
 User-agent: GPTBot
 Allow: /
+Disallow: /api/
 
 User-agent: ChatGPT-User
 Allow: /
+Disallow: /api/
 
+# Anthropic bots
 User-agent: ClaudeBot
 Allow: /
+Disallow: /api/
 
-User-agent: Claude-Web
+User-agent: Claude-User
 Allow: /
+Disallow: /api/
 
-User-agent: Anthropic-ai
+User-agent: Claude-SearchBot
 Allow: /
+Disallow: /api/
 
+# Other AI bots
 User-agent: Google-Extended
 Allow: /
+Disallow: /api/
 
 User-agent: Applebot-extended
 Allow: /
+Disallow: /api/
 
 User-agent: FacebookBot
 Allow: /
+Disallow: /api/
 
 User-agent: CohereBot
 Allow: /
+Disallow: /api/
+
+User-agent: PerplexityBot
+Allow: /
+Disallow: /api/
 
 # Sitemap URL
 Sitemap: https://yusupovwebart.github.io/Portfolio/sitemap.xml

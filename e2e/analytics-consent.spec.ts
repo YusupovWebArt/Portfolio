@@ -116,8 +116,8 @@ test.describe('Google Analytics 4 & Consent Mode v2 Basic Specification (E2E & T
     await footerSettingsBtn.scrollIntoViewIfNeeded();
     await footerSettingsBtn.click();
 
-    // Banner should re-open
-    const banner = page.locator('[data-testid="consent-banner"]');
-    await expect(banner).toBeVisible();
+    // Settings preferences dialog should open
+    const settingsDialog = page.getByRole('dialog');
+    await expect(settingsDialog).toBeVisible();
   });
 });
