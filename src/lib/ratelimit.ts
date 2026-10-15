@@ -1,4 +1,4 @@
-import crypto from 'crypto'
+import { createHmac } from 'node:crypto'
 
 export interface RateLimitOptions {
   maxRequests?: number
@@ -58,14 +58,21 @@ export function getMemoryStoreSize(): number {
 }
 
 /**
- * Deterministically hashes client IP with SHA-256 to protect user privacy
- * and prevent raw IP leakage into logs, caches, or third-party Redis stores.
+ * Deterministically hashes client identifier using HMAC-SHA-256 with server-side salt
+ * to prevent brute-force rainbow table reconstruction of visitor IP addresses.
  */
 export function hashIp(ip: string): string {
+  const secret = process.env.RATE_LIMIT_SALT
+  if (!secret && process.env.NODE_ENV === 'production') {
+    console.warn('[ratelimit] RATE_LIMIT_SALT is not set: identifiers are weakly pseudonymized')
+  }
   try {
-    return crypto.createHash('sha256').update(ip || '127.0.0.1').digest('hex').slice(0, 32)
+    return createHmac('sha256', secret ?? 'dev-only')
+      .update(ip || 'unknown')
+      .digest('hex')
+      .slice(0, 32)
   } catch {
-    return (ip || '127.0.0.1').slice(0, 32)
+    return 'unknown'.slice(0, 32)
   }
 }
 

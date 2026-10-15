@@ -41,7 +41,7 @@ const Contact = () => {
     {
       kind: 'email' as const,
       icon: <Mail className="w-5 h-5" />,
-      label: 'Email',
+      label: ct.emailLabel,
       value: cardValue('email', ct.reveal.email),
       link: cardLink('email'),
       glowColor: 'bg-blue-500',
@@ -74,13 +74,13 @@ const Contact = () => {
     {
       kind: undefined,
       icon: <MapPin className="w-5 h-5" />,
-      label: 'Location',
-      value: 'Spain, Seville',
+      label: ct.locationLabel,
+      value: ct.locationValue,
       link: '#',
       glowColor: 'bg-rose-500',
       iconColor: 'text-rose-500 dark:text-rose-400',
       borderHover: 'group-hover:border-rose-500/30',
-      tag: 'Remote / Relocate-ready',
+      tag: ct.locationTag,
     },
   ]
 
@@ -105,7 +105,7 @@ const Contact = () => {
       id: 'welcome',
       from: 'bot',
       text: ct.chatbot.welcomeMessage,
-      source: 'Direct FAQ',
+      source: ct.faqSource,
     },
   ])
   const [input, setInput] = useState('')
@@ -346,11 +346,12 @@ const Contact = () => {
                 
                 <button
                   onClick={handleClearChat}
-                  className="p-1.5 hover:bg-slate-100 dark:hover:bg-white/5 rounded-full text-slate-400 hover:text-slate-600 dark:hover:text-white transition-colors"
+                  className="p-1.5 hover:bg-slate-100 dark:hover:bg-white/5 rounded-full text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200 transition-colors focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-700 dark:focus-visible:outline-lime-400 cursor-pointer"
                   title={ct.chatbot.clearButton}
+                  aria-label={ct.chatbot.clearButton || 'Clear chat'}
                   type="button"
                 >
-                  <Trash2 className="w-3.5 h-3.5" />
+                  <Trash2 className="w-3.5 h-3.5" aria-hidden="true" />
                 </button>
               </div>
 
@@ -461,23 +462,24 @@ const Contact = () => {
                 )}
 
                 <div className="flex items-center space-x-2">
-                  <div className="flex-1 flex items-center bg-white dark:bg-slate-950 border border-slate-200 dark:border-white/5 rounded-full px-3.5 py-1 focus-within:border-purple-500/50 dark:focus-within:border-lime-500/50 focus-within:ring-2 focus-within:ring-purple-500/5 dark:focus-within:ring-lime-500/5 transition-all duration-250">
+                  <div className="flex-1 flex items-center bg-white dark:bg-slate-950 border border-slate-300 dark:border-white/10 rounded-full px-3.5 py-1 focus-within:border-purple-700 dark:focus-within:border-lime-400 focus-within:ring-2 focus-within:ring-purple-700 dark:focus-within:ring-lime-400 transition-all duration-250">
                     <input
-                      className="flex-1 bg-transparent border-0 outline-none text-slate-800 dark:text-slate-100 placeholder-slate-400 text-xs py-1"
+                      className="flex-1 bg-transparent border-0 outline-none text-slate-800 dark:text-slate-100 placeholder-slate-500 dark:placeholder-slate-400 text-xs py-1"
                       value={input}
                       onChange={(e) => setInput(e.target.value)}
                       onKeyDown={(e) => e.key === 'Enter' && handleSend(input)}
                       placeholder={ct.chatbot.placeholder}
+                      aria-label={ct.chatbot.a11y?.inputLabel || ct.chatbot.placeholder || 'Type your question'}
                     />
                   </div>
                   <button
                     onClick={() => handleSend(input)}
-                    className="w-8 h-8 rounded-full bg-purple-600 hover:bg-purple-700 dark:bg-lime-500 dark:hover:bg-lime-400 text-white dark:text-slate-900 flex items-center justify-center transition-all shadow-md active:scale-95 shrink-0"
+                    className="w-8 h-8 rounded-full bg-purple-600 hover:bg-purple-700 dark:bg-lime-500 dark:hover:bg-lime-400 text-white dark:text-slate-900 flex items-center justify-center transition-all shadow-md active:scale-95 shrink-0 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-700 dark:focus-visible:outline-lime-400 cursor-pointer"
                     title={ct.chatbot.sendButton}
                     aria-label={ct.chatbot.sendButton || 'Send message'}
                     type="button"
                   >
-                    <Send className="w-3.5 h-3.5" />
+                    <Send className="w-3.5 h-3.5" aria-hidden="true" />
                   </button>
                 </div>
               </div>

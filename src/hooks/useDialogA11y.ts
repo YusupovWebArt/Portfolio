@@ -9,12 +9,20 @@ export interface UseDialogA11yOptions {
 }
 
 /**
+ * Module-level stack of open dialog identifiers.
+ * Guarantees that in nested dialogs (e.g. Cookie Settings -> Cookie Policy),
+ * the Escape key dismisses only the topmost dialog, preventing cascaded dismissal.
+ */
+const dialogStack: symbol[] = []
+
+/**
  * Hook providing WCAG 2.2 AA and European Accessibility Act (EAA 2026) compliant dialog accessibility:
  * 1. Background inerting (marking background sibling elements inert so screen readers and keyboard focus cannot leak out)
  * 2. Focus entrapment (loops Tab / Shift+Tab within focusable elements)
- * 3. Escape key handling
+ * 3. Escape key handling with nested dialog stacking
  * 4. Automatic initial focus
  * 5. Restoration of focus to opener upon closing (clearing inert BEFORE focusing)
+ * 6. Stable callback ref to avoid effect recreation on unstable onClose references
  */
 export function useDialogA11y({
   isOpen,
@@ -26,8 +34,19 @@ export function useDialogA11y({
   const previousFocusRef = useRef<HTMLElement | null>(null)
   const inertElementsRef = useRef<HTMLElement[]>([])
 
+  // Keep a stable ref to onClose so prop changes don't restart the dialog lifecycle
+  const onCloseRef = useRef(onClose)
+  useEffect(() => {
+    onCloseRef.current = onClose
+  })
+
   useEffect(() => {
     if (!isOpen) return
+
+    // Register this dialog on the stack
+    const dialogId = Symbol('dialog')
+    dialogStack.push(dialogId)
+    const isTop = (): boolean => dialogStack[dialogStack.length - 1] === dialogId
 
     // Save active element that opened the dialog
     if (document.activeElement instanceof HTMLElement) {
@@ -88,14 +107,17 @@ export function useDialogA11y({
 
     // Keydown handler for Escape & Tab focus trap
     const handleKeyDown = (e: KeyboardEvent) => {
+      // In nested dialogs, only the topmost active dialog receives Escape
       if (closeOnEscape && e.key === 'Escape') {
+        if (!isTop()) return
         e.preventDefault()
         e.stopPropagation()
-        onClose()
+        onCloseRef.current()
         return
       }
 
       if (e.key === 'Tab' && dialogRef.current) {
+        if (!isTop()) return
         const focusable = Array.from(
           dialogRef.current.querySelectorAll<HTMLElement>(
             'button:not([disabled]):not([aria-hidden="true"]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])',
@@ -136,6 +158,12 @@ export function useDialogA11y({
       clearTimeout(focusTimer)
       window.removeEventListener('keydown', handleKeyDown, true)
 
+      // Pop this dialog from the stack
+      const stackIndex = dialogStack.indexOf(dialogId)
+      if (stackIndex !== -1) {
+        dialogStack.splice(stackIndex, 1)
+      }
+
       // 1. Un-inert background elements BEFORE restoring focus
       for (const el of inertElementsRef.current) {
         el.inert = false
@@ -153,5 +181,5 @@ export function useDialogA11y({
         previousFocusRef.current = null
       }
     }
-  }, [isOpen, onClose, dialogRef, initialFocusRef, closeOnEscape])
+  }, [isOpen, dialogRef, initialFocusRef, closeOnEscape])
 }

@@ -686,6 +686,11 @@ export const en: Translation = {
       phone: 'Best for quick chats',
       telegram: 'Fast async messaging',
     },
+    emailLabel: 'Email',
+    locationLabel: 'Location',
+    locationValue: 'Alicante / Valencia, Spain',
+    locationTag: 'Remote / Relocate-ready',
+    faqSource: 'Direct FAQ',
     chatbot: {
       title: 'RAG AI Assistant Console',
       placeholder: 'Type a question...',

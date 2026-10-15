@@ -360,7 +360,7 @@ const ChatModal = ({
           <div className="flex items-center space-x-2 shrink-0">
             <button
               onClick={handleClearChat}
-              className="p-2 hover:bg-slate-100 dark:hover:bg-white/5 rounded-full text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white transition-colors cursor-pointer"
+              className="p-2 hover:bg-slate-100 dark:hover:bg-white/5 rounded-full text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-700 dark:focus-visible:outline-lime-400"
               title={ct.clearButton}
               aria-label={ct.clearButton}
               type="button"
@@ -369,7 +369,7 @@ const ChatModal = ({
             </button>
             <button
               onClick={handleClose}
-              className="p-2 hover:bg-slate-100 dark:hover:bg-white/5 rounded-full text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white transition-colors cursor-pointer"
+              className="p-2 hover:bg-slate-100 dark:hover:bg-white/5 rounded-full text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-700 dark:focus-visible:outline-lime-400"
               title={ct.closeChat}
               aria-label={ct.closeChat}
               type="button"
@@ -545,7 +545,7 @@ const ChatModal = ({
 
           {/* Form Input */}
           <div className="flex items-center space-x-2">
-            <div className="flex-1 flex items-center bg-white dark:bg-slate-950 border border-slate-400/80 dark:border-white/20 rounded-full px-4 py-1.5 focus-within:border-purple-600 dark:focus-within:border-lime-400 focus-within:ring-2 focus-within:ring-purple-600/30 dark:focus-within:ring-lime-400/30 transition-all duration-200">
+            <div className="flex-1 flex items-center bg-white dark:bg-slate-950 border border-slate-400/80 dark:border-white/20 rounded-full px-4 py-1.5 focus-within:border-purple-700 dark:focus-within:border-lime-400 focus-within:ring-2 focus-within:ring-purple-700 dark:focus-within:ring-lime-400 transition-all duration-200">
               <input
                 ref={inputRef}
                 className="flex-1 bg-transparent border-0 outline-none text-slate-800 dark:text-slate-100 placeholder-slate-500 dark:placeholder-slate-400 text-sm py-1"
@@ -560,7 +560,7 @@ const ChatModal = ({
             </div>
             <button
               onClick={() => handleSend(input)}
-              className="w-10 h-10 rounded-full bg-purple-600 hover:bg-purple-700 dark:bg-lime-500 dark:hover:bg-lime-400 text-white dark:text-slate-900 flex items-center justify-center transition-all shadow-md active:scale-95 shrink-0 cursor-pointer"
+              className="w-10 h-10 rounded-full bg-purple-600 hover:bg-purple-700 dark:bg-lime-500 dark:hover:bg-lime-400 text-white dark:text-slate-900 flex items-center justify-center transition-all shadow-md active:scale-95 shrink-0 cursor-pointer focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-700 dark:focus-visible:outline-lime-400"
               title={ct.sendButton}
               aria-label={ct.sendButton || 'Send message'}
               type="button"

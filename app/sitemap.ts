@@ -12,7 +12,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   for (const locale of locales) {
     sitemapEntries.push({
       url: `${baseUrl}/${locale}`,
-      lastModified: new Date('2026-06-22'),
+      lastModified: new Date('2026-10-15'),
       changeFrequency: 'monthly',
       priority: 1.0,
       alternates: {
@@ -30,7 +30,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     for (const entry of entries) {
       sitemapEntries.push({
         url: `${baseUrl}/${locale}/projects/${entry.slug}`,
-        lastModified: new Date('2026-06-22'),
+        lastModified: new Date('2026-10-15'),
         changeFrequency: 'monthly',
         priority: 0.8,
         alternates: {

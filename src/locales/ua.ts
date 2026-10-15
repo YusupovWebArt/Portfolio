@@ -685,6 +685,11 @@ export const ua: Translation = {
       phone: 'Найкраще для швидких розмов',
       telegram: 'Швидкий асинхронний зв\'язок',
     },
+    emailLabel: 'Email',
+    locationLabel: 'Локація',
+    locationValue: 'Аліканте / Валенсія, Іспанія',
+    locationTag: 'Віддалено / Готовий до релокації',
+    faqSource: 'Прямий FAQ',
     chatbot: {
       title: 'Консоль RAG AI-асистента',
       placeholder: 'Напишіть своє запитання...',

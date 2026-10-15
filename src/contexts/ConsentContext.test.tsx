@@ -199,4 +199,23 @@ describe('ConsentContext Specification (TDD)', () => {
     await user.click(screen.getByRole('button', { name: /close policy/i }));
     expect(screen.getByTestId('modal-visibility')).toHaveTextContent('modal-hidden');
   });
+
+  it('should immediately halt GA tracking and update all 4 Consent Mode v2 signals to denied upon revocation', async () => {
+    const user = userEvent.setup();
+    render(
+      <ConsentProvider>
+        <ConsentConsumer />
+      </ConsentProvider>
+    );
+
+    // Accept first
+    await user.click(screen.getByRole('button', { name: /accept/i }));
+    expect(screen.getByTestId('consent-status')).toHaveTextContent('granted');
+    expect(window['ga-disable-G-1Q3H7DDTSG']).toBe(false);
+
+    // Decline / revoke
+    await user.click(screen.getByRole('button', { name: /decline/i }));
+    expect(screen.getByTestId('consent-status')).toHaveTextContent('denied');
+    expect(window['ga-disable-G-1Q3H7DDTSG']).toBe(true);
+  });
 });

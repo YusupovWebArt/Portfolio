@@ -1045,7 +1045,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
           >
             {/* Close Button inside Modal Card (top-right) */}
             <button
-              className="absolute top-3 right-3 md:top-4 md:right-4 text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200 p-1.5 md:p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800/80 transition z-50 cursor-pointer"
+              className="absolute top-3 right-3 md:top-4 md:right-4 text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200 p-1.5 md:p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800/80 transition z-50 cursor-pointer focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-700 dark:focus-visible:outline-lime-400"
               onClick={closeScreenshotModal}
               title={pr.close}
               aria-label={pr.close}
@@ -1074,7 +1074,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                       }
                     })
                   }
-                  className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/95 dark:bg-slate-800/95 text-slate-700 dark:text-slate-200 p-2.5 rounded-full shadow-lg border border-slate-200/50 dark:border-white/5 transition hover:scale-110 z-30 cursor-pointer"
+                  className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/95 dark:bg-slate-800/95 text-slate-700 dark:text-slate-200 p-2.5 rounded-full shadow-lg border border-slate-200/50 dark:border-white/5 transition hover:scale-110 z-30 cursor-pointer focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-700 dark:focus-visible:outline-lime-400"
                   type="button"
                   aria-label={pr.previousImage}
                 >
@@ -1096,7 +1096,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                       }
                     })
                   }
-                  className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/95 dark:bg-slate-800/95 text-slate-700 dark:text-slate-200 p-2.5 rounded-full shadow-lg border border-slate-200/50 dark:border-white/5 transition hover:scale-110 z-30 cursor-pointer"
+                  className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/95 dark:bg-slate-800/95 text-slate-700 dark:text-slate-200 p-2.5 rounded-full shadow-lg border border-slate-200/50 dark:border-white/5 transition hover:scale-110 z-30 cursor-pointer focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-700 dark:focus-visible:outline-lime-400"
                   type="button"
                   aria-label={pr.nextImage}
                 >

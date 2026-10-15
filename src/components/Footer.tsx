@@ -81,7 +81,7 @@ const Footer = () => {
               <button
                 type="button"
                 onClick={openSettings}
-                className="inline-flex items-center space-x-1.5 hover:text-white transition-colors focus:outline-none focus:underline"
+                className="inline-flex items-center space-x-1.5 hover:text-white transition-colors focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-400 dark:focus-visible:outline-lime-400 rounded-sm cursor-pointer"
               >
                 <Cookie className="w-3.5 h-3.5" aria-hidden="true" />
                 <span>{t.footer.cookieSettings}</span>

@@ -2,7 +2,6 @@ import { tool } from 'ai'
 import { z } from 'zod'
 import { getAllProjectEntries } from '../projects'
 import { PUBLIC_PROFILES } from '../profiles'
-import { revealContact } from '../contacts'
 
 export interface ProjectToolOutput {
   slug: string
@@ -88,21 +87,17 @@ export const showProjectsTool = tool({
 })
 
 export const getContactInfoTool = tool({
-  description:
-    "Retrieve verified public profiles and messaging channels for contacting Artur Yusupov.",
+  description: 'Retrieve verified public profiles for contacting Artur Yusupov.',
   parameters: z.object({}),
-  execute: async () => {
-    return {
-      name: PUBLIC_PROFILES.name,
-      role: PUBLIC_PROFILES.role,
-      location: PUBLIC_PROFILES.location,
-      githubUrl: PUBLIC_PROFILES.githubUrl,
-      linkedinUrl: PUBLIC_PROFILES.linkedinUrl,
-      telegramUrl: revealContact('telegram').href,
-      contactNote:
-        'Direct email and WhatsApp channels can be revealed on-demand in the Contact section of this website.',
-    }
-  },
+  execute: async () => ({
+    name: PUBLIC_PROFILES.name,
+    role: PUBLIC_PROFILES.role,
+    location: PUBLIC_PROFILES.location,
+    githubUrl: PUBLIC_PROFILES.githubUrl,
+    linkedinUrl: PUBLIC_PROFILES.linkedinUrl,
+    contactNote:
+      'Email, WhatsApp and Telegram are revealed on demand in the Contact section of this website.',
+  }),
 })
 
 export const aiTools = {

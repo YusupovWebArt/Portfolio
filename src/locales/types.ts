@@ -305,6 +305,11 @@ export interface Translation {
       phone: string
       telegram: string
     }
+    emailLabel: string
+    locationLabel: string
+    locationValue: string
+    locationTag: string
+    faqSource: string
     chatbot: {
       title: string
       placeholder: string

@@ -28,21 +28,29 @@ const MAX_BODY_BYTES = 16_384 // 16 KB max payload
 const MAX_MESSAGE_CHARS = 1200
 const MAX_HISTORY_MESSAGES = 8
 
+const ALLOWED_ORIGINS: ReadonlySet<string> = new Set([
+  'https://yusupovartur.com',
+  'https://www.yusupovartur.com',
+  'https://yusupovwebart.github.io',
+])
+
+function isAllowedOrigin(origin: string | null): boolean {
+  if (!origin) {
+    // In local dev and test environments, allow requests without Origin
+    return process.env.NODE_ENV !== 'production'
+  }
+  if (ALLOWED_ORIGINS.has(origin)) return true
+  return process.env.NODE_ENV !== 'production' && /^http:\/\/localhost(:\d+)?$/.test(origin)
+}
+
 export async function POST(req: Request) {
   try {
     // 1. Origin verification in production (CSRF / abuse protection)
-    const origin = req.headers.get('origin')
-    if (process.env.NODE_ENV === 'production' && origin) {
-      const isAllowedOrigin =
-        origin.includes('yusupovartur.com') ||
-        origin.includes('yusupovwebart.github.io') ||
-        origin.includes('localhost')
-      if (!isAllowedOrigin) {
-        return new Response(JSON.stringify({ error: 'Forbidden origin' }), {
-          status: 403,
-          headers: { 'Content-Type': 'application/json' },
-        })
-      }
+    if (!isAllowedOrigin(req.headers.get('origin'))) {
+      return new Response(JSON.stringify({ error: 'Forbidden origin' }), {
+        status: 403,
+        headers: { 'Content-Type': 'application/json' },
+      })
     }
 
     // 2. Payload size check (prevent DoS via massive payloads)
@@ -111,10 +119,10 @@ export async function POST(req: Request) {
 
     // 5. IP-based rate limiting (15 requests/hour, hashed IP in storage)
     const ip =
+      req.headers.get('x-vercel-forwarded-for')?.split(',')[0]?.trim() ||
       req.headers.get('x-real-ip')?.trim() ||
-      req.headers.get('x-vercel-ip')?.trim() ||
       req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||
-      '127.0.0.1'
+      'unknown'
 
     const rateLimit = await checkRateLimit(ip, {
       maxRequests: 15,
@@ -213,12 +221,15 @@ export async function POST(req: Request) {
       })),
       tools: aiTools,
       maxSteps: 3,
+      maxOutputTokens: 500,
+      temperature: 0.2,
+      abortSignal: req.signal,
     })
 
     return result.toTextStreamResponse()
   } catch (err) {
-    const message = err instanceof Error ? err.message : 'Unknown error'
-    return new Response(JSON.stringify({ error: message }), {
+    console.error('[api/chat]', err instanceof Error ? err.name : 'unknown')
+    return new Response(JSON.stringify({ error: 'Internal error. Please try again later.' }), {
       status: 500,
       headers: { 'Content-Type': 'application/json' },
     })

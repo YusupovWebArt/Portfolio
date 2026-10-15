@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import { showProjectsTool, getContactInfoTool, aiTools } from '../lib/ai/tools'
+import { revealContact, type ContactKind } from '../lib/contacts'
 
 interface ExecutableTool<TArgs, TResult> {
   execute: (args: TArgs) => Promise<TResult>
@@ -14,10 +15,15 @@ interface ShowProjectsResult {
 }
 
 interface ContactInfoResult {
-  telegramUrl: string
+  name: string
+  role: string
+  location: string
   githubUrl: string
   linkedinUrl: string
+  contactNote: string
 }
+
+const KINDS: readonly ContactKind[] = ['email', 'phone', 'telegram']
 
 describe('AI Agent Tools Specification (TDD)', () => {
   it('should define showProjects and getContactInfo tools in aiTools object', () => {
@@ -46,7 +52,7 @@ describe('AI Agent Tools Specification (TDD)', () => {
 
     const nextResult = await showTool.execute({
       technology: 'Next.js',
-      limit: 2,
+      limit: 3,
     })
 
     expect(nextResult.projects.length).toBeGreaterThan(0)
@@ -54,7 +60,7 @@ describe('AI Agent Tools Specification (TDD)', () => {
     expect(slugs).toContain('unitrition')
   })
 
-  it('should execute getContactInfo tool returning obfuscated contact channels', async () => {
+  it('should execute getContactInfo tool returning only public profiles with zero direct contact URLs', async () => {
     const contactTool = getContactInfoTool as unknown as ExecutableTool<
       Record<string, never>,
       ContactInfoResult
@@ -63,9 +69,21 @@ describe('AI Agent Tools Specification (TDD)', () => {
     const contactResult = await contactTool.execute({})
 
     expect(contactResult).toBeDefined()
-    expect(contactResult.telegramUrl).toContain('t.me')
     expect(contactResult.githubUrl).toContain('github.com')
     expect(contactResult.linkedinUrl).toContain('linkedin.com')
-    expect(JSON.stringify(contactResult)).not.toContain('—')
+    expect(contactResult.contactNote).toBeDefined()
+
+    const serialized = JSON.stringify(contactResult)
+    expect(serialized).not.toContain('t.me')
+    expect(serialized).not.toContain('wa.me')
+    expect(serialized).not.toContain('mailto:')
+    expect(serialized).not.toContain('—')
+
+    // Verify it doesn't contain any direct values from revealContact
+    for (const kind of KINDS) {
+      const { label, href } = revealContact(kind)
+      expect(serialized).not.toContain(label)
+      expect(serialized).not.toContain(href)
+    }
   })
 })

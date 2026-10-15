@@ -11,7 +11,7 @@ const emptySubscribe = () => () => {}
 
 // Equal visual weight for user decision choices in compliance with AEPD / GDPR
 const choiceButton =
-  'px-4 py-2 text-xs font-semibold rounded-lg border border-slate-900 bg-white text-slate-900 hover:bg-slate-50 dark:border-slate-300 dark:bg-transparent dark:text-white dark:hover:bg-slate-800/50 transition-colors cursor-pointer focus:outline-none focus:ring-2 focus:ring-purple-500/50 dark:focus:ring-lime-400/50'
+  'px-4 py-2 text-xs font-semibold rounded-lg border border-slate-900 bg-white text-slate-900 hover:bg-slate-50 dark:border-slate-300 dark:bg-transparent dark:text-white dark:hover:bg-slate-800/50 transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-700 dark:focus-visible:outline-lime-400'
 
 interface CookieSettingsDialogProps {
   initialAnalytics: boolean
@@ -77,7 +77,7 @@ const CookieSettingsDialog: React.FC<CookieSettingsDialogProps> = ({
           <button
             type="button"
             onClick={onClose}
-            className="p-1.5 rounded-lg text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors shrink-0 cursor-pointer"
+            className="p-1.5 rounded-lg text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors shrink-0 cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-700 dark:focus-visible:outline-lime-400"
             aria-label={c.closeSettings}
           >
             <X className="w-5 h-5" aria-hidden="true" />
@@ -134,7 +134,7 @@ const CookieSettingsDialog: React.FC<CookieSettingsDialogProps> = ({
           <button
             type="button"
             onClick={onOpenPolicy}
-            className="inline-flex items-center space-x-1 text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-purple-600 dark:hover:text-lime-400 transition-colors py-1.5 focus:outline-none focus:underline cursor-pointer"
+            className="inline-flex items-center space-x-1 text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-purple-600 dark:hover:text-lime-400 transition-colors py-1.5 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-700 dark:focus-visible:outline-lime-400 rounded-sm cursor-pointer"
           >
             <Shield className="w-3.5 h-3.5" aria-hidden="true" />
             <span>{c.cookiePolicy}</span>
@@ -144,14 +144,14 @@ const CookieSettingsDialog: React.FC<CookieSettingsDialogProps> = ({
             <button
               type="button"
               onClick={onClose}
-              className="px-3.5 py-2 text-xs font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+              className="px-3.5 py-2 text-xs font-medium rounded-lg text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-700 dark:focus-visible:outline-lime-400"
             >
               {t.projects.close}
             </button>
             <button
               type="button"
               onClick={() => onSave(analyticsChoice)}
-              className="px-4 py-2 text-xs font-semibold rounded-lg bg-slate-900 hover:bg-slate-800 text-white dark:bg-purple-600 dark:hover:bg-purple-500 transition-colors shadow-sm cursor-pointer focus:outline-none focus:ring-2 focus:ring-purple-500/50"
+              className="px-4 py-2 text-xs font-semibold rounded-lg bg-slate-900 hover:bg-slate-800 text-white dark:bg-purple-600 dark:hover:bg-purple-500 transition-colors shadow-sm cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-700 dark:focus-visible:outline-lime-400"
             >
               {c.savePreferences}
             </button>
@@ -242,7 +242,7 @@ export const ConsentBanner: React.FC = () => {
               <button
                 type="button"
                 onClick={openPolicyModal}
-                className="inline-flex items-center space-x-1 text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-purple-600 dark:hover:text-lime-400 transition-colors py-1.5 focus:outline-none focus:underline cursor-pointer"
+                className="inline-flex items-center space-x-1 text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-purple-600 dark:hover:text-lime-400 transition-colors py-1.5 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-700 dark:focus-visible:outline-lime-400 rounded-sm cursor-pointer"
               >
                 <Shield className="w-3.5 h-3.5" aria-hidden="true" />
                 <span>{c.cookiePolicy}</span>
@@ -250,7 +250,7 @@ export const ConsentBanner: React.FC = () => {
               <button
                 type="button"
                 onClick={openSettings}
-                className="inline-flex items-center space-x-1 text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-purple-600 dark:hover:text-lime-400 transition-colors py-1.5 focus:outline-none focus:underline cursor-pointer"
+                className="inline-flex items-center space-x-1 text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-purple-600 dark:hover:text-lime-400 transition-colors py-1.5 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-700 dark:focus-visible:outline-lime-400 rounded-sm cursor-pointer"
               >
                 <Settings className="w-3.5 h-3.5" aria-hidden="true" />
                 <span>{c.cookieSettings}</span>

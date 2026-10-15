@@ -50,6 +50,57 @@ const TestDialog = ({
   )
 }
 
+const NestedDialogsTest = ({
+  onCloseParent = vi.fn(),
+  onCloseChild = vi.fn(),
+}: {
+  onCloseParent?: () => void
+  onCloseChild?: () => void
+}) => {
+  const [isParentOpen, setIsParentOpen] = useState(true)
+  const [isChildOpen, setIsChildOpen] = useState(true)
+
+  const parentRef = useRef<HTMLDivElement>(null)
+  const childRef = useRef<HTMLDivElement>(null)
+
+  const handleCloseParent = () => {
+    setIsParentOpen(false)
+    onCloseParent()
+  }
+
+  const handleCloseChild = () => {
+    setIsChildOpen(false)
+    onCloseChild()
+  }
+
+  useDialogA11y({
+    isOpen: isParentOpen,
+    onClose: handleCloseParent,
+    dialogRef: parentRef,
+  })
+
+  useDialogA11y({
+    isOpen: isChildOpen,
+    onClose: handleCloseChild,
+    dialogRef: childRef,
+  })
+
+  return (
+    <div>
+      {isParentOpen && (
+        <div ref={parentRef} role="dialog" data-testid="parent-dialog">
+          <p>Parent Dialog</p>
+          {isChildOpen && (
+            <div ref={childRef} role="dialog" data-testid="child-dialog">
+              <p>Child Dialog</p>
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  )
+}
+
 describe('useDialogA11y Specification (WCAG 2.2 AA / EAA 2026)', () => {
   it('should trap focus, handle Escape key, and mark background inert', () => {
     const handleClose = vi.fn()
@@ -88,5 +139,25 @@ describe('useDialogA11y Specification (WCAG 2.2 AA / EAA 2026)', () => {
     // Tab from last element wraps to first element
     fireEvent.keyDown(window, { key: 'Tab', shiftKey: false })
     expect(document.activeElement).toBe(input)
+  })
+
+  it('should dismiss only the topmost dialog when nested dialogs are open (Escape stack)', () => {
+    const onCloseParent = vi.fn()
+    const onCloseChild = vi.fn()
+
+    render(<NestedDialogsTest onCloseParent={onCloseParent} onCloseChild={onCloseChild} />)
+
+    // Both dialogs initially rendered
+    expect(screen.getByTestId('parent-dialog')).toBeDefined()
+    expect(screen.getByTestId('child-dialog')).toBeDefined()
+
+    // First Escape: closes only child dialog
+    fireEvent.keyDown(window, { key: 'Escape' })
+    expect(onCloseChild).toHaveBeenCalledTimes(1)
+    expect(onCloseParent).not.toHaveBeenCalled()
+
+    // Second Escape: closes parent dialog
+    fireEvent.keyDown(window, { key: 'Escape' })
+    expect(onCloseParent).toHaveBeenCalledTimes(1)
   })
 })

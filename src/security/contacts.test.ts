@@ -1,58 +1,51 @@
-import { describe, it, expect } from 'vitest'
-import * as fs from 'fs'
-import * as path from 'path'
+import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs'
+import { join } from 'node:path'
+import { describe, expect, it } from 'vitest'
+import { revealContact, type ContactKind } from '../lib/contacts'
 
-describe('Security & Privacy: Contact Obfuscation Specification', () => {
-  const rootDir = path.resolve(__dirname, '../../')
-  const indexHtmlPath = path.resolve(rootDir, 'index.html')
-  const srcDir = path.resolve(rootDir, 'src')
-  const contactTsxPath = path.resolve(srcDir, 'components', 'Contact.tsx')
+const KINDS: readonly ContactKind[] = ['email', 'phone', 'telegram']
 
-  // Forbidden plaintext phone and email patterns
-  const rawPhonePattern = /\+34\s*642\s*413\s*967|34642413967/
-  const rawPersonalEmailPattern = /web\.sunline@gmail\.com|yusupovwebart@gmail\.com/
+function* sources(dir: string): Generator<string> {
+  if (!existsSync(dir)) return
+  for (const name of readdirSync(dir)) {
+    const path = join(dir, name)
+    if (statSync(path).isDirectory()) {
+      yield* sources(path)
+    } else if (
+      /\.(ts|tsx|md|json|html|txt)$/.test(name) &&
+      name !== 'contacts.ts' &&
+      !path.includes('node_modules') &&
+      !path.includes('dist')
+    ) {
+      yield path
+    }
+  }
+}
 
-  it('should not expose raw telephone, personal email, or [at] token in index.html', () => {
-    expect(fs.existsSync(indexHtmlPath)).toBe(true)
-    const htmlContent = fs.readFileSync(indexHtmlPath, 'utf-8')
+describe('Security & Privacy: Dynamic Contact Obfuscation Specification', () => {
+  it('scans src, app, public and index.html using values dynamically decoded at test time', () => {
+    const needles = KINDS.flatMap((kind) => {
+      const { label, href } = revealContact(kind)
+      return [label, href, label.replace(/\D/g, '')].filter((n) => n.length >= 6)
+    })
+    const files = [...['src', 'app', 'public'].flatMap((r) => [...sources(r)]), 'index.html']
+    expect(files.length).toBeGreaterThan(1)
+    const hits = files.filter(
+      (file) => existsSync(file) && needles.some((n) => readFileSync(file, 'utf8').includes(n)),
+    )
+    expect(hits).toEqual([])
+  })
 
-    const phoneMatch = htmlContent.match(rawPhonePattern)
-    const emailMatch = htmlContent.match(rawPersonalEmailPattern)
-
-    expect(phoneMatch).toBeNull()
-    expect(emailMatch).toBeNull()
+  it('should ensure index.html contains zero [at] token placeholders', () => {
+    expect(existsSync('index.html')).toBe(true)
+    const htmlContent = readFileSync('index.html', 'utf-8')
     expect(htmlContent).not.toMatch(/\[at\]/i)
   })
 
-  it('should not contain un-obfuscated raw personal phone in production source components', () => {
-    const scanDir = (dir: string) => {
-      const entries = fs.readdirSync(dir, { withFileTypes: true })
-      for (const entry of entries) {
-        const fullPath = path.join(dir, entry.name)
-        if (entry.isDirectory()) {
-          scanDir(fullPath)
-        } else if (
-          entry.isFile() &&
-          /\.(tsx|ts)$/.test(entry.name) &&
-          !/\.(test|spec)\.(ts|tsx)$/.test(entry.name) &&
-          !fullPath.includes(path.join('src', 'test'))
-        ) {
-          const content = fs.readFileSync(fullPath, 'utf-8')
-          const phoneMatch = content.match(rawPhonePattern)
-          expect(
-            phoneMatch,
-            `Raw phone number found in production file ${fullPath}: ${phoneMatch ? phoneMatch[0] : ''}`,
-          ).toBeNull()
-        }
-      }
-    }
-
-    scanDir(srcDir)
-  })
-
   it('should not decode contact credentials automatically via timer in Contact.tsx', () => {
-    expect(fs.existsSync(contactTsxPath)).toBe(true)
-    const content = fs.readFileSync(contactTsxPath, 'utf-8')
+    const contactTsxPath = join('src', 'components', 'Contact.tsx')
+    expect(existsSync(contactTsxPath)).toBe(true)
+    const content = readFileSync(contactTsxPath, 'utf-8')
     expect(content).not.toMatch(/setTimeout\(.*400\)/)
     expect(content).not.toMatch(/\[at\]/i)
     expect(content).toContain('revealContact')
