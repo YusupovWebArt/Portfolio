@@ -49,19 +49,26 @@ md += '| N4 | Разделение CI/CD на `verify` и `deploy` | Устра�
 md += '| N5 | Чистка хука, AI чанков, промпта и локали | Устранено | В `useDialogA11y.ts` регистрация в `dialogStack` перенесена после проверки `if (!dialogNode) return`. В `vite.config.ts` чанк `vendor-ai` ограничен регулярным выражением `/\\/node_modules\\/(ai|@ai-sdk)\\//`. В `prompts.ts` контекст обернут в `<context>` теги с явным запретом следовать инструкциям из контекста. В `route.ts` добавлена валидация `locale` по белому списку `[\'en\', \'ua\', \'es\']` и логирование токенов `usage` |\n\n'
 
 md += '## 2. Результаты 3 контрольных проверок, запрошенных Claude AI\n\n'
+md += `### 2.1 Playwright-тест видимости фокуса (WCAG 2.4.7 - 60 Tab stops + N1 Targeted Controls Verification):
+Команда:
+\`\`\`bash
+pnpm exec playwright test e2e/accessibility.spec.ts --reporter=list
+\`\`\`
+Вывод:
+\`\`\`text
+Running 5 tests using 1 worker
 
-md += '### 2.1 Playwright-тест видимости фокуса (WCAG 2.4.7 - 60 Tab stops):\n'
-md += 'Команда:\n```bash\npnpm test:e2e e2e/accessibility.spec.ts\n```\n'
-md += 'Вывод:\n'
-md += '```text\n'
-md += 'Running 4 tests using 1 worker\n'
-md += '  ok  1 [chromium] › e2e/accessibility.spec.ts:5:3 › home page in default dark theme should have zero critical or serious a11y violations\n'
-md += '  ok  2 [chromium] › e2e/accessibility.spec.ts:20:3 › home page in light theme should maintain contrast and accessibility standards\n'
-md += '  ok  3 [chromium] › e2e/accessibility.spec.ts:39:3 › project detail view should maintain accessible structure and navigation\n'
-md += '  ok  4 [chromium] › e2e/accessibility.spec.ts:61:3 › every keyboard tab stop shows a focus indicator (WCAG 2.4.7)\n'
-md += '  4 passed\n'
-md += '```\n'
-md += '**Результат:** Массив элементов без фокус-индикатора `bad: []` пуст. Все интерактивные элементы имеют четкую обводку `outline-2 outline-offset-2`.\n\n'
+  ok 1 [chromium] › e2e/accessibility.spec.ts:5:3 › WCAG 2.2 AA Accessibility Audits (EAA 2026 / EN 301 549) › home page in default dark theme should have zero critical or serious a11y violations (10.6s)
+  ok 2 [chromium] › e2e/accessibility.spec.ts:20:3 › WCAG 2.2 AA Accessibility Audits (EAA 2026 / EN 301 549) › home page in light theme should maintain contrast and accessibility standards (12.0s)
+  ok 3 [chromium] › e2e/accessibility.spec.ts:39:3 › WCAG 2.2 AA Accessibility Audits (EAA 2026 / EN 301 549) › project detail view should maintain accessible structure and navigation (7.4s)
+  ok 4 [chromium] › e2e/accessibility.spec.ts:61:3 › WCAG 2.2 AA Accessibility Audits (EAA 2026 / EN 301 549) › every keyboard tab stop shows a focus indicator (WCAG 2.4.7) (2.9s)
+  ok 5 [chromium] › e2e/accessibility.spec.ts:96:3 › WCAG 2.2 AA Accessibility Audits (EAA 2026 / EN 301 549) › previously broken controls show an outline on keyboard focus (N1 targeted verification) (7.6s)
+
+  5 passed (46.2s)
+\`\`\`
+**Результат:** Все 5 тестов пройдены. В тесте 4 массив bad: [] пуст. В тесте 5 каждый из 10 элементов (кнопки политики и настроек в ConsentBanner, модальное окно настроек cookie, кнопка вызова cookie в Footer, кнопки консоли Contact, модальное окно ChatModal и слайдер ProjectDetail) открывается, получает фокус с клавиатуры и подтверждает наличие видимого контура фокуса (outlineStyle !== "none" && outlineWidth > 0 или boxShadow !== "none").
+
+`
 
 md += '### 2.2 Playwright-тест отсутствия нарушений CSP в консоли (на загрузке и после нажатия «Принять»):\n'
 md += 'Команда:\n```bash\npnpm test:e2e e2e/analytics-consent.spec.ts\n```\n'
@@ -99,7 +106,7 @@ md += '## 3. Сводка всех гейтов качества\n\n'
 md += '- `pnpm exec tsc --noEmit`: **0 ошибок (Strict Zero-any)**\n'
 md += '- `pnpm lint`: **0 ошибок, 0 предупреждений (ESLint)**\n'
 md += '- `pnpm test`: **26 из 26 файлов (100 из 100 тестов) пройдены**\n'
-md += '- `pnpm test:e2e`: **14 из 14 Playwright тестов пройдены (включая WCAG 2.4.7 и CSP test)**\n'
+md += '- `pnpm test:e2e`: **15 из 15 Playwright тестов пройдены (включая WCAG 2.4.7, N1 targeted focus verification и CSP test)**\n'
 md += '- `node scripts/check-contact-leak.mjs`: **217 HTML файлов проверено, 0 утечек**\n'
 md += '- `node scripts/check-bundle-budget.mjs`: **Main Entry JS: 121.09 KB raw / 28.55 KB gzip (бюджет <200 KB / <60 KB соблюден)**\n'
 md += '- `pnpm audit --prod --audit-level=high`: **0 уязвимостей**\n\n'
