@@ -57,4 +57,39 @@ test.describe("WCAG 2.2 AA Accessibility Audits (EAA 2026 / EN 301 549)", () => 
 
     expect(criticalOrSerious, JSON.stringify(criticalOrSerious, null, 2)).toEqual([]);
   });
+
+  test("every keyboard tab stop shows a focus indicator (WCAG 2.4.7)", async ({ page }) => {
+    await page.goto("./");
+    await page.waitForLoadState("networkidle");
+
+    const bad: string[] = [];
+    for (let i = 0; i < 60; i++) {
+      await page.keyboard.press("Tab");
+      const info = await page.evaluate(() => {
+        const el = document.activeElement as HTMLElement | null;
+        if (!el || el === document.body) return null;
+        const shown = (node: Element | null): boolean => {
+          if (!node) return false;
+          const s = getComputedStyle(node);
+          return (
+            (s.outlineStyle !== "none" && parseFloat(s.outlineWidth) > 0) ||
+            s.boxShadow !== "none"
+          );
+        };
+        const visible =
+          shown(el) ||
+          shown(el.parentElement) ||
+          shown(el.parentElement?.parentElement ?? null);
+        return {
+          visible,
+          label:
+            el.getAttribute("aria-label") ??
+            el.textContent?.trim().slice(0, 30) ??
+            el.tagName,
+        };
+      });
+      if (info && !info.visible) bad.push(info.label);
+    }
+    expect(bad).toEqual([]);
+  });
 });

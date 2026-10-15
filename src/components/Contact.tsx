@@ -346,7 +346,7 @@ const Contact = () => {
                 
                 <button
                   onClick={handleClearChat}
-                  className="p-1.5 hover:bg-slate-100 dark:hover:bg-white/5 rounded-full text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200 transition-colors focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-700 dark:focus-visible:outline-lime-400 cursor-pointer"
+                  className="p-1.5 hover:bg-slate-100 dark:hover:bg-white/5 rounded-full text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-700 dark:focus-visible:outline-lime-400 cursor-pointer"
                   title={ct.chatbot.clearButton}
                   aria-label={ct.chatbot.clearButton || 'Clear chat'}
                   type="button"
@@ -474,7 +474,7 @@ const Contact = () => {
                   </div>
                   <button
                     onClick={() => handleSend(input)}
-                    className="w-8 h-8 rounded-full bg-purple-600 hover:bg-purple-700 dark:bg-lime-500 dark:hover:bg-lime-400 text-white dark:text-slate-900 flex items-center justify-center transition-all shadow-md active:scale-95 shrink-0 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-700 dark:focus-visible:outline-lime-400 cursor-pointer"
+                    className="w-8 h-8 rounded-full bg-purple-600 hover:bg-purple-700 dark:bg-lime-500 dark:hover:bg-lime-400 text-white dark:text-slate-900 flex items-center justify-center transition-all shadow-md active:scale-95 shrink-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-700 dark:focus-visible:outline-lime-400 cursor-pointer"
                     title={ct.chatbot.sendButton}
                     aria-label={ct.chatbot.sendButton || 'Send message'}
                     type="button"

@@ -218,4 +218,20 @@ describe('ConsentContext Specification (TDD)', () => {
     expect(screen.getByTestId('consent-status')).toHaveTextContent('denied');
     expect(window['ga-disable-G-1Q3H7DDTSG']).toBe(true);
   });
+
+  it('should push Arguments object rather than an Array into dataLayer when gtag is invoked (N3)', async () => {
+    const user = userEvent.setup();
+    render(
+      <ConsentProvider>
+        <ConsentConsumer />
+      </ConsentProvider>
+    );
+
+    await user.click(screen.getByRole('button', { name: /accept/i }));
+    expect(window.dataLayer).toBeDefined();
+    expect(window.dataLayer?.length).toBeGreaterThan(0);
+    // Verify first queued entry is an Arguments object recognizable by gtag.js
+    const firstCall = (window.dataLayer as unknown[])[0];
+    expect(Object.prototype.toString.call(firstCall)).toBe('[object Arguments]');
+  });
 });

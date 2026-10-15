@@ -43,6 +43,9 @@ export function useDialogA11y({
   useEffect(() => {
     if (!isOpen) return
 
+    const dialogNode = dialogRef.current
+    if (!dialogNode) return
+
     // Register this dialog on the stack
     const dialogId = Symbol('dialog')
     dialogStack.push(dialogId)
@@ -52,9 +55,6 @@ export function useDialogA11y({
     if (document.activeElement instanceof HTMLElement) {
       previousFocusRef.current = document.activeElement
     }
-
-    const dialogNode = dialogRef.current
-    if (!dialogNode) return
 
     // Find the topmost container of the dialog overlay to inert its siblings
     const rootContainer = dialogNode.parentElement || dialogNode

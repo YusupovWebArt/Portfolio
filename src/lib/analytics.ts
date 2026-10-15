@@ -36,8 +36,10 @@ export function initGoogleAnalytics(): void {
   }
 
   window.dataLayer = window.dataLayer || []
-  window.gtag = function gtag(...args: unknown[]) {
-    window.dataLayer?.push(args)
+  window.gtag = function gtag(): void {
+    // gtag.js only recognises the Arguments object, not an array
+    // eslint-disable-next-line prefer-rest-params
+    window.dataLayer?.push(arguments)
   }
 
   // Set default Consent Mode v2 signals (analytics granted, ad/marketing signals strictly denied)

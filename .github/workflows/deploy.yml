@@ -18,17 +18,17 @@ on:
       - '.gitignore'
       - 'LICENSE'
 
-permissions:
-  contents: write
-
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  build-and-deploy:
+  verify:
+    name: Verify Quality & Security Gates
     runs-on: ubuntu-latest
-    timeout-minutes: 10 # Protects against hanging processes consuming billing minutes
+    timeout-minutes: 10
+    permissions:
+      contents: read
 
     steps:
       - name: Checkout Repository
@@ -73,8 +73,34 @@ jobs:
       - name: 8. LHCI - Core Web Vitals & Quality Audit
         run: pnpm audit:lhci
 
-      - name: 9. Deploy to GitHub Pages (Master Only)
+      - name: Upload Production Dist
         if: github.ref == 'refs/heads/master' && github.event_name == 'push'
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist-artifact
+          path: dist
+          retention-days: 1
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: verify
+    if: github.ref == 'refs/heads/master' && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Download Built Distribution
+        uses: actions/download-artifact@v4
+        with:
+          name: dist-artifact
+          path: dist
+
+      - name: Deploy to GitHub Pages Branch
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -82,5 +108,3 @@ jobs:
           branch: gh-pages
           clean: true
           commit-message: "deploy: automated build for GitHub Pages [skip ci]"
-
-

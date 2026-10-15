@@ -77,6 +77,13 @@ export async function POST(req: Request) {
 
     const { messages, projectSlug, locale } = parsedBody
 
+    // 2b. Validate locale against allowed whitelist
+    const validLocales = ['en', 'ua', 'es'] as const
+    const validatedLocale: 'en' | 'ua' | 'es' =
+      typeof locale === 'string' && (validLocales as readonly string[]).includes(locale)
+        ? (locale as 'en' | 'ua' | 'es')
+        : 'en'
+
     // 3. Messages array validation
     if (!messages || !Array.isArray(messages) || messages.length === 0) {
       return new Response(JSON.stringify({ error: 'Messages array is required' }), {
@@ -200,7 +207,7 @@ export async function POST(req: Request) {
       const localAnswer = synthesizeLocalRagAnswer(lastUserMessage, {
         projectSlug: verifiedProjectSlug,
         projectTitle: verifiedProjectTitle,
-        locale,
+        locale: validatedLocale,
       })
 
       return new Response(localAnswer, {
@@ -224,6 +231,11 @@ export async function POST(req: Request) {
       maxOutputTokens: 500,
       temperature: 0.2,
       abortSignal: req.signal,
+      onFinish: ({ usage }) => {
+        if (usage) {
+          console.log(`[api/chat] Usage: prompt=${usage.promptTokens}, completion=${usage.completionTokens}`)
+        }
+      },
     })
 
     return result.toTextStreamResponse()

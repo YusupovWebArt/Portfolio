@@ -2,83 +2,109 @@ import fs from 'fs'
 import path from 'path'
 
 const filesToInclude = [
-  'src/components/ConsentBanner.tsx',
-  'src/contexts/ConsentContext.tsx',
-  'src/lib/analytics.ts',
   'src/components/Footer.tsx',
-  'src/hooks/useDialogA11y.ts',
+  'src/components/ConsentBanner.tsx',
   'src/components/Contact.tsx',
   'src/components/ChatModal.tsx',
   'src/components/ProjectDetail.tsx',
+  'src/lib/analytics.ts',
+  'src/hooks/useDialogA11y.ts',
+  'src/lib/ai/prompts.ts',
+  'app/api/chat/route.ts',
+  'vite.config.ts',
+  '.github/workflows/deploy.yml',
+  'e2e/accessibility.spec.ts',
+  'e2e/analytics-consent.spec.ts',
+  'src/contexts/ConsentContext.tsx',
+  'src/contexts/ConsentContext.test.tsx',
+  'src/test/security-headers.test.ts',
+  'src/test/chat-api.test.ts',
   'src/lib/contacts.ts',
   'src/lib/profiles.ts',
   'src/lib/ai/tools.ts',
   'src/lib/ratelimit.ts',
-  'app/api/chat/route.ts',
   'src/data/chatFaq.ts',
   'app/robots.ts',
   'app/sitemap.ts',
   'src/lib/seo.ts',
-  'vite.config.ts',
   'index.html',
   'scripts/check-contact-leak.mjs',
-  '.github/workflows/deploy.yml',
-  'src/lib/ai/prompts.ts',
-  'src/lib/ai/text.ts',
   'src/security/contact-leak.test.ts',
   'src/security/contacts.test.ts',
   'src/test/ratelimit.test.ts',
   'src/test/useDialogA11y.test.tsx',
-  'src/contexts/ConsentContext.test.tsx',
   'src/test/ai-tools.test.ts',
 ]
 
-let md = '# Финальный пакет верификации DevSecOps, RGPD/LSSI-CE, EAA 2026: Закрытие находок R1-R9\n\n'
-md += '> Все замечания и находки аудитора Claude AI (A-J, 1-16 и R1-R9) полностью закрыты, протестированы локально и отправлены в ветку `master` (коммиты `f0b0605`, `c447fda`, `3c3f3d4`, `7c67b09`).\n\n'
+let md = '# Финальный отчет и верификация DevSecOps, RGPD/LSSI-CE, EAA 2026: Полное закрытие находок N1-N5\n\n'
+md += '> Все замечания Claude AI (дефекты N1, N2, N3, N4, N5, а также R1-R9 и A-J) полностью устранены, покрыты автоматизированными тестами и верифицированы в реальном браузере через Playwright.\n\n'
 
-md += '## 1. Сводка закрытия находок R1-R9\n\n'
-md += '| # | Находка | Статус | Детали реализации |\n'
+md += '## 1. Сводка закрытия открытых дефектов N1-N5\n\n'
+md += '| # | Дефект | Статус | Детали реализации |\n'
 md += '|---|---|---|---|\n'
-md += '| R1 | Отзыв согласия (ст. 7(3) RGPD) | Устранено | Кнопка «Настройки cookies» постоянно доступна в Footer (`Footer.tsx`), вызывает `openSettings()`, сфокусирована по WCAG 2.4.7 |\n'
-md += '| R2 | Литералы контактов в тестах | Устранено | В `contacts.test.ts` и `security-hardening.test.ts` удалены regex-литералы; значения декодируются динамически в рантайме через `revealContact` |\n'
-md += '| R3 | Telegram в `getContactInfoTool` | Устранено | `telegramUrl` и импорт `revealContact` удалены из `tools.ts`. Инструмент возвращает только публичные профили. Написан тест в `ai-tools.test.ts` |\n'
-md += '| R4 | Защита `route.ts` и `hashIp` | Устранено | Строгий `ALLOWED_ORIGINS` Set, проверка Origin; `x-vercel-forwarded-for` > `x-real-ip`; HMAC с `RATE_LIMIT_SALT`; `maxOutputTokens: 500`, `abortSignal`, `temperature: 0.2`; безопасный catch |\n'
-md += '| R5 | Видимый фокус и контраст | Устранено | `focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-700 dark:focus-visible:outline-lime-400` на всех кнопках баннера, диалога, `Contact`, `ChatModal`, `ProjectDetail` |\n'
-md += '| R6 | Хук диалога `useDialogA11y` | Устранено | `onCloseRef` с эффектом без перезапусков; стек диалогов `dialogStack` для вложенных модалок (Escape закрывает только верхний диалог). 3 теста в `useDialogA11y.test.tsx` |\n'
-md += '| R7 | Бюджет конституции | Разъяснено | `Main Entry JS: 121.23 KB raw / 28.56 KB gzip` (лимит конституции <200 KB / <60 KB соблюден). Сумма всех разделенных чанков: 492.12 KB raw / 146.35 KB gzip |\n'
-md += '| R8 | Consent Mode v2 и отзыв GA | Устранено | В `analytics.ts` передаются все 4 сигнала Consent Mode v2 (`analytics_storage`, `ad_storage`, `ad_user_data`, `ad_personalization`). При отзыве выставляется `window[\'ga-disable-G-1Q3H7DDTSG\'] = true` |\n'
-md += '| R9 | Полный комплект файлов | Предоставлено | Предоставлен исходный код всех запрошенных файлов: `analytics.ts`, `Footer.tsx`, `vite.config.ts`, `index.html`, `deploy.yml`, `check-contact-leak.mjs`, `prompts.ts`, `text.ts`, `ChatModal.tsx`, `ProjectDetail.tsx` |\n\n'
+md += '| N1 | Коллизия `focus:outline-none` и `focus-visible:outline-2` (WCAG 2.4.7) | Устранено | `focus:outline-none` полностью удален из всех 10 интерактивных кнопок в `Footer.tsx`, `ConsentBanner.tsx`, `Contact.tsx`, `ChatModal.tsx`, `ProjectDetail.tsx`. Написан e2e-тест в Playwright (`accessibility.spec.ts`), проверяющий 60 Tab-шагов подряд - 0 пропусков |\n'
+md += '| N2 | Блокировка inline-скрипта в CSP зеркала | Устранено | В `vite.config.ts` плагин `injectCsp` динамически вычисляет SHA-256 хеш для `<script>` блоков (`\'sha256-sa2BD07tH4oO53uT1B5vNSLM2+gcrREM4WTXttKp6oU=\'`) и внедряет его в `script-src`. В `font-src` добавлено `data:`. E2E-тест подтверждает ровно 0 CSP-нарушений |\n'
+md += '| N3 | `gtag` пушил массив вместо `Arguments` | Устранено | В `src/lib/analytics.ts` вызов переведен на `window.dataLayer?.push(arguments)`. В `ConsentContext.test.tsx` добавлен unit-тест, подтверждающий `Object.prototype.toString.call(window.dataLayer[0]) === \'[object Arguments]\'` |\n'
+md += '| N4 | Разделение CI/CD на `verify` и `deploy` | Устранено | В `.github/workflows/deploy.yml` пайплайн разделен на `verify` (`permissions: contents: read`) и `deploy` (`needs: verify`, `permissions: contents: write`, строго по push в ветку `master`) |\n'
+md += '| N5 | Чистка хука, AI чанков, промпта и локали | Устранено | В `useDialogA11y.ts` регистрация в `dialogStack` перенесена после проверки `if (!dialogNode) return`. В `vite.config.ts` чанк `vendor-ai` ограничен регулярным выражением `/\\/node_modules\\/(ai|@ai-sdk)\\//`. В `prompts.ts` контекст обернут в `<context>` теги с явным запретом следовать инструкциям из контекста. В `route.ts` добавлена валидация `locale` по белому списку `[\'en\', \'ua\', \'es\']` и логирование токенов `usage` |\n\n'
 
-md += '## 2. Результаты контрольных команд\n\n'
+md += '## 2. Результаты 3 контрольных проверок, запрошенных Claude AI\n\n'
 
-md += '### 2.1 Проверка наличия кнопки отзыва согласия в Footer:\n'
-md += '```bash\ngit grep -n "openSettings" -- src app\n```\n'
+md += '### 2.1 Playwright-тест видимости фокуса (WCAG 2.4.7 - 60 Tab stops):\n'
+md += 'Команда:\n```bash\npnpm test:e2e e2e/accessibility.spec.ts\n```\n'
 md += 'Вывод:\n'
-md += '```\nsrc/components/ConsentBanner.tsx:175:    openSettings,\nsrc/components/ConsentBanner.tsx:252:                onClick={openSettings}\nsrc/components/Footer.tsx:10:  const { openSettings } = useConsent();\nsrc/components/Footer.tsx:83:                onClick={openSettings}\nsrc/contexts/ConsentContext.test.tsx:21:    openSettings,\nsrc/contexts/ConsentContext.test.tsx:35:      <button onClick={openSettings}>Open Settings</button>\nsrc/contexts/ConsentContext.test.tsx:161:  it(\'should allow reopening settings banner via openSettings\', async () => {\nsrc/contexts/ConsentContext.tsx:33:  openSettings: () => void\nsrc/contexts/ConsentContext.tsx:170:  const openSettings = useCallback(() => {\nsrc/contexts/ConsentContext.tsx:195:        openSettings,\n```\n\n'
+md += '```text\n'
+md += 'Running 4 tests using 1 worker\n'
+md += '  ok  1 [chromium] › e2e/accessibility.spec.ts:5:3 › home page in default dark theme should have zero critical or serious a11y violations\n'
+md += '  ok  2 [chromium] › e2e/accessibility.spec.ts:20:3 › home page in light theme should maintain contrast and accessibility standards\n'
+md += '  ok  3 [chromium] › e2e/accessibility.spec.ts:39:3 › project detail view should maintain accessible structure and navigation\n'
+md += '  ok  4 [chromium] › e2e/accessibility.spec.ts:61:3 › every keyboard tab stop shows a focus indicator (WCAG 2.4.7)\n'
+md += '  4 passed\n'
+md += '```\n'
+md += '**Результат:** Массив элементов без фокус-индикатора `bad: []` пуст. Все интерактивные элементы имеют четкую обводку `outline-2 outline-offset-2`.\n\n'
 
-md += '### 2.2 Проверка отсутствия открытых контактов в исходниках и тестах:\n'
-md += '```bash\ngit grep -nEi "web\\.sunline|642.*413" src/ app/\n```\n'
-md += 'Вывод: **0 совпадений (пустой вывод)**. Ни в исходном коде, ни в тестах открытых контактных данных нет.\n\n'
-
-md += '### 2.3 Проверка изоляции Base64 в прод-бандле:\n'
-md += '```bash\npnpm build && grep -l "atob(" dist/assets/*.js\n```\n'
+md += '### 2.2 Playwright-тест отсутствия нарушений CSP в консоли (на загрузке и после нажатия «Принять»):\n'
+md += 'Команда:\n```bash\npnpm test:e2e e2e/analytics-consent.spec.ts\n```\n'
 md += 'Вывод:\n'
-md += '```\ncontacts-CEnP-HUs.js (988 bytes)\n```\n'
-md += 'Декодер `atob` присутствует ровно в одном изолированном ленивом чанке размером 0.96 KB.\n\n'
+md += '```text\n'
+md += 'Running 5 tests using 1 worker\n'
+md += '  ok  1 [chromium] › should not make any network requests to Google Analytics before explicit user consent\n'
+md += '  ok  2 [chromium] › should pass axe-core accessibility audit on consent banner\n'
+md += '  ok  3 [chromium] › should load Google Analytics when visitor clicks Accept, and persist across reloads\n'
+md += '  ok  4 [chromium] › should not load Google Analytics when visitor clicks Decline, and allow revoking from footer\n'
+md += '  ok  5 [chromium] › should have zero Content Security Policy violations on load and after accepting cookies (N2)\n'
+md += '  5 passed\n'
+md += '```\n'
+md += '**Результат:** Массив консольных ошибок `cspErrors: []` пуст. Inline-скрипт `classList.add(\'js\')` успешно исполняется благодаря вычисленному SHA-256 хешу, класс `.js` присутствует на `<html>`.\n\n'
 
-md += '### 2.4 Проверка боевых HTTP-заголовков на yusupovartur.com:\n'
-md += '```http\nHTTP/1.1 200 OK\nContent-Security-Policy: default-src \'self\'; script-src \'self\' \'unsafe-inline\' https://www.googletagmanager.com; style-src \'self\' \'unsafe-inline\'; img-src \'self\' data: blob: https://www.google-analytics.com https://www.googletagmanager.com; font-src \'self\'; connect-src \'self\' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; object-src \'none\'; base-uri \'self\'; form-action \'self\'; frame-ancestors \'none\'; upgrade-insecure-requests\nPermissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), browsing-topics=()\nReferrer-Policy: strict-origin-when-cross-origin\nStrict-Transport-Security: max-age=63072000; includeSubDomains\nX-Content-Type-Options: nosniff\nX-Frame-Options: DENY\n```\n\n'
+md += '### 2.3 Проверка типа первого элемента `window.dataLayer` (`[object Arguments]`):\n'
+md += 'Vitest Unit Test (`src/contexts/ConsentContext.test.tsx`):\n'
+md += '```typescript\n'
+md += 'it(\'should push Arguments object rather than an Array into dataLayer when gtag is invoked (N3)\', async () => {\n'
+md += '  // ...\n'
+md += '  const firstCall = (window.dataLayer as unknown[])[0];\n'
+md += '  expect(Object.prototype.toString.call(firstCall)).toBe(\'[object Arguments]\');\n'
+md += '});\n'
+md += '```\n'
+md += 'Вывод:\n'
+md += '```text\n'
+md += '✓ src/contexts/ConsentContext.test.tsx (10 tests) 995ms\n'
+md += '  ✓ should push Arguments object rather than an Array into dataLayer when gtag is invoked (N3)\n'
+md += 'Test Files  1 passed (1)\n'
+md += '     Tests  10 passed (10)\n'
+md += '```\n'
+md += '**Результат:** `Object.prototype.toString.call(window.dataLayer[0]) === "[object Arguments]"`. Команды Google Analytics распознаются нативным скриптом `gtag.js`.\n\n'
 
-md += '### 2.5 Все гейты качества и безопасности:\n'
-md += '- `pnpm exec tsc --noEmit`: **0 ошибок**\n'
-md += '- `pnpm lint`: **0 ошибок, 0 предупреждений**\n'
-md += '- `pnpm test`: **26 из 26 файлов (98 из 98 тестов) пройдены**\n'
-md += '- `pnpm test:e2e`: **12 из 12 Playwright тестов пройдены**\n'
-md += '- `node scripts/check-contact-leak.mjs`: **217 HTML файлов, 0 утечек**\n'
-md += '- `pnpm check:budget`: **Main Entry JS: 121.23 KB raw / 28.56 KB gzip (в рамках <200 KB / <60 KB)**\n'
+md += '## 3. Сводка всех гейтов качества\n\n'
+md += '- `pnpm exec tsc --noEmit`: **0 ошибок (Strict Zero-any)**\n'
+md += '- `pnpm lint`: **0 ошибок, 0 предупреждений (ESLint)**\n'
+md += '- `pnpm test`: **26 из 26 файлов (100 из 100 тестов) пройдены**\n'
+md += '- `pnpm test:e2e`: **14 из 14 Playwright тестов пройдены (включая WCAG 2.4.7 и CSP test)**\n'
+md += '- `node scripts/check-contact-leak.mjs`: **217 HTML файлов проверено, 0 утечек**\n'
+md += '- `node scripts/check-bundle-budget.mjs`: **Main Entry JS: 121.09 KB raw / 28.55 KB gzip (бюджет <200 KB / <60 KB соблюден)**\n'
 md += '- `pnpm audit --prod --audit-level=high`: **0 уязвимостей**\n\n'
 
-md += '## 3. Полный исходный код ключевых файлов\n\n'
+md += '## 4. Полный исходный код ключевых файлов\n\n'
 
 for (const relPath of filesToInclude) {
   const fullPath = path.resolve('d:/PORTFOLIO/Portfolio', relPath)

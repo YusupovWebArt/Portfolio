@@ -25,5 +25,8 @@ describe('DevSecOps Security Headers Specification (TDD)', () => {
     expect(content).toContain("base-uri 'self'")
     expect(content).toContain("form-action 'self'")
     expect(content).not.toMatch(/unsafe-eval/)
+    if (existsSync('dist/index.html')) {
+      expect(content).toMatch(/script-src 'self' 'sha256-[A-Za-z0-9+/=]+'/)
+    }
   })
 })

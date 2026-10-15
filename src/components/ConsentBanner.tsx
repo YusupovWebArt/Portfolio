@@ -134,7 +134,7 @@ const CookieSettingsDialog: React.FC<CookieSettingsDialogProps> = ({
           <button
             type="button"
             onClick={onOpenPolicy}
-            className="inline-flex items-center space-x-1 text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-purple-600 dark:hover:text-lime-400 transition-colors py-1.5 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-700 dark:focus-visible:outline-lime-400 rounded-sm cursor-pointer"
+            className="inline-flex items-center space-x-1 text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-purple-600 dark:hover:text-lime-400 transition-colors py-1.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-700 dark:focus-visible:outline-lime-400 rounded-sm cursor-pointer"
           >
             <Shield className="w-3.5 h-3.5" aria-hidden="true" />
             <span>{c.cookiePolicy}</span>
@@ -242,7 +242,7 @@ export const ConsentBanner: React.FC = () => {
               <button
                 type="button"
                 onClick={openPolicyModal}
-                className="inline-flex items-center space-x-1 text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-purple-600 dark:hover:text-lime-400 transition-colors py-1.5 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-700 dark:focus-visible:outline-lime-400 rounded-sm cursor-pointer"
+                className="inline-flex items-center space-x-1 text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-purple-600 dark:hover:text-lime-400 transition-colors py-1.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-700 dark:focus-visible:outline-lime-400 rounded-sm cursor-pointer"
               >
                 <Shield className="w-3.5 h-3.5" aria-hidden="true" />
                 <span>{c.cookiePolicy}</span>
@@ -250,7 +250,7 @@ export const ConsentBanner: React.FC = () => {
               <button
                 type="button"
                 onClick={openSettings}
-                className="inline-flex items-center space-x-1 text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-purple-600 dark:hover:text-lime-400 transition-colors py-1.5 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-700 dark:focus-visible:outline-lime-400 rounded-sm cursor-pointer"
+                className="inline-flex items-center space-x-1 text-xs font-medium text-slate-600 dark:text-slate-400 hover:text-purple-600 dark:hover:text-lime-400 transition-colors py-1.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-700 dark:focus-visible:outline-lime-400 rounded-sm cursor-pointer"
               >
                 <Settings className="w-3.5 h-3.5" aria-hidden="true" />
                 <span>{c.cookieSettings}</span>

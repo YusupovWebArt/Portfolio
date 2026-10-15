@@ -120,4 +120,32 @@ test.describe('Google Analytics 4 & Consent Mode v2 Basic Specification (E2E & T
     const settingsDialog = page.getByRole('dialog');
     await expect(settingsDialog).toBeVisible();
   });
+
+  test('should have zero Content Security Policy violations on load and after accepting cookies (N2)', async ({
+    page,
+  }) => {
+    const cspErrors: string[] = [];
+    page.on('console', (msg) => {
+      const text = msg.text();
+      if (/Content Security Policy|CSP/i.test(text)) {
+        cspErrors.push(text);
+      }
+    });
+
+    await page.goto('./');
+    await page.waitForLoadState('networkidle');
+
+    // Verify inline script executed and .js class was added to html element
+    const hasJsClass = await page.evaluate(() => document.documentElement.classList.contains('js'));
+    expect(hasJsClass).toBe(true);
+
+    // Click Accept
+    const acceptBtn = page.getByRole('button', { name: /accept all|прийняти всі|aceptar todas/i });
+    if (await acceptBtn.isVisible()) {
+      await acceptBtn.click();
+      await page.waitForTimeout(1000);
+    }
+
+    expect(cspErrors).toEqual([]);
+  });
 });
