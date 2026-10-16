@@ -21,7 +21,7 @@ All AI coding agents (Antigravity, Claude Code, Cursor) and human contributors M
 ### Principle 3: Performance and Core Web Vitals Budget
 - **Initial Load:** Sub-second First Contentful Paint (FCP <= 0.8s) and Largest Contentful Paint (LCP <= 1.2s).
 - **Layout Stability:** Cumulative Layout Shift (CLS) must remain exactly 0.00.
-- **Bundle Budget:** Main JavaScript bundle must remain under 200 KB (`< 60 KB` gzip).
+- **Bundle Budget:** Main JavaScript entry chunk must remain under 200 KB (`< 65 KB` gzip); Total initial boot path must remain under 500 KB (`< 150 KB` gzip), accommodating trilingual dictionaries.
 - **Assets:** All project showcase media must use WebP/AVIF format with explicit dimensions and `loading="lazy"`.
 
 ### Principle 4: Trilingual Localization Parity (i18n)

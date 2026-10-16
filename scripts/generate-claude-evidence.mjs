@@ -2,6 +2,7 @@ import fs from 'fs'
 import path from 'path'
 
 const filesToInclude = [
+  '.specify/memory/constitution.md',
   'specs/harness-compliance/tasks.md',
   'src/components/Footer.tsx',
   'src/components/ConsentBanner.tsx',

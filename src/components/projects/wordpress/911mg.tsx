@@ -145,8 +145,8 @@ const mg911: Project = {
     'Впровадження структурованих метаданих Schema.org для розширених сніпетів за збереження високої швидкодії без конструкторів сторінок.',
   ],
   challengesEs: [
-    'Gestion de una extensa base de datos farmaceutica de EE.UU. con busqueda rapida en el cliente y navegacion por categorias sin sobrecargar el servidor.',
-    'Implementacion de metadatos estructurados Schema.org para fragmentos enriquecidos manteniendo un rendimiento estricto sin constructores de paginas.',
+    'Gestión de una extensa base de datos farmacéutica de EE. UU. con búsqueda rápida en el cliente y navegación por categorías sin sobrecargar el servidor.',
+    'Implementación de metadatos estructurados Schema.org para fragmentos enriquecidos manteniendo un rendimiento estricto sin constructores de páginas.',
   ],
   solutions: [
     'Engineered a custom PHP and MySQL architecture with lightweight indexing, responsive UI grid, and Cloudflare CDN caching.',
@@ -157,8 +157,8 @@ const mg911: Project = {
     'Створено валідні схеми JSON-LD безпосередньо у шаблонах теми, досягнувши показника PageSpeed 90+ та розширених результатів Google.',
   ],
   solutionsEs: [
-    'Diseno de una arquitectura personalizada de PHP y MySQL con indexacion ligera, cuadricula adaptable y almacenamiento en cache de Cloudflare CDN.',
-    'Creacion de esquemas JSON-LD validos directamente en las plantillas del tema, logrando una puntuacion de PageSpeed de 90+ y resultados enriquecidos de Google.',
+    'Diseño de una arquitectura personalizada de PHP y MySQL con indexación ligera, cuadrícula adaptable y almacenamiento en caché de Cloudflare CDN.',
+    'Creación de esquemas JSON-LD válidos directamente en las plantillas del tema, logrando una puntuación de PageSpeed de 90+ y resultados enriquecidos de Google.',
   ],
   liveUrl: 'https://www.911mg.org/',
   githubUrl: '#',
