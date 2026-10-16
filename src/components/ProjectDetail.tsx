@@ -594,7 +594,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                 role="tabpanel"
                 tabIndex={0}
                 aria-labelledby="tab-project-stack"
-                className="focus:outline-none"
+                className="focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-purple-700 dark:focus-visible:outline-lime-400"
               >
                 {/* Проверяем, используется ли новая структура с категориями */}
                 {Array.isArray(project.technologies) ? (
@@ -833,7 +833,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                 role="tabpanel"
                 tabIndex={0}
                 aria-labelledby="tab-project-features"
-                className="focus:outline-none"
+                className="focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-purple-700 dark:focus-visible:outline-lime-400"
               >
                 <ul className="space-y-4">
                   {project.features.map((feature, index) => {
@@ -914,7 +914,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                 role="tabpanel"
                 tabIndex={0}
                 aria-labelledby="tab-project-architecture"
-                className="space-y-6 focus:outline-none"
+                className="space-y-6 focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-purple-700 dark:focus-visible:outline-lime-400"
               >
                 {project.architecture.rows.map((row, rowIdx) => (
                   <div
@@ -965,7 +965,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                 role="tabpanel"
                 tabIndex={0}
                 aria-labelledby="tab-project-case-study"
-                className="space-y-6 animate-fade-in focus:outline-none"
+                className="space-y-6 animate-fade-in focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-purple-700 dark:focus-visible:outline-lime-400"
               >
                 {(() => {
                   const challengesList =

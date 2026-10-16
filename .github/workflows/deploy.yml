@@ -5,7 +5,6 @@ on:
     branches:
       - master
     paths-ignore:
-      - '**.md'
       - '.agents/**'
       - '.gitignore'
       - 'LICENSE'
@@ -13,7 +12,6 @@ on:
     branches:
       - master
     paths-ignore:
-      - '**.md'
       - '.agents/**'
       - '.gitignore'
       - 'LICENSE'
@@ -36,7 +34,10 @@ jobs:
 
       - name: 0. Secret Scan - Gitleaks (Working Tree)
         run: |
-          curl -sSfL https://github.com/gitleaks/gitleaks/releases/download/v8.24.0/gitleaks_8.24.0_linux_x64.tar.gz | sudo tar -xz -C /usr/local/bin gitleaks
+          curl -sSfL -o gitleaks.tar.gz https://github.com/gitleaks/gitleaks/releases/download/v8.24.0/gitleaks_8.24.0_linux_x64.tar.gz
+          echo "cb49b7de5ee986510fe8666ca0273a6cc15eb82571f2f14832c9e8920751f3a4  gitleaks.tar.gz" | sha256sum -c -
+          sudo tar -xzf gitleaks.tar.gz -C /usr/local/bin gitleaks
+          rm -f gitleaks.tar.gz
           gitleaks detect --no-git --source . --redact -v
 
       - name: Setup pnpm Environment

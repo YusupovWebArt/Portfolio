@@ -136,8 +136,30 @@ const mg911: Project = {
         'Fully responsive CSS Grid layout ensures an optimal browsing experience across desktop, tablet, and mobile devices for US health consumers.',
     },
   ],
-  challenges: [],
-  solutions: [],
+  challenges: [
+    'Managing an extensive US pharmaceutical database with fast client-side searching and category navigation without server bloat.',
+    'Implementing structured Schema.org drug metadata for rich snippets while maintaining strict zero-pagebuilder performance.',
+  ],
+  challengesUa: [
+    'Управління великою базою даних фармацевтичних препаратів США зі швидким клієнтським пошуком та навігацією без перевантаження сервера.',
+    'Впровадження структурованих метаданих Schema.org для розширених сніпетів за збереження високої швидкодії без конструкторів сторінок.',
+  ],
+  challengesEs: [
+    'Gestion de una extensa base de datos farmaceutica de EE.UU. con busqueda rapida en el cliente y navegacion por categorias sin sobrecargar el servidor.',
+    'Implementacion de metadatos estructurados Schema.org para fragmentos enriquecidos manteniendo un rendimiento estricto sin constructores de paginas.',
+  ],
+  solutions: [
+    'Engineered a custom PHP and MySQL architecture with lightweight indexing, responsive UI grid, and Cloudflare CDN caching.',
+    'Authored valid JSON-LD schemas directly in custom theme templates, achieving 90+ PageSpeed score and Google rich results.',
+  ],
+  solutionsUa: [
+    'Спроєктовано кастомну архітектуру PHP та MySQL з легким індексуванням, адаптивною CSS-сіткою та кешуванням Cloudflare CDN.',
+    'Створено валідні схеми JSON-LD безпосередньо у шаблонах теми, досягнувши показника PageSpeed 90+ та розширених результатів Google.',
+  ],
+  solutionsEs: [
+    'Diseno de una arquitectura personalizada de PHP y MySQL con indexacion ligera, cuadricula adaptable y almacenamiento en cache de Cloudflare CDN.',
+    'Creacion de esquemas JSON-LD validos directamente en las plantillas del tema, logrando una puntuacion de PageSpeed de 90+ y resultados enriquecidos de Google.',
+  ],
   liveUrl: 'https://www.911mg.org/',
   githubUrl: '#',
   category: ['wordpress'],

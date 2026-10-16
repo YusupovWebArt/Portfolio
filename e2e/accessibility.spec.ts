@@ -68,18 +68,29 @@ test.describe("WCAG 2.2 AA Accessibility Audits (EAA 2026 / EN 301 549)", () => 
       const info = await page.evaluate(() => {
         const el = document.activeElement as HTMLElement | null;
         if (!el || el === document.body) return null;
-        const shown = (node: Element | null): boolean => {
-          if (!node) return false;
-          const s = getComputedStyle(node);
-          return (
-            (s.outlineStyle !== "none" && parseFloat(s.outlineWidth) > 0) ||
-            s.boxShadow !== "none"
-          );
-        };
-        const visible =
-          shown(el) ||
-          shown(el.parentElement) ||
-          shown(el.parentElement?.parentElement ?? null);
+        const s = getComputedStyle(el);
+        const hasOutline = s.outlineStyle !== "none" && parseFloat(s.outlineWidth) > 0;
+        const isInteractive =
+          el.tagName === "BUTTON" ||
+          el.tagName === "A" ||
+          el.getAttribute("role") === "button" ||
+          el.getAttribute("role") === "link" ||
+          el.getAttribute("role") === "switch";
+
+        let visible: boolean;
+        if (isInteractive) {
+          // WCAG 2.4.7: Interactive controls must exhibit an explicit focus outline
+          // and not falsely pass via static container shadows
+          visible = hasOutline;
+        } else {
+          const parentS = el.parentElement ? getComputedStyle(el.parentElement) : null;
+          const parentHasRing =
+            parentS &&
+            (parentS.outlineStyle !== "none" ||
+              parentS.boxShadow.includes("rgb"));
+          visible = hasOutline || Boolean(parentHasRing);
+        }
+
         return {
           visible,
           label:
@@ -90,7 +101,7 @@ test.describe("WCAG 2.2 AA Accessibility Audits (EAA 2026 / EN 301 549)", () => 
       });
       if (info && !info.visible) bad.push(info.label);
     }
-    expect(bad).toEqual([]);
+    expect(bad, `Elements missing focus indicator: ${bad.join(", ")}`).toEqual([]);
   });
 
   test("previously broken controls show an outline on keyboard focus (N1 targeted verification)", async ({ page }) => {
@@ -144,56 +155,94 @@ test.describe("WCAG 2.2 AA Accessibility Audits (EAA 2026 / EN 301 549)", () => 
     await contactSection.scrollIntoViewIfNeeded();
 
     const clearChatBtn = contactSection.locator('button[aria-label*="lear" i], button[aria-label*="очистити" i], button[aria-label*="limpiar" i]');
-    if (await clearChatBtn.isVisible()) {
-      await expectOutlineOnKeyboardFocus(clearChatBtn);
-    }
+    await expect(clearChatBtn).toBeVisible();
+    await expectOutlineOnKeyboardFocus(clearChatBtn);
 
     const contactSendBtn = contactSection.locator('button:has(svg.lucide-send)').first();
+    await expect(contactSendBtn).toBeVisible();
     await expectOutlineOnKeyboardFocus(contactSendBtn);
 
-    // 5. ChatModal controls
+    // 5. ChatModal controls & scrollable history region (N7)
     const chatTriggerBtn = page.getByRole("button", { name: /chat with.*ai|спілкуватися.*ai|chatear.*ai/i }).first();
-    if (await chatTriggerBtn.isVisible()) {
-      await chatTriggerBtn.click();
-      const chatModal = page.locator('div[role="dialog"]');
-      await expect(chatModal).toBeVisible();
+    await expect(chatTriggerBtn).toBeVisible();
+    await chatTriggerBtn.click();
 
-      const modalSendBtn = chatModal.locator('button:has(svg.lucide-send)').first();
-      await expectOutlineOnKeyboardFocus(modalSendBtn);
+    const chatModal = page.locator('div[role="dialog"]');
+    await expect(chatModal).toBeVisible();
 
-      const modalCloseBtn = chatModal.locator('button:has(svg.lucide-x)').first();
-      await expectOutlineOnKeyboardFocus(modalCloseBtn);
-      await modalCloseBtn.click();
-      await expect(chatModal).toBeHidden();
-    }
+    const chatHistoryRegion = chatModal.locator('div[role="region"][tabindex="0"]');
+    await expect(chatHistoryRegion).toBeVisible();
+    await expectOutlineOnKeyboardFocus(chatHistoryRegion);
 
-    // 6. Project detail screenshot modal controls
+    const modalSendBtn = chatModal.locator('button:has(svg.lucide-send)').first();
+    await expect(modalSendBtn).toBeVisible();
+    await expectOutlineOnKeyboardFocus(modalSendBtn);
+
+    const modalCloseBtn = chatModal.locator('button:has(svg.lucide-x)').first();
+    await expect(modalCloseBtn).toBeVisible();
+    await expectOutlineOnKeyboardFocus(modalCloseBtn);
+    await modalCloseBtn.click();
+    await expect(chatModal).toBeHidden();
+
+    // 6. Project detail tabpanels (N7) & screenshot modal controls
     const firstDetailButton = page.locator("#projects").getByRole("button", { name: /view details|детальніше|ver detalles/i }).first();
-    if (await firstDetailButton.isVisible()) {
-      await firstDetailButton.scrollIntoViewIfNeeded();
-      await firstDetailButton.click();
+    await expect(firstDetailButton).toBeVisible();
+    await firstDetailButton.scrollIntoViewIfNeeded();
+    await firstDetailButton.click();
 
-      const zoomBtn = page.locator('button[title="Zoom"], button:has(svg.lucide-eye)').first();
-      if (await zoomBtn.isVisible({ timeout: 5000 })) {
-        await zoomBtn.click();
-        const screenshotModal = page.locator('div[role="dialog"][aria-labelledby="screenshot-modal-title"]');
-        if (await screenshotModal.isVisible({ timeout: 5000 })) {
-          const screenshotCloseBtn = screenshotModal.locator('button:has(svg.lucide-x)').first();
-          await expectOutlineOnKeyboardFocus(screenshotCloseBtn);
+    const backBtn = page.getByRole("button", { name: /back to (featured )?projects|до проєктів|volver a proyectos/i });
+    await expect(backBtn).toBeVisible();
 
-          const prevBtn = screenshotModal.locator('button[aria-label*="previous" i], button[aria-label*="попередн" i], button[aria-label*="anterior" i]');
-          if (await prevBtn.isVisible()) {
-            await expectOutlineOnKeyboardFocus(prevBtn);
-          }
+    // N7 Tabpanel 1: stack (initially active)
+    const stackPanel = page.locator("#panel-project-stack");
+    await expect(stackPanel).toBeVisible();
+    await expectOutlineOnKeyboardFocus(stackPanel);
 
-          const nextBtn = screenshotModal.locator('button[aria-label*="next" i], button[aria-label*="наступн" i], button[aria-label*="siguiente" i]');
-          if (await nextBtn.isVisible()) {
-            await expectOutlineOnKeyboardFocus(nextBtn);
-          }
+    // N7 Tabpanel 2: features
+    const featuresTab = page.locator("#tab-project-features");
+    await expect(featuresTab).toBeVisible();
+    await featuresTab.click();
+    const featuresPanel = page.locator("#panel-project-features");
+    await expect(featuresPanel).toBeVisible();
+    await expectOutlineOnKeyboardFocus(featuresPanel);
 
-          await screenshotCloseBtn.click();
-        }
-      }
-    }
+    // N7 Tabpanel 3: architecture
+    const archTab = page.locator("#tab-project-architecture");
+    await expect(archTab).toBeVisible();
+    await archTab.click();
+    const archPanel = page.locator("#panel-project-architecture");
+    await expect(archPanel).toBeVisible();
+    await expectOutlineOnKeyboardFocus(archPanel);
+
+    // N7 Tabpanel 4: case-study
+    const caseStudyTab = page.locator("#tab-project-case-study");
+    await expect(caseStudyTab).toBeVisible();
+    await caseStudyTab.click();
+    const caseStudyPanel = page.locator("#panel-project-case-study");
+    await expect(caseStudyPanel).toBeVisible();
+    await expectOutlineOnKeyboardFocus(caseStudyPanel);
+
+    // Screenshot modal controls
+    const zoomBtn = page.locator('button[title="Zoom"], button:has(svg.lucide-eye)').first();
+    await expect(zoomBtn).toBeVisible();
+    await zoomBtn.click();
+
+    const screenshotModal = page.locator('div[role="dialog"][aria-labelledby="screenshot-modal-title"]');
+    await expect(screenshotModal).toBeVisible();
+
+    const screenshotCloseBtn = screenshotModal.locator('button:has(svg.lucide-x)').first();
+    await expect(screenshotCloseBtn).toBeVisible();
+    await expectOutlineOnKeyboardFocus(screenshotCloseBtn);
+
+    const prevBtn = screenshotModal.locator('button[aria-label*="previous" i], button[aria-label*="попередн" i], button[aria-label*="anterior" i]');
+    await expect(prevBtn).toBeVisible();
+    await expectOutlineOnKeyboardFocus(prevBtn);
+
+    const nextBtn = screenshotModal.locator('button[aria-label*="next" i], button[aria-label*="наступн" i], button[aria-label*="siguiente" i]');
+    await expect(nextBtn).toBeVisible();
+    await expectOutlineOnKeyboardFocus(nextBtn);
+
+    await screenshotCloseBtn.click();
+    await expect(screenshotModal).toBeHidden();
   });
 });

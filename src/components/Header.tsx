@@ -160,7 +160,7 @@ const Header = () => {
     <>
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-purple-600 focus:text-white focus:rounded-lg focus:shadow-xl focus:outline-hidden focus:ring-2 focus:ring-white font-medium text-sm transition-transform"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:px-4 focus:py-2 focus:bg-purple-600 focus:text-white focus:rounded-lg focus:shadow-xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white font-medium text-sm transition-transform"
       >
         {t.app.skipToContent}
       </a>

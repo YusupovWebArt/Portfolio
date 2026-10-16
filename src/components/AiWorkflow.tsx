@@ -349,7 +349,7 @@ without exposing any plaintext credentials or scraper tokens.`
                     <button
                       key={stepIdx}
                       onClick={() => setActiveStep(stepIdx)}
-                      className="min-w-[24px] min-h-[24px] flex items-center justify-center p-1 rounded-full focus-visible:outline-hidden focus-visible:ring-2 focus-visible:ring-purple-500"
+                      className="min-w-[24px] min-h-[24px] flex items-center justify-center p-1 rounded-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-700 dark:focus-visible:outline-lime-400 cursor-pointer"
                       aria-label={`${aw.tabs.step} ${stepIdx + 1}`}
                       type="button"
                     >
@@ -369,10 +369,10 @@ without exposing any plaintext credentials or scraper tokens.`
                   <button
                     onClick={handlePrevStep}
                     disabled={activeStep === 0}
-                    className={`w-10 h-10 rounded-full flex items-center justify-center border transition-all duration-300 ${
+                    className={`w-10 h-10 rounded-full flex items-center justify-center border transition-all duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-700 dark:focus-visible:outline-lime-400 ${
                       activeStep === 0
                         ? 'border-slate-200 dark:border-slate-800 text-slate-300 dark:text-slate-700 cursor-not-allowed opacity-40'
-                        : 'border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-850 hover:scale-105 active:scale-95'
+                        : 'border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-850 hover:scale-105 active:scale-95 cursor-pointer'
                     }`}
                     aria-label={aw.tabs.prevStep}
                     type="button"
@@ -382,10 +382,10 @@ without exposing any plaintext credentials or scraper tokens.`
                   <button
                     onClick={handleNextStep}
                     disabled={activeStep === currentCategory.steps.length - 1}
-                    className={`w-10 h-10 rounded-full flex items-center justify-center border transition-all duration-300 ${
+                    className={`w-10 h-10 rounded-full flex items-center justify-center border transition-all duration-300 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-700 dark:focus-visible:outline-lime-400 ${
                       activeStep === currentCategory.steps.length - 1
                         ? 'border-slate-200 dark:border-slate-800 text-slate-300 dark:text-slate-700 cursor-not-allowed opacity-40'
-                        : 'border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-850 hover:scale-105 active:scale-95 shadow-sm'
+                        : 'border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-850 hover:scale-105 active:scale-95 shadow-sm cursor-pointer'
                     }`}
                     aria-label={aw.tabs.nextStep}
                     type="button"

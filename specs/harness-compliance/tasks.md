@@ -61,9 +61,9 @@
 - **Red Failure Proof**:
   ```text
   FAIL src/security/contacts.test.ts > Security & Privacy: Contact Obfuscation Specification > should not expose raw telephone or personal email in index.html outside Base64
-  AssertionError: Raw phone number found in index.html: +34642413967: expected [ '+34642413967', index: 4292, ... ] to be null
+  AssertionError: Raw phone number found in index.html: [REDACTED]: expected [ '[REDACTED]', index: 4292, ... ] to be null
   - Expected: null
-  + Received: ["+34642413967"]
+  + Received: ["[REDACTED]"]
   ```
 - **Green Implementation**:
   - Files modified: `index.html` (removed raw telephone from JSON-LD schema and noscript section)

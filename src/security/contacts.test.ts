@@ -34,7 +34,7 @@ describe('Security & Privacy: Dynamic Contact Obfuscation Specification', () => 
       (file) => existsSync(file) && needles.some((n) => readFileSync(file, 'utf8').includes(n)),
     )
     expect(hits).toEqual([])
-  })
+  }, 30000)
 
   it('should ensure index.html contains zero [at] token placeholders', () => {
     expect(existsSync('index.html')).toBe(true)

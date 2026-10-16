@@ -403,7 +403,7 @@ const ChatModal = ({
           role="region"
           tabIndex={0}
           aria-label={ct.a11y.logLabel}
-          className="flex-1 overflow-y-auto px-6 py-4 space-y-4 bg-slate-50/30 dark:bg-slate-950/10 custom-scrollbar focus:outline-none"
+          className="flex-1 overflow-y-auto px-6 py-4 space-y-4 bg-slate-50/30 dark:bg-slate-950/10 custom-scrollbar focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-purple-700 dark:focus-visible:outline-lime-400"
         >
           {displayedMessages.map((msg) => {
             const isBot = msg.from === 'bot'
