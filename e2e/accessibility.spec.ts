@@ -94,7 +94,7 @@ test.describe("WCAG 2.2 AA Accessibility Audits (EAA 2026 / EN 301 549)", () => 
   });
 
   test("previously broken controls show an outline on keyboard focus (N1 targeted verification)", async ({ page }) => {
-    async function expectFocusRing(locator: Locator): Promise<void> {
+    async function expectOutlineOnKeyboardFocus(locator: Locator): Promise<void> {
       await locator.scrollIntoViewIfNeeded();
       await locator.focus();
       await page.keyboard.press("Tab");
@@ -102,20 +102,10 @@ test.describe("WCAG 2.2 AA Accessibility Audits (EAA 2026 / EN 301 549)", () => 
       await expect(locator).toBeFocused();
       const ring = await locator.evaluate((el) => {
         const s = getComputedStyle(el);
-        const parentS = el.parentElement ? getComputedStyle(el.parentElement) : null;
-        const width = parseFloat(s.outlineWidth) || (parentS ? parseFloat(parentS.outlineWidth) : 0) || 0;
-        const style = s.outlineStyle !== "none" ? s.outlineStyle : (parentS?.outlineStyle ?? "none");
-        const shadow = s.boxShadow !== "none" && s.boxShadow !== "" ? s.boxShadow : (parentS?.boxShadow ?? "none");
-        return {
-          style,
-          width,
-          boxShadow: shadow,
-        };
+        return { style: s.outlineStyle, width: parseFloat(s.outlineWidth) || 0 };
       });
-      const hasVisibleRing =
-        (ring.style !== "none" && ring.width > 0) ||
-        (ring.boxShadow !== "none" && ring.boxShadow !== "");
-      expect(hasVisibleRing).toBe(true);
+      expect(ring.style).not.toBe("none");
+      expect(ring.width).toBeGreaterThan(0);
     }
 
     await page.goto("./");
@@ -127,10 +117,10 @@ test.describe("WCAG 2.2 AA Accessibility Audits (EAA 2026 / EN 301 549)", () => 
     await expect(banner).toBeVisible();
 
     const bannerPolicyBtn = banner.locator("button").filter({ hasText: /cookie policy|політика cookies|política de cookies/i });
-    await expectFocusRing(bannerPolicyBtn);
+    await expectOutlineOnKeyboardFocus(bannerPolicyBtn);
 
     const bannerSettingsBtn = banner.locator("button").filter({ hasText: /cookie settings|налаштування cookies|configuración de cookies/i });
-    await expectFocusRing(bannerSettingsBtn);
+    await expectOutlineOnKeyboardFocus(bannerSettingsBtn);
 
     // 2. Open Consent Settings dialog and test its controls
     await bannerSettingsBtn.click();
@@ -138,16 +128,16 @@ test.describe("WCAG 2.2 AA Accessibility Audits (EAA 2026 / EN 301 549)", () => 
     await expect(settingsDialog).toBeVisible();
 
     const dialogPolicyBtn = settingsDialog.locator("button").filter({ hasText: /cookie policy|політика cookies|política de cookies/i });
-    await expectFocusRing(dialogPolicyBtn);
+    await expectOutlineOnKeyboardFocus(dialogPolicyBtn);
 
     const savePreferencesBtn = settingsDialog.getByRole("button", { name: /save preferences|зберегти налаштування|guardar preferencias/i });
-    await expectFocusRing(savePreferencesBtn);
+    await expectOutlineOnKeyboardFocus(savePreferencesBtn);
     await savePreferencesBtn.click();
     await expect(settingsDialog).toBeHidden();
 
     // 3. Footer cookie settings button
     const footerSettingsBtn = page.locator("footer").getByRole("button", { name: /cookie settings|налаштування cookies|configuración de cookies/i });
-    await expectFocusRing(footerSettingsBtn);
+    await expectOutlineOnKeyboardFocus(footerSettingsBtn);
 
     // 4. Contact section chatbot controls
     const contactSection = page.locator("#contact");
@@ -155,11 +145,11 @@ test.describe("WCAG 2.2 AA Accessibility Audits (EAA 2026 / EN 301 549)", () => 
 
     const clearChatBtn = contactSection.locator('button[aria-label*="lear" i], button[aria-label*="очистити" i], button[aria-label*="limpiar" i]');
     if (await clearChatBtn.isVisible()) {
-      await expectFocusRing(clearChatBtn);
+      await expectOutlineOnKeyboardFocus(clearChatBtn);
     }
 
     const contactSendBtn = contactSection.locator('button:has(svg.lucide-send)').first();
-    await expectFocusRing(contactSendBtn);
+    await expectOutlineOnKeyboardFocus(contactSendBtn);
 
     // 5. ChatModal controls
     const chatTriggerBtn = page.getByRole("button", { name: /chat with.*ai|спілкуватися.*ai|chatear.*ai/i }).first();
@@ -169,10 +159,10 @@ test.describe("WCAG 2.2 AA Accessibility Audits (EAA 2026 / EN 301 549)", () => 
       await expect(chatModal).toBeVisible();
 
       const modalSendBtn = chatModal.locator('button:has(svg.lucide-send)').first();
-      await expectFocusRing(modalSendBtn);
+      await expectOutlineOnKeyboardFocus(modalSendBtn);
 
       const modalCloseBtn = chatModal.locator('button:has(svg.lucide-x)').first();
-      await expectFocusRing(modalCloseBtn);
+      await expectOutlineOnKeyboardFocus(modalCloseBtn);
       await modalCloseBtn.click();
       await expect(chatModal).toBeHidden();
     }
@@ -189,16 +179,16 @@ test.describe("WCAG 2.2 AA Accessibility Audits (EAA 2026 / EN 301 549)", () => 
         const screenshotModal = page.locator('div[role="dialog"][aria-labelledby="screenshot-modal-title"]');
         if (await screenshotModal.isVisible({ timeout: 5000 })) {
           const screenshotCloseBtn = screenshotModal.locator('button:has(svg.lucide-x)').first();
-          await expectFocusRing(screenshotCloseBtn);
+          await expectOutlineOnKeyboardFocus(screenshotCloseBtn);
 
           const prevBtn = screenshotModal.locator('button[aria-label*="previous" i], button[aria-label*="попередн" i], button[aria-label*="anterior" i]');
           if (await prevBtn.isVisible()) {
-            await expectFocusRing(prevBtn);
+            await expectOutlineOnKeyboardFocus(prevBtn);
           }
 
           const nextBtn = screenshotModal.locator('button[aria-label*="next" i], button[aria-label*="наступн" i], button[aria-label*="siguiente" i]');
           if (await nextBtn.isVisible()) {
-            await expectFocusRing(nextBtn);
+            await expectOutlineOnKeyboardFocus(nextBtn);
           }
 
           await screenshotCloseBtn.click();

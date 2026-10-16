@@ -45,62 +45,93 @@ md += '|---|---|---|---|\n'
 md += '| N1 | Коллизия `focus:outline-none` и `focus-visible:outline-2` (WCAG 2.4.7) | Устранено | `focus:outline-none` полностью удален из всех 10 интерактивных кнопок в `Footer.tsx`, `ConsentBanner.tsx`, `Contact.tsx`, `ChatModal.tsx`, `ProjectDetail.tsx`. Написан e2e-тест в Playwright (`accessibility.spec.ts`), проверяющий 60 Tab-шагов подряд - 0 пропусков |\n'
 md += '| N2 | Блокировка inline-скрипта в CSP зеркала | Устранено | В `vite.config.ts` плагин `injectCsp` динамически вычисляет SHA-256 хеш для `<script>` блоков (`\'sha256-sa2BD07tH4oO53uT1B5vNSLM2+gcrREM4WTXttKp6oU=\'`) и внедряет его в `script-src`. В `font-src` добавлено `data:`. E2E-тест подтверждает ровно 0 CSP-нарушений |\n'
 md += '| N3 | `gtag` пушил массив вместо `Arguments` | Устранено | В `src/lib/analytics.ts` вызов переведен на `window.dataLayer?.push(arguments)`. В `ConsentContext.test.tsx` добавлен unit-тест, подтверждающий `Object.prototype.toString.call(window.dataLayer[0]) === \'[object Arguments]\'` |\n'
-md += '| N4 | Разделение CI/CD на `verify` и `deploy` | Устранено | В `.github/workflows/deploy.yml` пайплайн разделен на `verify` (`permissions: contents: read`) и `deploy` (`needs: verify`, `permissions: contents: write`, строго по push в ветку `master`) |\n'
+md += '| N4 | Разделение CI/CD на `verify` и `deploy`, артефакты `dist`, SHA-пининг и Gitleaks | Устранено | В `.github/workflows/deploy.yml` пайплайн разделен на `verify` (`permissions: contents: read`, шаг Gitleaks `0. Secret Scan - Gitleaks`, загрузка `dist-artifact`) и `deploy` (`needs: verify`, `permissions: contents: write`, скачивание `dist-artifact`, строго по push в ветку `master`). Все GitHub Actions закреплены по полным 40-символьным commit SHA |\n'
 md += '| N5 | Чистка хука, AI чанков, промпта и локали | Устранено | В `useDialogA11y.ts` регистрация в `dialogStack` перенесена после проверки `if (!dialogNode) return`. В `vite.config.ts` чанк `vendor-ai` ограничен регулярным выражением `/\\/node_modules\\/(ai|@ai-sdk)\\//`. В `prompts.ts` контекст обернут в `<context>` теги с явным запретом следовать инструкциям из контекста. В `route.ts` добавлена валидация `locale` по белому списку `[\'en\', \'ua\', \'es\']` и логирование токенов `usage` |\n\n'
 
-md += '## 2. Результаты 3 контрольных проверок, запрошенных Claude AI\n\n'
-md += `### 2.1 Playwright-тест видимости фокуса (WCAG 2.4.7 - 60 Tab stops + N1 Targeted Controls Verification):
+md += '## 2. Результаты контрольных проверок, запрошенных Claude AI\n\n'
+md += `### 2.1 Playwright-тест видимости фокуса (N1 Targeted Controls Verification без ветки boxShadow - Красный и Зеленый прогоны):
+Хелпер \`expectOutlineOnKeyboardFocus\` проверяет строго \`outlineStyle !== "none"\` и \`outlineWidth > 0\` без обхода через \`boxShadow\`.
+
+**Красный прогон (с временным возвратом \`focus:outline-none\` в \`src/components/Footer.tsx\`):**
+\`\`\`text
+Running 1 test using 1 worker
+
+  x  1 [chromium] › e2e\\accessibility.spec.ts:96:3 › WCAG 2.2 AA Accessibility Audits (EAA 2026 / EN 301 549) › previously broken controls show an outline on keyboard focus (N1 targeted verification) (5.5s)
+
+
+  1) [chromium] › e2e\\accessibility.spec.ts:96:3 › WCAG 2.2 AA Accessibility Audits (EAA 2026 / EN 301 549) › previously broken controls show an outline on keyboard focus (N1 targeted verification) 
+
+    Error: expect(received).not.toBe(expected) // Object.is equality
+
+    Expected: not "none"
+
+      105 |         return { style: s.outlineStyle, width: parseFloat(s.outlineWidth) || 0 };
+      106 |       });
+    > 107 |       expect(ring.style).not.toBe("none");
+          |                              ^
+      108 |       expect(ring.width).toBeGreaterThan(0);
+      109 |     }
+      110 |
+        at expectOutlineOnKeyboardFocus (D:\\PORTFOLIO\\Portfolio\\e2e\\accessibility.spec.ts:107:30)
+        at D:\\PORTFOLIO\\Portfolio\\e2e\\accessibility.spec.ts:140:5
+
+  1 failed
+\`\`\`
+
+**Зеленый прогон (после \`git checkout -- src/components/Footer.tsx\`):**
+\`\`\`text
+Running 1 test using 1 worker
+
+  ok 1 [chromium] › e2e\\accessibility.spec.ts:96:3 › WCAG 2.2 AA Accessibility Audits (EAA 2026 / EN 301 549) › previously broken controls show an outline on keyboard focus (N1 targeted verification) (5.6s)
+
+  1 passed (10.1s)
+\`\`\`
+
+### 2.2 Playwright-тест отсутствия нарушений CSP в консоли (на загрузке и после нажатия «Принять»):
 Команда:
 \`\`\`bash
-pnpm exec playwright test e2e/accessibility.spec.ts --reporter=list
+pnpm exec playwright test e2e/analytics-consent.spec.ts --reporter=list
 \`\`\`
 Вывод:
 \`\`\`text
 Running 5 tests using 1 worker
 
-  ok 1 [chromium] › e2e/accessibility.spec.ts:5:3 › WCAG 2.2 AA Accessibility Audits (EAA 2026 / EN 301 549) › home page in default dark theme should have zero critical or serious a11y violations (10.6s)
-  ok 2 [chromium] › e2e/accessibility.spec.ts:20:3 › WCAG 2.2 AA Accessibility Audits (EAA 2026 / EN 301 549) › home page in light theme should maintain contrast and accessibility standards (12.0s)
-  ok 3 [chromium] › e2e/accessibility.spec.ts:39:3 › WCAG 2.2 AA Accessibility Audits (EAA 2026 / EN 301 549) › project detail view should maintain accessible structure and navigation (7.4s)
-  ok 4 [chromium] › e2e/accessibility.spec.ts:61:3 › WCAG 2.2 AA Accessibility Audits (EAA 2026 / EN 301 549) › every keyboard tab stop shows a focus indicator (WCAG 2.4.7) (2.9s)
-  ok 5 [chromium] › e2e/accessibility.spec.ts:96:3 › WCAG 2.2 AA Accessibility Audits (EAA 2026 / EN 301 549) › previously broken controls show an outline on keyboard focus (N1 targeted verification) (7.6s)
+  ok 1 [chromium] › e2e\\analytics-consent.spec.ts:5:3 › Google Analytics 4 & Consent Mode v2 Basic Specification (E2E & TDD) › should not make any network requests to Google Analytics before explicit user consent (2.5s)
+  ok 2 [chromium] › e2e\\analytics-consent.spec.ts:35:3 › Google Analytics 4 & Consent Mode v2 Basic Specification (E2E & TDD) › should pass axe-core accessibility audit on consent banner (5.0s)
+  ok 3 [chromium] › e2e\\analytics-consent.spec.ts:54:3 › Google Analytics 4 & Consent Mode v2 Basic Specification (E2E & TDD) › should load Google Analytics when visitor clicks Accept, and persist across reloads (5.7s)
+  ok 4 [chromium] › e2e\\analytics-consent.spec.ts:89:3 › Google Analytics 4 & Consent Mode v2 Basic Specification (E2E & TDD) › should not load Google Analytics when visitor clicks Decline, and allow revoking from footer (2.6s)
+  ok 5 [chromium] › e2e\\analytics-consent.spec.ts:124:3 › Google Analytics 4 & Consent Mode v2 Basic Specification (E2E & TDD) › should have zero Content Security Policy violations on load and after accepting cookies (N2) (3.1s)
 
-  5 passed (46.2s)
+  5 passed (24.4s)
 \`\`\`
-**Результат:** Все 5 тестов пройдены. В тесте 4 массив bad: [] пуст. В тесте 5 каждый из 10 элементов (кнопки политики и настроек в ConsentBanner, модальное окно настроек cookie, кнопка вызова cookie в Footer, кнопки консоли Contact, модальное окно ChatModal и слайдер ProjectDetail) открывается, получает фокус с клавиатуры и подтверждает наличие видимого контура фокуса (outlineStyle !== "none" && outlineWidth > 0 или boxShadow !== "none").
+
+### 2.3 Полный сырой вывод Vitest по \`ConsentContext.test.tsx\` (все 10 тестов с \`--reporter=verbose\`):
+Команда:
+\`\`\`bash
+pnpm exec vitest run src/contexts/ConsentContext.test.tsx --reporter=verbose
+\`\`\`
+Вывод:
+\`\`\`text
+ RUN  v5.0.1 D:/PORTFOLIO/Portfolio
+
+ ✓ src/contexts/ConsentContext.test.tsx > ConsentContext Specification (TDD) > should default to status undecided and banner-visible when localStorage is empty 135ms
+ ✓ src/contexts/ConsentContext.test.tsx > ConsentContext Specification (TDD) > should save status granted to localStorage and hide banner when acceptCookies is called 713ms
+ ✓ src/contexts/ConsentContext.test.tsx > ConsentContext Specification (TDD) > should save status denied to localStorage and hide banner when declineCookies is called 215ms
+ ✓ src/contexts/ConsentContext.test.tsx > ConsentContext Specification (TDD) > should honor valid existing granted status from localStorage without opening banner 14ms
+ ✓ src/contexts/ConsentContext.test.tsx > ConsentContext Specification (TDD) > should expire consent and reset to undecided if stored timestamp exceeds MAX_CONSENT_AGE_MS 15ms
+ ✓ src/contexts/ConsentContext.test.tsx > ConsentContext Specification (TDD) > should reset to undecided if stored policyVersion differs from CURRENT_POLICY_VERSION 18ms
+ ✓ src/contexts/ConsentContext.test.tsx > ConsentContext Specification (TDD) > should allow reopening settings banner via openSettings 202ms
+ ✓ src/contexts/ConsentContext.test.tsx > ConsentContext Specification (TDD) > should toggle policy modal visibility via openPolicyModal and closePolicyModal 262ms
+ ✓ src/contexts/ConsentContext.test.tsx > ConsentContext Specification (TDD) > should immediately halt GA tracking and update all 4 Consent Mode v2 signals to denied upon revocation 207ms
+ ✓ src/contexts/ConsentContext.test.tsx > ConsentContext Specification (TDD) > should push Arguments object rather than an Array into dataLayer when gtag is invoked (N3) 102ms
+
+ Test Files  1 passed (1)
+      Tests  10 passed (10)
+   Start at  06:50:21
+   Duration  64.27s (environment 59%, setup 29%, import 8%, tests 3%, transform 1%)
+\`\`\`
 
 `
-
-md += '### 2.2 Playwright-тест отсутствия нарушений CSP в консоли (на загрузке и после нажатия «Принять»):\n'
-md += 'Команда:\n```bash\npnpm test:e2e e2e/analytics-consent.spec.ts\n```\n'
-md += 'Вывод:\n'
-md += '```text\n'
-md += 'Running 5 tests using 1 worker\n'
-md += '  ok  1 [chromium] › should not make any network requests to Google Analytics before explicit user consent\n'
-md += '  ok  2 [chromium] › should pass axe-core accessibility audit on consent banner\n'
-md += '  ok  3 [chromium] › should load Google Analytics when visitor clicks Accept, and persist across reloads\n'
-md += '  ok  4 [chromium] › should not load Google Analytics when visitor clicks Decline, and allow revoking from footer\n'
-md += '  ok  5 [chromium] › should have zero Content Security Policy violations on load and after accepting cookies (N2)\n'
-md += '  5 passed\n'
-md += '```\n'
-md += '**Результат:** Массив консольных ошибок `cspErrors: []` пуст. Inline-скрипт `classList.add(\'js\')` успешно исполняется благодаря вычисленному SHA-256 хешу, класс `.js` присутствует на `<html>`.\n\n'
-
-md += '### 2.3 Проверка типа первого элемента `window.dataLayer` (`[object Arguments]`):\n'
-md += 'Vitest Unit Test (`src/contexts/ConsentContext.test.tsx`):\n'
-md += '```typescript\n'
-md += 'it(\'should push Arguments object rather than an Array into dataLayer when gtag is invoked (N3)\', async () => {\n'
-md += '  // ...\n'
-md += '  const firstCall = (window.dataLayer as unknown[])[0];\n'
-md += '  expect(Object.prototype.toString.call(firstCall)).toBe(\'[object Arguments]\');\n'
-md += '});\n'
-md += '```\n'
-md += 'Вывод:\n'
-md += '```text\n'
-md += '✓ src/contexts/ConsentContext.test.tsx (10 tests) 995ms\n'
-md += '  ✓ should push Arguments object rather than an Array into dataLayer when gtag is invoked (N3)\n'
-md += 'Test Files  1 passed (1)\n'
-md += '     Tests  10 passed (10)\n'
-md += '```\n'
-md += '**Результат:** `Object.prototype.toString.call(window.dataLayer[0]) === "[object Arguments]"`. Команды Google Analytics распознаются нативным скриптом `gtag.js`.\n\n'
 
 md += '## 3. Сводка всех гейтов качества\n\n'
 md += '- `pnpm exec tsc --noEmit`: **0 ошибок (Strict Zero-any)**\n'
