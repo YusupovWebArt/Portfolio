@@ -14,6 +14,8 @@ export type Message = {
   text: string
   source?: string
   timestamp?: Date
+  showContactCard?: boolean
+  followUps?: string[]
   projects?: {
     slug: string
     title: string

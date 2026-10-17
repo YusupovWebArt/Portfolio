@@ -162,18 +162,27 @@ const Contact = () => {
       text: textToSend,
     }
 
+    const historyForRag = messages
+      .filter((m) => m.id !== 'welcome' && !m.id.startsWith('welcome-') && m.text.trim())
+      .slice(-6)
+      .map((m) => ({
+        role: (m.from === 'user' ? 'user' : 'assistant') as 'user' | 'assistant',
+        content: m.text,
+      }))
+
     setMessages((prev) => [...prev, userMsg])
     setInput('')
     setIsTyping(true)
 
-    void import('../lib/ai/rag').then(({ synthesizeLocalRagAnswer, getRagSourceLabel }) => {
+    void import('../lib/ai/rag').then(({ synthesizeLocalRagAnswer, getRagSourceLabel, getContextualFollowUps }) => {
       setTimeout(() => {
         setIsTyping(false)
         const botMsg: Message = {
           id: `bot-${++contactMessageIdCounter}`,
           from: 'bot',
-          text: synthesizeLocalRagAnswer(textToSend, { locale: lang }),
-          source: getRagSourceLabel(textToSend, { locale: lang }),
+          text: synthesizeLocalRagAnswer(textToSend, { locale: lang, history: historyForRag }),
+          source: getRagSourceLabel(textToSend, { locale: lang, history: historyForRag }),
+          followUps: getContextualFollowUps(textToSend, { locale: lang, history: historyForRag }),
         }
         setMessages((prev) => [...prev, botMsg])
       }, 950)
@@ -318,7 +327,7 @@ const Contact = () => {
               {ct.chatbot.title}
             </h3>
             
-            <div className="relative overflow-hidden bg-white dark:bg-slate-900 lg:bg-white/60 lg:dark:bg-slate-900/60 lg:backdrop-blur-xl border border-slate-200/80 dark:border-white/10 rounded-3xl h-[420px] flex flex-col shadow-lg hover:border-slate-300 dark:hover:border-white/15 transition-all duration-300">
+            <div className="relative overflow-hidden bg-white dark:bg-slate-900 lg:bg-white/60 lg:dark:bg-slate-900/60 lg:backdrop-blur-xl border border-slate-200/80 dark:border-white/10 rounded-3xl h-[480px] flex flex-col shadow-lg hover:border-slate-300 dark:hover:border-white/15 transition-all duration-300">
               
               {/* Header inside the console */}
               <div className="flex items-center justify-between px-5 py-3.5 border-b border-slate-200/50 dark:border-white/5 bg-slate-50/50 dark:bg-slate-950/20">

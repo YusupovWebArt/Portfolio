@@ -3,6 +3,11 @@ import {
   retrieveKnowledge,
   formatContextForLLM,
   calculateCosineSimilarity,
+  resolveProjectFromQuery,
+  inferProjectFromHistory,
+  getContextualFollowUps,
+  isHireOrContactQuery,
+  synthesizeLocalRagAnswer,
 } from './rag'
 
 describe('Hybrid RAG Retriever Specification (TDD)', () => {
@@ -90,4 +95,43 @@ describe('Hybrid RAG Retriever Specification (TDD)', () => {
     expect(results.length).toBeGreaterThan(0)
     expect(results.some((r) => r.chunk.slug === 'unitrition')).toBe(true)
   })
+
+  it('should resolve projects with typos and hyphenless names via Damerau-Levenshtein matching', () => {
+    expect(resolveProjectFromQuery('Tell me about untirition')?.slug).toBe('unitrition')
+    expect(resolveProjectFromQuery('How was itmagic built?')?.slug).toBe('it-magic')
+    expect(resolveProjectFromQuery('Show me kidzly shopify store')?.slug).toBe('kidzely')
+  })
+
+  it('should retain project context across conversational history turns (coreference resolution)', () => {
+    const history = [
+      { role: 'user' as const, content: 'Tell me about Unitrition' },
+      { role: 'assistant' as const, content: 'Unitrition is a Next.js Personalized Nutrition & Health Platform.' },
+    ]
+    const inferred = inferProjectFromHistory(history)
+    expect(inferred?.slug).toBe('unitrition')
+
+    const followUpAnswer = synthesizeLocalRagAnswer('What tech stack was used there?', {
+      locale: 'en',
+      history,
+    })
+    expect(followUpAnswer).toContain('Unitrition')
+  })
+
+  it('should generate 3 localized contextual follow-up suggestions', () => {
+    const followUpsEn = getContextualFollowUps('Tell me about IT-Magic', { locale: 'en' })
+    expect(followUpsEn).toHaveLength(3)
+    expect(followUpsEn.some((q) => q.includes('IT-Magic'))).toBe(true)
+
+    const followUpsUa = getContextualFollowUps('Розкажи про Unitrition', { locale: 'ua' })
+    expect(followUpsUa).toHaveLength(3)
+    expect(followUpsUa.some((q) => q.includes('Unitrition'))).toBe(true)
+  })
+
+  it('should detect hire, pricing, and contact intent across EN, UA, and ES', () => {
+    expect(isHireOrContactQuery('How can I hire Artur and what are his rates?')).toBe(true)
+    expect(isHireOrContactQuery('Яка вартість розробки та контакти?')).toBe(true)
+    expect(isHireOrContactQuery('¿Cuál es el precio y cómo contactar?')).toBe(true)
+    expect(isHireOrContactQuery('How does React Fiber work?')).toBe(false)
+  })
 })
+

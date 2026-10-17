@@ -93,17 +93,18 @@ describe('ChatModal Client-side Streaming & Fallback Specification (TDD)', () =>
     const sendBtn = screen.getByTitle(/Send/i)
     fireEvent.click(sendBtn)
 
-    // Should gracefully display fallback answer from local RAG engine
+    // Should gracefully display fallback answer from local RAG engine and render ContactActionCard
     await waitFor(
       () => {
         const messages = screen.getAllByText(/open to remote|services include/i)
         expect(messages.length).toBeGreaterThan(0)
+        expect(screen.getByText(/Download CV \(PDF\)/i)).toBeInTheDocument()
       },
       { timeout: 4000 },
     )
   })
 
-  it('should enforce left-aligned text, scroll only the message region, and render interactive project cards', async () => {
+  it('should enforce left-aligned text, larger modal dimensions, scroll only the message region, and render interactive project cards', async () => {
     global.fetch = vi.fn().mockRejectedValue(new Error('Offline fallback'))
 
     render(
@@ -116,6 +117,9 @@ describe('ChatModal Client-side Streaming & Fallback Specification (TDD)', () =>
 
     const dialog = screen.getByRole('dialog')
     expect(dialog.className).toContain('text-left')
+    expect(dialog.className).toContain('max-w-3xl')
+    expect(dialog.className).toContain('lg:max-w-4xl')
+    expect(dialog.className).toContain('h-[740px]')
 
     const region = screen.getByRole('region')
     expect(region.className).toContain('relative')
@@ -143,3 +147,4 @@ describe('ChatModal Client-side Streaming & Fallback Specification (TDD)', () =>
     expect(dialog.scrollTop).toBe(0)
   })
 })
+

@@ -4,6 +4,8 @@ import {
   retrieveKnowledge,
   formatContextForLLM,
   synthesizeLocalRagAnswer,
+  resolveProjectFromQuery,
+  inferProjectFromHistory,
 } from '../../../src/lib/ai/rag'
 import { buildSystemPrompt } from '../../../src/lib/ai/prompts'
 import { aiTools } from '../../../src/lib/ai/tools'
@@ -190,6 +192,16 @@ export async function POST(req: Request) {
       }
     }
 
+    if (!verifiedProjectSlug) {
+      const fromQuery =
+        resolveProjectFromQuery(lastUserMessage) ||
+        inferProjectFromHistory(sanitizedHistory.slice(0, -1))
+      if (fromQuery) {
+        verifiedProjectSlug = fromQuery.slug
+        verifiedProjectTitle = fromQuery.project.title
+      }
+    }
+
     // 8. Knowledge retrieval via BM25
     const retrievedChunks = retrieveKnowledge(lastUserMessage, {
       currentProjectSlug: verifiedProjectSlug,
@@ -208,6 +220,7 @@ export async function POST(req: Request) {
         projectSlug: verifiedProjectSlug,
         projectTitle: verifiedProjectTitle,
         locale: validatedLocale,
+        history: sanitizedHistory.slice(0, -1),
       })
 
       return new Response(localAnswer, {
