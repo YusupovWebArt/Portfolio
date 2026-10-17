@@ -106,6 +106,9 @@ jobs:
           name: dist-artifact
           path: dist
 
+      - name: Configure Vercel Ignore for gh-pages Branch
+        run: echo '{"ignoreCommand":"exit 0"}' > dist/vercel.json
+
       - name: Deploy to GitHub Pages Branch
         uses: JamesIves/github-pages-deploy-action@fa24774553152dd7873cd16ebd8d959b010c5445 # v4
         with:
