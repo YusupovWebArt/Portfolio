@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef, useCallback } from 'react'
+import { createPortal } from 'react-dom'
 import { Send, Bot, User, X, Trash2, Sparkles, Database } from 'lucide-react'
 
 import { FAQ, Message } from '../data/chatFaq'
@@ -46,6 +47,7 @@ const ChatModal = ({
 
   useEffect(() => {
     const handleContextEvent = (event: Event) => {
+      event.stopImmediatePropagation()
       const customEvent = event as CustomEvent<ProjectChatContextDetail>
       if (customEvent.detail) {
         setProjectContext(customEvent.detail)
@@ -53,7 +55,8 @@ const ChatModal = ({
       }
     }
 
-    const handleOpenChat = () => {
+    const handleOpenChat = (event: Event) => {
+      event.stopImmediatePropagation()
       setInternalOpen(true)
     }
 
@@ -109,7 +112,7 @@ const ChatModal = ({
   })
   const [input, setInput] = useState('')
   const [isTyping, setIsTyping] = useState(false)
-  const messagesEndRef = useRef<HTMLDivElement>(null)
+  const messagesContainerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     sessionStorage.setItem(
@@ -119,8 +122,14 @@ const ChatModal = ({
   }, [messages])
 
   const scrollToBottom = () => {
-    if (typeof messagesEndRef.current?.scrollIntoView === 'function') {
-      messagesEndRef.current.scrollIntoView({ behavior: 'smooth' })
+    if (
+      messagesContainerRef.current &&
+      typeof messagesContainerRef.current.scrollTo === 'function'
+    ) {
+      messagesContainerRef.current.scrollTo({
+        top: messagesContainerRef.current.scrollHeight,
+        behavior: 'smooth',
+      })
     }
   }
 
@@ -140,18 +149,31 @@ const ChatModal = ({
       timestamp: new Date(),
     }
 
-    const { synthesizeLocalRagAnswer, getRagSourceLabel } = await import('../lib/ai/rag')
+    const historyPayload = [
+      ...messages
+        .filter((m) => !m.id.startsWith('welcome') && m.id !== 'welcome')
+        .map((m) => ({
+          role: m.from === 'user' ? 'user' : 'assistant',
+          content: m.text,
+        })),
+      { role: 'user', content: textToSend },
+    ]
 
-    const sourceLabel = getRagSourceLabel(textToSend, {
+    const ragOptions = {
       projectSlug: projectContext?.projectSlug,
       projectTitle: projectContext?.projectTitle,
       locale: lang,
-    })
+    }
+    const initialSourceLabel = projectContext?.projectTitle
+      ? `Hybrid RAG · ${projectContext.projectTitle} Case Study`
+      : 'Hybrid RAG · 70-Project Knowledge Base'
 
     setMessages((prev) => [...prev, userMessage])
     setInput('')
     setIsTyping(true)
     setLiveAnnouncement(ct.a11y.typing)
+
+    const ragModulePromise = import('../lib/ai/rag')
 
     const isStaticHosting =
       typeof window !== 'undefined' &&
@@ -160,18 +182,23 @@ const ChatModal = ({
 
     if (isStaticHosting) {
       // Direct autonomous local RAG synthesis without network /api/chat 404 on static hosting
+      const {
+        synthesizeLocalRagAnswer,
+        getRagSourceLabel,
+        getRelevantProjectCards,
+      } = await ragModulePromise
+      const sourceLabel = getRagSourceLabel(textToSend, ragOptions)
+      const projectCards = getRelevantProjectCards(textToSend, ragOptions)
+
       setTimeout(() => {
         setIsTyping(false)
-        const localAnswer = synthesizeLocalRagAnswer(textToSend, {
-          projectSlug: projectContext?.projectSlug,
-          projectTitle: projectContext?.projectTitle,
-          locale: lang,
-        })
+        const localAnswer = synthesizeLocalRagAnswer(textToSend, ragOptions)
         const botMessage: Message = {
           id: `bot-${++chatModalMessageIdCounter}`,
           from: 'bot',
           text: localAnswer,
           source: sourceLabel,
+          projects: projectCards.length > 0 ? projectCards : undefined,
           timestamp: new Date(),
         }
         setMessages((prev) => [...prev, botMessage])
@@ -187,15 +214,7 @@ const ChatModal = ({
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          messages: [
-            ...messages
-              .filter((m) => !m.id.startsWith('welcome') && m.id !== 'welcome')
-              .map((m) => ({
-                role: m.from === 'user' ? 'user' : 'assistant',
-                content: m.text,
-              })),
-            { role: 'user', content: textToSend },
-          ],
+          messages: historyPayload,
           projectSlug: projectContext?.projectSlug,
           projectTitle: projectContext?.projectTitle,
           locale: lang,
@@ -218,7 +237,7 @@ const ChatModal = ({
             id: botMessageId,
             from: 'bot',
             text: '',
-            source: sourceLabel,
+            source: initialSourceLabel,
             timestamp: new Date(),
           },
         ])
@@ -239,26 +258,49 @@ const ChatModal = ({
             id: botMessageId,
             from: 'bot',
             text,
-            source: sourceLabel,
+            source: initialSourceLabel,
             timestamp: new Date(),
           },
         ])
         setLiveAnnouncement(text)
       }
+
+      void ragModulePromise
+        .then(({ getRagSourceLabel, getRelevantProjectCards }) => {
+          const sourceLabel = getRagSourceLabel(textToSend, ragOptions)
+          const projectCards = getRelevantProjectCards(textToSend, ragOptions)
+          setMessages((prev) =>
+            prev.map((msg) =>
+              msg.id === botMessageId
+                ? {
+                    ...msg,
+                    source: sourceLabel,
+                    projects: projectCards.length > 0 ? projectCards : msg.projects,
+                  }
+                : msg,
+            ),
+          )
+        })
+        .catch(() => {})
     } catch {
       // Fallback to local autonomous RAG synthesis engine
+      const {
+        synthesizeLocalRagAnswer,
+        getRagSourceLabel,
+        getRelevantProjectCards,
+      } = await ragModulePromise
+      const sourceLabel = getRagSourceLabel(textToSend, ragOptions)
+      const projectCards = getRelevantProjectCards(textToSend, ragOptions)
+
       setTimeout(() => {
         setIsTyping(false)
-        const fallbackAnswer = synthesizeLocalRagAnswer(textToSend, {
-          projectSlug: projectContext?.projectSlug,
-          projectTitle: projectContext?.projectTitle,
-          locale: lang,
-        })
+        const fallbackAnswer = synthesizeLocalRagAnswer(textToSend, ragOptions)
         const botMessage: Message = {
           id: `bot-${++chatModalMessageIdCounter}`,
           from: 'bot',
           text: fallbackAnswer,
           source: sourceLabel,
+          projects: projectCards.length > 0 ? projectCards : undefined,
           timestamp: new Date(),
         }
         setMessages((prev) => [...prev, botMessage])
@@ -318,14 +360,14 @@ const ChatModal = ({
     (faq) => !messages.some((m) => m.from === 'user' && (m.text === faq.question || m.text === faq.questionUa || m.text === faq.questionEs))
   )
 
-  return (
-    <div className="fixed inset-0 bg-slate-900/40 dark:bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4 transition-all duration-300">
+  const modalNode = (
+    <div className="fixed inset-0 bg-slate-900/40 dark:bg-black/60 backdrop-blur-sm flex items-center justify-center z-[70] p-4 text-left transition-all duration-300">
       <div
         ref={modalRef}
         role="dialog"
         aria-modal="true"
         aria-labelledby="chat-modal-title"
-        className="relative w-full max-w-xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border border-slate-200/80 dark:border-white/10 rounded-3xl shadow-2xl flex flex-col h-[580px] max-h-[90vh] overflow-hidden transition-all duration-300"
+        className="relative w-full max-w-xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border border-slate-200/80 dark:border-white/10 rounded-3xl shadow-2xl flex flex-col h-[580px] max-h-[90vh] overflow-hidden text-left transition-all duration-300"
       >
         {/* Polite Screen Reader Live Region for Streaming and Typing Announcements */}
         <div role="status" aria-live="polite" aria-atomic="true" className="sr-only">
@@ -333,7 +375,7 @@ const ChatModal = ({
         </div>
         
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-slate-200/60 dark:border-white/5 bg-slate-50/50 dark:bg-slate-950/20">
+        <div className="shrink-0 flex items-center justify-between px-6 py-4 border-b border-slate-200/60 dark:border-white/5 bg-slate-50/50 dark:bg-slate-950/20">
           <div className="flex items-center space-x-3 min-w-0">
             <div className="w-10 h-10 rounded-full bg-purple-100 dark:bg-lime-500/10 flex items-center justify-center text-purple-600 dark:text-lime-400 shrink-0 border border-purple-200/50 dark:border-lime-500/20">
               <Bot className="w-5 h-5" aria-hidden="true" />
@@ -381,7 +423,7 @@ const ChatModal = ({
 
         {/* Pinned Active Project Context Bar */}
         {projectContext && (
-          <div className="flex items-center justify-between px-6 py-2 bg-purple-50/90 dark:bg-lime-500/10 border-b border-purple-200/60 dark:border-lime-500/20 text-xs">
+          <div className="shrink-0 flex items-center justify-between px-6 py-2 bg-purple-50/90 dark:bg-lime-500/10 border-b border-purple-200/60 dark:border-lime-500/20 text-xs">
             <div className="flex items-center gap-1.5 font-semibold text-purple-700 dark:text-lime-300 truncate">
               <Sparkles className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
               <span className="truncate">{ct.activeContext}: {projectContext.projectTitle}</span>
@@ -400,10 +442,11 @@ const ChatModal = ({
 
         {/* Message Area */}
         <div
+          ref={messagesContainerRef}
           role="region"
           tabIndex={0}
           aria-label={ct.a11y.logLabel}
-          className="flex-1 overflow-y-auto px-6 py-4 space-y-4 bg-slate-50/30 dark:bg-slate-950/10 custom-scrollbar focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-purple-700 dark:focus-visible:outline-lime-400"
+          className="relative flex-1 min-h-0 overflow-y-auto px-6 py-4 space-y-4 bg-slate-50/30 dark:bg-slate-950/10 custom-scrollbar focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-purple-700 dark:focus-visible:outline-lime-400"
         >
           {displayedMessages.map((msg) => {
             const isBot = msg.from === 'bot'
@@ -428,7 +471,7 @@ const ChatModal = ({
 
                 {/* Message Bubble */}
                 <div
-                  className={`px-4 py-2.5 rounded-2xl max-w-[85%] text-sm shadow-sm leading-relaxed ${
+                  className={`relative px-4 py-2.5 text-left rounded-2xl max-w-[85%] text-sm shadow-sm leading-relaxed ${
                     isBot
                       ? 'bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 rounded-tl-sm border border-slate-200/50 dark:border-white/5'
                       : 'bg-purple-600 dark:bg-lime-500 text-white dark:text-slate-900 rounded-tr-sm font-medium'
@@ -443,7 +486,12 @@ const ChatModal = ({
                   {msg.projects && msg.projects.length > 0 && (
                     <div className="mt-2 space-y-2">
                       {msg.projects.map((proj) => (
-                        <ProjectToolCard key={proj.slug} project={proj} locale={lang} />
+                        <ProjectToolCard
+                          key={proj.slug}
+                          project={proj}
+                          locale={lang}
+                          onNavigate={handleClose}
+                        />
                       ))}
                     </div>
                   )}
@@ -517,12 +565,10 @@ const ChatModal = ({
               </div>
             </div>
           )}
-
-          <div ref={messagesEndRef} />
         </div>
 
         {/* Footer & Inputs */}
-        <div className="p-4 border-t border-slate-200/60 dark:border-white/5 bg-slate-50/50 dark:bg-slate-950/20 space-y-3">
+        <div className="shrink-0 p-4 border-t border-slate-200/60 dark:border-white/5 bg-slate-50/50 dark:bg-slate-950/20 space-y-3">
           
           {/* Suggestion Chips (Wrapped & Compact, only for active chats) */}
           {activeSuggestions.length > 0 && messages.length > 1 && (
@@ -573,6 +619,10 @@ const ChatModal = ({
       </div>
     </div>
   )
+
+  return typeof document !== 'undefined'
+    ? createPortal(modalNode, document.body)
+    : modalNode
 }
 
 export default ChatModal

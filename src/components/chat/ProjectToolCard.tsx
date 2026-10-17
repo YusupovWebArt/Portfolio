@@ -8,16 +8,18 @@ import type { ProjectToolOutput } from '../../lib/ai/tools'
 interface ProjectToolCardProps {
   project: ProjectToolOutput
   locale?: string
+  onNavigate?: () => void
 }
 
 export default function ProjectToolCard({
   project,
   locale = 'en',
+  onNavigate,
 }: ProjectToolCardProps) {
   const caseStudyUrl = `/${locale}/projects/${project.slug}`
 
   return (
-    <div className="w-full my-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-sm hover:shadow-md transition-all duration-200 overflow-hidden flex flex-col">
+    <div className="w-full my-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-sm hover:shadow-md transition-all duration-200 overflow-hidden flex flex-col text-left">
       <div className="relative h-28 w-full bg-slate-100 dark:bg-slate-800 overflow-hidden">
         {project.image ? (
           <img
@@ -49,6 +51,7 @@ export default function ProjectToolCard({
         <div className="flex items-center justify-between gap-2 pt-2 border-t border-slate-100 dark:border-slate-800/80">
           <Link
             href={caseStudyUrl}
+            onClick={onNavigate}
             className="inline-flex items-center gap-1 text-xs font-semibold text-purple-600 dark:text-lime-400 hover:text-purple-700 dark:hover:text-lime-300 transition-colors"
           >
             <span>View Case Study</span>

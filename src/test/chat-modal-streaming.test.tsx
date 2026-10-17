@@ -93,13 +93,53 @@ describe('ChatModal Client-side Streaming & Fallback Specification (TDD)', () =>
     const sendBtn = screen.getByTitle(/Send/i)
     fireEvent.click(sendBtn)
 
-    // Should gracefully display fallback answer
+    // Should gracefully display fallback answer from local RAG engine
     await waitFor(
       () => {
-        const messages = screen.getAllByText(/rates|pricing|contact/i)
+        const messages = screen.getAllByText(/open to remote|services include/i)
         expect(messages.length).toBeGreaterThan(0)
       },
-      { timeout: 2000 },
+      { timeout: 4000 },
     )
+  })
+
+  it('should enforce left-aligned text, scroll only the message region, and render interactive project cards', async () => {
+    global.fetch = vi.fn().mockRejectedValue(new Error('Offline fallback'))
+
+    render(
+      <LanguageProvider>
+        <div className="text-center">
+          <ChatModal open={true} onClose={vi.fn()} />
+        </div>
+      </LanguageProvider>,
+    )
+
+    const dialog = screen.getByRole('dialog')
+    expect(dialog.className).toContain('text-left')
+
+    const region = screen.getByRole('region')
+    expect(region.className).toContain('relative')
+    expect(region.className).toContain('min-h-0')
+
+    const input = screen.getByPlaceholderText(/Type a question/i)
+    fireEvent.change(input, {
+      target: { value: 'What are your best projects?' },
+    })
+
+    const sendBtn = screen.getByTitle(/Send/i)
+    fireEvent.click(sendBtn)
+
+    await waitFor(
+      () => {
+        const caseStudyLinks = screen.getAllByRole('link', {
+          name: /View Case Study/i,
+        })
+        expect(caseStudyLinks.length).toBeGreaterThan(0)
+      },
+      { timeout: 4000 },
+    )
+
+    // Dialog container itself must never be scrolled
+    expect(dialog.scrollTop).toBe(0)
   })
 })

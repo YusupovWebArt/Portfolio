@@ -652,3 +652,110 @@ export function getRagSourceLabel(
 
   return 'Hybrid RAG · 70-Project Knowledge Base'
 }
+
+export interface ChatProjectCardItem {
+  slug: string
+  title: string
+  description: string
+  image: string
+  category: string
+  liveUrl?: string
+  githubUrl?: string
+}
+
+function toProjectCardItem(
+  slug: string,
+  project: Project,
+  lang: 'en' | 'ua' | 'es',
+): ChatProjectCardItem {
+  const rawDesc =
+    lang === 'es' && project.descriptionEs
+      ? project.descriptionEs
+      : lang === 'ua' && project.descriptionUa
+        ? project.descriptionUa
+        : project.description
+
+  return {
+    slug,
+    title: stripEmDashes(project.title),
+    description: stripEmDashes(rawDesc),
+    image: project.image,
+    category: project.category?.[0] || 'Web Development',
+    liveUrl: project.liveUrl && project.liveUrl !== '#' ? project.liveUrl : undefined,
+    githubUrl: project.githubUrl && project.githubUrl !== '#' ? project.githubUrl : undefined,
+  }
+}
+
+export function getRelevantProjectCards(
+  query: string,
+  options: LocalSynthesisOptions = {},
+): ChatProjectCardItem[] {
+  const trimmed = query ? query.trim() : ''
+  if (!trimmed) return []
+
+  const lower = foldForSearch(trimmed)
+  const lang = options.locale || detectLanguage(trimmed)
+
+  const isGeneralProfileOrServiceQuestion =
+    /(who is artur|about yourself|quien es artur|хто такий артур|how many years|скільки років|cuantos anos|where are you located|де ви знаходитесь|donde estas|services|rates|cost|hire|послуги|ціни|precio|contratar|workflow|ai & rag|seo|english|motivat)/i.test(
+      lower,
+    )
+
+  if (isGeneralProfileOrServiceQuestion) {
+    return []
+  }
+
+  // 1. Check if query mentions a specific project or has active project context
+  const byQuery = projectRegistry.find(
+    (p) =>
+      lower.includes(foldForSearch(p.project.title)) ||
+      (p.slug.length > 3 && lower.includes(p.slug.toLowerCase())),
+  )
+  if (byQuery) {
+    return [toProjectCardItem(byQuery.slug, byQuery.project, lang)]
+  }
+
+  if (options.projectSlug) {
+    const byContext = projectRegistry.find(
+      (p) => p.slug.toLowerCase() === options.projectSlug?.toLowerCase(),
+    )
+    if (byContext) {
+      return [toProjectCardItem(byContext.slug, byContext.project, lang)]
+    }
+  }
+
+  // 2. Check if user is asking to see completed projects / portfolio / work examples
+  const isProjectsShowcaseQuery =
+    /(projects|tell me about your work|completed|show me.*project|portfolio|проєкт|портфоліо|проект|портфолио|proyectos|portafolio|trabajo)/i.test(
+      lower,
+    )
+
+  if (isProjectsShowcaseQuery) {
+    const flagshipSlugs = ['it-magic', 'unitrition']
+    const cards: ChatProjectCardItem[] = []
+    for (const slug of flagshipSlugs) {
+      const entry = projectRegistry.find((p) => p.slug === slug)
+      if (entry) {
+        cards.push(toProjectCardItem(entry.slug, entry.project, lang))
+      }
+    }
+    return cards
+  }
+
+  // 3. Check high-confidence BM25 project matches for domain queries (e.g. "AWS", "Shopify")
+  const retrieved = retrieveKnowledge(trimmed, { topK: 2 })
+  const seenSlugs = new Set<string>()
+  const matchedCards: ChatProjectCardItem[] = []
+  for (const r of retrieved) {
+    if (r.chunk.type === 'project' && r.chunk.slug && r.score >= 3.0 && !seenSlugs.has(r.chunk.slug)) {
+      const entry = projectRegistry.find((p) => p.slug === r.chunk.slug)
+      if (entry) {
+        seenSlugs.add(entry.slug)
+        matchedCards.push(toProjectCardItem(entry.slug, entry.project, lang))
+      }
+    }
+  }
+
+  return matchedCards
+}
+
