@@ -80,5 +80,12 @@ describe('Contact Anti-Scrape Leak Verification (TDD)', () => {
       }
     }
   })
+
+  it('should ensure contacts chunk is never referenced or preloaded in dist/index.html (F1)', () => {
+    const distHtml = 'dist/index.html'
+    if (!existsSync(distHtml)) return
+    const text = readFileSync(distHtml, 'utf8')
+    expect(text).not.toMatch(/contacts(?:-[\w-]+)?\.js/)
+  })
 })
 

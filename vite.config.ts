@@ -56,9 +56,6 @@ export default defineConfig({
             }
             return 'vendor'
           }
-          if (id.includes('src/lib/contacts')) {
-            return 'contacts'
-          }
           if (id.includes('src/components/projects/') || id.includes('src/lib/projectRegistry')) {
             return 'projects-data'
           }

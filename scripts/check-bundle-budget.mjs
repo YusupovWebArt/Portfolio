@@ -89,9 +89,9 @@ if (totalGzip > MAX_TOTAL_GZIP) {
   )
 }
 
-// Check 3: Main entry JS budget (< 200 KB raw, < 65 KB gzip)
+// Check 3: Main entry JS budget (< 200 KB raw, < 60 KB gzip)
 const MAX_MAIN_RAW = 200 * 1024
-const MAX_MAIN_GZIP = 65 * 1024
+const MAX_MAIN_GZIP = 60 * 1024
 if (mainEntryRaw > MAX_MAIN_RAW) {
   failures.push(
     `Violation: Main entry chunk raw size (${mainRawKb} KB) exceeds budget of 200.00 KB.`
@@ -99,7 +99,7 @@ if (mainEntryRaw > MAX_MAIN_RAW) {
 }
 if (mainEntryGzip > MAX_MAIN_GZIP) {
   failures.push(
-    `Violation: Main entry chunk gzip size (${mainGzipKb} KB) exceeds budget of 65.00 KB.`
+    `Violation: Main entry chunk gzip size (${mainGzipKb} KB) exceeds budget of 60.00 KB.`
   )
 }
 

@@ -64,6 +64,16 @@ for (const root of ROOTS) {
   }
 }
 
+// Ensure contacts chunk is not referenced/preloaded from static HTML (F1)
+const distHtml = join('dist', 'index.html')
+if (existsSync(distHtml)) {
+  const html = readFileSync(distHtml, 'utf8')
+  if (/contacts(?:-[\w-]+)?\.js/.test(html)) {
+    console.error('Security violation: contacts chunk must not be referenced or preloaded from dist/index.html (F1)')
+    leaks++
+  }
+}
+
 if (scanned === 0) {
   console.error('Verification failed: zero HTML files scanned. Ensure this script runs after build.')
   process.exit(1)
