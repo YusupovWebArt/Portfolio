@@ -11,6 +11,7 @@ import {
   isEstimateOrCalculatorQuery,
   isBestProjectsQuery,
   isPersonalProjectsQuery,
+  isBlogArticlesQuery,
   synthesizeLocalRagAnswer,
   getRelevantProjectCards,
   getRagSourceLabel,
@@ -195,6 +196,41 @@ describe('Hybrid RAG Retriever Specification (TDD)', () => {
 
     const label = getRagSourceLabel('personal projects')
     expect(label).toContain('Personal Flagship Products')
+  })
+
+  it('should detect blog and engineering articles queries across EN, UA, and ES', () => {
+    expect(isBlogArticlesQuery('Tell me about your blog and engineering articles')).toBe(true)
+    expect(isBlogArticlesQuery('What articles or case studies have you written?')).toBe(true)
+    expect(isBlogArticlesQuery('Які статті або інженерний блог ти пишеш?')).toBe(true)
+    expect(isBlogArticlesQuery('¿Qué artículos de ingeniería o blog tienes?')).toBe(true)
+    expect(isBlogArticlesQuery('What is your favorite food?')).toBe(false)
+  })
+
+  it('should synthesize a comprehensive blog overview with links and no em dashes', () => {
+    const answerEn = synthesizeLocalRagAnswer('Tell me about your blog articles', { locale: 'en' })
+    expect(answerEn).toContain('Next.js 16 vs Headless WordPress')
+    expect(answerEn).toContain('Autonomous Hybrid RAG Architecture')
+    expect(answerEn).toContain('WCAG 2.2 AA & European Accessibility Act')
+    expect(answerEn).toContain('/en/blog/nextjs-vs-headless-wordpress-custom-php-2026')
+    expect(answerEn).toContain('/en/blog/autonomous-hybrid-rag-architecture-browser')
+    expect(answerEn).toContain('/en/blog/wcag-22-aa-european-accessibility-act-2026')
+    expect(answerEn).not.toContain('\u2014')
+
+    const answerUa = synthesizeLocalRagAnswer('Які статті блогу ти маєш?', { locale: 'ua' })
+    expect(answerUa).toContain('/ua/blog/')
+    expect(answerUa).not.toContain('\u2014')
+
+    const answerEs = synthesizeLocalRagAnswer('¿Qué artículos tienes en el blog?', { locale: 'es' })
+    expect(answerEs).toContain('/es/blog/')
+    expect(answerEs).not.toContain('\u2014')
+  })
+
+  it('should retrieve blog chunks with high BM25 relevance for architecture and accessibility queries', () => {
+    const results = retrieveKnowledge('WCAG 2.2 AA European Accessibility Act compliance audit')
+    expect(results.length).toBeGreaterThan(0)
+    expect(results.some((r) => r.chunk.type === 'blog')).toBe(true)
+    const blogChunk = results.find((r) => r.chunk.type === 'blog')
+    expect(blogChunk?.chunk.slug).toBe('wcag-22-aa-european-accessibility-act-2026')
   })
 })
 

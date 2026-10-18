@@ -43,6 +43,7 @@ export type QueryIntent =
   | 'contact'
   | 'methodology'
   | 'project-aspect'
+  | 'blog'
   | 'general'
 
 /**
@@ -72,6 +73,14 @@ export function calculateCosineSimilarity(vecA: number[], vecB: number[]): numbe
  */
 export function detectQueryIntent(query: string): QueryIntent {
   const lower = foldForSearch(query)
+
+  if (
+    /(blog|article|articles|writeup|read\s+about|статт|стат|блог|допис|дописи|articulo|articulos)/i.test(
+      lower,
+    )
+  ) {
+    return 'blog'
+  }
 
   if (
     /(service|services|pricing|price|rates|cost|hire|b2b|offer|послуг|цін|вартіст|цена|стоимост|servicios|servicio|precio|contratar|tarifas)/i.test(
@@ -240,7 +249,8 @@ export function retrieveKnowledge(
     intent === 'service' ||
     intent === 'profile' ||
     intent === 'contact' ||
-    intent === 'methodology'
+    intent === 'methodology' ||
+    intent === 'blog'
 
   for (const { chunk, docLength, termFrequencies } of index.indexedChunks) {
     let score = 0
@@ -316,6 +326,12 @@ export function retrieveKnowledge(
     if (chunk.type === 'methodology' && intent === 'methodology') {
       score += 6.0
       matchReasons.push('methodology-intent')
+    }
+
+    // 9. Blog Intent Match
+    if (chunk.type === 'blog' && intent === 'blog') {
+      score += 6.0
+      matchReasons.push('blog-intent')
     }
 
     if (score >= minScore) {
@@ -753,13 +769,20 @@ export function isPersonalProjectsQuery(query: string): boolean {
   )
 }
 
+export function isBlogArticlesQuery(query: string): boolean {
+  const lower = foldForSearch(query || '')
+  return /(blog|article|articles|writeup|read\s+about|статт|стат|блог|допис|дописи|articulo|articulos)/i.test(
+    lower,
+  )
+}
+
 function resolveTargetProject(
   query: string,
   options: LocalSynthesisOptions = {},
 ): { slug: string; project: Project } | undefined {
   const lower = foldForSearch(query || '')
 
-  if (isBestProjectsQuery(query) || isPersonalProjectsQuery(query)) {
+  if (isBestProjectsQuery(query) || isPersonalProjectsQuery(query) || isBlogArticlesQuery(query)) {
     return undefined
   }
 
@@ -907,6 +930,34 @@ export function synthesizeLocalRagAnswer(
         '- **E-Commerce Store**: 3-6 weeks (Shopify or WooCommerce)\n' +
         '- **Custom Web App / SaaS**: 4-8 weeks (Next.js 16 + TypeScript + API/Database)\n\n' +
         'Use the interactive estimator below to calculate dynamic turnaround based on your selected features:'
+    )
+  }
+
+  if (isBlogArticlesQuery(trimmed)) {
+    if (lang === 'ua') {
+      return stripEmDashes(
+        'У моєму інженерному блозі опубліковані детальні архітектурні розбори для CTO та технічних команд:\n\n' +
+          '1. **Next.js 16 проти Headless WordPress та Custom PHP** (/ua/blog/nextjs-vs-headless-wordpress-custom-php-2026) - Об єктивне порівняння TCO, вартості підтримки, швидкості Core Web Vitals та складності робочого процесу редакції.\n' +
+          '2. **Автономна архітектура Hybrid RAG у браузері** (/ua/blog/autonomous-hybrid-rag-architecture-browser) - Як реалізувати семантичний RAG-пошук за 5мс без витрат на зовнішні векторні бази даних (Pinecone/Milvus).\n' +
+          '3. **WCAG 2.2 AA та European Accessibility Act 2026** (/ua/blog/wcag-22-aa-european-accessibility-act-2026) - Практичний посібник для компаній у ЄС (зокрема в Іспанії) щодо обов язкових стандартів доступності, керування фокусом та CI/CD тестів.\n\n' +
+          'Ви можете відкрити будь-яку статтю за прямим посиланням вище або запитати мене про будь-яку з цих тем!'
+      )
+    }
+    if (lang === 'es') {
+      return stripEmDashes(
+        'En mi blog de ingeniería comparto análisis técnicos en profundidad pensados para CTOs y fundadores:\n\n' +
+          '1. **Next.js 16 vs Headless WordPress vs Custom PHP** (/es/blog/nextjs-vs-headless-wordpress-custom-php-2026) - Comparativa objetiva de TCO, costes de mantenimiento, Core Web Vitals y flujo editorial.\n' +
+          '2. **Arquitectura de Hybrid RAG autónomo en cliente** (/es/blog/autonomous-hybrid-rag-architecture-browser) - Cómo implementar búsqueda semántica en 5ms sin costes mensuales de bases de datos vectoriales.\n' +
+          '3. **WCAG 2.2 AA y European Accessibility Act 2026** (/es/blog/wcag-22-aa-european-accessibility-act-2026) - Guía técnica para empresas en España y la UE sobre cumplimiento normativo, gestión de foco y tests en CI/CD.\n\n' +
+          '¡Puedes acceder a los enlaces anteriores para leer el análisis completo o preguntarme cualquier duda sobre estos temas!'
+      )
+    }
+    return stripEmDashes(
+      'In my engineering blog, I publish architectural case studies designed for CTOs and technical leads:\n\n' +
+        '1. **Next.js 16 vs Headless WordPress vs Custom PHP** (/en/blog/nextjs-vs-headless-wordpress-custom-php-2026) - An objective TCO, maintenance, Core Web Vitals, and editorial workflow comparison.\n' +
+        '2. **Autonomous Hybrid RAG Architecture** (/en/blog/autonomous-hybrid-rag-architecture-browser) - Building in-browser semantic retrieval under 5ms with zero external vector database overhead.\n' +
+        '3. **WCAG 2.2 AA & European Accessibility Act 2026** (/en/blog/wcag-22-aa-european-accessibility-act-2026) - The practical engineering compliance guide for EU and Spanish businesses, covering keyboard focus, contrast, and CI/CD a11y gates.\n\n' +
+        'You can read the full articles via the direct links above or ask me any question about these topics!'
     )
   }
 

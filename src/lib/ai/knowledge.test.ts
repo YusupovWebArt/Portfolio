@@ -65,4 +65,14 @@ describe('RAG Knowledge Base Specification (TDD)', () => {
     const allChunks = getAllKnowledgeChunks()
     expect(allChunks.length).toBeGreaterThan(69)
   })
+
+  it('should include blog knowledge chunks for engineering articles', () => {
+    const kb = loadKnowledgeBase()
+
+    expect(kb.blog).toBeDefined()
+    expect(kb.blog.length).toBe(3)
+    const nextjsVsWp = kb.blog.find((b) => b.slug === 'nextjs-vs-headless-wordpress-custom-php-2026')
+    expect(nextjsVsWp).toBeDefined()
+    expect(nextjsVsWp?.type).toBe('blog')
+  })
 })

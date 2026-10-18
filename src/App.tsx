@@ -82,6 +82,7 @@ function App() {
                     key={selectedProject}
                     projectId={selectedProject}
                     onBack={handleBackToProjects}
+                    onSelectProject={handleProjectSelect}
                   />
                 </Suspense>
               </main>

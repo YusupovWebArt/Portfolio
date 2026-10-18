@@ -1,0 +1,54 @@
+import type { BlogPost, BlogLocale } from './types'
+import { nextjsVsHeadlessWordPressPost } from './posts/nextjs-vs-headless-wordpress'
+import { autonomousHybridRagPost } from './posts/autonomous-hybrid-rag'
+import { wcag22Eaa2026Post } from './posts/wcag-22-eaa-2026'
+
+export * from './types'
+
+export const allBlogPosts: BlogPost[] = [
+  nextjsVsHeadlessWordPressPost,
+  autonomousHybridRagPost,
+  wcag22Eaa2026Post,
+]
+
+export function getAllBlogPosts(): BlogPost[] {
+  return allBlogPosts
+}
+
+export function getBlogPostBySlug(slug: string): BlogPost | undefined {
+  return allBlogPosts.find((p) => p.slug === slug)
+}
+
+export function getRelatedBlogPosts(currentSlug: string, limit = 2): BlogPost[] {
+  return allBlogPosts.filter((p) => p.slug !== currentSlug).slice(0, limit)
+}
+
+export function getBlogTitle(post: BlogPost, locale: string): string {
+  const l = (locale === 'ua' || locale === 'es' ? locale : 'en') as BlogLocale
+  return post.title[l] || post.title.en
+}
+
+export function getBlogDescription(post: BlogPost, locale: string): string {
+  const l = (locale === 'ua' || locale === 'es' ? locale : 'en') as BlogLocale
+  return post.description[l] || post.description.en
+}
+
+export function getBlogReadTime(post: BlogPost, locale: string): string {
+  const l = (locale === 'ua' || locale === 'es' ? locale : 'en') as BlogLocale
+  return post.readTime[l] || post.readTime.en
+}
+
+export function getBlogCategoryLabel(post: BlogPost, locale: string): string {
+  const l = (locale === 'ua' || locale === 'es' ? locale : 'en') as BlogLocale
+  return post.categoryLabel[l] || post.categoryLabel.en
+}
+
+export function getBlogContent(post: BlogPost, locale: string): string {
+  const l = (locale === 'ua' || locale === 'es' ? locale : 'en') as BlogLocale
+  return post.content[l] || post.content.en
+}
+
+export function getBlogTldr(post: BlogPost, locale: string): string[] {
+  const l = (locale === 'ua' || locale === 'es' ? locale : 'en') as BlogLocale
+  return post.tldr[l] || post.tldr.en
+}

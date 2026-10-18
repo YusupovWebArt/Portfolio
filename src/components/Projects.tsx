@@ -36,10 +36,10 @@ const getFilterLabel = (id: string, filterAllLabel: string, currentLang?: string
   if (id === 'all') return filterAllLabel
   if (id === 'personal') {
     return currentLang === 'ua'
-      ? 'Власні проєкти (3)'
+      ? 'Власні проєкти'
       : currentLang === 'es'
-        ? 'Proyectos propios (3)'
-        : 'Personal Projects (3)'
+        ? 'Proyectos propios'
+        : 'Personal Projects'
   }
   switch (id) {
     case 'wordpress': return 'WordPress'

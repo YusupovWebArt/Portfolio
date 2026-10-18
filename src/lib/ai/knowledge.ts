@@ -2,12 +2,13 @@ import { Project, TechnologyItem } from '../../components/projects/project-types
 import { projectRegistry } from '../projectRegistry'
 import { stripEmDashes } from './text'
 import { PUBLIC_PROFILES } from '../profiles'
+import { allBlogPosts } from '../../data/blog'
 
 export type ProjectFacet = 'overview' | 'stack' | 'features' | 'architecture' | 'case-study'
 
 export interface KnowledgeChunk {
   id: string
-  type: 'project' | 'profile' | 'service' | 'methodology'
+  type: 'project' | 'profile' | 'service' | 'methodology' | 'blog'
   facet?: ProjectFacet
   parentId?: string
   title: string
@@ -42,6 +43,7 @@ export interface KnowledgeBase {
   profile: KnowledgeChunk[]
   services: KnowledgeChunk[]
   methodology: KnowledgeChunk[]
+  blog: KnowledgeChunk[]
   allChunks: KnowledgeChunk[]
 }
 
@@ -316,6 +318,41 @@ const buildMethodologyChunks = (): KnowledgeChunk[] => [
   },
 ]
 
+const buildBlogChunks = (): KnowledgeChunk[] => {
+  return allBlogPosts.map((post) => ({
+    id: `blog-${post.slug}`,
+    type: 'blog' as const,
+    title: post.title.en,
+    slug: post.slug,
+    category: post.category,
+    technologies: post.tags,
+    content: stripEmDashes(
+      `Engineering Article: ${post.title.en}. Category: ${post.categoryLabel.en}. Key Takeaways: ${post.tldr.en.join(' ')}. Summary: ${post.description.en}. Article link: /en/blog/${post.slug}`
+    ),
+    contentUa: stripEmDashes(
+      `Інженерна стаття: ${post.title.ua}. Категорія: ${post.categoryLabel.ua}. Ключові тези: ${post.tldr.ua.join(' ')}. Опис: ${post.description.ua}. Посилання на статтю: /ua/blog/${post.slug}`
+    ),
+    contentEs: stripEmDashes(
+      `Artículo técnico: ${post.title.es}. Categoría: ${post.categoryLabel.es}. Conclusiones: ${post.tldr.es.join(' ')}. Resumen: ${post.description.es}. Enlace al artículo: /es/blog/${post.slug}`
+    ),
+    metadata: {
+      keywords: [
+        'blog',
+        'article',
+        'architecture',
+        'tco',
+        'nextjs',
+        'wordpress',
+        'rag',
+        'wcag',
+        'eaa',
+        ...post.slug.split('-'),
+        ...post.tags.map((t) => t.toLowerCase()),
+      ],
+    },
+  }))
+}
+
 let cachedKnowledgeBase: KnowledgeBase | null = null
 
 export const loadKnowledgeBase = (): KnowledgeBase => {
@@ -326,7 +363,15 @@ export const loadKnowledgeBase = (): KnowledgeBase => {
   const profile = buildProfileChunks()
   const services = buildServiceChunks()
   const methodology = buildMethodologyChunks()
-  const allChunks = [...projects, ...projectFacets, ...profile, ...services, ...methodology]
+  const blog = buildBlogChunks()
+  const allChunks = [
+    ...projects,
+    ...projectFacets,
+    ...profile,
+    ...services,
+    ...methodology,
+    ...blog,
+  ]
 
   cachedKnowledgeBase = {
     version: '2026.2.0',
@@ -344,6 +389,7 @@ export const loadKnowledgeBase = (): KnowledgeBase => {
     profile,
     services,
     methodology,
+    blog,
     allChunks,
   }
 

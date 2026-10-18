@@ -28,6 +28,7 @@ interface ProjectDetailProps {
   slug?: string
   initialProject?: Project
   onBack?: () => void
+  onSelectProject?: (projectId: number) => void
 }
 
 const projects: Project[] = projectRegistry.map((item) => item.project)
@@ -54,6 +55,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
   slug,
   initialProject,
   onBack,
+  onSelectProject,
 }) => {
   const { lang, t } = useLanguage()
   const pr = t.projects
@@ -1091,12 +1093,26 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                       ? relProj.descriptionUa
                       : relProj.description
                 const relSlug = projectRegistry.find((p) => p.project.id === relProj.id)?.slug
-                const targetUrl = relSlug ? `/${lang}/projects/${relSlug}` : undefined
+                const basePath =
+                  typeof window !== 'undefined' && window.location.pathname.startsWith('/Portfolio')
+                    ? '/Portfolio'
+                    : ''
+                const targetUrl = relSlug ? `${basePath}/${lang}/projects/${relSlug}` : undefined
+
+                const handleNavigate = () => {
+                  if (onSelectProject) {
+                    onSelectProject(relProj.id)
+                    window.scrollTo({ top: 0, behavior: 'smooth' })
+                  }
+                }
 
                 return (
                   <div
                     key={relProj.id}
-                    className="bg-white dark:bg-slate-800 rounded-2xl p-4 border border-slate-200/80 dark:border-slate-700/60 shadow-xs flex flex-col justify-between hover:shadow-md hover:border-purple-300 dark:hover:border-lime-500/30 transition-all duration-300 group"
+                    onClick={handleNavigate}
+                    className={`bg-white dark:bg-slate-800 rounded-2xl p-4 border border-slate-200/80 dark:border-slate-700/60 shadow-xs flex flex-col justify-between hover:shadow-md hover:border-purple-300 dark:hover:border-lime-500/30 transition-all duration-300 group ${
+                      onSelectProject ? 'cursor-pointer' : ''
+                    }`}
                   >
                     <div>
                       <div className="relative overflow-hidden rounded-xl h-40 mb-3 bg-slate-100 dark:bg-slate-900">
@@ -1121,7 +1137,19 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                     </div>
 
                     <div className="pt-3 mt-3 border-t border-slate-100 dark:border-white/5 flex items-center justify-between">
-                      {targetUrl ? (
+                      {onSelectProject ? (
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation()
+                            handleNavigate()
+                          }}
+                          className="inline-flex items-center gap-1.5 text-xs font-bold text-purple-700 dark:text-lime-400 hover:text-purple-900 dark:hover:text-lime-300 transition cursor-pointer"
+                        >
+                          <span>{pr.viewProject || 'View Case Study'}</span>
+                          <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" aria-hidden="true" />
+                        </button>
+                      ) : targetUrl ? (
                         <a
                           href={targetUrl}
                           className="inline-flex items-center gap-1.5 text-xs font-bold text-purple-700 dark:text-lime-400 hover:text-purple-900 dark:hover:text-lime-300 transition"

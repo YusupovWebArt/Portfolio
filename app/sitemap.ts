@@ -44,5 +44,46 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   }
 
+  // Blog catalog pages for each locale
+  for (const locale of locales) {
+    sitemapEntries.push({
+      url: `${baseUrl}/${locale}/blog`,
+      lastModified: new Date('2026-10-18'),
+      changeFrequency: 'weekly',
+      priority: 0.9,
+      alternates: {
+        languages: {
+          en: `${baseUrl}/en/blog`,
+          uk: `${baseUrl}/ua/blog`,
+          es: `${baseUrl}/es/blog`,
+        },
+      },
+    })
+  }
+
+  // Blog article pages for each locale
+  const blogSlugs = [
+    'nextjs-vs-headless-wordpress-custom-php-2026',
+    'autonomous-hybrid-rag-architecture-browser',
+    'wcag-22-aa-european-accessibility-act-2026',
+  ]
+  for (const locale of locales) {
+    for (const slug of blogSlugs) {
+      sitemapEntries.push({
+        url: `${baseUrl}/${locale}/blog/${slug}`,
+        lastModified: new Date('2026-10-18'),
+        changeFrequency: 'monthly',
+        priority: 0.85,
+        alternates: {
+          languages: {
+            en: `${baseUrl}/en/blog/${slug}`,
+            uk: `${baseUrl}/ua/blog/${slug}`,
+            es: `${baseUrl}/es/blog/${slug}`,
+          },
+        },
+      })
+    }
+  }
+
   return sitemapEntries
 }

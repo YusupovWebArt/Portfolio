@@ -165,3 +165,65 @@ export function buildWebsiteFaqJsonLd(locale = 'en'): FaqPageJsonLd {
     })),
   }
 }
+
+export function buildBlogPostJsonLd(
+  postTitle: string,
+  postDesc: string,
+  coverImage: string,
+  date: string,
+  slug: string,
+  locale = 'en',
+) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'TechArticle',
+    headline: postTitle.replace(/[\u2014\u2013]/g, '-'),
+    description: postDesc.replace(/[\u2014\u2013]/g, '-'),
+    image: coverImage.startsWith('http') ? coverImage : `${baseUrl}${coverImage}`,
+    url: `${baseUrl}/${locale}/blog/${slug}`,
+    datePublished: `${date}T00:00:00Z`,
+    dateModified: `${date}T00:00:00Z`,
+    inLanguage: locale,
+    author: {
+      '@type': 'Person',
+      name: 'Artur Yusupov',
+      url: baseUrl,
+    },
+    publisher: {
+      '@type': 'Person',
+      name: 'Artur Yusupov',
+      url: baseUrl,
+    },
+  }
+}
+
+export function buildBlogBreadcrumbsJsonLd(
+  postTitle: string,
+  slug: string,
+  locale = 'en',
+): BreadcrumbListJsonLd {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: 'Home',
+        item: `${baseUrl}/${locale}`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: 'Blog',
+        item: `${baseUrl}/${locale}/blog`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: postTitle.replace(/[\u2014\u2013]/g, '-'),
+        item: `${baseUrl}/${locale}/blog/${slug}`,
+      },
+    ],
+  }
+}
