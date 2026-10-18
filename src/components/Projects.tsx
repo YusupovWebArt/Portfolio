@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { ExternalLink, X, ArrowRight } from 'lucide-react'
+import { ExternalLink, X, ArrowRight, Search } from 'lucide-react'
 import { Project, TechnologyItem } from './projects/project-types'
 import { useLanguage } from '../contexts/LanguageContext'
 
@@ -53,6 +53,7 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
   const { lang, t } = useLanguage()
   const pr = t.projects
   const [activeFilter, setActiveFilter] = useState('all')
+  const [searchQuery, setSearchQuery] = useState('')
   const [currentPage, setCurrentPage] = useState(1)
   const [expandedTechProjects, setExpandedTechProjects] = useState<Record<number, boolean>>({})
   const projectsPerPage = 6
@@ -72,6 +73,12 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
     setCurrentPage(1)
   }
 
+  const [prevSearch, setPrevSearch] = useState(searchQuery)
+  if (searchQuery !== prevSearch) {
+    setPrevSearch(searchQuery)
+    setCurrentPage(1)
+  }
+
   useEffect(() => {
     if (screenshotModal.isOpen) {
       document.body.style.overflow = 'hidden'
@@ -83,13 +90,32 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
     }
   }, [screenshotModal.isOpen])
 
-  // Фильтрация проектов по категории
-  const filteredProjects =
-    activeFilter === 'all'
-      ? projects
-      : projects.filter((project) => project.category.includes(activeFilter))
+  // Filtering projects by category and text search (title, description, technologies)
+  const filteredProjects = projects.filter((project) => {
+    const matchesCategory =
+      activeFilter === 'all' || project.category.includes(activeFilter)
+    if (!matchesCategory) return false
 
-  // Пагинация
+    if (!searchQuery.trim()) return true
+
+    const q = searchQuery.toLowerCase().trim()
+    const matchesTitle = project.title.toLowerCase().includes(q)
+    const matchesDesc =
+      project.description.toLowerCase().includes(q) ||
+      (Boolean(project.descriptionUa) && project.descriptionUa?.toLowerCase().includes(q)) ||
+      (Boolean(project.descriptionEs) && project.descriptionEs?.toLowerCase().includes(q))
+
+    const allTech = getProjectTechList(project)
+    const matchesTech = allTech.some((t) => {
+      const short = getTechShort(t).toLowerCase()
+      const full = getTechFull(t).toLowerCase()
+      return short.includes(q) || full.includes(q)
+    })
+
+    return matchesTitle || matchesDesc || matchesTech
+  })
+
+  // Pagination
   const indexOfLastProject = currentPage * projectsPerPage
   const indexOfFirstProject = indexOfLastProject - projectsPerPage
   const currentProjects = filteredProjects.slice(
@@ -114,6 +140,20 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
     }))
   }
 
+  const searchPlaceholder =
+    lang === 'ua'
+      ? 'Пошук серед 70+ проєктів за назвою чи стеком (Next.js, AWS, Tailwind, Shopify)...'
+      : lang === 'es'
+        ? 'Buscar en 70+ proyectos por nombre o tecnología (Next.js, AWS, Tailwind, Shopify)...'
+        : 'Search 70+ projects by name or technology (Next.js, AWS, Tailwind, Shopify)...'
+
+  const countLabel =
+    lang === 'ua'
+      ? `Показано ${filteredProjects.length} з ${projects.length} проєктів`
+      : lang === 'es'
+        ? `Mostrando ${filteredProjects.length} de ${projects.length} proyectos`
+        : `Showing ${filteredProjects.length} of ${projects.length} projects`
+
   return (
     <section
       id="projects"
@@ -127,6 +167,37 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
           <p className="text-lg text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
             {pr.sectionDescription}
           </p>
+        </div>
+
+        {/* Live Search & Filter Bar */}
+        <div className="max-w-xl mx-auto mb-6 px-2">
+          <div className="relative flex items-center bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-700/80 rounded-2xl shadow-xs focus-within:border-purple-600 dark:focus-within:border-lime-400 focus-within:ring-2 focus-within:ring-purple-600/20 dark:focus-within:ring-lime-400/20 transition-all">
+            <div className="pl-4 text-slate-400 dark:text-slate-500 pointer-events-none">
+              <Search className="w-4 h-4" aria-hidden="true" />
+            </div>
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder={searchPlaceholder}
+              aria-label={searchPlaceholder}
+              className="w-full py-2.5 px-3 text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 bg-transparent border-0 outline-none"
+            />
+            {searchQuery && (
+              <button
+                type="button"
+                onClick={() => setSearchQuery('')}
+                className="pr-4 text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition-colors cursor-pointer"
+                aria-label="Clear search"
+                title="Clear search"
+              >
+                <X className="w-4 h-4" aria-hidden="true" />
+              </button>
+            )}
+          </div>
+          <div className="mt-2 text-center text-xs font-medium text-slate-500 dark:text-slate-400">
+            {countLabel}
+          </div>
         </div>
 
         <div className="flex flex-wrap gap-3 mb-8 justify-center">
@@ -146,7 +217,38 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
           ))}
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {filteredProjects.length === 0 ? (
+          <div className="py-16 text-center bg-white dark:bg-slate-900 rounded-3xl border border-slate-200/80 dark:border-slate-800 p-8 max-w-lg mx-auto">
+            <div className="w-12 h-12 mx-auto mb-4 rounded-full bg-purple-50 dark:bg-lime-500/10 flex items-center justify-center text-purple-600 dark:text-lime-400">
+              <Search className="w-6 h-6" aria-hidden="true" />
+            </div>
+            <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-2">
+              {lang === 'ua'
+                ? 'Проєктів не знайдено'
+                : lang === 'es'
+                  ? 'No se encontraron proyectos'
+                  : 'No projects found'}
+            </h3>
+            <p className="text-sm text-slate-500 dark:text-slate-400 mb-6">
+              {lang === 'ua'
+                ? 'Спробуйте змінити пошуковий запит або скинути активний фільтр категорій.'
+                : lang === 'es'
+                  ? 'Prueba a cambiar los términos de búsqueda o restablecer los filtros.'
+                  : 'Try adjusting your search keywords or resetting the category filter.'}
+            </p>
+            <button
+              type="button"
+              onClick={() => {
+                setSearchQuery('')
+                setActiveFilter('all')
+              }}
+              className="px-5 py-2 rounded-xl text-xs font-semibold bg-purple-600 hover:bg-purple-700 dark:bg-lime-500 dark:hover:bg-lime-400 text-white dark:text-slate-950 transition-colors cursor-pointer"
+            >
+              {lang === 'ua' ? 'Скинути всі фільтри' : lang === 'es' ? 'Restablecer filtros' : 'Reset all filters'}
+            </button>
+          </div>
+        ) : (
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {currentProjects.map((project) => {
             const allTech = getProjectTechList(project)
             const visibleTech = allTech.slice(0, 4)
@@ -248,6 +350,7 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
             )
           })}
         </div>
+        )}
 
         {/* Пагинация */}
         {totalPages > 1 && (

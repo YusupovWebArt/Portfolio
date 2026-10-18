@@ -15,6 +15,8 @@ export type Message = {
   source?: string
   timestamp?: Date
   showContactCard?: boolean
+  showEstimateCalculator?: boolean
+  showStackComparison?: boolean
   followUps?: string[]
   projects?: {
     slug: string

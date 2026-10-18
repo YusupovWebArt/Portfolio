@@ -6,8 +6,6 @@ import Header from './components/Header'
 import Hero from './components/Hero'
 import AiWorkflow from './components/AiWorkflow'
 import About from './components/About'
-import Skills from './components/Skills'
-import B2bServices from './components/B2bServices'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import ScrollToTopButton from './components/ScrollToTopButton'
@@ -15,6 +13,8 @@ import ConsentBanner from './components/ConsentBanner'
 
 const ProjectDetail = lazy(() => import('./components/ProjectDetail'))
 const Projects = lazy(() => import('./components/Projects'))
+const Skills = lazy(() => import('./components/Skills'))
+const B2bServices = lazy(() => import('./components/B2bServices'))
 
 function ProjectLoadingFallback() {
   const { t } = useLanguage()
@@ -99,8 +99,10 @@ function App() {
                 >
                   <Projects onProjectSelect={handleProjectSelect} />
                 </Suspense>
-                <Skills />
-                <B2bServices />
+                <Suspense fallback={<div className="min-h-[100px]" />}>
+                  <Skills />
+                  <B2bServices />
+                </Suspense>
                 <Contact />
               </main>
             )}

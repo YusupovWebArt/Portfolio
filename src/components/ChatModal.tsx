@@ -21,6 +21,8 @@ import { useDialogA11y } from '../hooks/useDialogA11y'
 import ProjectToolCard from './chat/ProjectToolCard'
 import FormattedChatText from './chat/FormattedChatText'
 import ContactActionCard from './chat/ContactActionCard'
+import StackComparisonCard from './chat/StackComparisonCard'
+import ProjectEstimateCalculatorCard from './chat/ProjectEstimateCalculatorCard'
 
 export interface ProjectChatContextDetail {
   projectSlug: string
@@ -329,11 +331,15 @@ const ChatModal = ({
             getRagSourceLabel,
             getRelevantProjectCards,
             isHireOrContactQuery,
+            isStackComparisonQuery,
+            isEstimateOrCalculatorQuery,
             getContextualFollowUps,
           }) => {
             const sourceLabel = getRagSourceLabel(textToSend, ragOptions)
             const projectCards = getRelevantProjectCards(textToSend, ragOptions)
             const showContact = isHireOrContactQuery(textToSend)
+            const showStack = isStackComparisonQuery(textToSend)
+            const showEstimate = isEstimateOrCalculatorQuery(textToSend)
             const followUps = getContextualFollowUps(textToSend, ragOptions)
             setMessages((prev) =>
               prev.map((msg) =>
@@ -342,6 +348,8 @@ const ChatModal = ({
                       ...msg,
                       source: sourceLabel,
                       showContactCard: showContact,
+                      showStackComparison: showStack,
+                      showEstimateCalculator: showEstimate,
                       followUps,
                       projects:
                         projectCards.length > 0 ? projectCards : msg.projects,
@@ -365,11 +373,15 @@ const ChatModal = ({
         getRagSourceLabel,
         getRelevantProjectCards,
         isHireOrContactQuery,
+        isStackComparisonQuery,
+        isEstimateOrCalculatorQuery,
         getContextualFollowUps,
       } = await ragModulePromise
       const sourceLabel = getRagSourceLabel(textToSend, ragOptions)
       const projectCards = getRelevantProjectCards(textToSend, ragOptions)
       const showContact = isHireOrContactQuery(textToSend)
+      const showStack = isStackComparisonQuery(textToSend)
+      const showEstimate = isEstimateOrCalculatorQuery(textToSend)
       const followUps = getContextualFollowUps(textToSend, ragOptions)
 
       setTimeout(() => {
@@ -381,6 +393,8 @@ const ChatModal = ({
           text: fallbackAnswer,
           source: sourceLabel,
           showContactCard: showContact,
+          showStackComparison: showStack,
+          showEstimateCalculator: showEstimate,
           followUps,
           projects: projectCards.length > 0 ? projectCards : undefined,
           timestamp: new Date(),
@@ -606,6 +620,20 @@ const ChatModal = ({
 
                   {msg.showContactCard && (
                     <ContactActionCard
+                      locale={lang}
+                      onNavigateToContact={handleClose}
+                    />
+                  )}
+
+                  {msg.showStackComparison && (
+                    <StackComparisonCard
+                      locale={lang}
+                      onNavigateToContact={handleClose}
+                    />
+                  )}
+
+                  {msg.showEstimateCalculator && (
+                    <ProjectEstimateCalculatorCard
                       locale={lang}
                       onNavigateToContact={handleClose}
                     />

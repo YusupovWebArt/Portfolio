@@ -1,4 +1,4 @@
-﻿import { describe, it, expect, vi } from "vitest";
+import { describe, it, expect, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import Projects from "./Projects";
@@ -49,5 +49,32 @@ describe("Projects Component Specification (TDD)", () => {
 
     await user.click(viewDetailButtons[0]);
     expect(handleSelect).toHaveBeenCalledTimes(1);
+  });
+
+  it("should filter projects by search query and show empty state when no match is found", async () => {
+    const user = userEvent.setup();
+    const handleSelect = vi.fn();
+    render(
+      <LanguageProvider>
+        <Projects onProjectSelect={handleSelect} />
+      </LanguageProvider>
+    );
+
+    const searchInput = screen.getByRole("textbox", { name: /search/i });
+    await user.type(searchInput, "Unitrition");
+
+    expect(screen.getByText("Unitrition")).toBeInTheDocument();
+
+    // Type a nonexistent query to trigger empty state
+    await user.clear(searchInput);
+    await user.type(searchInput, "NonexistentProjectXYZ123");
+
+    expect(screen.getByText(/no projects found/i)).toBeInTheDocument();
+
+    // Click reset button
+    const resetBtn = screen.getByRole("button", { name: /reset all filters/i });
+    await user.click(resetBtn);
+
+    expect(screen.queryByText(/no projects found/i)).not.toBeInTheDocument();
   });
 });

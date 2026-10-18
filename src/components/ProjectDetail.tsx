@@ -15,6 +15,7 @@ import {
   ChevronRight,
   Eye,
   X,
+  ExternalLink,
 } from 'lucide-react'
 import { Project, TechnologyItem } from './projects/project-types'
 import { useLanguage } from '../contexts/LanguageContext'
@@ -182,6 +183,16 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
     (slug
       ? projectRegistry.find((p) => p.slug === slug.toLowerCase())?.project
       : projects.find((p) => p.id === projectId))
+
+  const relatedProjects = React.useMemo(() => {
+    if (!project) return []
+    const currentCats = new Set(project.category)
+    const matches = projects.filter((p) => {
+      if (p.id === project.id) return false
+      return p.category.some((c) => currentCats.has(c))
+    })
+    return matches.slice(0, 3)
+  }, [project])
 
   if (!project) {
     return (
@@ -1025,6 +1036,109 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
           </div>
         </div>
       </section>
+
+      {/* Related Case Studies */}
+      {relatedProjects.length > 0 && (
+        <section className="py-12 bg-slate-50/80 dark:bg-slate-900/60 border-t border-slate-200/70 dark:border-white/5 transition-colors duration-300">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex items-center justify-between mb-8">
+              <div>
+                <h3 className="text-2xl font-bold text-slate-900 dark:text-white">
+                  {lang === 'ua'
+                    ? 'Схожі проєкти та кейси'
+                    : lang === 'es'
+                      ? 'Proyectos y casos de estudio relacionados'
+                      : 'Related Case Studies & Projects'}
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
+                  {lang === 'ua'
+                    ? 'Ознайомтеся з іншими роботами у схожому стеку та бізнес-домені'
+                    : lang === 'es'
+                      ? 'Explora otros proyectos con tecnología y objetivos similares'
+                      : 'Explore other works with similar technical stack and domain requirements'}
+                </p>
+              </div>
+              {onBack && (
+                <button
+                  type="button"
+                  onClick={onBack}
+                  className="hidden sm:inline-flex items-center gap-1.5 text-xs font-semibold text-purple-600 dark:text-lime-400 hover:text-purple-700 dark:hover:text-lime-300 transition cursor-pointer"
+                >
+                  <span>{lang === 'ua' ? 'Всі проєкти' : lang === 'es' ? 'Ver todos' : 'View all projects'}</span>
+                  <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
+                </button>
+              )}
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {relatedProjects.map((relProj) => {
+                const relDesc =
+                  lang === 'es' && relProj.descriptionEs
+                    ? relProj.descriptionEs
+                    : lang === 'ua' && relProj.descriptionUa
+                      ? relProj.descriptionUa
+                      : relProj.description
+                const relSlug = projectRegistry.find((p) => p.project.id === relProj.id)?.slug
+                const targetUrl = relSlug ? `/${lang}/projects/${relSlug}` : undefined
+
+                return (
+                  <div
+                    key={relProj.id}
+                    className="bg-white dark:bg-slate-800 rounded-2xl p-4 border border-slate-200/80 dark:border-slate-700/60 shadow-xs flex flex-col justify-between hover:shadow-md hover:border-purple-300 dark:hover:border-lime-500/30 transition-all duration-300 group"
+                  >
+                    <div>
+                      <div className="relative overflow-hidden rounded-xl h-40 mb-3 bg-slate-100 dark:bg-slate-900">
+                        <img
+                          src={relProj.images[0]?.src || relProj.image}
+                          alt={relProj.title}
+                          loading="lazy"
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
+                      </div>
+                      <div className="flex items-center gap-2 mb-1.5">
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-purple-800 dark:text-lime-400 bg-purple-100 dark:bg-lime-500/20 px-2.5 py-0.5 rounded-full">
+                          {relProj.category[0] || 'Web Development'}
+                        </span>
+                      </div>
+                      <h4 className="text-base font-bold text-slate-900 dark:text-white line-clamp-1">
+                        {relProj.title}
+                      </h4>
+                      <p className="text-xs text-slate-700 dark:text-slate-300 mt-1 line-clamp-2 leading-relaxed">
+                        {relDesc}
+                      </p>
+                    </div>
+
+                    <div className="pt-3 mt-3 border-t border-slate-100 dark:border-white/5 flex items-center justify-between">
+                      {targetUrl ? (
+                        <a
+                          href={targetUrl}
+                          className="inline-flex items-center gap-1.5 text-xs font-bold text-purple-700 dark:text-lime-400 hover:text-purple-900 dark:hover:text-lime-300 transition"
+                        >
+                          <span>{pr.viewProject || 'View Case Study'}</span>
+                          <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" aria-hidden="true" />
+                        </a>
+                      ) : (
+                        <span className="text-xs font-semibold text-slate-500">Case Study</span>
+                      )}
+                      {relProj.liveUrl && relProj.liveUrl !== '#' && (
+                        <a
+                          href={relProj.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition p-1"
+                          title="Live Demo"
+                        >
+                          <ExternalLink className="w-3.5 h-3.5" aria-hidden="true" />
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/*
   Screenshot Modal

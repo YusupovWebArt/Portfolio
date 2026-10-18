@@ -7,6 +7,8 @@ import {
   inferProjectFromHistory,
   getContextualFollowUps,
   isHireOrContactQuery,
+  isStackComparisonQuery,
+  isEstimateOrCalculatorQuery,
   synthesizeLocalRagAnswer,
 } from './rag'
 
@@ -62,7 +64,7 @@ describe('Hybrid RAG Retriever Specification (TDD)', () => {
     const formatted = formatContextForLLM(results)
 
     expect(formatted).toContain('### Relevant Knowledge Base Chunks:')
-    expect(formatted).not.toContain('—')
+    expect(formatted).not.toContain('\u2014')
     expect(formatted.length).toBeGreaterThan(50)
   })
 
@@ -132,6 +134,20 @@ describe('Hybrid RAG Retriever Specification (TDD)', () => {
     expect(isHireOrContactQuery('Яка вартість розробки та контакти?')).toBe(true)
     expect(isHireOrContactQuery('¿Cuál es el precio y cómo contactar?')).toBe(true)
     expect(isHireOrContactQuery('How does React Fiber work?')).toBe(false)
+  })
+
+  it('should detect architecture stack comparison queries across EN, UA, and ES', () => {
+    expect(isStackComparisonQuery('WordPress vs Next.js: which stack is better?')).toBe(true)
+    expect(isStackComparisonQuery('Що краще обрати: WordPress чи Next.js?')).toBe(true)
+    expect(isStackComparisonQuery('¿Qué elegir entre WordPress y Next.js?')).toBe(true)
+    expect(isStackComparisonQuery('Tell me about your education')).toBe(false)
+  })
+
+  it('should detect project timeline estimation and calculator queries across EN, UA, and ES', () => {
+    expect(isEstimateOrCalculatorQuery('How long will it take to build an e-commerce website?')).toBe(true)
+    expect(isEstimateOrCalculatorQuery('Скільки часу займе розробка інтернет-магазину? / Калькулятор')).toBe(true)
+    expect(isEstimateOrCalculatorQuery('¿Cuánto tiempo tardaría el desarrollo? / Calculadora')).toBe(true)
+    expect(isEstimateOrCalculatorQuery('What is your favorite color?')).toBe(false)
   })
 })
 

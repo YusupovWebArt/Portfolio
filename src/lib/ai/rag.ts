@@ -719,6 +719,20 @@ export function isHireOrContactQuery(query: string): boolean {
   )
 }
 
+export function isStackComparisonQuery(query: string): boolean {
+  const lower = foldForSearch(query || '')
+  return /(vs|versus|compare|comparison|which stack|what tech|better|wordpress.*next|next.*wordpress|react.*next|shopify.*wordpress|порівня|порівняти|що краще|вибрати стек|разница|что лучше|сравнить|сравнение|comparar|comparativa|que elegir|diferencia entre)/i.test(
+    lower,
+  )
+}
+
+export function isEstimateOrCalculatorQuery(query: string): boolean {
+  const lower = foldForSearch(query || '')
+  return /(estimate|estimator|timeline|calculator|how long|timeframe|scope|phases|duration|термін|оцінка|термінів|калькулятор|тривалість|скільки часу|этапы|сроки|калькулятор|сколько времени|tiempo|plazos|calculadora|cuanto tiempo|duracion|fases)/i.test(
+    lower,
+  )
+}
+
 function resolveTargetProject(
   query: string,
   options: LocalSynthesisOptions = {},
@@ -809,14 +823,77 @@ export function synthesizeLocalRagAnswer(
     return stripEmDashes(formatProjectOverview(matchedProject, lang))
   }
 
-  // 4. General FAQ keyword matching
+  // 4. Dedicated query routing for stack comparison & timeline estimation
+  if (isStackComparisonQuery(trimmed)) {
+    if (lang === 'ua') {
+      return stripEmDashes(
+        'Я спеціалізуюся на чотирьох основних архітектурах під різні бізнес-задачі:\n\n' +
+          '- **Next.js 16 (App Router)**: SaaS, портали, веб-додатки, субсекундний Core Web Vitals (98-100 Lighthouse) та AI/RAG інтеграції.\n' +
+          '- **Headless WordPress**: Медіа та редакційні команди, яким потрібна знайома адмінка WP із надшвидким фронтендом на Next.js / React.\n' +
+          '- **Кастомний WordPress (PHP 8+)**: Чисті теми з ACF Pro та Tailwind CSS без важких плагінів і абонплат (90+ Lighthouse).\n' +
+          '- **Shopify**: Міжнародний e-commerce, роздрібні бренди, безпечний мультивалютний чекаут.\n\n' +
+          'Нижче доступна інтерактивна матриця для детального порівняння параметрів:'
+      )
+    }
+    if (lang === 'es') {
+      return stripEmDashes(
+        'Me especializo en cuatro arquitecturas principales según el objetivo de tu proyecto:\n\n' +
+          '- **Next.js 16 (App Router)**: SaaS, portales de alto tráfico, aplicaciones web, Core Web Vitals subsegundo (98-100) e IA/RAG.\n' +
+          '- **Headless WordPress**: Equipos editoriales que buscan el panel familiar de WP con frontend desacoplado ultrarrápido en Next.js.\n' +
+          '- **WordPress a medida (PHP 8+)**: Temas limpios con ACF Pro y Tailwind CSS, sin cuotas mensuales y rendimiento 90+ Lighthouse.\n' +
+          '- **Shopify**: Comercio electrónico internacional, pasarelas de pago globales y gestión ágil de catálogo.\n\n' +
+          'A continuación puedes consultar la matriz comparativa interactiva:'
+      )
+    }
+    return stripEmDashes(
+      'I specialize in four primary web architectures tailored to business goals:\n\n' +
+        '- **Next.js 16 (App Router)**: SaaS, portals, web applications, sub-second Core Web Vitals (98-100 Lighthouse), and embedded AI/RAG.\n' +
+        '- **Headless WordPress**: Editorial teams needing a familiar WP CMS combined with a decoupled Next.js / React frontend.\n' +
+        '- **Custom WordPress (PHP 8+)**: Tailored PHP themes with ACF Pro and Tailwind CSS, zero recurring SaaS fees, and 90+ Lighthouse.\n' +
+        '- **Shopify**: Global e-commerce brands, turnkey international checkout, and inventory workflows.\n\n' +
+        'Explore the interactive architecture comparison matrix below:'
+    )
+  }
+
+  if (isEstimateOrCalculatorQuery(trimmed)) {
+    if (lang === 'ua') {
+      return stripEmDashes(
+        'Орієнтовні терміни розробки за основними типами проєктів:\n\n' +
+          '- **Лендінг / Промо**: 1-2 тижні (Next.js або кастомний WP + Tailwind CSS)\n' +
+          '- **Корпоративний сайт**: 2-4 тижні (PHP 8+ або Headless WP + ACF Pro)\n' +
+          '- **Інтернет-магазин**: 3-6 тижнів (Shopify або WooCommerce)\n' +
+          '- **Веб-додаток / SaaS**: 4-8 тижнів (Next.js 16 + TypeScript + API/База даних)\n\n' +
+          'Скористайтеся інтерактивним калькулятором нижче, щоб розрахувати динамічний термін з урахуванням додаткових модулів (мультимовність, AI-асистент, Headless CMS):'
+      )
+    }
+    if (lang === 'es') {
+      return stripEmDashes(
+        'Plazos de desarrollo estimados según el tipo de proyecto:\n\n' +
+          '- **Landing / Promoción**: 1-2 semanas (Next.js o WP a medida + Tailwind CSS)\n' +
+          '- **Sitio Corporativo**: 2-4 semanas (PHP 8+ o Headless WP + ACF Pro)\n' +
+          '- **Tienda Online**: 3-6 semanas (Shopify o WooCommerce)\n' +
+          '- **Aplicación Web / SaaS**: 4-8 semanas (Next.js 16 + TypeScript + API/Base de datos)\n\n' +
+          'Utiliza la calculadora interactiva a continuación para calcular el cronograma dinámico según los módulos adicionales:'
+      )
+    }
+    return stripEmDashes(
+      'Estimated project delivery turnaround by architecture archetype:\n\n' +
+        '- **Landing / Promo**: 1-2 weeks (Next.js or Custom WP + Tailwind CSS)\n' +
+        '- **Corporate / Business Website**: 2-4 weeks (PHP 8+ or Headless WP + ACF Pro)\n' +
+        '- **E-Commerce Store**: 3-6 weeks (Shopify or WooCommerce)\n' +
+        '- **Custom Web App / SaaS**: 4-8 weeks (Next.js 16 + TypeScript + API/Database)\n\n' +
+        'Use the interactive estimator below to calculate dynamic turnaround based on your selected features:'
+    )
+  }
+
+  // 5. General FAQ keyword matching
   for (const item of FAQ) {
     if (item.keywords.some((kw) => lower.includes(foldForSearch(kw)))) {
       return stripEmDashes(getBotAnswer(trimmed, lang))
     }
   }
 
-  // 5. Hybrid RAG retrieval across all chunks
+  // 6. Hybrid RAG retrieval across all chunks
   const retrieved = retrieveKnowledge(trimmed, {
     currentProjectSlug: resolvedEntry?.slug || options.projectSlug,
     topK: 2,
@@ -846,6 +923,14 @@ export function getRagSourceLabel(
   query: string,
   options: LocalSynthesisOptions = {},
 ): string {
+  if (isStackComparisonQuery(query)) {
+    return 'Hybrid RAG · Architecture Comparison Matrix'
+  }
+
+  if (isEstimateOrCalculatorQuery(query)) {
+    return 'Hybrid RAG · Timeline & Scope Estimator'
+  }
+
   const resolved = resolveTargetProject(query, options)
   if (resolved) {
     return `Hybrid RAG · ${stripEmDashes(resolved.project.title)} Case Study`
@@ -1023,9 +1108,53 @@ export function getContextualFollowUps(
           : [
               'How is IT-Magic architected?',
               'What tech stack was used in Unitrition?',
-              'What services do you offer? / Can I hire you?',
+              'What are your rates and how to hire you?',
             ]
     return showcaseFollowUps.filter((q) => !answeredSet.has(foldForSearch(q))).slice(0, 3)
+  }
+
+  if (isStackComparisonQuery(trimmed)) {
+    const stackFollowUps =
+      lang === 'ua'
+        ? [
+            'Скільки часу займе розробка? / Калькулятор',
+            'Який стек технологій використано в Unitrition?',
+            'Які ваші розцінки та як вас найняти?',
+          ]
+        : lang === 'es'
+          ? [
+              '¿Cuánto tiempo tardaría el desarrollo? / Calculadora',
+              '¿Qué stack tecnológico se usó en Unitrition?',
+              '¿Cuáles son tus tarifas y cómo contratarte?',
+            ]
+          : [
+              'Estimate timeline for my project / Calculator',
+              'What tech stack was used in Unitrition?',
+              'What are your rates and how to hire you?',
+            ]
+    return stackFollowUps.filter((q) => !answeredSet.has(foldForSearch(q))).slice(0, 3)
+  }
+
+  if (isEstimateOrCalculatorQuery(trimmed)) {
+    const estimateFollowUps =
+      lang === 'ua'
+        ? [
+            'WordPress чи Next.js: порівняння стеків',
+            'Які проєкти ви створили? / Портфоліо',
+            'Чи можна вас найняти? / Контакти',
+          ]
+        : lang === 'es'
+          ? [
+              'WordPress vs Next.js: comparativa de stacks',
+              '¿Qué proyectos has completado? / Portafolio',
+              '¿Puedo contratarte? / Tarifas y Contacto',
+            ]
+          : [
+              'Next.js vs Headless WordPress comparison',
+              'What projects have you completed? / Portfolio',
+              'Can I hire you? / Rates & Contacts',
+            ]
+    return estimateFollowUps.filter((q) => !answeredSet.has(foldForSearch(q))).slice(0, 3)
   }
 
   return FAQ.map((faq) =>
