@@ -1,7 +1,8 @@
-﻿import { describe, it, expect, beforeEach } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { describe, it, expect, beforeEach } from "vitest";
+import { render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { LanguageProvider, useLanguage } from "./LanguageContext";
+import { clearTranslationCache } from "./language-loader";
 
 function LanguageConsumer() {
   const { lang, setLang, t } = useLanguage();
@@ -19,6 +20,7 @@ function LanguageConsumer() {
 describe("LanguageContext Specification", () => {
   beforeEach(() => {
     localStorage.clear();
+    clearTranslationCache();
   });
 
   it("should default to English when localStorage is empty", () => {
@@ -42,7 +44,9 @@ describe("LanguageContext Specification", () => {
 
     await user.click(screen.getByRole("button", { name: /set ukrainian/i }));
     expect(screen.getByTestId("current-lang")).toHaveTextContent("ua");
-    expect(screen.getByTestId("nav-projects")).toHaveTextContent("Проєкти");
+    await waitFor(() => {
+      expect(screen.getByTestId("nav-projects")).toHaveTextContent("Проєкти");
+    });
     expect(localStorage.getItem("portfolio_lang")).toBe("ua");
   });
 
@@ -56,11 +60,13 @@ describe("LanguageContext Specification", () => {
 
     await user.click(screen.getByRole("button", { name: /set spanish/i }));
     expect(screen.getByTestId("current-lang")).toHaveTextContent("es");
-    expect(screen.getByTestId("nav-projects")).toHaveTextContent("Proyectos");
+    await waitFor(() => {
+      expect(screen.getByTestId("nav-projects")).toHaveTextContent("Proyectos");
+    });
     expect(localStorage.getItem("portfolio_lang")).toBe("es");
   });
 
-  it("should restore saved language preference from localStorage", () => {
+  it("should restore saved language preference from localStorage", async () => {
     localStorage.setItem("portfolio_lang", "ua");
     render(
       <LanguageProvider>
@@ -69,6 +75,8 @@ describe("LanguageContext Specification", () => {
     );
 
     expect(screen.getByTestId("current-lang")).toHaveTextContent("ua");
-    expect(screen.getByTestId("nav-projects")).toHaveTextContent("Проєкти");
+    await waitFor(() => {
+      expect(screen.getByTestId("nav-projects")).toHaveTextContent("Проєкти");
+    });
   });
 });

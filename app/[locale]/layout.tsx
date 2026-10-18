@@ -48,6 +48,19 @@ export function generateStaticParams() {
   return [{ locale: 'en' }, { locale: 'ua' }, { locale: 'es' }]
 }
 
+const getLocaleTranslation = async (locale: string) => {
+  if (locale === 'ua') {
+    const mod = await import('../../src/locales/ua')
+    return mod.ua
+  }
+  if (locale === 'es') {
+    const mod = await import('../../src/locales/es')
+    return mod.es
+  }
+  const mod = await import('../../src/locales/en')
+  return mod.en
+}
+
 export default async function RootLocaleLayout({
   children,
   params,
@@ -56,16 +69,18 @@ export default async function RootLocaleLayout({
   params: Promise<{ locale: string }>
 }) {
   const { locale } = await params
-  const faqSchema = buildWebsiteFaqJsonLd(locale || 'en')
+  const activeLocale = (locale as 'en' | 'ua' | 'es') || 'en'
+  const initialTranslation = await getLocaleTranslation(activeLocale)
+  const faqSchema = buildWebsiteFaqJsonLd(activeLocale)
 
   return (
-    <html lang={locale || 'en'} suppressHydrationWarning>
+    <html lang={activeLocale} suppressHydrationWarning>
       <body className="min-h-screen bg-white dark:bg-slate-900 text-slate-900 dark:text-slate-100 transition-colors duration-300">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
         />
-        <Providers initialLang={locale as 'en' | 'ua' | 'es'}>
+        <Providers initialLang={activeLocale} initialTranslation={initialTranslation}>
           <Header />
           {children}
           <Footer />

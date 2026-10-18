@@ -26,6 +26,7 @@ console.log('--- Initial Eager JavaScript Chunks (Boot Path) ---')
 let totalRaw = 0
 let totalGzip = 0
 let hasProjectsDataInBoot = false
+let hasLazyLocalesInBoot = false
 let mainEntryRaw = 0
 let mainEntryGzip = 0
 
@@ -44,6 +45,10 @@ for (const file of initialJsFiles) {
 
   if (file.includes('projects-data')) {
     hasProjectsDataInBoot = true
+  }
+
+  if (file.includes('locale-ua') || file.includes('locale-es')) {
+    hasLazyLocalesInBoot = true
   }
 
   if (file.startsWith('index-')) {
@@ -72,6 +77,13 @@ const failures = []
 if (hasProjectsDataInBoot) {
   failures.push(
     'Violation: projects-data chunk is eagerly preloaded in index.html boot path. Must be deferred/code-split.'
+  )
+}
+
+// Check 1b: locale-ua and locale-es must NOT be loaded on boot
+if (hasLazyLocalesInBoot) {
+  failures.push(
+    'Violation: On-demand locale chunks (locale-ua, locale-es) are eagerly preloaded in index.html boot path. Must be lazy-loaded.'
   )
 }
 

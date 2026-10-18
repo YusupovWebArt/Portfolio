@@ -59,8 +59,14 @@ export default defineConfig({
           if (id.includes('src/components/projects/') || id.includes('src/lib/projectRegistry')) {
             return 'projects-data'
           }
+          if (id.includes('src/locales/ua')) {
+            return 'locale-ua'
+          }
+          if (id.includes('src/locales/es')) {
+            return 'locale-es'
+          }
           if (id.includes('src/locales/')) {
-            return 'locales'
+            return 'locale-en'
           }
         },
       },

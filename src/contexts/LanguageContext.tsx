@@ -1,20 +1,22 @@
 'use client'
 
-import React, { createContext, useContext, useState } from 'react'
+import React, { createContext, useContext, useState, useEffect } from 'react'
 import type { Translation } from '../locales/types'
 import { en } from '../locales/en'
-import { ua } from '../locales/ua'
-import { es } from '../locales/es'
+import {
+  type Lang,
+  getCachedTranslation,
+  registerTranslation,
+  loadLocale,
+} from './language-loader'
 
-export type Lang = 'en' | 'ua' | 'es'
+export type { Lang }
 
 interface LanguageContextType {
   lang: Lang
-  setLang: (lang: Lang) => void
+  setLang: (lang: Lang) => void | Promise<void>
   t: Translation
 }
-
-const translations: Record<Lang, Translation> = { en, ua, es }
 
 /** Detect initial language: initial prop -> URL pathname -> localStorage -> browser language -> fallback EN */
 const getInitialLang = (initialLang?: Lang): Lang => {
@@ -29,7 +31,7 @@ const getInitialLang = (initialLang?: Lang): Lang => {
       return match[1] as Lang
     }
     const saved = localStorage.getItem('portfolio_lang')
-    if (saved === 'en' || saved === 'ua' || saved === 'es') return saved
+    if (saved === 'en' || saved === 'ua' || saved === 'es') return saved as Lang
     const browserLang = navigator.language?.toLowerCase() ?? 'en'
     if (browserLang.startsWith('uk') || browserLang.startsWith('ua')) return 'ua'
     if (browserLang.startsWith('es')) return 'es'
@@ -51,15 +53,45 @@ export const useLanguage = (): LanguageContextType => {
 export interface LanguageProviderProps {
   children: React.ReactNode
   initialLang?: Lang
+  initialTranslation?: Translation
 }
 
 export const LanguageProvider: React.FC<LanguageProviderProps> = ({
   children,
   initialLang,
+  initialTranslation,
 }) => {
-  const [lang, setLangState] = useState<Lang>(() => getInitialLang(initialLang))
+  const detected = getInitialLang(initialLang)
 
-  const setLang = (newLang: Lang) => {
+  const [lang, setLangState] = useState<Lang>(detected)
+  const [t, setT] = useState<Translation>(() => {
+    if (initialTranslation && (initialLang === 'en' || initialLang === 'ua' || initialLang === 'es')) {
+      return initialTranslation
+    }
+    return getCachedTranslation(detected) || en
+  })
+
+  useEffect(() => {
+    if (initialTranslation && (initialLang === 'en' || initialLang === 'ua' || initialLang === 'es')) {
+      registerTranslation(initialLang, initialTranslation)
+    }
+  }, [initialLang, initialTranslation])
+
+  useEffect(() => {
+    let active = true
+    if (lang !== 'en' && !getCachedTranslation(lang)) {
+      loadLocale(lang).then((loaded) => {
+        if (active) {
+          setT(loaded)
+        }
+      })
+    }
+    return () => {
+      active = false
+    }
+  }, [lang])
+
+  const setLang = (newLang: Lang): void | Promise<void> => {
     setLangState(newLang)
     try {
       localStorage.setItem('portfolio_lang', newLang)
@@ -75,12 +107,23 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({
         const remainingPath = match[2] || ''
         const newUrl = `/${newLang}${remainingPath}${hash}`
         window.location.assign(newUrl)
+        return
       }
     }
+
+    const cached = getCachedTranslation(newLang)
+    if (cached) {
+      setT(cached)
+      return
+    }
+
+    return loadLocale(newLang).then((loaded) => {
+      setT(loaded)
+    })
   }
 
   return (
-    <LanguageContext.Provider value={{ lang, setLang, t: translations[lang] }}>
+    <LanguageContext.Provider value={{ lang, setLang, t }}>
       {children}
     </LanguageContext.Provider>
   )
