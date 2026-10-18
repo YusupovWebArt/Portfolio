@@ -77,4 +77,25 @@ describe("Projects Component Specification (TDD)", () => {
 
     expect(screen.queryByText(/no projects found/i)).not.toBeInTheDocument();
   });
+
+  it("should filter personal projects and render personal badge", async () => {
+    const user = userEvent.setup();
+    render(
+      <LanguageProvider>
+        <Projects onProjectSelect={vi.fn()} />
+      </LanguageProvider>
+    );
+
+    const personalButton = screen.getByRole("button", { name: /personal projects/i });
+    expect(personalButton).toBeInTheDocument();
+
+    await user.click(personalButton);
+
+    expect(screen.getByText("Unitrition")).toBeInTheDocument();
+    expect(screen.getByText("Next.js 16 & Hybrid RAG Portfolio Platform")).toBeInTheDocument();
+    expect(screen.getByText("My React Portfolio Website")).toBeInTheDocument();
+
+    const badges = screen.getAllByText(/personal project/i);
+    expect(badges.length).toBeGreaterThanOrEqual(3);
+  });
 });

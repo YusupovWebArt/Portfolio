@@ -2,6 +2,7 @@ import { Project } from '../project-types'
 
 const unitrition: Project = {
   id: 29000,
+  isPersonal: true,
   title: 'Unitrition',
   description:
     'A full-stack nutrition platform that helps users find the right foods for their specific dietary plans - pick a plan, search foods, and get an instant color-coded comparison of what fits and what doesn\'t. Built with headless WordPress as CMS, a Next.js 16 (React 19) App Router frontend, Supabase authentication, and a custom Bread Units Calculator integrated with the USDA FoodData Central API. Supports 10 diet frameworks, bilingual content (EN/ES), and an educational nutrition blog with Schema.org markup.',

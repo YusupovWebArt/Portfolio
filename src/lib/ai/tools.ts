@@ -11,6 +11,7 @@ export interface ProjectToolOutput {
   category: string
   liveUrl?: string
   githubUrl?: string
+  isPersonal?: boolean
 }
 
 export const showProjectsTool = tool({

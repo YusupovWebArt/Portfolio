@@ -2,6 +2,7 @@ import { Project } from '../project-types'
 
 const webartReactPortfolio: Project = {
   id: 3950,
+  isPersonal: true,
   title: 'My React Portfolio Website',
   description:
     'High-performance single-page portfolio application built with React 19, TypeScript 6, Tailwind CSS v4, and a 3-language i18n engine (EN/UA/ES) powered by the 2026 AI-Harness methodology (SDD + SDLC + TDD) with 29 Vitest specs, 11 Playwright E2E tests (WCAG 2.2 AA), Consent Mode v2 Basic, and 50.3% bundle code-splitting.',

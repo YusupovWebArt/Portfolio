@@ -20,7 +20,7 @@ const Hero = () => {
         <div className="absolute bottom-1/4 right-1/4 w-72 h-72 bg-blue-500 dark:bg-lime-400 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-pulse delay-1000"></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
         <div className="space-y-6">
           {/* Pill Badges / Specializations - kept in EN as they are technical terms */}
           <div className="flex flex-wrap justify-center gap-2 mb-6">

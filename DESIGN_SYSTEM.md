@@ -51,7 +51,7 @@ The site uses a clean, modern sans-serif typography system (configured to load `
 Layout structures are strictly managed to keep layout shifts (CLS) to a minimum.
 
 ### Global Container
-- Wrapped in `max-w-7xl mx-auto px-4 sm:px-6 lg:px-8`. This ensures a maximum width boundary of `1280px` on desktop and centered alignments.
+- Wrapped in `max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8`. This ensures a maximum width boundary of `1600px` on desktop and widescreen displays with centered alignments.
 
 ### Grid Systems
 - **About/Hero Panels:** Standard 1-column layout on mobile, transitioning to a `grid lg:grid-cols-2 gap-16 items-center` on widescreen displays.

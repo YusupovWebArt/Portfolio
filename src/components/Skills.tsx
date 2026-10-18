@@ -251,7 +251,7 @@ const Skills = () => {
       id="skills"
       className="py-20 bg-white dark:bg-slate-900 transition-colors duration-300"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white mb-6">
             {sk.sectionTitle}

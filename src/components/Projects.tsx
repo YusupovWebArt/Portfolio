@@ -32,8 +32,15 @@ import { allProjects } from '../lib/projectRegistry'
 
 const projects: Project[] = allProjects
 
-const getFilterLabel = (id: string, filterAllLabel: string) => {
+const getFilterLabel = (id: string, filterAllLabel: string, currentLang?: string) => {
   if (id === 'all') return filterAllLabel
+  if (id === 'personal') {
+    return currentLang === 'ua'
+      ? 'Власні проєкти (3)'
+      : currentLang === 'es'
+        ? 'Proyectos propios (3)'
+        : 'Personal Projects (3)'
+  }
   switch (id) {
     case 'wordpress': return 'WordPress'
     case 'nextjs': return 'Next.js'
@@ -47,7 +54,7 @@ const getFilterLabel = (id: string, filterAllLabel: string) => {
   }
 }
 
-const filterIds = ['all', 'wordpress', 'nextjs', 'react', 'javascript', 'static', 'shopify', 'wix', 'other-cms']
+const filterIds = ['all', 'personal', 'wordpress', 'nextjs', 'react', 'javascript', 'static', 'shopify', 'wix', 'other-cms']
 
 const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
   const { lang, t } = useLanguage()
@@ -93,7 +100,11 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
   // Filtering projects by category and text search (title, description, technologies)
   const filteredProjects = projects.filter((project) => {
     const matchesCategory =
-      activeFilter === 'all' || project.category.includes(activeFilter)
+      activeFilter === 'all'
+        ? true
+        : activeFilter === 'personal'
+          ? Boolean(project.isPersonal)
+          : project.category.includes(activeFilter)
     if (!matchesCategory) return false
 
     if (!searchQuery.trim()) return true
@@ -159,7 +170,7 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
       id="projects"
       className="py-20 bg-slate-50 dark:bg-slate-800 transition-colors duration-300"
     >
-      <div className="py-10 px-2 md:px-8 max-w-6xl mx-auto">
+      <div className="py-10 px-4 sm:px-6 lg:px-8 max-w-[1600px] mx-auto">
         <div className="text-center mb-8">
           <h2 className="text-4xl lg:text-5xl font-bold text-slate-900 dark:text-white mb-4">
             {pr.sectionTitle}
@@ -212,7 +223,7 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
               }`}
               type="button"
             >
-              {getFilterLabel(id, pr.filterAll)}
+              {getFilterLabel(id, pr.filterAll, lang)}
             </button>
           ))}
         </div>
@@ -261,19 +272,33 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
                 key={project.id}
                 className="bg-white dark:bg-slate-900 rounded-2xl shadow-md p-5 flex flex-col border border-slate-200/80 dark:border-slate-800 transition-colors duration-300"
               >
-                {/* Image without badge or zoom hover */}
-                <img
-                  src={project.images[0].src}
-                  alt={project.images[0].caption || project.title}
-                  loading="lazy"
-                  style={{
-                    viewTransitionName: `project-thumb-${project.id}`,
-                  }}
-                  className="w-full h-48 object-cover rounded-xl mb-4 cursor-pointer"
-                  onClick={() =>
-                    openScreenshotModal(project.images[0].src, project.title)
-                  }
-                />
+                {/* Image with optional Personal Project badge */}
+                <div className="relative mb-4">
+                  <img
+                    src={project.images[0].src}
+                    alt={project.images[0].caption || project.title}
+                    loading="lazy"
+                    style={{
+                      viewTransitionName: `project-thumb-${project.id}`,
+                    }}
+                    className="w-full h-48 object-cover rounded-xl cursor-pointer"
+                    onClick={() =>
+                      openScreenshotModal(project.images[0].src, project.title)
+                    }
+                  />
+                  {project.isPersonal && (
+                    <div className="absolute top-2.5 left-2.5 inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold tracking-wide bg-purple-700/90 dark:bg-lime-500/90 text-white dark:text-slate-950 shadow-md backdrop-blur-sm border border-purple-400/40 dark:border-lime-300/40">
+                      <span>★</span>
+                      <span>
+                        {lang === 'ua'
+                          ? 'Власний проєкт'
+                          : lang === 'es'
+                            ? 'Proyecto propio'
+                            : 'Personal Project'}
+                      </span>
+                    </div>
+                  )}
+                </div>
 
                 {/* Title */}
                 <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">

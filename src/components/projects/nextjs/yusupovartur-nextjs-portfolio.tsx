@@ -2,6 +2,7 @@ import { Project } from '../project-types'
 
 const yusupovarturNextjsPortfolio: Project = {
   id: 29500,
+  isPersonal: true,
   title: 'Next.js 16 & Hybrid RAG Portfolio Platform',
   description:
     'Enterprise-grade fullstack portfolio and AI engineering platform built with Next.js 16 App Router, React 19 Server Components, TypeScript 6, and a custom Hybrid RAG AI Assistant indexing 70 project case studies across 210+ localized SSG routes (EN/UA/ES), deployed on Vercel with Cloudflare DNS and WCAG 2.2 AA compliance.',

@@ -11,7 +11,7 @@ const Footer = () => {
 
   return (
     <footer className="bg-slate-900 dark:bg-slate-950 text-white py-12 transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           {/* Logo/Brand */}
           <div className="mb-8">

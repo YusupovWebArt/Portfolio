@@ -118,8 +118,15 @@ describe('ChatModal Client-side Streaming & Fallback Specification (TDD)', () =>
     const dialog = screen.getByRole('dialog')
     expect(dialog.className).toContain('text-left')
     expect(dialog.className).toContain('max-w-3xl')
-    expect(dialog.className).toContain('lg:max-w-4xl')
+    expect(dialog.className).toContain('lg:max-w-5xl')
+    expect(dialog.className).toContain('xl:max-w-6xl')
     expect(dialog.className).toContain('h-[740px]')
+
+    const maxBtn = screen.getByTitle(/Maximize/i)
+    fireEvent.click(maxBtn)
+    expect(dialog.className).toContain('max-w-[1550px]')
+    fireEvent.click(screen.getByTitle(/Restore/i))
+    expect(dialog.className).toContain('lg:max-w-5xl')
 
     const region = screen.getByRole('region')
     expect(region.className).toContain('relative')

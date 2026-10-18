@@ -33,9 +33,22 @@ export default function ProjectToolCard({
             <Layers className="w-8 h-8" />
           </div>
         )}
-        <div className="absolute top-2 left-2 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-purple-600 text-white shadow-sm">
-          {project.category}
-        </div>
+        {project.isPersonal ? (
+          <div className="absolute top-2 left-2 inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold tracking-wider uppercase bg-purple-700/90 dark:bg-lime-500/90 text-white dark:text-slate-950 shadow-sm border border-purple-400/40 dark:border-lime-300/40 backdrop-blur-sm">
+            <span>★</span>
+            <span>
+              {locale === 'ua'
+                ? 'Власний проєкт'
+                : locale === 'es'
+                  ? 'Proyecto propio'
+                  : 'Personal'}
+            </span>
+          </div>
+        ) : (
+          <div className="absolute top-2 left-2 px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-purple-600 text-white shadow-sm">
+            {project.category}
+          </div>
+        )}
       </div>
 
       <div className="p-3.5 flex flex-col flex-1 justify-between gap-2.5">

@@ -13,6 +13,8 @@ import {
   Copy,
   Check,
   Square,
+  Maximize2,
+  Minimize2,
 } from 'lucide-react'
 
 import { FAQ, Message } from '../data/chatFaq'
@@ -98,6 +100,7 @@ const ChatModal = ({
   const [liveAnnouncement, setLiveAnnouncement] = useState('')
   const [copiedId, setCopiedId] = useState<string | null>(null)
   const [isStreaming, setIsStreaming] = useState(false)
+  const [isMaximized, setIsMaximized] = useState(false)
 
   useDialogA11y({
     isOpen: isModalOpen,
@@ -238,11 +241,15 @@ const ChatModal = ({
         getRagSourceLabel,
         getRelevantProjectCards,
         isHireOrContactQuery,
+        isStackComparisonQuery,
+        isEstimateOrCalculatorQuery,
         getContextualFollowUps,
       } = await ragModulePromise
       const sourceLabel = getRagSourceLabel(textToSend, ragOptions)
       const projectCards = getRelevantProjectCards(textToSend, ragOptions)
       const showContact = isHireOrContactQuery(textToSend)
+      const showStack = isStackComparisonQuery(textToSend)
+      const showEstimate = isEstimateOrCalculatorQuery(textToSend)
       const followUps = getContextualFollowUps(textToSend, ragOptions)
 
       setTimeout(() => {
@@ -254,6 +261,8 @@ const ChatModal = ({
           text: localAnswer,
           source: sourceLabel,
           showContactCard: showContact,
+          showStackComparison: showStack,
+          showEstimateCalculator: showEstimate,
           followUps,
           projects: projectCards.length > 0 ? projectCards : undefined,
           timestamp: new Date(),
@@ -502,7 +511,11 @@ const ChatModal = ({
         role="dialog"
         aria-modal="true"
         aria-labelledby="chat-modal-title"
-        className="relative w-full max-w-3xl lg:max-w-4xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border border-slate-200/80 dark:border-white/10 rounded-3xl shadow-2xl flex flex-col h-[740px] sm:h-[780px] max-h-[92vh] overflow-hidden text-left transition-all duration-300"
+        className={`relative w-full bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border border-slate-200/80 dark:border-white/10 rounded-3xl shadow-2xl flex flex-col overflow-hidden text-left transition-all duration-300 ${
+          isMaximized
+            ? 'max-w-[1550px] w-[96vw] h-[95vh] max-h-[95vh]'
+            : 'max-w-3xl lg:max-w-5xl xl:max-w-6xl h-[740px] sm:h-[780px] max-h-[92vh]'
+        }`}
       >
         {/* Polite Screen Reader Live Region for Streaming and Typing Announcements */}
         <div role="status" aria-live="polite" aria-atomic="true" className="sr-only">
@@ -543,6 +556,43 @@ const ChatModal = ({
               type="button"
             >
               <Trash2 className="w-4 h-4" aria-hidden="true" />
+            </button>
+            <button
+              onClick={() => setIsMaximized((prev) => !prev)}
+              className="p-2 hover:bg-slate-100 dark:hover:bg-white/5 rounded-full text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-700 dark:focus-visible:outline-lime-400"
+              title={
+                isMaximized
+                  ? lang === 'ua'
+                    ? 'Зменшити вікно'
+                    : lang === 'es'
+                      ? 'Restaurar ventana'
+                      : 'Restore window'
+                  : lang === 'ua'
+                    ? 'Розгорнути вікно'
+                    : lang === 'es'
+                      ? 'Maximizar ventana'
+                      : 'Maximize window'
+              }
+              aria-label={
+                isMaximized
+                  ? lang === 'ua'
+                    ? 'Зменшити вікно'
+                    : lang === 'es'
+                      ? 'Restaurar ventana'
+                      : 'Restore window'
+                  : lang === 'ua'
+                    ? 'Розгорнути вікно'
+                    : lang === 'es'
+                      ? 'Maximizar ventana'
+                      : 'Maximize window'
+              }
+              type="button"
+            >
+              {isMaximized ? (
+                <Minimize2 className="w-4 h-4" aria-hidden="true" />
+              ) : (
+                <Maximize2 className="w-4 h-4" aria-hidden="true" />
+              )}
             </button>
             <button
               onClick={handleClose}
@@ -606,7 +656,13 @@ const ChatModal = ({
 
                 {/* Message Bubble */}
                 <div
-                  className={`relative px-5 py-3.5 text-left rounded-2xl max-w-[88%] text-sm shadow-sm leading-relaxed ${
+                  className={`relative px-5 py-3.5 text-left rounded-2xl text-sm shadow-sm leading-relaxed ${
+                    msg.showStackComparison ||
+                    msg.showEstimateCalculator ||
+                    (msg.projects && msg.projects.length > 0)
+                      ? 'w-full max-w-full'
+                      : 'max-w-[88%] sm:max-w-3xl'
+                  } ${
                     isBot
                       ? 'bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 rounded-tl-sm border border-slate-200/50 dark:border-white/5'
                       : 'bg-purple-600 dark:bg-lime-500 text-white dark:text-slate-900 rounded-tr-sm font-medium'

@@ -733,11 +733,35 @@ export function isEstimateOrCalculatorQuery(query: string): boolean {
   )
 }
 
+export function isBestProjectsQuery(query: string): boolean {
+  const lower = foldForSearch(query || '')
+  const hasBest = /(best|top|featured|dest|bedt|highlight|showcase|flagship|кращ|кращі|кращих|найкращ|лучш|лучшие|лучших|топ|mejores|destacados)/i.test(
+    lower,
+  )
+  const hasProjectsWord = /(project|work|portfolio|case|example|sample|проєкт|проект|робіт|работ|портфоліо|портфолио|кейси|кейсы|proyecto|trabajo)/i.test(
+    lower,
+  )
+  return hasBest && (hasProjectsWord || lower.length < 16)
+}
+
+export function isPersonalProjectsQuery(query: string): boolean {
+  const lower = foldForSearch(query || '')
+  return /(personal|own|pet project|flagship product|авторськ|власн|личн|собственн|propios|personal)/i.test(
+    lower,
+  ) && /(project|app|platform|portfolio|product|work|проєкт|проект|додат|продукт|платформ|робот|proyecto|aplicacion|producto)/i.test(
+    lower,
+  )
+}
+
 function resolveTargetProject(
   query: string,
   options: LocalSynthesisOptions = {},
 ): { slug: string; project: Project } | undefined {
   const lower = foldForSearch(query || '')
+
+  if (isBestProjectsQuery(query) || isPersonalProjectsQuery(query)) {
+    return undefined
+  }
 
   const isGeneralOrShowcase =
     /(who is artur|about yourself|quien es artur|хто такий артур|how many years|скільки років|cuantos anos|where are you located|де ви знаходитесь|donde estas|services|rates|cost|hire|послуги|ціни|precio|contratar|what projects|best projects|all projects|show me.*projects|яких проєкт|які проєкти|que proyectos)/i.test(
@@ -886,6 +910,80 @@ export function synthesizeLocalRagAnswer(
     )
   }
 
+  if (isPersonalProjectsQuery(trimmed)) {
+    if (lang === 'ua') {
+      return stripEmDashes(
+        'Мої власні авторські розробки (Personal Flagship Products), де я виступаю архітектором, Product Owner та Lead Fullstack інженером:\n\n' +
+          '1. **Next.js 16 & Hybrid RAG Portfolio Platform** (yusupovartur.com) - Enterprise fullstack-платформа на Next.js 16 App Router, React 19 Server Components, TypeScript 6 та кастомному автономному AI Hybrid RAG двигуні, що індексує 70 проєктів на 210+ SSG маршрутах (EN/UA/ES) із WCAG 2.2 AA.\n' +
+          '2. **Unitrition** (unitrition.info) - Повнофункціональна платформа персоналізованого харчування для 10 дієтичних планів на базі Headless WordPress, Next.js 16, Supabase та інтеграції USDA FoodData Central API.\n' +
+          '3. **My React Portfolio Website** - Високопродуктивний односторінковий застосунок-портфоліо на React 19, TypeScript, Tailwind CSS v4 та 3-мовній i18n екосистемі із 29 Vitest тестами.\n\n' +
+          'Нижче доступні картки цих проєктів із прямим переходом до кейсів:'
+      )
+    }
+    if (lang === 'es') {
+      return stripEmDashes(
+        'Mis proyectos propios destacados (Personal Flagship Products), donde actúo como arquitecto, Product Owner y Lead Fullstack Engineer:\n\n' +
+          '1. **Next.js 16 & Hybrid RAG Portfolio Platform** (yusupovartur.com) - Plataforma fullstack empresarial con Next.js 16 App Router, React 19 Server Components, TypeScript 6 y motor propio Hybrid RAG que indexa 70 proyectos en más de 210 rutas SSG (EN/UA/ES) con WCAG 2.2 AA.\n' +
+          '2. **Unitrition** (unitrition.info) - Plataforma completa de nutrición personalizada para 10 dietas, construida con Headless WordPress, Next.js 16 App Router, Supabase y API de USDA.\n' +
+          '3. **My React Portfolio Website** - Aplicación SPA de alto rendimiento desarrollada con React 19, TypeScript, Tailwind CSS v4 y sistema i18n trilingüe respaldada por 29 pruebas Vitest.\n\n' +
+          'A continuación puedes explorar las tarjetas de estos proyectos:'
+      )
+    }
+    return stripEmDashes(
+      'My personal flagship products where I act as Architect, Product Owner, and Lead Fullstack Engineer:\n\n' +
+        '1. **Next.js 16 & Hybrid RAG Portfolio Platform** (yusupovartur.com) - Enterprise fullstack platform with Next.js 16 App Router, React 19 Server Components, TypeScript 6, and a custom autonomous Hybrid RAG engine indexing 70 case studies across 210+ SSG routes (EN/UA/ES) with WCAG 2.2 AA.\n' +
+        '2. **Unitrition** (unitrition.info) - Comprehensive dietary modeling platform supporting 10 nutrition plans, built with Headless WordPress, Next.js 16 App Router, Supabase, and USDA API integration.\n' +
+        '3. **My React Portfolio Website** - High-performance single-page portfolio application built with React 19, TypeScript, Tailwind CSS v4, and 3-language i18n backed by 29 Vitest specs.\n\n' +
+        'Explore the case study cards below:'
+    )
+  }
+
+  if (isBestProjectsQuery(trimmed)) {
+    if (lang === 'ua') {
+      return stripEmDashes(
+        'Ось добірка моїх провідних проєктів, згрупованих за ключовими технологічними стеками (перші та найсильніші приклади з кожного напрямку):\n\n' +
+          '- **Next.js 16 & Full-Stack**:\n' +
+          '  - **Next.js 16 & Hybrid RAG Portfolio Platform** - корпоративна fullstack-платформа з автономним Hybrid RAG AI-асистентом на 70 кейсів.\n' +
+          '  - **Unitrition** - персоналізована платформа харчування на Next.js 16 App Router, Headless WP, Supabase та USDA API.\n' +
+          '- **Custom WordPress & Enterprise**:\n' +
+          '  - **IT-Magic** - enterprise-портал для провідного AWS Advanced Consulting Partner із кастомною темою, Schema.org та топовими позиціями в Google.\n' +
+          '- **React 19 & Web Apps**:\n' +
+          '  - **My React Portfolio Website** - сучасний PWA-застосунок на React 19 із View Transitions API та TDD тест-сьютом.\n' +
+          '- **Shopify & E-Commerce**:\n' +
+          '  - **Kidzely** - міжнародний магазин дитячих товарів із оптимізованим чекаутом і мобільним UX.\n\n' +
+          'Нижче наведені інтерактивні картки найкращих проєктів із прямим доступом до детальних кейсів та живих демо:'
+      )
+    }
+    if (lang === 'es') {
+      return stripEmDashes(
+        'A continuación presento una selección de mis mejores proyectos organizados por tecnologías clave (los ejemplos destacados de cada categoría):\n\n' +
+          '- **Next.js 16 y Full-Stack**:\n' +
+          '  - **Next.js 16 & Hybrid RAG Portfolio Platform** - Plataforma fullstack empresarial con motor propio Hybrid RAG y 210+ rutas SSG.\n' +
+          '  - **Unitrition** - Plataforma de nutrición personalizada con Next.js 16 App Router, Headless WP, Supabase y API USDA.\n' +
+          '- **WordPress a medida y Enterprise**:\n' +
+          '  - **IT-Magic** - Portal corporativo para socio consultor de AWS con tema PHP personalizado y optimización SEO técnica.\n' +
+          '- **React 19 y Aplicaciones Web**:\n' +
+          '  - **My React Portfolio Website** - Aplicación SPA/PWA de alto rendimiento con React 19, View Transitions API y pruebas TDD.\n' +
+          '- **Shopify y E-Commerce**:\n' +
+          '  - **Kidzely** - Tienda de comercio electrónico internacional con checkout optimizado.\n\n' +
+          'Descubre las tarjetas interactivas de los proyectos destacados a continuación:'
+      )
+    }
+    return stripEmDashes(
+      'Here is a curated showcase of my top flagship projects across the primary technology stacks (the leading examples from each category):\n\n' +
+        '- **Next.js 16 & Full-Stack**:\n' +
+        '  - **Next.js 16 & Hybrid RAG Portfolio Platform** - Enterprise fullstack platform with an autonomous Hybrid RAG engine, 210+ SSG routes, and WCAG 2.2 AA compliance.\n' +
+        '  - **Unitrition** - Personalized nutrition platform built with Next.js 16 App Router, Headless WordPress, Supabase, and USDA API.\n' +
+        '- **Custom WordPress & Enterprise**:\n' +
+        '  - **IT-Magic** - Enterprise cloud consulting platform for an AWS Advanced Partner with bespoke PHP theme and top Google rankings.\n' +
+        '- **React 19 & Modern Web Apps**:\n' +
+        '  - **My React Portfolio Website** - High-performance SPA/PWA built with React 19, TypeScript, View Transitions API, and 29 Vitest specs.\n' +
+        '- **Shopify & E-Commerce**:\n' +
+        '  - **Kidzely** - International e-commerce store with optimized checkout and mobile UX.\n\n' +
+        'Explore the interactive case study cards below:'
+    )
+  }
+
   // 5. General FAQ keyword matching
   for (const item of FAQ) {
     if (item.keywords.some((kw) => lower.includes(foldForSearch(kw)))) {
@@ -931,6 +1029,14 @@ export function getRagSourceLabel(
     return 'Hybrid RAG · Timeline & Scope Estimator'
   }
 
+  if (isPersonalProjectsQuery(query)) {
+    return 'Hybrid RAG · Personal Flagship Products'
+  }
+
+  if (isBestProjectsQuery(query)) {
+    return 'Hybrid RAG · Best Flagship Projects Showcase'
+  }
+
   const resolved = resolveTargetProject(query, options)
   if (resolved) {
     return `Hybrid RAG · ${stripEmDashes(resolved.project.title)} Case Study`
@@ -951,6 +1057,7 @@ export interface ChatProjectCardItem {
   category: string
   liveUrl?: string
   githubUrl?: string
+  isPersonal?: boolean
 }
 
 function toProjectCardItem(
@@ -973,6 +1080,7 @@ function toProjectCardItem(
     category: project.category?.[0] || 'Web Development',
     liveUrl: project.liveUrl && project.liveUrl !== '#' ? project.liveUrl : undefined,
     githubUrl: project.githubUrl && project.githubUrl !== '#' ? project.githubUrl : undefined,
+    isPersonal: Boolean(project.isPersonal),
   }
 }
 
@@ -995,20 +1103,61 @@ export function getRelevantProjectCards(
     return []
   }
 
-  // 1. Check if query mentions a specific project (including typo-tolerant match) or has active context
+  // 1. Check if user is asking for personal flagship products
+  if (isPersonalProjectsQuery(trimmed)) {
+    const personalSlugs = [
+      'yusupovartur-nextjs-portfolio',
+      'unitrition',
+      'webart-react-portfolio',
+    ]
+    const cards: ChatProjectCardItem[] = []
+    for (const slug of personalSlugs) {
+      const entry = projectRegistry.find((p) => p.slug === slug)
+      if (entry) {
+        cards.push(toProjectCardItem(entry.slug, entry.project, lang))
+      }
+    }
+    return cards
+  }
+
+  // 2. Check if user is asking for best / top projects categorized by technology
+  if (isBestProjectsQuery(trimmed)) {
+    const bestSlugs = [
+      'yusupovartur-nextjs-portfolio',
+      'unitrition',
+      'it-magic',
+      'webart-react-portfolio',
+      'kidzely',
+    ]
+    const cards: ChatProjectCardItem[] = []
+    for (const slug of bestSlugs) {
+      const entry = projectRegistry.find((p) => p.slug === slug)
+      if (entry) {
+        cards.push(toProjectCardItem(entry.slug, entry.project, lang))
+      }
+    }
+    return cards
+  }
+
+  // 3. Check if query mentions a specific project (including typo-tolerant match) or has active context
   const resolved = resolveTargetProject(trimmed, options)
   if (resolved) {
     return [toProjectCardItem(resolved.slug, resolved.project, lang)]
   }
 
-  // 2. Check if user is asking to see completed projects / portfolio / work examples
+  // 4. Check if user is asking to see completed projects / portfolio / work examples
   const isProjectsShowcaseQuery =
     /(projects|tell me about your work|completed|show me.*project|portfolio|проєкт|портфоліо|проект|портфолио|proyectos|portafolio|trabajo)/i.test(
       lower,
     )
 
   if (isProjectsShowcaseQuery) {
-    const flagshipSlugs = ['it-magic', 'unitrition']
+    const flagshipSlugs = [
+      'yusupovartur-nextjs-portfolio',
+      'unitrition',
+      'it-magic',
+      'webart-react-portfolio',
+    ]
     const cards: ChatProjectCardItem[] = []
     for (const slug of flagshipSlugs) {
       const entry = projectRegistry.find((p) => p.slug === slug)
@@ -1084,6 +1233,28 @@ export function getContextualFollowUps(
       .filter((c) => !c.skip && !answeredSet.has(foldForSearch(c.text)))
       .map((c) => c.text)
       .slice(0, 3)
+  }
+
+  if (isPersonalProjectsQuery(trimmed) || isBestProjectsQuery(trimmed)) {
+    const flagshipFollowUps =
+      lang === 'ua'
+        ? [
+            'Який стек технологій використано в Unitrition?',
+            'Як влаштована архітектура Next.js 16 Portfolio Platform?',
+            'Розкажи детальніше про проєкт IT-Magic',
+          ]
+        : lang === 'es'
+          ? [
+              '¿Qué stack tecnológico se usó en Unitrition?',
+              '¿Cómo está estructurada la plataforma Next.js 16?',
+              'Cuéntame más sobre el proyecto IT-Magic',
+            ]
+          : [
+              'What tech stack was used in Unitrition?',
+              'How is Next.js 16 Portfolio Platform architected?',
+              'Tell me more about the IT-Magic project',
+            ]
+    return flagshipFollowUps.filter((q) => !answeredSet.has(foldForSearch(q))).slice(0, 3)
   }
 
   const isProjectsShowcaseQuery =

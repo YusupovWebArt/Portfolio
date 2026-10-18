@@ -92,4 +92,6 @@ export interface Project {
   liveUrl: string
   githubUrl: string
   category: string[]
+  /** Flag for Artur's personal flagship products (e.g. Next.js 16 RAG Platform, Unitrition, React Portfolio). */
+  isPersonal?: boolean
 }

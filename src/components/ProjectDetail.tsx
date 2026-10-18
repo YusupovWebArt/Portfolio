@@ -298,7 +298,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
   }
 
   return (
-    <div className="max-w-7xl mx-auto px-2 md:px-8 pt-24 pb-10">
+    <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-10">
       {/* Breadcrumb Navigation */}
       <nav aria-label={pr.breadcrumb} className="mb-4">
         <ol className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
@@ -445,6 +445,18 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
           </div>
 
           <div className="flex flex-col gap-6 min-w-0">
+            {project.isPersonal && (
+              <div className="inline-flex items-center gap-1.5 self-start px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase bg-purple-100 dark:bg-lime-500/20 text-purple-700 dark:text-lime-300 border border-purple-300 dark:border-lime-500/30">
+                <span>★</span>
+                <span>
+                  {lang === 'ua'
+                    ? 'Власний флагманський продукт'
+                    : lang === 'es'
+                      ? 'Producto propio destacado'
+                      : 'Personal Flagship Product'}
+                </span>
+              </div>
+            )}
             {project.detailHeroLine && (
               <p className="text-xs sm:text-sm font-medium tracking-wide text-slate-600 dark:text-slate-400 uppercase">
                 {project.detailHeroLine}
@@ -1040,7 +1052,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
       {/* Related Case Studies */}
       {relatedProjects.length > 0 && (
         <section className="py-12 bg-slate-50/80 dark:bg-slate-900/60 border-t border-slate-200/70 dark:border-white/5 transition-colors duration-300">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between mb-8">
               <div>
                 <h3 className="text-2xl font-bold text-slate-900 dark:text-white">

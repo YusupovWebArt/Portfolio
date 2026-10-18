@@ -9,7 +9,11 @@ import {
   isHireOrContactQuery,
   isStackComparisonQuery,
   isEstimateOrCalculatorQuery,
+  isBestProjectsQuery,
+  isPersonalProjectsQuery,
   synthesizeLocalRagAnswer,
+  getRelevantProjectCards,
+  getRagSourceLabel,
 } from './rag'
 
 describe('Hybrid RAG Retriever Specification (TDD)', () => {
@@ -148,6 +152,49 @@ describe('Hybrid RAG Retriever Specification (TDD)', () => {
     expect(isEstimateOrCalculatorQuery('Скільки часу займе розробка інтернет-магазину? / Калькулятор')).toBe(true)
     expect(isEstimateOrCalculatorQuery('¿Cuánto tiempo tardaría el desarrollo? / Calculadora')).toBe(true)
     expect(isEstimateOrCalculatorQuery('What is your favorite color?')).toBe(false)
+  })
+
+  it('should detect best projects queries including typos like dest projects and top projects', () => {
+    expect(isBestProjectsQuery('best projects')).toBe(true)
+    expect(isBestProjectsQuery('dest projects')).toBe(true)
+    expect(isBestProjectsQuery('top projects')).toBe(true)
+    expect(isBestProjectsQuery('покажи найкращі проєкти')).toBe(true)
+    expect(isBestProjectsQuery('cuáles son tus mejores proyectos')).toBe(true)
+    expect(isBestProjectsQuery('how old are you')).toBe(false)
+  })
+
+  it('should detect personal flagship project queries across EN, UA, and ES', () => {
+    expect(isPersonalProjectsQuery('What are your personal projects?')).toBe(true)
+    expect(isPersonalProjectsQuery('Які твої власні проєкти?')).toBe(true)
+    expect(isPersonalProjectsQuery('¿Cuáles son tus proyectos propios?')).toBe(true)
+    expect(isPersonalProjectsQuery('Where do you live?')).toBe(false)
+  })
+
+  it('should synthesize a categorized response for best projects across Next.js, WordPress, React, and Shopify', () => {
+    const answer = synthesizeLocalRagAnswer('dest projects', { locale: 'en' })
+    expect(answer).toContain('Next.js 16')
+    expect(answer).toContain('WordPress')
+    expect(answer).toContain('React 19')
+    expect(answer).toContain('Shopify')
+    expect(answer).not.toContain('\u2014')
+
+    const cards = getRelevantProjectCards('dest projects', { locale: 'en' })
+    expect(cards.length).toBeGreaterThanOrEqual(4)
+    expect(cards.some((c) => c.slug === 'yusupovartur-nextjs-portfolio')).toBe(true)
+    expect(cards.some((c) => c.slug === 'unitrition')).toBe(true)
+    expect(cards.some((c) => c.slug === 'it-magic')).toBe(true)
+  })
+
+  it('should return personal flagship projects with isPersonal: true flag', () => {
+    const cards = getRelevantProjectCards('What are your personal projects?', { locale: 'en' })
+    expect(cards).toHaveLength(3)
+    expect(cards.every((c) => c.isPersonal === true)).toBe(true)
+    expect(cards.some((c) => c.slug === 'yusupovartur-nextjs-portfolio')).toBe(true)
+    expect(cards.some((c) => c.slug === 'unitrition')).toBe(true)
+    expect(cards.some((c) => c.slug === 'webart-react-portfolio')).toBe(true)
+
+    const label = getRagSourceLabel('personal projects')
+    expect(label).toContain('Personal Flagship Products')
   })
 })
 
