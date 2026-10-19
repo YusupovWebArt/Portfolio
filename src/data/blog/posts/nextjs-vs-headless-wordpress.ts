@@ -36,7 +36,7 @@ export const nextjsVsHeadlessWordPressPost: BlogPost = {
   coverImage: '/Portfolio/images/blog/cover-nextjs-vs-headless-wp.png',
   appliedProjects: [
     {
-      projectId: 2,
+      projectId: 29000,
       slug: 'unitrition',
       name: 'Unitrition E-Commerce Platform',
       note: {
@@ -46,7 +46,7 @@ export const nextjsVsHeadlessWordPressPost: BlogPost = {
       },
     },
     {
-      projectId: 1,
+      projectId: 19500,
       slug: 'it-magic',
       name: 'IT-Magic AWS Migration & Cloud Architecture',
       note: {

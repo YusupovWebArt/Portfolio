@@ -36,7 +36,7 @@ export const autonomousHybridRagPost: BlogPost = {
   coverImage: '/Portfolio/images/blog/cover-autonomous-hybrid-rag.png',
   appliedProjects: [
     {
-      projectId: 70,
+      projectId: 29500,
       slug: 'yusupovartur-nextjs-portfolio',
       name: 'Next.js 16 & Hybrid RAG Portfolio Platform',
       note: {

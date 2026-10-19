@@ -79,6 +79,11 @@ const nextConfig: NextConfig = {
         destination: '/en',
         permanent: false,
       },
+      {
+        source: '/:locale(en|ua|es)/projects/all-day-medical-care-clinic',
+        destination: '/:locale/projects/alldaymedicalcare',
+        permanent: true,
+      },
     ]
   },
   async rewrites() {

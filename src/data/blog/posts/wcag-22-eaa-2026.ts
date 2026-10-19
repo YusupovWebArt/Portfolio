@@ -36,8 +36,8 @@ export const wcag22Eaa2026Post: BlogPost = {
   coverImage: '/Portfolio/images/blog/cover-wcag-22-eaa.svg',
   appliedProjects: [
     {
-      projectId: 4,
-      slug: 'all-day-medical-care-clinic',
+      projectId: 14500,
+      slug: 'alldaymedicalcare',
       name: 'All Day Medical Care Clinic',
       note: {
         en: 'Healthcare web platform certified for WCAG 2.2 AA compliance, accessible keyboard traps prevention, and contrast ratios > 7:1.',
@@ -46,7 +46,7 @@ export const wcag22Eaa2026Post: BlogPost = {
       },
     },
     {
-      projectId: 2,
+      projectId: 29000,
       slug: 'unitrition',
       name: 'Unitrition E-Commerce Platform',
       note: {
