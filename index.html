@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta http-equiv="Content-Security-Policy" content="default-src &#39;self&#39;; script-src &#39;self&#39; &#39;sha256-sa2BD07tH4oO53uT1B5vNSLM2+gcrREM4WTXttKp6oU=&#39; https://www.googletagmanager.com; style-src &#39;self&#39; &#39;unsafe-inline&#39;; img-src &#39;self&#39; data: blob: https://yusupovwebart.github.io https://*.google-analytics.com https://www.google-analytics.com; font-src &#39;self&#39; data:; connect-src &#39;self&#39; https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; frame-src &#39;none&#39;; object-src &#39;none&#39;; base-uri &#39;self&#39;; form-action &#39;self&#39;; upgrade-insecure-requests">
+    <meta http-equiv="Content-Security-Policy" content="default-src &#39;self&#39;; script-src &#39;self&#39; &#39;sha256-xyltYWZpfogtI0YZMrZqxspbF0fOzqXgBN1tfaF0L9g=&#39; https://www.googletagmanager.com; style-src &#39;self&#39; &#39;unsafe-inline&#39;; img-src &#39;self&#39; data: blob: https://yusupovwebart.github.io https://*.google-analytics.com https://www.google-analytics.com; font-src &#39;self&#39; data:; connect-src &#39;self&#39; https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com; frame-src &#39;none&#39;; object-src &#39;none&#39;; base-uri &#39;self&#39;; form-action &#39;self&#39;; upgrade-insecure-requests">
 
     <meta charset="UTF-8" />
     <link rel="icon" type="image/x-icon" href="/Portfolio/images/favicon.ico" />
@@ -156,21 +156,24 @@
     }
     </script>
 
-    <style>
-      .js #seo-fallback {
-        display: none;
-      }
-    </style>
     <script>
-      document.documentElement.classList.add('js');
+      // Graceful chunk load error guard to eliminate white screens on stale deployed assets
+      window.addEventListener('error', function(e) {
+        if (e && e.message && /Loading chunk|Failed to fetch dynamically imported module/i.test(e.message)) {
+          if (!sessionStorage.getItem('chunk_reload_guard')) {
+            sessionStorage.setItem('chunk_reload_guard', '1');
+            window.location.reload();
+          }
+        }
+      });
     </script>
-    <script type="module" crossorigin src="/Portfolio/assets/index-DXAISZpL.js"></script>
+    <script type="module" crossorigin src="/Portfolio/assets/index-DrkKrX7r.js"></script>
     <link rel="modulepreload" crossorigin href="/Portfolio/assets/rolldown-runtime-hePW80VL.js">
     <link rel="modulepreload" crossorigin href="/Portfolio/assets/vendor-iNbr9NVS.js">
-    <link rel="modulepreload" crossorigin href="/Portfolio/assets/locale-en-B21-iSjC.js">
-    <link rel="modulepreload" crossorigin href="/Portfolio/assets/vendor-icons-BIn4estQ.js">
+    <link rel="modulepreload" crossorigin href="/Portfolio/assets/locale-en-BmXCdu0O.js">
+    <link rel="modulepreload" crossorigin href="/Portfolio/assets/vendor-icons-BZ2lxcVs.js">
     <link rel="stylesheet" crossorigin href="/Portfolio/assets/vendor-BxCUZ4Nn.css">
-    <link rel="stylesheet" crossorigin href="/Portfolio/assets/index-47cGHpnO.css">
+    <link rel="stylesheet" crossorigin href="/Portfolio/assets/index-DijDnt5k.css">
   </head>
   <body>
     <div id="root">
