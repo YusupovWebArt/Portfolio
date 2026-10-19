@@ -126,6 +126,7 @@ const Header = () => {
     { id: 'projects', label: t.header.nav.projects },
     { id: 'skills', label: t.header.nav.skills },
     { id: 'b2b-services', label: t.b2bServices.badge },
+    { id: 'blog', label: lang === 'ua' ? 'Блог' : lang === 'es' ? 'Blog' : 'Blog' },
     { id: 'contact', label: t.header.nav.contact },
   ]
 
@@ -152,6 +153,13 @@ const Header = () => {
     const element = document.getElementById(sectionId)
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' })
+    } else if (sectionId === 'blog') {
+      const isGitHubPages = typeof window !== 'undefined' && window.location.pathname.startsWith('/Portfolio')
+      if (isGitHubPages) {
+        window.dispatchEvent(new CustomEvent('open-blog-view'))
+      } else {
+        window.location.assign(`/${lang}/blog`)
+      }
     }
     setIsMenuOpen(false)
   }

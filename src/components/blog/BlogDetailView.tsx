@@ -27,9 +27,16 @@ import {
 interface BlogDetailViewProps {
   post: BlogPost
   locale: string
+  onBack?: () => void
+  onSelectRelatedPost?: (slug: string) => void
 }
 
-export default function BlogDetailView({ post, locale }: BlogDetailViewProps) {
+export default function BlogDetailView({
+  post,
+  locale,
+  onBack,
+  onSelectRelatedPost,
+}: BlogDetailViewProps) {
   const title = getBlogTitle(post, locale)
   const description = getBlogDescription(post, locale)
   const readTime = getBlogReadTime(post, locale)
@@ -97,13 +104,24 @@ export default function BlogDetailView({ post, locale }: BlogDetailViewProps) {
 
         {/* Back Link */}
         <div className="mb-6">
-          <Link
-            href={`/${locale}/blog`}
-            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-purple-600 dark:text-lime-400 hover:text-purple-700 dark:hover:text-lime-300 transition"
-          >
-            <ArrowLeft className="w-4 h-4" aria-hidden="true" />
-            <span>{locale === 'ua' ? 'Назад до списку статей' : locale === 'es' ? 'Volver a los artículos' : 'Back to Articles'}</span>
-          </Link>
+          {onBack ? (
+            <button
+              type="button"
+              onClick={onBack}
+              className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-purple-600 dark:text-lime-400 hover:text-purple-700 dark:hover:text-lime-300 transition cursor-pointer"
+            >
+              <ArrowLeft className="w-4 h-4" aria-hidden="true" />
+              <span>{locale === 'ua' ? 'Назад до списку статей' : locale === 'es' ? 'Volver a los artículos' : 'Back to Articles'}</span>
+            </button>
+          ) : (
+            <Link
+              href={`/${locale}/blog`}
+              className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-purple-600 dark:text-lime-400 hover:text-purple-700 dark:hover:text-lime-300 transition"
+            >
+              <ArrowLeft className="w-4 h-4" aria-hidden="true" />
+              <span>{locale === 'ua' ? 'Назад до списку статей' : locale === 'es' ? 'Volver a los artículos' : 'Back to Articles'}</span>
+            </Link>
+          )}
         </div>
 
         {/* Article Header */}
@@ -244,12 +262,8 @@ export default function BlogDetailView({ post, locale }: BlogDetailViewProps) {
                 const relTitle = getBlogTitle(rel, locale)
                 const relDesc = getBlogDescription(rel, locale)
                 const relRead = getBlogReadTime(rel, locale)
-                return (
-                  <Link
-                    key={rel.slug}
-                    href={`/${locale}/blog/${rel.slug}`}
-                    className="p-6 bg-slate-50 dark:bg-slate-800/80 rounded-2xl border border-slate-200/80 dark:border-slate-700/60 hover:border-purple-400 dark:hover:border-lime-500/40 hover:shadow-md transition-all flex flex-col justify-between group"
-                  >
+                const cardContent = (
+                  <>
                     <div>
                       <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400 mb-2">
                         <BookOpen className="w-3.5 h-3.5 text-purple-600 dark:text-lime-400" aria-hidden="true" />
@@ -266,6 +280,29 @@ export default function BlogDetailView({ post, locale }: BlogDetailViewProps) {
                       <span>{locale === 'ua' ? 'Читати розбір' : locale === 'es' ? 'Leer análisis' : 'Read Article'}</span>
                       <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
                     </div>
+                  </>
+                )
+
+                if (onSelectRelatedPost) {
+                  return (
+                    <button
+                      key={rel.slug}
+                      type="button"
+                      onClick={() => onSelectRelatedPost(rel.slug)}
+                      className="p-6 bg-slate-50 dark:bg-slate-800/80 rounded-2xl border border-slate-200/80 dark:border-slate-700/60 hover:border-purple-400 dark:hover:border-lime-500/40 hover:shadow-md transition-all flex flex-col justify-between group cursor-pointer text-left"
+                    >
+                      {cardContent}
+                    </button>
+                  )
+                }
+
+                return (
+                  <Link
+                    key={rel.slug}
+                    href={`/${locale}/blog/${rel.slug}`}
+                    className="p-6 bg-slate-50 dark:bg-slate-800/80 rounded-2xl border border-slate-200/80 dark:border-slate-700/60 hover:border-purple-400 dark:hover:border-lime-500/40 hover:shadow-md transition-all flex flex-col justify-between group"
+                  >
+                    {cardContent}
                   </Link>
                 )
               })}

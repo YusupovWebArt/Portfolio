@@ -1,15 +1,18 @@
 // GitHub Pages Single Page Application redirect parser
-if (typeof window !== 'undefined' && window.location.search[1] === '/') {
-  const decoded = window.location.search
-    .slice(1)
-    .split('&')
-    .map((s) => s.replace(/~and~/g, '&'))
-    .join('?')
-  window.history.replaceState(
-    null,
-    '',
-    window.location.pathname.slice(0, -1) + decoded + window.location.hash
-  )
+if (typeof window !== 'undefined') {
+  const search = window.location.search
+  if (search.startsWith('?p=/') || search[1] === '/') {
+    const raw = search.startsWith('?p=/') ? search.slice(3) : search.slice(1)
+    const decoded = raw
+      .split('&')
+      .map((s) => s.replace(/~and~/g, '&'))
+      .join('?')
+    window.history.replaceState(
+      null,
+      '',
+      window.location.pathname.slice(0, -1) + decoded + window.location.hash
+    )
+  }
 }
 
 import '@fontsource-variable/plus-jakarta-sans'

@@ -722,8 +722,8 @@ export const es: Translation = {
     tagline: 'Ingeniería de productos web de alto rendimiento con velocidad potenciada por IA.',
     legalNotice: '🛡️ Facturación adaptada a profesionales y empresas en la Unión Europea. Cumplimiento normativo adaptado al RGPD y LOPDGDD.',
     copyright: 'Todos los derechos reservados.',
-    madeWith: 'Hecho',
-    techUsing: 'con React & TypeScript. Tailwind CSS',
+    madeWith: 'Desarrollado con',
+    techUsing: 'Next.js 16, React 19, TypeScript, Tailwind CSS y Asistente de IA RAG Híbrido',
     cookieSettings: 'Configuración de cookies',
   },
   consent: {

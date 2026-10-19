@@ -15,6 +15,9 @@ const ProjectDetail = lazy(() => import('./components/ProjectDetail'))
 const Projects = lazy(() => import('./components/Projects'))
 const Skills = lazy(() => import('./components/Skills'))
 const B2bServices = lazy(() => import('./components/B2bServices'))
+const FeaturedBlogSection = lazy(() => import('./components/blog/FeaturedBlogSection'))
+const BlogDetailView = lazy(() => import('./components/blog/BlogDetailView'))
+import { getBlogPostBySlug } from './data/blog'
 
 function ProjectLoadingFallback() {
   const { t } = useLanguage()
@@ -30,10 +33,13 @@ function ProjectLoadingFallback() {
   )
 }
 
-function App() {
+function PortfolioMain() {
+  const { lang } = useLanguage()
   const [selectedProject, setSelectedProject] = useState<number | null>(null)
+  const [selectedBlogSlug, setSelectedBlogSlug] = useState<string | null>(null)
 
   const handleProjectSelect = (projectId: number) => {
+    setSelectedBlogSlug(null)
     if ('startViewTransition' in document) {
       const doc = document as Document & {
         startViewTransition: (callback: () => void) => void
@@ -69,48 +75,107 @@ function App() {
     }
   }
 
+  const handleBlogSelect = (slug: string) => {
+    setSelectedProject(null)
+    if ('startViewTransition' in document) {
+      const doc = document as Document & {
+        startViewTransition: (callback: () => void) => void
+      }
+      doc.startViewTransition(() => {
+        setSelectedBlogSlug(slug)
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+      })
+    } else {
+      setSelectedBlogSlug(slug)
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+  }
+
+  const handleBackFromBlog = () => {
+    if ('startViewTransition' in document) {
+      const doc = document as Document & {
+        startViewTransition: (callback: () => void) => void
+      }
+      doc.startViewTransition(() => {
+        setSelectedBlogSlug(null)
+        setTimeout(() => {
+          document.getElementById('blog')?.scrollIntoView({ behavior: 'smooth' })
+        }, 80)
+      })
+    } else {
+      setSelectedBlogSlug(null)
+      setTimeout(() => {
+        document.getElementById('blog')?.scrollIntoView({ behavior: 'smooth' })
+      }, 80)
+    }
+  }
+
+  return (
+    <div className="min-h-screen bg-white dark:bg-slate-900 transition-colors duration-300">
+      <Header />
+      {selectedProject !== null ? (
+        <main id="main-content">
+          <Suspense fallback={<ProjectLoadingFallback />}>
+            <ProjectDetail
+              key={selectedProject}
+              projectId={selectedProject}
+              onBack={handleBackToProjects}
+              onSelectProject={handleProjectSelect}
+            />
+          </Suspense>
+        </main>
+      ) : selectedBlogSlug !== null ? (
+        <main id="main-content">
+          <Suspense fallback={<ProjectLoadingFallback />}>
+            {(() => {
+              const post = getBlogPostBySlug(selectedBlogSlug)
+              if (!post) return null
+              return (
+                <BlogDetailView
+                  post={post}
+                  locale={lang}
+                  onBack={handleBackFromBlog}
+                  onSelectRelatedPost={handleBlogSelect}
+                />
+              )
+            })()}
+          </Suspense>
+        </main>
+      ) : (
+        <main id="main-content">
+          <Hero />
+          <About />
+          <AiWorkflow />
+          <Suspense
+            fallback={
+              <div id="projects" className="py-20 flex items-center justify-center min-h-[300px]">
+                <div className="w-10 h-10 border-4 border-purple-500/20 border-t-purple-600 rounded-full animate-spin" />
+              </div>
+            }
+          >
+            <Projects onProjectSelect={handleProjectSelect} />
+          </Suspense>
+          <Suspense fallback={<div className="min-h-[100px]" />}>
+            <Skills />
+            <B2bServices />
+            <FeaturedBlogSection onSelectPost={handleBlogSelect} />
+          </Suspense>
+          <Contact />
+        </main>
+      )}
+      <Footer />
+      {selectedProject === null && selectedBlogSlug === null && <ScrollToTopButton />}
+      <ConsentBanner />
+    </div>
+  )
+}
+
+function App() {
   return (
     <LanguageProvider>
       <ThemeProvider>
         <ConsentProvider>
-          <div className="min-h-screen bg-white dark:bg-slate-900 transition-colors duration-300">
-            <Header />
-            {selectedProject !== null ? (
-              <main id="main-content">
-                <Suspense fallback={<ProjectLoadingFallback />}>
-                  <ProjectDetail
-                    key={selectedProject}
-                    projectId={selectedProject}
-                    onBack={handleBackToProjects}
-                    onSelectProject={handleProjectSelect}
-                  />
-                </Suspense>
-              </main>
-            ) : (
-              <main id="main-content">
-                <Hero />
-                <About />
-                <AiWorkflow />
-                <Suspense
-                  fallback={
-                    <div id="projects" className="py-20 flex items-center justify-center min-h-[300px]">
-                      <div className="w-10 h-10 border-4 border-purple-500/20 border-t-purple-600 rounded-full animate-spin" />
-                    </div>
-                  }
-                >
-                  <Projects onProjectSelect={handleProjectSelect} />
-                </Suspense>
-                <Suspense fallback={<div className="min-h-[100px]" />}>
-                  <Skills />
-                  <B2bServices />
-                </Suspense>
-                <Contact />
-              </main>
-            )}
-            <Footer />
-            {selectedProject === null && <ScrollToTopButton />}
-            <ConsentBanner />
-          </div>
+          <PortfolioMain />
         </ConsentProvider>
       </ThemeProvider>
     </LanguageProvider>

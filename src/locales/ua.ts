@@ -722,8 +722,8 @@ export const ua: Translation = {
     tagline: 'Інженерія високопродуктивних вебпродуктів із прискоренням на базі штучного інтелекту.',
     legalNotice: '🛡️ Офіційне виставлення рахунків для компаній та фахівців у ЄС. Дотримання вимог RGPD та LOPDGDD.',
     copyright: 'Всі права захищені.',
-    madeWith: 'Зроблено',
-    techUsing: 'на базі React & TypeScript. Tailwind CSS',
+    madeWith: 'Розроблено на',
+    techUsing: 'Next.js 16, React 19, TypeScript, Tailwind CSS та гібридному RAG AI-асистенті',
     cookieSettings: 'Налаштування cookies',
   },
   consent: {

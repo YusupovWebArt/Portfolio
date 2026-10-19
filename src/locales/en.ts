@@ -723,8 +723,8 @@ export const en: Translation = {
     tagline: 'Engineering high-performance web products with AI-augmented velocity.',
     legalNotice: '🛡️ Invoicing compliant with EU regulations for professionals and businesses. Adherence to GDPR & LOPDGDD standards.',
     copyright: 'All rights reserved.',
-    madeWith: 'Made',
-    techUsing: 'using React & TypeScript. Tailwind CSS',
+    madeWith: 'Built with',
+    techUsing: 'Next.js 16, React 19, TypeScript, Tailwind CSS & Hybrid RAG AI Assistant',
     cookieSettings: 'Cookie Settings',
   },
   consent: {

@@ -6,7 +6,7 @@ import { useConsent } from "../contexts/ConsentContext";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   const { openSettings } = useConsent();
 
   return (
@@ -54,6 +54,19 @@ const Footer = () => {
               className="text-slate-300 dark:text-slate-400 hover:text-white transition-colors"
             >
               {t.b2bServices.badge}
+            </a>
+            <a
+              href={`/${lang}/blog`}
+              onClick={(e) => {
+                if (typeof window !== 'undefined' && window.location.pathname.startsWith('/Portfolio')) {
+                  e.preventDefault()
+                  window.dispatchEvent(new CustomEvent('open-blog-view'))
+                  window.scrollTo({ top: 0, behavior: 'smooth' })
+                }
+              }}
+              className="text-slate-300 dark:text-slate-400 hover:text-white transition-colors"
+            >
+              {lang === 'ua' ? 'Блог' : lang === 'es' ? 'Blog' : 'Blog'}
             </a>
             <a
               href="#contact"
