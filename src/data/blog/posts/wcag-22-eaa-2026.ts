@@ -33,7 +33,7 @@ export const wcag22Eaa2026Post: BlogPost = {
       es: 'Ingeniero Web Fullstack y Desarrollador IA',
     },
   },
-  coverImage: '/Portfolio/images/portfolio/projects/wordpress/alldaymedicalcare/alldaymedicalcare-1.webp',
+  coverImage: '/Portfolio/images/portfolio/projects/wordpress/all-day-medical-care-clinic.webp',
   tldr: {
     en: [
       'The European Accessibility Act (Directive 2019/882 / EN 301 549) establishes legally binding digital accessibility requirements for businesses operating in the EU.',

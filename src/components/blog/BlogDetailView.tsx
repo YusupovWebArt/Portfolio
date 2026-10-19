@@ -14,6 +14,7 @@ import {
   Sparkles,
 } from 'lucide-react'
 import type { BlogPost } from '../../data/blog'
+import MarkdownRenderer from './MarkdownRenderer'
 import {
   getBlogTitle,
   getBlogDescription,
@@ -28,6 +29,7 @@ interface BlogDetailViewProps {
   post: BlogPost
   locale: string
   onBack?: () => void
+  onBackToPortfolio?: () => void
   onSelectRelatedPost?: (slug: string) => void
 }
 
@@ -35,6 +37,7 @@ export default function BlogDetailView({
   post,
   locale,
   onBack,
+  onBackToPortfolio,
   onSelectRelatedPost,
 }: BlogDetailViewProps) {
   const title = getBlogTitle(post, locale)
@@ -85,15 +88,35 @@ export default function BlogDetailView({
         <nav aria-label="Breadcrumb" className="mb-8">
           <ol className="flex items-center space-x-2 text-xs sm:text-sm text-slate-500 dark:text-slate-400">
             <li>
-              <Link href={`/${locale}`} className="hover:text-purple-600 dark:hover:text-lime-400 transition">
-                {locale === 'ua' ? 'Головна' : locale === 'es' ? 'Inicio' : 'Home'}
-              </Link>
+              {onBackToPortfolio ? (
+                <button
+                  type="button"
+                  onClick={onBackToPortfolio}
+                  className="hover:text-purple-600 dark:hover:text-lime-400 transition cursor-pointer"
+                >
+                  {locale === 'ua' ? 'Головна' : locale === 'es' ? 'Inicio' : 'Home'}
+                </button>
+              ) : (
+                <Link href={`/${locale}`} className="hover:text-purple-600 dark:hover:text-lime-400 transition">
+                  {locale === 'ua' ? 'Головна' : locale === 'es' ? 'Inicio' : 'Home'}
+                </Link>
+              )}
             </li>
             <li aria-hidden="true">/</li>
             <li>
-              <Link href={`/${locale}/blog`} className="hover:text-purple-600 dark:hover:text-lime-400 transition">
-                {locale === 'ua' ? 'Блог' : locale === 'es' ? 'Blog' : 'Blog'}
-              </Link>
+              {onBack ? (
+                <button
+                  type="button"
+                  onClick={onBack}
+                  className="hover:text-purple-600 dark:hover:text-lime-400 transition cursor-pointer"
+                >
+                  {locale === 'ua' ? 'Блог' : locale === 'es' ? 'Blog' : 'Blog'}
+                </button>
+              ) : (
+                <Link href={`/${locale}/blog`} className="hover:text-purple-600 dark:hover:text-lime-400 transition">
+                  {locale === 'ua' ? 'Блог' : locale === 'es' ? 'Blog' : 'Blog'}
+                </Link>
+              )}
             </li>
             <li aria-hidden="true">/</li>
             <li className="text-slate-800 dark:text-slate-200 font-medium truncate max-w-xs sm:max-w-md">
@@ -188,6 +211,21 @@ export default function BlogDetailView({
           </div>
         </header>
 
+        {/* Cover Image */}
+        {post.coverImage && (
+          <div className="mb-10 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-md h-64 sm:h-96 w-full bg-slate-100 dark:bg-slate-800">
+            <img
+              src={post.coverImage}
+              alt={title}
+              onError={(e) => {
+                const parent = (e.currentTarget as HTMLElement).parentElement
+                if (parent) parent.style.display = 'none'
+              }}
+              className="w-full h-full object-cover"
+            />
+          </div>
+        )}
+
         {/* Executive TL;DR Box */}
         {tldr.length > 0 && (
           <aside className="mb-10 p-6 bg-slate-50 dark:bg-slate-800/80 rounded-2xl border border-purple-200/70 dark:border-lime-500/30 shadow-xs">
@@ -206,9 +244,9 @@ export default function BlogDetailView({
           </aside>
         )}
 
-        {/* Main Content Body */}
-        <div className="prose prose-slate dark:prose-invert max-w-none text-slate-800 dark:text-slate-200 leading-relaxed text-base sm:text-lg mb-16 whitespace-pre-line font-normal">
-          {content}
+        {/* Main Content Body with Semantic Markdown & Tables */}
+        <div className="mb-16">
+          <MarkdownRenderer content={content} />
         </div>
 
         {/* AI & Engineering Discussion CTA */}
@@ -242,12 +280,27 @@ export default function BlogDetailView({
               <MessageSquare className="w-4 h-4" aria-hidden="true" />
               <span>{locale === 'ua' ? 'Запитати AI-асистента' : locale === 'es' ? 'Consultar al Asistente IA' : 'Ask AI Assistant'}</span>
             </button>
-            <Link
-              href={`/${locale}#contact`}
-              className="w-full sm:w-auto px-5 py-3 rounded-xl font-bold text-sm bg-white/10 hover:bg-white/20 text-white border border-white/20 transition-all flex items-center justify-center"
-            >
-              <span>{locale === 'ua' ? 'Написати напряму' : locale === 'es' ? 'Contactar directamente' : 'Contact Directly'}</span>
-            </Link>
+            {onBackToPortfolio ? (
+              <button
+                type="button"
+                onClick={() => {
+                  onBackToPortfolio()
+                  setTimeout(() => {
+                    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
+                  }, 100)
+                }}
+                className="w-full sm:w-auto px-5 py-3 rounded-xl font-bold text-sm bg-white/10 hover:bg-white/20 text-white border border-white/20 transition-all flex items-center justify-center cursor-pointer"
+              >
+                <span>{locale === 'ua' ? 'Написати напряму' : locale === 'es' ? 'Contactar directamente' : 'Contact Directly'}</span>
+              </button>
+            ) : (
+              <Link
+                href={`/${locale}#contact`}
+                className="w-full sm:w-auto px-5 py-3 rounded-xl font-bold text-sm bg-white/10 hover:bg-white/20 text-white border border-white/20 transition-all flex items-center justify-center"
+              >
+                <span>{locale === 'ua' ? 'Написати напряму' : locale === 'es' ? 'Contactar directamente' : 'Contact Directly'}</span>
+              </Link>
+            )}
           </div>
         </div>
 

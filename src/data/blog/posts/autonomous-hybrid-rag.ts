@@ -33,7 +33,7 @@ export const autonomousHybridRagPost: BlogPost = {
       es: 'Ingeniero Web Fullstack y Desarrollador IA',
     },
   },
-  coverImage: '/Portfolio/images/portfolio/projects/nextjs/yusupovartur-nextjs-portfolio/yusupovartur-nextjs-portfolio-1.webp',
+  coverImage: '/Portfolio/images/portfolio/projects/wordpress/it-magic.webp',
   tldr: {
     en: [
       'For knowledge bases under 10,000 documents, paying $50-$200/month for cloud vector databases like Pinecone or Milvus is architectural overkill.',

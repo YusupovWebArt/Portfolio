@@ -150,15 +150,25 @@ const Header = () => {
   }, [t])
 
   const scrollToSection = (sectionId: string) => {
+    const isSpa =
+      typeof window !== 'undefined' &&
+      (window.location.pathname.startsWith('/Portfolio') || window.location.port === '5173')
     const element = document.getElementById(sectionId)
+
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' })
     } else if (sectionId === 'blog') {
-      const isGitHubPages = typeof window !== 'undefined' && window.location.pathname.startsWith('/Portfolio')
-      if (isGitHubPages) {
+      if (isSpa) {
         window.dispatchEvent(new CustomEvent('open-blog-view'))
+        window.scrollTo({ top: 0, behavior: 'smooth' })
       } else {
         window.location.assign(`/${lang}/blog`)
+      }
+    } else {
+      if (isSpa) {
+        window.dispatchEvent(new CustomEvent('navigate-to-section', { detail: sectionId }))
+      } else {
+        window.location.assign(`/${lang}#${sectionId}`)
       }
     }
     setIsMenuOpen(false)

@@ -9,6 +9,24 @@ const Footer = () => {
   const { t, lang } = useLanguage();
   const { openSettings } = useConsent();
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
+    const isSpa =
+      typeof window !== 'undefined' &&
+      (window.location.pathname.startsWith('/Portfolio') || window.location.port === '5173')
+    const element = document.getElementById(sectionId)
+
+    if (element) {
+      e.preventDefault()
+      element.scrollIntoView({ behavior: 'smooth' })
+    } else if (isSpa) {
+      e.preventDefault()
+      window.dispatchEvent(new CustomEvent('navigate-to-section', { detail: sectionId }))
+    } else {
+      e.preventDefault()
+      window.location.assign(`/${lang}#${sectionId}`)
+    }
+  }
+
   return (
     <footer className="bg-slate-900 dark:bg-slate-950 text-white py-12 transition-colors duration-300">
       <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
@@ -27,50 +45,59 @@ const Footer = () => {
           <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-8 mb-8">
             <a
               href="#home"
-              className="text-slate-300 dark:text-slate-400 hover:text-white transition-colors"
+              onClick={(e) => handleNavClick(e, 'home')}
+              className="text-slate-300 dark:text-slate-400 hover:text-white transition-colors cursor-pointer"
             >
               {t.header.nav.home}
             </a>
             <a
               href="#about"
-              className="text-slate-300 dark:text-slate-400 hover:text-white transition-colors"
+              onClick={(e) => handleNavClick(e, 'about')}
+              className="text-slate-300 dark:text-slate-400 hover:text-white transition-colors cursor-pointer"
             >
               {t.header.nav.about}
             </a>
             <a
               href="#projects"
-              className="text-slate-300 dark:text-slate-400 hover:text-white transition-colors"
+              onClick={(e) => handleNavClick(e, 'projects')}
+              className="text-slate-300 dark:text-slate-400 hover:text-white transition-colors cursor-pointer"
             >
               {t.header.nav.projects}
             </a>
             <a
               href="#skills"
-              className="text-slate-300 dark:text-slate-400 hover:text-white transition-colors"
+              onClick={(e) => handleNavClick(e, 'skills')}
+              className="text-slate-300 dark:text-slate-400 hover:text-white transition-colors cursor-pointer"
             >
               {t.header.nav.skills}
             </a>
             <a
               href="#b2b-services"
-              className="text-slate-300 dark:text-slate-400 hover:text-white transition-colors"
+              onClick={(e) => handleNavClick(e, 'b2b-services')}
+              className="text-slate-300 dark:text-slate-400 hover:text-white transition-colors cursor-pointer"
             >
               {t.b2bServices.badge}
             </a>
             <a
               href={`/${lang}/blog`}
               onClick={(e) => {
-                if (typeof window !== 'undefined' && window.location.pathname.startsWith('/Portfolio')) {
+                const isSpa =
+                  typeof window !== 'undefined' &&
+                  (window.location.pathname.startsWith('/Portfolio') || window.location.port === '5173')
+                if (isSpa) {
                   e.preventDefault()
                   window.dispatchEvent(new CustomEvent('open-blog-view'))
                   window.scrollTo({ top: 0, behavior: 'smooth' })
                 }
               }}
-              className="text-slate-300 dark:text-slate-400 hover:text-white transition-colors"
+              className="text-slate-300 dark:text-slate-400 hover:text-white transition-colors cursor-pointer"
             >
               {lang === 'ua' ? 'Блог' : lang === 'es' ? 'Blog' : 'Blog'}
             </a>
             <a
               href="#contact"
-              className="text-slate-300 dark:text-slate-400 hover:text-white transition-colors"
+              onClick={(e) => handleNavClick(e, 'contact')}
+              className="text-slate-300 dark:text-slate-400 hover:text-white transition-colors cursor-pointer"
             >
               {t.header.nav.contact}
             </a>

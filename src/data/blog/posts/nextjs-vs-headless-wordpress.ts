@@ -33,7 +33,7 @@ export const nextjsVsHeadlessWordPressPost: BlogPost = {
       es: 'Ingeniero Web Fullstack y Desarrollador IA',
     },
   },
-  coverImage: '/Portfolio/images/portfolio/projects/nextjs/unitrition/unitrition-1.webp',
+  coverImage: '/Portfolio/images/portfolio/projects/nextjs/unitrition/screenshot-unitrition.webp',
   tldr: {
     en: [
       'Custom PHP/WordPress remains the most cost-effective option for SMBs without complex interactive interfaces ($5-$15/month hosting).',

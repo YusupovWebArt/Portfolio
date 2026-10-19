@@ -1,4 +1,4 @@
-import { useState, lazy, Suspense } from 'react'
+import { useState, useEffect, lazy, Suspense } from 'react'
 import { ThemeProvider } from './contexts/ThemeContext'
 import { LanguageProvider, useLanguage } from './contexts/LanguageContext'
 import { ConsentProvider } from './contexts/ConsentContext'
@@ -15,7 +15,7 @@ const ProjectDetail = lazy(() => import('./components/ProjectDetail'))
 const Projects = lazy(() => import('./components/Projects'))
 const Skills = lazy(() => import('./components/Skills'))
 const B2bServices = lazy(() => import('./components/B2bServices'))
-const FeaturedBlogSection = lazy(() => import('./components/blog/FeaturedBlogSection'))
+const BlogCatalogView = lazy(() => import('./components/blog/BlogCatalogView'))
 const BlogDetailView = lazy(() => import('./components/blog/BlogDetailView'))
 import { getBlogPostBySlug } from './data/blog'
 
@@ -37,9 +37,41 @@ function PortfolioMain() {
   const { lang } = useLanguage()
   const [selectedProject, setSelectedProject] = useState<number | null>(null)
   const [selectedBlogSlug, setSelectedBlogSlug] = useState<string | null>(null)
+  const [isBlogCatalog, setIsBlogCatalog] = useState(false)
+
+  useEffect(() => {
+    const handleOpenBlog = () => {
+      setIsBlogCatalog(true)
+      setSelectedBlogSlug(null)
+      setSelectedProject(null)
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+
+    const handleNavigateToSection = (e: Event) => {
+      const customEvent = e as CustomEvent<string>
+      const sectionId = customEvent.detail
+      setIsBlogCatalog(false)
+      setSelectedBlogSlug(null)
+      setSelectedProject(null)
+      if (sectionId) {
+        setTimeout(() => {
+          document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' })
+        }, 100)
+      }
+    }
+
+    window.addEventListener('open-blog-view', handleOpenBlog)
+    window.addEventListener('navigate-to-section', handleNavigateToSection as EventListener)
+
+    return () => {
+      window.removeEventListener('open-blog-view', handleOpenBlog)
+      window.removeEventListener('navigate-to-section', handleNavigateToSection as EventListener)
+    }
+  }, [])
 
   const handleProjectSelect = (projectId: number) => {
     setSelectedBlogSlug(null)
+    setIsBlogCatalog(false)
     if ('startViewTransition' in document) {
       const doc = document as Document & {
         startViewTransition: (callback: () => void) => void
@@ -77,6 +109,7 @@ function PortfolioMain() {
 
   const handleBlogSelect = (slug: string) => {
     setSelectedProject(null)
+    setIsBlogCatalog(false)
     if ('startViewTransition' in document) {
       const doc = document as Document & {
         startViewTransition: (callback: () => void) => void
@@ -91,23 +124,16 @@ function PortfolioMain() {
     }
   }
 
-  const handleBackFromBlog = () => {
-    if ('startViewTransition' in document) {
-      const doc = document as Document & {
-        startViewTransition: (callback: () => void) => void
-      }
-      doc.startViewTransition(() => {
-        setSelectedBlogSlug(null)
-        setTimeout(() => {
-          document.getElementById('blog')?.scrollIntoView({ behavior: 'smooth' })
-        }, 80)
-      })
-    } else {
-      setSelectedBlogSlug(null)
-      setTimeout(() => {
-        document.getElementById('blog')?.scrollIntoView({ behavior: 'smooth' })
-      }, 80)
-    }
+  const handleBackFromBlogDetail = () => {
+    setSelectedBlogSlug(null)
+    setIsBlogCatalog(true)
+    window.scrollTo({ top: 0, behavior: 'smooth' })
+  }
+
+  const handleBackToPortfolio = () => {
+    setSelectedBlogSlug(null)
+    setIsBlogCatalog(false)
+    window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
   return (
@@ -134,11 +160,22 @@ function PortfolioMain() {
                 <BlogDetailView
                   post={post}
                   locale={lang}
-                  onBack={handleBackFromBlog}
+                  onBack={handleBackFromBlogDetail}
+                  onBackToPortfolio={handleBackToPortfolio}
                   onSelectRelatedPost={handleBlogSelect}
                 />
               )
             })()}
+          </Suspense>
+        </main>
+      ) : isBlogCatalog ? (
+        <main id="main-content">
+          <Suspense fallback={<ProjectLoadingFallback />}>
+            <BlogCatalogView
+              locale={lang}
+              onBack={handleBackToPortfolio}
+              onSelectPost={handleBlogSelect}
+            />
           </Suspense>
         </main>
       ) : (
@@ -158,13 +195,12 @@ function PortfolioMain() {
           <Suspense fallback={<div className="min-h-[100px]" />}>
             <Skills />
             <B2bServices />
-            <FeaturedBlogSection onSelectPost={handleBlogSelect} />
           </Suspense>
           <Contact />
         </main>
       )}
       <Footer />
-      {selectedProject === null && selectedBlogSlug === null && <ScrollToTopButton />}
+      {selectedProject === null && selectedBlogSlug === null && !isBlogCatalog && <ScrollToTopButton />}
       <ConsentBanner />
     </div>
   )

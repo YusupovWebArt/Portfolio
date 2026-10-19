@@ -7,7 +7,6 @@ import About from '../../src/components/About'
 import AiWorkflow from '../../src/components/AiWorkflow'
 import Skills from '../../src/components/Skills'
 import B2bServices from '../../src/components/B2bServices'
-import FeaturedBlogSection from '../../src/components/blog/FeaturedBlogSection'
 import Contact from '../../src/components/Contact'
 import Projects from '../../src/components/Projects'
 import { getAllProjectEntries } from '../../src/lib/projects'
@@ -41,7 +40,6 @@ export default function LandingPage() {
       </Suspense>
       <Skills />
       <B2bServices />
-      <FeaturedBlogSection />
       <Contact />
     </main>
   )

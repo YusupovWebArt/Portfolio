@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react'
 import Link from 'next/link'
-import { ArrowRight, Clock, Calendar, Tag, BookOpen } from 'lucide-react'
+import { ArrowRight, ArrowLeft, Clock, Calendar, Tag, BookOpen } from 'lucide-react'
 import {
   allBlogPosts,
   getBlogTitle,
@@ -14,9 +14,15 @@ import {
 
 interface BlogCatalogViewProps {
   locale: string
+  onBack?: () => void
+  onSelectPost?: (slug: string) => void
 }
 
-export default function BlogCatalogView({ locale }: BlogCatalogViewProps) {
+export default function BlogCatalogView({
+  locale,
+  onBack,
+  onSelectPost,
+}: BlogCatalogViewProps) {
   const [selectedCategory, setSelectedCategory] = useState<string>('all')
 
   const categories = [
@@ -47,6 +53,19 @@ export default function BlogCatalogView({ locale }: BlogCatalogViewProps) {
   return (
     <div className="min-h-screen pt-24 pb-20 bg-slate-50 dark:bg-slate-900 transition-colors duration-300">
       <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
+        {onBack && (
+          <div className="mb-6">
+            <button
+              type="button"
+              onClick={onBack}
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 transition cursor-pointer"
+            >
+              <ArrowLeft className="w-3.5 h-3.5" aria-hidden="true" />
+              <span>{locale === 'ua' ? 'Назад до портфоліо' : locale === 'es' ? 'Volver al portafolio' : 'Back to Portfolio'}</span>
+            </button>
+          </div>
+        )}
+
         {/* Header */}
         <div className="text-center max-w-4xl mx-auto mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-purple-100 dark:bg-lime-500/10 text-purple-700 dark:text-lime-400 border border-purple-200 dark:border-lime-500/20 mb-4">
@@ -101,6 +120,9 @@ export default function BlogCatalogView({ locale }: BlogCatalogViewProps) {
                       src={post.coverImage}
                       alt={title}
                       loading="lazy"
+                      onError={(e) => {
+                        (e.currentTarget as HTMLElement).style.display = 'none'
+                      }}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                     <div className="absolute top-3 left-3">
@@ -123,9 +145,19 @@ export default function BlogCatalogView({ locale }: BlogCatalogViewProps) {
                       </span>
                     </div>
 
-                    <h2 className="text-xl font-bold text-slate-900 dark:text-white line-clamp-2 mb-3 group-hover:text-purple-600 dark:group-hover:text-lime-400 transition-colors">
-                      <Link href={articleUrl}>{title}</Link>
-                    </h2>
+                    {onSelectPost ? (
+                      <button
+                        type="button"
+                        onClick={() => onSelectPost(post.slug)}
+                        className="text-xl font-bold text-slate-900 dark:text-white line-clamp-2 mb-3 group-hover:text-purple-600 dark:group-hover:text-lime-400 transition-colors text-left cursor-pointer"
+                      >
+                        {title}
+                      </button>
+                    ) : (
+                      <h2 className="text-xl font-bold text-slate-900 dark:text-white line-clamp-2 mb-3 group-hover:text-purple-600 dark:group-hover:text-lime-400 transition-colors">
+                        <Link href={articleUrl}>{title}</Link>
+                      </h2>
+                    )}
 
                     <p className="text-sm text-slate-600 dark:text-slate-300 line-clamp-3 leading-relaxed mb-4">
                       {desc}
@@ -162,13 +194,24 @@ export default function BlogCatalogView({ locale }: BlogCatalogViewProps) {
                     ))}
                   </div>
 
-                  <Link
-                    href={articleUrl}
-                    className="inline-flex items-center gap-1.5 text-xs font-bold text-purple-600 dark:text-lime-400 hover:text-purple-800 dark:hover:text-lime-300 transition-colors"
-                  >
-                    <span>{locale === 'ua' ? 'Читати статтю' : locale === 'es' ? 'Leer artículo' : 'Read Article'}</span>
-                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
-                  </Link>
+                  {onSelectPost ? (
+                    <button
+                      type="button"
+                      onClick={() => onSelectPost(post.slug)}
+                      className="inline-flex items-center gap-1.5 text-xs font-bold text-purple-600 dark:text-lime-400 hover:text-purple-800 dark:hover:text-lime-300 transition-colors cursor-pointer"
+                    >
+                      <span>{locale === 'ua' ? 'Читати статтю' : locale === 'es' ? 'Leer artículo' : 'Read Article'}</span>
+                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+                    </button>
+                  ) : (
+                    <Link
+                      href={articleUrl}
+                      className="inline-flex items-center gap-1.5 text-xs font-bold text-purple-600 dark:text-lime-400 hover:text-purple-800 dark:hover:text-lime-300 transition-colors"
+                    >
+                      <span>{locale === 'ua' ? 'Читати статтю' : locale === 'es' ? 'Leer artículo' : 'Read Article'}</span>
+                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
+                    </Link>
+                  )}
                 </div>
               </article>
             )
