@@ -33,7 +33,29 @@ export const nextjsVsHeadlessWordPressPost: BlogPost = {
       es: 'Ingeniero Web Fullstack y Desarrollador IA',
     },
   },
-  coverImage: '/Portfolio/images/portfolio/projects/nextjs/unitrition/screenshot-unitrition.webp',
+  coverImage: '/Portfolio/images/blog/cover-nextjs-vs-headless-wp.png',
+  appliedProjects: [
+    {
+      projectId: 2,
+      slug: 'unitrition',
+      name: 'Unitrition E-Commerce Platform',
+      note: {
+        en: 'Next.js 16 SSG/SSR e-commerce architecture delivering 0.3s FCP, zero bundle bloat, and sub-second catalog transitions.',
+        ua: 'E-commerce архітектура на Next.js 16 SSG/SSR із показником 0.3с FCP та субсекундними переходами каталогу.',
+        es: 'Arquitectura de comercio electrónico con Next.js 16 SSG/SSR con FCP de 0.3s y transiciones instantáneas en catálogo.',
+      },
+    },
+    {
+      projectId: 1,
+      slug: 'it-magic',
+      name: 'IT-Magic AWS Migration & Cloud Architecture',
+      note: {
+        en: 'Custom high-performance WordPress engineering with zero page-builder overhead, achieving 99/100 Core Web Vitals.',
+        ua: 'Кастомна високопродуктивна розробка на WordPress без конструкторів із 99/100 Core Web Vitals.',
+        es: 'Desarrollo en WordPress de alto rendimiento sin constructores visuales, alcanzando 99/100 en Core Web Vitals.',
+      },
+    },
+  ],
   tldr: {
     en: [
       'Custom PHP/WordPress remains the most cost-effective option for SMBs without complex interactive interfaces ($5-$15/month hosting).',

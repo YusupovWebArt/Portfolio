@@ -33,7 +33,29 @@ export const wcag22Eaa2026Post: BlogPost = {
       es: 'Ingeniero Web Fullstack y Desarrollador IA',
     },
   },
-  coverImage: '/Portfolio/images/portfolio/projects/wordpress/all-day-medical-care-clinic.webp',
+  coverImage: '/Portfolio/images/blog/cover-wcag-22-eaa.svg',
+  appliedProjects: [
+    {
+      projectId: 4,
+      slug: 'all-day-medical-care-clinic',
+      name: 'All Day Medical Care Clinic',
+      note: {
+        en: 'Healthcare web platform certified for WCAG 2.2 AA compliance, accessible keyboard traps prevention, and contrast ratios > 7:1.',
+        ua: 'Медична платформа, сертифікована за стандартом WCAG 2.2 AA із повною клавіатурною доступністю та контрастністю > 7:1.',
+        es: 'Plataforma sanitaria adaptada a WCAG 2.2 AA con navegación por teclado y ratios de contraste superiores a 7:1.',
+      },
+    },
+    {
+      projectId: 2,
+      slug: 'unitrition',
+      name: 'Unitrition E-Commerce Platform',
+      note: {
+        en: 'Accessible semantic e-commerce layout with zero keyboard traps, screen-reader optimized product filtering, and strict ARIA roles.',
+        ua: 'Доступна семантична e-commerce верстка без пасток фокусу, оптимізована для скрінрідерів із суворими ARIA-ролями.',
+        es: 'Maquetación accesible de comercio electrónico sin trampas de foco, filtrado adaptado a lectores de pantalla y roles ARIA estrictos.',
+      },
+    },
+  ],
   tldr: {
     en: [
       'The European Accessibility Act (Directive 2019/882 / EN 301 549) establishes legally binding digital accessibility requirements for businesses operating in the EU.',

@@ -54,6 +54,33 @@ describe('MarkdownRenderer Specification (TDD)', () => {
     expect(container.querySelectorAll('li').length).toBe(2)
   })
 
+  it('should render fenced code blocks with language badge and copy button', () => {
+    const content = `
+\`\`\`ts
+function test(): void {
+  console.log("hello");
+}
+\`\`\`
+`
+    const { container } = render(<MarkdownRenderer content={content} />)
+    expect(container.querySelector('pre')).not.toBeNull()
+    expect(screen.getByText('TS')).not.toBeNull()
+    expect(screen.getByRole('button', { name: /copy/i })).not.toBeNull()
+  })
+
+  it('should render sequential step badges for numbered step items', () => {
+    const content = `
+1. Stage 1: Lexical Analysis
+2. Stage 2: Cosine Similarity
+`
+    const { container } = render(<MarkdownRenderer content={content} />)
+    const steps = container.querySelectorAll('span.rounded-xl')
+    expect(steps.length).toBe(2)
+    expect(steps[0].textContent).toBe('1')
+    expect(steps[1].textContent).toBe('2')
+    expect(screen.getByText('Stage 1: Lexical Analysis')).not.toBeNull()
+  })
+
   it('should contain zero em dashes', () => {
     const content = `
 ## Architectural Deep Dive

@@ -33,7 +33,19 @@ export const autonomousHybridRagPost: BlogPost = {
       es: 'Ingeniero Web Fullstack y Desarrollador IA',
     },
   },
-  coverImage: '/Portfolio/images/portfolio/projects/wordpress/it-magic.webp',
+  coverImage: '/Portfolio/images/blog/cover-autonomous-hybrid-rag.png',
+  appliedProjects: [
+    {
+      projectId: 70,
+      slug: 'yusupovartur-nextjs-portfolio',
+      name: 'Next.js 16 & Hybrid RAG Portfolio Platform',
+      note: {
+        en: 'Primary reference implementation: In-browser vector retrieval, cosine similarity ranking, and instant conversational tool orchestration.',
+        ua: 'Головна референсна реалізація: браузерний векторний пошук, ранжування за косинусною подібністю та автономний діалоговий рушій.',
+        es: 'Implementación de referencia principal: búsqueda vectorial en cliente, cálculo de similitud coseno y asistente conversacional instantáneo.',
+      },
+    },
+  ],
   tldr: {
     en: [
       'For knowledge bases under 10,000 documents, paying $50-$200/month for cloud vector databases like Pinecone or Milvus is architectural overkill.',

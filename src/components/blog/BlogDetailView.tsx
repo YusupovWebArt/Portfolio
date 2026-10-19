@@ -5,6 +5,7 @@ import Link from 'next/link'
 import {
   ArrowLeft,
   ArrowRight,
+  ArrowUpRight,
   Calendar,
   Clock,
   BookOpen,
@@ -31,6 +32,7 @@ interface BlogDetailViewProps {
   onBack?: () => void
   onBackToPortfolio?: () => void
   onSelectRelatedPost?: (slug: string) => void
+  onSelectProject?: (projectId: number) => void
 }
 
 export default function BlogDetailView({
@@ -39,6 +41,7 @@ export default function BlogDetailView({
   onBack,
   onBackToPortfolio,
   onSelectRelatedPost,
+  onSelectProject,
 }: BlogDetailViewProps) {
   const title = getBlogTitle(post, locale)
   const description = getBlogDescription(post, locale)
@@ -209,6 +212,40 @@ export default function BlogDetailView({
               </button>
             </div>
           </div>
+
+          {post.appliedProjects && post.appliedProjects.length > 0 && (
+            <div className="flex flex-wrap items-center gap-2 pt-4 mt-4 border-t border-slate-100 dark:border-white/5">
+              <span className="text-xs font-bold uppercase tracking-wider text-purple-700 dark:text-lime-400 flex items-center gap-1.5">
+                <CheckCircle2 className="w-3.5 h-3.5" aria-hidden="true" />
+                <span>{locale === 'ua' ? 'Впроваджено в проєктах:' : locale === 'es' ? 'Aplicado en producción:' : 'Production Proof:'}</span>
+              </span>
+              {post.appliedProjects.map((p) => {
+                const btnContent = (
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 hover:bg-purple-100 dark:bg-slate-800 dark:hover:bg-lime-500/20 text-slate-800 dark:text-slate-200 hover:text-purple-700 dark:hover:text-lime-300 border border-slate-200 dark:border-slate-700 transition">
+                    <span>{p.name}</span>
+                    <ArrowUpRight className="w-3 h-3" aria-hidden="true" />
+                  </span>
+                )
+                if (onSelectProject) {
+                  return (
+                    <button
+                      key={p.projectId}
+                      type="button"
+                      onClick={() => onSelectProject(p.projectId)}
+                      className="cursor-pointer"
+                    >
+                      {btnContent}
+                    </button>
+                  )
+                }
+                return (
+                  <Link key={p.projectId} href={`/${locale}/projects/${p.slug}`}>
+                    {btnContent}
+                  </Link>
+                )
+              })}
+            </div>
+          )}
         </header>
 
         {/* Cover Image */}
@@ -248,6 +285,68 @@ export default function BlogDetailView({
         <div className="mb-16">
           <MarkdownRenderer content={content} />
         </div>
+
+        {/* Applied Production Case Studies Section */}
+        {post.appliedProjects && post.appliedProjects.length > 0 && (
+          <section className="mb-16 p-6 sm:p-8 rounded-3xl bg-slate-50 dark:bg-slate-800/80 border border-purple-200/80 dark:border-lime-500/30 shadow-md">
+            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-purple-700 dark:text-lime-400 mb-2">
+              <Sparkles className="w-4 h-4" aria-hidden="true" />
+              <span>{locale === 'ua' ? 'Практичне впровадження в коді' : locale === 'es' ? 'Implementación real en producción' : 'Battle-Tested Production Proof'}</span>
+            </div>
+            <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white mb-2">
+              {locale === 'ua' ? 'Де ця архітектура працює у моєму портфоліо' : locale === 'es' ? 'Dónde funciona esta arquitectura en proyectos reales' : 'Where This Architecture is Deployed in Production'}
+            </h3>
+            <p className="text-sm text-slate-600 dark:text-slate-300 mb-6">
+              {locale === 'ua'
+                ? 'Ці інженерні рішення не є абстрактною теорією - вони повністю реалізовані та перевірені у наступних робочих продуктах:'
+                : locale === 'es'
+                  ? 'Estas soluciones no son teoría abstracta: están desplegadas y verificadas en los siguientes productos reales:'
+                  : 'These architectural patterns are not abstract theory - they are fully deployed and benchmarked in these live production builds:'}
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {post.appliedProjects.map((p) => {
+                const noteText = p.note[locale === 'ua' || locale === 'es' ? locale : 'en']
+                const cardBody = (
+                  <div className="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 hover:border-purple-300 dark:hover:border-lime-500/40 transition-all flex flex-col justify-between group h-full">
+                    <div>
+                      <div className="flex items-center justify-between mb-2">
+                        <h4 className="font-bold text-base text-slate-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-lime-400 transition-colors">
+                          {p.name}
+                        </h4>
+                        <ArrowUpRight className="w-4 h-4 text-purple-600 dark:text-lime-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" aria-hidden="true" />
+                      </div>
+                      <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
+                        {noteText}
+                      </p>
+                    </div>
+                    <div className="text-xs font-bold text-purple-600 dark:text-lime-400 flex items-center gap-1">
+                      <span>{locale === 'ua' ? 'Переглянути кейс' : locale === 'es' ? 'Ver caso de estudio' : 'Explore Case Study'}</span>
+                      <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
+                    </div>
+                  </div>
+                )
+
+                if (onSelectProject) {
+                  return (
+                    <button
+                      key={p.projectId}
+                      type="button"
+                      onClick={() => onSelectProject(p.projectId)}
+                      className="text-left cursor-pointer h-full"
+                    >
+                      {cardBody}
+                    </button>
+                  )
+                }
+                return (
+                  <Link key={p.projectId} href={`/${locale}/projects/${p.slug}`} className="h-full block">
+                    {cardBody}
+                  </Link>
+                )
+              })}
+            </div>
+          </section>
+        )}
 
         {/* AI & Engineering Discussion CTA */}
         <div className="p-8 mb-16 rounded-3xl bg-gradient-to-br from-purple-900/90 to-slate-900 text-white border border-purple-500/30 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">

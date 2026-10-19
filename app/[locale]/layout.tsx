@@ -42,6 +42,12 @@ export const metadata: Metadata = {
     description:
       'Engineering high-performance web products, custom WordPress, React 19 apps & AI automation for businesses and agencies in Spain.',
   },
+  other: {
+    'geo.region': 'ES-AN',
+    'geo.placename': 'Seville, Spain',
+    'geo.position': '37.3891;-5.9845',
+    'ICBM': '37.3891, -5.9845',
+  },
 }
 
 export function generateStaticParams() {

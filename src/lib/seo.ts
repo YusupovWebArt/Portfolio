@@ -188,12 +188,19 @@ export function buildBlogPostJsonLd(
       '@type': 'Person',
       name: 'Artur Yusupov',
       url: baseUrl,
+      jobTitle: 'Senior Fullstack Web Engineer & AI Developer',
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Seville',
+        addressCountry: 'ES',
+      },
     },
     publisher: {
       '@type': 'Person',
       name: 'Artur Yusupov',
       url: baseUrl,
     },
+    spatialCoverage: 'Spain, European Union',
   }
 }
 

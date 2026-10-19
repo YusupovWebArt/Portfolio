@@ -163,6 +163,7 @@ function PortfolioMain() {
                   onBack={handleBackFromBlogDetail}
                   onBackToPortfolio={handleBackToPortfolio}
                   onSelectRelatedPost={handleBlogSelect}
+                  onSelectProject={handleProjectSelect}
                 />
               )
             })()}

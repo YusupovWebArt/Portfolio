@@ -1,10 +1,66 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
+import { Copy, Check } from 'lucide-react'
 
 interface MarkdownRendererProps {
   content: string
   className?: string
+}
+
+function CodeBlock({ code, language }: { code: string; language: string }) {
+  const [copied, setCopied] = useState(false)
+
+  const handleCopy = () => {
+    if (typeof navigator !== 'undefined' && navigator.clipboard) {
+      navigator.clipboard.writeText(code)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    }
+  }
+
+  const langDisplay = language ? language.toUpperCase() : 'CODE'
+
+  return (
+    <div className="my-6 rounded-2xl overflow-hidden border border-slate-700/80 bg-slate-950 shadow-xl">
+      <div className="flex items-center justify-between px-4 py-2.5 bg-slate-900 border-b border-slate-800">
+        <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5" aria-hidden="true">
+            <span className="w-2.5 h-2.5 rounded-full bg-rose-500/80" />
+            <span className="w-2.5 h-2.5 rounded-full bg-amber-500/80" />
+            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/80" />
+          </div>
+          <span className="ml-2 text-[11px] font-mono font-bold tracking-wider text-slate-400">
+            {langDisplay}
+          </span>
+        </div>
+        <button
+          type="button"
+          onClick={handleCopy}
+          className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-700 transition cursor-pointer"
+          aria-label={copied ? 'Code copied' : 'Copy code to clipboard'}
+          title={copied ? 'Copied!' : 'Copy code'}
+        >
+          {copied ? (
+            <>
+              <Check className="w-3.5 h-3.5 text-lime-400" aria-hidden="true" />
+              <span className="text-lime-400 font-semibold text-[11px]">Copied!</span>
+            </>
+          ) : (
+            <>
+              <Copy className="w-3.5 h-3.5 text-slate-400" aria-hidden="true" />
+              <span className="text-[11px]">Copy</span>
+            </>
+          )}
+        </button>
+      </div>
+      <div className="p-4 overflow-x-auto text-xs sm:text-sm font-mono text-slate-200 leading-relaxed selection:bg-purple-900 selection:text-white">
+        <pre className="m-0 font-mono">
+          <code>{code}</code>
+        </pre>
+      </div>
+    </div>
+  )
 }
 
 function renderInline(text: string): React.ReactNode[] {
@@ -69,7 +125,8 @@ export default function MarkdownRenderer({ content, className = '' }: MarkdownRe
   let i = 0
 
   while (i < lines.length) {
-    const line = lines[i].trim()
+    const rawLine = lines[i]
+    const line = rawLine.trim()
 
     // Empty lines
     if (!line) {
@@ -86,6 +143,28 @@ export default function MarkdownRenderer({ content, className = '' }: MarkdownRe
         />
       )
       i++
+      continue
+    }
+
+    // Fenced Code Block (```lang ... ```)
+    if (line.startsWith('```')) {
+      const language = line.slice(3).trim()
+      const codeLines: string[] = []
+      i++
+      while (i < lines.length && !lines[i].trim().startsWith('```')) {
+        codeLines.push(lines[i])
+        i++
+      }
+      if (i < lines.length && lines[i].trim().startsWith('```')) {
+        i++
+      }
+      elements.push(
+        <CodeBlock
+          key={`code-${i}`}
+          code={codeLines.join('\n')}
+          language={language}
+        />
+      )
       continue
     }
 
@@ -193,10 +272,29 @@ export default function MarkdownRenderer({ content, className = '' }: MarkdownRe
       elements.push(
         <blockquote
           key={`quote-${i}`}
-          className="my-6 pl-4 border-l-4 border-purple-500 dark:border-lime-400 italic text-slate-600 dark:text-slate-300"
+          className="my-6 pl-4 py-2 border-l-4 border-purple-500 dark:border-lime-400 italic bg-purple-50/30 dark:bg-slate-800/40 rounded-r-xl text-slate-700 dark:text-slate-300 text-sm sm:text-base"
         >
           {renderInline(line.slice(2))}
         </blockquote>
+      )
+      i++
+      continue
+    }
+
+    // Numbered step (e.g. "1. Stage 1: ...", "2. **Stage 2**")
+    const stepMatch = /^(\d+)\.\s+(.*)$/.exec(line)
+    if (stepMatch) {
+      const stepNum = stepMatch[1]
+      const stepText = stepMatch[2]
+      elements.push(
+        <div key={`step-${i}`} className="my-5 flex items-start gap-3">
+          <span className="inline-flex items-center justify-center w-7 h-7 rounded-xl bg-purple-100 dark:bg-lime-500/15 text-purple-700 dark:text-lime-400 text-xs font-extrabold shrink-0 mt-0.5 border border-purple-200/80 dark:border-lime-500/30 shadow-xs">
+            {stepNum}
+          </span>
+          <div className="flex-1 text-slate-900 dark:text-white text-base sm:text-lg font-bold leading-snug">
+            {renderInline(stepText)}
+          </div>
+        </div>
       )
       i++
       continue
@@ -213,8 +311,8 @@ export default function MarkdownRenderer({ content, className = '' }: MarkdownRe
         <ul key={`ul-${i}`} className="my-4 space-y-2 text-slate-700 dark:text-slate-300">
           {listItems.map((item, idx) => (
             <li key={idx} className="flex items-start gap-2.5">
-              <span className="w-1.5 h-1.5 rounded-full bg-purple-600 dark:bg-lime-400 mt-2 shrink-0" />
-              <span>{renderInline(item)}</span>
+              <span className="w-1.5 h-1.5 rounded-full bg-purple-600 dark:bg-lime-400 mt-2.5 shrink-0" />
+              <span className="text-sm sm:text-base leading-relaxed">{renderInline(item)}</span>
             </li>
           ))}
         </ul>
@@ -222,26 +320,7 @@ export default function MarkdownRenderer({ content, className = '' }: MarkdownRe
       continue
     }
 
-    // Numbered List
-    if (/^\d+\.\s/.test(line)) {
-      const listItems: string[] = []
-      while (i < lines.length && /^\d+\.\s/.test(lines[i].trim())) {
-        listItems.push(lines[i].trim().replace(/^\d+\.\s/, ''))
-        i++
-      }
-      elements.push(
-        <ol key={`ol-${i}`} className="my-4 space-y-2 text-slate-700 dark:text-slate-300 list-decimal list-inside">
-          {listItems.map((item, idx) => (
-            <li key={idx} className="leading-relaxed">
-              <span>{renderInline(item)}</span>
-            </li>
-          ))}
-        </ol>
-      )
-      continue
-    }
-
-    // Paragraph
+    // Standard Paragraph
     elements.push(
       <p key={`p-${i}`} className="my-4 leading-relaxed text-slate-700 dark:text-slate-300 text-base sm:text-lg">
         {renderInline(line)}

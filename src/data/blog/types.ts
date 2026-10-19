@@ -1,5 +1,12 @@
 export type BlogLocale = 'en' | 'ua' | 'es'
 
+export interface BlogReferenceProject {
+  projectId: number
+  slug: string
+  name: string
+  note: Record<BlogLocale, string>
+}
+
 export interface BlogPost {
   slug: string
   title: Record<BlogLocale, string>
@@ -16,4 +23,5 @@ export interface BlogPost {
   coverImage: string
   tldr: Record<BlogLocale, string[]>
   content: Record<BlogLocale, string>
+  appliedProjects?: BlogReferenceProject[]
 }
