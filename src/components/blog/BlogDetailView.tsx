@@ -24,10 +24,12 @@ import {
   getBlogContent,
   getBlogTldr,
   getRelatedBlogPosts,
+  getBlogPostBySlug,
 } from '../../data/blog'
 
 interface BlogDetailViewProps {
-  post: BlogPost
+  post?: BlogPost
+  slug?: string
   locale: string
   onBack?: () => void
   onBackToPortfolio?: () => void
@@ -37,19 +39,23 @@ interface BlogDetailViewProps {
 
 export default function BlogDetailView({
   post,
+  slug,
   locale,
   onBack,
   onBackToPortfolio,
   onSelectRelatedPost,
   onSelectProject,
 }: BlogDetailViewProps) {
-  const title = getBlogTitle(post, locale)
-  const description = getBlogDescription(post, locale)
-  const readTime = getBlogReadTime(post, locale)
-  const categoryLabel = getBlogCategoryLabel(post, locale)
-  const content = getBlogContent(post, locale)
-  const tldr = getBlogTldr(post, locale)
-  const relatedPosts = getRelatedBlogPosts(post.slug, 2)
+  const currentPost = post || (slug ? getBlogPostBySlug(slug) : undefined)
+  if (!currentPost) return null
+
+  const title = getBlogTitle(currentPost, locale)
+  const description = getBlogDescription(currentPost, locale)
+  const readTime = getBlogReadTime(currentPost, locale)
+  const categoryLabel = getBlogCategoryLabel(currentPost, locale)
+  const content = getBlogContent(currentPost, locale)
+  const tldr = getBlogTldr(currentPost, locale)
+  const relatedPosts = getRelatedBlogPosts(currentPost.slug, 2)
 
   const handleShare = () => {
     if (typeof navigator !== 'undefined' && navigator.share) {
@@ -71,7 +77,7 @@ export default function BlogDetailView({
           detail: {
             projectId: 70,
             projectTitle: title,
-            techCategory: post.category,
+            techCategory: currentPost.category,
             customPrompt:
               locale === 'ua'
                 ? `Розкажи детальніше про тему статті: "${title}"`
@@ -159,7 +165,7 @@ export default function BlogDetailView({
             <div className="flex items-center gap-3 text-xs text-slate-500 dark:text-slate-400">
               <span className="flex items-center gap-1">
                 <Calendar className="w-3.5 h-3.5" aria-hidden="true" />
-                <time dateTime={post.date}>{post.date}</time>
+                <time dateTime={currentPost.date}>{currentPost.date}</time>
               </span>
               <span className="flex items-center gap-1">
                 <Clock className="w-3.5 h-3.5" aria-hidden="true" />
@@ -184,10 +190,10 @@ export default function BlogDetailView({
               </div>
               <div>
                 <div className="font-semibold text-sm text-slate-900 dark:text-white">
-                  {post.author.name}
+                  {currentPost.author.name}
                 </div>
                 <div className="text-xs text-slate-500 dark:text-slate-400">
-                  {post.author.role[locale === 'ua' || locale === 'es' ? locale : 'en']}
+                  {currentPost.author.role[locale === 'ua' || locale === 'es' ? locale : 'en']}
                 </div>
               </div>
             </div>
@@ -213,13 +219,13 @@ export default function BlogDetailView({
             </div>
           </div>
 
-          {post.appliedProjects && post.appliedProjects.length > 0 && (
+          {currentPost.appliedProjects && currentPost.appliedProjects.length > 0 && (
             <div className="flex flex-wrap items-center gap-2 pt-4 mt-4 border-t border-slate-100 dark:border-white/5">
               <span className="text-xs font-bold uppercase tracking-wider text-purple-700 dark:text-lime-400 flex items-center gap-1.5">
                 <CheckCircle2 className="w-3.5 h-3.5" aria-hidden="true" />
                 <span>{locale === 'ua' ? 'Впроваджено в проєктах:' : locale === 'es' ? 'Aplicado en producción:' : 'Production Proof:'}</span>
               </span>
-              {post.appliedProjects.map((p) => {
+              {currentPost.appliedProjects.map((p) => {
                 const btnContent = (
                   <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-slate-100 hover:bg-purple-100 dark:bg-slate-800 dark:hover:bg-lime-500/20 text-slate-800 dark:text-slate-200 hover:text-purple-700 dark:hover:text-lime-300 border border-slate-200 dark:border-slate-700 transition">
                     <span>{p.name}</span>
@@ -249,10 +255,10 @@ export default function BlogDetailView({
         </header>
 
         {/* Cover Image */}
-        {post.coverImage && (
+        {currentPost.coverImage && (
           <div className="mb-10 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shadow-md h-64 sm:h-96 w-full bg-slate-100 dark:bg-slate-800">
             <img
-              src={post.coverImage}
+              src={currentPost.coverImage}
               alt={title}
               onError={(e) => {
                 const parent = (e.currentTarget as HTMLElement).parentElement
@@ -287,7 +293,7 @@ export default function BlogDetailView({
         </div>
 
         {/* Applied Production Case Studies Section */}
-        {post.appliedProjects && post.appliedProjects.length > 0 && (
+        {currentPost.appliedProjects && currentPost.appliedProjects.length > 0 && (
           <section className="mb-16 p-6 sm:p-8 rounded-3xl bg-slate-50 dark:bg-slate-800/80 border border-purple-200/80 dark:border-lime-500/30 shadow-md">
             <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-purple-700 dark:text-lime-400 mb-2">
               <Sparkles className="w-4 h-4" aria-hidden="true" />
@@ -304,7 +310,7 @@ export default function BlogDetailView({
                   : 'These architectural patterns are not abstract theory - they are fully deployed and benchmarked in these live production builds:'}
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {post.appliedProjects.map((p) => {
+              {currentPost.appliedProjects.map((p) => {
                 const noteText = p.note[locale === 'ua' || locale === 'es' ? locale : 'en']
                 const cardBody = (
                   <div className="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 hover:border-purple-300 dark:hover:border-lime-500/40 transition-all flex flex-col justify-between group h-full">

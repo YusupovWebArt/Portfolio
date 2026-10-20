@@ -2,13 +2,21 @@ import type { BlogPost, BlogLocale } from './types'
 import { nextjsVsHeadlessWordPressPost } from './posts/nextjs-vs-headless-wordpress'
 import { autonomousHybridRagPost } from './posts/autonomous-hybrid-rag'
 import { wcag22Eaa2026Post } from './posts/wcag-22-eaa-2026'
+import { subSecondCwvBundleOptimizationPost } from './posts/sub-second-cwv-bundle-optimization'
+import { shopifyLiquidVsCustomWooCommercePost } from './posts/shopify-liquid-vs-custom-woocommerce'
+import { clientSideZeroTrustSecurityPost } from './posts/client-side-zero-trust-security'
+import { legacyMigrationCloudInfrastructurePost } from './posts/legacy-migration-cloud-infrastructure'
 
 export * from './types'
 
 export const allBlogPosts: BlogPost[] = [
   nextjsVsHeadlessWordPressPost,
   autonomousHybridRagPost,
+  subSecondCwvBundleOptimizationPost,
   wcag22Eaa2026Post,
+  shopifyLiquidVsCustomWooCommercePost,
+  clientSideZeroTrustSecurityPost,
+  legacyMigrationCloudInfrastructurePost,
 ]
 
 export function getAllBlogPosts(): BlogPost[] {

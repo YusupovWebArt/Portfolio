@@ -59,6 +59,9 @@ export default defineConfig({
           if (id.includes('src/components/projects/') || id.includes('src/lib/projectRegistry')) {
             return 'projects-data'
           }
+          if (id.includes('src/data/blog')) {
+            return 'blog-data'
+          }
           if (id.includes('src/locales/ua')) {
             return 'locale-ua'
           }

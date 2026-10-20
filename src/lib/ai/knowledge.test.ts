@@ -70,7 +70,7 @@ describe('RAG Knowledge Base Specification (TDD)', () => {
     const kb = loadKnowledgeBase()
 
     expect(kb.blog).toBeDefined()
-    expect(kb.blog.length).toBe(3)
+    expect(kb.blog.length).toBe(7)
     const nextjsVsWp = kb.blog.find((b) => b.slug === 'nextjs-vs-headless-wordpress-custom-php-2026')
     expect(nextjsVsWp).toBeDefined()
     expect(nextjsVsWp?.type).toBe('blog')

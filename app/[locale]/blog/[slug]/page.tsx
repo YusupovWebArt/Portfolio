@@ -101,6 +101,14 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     post.date,
     slug,
     locale,
+    {
+      tags: post.tags,
+      readTime: post.readTime[locale === 'ua' || locale === 'es' ? locale : 'en'] || post.readTime.en,
+      appliedProjects: post.appliedProjects?.map((p) => ({
+        slug: p.slug,
+        name: p.name,
+      })),
+    },
   )
   const breadcrumbsJsonLd = buildBlogBreadcrumbsJsonLd(postTitle, slug, locale)
 

@@ -17,7 +17,6 @@ const Skills = lazy(() => import('./components/Skills'))
 const B2bServices = lazy(() => import('./components/B2bServices'))
 const BlogCatalogView = lazy(() => import('./components/blog/BlogCatalogView'))
 const BlogDetailView = lazy(() => import('./components/blog/BlogDetailView'))
-import { getBlogPostBySlug } from './data/blog'
 
 function ProjectLoadingFallback() {
   const { t } = useLanguage()
@@ -153,20 +152,14 @@ function PortfolioMain() {
       ) : selectedBlogSlug !== null ? (
         <main id="main-content">
           <Suspense fallback={<ProjectLoadingFallback />}>
-            {(() => {
-              const post = getBlogPostBySlug(selectedBlogSlug)
-              if (!post) return null
-              return (
-                <BlogDetailView
-                  post={post}
-                  locale={lang}
-                  onBack={handleBackFromBlogDetail}
-                  onBackToPortfolio={handleBackToPortfolio}
-                  onSelectRelatedPost={handleBlogSelect}
-                  onSelectProject={handleProjectSelect}
-                />
-              )
-            })()}
+            <BlogDetailView
+              slug={selectedBlogSlug}
+              locale={lang}
+              onBack={handleBackFromBlogDetail}
+              onBackToPortfolio={handleBackToPortfolio}
+              onSelectRelatedPost={handleBlogSelect}
+              onSelectProject={handleProjectSelect}
+            />
           </Suspense>
         </main>
       ) : isBlogCatalog ? (
@@ -176,6 +169,7 @@ function PortfolioMain() {
               locale={lang}
               onBack={handleBackToPortfolio}
               onSelectPost={handleBlogSelect}
+              onSelectProject={handleProjectSelect}
             />
           </Suspense>
         </main>

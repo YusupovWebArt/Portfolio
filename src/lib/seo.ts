@@ -166,6 +166,74 @@ export function buildWebsiteFaqJsonLd(locale = 'en'): FaqPageJsonLd {
   }
 }
 
+export interface BlogCatalogJsonLdItem {
+  title: string
+  desc: string
+  date: string
+  coverImage: string
+  slug: string
+}
+
+export function buildBlogCatalogJsonLd(
+  posts: BlogCatalogJsonLdItem[],
+  locale = 'en',
+) {
+  const isUa = locale === 'ua'
+  const isEs = locale === 'es'
+
+  const title = isUa
+    ? 'Інженерний блог та архітектурні кейси | Артур Юсупов'
+    : isEs
+      ? 'Blog de Ingeniería y Casos de Arquitectura | Artur Yusupov'
+      : 'Engineering Blog & Architectural Case Studies | Artur Yusupov'
+
+  const description = isUa
+    ? 'Глибокі технічні статті про архітектуру вебу, Next.js 16, кастомний WordPress, автономні RAG AI-рушії та доступність WCAG 2.2 AA.'
+    : isEs
+      ? 'Artículos técnicos en profundidad sobre arquitectura web, Next.js 16, WordPress a medida, motores de IA con RAG y accesibilidad WCAG 2.2 AA.'
+      : 'In-depth engineering articles on web architecture, Next.js 16, custom WordPress, autonomous in-browser RAG AI engines, and WCAG 2.2 AA compliance.'
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Blog',
+    '@id': `${baseUrl}/${locale}/blog#blog`,
+    name: title,
+    description: description,
+    url: `${baseUrl}/${locale}/blog`,
+    inLanguage: locale,
+    author: {
+      '@type': 'Person',
+      name: 'Artur Yusupov',
+      url: baseUrl,
+      jobTitle: 'Senior Fullstack Web Engineer & AI Developer',
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Seville',
+        addressCountry: 'ES',
+      },
+    },
+    publisher: {
+      '@type': 'Person',
+      name: 'Artur Yusupov',
+      url: baseUrl,
+    },
+    blogPost: posts.map((post) => ({
+      '@type': 'BlogPosting',
+      headline: post.title.replace(/[\u2014\u2013]/g, '-'),
+      description: post.desc.replace(/[\u2014\u2013]/g, '-'),
+      url: `${baseUrl}/${locale}/blog/${post.slug}`,
+      datePublished: `${post.date}T00:00:00Z`,
+      dateModified: `${post.date}T00:00:00Z`,
+      image: post.coverImage.startsWith('http') ? post.coverImage : `${baseUrl}${post.coverImage}`,
+      author: {
+        '@type': 'Person',
+        name: 'Artur Yusupov',
+        url: baseUrl,
+      },
+    })),
+  }
+}
+
 export function buildBlogPostJsonLd(
   postTitle: string,
   postDesc: string,
@@ -173,8 +241,16 @@ export function buildBlogPostJsonLd(
   date: string,
   slug: string,
   locale = 'en',
+  options?: {
+    tags?: string[]
+    readTime?: string
+    appliedProjects?: { slug: string; name: string }[]
+  },
 ) {
-  return {
+  const digitsOnly = options?.readTime ? options.readTime.replace(/\D+/g, '') : ''
+  const isoDuration = digitsOnly ? `PT${digitsOnly}M` : undefined
+
+  const jsonLd: Record<string, unknown> = {
     '@context': 'https://schema.org',
     '@type': 'TechArticle',
     headline: postTitle.replace(/[\u2014\u2013]/g, '-'),
@@ -202,6 +278,22 @@ export function buildBlogPostJsonLd(
     },
     spatialCoverage: 'Spain, European Union',
   }
+
+  if (options?.tags && options.tags.length > 0) {
+    jsonLd.keywords = options.tags.join(', ')
+  }
+  if (isoDuration) {
+    jsonLd.timeRequired = isoDuration
+  }
+  if (options?.appliedProjects && options.appliedProjects.length > 0) {
+    jsonLd.about = options.appliedProjects.map((p) => ({
+      '@type': 'SoftwareApplication',
+      name: p.name,
+      url: `${baseUrl}/${locale}/projects/${p.slug}`,
+    }))
+  }
+
+  return jsonLd
 }
 
 export function buildBlogBreadcrumbsJsonLd(
