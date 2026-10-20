@@ -152,7 +152,10 @@ const Header = () => {
   const scrollToSection = (sectionId: string) => {
     const isSpa =
       typeof window !== 'undefined' &&
-      (window.location.pathname.startsWith('/Portfolio') || window.location.port === '5173')
+      (Boolean((window as unknown as { __IS_PORTFOLIO_SPA__?: boolean }).__IS_PORTFOLIO_SPA__) ||
+        window.location.pathname.startsWith('/Portfolio') ||
+        window.location.port === '5173' ||
+        window.location.port === '4173')
     const element = document.getElementById(sectionId)
 
     if (element) {

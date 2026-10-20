@@ -54,8 +54,8 @@ const About = () => {
           <li className="flex items-start gap-3">
             <span className="w-2 h-2 rounded-full bg-emerald-500 mt-1.5 shrink-0"></span>
             <span>
-              <strong className="text-slate-800 dark:text-white">SEO &amp; GEO Evolution:</strong>{" "}
-              Studying and deploying structured schemas for AI search citations and LLM recommendations.
+              <strong className="text-slate-800 dark:text-white">{ab.education.item0.description.seoGeo.label}</strong>{" "}
+              {ab.education.item0.description.seoGeo.text}
             </span>
           </li>
           <li className="flex items-start gap-3">
@@ -68,8 +68,8 @@ const About = () => {
           <li className="flex items-start gap-3">
             <span className="w-2 h-2 rounded-full bg-amber-500 mt-1.5 shrink-0"></span>
             <span>
-              <strong className="text-slate-800 dark:text-white">Emerging Tech:</strong>{" "}
-              Evolving practical skills in building Telegram Mini Apps (TMA).
+              <strong className="text-slate-800 dark:text-white">{ab.education.item0.description.emerging.label}</strong>{" "}
+              {ab.education.item0.description.emerging.text}
             </span>
           </li>
         </ul>

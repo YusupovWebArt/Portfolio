@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import React, {
   useState,
   useEffect,
@@ -172,14 +173,6 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
     if (strip) strip.scrollLeft = 0
   }, [projectId, slug])
 
-  const defaultOnBack = useCallback(() => {
-    if (typeof window !== 'undefined') {
-      window.location.assign(`/${lang}#projects`)
-    }
-  }, [lang])
-
-  const handleBack = onBack || defaultOnBack
-
   const project =
     initialProject ||
     (slug
@@ -203,13 +196,22 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
           <h2 className="text-2xl font-bold text-slate-900 mb-4">
             Project not found
           </h2>
-          <button
-            onClick={handleBack}
-            className="px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors"
-            type="button"
-          >
-            {pr.backToProjects}
-          </button>
+          {onBack ? (
+            <button
+              onClick={onBack}
+              className="px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors cursor-pointer"
+              type="button"
+            >
+              {pr.backToProjects}
+            </button>
+          ) : (
+            <Link
+              href={`/${lang}#projects`}
+              className="px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors inline-block"
+            >
+              {pr.backToProjects}
+            </Link>
+          )}
         </div>
       </div>
     )
@@ -325,14 +327,24 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
       </nav>
 
       {/* Back button */}
-      <button
-        onClick={handleBack}
-        type="button"
-        className="mb-6 md:mb-8 flex w-full items-center justify-start gap-2 text-left text-sm sm:text-base font-semibold text-purple-600 dark:text-lime-400 hover:text-purple-700 dark:hover:text-lime-300 transition-colors cursor-pointer"
-      >
-        <ArrowLeft className="h-5 w-5 shrink-0" aria-hidden />
-        <span>{pr.backToProjects}</span>
-      </button>
+      {onBack ? (
+        <button
+          onClick={onBack}
+          type="button"
+          className="mb-6 md:mb-8 flex w-full items-center justify-start gap-2 text-left text-sm sm:text-base font-semibold text-purple-600 dark:text-lime-400 hover:text-purple-700 dark:hover:text-lime-300 transition-colors cursor-pointer"
+        >
+          <ArrowLeft className="h-5 w-5 shrink-0" aria-hidden />
+          <span>{pr.backToProjects}</span>
+        </button>
+      ) : (
+        <Link
+          href={`/${lang}#projects`}
+          className="mb-6 md:mb-8 flex w-full items-center justify-start gap-2 text-left text-sm sm:text-base font-semibold text-purple-600 dark:text-lime-400 hover:text-purple-700 dark:hover:text-lime-300 transition-colors cursor-pointer"
+        >
+          <ArrowLeft className="h-5 w-5 shrink-0" aria-hidden />
+          <span>{pr.backToProjects}</span>
+        </Link>
+      )}
 
       <section className="rounded-2xl bg-neutral-100 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700 p-6 md:p-8 lg:p-10">
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-start">
@@ -1150,13 +1162,13 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                           <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" aria-hidden="true" />
                         </button>
                       ) : targetUrl ? (
-                        <a
+                        <Link
                           href={targetUrl}
                           className="inline-flex items-center gap-1.5 text-xs font-bold text-purple-700 dark:text-lime-400 hover:text-purple-900 dark:hover:text-lime-300 transition"
                         >
                           <span>{pr.viewProject || 'View Case Study'}</span>
                           <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" aria-hidden="true" />
-                        </a>
+                        </Link>
                       ) : (
                         <span className="text-xs font-semibold text-slate-500">Case Study</span>
                       )}

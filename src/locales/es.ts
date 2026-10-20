@@ -89,6 +89,14 @@ export const es: Translation = {
             label: 'RAG & AI SDLC Integration:',
             text: 'Diseño de motores de conocimiento Hybrid RAG y flujos Spec-Driven con Claude Code, Antigravity y MCP.',
           },
+          seoGeo: {
+            label: 'Evolución SEO y GEO:',
+            text: 'Estudio e implementación de esquemas estructurados para citaciones en motores de IA y recomendaciones LLM.',
+          },
+          emerging: {
+            label: 'Tecnologías emergentes:',
+            text: 'Desarrollo de habilidades prácticas en la creación de Telegram Mini Apps (TMA).',
+          },
         },
       },
       item1: {

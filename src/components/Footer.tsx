@@ -12,7 +12,10 @@ const Footer = () => {
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, sectionId: string) => {
     const isSpa =
       typeof window !== 'undefined' &&
-      (window.location.pathname.startsWith('/Portfolio') || window.location.port === '5173')
+      (Boolean((window as unknown as { __IS_PORTFOLIO_SPA__?: boolean }).__IS_PORTFOLIO_SPA__) ||
+        window.location.pathname.startsWith('/Portfolio') ||
+        window.location.port === '5173' ||
+        window.location.port === '4173')
     const element = document.getElementById(sectionId)
 
     if (element) {
@@ -83,7 +86,10 @@ const Footer = () => {
               onClick={(e) => {
                 const isSpa =
                   typeof window !== 'undefined' &&
-                  (window.location.pathname.startsWith('/Portfolio') || window.location.port === '5173')
+                  (Boolean((window as unknown as { __IS_PORTFOLIO_SPA__?: boolean }).__IS_PORTFOLIO_SPA__) ||
+                    window.location.pathname.startsWith('/Portfolio') ||
+                    window.location.port === '5173' ||
+                    window.location.port === '4173')
                 if (isSpa) {
                   e.preventDefault()
                   window.dispatchEvent(new CustomEvent('open-blog-view'))

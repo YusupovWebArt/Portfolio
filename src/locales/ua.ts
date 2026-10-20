@@ -89,6 +89,14 @@ export const ua: Translation = {
             label: 'RAG & AI SDLC Integration:',
             text: 'Проєктування Hybrid RAG систем та Spec-Driven процесів з використанням Claude Code, Antigravity та MCP.',
           },
+          seoGeo: {
+            label: 'SEO та GEO еволюція:',
+            text: 'Дослідження та впровадження структурованих схем для AI-пошуку та рекомендацій LLM-моделей.',
+          },
+          emerging: {
+            label: 'Новітні технології:',
+            text: 'Розвиток практичних навичок створення Telegram Mini Apps (TMA).',
+          },
         },
       },
       item1: {

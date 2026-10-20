@@ -1,7 +1,21 @@
-import React, { useState, useEffect } from 'react'
-import { ExternalLink, X, ArrowRight, Search } from 'lucide-react'
+import React, { useState, useEffect, useRef } from 'react'
+import { ExternalLink, X, ArrowRight, Search, ChevronLeft, ChevronRight } from 'lucide-react'
 import { Project, TechnologyItem } from './projects/project-types'
 import { useLanguage } from '../contexts/LanguageContext'
+import { useDialogA11y } from '../hooks/useDialogA11y'
+
+function getPaginationPages(current: number, total: number): (number | '...')[] {
+  if (total <= 7) {
+    return Array.from({ length: total }, (_, i) => i + 1)
+  }
+  if (current <= 4) {
+    return [1, 2, 3, 4, 5, '...', total]
+  }
+  if (current >= total - 3) {
+    return [1, '...', total - 4, total - 3, total - 2, total - 1, total]
+  }
+  return [1, '...', current - 1, current, current + 1, '...', total]
+}
 
 interface ProjectsProps {
   onProjectSelect: (projectId: number) => void
@@ -142,6 +156,14 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
   const closeScreenshotModal = () => {
     setScreenshotModal({ isOpen: false, image: '', title: '' })
   }
+
+  const screenshotModalRef = useRef<HTMLDivElement>(null)
+
+  useDialogA11y({
+    isOpen: screenshotModal.isOpen,
+    onClose: closeScreenshotModal,
+    dialogRef: screenshotModalRef,
+  })
 
   const toggleTechExpanded = (projectId: number, e: React.MouseEvent) => {
     e.stopPropagation()
@@ -379,52 +401,114 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
 
         {/* Пагинация */}
         {totalPages > 1 && (
-          <div className="flex justify-center mt-8 space-x-2">
-            {Array.from({ length: totalPages }, (_, i) => (
-              <button
-                key={i + 1}
-                onClick={() => setCurrentPage(i + 1)}
-                className={`px-4 py-2 rounded-full font-medium transition ${
-                  currentPage === i + 1
-                    ? 'bg-purple-600 text-white dark:bg-lime-500 dark:text-slate-900'
-                    : 'bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-slate-200 hover:bg-purple-100 dark:hover:bg-lime-700'
-                }`}
-                type="button"
-              >
-                {i + 1}
-              </button>
-            ))}
-          </div>
+          <nav
+            aria-label={lang === 'ua' ? 'Навігація по сторінках проєктів' : lang === 'es' ? 'Paginación de proyectos' : 'Projects pagination'}
+            className="flex items-center justify-center mt-10 gap-1.5 sm:gap-2 select-none"
+          >
+            <button
+              type="button"
+              onClick={() => {
+                setCurrentPage((prev) => Math.max(1, prev - 1))
+                document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })
+              }}
+              disabled={currentPage === 1}
+              aria-label={lang === 'ua' ? 'Попередня сторінка' : lang === 'es' ? 'Página anterior' : 'Previous page'}
+              className="p-2 sm:px-3 sm:py-2 rounded-xl text-xs sm:text-sm font-semibold transition border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 disabled:opacity-40 disabled:cursor-not-allowed hover:not-disabled:bg-slate-100 dark:hover:not-disabled:bg-slate-700 cursor-pointer flex items-center gap-1"
+            >
+              <ChevronLeft className="w-4 h-4" aria-hidden="true" />
+              <span className="hidden sm:inline">{lang === 'ua' ? 'Назад' : lang === 'es' ? 'Anterior' : 'Prev'}</span>
+            </button>
+
+            {getPaginationPages(currentPage, totalPages).map((page, idx) => {
+              if (page === '...') {
+                return (
+                  <span
+                    key={`ellipsis-${idx}`}
+                    className="px-2 py-1 text-slate-400 dark:text-slate-500 font-bold select-none text-xs sm:text-sm"
+                  >
+                    ...
+                  </span>
+                )
+              }
+              const isCurrent = currentPage === page
+              return (
+                <button
+                  key={page}
+                  onClick={() => {
+                    setCurrentPage(page)
+                    document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })
+                  }}
+                  aria-current={isCurrent ? 'page' : undefined}
+                  aria-label={`${lang === 'ua' ? 'Сторінка' : lang === 'es' ? 'Página' : 'Page'} ${page}`}
+                  type="button"
+                  className={`min-w-9 h-9 sm:min-w-10 sm:h-10 px-2.5 rounded-xl font-bold text-xs sm:text-sm transition cursor-pointer flex items-center justify-center ${
+                    isCurrent
+                      ? 'bg-purple-600 text-white dark:bg-lime-500 dark:text-slate-900 shadow-md shadow-purple-500/20 dark:shadow-lime-500/20'
+                      : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700/80'
+                  }`}
+                >
+                  {page}
+                </button>
+              )
+            })}
+
+            <button
+              type="button"
+              onClick={() => {
+                setCurrentPage((prev) => Math.min(totalPages, prev + 1))
+                document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })
+              }}
+              disabled={currentPage === totalPages}
+              aria-label={lang === 'ua' ? 'Наступна сторінка' : lang === 'es' ? 'Página siguiente' : 'Next page'}
+              className="p-2 sm:px-3 sm:py-2 rounded-xl text-xs sm:text-sm font-semibold transition border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 disabled:opacity-40 disabled:cursor-not-allowed hover:not-disabled:bg-slate-100 dark:hover:not-disabled:bg-slate-700 cursor-pointer flex items-center gap-1"
+            >
+              <span className="hidden sm:inline">{lang === 'ua' ? 'Вперед' : lang === 'es' ? 'Siguiente' : 'Next'}</span>
+              <ChevronRight className="w-4 h-4" aria-hidden="true" />
+            </button>
+          </nav>
         )}
 
         {/* Модальное окно скриншота */}
         {screenshotModal.isOpen && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 backdrop-blur-xs p-4">
-            <div className="relative bg-white dark:bg-slate-800 rounded-2xl shadow-2xl max-w-3xl w-full p-6 border border-slate-200/80 dark:border-white/10">
+          <div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/75 backdrop-blur-xs p-4"
+            role="presentation"
+            onClick={closeScreenshotModal}
+          >
+            <div
+              ref={screenshotModalRef}
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="screenshot-modal-title"
+              tabIndex={-1}
+              onClick={(e) => e.stopPropagation()}
+              className="relative bg-white dark:bg-slate-800 rounded-2xl shadow-2xl max-w-3xl w-full p-6 border border-slate-200/80 dark:border-white/10 focus:outline-none"
+            >
               <button
-                className="absolute top-4 right-4 text-slate-700 dark:text-slate-300 hover:text-purple-600 dark:hover:text-lime-400 p-1"
+                className="absolute top-4 right-4 text-slate-700 dark:text-slate-300 hover:text-purple-600 dark:hover:text-lime-400 p-1.5 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700/60 transition cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-700 dark:focus-visible:outline-lime-400"
                 onClick={closeScreenshotModal}
-                title="Закрыть"
-                aria-label="Закрыть"
+                title={pr.close || 'Close'}
+                aria-label={pr.close || 'Close'}
                 type="button"
               >
-                <X size={24} />
+                <X size={20} aria-hidden="true" />
               </button>
-              <img
-                src={screenshotModal.image}
-                alt={screenshotModal.title}
-                className="max-w-full max-h-[70vh] object-contain rounded-xl shadow-2xl mx-auto"
-              />
+              <div className="overflow-hidden rounded-xl bg-slate-100 dark:bg-slate-900 flex items-center justify-center">
+                <img
+                  src={screenshotModal.image}
+                  alt={screenshotModal.title}
+                  className="max-w-full max-h-[70vh] object-contain rounded-xl shadow-2xl mx-auto"
+                />
+              </div>
               <div className="mt-4 text-center">
-                <h3 className="text-lg font-bold text-slate-900 dark:text-white">
+                <h3
+                  id="screenshot-modal-title"
+                  className="text-lg font-bold text-slate-900 dark:text-white"
+                >
                   {screenshotModal.title}
                 </h3>
               </div>
             </div>
-            <div
-              className="absolute inset-0 -z-10"
-              onClick={closeScreenshotModal}
-            ></div>
           </div>
         )}
       </div>

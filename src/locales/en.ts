@@ -89,6 +89,14 @@ export const en: Translation = {
             label: 'RAG & AI SDLC Integration:',
             text: 'Engineering Hybrid RAG knowledge engines and Spec-Driven workflows using Claude Code, Antigravity, and MCP.',
           },
+          seoGeo: {
+            label: 'SEO & GEO Evolution:',
+            text: 'Studying and deploying structured schemas for AI search citations and LLM recommendations.',
+          },
+          emerging: {
+            label: 'Emerging Tech:',
+            text: 'Evolving practical skills in building Telegram Mini Apps (TMA).',
+          },
         },
       },
       item1: {

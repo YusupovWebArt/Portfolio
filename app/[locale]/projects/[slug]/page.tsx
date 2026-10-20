@@ -55,11 +55,11 @@ export async function generateMetadata({
     title,
     description: localizedDesc,
     alternates: {
-      canonical: `https://yusupovwebart.github.io/Portfolio/${locale}/projects/${slug}`,
+      canonical: `/${locale}/projects/${slug}`,
       languages: {
-        en: `https://yusupovwebart.github.io/Portfolio/en/projects/${slug}`,
-        uk: `https://yusupovwebart.github.io/Portfolio/ua/projects/${slug}`,
-        es: `https://yusupovwebart.github.io/Portfolio/es/projects/${slug}`,
+        en: `/en/projects/${slug}`,
+        uk: `/ua/projects/${slug}`,
+        es: `/es/projects/${slug}`,
       },
     },
     openGraph: {

@@ -37,7 +37,7 @@ export async function generateMetadata({
       ? 'Artículos técnicos en profundidad sobre arquitectura web, Next.js 16, WordPress a medida, motores de IA con RAG y accesibilidad WCAG 2.2 AA.'
       : 'In-depth engineering articles on web architecture, Next.js 16, custom WordPress, autonomous in-browser RAG AI engines, and WCAG 2.2 AA compliance.'
 
-  const ogImageUrl = 'https://www.yusupovartur.com/Portfolio/images/blog/cover-nextjs-vs-headless-wp.png'
+  const ogImageUrl = 'https://www.yusupovartur.com/images/blog/cover-nextjs-vs-headless-wp.png'
 
   return {
     title,

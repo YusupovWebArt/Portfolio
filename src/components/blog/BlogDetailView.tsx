@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 import Link from 'next/link'
 import {
   ArrowLeft,
@@ -46,6 +46,7 @@ export default function BlogDetailView({
   onSelectRelatedPost,
   onSelectProject,
 }: BlogDetailViewProps) {
+  const [copiedLink, setCopiedLink] = useState(false)
   const currentPost = post || (slug ? getBlogPostBySlug(slug) : undefined)
   if (!currentPost) return null
 
@@ -59,14 +60,17 @@ export default function BlogDetailView({
 
   const handleShare = () => {
     if (typeof navigator !== 'undefined' && navigator.share) {
-      navigator.share({
-        title,
-        text: description,
-        url: window.location.href,
-      }).catch(() => {})
+      navigator
+        .share({
+          title,
+          text: description,
+          url: window.location.href,
+        })
+        .catch(() => {})
     } else if (typeof navigator !== 'undefined' && navigator.clipboard) {
       navigator.clipboard.writeText(window.location.href)
-      alert(locale === 'ua' ? 'Посилання скопійовано!' : locale === 'es' ? '¡Enlace copiado!' : 'Link copied to clipboard!')
+      setCopiedLink(true)
+      setTimeout(() => setCopiedLink(false), 2000)
     }
   }
 
@@ -211,11 +215,49 @@ export default function BlogDetailView({
               <button
                 type="button"
                 onClick={handleShare}
-                aria-label="Share article"
-                title="Share article"
-                className="p-2 rounded-lg text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-white bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 transition cursor-pointer"
+                aria-label={
+                  copiedLink
+                    ? locale === 'ua'
+                      ? 'Посилання скопійовано'
+                      : locale === 'es'
+                        ? 'Enlace copiado'
+                        : 'Link copied'
+                    : locale === 'ua'
+                      ? 'Поділитися статтею'
+                      : locale === 'es'
+                        ? 'Compartir artículo'
+                        : 'Share article'
+                }
+                title={
+                  copiedLink
+                    ? locale === 'ua'
+                      ? 'Скопійовано!'
+                      : locale === 'es'
+                        ? '¡Copiado!'
+                        : 'Copied!'
+                    : locale === 'ua'
+                      ? 'Поділитися'
+                      : locale === 'es'
+                        ? 'Compartir'
+                        : 'Share'
+                }
+                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition cursor-pointer ${
+                  copiedLink
+                    ? 'bg-emerald-100 dark:bg-emerald-500/20 text-emerald-700 dark:text-emerald-400 border border-emerald-300 dark:border-emerald-500/30'
+                    : 'text-slate-650 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 border border-slate-200/80 dark:border-slate-700'
+                }`}
               >
-                <Share2 className="w-4 h-4" aria-hidden="true" />
+                {copiedLink ? (
+                  <>
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400" aria-hidden="true" />
+                    <span>{locale === 'ua' ? 'Скопійовано!' : locale === 'es' ? '¡Copiado!' : 'Copied!'}</span>
+                  </>
+                ) : (
+                  <>
+                    <Share2 className="w-4 h-4" aria-hidden="true" />
+                    <span>{locale === 'ua' ? 'Поділитися' : locale === 'es' ? 'Compartir' : 'Share'}</span>
+                  </>
+                )}
               </button>
             </div>
           </div>
