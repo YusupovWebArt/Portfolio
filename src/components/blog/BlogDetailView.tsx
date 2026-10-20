@@ -370,7 +370,7 @@ export default function BlogDetailView({
             </h3>
             <p className="text-sm text-slate-300 leading-relaxed">
               {locale === 'ua'
-                ? 'Обговоріть архітектурні вимоги вашого проєкту з інтерактивним RAG AI-асистентом або зв яжіться напряму для інженерної оцінки.'
+                ? 'Обговоріть архітектурні вимоги вашого проєкту з інтерактивним RAG AI-асистентом або зв’яжіться напряму для інженерної оцінки.'
                 : locale === 'es'
                   ? 'Consulta los requerimientos de tu proyecto con el asistente de IA o solicita una evaluación técnica directa.'
                   : 'Discuss architectural requirements with my interactive RAG AI assistant or connect directly for an engineering assessment.'}

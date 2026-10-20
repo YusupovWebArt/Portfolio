@@ -12,3 +12,13 @@ export function getProjectBySlug(slug: string): Project | undefined {
   const entry = projectRegistry.find((e) => e.slug === normalized)
   return entry?.project
 }
+
+export function getProjectById(id: number): Project | undefined {
+  const entry = projectRegistry.find((e) => e.project.id === id)
+  return entry?.project
+}
+
+export function getProjectSlugById(id: number): string | undefined {
+  const entry = projectRegistry.find((e) => e.project.id === id)
+  return entry?.slug
+}

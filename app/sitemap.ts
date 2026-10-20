@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next'
 import { getAllProjectEntries } from '../src/lib/projects'
+import { allBlogPosts } from '../src/data/blog'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://www.yusupovartur.com'
@@ -12,7 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   for (const locale of locales) {
     sitemapEntries.push({
       url: `${baseUrl}/${locale}`,
-      lastModified: new Date('2026-10-15'),
+      lastModified: new Date('2026-10-20'),
       changeFrequency: 'monthly',
       priority: 1.0,
       alternates: {
@@ -30,7 +31,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     for (const entry of entries) {
       sitemapEntries.push({
         url: `${baseUrl}/${locale}/projects/${entry.slug}`,
-        lastModified: new Date('2026-10-15'),
+        lastModified: new Date('2026-10-20'),
         changeFrequency: 'monthly',
         priority: 0.8,
         alternates: {
@@ -48,7 +49,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   for (const locale of locales) {
     sitemapEntries.push({
       url: `${baseUrl}/${locale}/blog`,
-      lastModified: new Date('2026-10-18'),
+      lastModified: new Date('2026-10-20'),
       changeFrequency: 'weekly',
       priority: 0.9,
       alternates: {
@@ -62,23 +63,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }
 
   // Blog article pages for each locale
-  const blogSlugs = [
-    'nextjs-vs-headless-wordpress-custom-php-2026',
-    'autonomous-hybrid-rag-architecture-browser',
-    'wcag-22-aa-european-accessibility-act-2026',
-  ]
   for (const locale of locales) {
-    for (const slug of blogSlugs) {
+    for (const post of allBlogPosts) {
       sitemapEntries.push({
-        url: `${baseUrl}/${locale}/blog/${slug}`,
-        lastModified: new Date('2026-10-18'),
+        url: `${baseUrl}/${locale}/blog/${post.slug}`,
+        lastModified: new Date(post.date || '2026-10-20'),
         changeFrequency: 'monthly',
         priority: 0.85,
         alternates: {
           languages: {
-            en: `${baseUrl}/en/blog/${slug}`,
-            uk: `${baseUrl}/ua/blog/${slug}`,
-            es: `${baseUrl}/es/blog/${slug}`,
+            en: `${baseUrl}/en/blog/${post.slug}`,
+            uk: `${baseUrl}/ua/blog/${post.slug}`,
+            es: `${baseUrl}/es/blog/${post.slug}`,
           },
         },
       })

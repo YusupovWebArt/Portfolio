@@ -17,6 +17,25 @@ export default function ProjectToolCard({
   onNavigate,
 }: ProjectToolCardProps) {
   const caseStudyUrl = `/${locale}/projects/${project.slug}`
+  const viewCaseStudyText =
+    locale === 'ua'
+      ? 'Переглянути кейс'
+      : locale === 'es'
+        ? 'Ver caso de estudio'
+        : 'View Case Study'
+
+  const handleCaseStudyClick = (e: React.MouseEvent) => {
+    onNavigate?.()
+    if (
+      typeof window !== 'undefined' &&
+      Boolean((window as unknown as { __IS_PORTFOLIO_SPA__?: boolean }).__IS_PORTFOLIO_SPA__)
+    ) {
+      e.preventDefault()
+      window.dispatchEvent(
+        new CustomEvent('open-project', { detail: { slug: project.slug } })
+      )
+    }
+  }
 
   return (
     <div className="w-full my-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl shadow-sm hover:shadow-md transition-all duration-200 overflow-hidden flex flex-col text-left">
@@ -64,10 +83,10 @@ export default function ProjectToolCard({
         <div className="flex items-center justify-between gap-2 pt-2 border-t border-slate-100 dark:border-slate-800/80">
           <Link
             href={caseStudyUrl}
-            onClick={onNavigate}
+            onClick={handleCaseStudyClick}
             className="inline-flex items-center gap-1 text-xs font-semibold text-purple-600 dark:text-lime-400 hover:text-purple-700 dark:hover:text-lime-300 transition-colors"
           >
-            <span>View Case Study</span>
+            <span>{viewCaseStudyText}</span>
             <ArrowRight className="w-3.5 h-3.5" aria-hidden />
           </Link>
 

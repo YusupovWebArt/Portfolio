@@ -1,13 +1,13 @@
-import { useState, lazy, Suspense } from 'react'
 import { FaFilePdf } from 'react-icons/fa'
 import { Bot } from 'lucide-react'
 import { useLanguage } from '../contexts/LanguageContext'
 
-const ChatModal = lazy(() => import('./ChatModal'))
-
 const Hero = () => {
-  const [chatOpen, setChatOpen] = useState(false)
   const { t } = useLanguage()
+
+  const handleOpenChat = () => {
+    window.dispatchEvent(new CustomEvent('open-ai-chat'))
+  }
 
   return (
     <section
@@ -57,7 +57,7 @@ const Hero = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             {/* Primary Action: Chat with AI */}
             <button
-              onClick={() => setChatOpen(true)}
+              onClick={handleOpenChat}
               className="flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-purple-600 to-blue-600 dark:from-lime-500 dark:to-lime-600 text-white font-semibold rounded-full hover:from-purple-700 hover:to-blue-700 dark:hover:from-lime-600 dark:hover:to-lime-700 transform hover:scale-105 transition-all duration-200 shadow-lg hover:shadow-purple-500/25 dark:hover:shadow-lime-500/25 cursor-pointer"
             >
               <Bot aria-hidden="true" className="w-4 h-4" />
@@ -72,9 +72,6 @@ const Hero = () => {
               <FaFilePdf aria-hidden="true" className="w-4 h-4" />
               {t.hero.ctaSecondary}
             </a>
-            <Suspense fallback={null}>
-              <ChatModal open={chatOpen} onClose={() => setChatOpen(false)} />
-            </Suspense>
           </div>
         </div>
       </div>

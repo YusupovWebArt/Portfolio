@@ -378,12 +378,21 @@ export default function BlogCatalogView({
                 </button>
                 <a
                   href={`/${locale}#contact`}
+                  onClick={(e) => {
+                    if (onBack) {
+                      e.preventDefault()
+                      onBack()
+                      setTimeout(() => {
+                        document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
+                      }, 100)
+                    }
+                  }}
                   className="w-full inline-flex items-center justify-center gap-2 px-3 py-2 rounded-xl text-xs font-semibold bg-slate-800/80 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-700 transition"
                 >
                   <Mail className="w-3.5 h-3.5" aria-hidden="true" />
                   <span>
                     {isUa
-                      ? 'Зв язатися напряму'
+                      ? 'Зв’язатися напряму'
                       : isEs
                         ? 'Contactar directamente'
                         : 'Contact Directly'}
@@ -506,23 +515,39 @@ export default function BlogCatalogView({
                                 : 'Applied in Production:'}
                           </span>
                           <div className="flex flex-wrap gap-1.5">
-                            {featuredPost.appliedProjects.map((proj) => (
-                              <span
-                                key={proj.slug}
-                                onClick={(e) => {
-                                  if (onSelectProject) {
-                                    e.stopPropagation()
-                                    onSelectProject(proj.projectId)
-                                  }
-                                }}
-                                className={`inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-lg bg-purple-50 dark:bg-lime-500/10 text-purple-700 dark:text-lime-400 border border-purple-200/80 dark:border-lime-500/20 ${
-                                  onSelectProject ? 'cursor-pointer hover:underline' : ''
-                                }`}
-                              >
-                                <span className="w-1.5 h-1.5 rounded-full bg-purple-500 dark:bg-lime-400" />
-                                {proj.name}
-                              </span>
-                            ))}
+                            {featuredPost.appliedProjects.map((proj) => {
+                              const badge = (
+                                <>
+                                  <span className="w-1.5 h-1.5 rounded-full bg-purple-500 dark:bg-lime-400" />
+                                  {proj.name}
+                                </>
+                              )
+                              if (onSelectProject) {
+                                return (
+                                  <button
+                                    key={proj.slug}
+                                    type="button"
+                                    onClick={(e) => {
+                                      e.stopPropagation()
+                                      onSelectProject(proj.projectId)
+                                    }}
+                                    className="inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-lg bg-purple-50 dark:bg-lime-500/10 text-purple-700 dark:text-lime-400 border border-purple-200/80 dark:border-lime-500/20 cursor-pointer hover:underline"
+                                  >
+                                    {badge}
+                                  </button>
+                                )
+                              }
+                              return (
+                                <Link
+                                  key={proj.slug}
+                                  href={`/${locale}/projects/${proj.slug}`}
+                                  onClick={(e) => e.stopPropagation()}
+                                  className="inline-flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-lg bg-purple-50 dark:bg-lime-500/10 text-purple-700 dark:text-lime-400 border border-purple-200/80 dark:border-lime-500/20 hover:underline"
+                                >
+                                  {badge}
+                                </Link>
+                              )
+                            })}
                           </div>
                         </div>
                       )}
@@ -644,23 +669,39 @@ export default function BlogCatalogView({
                                     : 'Applied in Production:'}
                               </span>
                               <div className="flex flex-wrap gap-1.5">
-                                {post.appliedProjects.map((proj) => (
-                                  <span
-                                    key={proj.slug}
-                                    onClick={(e) => {
-                                      if (onSelectProject) {
-                                        e.stopPropagation()
-                                        onSelectProject(proj.projectId)
-                                      }
-                                    }}
-                                    className={`inline-flex items-center gap-1 text-[11px] font-semibold px-2 py-0.5 rounded-md bg-purple-50 dark:bg-lime-500/10 text-purple-700 dark:text-lime-400 border border-purple-200/60 dark:border-lime-500/20 ${
-                                      onSelectProject ? 'cursor-pointer hover:underline' : ''
-                                    }`}
-                                  >
-                                    <span className="w-1.5 h-1.5 rounded-full bg-purple-500 dark:bg-lime-400" />
-                                    {proj.name}
-                                  </span>
-                                ))}
+                                {post.appliedProjects.map((proj) => {
+                                  const badge = (
+                                    <>
+                                      <span className="w-1.5 h-1.5 rounded-full bg-purple-500 dark:bg-lime-400" />
+                                      {proj.name}
+                                    </>
+                                  )
+                                  if (onSelectProject) {
+                                    return (
+                                      <button
+                                        key={proj.slug}
+                                        type="button"
+                                        onClick={(e) => {
+                                          e.stopPropagation()
+                                          onSelectProject(proj.projectId)
+                                        }}
+                                        className="inline-flex items-center gap-1 text-[11px] font-semibold px-2 py-0.5 rounded-md bg-purple-50 dark:bg-lime-500/10 text-purple-700 dark:text-lime-400 border border-purple-200/60 dark:border-lime-500/20 cursor-pointer hover:underline"
+                                      >
+                                        {badge}
+                                      </button>
+                                    )
+                                  }
+                                  return (
+                                    <Link
+                                      key={proj.slug}
+                                      href={`/${locale}/projects/${proj.slug}`}
+                                      onClick={(e) => e.stopPropagation()}
+                                      className="inline-flex items-center gap-1 text-[11px] font-semibold px-2 py-0.5 rounded-md bg-purple-50 dark:bg-lime-500/10 text-purple-700 dark:text-lime-400 border border-purple-200/60 dark:border-lime-500/20 hover:underline"
+                                    >
+                                      {badge}
+                                    </Link>
+                                  )
+                                })}
                               </div>
                             </div>
                           )}

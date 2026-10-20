@@ -4,7 +4,7 @@ export const legacyMigrationCloudInfrastructurePost: BlogPost = {
   slug: 'legacy-migration-cloud-infrastructure',
   title: {
     en: 'Zero-Downtime Legacy System Migration: Cloud Infrastructure, SEO Preservation & High-Load Reliability',
-    ua: 'Безшоexitна міграція легасі-систем: хмарна інфраструктура, збереження 100% SEO та високі навантаження',
+    ua: 'Безшовна міграція легасі-систем: хмарна інфраструктура, збереження 100% SEO та високі навантаження',
     es: 'Migración de sistemas heredados sin tiempo de inactividad: Infraestructura cloud, preservación SEO y alta disponibilidad',
   },
   description: {

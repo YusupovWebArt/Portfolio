@@ -14,44 +14,76 @@ import ScrollToTopButton from '../../src/components/ScrollToTopButton'
 import ChatModal from '../../src/components/ChatModal'
 import { buildWebsiteFaqJsonLd } from '../../src/lib/seo'
 
-export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://yusupovartur.com'),
-  title: 'Artur Yusupov - Fullstack Web Engineer & AI Developer',
-  description:
-    'Engineering high-performance web products, custom WordPress, React 19 apps & AI automation for businesses and agencies in Spain.',
-  alternates: {
-    canonical: '/',
-    languages: {
-      en: '/en',
-      uk: '/ua',
-      es: '/es',
-    },
-  },
-  openGraph: {
-    title: 'Artur Yusupov - Fullstack Web Engineer & AI Developer',
-    description:
-      'Engineering high-performance web products, custom WordPress, React 19 apps & AI automation for businesses and agencies in Spain.',
-    url: 'https://yusupovartur.com',
-    siteName: 'Artur Yusupov Portfolio',
-    locale: 'en_US',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Artur Yusupov - Fullstack Web Engineer & AI Developer',
-    description:
-      'Engineering high-performance web products, custom WordPress, React 19 apps & AI automation for businesses and agencies in Spain.',
-  },
-  other: {
-    'geo.region': 'ES-AN',
-    'geo.placename': 'Seville, Spain',
-    'geo.position': '37.3891;-5.9845',
-    'ICBM': '37.3891, -5.9845',
-  },
-}
-
 export function generateStaticParams() {
   return [{ locale: 'en' }, { locale: 'ua' }, { locale: 'es' }]
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>
+}): Promise<Metadata> {
+  const { locale } = await params
+  const activeLocale = (locale as 'en' | 'ua' | 'es') || 'en'
+  const isUa = activeLocale === 'ua'
+  const isEs = activeLocale === 'es'
+
+  const title = isUa
+    ? 'Артур Юсупов - Fullstack веб-інженер та AI-розробник'
+    : isEs
+      ? 'Artur Yusupov - Ingeniero Web Fullstack y Desarrollador AI'
+      : 'Artur Yusupov - Fullstack Web Engineer & AI Developer'
+
+  const description = isUa
+    ? 'Розробка високопродуктивних веб-продуктів, кастомного WordPress, React 19 застосунків та AI-автоматизації для бізнесу та агенцій в Іспанії.'
+    : isEs
+      ? 'Desarrollo de productos web de alto rendimiento, WordPress a medida, aplicaciones React 19 y automatización de IA para empresas y agencias en España.'
+      : 'Engineering high-performance web products, custom WordPress, React 19 apps & AI automation for businesses and agencies in Spain.'
+
+  const ogLocale = isUa ? 'uk_UA' : isEs ? 'es_ES' : 'en_US'
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.yusupovartur.com'
+
+  return {
+    metadataBase: new URL(siteUrl),
+    title,
+    description,
+    alternates: {
+      canonical: `/${activeLocale}`,
+      languages: {
+        en: '/en',
+        uk: '/ua',
+        es: '/es',
+      },
+    },
+    openGraph: {
+      title,
+      description,
+      url: `${siteUrl}/${activeLocale}`,
+      siteName: 'Artur Yusupov Portfolio',
+      locale: ogLocale,
+      type: 'website',
+      images: [
+        {
+          url: '/images/og-image.jpg',
+          width: 1200,
+          height: 630,
+          alt: title,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: ['/images/og-image.jpg'],
+    },
+    other: {
+      'geo.region': 'ES-AN',
+      'geo.placename': 'Seville, Spain',
+      'geo.position': '37.3891;-5.9845',
+      'ICBM': '37.3891, -5.9845',
+    },
+  }
 }
 
 const getLocaleTranslation = async (locale: string) => {

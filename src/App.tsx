@@ -10,6 +10,7 @@ import Contact from './components/Contact'
 import Footer from './components/Footer'
 import ScrollToTopButton from './components/ScrollToTopButton'
 import ConsentBanner from './components/ConsentBanner'
+import { getProjectBySlug, getProjectSlugById } from './lib/projects'
 
 const ProjectDetail = lazy(() => import('./components/ProjectDetail'))
 const Projects = lazy(() => import('./components/Projects'))
@@ -17,6 +18,7 @@ const Skills = lazy(() => import('./components/Skills'))
 const B2bServices = lazy(() => import('./components/B2bServices'))
 const BlogCatalogView = lazy(() => import('./components/blog/BlogCatalogView'))
 const BlogDetailView = lazy(() => import('./components/blog/BlogDetailView'))
+const ChatModal = lazy(() => import('./components/ChatModal'))
 
 function ProjectLoadingFallback() {
   const { t } = useLanguage()
@@ -32,45 +34,79 @@ function ProjectLoadingFallback() {
   )
 }
 
+function syncUrl(options: { blog?: string | null; project?: string | number | null }) {
+  if (typeof window === 'undefined') return
+  try {
+    const url = new URL(window.location.href)
+    if (options.blog) {
+      url.searchParams.set('blog', options.blog)
+      url.searchParams.delete('project')
+    } else {
+      url.searchParams.delete('blog')
+    }
+
+    if (options.project) {
+      url.searchParams.set('project', String(options.project))
+      url.searchParams.delete('blog')
+    } else if (!options.blog) {
+      url.searchParams.delete('project')
+    }
+
+    window.history.pushState(
+      { blog: options.blog || null, project: options.project || null },
+      '',
+      url.toString()
+    )
+  } catch {
+    // Ignore history pushState restrictions if in an atypical frame
+  }
+}
+
+function getInitialNavigationState(): {
+  project: number | null
+  blogSlug: string | null
+  isCatalog: boolean
+} {
+  if (typeof window === 'undefined') {
+    return { project: null, blogSlug: null, isCatalog: false }
+  }
+  const params = new URLSearchParams(window.location.search)
+  const blogParam = params.get('blog')
+  const projectParam = params.get('project')
+
+  if (blogParam) {
+    if (blogParam === 'catalog') {
+      return { project: null, blogSlug: null, isCatalog: true }
+    }
+    return { project: null, blogSlug: blogParam, isCatalog: false }
+  }
+
+  if (projectParam) {
+    const num = Number(projectParam)
+    if (!Number.isNaN(num) && num > 0) {
+      return { project: num, blogSlug: null, isCatalog: false }
+    }
+    const found = getProjectBySlug(projectParam)
+    if (found) {
+      return { project: found.id, blogSlug: null, isCatalog: false }
+    }
+  }
+
+  return { project: null, blogSlug: null, isCatalog: false }
+}
+
 function PortfolioMain() {
   const { lang } = useLanguage()
-  const [selectedProject, setSelectedProject] = useState<number | null>(null)
-  const [selectedBlogSlug, setSelectedBlogSlug] = useState<string | null>(null)
-  const [isBlogCatalog, setIsBlogCatalog] = useState(false)
-
-  useEffect(() => {
-    const handleOpenBlog = () => {
-      setIsBlogCatalog(true)
-      setSelectedBlogSlug(null)
-      setSelectedProject(null)
-      window.scrollTo({ top: 0, behavior: 'smooth' })
-    }
-
-    const handleNavigateToSection = (e: Event) => {
-      const customEvent = e as CustomEvent<string>
-      const sectionId = customEvent.detail
-      setIsBlogCatalog(false)
-      setSelectedBlogSlug(null)
-      setSelectedProject(null)
-      if (sectionId) {
-        setTimeout(() => {
-          document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' })
-        }, 100)
-      }
-    }
-
-    window.addEventListener('open-blog-view', handleOpenBlog)
-    window.addEventListener('navigate-to-section', handleNavigateToSection as EventListener)
-
-    return () => {
-      window.removeEventListener('open-blog-view', handleOpenBlog)
-      window.removeEventListener('navigate-to-section', handleNavigateToSection as EventListener)
-    }
-  }, [])
+  const [initialNav] = useState(getInitialNavigationState)
+  const [selectedProject, setSelectedProject] = useState<number | null>(initialNav.project)
+  const [selectedBlogSlug, setSelectedBlogSlug] = useState<string | null>(initialNav.blogSlug)
+  const [isBlogCatalog, setIsBlogCatalog] = useState(initialNav.isCatalog)
 
   const handleProjectSelect = (projectId: number) => {
     setSelectedBlogSlug(null)
     setIsBlogCatalog(false)
+    const slug = getProjectSlugById(projectId)
+    syncUrl({ project: slug || projectId })
     if ('startViewTransition' in document) {
       const doc = document as Document & {
         startViewTransition: (callback: () => void) => void
@@ -84,6 +120,7 @@ function PortfolioMain() {
   }
 
   const handleBackToProjects = () => {
+    syncUrl({ project: null, blog: null })
     if ('startViewTransition' in document) {
       const doc = document as Document & {
         startViewTransition: (callback: () => void) => void
@@ -109,6 +146,7 @@ function PortfolioMain() {
   const handleBlogSelect = (slug: string) => {
     setSelectedProject(null)
     setIsBlogCatalog(false)
+    syncUrl({ blog: slug })
     if ('startViewTransition' in document) {
       const doc = document as Document & {
         startViewTransition: (callback: () => void) => void
@@ -126,14 +164,98 @@ function PortfolioMain() {
   const handleBackFromBlogDetail = () => {
     setSelectedBlogSlug(null)
     setIsBlogCatalog(true)
+    syncUrl({ blog: 'catalog' })
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
   const handleBackToPortfolio = () => {
     setSelectedBlogSlug(null)
     setIsBlogCatalog(false)
+    syncUrl({ blog: null, project: null })
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+    ;(window as unknown as { __IS_PORTFOLIO_SPA__?: boolean }).__IS_PORTFOLIO_SPA__ = true
+
+    const handlePopState = () => {
+      const current = new URLSearchParams(window.location.search)
+      const b = current.get('blog')
+      const p = current.get('project')
+
+      if (b) {
+        setSelectedProject(null)
+        if (b === 'catalog') {
+          setIsBlogCatalog(true)
+          setSelectedBlogSlug(null)
+        } else {
+          setIsBlogCatalog(false)
+          setSelectedBlogSlug(b)
+        }
+      } else if (p) {
+        setIsBlogCatalog(false)
+        setSelectedBlogSlug(null)
+        const num = Number(p)
+        if (!Number.isNaN(num) && num > 0) {
+          setSelectedProject(num)
+        } else {
+          const found = getProjectBySlug(p)
+          if (found) setSelectedProject(found.id)
+        }
+      } else {
+        setSelectedProject(null)
+        setSelectedBlogSlug(null)
+        setIsBlogCatalog(false)
+      }
+    }
+
+    const handleOpenBlog = () => {
+      setIsBlogCatalog(true)
+      setSelectedBlogSlug(null)
+      setSelectedProject(null)
+      syncUrl({ blog: 'catalog' })
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+
+    const handleNavigateToSection = (e: Event) => {
+      const customEvent = e as CustomEvent<string>
+      const sectionId = customEvent.detail
+      setIsBlogCatalog(false)
+      setSelectedBlogSlug(null)
+      setSelectedProject(null)
+      syncUrl({ blog: null, project: null })
+      if (sectionId) {
+        setTimeout(() => {
+          document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' })
+        }, 100)
+      }
+    }
+
+    const handleOpenProject = (e: Event) => {
+      const customEvent = e as CustomEvent<{ slug?: string; id?: number }>
+      if (customEvent.detail?.id) {
+        handleProjectSelect(customEvent.detail.id)
+      } else if (customEvent.detail?.slug) {
+        const found = getProjectBySlug(customEvent.detail.slug)
+        if (found) {
+          handleProjectSelect(found.id)
+        }
+      }
+    }
+
+    window.addEventListener('popstate', handlePopState)
+    window.addEventListener('open-blog-view', handleOpenBlog)
+    window.addEventListener('navigate-to-section', handleNavigateToSection as EventListener)
+    window.addEventListener('open-project', handleOpenProject as EventListener)
+
+    return () => {
+      window.removeEventListener('popstate', handlePopState)
+      window.removeEventListener('open-blog-view', handleOpenBlog)
+      window.removeEventListener('navigate-to-section', handleNavigateToSection as EventListener)
+      window.removeEventListener('open-project', handleOpenProject as EventListener)
+    }
+  }, [])
 
   return (
     <div className="min-h-screen bg-white dark:bg-slate-900 transition-colors duration-300">
@@ -197,6 +319,9 @@ function PortfolioMain() {
       <Footer />
       {selectedProject === null && selectedBlogSlug === null && !isBlogCatalog && <ScrollToTopButton />}
       <ConsentBanner />
+      <Suspense fallback={null}>
+        <ChatModal />
+      </Suspense>
     </div>
   )
 }
