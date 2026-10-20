@@ -8,12 +8,76 @@ interface FormattedChatTextProps {
   isBot?: boolean
 }
 
+function renderLink(
+  url: string,
+  label: string,
+  key: number | string,
+  isBot: boolean,
+): React.ReactNode {
+  const isExternal = url.startsWith('http://') || url.startsWith('https://')
+  const blogMatch = url.match(/\/(?:en|ua|es)\/blog\/([a-zA-Z0-9-]+)/)
+  const projectMatch = url.match(/\/(?:en|ua|es)\/projects\/([a-zA-Z0-9-]+)/)
+
+  const handleClick = (e: React.MouseEvent) => {
+    if (
+      typeof window !== 'undefined' &&
+      Boolean((window as unknown as { __IS_PORTFOLIO_SPA__?: boolean }).__IS_PORTFOLIO_SPA__)
+    ) {
+      if (blogMatch) {
+        e.preventDefault()
+        window.dispatchEvent(new CustomEvent('close-ai-chat'))
+        window.dispatchEvent(
+          new CustomEvent('open-blog-article', { detail: { slug: blogMatch[1] } }),
+        )
+        return
+      }
+      if (projectMatch) {
+        e.preventDefault()
+        window.dispatchEvent(new CustomEvent('close-ai-chat'))
+        window.dispatchEvent(
+          new CustomEvent('open-project', { detail: { slug: projectMatch[1] } }),
+        )
+        return
+      }
+    }
+  }
+
+  return (
+    <a
+      key={key}
+      href={url}
+      onClick={handleClick}
+      target={isExternal ? '_blank' : undefined}
+      rel={isExternal ? 'noopener noreferrer' : undefined}
+      className={
+        isBot
+          ? 'inline-flex items-center gap-0.5 text-purple-600 dark:text-lime-400 font-semibold underline underline-offset-2 hover:text-purple-700 dark:hover:text-lime-300 transition-colors'
+          : 'underline underline-offset-2 font-semibold text-white hover:text-white/80'
+      }
+    >
+      <span>{label}</span>
+    </a>
+  )
+}
+
 function renderInlineSegments(line: string, isBot: boolean): React.ReactNode {
-  if (!line.includes('**') && !line.includes('`')) {
+  const hasFormatting =
+    line.includes('**') ||
+    line.includes('`') ||
+    line.includes('[') ||
+    line.includes('/blog/') ||
+    line.includes('/projects/') ||
+    line.includes('http://') ||
+    line.includes('https://')
+
+  if (!hasFormatting) {
     return line
   }
 
-  const tokens = line.split(/(\*\*[^*]+\*\*|`[^`]+`)/g)
+  const tokens = line.split(
+    /(\*\*[^*]+\*\*|`[^`]+`|\[[^\]]+\]\([^)]+\)|https?:\/\/[^\s)\]]+|\/(?:en|ua|es)\/(?:blog|projects)\/[a-zA-Z0-9-]+)/g,
+  )
+
   return tokens.map((token, idx) => {
     if (token.startsWith('**') && token.endsWith('**') && token.length > 4) {
       return (
@@ -29,6 +93,7 @@ function renderInlineSegments(line: string, isBot: boolean): React.ReactNode {
         </strong>
       )
     }
+
     if (token.startsWith('`') && token.endsWith('`') && token.length > 2) {
       return (
         <code
@@ -43,6 +108,22 @@ function renderInlineSegments(line: string, isBot: boolean): React.ReactNode {
         </code>
       )
     }
+
+    if (token.startsWith('[') && token.includes('](')) {
+      const match = token.match(/^\[(.*?)\]\((.*?)\)$/)
+      if (match) {
+        return renderLink(match[2], match[1], idx, isBot)
+      }
+    }
+
+    if (
+      token.startsWith('http://') ||
+      token.startsWith('https://') ||
+      /^\/(?:en|ua|es)\/(?:blog|projects)\/[a-zA-Z0-9-]+$/.test(token)
+    ) {
+      return renderLink(token, token, idx, isBot)
+    }
+
     return <React.Fragment key={idx}>{token}</React.Fragment>
   })
 }
@@ -53,15 +134,6 @@ export default function FormattedChatText({
   isBot = true,
 }: FormattedChatTextProps) {
   const lines = text.split('\n')
-
-  if (lines.length <= 1 && !text.includes('**') && !text.includes('`')) {
-    return (
-      <div className="whitespace-pre-line">
-        {srPrefix && <span className="sr-only">{srPrefix}</span>}
-        {text}
-      </div>
-    )
-  }
 
   return (
     <div className="space-y-1.5">

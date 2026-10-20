@@ -76,6 +76,7 @@ export default function BlogDetailView({
         new CustomEvent('open-ai-chat-context', {
           detail: {
             projectId: 70,
+            projectSlug: currentPost.slug,
             projectTitle: title,
             techCategory: currentPost.category,
             customPrompt:

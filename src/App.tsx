@@ -10,7 +10,7 @@ import Contact from './components/Contact'
 import Footer from './components/Footer'
 import ScrollToTopButton from './components/ScrollToTopButton'
 import ConsentBanner from './components/ConsentBanner'
-import { getProjectBySlug, getProjectSlugById } from './lib/projects'
+import { getProjectIdBySlug, getProjectSlugById } from './data/projectSlugs'
 
 const ProjectDetail = lazy(() => import('./components/ProjectDetail'))
 const Projects = lazy(() => import('./components/Projects'))
@@ -86,9 +86,9 @@ function getInitialNavigationState(): {
     if (!Number.isNaN(num) && num > 0) {
       return { project: num, blogSlug: null, isCatalog: false }
     }
-    const found = getProjectBySlug(projectParam)
-    if (found) {
-      return { project: found.id, blogSlug: null, isCatalog: false }
+    const id = getProjectIdBySlug(projectParam)
+    if (id) {
+      return { project: id, blogSlug: null, isCatalog: false }
     }
   }
 
@@ -200,8 +200,8 @@ function PortfolioMain() {
         if (!Number.isNaN(num) && num > 0) {
           setSelectedProject(num)
         } else {
-          const found = getProjectBySlug(p)
-          if (found) setSelectedProject(found.id)
+          const id = getProjectIdBySlug(p)
+          if (id) setSelectedProject(id)
         }
       } else {
         setSelectedProject(null)
@@ -237,10 +237,17 @@ function PortfolioMain() {
       if (customEvent.detail?.id) {
         handleProjectSelect(customEvent.detail.id)
       } else if (customEvent.detail?.slug) {
-        const found = getProjectBySlug(customEvent.detail.slug)
-        if (found) {
-          handleProjectSelect(found.id)
+        const id = getProjectIdBySlug(customEvent.detail.slug)
+        if (id) {
+          handleProjectSelect(id)
         }
+      }
+    }
+
+    const handleOpenBlogArticle = (e: Event) => {
+      const customEvent = e as CustomEvent<{ slug?: string }>
+      if (customEvent.detail?.slug) {
+        handleBlogSelect(customEvent.detail.slug)
       }
     }
 
@@ -248,12 +255,14 @@ function PortfolioMain() {
     window.addEventListener('open-blog-view', handleOpenBlog)
     window.addEventListener('navigate-to-section', handleNavigateToSection as EventListener)
     window.addEventListener('open-project', handleOpenProject as EventListener)
+    window.addEventListener('open-blog-article', handleOpenBlogArticle as EventListener)
 
     return () => {
       window.removeEventListener('popstate', handlePopState)
       window.removeEventListener('open-blog-view', handleOpenBlog)
       window.removeEventListener('navigate-to-section', handleNavigateToSection as EventListener)
       window.removeEventListener('open-project', handleOpenProject as EventListener)
+      window.removeEventListener('open-blog-article', handleOpenBlogArticle as EventListener)
     }
   }, [])
 

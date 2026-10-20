@@ -34,7 +34,28 @@ export const FAQ: FaqItem[] = [
     question: 'Who is Artur? / Tell me about yourself',
     questionUa: 'Хто такий Артур? / Розкажи про себе',
     questionEs: '¿Quién es Artur? / Háblame de ti',
-    keywords: ['who is', 'who are you', 'about artur', 'about yourself', 'bio', 'yourself', 'introduce', 'artur', 'кто', 'артур', 'о себе', 'расскажи', 'хто', 'розкажи', 'про себе', 'хто такий', 'quién', 'sobre ti', 'sobre artur', 'preséntate'],
+    keywords: [
+      'who is',
+      'who are you',
+      'about artur',
+      'about yourself',
+      'bio',
+      'yourself',
+      'introduce',
+      'artur',
+      'кто',
+      'артур',
+      'о себе',
+      'расскажи',
+      'хто',
+      'розкажи',
+      'про себе',
+      'хто такий',
+      'quién',
+      'sobre ti',
+      'sobre artur',
+      'presentate',
+    ],
     answer:
       'Artur Yusupov is a Fullstack WordPress Developer and React/Next.js Engineer with over 5+ years of professional experience. Currently based in Seville, Spain, he specializes in high-performance web engineering, custom themes/plugins, Hybrid RAG AI assistants, and Spec-Driven AI development.',
     answerUa:
@@ -46,7 +67,23 @@ export const FAQ: FaqItem[] = [
     question: 'What technologies do you specialize in?',
     questionUa: 'На яких технологіях ви спеціалізуєтеся?',
     questionEs: '¿En qué tecnologías te especializas?',
-    keywords: ['technologies', 'stack', 'specialize', 'skills', 'tools', 'frontend', 'backend', 'технологии', 'стек', 'навыки', 'технології', 'tecnologías', 'habilidades', 'herramientas', 'especializ'],
+    keywords: [
+      'technologies',
+      'stack',
+      'specialize',
+      'skills',
+      'tools',
+      'frontend',
+      'backend',
+      'технологии',
+      'стек',
+      'навыки',
+      'технології',
+      'tecnologias',
+      'habilidades',
+      'herramientas',
+      'especializ',
+    ],
     answer:
       'My core stack includes WordPress (custom themes/plugins, WooCommerce), React 19, Next.js 16 (App Router), TypeScript, Node.js, and PHP 8+. I also engineer custom Hybrid RAG (Retrieval-Augmented Generation) pipelines, Tailwind CSS interfaces, and REST/GraphQL APIs.',
     answerUa:
@@ -58,7 +95,19 @@ export const FAQ: FaqItem[] = [
     question: 'How many years of development experience do you have?',
     questionUa: 'Скільки років досвіду розробки у вас?',
     questionEs: '¿Cuántos años de experiencia en desarrollo tienes?',
-    keywords: ['years', 'experience', 'develop', 'how long', 'work', 'опыт', 'лет', 'разработке', 'досвід', 'років', 'años', 'experiencia', 'cuántos'],
+    keywords: [
+      'years',
+      'experience',
+      'how long',
+      'опыт',
+      'лет',
+      'разработке',
+      'досвід',
+      'років',
+      'anos',
+      'experiencia',
+      'cuantos',
+    ],
     answer:
       'I have over 5+ years of professional experience in web development, having delivered 70+ completed projects ranging from custom business websites to international enterprise applications (e.g. IT-Magic, Unitrition, Frontdeskhelpers).',
     answerUa:
@@ -70,7 +119,20 @@ export const FAQ: FaqItem[] = [
     question: 'What projects have you completed? / Tell me about your work',
     questionUa: 'Які проєкти ви створили? / Портфоліо',
     questionEs: '¿Qué proyectos has completado? / Cuéntame sobre tu trabajo',
-    keywords: ['projects', 'portfolio', 'completed', 'examples', 'websites you made', 'done', 'show me', 'проєкты', 'портфолио', 'работы', 'проєкти', 'proyectos', 'portafolio', 'trabajo', 'ejemplos'],
+    keywords: [
+      'projects',
+      'portfolio',
+      'completed',
+      'websites you made',
+      'show me projects',
+      'проєкты',
+      'портфолио',
+      'работы',
+      'проєкти',
+      'proyectos',
+      'portafolio',
+      'trabajo',
+    ],
     answer:
       'I have launched 70+ web projects indexed directly in this Hybrid RAG assistant! You can explore them in the "Featured Projects" section or ask me about any specific project (e.g. "Tell me about IT-Magic" or "Unitrition tech stack").',
     answerUa:
@@ -82,7 +144,27 @@ export const FAQ: FaqItem[] = [
     question: 'How do you use AI & RAG in your workflow?',
     questionUa: 'Як ви використовуєте AI та RAG у розробці?',
     questionEs: '¿Cómo usas la IA y RAG en tu flujo de desarrollo?',
-    keywords: ['ai', 'rag', 'retrieval', 'copilot', 'cursor', 'windsurf', 'artificial intelligence', 'agents', 'mcp', 'antigravity', 'ии', 'интеллект', 'нейросети', 'sdd', 'spec', 'спец', 'штучний', 'inteligencia artificial', 'ia', 'flujo', 'workflow'],
+    keywords: [
+      'ai',
+      'rag',
+      'retrieval',
+      'copilot',
+      'cursor',
+      'windsurf',
+      'artificial intelligence',
+      'agents',
+      'mcp',
+      'antigravity',
+      'ии',
+      'интеллект',
+      'нейросети',
+      'sdd',
+      'spec',
+      'штучний',
+      'inteligencia artificial',
+      'ia',
+      'workflow',
+    ],
     answer:
       'I build custom Hybrid RAG (Retrieval-Augmented Generation) systems - including this very portfolio assistant that indexes 70 case studies with lexical and cosine scoring. In development, I integrate Claude Code, Cursor, and Google Antigravity into a strict Spec-Driven Development (SDD) + TDD pipeline, accelerating delivery by 3x with zero hallucinations.',
     answerUa:
@@ -94,7 +176,27 @@ export const FAQ: FaqItem[] = [
     question: 'What services do you offer? / Can I hire you?',
     questionUa: 'Які послуги ви надаєте? / Чи можна вас найняти?',
     questionEs: '¿Qué servicios ofreces? / ¿Puedo contratarte?',
-    keywords: ['services', 'offer', 'hire', 'rates', 'price', 'freelance', 'contract', 'collaboration', 'услуги', 'нанять', 'цена', 'стоимость', 'работать', 'послуги', 'найняти', 'servicios', 'contratar', 'precio', 'colaboración'],
+    keywords: [
+      'services',
+      'offer',
+      'hire',
+      'rates',
+      'price',
+      'freelance',
+      'contract',
+      'collaboration',
+      'услуги',
+      'нанять',
+      'цена',
+      'стоимость',
+      'работать',
+      'послуги',
+      'найняти',
+      'servicios',
+      'contratar',
+      'precio',
+      'colaboracion',
+    ],
     answer:
       'I am fully open to remote full-time, part-time, or contract roles. My services include custom React/Next.js 16 app engineering, custom WordPress architecture from scratch, custom RAG AI chatbot development grounded in business data, and Core Web Vitals optimization.',
     answerUa:
@@ -106,7 +208,17 @@ export const FAQ: FaqItem[] = [
     question: 'Can you describe your experience with SEO?',
     questionUa: 'Який у вас досвід у SEO?',
     questionEs: '¿Puedes describir tu experiencia con SEO?',
-    keywords: ['seo', 'search', 'optimization', 'indexing', 'pagespeed', 'google', 'сео', 'оптимизация', 'поиск', 'пошук', 'posicionamiento', 'búsqueda', 'optimización'],
+    keywords: [
+      'seo',
+      'pagespeed',
+      'сео',
+      'оптимизация',
+      'поиск',
+      'пошук',
+      'posicionamiento',
+      'busqueda',
+      'optimizacion',
+    ],
     answer:
       'I specialize in technical SEO, including Core Web Vitals, site speed tuning, semantic HTML, structured data schema, and mobile-first accessibility. This helps client websites achieve higher Google rankings and better organic conversion rates.',
     answerUa:
@@ -118,7 +230,22 @@ export const FAQ: FaqItem[] = [
     question: 'Where are you located?',
     questionUa: 'Де ви знаходитесь?',
     questionEs: '¿Dónde estás ubicado?',
-    keywords: ['location', 'located', 'where', 'based', 'spain', 'seville', 'где', 'находишься', 'локация', 'испания', 'де', 'ubicación', 'sevilla', 'españa', 'dónde'],
+    keywords: [
+      'location',
+      'located',
+      'where',
+      'based',
+      'seville',
+      'где',
+      'находишься',
+      'локация',
+      'испания',
+      'де',
+      'ubicacion',
+      'sevilla',
+      'espana',
+      'donde',
+    ],
     answer:
       'I am currently based in Seville, Spain, but I work remotely and collaborate seamlessly with international clients and teams across different time zones.',
     answerUa:
@@ -130,7 +257,13 @@ export const FAQ: FaqItem[] = [
     question: 'What is your English proficiency level?',
     questionUa: 'Який у вас рівень англійської мови?',
     questionEs: '¿Cuál es tu nivel de inglés?',
-    keywords: ['english', 'language', 'proficiency', 'level', 'speak', 'английский', 'язык', 'уровень', 'англійська', 'inglés', 'idioma', 'nivel'],
+    keywords: [
+      'english',
+      'proficiency',
+      'английский',
+      'англійська',
+      'ingles',
+    ],
     answer:
       'My English level is Upper-Intermediate (B2). I am fully comfortable participating in video calls, writing documentation, and conducting daily technical discussions.',
     answerUa:
@@ -142,7 +275,16 @@ export const FAQ: FaqItem[] = [
     question: 'What motivates you as a developer?',
     questionUa: 'Що вас мотивує як розробника?',
     questionEs: '¿Qué te motiva como desarrollador?',
-    keywords: ['motivate', 'motivation', 'inspire', 'drive', 'why', 'мотивация', 'мотивирует', 'мотивація', 'motivación', 'inspira', 'apasiona'],
+    keywords: [
+      'motivate',
+      'motivation',
+      'inspire',
+      'мотивация',
+      'мотивирует',
+      'мотивація',
+      'motivacion',
+      'inspira',
+    ],
     answer:
       'I am driven by solving complex problems, building user-friendly and fast digital experiences, and continuously learning new technologies. I love combining clean code with direct business results.',
     answerUa:
@@ -151,6 +293,16 @@ export const FAQ: FaqItem[] = [
       'Me impulsa resolver problemas complejos, crear experiencias digitales rápidas y amigables para el usuario, y aprender continuamente nuevas tecnologías. Me encanta combinar código limpio con resultados empresariales concretos.',
   },
 ]
+
+export function matchesFaqKeyword(text: string, kw: string): boolean {
+  const lower = text.toLowerCase()
+  const lowerKw = kw.toLowerCase()
+  if (lowerKw.length <= 4) {
+    const rx = new RegExp(`(^|[^a-z0-9а-яіїєґ])${lowerKw}([^a-z0-9а-яіїєґ]|$)`, 'i')
+    return rx.test(lower)
+  }
+  return lower.includes(lowerKw)
+}
 
 export function getBotAnswer(question: string, lang: 'en' | 'ua' | 'es' = 'en'): string {
   const lower = question.toLowerCase()
@@ -166,7 +318,7 @@ export function getBotAnswer(question: string, lang: 'en' | 'ua' | 'es' = 'en'):
     }
   }
   for (const item of FAQ) {
-    if (item.keywords.some((kw) => lower.includes(kw))) {
+    if (item.keywords.some((kw) => matchesFaqKeyword(lower, kw))) {
       if (lang === 'ua') return item.answerUa
       if (lang === 'es') return item.answerEs
       return item.answer

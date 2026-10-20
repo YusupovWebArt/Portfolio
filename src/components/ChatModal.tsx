@@ -62,6 +62,15 @@ const ChatModal = ({
 
   const isModalOpen = (open ?? false) || internalOpen
 
+  const abortControllerRef = useRef<AbortController | null>(null)
+
+  const handleClose = useCallback(() => {
+    abortControllerRef.current?.abort()
+    abortControllerRef.current = null
+    setInternalOpen(false)
+    onClose?.()
+  }, [onClose])
+
   useEffect(() => {
     const handleContextEvent = (event: Event) => {
       event.stopImmediatePropagation()
@@ -79,21 +88,14 @@ const ChatModal = ({
 
     window.addEventListener('open-ai-chat-context', handleContextEvent)
     window.addEventListener('open-ai-chat', handleOpenChat)
+    window.addEventListener('close-ai-chat', handleClose)
 
     return () => {
       window.removeEventListener('open-ai-chat-context', handleContextEvent)
       window.removeEventListener('open-ai-chat', handleOpenChat)
+      window.removeEventListener('close-ai-chat', handleClose)
     }
-  }, [])
-
-  const abortControllerRef = useRef<AbortController | null>(null)
-
-  const handleClose = useCallback(() => {
-    abortControllerRef.current?.abort()
-    abortControllerRef.current = null
-    setInternalOpen(false)
-    onClose?.()
-  }, [onClose])
+  }, [handleClose])
 
   const modalRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)

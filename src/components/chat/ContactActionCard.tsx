@@ -44,6 +44,11 @@ export default function ContactActionCard({
       const contactSection = document.getElementById('contact')
       if (contactSection && typeof contactSection.scrollIntoView === 'function') {
         contactSection.scrollIntoView({ behavior: 'smooth' })
+      } else if (
+        typeof window !== 'undefined' &&
+        Boolean((window as unknown as { __IS_PORTFOLIO_SPA__?: boolean }).__IS_PORTFOLIO_SPA__)
+      ) {
+        window.dispatchEvent(new CustomEvent('navigate-to-section', { detail: 'contact' }))
       } else if (typeof window !== 'undefined') {
         window.location.assign(`/${locale}#contact`)
       }

@@ -12,6 +12,7 @@ import { aiTools } from '../../../src/lib/ai/tools'
 import { checkRateLimit } from '../../../src/lib/ratelimit'
 import { sanitizeLlmInput } from '../../../src/lib/ai/text'
 import { projectRegistry } from '../../../src/lib/projectRegistry'
+import { getBlogPostBySlug, getBlogTitle } from '../../../src/data/blog'
 
 export const dynamic = 'force-dynamic'
 
@@ -189,6 +190,12 @@ export async function POST(req: Request) {
       if (found) {
         verifiedProjectSlug = found.slug
         verifiedProjectTitle = found.project.title
+      } else {
+        const blogPost = getBlogPostBySlug(slugNormalized)
+        if (blogPost) {
+          verifiedProjectSlug = blogPost.slug
+          verifiedProjectTitle = getBlogTitle(blogPost, validatedLocale)
+        }
       }
     }
 

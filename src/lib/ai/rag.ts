@@ -1,7 +1,17 @@
 import { getAllKnowledgeChunks, KnowledgeChunk } from './knowledge'
 import { projectRegistry } from '../projectRegistry'
-import { FAQ, getBotAnswer } from '../../data/chatFaq'
+import { FAQ, getBotAnswer, matchesFaqKeyword } from '../../data/chatFaq'
 import type { Project, TechnologyItem } from '../../components/projects/project-types'
+import {
+  allBlogPosts,
+  getBlogPostBySlug,
+  getBlogTitle,
+  getBlogDescription,
+  getBlogCategoryLabel,
+  getBlogReadTime,
+  getBlogTldr,
+  type BlogPost,
+} from '../../data/blog'
 import {
   tokenize,
   expandTokens,
@@ -737,7 +747,7 @@ export function isHireOrContactQuery(query: string): boolean {
 
 export function isStackComparisonQuery(query: string): boolean {
   const lower = foldForSearch(query || '')
-  return /(vs|versus|compare|comparison|which stack|what tech|better|wordpress.*next|next.*wordpress|react.*next|shopify.*wordpress|порівня|порівняти|що краще|вибрати стек|разница|что лучше|сравнить|сравнение|comparar|comparativa|que elegir|diferencia entre)/i.test(
+  return /(vs|versus|compare|comparison|which stack|what tech to choose|what tech is better|which tech|better|wordpress.*next|next.*wordpress|react.*next|shopify.*wordpress|порівня|порівняти|що краще|вибрати стек|разница|что лучше|сравнить|сравнение|comparar|comparativa|que elegir|diferencia entre)/i.test(
     lower,
   )
 }
@@ -776,13 +786,328 @@ export function isBlogArticlesQuery(query: string): boolean {
   )
 }
 
+/**
+ * Resolves the appropriate response language by analyzing query characters first
+ * (Cyrillic -> 'ua', Spanish markers -> 'es', neutral / English -> preferredLocale or 'en').
+ */
+export function resolveResponseLanguage(
+  query: string,
+  preferredLocale?: 'en' | 'ua' | 'es',
+): 'en' | 'ua' | 'es' {
+  const trimmed = query ? query.trim() : ''
+  if (!trimmed) return preferredLocale || 'en'
+
+  // Cyrillic characters (Russian or Ukrainian queries) -> 'ua'
+  if (/[а-яіїєґё]/i.test(trimmed)) {
+    return 'ua'
+  }
+
+  // Spanish diacritics or explicit Spanish query keywords
+  if (
+    /[¿¡áéíóúüñ]/i.test(trimmed) ||
+    /\b(que|como|para|por|con|sobre|servicios|hola|quien|cuales|cuanto|experiencia|proyectos|desarrollo|buenas)\b/i.test(
+      trimmed,
+    )
+  ) {
+    return 'es'
+  }
+
+  return preferredLocale || detectLanguage(trimmed)
+}
+
+/**
+ * Resolves a blog post from query text or options context.
+ */
+export function resolveBlogFromQueryOrContext(
+  query: string,
+  options: LocalSynthesisOptions = {},
+): BlogPost | undefined {
+  const trimmed = query ? query.trim() : ''
+  const lower = foldForSearch(trimmed)
+
+  // 1. Direct slug match from options.projectSlug
+  if (options.projectSlug) {
+    const bySlug = getBlogPostBySlug(options.projectSlug)
+    if (bySlug) return bySlug
+  }
+
+  // 2. Direct title match from options.projectTitle
+  if (options.projectTitle) {
+    const byTitle = allBlogPosts.find(
+      (p) =>
+        foldForSearch(p.title.en) === foldForSearch(options.projectTitle!) ||
+        foldForSearch(p.title.ua) === foldForSearch(options.projectTitle!) ||
+        foldForSearch(p.title.es) === foldForSearch(options.projectTitle!),
+    )
+    if (byTitle) return byTitle
+  }
+
+  if (!trimmed) return undefined
+
+  // 3. Query contains exact blog slug or titles
+  for (const post of allBlogPosts) {
+    if (lower.includes(post.slug.toLowerCase())) {
+      return post
+    }
+    const tEn = foldForSearch(post.title.en)
+    const tUa = foldForSearch(post.title.ua)
+    const tEs = foldForSearch(post.title.es)
+    if (
+      (tEn.length > 8 && lower.includes(tEn)) ||
+      (tUa.length > 8 && lower.includes(tUa)) ||
+      (tEs.length > 8 && lower.includes(tEs))
+    ) {
+      return post
+    }
+  }
+
+  // 4. Distinct article topical phrases
+  if (/\b(wcag|eaa\b|european accessibility|accessibility act|доступност|доступность|accesibilidad)/i.test(lower)) {
+    return getBlogPostBySlug('wcag-22-aa-european-accessibility-act-2026')
+  }
+
+  if (/\b(zero[\s-]*trust|client[\s-]*side security|обфускац)/i.test(lower)) {
+    return getBlogPostBySlug('client-side-zero-trust-security')
+  }
+
+  if (/\b(hybrid[\s-]*rag|browser[\s-]*rag|in[\s-]*browser rag|раг|векторн.*браузер)/i.test(lower)) {
+    return getBlogPostBySlug('autonomous-hybrid-rag-architecture-browser')
+  }
+
+  if (/\b(core web vitals|cwv|bundle optimization|бандл|inp < 50)/i.test(lower)) {
+    return getBlogPostBySlug('sub-second-cwv-bundle-optimization')
+  }
+
+  if (/\b(shopify.*woocommerce|woocommerce.*shopify|liquid.*woocommerce)/i.test(lower)) {
+    return getBlogPostBySlug('shopify-liquid-vs-custom-woocommerce')
+  }
+
+  if (/\b(next\.?js.*headless|headless.*next\.?js|headless.*wordpress)/i.test(lower)) {
+    return getBlogPostBySlug('nextjs-vs-headless-wordpress-custom-php-2026')
+  }
+
+  if (/\b(legacy migration|zero[\s-]*downtime migration|міграці.*хмар|миграци.*облак)/i.test(lower)) {
+    return getBlogPostBySlug('legacy-migration-cloud-infrastructure')
+  }
+
+  return undefined
+}
+
+/**
+ * Formats a blog article into a rich markdown response with link, TL;DR, and applied case studies.
+ */
+export function formatBlogPostDetails(post: BlogPost, lang: 'en' | 'ua' | 'es'): string {
+  const title = getBlogTitle(post, lang)
+  const desc = getBlogDescription(post, lang)
+  const categoryLabel = getBlogCategoryLabel(post, lang)
+  const readTime = getBlogReadTime(post, lang)
+  const tldr = getBlogTldr(post, lang)
+  const articleUrl = `/${lang}/blog/${post.slug}`
+
+  const lines: string[] = [
+    `### [${title}](${articleUrl})`,
+    `*${categoryLabel} · ${readTime} read*`,
+    '',
+    desc,
+  ]
+
+  if (tldr && tldr.length > 0) {
+    const tldrHeader =
+      lang === 'ua'
+        ? 'Ключові архітектурні тези:'
+        : lang === 'es'
+          ? 'Conclusiones arquitectónicas clave:'
+          : 'Key Architectural Takeaways:'
+    lines.push('', tldrHeader)
+    tldr.forEach((item) => {
+      lines.push(`- ${item}`)
+    })
+  }
+
+  if (post.appliedProjects && post.appliedProjects.length > 0) {
+    const appliedHeader =
+      lang === 'ua'
+        ? 'Практичне впровадження у реальних кейсах:'
+        : lang === 'es'
+          ? 'Implementación práctica en proyectos reales:'
+          : 'Production implementation in case studies:'
+    lines.push('', appliedHeader)
+    post.appliedProjects.forEach((p) => {
+      const note = p.note[lang] || p.note.en
+      lines.push(`- **${p.name}**: ${note}`)
+    })
+  }
+
+  const readMoreText =
+    lang === 'ua'
+      ? `Повний технічний розбір читайте у статті: [Читати статтю](${articleUrl})`
+      : lang === 'es'
+        ? `Lee el análisis técnico completo en: [Leer artículo](${articleUrl})`
+        : `Read the full architectural case study: [Read Full Article](${articleUrl})`
+
+  lines.push('', readMoreText)
+  return lines.join('\n')
+}
+
+export interface CategoryShowcaseResult {
+  category: string
+  answer: string
+  projectSlugs: string[]
+}
+
+export function resolveCategoryOrTechShowcase(
+  query: string,
+  lang: 'en' | 'ua' | 'es',
+): CategoryShowcaseResult | undefined {
+  const trimmed = query ? query.trim() : ''
+  const lower = foldForSearch(trimmed)
+
+  if (isStackComparisonQuery(query) || isEstimateOrCalculatorQuery(query)) {
+    return undefined
+  }
+
+  // 1. Shopify & E-commerce
+  if (
+    /(shopify|шопифай|шопіфай)/i.test(lower) ||
+    (/(e[\s-]*commerce|онлайн[\s-]*магазин|інтернет[\s-]*магазин|tienda online)/i.test(lower) &&
+      !/(vs|versus|compare|порівня)/i.test(lower))
+  ) {
+    const projectSlugs = ['kidzely', 'artezioeu', 'cartooniko', 'prezentify', 'secondchancedecor']
+    const answer =
+      lang === 'ua'
+        ? 'Я розробляю високонавантажені e-commerce рішення на Shopify Liquid та кастомні інтернет-магазини:\n\n' +
+          '- **Kidzely**: Міжнародний магазин дитячих товарів із оптимізованим чекаутом, мобільним UX та високою швидкістю завантаження.\n' +
+          '- **Artezio EU**: Європейський інтернет-магазин із підтримкою мультивалютності та автоматизацією складських залишків.\n' +
+          '- **Cartooniko**: Інтерактивна платформа дитячих товарів із кастомною темою Liquid та інтеграціями додатків.\n' +
+          '- **Prezentify**: Подарунковий e-commerce портал із гнучкими фільтрами та адаптивним кошиком.\n\n' +
+          'Нижче доступні картки цих проєктів із переходом до повних кейсів:'
+        : lang === 'es'
+          ? 'Desarrollo soluciones de comercio electrónico de alto rendimiento en Shopify Liquid y tiendas a medida:\n\n' +
+            '- **Kidzely**: Tienda internacional con checkout optimizado, experiencia móvil fluida y alta velocidad de carga.\n' +
+            '- **Artezio EU**: Tienda europea multimoneda con sincronización automática de inventario.\n' +
+            '- **Cartooniko**: Plataforma interactiva con tema personalizado en Liquid e integraciones de aplicaciones.\n' +
+            '- **Prezentify**: Tienda de regalos con filtros dinámicos y carrito optimizado.\n\n' +
+            'A continuación puedes explorar las tarjetas interactivas de estos proyectos:'
+          : 'I develop high-performance e-commerce solutions using Shopify Liquid and tailored online storefronts:\n\n' +
+            '- **Kidzely**: International consumer e-commerce store with optimized checkout velocity, mobile UX, and high conversion speed.\n' +
+            '- **Artezio EU**: European multi-currency storefront with automated inventory management and ERP sync.\n' +
+            '- **Cartooniko**: Interactive retail store featuring custom Liquid templating and third-party app integration.\n' +
+            '- **Prezentify**: Gift commerce portal with responsive product filtering and frictionless cart workflows.\n\n' +
+            'Explore the project case studies below:'
+
+    return { category: 'Shopify & E-Commerce', answer, projectSlugs }
+  }
+
+  // 2. AWS & Cloud Infrastructure
+  if (/(aws\b|amazon web services|cloud delivery|хмарн.*інфраструктур|infraestructura cloud)/i.test(lower)) {
+    const projectSlugs = [
+      'it-magic',
+      'aws-migration-services',
+      'aws-for-ecommerce',
+      'cloud-delivery-solution',
+    ]
+    const answer =
+      lang === 'ua'
+        ? 'У моєму портфоліо представлена серія enterprise-проєктів для хмарної інфраструктури AWS та консалтингу:\n\n' +
+          '- **IT-Magic**: Офіційний корпоративний портал для провідного AWS Advanced Consulting Partner із кастомною архітектурою та високим SEO-рейтингом.\n' +
+          '- **AWS Migration Services**: Спеціалізований B2B-портал міграції інфраструктури в AWS без простою бізнес-процесів.\n' +
+          '- **AWS for E-commerce**: Хмарна масштабована архітектура для онлайн-рітейлу з високою доступністю 99.99%.\n' +
+          '- **Cloud Delivery Solution**: Рішення доставки контенту через глобальний CloudFront CDN та сертифікати безпеки SSL/TLS.\n\n' +
+          'Ознайомтеся з кейсами цих проєктів нижче:'
+        : lang === 'es'
+          ? 'Cuento con una amplia experiencia en proyectos empresariales y consultoría sobre infraestructura AWS Cloud:\n\n' +
+            '- **IT-Magic**: Portal corporativo para socio consultor de AWS con arquitectura PHP limpia y excelente posicionamiento SEO.\n' +
+            '- **AWS Migration Services**: Portal B2B especializado en migración a la nube de AWS con cero tiempo de inactividad.\n' +
+            '- **AWS for E-commerce**: Arquitectura cloud elástica para retail online con 99.99% de disponibilidad.\n' +
+            '- **Cloud Delivery Solution**: Distribución de contenido global mediante CloudFront CDN y cifrado SSL/TLS.\n\n' +
+            'A continuación puedes acceder a los casos de estudio detallados:'
+          : 'My portfolio includes a specialized series of enterprise projects for AWS Cloud infrastructure and consulting:\n\n' +
+            '- **IT-Magic**: Corporate platform for a leading AWS Advanced Consulting Partner with bespoke architecture and top Google rankings.\n' +
+            '- **AWS Migration Services**: High-conversion B2B portal for zero-downtime enterprise AWS cloud migrations.\n' +
+            '- **AWS for E-commerce**: Elastic cloud architecture for high-traffic retail platforms guaranteeing 99.99% uptime.\n' +
+            '- **Cloud Delivery Solution**: High-availability CDN delivery network powered by AWS CloudFront and automated SSL/TLS.\n\n' +
+            'Explore the detailed case study cards below:'
+
+    return { category: 'AWS Cloud Infrastructure', answer, projectSlugs }
+  }
+
+  // 3. WordPress & Custom PHP
+  if (/(wordpress projects|wordpress сайти|проєкти на wordpress|сайты на вордпресс|proyectos wordpress|temas wordpress)/i.test(lower)) {
+    const projectSlugs = [
+      'it-magic',
+      'aws-migration-services',
+      'front-desk-helpers',
+      'adwoods-design',
+    ]
+    const answer =
+      lang === 'ua'
+        ? 'У напрямку WordPress я спеціалізуюся на чистій кастомній розробці (PHP 8+, ACF Pro, Tailwind CSS) без важких конструкторів:\n\n' +
+          '- **IT-Magic**: Корпоративний enterprise-портал для AWS Advanced Partner із оцінкою 95+ Lighthouse.\n' +
+          '- **AWS Migration Services**: B2B-сервіс із кастомними типами записів (CPT) та оптимізованими формами конверсії.\n' +
+          '- **Front Desk Helpers**: Масштабний портал аутсорсингових сервісів із кастомною структурою блогу та бази знань.\n' +
+          '- **Adwoods Design**: Креативний сайт агентства із плавною анімацією та адаптивним каталогом робіт.\n\n' +
+          'Нижче доступні картки проєктів із переглядом технологічного стеку та живих сайтів:'
+        : lang === 'es'
+          ? 'En el ecosistema WordPress me enfoco en desarrollo a medida (PHP 8+, ACF Pro, Tailwind CSS) sin constructores pesados:\n\n' +
+            '- **IT-Magic**: Portal empresarial para socio consultor de AWS con rendimiento 95+ Lighthouse.\n' +
+            '- **AWS Migration Services**: Portal B2B con tipos de contenido personalizados (CPT) y flujos de conversión ágiles.\n' +
+            '- **Front Desk Helpers**: Gran plataforma corporativa con blog técnico y base de conocimientos optimizada.\n' +
+            '- **Adwoods Design**: Sitio para agencia creativa con animaciones fluidas y catálogo interactivo.\n\n' +
+            'A continuación puedes ver las tarjetas interactivas de estos proyectos:'
+          : 'In the WordPress ecosystem, I specialize in clean bespoke engineering (PHP 8+, ACF Pro, Tailwind CSS) without heavy visual builders:\n\n' +
+            '- **IT-Magic**: Enterprise corporate portal for an AWS Advanced Partner scoring 95+ on Google Lighthouse.\n' +
+            '- **AWS Migration Services**: High-impact B2B platform with bespoke Custom Post Types and optimized lead funnels.\n' +
+            '- **Front Desk Helpers**: Scalable outsourcing service platform with custom knowledge base and multi-tier blog.\n' +
+            '- **Adwoods Design**: Creative agency web platform featuring fluid UI transitions and portfolio taxonomy.\n\n' +
+            'Explore the interactive project cards below:'
+
+    return { category: 'Custom WordPress & PHP', answer, projectSlugs }
+  }
+
+  // 4. Next.js & Modern React
+  if (/(next\.?js projects|nextjs projects|проєкти на next|react projects|проєкти на react|proyectos next|proyectos react)/i.test(lower)) {
+    const projectSlugs = [
+      'yusupovartur-nextjs-portfolio',
+      'unitrition',
+      'webart-react-portfolio',
+    ]
+    const answer =
+      lang === 'ua'
+        ? 'У напрямку Next.js 16 та React 19 я створюю надшвидкі масштабовані веб-платформи:\n\n' +
+          '- **Next.js 16 Portfolio Platform**: Повноцінна fullstack-платформа на React 19 Server Components із автономним Hybrid RAG AI-рушієм, SSG 210+ сторінками та WCAG 2.2 AA.\n' +
+          '- **Unitrition**: Платформа персоналізованого харчування на Next.js 16 App Router, Headless WordPress, Supabase та USDA API.\n' +
+          '- **My React Portfolio Website**: Високопродуктивний SPA на React 19, TypeScript та Tailwind CSS v4 із Vitest тест-сьютом.\n\n' +
+          'Ознайомтеся з картками проєктів нижче:'
+        : lang === 'es'
+          ? 'En Next.js 16 y React 19 desarrollo plataformas web ultrarrápidas y accesibles:\n\n' +
+            '- **Next.js 16 Portfolio Platform**: Plataforma fullstack con React 19 Server Components, motor Hybrid RAG autónomo, 210+ páginas SSG y WCAG 2.2 AA.\n' +
+            '- **Unitrition**: Plataforma de nutrición con Next.js 16 App Router, Headless WordPress, Supabase y API de USDA.\n' +
+            '- **My React Portfolio Website**: Aplicación SPA de alto rendimiento con React 19, TypeScript y pruebas Vitest.\n\n' +
+            'Explora los proyectos a continuación:'
+          : 'In Next.js 16 and React 19, I architect sub-second, accessible web applications:\n\n' +
+            '- **Next.js 16 Portfolio Platform**: Enterprise fullstack system with React 19 Server Components, autonomous Hybrid RAG, 210+ SSG pages, and WCAG 2.2 AA.\n' +
+            '- **Unitrition**: Personalized nutrition modeling platform built with Next.js 16 App Router, Headless WordPress, Supabase, and USDA API.\n' +
+            '- **My React Portfolio Website**: High-performance single page application built with React 19, TypeScript, and 29 Vitest specs.\n\n' +
+            'Explore the project cards below:'
+
+    return { category: 'Next.js & React Applications', answer, projectSlugs }
+  }
+
+  return undefined
+}
+
 function resolveTargetProject(
   query: string,
   options: LocalSynthesisOptions = {},
 ): { slug: string; project: Project } | undefined {
   const lower = foldForSearch(query || '')
 
-  if (isBestProjectsQuery(query) || isPersonalProjectsQuery(query) || isBlogArticlesQuery(query)) {
+  if (
+    isBestProjectsQuery(query) ||
+    isPersonalProjectsQuery(query) ||
+    isBlogArticlesQuery(query) ||
+    Boolean(resolveBlogFromQueryOrContext(query, options))
+  ) {
     return undefined
   }
 
@@ -826,7 +1151,7 @@ export function synthesizeLocalRagAnswer(
 ): string {
   const trimmed = query ? query.trim() : ''
   const lower = foldForSearch(trimmed)
-  const lang = options.locale || detectLanguage(trimmed)
+  const lang = resolveResponseLanguage(trimmed, options.locale)
 
   // 1. Check if query is an exact match for one of the general FAQ questions
   for (const item of FAQ) {
@@ -839,38 +1164,7 @@ export function synthesizeLocalRagAnswer(
     }
   }
 
-  // 2. Resolve target project from query, options, or conversational history
-  const resolvedEntry = resolveTargetProject(trimmed, options)
-  const matchedProject = resolvedEntry?.project
-
-  // 3. If a project is targeted and the query is not a general profile/services question
-  const isGeneralProfileOrServiceQuestion =
-    /(who is artur|about yourself|quien es artur|хто такий артур|how many years|скільки років|cuantos anos|where are you located|де ви знаходитесь|donde estas|services|rates|cost|послуги|ціни|precio)/i.test(
-      lower,
-    )
-
-  if (matchedProject && !isGeneralProfileOrServiceQuestion) {
-    if (/(tech\s*stack|technologies|stack|used|built with|tecnolog|стек|технолог)/i.test(lower)) {
-      return stripEmDashes(formatProjectStack(matchedProject, lang))
-    }
-    if (
-      /(feature|main features|functionality|funciones|caracteristicas|фіч|функці|можливост|возможност|особенност)/i.test(
-        lower,
-      )
-    ) {
-      return stripEmDashes(formatProjectFeatures(matchedProject, lang))
-    }
-    if (
-      /(architect|arquitectura|архітектур|архитектур|challenge|solution|case study|how it works|как устроен|як влаштован)/i.test(
-        lower,
-      )
-    ) {
-      return stripEmDashes(formatProjectArchitecture(matchedProject, lang))
-    }
-    return stripEmDashes(formatProjectOverview(matchedProject, lang))
-  }
-
-  // 4. Dedicated query routing for stack comparison & timeline estimation
+  // 2. Dedicated query routing for stack comparison & timeline estimation
   if (isStackComparisonQuery(trimmed)) {
     if (lang === 'ua') {
       return stripEmDashes(
@@ -1047,14 +1341,56 @@ export function synthesizeLocalRagAnswer(
     )
   }
 
-  // 5. General FAQ keyword matching
+  // 3. Blog post context or specific article query match
+  const resolvedBlog = resolveBlogFromQueryOrContext(trimmed, options)
+  if (resolvedBlog) {
+    return stripEmDashes(formatBlogPostDetails(resolvedBlog, lang))
+  }
+
+  // 4. Resolve target project from query, options, or conversational history
+  const resolvedEntry = resolveTargetProject(trimmed, options)
+  const matchedProject = resolvedEntry?.project
+
+  const isGeneralProfileOrServiceQuestion =
+    /(who is artur|about yourself|quien es artur|хто такий артур|how many years|скільки років|cuantos anos|where are you located|де ви знаходитесь|donde estas|services|rates|cost|послуги|ціни|precio)/i.test(
+      lower,
+    )
+
+  if (matchedProject && !isGeneralProfileOrServiceQuestion) {
+    if (/(tech\s*stack|technologies|stack|used|built with|tecnolog|стек|технолог)/i.test(lower)) {
+      return stripEmDashes(formatProjectStack(matchedProject, lang))
+    }
+    if (
+      /(feature|main features|functionality|funciones|caracteristicas|фіч|функці|можливост|возможност|особенност)/i.test(
+        lower,
+      )
+    ) {
+      return stripEmDashes(formatProjectFeatures(matchedProject, lang))
+    }
+    if (
+      /(architect|arquitectura|архітектур|архитектур|challenge|solution|case study|how it works|как устроен|як влаштован)/i.test(
+        lower,
+      )
+    ) {
+      return stripEmDashes(formatProjectArchitecture(matchedProject, lang))
+    }
+    return stripEmDashes(formatProjectOverview(matchedProject, lang))
+  }
+
+  // 5. Category & Technology Showcase (e.g. Shopify, AWS, WordPress, Next.js)
+  const categoryShowcase = resolveCategoryOrTechShowcase(trimmed, lang)
+  if (categoryShowcase) {
+    return stripEmDashes(categoryShowcase.answer)
+  }
+
+  // 6. General FAQ keyword matching with word boundaries
   for (const item of FAQ) {
-    if (item.keywords.some((kw) => lower.includes(foldForSearch(kw)))) {
+    if (item.keywords.some((kw) => matchesFaqKeyword(lower, kw))) {
       return stripEmDashes(getBotAnswer(trimmed, lang))
     }
   }
 
-  // 6. Hybrid RAG retrieval across all chunks
+  // 7. Hybrid RAG BM25 retrieval across all 290 knowledge chunks
   const retrieved = retrieveKnowledge(trimmed, {
     currentProjectSlug: resolvedEntry?.slug || options.projectSlug,
     topK: 2,
@@ -1066,6 +1402,12 @@ export function synthesizeLocalRagAnswer(
       const proj = projectRegistry.find((p) => p.slug === top.slug)?.project
       if (proj) {
         return stripEmDashes(formatProjectOverview(proj, lang))
+      }
+    }
+    if (top.type === 'blog' && top.slug) {
+      const blog = getBlogPostBySlug(top.slug)
+      if (blog) {
+        return stripEmDashes(formatBlogPostDetails(blog, lang))
       }
     }
     const text =
@@ -1084,12 +1426,18 @@ export function getRagSourceLabel(
   query: string,
   options: LocalSynthesisOptions = {},
 ): string {
+  const lang = resolveResponseLanguage(query, options.locale)
+
   if (isStackComparisonQuery(query)) {
     return 'Hybrid RAG · Architecture Comparison Matrix'
   }
 
   if (isEstimateOrCalculatorQuery(query)) {
     return 'Hybrid RAG · Timeline & Scope Estimator'
+  }
+
+  if (isBlogArticlesQuery(query)) {
+    return 'Hybrid RAG · Technical Engineering Blog'
   }
 
   if (isPersonalProjectsQuery(query)) {
@@ -1100,9 +1448,20 @@ export function getRagSourceLabel(
     return 'Hybrid RAG · Best Flagship Projects Showcase'
   }
 
+  const resolvedBlog = resolveBlogFromQueryOrContext(query, options)
+  if (resolvedBlog) {
+    const blogTitle = getBlogTitle(resolvedBlog, lang)
+    return `Hybrid RAG · ${stripEmDashes(blogTitle)} (Article)`
+  }
+
   const resolved = resolveTargetProject(query, options)
   if (resolved) {
     return `Hybrid RAG · ${stripEmDashes(resolved.project.title)} Case Study`
+  }
+
+  const categoryShowcase = resolveCategoryOrTechShowcase(query, lang)
+  if (categoryShowcase) {
+    return `Hybrid RAG · ${categoryShowcase.category} Showcase`
   }
 
   if (options.projectTitle) {
@@ -1155,7 +1514,7 @@ export function getRelevantProjectCards(
   if (!trimmed) return []
 
   const lower = foldForSearch(trimmed)
-  const lang = options.locale || detectLanguage(trimmed)
+  const lang = resolveResponseLanguage(trimmed, options.locale)
 
   const isGeneralProfileOrServiceQuestion =
     /(who is artur|about yourself|quien es artur|хто такий артур|how many years|скільки років|cuantos anos|where are you located|де ви знаходитесь|donde estas|services|rates|cost|hire|послуги|ціни|precio|contratar|workflow|ai & rag|seo|english|motivat)/i.test(
@@ -1202,13 +1561,39 @@ export function getRelevantProjectCards(
     return cards
   }
 
-  // 3. Check if query mentions a specific project (including typo-tolerant match) or has active context
+  // 3. Check if query matches a blog article that has applied project references
+  const resolvedBlog = resolveBlogFromQueryOrContext(trimmed, options)
+  if (resolvedBlog?.appliedProjects && resolvedBlog.appliedProjects.length > 0) {
+    const cards: ChatProjectCardItem[] = []
+    for (const ref of resolvedBlog.appliedProjects) {
+      const entry = projectRegistry.find((p) => p.slug === ref.slug)
+      if (entry) {
+        cards.push(toProjectCardItem(entry.slug, entry.project, lang))
+      }
+    }
+    if (cards.length > 0) return cards
+  }
+
+  // 4. Category & Technology Showcase (Shopify, AWS, WordPress, Next.js)
+  const categoryShowcase = resolveCategoryOrTechShowcase(trimmed, lang)
+  if (categoryShowcase?.projectSlugs) {
+    const cards: ChatProjectCardItem[] = []
+    for (const slug of categoryShowcase.projectSlugs) {
+      const entry = projectRegistry.find((p) => p.slug === slug)
+      if (entry) {
+        cards.push(toProjectCardItem(entry.slug, entry.project, lang))
+      }
+    }
+    if (cards.length > 0) return cards
+  }
+
+  // 5. Check if query mentions a specific project (including typo-tolerant match) or has active context
   const resolved = resolveTargetProject(trimmed, options)
   if (resolved) {
     return [toProjectCardItem(resolved.slug, resolved.project, lang)]
   }
 
-  // 4. Check if user is asking to see completed projects / portfolio / work examples
+  // 6. Check if user is asking to see completed projects / portfolio / work examples
   const isProjectsShowcaseQuery =
     /(projects|tell me about your work|completed|show me.*project|portfolio|проєкт|портфоліо|проект|портфолио|proyectos|portafolio|trabajo)/i.test(
       lower,
@@ -1231,7 +1616,7 @@ export function getRelevantProjectCards(
     return cards
   }
 
-  // 3. Check high-confidence BM25 project matches for domain queries (e.g. "AWS", "Shopify")
+  // 7. Check high-confidence BM25 project matches for domain queries (e.g. "AWS", "Shopify")
   const retrieved = retrieveKnowledge(trimmed, { topK: 2 })
   const seenSlugs = new Set<string>()
   const matchedCards: ChatProjectCardItem[] = []
@@ -1257,11 +1642,35 @@ export function getContextualFollowUps(
 ): string[] {
   const trimmed = query ? query.trim() : ''
   const lower = foldForSearch(trimmed)
-  const lang = options.locale || detectLanguage(trimmed)
+  const lang = resolveResponseLanguage(trimmed, options.locale)
   const answeredSet = new Set(
     (options.answeredQuestions || []).map((q) => foldForSearch(q)),
   )
   answeredSet.add(lower)
+
+  // Follow-ups for blog articles
+  const resolvedBlog = resolveBlogFromQueryOrContext(trimmed, options)
+  if (resolvedBlog) {
+    const candidates =
+      lang === 'ua'
+        ? [
+            'Які ще архітектурні статті є в блозі?',
+            'Як влаштована архітектура Next.js 16 Portfolio Platform?',
+            'Скільки часу займе розробка? / Калькулятор',
+          ]
+        : lang === 'es'
+          ? [
+              '¿Qué otros artículos arquitectónicos hay en el blog?',
+              '¿Cómo está estructurada la plataforma Next.js 16?',
+              '¿Cuánto tiempo tardaría el desarrollo? / Calculadora',
+            ]
+          : [
+              'What other architectural articles are in the blog?',
+              'How is Next.js 16 Portfolio Platform architected?',
+              'Estimate timeline for my project / Calculator',
+            ]
+    return candidates.filter((q) => !answeredSet.has(foldForSearch(q))).slice(0, 3)
+  }
 
   const resolved = resolveTargetProject(trimmed, options)
   if (resolved) {
@@ -1389,6 +1798,28 @@ export function getContextualFollowUps(
               'Can I hire you? / Rates & Contacts',
             ]
     return estimateFollowUps.filter((q) => !answeredSet.has(foldForSearch(q))).slice(0, 3)
+  }
+
+  if (isBlogArticlesQuery(trimmed)) {
+    const blogFollowUps =
+      lang === 'ua'
+        ? [
+            'Як працює автономний Hybrid RAG у браузері?',
+            'WordPress чи Next.js: порівняння стеків',
+            'Скільки часу займе розробка? / Калькулятор',
+          ]
+        : lang === 'es'
+          ? [
+              '¿Cómo funciona el Hybrid RAG autónomo en cliente?',
+              'WordPress vs Next.js: comparativa de stacks',
+              '¿Cuánto tiempo tardaría el desarrollo? / Calculadora',
+            ]
+          : [
+              'How does in-browser Hybrid RAG work?',
+              'Next.js vs Headless WordPress comparison',
+              'Estimate timeline for my project / Calculator',
+            ]
+    return blogFollowUps.filter((q) => !answeredSet.has(foldForSearch(q))).slice(0, 3)
   }
 
   return FAQ.map((faq) =>
