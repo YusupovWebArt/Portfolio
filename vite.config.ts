@@ -1,6 +1,8 @@
 import { defineConfig, type Plugin } from 'vite'
 import react from '@vitejs/plugin-react'
 import { createHash } from 'node:crypto'
+import fs from 'node:fs'
+import path from 'node:path'
 
 const SPA_CSP = [
   "default-src 'self'",
@@ -34,9 +36,23 @@ const injectCsp = (): Plugin => ({
   },
 })
 
+const emitVercelIgnore = (): Plugin => ({
+  name: 'emit-vercel-ignore',
+  closeBundle() {
+    const rootDir = typeof import.meta.dirname !== 'undefined' ? import.meta.dirname : process.cwd()
+    const vercelJsonPath = path.resolve(rootDir, 'dist/vercel.json')
+    const config = {
+      $schema: 'https://openapi.vercel.sh/vercel.json',
+      framework: null,
+      ignoreCommand: 'exit 0',
+    }
+    fs.writeFileSync(vercelJsonPath, JSON.stringify(config, null, 2), 'utf8')
+  },
+})
+
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), injectCsp()],
+  plugins: [react(), injectCsp(), emitVercelIgnore()],
   base: '/Portfolio/',
   server: {
     hmr: {
