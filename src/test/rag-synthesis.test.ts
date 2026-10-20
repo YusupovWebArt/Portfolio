@@ -57,7 +57,7 @@ describe('RAG Synthesis & Multilingual Routing Specification (TDD)', () => {
   })
 
   describe('formatBlogPostDetails', () => {
-    it('should format blog article into structured markdown with zero em dashes', () => {
+    it('should format blog article into structured markdown with zero em dashes and proper read time', () => {
       const post = getBlogPostBySlug('autonomous-hybrid-rag-architecture-browser')
       expect(post).toBeDefined()
       const text = formatBlogPostDetails(post!, 'en')
@@ -67,6 +67,12 @@ describe('RAG Synthesis & Multilingual Routing Specification (TDD)', () => {
       )
       expect(text).toContain('Key Architectural Takeaways:')
       expect(text).not.toContain('\u2014')
+      expect(text).not.toContain('read read')
+      expect(text).toContain('*AI Engineering · 7 min read*')
+
+      const textUa = formatBlogPostDetails(post!, 'ua')
+      expect(textUa).not.toContain('читання read')
+      expect(textUa).toContain('*AI-інженерія · 7 хв читання*')
     })
   })
 

@@ -906,7 +906,7 @@ export function formatBlogPostDetails(post: BlogPost, lang: 'en' | 'ua' | 'es'):
 
   const lines: string[] = [
     `### [${title}](${articleUrl})`,
-    `*${categoryLabel} · ${readTime} read*`,
+    `*${categoryLabel} · ${readTime}*`,
     '',
     desc,
   ]
@@ -1096,7 +1096,7 @@ export function resolveCategoryOrTechShowcase(
   return undefined
 }
 
-function resolveTargetProject(
+export function resolveTargetProject(
   query: string,
   options: LocalSynthesisOptions = {},
 ): { slug: string; project: Project } | undefined {

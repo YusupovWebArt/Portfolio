@@ -63,6 +63,7 @@ function renderLink(
 function renderInlineSegments(line: string, isBot: boolean): React.ReactNode {
   const hasFormatting =
     line.includes('**') ||
+    line.includes('*') ||
     line.includes('`') ||
     line.includes('[') ||
     line.includes('/blog/') ||
@@ -75,7 +76,7 @@ function renderInlineSegments(line: string, isBot: boolean): React.ReactNode {
   }
 
   const tokens = line.split(
-    /(\*\*[^*]+\*\*|`[^`]+`|\[[^\]]+\]\([^)]+\)|https?:\/\/[^\s)\]]+|\/(?:en|ua|es)\/(?:blog|projects)\/[a-zA-Z0-9-]+)/g,
+    /(\*\*[^*]+\*\*|\*(?!\s)[^*]+(?<!\s)\*|`[^`]+`|\[[^\]]+\]\([^)]+\)|https?:\/\/[^\s)\]]+|\/(?:en|ua|es)\/(?:blog|projects)\/[a-zA-Z0-9-]+)/g,
   )
 
   return tokens.map((token, idx) => {
@@ -91,6 +92,22 @@ function renderInlineSegments(line: string, isBot: boolean): React.ReactNode {
         >
           {token.slice(2, -2)}
         </strong>
+      )
+    }
+
+    if (
+      token.startsWith('*') &&
+      token.endsWith('*') &&
+      !token.startsWith('**') &&
+      token.length > 2
+    ) {
+      return (
+        <em
+          key={idx}
+          className="italic text-slate-600 dark:text-slate-300"
+        >
+          {token.slice(1, -1)}
+        </em>
       )
     }
 
@@ -160,6 +177,40 @@ export default function FormattedChatText({
               <span className="flex-1 leading-relaxed">
                 {renderInlineSegments(content, isBot)}
               </span>
+            </div>
+          )
+        }
+
+        const isHeading3 = trimmed.startsWith('### ')
+        const isHeading2 = trimmed.startsWith('## ')
+        if (isHeading3 || isHeading2) {
+          const content = trimmed.slice(isHeading3 ? 4 : 3).trim()
+          return (
+            <h4
+              key={idx}
+              className={`font-bold tracking-tight text-slate-900 dark:text-white pt-1 pb-0.5 ${
+                isHeading2 ? 'text-base sm:text-lg' : 'text-sm sm:text-base'
+              }`}
+            >
+              {renderInlineSegments(content, isBot)}
+            </h4>
+          )
+        }
+
+        const isItalicLine =
+          trimmed.startsWith('*') &&
+          trimmed.endsWith('*') &&
+          !trimmed.startsWith('**') &&
+          trimmed.length > 2
+
+        if (isItalicLine) {
+          const content = trimmed.slice(1, -1).trim()
+          return (
+            <div
+              key={idx}
+              className="text-xs text-slate-500 dark:text-slate-400 font-medium italic -mt-0.5 mb-1"
+            >
+              {renderInlineSegments(content, isBot)}
             </div>
           )
         }

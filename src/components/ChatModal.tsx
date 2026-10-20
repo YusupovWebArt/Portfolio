@@ -147,22 +147,52 @@ const ChatModal = ({
     )
   }, [messages])
 
-  const scrollToBottom = () => {
-    if (
-      messagesContainerRef.current &&
-      typeof messagesContainerRef.current.scrollTo === 'function'
-    ) {
-      messagesContainerRef.current.scrollTo({
-        top: messagesContainerRef.current.scrollHeight,
-        behavior: 'smooth',
-      })
-    }
-  }
-
   useEffect(() => {
-    if (isModalOpen) {
-      setTimeout(scrollToBottom, 50)
+    if (!isModalOpen) return
+
+    const scrollToAppropriatePosition = () => {
+      const container = messagesContainerRef.current
+      if (!container || typeof container.scrollTo !== 'function') return
+
+      if (messages.length <= 1) {
+        container.scrollTo({
+          top: 0,
+          behavior: 'smooth',
+        })
+        return
+      }
+
+      const lastMsg = messages[messages.length - 1]
+      if (!lastMsg) return
+
+      // If user message was just added or assistant is currently typing
+      if (lastMsg.from === 'user' || isTyping) {
+        container.scrollTo({
+          top: container.scrollHeight,
+          behavior: 'smooth',
+        })
+        return
+      }
+
+      // Bot message has arrived and assistant finished typing
+      const userElements = container.querySelectorAll<HTMLElement>('[data-chat-message="user"]')
+      const latestUserEl = userElements[userElements.length - 1]
+      if (latestUserEl) {
+        const targetScroll = Math.max(0, latestUserEl.offsetTop - 16)
+        container.scrollTo({
+          top: targetScroll,
+          behavior: 'smooth',
+        })
+      } else {
+        container.scrollTo({
+          top: container.scrollHeight,
+          behavior: 'smooth',
+        })
+      }
     }
+
+    const timer = setTimeout(scrollToAppropriatePosition, 60)
+    return () => clearTimeout(timer)
   }, [messages, isTyping, isModalOpen])
 
   const handleCopyMessage = (id: string, text: string) => {
@@ -246,6 +276,8 @@ const ChatModal = ({
         isStackComparisonQuery,
         isEstimateOrCalculatorQuery,
         getContextualFollowUps,
+        resolveBlogFromQueryOrContext,
+        resolveTargetProject,
       } = await ragModulePromise
       const sourceLabel = getRagSourceLabel(textToSend, ragOptions)
       const projectCards = getRelevantProjectCards(textToSend, ragOptions)
@@ -253,6 +285,31 @@ const ChatModal = ({
       const showStack = isStackComparisonQuery(textToSend)
       const showEstimate = isEstimateOrCalculatorQuery(textToSend)
       const followUps = getContextualFollowUps(textToSend, ragOptions)
+
+      const resolvedBlog = resolveBlogFromQueryOrContext(textToSend, ragOptions)
+      if (resolvedBlog) {
+        const blogTitle =
+          lang === 'ua'
+            ? resolvedBlog.title.ua
+            : lang === 'es'
+              ? resolvedBlog.title.es
+              : resolvedBlog.title.en
+        setProjectContext({
+          projectSlug: resolvedBlog.slug,
+          projectTitle: blogTitle,
+        })
+      } else {
+        const resolvedProject = resolveTargetProject(textToSend, ragOptions)
+        if (
+          resolvedProject &&
+          resolvedProject.slug !== projectContext?.projectSlug
+        ) {
+          setProjectContext({
+            projectSlug: resolvedProject.slug,
+            projectTitle: resolvedProject.project.title,
+          })
+        }
+      }
 
       setTimeout(() => {
         setIsTyping(false)
@@ -387,6 +444,8 @@ const ChatModal = ({
         isStackComparisonQuery,
         isEstimateOrCalculatorQuery,
         getContextualFollowUps,
+        resolveBlogFromQueryOrContext,
+        resolveTargetProject,
       } = await ragModulePromise
       const sourceLabel = getRagSourceLabel(textToSend, ragOptions)
       const projectCards = getRelevantProjectCards(textToSend, ragOptions)
@@ -394,6 +453,31 @@ const ChatModal = ({
       const showStack = isStackComparisonQuery(textToSend)
       const showEstimate = isEstimateOrCalculatorQuery(textToSend)
       const followUps = getContextualFollowUps(textToSend, ragOptions)
+
+      const resolvedBlog = resolveBlogFromQueryOrContext(textToSend, ragOptions)
+      if (resolvedBlog) {
+        const blogTitle =
+          lang === 'ua'
+            ? resolvedBlog.title.ua
+            : lang === 'es'
+              ? resolvedBlog.title.es
+              : resolvedBlog.title.en
+        setProjectContext({
+          projectSlug: resolvedBlog.slug,
+          projectTitle: blogTitle,
+        })
+      } else {
+        const resolvedProject = resolveTargetProject(textToSend, ragOptions)
+        if (
+          resolvedProject &&
+          resolvedProject.slug !== projectContext?.projectSlug
+        ) {
+          setProjectContext({
+            projectSlug: resolvedProject.slug,
+            projectTitle: resolvedProject.project.title,
+          })
+        }
+      }
 
       setTimeout(() => {
         setIsTyping(false)
@@ -640,6 +724,7 @@ const ChatModal = ({
             return (
               <div
                 key={msg.id}
+                data-chat-message={isBot ? 'bot' : 'user'}
                 className={`flex items-start space-x-3 ${
                   isBot ? 'justify-start' : 'justify-end space-x-reverse'
                 }`}
@@ -744,8 +829,8 @@ const ChatModal = ({
             )
           })}
 
-          {/* Project Context Quick Prompts inside chat log */}
-          {projectContext && (
+          {/* Project Context Quick Prompts inside chat log (initial open only) */}
+          {projectContext && messages.length === 1 && !isTyping && (
             <div className="mt-2 ml-11 p-3.5 bg-purple-50/70 dark:bg-slate-800/70 border border-purple-200/60 dark:border-lime-500/25 rounded-2xl animate-fade-in space-y-2">
               <div className="text-[10px] font-bold text-purple-600 dark:text-lime-400 uppercase tracking-wider flex items-center justify-between">
                 <span>{ct.quickQueriesHeader}: {projectContext.projectTitle}</span>
