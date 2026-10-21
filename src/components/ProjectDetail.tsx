@@ -21,6 +21,7 @@ import {
 import { Project, TechnologyItem } from './projects/project-types'
 import { useLanguage } from '../contexts/LanguageContext'
 import { projectRegistry } from '../lib/projectRegistry'
+import { getRelatedProjects } from '../lib/projects'
 import { useDialogA11y } from '../hooks/useDialogA11y'
 import ProjectChatTrigger from './ProjectChatTrigger'
 
@@ -181,12 +182,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
 
   const relatedProjects = React.useMemo(() => {
     if (!project) return []
-    const currentCats = new Set(project.category)
-    const matches = projects.filter((p) => {
-      if (p.id === project.id) return false
-      return p.category.some((c) => currentCats.has(c))
-    })
-    return matches.slice(0, 3)
+    return getRelatedProjects(project, projects, 3)
   }, [project])
 
   if (!project) {
