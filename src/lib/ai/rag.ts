@@ -1068,6 +1068,7 @@ export function resolveCategoryOrTechShowcase(
   if (/(next\.?js projects|nextjs projects|проєкти на next|react projects|проєкти на react|proyectos next|proyectos react)/i.test(lower)) {
     const projectSlugs = [
       'yusupovartur-nextjs-portfolio',
+      'wpskills',
       'unitrition',
       'webart-react-portfolio',
     ]
@@ -1271,26 +1272,29 @@ export function synthesizeLocalRagAnswer(
     if (lang === 'ua') {
       return stripEmDashes(
         'Мої власні авторські розробки (Personal Flagship Products), де я виступаю архітектором, Product Owner та Lead Fullstack інженером:\n\n' +
-          '1. **Next.js 16 & Hybrid RAG Portfolio Platform** (yusupovartur.com) - Enterprise fullstack-платформа на Next.js 16 App Router, React 19 Server Components, TypeScript 6 та кастомному автономному AI Hybrid RAG двигуні, що індексує 70 проєктів на 210+ SSG маршрутах (EN/UA/ES) із WCAG 2.2 AA.\n' +
-          '2. **Unitrition** (unitrition.info) - Повнофункціональна платформа персоналізованого харчування для 10 дієтичних планів на базі Headless WordPress, Next.js 16, Supabase та інтеграції USDA FoodData Central API.\n' +
-          '3. **My React Portfolio Website** - Високопродуктивний односторінковий застосунок-портфоліо на React 19, TypeScript, Tailwind CSS v4 та 3-мовній i18n екосистемі із 29 Vitest тестами.\n\n' +
+          '1. **Next.js 16 & Hybrid RAG Portfolio Platform** (yusupovartur.com) - Enterprise fullstack-платформа на Next.js 16 App Router, React 19 Server Components, TypeScript 6 та кастомному автономному AI Hybrid RAG двигуні, що індексує 71 проєкт на 213+ SSG маршрутах (EN/UA/ES) із WCAG 2.2 AA.\n' +
+          '2. **WPSKILLS** (wpskills.vercel.app) - Інтерактивна освітня інженерна платформа для вивчення Fullstack (React 19, Next.js 16, TypeScript, WordPress core) на базі нативного Rust-компілятора MDX-RS (1 100+ уроків), симуляторів рантайму, генератора аудіопідкастів для Google NotebookLM та гейміфікації на Supabase.\n' +
+          '3. **Unitrition** (unitrition.info) - Повнофункціональна платформа персоналізованого харчування для 10 дієтичних планів на базі Headless WordPress, Next.js 16, Supabase та інтеграції USDA FoodData Central API.\n' +
+          '4. **My React Portfolio Website** - Високопродуктивний односторінковий застосунок-портфоліо на React 19, TypeScript, Tailwind CSS v4 та 3-мовній i18n екосистемі із 29 Vitest тестами.\n\n' +
           'Нижче доступні картки цих проєктів із прямим переходом до кейсів:'
       )
     }
     if (lang === 'es') {
       return stripEmDashes(
         'Mis proyectos propios destacados (Personal Flagship Products), donde actúo como arquitecto, Product Owner y Lead Fullstack Engineer:\n\n' +
-          '1. **Next.js 16 & Hybrid RAG Portfolio Platform** (yusupovartur.com) - Plataforma fullstack empresarial con Next.js 16 App Router, React 19 Server Components, TypeScript 6 y motor propio Hybrid RAG que indexa 70 proyectos en más de 210 rutas SSG (EN/UA/ES) con WCAG 2.2 AA.\n' +
-          '2. **Unitrition** (unitrition.info) - Plataforma completa de nutrición personalizada para 10 dietas, construida con Headless WordPress, Next.js 16 App Router, Supabase y API de USDA.\n' +
-          '3. **My React Portfolio Website** - Aplicación SPA de alto rendimiento desarrollada con React 19, TypeScript, Tailwind CSS v4 y sistema i18n trilingüe respaldada por 29 pruebas Vitest.\n\n' +
+          '1. **Next.js 16 & Hybrid RAG Portfolio Platform** (yusupovartur.com) - Plataforma fullstack empresarial con Next.js 16 App Router, React 19 Server Components, TypeScript 6 y motor propio Hybrid RAG que indexa 71 proyectos en más de 213 rutas SSG (EN/UA/ES) con WCAG 2.2 AA.\n' +
+          '2. **WPSKILLS** (wpskills.vercel.app) - Plataforma educativa interactiva de ingeniería Fullstack (React 19, Next.js 16, TypeScript, WordPress core) impulsada por compilación Rust MDX-RS (1.100+ lecciones), simuladores de ejecución, generador de podcasts para Google NotebookLM y gamificación en Supabase.\n' +
+          '3. **Unitrition** (unitrition.info) - Plataforma completa de nutrición personalizada para 10 dietas, construida con Headless WordPress, Next.js 16 App Router, Supabase y API de USDA.\n' +
+          '4. **My React Portfolio Website** - Aplicación SPA de alto rendimiento desarrollada con React 19, TypeScript, Tailwind CSS v4 y sistema i18n trilingüe respaldada por 29 pruebas Vitest.\n\n' +
           'A continuación puedes explorar las tarjetas de estos proyectos:'
       )
     }
     return stripEmDashes(
       'My personal flagship products where I act as Architect, Product Owner, and Lead Fullstack Engineer:\n\n' +
-        '1. **Next.js 16 & Hybrid RAG Portfolio Platform** (yusupovartur.com) - Enterprise fullstack platform with Next.js 16 App Router, React 19 Server Components, TypeScript 6, and a custom autonomous Hybrid RAG engine indexing 70 case studies across 210+ SSG routes (EN/UA/ES) with WCAG 2.2 AA.\n' +
-        '2. **Unitrition** (unitrition.info) - Comprehensive dietary modeling platform supporting 10 nutrition plans, built with Headless WordPress, Next.js 16 App Router, Supabase, and USDA API integration.\n' +
-        '3. **My React Portfolio Website** - High-performance single-page portfolio application built with React 19, TypeScript, Tailwind CSS v4, and 3-language i18n backed by 29 Vitest specs.\n\n' +
+        '1. **Next.js 16 & Hybrid RAG Portfolio Platform** (yusupovartur.com) - Enterprise fullstack platform with Next.js 16 App Router, React 19 Server Components, TypeScript 6, and a custom autonomous Hybrid RAG engine indexing 71 case studies across 213+ SSG routes (EN/UA/ES) with WCAG 2.2 AA.\n' +
+        '2. **WPSKILLS** (wpskills.vercel.app) - Interactive engineering educational platform for Fullstack mastery (React 19, Next.js 16, TypeScript, WordPress core internals) powered by native Rust MDX-RS compilation (1,100+ lessons), runtime simulators, Google NotebookLM audio prompt engine, and Supabase gamification.\n' +
+        '3. **Unitrition** (unitrition.info) - Comprehensive dietary modeling platform supporting 10 nutrition plans, built with Headless WordPress, Next.js 16 App Router, Supabase, and USDA API integration.\n' +
+        '4. **My React Portfolio Website** - High-performance single-page portfolio application built with React 19, TypeScript, Tailwind CSS v4, and 3-language i18n backed by 29 Vitest specs.\n\n' +
         'Explore the case study cards below:'
     )
   }
@@ -1300,7 +1304,8 @@ export function synthesizeLocalRagAnswer(
       return stripEmDashes(
         'Ось добірка моїх провідних проєктів, згрупованих за ключовими технологічними стеками (перші та найсильніші приклади з кожного напрямку):\n\n' +
           '- **Next.js 16 & Full-Stack**:\n' +
-          '  - **Next.js 16 & Hybrid RAG Portfolio Platform** - корпоративна fullstack-платформа з автономним Hybrid RAG AI-асистентом на 70 кейсів.\n' +
+          '  - **Next.js 16 & Hybrid RAG Portfolio Platform** - корпоративна fullstack-платформа з автономним Hybrid RAG AI-асистентом на 71 кейс.\n' +
+          '  - **WPSKILLS** - інтерактивна інженерна освітня екосистема на 1 100+ MDX-уроків із Rust MDX-RS, симулятором аварій та NotebookLM AI.\n' +
           '  - **Unitrition** - персоналізована платформа харчування на Next.js 16 App Router, Headless WP, Supabase та USDA API.\n' +
           '- **Custom WordPress & Enterprise**:\n' +
           '  - **IT-Magic** - enterprise-портал для провідного AWS Advanced Consulting Partner із кастомною темою, Schema.org та топовими позиціями в Google.\n' +
@@ -1315,7 +1320,8 @@ export function synthesizeLocalRagAnswer(
       return stripEmDashes(
         'A continuación presento una selección de mis mejores proyectos organizados por tecnologías clave (los ejemplos destacados de cada categoría):\n\n' +
           '- **Next.js 16 y Full-Stack**:\n' +
-          '  - **Next.js 16 & Hybrid RAG Portfolio Platform** - Plataforma fullstack empresarial con motor propio Hybrid RAG y 210+ rutas SSG.\n' +
+          '  - **Next.js 16 & Hybrid RAG Portfolio Platform** - Plataforma fullstack empresarial con motor propio Hybrid RAG y 213+ rutas SSG.\n' +
+          '  - **WPSKILLS** - Ecosistema educativo interactivo con 1.100+ lecciones MDX en Rust MDX-RS, simulador de fallos y NotebookLM AI.\n' +
           '  - **Unitrition** - Plataforma de nutrición personalizada con Next.js 16 App Router, Headless WP, Supabase y API USDA.\n' +
           '- **WordPress a medida y Enterprise**:\n' +
           '  - **IT-Magic** - Portal corporativo para socio consultor de AWS con tema PHP personalizado y optimización SEO técnica.\n' +
@@ -1468,7 +1474,7 @@ export function getRagSourceLabel(
     return `Hybrid RAG · ${stripEmDashes(options.projectTitle)} Case Study`
   }
 
-  return 'Hybrid RAG · 70-Project Knowledge Base'
+  return 'Hybrid RAG · 71-Project Knowledge Base'
 }
 
 export interface ChatProjectCardItem {
@@ -1529,6 +1535,7 @@ export function getRelevantProjectCards(
   if (isPersonalProjectsQuery(trimmed)) {
     const personalSlugs = [
       'yusupovartur-nextjs-portfolio',
+      'wpskills',
       'unitrition',
       'webart-react-portfolio',
     ]
@@ -1546,6 +1553,7 @@ export function getRelevantProjectCards(
   if (isBestProjectsQuery(trimmed)) {
     const bestSlugs = [
       'yusupovartur-nextjs-portfolio',
+      'wpskills',
       'unitrition',
       'it-magic',
       'webart-react-portfolio',

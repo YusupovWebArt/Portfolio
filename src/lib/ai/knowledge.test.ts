@@ -7,13 +7,13 @@ import {
 } from './knowledge'
 
 describe('RAG Knowledge Base Specification (TDD)', () => {
-  it('should load structured knowledge base containing all 70 project case studies', () => {
+  it('should load structured knowledge base containing all 71 project case studies', () => {
     const kb = loadKnowledgeBase()
 
     expect(kb).toBeDefined()
     expect(kb.version).toBeDefined()
     expect(kb.author.name).toBe('Artur Yusupov')
-    expect(kb.projects).toHaveLength(70)
+    expect(kb.projects).toHaveLength(71)
   })
 
   it('should contain valid schema for all project knowledge chunks', () => {
@@ -53,6 +53,10 @@ describe('RAG Knowledge Base Specification (TDD)', () => {
     const unitrition = findChunkBySlug('unitrition')
     expect(unitrition).toBeDefined()
     expect(unitrition?.title).toContain('Unitrition')
+
+    const wpskills = findChunkBySlug('wpskills')
+    expect(wpskills).toBeDefined()
+    expect(wpskills?.title).toContain('WPSKILLS')
   })
 
   it('should include profile, service, and methodology knowledge chunks', () => {

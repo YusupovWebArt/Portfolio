@@ -182,13 +182,14 @@ describe('Hybrid RAG Retriever Specification (TDD)', () => {
     const cards = getRelevantProjectCards('dest projects', { locale: 'en' })
     expect(cards.length).toBeGreaterThanOrEqual(4)
     expect(cards.some((c) => c.slug === 'yusupovartur-nextjs-portfolio')).toBe(true)
+    expect(cards.some((c) => c.slug === 'wpskills')).toBe(true)
     expect(cards.some((c) => c.slug === 'unitrition')).toBe(true)
     expect(cards.some((c) => c.slug === 'it-magic')).toBe(true)
   })
 
   it('should return personal flagship projects with isPersonal: true flag', () => {
     const cards = getRelevantProjectCards('What are your personal projects?', { locale: 'en' })
-    expect(cards).toHaveLength(3)
+    expect(cards).toHaveLength(4)
     expect(cards.every((c) => c.isPersonal === true)).toBe(true)
     expect(cards.some((c) => c.slug === 'yusupovartur-nextjs-portfolio')).toBe(true)
     expect(cards.some((c) => c.slug === 'unitrition')).toBe(true)

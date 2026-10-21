@@ -74,12 +74,18 @@ export const PROJECT_SLUG_MAP: Record<string, number> = {
   'webart-portfolio-website-v2': 67,
   'webart-react-portfolio': 68,
   'website-integration-crm': 69,
+  'wpskills': 71,
   'yusupovartur-nextjs-portfolio': 70,
 }
 
-export const PROJECT_ID_MAP: Record<number, string> = Object.fromEntries(
-  Object.entries(PROJECT_SLUG_MAP).map(([slug, id]) => [id, slug])
-)
+export const PROJECT_ID_MAP: Record<number, string> = {
+  ...Object.fromEntries(
+    Object.entries(PROJECT_SLUG_MAP).map(([slug, id]) => [id, slug])
+  ),
+  29000: 'unitrition',
+  29100: 'wpskills',
+  29500: 'yusupovartur-nextjs-portfolio',
+}
 
 export function getProjectIdBySlug(slug: string): number | undefined {
   return PROJECT_SLUG_MAP[slug.trim().toLowerCase()]

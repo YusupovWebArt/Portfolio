@@ -19,22 +19,27 @@ describe('Standalone SSG Project Pages Specification (TDD)', () => {
   })
 
   it(
-    'should generate static params for all 70 projects across en, ua, and es locales',
+    'should generate static params for all 71 projects across en, ua, and es locales',
     async () => {
     const kb = loadKnowledgeBase()
-    expect(kb.projects.length).toBe(70)
+    expect(kb.projects.length).toBe(71)
 
     // Dynamic import to verify generateStaticParams output
     const mod = await import('../../app/[locale]/projects/[slug]/page')
     const paramsList = await mod.generateStaticParams()
 
-    // 70 projects * 3 locales = 210 pre-rendered paths
-    expect(paramsList).toHaveLength(210)
+    // 71 projects * 3 locales = 213 pre-rendered paths
+    expect(paramsList).toHaveLength(213)
 
     const itMagicParams = paramsList.find(
       (p: { locale: string; slug: string }) => p.slug === 'it-magic' && p.locale === 'en',
     )
     expect(itMagicParams).toBeDefined()
+
+    const wpskillsParams = paramsList.find(
+      (p: { locale: string; slug: string }) => p.slug === 'wpskills' && p.locale === 'en',
+    )
+    expect(wpskillsParams).toBeDefined()
   }, 15000)
 
   it('should have standalone ProjectDetailView component without em dashes', () => {
