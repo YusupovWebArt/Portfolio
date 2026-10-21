@@ -713,7 +713,11 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                   project.technologies.contentManagement.length > 0 && (
                     <div className="p-3 bg-slate-50 dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">
                       <h4 className="font-semibold text-slate-900 dark:text-white mb-2">
-                        Content Management:
+                        {lang === 'ua'
+                          ? 'Управління контентом (CMS):'
+                          : lang === 'es'
+                            ? 'Gestión de contenidos (CMS):'
+                            : 'Content Management:'}
                       </h4>
                       <ul className="list-none pl-2 space-y-1 text-slate-600 dark:text-slate-300">
                         {project.technologies.contentManagement.map(
@@ -735,7 +739,11 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                   project.technologies.devopsSecurity.length > 0 && (
                     <div className="p-3 bg-slate-50 dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">
                       <h4 className="font-semibold text-slate-900 dark:text-white mb-2">
-                        DevOps & Security:
+                        {lang === 'ua'
+                          ? 'DevOps та безпека:'
+                          : lang === 'es'
+                            ? 'DevOps y seguridad:'
+                            : 'DevOps & Security:'}
                       </h4>
                       <ul className="list-none pl-2 space-y-1 text-slate-600 dark:text-slate-300">
                         {project.technologies.devopsSecurity.map(
@@ -757,7 +765,11 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                   project.technologies.analytics.length > 0 && (
                     <div className="p-3 bg-slate-50 dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">
                       <h4 className="font-semibold text-slate-900 dark:text-white mb-2">
-                        Analytics:
+                        {lang === 'ua'
+                          ? 'Аналітика:'
+                          : lang === 'es'
+                            ? 'Analítica:'
+                            : 'Analytics:'}
                       </h4>
                       <ul className="list-none pl-2 space-y-1 text-slate-600 dark:text-slate-300">
                         {project.technologies.analytics.map((tech, idx) => (
@@ -777,7 +789,11 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                   project.technologies.aiTools.length > 0 && (
                     <div className="p-3 bg-slate-50 dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">
                       <h4 className="font-semibold text-slate-900 dark:text-white mb-2">
-                        AI Tools:
+                        {lang === 'ua'
+                          ? 'AI-інструменти:'
+                          : lang === 'es'
+                            ? 'Herramientas de IA:'
+                            : 'AI Tools:'}
                       </h4>
                       <ul className="list-none pl-2 space-y-1 text-slate-600 dark:text-slate-300">
                         {project.technologies.aiTools.map((tech, idx) => (
@@ -817,7 +833,11 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                   project.technologies.technicalOptimization.length > 0 && (
                     <div className="p-3 bg-slate-50 dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">
                       <h4 className="font-semibold text-slate-900 dark:text-white mb-2">
-                        Technical Optimization:
+                        {lang === 'ua'
+                          ? 'Технічна оптимізація:'
+                          : lang === 'es'
+                            ? 'Optimización técnica:'
+                            : 'Technical Optimization:'}
                       </h4>
                       <ul className="list-none pl-2 space-y-1 text-slate-600 dark:text-slate-300">
                         {project.technologies.technicalOptimization.map(
@@ -839,7 +859,11 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                   project.technologies.digitalMarketing.length > 0 && (
                     <div className="p-3 bg-slate-50 dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-600">
                       <h4 className="font-semibold text-slate-900 dark:text-white mb-2">
-                        Digital Marketing:
+                        {lang === 'ua'
+                          ? 'Цифровий маркетинг:'
+                          : lang === 'es'
+                            ? 'Marketing digital:'
+                            : 'Digital Marketing:'}
                       </h4>
                       <ul className="list-none pl-2 space-y-1 text-slate-600 dark:text-slate-300">
                         {project.technologies.digitalMarketing.map(

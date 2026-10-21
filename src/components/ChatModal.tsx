@@ -130,8 +130,8 @@ const ChatModal = ({
       {
         id: 'welcome',
         from: 'bot',
-        text: "Hi! I am Artur's AI assistant powered by a custom Hybrid RAG engine. 🤖 I have indexed all 70 portfolio case studies, architectures, and tech stacks. Ask me about any project, skill, or experience!",
-        source: 'Hybrid RAG · 70-Project Knowledge Base',
+        text: "Hi! I am Artur's AI assistant powered by a custom Hybrid RAG engine. 🤖 I have indexed all 71 portfolio case studies, architectures, and tech stacks. Ask me about any project, skill, or experience!",
+        source: 'Hybrid RAG · 71-Project Knowledge Base',
         timestamp: new Date(),
       },
     ]
@@ -252,7 +252,7 @@ const ChatModal = ({
     }
     const initialSourceLabel = projectContext?.projectTitle
       ? `Hybrid RAG · ${projectContext.projectTitle} Case Study`
-      : 'Hybrid RAG · 70-Project Knowledge Base'
+      : 'Hybrid RAG · 71-Project Knowledge Base'
 
     setMessages((prev) => [...prev, userMessage])
     setInput('')
@@ -402,6 +402,8 @@ const ChatModal = ({
             isStackComparisonQuery,
             isEstimateOrCalculatorQuery,
             getContextualFollowUps,
+            resolveBlogFromQueryOrContext,
+            resolveTargetProject,
           }) => {
             const sourceLabel = getRagSourceLabel(textToSend, ragOptions)
             const projectCards = getRelevantProjectCards(textToSend, ragOptions)
@@ -409,6 +411,38 @@ const ChatModal = ({
             const showStack = isStackComparisonQuery(textToSend)
             const showEstimate = isEstimateOrCalculatorQuery(textToSend)
             const followUps = getContextualFollowUps(textToSend, ragOptions)
+
+            const resolvedBlog = resolveBlogFromQueryOrContext(
+              textToSend,
+              ragOptions,
+            )
+            if (resolvedBlog) {
+              const blogTitle =
+                lang === 'ua'
+                  ? resolvedBlog.title.ua
+                  : lang === 'es'
+                    ? resolvedBlog.title.es
+                    : resolvedBlog.title.en
+              setProjectContext({
+                projectSlug: resolvedBlog.slug,
+                projectTitle: blogTitle,
+              })
+            } else {
+              const resolvedProject = resolveTargetProject(
+                textToSend,
+                ragOptions,
+              )
+              if (
+                resolvedProject &&
+                resolvedProject.slug !== projectContext?.projectSlug
+              ) {
+                setProjectContext({
+                  projectSlug: resolvedProject.slug,
+                  projectTitle: resolvedProject.project.title,
+                })
+              }
+            }
+
             setMessages((prev) =>
               prev.map((msg) =>
                 msg.id === botMessageId
@@ -510,7 +544,7 @@ const ChatModal = ({
         id: `welcome-${Date.now()}`,
         from: 'bot',
         text: ct.welcomeMessage,
-        source: 'Hybrid RAG · 70-Project Knowledge Base',
+        source: 'Hybrid RAG · 71-Project Knowledge Base',
         timestamp: new Date(),
       },
     ])
@@ -522,7 +556,7 @@ const ChatModal = ({
       return {
         ...msg,
         text: ct.welcomeMessage,
-        source: msg.source || 'Hybrid RAG · 70-Project Knowledge Base',
+        source: msg.source || 'Hybrid RAG · 71-Project Knowledge Base',
       }
     }
     return msg

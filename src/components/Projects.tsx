@@ -3,6 +3,9 @@ import { ExternalLink, X, ArrowRight, Search, ChevronLeft, ChevronRight } from '
 import { Project, TechnologyItem } from './projects/project-types'
 import { useLanguage } from '../contexts/LanguageContext'
 import { useDialogA11y } from '../hooks/useDialogA11y'
+import { allProjects } from '../lib/projectRegistry'
+import { getProjectSlugById } from '../data/projectSlugs'
+import { getProjectTechList, matchesProjectSearch } from '../lib/projects'
 
 function getPaginationPages(current: number, total: number): (number | '...')[] {
   if (total <= 7) {
@@ -26,23 +29,6 @@ const getTechShort = (tech: TechnologyItem): string =>
 
 const getTechFull = (tech: TechnologyItem): string =>
   typeof tech === 'string' ? tech : tech.full || tech.short
-
-const getProjectTechList = (project: Project): TechnologyItem[] => {
-  if (Array.isArray(project.technologies)) {
-    return project.technologies
-  }
-  const techObj = project.technologies
-  const list: TechnologyItem[] = []
-  if (techObj.frontend) list.push(...techObj.frontend)
-  if (techObj.backend) list.push(...techObj.backend)
-  if (techObj.contentManagement) list.push(...techObj.contentManagement)
-  if (techObj.api) list.push(...techObj.api)
-  if (techObj.devopsSecurity) list.push(...techObj.devopsSecurity)
-  if (techObj.aiTools) list.push(...techObj.aiTools)
-  return list
-}
-
-import { allProjects } from '../lib/projectRegistry'
 
 const projects: Project[] = allProjects
 
@@ -111,7 +97,7 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
     }
   }, [screenshotModal.isOpen])
 
-  // Filtering projects by category and text search (title, description, technologies)
+  // Filtering projects by category and tokenized multi-word search
   const filteredProjects = projects.filter((project) => {
     const matchesCategory =
       activeFilter === 'all'
@@ -121,24 +107,14 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
           : project.category.includes(activeFilter)
     if (!matchesCategory) return false
 
-    if (!searchQuery.trim()) return true
-
-    const q = searchQuery.toLowerCase().trim()
-    const matchesTitle = project.title.toLowerCase().includes(q)
-    const matchesDesc =
-      project.description.toLowerCase().includes(q) ||
-      (Boolean(project.descriptionUa) && project.descriptionUa?.toLowerCase().includes(q)) ||
-      (Boolean(project.descriptionEs) && project.descriptionEs?.toLowerCase().includes(q))
-
-    const allTech = getProjectTechList(project)
-    const matchesTech = allTech.some((t) => {
-      const short = getTechShort(t).toLowerCase()
-      const full = getTechFull(t).toLowerCase()
-      return short.includes(q) || full.includes(q)
-    })
-
-    return matchesTitle || matchesDesc || matchesTech
+    return matchesProjectSearch(project, searchQuery)
   })
+
+  // Check if there are matches across all categories when current category yields 0 results
+  const globalSearchMatches =
+    activeFilter !== 'all' && searchQuery.trim() !== '' && filteredProjects.length === 0
+      ? projects.filter((project) => matchesProjectSearch(project, searchQuery))
+      : []
 
   // Pagination
   const indexOfLastProject = currentPage * projectsPerPage
@@ -171,6 +147,22 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
       ...prev,
       [projectId]: !prev[projectId],
     }))
+  }
+
+  const handleCardLinkClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    projectId: number,
+  ) => {
+    if (
+      e.button === 0 &&
+      !e.ctrlKey &&
+      !e.metaKey &&
+      !e.shiftKey &&
+      !e.altKey
+    ) {
+      e.preventDefault()
+      onProjectSelect(projectId)
+    }
   }
 
   const searchPlaceholder =
@@ -263,22 +255,47 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
                   : 'No projects found'}
             </h3>
             <p className="text-sm text-slate-500 dark:text-slate-400 mb-6">
-              {lang === 'ua'
-                ? 'Спробуйте змінити пошуковий запит або скинути активний фільтр категорій.'
-                : lang === 'es'
-                  ? 'Prueba a cambiar los términos de búsqueda o restablecer los filtros.'
-                  : 'Try adjusting your search keywords or resetting the category filter.'}
+              {globalSearchMatches.length > 0
+                ? lang === 'ua'
+                  ? `У вибраній категорії збігів немає, але знайдено ${globalSearchMatches.length} проєкт(ів) в усіх категоріях.`
+                  : lang === 'es'
+                    ? `No hay coincidencias en esta categoría, pero se encontraron ${globalSearchMatches.length} proyecto(s) en todas las categorías.`
+                    : `No matches in this category, but found ${globalSearchMatches.length} matching project(s) across all categories.`
+                : lang === 'ua'
+                  ? 'Спробуйте змінити пошуковий запит або скинути активний фільтр категорій.'
+                  : lang === 'es'
+                    ? 'Prueba a cambiar los términos de búsqueda o restablecer los filtros.'
+                    : 'Try adjusting your search keywords or resetting the category filter.'}
             </p>
-            <button
-              type="button"
-              onClick={() => {
-                setSearchQuery('')
-                setActiveFilter('all')
-              }}
-              className="px-5 py-2 rounded-xl text-xs font-semibold bg-purple-600 hover:bg-purple-700 dark:bg-lime-500 dark:hover:bg-lime-400 text-white dark:text-slate-950 transition-colors cursor-pointer"
-            >
-              {lang === 'ua' ? 'Скинути всі фільтри' : lang === 'es' ? 'Restablecer filtros' : 'Reset all filters'}
-            </button>
+            <div className="flex flex-wrap items-center justify-center gap-3">
+              {globalSearchMatches.length > 0 && (
+                <button
+                  type="button"
+                  onClick={() => setActiveFilter('all')}
+                  className="px-5 py-2 rounded-xl text-xs font-semibold bg-purple-600 hover:bg-purple-700 dark:bg-lime-500 dark:hover:bg-lime-400 text-white dark:text-slate-950 transition-colors cursor-pointer"
+                >
+                  {lang === 'ua'
+                    ? `Показати в усіх категоріях (${globalSearchMatches.length})`
+                    : lang === 'es'
+                      ? `Mostrar en todas las categorías (${globalSearchMatches.length})`
+                      : `Show in all categories (${globalSearchMatches.length})`}
+                </button>
+              )}
+              <button
+                type="button"
+                onClick={() => {
+                  setSearchQuery('')
+                  setActiveFilter('all')
+                }}
+                className={`px-5 py-2 rounded-xl text-xs font-semibold transition-colors cursor-pointer ${
+                  globalSearchMatches.length > 0
+                    ? 'bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200'
+                    : 'bg-purple-600 hover:bg-purple-700 dark:bg-lime-500 dark:hover:bg-lime-400 text-white dark:text-slate-950'
+                }`}
+              >
+                {lang === 'ua' ? 'Скинути всі фільтри' : lang === 'es' ? 'Restablecer filtros' : 'Reset all filters'}
+              </button>
+            </div>
           </div>
         ) : (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -288,6 +305,10 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
             const remainingCount = allTech.length - visibleTech.length
             const isTechExpanded = Boolean(expandedTechProjects[project.id])
             const displayedTech = isTechExpanded ? allTech : visibleTech
+            const projectSlug = getProjectSlugById(project.id)
+            const projectHref = projectSlug
+              ? `/${lang}/projects/${projectSlug}`
+              : '#projects'
 
             return (
               <div
@@ -324,7 +345,13 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
 
                 {/* Title */}
                 <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
-                  {project.title}
+                  <a
+                    href={projectHref}
+                    onClick={(e) => handleCardLinkClick(e, project.id)}
+                    className="hover:text-purple-600 dark:hover:text-lime-400 transition-colors"
+                  >
+                    {project.title}
+                  </a>
                 </h3>
 
                 {/* Description (full readable text) */}
@@ -371,14 +398,14 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
 
                 {/* Sticky Bottom Action Footer */}
                 <div className="mt-auto pt-4 border-t border-slate-100 dark:border-white/5 flex items-center justify-between gap-3">
-                  <button
-                    onClick={() => onProjectSelect(project.id)}
+                  <a
+                    href={projectHref}
+                    onClick={(e) => handleCardLinkClick(e, project.id)}
                     className="inline-flex items-center gap-1.5 text-sm font-semibold text-purple-600 dark:text-lime-400 hover:text-purple-700 dark:hover:text-lime-300 transition-colors"
-                    type="button"
                   >
                     <span>{pr.viewDetails}</span>
                     <ArrowRight className="w-4 h-4" />
-                  </button>
+                  </a>
 
                   {project.liveUrl && project.liveUrl !== '#' && (
                     <a

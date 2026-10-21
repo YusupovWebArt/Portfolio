@@ -678,7 +678,7 @@ export const es: Translation = {
       highlight: 'extraordinario',
     },
     description:
-      '¿Listo para dar vida a su proyecto? Elija un canal de comunicación a continuación o pruebe mi asistente Hybrid RAG IA entrenado con los 70 proyectos del portfolio.',
+      '¿Listo para dar vida a su proyecto? Elija un canal de comunicación a continuación o pruebe mi asistente Hybrid RAG IA entrenado con los 71 proyectos del portfolio.',
     directChannels: 'Canales directos',
     followCredentials: 'Redes sociales y perfiles',
     reveal: {
@@ -703,11 +703,11 @@ export const es: Translation = {
       placeholder: 'Escriba su pregunta...',
       clearButton: 'Limpiar',
       sendButton: 'Enviar',
-      welcomeMessage: '¡Hola! Soy el asistente de IA de Artur impulsado por un motor Hybrid RAG propio. 🤖 He indexado los 70 casos de estudio del portfolio, arquitecturas y stacks tecnológicos. ¡Pregúnteme sobre cualquier proyecto, habilidad o experiencia!',
+      welcomeMessage: '¡Hola! Soy el asistente de IA de Artur impulsado por un motor Hybrid RAG propio. 🤖 He indexado los 71 casos de estudio del portfolio, arquitecturas y stacks tecnológicos. ¡Pregúnteme sobre cualquier proyecto, habilidad o experiencia!',
       assistantName: 'Asistente RAG IA de Artur',
-      liveConsole: 'Hybrid RAG · 70 proyectos indexados',
+      liveConsole: 'Hybrid RAG · 71 proyectos indexados',
       faqHeader: 'Preguntas frecuentes',
-      online: 'EN LÍNEA · Hybrid RAG · 70 Proyectos',
+      online: 'EN LÍNEA · Hybrid RAG · 71 Proyectos',
       closeChat: 'Cerrar chat',
       activeContext: 'Contexto RAG activo',
       clearContext: 'Restablecer contexto del proyecto',

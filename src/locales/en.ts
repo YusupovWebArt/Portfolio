@@ -679,7 +679,7 @@ export const en: Translation = {
       highlight: 'extraordinary',
     },
     description:
-      'Ready to bring your project to life? Choose a messaging channel below or test my Hybrid RAG AI assistant trained on all 70 portfolio projects.',
+      'Ready to bring your project to life? Choose a messaging channel below or test my Hybrid RAG AI assistant trained on all 71 portfolio projects.',
     directChannels: 'Direct Channels',
     followCredentials: 'Follow Credentials',
     reveal: {
@@ -704,11 +704,11 @@ export const en: Translation = {
       placeholder: 'Type a question...',
       clearButton: 'Clear',
       sendButton: 'Send',
-      welcomeMessage: "Hi! I am Artur's AI assistant powered by a custom Hybrid RAG engine. 🤖 I have indexed all 70 portfolio case studies, architectures, and tech stacks. Ask me about any project, skill, or experience!",
+      welcomeMessage: "Hi! I am Artur's AI assistant powered by a custom Hybrid RAG engine. 🤖 I have indexed all 71 portfolio case studies, architectures, and tech stacks. Ask me about any project, skill, or experience!",
       assistantName: "Artur's RAG AI Assistant",
-      liveConsole: 'Hybrid RAG · 70 Case Studies Indexed',
+      liveConsole: 'Hybrid RAG · 71 Case Studies Indexed',
       faqHeader: 'Frequently Asked Questions',
-      online: 'ONLINE · Hybrid RAG · 70 Projects DB',
+      online: 'ONLINE · Hybrid RAG · 71 Projects DB',
       closeChat: 'Close chat',
       activeContext: 'Active RAG Context',
       clearContext: 'Clear project context',

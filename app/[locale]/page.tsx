@@ -10,11 +10,13 @@ import B2bServices from '../../src/components/B2bServices'
 import Contact from '../../src/components/Contact'
 import Projects from '../../src/components/Projects'
 import { getAllProjectEntries } from '../../src/lib/projects'
+import { buildWebsiteFaqJsonLd } from '../../src/lib/seo'
 
 export default function LandingPage() {
   const router = useRouter()
   const params = useParams()
   const locale = (params?.locale as string) || 'en'
+  const faqSchema = buildWebsiteFaqJsonLd(locale)
 
   const handleProjectSelect = (projectId: number) => {
     const entries = getAllProjectEntries()
@@ -26,6 +28,10 @@ export default function LandingPage() {
 
   return (
     <main id="main-content">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <Hero />
       <About />
       <AiWorkflow />

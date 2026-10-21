@@ -1,13 +1,17 @@
 import { describe, it, expect } from 'vitest'
+import fs from 'node:fs'
+import path from 'node:path'
 import {
   buildProjectJsonLd,
   buildProjectBreadcrumbsJsonLd,
   buildWebsiteFaqJsonLd,
+  toBcp47Lang,
+  toAbsoluteAssetUrl,
 } from '../lib/seo'
 import { getProjectBySlug } from '../lib/projects'
 
 describe('Automated Project SEO/GEO Metadata Specification (TDD)', () => {
-  it('should generate valid Schema.org TechArticle JSON-LD for IT-Magic', () => {
+  it('should generate valid Schema.org TechArticle JSON-LD for IT-Magic with absolute image URL and BCP-47 language code', () => {
     const project = getProjectBySlug('it-magic')
     expect(project).toBeDefined()
 
@@ -17,10 +21,20 @@ describe('Automated Project SEO/GEO Metadata Specification (TDD)', () => {
     expect(jsonLd.headline).toContain('IT-Magic')
     expect(jsonLd.author.name).toBe('Artur Yusupov')
     expect(jsonLd.about['@type']).toBe('SoftwareApplication')
+    expect(jsonLd.image).toMatch(/^https:\/\/www\.yusupovartur\.com\/images\//)
+    expect(jsonLd.image).not.toContain('/Portfolio/')
+    expect(jsonLd.inLanguage).toBe('en')
     expect(JSON.stringify(jsonLd)).not.toContain('\u2014')
+
+    const jsonLdUa = buildProjectJsonLd(project!, 'it-magic', 'ua')
+    expect(jsonLdUa.inLanguage).toBe('uk')
+    expect(toBcp47Lang('ua')).toBe('uk')
+    expect(toAbsoluteAssetUrl('/Portfolio/images/test.webp')).toBe(
+      'https://www.yusupovartur.com/images/test.webp',
+    )
   })
 
-  it('should generate valid BreadcrumbList Schema.org microdata', () => {
+  it('should generate valid BreadcrumbList Schema.org microdata with localized labels', () => {
     const project = getProjectBySlug('unitrition')
     expect(project).toBeDefined()
 
@@ -31,6 +45,10 @@ describe('Automated Project SEO/GEO Metadata Specification (TDD)', () => {
     expect(breadcrumbs.itemListElement[1].name).toBe('Projects')
     expect(breadcrumbs.itemListElement[2].name).toBe(project!.title)
     expect(JSON.stringify(breadcrumbs)).not.toContain('\u2014')
+
+    const breadcrumbsUa = buildProjectBreadcrumbsJsonLd(project!, 'unitrition', 'ua')
+    expect(breadcrumbsUa.itemListElement[0].name).toBe('Головна')
+    expect(breadcrumbsUa.itemListElement[1].name).toBe('Проєкти')
   })
 
   it('should generate valid FAQPage Schema.org structured data for GEO AI search', () => {
@@ -41,5 +59,22 @@ describe('Automated Project SEO/GEO Metadata Specification (TDD)', () => {
     expect(faqJsonLd.mainEntity[0]['@type']).toBe('Question')
     expect(faqJsonLd.mainEntity[0].acceptedAnswer['@type']).toBe('Answer')
     expect(JSON.stringify(faqJsonLd)).not.toContain('\u2014')
+  })
+
+  it('should provide public/llms.txt and public/llms-full.txt for Generative Engine Optimization (GEO)', () => {
+    const llmsPath = path.resolve(process.cwd(), 'public/llms.txt')
+    const llmsFullPath = path.resolve(process.cwd(), 'public/llms-full.txt')
+
+    expect(fs.existsSync(llmsPath)).toBe(true)
+    expect(fs.existsSync(llmsFullPath)).toBe(true)
+
+    const llmsContent = fs.readFileSync(llmsPath, 'utf8')
+    const llmsFullContent = fs.readFileSync(llmsFullPath, 'utf8')
+
+    expect(llmsContent).toContain('WPSKILLS')
+    expect(llmsContent).toContain('Unitrition')
+    expect(llmsContent).not.toContain('\u2014')
+    expect(llmsFullContent).toContain('WPSKILLS')
+    expect(llmsFullContent).not.toContain('\u2014')
   })
 })

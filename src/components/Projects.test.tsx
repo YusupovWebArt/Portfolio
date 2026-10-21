@@ -44,7 +44,7 @@ describe("Projects Component Specification (TDD)", () => {
       </LanguageProvider>
     );
 
-    const viewDetailButtons = screen.getAllByRole("button", { name: /view details/i });
+    const viewDetailButtons = screen.getAllByRole("link", { name: /view details/i });
     expect(viewDetailButtons.length).toBeGreaterThan(0);
 
     await user.click(viewDetailButtons[0]);

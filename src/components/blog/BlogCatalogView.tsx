@@ -403,7 +403,7 @@ export default function BlogCatalogView({
           </aside>
 
           {/* ================= RIGHT MAIN CONTENT AREA ================= */}
-          <main className="lg:col-span-8 xl:col-span-9 space-y-8">
+          <div className="lg:col-span-8 xl:col-span-9 space-y-8">
             {/* Active Filters Pill Bar */}
             {isFiltering && (
               <div className="flex flex-wrap items-center justify-between gap-3 p-4 bg-purple-50 dark:bg-slate-800/80 rounded-2xl border border-purple-200/80 dark:border-lime-500/20">
@@ -775,7 +775,7 @@ export default function BlogCatalogView({
                 </button>
               </div>
             )}
-          </main>
+          </div>
         </div>
       </div>
     </div>

@@ -449,7 +449,27 @@ function formatProjectFeatures(project: Project, lang: 'en' | 'ua' | 'es'): stri
       if (typeof f === 'string') {
         lines.push(`- ${f}`)
       } else if (f && typeof f === 'object' && 'title' in f) {
-        lines.push(`- ${f.title}: ${f.description}`)
+        const feat = f as {
+          title: string
+          titleUa?: string
+          titleEs?: string
+          description: string
+          descriptionUa?: string
+          descriptionEs?: string
+        }
+        const fTitle =
+          lang === 'es' && feat.titleEs
+            ? feat.titleEs
+            : lang === 'ua' && feat.titleUa
+              ? feat.titleUa
+              : feat.title
+        const fDesc =
+          lang === 'es' && feat.descriptionEs
+            ? feat.descriptionEs
+            : lang === 'ua' && feat.descriptionUa
+              ? feat.descriptionUa
+              : feat.description
+        lines.push(`- ${fTitle}: ${fDesc}`)
       }
     }
   }
@@ -486,8 +506,14 @@ function formatProjectArchitecture(project: Project, lang: 'en' | 'ua' | 'es'): 
   parts.push(header)
 
   if (project.architecture) {
-    if (project.architecture.description) {
-      parts.push(project.architecture.description)
+    const archDesc =
+      lang === 'es' && project.architecture.descriptionEs
+        ? project.architecture.descriptionEs
+        : lang === 'ua' && project.architecture.descriptionUa
+          ? project.architecture.descriptionUa
+          : project.architecture.description
+    if (archDesc) {
+      parts.push(archDesc)
     }
     if (project.architecture.rows && project.architecture.rows.length > 0) {
       const flows = project.architecture.rows.map(
@@ -497,18 +523,32 @@ function formatProjectArchitecture(project: Project, lang: 'en' | 'ua' | 'es'): 
     }
   }
 
-  if (project.challenges && project.challenges.length > 0) {
+  const localizedChallenges =
+    lang === 'es' && project.challengesEs?.length
+      ? project.challengesEs
+      : lang === 'ua' && project.challengesUa?.length
+        ? project.challengesUa
+        : project.challenges
+
+  if (localizedChallenges && localizedChallenges.length > 0) {
     const chLabel =
       lang === 'es' ? 'Desafíos clave:' : lang === 'ua' ? 'Ключові виклики:' : 'Key challenges:'
     parts.push(
-      `${chLabel}\n${project.challenges
+      `${chLabel}\n${localizedChallenges
         .slice(0, 3)
         .map((c) => `- ${c}`)
         .join('\n')}`,
     )
   }
 
-  if (project.solutions && project.solutions.length > 0) {
+  const localizedSolutions =
+    lang === 'es' && project.solutionsEs?.length
+      ? project.solutionsEs
+      : lang === 'ua' && project.solutionsUa?.length
+        ? project.solutionsUa
+        : project.solutions
+
+  if (localizedSolutions && localizedSolutions.length > 0) {
     const solLabel =
       lang === 'es'
         ? 'Soluciones implementadas:'
@@ -516,7 +556,7 @@ function formatProjectArchitecture(project: Project, lang: 'en' | 'ua' | 'es'): 
           ? 'Реалізовані рішення:'
           : 'Solutions implemented:'
     parts.push(
-      `${solLabel}\n${project.solutions
+      `${solLabel}\n${localizedSolutions
         .slice(0, 3)
         .map((s) => `- ${s}`)
         .join('\n')}`,
@@ -727,7 +767,11 @@ export function inferProjectFromHistory(
     if (!content) continue
     // Only inspect user messages or short contextual messages to avoid matching generic welcome text
     if (msg.role === 'assistant' || msg.from === 'bot') {
-      if (content.includes('70 portfolio case studies') || content.includes('70+ web projects')) {
+      if (
+        content.includes('70 portfolio case studies') ||
+        content.includes('71 portfolio case studies') ||
+        content.includes('70+ web projects')
+      ) {
         continue
       }
     }
@@ -1075,18 +1119,21 @@ export function resolveCategoryOrTechShowcase(
     const answer =
       lang === 'ua'
         ? 'У напрямку Next.js 16 та React 19 я створюю надшвидкі масштабовані веб-платформи:\n\n' +
-          '- **Next.js 16 Portfolio Platform**: Повноцінна fullstack-платформа на React 19 Server Components із автономним Hybrid RAG AI-рушієм, SSG 210+ сторінками та WCAG 2.2 AA.\n' +
+          '- **Next.js 16 Portfolio Platform**: Повноцінна fullstack-платформа на React 19 Server Components із автономним Hybrid RAG AI-рушієм, SSG 213+ сторінками та WCAG 2.2 AA.\n' +
+          '- **WPSKILLS**: Інтерактивна інженерна освітня платформа на Next.js 16, React 19, нативному Rust-компіляторі MDX-RS (1 100+ уроків), симуляторах рантайму та Supabase.\n' +
           '- **Unitrition**: Платформа персоналізованого харчування на Next.js 16 App Router, Headless WordPress, Supabase та USDA API.\n' +
           '- **My React Portfolio Website**: Високопродуктивний SPA на React 19, TypeScript та Tailwind CSS v4 із Vitest тест-сьютом.\n\n' +
           'Ознайомтеся з картками проєктів нижче:'
         : lang === 'es'
           ? 'En Next.js 16 y React 19 desarrollo plataformas web ultrarrápidas y accesibles:\n\n' +
-            '- **Next.js 16 Portfolio Platform**: Plataforma fullstack con React 19 Server Components, motor Hybrid RAG autónomo, 210+ páginas SSG y WCAG 2.2 AA.\n' +
+            '- **Next.js 16 Portfolio Platform**: Plataforma fullstack con React 19 Server Components, motor Hybrid RAG autónomo, 213+ páginas SSG y WCAG 2.2 AA.\n' +
+            '- **WPSKILLS**: Plataforma educativa interactiva de ingeniería con Next.js 16, React 19, compilador Rust MDX-RS (1.100+ lecciones), simuladores y Supabase.\n' +
             '- **Unitrition**: Plataforma de nutrición con Next.js 16 App Router, Headless WordPress, Supabase y API de USDA.\n' +
             '- **My React Portfolio Website**: Aplicación SPA de alto rendimiento con React 19, TypeScript y pruebas Vitest.\n\n' +
             'Explora los proyectos a continuación:'
           : 'In Next.js 16 and React 19, I architect sub-second, accessible web applications:\n\n' +
-            '- **Next.js 16 Portfolio Platform**: Enterprise fullstack system with React 19 Server Components, autonomous Hybrid RAG, 210+ SSG pages, and WCAG 2.2 AA.\n' +
+            '- **Next.js 16 Portfolio Platform**: Enterprise fullstack system with React 19 Server Components, autonomous Hybrid RAG, 213+ SSG pages, and WCAG 2.2 AA.\n' +
+            '- **WPSKILLS**: Interactive engineering educational platform built with Next.js 16, React 19, native Rust MDX-RS compilation (1,100+ lessons), runtime simulators, and Supabase.\n' +
             '- **Unitrition**: Personalized nutrition modeling platform built with Next.js 16 App Router, Headless WordPress, Supabase, and USDA API.\n' +
             '- **My React Portfolio Website**: High-performance single page application built with React 19, TypeScript, and 29 Vitest specs.\n\n' +
             'Explore the project cards below:'
@@ -1335,7 +1382,8 @@ export function synthesizeLocalRagAnswer(
     return stripEmDashes(
       'Here is a curated showcase of my top flagship projects across the primary technology stacks (the leading examples from each category):\n\n' +
         '- **Next.js 16 & Full-Stack**:\n' +
-        '  - **Next.js 16 & Hybrid RAG Portfolio Platform** - Enterprise fullstack platform with an autonomous Hybrid RAG engine, 210+ SSG routes, and WCAG 2.2 AA compliance.\n' +
+        '  - **Next.js 16 & Hybrid RAG Portfolio Platform** - Enterprise fullstack platform with an autonomous Hybrid RAG engine, 213+ SSG routes, and WCAG 2.2 AA compliance.\n' +
+        '  - **WPSKILLS** - Interactive engineering educational ecosystem with 1,100+ MDX lessons compiled via Rust MDX-RS, outage simulators, and NotebookLM AI.\n' +
         '  - **Unitrition** - Personalized nutrition platform built with Next.js 16 App Router, Headless WordPress, Supabase, and USDA API.\n' +
         '- **Custom WordPress & Enterprise**:\n' +
         '  - **IT-Magic** - Enterprise cloud consulting platform for an AWS Advanced Partner with bespoke PHP theme and top Google rankings.\n' +

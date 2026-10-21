@@ -1,0 +1,62 @@
+# Artur Yusupov - Extended Engineering Profile & 71-Project Portfolio Index (llms-full.txt)
+
+> Comprehensive reference document for AI search engines, technical recruiters, and CTOs evaluating Artur Yusupov's software engineering capabilities, production metrics, architectural patterns, and case studies.
+
+## 1. Executive Summary
+
+- **Name**: Artur Yusupov
+- **Role**: Senior Fullstack Web Engineer & AI Developer
+- **Location**: Seville / Alicante / Valencia, Spain (European Union) - Available for remote roles, B2B contracts, and relocation.
+- **Experience**: 5+ years of commercial software engineering across 71 production web platforms, e-commerce stores, cloud portals, and interactive web applications.
+- **Languages**: English, Spanish, Ukrainian, Russian (Full trilingual UI/SEO support on yusupovartur.com in EN, UA, ES).
+- **Primary URL**: https://www.yusupovartur.com/en
+
+## 2. Technical Stack & Engineering Standards
+
+- **Frontend & Modern Web**: Next.js 16 (App Router, React Server Components, SSG/ISR), React 19, TypeScript 6 (Strict Zero-`any`), Tailwind CSS v4, HTML5, CSS3/SASS, View Transitions API, Zustand v5.
+- **Backend & CMS Platforms**: WordPress Core Internals, Custom PHP 8+ Themes & Plugins, Advanced Custom Fields (ACF Pro), Headless WordPress (WP REST API & WPGraphQL), WooCommerce, Node.js, Supabase (PostgreSQL + RLS), Shopify Liquid, Wix Velo.
+- **AI & RAG Engineering**: Custom Hybrid Retrieval-Augmented Generation (1536-dim OpenAI embeddings + cosine similarity + BM25 + deterministic multilingual synthesis), Vercel AI SDK, Google Gemini / NotebookLM prompt pipelines, Spec-Driven AI SDLC.
+- **Cloud, DevSecOps & Quality**: AWS (EC2, S3, CloudFront, RDS, Route 53), Vercel Edge Network, Cloudflare WAF/CDN, Docker, GitHub Actions CI/CD, Vitest + React Testing Library (155+ automated tests), WCAG 2.2 AA / EAA 2026 compliance, strict HTTP security headers (CSP, HSTS, X-Frame-Options).
+
+## 3. Flagship Case Studies (Detailed Breakdown)
+
+### 3.1. WPSKILLS - Interactive Fullstack Engineering Platform
+- **Case Study URL**: https://www.yusupovartur.com/en/projects/wpskills
+- **Live URL**: https://wpskills.vercel.app
+- **Stack**: Next.js 16, React 19, TypeScript, Tailwind CSS v4, Rust MDX-RS, Zustand v5, Supabase, Vitest 4, Gemini NotebookLM Audio Prompt Engine.
+- **Highlights**:
+  - Compiles 1,100+ MDX lessons and 1,700+ static pages in under 90 seconds (reduced from 21.6 minutes via an in-memory content caching pipeline and native Rust MDX-RS).
+  - Features interactive Explorable Explanations (`<ArchitectureFlow>`, `<StepFlow>`, WordPress hook lifecycle and production outage simulators), formative checkpoints (+15 XP), Spaced Repetition flashcards, and a global Supabase leaderboard.
+  - Automated zero-metaphor first-principles prompt generator for Google NotebookLM Deep Dive Audio Overviews across 4 locales (EN/RU/UK/ES).
+
+### 3.2. Next.js 16 & Hybrid RAG Portfolio Platform
+- **Case Study URL**: https://www.yusupovartur.com/en/projects/yusupovartur-nextjs-portfolio
+- **Live URL**: https://www.yusupovartur.com
+- **Stack**: Next.js 16 App Router, React 19 Server Components, TypeScript 6, Tailwind CSS v4, Vercel AI SDK, Custom Hybrid RAG Engine, Vitest.
+- **Highlights**:
+  - Dual-runtime architecture supporting SSR/SSG on Vercel (213+ localized project pages and 21 blog routes) and static SPA export on GitHub Pages.
+  - Built-in Hybrid RAG AI Assistant indexing all 71 projects and 7 engineering articles with interactive generative UI cards, timeline estimator, stack comparison matrix, and zero-leak Base64 contact protection.
+
+### 3.3. Unitrition - Personalized Nutrition & Dietary Platform
+- **Case Study URL**: https://www.yusupovartur.com/en/projects/unitrition
+- **Live URL**: https://www.unitrition.info
+- **Stack**: Next.js 16 App Router, React 19, TypeScript, Headless WordPress, Supabase, USDA FoodData Central API, Tailwind CSS.
+- **Highlights**:
+  - Supports 10 specialized diet regimens with real-time macro/micronutrient modeling and bilingual localization.
+
+### 3.4. IT-Magic - Enterprise AWS Consulting Portal
+- **Case Study URL**: https://www.yusupovartur.com/en/projects/it-magic
+- **Live URL**: https://it-magic.org
+- **Stack**: Custom WordPress Theme (PHP 8+), ACF Pro, AWS CloudFront, S3, EC2, Schema.org JSON-LD, Core Web Vitals Optimization.
+- **Highlights**:
+  - Engineered for an AWS Advanced Consulting Partner with 95+ PageSpeed scores, multilingual architecture, and #1 Google rankings for competitive DevOps keywords.
+
+## 4. Complete Engineering Blog Index (EN / UA / ES)
+
+1. **Next.js 16 vs Headless WordPress vs Custom PHP in 2026**: `/en/blog/nextjs-vs-headless-wordpress-custom-php-2026`
+2. **Autonomous Hybrid RAG Architecture in Browser**: `/en/blog/autonomous-hybrid-rag-architecture-browser`
+3. **WCAG 2.2 AA & European Accessibility Act (EAA 2026)**: `/en/blog/wcag-22-aa-european-accessibility-act-2026`
+4. **Sub-Second Core Web Vitals & Bundle Optimization**: `/en/blog/sub-second-cwv-bundle-optimization`
+5. **Shopify Liquid vs Custom WooCommerce**: `/en/blog/shopify-liquid-vs-custom-woocommerce`
+6. **Client-Side Zero-Trust Web Security**: `/en/blog/client-side-zero-trust-security`
+7. **Zero-Downtime Legacy System Migration to Cloud**: `/en/blog/legacy-migration-cloud-infrastructure`

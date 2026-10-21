@@ -2,6 +2,17 @@ import { Project } from '../components/projects/project-types'
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.yusupovartur.com'
 
+export function toBcp47Lang(locale = 'en'): string {
+  return locale === 'ua' ? 'uk' : locale
+}
+
+export function toAbsoluteAssetUrl(imagePath: string): string {
+  if (!imagePath) return `${baseUrl}/images/og-image.jpg`
+  if (imagePath.startsWith('http')) return imagePath
+  const cleaned = imagePath.replace(/^\/Portfolio(?=\/)/i, '')
+  return `${baseUrl}${cleaned.startsWith('/') ? cleaned : `/${cleaned}`}`
+}
+
 export interface ProjectJsonLd {
   '@context': string
   '@type': string
@@ -53,11 +64,11 @@ export function buildProjectJsonLd(
     '@type': 'TechArticle',
     headline: project.title.replace(/[\u2014\u2013]/g, '-'),
     description: desc.replace(/[\u2014\u2013]/g, '-'),
-    image: project.image,
+    image: toAbsoluteAssetUrl(project.image),
     url: `${baseUrl}/${locale}/projects/${slug}`,
     datePublished: '2026-01-15T00:00:00Z',
     dateModified: '2026-10-12T00:00:00Z',
-    inLanguage: locale,
+    inLanguage: toBcp47Lang(locale),
     author: {
       '@type': 'Person',
       name: 'Artur Yusupov',
@@ -77,6 +88,9 @@ export function buildProjectBreadcrumbsJsonLd(
   slug: string,
   locale = 'en',
 ): BreadcrumbListJsonLd {
+  const homeLabel = locale === 'ua' ? 'Головна' : locale === 'es' ? 'Inicio' : 'Home'
+  const projectsLabel = locale === 'ua' ? 'Проєкти' : locale === 'es' ? 'Proyectos' : 'Projects'
+
   return {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -84,13 +98,13 @@ export function buildProjectBreadcrumbsJsonLd(
       {
         '@type': 'ListItem',
         position: 1,
-        name: 'Home',
+        name: homeLabel,
         item: `${baseUrl}/${locale}`,
       },
       {
         '@type': 'ListItem',
         position: 2,
-        name: 'Projects',
+        name: projectsLabel,
         item: `${baseUrl}/${locale}#projects`,
       },
       {
@@ -200,7 +214,7 @@ export function buildBlogCatalogJsonLd(
     name: title,
     description: description,
     url: `${baseUrl}/${locale}/blog`,
-    inLanguage: locale,
+    inLanguage: toBcp47Lang(locale),
     author: {
       '@type': 'Person',
       name: 'Artur Yusupov',
@@ -224,7 +238,7 @@ export function buildBlogCatalogJsonLd(
       url: `${baseUrl}/${locale}/blog/${post.slug}`,
       datePublished: `${post.date}T00:00:00Z`,
       dateModified: `${post.date}T00:00:00Z`,
-      image: post.coverImage.startsWith('http') ? post.coverImage : `${baseUrl}${post.coverImage}`,
+      image: toAbsoluteAssetUrl(post.coverImage),
       author: {
         '@type': 'Person',
         name: 'Artur Yusupov',
@@ -255,11 +269,11 @@ export function buildBlogPostJsonLd(
     '@type': 'TechArticle',
     headline: postTitle.replace(/[\u2014\u2013]/g, '-'),
     description: postDesc.replace(/[\u2014\u2013]/g, '-'),
-    image: coverImage.startsWith('http') ? coverImage : `${baseUrl}${coverImage}`,
+    image: toAbsoluteAssetUrl(coverImage),
     url: `${baseUrl}/${locale}/blog/${slug}`,
     datePublished: `${date}T00:00:00Z`,
     dateModified: `${date}T00:00:00Z`,
-    inLanguage: locale,
+    inLanguage: toBcp47Lang(locale),
     author: {
       '@type': 'Person',
       name: 'Artur Yusupov',
@@ -301,6 +315,9 @@ export function buildBlogBreadcrumbsJsonLd(
   slug: string,
   locale = 'en',
 ): BreadcrumbListJsonLd {
+  const homeLabel = locale === 'ua' ? 'Головна' : locale === 'es' ? 'Inicio' : 'Home'
+  const blogLabel = locale === 'ua' ? 'Блог' : 'Blog'
+
   return {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
@@ -308,13 +325,13 @@ export function buildBlogBreadcrumbsJsonLd(
       {
         '@type': 'ListItem',
         position: 1,
-        name: 'Home',
+        name: homeLabel,
         item: `${baseUrl}/${locale}`,
       },
       {
         '@type': 'ListItem',
         position: 2,
-        name: 'Blog',
+        name: blogLabel,
         item: `${baseUrl}/${locale}/blog`,
       },
       {

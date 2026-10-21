@@ -1,0 +1,43 @@
+# Artur Yusupov - Senior Fullstack Web Engineer & AI Developer
+
+> Official portfolio and engineering knowledge base of Artur Yusupov (Seville / Alicante / Valencia, Spain, European Union). Specializing in Next.js 16 (React 19 Server Components), Custom & Headless WordPress (PHP 8+, ACF Pro, REST/GraphQL), TypeScript, Autonomous Hybrid RAG AI Assistants, Shopify Liquid, and WCAG 2.2 AA / EAA 2026 web accessibility compliance.
+
+- Website: https://www.yusupovartur.com/en
+- Ukrainian Version: https://www.yusupovartur.com/ua
+- Spanish Version: https://www.yusupovartur.com/es
+- Engineering Blog: https://www.yusupovartur.com/en/blog
+- Extended Context: https://www.yusupovartur.com/llms-full.txt
+- LinkedIn: https://www.linkedin.com/in/artur-iusupov/
+- GitHub: https://github.com/YusupovWebArt
+
+## Core Engineering Capabilities & B2B Services
+
+- **Fullstack Next.js 16 & React 19 Applications**: App Router, Server Components, TypeScript 6, Tailwind CSS v4, Supabase, sub-second Core Web Vitals (95-100 Lighthouse, LCP < 0.8s, CLS 0.00).
+- **Custom & Headless WordPress Architecture**: Bespoke PHP 8+ themes, ACF Pro flexible content blocks, WooCommerce, WPGraphQL / REST API headless decoupling, AWS cloud migrations.
+- **AI Engineering & Hybrid RAG Systems**: Custom in-browser and server-side Retrieval-Augmented Generation (RAG) assistants, vector embeddings, deterministic fallback engines, and Spec-Driven AI SDLC.
+- **EU Accessibility & DevSecOps Compliance**: WCAG 2.2 Level AA & European Accessibility Act (EAA 2026 / EN 301 549) keyboard/screen-reader engineering, strict CSP/HSTS headers, and zero-leak client-side contact obfuscation.
+
+## Personal Flagship Products
+
+- [Next.js 16 & Hybrid RAG Portfolio Platform](https://www.yusupovartur.com/en/projects/yusupovartur-nextjs-portfolio): Enterprise fullstack platform with React 19 Server Components, autonomous Hybrid RAG engine indexing 71 case studies across 213+ SSG routes (EN/UA/ES), and WCAG 2.2 AA compliance.
+- [WPSKILLS Interactive Engineering Platform](https://www.yusupovartur.com/en/projects/wpskills): Interactive EdTech platform for Fullstack mastery (React 19, Next.js 16, WordPress core internals, TypeScript) powered by native Rust MDX-RS compilation across 1,100+ lessons, runtime simulators, Google NotebookLM Audio Overview prompt generator, and Supabase gamification.
+- [Unitrition](https://www.yusupovartur.com/en/projects/unitrition): Personalized nutrition modeling platform supporting 10 dietary regimens, built with Next.js 16 App Router, Headless WordPress, Supabase, and USDA FoodData Central API.
+- [My React Portfolio Website](https://www.yusupovartur.com/en/projects/webart-react-portfolio): High-performance SPA/PWA built with React 19, TypeScript, Tailwind CSS v4, View Transitions API, and Vitest test suite.
+
+## Selected Commercial Case Studies (71 Total Indexed)
+
+- [IT-Magic (AWS Advanced Consulting Partner)](https://www.yusupovartur.com/en/projects/it-magic): Enterprise cloud consulting platform with custom PHP/WordPress architecture, Schema.org structured data, and top Google organic rankings.
+- [AWS Migration Services](https://www.yusupovartur.com/en/projects/aws-migration-services): Dedicated cloud migration landing and lead-generation platform on AWS CloudFront, EC2, and RDS.
+- [911MG Healthcare Platform](https://www.yusupovartur.com/en/projects/911mg): High-availability medical portal engineered for speed, accessibility, and patient conversion.
+- [Front Desk Helpers](https://www.yusupovartur.com/en/projects/front-desk-helpers): Scalable B2B remote staffing and outsourcing platform with custom knowledge base and multi-tier blog.
+- [Kidzely Shopify Store](https://www.yusupovartur.com/en/projects/kidzely): International Shopify Liquid e-commerce storefront with optimized checkout conversion and mobile UX.
+
+## Engineering Blog & Architectural Deep Dives
+
+- [Next.js 16 vs Headless WordPress vs Custom PHP in 2026](https://www.yusupovartur.com/en/blog/nextjs-vs-headless-wordpress-custom-php-2026): Objective TCO, maintenance cost, Core Web Vitals, and editorial workflow comparison for CTOs.
+- [Autonomous Hybrid RAG Architecture in Browser](https://www.yusupovartur.com/en/blog/autonomous-hybrid-rag-architecture-browser): Building sub-5ms semantic vector retrieval and deterministic synthesis with zero vector DB overhead.
+- [WCAG 2.2 AA & European Accessibility Act (EAA 2026) Guide](https://www.yusupovartur.com/en/blog/wcag-22-aa-european-accessibility-act-2026): Practical engineering compliance guide for EU and Spanish businesses.
+- [Sub-Second Core Web Vitals & Bundle Optimization](https://www.yusupovartur.com/en/blog/sub-second-cwv-bundle-optimization): Reducing initial JS from 480KB to 98KB, tree-shaking, WebP/AVIF pipelines, and sub-50ms INP.
+- [Shopify Liquid vs Custom WooCommerce](https://www.yusupovartur.com/en/blog/shopify-liquid-vs-custom-woocommerce): E-commerce architecture breakdown: real-world TCO, conversion velocity, and payment security.
+- [Client-Side Zero-Trust Web Security](https://www.yusupovartur.com/en/blog/client-side-zero-trust-security): Base64 contact obfuscation against scrapers, strict Content Security Policies, and DOM isolation.
+- [Zero-Downtime Legacy System Migration to Cloud](https://www.yusupovartur.com/en/blog/legacy-migration-cloud-infrastructure): Transitioning legacy monoliths to cloud infrastructure with 100% SEO preservation.

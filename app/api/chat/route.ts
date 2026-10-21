@@ -184,7 +184,12 @@ export async function POST(req: Request) {
     let verifiedProjectTitle: string | undefined
     let verifiedProjectSlug: string | undefined
 
-    if (typeof projectSlug === 'string' && /^[a-z0-9-]+$/i.test(projectSlug.trim())) {
+    // Explicit mention of a project in the latest user message always takes highest priority
+    const explicitFromQuery = resolveProjectFromQuery(lastUserMessage)
+    if (explicitFromQuery) {
+      verifiedProjectSlug = explicitFromQuery.slug
+      verifiedProjectTitle = explicitFromQuery.project.title
+    } else if (typeof projectSlug === 'string' && /^[a-z0-9-]+$/i.test(projectSlug.trim())) {
       const slugNormalized = projectSlug.trim().toLowerCase()
       const found = projectRegistry.find((p) => p.slug.toLowerCase() === slugNormalized)
       if (found) {
@@ -200,12 +205,10 @@ export async function POST(req: Request) {
     }
 
     if (!verifiedProjectSlug) {
-      const fromQuery =
-        resolveProjectFromQuery(lastUserMessage) ||
-        inferProjectFromHistory(sanitizedHistory.slice(0, -1))
-      if (fromQuery) {
-        verifiedProjectSlug = fromQuery.slug
-        verifiedProjectTitle = fromQuery.project.title
+      const fromHistory = inferProjectFromHistory(sanitizedHistory.slice(0, -1))
+      if (fromHistory) {
+        verifiedProjectSlug = fromHistory.slug
+        verifiedProjectTitle = fromHistory.project.title
       }
     }
 

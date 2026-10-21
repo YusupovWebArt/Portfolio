@@ -1,4 +1,4 @@
-import type { Project } from '../components/projects/project-types'
+import type { Project, TechnologyItem } from '../components/projects/project-types'
 import { projectRegistry, type ProjectRegistryItem } from './projectRegistry'
 
 export type ProjectEntry = ProjectRegistryItem
@@ -167,4 +167,96 @@ export function getRelatedProjects(
     .sort((a, b) => b.score - a.score)
 
   return scored.slice(0, limit).map((item) => item.project)
+}
+
+export function getProjectTechList(project: Project): TechnologyItem[] {
+  if (Array.isArray(project.technologies)) {
+    return project.technologies
+  }
+  const techObj = project.technologies
+  const list: TechnologyItem[] = []
+  if (techObj.frontend) list.push(...techObj.frontend)
+  if (techObj.backend) list.push(...techObj.backend)
+  if (techObj.contentManagement) list.push(...techObj.contentManagement)
+  if (techObj.api) list.push(...techObj.api)
+  if (techObj.devopsSecurity) list.push(...techObj.devopsSecurity)
+  if (techObj.aiTools) list.push(...techObj.aiTools)
+  if (techObj.seo) list.push(...techObj.seo)
+  if (techObj.technicalOptimization) list.push(...techObj.technicalOptimization)
+  if (techObj.analytics) list.push(...techObj.analytics)
+  if (techObj.digitalMarketing) list.push(...techObj.digitalMarketing)
+  return list
+}
+
+export function matchesProjectSearch(project: Project, rawQuery: string): boolean {
+  const trimmed = rawQuery.toLowerCase().trim()
+  if (!trimmed) return true
+
+  const parts: string[] = [
+    project.title,
+    project.category.join(' '),
+    project.detailHeroLine || '',
+    project.description,
+    project.descriptionUa || '',
+    project.descriptionEs || '',
+    project.fullDescription || '',
+    project.fullDescriptionUa || '',
+    project.fullDescriptionEs || '',
+    project.challenges || '',
+    project.challengesUa || '',
+    project.challengesEs || '',
+    project.solutions || '',
+    project.solutionsUa || '',
+    project.solutionsEs || '',
+    project.architecture?.description || '',
+    project.architecture?.descriptionUa || '',
+    project.architecture?.descriptionEs || '',
+  ]
+
+  const allTech = getProjectTechList(project)
+  for (const tech of allTech) {
+    if (typeof tech === 'string') {
+      parts.push(tech)
+    } else {
+      parts.push(tech.short, tech.full || tech.short)
+    }
+  }
+
+  if (Array.isArray(project.features)) {
+    for (const feat of project.features) {
+      if (typeof feat === 'string') {
+        parts.push(feat)
+      } else if (feat && typeof feat === 'object' && 'title' in feat) {
+        const f = feat as {
+          title?: string
+          titleUa?: string
+          titleEs?: string
+          description?: string
+          descriptionUa?: string
+          descriptionEs?: string
+        }
+        parts.push(
+          f.title || '',
+          f.titleUa || '',
+          f.titleEs || '',
+          f.description || '',
+          f.descriptionUa || '',
+          f.descriptionEs || '',
+        )
+      }
+    }
+  }
+
+  const corpus = parts.join(' ').toLowerCase()
+  const corpusCompact = corpus.replace(/[.\-/]/g, '')
+
+  const tokens = trimmed.split(/\s+/).filter(Boolean)
+  return tokens.every((token) => {
+    if (corpus.includes(token)) return true
+    const compactToken = token.replace(/[.\-/]/g, '')
+    if (compactToken.length >= 2 && corpusCompact.includes(compactToken)) {
+      return true
+    }
+    return false
+  })
 }

@@ -2,7 +2,11 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { getAllProjectEntries, getProjectBySlug } from '../../../../src/lib/projects'
-import { buildProjectJsonLd, buildProjectBreadcrumbsJsonLd } from '../../../../src/lib/seo'
+import {
+  buildProjectJsonLd,
+  buildProjectBreadcrumbsJsonLd,
+  toAbsoluteAssetUrl,
+} from '../../../../src/lib/seo'
 import ProjectDetailView from '../../../../src/components/ProjectDetailView'
 
 interface ProjectPageProps {
@@ -49,7 +53,17 @@ export async function generateMetadata({
         ? project.descriptionEs
         : project.description
 
-  const title = `${project.title} - Case Study | Artur Yusupov`
+  const caseStudyLabel =
+    locale === 'ua'
+      ? 'Кейс проєкту'
+      : locale === 'es'
+        ? 'Caso de estudio'
+        : 'Case Study'
+
+  const title = `${project.title} - ${caseStudyLabel} | Artur Yusupov`
+  const ogLocale = locale === 'ua' ? 'uk_UA' : locale === 'es' ? 'es_ES' : 'en_US'
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.yusupovartur.com'
+  const imageUrl = toAbsoluteAssetUrl(project.image)
 
   return {
     title,
@@ -65,13 +79,22 @@ export async function generateMetadata({
     openGraph: {
       title,
       description: localizedDesc,
+      url: `${siteUrl}/${locale}/projects/${slug}`,
+      siteName: 'Artur Yusupov Portfolio',
+      locale: ogLocale,
       images: [
         {
-          url: project.image,
+          url: imageUrl,
           alt: project.title,
         },
       ],
       type: 'article',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description: localizedDesc,
+      images: [imageUrl],
     },
   }
 }

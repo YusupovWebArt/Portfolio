@@ -122,5 +122,27 @@ describe('RAG Synthesis & Multilingual Routing Specification (TDD)', () => {
       const followUps = getContextualFollowUps('Tell me about WCAG 2.2 AA', { locale: 'en' })
       expect(followUps.length).toBe(3)
     })
+
+    it('should output localized Ukrainian and Spanish features and architecture for WPSKILLS', () => {
+      const featuresUa = synthesizeLocalRagAnswer('Основні можливості та функції проєкту WPSKILLS?', {
+        locale: 'ua',
+      })
+      expect(featuresUa).toContain('Основні функції проєкту WPSKILLS:')
+      expect(featuresUa).toContain('Нативна компіляція на Rust MDX-RS')
+
+      const archEs = synthesizeLocalRagAnswer('¿Cuál es la arquitectura de WPSKILLS?', {
+        locale: 'es',
+      })
+      expect(archEs).toContain('Arquitectura e ingeniería de WPSKILLS:')
+      expect(archEs).toContain('Desafíos clave:')
+      expect(archEs).toContain('Soluciones implementadas:')
+    })
+
+    it('should include WPSKILLS in Next.js showcase text and slugs', () => {
+      const showcase = resolveCategoryOrTechShowcase('Show me Next.js projects', 'en')
+      expect(showcase).toBeDefined()
+      expect(showcase?.projectSlugs).toContain('wpskills')
+      expect(showcase?.answer).toContain('WPSKILLS')
+    })
   })
 })
