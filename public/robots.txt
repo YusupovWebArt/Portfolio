@@ -12,6 +12,10 @@ User-agent: ChatGPT-User
 Allow: /
 Disallow: /api/
 
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /api/
+
 # Anthropic bots
 User-agent: ClaudeBot
 Allow: /
@@ -46,5 +50,6 @@ User-agent: PerplexityBot
 Allow: /
 Disallow: /api/
 
-# Sitemap URL
+# Sitemap URLs
+Sitemap: https://www.yusupovartur.com/sitemap.xml
 Sitemap: https://yusupovwebart.github.io/Portfolio/sitemap.xml

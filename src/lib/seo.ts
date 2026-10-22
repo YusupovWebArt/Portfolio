@@ -343,3 +343,102 @@ export function buildBlogBreadcrumbsJsonLd(
     ],
   }
 }
+
+export function buildPersonAndWebsiteJsonLd(locale = 'en') {
+  const isUa = locale === 'ua'
+  const isEs = locale === 'es'
+
+  const jobTitle = isUa
+    ? 'Senior Fullstack Web Engineer & AI Developer'
+    : isEs
+      ? 'Ingeniero Web Fullstack Senior y Desarrollador IA'
+      : 'Senior Fullstack Web Engineer & AI Developer'
+
+  const description = isUa
+    ? 'Портфоліо та інженерний хаб Артура Юсупова - Fullstack WordPress-розробника, React/Next.js інженера та спеціаліста з AI-інтеграцій та SEO.'
+    : isEs
+      ? 'Portafolio y centro de ingeniería de Artur Yusupov - Desarrollador Fullstack WordPress, ingeniero React/Next.js y especialista en IA y SEO.'
+      : 'Engineering portfolio of Artur Yusupov - Senior Fullstack WordPress & Next.js Engineer specializing in high-performance web applications, custom RAG AI assistants, and technical SEO.'
+
+  return {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'WebSite',
+        '@id': `${baseUrl}/${locale}#website`,
+        url: `${baseUrl}/${locale}`,
+        name: 'Artur Yusupov | Portfolio',
+        description,
+        inLanguage: toBcp47Lang(locale),
+        publisher: {
+          '@id': `${baseUrl}/#person`,
+        },
+      },
+      {
+        '@type': 'Person',
+        '@id': `${baseUrl}/#person`,
+        name: 'Artur Yusupov',
+        jobTitle,
+        url: baseUrl,
+        sameAs: [
+          'https://github.com/YusupovWebArt',
+          'https://www.linkedin.com/in/artur-iusupov/',
+        ],
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: 'Seville',
+          addressRegion: 'Andalusia',
+          addressCountry: 'ES',
+        },
+        knowsAbout: [
+          'WordPress Development',
+          'Next.js 16',
+          'React 19',
+          'TypeScript',
+          'PHP 8',
+          'Shopify Liquid',
+          'Headless CMS',
+          'Retrieval-Augmented Generation (RAG)',
+          'Core Web Vitals Optimization',
+          'WCAG 2.2 AA Accessibility',
+        ],
+      },
+      {
+        '@type': 'ProfessionalService',
+        '@id': `${baseUrl}/#service`,
+        name: 'Artur Yusupov Web Engineering Services',
+        url: `${baseUrl}/${locale}`,
+        image: `${baseUrl}/images/og-image.jpg`,
+        priceRange: '$$$',
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: 'Seville',
+          addressCountry: 'ES',
+        },
+        areaServed: [
+          {
+            '@type': 'Country',
+            name: 'Spain',
+          },
+          {
+            '@type': 'Country',
+            name: 'European Union',
+          },
+          {
+            '@type': 'Country',
+            name: 'Worldwide',
+          },
+        ],
+        serviceType: [
+          'Fullstack Web Engineering',
+          'Custom WordPress Theme & Plugin Development',
+          'Headless WordPress & Next.js Architecture',
+          'Shopify E-Commerce Stores',
+          'Autonomous In-Browser AI Assistant Integration',
+          'Core Web Vitals Sub-Second Performance Tuning',
+          'WCAG 2.2 AA Accessibility Audits & Remediation',
+        ],
+      },
+    ],
+  }
+}

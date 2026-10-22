@@ -19,6 +19,7 @@ import { FAQ, Message } from '../data/chatFaq'
 import { useLanguage } from '../contexts/LanguageContext'
 import { PUBLIC_PROFILES } from '../lib/profiles'
 import type { ContactKind, RevealedContact } from '../lib/contacts'
+import FormattedChatText from './chat/FormattedChatText'
 
 let contactMessageIdCounter = 0
 
@@ -212,6 +213,9 @@ const Contact = () => {
     (faq) => !messages.some((m) => m.from === 'user' && (m.text === faq.question || m.text === faq.questionUa || m.text === faq.questionEs))
   )
 
+  const lastBotMsg = [...messages].reverse().find((m) => m.from === 'bot')
+  const followUpChips = lastBotMsg?.followUps && lastBotMsg.followUps.length > 0 ? lastBotMsg.followUps : []
+
   return (
     <section
       id="contact"
@@ -395,7 +399,11 @@ const Contact = () => {
                             : 'bg-purple-600 dark:bg-lime-500 text-white dark:text-slate-900 rounded-tr-sm font-medium'
                         }`}
                       >
-                        <div className="whitespace-pre-line">{msg.text}</div>
+                        <FormattedChatText
+                          text={msg.text}
+                          srPrefix={`${isBot ? ct.chatbot.a11y?.botPrefix || 'Assistant' : 'You'}: `}
+                          isBot={isBot}
+                        />
                         {isBot && msg.source && (
                           <div className="mt-2 pt-1.5 border-t border-slate-200/60 dark:border-white/10 flex items-center gap-1.5 text-[10px] font-medium text-purple-600 dark:text-lime-400">
                             <Database className="w-2.5 h-2.5 shrink-0" />
@@ -451,22 +459,33 @@ const Contact = () => {
               {/* Console Input Footer */}
               <div className="p-3 border-t border-slate-200/50 dark:border-white/5 bg-slate-50/50 dark:bg-slate-950/20 space-y-2">
                 
-                {/* Active Suggestion Chips (Wrapped & Compact, max 2 items for space) */}
-                {activeSuggestions.length > 0 && messages.length > 1 && (
+                {/* Contextual Follow-Up Suggestions or FAQ Chips */}
+                {messages.length > 1 && (
                   <div className="flex flex-wrap gap-1.5">
-                    {activeSuggestions.slice(0, 2).map((faq, idx) => {
-                      const questionText = lang === 'ua' ? faq.questionUa : lang === 'es' ? faq.questionEs : faq.question
-                      return (
-                        <button
-                          key={idx}
-                          onClick={() => handleSend(questionText)}
-                          className="px-2.5 py-1 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700/80 text-[10px] font-semibold text-slate-500 dark:text-slate-300 rounded-full border border-slate-200/60 dark:border-white/5 hover:border-slate-300 dark:hover:border-white/10 shadow-sm transition-all active:scale-95 duration-250"
-                          type="button"
-                        >
-                          {questionText}
-                        </button>
-                      )
-                    })}
+                    {followUpChips.length > 0
+                      ? followUpChips.slice(0, 3).map((chip, idx) => (
+                          <button
+                            key={idx}
+                            onClick={() => handleSend(chip)}
+                            className="px-2.5 py-1 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700/80 text-[10px] font-semibold text-purple-600 dark:text-lime-400 rounded-full border border-purple-200/50 dark:border-lime-500/20 hover:border-purple-300 dark:hover:border-lime-500/40 shadow-xs transition-all active:scale-95 duration-200"
+                            type="button"
+                          >
+                            {chip}
+                          </button>
+                        ))
+                      : activeSuggestions.slice(0, 2).map((faq, idx) => {
+                          const questionText = lang === 'ua' ? faq.questionUa : lang === 'es' ? faq.questionEs : faq.question
+                          return (
+                            <button
+                              key={idx}
+                              onClick={() => handleSend(questionText)}
+                              className="px-2.5 py-1 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700/80 text-[10px] font-semibold text-slate-500 dark:text-slate-300 rounded-full border border-slate-200/60 dark:border-white/5 hover:border-slate-300 dark:hover:border-white/10 shadow-xs transition-all active:scale-95 duration-200"
+                              type="button"
+                            >
+                              {questionText}
+                            </button>
+                          )
+                        })}
                   </div>
                 )}
 

@@ -1,11 +1,14 @@
 import React from 'react'
-import { describe, it, expect, vi } from 'vitest'
+import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { render, screen, fireEvent } from '@testing-library/react'
 import Projects from '../components/Projects'
 import { LanguageProvider } from '../contexts/LanguageContext'
 import { getProjectBySlug, matchesProjectSearch, getProjectTechList } from '../lib/projects'
 
 describe('Featured Projects Search & Filtering Specification (TDD)', () => {
+  beforeEach(() => {
+    sessionStorage.clear()
+  })
   it('getProjectTechList should extract technologies from all 10 categories including seo, analytics, technicalOptimization, digitalMarketing', () => {
     const wpskills = getProjectBySlug('wpskills')
     expect(wpskills).toBeDefined()

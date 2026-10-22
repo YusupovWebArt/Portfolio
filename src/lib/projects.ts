@@ -188,6 +188,46 @@ export function getProjectTechList(project: Project): TechnologyItem[] {
   return list
 }
 
+const SEARCH_SYNONYMS: Record<string, string[]> = {
+  // Medical & Clinic
+  'медицина': ['medical', 'healthcare', 'clinic'],
+  'медичний': ['medical', 'healthcare'],
+  'клініка': ['clinic', 'medical'],
+  'клиника': ['clinic', 'medical'],
+  'стоматологія': ['dental', 'clinic'],
+  'стоматология': ['dental', 'clinic'],
+  'dental': ['стоматологія', 'dental'],
+  'clínica': ['clinic', 'medical'],
+  'clinica': ['clinic', 'medical'],
+  'médico': ['medical', 'healthcare'],
+  'medico': ['medical', 'healthcare'],
+
+  // E-commerce & Store
+  'магазин': ['store', 'shop', 'ecommerce', 'shopify', 'woocommerce'],
+  'інтернет-магазин': ['ecommerce', 'store', 'shopify'],
+  'tienda': ['store', 'shop', 'ecommerce', 'shopify'],
+  'comercio': ['ecommerce', 'store'],
+  'ecommerce': ['магазин', 'tienda', 'store', 'e-commerce'],
+  'e-commerce': ['магазин', 'tienda', 'store', 'ecommerce'],
+
+  // Education / Edtech
+  'освіта': ['education', 'edtech', 'learning'],
+  'навчання': ['education', 'edtech', 'learning'],
+  'educación': ['education', 'edtech'],
+  'educacion': ['education', 'edtech'],
+  'edtech': ['освіта', 'навчання', 'education', 'learning'],
+
+  // Construction
+  'будівництво': ['construction', 'timber'],
+  'строительство': ['construction', 'timber'],
+  'construcción': ['construction'],
+  'construccion': ['construction'],
+
+  // Architecture / CRM / SaaS
+  'crm': ['інтеграція', 'integration', 'crm'],
+  'saas': ['платформа', 'platform', 'app'],
+}
+
 export function matchesProjectSearch(project: Project, rawQuery: string): boolean {
   const trimmed = rawQuery.toLowerCase().trim()
   if (!trimmed) return true
@@ -257,6 +297,53 @@ export function matchesProjectSearch(project: Project, rawQuery: string): boolea
     if (compactToken.length >= 2 && corpusCompact.includes(compactToken)) {
       return true
     }
+
+    const synonyms = SEARCH_SYNONYMS[token]
+    if (synonyms && synonyms.some((syn) => corpus.includes(syn))) {
+      return true
+    }
+
     return false
   })
+}
+
+export function getProjectSearchRelevanceScore(project: Project, rawQuery: string): number {
+  const trimmed = rawQuery.toLowerCase().trim()
+  if (!trimmed) return 0
+  const tokens = trimmed.split(/\s+/).filter(Boolean)
+  let score = 0
+  const titleLower = project.title.toLowerCase()
+  const categoryLower = project.category.join(' ').toLowerCase()
+  const techList = getProjectTechList(project)
+  const techLower = techList
+    .map((t) => (typeof t === 'string' ? t : `${t.short} ${t.full || ''}`))
+    .join(' ')
+    .toLowerCase()
+  const descLower = `${project.description} ${project.descriptionUa || ''} ${project.descriptionEs || ''}`.toLowerCase()
+
+  for (const token of tokens) {
+    if (titleLower === token) {
+      score += 300
+    } else if (titleLower.includes(token)) {
+      score += 150
+    }
+
+    if (categoryLower.includes(token)) score += 80
+    if (techLower.includes(token)) score += 60
+    if (descLower.includes(token)) score += 30
+
+    const synonyms = SEARCH_SYNONYMS[token]
+    if (synonyms) {
+      for (const syn of synonyms) {
+        if (titleLower.includes(syn)) score += 100
+        if (categoryLower.includes(syn)) score += 60
+        if (techLower.includes(syn)) score += 40
+      }
+    }
+  }
+
+  if (project.isPersonal) score += 20
+  score += project.id / 100000
+
+  return score
 }

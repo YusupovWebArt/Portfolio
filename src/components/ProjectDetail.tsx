@@ -167,9 +167,11 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
     return () => cancelAnimationFrame(id)
   }, [currentImageIndex, projectId, slug, scrollActiveThumbHorizontal])
 
-  // Scroll immediately to top on project mount
+  // Scroll immediately to top and reset slide/tab on project mount or change
   useIsomorphicLayoutEffect(() => {
     window.scrollTo(0, 0)
+    setCurrentImageIndex(0)
+    setDetailTab('stack')
     const strip = thumbnailScrollRef.current
     if (strip) strip.scrollLeft = 0
   }, [projectId, slug])
@@ -224,7 +226,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
   }
 
   const openScreenshotModal = () => {
-    const currentImg = project.images[currentImageIndex]
+    const currentImg = project.images[currentImageIndex] ?? project.images[0]
     if (!currentImg) return
     setScreenshotModal({
       isOpen: true,
@@ -347,7 +349,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
           <div className="space-y-4">
             <div className="relative bg-white dark:bg-slate-900 rounded-xl overflow-hidden shadow-sm border border-slate-200/90 dark:border-slate-600">
               <img
-                src={project.images[currentImageIndex].src}
+                src={(project.images[currentImageIndex] ?? project.images[0])?.src || project.image}
                 alt={`${project.title} screenshot ${currentImageIndex + 1}`}
                 loading="lazy"
                 style={{

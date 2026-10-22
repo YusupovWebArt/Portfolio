@@ -57,9 +57,18 @@ const LangDropdown = ({ lang, label, onSelect, compact = false }: LangDropdownPr
         setOpen(false)
       }
     }
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && open) {
+        setOpen(false)
+      }
+    }
     document.addEventListener('mousedown', handleClickOutside)
-    return () => document.removeEventListener('mousedown', handleClickOutside)
-  }, [])
+    document.addEventListener('keydown', handleKeyDown)
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+      document.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [open])
 
   const CurrentFlag = FLAGS[lang].component
 
@@ -70,6 +79,8 @@ const LangDropdown = ({ lang, label, onSelect, compact = false }: LangDropdownPr
         id="lang-dropdown-btn"
         onClick={() => setOpen((prev) => !prev)}
         aria-label={label}
+        aria-haspopup="listbox"
+        aria-expanded={open}
         title={label}
         className={`flex items-center gap-1.5 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all duration-200 font-semibold text-xs ${
           compact ? 'px-2 py-1.5' : 'px-3 py-2 w-full justify-center'
@@ -84,12 +95,18 @@ const LangDropdown = ({ lang, label, onSelect, compact = false }: LangDropdownPr
       </button>
 
       {open && (
-        <div className="absolute right-0 mt-1.5 w-28 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl shadow-xl overflow-hidden z-50 animate-fade-in">
+        <div
+          role="listbox"
+          aria-label={label}
+          className="absolute right-0 mt-1.5 w-28 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl shadow-xl overflow-hidden z-50 animate-fade-in"
+        >
           {(Object.entries(FLAGS) as [Lang, { component: React.FC; code: string }][]).map(
-            ([code, { component: FlagComponent, code: label }]) => (
+            ([code, { component: FlagComponent, code: itemLabel }]) => (
               <button
                 key={code}
                 type="button"
+                role="option"
+                aria-selected={lang === code}
                 onClick={() => {
                   onSelect(code)
                   setOpen(false)
@@ -101,7 +118,7 @@ const LangDropdown = ({ lang, label, onSelect, compact = false }: LangDropdownPr
                 }`}
               >
                 <FlagComponent />
-                <span>{label}</span>
+                <span>{itemLabel}</span>
               </button>
             )
           )}
@@ -188,9 +205,14 @@ const Header = () => {
       <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
       <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          <div className="text-xl font-bold text-slate-900 dark:text-white">
+          <button
+            type="button"
+            onClick={() => scrollToSection('home')}
+            aria-label="Artur Yusupov - Portfolio Home"
+            className="text-xl font-bold text-slate-900 dark:text-white hover:text-purple-600 dark:hover:text-lime-400 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-600 dark:focus-visible:outline-lime-400 rounded text-left"
+          >
             Artur Yusupov
-          </div>
+          </button>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">

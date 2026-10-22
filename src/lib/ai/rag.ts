@@ -856,6 +856,15 @@ export function resolveResponseLanguage(
     return 'es'
   }
 
+  // Explicit English query markers
+  if (
+    /\b(what|how|why|who|where|which|when|can you|tell me|show me|do you|experience|stack|skills|projects|pricing|rates|portfolio|hello|hi|build|develop)\b/i.test(
+      trimmed,
+    )
+  ) {
+    return 'en'
+  }
+
   return preferredLocale || detectLanguage(trimmed)
 }
 
@@ -869,14 +878,22 @@ export function resolveBlogFromQueryOrContext(
   const trimmed = query ? query.trim() : ''
   const lower = foldForSearch(trimmed)
 
-  // 1. Direct slug match from options.projectSlug
-  if (options.projectSlug) {
+  // If query is specifically asking about a project, showcase or category, do not let options context hijack it
+  const isProjectOrCategoryQuery =
+    Boolean(trimmed) &&
+    (Boolean(resolveProjectFromQuery(trimmed)) ||
+      isBestProjectsQuery(trimmed) ||
+      isPersonalProjectsQuery(trimmed) ||
+      Boolean(resolveCategoryOrTechShowcase(trimmed, options.preferredLocale || 'en')))
+
+  // 1. Direct slug match from options.projectSlug (only if query does not target a project/category)
+  if (!isProjectOrCategoryQuery && options.projectSlug) {
     const bySlug = getBlogPostBySlug(options.projectSlug)
     if (bySlug) return bySlug
   }
 
-  // 2. Direct title match from options.projectTitle
-  if (options.projectTitle) {
+  // 2. Direct title match from options.projectTitle (only if query does not target a project/category)
+  if (!isProjectOrCategoryQuery && options.projectTitle) {
     const byTitle = allBlogPosts.find(
       (p) =>
         foldForSearch(p.title.en) === foldForSearch(options.projectTitle!) ||

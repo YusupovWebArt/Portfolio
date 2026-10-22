@@ -5,7 +5,11 @@ import { useLanguage } from '../contexts/LanguageContext'
 import { useDialogA11y } from '../hooks/useDialogA11y'
 import { allProjects } from '../lib/projectRegistry'
 import { getProjectSlugById } from '../data/projectSlugs'
-import { getProjectTechList, matchesProjectSearch } from '../lib/projects'
+import {
+  getProjectTechList,
+  matchesProjectSearch,
+  getProjectSearchRelevanceScore,
+} from '../lib/projects'
 
 function getPaginationPages(current: number, total: number): (number | '...')[] {
   if (total <= 7) {
@@ -59,9 +63,33 @@ const filterIds = ['all', 'personal', 'wordpress', 'nextjs', 'react', 'javascrip
 const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
   const { lang, t } = useLanguage()
   const pr = t.projects
-  const [activeFilter, setActiveFilter] = useState('all')
-  const [searchQuery, setSearchQuery] = useState('')
-  const [currentPage, setCurrentPage] = useState(1)
+  const [activeFilter, setActiveFilter] = useState(() => {
+    if (typeof window === 'undefined') return 'all'
+    try {
+      const saved = sessionStorage.getItem('portfolio_projects_filter')
+      return saved && filterIds.includes(saved) ? saved : 'all'
+    } catch {
+      return 'all'
+    }
+  })
+  const [searchQuery, setSearchQuery] = useState(() => {
+    if (typeof window === 'undefined') return ''
+    try {
+      return sessionStorage.getItem('portfolio_projects_search') || ''
+    } catch {
+      return ''
+    }
+  })
+  const [currentPage, setCurrentPage] = useState(() => {
+    if (typeof window === 'undefined') return 1
+    try {
+      const saved = sessionStorage.getItem('portfolio_projects_page')
+      const num = saved ? parseInt(saved, 10) : 1
+      return !isNaN(num) && num > 0 ? num : 1
+    } catch {
+      return 1
+    }
+  })
   const [expandedTechProjects, setExpandedTechProjects] = useState<Record<number, boolean>>({})
   const projectsPerPage = 6
   const [screenshotModal, setScreenshotModal] = useState<{
@@ -86,6 +114,17 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
     setCurrentPage(1)
   }
 
+  // Persist search/filter/page to sessionStorage
+  useEffect(() => {
+    try {
+      sessionStorage.setItem('portfolio_projects_filter', activeFilter)
+      sessionStorage.setItem('portfolio_projects_search', searchQuery)
+      sessionStorage.setItem('portfolio_projects_page', String(currentPage))
+    } catch {
+      // Ignore sessionStorage errors
+    }
+  }, [activeFilter, searchQuery, currentPage])
+
   useEffect(() => {
     if (screenshotModal.isOpen) {
       document.body.style.overflow = 'hidden'
@@ -97,24 +136,38 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
     }
   }, [screenshotModal.isOpen])
 
-  // Filtering projects by category and tokenized multi-word search
-  const filteredProjects = projects.filter((project) => {
-    const matchesCategory =
-      activeFilter === 'all'
-        ? true
-        : activeFilter === 'personal'
-          ? Boolean(project.isPersonal)
-          : project.category.includes(activeFilter)
-    if (!matchesCategory) return false
+  // Filtering projects by category, tokenized multi-word search, and relevance sorting
+  const filteredProjects = React.useMemo(() => {
+    const list = projects.filter((project) => {
+      const matchesCategory =
+        activeFilter === 'all'
+          ? true
+          : activeFilter === 'personal'
+            ? Boolean(project.isPersonal)
+            : project.category.includes(activeFilter)
+      if (!matchesCategory) return false
 
-    return matchesProjectSearch(project, searchQuery)
-  })
+      return matchesProjectSearch(project, searchQuery)
+    })
+
+    if (searchQuery.trim()) {
+      return [...list].sort(
+        (a, b) =>
+          getProjectSearchRelevanceScore(b, searchQuery) -
+          getProjectSearchRelevanceScore(a, searchQuery),
+      )
+    }
+
+    return list
+  }, [activeFilter, searchQuery])
 
   // Check if there are matches across all categories when current category yields 0 results
-  const globalSearchMatches =
-    activeFilter !== 'all' && searchQuery.trim() !== '' && filteredProjects.length === 0
-      ? projects.filter((project) => matchesProjectSearch(project, searchQuery))
-      : []
+  const globalSearchMatches = React.useMemo(() => {
+    if (activeFilter === 'all' || !searchQuery.trim() || filteredProjects.length > 0) {
+      return []
+    }
+    return projects.filter((project) => matchesProjectSearch(project, searchQuery))
+  }, [activeFilter, searchQuery, filteredProjects.length])
 
   // Pagination
   const indexOfLastProject = currentPage * projectsPerPage

@@ -1,10 +1,13 @@
-import { describe, it, expect, vi } from "vitest";
+import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import Projects from "./Projects";
 import { LanguageProvider } from "../contexts/LanguageContext";
 
 describe("Projects Component Specification (TDD)", () => {
+  beforeEach(() => {
+    sessionStorage.clear();
+  });
   it("should render projects section headline and category filter buttons", () => {
     const handleSelect = vi.fn();
     render(
