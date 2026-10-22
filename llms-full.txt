@@ -26,7 +26,7 @@
 - **Stack**: Next.js 16, React 19, TypeScript, Tailwind CSS v4, Rust MDX-RS, Zustand v5, Supabase, Vitest 4, Gemini NotebookLM Audio Prompt Engine.
 - **Highlights**:
   - Compiles 1,100+ MDX lessons and 1,700+ static pages in under 90 seconds (reduced from 21.6 minutes via an in-memory content caching pipeline and native Rust MDX-RS).
-  - Features interactive Explorable Explanations (`<ArchitectureFlow>`, `<StepFlow>`, WordPress hook lifecycle and production outage simulators), formative checkpoints (+15 XP), Spaced Repetition flashcards, and a global Supabase leaderboard.
+  - Features interactive Explorable Explanations (`<ArchitectureFlow>`, `<StepFlow>`, WordPress hook lifecycle and production outage simulators), formative checkpoints (+15 XP), Spaced Repetition flashcards, and Supabase-backed personal cloud progress synchronization.
   - Automated zero-metaphor first-principles prompt generator for Google NotebookLM Deep Dive Audio Overviews across 4 locales (EN/RU/UK/ES).
 
 ### 3.2. Next.js 16 & Hybrid RAG Portfolio Platform
@@ -60,3 +60,5 @@
 5. **Shopify Liquid vs Custom WooCommerce**: `/en/blog/shopify-liquid-vs-custom-woocommerce`
 6. **Client-Side Zero-Trust Web Security**: `/en/blog/client-side-zero-trust-security`
 7. **Zero-Downtime Legacy System Migration to Cloud**: `/en/blog/legacy-migration-cloud-infrastructure`
+8. **WPSKILLS Architecture Deep-Dive: Rust MDX-RS, Interactive Labs & Personal Progress Sync**: `/en/blog/wpskills-interactive-edtech-architecture`
+9. **Unitrition Architecture Deep-Dive: Headless WordPress, USDA API & Deterministic Diet Modeling**: `/en/blog/unitrition-headless-healthtech-architecture`
