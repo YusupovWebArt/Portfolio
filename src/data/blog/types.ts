@@ -24,4 +24,6 @@ export interface BlogPost {
   tldr: Record<BlogLocale, string[]>
   content: Record<BlogLocale, string>
   appliedProjects?: BlogReferenceProject[]
+  /** Marks flagship architecture & case-study breakdowns of personal or commercial projects */
+  isProjectDeepDive?: boolean
 }

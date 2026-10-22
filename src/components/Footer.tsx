@@ -92,8 +92,7 @@ const Footer = () => {
                     window.location.port === '4173')
                 if (isSpa) {
                   e.preventDefault()
-                  window.dispatchEvent(new CustomEvent('open-blog-view'))
-                  window.scrollTo({ top: 0, behavior: 'smooth' })
+                  window.open(`https://www.yusupovartur.com/${lang}/blog`, '_blank', 'noopener,noreferrer')
                 }
               }}
               className="text-slate-300 dark:text-slate-400 hover:text-white transition-colors cursor-pointer"

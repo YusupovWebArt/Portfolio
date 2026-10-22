@@ -52,6 +52,14 @@ export default function BlogCatalogView({
         label: isUa ? 'Всі інженерні статті' : isEs ? 'Todos los artículos' : 'All Engineering Articles',
       },
       {
+        id: 'project-case-studies',
+        label: isUa
+          ? 'Розбори моїх проєктів'
+          : isEs
+            ? 'Casos de Estudio de Mis Proyectos'
+            : 'My Project Case Studies',
+      },
+      {
         id: 'architecture-tco',
         label: isUa ? 'Архітектура та TCO' : isEs ? 'Arquitectura y TCO' : 'Architecture & TCO',
       },
@@ -92,7 +100,10 @@ export default function BlogCatalogView({
   )
 
   const categoryCounts = useMemo(() => {
-    const counts: Record<string, number> = { all: allBlogPosts.length }
+    const counts: Record<string, number> = {
+      all: allBlogPosts.length,
+      'project-case-studies': allBlogPosts.filter((p) => p.isProjectDeepDive).length,
+    }
     for (const post of allBlogPosts) {
       counts[post.category] = (counts[post.category] || 0) + 1
     }
@@ -102,7 +113,9 @@ export default function BlogCatalogView({
   const filteredPosts = useMemo(() => {
     return allBlogPosts.filter((post) => {
       // 1. Category filter
-      if (selectedCategory !== 'all' && post.category !== selectedCategory) {
+      if (selectedCategory === 'project-case-studies') {
+        if (!post.isProjectDeepDive) return false
+      } else if (selectedCategory !== 'all' && post.category !== selectedCategory) {
         return false
       }
 

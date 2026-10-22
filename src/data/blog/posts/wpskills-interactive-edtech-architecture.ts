@@ -2,6 +2,7 @@ import type { BlogPost } from '../types'
 
 export const wpskillsInteractiveEdtechArchitecturePost: BlogPost = {
   slug: 'wpskills-interactive-edtech-architecture',
+  isProjectDeepDive: true,
   title: {
     en: 'WPSKILLS Architecture Deep-Dive: Compiling 1,100+ MDX Lessons in 90 Seconds with Next.js 16 & Rust MDX-RS',
     ua: 'Повний розбір архітектури WPSKILLS: компіляція 1 100+ MDX-уроків за 90 секунд на Next.js 16 та Rust MDX-RS',

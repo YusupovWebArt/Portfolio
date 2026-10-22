@@ -2,6 +2,7 @@ import type { BlogPost } from '../types'
 
 export const subSecondCwvBundleOptimizationPost: BlogPost = {
   slug: 'sub-second-cwv-bundle-optimization',
+  isProjectDeepDive: true,
   title: {
     en: 'Sub-Second Core Web Vitals: Reducing Bundle Size, Asset Pipelines & Modern Hydration Strategies (2026)',
     ua: 'Субсекундні показники Core Web Vitals: оптимізація бандлу, медіа-пайплайни та сучасна гідратація (2026)',

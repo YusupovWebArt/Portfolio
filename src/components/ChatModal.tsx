@@ -15,6 +15,11 @@ import {
   Square,
   Maximize2,
   Minimize2,
+  Layers,
+  Cpu,
+  Wrench,
+  ChevronDown,
+  ChevronUp,
 } from 'lucide-react'
 
 import { FAQ, Message } from '../data/chatFaq'
@@ -103,6 +108,7 @@ const ChatModal = ({
   const [copiedId, setCopiedId] = useState<string | null>(null)
   const [isStreaming, setIsStreaming] = useState(false)
   const [isMaximized, setIsMaximized] = useState(false)
+  const [showGeneralFaqs, setShowGeneralFaqs] = useState(false)
 
   useDialogA11y({
     isOpen: isModalOpen,
@@ -553,10 +559,23 @@ const ChatModal = ({
 
   const displayedMessages = messages.map((msg) => {
     if (msg.id === 'welcome' || msg.id.startsWith('welcome-')) {
+      if (projectContext && messages.length === 1) {
+        const contextWelcome =
+          lang === 'ua'
+            ? `Активний контекст: **${projectContext.projectTitle}**. Я завантажив його архітектуру, технічний стек, ключові функції та інженерні рішення. Оберіть швидкий запит нижче або поставте своє запитання щодо цього проєкту!`
+            : lang === 'es'
+              ? `Contexto activo: **${projectContext.projectTitle}**. He cargado su arquitectura, stack técnico, funcionalidades clave y soluciones de ingeniería. Elige una consulta rápida abajo o haz cualquier pregunta sobre este proyecto.`
+              : `Active context: **${projectContext.projectTitle}**. I have loaded its architecture, tech stack, key features, and engineering case study. Pick a quick query below or ask any specific question about this project!`
+        return {
+          ...msg,
+          text: contextWelcome,
+          source: `Active Case Study · ${projectContext.projectTitle}`,
+        }
+      }
       return {
         ...msg,
         text: ct.welcomeMessage,
-        source: msg.source || 'Hybrid RAG · 71-Project Knowledge Base',
+        source: 'Hybrid RAG · 71-Project Knowledge Base',
       }
     }
     return msg
@@ -564,25 +583,96 @@ const ChatModal = ({
 
   if (!isModalOpen) return null
 
-  const projectChips = projectContext
+  const projectQuickItems = projectContext
     ? lang === 'ua'
       ? [
-          `Запитати про ${projectContext.projectTitle}: ${ct.quickQueryStack}`,
-          `Запитати про ${projectContext.projectTitle}: ${ct.quickQueryFeatures}`,
-          `Запитати про ${projectContext.projectTitle}: ${ct.quickQueryArchitecture}`,
+          {
+            icon: Layers,
+            title: 'Технічний стек і версії',
+            subtitle: ct.quickQueryStack,
+            prompt: `Запитати про ${projectContext.projectTitle}: ${ct.quickQueryStack}`,
+          },
+          {
+            icon: Cpu,
+            title: 'Системна архітектура',
+            subtitle: ct.quickQueryArchitecture,
+            prompt: `Запитати про ${projectContext.projectTitle}: ${ct.quickQueryArchitecture}`,
+          },
+          {
+            icon: Sparkles,
+            title: 'Ключові функції та метрики',
+            subtitle: ct.quickQueryFeatures,
+            prompt: `Запитати про ${projectContext.projectTitle}: ${ct.quickQueryFeatures}`,
+          },
+          {
+            icon: Wrench,
+            title: 'Інженерні виклики та рішення',
+            subtitle: 'Які технічні виклики було вирішено?',
+            prompt: `Запитати про ${projectContext.projectTitle}: Які технічні виклики та рішення реалізовано в проєкті?`,
+          },
         ]
       : lang === 'es'
         ? [
-            `Preguntar sobre ${projectContext.projectTitle}: ${ct.quickQueryStack}`,
-            `Preguntar sobre ${projectContext.projectTitle}: ${ct.quickQueryFeatures}`,
-            `Preguntar sobre ${projectContext.projectTitle}: ${ct.quickQueryArchitecture}`,
+            {
+              icon: Layers,
+              title: 'Stack Técnico y Versiones',
+              subtitle: ct.quickQueryStack,
+              prompt: `Preguntar sobre ${projectContext.projectTitle}: ${ct.quickQueryStack}`,
+            },
+            {
+              icon: Cpu,
+              title: 'Arquitectura del Sistema',
+              subtitle: ct.quickQueryArchitecture,
+              prompt: `Preguntar sobre ${projectContext.projectTitle}: ${ct.quickQueryArchitecture}`,
+            },
+            {
+              icon: Sparkles,
+              title: 'Funciones Clave y Métricas',
+              subtitle: ct.quickQueryFeatures,
+              prompt: `Preguntar sobre ${projectContext.projectTitle}: ${ct.quickQueryFeatures}`,
+            },
+            {
+              icon: Wrench,
+              title: 'Retos y Soluciones',
+              subtitle: '¿Qué retos de ingeniería se resolvieron?',
+              prompt: `Preguntar sobre ${projectContext.projectTitle}: ¿Qué retos de ingeniería y soluciones se implementaron?`,
+            },
           ]
         : [
-            `Ask about ${projectContext.projectTitle}: ${ct.quickQueryStack}`,
-            `Ask about ${projectContext.projectTitle}: ${ct.quickQueryFeatures}`,
-            `Ask about ${projectContext.projectTitle}: ${ct.quickQueryArchitecture}`,
+            {
+              icon: Layers,
+              title: 'Tech Stack & Versions',
+              subtitle: ct.quickQueryStack,
+              prompt: `Ask about ${projectContext.projectTitle}: ${ct.quickQueryStack}`,
+            },
+            {
+              icon: Cpu,
+              title: 'System Architecture',
+              subtitle: ct.quickQueryArchitecture,
+              prompt: `Ask about ${projectContext.projectTitle}: ${ct.quickQueryArchitecture}`,
+            },
+            {
+              icon: Sparkles,
+              title: 'Key Features & Metrics',
+              subtitle: ct.quickQueryFeatures,
+              prompt: `Ask about ${projectContext.projectTitle}: ${ct.quickQueryFeatures}`,
+            },
+            {
+              icon: Wrench,
+              title: 'Challenges & Solutions',
+              subtitle: 'What engineering challenges were solved?',
+              prompt: `Ask about ${projectContext.projectTitle}: What engineering challenges and solutions were implemented?`,
+            },
           ]
     : []
+
+  const inputPlaceholder = projectContext
+    ? lang === 'ua'
+      ? `Введіть запитання про ${projectContext.projectTitle}...`
+      : lang === 'es'
+        ? `Escribe una pregunta sobre ${projectContext.projectTitle}...`
+        : `Type a question about ${projectContext.projectTitle}...`
+    : ct.placeholder
 
   // Dynamic contextual follow-ups from the latest bot message, or fallback to unanswered FAQ items
   const lastBotMsg = [...messages].reverse().find((m) => m.from === 'bot')
@@ -865,47 +955,90 @@ const ChatModal = ({
 
           {/* Project Context Quick Prompts inside chat log (initial open only) */}
           {projectContext && messages.length === 1 && !isTyping && (
-            <div className="mt-2 ml-11 p-3.5 bg-purple-50/70 dark:bg-slate-800/70 border border-purple-200/60 dark:border-lime-500/25 rounded-2xl animate-fade-in space-y-2">
+            <div className="mt-2 ml-11 p-4 bg-purple-50/70 dark:bg-slate-800/70 border border-purple-200/60 dark:border-lime-500/25 rounded-2xl animate-fade-in space-y-3">
               <div className="text-[10px] font-bold text-purple-600 dark:text-lime-400 uppercase tracking-wider flex items-center justify-between">
                 <span>{ct.quickQueriesHeader}: {projectContext.projectTitle}</span>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
-                {projectChips.map((chip, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() => handleSend(chip)}
-                    className="text-left px-3.5 py-2 bg-white hover:bg-purple-50/50 dark:bg-slate-900 dark:hover:bg-slate-800 text-xs font-medium text-purple-700 dark:text-lime-400 rounded-xl border border-purple-100 dark:border-lime-500/20 shadow-sm transition-all cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-700 dark:focus-visible:outline-lime-400"
-                    type="button"
-                  >
-                    {chip}
-                  </button>
-                ))}
-              </div>
-            </div>
-          )}
-
-          {/* Initial FAQ Grid inside the chat log */}
-          {messages.length === 1 && !isTyping && (
-            <div className="mt-3 ml-11 space-y-2.5 animate-fade-in">
-              <div className="text-[10px] font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wider mb-1.5">
-                {ct.faqHeader}
-              </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                {FAQ.slice(0, 8).map((faq, idx) => {
-                  const questionText = lang === 'ua' ? faq.questionUa : lang === 'es' ? faq.questionEs : faq.question
+                {projectQuickItems.map((item, idx) => {
+                  const IconComponent = item.icon
                   return (
                     <button
                       key={idx}
-                      onClick={() => handleSend(questionText)}
-                      className="text-left px-4 py-2.5 bg-white hover:bg-slate-50 dark:bg-slate-800 dark:hover:bg-slate-700/80 text-xs font-semibold text-purple-600 dark:text-lime-400 hover:text-purple-700 dark:hover:text-lime-300 rounded-xl border border-slate-200/80 dark:border-white/5 shadow-sm transition-all duration-200 active:scale-[0.99] flex items-center justify-between group cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-700 dark:focus-visible:outline-lime-400"
+                      onClick={() => handleSend(item.prompt)}
+                      className="text-left px-3.5 py-2.5 bg-white hover:bg-purple-50/60 dark:bg-slate-900 dark:hover:bg-slate-800/90 rounded-xl border border-purple-100 dark:border-lime-500/20 shadow-sm transition-all flex items-start gap-3 group cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-700 dark:focus-visible:outline-lime-400"
                       type="button"
                     >
-                      <span className="line-clamp-2">{questionText}</span>
-                      <span className="text-slate-400 dark:text-slate-500 group-hover:translate-x-0.5 transition-transform ml-1.5 shrink-0" aria-hidden="true">→</span>
+                      <span className="mt-0.5 p-1.5 rounded-lg bg-purple-100/80 dark:bg-lime-500/10 text-purple-700 dark:text-lime-400 shrink-0">
+                        <IconComponent className="w-3.5 h-3.5" aria-hidden="true" />
+                      </span>
+                      <span className="min-w-0 flex-1">
+                        <span className="block text-xs font-bold text-slate-900 dark:text-white group-hover:text-purple-700 dark:group-hover:text-lime-300 transition-colors">
+                          {item.title}
+                        </span>
+                        <span className="block text-[11px] text-slate-600 dark:text-slate-400 mt-0.5 line-clamp-1">
+                          {item.subtitle}
+                        </span>
+                      </span>
                     </button>
                   )
                 })}
               </div>
+            </div>
+          )}
+
+          {/* Initial FAQ Grid inside the chat log (collapsed by default when projectContext is active) */}
+          {messages.length === 1 && !isTyping && (
+            <div className="mt-3 ml-11 space-y-2.5 animate-fade-in">
+              {projectContext ? (
+                <button
+                  type="button"
+                  onClick={() => setShowGeneralFaqs((prev) => !prev)}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[11px] font-semibold text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white bg-slate-100/80 hover:bg-slate-200/70 dark:bg-slate-800/70 dark:hover:bg-slate-800 border border-slate-200/70 dark:border-white/10 transition cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-700 dark:focus-visible:outline-lime-400"
+                >
+                  <span>
+                    {showGeneralFaqs
+                      ? lang === 'ua'
+                        ? 'Сховати загальні питання портфоліо'
+                        : lang === 'es'
+                          ? 'Ocultar preguntas generales del portfolio'
+                          : 'Hide general portfolio FAQs'
+                      : lang === 'ua'
+                        ? 'Показати загальні питання портфоліо (8)'
+                        : lang === 'es'
+                          ? 'Mostrar preguntas generales del portfolio (8)'
+                          : 'Show general portfolio FAQs (8)'}
+                  </span>
+                  {showGeneralFaqs ? (
+                    <ChevronUp className="w-3.5 h-3.5" aria-hidden="true" />
+                  ) : (
+                    <ChevronDown className="w-3.5 h-3.5" aria-hidden="true" />
+                  )}
+                </button>
+              ) : (
+                <div className="text-[10px] font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wider mb-1.5">
+                  {ct.faqHeader}
+                </div>
+              )}
+
+              {(!projectContext || showGeneralFaqs) && (
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                  {FAQ.slice(0, 8).map((faq, idx) => {
+                    const questionText = lang === 'ua' ? faq.questionUa : lang === 'es' ? faq.questionEs : faq.question
+                    return (
+                      <button
+                        key={idx}
+                        onClick={() => handleSend(questionText)}
+                        className="text-left px-4 py-2.5 bg-white hover:bg-slate-50 dark:bg-slate-800 dark:hover:bg-slate-700/80 text-xs font-semibold text-purple-600 dark:text-lime-400 hover:text-purple-700 dark:hover:text-lime-300 rounded-xl border border-slate-200/80 dark:border-white/5 shadow-sm transition-all duration-200 active:scale-[0.99] flex items-center justify-between group cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-700 dark:focus-visible:outline-lime-400"
+                        type="button"
+                      >
+                        <span className="line-clamp-2">{questionText}</span>
+                        <span className="text-slate-400 dark:text-slate-500 group-hover:translate-x-0.5 transition-transform ml-1.5 shrink-0" aria-hidden="true">→</span>
+                      </button>
+                    )
+                  })}
+                </div>
+              )}
             </div>
           )}
 
@@ -952,7 +1085,7 @@ const ChatModal = ({
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && handleSend(input)}
-                placeholder={ct.placeholder}
+                placeholder={inputPlaceholder}
                 aria-label={ct.a11y.inputLabel}
                 autoComplete="off"
                 enterKeyHint="send"

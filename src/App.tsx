@@ -16,8 +16,6 @@ const ProjectDetail = lazy(() => import('./components/ProjectDetail'))
 const Projects = lazy(() => import('./components/Projects'))
 const Skills = lazy(() => import('./components/Skills'))
 const B2bServices = lazy(() => import('./components/B2bServices'))
-const BlogCatalogView = lazy(() => import('./components/blog/BlogCatalogView'))
-const BlogDetailView = lazy(() => import('./components/blog/BlogDetailView'))
 const ChatModal = lazy(() => import('./components/ChatModal'))
 
 function ProjectLoadingFallback() {
@@ -34,26 +32,20 @@ function ProjectLoadingFallback() {
   )
 }
 
-function syncUrl(options: { blog?: string | null; project?: string | number | null }) {
+function syncUrl(options: { project?: string | number | null }) {
   if (typeof window === 'undefined') return
   try {
     const url = new URL(window.location.href)
-    if (options.blog) {
-      url.searchParams.set('blog', options.blog)
-      url.searchParams.delete('project')
-    } else {
-      url.searchParams.delete('blog')
-    }
+    url.searchParams.delete('blog')
 
     if (options.project) {
       url.searchParams.set('project', String(options.project))
-      url.searchParams.delete('blog')
-    } else if (!options.blog) {
+    } else {
       url.searchParams.delete('project')
     }
 
     window.history.pushState(
-      { blog: options.blog || null, project: options.project || null },
+      { project: options.project || null },
       '',
       url.toString()
     )
@@ -64,47 +56,44 @@ function syncUrl(options: { blog?: string | null; project?: string | number | nu
 
 function getInitialNavigationState(): {
   project: number | null
-  blogSlug: string | null
-  isCatalog: boolean
 } {
   if (typeof window === 'undefined') {
-    return { project: null, blogSlug: null, isCatalog: false }
+    return { project: null }
   }
   const params = new URLSearchParams(window.location.search)
   const blogParam = params.get('blog')
   const projectParam = params.get('project')
 
   if (blogParam) {
-    if (blogParam === 'catalog') {
-      return { project: null, blogSlug: null, isCatalog: true }
-    }
-    return { project: null, blogSlug: blogParam, isCatalog: false }
+    // Redirect legacy SPA ?blog=... URLs directly to the canonical Next.js blog on yusupovartur.com
+    const targetUrl =
+      blogParam === 'catalog'
+        ? 'https://www.yusupovartur.com/en/blog'
+        : `https://www.yusupovartur.com/en/blog/${encodeURIComponent(blogParam)}`
+    window.location.replace(targetUrl)
+    return { project: null }
   }
 
   if (projectParam) {
     const num = Number(projectParam)
     if (!Number.isNaN(num) && num > 0) {
-      return { project: num, blogSlug: null, isCatalog: false }
+      return { project: num }
     }
     const id = getProjectIdBySlug(projectParam)
     if (id) {
-      return { project: id, blogSlug: null, isCatalog: false }
+      return { project: id }
     }
   }
 
-  return { project: null, blogSlug: null, isCatalog: false }
+  return { project: null }
 }
 
 function PortfolioMain() {
   const { lang } = useLanguage()
   const [initialNav] = useState(getInitialNavigationState)
   const [selectedProject, setSelectedProject] = useState<number | null>(initialNav.project)
-  const [selectedBlogSlug, setSelectedBlogSlug] = useState<string | null>(initialNav.blogSlug)
-  const [isBlogCatalog, setIsBlogCatalog] = useState(initialNav.isCatalog)
 
   const handleProjectSelect = (projectId: number) => {
-    setSelectedBlogSlug(null)
-    setIsBlogCatalog(false)
     const slug = getProjectSlugById(projectId)
     syncUrl({ project: slug || projectId })
     if ('startViewTransition' in document) {
@@ -120,7 +109,7 @@ function PortfolioMain() {
   }
 
   const handleBackToProjects = () => {
-    syncUrl({ project: null, blog: null })
+    syncUrl({ project: null })
     if ('startViewTransition' in document) {
       const doc = document as Document & {
         startViewTransition: (callback: () => void) => void
@@ -143,59 +132,15 @@ function PortfolioMain() {
     }
   }
 
-  const handleBlogSelect = (slug: string) => {
-    setSelectedProject(null)
-    setIsBlogCatalog(false)
-    syncUrl({ blog: slug })
-    if ('startViewTransition' in document) {
-      const doc = document as Document & {
-        startViewTransition: (callback: () => void) => void
-      }
-      doc.startViewTransition(() => {
-        setSelectedBlogSlug(slug)
-        window.scrollTo({ top: 0, behavior: 'smooth' })
-      })
-    } else {
-      setSelectedBlogSlug(slug)
-      window.scrollTo({ top: 0, behavior: 'smooth' })
-    }
-  }
-
-  const handleBackFromBlogDetail = () => {
-    setSelectedBlogSlug(null)
-    setIsBlogCatalog(true)
-    syncUrl({ blog: 'catalog' })
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }
-
-  const handleBackToPortfolio = () => {
-    setSelectedBlogSlug(null)
-    setIsBlogCatalog(false)
-    syncUrl({ blog: null, project: null })
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }
-
   useEffect(() => {
     if (typeof window === 'undefined') return
     ;(window as unknown as { __IS_PORTFOLIO_SPA__?: boolean }).__IS_PORTFOLIO_SPA__ = true
 
     const handlePopState = () => {
       const current = new URLSearchParams(window.location.search)
-      const b = current.get('blog')
       const p = current.get('project')
 
-      if (b) {
-        setSelectedProject(null)
-        if (b === 'catalog') {
-          setIsBlogCatalog(true)
-          setSelectedBlogSlug(null)
-        } else {
-          setIsBlogCatalog(false)
-          setSelectedBlogSlug(b)
-        }
-      } else if (p) {
-        setIsBlogCatalog(false)
-        setSelectedBlogSlug(null)
+      if (p) {
         const num = Number(p)
         if (!Number.isNaN(num) && num > 0) {
           setSelectedProject(num)
@@ -205,26 +150,18 @@ function PortfolioMain() {
         }
       } else {
         setSelectedProject(null)
-        setSelectedBlogSlug(null)
-        setIsBlogCatalog(false)
       }
     }
 
     const handleOpenBlog = () => {
-      setIsBlogCatalog(true)
-      setSelectedBlogSlug(null)
-      setSelectedProject(null)
-      syncUrl({ blog: 'catalog' })
-      window.scrollTo({ top: 0, behavior: 'smooth' })
+      window.open(`https://www.yusupovartur.com/${lang}/blog`, '_blank', 'noopener,noreferrer')
     }
 
     const handleNavigateToSection = (e: Event) => {
       const customEvent = e as CustomEvent<string>
       const sectionId = customEvent.detail
-      setIsBlogCatalog(false)
-      setSelectedBlogSlug(null)
       setSelectedProject(null)
-      syncUrl({ blog: null, project: null })
+      syncUrl({ project: null })
       if (sectionId) {
         setTimeout(() => {
           document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' })
@@ -247,7 +184,11 @@ function PortfolioMain() {
     const handleOpenBlogArticle = (e: Event) => {
       const customEvent = e as CustomEvent<{ slug?: string }>
       if (customEvent.detail?.slug) {
-        handleBlogSelect(customEvent.detail.slug)
+        window.open(
+          `https://www.yusupovartur.com/${lang}/blog/${customEvent.detail.slug}`,
+          '_blank',
+          'noopener,noreferrer',
+        )
       }
     }
 
@@ -264,7 +205,7 @@ function PortfolioMain() {
       window.removeEventListener('open-project', handleOpenProject as EventListener)
       window.removeEventListener('open-blog-article', handleOpenBlogArticle as EventListener)
     }
-  }, [])
+  }, [lang])
 
   return (
     <div className="min-h-screen bg-white dark:bg-slate-900 transition-colors duration-300">
@@ -276,30 +217,6 @@ function PortfolioMain() {
               key={selectedProject}
               projectId={selectedProject}
               onBack={handleBackToProjects}
-              onSelectProject={handleProjectSelect}
-            />
-          </Suspense>
-        </main>
-      ) : selectedBlogSlug !== null ? (
-        <main id="main-content">
-          <Suspense fallback={<ProjectLoadingFallback />}>
-            <BlogDetailView
-              slug={selectedBlogSlug}
-              locale={lang}
-              onBack={handleBackFromBlogDetail}
-              onBackToPortfolio={handleBackToPortfolio}
-              onSelectRelatedPost={handleBlogSelect}
-              onSelectProject={handleProjectSelect}
-            />
-          </Suspense>
-        </main>
-      ) : isBlogCatalog ? (
-        <main id="main-content">
-          <Suspense fallback={<ProjectLoadingFallback />}>
-            <BlogCatalogView
-              locale={lang}
-              onBack={handleBackToPortfolio}
-              onSelectPost={handleBlogSelect}
               onSelectProject={handleProjectSelect}
             />
           </Suspense>
@@ -326,7 +243,7 @@ function PortfolioMain() {
         </main>
       )}
       <Footer />
-      {selectedProject === null && selectedBlogSlug === null && !isBlogCatalog && <ScrollToTopButton />}
+      {selectedProject === null && <ScrollToTopButton />}
       <ConsentBanner />
       <Suspense fallback={null}>
         <ChatModal />

@@ -83,4 +83,16 @@ describe('BlogCatalogView Specification (TDD)', () => {
     expect(listener).toHaveBeenCalledTimes(1)
     window.removeEventListener('open-ai-chat-context', listener)
   })
+
+  it('filters project deep-dive articles when clicking My Project Case Studies category', () => {
+    render(<BlogCatalogView locale="en" />)
+
+    const caseStudiesBtn = screen.getByRole('button', { name: /My Project Case Studies/i })
+    fireEvent.click(caseStudiesBtn)
+
+    expect(screen.getByText(/WPSKILLS Architecture Deep-Dive/i)).toBeDefined()
+    expect(screen.getByText(/Unitrition Architecture Deep-Dive/i)).toBeDefined()
+    expect(screen.getByText(/Autonomous Hybrid RAG Architecture/i)).toBeDefined()
+    expect(screen.queryByText(/Shopify Liquid vs Custom WooCommerce/i)).toBeNull()
+  })
 })

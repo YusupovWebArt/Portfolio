@@ -2,6 +2,7 @@ import type { BlogPost } from '../types'
 
 export const unitritionHeadlessHealthtechArchitecturePost: BlogPost = {
   slug: 'unitrition-headless-healthtech-architecture',
+  isProjectDeepDive: true,
   title: {
     en: 'Unitrition Architecture Deep-Dive: Engineering a Headless HealthTech & Precision Nutrition Platform with Next.js 16, WordPress & Supabase',
     ua: 'Повний розбір архітектури Unitrition: розробка Headless HealthTech-платформи персоналізованого харчування на Next.js 16, WordPress та Supabase',

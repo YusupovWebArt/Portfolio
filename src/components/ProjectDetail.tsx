@@ -65,11 +65,13 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
   const [screenshotModal, setScreenshotModal] = useState<{
     isOpen: boolean
+    isFullPage: boolean
     image: string
     title: string
     caption: string
   }>({
     isOpen: false,
+    isFullPage: false,
     image: '',
     title: '',
     caption: '',
@@ -89,7 +91,13 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
   const screenshotModalRef = useRef<HTMLDivElement>(null)
 
   const closeScreenshotModal = useCallback(() => {
-    setScreenshotModal({ isOpen: false, image: '', title: '', caption: '' })
+    setScreenshotModal({
+      isOpen: false,
+      isFullPage: false,
+      image: '',
+      title: '',
+      caption: '',
+    })
   }, [])
 
   useDialogA11y({
@@ -231,23 +239,27 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
     if (!currentImg) return
     setScreenshotModal({
       isOpen: true,
+      isFullPage: false,
       image: currentImg.src,
       title: project.title,
       caption: currentImg.caption || `Screenshot ${currentImageIndex + 1}`,
     })
   }
 
-  const openFullScreenshotModal = () => {
-    let fullPagePath = project.fullScreenshot
-    if (!fullPagePath) return
+  const hasDistinctFullScreenshot = Boolean(
+    project.fullScreenshot &&
+      !project.fullScreenshot.includes('/thumbs/') &&
+      project.fullScreenshot !== project.image &&
+      !project.images.some((img) => img.src === project.fullScreenshot),
+  )
 
-    // Rewrite path from thumbs to projects if necessary
-    if (fullPagePath.includes('/thumbs/') && fullPagePath.includes('_thumb.')) {
-      fullPagePath = fullPagePath.replace('/thumbs/', '/projects/').replace('_thumb.', '.')
-    }
+  const openFullScreenshotModal = () => {
+    const fullPagePath = project.fullScreenshot
+    if (!fullPagePath || !hasDistinctFullScreenshot) return
 
     setScreenshotModal({
       isOpen: true,
+      isFullPage: true,
       image: fullPagePath,
       title: project.title,
       caption: 'Full page layout screenshot',
@@ -455,7 +467,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                 )}
               </div>
             )}
-            {project.fullScreenshot && (
+            {hasDistinctFullScreenshot && (
               <button
                 onClick={openFullScreenshotModal}
                 className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-purple-100 hover:bg-purple-200 dark:bg-lime-500/10 dark:hover:bg-lime-500/20 text-purple-700 dark:text-lime-400 px-4 py-3 text-sm font-semibold transition cursor-pointer"
@@ -535,41 +547,37 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                   <ArrowRight className="w-4 h-4" aria-hidden />
                 </a>
               )}
-              {project.deepDiveBlogSlug && (
-                <a
-                  href={`/${lang}/blog/${project.deepDiveBlogSlug}`}
-                  onClick={(e) => {
-                    if (
-                      typeof window !== 'undefined' &&
-                      (Boolean(
-                        (window as unknown as { __IS_PORTFOLIO_SPA__?: boolean })
-                          .__IS_PORTFOLIO_SPA__,
-                      ) ||
-                        window.location.pathname.startsWith('/Portfolio') ||
-                        window.location.port === '5173' ||
-                        window.location.port === '4173')
-                    ) {
-                      e.preventDefault()
-                      window.dispatchEvent(
-                        new CustomEvent('open-blog-article', {
-                          detail: { slug: project.deepDiveBlogSlug },
-                        }),
-                      )
-                    }
-                  }}
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-purple-100 hover:bg-purple-200 dark:bg-lime-500/10 dark:hover:bg-lime-500/20 text-purple-700 dark:text-lime-400 border border-purple-200/70 dark:border-lime-500/25 px-4 py-3 text-sm font-semibold transition"
-                >
-                  <BookOpen className="w-4 h-4 shrink-0" aria-hidden />
-                  <span>
-                    {lang === 'ua'
-                      ? 'Повний розбір архітектури та механізмів'
-                      : lang === 'es'
-                        ? 'Análisis profundo de arquitectura y mecanismos'
-                        : 'Architecture & Case Study Deep-Dive'}
-                  </span>
-                  <ArrowRight className="w-4 h-4 shrink-0" aria-hidden />
-                </a>
-              )}
+              {project.deepDiveBlogSlug && (() => {
+                const isSpa =
+                  typeof window !== 'undefined' &&
+                  (Boolean(
+                    (window as unknown as { __IS_PORTFOLIO_SPA__?: boolean })
+                      .__IS_PORTFOLIO_SPA__,
+                  ) ||
+                    window.location.hostname.includes('github.io') ||
+                    window.location.pathname.startsWith('/Portfolio'))
+                const blogHref = isSpa
+                  ? `https://www.yusupovartur.com/${lang}/blog/${project.deepDiveBlogSlug}`
+                  : `/${lang}/blog/${project.deepDiveBlogSlug}`
+                return (
+                  <a
+                    href={blogHref}
+                    target={isSpa ? '_blank' : undefined}
+                    rel={isSpa ? 'noopener noreferrer' : undefined}
+                    className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-purple-100 hover:bg-purple-200 dark:bg-lime-500/10 dark:hover:bg-lime-500/20 text-purple-700 dark:text-lime-400 border border-purple-200/70 dark:border-lime-500/25 px-4 py-3 text-sm font-semibold transition"
+                  >
+                    <BookOpen className="w-4 h-4 shrink-0" aria-hidden />
+                    <span>
+                      {lang === 'ua'
+                        ? 'Повний розбір архітектури та механізмів'
+                        : lang === 'es'
+                          ? 'Análisis profundo de arquitectura y mecanismos'
+                          : 'Architecture & Case Study Deep-Dive'}
+                    </span>
+                    <ArrowRight className="w-4 h-4 shrink-0" aria-hidden />
+                  </a>
+                )
+              })()}
               <ProjectChatTrigger
                 projectSlug={slug || project.title.toLowerCase().replace(/\s+/g, '-')}
                 projectTitle={project.title}
@@ -1279,7 +1287,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
             </button>
 
             {/* Navigation Arrows (Only show when viewing carousel slides, not full screenshot) */}
-            {project.images.length > 1 && project.images.some(img => img.src === screenshotModal.image) && (
+            {!screenshotModal.isFullPage && project.images.length > 1 && project.images.some(img => img.src === screenshotModal.image) && (
               <>
                 <button
                   onClick={() =>
@@ -1332,23 +1340,13 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
             {/* Scrollable Image Area with top-padding to clear the close button */}
             <div className="px-4 md:px-6 pb-4 pt-12 md:pt-14">
               {(() => {
-                const isFullPage = !project.images.some(img => img.src === screenshotModal.image)
+                const isFullPage = screenshotModal.isFullPage
                 return (
                   <div className={`w-full overflow-y-auto max-h-[65vh] md:max-h-[70vh] green-scrollbar rounded-xl border border-slate-200/50 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/40 ${isFullPage ? '' : 'flex items-center justify-center'}`}>
                     <img
                       src={screenshotModal.image}
                       alt={screenshotModal.title}
                       className={isFullPage ? 'w-full h-auto shadow-2xl mx-auto' : 'max-w-full max-h-[65vh] md:max-h-[70vh] object-contain rounded-lg shadow-2xl mx-auto'}
-                      onError={() => {
-                        // Fallback to currently selected slide image if full page screenshot fails to load
-                        if (screenshotModal.image !== project.images[currentImageIndex].src) {
-                          setScreenshotModal((prev) => ({
-                            ...prev,
-                            image: project.images[currentImageIndex].src,
-                            caption: project.images[currentImageIndex].caption,
-                          }))
-                        }
-                      }}
                     />
                   </div>
                 )

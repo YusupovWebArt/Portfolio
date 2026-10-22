@@ -179,8 +179,7 @@ const Header = () => {
       element.scrollIntoView({ behavior: 'smooth' })
     } else if (sectionId === 'blog') {
       if (isSpa) {
-        window.dispatchEvent(new CustomEvent('open-blog-view'))
-        window.scrollTo({ top: 0, behavior: 'smooth' })
+        window.open(`https://www.yusupovartur.com/${lang}/blog`, '_blank', 'noopener,noreferrer')
       } else {
         window.location.assign(`/${lang}/blog`)
       }
