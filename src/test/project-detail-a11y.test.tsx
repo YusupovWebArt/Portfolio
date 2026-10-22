@@ -80,4 +80,21 @@ describe('ProjectDetail Accessibility Specification (WCAG 2.2 AA / EAA 2026)', (
     fireEvent.keyDown(window, { key: 'Escape' })
     expect(screen.queryByRole('dialog')).toBeNull()
   })
+
+  it('should render Architecture & Case Study Deep-Dive link when deepDiveBlogSlug is defined', () => {
+    const wpskillsProject = projectRegistry.find((e) => e.slug === 'wpskills')?.project
+    expect(wpskillsProject).toBeDefined()
+
+    render(
+      <LanguageProvider>
+        <ProjectDetail initialProject={wpskillsProject} />
+      </LanguageProvider>,
+    )
+
+    const deepDiveLink = screen.getByRole('link', {
+      name: /architecture & case study deep-dive|детальний розбір архітектури|análisis profundo de arquitectura/i,
+    })
+    expect(deepDiveLink).toBeDefined()
+    expect(deepDiveLink.getAttribute('href')).toContain('/blog/wpskills-interactive-edtech-architecture')
+  })
 })

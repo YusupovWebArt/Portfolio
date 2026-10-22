@@ -94,4 +94,6 @@ export interface Project {
   category: string[]
   /** Flag for Artur's personal flagship products (e.g. Next.js 16 RAG Platform, Unitrition, React Portfolio). */
   isPersonal?: boolean
+  /** Optional slug of a deep-dive engineering article in the Blog (/blog/[slug]). */
+  deepDiveBlogSlug?: string
 }

@@ -1295,39 +1295,45 @@ export function synthesizeLocalRagAnswer(
   if (isBlogArticlesQuery(trimmed)) {
     if (lang === 'ua') {
       return stripEmDashes(
-        'У моєму інженерному блозі опубліковані 7 детальних архітектурних розборів для CTO та технічних команд:\n\n' +
+        'У моєму інженерному блозі опубліковані 9 детальних архітектурних розборів для CTO та технічних команд:\n\n' +
           '1. **Next.js 16 проти Headless WordPress та Custom PHP** (/ua/blog/nextjs-vs-headless-wordpress-custom-php-2026) - Об’єктивне порівняння TCO, вартості підтримки, швидкості Core Web Vitals та робочого процесу редакції.\n' +
-          '2. **Автономна архітектура Hybrid RAG у браузері** (/ua/blog/autonomous-hybrid-rag-architecture-browser) - Як реалізувати семантичний RAG-пошук за 5мс без витрат на зовнішні векторні бази даних (Pinecone/Milvus).\n' +
-          '3. **WCAG 2.2 AA та European Accessibility Act 2026** (/ua/blog/wcag-22-aa-european-accessibility-act-2026) - Практичний посібник для бізнесу в ЄС щодо обов’язкових стандартів доступності, керування фокусом та CI/CD тестів.\n' +
-          '4. **Субсекундні Core Web Vitals та оптимізація бандлу** (/ua/blog/sub-second-cwv-bundle-optimization) - Практики скорочення JS-бандлу з 480KB до 98KB, Tree-Shaking, WebP/AVIF та INP < 50ms у Vite та Next.js.\n' +
-          '5. **Shopify Liquid проти кастомного WooCommerce** (/ua/blog/shopify-liquid-vs-custom-woocommerce) - Архітектурний розбір e-commerce: реальний TCO, швидкість конверсії, масштабування та безпека платежів.\n' +
-          '6. **Zero-Trust безпека на стороні клієнта** (/ua/blog/client-side-zero-trust-security) - Захист вебдодатків: Base64-обфускація контактів від спам-ботів, суворі заголовки CSP та ізоляція DOM.\n' +
-          '7. **Безшовна міграція легасі-систем у хмару** (/ua/blog/legacy-migration-cloud-infrastructure) - План міграції монолітів та баз даних без зупинки бізнес-транзакцій та зі збереженням 100% SEO-трафіку.\n\n' +
+          '2. **Повний розбір архітектури WPSKILLS** (/ua/blog/wpskills-interactive-edtech-architecture) - Компіляція 1 100+ MDX-уроків за 90 секунд на Next.js 16 та Rust MDX-RS, інтерактивні симулятори та синхронізація прогресу в Supabase.\n' +
+          '3. **Повний розбір архітектури Unitrition** (/ua/blog/unitrition-headless-healthtech-architecture) - Headless HealthTech-платформа на Next.js 16, WordPress REST API, Supabase RLS та USDA FoodData Central API.\n' +
+          '4. **Автономна архітектура Hybrid RAG у браузері** (/ua/blog/autonomous-hybrid-rag-architecture-browser) - Як реалізувати семантичний RAG-пошук за 5мс без витрат на зовнішні векторні бази даних (Pinecone/Milvus).\n' +
+          '5. **WCAG 2.2 AA та European Accessibility Act 2026** (/ua/blog/wcag-22-aa-european-accessibility-act-2026) - Практичний посібник для бізнесу в ЄС щодо обов’язкових стандартів доступності, керування фокусом та CI/CD тестів.\n' +
+          '6. **Субсекундні Core Web Vitals та оптимізація бандлу** (/ua/blog/sub-second-cwv-bundle-optimization) - Практики скорочення JS-бандлу з 480KB до 98KB, Tree-Shaking, WebP/AVIF та INP < 50ms у Vite та Next.js.\n' +
+          '7. **Shopify Liquid проти кастомного WooCommerce** (/ua/blog/shopify-liquid-vs-custom-woocommerce) - Архітектурний розбір e-commerce: реальний TCO, швидкість конверсії, масштабування та безпека платежів.\n' +
+          '8. **Zero-Trust безпека на стороні клієнта** (/ua/blog/client-side-zero-trust-security) - Захист вебдодатків: Base64-обфускація контактів від спам-ботів, суворі заголовки CSP та ізоляція DOM.\n' +
+          '9. **Безшовна міграція легасі-систем у хмару** (/ua/blog/legacy-migration-cloud-infrastructure) - План міграції монолітів та баз даних без зупинки бізнес-транзакцій та зі збереженням 100% SEO-трафіку.\n\n' +
           'Ви можете відкрити будь-яку статтю за прямим посиланням або запитати мене про будь-яку з цих тем!'
       )
     }
     if (lang === 'es') {
       return stripEmDashes(
-        'En mi blog de ingeniería comparto 7 análisis técnicos en profundidad pensados para CTOs y fundadores:\n\n' +
+        'En mi blog de ingeniería comparto 9 análisis técnicos en profundidad pensados para CTOs y fundadores:\n\n' +
           '1. **Next.js 16 vs Headless WordPress vs Custom PHP** (/es/blog/nextjs-vs-headless-wordpress-custom-php-2026) - Comparativa objetiva de TCO, costes de mantenimiento, Core Web Vitals y flujo editorial.\n' +
-          '2. **Arquitectura de Hybrid RAG autónomo en cliente** (/es/blog/autonomous-hybrid-rag-architecture-browser) - Cómo implementar búsqueda semántica en 5ms sin costes mensuales de bases de datos vectoriales.\n' +
-          '3. **WCAG 2.2 AA y European Accessibility Act 2026** (/es/blog/wcag-22-aa-european-accessibility-act-2026) - Guía técnica para empresas en España y la UE sobre cumplimiento normativo, gestión de foco y tests en CI/CD.\n' +
-          '4. **Core Web Vitals subsegundos y optimización de bundles** (/es/blog/sub-second-cwv-bundle-optimization) - Reducción del JS inicial de 480KB a 98KB, tree-shaking, imágenes WebP/AVIF e INP < 50ms en Vite y Next.js.\n' +
-          '5. **Shopify Liquid vs WooCommerce a medida** (/es/blog/shopify-liquid-vs-custom-woocommerce) - Desglose de arquitectura e-commerce: TCO real, conversión, escalabilidad y seguridad transaccional.\n' +
-          '6. **Seguridad web Zero-Trust en cliente** (/es/blog/client-side-zero-trust-security) - Protección frontend: ofuscación Base64 contra scrapers, cabeceras CSP estrictas y aislamiento de DOM.\n' +
-          '7. **Migración cloud sin tiempo de inactividad** (/es/blog/legacy-migration-cloud-infrastructure) - Metodología probada para migrar sistemas heredados a la nube preservando el 100% del SEO y cero caídas operativas.\n\n' +
+          '2. **Análisis profundo de la arquitectura WPSKILLS** (/es/blog/wpskills-interactive-edtech-architecture) - Compilación de 1.100+ lecciones MDX en 90 segundos con Next.js 16 y Rust MDX-RS, simuladores interactivos y sincronización personal en Supabase.\n' +
+          '3. **Análisis profundo de la arquitectura Unitrition** (/es/blog/unitrition-headless-healthtech-architecture) - Plataforma HealthTech Headless con Next.js 16, WordPress, Supabase RLS y API USDA FoodData Central.\n' +
+          '4. **Arquitectura de Hybrid RAG autónomo en cliente** (/es/blog/autonomous-hybrid-rag-architecture-browser) - Cómo implementar búsqueda semántica en 5ms sin costes mensuales de bases de datos vectoriales.\n' +
+          '5. **WCAG 2.2 AA y European Accessibility Act 2026** (/es/blog/wcag-22-aa-european-accessibility-act-2026) - Guía técnica para empresas en España y la UE sobre cumplimiento normativo, gestión de foco y tests en CI/CD.\n' +
+          '6. **Core Web Vitals subsegundos y optimización de bundles** (/es/blog/sub-second-cwv-bundle-optimization) - Reducción del JS inicial de 480KB a 98KB, tree-shaking, imágenes WebP/AVIF e INP < 50ms en Vite y Next.js.\n' +
+          '7. **Shopify Liquid vs WooCommerce a medida** (/es/blog/shopify-liquid-vs-custom-woocommerce) - Desglose de arquitectura e-commerce: TCO real, conversión, escalabilidad y seguridad transaccional.\n' +
+          '8. **Seguridad web Zero-Trust en cliente** (/es/blog/client-side-zero-trust-security) - Protección frontend: ofuscación Base64 contra scrapers, cabeceras CSP estrictas y aislamiento de DOM.\n' +
+          '9. **Migración cloud sin tiempo de inactividad** (/es/blog/legacy-migration-cloud-infrastructure) - Metodología probada para migrar sistemas heredados a la nube preservando el 100% del SEO y cero caídas operativas.\n\n' +
           '¡Puedes acceder a los enlaces anteriores para leer el análisis completo o preguntarme cualquier duda sobre estos temas!'
       )
     }
     return stripEmDashes(
-      'In my engineering blog, I publish 7 architectural case studies designed for CTOs and technical leads:\n\n' +
+      'In my engineering blog, I publish 9 architectural case studies designed for CTOs and technical leads:\n\n' +
         '1. **Next.js 16 vs Headless WordPress vs Custom PHP** (/en/blog/nextjs-vs-headless-wordpress-custom-php-2026) - An objective TCO, maintenance, Core Web Vitals, and editorial workflow comparison.\n' +
-        '2. **Autonomous Hybrid RAG Architecture** (/en/blog/autonomous-hybrid-rag-architecture-browser) - Building in-browser semantic retrieval under 5ms with zero external vector database overhead.\n' +
-        '3. **WCAG 2.2 AA & European Accessibility Act 2026** (/en/blog/wcag-22-aa-european-accessibility-act-2026) - The practical engineering compliance guide for EU and Spanish businesses, covering keyboard focus, contrast, and CI/CD a11y gates.\n' +
-        '4. **Sub-Second Core Web Vitals & Bundle Optimization** (/en/blog/sub-second-cwv-bundle-optimization) - Strategies reducing initial JS from 480KB to 98KB, tree-shaking, WebP/AVIF pipelines, and sub-50ms INP.\n' +
-        '5. **Shopify Liquid vs Custom WooCommerce** (/en/blog/shopify-liquid-vs-custom-woocommerce) - Real-world e-commerce TCO, conversion velocity, payment security, and enterprise checkout architecture.\n' +
-        '6. **Client-Side Zero-Trust Web Security** (/en/blog/client-side-zero-trust-security) - Frontend hardening: Base64 obfuscation against scrapers, strict Content Security Policies, and DOM isolation.\n' +
-        '7. **Zero-Downtime Legacy System Migration to Cloud** (/en/blog/legacy-migration-cloud-infrastructure) - Transitioning legacy monoliths to high-availability cloud infrastructure with dual-write replication and 100% SEO preservation.\n\n' +
+        '2. **WPSKILLS Architecture Deep-Dive** (/en/blog/wpskills-interactive-edtech-architecture) - Compiling 1,100+ MDX lessons in 90 seconds with Next.js 16 & Rust MDX-RS, interactive simulators, and Supabase personal progress sync.\n' +
+        '3. **Unitrition Architecture Deep-Dive** (/en/blog/unitrition-headless-healthtech-architecture) - Engineering a Headless HealthTech platform with Next.js 16, WordPress REST API, Supabase RLS, and USDA FoodData Central API.\n' +
+        '4. **Autonomous Hybrid RAG Architecture** (/en/blog/autonomous-hybrid-rag-architecture-browser) - Building in-browser semantic retrieval under 5ms with zero external vector database overhead.\n' +
+        '5. **WCAG 2.2 AA & European Accessibility Act 2026** (/en/blog/wcag-22-aa-european-accessibility-act-2026) - The practical engineering compliance guide for EU and Spanish businesses, covering keyboard focus, contrast, and CI/CD a11y gates.\n' +
+        '6. **Sub-Second Core Web Vitals & Bundle Optimization** (/en/blog/sub-second-cwv-bundle-optimization) - Strategies reducing initial JS from 480KB to 98KB, tree-shaking, WebP/AVIF pipelines, and sub-50ms INP.\n' +
+        '7. **Shopify Liquid vs Custom WooCommerce** (/en/blog/shopify-liquid-vs-custom-woocommerce) - Real-world e-commerce TCO, conversion velocity, payment security, and enterprise checkout architecture.\n' +
+        '8. **Client-Side Zero-Trust Web Security** (/en/blog/client-side-zero-trust-security) - Frontend hardening: Base64 obfuscation against scrapers, strict Content Security Policies, and DOM isolation.\n' +
+        '9. **Zero-Downtime Legacy System Migration to Cloud** (/en/blog/legacy-migration-cloud-infrastructure) - Transitioning legacy monoliths to high-availability cloud infrastructure with dual-write replication and 100% SEO preservation.\n\n' +
         'You can read the full articles via the direct links above or ask me any question about these topics!'
     )
   }

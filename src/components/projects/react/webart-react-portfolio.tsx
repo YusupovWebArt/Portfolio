@@ -236,6 +236,7 @@ const webartReactPortfolio: Project = {
   liveUrl: 'https://yusupovwebart.github.io/Portfolio/',
   githubUrl: 'https://github.com/YusupovWebArt/Portfolio',
   category: ['react'],
+  deepDiveBlogSlug: 'sub-second-cwv-bundle-optimization',
 }
 
 export default webartReactPortfolio

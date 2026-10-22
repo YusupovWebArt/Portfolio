@@ -36,6 +36,16 @@ export const subSecondCwvBundleOptimizationPost: BlogPost = {
   coverImage: '/Portfolio/images/blog/cover-sub-second-cwv.svg',
   appliedProjects: [
     {
+      projectId: 3950,
+      slug: 'webart-react-portfolio',
+      name: 'WebArt React Portfolio SPA',
+      note: {
+        en: 'Reference Vite + React 19 SPA implementation with Rollup vendor chunk isolation, zero-CLS responsive containers, and Base64 contact obfuscation.',
+        ua: 'Еталонна реалізація Vite + React 19 SPA з ізоляцією вендорних чанків у Rollup, контейнерами без CLS та Base64-обфускацією контактів.',
+        es: 'Implementación de referencia SPA con Vite + React 19, aislamiento de chunks vendor en Rollup, contenedores sin CLS y ofuscación de contacto Base64.',
+      },
+    },
+    {
       projectId: 29000,
       slug: 'unitrition',
       name: 'Unitrition E-Commerce Platform',
@@ -194,7 +204,16 @@ export function ChatTrigger() {
 - **First Contentful Paint (FCP):** reduced from 1.6s to 0.3s across tested 4G mobile profiles.
 - **Largest Contentful Paint (LCP):** consistently maintained under 0.9s on static SSG edges.
 - **Cumulative Layout Shift (CLS):** 0.00 across all responsive breakpoints.
-- **Total Blocking Time (TBT):** dropped below 40ms, providing instantaneous touch responsiveness.`,
+- **Total Blocking Time (TBT):** dropped below 40ms, providing instantaneous touch responsiveness.
+
+---
+
+### Step 4: Engineering Glossary & Client-Side Security
+
+- **Tree-Shaking:** Static dead-code elimination performed by Rollup/Vite using ES module import/export graph analysis so unused icon or utility functions are excluded from production bundles.
+- **Manual Chunk Splitting (\`manualChunks\`):** Separating stable third-party dependencies (\`react\`, \`lucide-react\`) from rapidly changing application code so returning visitors retain cached vendor bundles across deployments.
+- **Deferred Hydration (\`requestIdleCallback\`):** Postponing the execution and attachment of non-critical interactive widgets (such as modal drawers or chat assistants) until the browser main thread is idle.
+- **Client-Side Base64 Obfuscation (\`atob\`):** Storing sensitive contact endpoints (email, phone, Telegram) as Base64-encoded strings in the static bundle and decoding them only upon explicit user interaction or runtime mount to prevent automated spambot harvesting.`,
 
     ua: `### Ціна перевантаженого клієнтського коду
 
@@ -298,7 +317,16 @@ export function ChatTrigger() {
 - **First Contentful Paint (FCP):** зменшено з 1.6с до 0.3с на мобільних пристроях.
 - **Largest Contentful Paint (LCP):** стабільно до 0.9с на статичних сторінках.
 - **Cumulative Layout Shift (CLS):** 0.00 на всіх типах екранів.
-- **Total Blocking Time (TBT):** знижено до менш ніж 40 мс.`,
+- **Total Blocking Time (TBT):** знижено до менш ніж 40 мс.
+
+---
+
+### Крок 4: Інженерний глосарій та клієнтська безпека
+
+- **Tree-Shaking:** Статичне видалення мертвого коду збирачем Rollup/Vite через аналіз графа ES-модулів, завдяки чому невикористані іконки чи утиліти не потрапляють у фінальний бандл.
+- **Manual Chunk Splitting (\`manualChunks\`):** Відокремлення стабільних бібліотек (\`react\`, \`lucide-react\`) від прикладного коду, щоб повторні відвідувачі використовували кешовані вендорні чанки після нових релізів.
+- **Відкладена гідратація (\`requestIdleCallback\`):** Відтермінування ініціалізації другорядних інтерактивних віджетів (модальних вікон, чату) до моменту простою головного потоку браузера.
+- **Клієнтська Base64-обфускація (\`atob\`):** Зберігання контактних даних (email, телефон, Telegram) у закодованому форматі Base64 та їх розшифрування лише під час клієнтського монтування або кліку для захисту від спам-ботів.`,
 
     es: `### El impacto del exceso de código en cliente
 
@@ -400,6 +428,15 @@ export function ChatTrigger() {
 - **First Contentful Paint (FCP):** reducido de 1.6s a 0.3s en redes móviles.
 - **Largest Contentful Paint (LCP):** por debajo de 0.9s en páginas estáticas.
 - **Cumulative Layout Shift (CLS):** 0.00 en todas las resoluciones.
-- **Total Blocking Time (TBT):** inferior a 40 ms.`,
+- **Total Blocking Time (TBT):** inferior a 40 ms.
+
+---
+
+### Paso 4: Glosario de Ingeniería y Seguridad en Cliente
+
+- **Tree-Shaking:** Eliminación estática de código muerto realizada por Rollup/Vite mediante el análisis de importaciones ES Modules, excluyendo iconos o utilidades no utilizadas del bundle final.
+- **Manual Chunk Splitting (\`manualChunks\`):** Separación de dependencias externas estables (\`react\`, \`lucide-react\`) del código de aplicación para conservar la caché HTTP entre despliegues.
+- **Hidratación Diferida (\`requestIdleCallback\`):** Posposición de la carga y ejecución de widgets interactivos secundarios (modales, asistente de chat) hasta que el hilo principal del navegador esté inactivo.
+- **Ofuscación Base64 en Cliente (\`atob\`):** Almacenamiento de datos de contacto (correo, teléfono, Telegram) codificados en Base64 y decodificados únicamente en tiempo de ejecución o interacción del usuario para evitar el rastreo de bots de spam.`,
   },
 }

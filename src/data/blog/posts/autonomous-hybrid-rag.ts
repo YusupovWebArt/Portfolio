@@ -140,7 +140,23 @@ What happens if the user is offline or the server streaming endpoint fails?
 
 - **Measure dataset scale before choosing infrastructure**: If your corpus fits in under 2 megabytes of text, an in-memory or edge-cached index beats remote cloud databases in both latency and reliability.
 - **Hybrid beats pure vector search**: Always layer lexical token analysis and domain boost weights over raw vector distances to eliminate catastrophic semantic misses.
-- **Design for offline-first**: Client-side RAG allows documentation portals and developer tools to function seamlessly even in unstable network conditions.`,
+- **Design for offline-first**: Client-side RAG allows documentation portals and developer tools to function seamlessly even in unstable network conditions.
+
+---
+
+### 5. Engineering Glossary & Security Architecture
+
+- **Hybrid RAG (Retrieval-Augmented Generation)**:
+  - *What it is*: Combining deterministic keyword matching (BM25 lexical scoring) with mathematical vector embeddings (semantic search) before synthesizing an AI answer.
+  - *Why it matters*: Eliminates AI hallucinations and ensures exact tech stack names (\`Next.js 16\`, \`WPSKILLS\`, \`Unitrition\`) are never confused.
+- **Cosine Similarity**:
+  - *What it is*: A geometric calculation measuring the cosine of the angle between two high-dimensional vectors (1536 dimensions) to determine semantic similarity regardless of document length.
+  - *Why it matters*: Allows the assistant to match user intent across English, Ukrainian, and Spanish in under **2ms**.
+- **Generative UI**:
+  - *What it is*: Rendering interactive React components (\`ProjectToolCard\`, \`StackComparisonCard\`, \`ProjectEstimateCalculatorCard\`) directly inside chat responses rather than plain text.
+  - *Why it matters*: Transforms a passive Q&A chatbot into an interactive B2B conversion tool.
+- **Defense-in-Depth API Protection (\`/api/chat\`)**:
+  - *How it is secured*: Protected by an IP rate limiter with LRU memory eviction, a Prompt Injection sanitization shield stripping system-override instructions, and Zero-Trust Base64 contact obfuscation.`,
 
     ua: `### Антипатерн хмарних векторних баз даних
 
@@ -188,46 +204,76 @@ What happens if the user is offline or the server streaming endpoint fails?
 ### 4. Висновки для техлідів та CTO
 
 - **Оцінюйте масштаб даних**: якщо база знань займає менше кількох мегабайтів, браузерний або edge-кешований індекс працює в рази швидше за хмарні бази.
-- **Комбінуйте лексику та вектори**: гібридний пошук виключає дурні помилки штучного інтелекту.`,
+- **Комбінуйте лексику та вектори**: гібридний пошук виключає дурні помилки штучного інтелекту.
+
+---
+
+### 5. Інженерний глосарій та архітектура безпеки
+
+- **Hybrid RAG (Retrieval-Augmented Generation)**:
+  - *Що це*: Поєднання точного ключового пошуку (BM25) із семантичним пошуком за векторними ембедингами перед генерацією відповіді AI.
+  - *Користь*: Повністю виключає галюцинації та гарантує точність за назвами проєктів (\`WPSKILLS\`, \`Unitrition\`, \`IT-Magic\`).
+- **Косинусна подібність (Cosine Similarity)**:
+  - *Що це*: Математичне обчислення косинуса кута між двома 1536-вимірними векторами для оцінки близькості змісту незалежно від довжини тексту.
+  - *Користь*: Дозволяє асистенту розуміти суть питання англійською, українською та іспанською мовами менш ніж за **2мс**.
+- **Generative UI**:
+  - *Що це*: Динамічний рендеринг інтерактивних React-віджетів (картки проєктів, порівняння стеків, калькулятор термінів) прямо всередині діалогу.
+  - *Користь*: Перетворює чат-бота на повноцінний інструмент B2B-конверсії.
+- **Ешелонований захист API (\`/api/chat\`)**:
+  - *Як захищено*: IP Rate Limiter із LRU-очищенням пам'яті, фільтр Prompt Injection для блокування підміни системних інструкцій та Zero-Trust обфускація контактів у Base64.`,
 
     es: `### El antipatrón de las bases de datos vectoriales en la nube
-
+ 
 Durante los últimos años se ha repetido una pauta constante: *para crear un asistente con RAG necesitas contratar Pinecone, Weaviate o Qdrant, desplegar microservicios de embeddings y realizar peticiones remotas ante cada consulta.*
-
+ 
 Para millones de documentos corporativos esto es imprescindible. Sin embargo, **para portales de documentación, bases de conocimiento o plataformas profesionales de menos de 10.000 documentos, supone una complejidad innecesaria**.
-
+ 
 Desventajas:
 - **Latencia innecesaria**: añade entre 100ms y 400ms de ida y vuelta de red antes de generar la respuesta.
 - **Coste mensual recurrente**: tarifas mínimas de entre $70 y $250 al mes por instancias inactivas.
 - **Punto único de fallo**: si la base remota falla o se agota la cuota, el asistente deja de responder.
-
+ 
 En nuestra plataforma desarrollamos un **motor autónomo de Hybrid RAG** que opera en cliente y edge, logrando **búsquedas en menos de 5ms con cero coste en infraestructura**.
-
+ 
 ---
-
+ 
 ### 1. Pipeline de búsqueda híbrida en dos fases
-
+ 
 La búsqueda vectorial pura suele fallar ante versiones exactas o nombres de producto específicos. La búsqueda por palabras clave no comprende preguntas abstractas como *«¿cómo optimizas la velocidad en móviles?»*.
-
+ 
 Nuestra arquitectura aplica una fórmula de puntuación híbrida:
-
+ 
 1. **Coincidencia léxica normalizada**: filtrado de palabras vacías (en español, inglés y ucraniano) con tolerancia a erratas mediante distancia Damerau-Levenshtein.
 2. **Similitud coseno en memoria**: cálculo de producto escalar vectorizado sobre vectores normalizados.
 3. **Impulso contextual (Context Boost)**: si el usuario consulta el asistente mientras revisa un caso de estudio de WordPress, las respuestas sobre PHP y arquitectura CMS reciben una bonificación de relevancia **+0.35**.
-
+ 
 ---
-
+ 
 ### 2. Embeddings precalculados durante la compilación
-
+ 
 En lugar de calcular vectores en cada visita, los 70+ proyectos y especificaciones se procesan una sola vez durante el build en CI/CD con \`text-embedding-3-small\`.
-
+ 
 El índice vectorial resultante se empaqueta en un chunk lazy independiente (\`rag-*.js\`) de tan solo **41.88 KB raw / 14.52 KB gzip**, que se descarga en 20ms solo al abrir el chat y se mantiene en la memoria del navegador.
+ 
+---
+ 
+### 3. Conclusiones para líderes técnicos
+ 
+- **Evalúa el volumen real de tus datos**: si el contenido ocupa menos de 2 MB en texto, un índice en memoria en cliente o edge supera en velocidad y fiabilidad a cualquier base de datos remota.
+- **La búsqueda híbrida es obligatoria**: combinar léxica con semántica elimina las alucinaciones habituales de los modelos de lenguaje.
 
 ---
 
-### 3. Conclusiones para líderes técnicos
+### 4. Glosario de Ingeniería y Arquitectura de Seguridad
 
-- **Evalúa el volumen real de tus datos**: si el contenido ocupa menos de 2 MB en texto, un índice en memoria en cliente o edge supera en velocidad y fiabilidad a cualquier base de datos remota.
-- **La búsqueda híbrida es obligatoria**: combinar léxica con semántica elimina las alucinaciones habituales de los modelos de lenguaje.`,
+- **Hybrid RAG (Generación Aumentada por Recuperación Híbrida)**:
+  - *Qué es*: Combinar coincidencia léxica exacta (BM25) con búsqueda semántica vectorial antes de sintetizar la respuesta de IA.
+  - *Valor*: Elimina alucinaciones y garantiza precisión absoluta en nombres de tecnologías y casos de estudio.
+- **Similitud Coseno (Cosine Similarity)**:
+  - *Qué es*: Cálculo matemático del coseno del ángulo entre dos vectores de 1536 dimensiones para medir la proximidad semántica en menos de **2ms**.
+- **Generative UI**:
+  - *Qué es*: Renderizado de componentes interactivos de React (tarjetas de proyectos, comparador de stacks y calculadora de presupuestos) dentro del chat.
+- **Seguridad en Profundidad (\`/api/chat\`)**:
+  - *Cómo se protege*: Limitador de tasa por IP con caché LRU, escudo contra Prompt Injection y ofuscación Zero-Trust en Base64 para proteger datos de contacto.`,
   },
 }

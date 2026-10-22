@@ -20,7 +20,7 @@
 ## Personal Flagship Products
 
 - [Next.js 16 & Hybrid RAG Portfolio Platform](https://www.yusupovartur.com/en/projects/yusupovartur-nextjs-portfolio): Enterprise fullstack platform with React 19 Server Components, autonomous Hybrid RAG engine indexing 71 case studies across 213+ SSG routes (EN/UA/ES), and WCAG 2.2 AA compliance.
-- [WPSKILLS Interactive Engineering Platform](https://www.yusupovartur.com/en/projects/wpskills): Interactive EdTech platform for Fullstack mastery (React 19, Next.js 16, WordPress core internals, TypeScript) powered by native Rust MDX-RS compilation across 1,100+ lessons, runtime simulators, Google NotebookLM Audio Overview prompt generator, and Supabase gamification.
+- [WPSKILLS Interactive Engineering Platform](https://www.yusupovartur.com/en/projects/wpskills): Interactive EdTech platform for Fullstack mastery (React 19, Next.js 16, WordPress core internals, TypeScript) powered by native Rust MDX-RS compilation across 1,100+ lessons, runtime simulators, Google NotebookLM Audio Overview prompt generator, and Supabase personal cloud progress synchronization.
 - [Unitrition](https://www.yusupovartur.com/en/projects/unitrition): Personalized nutrition modeling platform supporting 10 dietary regimens, built with Next.js 16 App Router, Headless WordPress, Supabase, and USDA FoodData Central API.
 - [My React Portfolio Website](https://www.yusupovartur.com/en/projects/webart-react-portfolio): High-performance SPA/PWA built with React 19, TypeScript, Tailwind CSS v4, View Transitions API, and Vitest test suite.
 
@@ -41,3 +41,5 @@
 - [Shopify Liquid vs Custom WooCommerce](https://www.yusupovartur.com/en/blog/shopify-liquid-vs-custom-woocommerce): E-commerce architecture breakdown: real-world TCO, conversion velocity, and payment security.
 - [Client-Side Zero-Trust Web Security](https://www.yusupovartur.com/en/blog/client-side-zero-trust-security): Base64 contact obfuscation against scrapers, strict Content Security Policies, and DOM isolation.
 - [Zero-Downtime Legacy System Migration to Cloud](https://www.yusupovartur.com/en/blog/legacy-migration-cloud-infrastructure): Transitioning legacy monoliths to cloud infrastructure with 100% SEO preservation.
+- [WPSKILLS Architecture Deep-Dive](https://www.yusupovartur.com/en/blog/wpskills-interactive-edtech-architecture): Rust MDX-RS compilation for 1,100+ interactive lessons, runtime simulators, and Supabase RLS personal progress sync.
+- [Unitrition Architecture Deep-Dive](https://www.yusupovartur.com/en/blog/unitrition-headless-healthtech-architecture): Decoupled HealthTech platform with Next.js 16, Headless WordPress, USDA FoodData API, and deterministic BMR/TDEE modeling.

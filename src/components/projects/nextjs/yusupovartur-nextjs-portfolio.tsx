@@ -186,6 +186,7 @@ const yusupovarturNextjsPortfolio: Project = {
   liveUrl: 'https://www.yusupovartur.com/',
   githubUrl: 'https://github.com/YusupovWebArt/Portfolio',
   category: ['nextjs'],
+  deepDiveBlogSlug: 'autonomous-hybrid-rag-architecture-browser',
 }
 
 export default yusupovarturNextjsPortfolio

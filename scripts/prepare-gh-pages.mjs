@@ -23,4 +23,19 @@ fs.writeFileSync(
   'utf8',
 )
 
-console.log('✅ Generated dist/vercel.json (instructs Vercel to ignore gh-pages branch)')
+// Remove duplicate sitemap.xml from gh-pages build so search engines only index yusupovartur.com
+const distSitemap = path.join(distDir, 'sitemap.xml')
+if (fs.existsSync(distSitemap)) {
+  fs.unlinkSync(distSitemap)
+}
+
+// Write dedicated robots.txt for gh-pages demo to prevent duplicate content indexing
+const ghPagesRobots = `# GitHub Pages React SPA Demo - Canonical site is https://www.yusupovartur.com/en
+User-agent: *
+Disallow: /
+
+Sitemap: https://www.yusupovartur.com/sitemap.xml
+`
+fs.writeFileSync(path.join(distDir, 'robots.txt'), ghPagesRobots, 'utf8')
+
+console.log('✅ Generated dist/vercel.json and SEO-isolated dist/robots.txt for gh-pages')

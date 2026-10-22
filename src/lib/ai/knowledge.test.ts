@@ -74,9 +74,15 @@ describe('RAG Knowledge Base Specification (TDD)', () => {
     const kb = loadKnowledgeBase()
 
     expect(kb.blog).toBeDefined()
-    expect(kb.blog.length).toBe(7)
+    expect(kb.blog.length).toBe(9)
     const nextjsVsWp = kb.blog.find((b) => b.slug === 'nextjs-vs-headless-wordpress-custom-php-2026')
     expect(nextjsVsWp).toBeDefined()
     expect(nextjsVsWp?.type).toBe('blog')
+
+    const wpskillsDeepDive = kb.blog.find((b) => b.slug === 'wpskills-interactive-edtech-architecture')
+    expect(wpskillsDeepDive).toBeDefined()
+
+    const unitritionDeepDive = kb.blog.find((b) => b.slug === 'unitrition-headless-healthtech-architecture')
+    expect(unitritionDeepDive).toBeDefined()
   })
 })

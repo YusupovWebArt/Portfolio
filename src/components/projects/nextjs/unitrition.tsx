@@ -281,6 +281,7 @@ const unitrition: Project = {
   liveUrl: 'https://www.unitrition.info',
   githubUrl: '#',
   category: ['nextjs', 'wordpress'],
+  deepDiveBlogSlug: 'unitrition-headless-healthtech-architecture',
 }
 
 export default unitrition

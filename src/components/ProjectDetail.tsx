@@ -12,6 +12,7 @@ import {
   ArrowLeft,
   ArrowRight,
   ArrowUpRight,
+  BookOpen,
   ChevronLeft,
   ChevronRight,
   Eye,
@@ -454,6 +455,16 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                 )}
               </div>
             )}
+            {project.fullScreenshot && (
+              <button
+                onClick={openFullScreenshotModal}
+                className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-purple-100 hover:bg-purple-200 dark:bg-lime-500/10 dark:hover:bg-lime-500/20 text-purple-700 dark:text-lime-400 px-4 py-3 text-sm font-semibold transition cursor-pointer"
+                type="button"
+              >
+                {pr.fullPageLayout}
+                <Eye className="w-4 h-4" aria-hidden />
+              </button>
+            )}
           </div>
 
           <div className="flex flex-col gap-6 min-w-0">
@@ -524,15 +535,40 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                   <ArrowRight className="w-4 h-4" aria-hidden />
                 </a>
               )}
-              {project.fullScreenshot && (
-                <button
-                  onClick={openFullScreenshotModal}
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-purple-100 hover:bg-purple-200 dark:bg-lime-500/10 dark:hover:bg-lime-500/20 text-purple-700 dark:text-lime-400 px-4 py-3 text-sm font-semibold transition"
-                  type="button"
+              {project.deepDiveBlogSlug && (
+                <a
+                  href={`/${lang}/blog/${project.deepDiveBlogSlug}`}
+                  onClick={(e) => {
+                    if (
+                      typeof window !== 'undefined' &&
+                      (Boolean(
+                        (window as unknown as { __IS_PORTFOLIO_SPA__?: boolean })
+                          .__IS_PORTFOLIO_SPA__,
+                      ) ||
+                        window.location.pathname.startsWith('/Portfolio') ||
+                        window.location.port === '5173' ||
+                        window.location.port === '4173')
+                    ) {
+                      e.preventDefault()
+                      window.dispatchEvent(
+                        new CustomEvent('open-blog-article', {
+                          detail: { slug: project.deepDiveBlogSlug },
+                        }),
+                      )
+                    }
+                  }}
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-purple-100 hover:bg-purple-200 dark:bg-lime-500/10 dark:hover:bg-lime-500/20 text-purple-700 dark:text-lime-400 border border-purple-200/70 dark:border-lime-500/25 px-4 py-3 text-sm font-semibold transition"
                 >
-                  {pr.fullPageLayout}
-                  <Eye className="w-4 h-4" aria-hidden />
-                </button>
+                  <BookOpen className="w-4 h-4 shrink-0" aria-hidden />
+                  <span>
+                    {lang === 'ua'
+                      ? 'Повний розбір архітектури та механізмів'
+                      : lang === 'es'
+                        ? 'Análisis profundo de arquitectura y mecanismos'
+                        : 'Architecture & Case Study Deep-Dive'}
+                  </span>
+                  <ArrowRight className="w-4 h-4 shrink-0" aria-hidden />
+                </a>
               )}
               <ProjectChatTrigger
                 projectSlug={slug || project.title.toLowerCase().replace(/\s+/g, '-')}

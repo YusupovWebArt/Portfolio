@@ -11,11 +11,11 @@ const wpskills: Project = {
   descriptionEs:
     'Plataforma educativa interactiva de ingeniería para dominar el desarrollo Fullstack moderno: React 19, Next.js 16 App Router, arquitectura interna de WordPress, TypeScript e ingeniería asistida por IA. Impulsada por compilación Rust MDX-RS con más de 1.100 lecciones, explicaciones explorables (<ArchitectureFlow>, <StepFlow>), generador de prompts de audio para Gemini NotebookLM sin metáforas cotidianas, sistema gamificado de XP y soporte multilingüe en 4 idiomas (EN/RU/UK/ES).',
   fullDescription:
-    'An enterprise-grade interactive engineering learning ecosystem built on Cognitive Load Theory (Sweller) and Bruner\'s Spiral Curriculum. Architected with Next.js 16 (React 19 with Server Components and View Transitions), Tailwind CSS v4, and a high-performance in-memory caching pipeline that renders 1,700+ static pages in under 90 seconds. Features interactive visual architecture flows, hook lifecycle and outage simulators, formative section assessments (+15 XP), Spaced Repetition flashcards, a global Supabase-backed leaderboard, and automated zero-metaphor Audio Overview prompts for Google NotebookLM across 4 languages.',
+    'An enterprise-grade interactive engineering learning ecosystem built on Cognitive Load Theory (Sweller) and Bruner\'s Spiral Curriculum. Architected with Next.js 16 (React 19 with Server Components and View Transitions), Tailwind CSS v4, and a high-performance in-memory caching pipeline that renders 1,700+ static pages in under 90 seconds. Features interactive visual architecture flows, hook lifecycle and outage simulators, formative section assessments (+15 XP), Spaced Repetition flashcards, Supabase-backed personal cloud progress synchronization, and automated zero-metaphor Audio Overview prompts for Google NotebookLM across 4 languages.',
   fullDescriptionUa:
-    'Інтерактивна інженерна освітня екосистема, спроєктована на основі теорії когнітивного навантаження Свеллера та спіральної дидактики Брунера. Побудована на базі Next.js 16 (React 19 із Server Components та View Transitions), Tailwind CSS v4 та оптимізованого in-memory контентного кешу, що збирає понад 1 700 статичних сторінок менш ніж за 90 секунд. Включає інтерактивні архітектурні конвеєри, симулятори хуків WordPress та аварій, формувальні чекпоінти (+15 XP), інтервальне повторення карток, глобальний лідерборд на Supabase та генерацію глибоких аудіопромптів для Google NotebookLM 4 мовами.',
+    'Інтерактивна інженерна освітня екосистема, спроєктована на основі теорії когнітивного навантаження Свеллера та спіральної дидактики Брунера. Побудована на базі Next.js 16 (React 19 із Server Components та View Transitions), Tailwind CSS v4 та оптимізованого in-memory контентного кешу, що збирає понад 1 700 статичних сторінок менш ніж за 90 секунд. Включає інтерактивні архітектурні конвеєри, симулятори хуків WordPress та аварій, формувальні чекпоінти (+15 XP), інтервальне повторення карток, персональну хмарну синхронізацію прогресу на Supabase та генерацію глибоких аудіопромптів для Google NotebookLM 4 мовами.',
   fullDescriptionEs:
-    'Ecosistema educativo interactivo de ingeniería de nivel empresarial basado en la Teoría de Carga Cognitiva de Sweller y el currículo en espiral de Bruner. Diseñado con Next.js 16 (React 19 con Server Components y View Transitions), Tailwind CSS v4 y una canalización de caché en memoria de alto rendimiento que pre-renderiza más de 1.700 páginas estáticas en menos de 90 segundos. Cuenta con flujos arquitectónicos interactivos, simuladores de ciclo de vida de WordPress y fallos, evaluaciones formativas (+15 XP), tarjetas con repetición espaciada, tabla de clasificación global en Supabase y generación de prompts de audio sin metáforas para Google NotebookLM en 4 idiomas.',
+    'Ecosistema educativo interactivo de ingeniería de nivel empresarial basado en la Teoría de Carga Cognitiva de Sweller y el currículo en espiral de Bruner. Diseñado con Next.js 16 (React 19 con Server Components y View Transitions), Tailwind CSS v4 y una canalización de caché en memoria de alto rendimiento que pre-renderiza más de 1.700 páginas estáticas en menos de 90 segundos. Cuenta con flujos arquitectónicos interactivos, simuladores de ciclo de vida de WordPress y fallos, evaluaciones formativas (+15 XP), tarjetas con repetición espaciada, sincronización personal de progreso en la nube con Supabase y generación de prompts de audio sin metáforas para Google NotebookLM en 4 idiomas.',
   detailHeroLine: 'FULLSTACK · INTERACTIVE EDTECH · SPEC-DRIVEN AI SDLC',
   detailMetrics: [
     { value: '98+', label: 'PageSpeed', accent: 'green' },
@@ -58,8 +58,8 @@ const wpskills: Project = {
         steps: [
           { label: 'Zustand v5 Store' },
           { label: 'LocalStorage Hydration Guard', highlight: true },
-          { label: 'Supabase Leaderboard API' },
-          { label: 'Dynamic Podium' },
+          { label: 'Supabase Progress Sync API' },
+          { label: 'Personal Mastery Dashboard' },
         ],
       },
       {
@@ -102,7 +102,7 @@ const wpskills: Project = {
     },
     {
       src: '/Portfolio/images/portfolio/sliders/nextjs/wpskills/wpskills-slide5.webp',
-      caption: 'Supabase-Powered Global Leaderboard with Dynamic Podium, XP Levels, and Streak Tracking',
+      caption: 'Supabase-Powered Personal Progress Sync, XP Mastery Levels, and Daily Streak Tracking',
     },
   ],
   technologies: {
@@ -139,11 +139,11 @@ const wpskills: Project = {
     backend: [
       {
         short: 'Next.js Route Handlers',
-        full: 'Edge and Node.js Serverless Route Handlers (/api/notebooklm, /api/leaderboard, /api/interview, /api/revalidate)',
+        full: 'Edge and Node.js Serverless Route Handlers (/api/notebooklm, /api/progress, /api/interview, /api/revalidate)',
       },
       {
         short: 'Supabase (PostgreSQL)',
-        full: 'Supabase managed PostgreSQL database with Row Level Security (RLS) for global leaderboard and user progress sync',
+        full: 'Supabase managed PostgreSQL database with Row Level Security (RLS) for personal cloud progress synchronization',
       },
       {
         short: 'In-Memory Content Cache',
@@ -157,7 +157,7 @@ const wpskills: Project = {
       },
       {
         short: 'Supabase PostgREST API',
-        full: 'RESTful database access layer with edge caching (stale-while-revalidate) for leaderboard podiums',
+        full: 'RESTful database access layer with Row Level Security (RLS) for cross-device personal progress sync',
       },
       {
         short: 'AI Interview Engine',
@@ -263,7 +263,7 @@ const wpskills: Project = {
       },
       {
         short: 'Gamified EdTech Retention',
-        full: 'Retention mechanics: XP rewards, level badges, streak counts, and public leaderboards',
+        full: 'Retention mechanics: XP rewards, mastery level badges, daily streak counts, and personal cloud sync',
       },
       {
         short: 'Audio-First Accessibility',
@@ -339,15 +339,15 @@ const wpskills: Project = {
         'Barajas interactivas de tarjetas impulsadas por el algoritmo de repetición espaciada de 5 cajas de Leitner junto con cuestionarios de opción múltiple con explicaciones técnicas detalladas.',
     },
     {
-      title: 'Gamified XP, Streaks & Supabase Leaderboard',
-      titleUa: 'Гейміфікація XP, серії днів та лідерборд Supabase',
-      titleEs: 'Gamificación con XP, rachas y tabla de clasificación Supabase',
+      title: 'Gamified XP, Streaks & Supabase Cloud Sync',
+      titleUa: 'Гейміфікація XP, серії днів та хмарна синхронізація Supabase',
+      titleEs: 'Gamificación con XP, rachas y sincronización en Supabase',
       description:
-        'Zustand v5-powered state tracking with hydration protection, daily learning streak counters, XP level badges, and a public podium leaderboard synchronized with Supabase PostgreSQL.',
+        'Zustand v5-powered state tracking with hydration protection, daily learning streak counters, XP mastery badges, and personal progress synchronization backed by Supabase PostgreSQL.',
       descriptionUa:
-        'Трекінг прогресу на Zustand v5 із захистом від гідратаційних розбіжностей, лічильником щоденних серій, бейджами рівнів XP та публічним подіумом лідерів із синхронізацією через Supabase PostgreSQL.',
+        'Трекінг прогресу на Zustand v5 із захистом від гідратаційних розбіжностей, лічильником щоденних серій, бейджами рівнів XP та персональною хмарною синхронізацією прогресу через Supabase PostgreSQL.',
       descriptionEs:
-        'Seguimiento de estado con Zustand v5 y protección de hidratación, contadores de rachas diarias, insignias de nivel XP y tabla de clasificación pública con podio sincronizada con Supabase PostgreSQL.',
+        'Seguimiento de estado con Zustand v5 y protección de hidratación, contadores de rachas diarias, insignias de nivel XP y sincronización personal de progreso en la nube con Supabase PostgreSQL.',
     },
     {
       title: '4-Locale Internationalization (i18n)',
@@ -394,6 +394,7 @@ const wpskills: Project = {
   liveUrl: 'https://wpskills.vercel.app',
   githubUrl: '#',
   category: ['nextjs', 'react', 'wordpress', 'fullstack'],
+  deepDiveBlogSlug: 'wpskills-interactive-edtech-architecture',
 }
 
 export default wpskills
