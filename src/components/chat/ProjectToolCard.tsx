@@ -6,6 +6,7 @@ import {
   LuExternalLink as ExternalLink,
   LuArrowRight as ArrowRight,
   LuLayers as Layers,
+  LuStar,
 } from 'react-icons/lu'
 import { FaGithub as Github } from 'react-icons/fa'
 import type { ProjectToolOutput } from '../../lib/ai/tools'
@@ -59,7 +60,7 @@ export default function ProjectToolCard({
         )}
         {project.isPersonal ? (
           <div className="absolute top-2 left-2 inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold tracking-wider uppercase bg-purple-700/90 dark:bg-lime-500/90 text-white dark:text-slate-950 shadow-sm border border-purple-400/40 dark:border-lime-300/40 backdrop-blur-sm">
-            <span>★</span>
+            <LuStar aria-hidden="true" className="w-3 h-3 fill-current" />
             <span>
               {locale === 'ua'
                 ? 'Власний проєкт'

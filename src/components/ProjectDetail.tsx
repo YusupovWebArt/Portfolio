@@ -18,6 +18,7 @@ import {
   LuEye as Eye,
   LuX as X,
   LuExternalLink as ExternalLink,
+  LuStar,
 } from 'react-icons/lu'
 import { Project, TechnologyItem } from './projects/project-types'
 import { useLanguage } from '../contexts/LanguageContext'
@@ -482,7 +483,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
           <div className="flex flex-col gap-6 min-w-0">
             {project.isPersonal && (
               <div className="inline-flex items-center gap-1.5 self-start px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase bg-purple-100 dark:bg-lime-500/20 text-purple-700 dark:text-lime-300 border border-purple-300 dark:border-lime-500/30">
-                <span>★</span>
+                <LuStar aria-hidden="true" className="w-3 h-3 fill-current" />
                 <span>
                   {lang === 'ua'
                     ? 'Власний флагманський продукт'

@@ -1,4 +1,4 @@
-# Hi there! I'm Artur Yusupov 👋
+# Hi there! I'm Artur Yusupov 
 
 I am a results-driven **Full-Stack Web Engineer** with **5+ years of experience** engineering, scaling, and technically optimizing high-load platforms, with a deep architectural specialization in WordPress. 
 
@@ -6,7 +6,7 @@ My expertise lies at the sharp intersection of modern frontend ecosystems (**Rea
 
 ---
 
-### 🚀 My Core Engineering Philosophy
+### My Core Engineering Philosophy
 
 I follow a sophisticated, **AI-first engineering philosophy**. Rather than treating AI as a simple autocomplete tool, I systematically integrate next-generation agentic systems (Claude Code, Cursor, Google Antigravity) directly into the Software Development Life Cycle (SDLC) using a **Spec-Driven AI Harness Architecture (SDD)**:
 1. **Define Specifications First:** I draft the technical specification and architectural contracts before writing code.
@@ -17,7 +17,7 @@ This workflow accelerates development velocity by **3x**, minimizes technical de
 
 ---
 
-### 🛠️ Technical Toolkit
+### Technical Toolkit
 
 - **Frontend & App Engineering:** React 19, Next.js 15, TypeScript 6.x, Tailwind CSS v4, Trilingual i18n (English, Ukrainian, Spanish), JavaScript (ES6+), HTML5/CSS3
 - **Backend & CMS Architecture:** PHP 8.x (OOP, WPCS, PSR-12), WordPress Core, Custom Plugins & Themes from scratch, Headless WordPress REST/GraphQL APIs
@@ -27,7 +27,7 @@ This workflow accelerates development velocity by **3x**, minimizes technical de
 
 ---
 
-### 🌐 Connect with Me
+### Connect with Me
 
 - **Portfolio Website (Live):** [yusupovwebart.github.io/Portfolio](https://yusupovwebart.github.io/Portfolio/)
 - **LinkedIn:** [linkedin.com/in/artur-iusupov](https://www.linkedin.com/in/artur-iusupov/)

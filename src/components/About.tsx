@@ -1,7 +1,7 @@
 'use client'
 
 import { SiReact, SiWordpress, SiGoogleanalytics } from "react-icons/si";
-import { LuBrainCircuit } from "react-icons/lu";
+import { LuBrainCircuit, LuGlobe, LuBriefcase } from "react-icons/lu";
 import { useLanguage } from "../contexts/LanguageContext";
 
 const About = () => {
@@ -282,8 +282,8 @@ const About = () => {
                     <h4 className="font-bold text-lg mb-1">Artur Yusupov</h4>
                     <p className="text-slate-200 text-sm mb-2">{ab.photoCaption.role}</p>
                     <div className="flex items-center space-x-4 text-xs text-slate-300">
-                      <span>{ab.photoCaption.location}</span>
-                      <span>{ab.photoCaption.experience}</span>
+                      <span className="inline-flex items-center gap-1.5"><LuGlobe aria-hidden="true" className="w-3.5 h-3.5" />{ab.photoCaption.location}</span>
+                      <span className="inline-flex items-center gap-1.5"><LuBriefcase aria-hidden="true" className="w-3.5 h-3.5" />{ab.photoCaption.experience}</span>
                     </div>
                   </div>
                 </div>

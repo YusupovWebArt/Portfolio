@@ -68,8 +68,8 @@ export const es: Translation = {
     },
     photoCaption: {
       role: 'Desarrollador web',
-      location: '🌍 España',
-      experience: '💼 5+ años de experiencia',
+      location: 'España',
+      experience: '5+ años de experiencia',
     },
     educationTitle: 'Mi formación',
     education: {
@@ -703,7 +703,7 @@ export const es: Translation = {
       placeholder: 'Escriba su pregunta...',
       clearButton: 'Limpiar',
       sendButton: 'Enviar',
-      welcomeMessage: '¡Hola! Soy el asistente de IA de Artur impulsado por un motor Hybrid RAG propio. 🤖 He indexado los 71 casos de estudio del portfolio, arquitecturas y stacks tecnológicos. ¡Pregúnteme sobre cualquier proyecto, habilidad o experiencia!',
+      welcomeMessage: '¡Hola! Soy el asistente de IA de Artur impulsado por un motor Hybrid RAG propio. He indexado los 71 casos de estudio del portfolio, arquitecturas y stacks tecnológicos. ¡Pregúnteme sobre cualquier proyecto, habilidad o experiencia!',
       assistantName: 'Asistente RAG IA de Artur',
       liveConsole: 'Hybrid RAG · 71 proyectos indexados',
       faqHeader: 'Preguntas frecuentes',
@@ -728,7 +728,7 @@ export const es: Translation = {
   },
   footer: {
     tagline: 'Ingeniería de productos web de alto rendimiento con velocidad potenciada por IA.',
-    legalNotice: '🛡️ Facturación adaptada a profesionales y empresas en la Unión Europea. Cumplimiento normativo adaptado al RGPD y LOPDGDD.',
+    legalNotice: 'Facturación adaptada a profesionales y empresas en la Unión Europea. Cumplimiento normativo adaptado al RGPD y LOPDGDD.',
     copyright: 'Todos los derechos reservados.',
     madeWith: 'Desarrollado con',
     techUsing: 'Next.js 16, React 19, TypeScript, Tailwind CSS y Asistente de IA RAG Híbrido',

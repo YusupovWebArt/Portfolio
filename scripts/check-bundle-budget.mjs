@@ -116,12 +116,12 @@ if (mainEntryGzip > MAX_MAIN_GZIP) {
 }
 
 if (failures.length > 0) {
-  console.error('\n❌ BUNDLE BUDGET CHECKS FAILED:')
+  console.error('\n[FAIL] BUNDLE BUDGET CHECKS FAILED:')
   for (const f of failures) {
     console.error(`  - ${f}`)
   }
   process.exit(1)
 }
 
-console.log('\n✅ ALL BUNDLE BUDGET CHECKS PASSED!')
+console.log('\n[OK] ALL BUNDLE BUDGET CHECKS PASSED!')
 process.exit(0)

@@ -8,6 +8,7 @@ import {
   LuSearch as Search,
   LuChevronLeft as ChevronLeft,
   LuChevronRight as ChevronRight,
+  LuStar,
 } from 'react-icons/lu'
 import { Project, TechnologyItem } from './projects/project-types'
 import { useLanguage } from '../contexts/LanguageContext'
@@ -394,7 +395,7 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
                   />
                   {project.isPersonal && (
                     <div className="absolute top-2.5 left-2.5 inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold tracking-wide bg-purple-700/90 dark:bg-lime-500/90 text-white dark:text-slate-950 shadow-md backdrop-blur-sm border border-purple-400/40 dark:border-lime-300/40">
-                      <span>★</span>
+                      <LuStar aria-hidden="true" className="w-3 h-3 fill-current" />
                       <span>
                         {lang === 'ua'
                           ? 'Власний проєкт'

@@ -4,7 +4,7 @@ A comprehensive technical reference of the visual language, layout rules, typogr
 
 ---
 
-## 🎨 1. Core Visual Concept
+## 1. Core Visual Concept
 
 The website is designed with a **modern developer aesthetic**, utilizing a premium dark-mode-first glassmorphism style combined with vibrant color accents. The UI is built to feel responsive, tactile, and mathematically clean.
 
@@ -15,7 +15,7 @@ The website is designed with a **modern developer aesthetic**, utilizing a premi
 
 ---
 
-## 🎨 2. Color Palette & Semantics
+## 2. Color Palette & Semantics
 
 The palette uses curated neutrals with bright accent tokens to categorize content areas.
 
@@ -33,7 +33,7 @@ The palette uses curated neutrals with bright accent tokens to categorize conten
 
 ---
 
-## 🔠 3. Typography & Hierarchy
+## 3. Typography & Hierarchy
 
 The site uses a clean, modern sans-serif typography system (configured to load `Inter` or `Outfit` fonts via styles).
 
@@ -46,7 +46,7 @@ The site uses a clean, modern sans-serif typography system (configured to load `
 
 ---
 
-## 📐 4. Layout & Grid Specifications
+## 4. Layout & Grid Specifications
 
 Layout structures are strictly managed to keep layout shifts (CLS) to a minimum.
 
@@ -60,7 +60,7 @@ Layout structures are strictly managed to keep layout shifts (CLS) to a minimum.
 
 ---
 
-## ⚡ 5. Interactive Logic & State Rules
+## 5. Interactive Logic & State Rules
 
 Interactive elements follow rigid behavior patterns to guarantee stability and prevent layout jumps:
 
@@ -78,7 +78,7 @@ Interactive elements follow rigid behavior patterns to guarantee stability and p
 
 ---
 
-## 🏢 6. B2B Services & Tabbed Navigation Component (`B2bServices.tsx`)
+## 6. B2B Services & Tabbed Navigation Component (`B2bServices.tsx`)
 
 The B2B services component provides dedicated audience switching between small businesses (**Pymes / Autónomos**) and digital agencies (**Marca Blanca**):
 
@@ -94,7 +94,7 @@ The B2B services component provides dedicated audience switching between small b
 
 ---
 
-## 🗂️ 7. Project Card Grid Component (`Projects.tsx`)
+## 7. Project Card Grid Component (`Projects.tsx`)
 
 The portfolio showcase utilizes a symmetrical, clean card layout:
 

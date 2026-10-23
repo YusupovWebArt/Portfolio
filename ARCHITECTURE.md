@@ -4,7 +4,7 @@ A technical overview of the directory structure, build system, deployment mechan
 
 ---
 
-## 🏗️ 1. System Architecture
+## 1. System Architecture
 
 The application is structured as a high-performance **Single Page Application (SPA)** using React 19, TypeScript, and Vite, running on **Node.js 24 LTS**.
 
@@ -27,7 +27,7 @@ graph TD
 
 ---
 
-## 📁 2. Directory Structure
+## 2. Directory Structure
 
 The core files and components are structured as follows:
 
@@ -71,7 +71,7 @@ Portfolio/
 
 ---
 
-## ⚡ 3. Runtime Logic & Navigation
+## 3. Runtime Logic & Navigation
 
 ### Theme Context
 - A React Context (`ThemeContext`) controls dark-mode state by toggling the `.dark` class on the root `document.documentElement` element.
@@ -113,7 +113,7 @@ Portfolio/
 
 ---
 
-## 🚀 4. Build, CI/CD, & Deploy Pipeline
+## 4. Build, CI/CD, & Deploy Pipeline
 
 - **Local Compilation:** Vite uses the Rolldown bundler to perform code splitting, generating small modular files for vendor packages, icons, and components. Main bundle is optimized under 200 KB (`198.09 kB`, 53.62 kB gzip).
 - **Package Management:** Managed via **pnpm 11** with global NTFS content-addressable storage (`D:\.pnpm-store`), ensuring zero-duplication hard links and strict non-flat node_modules resolution.
@@ -127,7 +127,7 @@ Portfolio/
 
 ---
 
-## 🔮 5. Future Roadmap: Hybrid RAG AI Chatbot Architecture
+## 5. Future Roadmap: Hybrid RAG AI Chatbot Architecture
 
 A planned upgrade to transition the current client-side keyword matching FAQ chatbot into an enterprise **Hybrid RAG (Retrieval-Augmented Generation)** assistant while preserving 100% of the existing UI/UX:
 

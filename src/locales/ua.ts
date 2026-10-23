@@ -68,8 +68,8 @@ export const ua: Translation = {
     },
     photoCaption: {
       role: 'Веб-розробник',
-      location: '🌍 Іспанія',
-      experience: '💼 5+ років досвіду',
+      location: 'Іспанія',
+      experience: '5+ років досвіду',
     },
     educationTitle: 'Моя освіта',
     education: {
@@ -703,7 +703,7 @@ export const ua: Translation = {
       placeholder: 'Напишіть своє запитання...',
       clearButton: 'Очистити',
       sendButton: 'Надіслати',
-      welcomeMessage: 'Привіт! Я AI-асистент Артура на базі кастомного двигуна Hybrid RAG. 🤖 У моїй базі проіндексовано всі 71 кейс портфоліо, архітектури та стек технологій. Запитуйте про будь-який проєкт, навички чи досвід!',
+      welcomeMessage: 'Привіт! Я AI-асистент Артура на базі кастомного двигуна Hybrid RAG. У моїй базі проіндексовано всі 71 кейс портфоліо, архітектури та стек технологій. Запитуйте про будь-який проєкт, навички чи досвід!',
       assistantName: 'RAG AI-асистент Артура',
       liveConsole: 'Hybrid RAG · 71 кейс у базі',
       faqHeader: 'Часті питання',
@@ -728,7 +728,7 @@ export const ua: Translation = {
   },
   footer: {
     tagline: 'Інженерія високопродуктивних вебпродуктів із прискоренням на базі штучного інтелекту.',
-    legalNotice: '🛡️ Офіційне виставлення рахунків для компаній та фахівців у ЄС. Дотримання вимог RGPD та LOPDGDD.',
+    legalNotice: 'Офіційне виставлення рахунків для компаній та фахівців у ЄС. Дотримання вимог RGPD та LOPDGDD.',
     copyright: 'Всі права захищені.',
     madeWith: 'Розроблено на',
     techUsing: 'Next.js 16, React 19, TypeScript, Tailwind CSS та гібридному RAG AI-асистенті',

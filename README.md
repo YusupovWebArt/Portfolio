@@ -12,11 +12,11 @@
 
 A high-performance, enterprise-grade Single Page Application (SPA) and Progressive Web App (PWA) built with **React 19**, **TypeScript 6.x**, and **Tailwind CSS v4**, engineered using the **2026 AI-Harness methodology (SDD + SDLC + TDD)**. Fully internationalized across 3 languages (**English**, **Ukrainian**, and **Spanish**), audited for European Accessibility Act (**EAA 2026 / WCAG 2.2 Level AA**) compliance, aligned with strict **Core Web Vitals budgets**, and hardened with a **9-step CI/CD DevSecOps** deployment pipeline.
 
-🔗 **Live Website:** [https://yusupovwebart.github.io/Portfolio/](https://yusupovwebart.github.io/Portfolio/)
+**Live Website:** [https://yusupovwebart.github.io/Portfolio/](https://yusupovwebart.github.io/Portfolio/)
 
 ---
 
-## 🛠️ Technology Stack
+## Technology Stack
 
 - **Core Framework:** React 19 (SPA Architecture with modern hooks)
 - **Runtime Environment:** Node.js 24 LTS
@@ -35,7 +35,7 @@ A high-performance, enterprise-grade Single Page Application (SPA) and Progressi
 
 ---
 
-## ⚡ Core Technical Pillars
+## Core Technical Pillars
 
 ```mermaid
 flowchart TD
@@ -62,7 +62,7 @@ flowchart TD
     L1 --> L2 --> L3 --> L4
 ```
 
-### 🤖 1. 2026 AI-Harness Architecture (SDD + SDLC + TDD)
+### 1. 2026 AI-Harness Architecture (SDD + SDLC + TDD)
 - **Immutable Constitution:** Governed by [`.specify/memory/constitution.md`](.specify/memory/constitution.md) enforcing strict zero-`any` typing, DevSecOps obfuscation, trilingual parity, and WCAG 2.2 AA accessibility.
 - **Antigravity Custom Agent Skills:** Specialized agent skills inside [`.agents/skills/`](.agents/skills/):
   - `sdd-workflow`: Spec-Driven Development (SDD) 7-stage lifecycle and stop-gates.
@@ -73,7 +73,7 @@ flowchart TD
   - `seo-pseo`: Schema.org structured data, JSON-LD microdata, and Open Graph standards.
 - **Spec-Driven Lifecycle:** Feature requirements are authored under `specs/<feature-slug>/` before implementation, eliminating hallucinations and context drift.
 
-### 🧪 2. Automated TDD & Unit Testing Layer (Vitest)
+### 2. Automated TDD & Unit Testing Layer (Vitest)
 - **Framework:** Vitest 5 with isolated JSDOM testing environments.
 - **Test Suite:** 29 automated unit and component specifications across 7 test suites covering:
   - Theme toggling, document root class mutation, and localStorage state persistence (`ThemeContext.test.tsx`).
@@ -87,7 +87,7 @@ flowchart TD
   - Functions: `>= 14.00%` (actual: 15.29%)
   - Lines: `>= 30.00%` (actual: 31.50%)
 
-### ♿ 3. European Accessibility Act (EAA 2026) & WCAG 2.2 Level AA
+### 3. European Accessibility Act (EAA 2026) & WCAG 2.2 Level AA
 - **Automated Scanning:** Integrated Playwright with `@axe-core/playwright` to test the full DOM tree across all viewports and color themes.
 - **Accessibility Benchmarks:**
   - 0 critical or serious violations under `wcag2a`, `wcag2aa`, `wcag21a`, `wcag21aa`, and `wcag22aa`.
@@ -95,7 +95,7 @@ flowchart TD
   - Target Size Minimum (SC 2.5.8): All interactive buttons and stepper controls meet >= 24x24px.
   - Decorative SVGs isolated with `aria-hidden="true"` to prevent screen reader clutter.
 
-### 🚀 4. Core Web Vitals, Code-Splitting & Performance Budgets
+### 4. Core Web Vitals, Code-Splitting & Performance Budgets
 - **Automated Bundle Budget Gate:** `scripts/check-bundle-budget.mjs` strictly asserts bundle sizes on every production build:
   - **Main Entry (`index-*.js`):** 116.18 KB raw / 27.26 KB gzip (budget limit: `< 200 KB`).
   - **Total Initial Eager JS:** 418.54 KB raw / 124.43 KB gzip (budget limit: `< 450 KB` / `< 130 KB` gz). Slashed by **50.3%** from the 842.95 KB baseline.
@@ -109,12 +109,12 @@ flowchart TD
 - **PWA & Offline Pipeline:** Custom Service Worker (`public/sw.js`) with **Stale-While-Revalidate** caching for instant subsequent loads and offline availability.
 - **Native View Transitions API:** W3C View Transitions API standard for smooth GPU-accelerated card expansion without heavy external animation libraries.
 
-### 🌐 5. Trilingual Internationalization Engine (i18n)
+### 5. Trilingual Internationalization Engine (i18n)
 - **Supported Languages:** English (`en`), Ukrainian (`ua`), and Spanish (`es`).
 - **Smart Locale Handling:** Custom React `LanguageContext` detecting browser preferences with persistent `localStorage` storage and dynamic `<html lang="...">` DOM attribute updates.
 - **69 Localized Case Studies:** Complete parity across all 69 project case studies with technical architecture diagrams.
 
-### 🛡️ 6. DevSecOps & Security Hardening
+### 6. DevSecOps & Security Hardening
 - **Zero Secrets Policy:** Zero API keys, tokens, or personal contact credentials in raw text. Verified by automated scanner `src/security/contacts.test.ts`.
 - **Anti-Scraping Obfuscation:** Personal contact channels (email, phone, Telegram, WhatsApp) are stored in Base64 format and decrypted only on client interaction.
 - **Security Headers:** Strict Content Security Policy (CSP), Permissions-Policy (`camera=(), microphone=(), geolocation=()`), and Referrer-Policy (`strict-origin-when-cross-origin`).
@@ -124,7 +124,7 @@ flowchart TD
 
 ---
 
-## 📁 Repository Structure
+## Repository Structure
 
 ```text
 Portfolio/
@@ -182,7 +182,7 @@ Portfolio/
 
 ---
 
-## 💻 Local Development & Quality Gates
+## Local Development & Quality Gates
 
 ```bash
 # 1. Clone the repository
@@ -218,7 +218,7 @@ pnpm build
 
 ---
 
-## 🚦 GitHub Actions CI/CD Pipeline
+## GitHub Actions CI/CD Pipeline
 
 Every push to `master` triggers an automated quality and deployment pipeline:
 
@@ -235,6 +235,6 @@ Every push to `master` triggers an automated quality and deployment pipeline:
 
 ---
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.

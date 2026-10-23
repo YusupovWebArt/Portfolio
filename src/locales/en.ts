@@ -68,8 +68,8 @@ export const en: Translation = {
     },
     photoCaption: {
       role: 'Web developer',
-      location: '🌍 Spain',
-      experience: '💼 5+ Years Experience',
+      location: 'Spain',
+      experience: '5+ Years Experience',
     },
     educationTitle: 'My Education',
     education: {
@@ -704,7 +704,7 @@ export const en: Translation = {
       placeholder: 'Type a question...',
       clearButton: 'Clear',
       sendButton: 'Send',
-      welcomeMessage: "Hi! I am Artur's AI assistant powered by a custom Hybrid RAG engine. 🤖 I have indexed all 71 portfolio case studies, architectures, and tech stacks. Ask me about any project, skill, or experience!",
+      welcomeMessage: "Hi! I am Artur's AI assistant powered by a custom Hybrid RAG engine. I have indexed all 71 portfolio case studies, architectures, and tech stacks. Ask me about any project, skill, or experience!",
       assistantName: "Artur's RAG AI Assistant",
       liveConsole: 'Hybrid RAG · 71 Case Studies Indexed',
       faqHeader: 'Frequently Asked Questions',
@@ -729,7 +729,7 @@ export const en: Translation = {
   },
   footer: {
     tagline: 'Engineering high-performance web products with AI-augmented velocity.',
-    legalNotice: '🛡️ Invoicing compliant with EU regulations for professionals and businesses. Adherence to GDPR & LOPDGDD standards.',
+    legalNotice: 'Invoicing compliant with EU regulations for professionals and businesses. Adherence to GDPR & LOPDGDD standards.',
     copyright: 'All rights reserved.',
     madeWith: 'Built with',
     techUsing: 'Next.js 16, React 19, TypeScript, Tailwind CSS & Hybrid RAG AI Assistant',

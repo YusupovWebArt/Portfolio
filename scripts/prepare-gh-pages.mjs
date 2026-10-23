@@ -38,4 +38,4 @@ Sitemap: https://www.yusupovartur.com/sitemap.xml
 `
 fs.writeFileSync(path.join(distDir, 'robots.txt'), ghPagesRobots, 'utf8')
 
-console.log('✅ Generated dist/vercel.json and SEO-isolated dist/robots.txt for gh-pages')
+console.log('[OK] Generated dist/vercel.json and SEO-isolated dist/robots.txt for gh-pages')

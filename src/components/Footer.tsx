@@ -1,6 +1,6 @@
 'use client'
 
-import { LuCode as Code, LuCookie as Cookie } from "react-icons/lu";
+import { LuCode as Code, LuCookie as Cookie, LuShieldCheck as ShieldCheck } from "react-icons/lu";
 import { useLanguage } from "../contexts/LanguageContext";
 import { useConsent } from "../contexts/ConsentContext";
 
@@ -111,6 +111,7 @@ const Footer = () => {
           {/* Legal Footprint Notice */}
           {t.footer.legalNotice && (
             <div className="mb-6 max-w-3xl mx-auto px-4 py-2.5 rounded-2xl bg-slate-800/40 dark:bg-slate-900/40 border border-slate-800 dark:border-white/5 text-xs text-slate-400 dark:text-slate-400">
+              <ShieldCheck aria-hidden="true" className="inline-block w-4 h-4 mr-1.5 -mt-0.5" />
               {t.footer.legalNotice}
             </div>
           )}

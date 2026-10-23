@@ -4,7 +4,7 @@ This document details the search filtering architecture, token conservation stra
 
 ---
 
-## 🎯 1. Overview & Purpose
+## 1. Overview & Purpose
 
 AI coding assistants (such as Antigravity, Claude Code, and Cursor) rely heavily on fast command-line search engines (`ripgrep`, `fd`, `grep_search`, `find_by_name`) to explore codebases, inspect references, and retrieve context.
 
@@ -17,7 +17,7 @@ To eliminate context pollution, the repository implements a dedicated **`.ignore
 
 ---
 
-## ⚖️ 2. Key Differences: `.gitignore` vs `.ignore`
+## 2. Key Differences: `.gitignore` vs `.ignore`
 
 | Feature | `.gitignore` | `.ignore` |
 | :--- | :--- | :--- |
@@ -28,7 +28,7 @@ To eliminate context pollution, the repository implements a dedicated **`.ignore
 
 ---
 
-## 📋 3. Excluded Categories in `.ignore`
+## 3. Excluded Categories in `.ignore`
 
 ```ignore
 # 1. Package manager lockfiles (critical for CI, excluded from code search)
@@ -77,8 +77,8 @@ node_modules/
 
 ---
 
-## 🚀 4. Benefits for Spec-Driven Development (SDD)
+## 4. Benefits for Spec-Driven Development (SDD)
 
-- **⚡ Sub-Second Search Speed:** `ripgrep` queries complete in milliseconds by skipping binary assets and multi-megabyte lockfiles.
-- **🎯 Higher AI Precision:** Search results returned to AI agents contain only relevant application code and markdown specifications.
-- **💰 Token Economics:** Conserves AI context window capacity for deep reasoning and code synthesis.
+- **Sub-Second Search Speed:** `ripgrep` queries complete in milliseconds by skipping binary assets and multi-megabyte lockfiles.
+- **Higher AI Precision:** Search results returned to AI agents contain only relevant application code and markdown specifications.
+- **Token Economics:** Conserves AI context window capacity for deep reasoning and code synthesis.

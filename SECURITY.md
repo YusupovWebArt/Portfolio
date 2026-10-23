@@ -4,7 +4,7 @@ This document details the security architecture, DevSecOps pipelines, automated 
 
 ---
 
-## 🏗️ DevSecOps Pipeline Architecture
+## DevSecOps Pipeline Architecture
 
 Security is integrated across the entire Software Development Life Cycle (SDLC), from local development and agentic AI coding to automated CI/CD gating and production client execution.
 
@@ -33,7 +33,7 @@ graph LR
 
 ---
 
-## 🔒 1. Zero-Commit Credentials & Secret Management
+## 1. Zero-Commit Credentials & Secret Management
 
 - **No Secrets in Code:** Under no circumstances should API keys, private domains, database passwords, or personal credentials be written directly into source files.
 - **Environment Variables:** All environment-specific variables must reside in a `.env` file (strictly excluded via `.gitignore`) and accessed exclusively via `import.meta.env.*`.
@@ -41,7 +41,7 @@ graph LR
 
 ---
 
-## 🔍 2. Static Application Security Testing (SAST) & Type Safety
+## 2. Static Application Security Testing (SAST) & Type Safety
 
 - **Strict Type Checking (Zero `any` Policy):** All components, props, state, and utility functions must be strictly typed. Proposal of new code additions requires passing `pnpm exec tsc --noEmit` with zero errors.
 - **Linting & React Hooks Guardrails:** `eslint` validates adherence to modern ECMAScript standards and enforces React Hook rules (`eslint-plugin-react-hooks`).
@@ -49,7 +49,7 @@ graph LR
 
 ---
 
-## 📦 3. Software Composition Analysis (SCA) & Dependency Governance
+## 3. Software Composition Analysis (SCA) & Dependency Governance
 
 - **Continuous Vulnerability Scanning:** Every package installation and CI run audits the dependency tree via `pnpm audit --prod --audit-level=high` (Targeting 0 production vulnerabilities).
 - **Automated Dependabot Lifecycle:** Configured in [`.github/dependabot.yml`](file:///.github/dependabot.yml) to scan weekly:
@@ -58,7 +58,7 @@ graph LR
 
 ---
 
-## 🛡️ 4. Client-Side App Hardening & HTTP Security Headers
+## 4. Client-Side App Hardening & HTTP Security Headers
 
 The application enforces a sandboxed browser environment directly via `<meta>` tags in [`index.html`](file:///index.html):
 
@@ -72,7 +72,7 @@ The application enforces a sandboxed browser environment directly via `<meta>` t
 
 ---
 
-## 🕵️ 5. Anti-Scraping & Personal Data Obfuscation
+## 5. Anti-Scraping & Personal Data Obfuscation
 
 To protect email addresses, phone numbers, and messaging handles from automated scraping bots and spam crawlers:
 
@@ -84,7 +84,7 @@ To protect email addresses, phone numbers, and messaging handles from automated 
 
 ---
 
-## 🚀 6. CI/CD Automated Security Gating (GitHub Actions)
+## 6. CI/CD Automated Security Gating (GitHub Actions)
 
 Configured in [`.github/workflows/deploy.yml`](file:///.github/workflows/deploy.yml), every push to the `master` branch triggers an automated 4-stage security gate before deployment:
 
@@ -96,43 +96,43 @@ Configured in [`.github/workflows/deploy.yml`](file:///.github/workflows/deploy.
 
 ---
 
-## 🤖 7. Future RAG Architecture Security Roadmap (AI Chatbot Upgrade)
+## 7. Future RAG Architecture Security Roadmap (AI Chatbot Upgrade)
 
 When upgrading the client-side FAQ chatbot to a serverless **Hybrid RAG (Retrieval-Augmented Generation)** architecture, the following 6 defense tiers must be strictly implemented:
 
-### 🛡️ Tier 1: Zero-Commit API Key Protection (Zero-Commit Policy)
+### Tier 1: Zero-Commit API Key Protection (Zero-Commit Policy)
 - **Risk:** Embedding OpenAI/Gemini/Anthropic keys directly in the client bundle exposes them to extraction via browser DevTools.
 - **Enforcement:** API keys must never be committed to Git or exposed to the client. Keys are stored exclusively in encrypted environment secrets on the serverless edge (e.g., Cloudflare Workers via `wrangler secret put OPENAI_API_KEY`). The browser communicates only with the serverless proxy.
 
-### 🛡️ Tier 2: Domain Whitelisting (CORS Protection)
+### Tier 2: Domain Whitelisting (CORS Protection)
 - **Risk:** Unauthorized third-party sites copying the endpoint URL to consume API quotas.
 - **Enforcement:** The serverless worker strictly validates the `Origin` header. Requests are accepted exclusively from `https://yusupovwebart.github.io` (and `localhost` for development). All other origins receive an immediate `403 Forbidden`.
 
-### 🛡️ Tier 3: Abuse Prevention & Hard Budget Caps (Rate Limiting & Cost Control)
+### Tier 3: Abuse Prevention & Hard Budget Caps (Rate Limiting & Cost Control)
 - **Risk:** Malicious bots spamming thousands of requests per minute to drain API credits.
 - **Enforcement:**
   - **IP-Based Rate Limiting:** Enforce a strict threshold of maximum 5–10 requests per minute per IP.
   - **Hard Spend Limits:** Configure a monthly hard ceiling (e.g., $2.00/month) in the LLM provider console. If reached, the system auto-shuts off dynamic calls and falls back to static FAQ.
   - **Payload Clamping:** Sanitize and truncate user input to 300 characters max, capping model completions to 250 tokens.
 
-### 🛡️ Tier 4: Prompt Injection Guardrails & Grounding (AI Safety)
+### Tier 4: Prompt Injection Guardrails & Grounding (AI Safety)
 - **Risk:** Malicious prompts attempting to hijack persona, negotiate unauthorized rates, or leak system prompts.
 - **Enforcement:**
   - Rigid system prompt instructing the model to act strictly as Artur's AI Assistant, ground answers exclusively on verified portfolio facts, and never agree to custom pricing or reveal internal prompts.
   - Input Sanitization: Strip all HTML, script, and markdown executable injections before passing queries to the vector search and LLM context.
 
-### 🛡️ Tier 5: EU RGPD / LOPDGDD Privacy Compliance
+### Tier 5: EU RGPD / LOPDGDD Privacy Compliance
 - **Risk:** Illegally storing visitor IP addresses or sensitive chat logs under EU privacy laws.
 - **Enforcement:**
   - **Zero-Log Architecture:** The serverless proxy processes requests ephemerally in-memory without persisting user chat logs or IP addresses to any persistent database.
   - Contact data remains Base64-obfuscated across all dynamic retrieval pipelines.
 
-### 🛡️ Tier 6: Resilient Fallback (Graceful Degradation)
+### Tier 6: Resilient Fallback (Graceful Degradation)
 - **Enforcement:** If network latency spikes, rate limits are hit, or the serverless backend is unreachable, the client frontend (`ChatModal.tsx`) automatically and silently falls back to the local static [`chatFaq.ts`](file:///d:/PORTFOLIO/Portfolio/src/data/chatFaq.ts) matching engine with zero UI disruption.
 
 ---
 
-## ⚖️ 8. European Regulatory & Privacy Compliance (RGPD / LOPDGDD)
+## 8. European Regulatory & Privacy Compliance (RGPD / LOPDGDD)
 
 - **Privacy & Consent Architecture:** The site operates without non-essential tracking cookies until explicit opt-in consent is provided. Google Analytics (GA4) runs strictly under Consent Mode v2 Basic mode.
 - **Anonymized Analytics:** Google Analytics (GA4) is configured with IP anonymization and respects user privacy preferences.

@@ -136,7 +136,7 @@ const ChatModal = ({
       {
         id: 'welcome',
         from: 'bot',
-        text: "Hi! I am Artur's AI assistant powered by a custom Hybrid RAG engine. 🤖 I have indexed all 71 portfolio case studies, architectures, and tech stacks. Ask me about any project, skill, or experience!",
+        text: "Hi! I am Artur's AI assistant powered by a custom Hybrid RAG engine. I have indexed all 71 portfolio case studies, architectures, and tech stacks. Ask me about any project, skill, or experience!",
         source: 'Hybrid RAG · 71-Project Knowledge Base',
         timestamp: new Date(),
       },
