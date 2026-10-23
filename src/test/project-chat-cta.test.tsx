@@ -54,8 +54,10 @@ describe('Contextual Project AI Chat Trigger Specification (TDD)', () => {
       )
     })
 
-    // Now modal should be open and display project context chips
-    const chips = screen.getAllByText(/Ask about IT-Magic/i)
-    expect(chips.length).toBeGreaterThanOrEqual(3)
+    // Now modal should be open and display project context quick query cards
+    expect(screen.getByText('Tech Stack & Versions')).toBeTruthy()
+    expect(screen.getByText('System Architecture')).toBeTruthy()
+    expect(screen.getByText('Key Features & Metrics')).toBeTruthy()
+    expect(screen.getByText('Challenges & Solutions')).toBeTruthy()
   })
 })

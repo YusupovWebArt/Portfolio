@@ -10,6 +10,7 @@ import {
 import {
   buildBlogPostJsonLd,
   buildBlogBreadcrumbsJsonLd,
+  toAbsoluteOgImageUrl,
 } from '../../../../src/lib/seo'
 import BlogDetailView from '../../../../src/components/blog/BlogDetailView'
 
@@ -50,6 +51,7 @@ export async function generateMetadata({
 
   const title = `${getBlogTitle(post, locale)} | Artur Yusupov`
   const description = getBlogDescription(post, locale)
+  const ogImageUrl = toAbsoluteOgImageUrl(post.coverImage)
 
   return {
     title,
@@ -60,6 +62,7 @@ export async function generateMetadata({
         en: `https://www.yusupovartur.com/en/blog/${slug}`,
         uk: `https://www.yusupovartur.com/ua/blog/${slug}`,
         es: `https://www.yusupovartur.com/es/blog/${slug}`,
+        'x-default': `https://www.yusupovartur.com/en/blog/${slug}`,
       },
     },
     openGraph: {
@@ -71,7 +74,7 @@ export async function generateMetadata({
       authors: ['Artur Yusupov'],
       images: [
         {
-          url: post.coverImage,
+          url: ogImageUrl,
           alt: getBlogTitle(post, locale),
         },
       ],
@@ -80,6 +83,7 @@ export async function generateMetadata({
       card: 'summary_large_image',
       title,
       description,
+      images: [ogImageUrl],
     },
   }
 }

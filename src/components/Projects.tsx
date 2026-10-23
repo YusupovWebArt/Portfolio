@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useState, useEffect, useRef } from 'react'
 import { ExternalLink, X, ArrowRight, Search, ChevronLeft, ChevronRight } from 'lucide-react'
 import { Project, TechnologyItem } from './projects/project-types'
@@ -25,7 +27,7 @@ function getPaginationPages(current: number, total: number): (number | '...')[] 
 }
 
 interface ProjectsProps {
-  onProjectSelect: (projectId: number) => void
+  onProjectSelect?: (projectId: number) => void
 }
 
 const getTechShort = (tech: TechnologyItem): string =>
@@ -207,6 +209,7 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
     projectId: number,
   ) => {
     if (
+      onProjectSelect &&
       e.button === 0 &&
       !e.ctrlKey &&
       !e.metaKey &&

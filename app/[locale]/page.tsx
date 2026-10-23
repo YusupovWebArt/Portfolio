@@ -1,7 +1,4 @@
-'use client'
-
 import React, { Suspense } from 'react'
-import { useRouter, useParams } from 'next/navigation'
 import Hero from '../../src/components/Hero'
 import About from '../../src/components/About'
 import AiWorkflow from '../../src/components/AiWorkflow'
@@ -9,23 +6,19 @@ import Skills from '../../src/components/Skills'
 import B2bServices from '../../src/components/B2bServices'
 import Contact from '../../src/components/Contact'
 import Projects from '../../src/components/Projects'
-import { getAllProjectEntries } from '../../src/lib/projects'
 import { buildWebsiteFaqJsonLd, buildPersonAndWebsiteJsonLd } from '../../src/lib/seo'
 
-export default function LandingPage() {
-  const router = useRouter()
-  const params = useParams()
-  const locale = (params?.locale as string) || 'en'
+interface LandingPageProps {
+  params?: Promise<{
+    locale: string
+  }>
+}
+
+export default async function LandingPage({ params }: LandingPageProps) {
+  const resolvedParams = params ? await params : { locale: 'en' }
+  const locale = resolvedParams?.locale || 'en'
   const faqSchema = buildWebsiteFaqJsonLd(locale)
   const personWebsiteSchema = buildPersonAndWebsiteJsonLd(locale)
-
-  const handleProjectSelect = (projectId: number) => {
-    const entries = getAllProjectEntries()
-    const entry = entries.find((e) => e.project.id === projectId)
-    if (entry) {
-      router.push(`/${locale}/projects/${entry.slug}`)
-    }
-  }
 
   return (
     <main id="main-content">
@@ -47,7 +40,7 @@ export default function LandingPage() {
           </div>
         }
       >
-        <Projects onProjectSelect={handleProjectSelect} />
+        <Projects />
       </Suspense>
       <Skills />
       <B2bServices />

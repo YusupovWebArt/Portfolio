@@ -1,3 +1,5 @@
+'use client'
+
 import { FaFilePdf } from 'react-icons/fa'
 import { Bot } from 'lucide-react'
 import { useLanguage } from '../contexts/LanguageContext'

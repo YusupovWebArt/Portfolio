@@ -8,7 +8,7 @@
 - **Role**: Senior Fullstack Web Engineer & AI Developer
 - **Location**: Seville / Alicante / Valencia, Spain (European Union) - Available for remote roles, B2B contracts, and relocation.
 - **Experience**: 5+ years of commercial software engineering across 71 production web platforms, e-commerce stores, cloud portals, and interactive web applications.
-- **Languages**: English, Spanish, Ukrainian, Russian (Full trilingual UI/SEO support on yusupovartur.com in EN, UA, ES).
+- **Languages**: English, Spanish, Ukrainian, Russian (Full trilingual UI/SEO support on yusupovartur.com in EN, UA, ES across 246 static routes).
 - **Primary URL**: https://www.yusupovartur.com/en
 
 ## 2. Technical Stack & Engineering Standards
@@ -16,12 +16,13 @@
 - **Frontend & Modern Web**: Next.js 16 (App Router, React Server Components, SSG/ISR), React 19, TypeScript 6 (Strict Zero-`any`), Tailwind CSS v4, HTML5, CSS3/SASS, View Transitions API, Zustand v5.
 - **Backend & CMS Platforms**: WordPress Core Internals, Custom PHP 8+ Themes & Plugins, Advanced Custom Fields (ACF Pro), Headless WordPress (WP REST API & WPGraphQL), WooCommerce, Node.js, Supabase (PostgreSQL + RLS), Shopify Liquid, Wix Velo.
 - **AI & RAG Engineering**: Custom Hybrid Retrieval-Augmented Generation (1536-dim OpenAI embeddings + cosine similarity + BM25 + deterministic multilingual synthesis), Vercel AI SDK, Google Gemini / NotebookLM prompt pipelines, Spec-Driven AI SDLC.
-- **Cloud, DevSecOps & Quality**: AWS (EC2, S3, CloudFront, RDS, Route 53), Vercel Edge Network, Cloudflare WAF/CDN, Docker, GitHub Actions CI/CD, Vitest + React Testing Library (155+ automated tests), WCAG 2.2 AA / EAA 2026 compliance, strict HTTP security headers (CSP, HSTS, X-Frame-Options).
+- **Cloud, DevSecOps & Quality**: AWS (EC2, S3, CloudFront, RDS, Route 53), Vercel Edge Network, Cloudflare WAF/CDN, Docker, GitHub Actions CI/CD, Vitest + React Testing Library (160+ automated tests), WCAG 2.2 AA / EAA 2026 compliance, strict HTTP security headers (CSP, HSTS, X-Frame-Options).
 
 ## 3. Flagship Case Studies (Detailed Breakdown)
 
 ### 3.1. WPSKILLS - Interactive Fullstack Engineering Platform
 - **Case Study URL**: https://www.yusupovartur.com/en/projects/wpskills
+- **Deep-Dive Article**: https://www.yusupovartur.com/en/blog/wpskills-interactive-edtech-architecture
 - **Live URL**: https://wpskills.vercel.app
 - **Stack**: Next.js 16, React 19, TypeScript, Tailwind CSS v4, Rust MDX-RS, Zustand v5, Supabase, Vitest 4, Gemini NotebookLM Audio Prompt Engine.
 - **Highlights**:
@@ -31,34 +32,278 @@
 
 ### 3.2. Next.js 16 & Hybrid RAG Portfolio Platform
 - **Case Study URL**: https://www.yusupovartur.com/en/projects/yusupovartur-nextjs-portfolio
+- **Deep-Dive Article**: https://www.yusupovartur.com/en/blog/autonomous-hybrid-rag-architecture-browser
 - **Live URL**: https://www.yusupovartur.com
 - **Stack**: Next.js 16 App Router, React 19 Server Components, TypeScript 6, Tailwind CSS v4, Vercel AI SDK, Custom Hybrid RAG Engine, Vitest.
 - **Highlights**:
-  - Dual-runtime architecture supporting SSR/SSG on Vercel (213+ localized project pages and 21 blog routes) and static SPA export on GitHub Pages.
-  - Built-in Hybrid RAG AI Assistant indexing all 71 projects and 7 engineering articles with interactive generative UI cards, timeline estimator, stack comparison matrix, and zero-leak Base64 contact protection.
+  - Dual-runtime architecture supporting SSR/SSG on Vercel (213 localized project pages, 27 blog routes, and 246 total static routes) and static SPA export on GitHub Pages.
+  - Built-in Hybrid RAG AI Assistant indexing all 71 projects and 9 engineering articles with interactive generative UI cards, timeline estimator, stack comparison matrix, and zero-leak Base64 contact protection.
 
 ### 3.3. Unitrition - Personalized Nutrition & Dietary Platform
 - **Case Study URL**: https://www.yusupovartur.com/en/projects/unitrition
+- **Deep-Dive Article**: https://www.yusupovartur.com/en/blog/unitrition-headless-healthtech-architecture
 - **Live URL**: https://www.unitrition.info
 - **Stack**: Next.js 16 App Router, React 19, TypeScript, Headless WordPress, Supabase, USDA FoodData Central API, Tailwind CSS.
 - **Highlights**:
   - Supports 10 specialized diet regimens with real-time macro/micronutrient modeling and bilingual localization.
 
-### 3.4. IT-Magic - Enterprise AWS Consulting Portal
+### 3.4. My React Portfolio Website (WebArt SPA/PWA)
+- **Case Study URL**: https://www.yusupovartur.com/en/projects/webart-react-portfolio
+- **Deep-Dive Article**: https://www.yusupovartur.com/en/blog/sub-second-cwv-bundle-optimization
+- **Live URL**: https://yusupovwebart.github.io/Portfolio/
+- **Stack**: React 19, TypeScript, Vite, Tailwind CSS v4, View Transitions API, Vitest.
+- **Highlights**:
+  - Sub-second Core Web Vitals (98KB initial JS bundle, 0.7s LCP, 0.00 CLS) and custom windowing pagination across 71 projects.
+
+### 3.5. IT-Magic - Enterprise AWS Consulting Portal
 - **Case Study URL**: https://www.yusupovartur.com/en/projects/it-magic
 - **Live URL**: https://it-magic.org
 - **Stack**: Custom WordPress Theme (PHP 8+), ACF Pro, AWS CloudFront, S3, EC2, Schema.org JSON-LD, Core Web Vitals Optimization.
 - **Highlights**:
   - Engineered for an AWS Advanced Consulting Partner with 95+ PageSpeed scores, multilingual architecture, and #1 Google rankings for competitive DevOps keywords.
 
-## 4. Complete Engineering Blog Index (EN / UA / ES)
+## 4. Complete Engineering Blog Index (9 Articles across EN / UA / ES = 27 Routes)
 
-1. **Next.js 16 vs Headless WordPress vs Custom PHP in 2026**: `/en/blog/nextjs-vs-headless-wordpress-custom-php-2026`
-2. **Autonomous Hybrid RAG Architecture in Browser**: `/en/blog/autonomous-hybrid-rag-architecture-browser`
-3. **WCAG 2.2 AA & European Accessibility Act (EAA 2026)**: `/en/blog/wcag-22-aa-european-accessibility-act-2026`
-4. **Sub-Second Core Web Vitals & Bundle Optimization**: `/en/blog/sub-second-cwv-bundle-optimization`
-5. **Shopify Liquid vs Custom WooCommerce**: `/en/blog/shopify-liquid-vs-custom-woocommerce`
-6. **Client-Side Zero-Trust Web Security**: `/en/blog/client-side-zero-trust-security`
-7. **Zero-Downtime Legacy System Migration to Cloud**: `/en/blog/legacy-migration-cloud-infrastructure`
-8. **WPSKILLS Architecture Deep-Dive: Rust MDX-RS, Interactive Labs & Personal Progress Sync**: `/en/blog/wpskills-interactive-edtech-architecture`
-9. **Unitrition Architecture Deep-Dive: Headless WordPress, USDA API & Deterministic Diet Modeling**: `/en/blog/unitrition-headless-healthtech-architecture`
+1. **Next.js 16 vs Headless WordPress vs Custom PHP: Objective TCO, Performance & SEO Analysis (2026)**: https://www.yusupovartur.com/en/blog/nextjs-vs-headless-wordpress-custom-php-2026
+   - **Published**: 2026-10-18 | **Tags**: Next.js 16, WordPress, PHP 8.2, Headless CMS, Core Web Vitals, TCO
+   - **Summary**: An engineering breakdown comparing architecture, maintenance overhead, Total Cost of Ownership (TCO), and Google Core Web Vitals across Next.js 16, Headless WordPress, and custom PHP.
+2. **WPSKILLS Architecture Deep-Dive: Compiling 1,100+ MDX Lessons in 90 Seconds with Next.js 16 & Rust MDX-RS**: https://www.yusupovartur.com/en/blog/wpskills-interactive-edtech-architecture
+   - **Published**: 2026-10-22 | **Tags**: Next.js 16, React 19, Rust MDX-RS, EdTech Architecture, Zustand v5, Supabase, NotebookLM AI
+   - **Summary**: Complete executive and technical breakdown of the WPSKILLS interactive engineering platform: how we cut SSG build times by 14x (from 21.6m to 1.5m), engineered interactive runtime simulators, built a zero-metaphor NotebookLM audio engine, and explained every core term and security mechanism.
+3. **Unitrition Architecture Deep-Dive: Engineering a Headless HealthTech & Precision Nutrition Platform with Next.js 16, WordPress & Supabase**: https://www.yusupovartur.com/en/blog/unitrition-headless-healthtech-architecture
+   - **Published**: 2026-10-21 | **Tags**: Next.js 16, Headless WordPress, Supabase, USDA API, HealthTech, TypeScript, Schema.org
+   - **Summary**: Executive and technical breakdown of Unitrition (unitrition.info): decoupling WordPress CMS from Next.js 16 App Router, integrating USDA FoodData Central API for real-time Bread Units and glycemic curve modeling across 10 clinical diet frameworks, and securing user data with Supabase RLS.
+4. **Autonomous Hybrid RAG Architecture: In-Browser Vector Retrieval, Generative UI & Next.js 16 SSG**: https://www.yusupovartur.com/en/blog/autonomous-hybrid-rag-architecture-browser
+   - **Published**: 2026-10-18 | **Tags**: Hybrid RAG, AI Assistant, Cosine Similarity, Okapi BM25, Generative UI, Next.js 16, Web Performance
+   - **Summary**: Complete architectural case study of the yusupovartur.com platform: engineering a sub-5ms Hybrid RAG assistant (Okapi BM25 + Damerau-Levenshtein + Cosine Similarity), multi-turn conversational memory, Generative UI tool cards, and 213+ localized Next.js 16 SSG routes with zero vector database fees.
+5. **Sub-Second Core Web Vitals: Reducing Bundle Size, Asset Pipelines & Modern Hydration Strategies (2026)**: https://www.yusupovartur.com/en/blog/sub-second-cwv-bundle-optimization
+   - **Published**: 2026-10-19 | **Tags**: Core Web Vitals, Performance, Bundle Size, Vite, Next.js, WebP, Hydration
+   - **Summary**: A comprehensive engineering guide on achieving sub-second Largest Contentful Paint (LCP < 1.0s), zero Layout Shift (CLS = 0), and 98+ PageSpeed scores in high-traffic applications using Rollup chunk splitting, WebP pipelines, and delayed non-critical hydration.
+6. **WCAG 2.2 AA & European Accessibility Act 2026: Practical Engineering Compliance Guide**: https://www.yusupovartur.com/en/blog/wcag-22-aa-european-accessibility-act-2026
+   - **Published**: 2026-10-18 | **Tags**: WCAG 2.2 AA, EAA 2026, EN 301 549, A11y, React 19, Playwright, DevSecOps
+   - **Summary**: A pragmatic developer guide for EU companies and agencies on complying with the European Accessibility Act (EAA 2026 / EN 301 549), covering focus management, color contrast, semantic DOM, and automated CI/CD audits.
+7. **Shopify Liquid vs Custom WooCommerce in 2026: Architecture, Checkout Extensibility & True TCO**: https://www.yusupovartur.com/en/blog/shopify-liquid-vs-custom-woocommerce
+   - **Published**: 2026-10-19 | **Tags**: Shopify, Liquid, WooCommerce, WordPress, E-Commerce, Checkout, TCO
+   - **Summary**: An architectural breakdown comparing hosted SaaS (Shopify Liquid & Checkout Extensibility) against open-source infrastructure (WooCommerce, PHP 8+, and Redis caching) for technical directors and e-commerce founders.
+8. **Client-Side Zero-Trust Security: PII Obfuscation, Anti-Scraping & CSP Defense for Web Apps**: https://www.yusupovartur.com/en/blog/client-side-zero-trust-security
+   - **Published**: 2026-10-19 | **Tags**: DevSecOps, Security, CSP, Base64, Anti-Scraping, Privacy
+   - **Summary**: How to safeguard sensitive business contacts, protect clinical and personal data from automated scrapers, and enforce strict Content Security Policies (CSP) without degrading user experience or Core Web Vitals.
+9. **Zero-Downtime Legacy System Migration: Cloud Infrastructure, SEO Preservation & High-Load Reliability**: https://www.yusupovartur.com/en/blog/legacy-migration-cloud-infrastructure
+   - **Published**: 2026-10-19 | **Tags**: Cloud Migration, AWS, Database Optimization, Nginx, 301 Redirects, Zero Downtime
+   - **Summary**: A battle-tested blueprint for migrating legacy monolithic portals and high-traffic databases to modern cloud architectures with dual-write replication, automated 301/308 redirect mapping, and zero interruption to customer transactions.
+
+## 5. Complete 71-Project Portfolio Index (213 Localized Case Study Routes)
+
+1. **Next.js 16 & Hybrid RAG Portfolio Platform** (nextjs) - https://www.yusupovartur.com/en/projects/yusupovartur-nextjs-portfolio | Live: https://www.yusupovartur.com/ | Deep-Dive: https://www.yusupovartur.com/en/blog/autonomous-hybrid-rag-architecture-browser
+   - **Stack**: Next.js 16 (App Router), React 19, TypeScript 6.x, Tailwind CSS v4, Trilingual i18n (/en, /ua, /es), Next.js Route Handlers
+   - **Overview**: Enterprise-grade fullstack portfolio and AI engineering platform built with Next.js 16 App Router, React 19 Server Components, TypeScript 6, and a custom Hybrid RAG AI Assistant indexing 70 project case studies across 210+ localized SSG routes (EN/UA/ES), deployed on Vercel with Cloudflare DNS and WCAG 2.2 AA compliance.
+2. **WPSKILLS** (nextjs, react, wordpress, fullstack) - https://www.yusupovartur.com/en/projects/wpskills | Live: https://wpskills.vercel.app | Deep-Dive: https://www.yusupovartur.com/en/blog/wpskills-interactive-edtech-architecture
+   - **Stack**: Next.js 16.3, React 19.2, TypeScript 5.8, Tailwind CSS v4, Zustand v5, Lucide React & Base UI
+   - **Overview**: An interactive engineering educational platform designed for mastering modern Fullstack development, React 19, Next.js 16 App Router, WordPress core internals, TypeScript, and AI-augmented software engineering. Powered by Rust-based MDX-RS compilation across 1,100+ lessons, interactive Explorable Explanations (<ArchitectureFlow>, <StepFlow>, checkpoints), zero-metaphor Gemini NotebookLM Audio Overview generators, gamified XP/Streak engine, and 4-locale internationalization (EN/RU/UK/ES).
+3. **Unitrition** (nextjs, wordpress) - https://www.yusupovartur.com/en/projects/unitrition | Live: https://www.unitrition.info | Deep-Dive: https://www.yusupovartur.com/en/blog/unitrition-headless-healthtech-architecture
+   - **Stack**: Next.js 16, React 19, TypeScript 5.9, Tailwind CSS, Recharts 3, Node.js 24 LTS
+   - **Overview**: A full-stack nutrition platform that helps users find the right foods for their specific dietary plans - pick a plan, search foods, and get an instant color-coded comparison of what fits and what doesn't. Built with headless WordPress as CMS, a Next.js 16 (React 19) App Router frontend, Supabase authentication, and a custom Bread Units Calculator integrated with the USDA FoodData Central API. Supports 10 diet frameworks, bilingual content (EN/ES), and an educational nutrition blog with Schema.org markup.
+4. **IT-Magic** (wordpress) - https://www.yusupovartur.com/en/projects/it-magic | Live: https://itmagic.pro/
+   - **Stack**: CSS3 & HTML5, JavaScript (ES6), Elementor, CSS Grid, PHP 8.0+, MySQL
+   - **Overview**: The IT-Magic project represents a comprehensive, end-to-end AWS and DevOps solution provider - from infrastructure design and migration to ongoing support and optimization.
+5. **Front Desk Helpers** (wordpress) - https://www.yusupovartur.com/en/projects/front-desk-helpers | Live: https://frontdeskhelpers.com/
+   - **Stack**: HTML5, CSS3 (Flexbox/Grid), JavaScript (ES6), Elementor Pro, PHP 8+, MySQL
+   - **Overview**: FDH provides skilled remote employees and advanced IT solutions to help businesses grow and thrive.
+6. **AWS Migration Services** (wordpress) - https://www.yusupovartur.com/en/projects/aws-migration-services | Live: https://awsmigrationservices.com/
+   - **Stack**: HTML5 & CSS3, JavaScript (ES6), Responsive CSS Grid, PHP 8.2, MySQL, Custom Theme
+   - **Overview**: Specialized platform designed to assist businesses in transitioning their operations to the Amazon Web Services (AWS) cloud. The website offers a comprehensive suite of services aimed at ensuring a smooth, secure, and cost-effective migration process.
+7. **Octobit** (wordpress) - https://www.yusupovartur.com/en/projects/octobit | Live: https://octobit.com.ua/
+   - **Stack**: HTML5, CSS3 (Flexbox/Grid), JavaScript (ES6), Responsive Layouts, PHP 8+, MySQL
+   - **Overview**: Octobit is a Ukrainian informational portal focused on cryptocurrency and blockchain topics. It’s aimed both at beginners and more experienced users.
+8. **Telefontrainingskoffer** (wordpress) - https://www.yusupovartur.com/en/projects/telefontrainingskoffer | Live: https://callcenter-akademie.de/telefontrainingskoffer/
+   - **Stack**: HTML5, CSS3 (Flexbox), JavaScript (ES6), WPBakery Page Builder, PHP 8+, MySQL
+   - **Overview**: Callcenter Akademie
+9. **Rolen Construction** (wordpress) - https://www.yusupovartur.com/en/projects/rolenconstruction | Live: https://rolenconstruction.com/
+   - **Stack**: HTML5, CSS3, JavaScript (ES6), Elementor, PHP 8+, MySQL
+   - **Overview**: Partner in ADUs, New Construction, and transformative Remodeling.
+10. **AWS Security Services** (wordpress) - https://www.yusupovartur.com/en/projects/aws-security-service | Live: https://awssecurityservice.com/
+   - **Stack**: HTML5, CSS3, JavaScript (ES6), PHP 8+, MySQL, WordPress Core
+   - **Overview**: Specialized platform focused on securing cloud infrastructures built on Amazon Web Services (AWS). The site provides end-to-end solutions for compliance, threat detection, monitoring, and proactive defense to help businesses safeguard their data and operations.
+11. **Organic Bed** (wordpress) - https://www.yusupovartur.com/en/projects/organic-bed | Live: https://organicbed.co.il/
+   - **Stack**: HTML5, CSS3, JavaScript (ES6), PHP 8+, MySQL, WordPress Core
+   - **Overview**: RTL Israeli website offering a range of eco-friendly, organic bedding products.
+12. **Buhl WISO** (wordpress) - https://www.yusupovartur.com/en/projects/buhl-de | Live: https://www.buhl.de/
+   - **Stack**: HTML5, CSS3, JavaScript (ES6), PHP 8+, MySQL, WordPress Core
+   - **Overview**: Steuer Jetzt Geld zurückholen. Germany
+13. **AWS for Retail** (wordpress) - https://www.yusupovartur.com/en/projects/aws-for-retail | Live: https://awsforretail.com/
+   - **Stack**: HTML5, CSS3, JavaScript (ES6), Elementor, PHP 8+, MySQL
+   - **Overview**: Website focused on promoting retail-oriented cloud solutions and services built on Amazon Web Services (AWS). It positions AWS not just as infrastructure, but as a strategic backbone for retail businesses to modernize operations, scale dynamically, and provide seamless customer experiences.
+14. **All Day Medical Care Clinic** (wordpress) - https://www.yusupovartur.com/en/projects/alldaymedicalcare | Live: https://alldaymedicalcare.com/
+   - **Stack**: HTML5, CSS3, JavaScript (ES6), Elementor, PHP 8+, MySQL
+   - **Overview**: Healthcare provider focused on offering a wide range of medical services.
+15. **Serzak Marketak** (wordpress) - https://www.yusupovartur.com/en/projects/serzak-marketak | Live: https://serzakmarketak.cz/
+   - **Stack**: HTML5, CSS3, JavaScript (ES6), Elementor, PHP 8+, MySQL
+   - **Overview**: Czech-based digital marketing agency founded and run by marketing specialist Serhiy Venhryn.
+16. **AWS for Ecommerce** (wordpress) - https://www.yusupovartur.com/en/projects/aws-for-ecommerce | Live: https://awsforecommerce.com/
+   - **Stack**: HTML5, CSS3, JavaScript (ES6), Elementor, PHP 8+, MySQL
+   - **Overview**: Website specialized platform designed to help businesses build, scale, and secure their online retail operations using Amazon Web Services (AWS). The site offers a comprehensive suite of solutions tailored for e-commerce, focusing on performance, security, scalability, and AI-driven personalization.
+17. **Adwoods Design** (wordpress) - https://www.yusupovartur.com/en/projects/adwoods-design | Live: https://test.adwoods-design.com/
+   - **Stack**: HTML5, CSS3, JavaScript (ES6), PHP 8+, MySQL, WordPress Core
+   - **Overview**: 3D Artists with experience in construction, architecture, and design, present ideas in visual language.
+18. **Lellex** (wordpress) - https://www.yusupovartur.com/en/projects/lellex | Live: https://lellexvideoproduction.com/
+   - **Stack**: HTML5, CSS3, JavaScript (ES6), PHP 8+, MySQL, WordPress Core
+   - **Overview**: Video Production.
+19. **Manitoulin Timber Frames** (wordpress) - https://www.yusupovartur.com/en/projects/manitoulintimberframes | Live: https://manitoulintimberframes.ca/
+   - **Stack**: HTML5, CSS3, JavaScript (ES6), Elementor, PHP 8+, MySQL
+   - **Overview**: Custom builder based on Manitoulin Island, Ontario, specializing in handcrafted timber-frame homes and structures.
+20. **Causetume** (wordpress) - https://www.yusupovartur.com/en/projects/causetume | Live: https://causetume.com/
+   - **Stack**: HTML5, CSS3, JavaScript (ES6), PHP 8+, MySQL, WordPress Core
+   - **Overview**: Knitwear Brand. Cloth store
+21. **911mg** (wordpress) - https://www.yusupovartur.com/en/projects/911mg | Live: https://www.911mg.org/
+   - **Stack**: HTML5, CSS3, JavaScript (ES6), PHP 8+, MySQL, WordPress Core
+   - **Overview**: US online health resource offering an extensive database of medications.
+22. **Exim Property** (wordpress) - https://www.yusupovartur.com/en/projects/exim-property | Live: https://www.eximproperty.com/
+   - **Stack**: HTML5, CSS3, JavaScript (ES6), PHP 8+, MySQL, WordPress Core
+   - **Overview**: Real estate services company based in Thailand, with a focus on helping foreign buyers-especially clients-discover, evaluate, and acquire property in Thailand.
+23. **Bemol** (wordpress) - https://www.yusupovartur.com/en/projects/bemol | Live: https://bemol.cz/
+   - **Stack**: HTML5, CSS3, JavaScript (ES6), Elementor, PHP 8+, MySQL
+   - **Overview**: Czech plumbing and heating services provider.
+24. **Sola Dental Spa** (wordpress) - https://www.yusupovartur.com/en/projects/sola-dental-spa | Live: https://www.soladentalspa.com/
+   - **Stack**: HTML5, CSS3, JavaScript (ES6), WPBakery, PHP 8+, MySQL
+   - **Overview**: Cosmetic Dental Clinic in Staten Island, NY
+25. **Orozco Trucking** (wordpress) - https://www.yusupovartur.com/en/projects/orozco-trucking | Live: https://www.orozcotrucking.com/
+   - **Stack**: HTML5, CSS3, JavaScript (ES6), PHP 8+, MySQL, WordPress Core
+   - **Overview**: Freight transportation company based in Elk Grove Village, Illinois.
+26. **Tu bebe y tu** (wordpress) - https://www.yusupovartur.com/en/projects/tubebeytu | Live: https://www.tubebeytu.es/
+   - **Stack**: HTML5, CSS3, JavaScript (ES6), PHP 8+, MySQL, WordPress Core
+   - **Overview**: Spanish online store specializing in products for babies and mothers.
+27. **Leo Lardy** (wordpress) - https://www.yusupovartur.com/en/projects/leo-lardy | Live: https://lardyleo.com/
+   - **Stack**: HTML5, CSS3, JavaScript (ES6), PHP 8+, MySQL, WordPress Core
+   - **Overview**: French visually driven creative platform.
+28. **Moskitnaya setka** (wordpress) - https://www.yusupovartur.com/en/projects/moskitnaya-setka | Live: https://moskitnaya-setka.com.ua/
+   - **Stack**: HTML5, CSS3, JavaScript (ES6), PHP 8+, MySQL, WordPress Core
+   - **Overview**: Ukrainian Mosquito net store.
+29. **Telecommunication Solutions for Business** (wordpress) - https://www.yusupovartur.com/en/projects/telecommunication-solutions | Live: https://frontdeskhelpers.com/remote-virtual-services/innovative-telecommunication-solutions-for-business/
+   - **Stack**: HTML5, CSS3, JavaScript (ES6), Bootstrap 5, PHP 8+, MySQL
+   - **Overview**: USA (+ localization Spain).
+30. **Fluffy Ninja** (wordpress) - https://www.yusupovartur.com/en/projects/fluffy-ninja | Live: https://fluffy-ninja.com/
+   - **Stack**: HTML5, CSS3, JavaScript (ES6), PHP 8+, MySQL, WordPress Core
+   - **Overview**: Creative cloth store. France
+31. **Cloud Delivery solution** (wordpress) - https://www.yusupovartur.com/en/projects/cloud-delivery-solution | Live: https://frontdeskhelpers.com/remote-virtual-services/delivery-solution-fdh-cloud/
+   - **Stack**: HTML5, CSS3, JavaScript (ES6), Bootstrap 5, PHP 8+, MySQL
+   - **Overview**: System for dispatching, planning, and tracking your deliveries and courier.
+32. **Artdemes** (wordpress) - https://www.yusupovartur.com/en/projects/artdemes | Live: https://artdemes.com/
+   - **Stack**: HTML5, CSS3, JavaScript (ES6), Elementor, PHP 8+, MySQL
+   - **Overview**: Artesania creativa. Spain store.
+33. **Lunamebel** (wordpress) - https://www.yusupovartur.com/en/projects/lunamebel | Live: https://lunamebel.com.ua/
+   - **Stack**: HTML5, CSS3, JavaScript (ES6), PHP 8+, MySQL, WordPress Core
+   - **Overview**: Ukrainian online furniture store.
+34. **Bezalel Care Management** (wordpress) - https://www.yusupovartur.com/en/projects/bezalel | Live: https://www.bezalelservices.com/
+   - **Stack**: HTML5, CSS3, JavaScript (ES6), Elementor, PHP 8+, MySQL
+   - **Overview**: Care coordination agency located in New York City.
+35. **Vikamaster** (wordpress) - https://www.yusupovartur.com/en/projects/vikamaster | Live: https://vikamaster.com/
+   - **Stack**: HTML5, CSS3, JavaScript (ES6), PHP 8+, MySQL, WordPress Core
+   - **Overview**: Handcrafted jewelry brand based in Ukraine, offering an array of beautifully artisan-made accessories.
+36. **Svkus** (wordpress) - https://www.yusupovartur.com/en/projects/svkus | Live: https://svkus.com/
+   - **Stack**: HTML5, CSS3, JavaScript (ES6), PHP 8+, MySQL, WordPress Core
+   - **Overview**: Syndicate of Taste is the online portal for a dynamic and creative group of restaurants in Ukraine.
+37. **Website integration with CRM** (wordpress) - https://www.yusupovartur.com/en/projects/website-integration-crm | Live: https://frontdeskhelpers.com/remote-virtual-services/website-integration-with-crm/
+   - **Stack**: HTML5, CSS3, JavaScript (ES6), Bootstrap 5, PHP 8+, MySQL
+   - **Overview**: USA (+ localization Spain)
+38. **Vival** (wordpress) - https://www.yusupovartur.com/en/projects/vival | Live: https://vival.ua/
+   - **Stack**: HTML5, CSS3, JavaScript (ES6), PHP 8+, MySQL, WordPress Core
+   - **Overview**: Ukrainian online store specializing in premium construction materials, particularly for roofing and industrial flooring.
+39. **Kolosochok** (wordpress) - https://www.yusupovartur.com/en/projects/kolosochok | Live: https://kolosochok.kiev.ua/
+   - **Stack**: HTML5, CSS3, JavaScript (ES6), Elementor, PHP 8+, MySQL
+   - **Overview**: Ukrainian private ethno-kindergarten in Kyiv offering culturally immersive preschool education.
+40. **Psichologonline** (wordpress) - https://www.yusupovartur.com/en/projects/psichologonline | Live: https://psichologonline.com/
+   - **Stack**: HTML5, CSS3, JavaScript (ES6), Elementor, PHP 8+, MySQL
+   - **Overview**: Elena Grechka is a qualified Ukrainian psychologist.
+41. **Aristocrat Hotel & Restaurant** (wordpress) - https://www.yusupovartur.com/en/projects/aristokrat | Live: https://aristokrat-hotel24.com/
+   - **Stack**: HTML5, CSS3, JavaScript (ES6), PHP 8+, MySQL, WordPress Core
+   - **Overview**: Ukrainian hotel-restaurant complex offers guests elegant accommodation in a beautifully restored historic building.
+42. **Elite Health Warrior** (other-cms) - https://www.yusupovartur.com/en/projects/elitehealthwarrior | Live: https://elitehealthwarrior.com/
+   - **Stack**: HTML5, CSS3, JavaScript (ES6), PHP 8+, MySQL, Joomla CMS
+   - **Overview**: US-based Health and Wellness
+43. **Sportpit24** (other-cms) - https://www.yusupovartur.com/en/projects/sportpit24 | Live: https://sportpit24.com.ua/
+   - **Stack**: HTML5, CSS3, JavaScript (ES6), PHP 8+, MySQL, OpenCart
+   - **Overview**: Ukrainian online store specializing in high-quality sports nutrition and fitness supplements.
+44. **Health Linespro** (other-cms) - https://www.yusupovartur.com/en/projects/healthlinespro
+   - **Stack**: HTML5, CSS3, JavaScript (ES6), PHP 8+, MySQL, Joomla CMS
+   - **Overview**: US-based Wellness Hub
+45. **Uman travel** (other-cms) - https://www.yusupovartur.com/en/projects/umantravel | Live: https://umantravel.com.ua/
+   - **Stack**: HTML5, CSS3, JavaScript (ES6), PHP 8+, MySQL, Joomla CMS
+   - **Overview**: Historical and cultural tourism information center based in Uman, Ukraine.
+46. **Portage** (other-cms) - https://www.yusupovartur.com/en/projects/portagedental
+   - **Stack**: HTML5, CSS3, JavaScript (ES6), PHP 8+, MySQL, Joomla CMS
+   - **Overview**: US-based Dental Clinic
+47. **VIN Energo** (other-cms) - https://www.yusupovartur.com/en/projects/vinenergo | Live: http://vinenergo.com.ua/
+   - **Stack**: HTML5, CSS3, JavaScript (ES6), PHP 8+, MySQL, Joomla CMS
+   - **Overview**: Ukrainian company specializing in the production and sale of Pini Kay wood and charcoal briquettes, as well as the manufacture of equipment for briquette production.
+48. **TST - Technical Support Team** (wix) - https://www.yusupovartur.com/en/projects/technicalsupport | Live: https://www.technicalsupport.team/
+   - **Stack**: Wix Editor, Wix Velo, CSS3, JavaScript (ES6+), Wix CMS, Wix App Market
+   - **Overview**: U.S.-based web development and digital marketing agency founded in 2015.
+49. **ISAL** (wix) - https://www.yusupovartur.com/en/projects/isal | Live: https://www.isalusa.com/
+   - **Stack**: Wix Editor, Wix Velo, CSS3, JavaScript (ES6+), Wix CMS, Wix App Market
+   - **Overview**: Learn English in Boston - US language school website.
+50. **Lashbou Academy** (wix) - https://www.yusupovartur.com/en/projects/lashbouacademy | Live: https://www.lashbouacademy.com/
+   - **Stack**: Wix Editor, Wix Velo, CSS3, JavaScript (ES6+), Wix CMS, Wix App Market
+   - **Overview**: USA eyelash technician training academy website.
+51. **Lashbousalon** (wix) - https://www.yusupovartur.com/en/projects/lashbousalon | Live: https://www.arlington.lashbousalon.com/
+   - **Stack**: Wix Editor, Wix Velo, CSS3, JavaScript (ES6+), Wix CMS, Wix App Market
+   - **Overview**: U.S.-based eyelash salon in Arlington, Texas.
+52. **Artezioeu** (shopify) - https://www.yusupovartur.com/en/projects/artezioeu | Live: https://www.artezio.es/
+   - **Stack**: Shopify Liquid, CSS3, JavaScript (ES6+), Shopify Admin, Theme Customization, App Integration
+   - **Overview**: Spain-based painting by numbers store.
+53. **Prezentify** (shopify) - https://www.yusupovartur.com/en/projects/prezentify | Live: https://prezentify.pl/
+   - **Stack**: Shopify Liquid, CSS3, JavaScript (ES6+), Shopify Admin, Theme Customization, App Integration
+   - **Overview**: Polish online store specializing in personalized gifts.
+54. **Second Chance Decor** (shopify) - https://www.yusupovartur.com/en/projects/secondchancedecor | Live: https://www.secondchancedecor.ca/
+   - **Stack**: Shopify Liquid, CSS3, JavaScript (ES6+), Shopify Admin, Theme Customization, App Integration
+   - **Overview**: Canadian sustainable home décor retailer giving discontinued items a second life.
+55. **Lueiris lashes** (shopify) - https://www.yusupovartur.com/en/projects/lueiris | Live: https://lueirislashes.com/
+   - **Stack**: Shopify Liquid, CSS3, JavaScript (ES6+), Shopify Admin, Theme Customization, App Integration
+   - **Overview**: US-based lashes beauty store.
+56. **Cartooniko** (shopify) - https://www.yusupovartur.com/en/projects/cartooniko | Live: https://cartooniko.myshopify.com/
+   - **Stack**: Shopify Liquid, CSS3, JavaScript (ES6+), Shopify Admin, Theme Customization, App Integration
+   - **Overview**: Custom portraits in cartoon style.
+57. **Kidzely** (shopify) - https://www.yusupovartur.com/en/projects/kidzely | Live: https://www.kidzely.com/
+   - **Stack**: Shopify Liquid, CSS3, JavaScript (ES6+), Shopify Admin, Theme Customization, App Integration
+   - **Overview**: USA-based online store for baby products.
+58. **My Portfolio Website v2** (static) - https://www.yusupovartur.com/en/projects/webart-portfolio-website-v2 | Live: https://yusupovwebart.github.io/Portfolio-v2-static-vanilla-js/
+   - **Stack**: HTML5, CSS3, JavaScript (ES6+), GitHub Pages, SSL/TLS, Responsive Design
+   - **Overview**: Personal portfolio site of Artur Yusupov.
+59. **My Portfolio Website v1** (static) - https://www.yusupovartur.com/en/projects/webart-portfolio-website-v1
+   - **Stack**: HTML5, CSS3, JavaScript (ES6+), GitHub Pages, SSL/TLS, Responsive Design
+   - **Overview**: Personal portfolio site of Artur Yusupov.
+60. **Mohave Cosmetic Surgery** (static) - https://www.yusupovartur.com/en/projects/mohavecosmeticsurgery | Live: https://mohavecosmeticsurgery.com/
+   - **Stack**: HTML5, CSS3, JavaScript (ES6+), cPanel Hosting, SSL/TLS, Responsive Design
+   - **Overview**: Las Vegas-based practice led by board-certified plastic surgeon Dr. Bryson Richards.
+61. **Nokyc** (static) - https://www.yusupovartur.com/en/projects/nokyc | Live: https://yusupovwebart.github.io/nokyc/
+   - **Stack**: HTML5, CSS3, JavaScript (ES6+), GitHub Pages, SSL/TLS, Responsive Design
+   - **Overview**: Pure HTML/CSS/JS code.
+62. **Simple Javascript Quiz App** (javascript) - https://www.yusupovartur.com/en/projects/simple-javascript-quiz | Live: https://yusupovwebart.github.io/js-simple-quiz-app/
+   - **Stack**: HTML5, CSS3, Vanilla JavaScript (ES6+), GitHub Pages, Responsive Design
+   - **Overview**: Pet project for learning and practicing JavaScript.
+63. **Modern Simple Javascript Calculator** (javascript) - https://www.yusupovartur.com/en/projects/simple-javascript-calculator | Live: https://yusupovwebart.github.io/js-simple-calculator/
+   - **Stack**: HTML5, CSS3, Vanilla JavaScript (ES6+), GitHub Pages, Responsive Design
+   - **Overview**: Pet project for learning and practicing JavaScript.
+64. **Javascript Simple To-Do List** (javascript) - https://www.yusupovartur.com/en/projects/js-vanilla-simple-todolist | Live: https://yusupovwebart.github.io/js-simple-todo-list/
+   - **Stack**: HTML5, CSS3, Vanilla JavaScript (ES6+), GitHub Pages, Responsive Design
+   - **Overview**: Pet project for learning and practicing JavaScript.
+65. **Vanilla Javascript Simple Calculator** (javascript) - https://www.yusupovartur.com/en/projects/simple-vanilla-calculator | Live: https://yusupovwebart.github.io/js-calculator/
+   - **Stack**: HTML5, CSS3, Vanilla JavaScript (ES6+), GitHub Pages, Responsive Design
+   - **Overview**: Pet project for learning and practicing JavaScript.
+66. **Javascript Date and time app** (javascript) - https://www.yusupovartur.com/en/projects/simple-javascript-date-time | Live: https://yusupovwebart.github.io/date_n_time/
+   - **Stack**: HTML5, CSS3, Vanilla JavaScript (ES6+), GitHub Pages, Responsive Design
+   - **Overview**: Pet project for learning and practicing JavaScript.
+67. **Javascript Simple List of Users** (javascript) - https://www.yusupovartur.com/en/projects/simple-javascript-list-users | Live: https://yusupovwebart.github.io/list-of-users-javascript/
+   - **Stack**: HTML5, CSS3, Vanilla JavaScript (ES6+), GitHub Pages, Responsive Design
+   - **Overview**: Pet project for learning and practicing JavaScript.
+68. **My React Portfolio Website** (react) - https://www.yusupovartur.com/en/projects/webart-react-portfolio | Live: https://yusupovwebart.github.io/Portfolio/ | Deep-Dive: https://www.yusupovartur.com/en/blog/sub-second-cwv-bundle-optimization
+   - **Stack**: React 19, TypeScript 6.x, PWA & Service Worker, View Transitions API, Tailwind CSS v4, Trilingual i18n (EN/UA/ES)
+   - **Overview**: High-performance single-page portfolio application built with React 19, TypeScript 6, Tailwind CSS v4, and a 3-language i18n engine (EN/UA/ES) powered by the 2026 AI-Harness methodology (SDD + SDLC + TDD) with 29 Vitest specs, 11 Playwright E2E tests (WCAG 2.2 AA), Consent Mode v2 Basic, and 50.3% bundle code-splitting.
+69. **Simple To-Do App** (react) - https://www.yusupovartur.com/en/projects/react-simple-todo-list | Live: https://yusupovwebart.github.io/react-js-basic-todo-list/
+   - **Stack**: React.js, Bootstrap 5, React-Bootstrap, React Icons, JavaScript (ES6+), Vite
+   - **Overview**: In the process of learning React.js technology.
+70. **Simple React calculator App** (react) - https://www.yusupovartur.com/en/projects/react-simple-calculator | Live: https://yusupovwebart.github.io/react-js-simple-calculator/
+   - **Stack**: React.js, JavaScript (ES6+), CSS3, Vite, GitHub Pages, SSL/TLS
+   - **Overview**: Simple pet-project demonstrates fundamental React concepts such as component structure.
+71. **Simple React Cost Accounting App** (react) - https://www.yusupovartur.com/en/projects/react-simple-cost-accounting | Live: https://yusupovwebart.github.io/react-js-basic-cost-accounting/
+   - **Stack**: React.js, JavaScript (ES6+), CSS3, Vite, GitHub Pages, SSL/TLS
+   - **Overview**: Pet project for learning and practicing React.js.

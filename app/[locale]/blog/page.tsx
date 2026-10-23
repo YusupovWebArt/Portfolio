@@ -6,7 +6,10 @@ import {
   getBlogTitle,
   getBlogDescription,
 } from '../../../src/data/blog'
-import { buildBlogCatalogJsonLd } from '../../../src/lib/seo'
+import {
+  buildBlogCatalogJsonLd,
+  buildBlogCatalogBreadcrumbsJsonLd,
+} from '../../../src/lib/seo'
 
 interface BlogCatalogPageProps {
   params: Promise<{
@@ -60,6 +63,7 @@ export async function generateMetadata({
         en: 'https://www.yusupovartur.com/en/blog',
         uk: 'https://www.yusupovartur.com/ua/blog',
         es: 'https://www.yusupovartur.com/es/blog',
+        'x-default': 'https://www.yusupovartur.com/en/blog',
       },
     },
     openGraph: {
@@ -100,12 +104,17 @@ export default async function BlogCatalogPage({ params }: BlogCatalogPageProps) 
   }))
 
   const catalogJsonLd = buildBlogCatalogJsonLd(catalogJsonLdItems, currentLocale)
+  const breadcrumbsJsonLd = buildBlogCatalogBreadcrumbsJsonLd(currentLocale)
 
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(catalogJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbsJsonLd) }}
       />
       <main id="main-content">
         <BlogCatalogView locale={currentLocale} />

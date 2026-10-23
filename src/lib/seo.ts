@@ -1,4 +1,4 @@
-import { Project } from '../components/projects/project-types'
+import { Project, TechnologyItem } from '../components/projects/project-types'
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.yusupovartur.com'
 
@@ -13,6 +13,44 @@ export function toAbsoluteAssetUrl(imagePath: string): string {
   return `${baseUrl}${cleaned.startsWith('/') ? cleaned : `/${cleaned}`}`
 }
 
+export function toAbsoluteOgImageUrl(imagePath: string): string {
+  const absoluteUrl = toAbsoluteAssetUrl(imagePath)
+  if (/\.svg(\?.*)?$/i.test(absoluteUrl)) {
+    return `${baseUrl}/images/blog/cover-nextjs-vs-headless-wp.png`
+  }
+  return absoluteUrl
+}
+
+export function extractProjectKeywords(project: Project): string {
+  const techSet = new Set<string>()
+  if (project.category) {
+    for (const cat of project.category) {
+      if (cat && cat !== 'All Projects') techSet.add(cat)
+    }
+  }
+  const techs = project.technologies
+  if (Array.isArray(techs)) {
+    for (const item of techs) {
+      if (typeof item === 'string') techSet.add(item)
+    }
+  } else if (techs && typeof techs === 'object') {
+    for (const group of Object.values(techs)) {
+      if (Array.isArray(group)) {
+        for (const item of group as TechnologyItem[]) {
+          if (typeof item === 'string') {
+            techSet.add(item)
+          } else if (item && typeof item.short === 'string') {
+            techSet.add(item.short)
+          }
+        }
+      }
+    }
+  }
+  return Array.from(techSet)
+    .map((k) => k.replace(/[\u2014\u2013]/g, '-'))
+    .join(', ')
+}
+
 export interface ProjectJsonLd {
   '@context': string
   '@type': string
@@ -23,6 +61,11 @@ export interface ProjectJsonLd {
   datePublished?: string
   dateModified?: string
   inLanguage?: string
+  keywords?: string
+  subjectOf?: {
+    '@type': string
+    url: string
+  }
   author: {
     '@type': string
     name: string
@@ -33,6 +76,8 @@ export interface ProjectJsonLd {
     name: string
     applicationCategory: string
     operatingSystem: string
+    url?: string
+    codeRepository?: string
   }
 }
 
@@ -59,7 +104,23 @@ export function buildProjectJsonLd(
         ? project.descriptionEs
         : project.description
 
-  return {
+  const keywords = extractProjectKeywords(project)
+
+  const about: ProjectJsonLd['about'] = {
+    '@type': 'SoftwareApplication',
+    name: project.title.replace(/[\u2014\u2013]/g, '-'),
+    applicationCategory: project.category?.[0] || 'WebApplication',
+    operatingSystem: 'All',
+  }
+
+  if (project.liveUrl && project.liveUrl.startsWith('http')) {
+    about.url = project.liveUrl
+  }
+  if (project.githubUrl && project.githubUrl.startsWith('http')) {
+    about.codeRepository = project.githubUrl
+  }
+
+  const jsonLd: ProjectJsonLd = {
     '@context': 'https://schema.org',
     '@type': 'TechArticle',
     headline: project.title.replace(/[\u2014\u2013]/g, '-'),
@@ -67,20 +128,28 @@ export function buildProjectJsonLd(
     image: toAbsoluteAssetUrl(project.image),
     url: `${baseUrl}/${locale}/projects/${slug}`,
     datePublished: '2026-01-15T00:00:00Z',
-    dateModified: '2026-10-12T00:00:00Z',
+    dateModified: '2026-10-22T00:00:00Z',
     inLanguage: toBcp47Lang(locale),
     author: {
       '@type': 'Person',
       name: 'Artur Yusupov',
       url: baseUrl,
     },
-    about: {
-      '@type': 'SoftwareApplication',
-      name: project.title.replace(/[\u2014\u2013]/g, '-'),
-      applicationCategory: project.category?.[0] || 'WebApplication',
-      operatingSystem: 'All',
-    },
+    about,
   }
+
+  if (keywords) {
+    jsonLd.keywords = keywords
+  }
+
+  if (project.deepDiveBlogSlug) {
+    jsonLd.subjectOf = {
+      '@type': 'TechArticle',
+      url: `${baseUrl}/${locale}/blog/${project.deepDiveBlogSlug}`,
+    }
+  }
+
+  return jsonLd
 }
 
 export function buildProjectBreadcrumbsJsonLd(
@@ -308,6 +377,37 @@ export function buildBlogPostJsonLd(
   }
 
   return jsonLd
+}
+
+export function buildBlogCatalogBreadcrumbsJsonLd(
+  locale = 'en',
+): BreadcrumbListJsonLd {
+  const homeLabel = locale === 'ua' ? 'Головна' : locale === 'es' ? 'Inicio' : 'Home'
+  const blogLabel =
+    locale === 'ua'
+      ? 'Інженерний блог'
+      : locale === 'es'
+        ? 'Blog de Ingeniería'
+        : 'Engineering Blog'
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: homeLabel,
+        item: `${baseUrl}/${locale}`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: blogLabel,
+        item: `${baseUrl}/${locale}/blog`,
+      },
+    ],
+  }
 }
 
 export function buildBlogBreadcrumbsJsonLd(

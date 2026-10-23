@@ -1,3 +1,5 @@
+'use client'
+
 import { SiReact, SiWordpress, SiGoogleanalytics } from "react-icons/si";
 import { LuBrainCircuit } from "react-icons/lu";
 import { useLanguage } from "../contexts/LanguageContext";

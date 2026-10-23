@@ -74,6 +74,7 @@ export async function generateMetadata({
         en: `/en/projects/${slug}`,
         uk: `/ua/projects/${slug}`,
         es: `/es/projects/${slug}`,
+        'x-default': `/en/projects/${slug}`,
       },
     },
     openGraph: {

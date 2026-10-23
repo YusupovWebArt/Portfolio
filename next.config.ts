@@ -77,7 +77,7 @@ const nextConfig: NextConfig = {
       {
         source: '/',
         destination: '/en',
-        permanent: false,
+        permanent: true,
       },
       {
         source: '/:locale(en|ua|es)/projects/all-day-medical-care-clinic',

@@ -63,16 +63,16 @@ describe('RAG Synthesis & Multilingual Routing Specification (TDD)', () => {
       const text = formatBlogPostDetails(post!, 'en')
 
       expect(text).toContain(
-        '### [Autonomous Hybrid RAG Architecture: In-Browser Vector Retrieval with Zero Infrastructure Overhead](/en/blog/autonomous-hybrid-rag-architecture-browser)',
+        '### [Autonomous Hybrid RAG Architecture: In-Browser Vector Retrieval, Generative UI & Next.js 16 SSG](/en/blog/autonomous-hybrid-rag-architecture-browser)',
       )
       expect(text).toContain('Key Architectural Takeaways:')
       expect(text).not.toContain('\u2014')
       expect(text).not.toContain('read read')
-      expect(text).toContain('*AI Engineering · 7 min read*')
+      expect(text).toContain('*AI Engineering · 12 min read*')
 
       const textUa = formatBlogPostDetails(post!, 'ua')
       expect(textUa).not.toContain('читання read')
-      expect(textUa).toContain('*AI-інженерія · 7 хв читання*')
+      expect(textUa).toContain('*AI-інженерія · 12 хв читання*')
     })
   })
 
