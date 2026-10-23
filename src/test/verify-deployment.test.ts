@@ -32,7 +32,7 @@ describe('Production Deployment & Vercel Configuration Specification (TDD)', () 
   it('should verify package.json has Next.js 16 build scripts and AI SDK dependencies', () => {
     const pkg = JSON.parse(fs.readFileSync(packageJsonPath, 'utf-8'))
     expect(pkg.scripts['build:next']).toBe('next build')
-    expect(pkg.dependencies.next).toBe('16.4.1')
+    expect(pkg.dependencies.next).toBe('16.4.2')
     expect(pkg.dependencies.ai).toBe('7.0.137')
     expect(pkg.dependencies['@ai-sdk/openai']).toBeDefined()
     expect(pkg.dependencies['@ai-sdk/react']).toBeDefined()
