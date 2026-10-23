@@ -1,7 +1,9 @@
 'use client'
 
 import React from 'react'
-import { Sparkles } from 'lucide-react'
+import {
+  LuSparkles as Sparkles,
+} from 'react-icons/lu'
 
 interface ProjectChatTriggerProps {
   projectSlug: string

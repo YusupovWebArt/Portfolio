@@ -158,7 +158,7 @@ test.describe("WCAG 2.2 AA Accessibility Audits (EAA 2026 / EN 301 549)", () => 
     await expect(clearChatBtn).toBeVisible();
     await expectOutlineOnKeyboardFocus(clearChatBtn);
 
-    const contactSendBtn = contactSection.locator('button:has(svg.lucide-send)').first();
+    const contactSendBtn = contactSection.locator('button[aria-label="Send" i], button[aria-label="Надіслати" i], button[aria-label="Enviar" i]').first();
     await expect(contactSendBtn).toBeVisible();
     await expectOutlineOnKeyboardFocus(contactSendBtn);
 
@@ -174,11 +174,11 @@ test.describe("WCAG 2.2 AA Accessibility Audits (EAA 2026 / EN 301 549)", () => 
     await expect(chatHistoryRegion).toBeVisible();
     await expectOutlineOnKeyboardFocus(chatHistoryRegion);
 
-    const modalSendBtn = chatModal.locator('button:has(svg.lucide-send)').first();
+    const modalSendBtn = chatModal.locator('button[aria-label="Send" i], button[aria-label="Надіслати" i], button[aria-label="Enviar" i]').first();
     await expect(modalSendBtn).toBeVisible();
     await expectOutlineOnKeyboardFocus(modalSendBtn);
 
-    const modalCloseBtn = chatModal.locator('button:has(svg.lucide-x)').first();
+    const modalCloseBtn = chatModal.locator('button[aria-label="Close chat" i], button[aria-label="Закрити чат" i], button[aria-label="Cerrar chat" i]').first();
     await expect(modalCloseBtn).toBeVisible();
     await expectOutlineOnKeyboardFocus(modalCloseBtn);
     await modalCloseBtn.click();
@@ -223,14 +223,14 @@ test.describe("WCAG 2.2 AA Accessibility Audits (EAA 2026 / EN 301 549)", () => 
     await expectOutlineOnKeyboardFocus(caseStudyPanel);
 
     // Screenshot modal controls
-    const zoomBtn = page.locator('button[title="Zoom"], button:has(svg.lucide-eye)').first();
+    const zoomBtn = page.locator('button[title="Zoom"]').first();
     await expect(zoomBtn).toBeVisible();
     await zoomBtn.click();
 
     const screenshotModal = page.locator('div[role="dialog"][aria-labelledby="screenshot-modal-title"]');
     await expect(screenshotModal).toBeVisible();
 
-    const screenshotCloseBtn = screenshotModal.locator('button:has(svg.lucide-x)').first();
+    const screenshotCloseBtn = screenshotModal.locator('button[aria-label="Close" i], button[aria-label="Закрити" i], button[aria-label="Cerrar" i]').first();
     await expect(screenshotCloseBtn).toBeVisible();
     await expectOutlineOnKeyboardFocus(screenshotCloseBtn);
 

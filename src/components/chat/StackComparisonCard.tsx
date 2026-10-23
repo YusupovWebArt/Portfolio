@@ -1,7 +1,14 @@
 'use client'
 
 import React, { useState } from 'react'
-import { Layers, Zap, ShieldCheck, Gauge, ArrowRight, CheckCircle2 } from 'lucide-react'
+import {
+  LuLayers as Layers,
+  LuZap as Zap,
+  LuShieldCheck as ShieldCheck,
+  LuGauge as Gauge,
+  LuArrowRight as ArrowRight,
+  LuCircleCheck as CheckCircle2,
+} from 'react-icons/lu'
 
 interface StackComparisonCardProps {
   locale?: 'en' | 'ua' | 'es'

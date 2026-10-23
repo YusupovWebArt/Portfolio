@@ -1,7 +1,9 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { ArrowUp } from 'lucide-react'
+import {
+  LuArrowUp as ArrowUp,
+} from 'react-icons/lu'
 
 const ScrollToTopButton = () => {
   const [showBtn, setShowBtn] = useState(false)

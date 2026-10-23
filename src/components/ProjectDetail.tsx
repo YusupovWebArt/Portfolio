@@ -9,16 +9,16 @@ import React, {
   useCallback,
 } from 'react'
 import {
-  ArrowLeft,
-  ArrowRight,
-  ArrowUpRight,
-  BookOpen,
-  ChevronLeft,
-  ChevronRight,
-  Eye,
-  X,
-  ExternalLink,
-} from 'lucide-react'
+  LuArrowLeft as ArrowLeft,
+  LuArrowRight as ArrowRight,
+  LuArrowUpRight as ArrowUpRight,
+  LuBookOpen as BookOpen,
+  LuChevronLeft as ChevronLeft,
+  LuChevronRight as ChevronRight,
+  LuEye as Eye,
+  LuX as X,
+  LuExternalLink as ExternalLink,
+} from 'react-icons/lu'
 import { Project, TechnologyItem } from './projects/project-types'
 import { useLanguage } from '../contexts/LanguageContext'
 import { projectRegistry } from '../lib/projectRegistry'

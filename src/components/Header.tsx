@@ -1,7 +1,14 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
-import { Menu, X, Github, Linkedin, Sun, Moon, ChevronDown } from 'lucide-react'
+import {
+  LuMenu as Menu,
+  LuX as X,
+  LuSun as Sun,
+  LuMoon as Moon,
+  LuChevronDown as ChevronDown,
+} from 'react-icons/lu'
+import { FaGithub as Github, FaLinkedin as Linkedin } from 'react-icons/fa'
 import { useTheme } from '../contexts/ThemeContext'
 import { useLanguage } from '../contexts/LanguageContext'
 import type { Lang } from '../contexts/LanguageContext'

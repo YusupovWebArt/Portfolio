@@ -54,7 +54,7 @@ graph LR
 - **Continuous Vulnerability Scanning:** Every package installation and CI run audits the dependency tree via `pnpm audit --prod --audit-level=high` (Targeting 0 production vulnerabilities).
 - **Automated Dependabot Lifecycle:** Configured in [`.github/dependabot.yml`](file:///.github/dependabot.yml) to scan weekly:
   - **Grouped Updates:** Minor and patch updates are grouped into unified PRs to prevent dependency drift.
-  - **Breaking Change Pinning:** Core compilers and layout dependencies with breaking migrations (e.g., `typescript >= 7.0.0`, `lucide-react >= 1.0.0`) are pinned to preserve build stability.
+  - **Breaking Change Pinning:** Core compilers and layout dependencies with breaking migrations (e.g., `typescript >= 7.0.0`) are pinned to preserve build stability. Icons are served exclusively by `react-icons` (Lucide, Font Awesome, and Simple Icons sets) to keep a single icon dependency.
 
 ---
 

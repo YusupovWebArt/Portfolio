@@ -1,6 +1,6 @@
 'use client'
 
-import { Code, Cookie } from "lucide-react";
+import { LuCode as Code, LuCookie as Cookie } from "react-icons/lu";
 import { useLanguage } from "../contexts/LanguageContext";
 import { useConsent } from "../contexts/ConsentContext";
 

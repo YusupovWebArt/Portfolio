@@ -2,7 +2,12 @@
 
 import React from 'react'
 import Link from 'next/link'
-import { ExternalLink, Github, ArrowRight, Layers } from 'lucide-react'
+import {
+  LuExternalLink as ExternalLink,
+  LuArrowRight as ArrowRight,
+  LuLayers as Layers,
+} from 'react-icons/lu'
+import { FaGithub as Github } from 'react-icons/fa'
 import type { ProjectToolOutput } from '../../lib/ai/tools'
 
 interface ProjectToolCardProps {

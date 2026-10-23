@@ -1,4 +1,8 @@
-import { Cpu, Layers, Check } from 'lucide-react'
+import {
+  LuCpu as Cpu,
+  LuLayers as Layers,
+  LuCheck as Check,
+} from 'react-icons/lu'
 import { useLanguage } from '../contexts/LanguageContext'
 
 const WhyWorkWithMe = () => {

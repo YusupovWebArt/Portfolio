@@ -3,13 +3,13 @@
 import { useState } from 'react'
 import { useLanguage } from '../contexts/LanguageContext'
 import {
-  Cpu,
-  Brain,
-  Shield,
-  Zap,
-  ChevronLeft,
-  ChevronRight,
-} from 'lucide-react'
+  LuCpu as Cpu,
+  LuBrain as Brain,
+  LuShield as Shield,
+  LuZap as Zap,
+  LuChevronLeft as ChevronLeft,
+  LuChevronRight as ChevronRight,
+} from 'react-icons/lu'
 
 interface StepDetail {
   name: string

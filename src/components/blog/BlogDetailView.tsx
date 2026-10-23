@@ -3,17 +3,17 @@
 import React, { useState } from 'react'
 import Link from 'next/link'
 import {
-  ArrowLeft,
-  ArrowRight,
-  ArrowUpRight,
-  Calendar,
-  Clock,
-  BookOpen,
-  Share2,
-  CheckCircle2,
-  MessageSquare,
-  Sparkles,
-} from 'lucide-react'
+  LuArrowLeft as ArrowLeft,
+  LuArrowRight as ArrowRight,
+  LuArrowUpRight as ArrowUpRight,
+  LuCalendar as Calendar,
+  LuClock as Clock,
+  LuBookOpen as BookOpen,
+  LuShare2 as Share2,
+  LuCircleCheck as CheckCircle2,
+  LuMessageSquare as MessageSquare,
+  LuSparkles as Sparkles,
+} from 'react-icons/lu'
 import type { BlogPost } from '../../data/blog'
 import MarkdownRenderer from './MarkdownRenderer'
 import {

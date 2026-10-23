@@ -2,18 +2,17 @@
 
 import { useState, useEffect, useRef, useCallback } from 'react'
 import {
-  Mail,
-  Phone,
-  MapPin,
-  MessageCircle,
-  Github,
-  Linkedin,
-  Send,
-  Bot,
-  User,
-  Trash2,
-  Database,
-} from 'lucide-react'
+  LuMail as Mail,
+  LuPhone as Phone,
+  LuMapPin as MapPin,
+  LuMessageCircle as MessageCircle,
+  LuSend as Send,
+  LuBot as Bot,
+  LuUser as User,
+  LuTrash2 as Trash2,
+  LuDatabase as Database,
+} from 'react-icons/lu'
+import { FaGithub as Github, FaLinkedin as Linkedin } from 'react-icons/fa'
 
 import { FAQ, Message } from '../data/chatFaq'
 import { useLanguage } from '../contexts/LanguageContext'

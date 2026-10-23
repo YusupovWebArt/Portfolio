@@ -3,24 +3,24 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import { createPortal } from 'react-dom'
 import {
-  Send,
-  Bot,
-  User,
-  X,
-  Trash2,
-  Sparkles,
-  Database,
-  Copy,
-  Check,
-  Square,
-  Maximize2,
-  Minimize2,
-  Layers,
-  Cpu,
-  Wrench,
-  ChevronDown,
-  ChevronUp,
-} from 'lucide-react'
+  LuSend as Send,
+  LuBot as Bot,
+  LuUser as User,
+  LuX as X,
+  LuTrash2 as Trash2,
+  LuSparkles as Sparkles,
+  LuDatabase as Database,
+  LuCopy as Copy,
+  LuCheck as Check,
+  LuSquare as Square,
+  LuMaximize2 as Maximize2,
+  LuMinimize2 as Minimize2,
+  LuLayers as Layers,
+  LuCpu as Cpu,
+  LuWrench as Wrench,
+  LuChevronDown as ChevronDown,
+  LuChevronUp as ChevronUp,
+} from 'react-icons/lu'
 
 import { FAQ, Message } from '../data/chatFaq'
 import { useLanguage } from '../contexts/LanguageContext'

@@ -1,7 +1,14 @@
 'use client'
 
 import React, { useState, useId } from 'react'
-import { Calculator, Clock, Layers, ArrowRight, CheckSquare, Square } from 'lucide-react'
+import {
+  LuCalculator as Calculator,
+  LuClock as Clock,
+  LuLayers as Layers,
+  LuArrowRight as ArrowRight,
+  LuSquareCheck as CheckSquare,
+  LuSquare as Square,
+} from 'react-icons/lu'
 
 interface ProjectEstimateCalculatorCardProps {
   locale?: 'en' | 'ua' | 'es'

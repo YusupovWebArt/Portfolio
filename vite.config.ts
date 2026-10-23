@@ -64,7 +64,7 @@ export default defineConfig({
       output: {
         manualChunks(id) {
           if (id.includes('node_modules')) {
-            if (id.includes('react-icons') || id.includes('lucide-react')) {
+            if (id.includes('react-icons')) {
               return 'vendor-icons'
             }
             if (/\/node_modules\/(ai|@ai-sdk)\//.test(id)) {

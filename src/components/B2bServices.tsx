@@ -2,21 +2,21 @@
 
 import { useState } from 'react'
 import {
-  Layout,
-  Zap,
-  Bot,
-  MapPin,
-  ShoppingCart,
-  ShieldCheck,
-  Lock,
-  Code2,
-  Sparkles,
-  Search,
-  Handshake,
-  Check,
-  Building2,
-  Briefcase,
-} from 'lucide-react'
+  LuPanelsTopLeft as Layout,
+  LuZap as Zap,
+  LuBot as Bot,
+  LuMapPin as MapPin,
+  LuShoppingCart as ShoppingCart,
+  LuShieldCheck as ShieldCheck,
+  LuLock as Lock,
+  LuCodeXml as Code2,
+  LuSparkles as Sparkles,
+  LuSearch as Search,
+  LuHandshake as Handshake,
+  LuCheck as Check,
+  LuBuilding2 as Building2,
+  LuBriefcase as Briefcase,
+} from 'react-icons/lu'
 import { useLanguage } from '../contexts/LanguageContext'
 
 const pymesIcons = [Layout, Zap, Bot, MapPin, ShoppingCart, ShieldCheck]

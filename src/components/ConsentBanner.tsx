@@ -1,7 +1,13 @@
 'use client'
 
 import React, { useState, useEffect, useRef, useSyncExternalStore } from 'react'
-import { Cookie, Shield, X, Check, Settings } from 'lucide-react'
+import {
+  LuCookie as Cookie,
+  LuShield as Shield,
+  LuX as X,
+  LuCheck as Check,
+  LuSettings as Settings,
+} from 'react-icons/lu'
 import { useConsent } from '../contexts/ConsentContext'
 import { useLanguage } from '../contexts/LanguageContext'
 import { CookiePolicyModal } from './CookiePolicyModal'

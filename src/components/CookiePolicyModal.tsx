@@ -1,7 +1,11 @@
 'use client'
 
 import React, { useRef } from 'react';
-import { X, ShieldCheck } from 'lucide-react';
+import {
+  LuX as X,
+  LuShieldCheck as ShieldCheck,
+} from 'react-icons/lu'
+;
 import { useLanguage } from '../contexts/LanguageContext';
 import { useDialogA11y } from '../hooks/useDialogA11y';
 

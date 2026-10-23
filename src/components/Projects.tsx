@@ -1,7 +1,14 @@
 'use client'
 
 import React, { useState, useEffect, useRef } from 'react'
-import { ExternalLink, X, ArrowRight, Search, ChevronLeft, ChevronRight } from 'lucide-react'
+import {
+  LuExternalLink as ExternalLink,
+  LuX as X,
+  LuArrowRight as ArrowRight,
+  LuSearch as Search,
+  LuChevronLeft as ChevronLeft,
+  LuChevronRight as ChevronRight,
+} from 'react-icons/lu'
 import { Project, TechnologyItem } from './projects/project-types'
 import { useLanguage } from '../contexts/LanguageContext'
 import { useDialogA11y } from '../hooks/useDialogA11y'

@@ -3,16 +3,16 @@
 import { useState } from 'react'
 import { useLanguage } from '../contexts/LanguageContext'
 import {
-  Layout,
-  Palette,
-  Brain,
-  Target,
-  MessageSquare,
-  ClipboardCheck,
-  TrendingUp,
-  Handshake,
-  Users,
-} from 'lucide-react'
+  LuPanelsTopLeft as Layout,
+  LuPalette as Palette,
+  LuBrain as Brain,
+  LuTarget as Target,
+  LuMessageSquare as MessageSquare,
+  LuClipboardCheck as ClipboardCheck,
+  LuTrendingUp as TrendingUp,
+  LuHandshake as Handshake,
+  LuUsers as Users,
+} from 'react-icons/lu'
 import { SiReact, SiWordpress, SiGoogleanalytics } from 'react-icons/si'
 
 const Skills = () => {

@@ -1,7 +1,11 @@
 'use client'
 
 import React from 'react'
-import { MessageCircle, FileText, ArrowRight } from 'lucide-react'
+import {
+  LuMessageCircle as MessageCircle,
+  LuFileText as FileText,
+  LuArrowRight as ArrowRight,
+} from 'react-icons/lu'
 
 interface ContactActionCardProps {
   locale?: 'en' | 'ua' | 'es'

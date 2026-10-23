@@ -1,7 +1,10 @@
 'use client'
 
 import React, { useState } from 'react'
-import { Copy, Check } from 'lucide-react'
+import {
+  LuCopy as Copy,
+  LuCheck as Check,
+} from 'react-icons/lu'
 
 interface MarkdownRendererProps {
   content: string

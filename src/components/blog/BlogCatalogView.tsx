@@ -3,19 +3,19 @@
 import React, { useState, useMemo } from 'react'
 import Link from 'next/link'
 import {
-  ArrowRight,
-  ArrowLeft,
-  Clock,
-  Calendar,
-  Search,
-  X,
-  Sparkles,
-  Bot,
-  Mail,
-  SlidersHorizontal,
-  BookOpen,
-  FolderOpen,
-} from 'lucide-react'
+  LuArrowRight as ArrowRight,
+  LuArrowLeft as ArrowLeft,
+  LuClock as Clock,
+  LuCalendar as Calendar,
+  LuSearch as Search,
+  LuX as X,
+  LuSparkles as Sparkles,
+  LuBot as Bot,
+  LuMail as Mail,
+  LuSlidersHorizontal as SlidersHorizontal,
+  LuBookOpen as BookOpen,
+  LuFolderOpen as FolderOpen,
+} from 'react-icons/lu'
 import {
   allBlogPosts,
   getBlogTitle,
