@@ -8,7 +8,8 @@ import {
   LuMoon as Moon,
   LuChevronDown as ChevronDown,
 } from 'react-icons/lu'
-import { FaGithub as Github, FaLinkedin as Linkedin, FaTwitter as Twitter } from 'react-icons/fa'
+import { FaGithub as Github, FaLinkedin as Linkedin } from 'react-icons/fa'
+import { FaXTwitter as XIcon } from 'react-icons/fa6'
 import { useTheme } from '../contexts/ThemeContext'
 import { useLanguage } from '../contexts/LanguageContext'
 import type { Lang } from '../contexts/LanguageContext'
@@ -271,10 +272,10 @@ const Header = () => {
               href="https://x.com/yusupovwebart"
               target="_blank"
               rel="noopener noreferrer"
-              aria-label="Twitter Profile"
+              aria-label="X Profile"
               className="text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white transition-colors"
             >
-              <Twitter size={20} aria-hidden="true" />
+              <XIcon size={18} aria-hidden="true" />
             </a>
 
             {/* Language Dropdown - Rightmost position with divider */}
@@ -342,10 +343,10 @@ const Header = () => {
                   href="https://x.com/yusupovwebart"
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="Twitter Profile"
+                  aria-label="X Profile"
                   className="text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white transition-colors"
                 >
-                  <Twitter size={20} aria-hidden="true" />
+                  <XIcon size={18} aria-hidden="true" />
                 </a>
 
                 {/* Language Dropdown in mobile menu */}
