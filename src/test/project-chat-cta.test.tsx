@@ -14,7 +14,7 @@ describe('Contextual Project AI Chat Trigger Specification (TDD)', () => {
       <ProjectChatTrigger
         projectSlug="it-magic"
         projectTitle="IT-Magic"
-        label="Ask AI about this project"
+        label="Ask AI about IT-Magic"
       />,
     )
 

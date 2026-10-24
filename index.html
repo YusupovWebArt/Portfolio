@@ -161,6 +161,7 @@
     </script>
 
     <script>
+      document.documentElement.classList.add('js');
       // Graceful chunk load error guard to eliminate white screens on stale deployed assets
       window.addEventListener('error', function(e) {
         if (e && e.message && /Loading chunk|Failed to fetch dynamically imported module/i.test(e.message)) {

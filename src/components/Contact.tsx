@@ -256,7 +256,6 @@ const Contact = () => {
                   href={item.link}
                   target={item.link === '#' || item.link.startsWith('#') ? undefined : '_blank'}
                   rel="noopener noreferrer"
-                  aria-label={item.kind && !revealed[item.kind] ? `${item.label}: ${ct.reveal.revealLabel}` : undefined}
                   onClick={(e) => {
                     if (item.kind && !revealed[item.kind]) {
                       e.preventDefault()

@@ -69,7 +69,7 @@ test.describe("Critical User Flows & Browser Integration", () => {
     await page.waitForLoadState("networkidle");
 
     // Click first View Details button
-    const firstDetailButton = page.getByRole("button", { name: /view details/i }).first();
+    const firstDetailButton = page.locator("#projects").getByRole("link", { name: /view details/i }).first();
     await firstDetailButton.click();
 
     // Verify detail screen is active

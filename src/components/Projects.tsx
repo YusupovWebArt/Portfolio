@@ -503,7 +503,7 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
                 document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })
               }}
               disabled={currentPage === 1}
-              aria-label={lang === 'ua' ? 'Попередня сторінка' : lang === 'es' ? 'Página anterior' : 'Previous page'}
+              aria-label={lang === 'ua' ? 'Назад (попередня сторінка)' : lang === 'es' ? 'Anterior (página anterior)' : 'Prev (previous page)'}
               className="p-2 sm:px-3 sm:py-2 rounded-xl text-xs sm:text-sm font-semibold transition border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 disabled:opacity-40 disabled:cursor-not-allowed hover:not-disabled:bg-slate-100 dark:hover:not-disabled:bg-slate-700 cursor-pointer flex items-center gap-1"
             >
               <ChevronLeft className="w-4 h-4" aria-hidden="true" />
@@ -550,7 +550,7 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
                 document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })
               }}
               disabled={currentPage === totalPages}
-              aria-label={lang === 'ua' ? 'Наступна сторінка' : lang === 'es' ? 'Página siguiente' : 'Next page'}
+              aria-label={lang === 'ua' ? 'Вперед (наступна сторінка)' : lang === 'es' ? 'Siguiente (página siguiente)' : 'Next (next page)'}
               className="p-2 sm:px-3 sm:py-2 rounded-xl text-xs sm:text-sm font-semibold transition border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 disabled:opacity-40 disabled:cursor-not-allowed hover:not-disabled:bg-slate-100 dark:hover:not-disabled:bg-slate-700 cursor-pointer flex items-center gap-1"
             >
               <span className="hidden sm:inline">{lang === 'ua' ? 'Вперед' : lang === 'es' ? 'Siguiente' : 'Next'}</span>

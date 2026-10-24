@@ -41,7 +41,7 @@ test.describe("WCAG 2.2 AA Accessibility Audits (EAA 2026 / EN 301 549)", () => 
     await page.waitForLoadState("networkidle");
 
     // Click first View Details button
-    const firstDetailButton = page.getByRole("button", { name: /view details/i }).first();
+    const firstDetailButton = page.locator("#projects").getByRole("link", { name: /view details/i }).first();
     await firstDetailButton.click();
 
     // Verify detail view mounted
@@ -185,7 +185,7 @@ test.describe("WCAG 2.2 AA Accessibility Audits (EAA 2026 / EN 301 549)", () => 
     await expect(chatModal).toBeHidden();
 
     // 6. Project detail tabpanels (N7) & screenshot modal controls
-    const firstDetailButton = page.locator("#projects").getByRole("button", { name: /view details|детальніше|ver detalles/i }).first();
+    const firstDetailButton = page.locator("#projects").getByRole("link", { name: /view details|детальніше|ver detalles/i }).first();
     await expect(firstDetailButton).toBeVisible();
     await firstDetailButton.scrollIntoViewIfNeeded();
     await firstDetailButton.click();

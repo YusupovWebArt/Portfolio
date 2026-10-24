@@ -85,7 +85,7 @@ const LangDropdown = ({ lang, label, onSelect, compact = false }: LangDropdownPr
         type="button"
         id="lang-dropdown-btn"
         onClick={() => setOpen((prev) => !prev)}
-        aria-label={label}
+        aria-label={`${label}: ${FLAGS[lang].code}`}
         aria-haspopup="listbox"
         aria-expanded={open}
         title={label}
@@ -104,7 +104,7 @@ const LangDropdown = ({ lang, label, onSelect, compact = false }: LangDropdownPr
       {open && (
         <div
           role="listbox"
-          aria-label={label}
+          aria-label={`${label}: ${FLAGS[lang].code}`}
           className="absolute right-0 mt-1.5 w-28 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl shadow-xl overflow-hidden z-50 animate-fade-in"
         >
           {(Object.entries(FLAGS) as [Lang, { component: React.FC; code: string }][]).map(
