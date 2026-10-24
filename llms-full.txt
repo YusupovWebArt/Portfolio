@@ -10,6 +10,9 @@
 - **Experience**: 5+ years of commercial software engineering across 71 production web platforms, e-commerce stores, cloud portals, and interactive web applications.
 - **Languages**: English, Spanish, Ukrainian, Russian (Full trilingual UI/SEO support on yusupovartur.com in EN, UA, ES across 246 static routes).
 - **Primary URL**: https://www.yusupovartur.com/en
+- **GitHub**: https://github.com/YusupovWebArt
+- **LinkedIn**: https://www.linkedin.com/in/artur-iusupov/
+- **Twitter / X**: https://x.com/yusupovwebart
 
 ## 2. Technical Stack & Engineering Standards
 
