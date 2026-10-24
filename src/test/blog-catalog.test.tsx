@@ -24,13 +24,13 @@ describe('BlogCatalogView Specification (TDD)', () => {
 
     // Shopify article should appear
     expect(screen.getByText(/Shopify Liquid vs Custom WooCommerce/i)).toBeDefined()
-    // WCAG article should NOT be visible
-    expect(screen.queryByText(/WCAG 2.2 AA & European Accessibility Act/i)).toBeNull()
+    // Unrelated page 1 article should NOT be visible while searching 'Liquid'
+    expect(screen.queryByText(/Autonomous Hybrid RAG/i)).toBeNull()
 
     // Clear search
     const clearBtn = screen.getByLabelText(/Clear search/i)
     fireEvent.click(clearBtn)
-    expect(screen.getByText(/WCAG 2.2 AA & European Accessibility Act/i)).toBeDefined()
+    expect(screen.getByText(/Autonomous Hybrid RAG/i)).toBeDefined()
   })
 
   it('filters articles by clicking category pills in the sidebar', () => {
@@ -94,5 +94,36 @@ describe('BlogCatalogView Specification (TDD)', () => {
     expect(screen.getByText(/Unitrition Architecture Deep-Dive/i)).toBeDefined()
     expect(screen.getByText(/Autonomous Hybrid RAG Architecture/i)).toBeDefined()
     expect(screen.queryByText(/Shopify Liquid vs Custom WooCommerce/i)).toBeNull()
+  })
+
+  it('paginates articles with 4 posts per page in standard grid and allows switching pages', () => {
+    render(<BlogCatalogView locale="en" />)
+
+    // Flagship post is visible on page 1
+    expect(screen.getByText(allBlogPosts[0].title.en)).toBeDefined()
+
+    // Page 1 standard posts (index 1 to 4) should be visible
+    expect(screen.getByText(allBlogPosts[1].title.en)).toBeDefined()
+    expect(screen.getByText(allBlogPosts[2].title.en)).toBeDefined()
+    expect(screen.getByText(allBlogPosts[3].title.en)).toBeDefined()
+    expect(screen.getByText(allBlogPosts[4].title.en)).toBeDefined()
+
+    // Page 2 standard posts (index 5 to 8) should NOT be visible on page 1
+    expect(screen.queryByText(allBlogPosts[5].title.en)).toBeNull()
+    expect(screen.queryByText(allBlogPosts[6].title.en)).toBeNull()
+
+    // Pagination nav exists
+    const page2Btn = screen.getByRole('button', { name: 'Page 2' })
+    expect(page2Btn).toBeDefined()
+
+    // Switch to page 2
+    fireEvent.click(page2Btn)
+
+    // Page 2 standard posts should now be visible
+    expect(screen.getByText(allBlogPosts[5].title.en)).toBeDefined()
+    expect(screen.getByText(allBlogPosts[6].title.en)).toBeDefined()
+
+    // Page 1 standard posts should no longer be visible
+    expect(screen.queryByText(allBlogPosts[1].title.en)).toBeNull()
   })
 })

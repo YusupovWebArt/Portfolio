@@ -483,6 +483,7 @@ export function buildPersonAndWebsiteJsonLd(locale = 'en') {
         sameAs: [
           'https://github.com/YusupovWebArt',
           'https://www.linkedin.com/in/artur-iusupov/',
+          'https://x.com/yusupovwebart',
         ],
         address: {
           '@type': 'PostalAddress',

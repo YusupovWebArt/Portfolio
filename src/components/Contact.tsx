@@ -12,7 +12,7 @@ import {
   LuTrash2 as Trash2,
   LuDatabase as Database,
 } from 'react-icons/lu'
-import { FaGithub as Github, FaLinkedin as Linkedin } from 'react-icons/fa'
+import { FaGithub as Github, FaLinkedin as Linkedin, FaTwitter as Twitter } from 'react-icons/fa'
 
 import { FAQ, Message } from '../data/chatFaq'
 import { useLanguage } from '../contexts/LanguageContext'
@@ -95,6 +95,12 @@ const Contact = () => {
       icon: <Linkedin className="w-5 h-5" />,
       label: 'LinkedIn',
       url: PUBLIC_PROFILES.linkedinUrl,
+      hoverColor: 'hover:text-purple-600 dark:hover:text-lime-400 hover:border-purple-500/40 dark:hover:border-lime-500/40',
+    },
+    {
+      icon: <Twitter className="w-5 h-5" />,
+      label: 'Twitter',
+      url: PUBLIC_PROFILES.twitterUrl,
       hoverColor: 'hover:text-purple-600 dark:hover:text-lime-400 hover:border-purple-500/40 dark:hover:border-lime-500/40',
     },
   ]
@@ -262,7 +268,7 @@ const Contact = () => {
                       void reveal(item.kind)
                     }
                   }}
-                  className="group flex items-center space-x-4 p-4 bg-white dark:bg-slate-900 lg:bg-white/40 lg:dark:bg-slate-900/40 lg:backdrop-blur-md border border-slate-200/60 dark:border-white/5 rounded-2xl hover:bg-white/70 dark:hover:bg-slate-900/80 hover:border-slate-300 dark:hover:border-white/10 hover:scale-[1.01] hover:-translate-y-0.5 transition-all duration-300 shadow-sm relative overflow-hidden"
+                  className="group flex items-center gap-4 p-4 bg-white dark:bg-slate-900 lg:bg-white/40 lg:dark:bg-slate-900/40 lg:backdrop-blur-md border border-slate-200/60 dark:border-white/5 rounded-2xl hover:bg-white/70 dark:hover:bg-slate-900/80 hover:border-slate-300 dark:hover:border-white/10 hover:scale-[1.01] hover:-translate-y-0.5 transition-all duration-300 shadow-sm relative overflow-hidden"
                 >
                   {/* Glass reflections and dynamic glow */}
                   <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-white/10 opacity-30 pointer-events-none" />

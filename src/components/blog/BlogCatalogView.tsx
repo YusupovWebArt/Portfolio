@@ -15,6 +15,8 @@ import {
   LuSlidersHorizontal as SlidersHorizontal,
   LuBookOpen as BookOpen,
   LuFolderOpen as FolderOpen,
+  LuChevronLeft as ChevronLeft,
+  LuChevronRight as ChevronRight,
 } from 'react-icons/lu'
 import {
   allBlogPosts,
@@ -32,6 +34,21 @@ interface BlogCatalogViewProps {
   onSelectProject?: (projectId: number) => void
 }
 
+const POSTS_PER_PAGE = 4
+
+function getPaginationPages(current: number, total: number): (number | '...')[] {
+  if (total <= 7) {
+    return Array.from({ length: total }, (_, i) => i + 1)
+  }
+  if (current <= 4) {
+    return [1, 2, 3, 4, 5, '...', total]
+  }
+  if (current >= total - 3) {
+    return [1, '...', total - 4, total - 3, total - 2, total - 1, total]
+  }
+  return [1, '...', current - 1, current, current + 1, '...', total]
+}
+
 export default function BlogCatalogView({
   locale,
   onBack,
@@ -41,6 +58,15 @@ export default function BlogCatalogView({
   const [selectedCategory, setSelectedCategory] = useState<string>('all')
   const [selectedTag, setSelectedTag] = useState<string | null>(null)
   const [searchQuery, setSearchQuery] = useState<string>('')
+  const [currentPage, setCurrentPage] = useState<number>(1)
+
+  // Adjust pagination when filter criteria change during render (no cascading effect)
+  const filterKey = `${selectedCategory}|${selectedTag || ''}|${searchQuery}`
+  const [prevFilterKey, setPrevFilterKey] = useState<string>(filterKey)
+  if (filterKey !== prevFilterKey) {
+    setPrevFilterKey(filterKey)
+    setCurrentPage(1)
+  }
 
   const isUa = locale === 'ua'
   const isEs = locale === 'es'
@@ -188,13 +214,21 @@ export default function BlogCatalogView({
       ? 'Artículos técnicos en profundidad sobre arquitectura web, Next.js 16, WordPress a medida, motores de IA con RAG en cliente y accesibilidad WCAG 2.2 AA.'
       : 'In-depth engineering writeups on modern web architecture, Next.js 16, custom WordPress, autonomous in-browser RAG AI engines, and WCAG 2.2 AA compliance.'
 
-  // Determine featured post
+  // Determine featured post (rendered on Page 1 only when not actively filtering)
   const featuredPost: BlogPost | null =
-    !isFiltering && allBlogPosts.length > 0 ? allBlogPosts[0] : null
-  const standardPosts: BlogPost[] =
-    !isFiltering && allBlogPosts.length > 1
-      ? allBlogPosts.slice(1)
-      : filteredPosts
+    !isFiltering && currentPage === 1 && allBlogPosts.length > 0 ? allBlogPosts[0] : null
+
+  const postsToPaginate = useMemo(() => {
+    if (isFiltering) return filteredPosts
+    return allBlogPosts.slice(1)
+  }, [isFiltering, filteredPosts])
+
+  const totalPages = Math.max(1, Math.ceil(postsToPaginate.length / POSTS_PER_PAGE))
+
+  const paginatedPosts = useMemo(() => {
+    const startIndex = (currentPage - 1) * POSTS_PER_PAGE
+    return postsToPaginate.slice(startIndex, startIndex + POSTS_PER_PAGE)
+  }, [postsToPaginate, currentPage])
 
   return (
     <div className="min-h-screen pt-24 pb-20 bg-slate-50 dark:bg-slate-900 transition-colors duration-300">
@@ -416,7 +450,7 @@ export default function BlogCatalogView({
           </aside>
 
           {/* ================= RIGHT MAIN CONTENT AREA ================= */}
-          <div className="lg:col-span-8 xl:col-span-9 space-y-8">
+          <div id="blog-catalog-top" className="lg:col-span-8 xl:col-span-9 space-y-8">
             {/* Active Filters Pill Bar */}
             {isFiltering && (
               <div className="flex flex-wrap items-center justify-between gap-3 p-4 bg-purple-50 dark:bg-slate-800/80 rounded-2xl border border-purple-200/80 dark:border-lime-500/20">
@@ -607,9 +641,10 @@ export default function BlogCatalogView({
             )}
 
             {/* Standard 2-Column Articles Grid */}
-            {standardPosts.length > 0 ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {standardPosts.map((post) => {
+            {paginatedPosts.length > 0 ? (
+              <>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {paginatedPosts.map((post) => {
                   const title = getBlogTitle(post, locale)
                   const desc = getBlogDescription(post, locale)
                   const readTime = getBlogReadTime(post, locale)
@@ -761,6 +796,97 @@ export default function BlogCatalogView({
                   )
                 })}
               </div>
+
+              {totalPages > 1 && (
+                <nav
+                  aria-label={
+                    isUa
+                      ? 'Навігація по сторінках статей'
+                      : isEs
+                        ? 'Paginación de artículos'
+                        : 'Articles pagination'
+                  }
+                  className="flex items-center justify-center mt-12 gap-1.5 sm:gap-2 select-none"
+                >
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setCurrentPage((prev) => Math.max(1, prev - 1))
+                      const el = document.getElementById('blog-catalog-top'); if (typeof el?.scrollIntoView === 'function') el.scrollIntoView({ behavior: 'smooth' })
+                    }}
+                    disabled={currentPage === 1}
+                    aria-label={
+                      isUa
+                        ? 'Назад (попередня сторінка)'
+                        : isEs
+                          ? 'Anterior (página anterior)'
+                          : 'Prev (previous page)'
+                    }
+                    className="p-2 sm:px-3 sm:py-2 rounded-xl text-xs sm:text-sm font-semibold transition border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 disabled:opacity-40 disabled:cursor-not-allowed hover:not-disabled:bg-slate-100 dark:hover:not-disabled:bg-slate-700 cursor-pointer flex items-center gap-1"
+                  >
+                    <ChevronLeft className="w-4 h-4" aria-hidden="true" />
+                    <span className="hidden sm:inline">
+                      {isUa ? 'Назад' : isEs ? 'Anterior' : 'Prev'}
+                    </span>
+                  </button>
+
+                  {getPaginationPages(currentPage, totalPages).map((page, idx) => {
+                    if (page === '...') {
+                      return (
+                        <span
+                          key={`ellipsis-${idx}`}
+                          className="px-2 py-1 text-slate-400 dark:text-slate-500 font-bold select-none text-xs sm:text-sm"
+                        >
+                          ...
+                        </span>
+                      )
+                    }
+                    const isCurrent = currentPage === page
+                    return (
+                      <button
+                        key={page}
+                        onClick={() => {
+                          setCurrentPage(page)
+                          const el = document.getElementById('blog-catalog-top'); if (typeof el?.scrollIntoView === 'function') el.scrollIntoView({ behavior: 'smooth' })
+                        }}
+                        aria-current={isCurrent ? 'page' : undefined}
+                        aria-label={`${isUa ? 'Сторінка' : isEs ? 'Página' : 'Page'} ${page}`}
+                        type="button"
+                        className={`min-w-9 h-9 sm:min-w-10 sm:h-10 px-2.5 rounded-xl font-bold text-xs sm:text-sm transition cursor-pointer flex items-center justify-center ${
+                          isCurrent
+                            ? 'bg-purple-600 text-white dark:bg-lime-500 dark:text-slate-900 shadow-md shadow-purple-500/20 dark:shadow-lime-500/20'
+                            : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700/80'
+                        }`}
+                      >
+                        {page}
+                      </button>
+                    )
+                  })}
+
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setCurrentPage((prev) => Math.min(totalPages, prev + 1))
+                      const el = document.getElementById('blog-catalog-top'); if (typeof el?.scrollIntoView === 'function') el.scrollIntoView({ behavior: 'smooth' })
+                    }}
+                    disabled={currentPage === totalPages}
+                    aria-label={
+                      isUa
+                        ? 'Вперед (наступна сторінка)'
+                        : isEs
+                          ? 'Siguiente (página siguiente)'
+                          : 'Next (next page)'
+                    }
+                    className="p-2 sm:px-3 sm:py-2 rounded-xl text-xs sm:text-sm font-semibold transition border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 disabled:opacity-40 disabled:cursor-not-allowed hover:not-disabled:bg-slate-100 dark:hover:not-disabled:bg-slate-700 cursor-pointer flex items-center gap-1"
+                  >
+                    <span className="hidden sm:inline">
+                      {isUa ? 'Вперед' : isEs ? 'Siguiente' : 'Next'}
+                    </span>
+                    <ChevronRight className="w-4 h-4" aria-hidden="true" />
+                  </button>
+                </nav>
+              )}
+              </>
             ) : (
               /* Empty Search / Filter Results State */
               <div className="text-center py-16 bg-white dark:bg-slate-800/50 rounded-2xl border border-slate-200 dark:border-slate-700 p-8">

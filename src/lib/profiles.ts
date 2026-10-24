@@ -10,4 +10,6 @@ export const PUBLIC_PROFILES = {
   experience: '5+ years commercial experience',
   githubUrl: 'https://github.com/YusupovWebArt',
   linkedinUrl: 'https://www.linkedin.com/in/artur-iusupov/',
+  twitterUrl: 'https://x.com/yusupovwebart',
+  xUrl: 'https://x.com/yusupovwebart',
 } as const

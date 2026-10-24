@@ -75,6 +75,7 @@ export interface DecodedContactInfo {
   telegramUrl: string
   githubUrl: string
   linkedinUrl: string
+  twitterUrl: string
 }
 
 export function getDecodedContactInfo(): DecodedContactInfo {
@@ -90,5 +91,6 @@ export function getDecodedContactInfo(): DecodedContactInfo {
     telegramUrl: decodeContact(OBFUSCATED_CONTACTS.telegramUrl),
     githubUrl: PUBLIC_PROFILES.githubUrl,
     linkedinUrl: PUBLIC_PROFILES.linkedinUrl,
+    twitterUrl: PUBLIC_PROFILES.twitterUrl,
   }
 }

@@ -31,6 +31,7 @@ This workflow accelerates development velocity by **3x**, minimizes technical de
 
 - **Portfolio Website (Live):** [yusupovwebart.github.io/Portfolio](https://yusupovwebart.github.io/Portfolio/)
 - **LinkedIn:** [linkedin.com/in/artur-iusupov](https://www.linkedin.com/in/artur-iusupov/)
+- **X (Twitter):** [x.com/yusupovwebart](https://x.com/yusupovwebart)
 - **GitHub:** [github.com/YusupovWebArt](https://github.com/YusupovWebArt)
 - **Direct Contact:** Available via the interactive AI Chatbot and secure contact forms on my portfolio!
 
