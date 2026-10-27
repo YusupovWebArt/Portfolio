@@ -54,7 +54,7 @@ describe('Featured Projects Search & Filtering Specification (TDD)', () => {
     const searchInput = screen.getByRole('textbox')
     fireEvent.change(searchInput, { target: { value: 'Next.js Supabase' } })
 
-    expect(screen.getByText('Fullstack AI Lab (formerly WPSKILLS)')).toBeDefined()
+    expect(screen.getByText('Fullstack AI Lab')).toBeDefined()
 
     // Switch to Shopify tab while searching for Next.js Supabase
     const shopifyTab = screen.getByRole('button', { name: 'Shopify' })
@@ -67,7 +67,7 @@ describe('Featured Projects Search & Filtering Specification (TDD)', () => {
     expect(showAllMatchesBtn).toBeDefined()
 
     fireEvent.click(showAllMatchesBtn)
-    expect(screen.getByText('Fullstack AI Lab (formerly WPSKILLS)')).toBeDefined()
+    expect(screen.getByText('Fullstack AI Lab')).toBeDefined()
   })
 
   it('should render semantic links for project details that support both href and click handler', () => {
@@ -79,7 +79,7 @@ describe('Featured Projects Search & Filtering Specification (TDD)', () => {
     )
 
     const searchInput = screen.getByRole('textbox')
-    fireEvent.change(searchInput, { target: { value: 'WPSKILLS' } })
+    fireEvent.change(searchInput, { target: { value: 'Fullstack AI Lab' } })
 
     const viewDetailsLinks = screen.getAllByRole('link', {
       name: /view details|детальніше|ver detalles/i,

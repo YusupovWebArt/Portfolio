@@ -56,7 +56,7 @@ describe('RAG Knowledge Base Specification (TDD)', () => {
 
     const wpskills = findChunkBySlug('wpskills')
     expect(wpskills).toBeDefined()
-    expect(wpskills?.title).toContain('WPSKILLS')
+    expect(wpskills?.title).toContain('Fullstack AI Lab')
   })
 
   it('should include profile, service, and methodology knowledge chunks', () => {

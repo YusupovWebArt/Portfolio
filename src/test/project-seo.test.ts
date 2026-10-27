@@ -99,10 +99,10 @@ describe('Automated Project SEO/GEO Metadata Specification (TDD)', () => {
     const llmsContent = fs.readFileSync(llmsPath, 'utf8')
     const llmsFullContent = fs.readFileSync(llmsFullPath, 'utf8')
 
-    expect(llmsContent).toContain('WPSKILLS')
+    expect(llmsContent).toContain('Fullstack AI Lab')
     expect(llmsContent).toContain('Unitrition')
     expect(llmsContent).not.toContain('\u2014')
-    expect(llmsFullContent).toContain('WPSKILLS')
+    expect(llmsFullContent).toContain('Fullstack AI Lab')
     expect(llmsFullContent).not.toContain('\u2014')
 
     for (const entry of getAllProjectEntries()) {

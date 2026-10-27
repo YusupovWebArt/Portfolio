@@ -1137,20 +1137,20 @@ export function resolveCategoryOrTechShowcase(
       lang === 'ua'
         ? 'У напрямку Next.js 16 та React 19 я створюю надшвидкі масштабовані веб-платформи:\n\n' +
           '- **Next.js 16 Portfolio Platform**: Повноцінна fullstack-платформа на React 19 Server Components із автономним Hybrid RAG AI-рушієм, SSG 213+ сторінками та WCAG 2.2 AA.\n' +
-          '- **Fullstack AI Lab (formerly WPSKILLS)**: Інтерактивна інженерна освітня платформа на Next.js 16, React 19, нативному Rust-компіляторі MDX-RS (1 135+ уроків), симуляторах рантайму, WASM-пісочниці та Supabase.\n' +
+          '- **Fullstack AI Lab**: Інтерактивна інженерна освітня платформа на Next.js 16, React 19, нативному Rust-компіляторі MDX-RS (1 135+ уроків), симуляторах рантайму, WASM-пісочниці та Supabase.\n' +
           '- **Unitrition**: Платформа персоналізованого харчування на Next.js 16 App Router, Headless WordPress, Supabase та USDA API.\n' +
           '- **My React Portfolio Website**: Високопродуктивний SPA на React 19, TypeScript та Tailwind CSS v4 із Vitest тест-сьютом.\n\n' +
           'Ознайомтеся з картками проєктів нижче:'
         : lang === 'es'
           ? 'En Next.js 16 y React 19 desarrollo plataformas web ultrarrápidas y accesibles:\n\n' +
             '- **Next.js 16 Portfolio Platform**: Plataforma fullstack con React 19 Server Components, motor Hybrid RAG autónomo, 213+ páginas SSG y WCAG 2.2 AA.\n' +
-            '- **Fullstack AI Lab (formerly WPSKILLS)**: Plataforma educativa interactiva de ingeniería con Next.js 16, React 19, compilador Rust MDX-RS (1.135+ lecciones), simuladores, sandbox WASM y Supabase.\n' +
+            '- **Fullstack AI Lab**: Plataforma educativa interactiva de ingeniería con Next.js 16, React 19, compilador Rust MDX-RS (1.135+ lecciones), simuladores, sandbox WASM y Supabase.\n' +
             '- **Unitrition**: Plataforma de nutrición con Next.js 16 App Router, Headless WordPress, Supabase y API de USDA.\n' +
             '- **My React Portfolio Website**: Aplicación SPA de alto rendimiento con React 19, TypeScript y pruebas Vitest.\n\n' +
             'Explora los proyectos a continuación:'
           : 'In Next.js 16 and React 19, I architect sub-second, accessible web applications:\n\n' +
             '- **Next.js 16 Portfolio Platform**: Enterprise fullstack system with React 19 Server Components, autonomous Hybrid RAG, 213+ SSG pages, and WCAG 2.2 AA.\n' +
-            '- **Fullstack AI Lab (formerly WPSKILLS)**: Interactive engineering educational platform built with Next.js 16, React 19, native Rust MDX-RS compilation (1,135+ lessons), runtime simulators, in-browser WASM playground, and Supabase.\n' +
+            '- **Fullstack AI Lab**: Interactive engineering educational platform built with Next.js 16, React 19, native Rust MDX-RS compilation (1,135+ lessons), runtime simulators, in-browser WASM playground, and Supabase.\n' +
             '- **Unitrition**: Personalized nutrition modeling platform built with Next.js 16 App Router, Headless WordPress, Supabase, and USDA API.\n' +
             '- **My React Portfolio Website**: High-performance single page application built with React 19, TypeScript, and 29 Vitest specs.\n\n' +
             'Explore the project cards below:'
@@ -1343,7 +1343,7 @@ export function synthesizeLocalRagAnswer(
       return stripEmDashes(
         'Мої власні авторські розробки (Personal Flagship Products), де я виступаю архітектором, Product Owner та Lead Fullstack інженером:\n\n' +
           '1. **Next.js 16 & Hybrid RAG Portfolio Platform** (yusupovartur.com) - Enterprise fullstack-платформа на Next.js 16 App Router, React 19 Server Components, TypeScript 6 та кастомному автономному AI Hybrid RAG двигуні, що індексує 71 проєкт на 213+ SSG маршрутах (EN/UA/ES) із WCAG 2.2 AA.\n' +
-          '2. **Fullstack AI Lab (formerly WPSKILLS)** (fullstackailab.com) - Інтерактивна освітня інженерна платформа для вивчення Fullstack (React 19, Next.js 16, TypeScript, WordPress core) на базі нативного Rust-компілятора MDX-RS (1 135+ уроків), симуляторів рантайму, WASM-пісочниці, генератора аудіопідкастів для Google NotebookLM та гейміфікації на Supabase.\n' +
+          '2. **Fullstack AI Lab** (fullstackailab.com) - Інтерактивна освітня інженерна платформа для вивчення Fullstack (React 19, Next.js 16, TypeScript, WordPress core) на базі нативного Rust-компілятора MDX-RS (1 135+ уроків), симуляторів рантайму, WASM-пісочниці, генератора аудіопідкастів для Google NotebookLM та гейміфікації на Supabase.\n' +
           '3. **Unitrition** (unitrition.info) - Повнофункціональна платформа персоналізованого харчування для 10 дієтичних планів на базі Headless WordPress, Next.js 16, Supabase та інтеграції USDA FoodData Central API.\n' +
           '4. **My React Portfolio Website** - Високопродуктивний односторінковий застосунок-портфоліо на React 19, TypeScript, Tailwind CSS v4 та 3-мовній i18n екосистемі із 29 Vitest тестами.\n\n' +
           'Нижче доступні картки цих проєктів із прямим переходом до кейсів:'
@@ -1353,7 +1353,7 @@ export function synthesizeLocalRagAnswer(
       return stripEmDashes(
         'Mis proyectos propios destacados (Personal Flagship Products), donde actúo como arquitecto, Product Owner y Lead Fullstack Engineer:\n\n' +
           '1. **Next.js 16 & Hybrid RAG Portfolio Platform** (yusupovartur.com) - Plataforma fullstack empresarial con Next.js 16 App Router, React 19 Server Components, TypeScript 6 y motor propio Hybrid RAG que indexa 71 proyectos en más de 213 rutas SSG (EN/UA/ES) con WCAG 2.2 AA.\n' +
-          '2. **Fullstack AI Lab (formerly WPSKILLS)** (fullstackailab.com) - Plataforma educativa interactiva de ingeniería Fullstack (React 19, Next.js 16, TypeScript, WordPress core) impulsada por compilación Rust MDX-RS (1.135+ lecciones), simuladores de ejecución, sandbox WASM, generador de podcasts para Google NotebookLM y gamificación en Supabase.\n' +
+          '2. **Fullstack AI Lab** (fullstackailab.com) - Plataforma educativa interactiva de ingeniería Fullstack (React 19, Next.js 16, TypeScript, WordPress core) impulsada por compilación Rust MDX-RS (1.135+ lecciones), simuladores de ejecución, sandbox WASM, generador de podcasts para Google NotebookLM y gamificación en Supabase.\n' +
           '3. **Unitrition** (unitrition.info) - Plataforma completa de nutrición personalizada para 10 dietas, construida con Headless WordPress, Next.js 16 App Router, Supabase y API de USDA.\n' +
           '4. **My React Portfolio Website** - Aplicación SPA de alto rendimiento desarrollada con React 19, TypeScript, Tailwind CSS v4 y sistema i18n trilingüe respaldada por 29 pruebas Vitest.\n\n' +
           'A continuación puedes explorar las tarjetas de estos proyectos:'
@@ -1362,7 +1362,7 @@ export function synthesizeLocalRagAnswer(
     return stripEmDashes(
       'My personal flagship products where I act as Architect, Product Owner, and Lead Fullstack Engineer:\n\n' +
         '1. **Next.js 16 & Hybrid RAG Portfolio Platform** (yusupovartur.com) - Enterprise fullstack platform with Next.js 16 App Router, React 19 Server Components, TypeScript 6, and a custom autonomous Hybrid RAG engine indexing 71 case studies across 213+ SSG routes (EN/UA/ES) with WCAG 2.2 AA.\n' +
-        '2. **Fullstack AI Lab (formerly WPSKILLS)** (fullstackailab.com) - Interactive engineering educational platform for Fullstack mastery (React 19, Next.js 16, TypeScript, WordPress core internals) powered by native Rust MDX-RS compilation (1,135+ lessons), runtime simulators, in-browser WASM playground, Google NotebookLM audio prompt engine, and Supabase gamification.\n' +
+        '2. **Fullstack AI Lab** (fullstackailab.com) - Interactive engineering educational platform for Fullstack mastery (React 19, Next.js 16, TypeScript, WordPress core internals) powered by native Rust MDX-RS compilation (1,135+ lessons), runtime simulators, in-browser WASM playground, Google NotebookLM audio prompt engine, and Supabase gamification.\n' +
         '3. **Unitrition** (unitrition.info) - Comprehensive dietary modeling platform supporting 10 nutrition plans, built with Headless WordPress, Next.js 16 App Router, Supabase, and USDA API integration.\n' +
         '4. **My React Portfolio Website** - High-performance single-page portfolio application built with React 19, TypeScript, Tailwind CSS v4, and 3-language i18n backed by 29 Vitest specs.\n\n' +
         'Explore the case study cards below:'
