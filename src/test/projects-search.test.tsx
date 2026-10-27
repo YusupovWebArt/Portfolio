@@ -36,7 +36,7 @@ describe('Featured Projects Search & Filtering Specification (TDD)', () => {
     expect(matchesProjectSearch(itMagic, 'WordPress AWS')).toBe(true)
 
     // Non-matching multi-word query
-    expect(matchesProjectSearch(wpskills, 'Next.js WooCommerce')).toBe(false)
+    expect(matchesProjectSearch(wpskills, 'Next.js Shopify')).toBe(false)
   })
 
   it('should filter projects in UI with multi-word queries and show cross-category recovery CTA when needed', () => {
@@ -54,7 +54,7 @@ describe('Featured Projects Search & Filtering Specification (TDD)', () => {
     const searchInput = screen.getByRole('textbox')
     fireEvent.change(searchInput, { target: { value: 'Next.js Supabase' } })
 
-    expect(screen.getByText('WPSKILLS')).toBeDefined()
+    expect(screen.getByText('Fullstack AI Lab (formerly WPSKILLS)')).toBeDefined()
 
     // Switch to Shopify tab while searching for Next.js Supabase
     const shopifyTab = screen.getByRole('button', { name: 'Shopify' })
@@ -67,7 +67,7 @@ describe('Featured Projects Search & Filtering Specification (TDD)', () => {
     expect(showAllMatchesBtn).toBeDefined()
 
     fireEvent.click(showAllMatchesBtn)
-    expect(screen.getByText('WPSKILLS')).toBeDefined()
+    expect(screen.getByText('Fullstack AI Lab (formerly WPSKILLS)')).toBeDefined()
   })
 
   it('should render semantic links for project details that support both href and click handler', () => {

@@ -21,7 +21,7 @@
 ## Personal Flagship Products
 
 - [Next.js 16 & Hybrid RAG Portfolio Platform](https://www.yusupovartur.com/en/projects/yusupovartur-nextjs-portfolio): Enterprise fullstack platform with React 19 Server Components, autonomous Hybrid RAG engine indexing 71 case studies and 9 engineering articles across 246+ SSG routes (EN/UA/ES), and WCAG 2.2 AA compliance.
-- [WPSKILLS Interactive Engineering Platform](https://www.yusupovartur.com/en/projects/wpskills): Interactive EdTech platform for Fullstack mastery (React 19, Next.js 16, WordPress core internals, TypeScript) powered by native Rust MDX-RS compilation across 1,100+ lessons, runtime simulators, Google NotebookLM Audio Overview prompt generator, and Supabase personal cloud progress synchronization.
+- [Fullstack AI Lab (formerly WPSKILLS)](https://www.yusupovartur.com/en/projects/wpskills): Interactive EdTech platform for Fullstack mastery (React 19, Next.js 16, WordPress core internals, TypeScript) powered by native Rust MDX-RS compilation across 1,135+ lessons, in-browser WASM WordPress 7.0 / PHP 8.4 Playground, AI Technical Interview Engine, Google NotebookLM Audio Overview prompt generator, and Supabase personal cloud progress synchronization. Live: https://www.fullstackailab.com/ru
 - [Unitrition](https://www.yusupovartur.com/en/projects/unitrition): Personalized nutrition modeling platform supporting 10 dietary regimens, built with Next.js 16 App Router, Headless WordPress, Supabase, and USDA FoodData Central API.
 - [My React Portfolio Website](https://www.yusupovartur.com/en/projects/webart-react-portfolio): High-performance SPA/PWA built with React 19, TypeScript, Tailwind CSS v4, View Transitions API, and Vitest test suite.
 

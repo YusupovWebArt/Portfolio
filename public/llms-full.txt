@@ -23,10 +23,10 @@
 
 ## 3. Flagship Case Studies (Detailed Breakdown)
 
-### 3.1. WPSKILLS - Interactive Fullstack Engineering Platform
+### 3.1. Fullstack AI Lab (formerly WPSKILLS) - Interactive Fullstack Engineering Platform
 - **Case Study URL**: https://www.yusupovartur.com/en/projects/wpskills
 - **Deep-Dive Article**: https://www.yusupovartur.com/en/blog/wpskills-interactive-edtech-architecture
-- **Live URL**: https://wpskills.vercel.app
+- **Live URL**: https://www.fullstackailab.com/ru
 - **Stack**: Next.js 16, React 19, TypeScript, Tailwind CSS v4, Rust MDX-RS, Zustand v5, Supabase, Vitest 4, Gemini NotebookLM Audio Prompt Engine.
 - **Highlights**:
   - Compiles 1,100+ MDX lessons and 1,700+ static pages in under 90 seconds (reduced from 21.6 minutes via an in-memory content caching pipeline and native Rust MDX-RS).
@@ -100,7 +100,7 @@
 1. **Next.js 16 & Hybrid RAG Portfolio Platform** (nextjs) - https://www.yusupovartur.com/en/projects/yusupovartur-nextjs-portfolio | Live: https://www.yusupovartur.com/ | Deep-Dive: https://www.yusupovartur.com/en/blog/autonomous-hybrid-rag-architecture-browser
    - **Stack**: Next.js 16 (App Router), React 19, TypeScript 6.x, Tailwind CSS v4, Trilingual i18n (/en, /ua, /es), Next.js Route Handlers
    - **Overview**: Enterprise-grade fullstack portfolio and AI engineering platform built with Next.js 16 App Router, React 19 Server Components, TypeScript 6, and a custom Hybrid RAG AI Assistant indexing 70 project case studies across 210+ localized SSG routes (EN/UA/ES), deployed on Vercel with Cloudflare DNS and WCAG 2.2 AA compliance.
-2. **WPSKILLS** (nextjs, react, wordpress, fullstack) - https://www.yusupovartur.com/en/projects/wpskills | Live: https://wpskills.vercel.app | Deep-Dive: https://www.yusupovartur.com/en/blog/wpskills-interactive-edtech-architecture
+2. **Fullstack AI Lab (formerly WPSKILLS)** (nextjs, react, wordpress, fullstack) - https://www.yusupovartur.com/en/projects/wpskills | Live: https://www.fullstackailab.com/ru | Deep-Dive: https://www.yusupovartur.com/en/blog/wpskills-interactive-edtech-architecture
    - **Stack**: Next.js 16.3, React 19.2, TypeScript 5.8, Tailwind CSS v4, Zustand v5, Lucide React & Base UI
    - **Overview**: An interactive engineering educational platform designed for mastering modern Fullstack development, React 19, Next.js 16 App Router, WordPress core internals, TypeScript, and AI-augmented software engineering. Powered by Rust-based MDX-RS compilation across 1,100+ lessons, interactive Explorable Explanations (<ArchitectureFlow>, <StepFlow>, checkpoints), zero-metaphor Gemini NotebookLM Audio Overview generators, gamified XP/Streak engine, and 4-locale internationalization (EN/RU/UK/ES).
 3. **Unitrition** (nextjs, wordpress) - https://www.yusupovartur.com/en/projects/unitrition | Live: https://www.unitrition.info | Deep-Dive: https://www.yusupovartur.com/en/blog/unitrition-headless-healthtech-architecture

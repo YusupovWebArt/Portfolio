@@ -127,13 +127,13 @@ describe('RAG Synthesis & Multilingual Routing Specification (TDD)', () => {
       const featuresUa = synthesizeLocalRagAnswer('Основні можливості та функції проєкту WPSKILLS?', {
         locale: 'ua',
       })
-      expect(featuresUa).toContain('Основні функції проєкту WPSKILLS:')
+      expect(featuresUa).toContain('Основні функції проєкту Fullstack AI Lab (formerly WPSKILLS):')
       expect(featuresUa).toContain('Нативна компіляція на Rust MDX-RS')
 
       const archEs = synthesizeLocalRagAnswer('¿Cuál es la arquitectura de WPSKILLS?', {
         locale: 'es',
       })
-      expect(archEs).toContain('Arquitectura e ingeniería de WPSKILLS:')
+      expect(archEs).toContain('Arquitectura e ingeniería de Fullstack AI Lab (formerly WPSKILLS):')
       expect(archEs).toContain('Desafíos clave:')
       expect(archEs).toContain('Soluciones implementadas:')
     })
