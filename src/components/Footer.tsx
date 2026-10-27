@@ -120,23 +120,23 @@ const Footer = () => {
           <div className="w-full h-px bg-slate-800 dark:bg-slate-900 mb-8"></div>
 
           {/* Copyright & Settings */}
-          <div className="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
-            <div className="flex items-center space-x-3 text-slate-400 dark:text-slate-400 text-sm">
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-xs sm:text-sm text-slate-400 dark:text-slate-400 pb-8 sm:pb-0">
+            <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3 text-center sm:text-left">
               <span>© {currentYear} Artur Yusupov. {t.footer.copyright}</span>
-              <span className="text-slate-600 dark:text-slate-600">•</span>
+              <span className="hidden sm:inline text-slate-600 dark:text-slate-600" aria-hidden="true">•</span>
               <button
                 type="button"
                 onClick={openSettings}
-                className="inline-flex items-center space-x-1.5 hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-400 dark:focus-visible:outline-lime-400 rounded-sm cursor-pointer"
+                className="inline-flex items-center gap-1.5 hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-400 dark:focus-visible:outline-lime-400 rounded-md px-2 py-1 hover:bg-slate-800/60 cursor-pointer"
               >
-                <Cookie className="w-3.5 h-3.5" aria-hidden="true" />
+                <Cookie className="w-3.5 h-3.5 shrink-0" aria-hidden="true" />
                 <span>{t.footer.cookieSettings}</span>
               </button>
             </div>
 
-            <div className="flex items-center space-x-2 text-slate-400 dark:text-slate-400 text-sm">
+            <div className="flex items-center justify-center gap-1.5 text-center">
               <span>{t.footer.madeWith}</span>
-              <Code className="w-4 h-4 text-lime-400 dark:text-purple-400" />
+              <Code className="w-4 h-4 text-lime-400 dark:text-purple-400 shrink-0" aria-hidden="true" />
               <span>{t.footer.techUsing}</span>
             </div>
           </div>

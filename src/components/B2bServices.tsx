@@ -34,7 +34,7 @@ const B2bServices = () => {
   return (
     <section
       id="b2b-services"
-      className="py-20 bg-gradient-to-br from-slate-50 via-white to-slate-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 transition-colors duration-300 relative overflow-hidden"
+      className="py-20 scroll-mt-20 lg:scroll-mt-24 bg-gradient-to-br from-slate-50 via-white to-slate-50 dark:from-slate-900 dark:via-slate-800 dark:to-slate-900 transition-colors duration-300 relative overflow-hidden"
     >
       {/* Background Effects */}
       <div className="hidden lg:block absolute inset-0">
@@ -60,31 +60,31 @@ const B2bServices = () => {
           </p>
 
           {/* Interactive Audience Switcher (Tabs) */}
-          <div className="inline-flex p-1.5 bg-slate-200/80 dark:bg-slate-800/80 backdrop-blur-md rounded-2xl border border-slate-300/50 dark:border-white/10 shadow-inner max-w-full overflow-x-auto">
+          <div className="flex flex-col sm:inline-flex sm:flex-row p-1.5 bg-slate-200/80 dark:bg-slate-800/80 backdrop-blur-md rounded-2xl border border-slate-300/50 dark:border-white/10 shadow-inner w-full sm:w-auto max-w-md sm:max-w-none mx-auto gap-1.5 sm:gap-0">
             <button
               type="button"
               onClick={() => setActiveTab('pymes')}
-              className={`flex items-center gap-2 px-5 py-3 rounded-xl text-xs sm:text-sm font-bold transition-all duration-300 ${
+              className={`flex items-center justify-center gap-2.5 px-5 py-3.5 sm:py-3 rounded-xl text-xs sm:text-sm font-bold transition-all duration-300 w-full sm:w-auto ${
                 isPymes
-                  ? 'bg-white dark:bg-slate-900 text-purple-600 dark:text-lime-400 shadow-md scale-[1.02]'
+                  ? 'bg-white dark:bg-slate-900 text-purple-600 dark:text-lime-400 shadow-md scale-[1.01] sm:scale-[1.02]'
                   : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
               }`}
             >
-              <Briefcase className="w-4 h-4" />
-              <span>{b2b.tabs.pymes}</span>
+              <Briefcase className="w-4 h-4 shrink-0" />
+              <span className="leading-snug">{b2b.tabs.pymes}</span>
             </button>
 
             <button
               type="button"
               onClick={() => setActiveTab('agencies')}
-              className={`flex items-center gap-2 px-5 py-3 rounded-xl text-xs sm:text-sm font-bold transition-all duration-300 ${
+              className={`flex items-center justify-center gap-2.5 px-5 py-3.5 sm:py-3 rounded-xl text-xs sm:text-sm font-bold transition-all duration-300 w-full sm:w-auto ${
                 !isPymes
-                  ? 'bg-white dark:bg-slate-900 text-purple-600 dark:text-lime-400 shadow-md scale-[1.02]'
+                  ? 'bg-white dark:bg-slate-900 text-purple-600 dark:text-lime-400 shadow-md scale-[1.01] sm:scale-[1.02]'
                   : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
               }`}
             >
-              <Building2 className="w-4 h-4" />
-              <span>{b2b.tabs.agencies}</span>
+              <Building2 className="w-4 h-4 shrink-0" />
+              <span className="leading-snug">{b2b.tabs.agencies}</span>
             </button>
           </div>
         </div>

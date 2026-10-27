@@ -196,6 +196,8 @@ export const ua: Translation = {
       prevStep: 'Попередній крок',
       step: 'Крок',
       of: 'з',
+      choosePhase: 'Етапи розробки',
+      swipe: 'Проведіть',
     },
     categories: [
       {

@@ -125,6 +125,8 @@ export interface Translation {
       prevStep: string
       step: string
       of: string
+      choosePhase: string
+      swipe: string
     }
     categories: Array<{
       title: string

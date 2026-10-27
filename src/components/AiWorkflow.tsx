@@ -183,7 +183,7 @@ without exposing any plaintext credentials or scraper tokens.`
   return (
     <section
       id="how-i-work"
-      className="py-20 bg-white dark:bg-slate-950 transition-colors duration-300 relative overflow-hidden"
+      className="py-20 scroll-mt-20 lg:scroll-mt-24 bg-white dark:bg-slate-950 transition-colors duration-300 relative overflow-hidden"
     >
       {/* Soft background technological glow */}
       <div className="hidden lg:block absolute inset-0 pointer-events-none">
@@ -209,6 +209,17 @@ without exposing any plaintext credentials or scraper tokens.`
 
         {/* Top Horizontal Row of Tabs (Titles Only) */}
         <div className="w-full mb-8">
+          {/* Mobile Swipe Hint */}
+          <div className="lg:hidden flex items-center justify-between mb-3 px-1">
+            <span className="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
+              {aw.tabs.choosePhase}
+            </span>
+            <span className="text-[10px] text-slate-400 dark:text-slate-500 flex items-center space-x-1 animate-pulse font-medium">
+              <span>{aw.tabs.swipe}</span>
+              <span>→</span>
+            </span>
+          </div>
+
           <div className="flex overflow-x-auto lg:flex-wrap lg:justify-center gap-3 pb-3 scrollbar-none snap-x snap-mandatory">
             {workflowCategories.map((category, index) => {
               const isActive = activeTab === index

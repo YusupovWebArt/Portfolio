@@ -227,7 +227,7 @@ const About = () => {
   return (
     <section
       id="about"
-      className="py-20 bg-slate-50 dark:bg-slate-800 transition-colors duration-300"
+      className="py-20 scroll-mt-20 lg:scroll-mt-24 bg-slate-50 dark:bg-slate-800 transition-colors duration-300"
     >
       <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid lg:grid-cols-2 gap-16 items-center">

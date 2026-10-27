@@ -196,6 +196,8 @@ export const es: Translation = {
       prevStep: 'Paso anterior',
       step: 'Paso',
       of: 'de',
+      choosePhase: 'Fases del flujo',
+      swipe: 'Deslizar',
     },
     categories: [
       {

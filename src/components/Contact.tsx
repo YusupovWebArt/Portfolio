@@ -229,7 +229,7 @@ const Contact = () => {
   return (
     <section
       id="contact"
-      className="py-20 bg-white dark:bg-slate-950 transition-colors duration-300 relative overflow-hidden"
+      className="py-20 scroll-mt-20 lg:scroll-mt-24 bg-white dark:bg-slate-950 transition-colors duration-300 relative overflow-hidden"
     >
       {/* Soft background gradient rings */}
       <div className="hidden lg:block absolute inset-0 pointer-events-none">

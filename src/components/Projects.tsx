@@ -246,7 +246,7 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
   return (
     <section
       id="projects"
-      className="py-20 bg-slate-50 dark:bg-slate-800 transition-colors duration-300"
+      className="py-20 scroll-mt-20 lg:scroll-mt-24 bg-slate-50 dark:bg-slate-800 transition-colors duration-300"
     >
       <div className="py-10 px-4 sm:px-6 lg:px-8 max-w-[1600px] mx-auto">
         <div className="text-center mb-8">

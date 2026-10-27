@@ -197,6 +197,8 @@ export const en: Translation = {
       prevStep: 'Previous step',
       step: 'Step',
       of: 'of',
+      choosePhase: 'Development Phases',
+      swipe: 'Swipe',
     },
     categories: [
       {
