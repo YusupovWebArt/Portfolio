@@ -1,4 +1,9 @@
-export const GA_MEASUREMENT_ID = 'G-1Q3H7DDTSG'
+const envMeasurementId =
+  typeof process !== 'undefined' && process.env
+    ? process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID
+    : undefined
+
+export const GA_MEASUREMENT_ID = envMeasurementId || 'G-STZ8DN2KND'
 
 declare global {
   interface Window {
@@ -102,4 +107,48 @@ export function purgeAnalyticsCookies(): void {
       }
     }
   }
+}
+
+export type AnalyticsEventParams = Record<string, string | number | boolean | undefined>
+
+/**
+ * Sends a custom event to Google Analytics 4 if consent is granted and gtag is initialized.
+ */
+export function trackEvent(eventName: string, params?: AnalyticsEventParams): void {
+  if (typeof window === 'undefined' || typeof window.gtag !== 'function') {
+    return
+  }
+  window.gtag('event', eventName, params)
+}
+
+/**
+ * Tracks contact click conversion (Email, Telegram, WhatsApp, X, LinkedIn, etc.).
+ */
+export function trackContactClick(channel: string): void {
+  trackEvent('contact_click', {
+    contact_channel: channel,
+    event_category: 'engagement',
+    event_label: channel,
+  })
+}
+
+/**
+ * Tracks CV download conversion.
+ */
+export function trackCvDownload(source: string = 'hero'): void {
+  trackEvent('cv_download', {
+    download_source: source,
+    event_category: 'conversion',
+    event_label: 'Curriculum Vitae',
+  })
+}
+
+/**
+ * Tracks AI Assistant engagement.
+ */
+export function trackAiChatInteraction(action: 'open' | 'send_message' | 'clear' | 'faq_click'): void {
+  trackEvent('ai_chat_interaction', {
+    chat_action: action,
+    event_category: 'engagement',
+  })
 }

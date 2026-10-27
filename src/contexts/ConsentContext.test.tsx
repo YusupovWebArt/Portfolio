@@ -8,6 +8,7 @@ import {
   CONSENT_STORAGE_KEY,
   MAX_CONSENT_AGE_MS,
 } from './ConsentContext';
+import { GA_MEASUREMENT_ID } from '../lib/analytics';
 
 // Consumer component for testing context
 function ConsentConsumer() {
@@ -211,12 +212,12 @@ describe('ConsentContext Specification (TDD)', () => {
     // Accept first
     await user.click(screen.getByRole('button', { name: /accept/i }));
     expect(screen.getByTestId('consent-status')).toHaveTextContent('granted');
-    expect(window['ga-disable-G-1Q3H7DDTSG']).toBe(false);
+    expect(window[`ga-disable-${GA_MEASUREMENT_ID}`]).toBe(false);
 
     // Decline / revoke
     await user.click(screen.getByRole('button', { name: /decline/i }));
     expect(screen.getByTestId('consent-status')).toHaveTextContent('denied');
-    expect(window['ga-disable-G-1Q3H7DDTSG']).toBe(true);
+    expect(window[`ga-disable-${GA_MEASUREMENT_ID}`]).toBe(true);
   });
 
   it('should push Arguments object rather than an Array into dataLayer when gtag is invoked (N3)', async () => {

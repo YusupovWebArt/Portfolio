@@ -75,3 +75,8 @@
    - [x] Структурированная Schema.org микроразметка `FAQPage` в `index.html` и `app/[locale]/layout.tsx` для цитирования в Google AI Overviews, Perplexity и SearchGPT.
    - [x] Расширенные мета-теги Open Graph, Twitter Summary Large Image и языковые hreflang-альтернативы для мультиязычной индексации (`en`, `ua`, `es`).
    - [ ] Раздел `/[locale]/blog` с разбором архитектурных решений (Headless WordPress vs Next.js, внедрение Hybrid RAG без внешних векторных БД, SDD + TDD пайплайны).
+
+6. **Надежность, телеметрия и мониторинг ошибок (Sentry / OpenTelemetry):**
+   - [ ] Интеграция SDK Sentry для Next.js (клиентский мониторинг сбоев в браузере и серверный трекинг API ошибок в `/api/chat`).
+   - [ ] Настройка алертов в Telegram/Email при возникновении необработанных исключений у реальных пользователей.
+   - [ ] Конфигурация OpenTelemetry трейсинга для замера времени ответа serverless функций Vercel.

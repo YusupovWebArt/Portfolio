@@ -91,6 +91,7 @@ export default function ContactActionCard({
         <a
           href="/Portfolio/resume/Artur_Yusupov_Resume.pdf"
           download
+          onClick={() => trackCvDownload('chat_card')}
           className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-white hover:bg-slate-50 dark:bg-slate-800 dark:hover:bg-slate-700 text-purple-700 dark:text-lime-400 border border-purple-200 dark:border-lime-500/30 shadow-sm transition-all cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-700 dark:focus-visible:outline-lime-400"
         >
           <FileText className="w-3.5 h-3.5" aria-hidden="true" />

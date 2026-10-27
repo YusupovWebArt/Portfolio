@@ -10,6 +10,7 @@ const Hero = () => {
   const { t } = useLanguage()
 
   const handleOpenChat = () => {
+    trackAiChatInteraction('open')
     window.dispatchEvent(new CustomEvent('open-ai-chat'))
   }
 
@@ -71,6 +72,7 @@ const Hero = () => {
             <a
               href="/Portfolio/resume/Artur_Yusupov_Resume.pdf"
               download
+              onClick={() => trackCvDownload('hero')}
               className="flex items-center gap-2 px-6 py-2.5 border-2 border-purple-500 dark:border-lime-400 text-purple-600 dark:text-lime-400 font-semibold rounded-full hover:bg-purple-500 dark:hover:bg-lime-400 hover:text-white dark:hover:text-slate-900 transform hover:scale-105 transition-all duration-200 cursor-pointer"
             >
               <FaFilePdf aria-hidden="true" className="w-4 h-4" />

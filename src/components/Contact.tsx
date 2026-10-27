@@ -20,6 +20,7 @@ import { FAQ, Message } from '../data/chatFaq'
 import { useLanguage } from '../contexts/LanguageContext'
 import { PUBLIC_PROFILES } from '../lib/profiles'
 import type { ContactKind, RevealedContact } from '../lib/contacts'
+import { trackContactClick, trackAiChatInteraction } from '../lib/analytics'
 import FormattedChatText from './chat/FormattedChatText'
 
 let contactMessageIdCounter = 0
@@ -163,6 +164,7 @@ const Contact = () => {
 
   const handleSend = (textToSend: string) => {
     if (!textToSend.trim()) return
+    trackAiChatInteraction('send_message')
 
     const userMsg: Message = {
       id: `user-${++contactMessageIdCounter}`,
@@ -200,6 +202,7 @@ const Contact = () => {
   }
 
   const handleClearChat = () => {
+    trackAiChatInteraction('clear')
     setMessages([
       {
         id: `welcome-${Date.now()}`,
@@ -265,6 +268,9 @@ const Contact = () => {
                   target={item.link === '#' || item.link.startsWith('#') ? undefined : '_blank'}
                   rel="noopener noreferrer"
                   onClick={(e) => {
+                    if (item.kind) {
+                      trackContactClick(item.kind)
+                    }
                     if (item.kind && !revealed[item.kind]) {
                       e.preventDefault()
                       void reveal(item.kind)
@@ -321,6 +327,7 @@ const Contact = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={social.label}
+                    onClick={() => trackContactClick(social.label.toLowerCase())}
                     className={`p-3 bg-white dark:bg-slate-900 lg:bg-white/40 lg:dark:bg-slate-900/40 lg:backdrop-blur-md border border-slate-200/60 dark:border-white/5 rounded-full text-slate-500 dark:text-slate-400 ${social.hoverColor} transition-all duration-300 hover:scale-110 hover:shadow-sm`}
                     title={social.label}
                   >
@@ -433,7 +440,10 @@ const Contact = () => {
                         return (
                           <button
                             key={idx}
-                            onClick={() => handleSend(questionText)}
+                            onClick={() => {
+                              trackAiChatInteraction('faq_click')
+                              handleSend(questionText)
+                            }}
                             className="text-left px-3.5 py-2.5 rounded-xl border transition-all duration-200 cursor-pointer flex items-center justify-between gap-2 group shadow-xs active:scale-[0.99] bg-white hover:bg-slate-50 text-slate-800 hover:text-purple-700 border-slate-200/90 hover:border-purple-300 dark:bg-slate-800/90 dark:hover:bg-slate-800 dark:text-slate-200 dark:hover:text-lime-300 dark:border-slate-700/70 dark:hover:border-lime-500/50"
                             type="button"
                           >
