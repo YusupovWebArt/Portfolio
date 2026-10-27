@@ -1,6 +1,6 @@
 # Artur Yusupov - Senior Fullstack Web Engineer & AI Developer
 
-> Official portfolio and engineering knowledge base of Artur Yusupov (Seville / Alicante / Valencia, Spain, European Union). Specializing in Next.js 16 (React 19 Server Components), Custom & Headless WordPress (PHP 8+, ACF Pro, REST/GraphQL), TypeScript, Autonomous Hybrid RAG AI Assistants, Shopify Liquid, and WCAG 2.2 AA / EAA 2026 web accessibility compliance.
+> Official portfolio and engineering knowledge base of Artur Yusupov (Seville, Spain, European Union). Specializing in Next.js 16 (React 19 Server Components), Custom & Headless WordPress (PHP 8+, ACF Pro, REST/GraphQL), TypeScript, Autonomous Hybrid RAG AI Assistants, Shopify Liquid, and WCAG 2.2 AA / EAA 2026 web accessibility compliance.
 
 - Website: https://www.yusupovartur.com/en
 - Ukrainian Version: https://www.yusupovartur.com/ua

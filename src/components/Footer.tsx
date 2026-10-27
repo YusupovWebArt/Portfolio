@@ -31,7 +31,7 @@ const Footer = () => {
   }
 
   return (
-    <footer className="bg-slate-900 dark:bg-slate-950 text-white py-12 transition-colors duration-300">
+    <footer className="bg-slate-900 dark:bg-slate-950 text-white pt-12 pb-28 sm:py-12 transition-colors duration-300">
       <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           {/* Logo/Brand */}
@@ -120,7 +120,7 @@ const Footer = () => {
           <div className="w-full h-px bg-slate-800 dark:bg-slate-900 mb-8"></div>
 
           {/* Copyright & Settings */}
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-4 text-xs sm:text-sm text-slate-400 dark:text-slate-400 pb-8 sm:pb-0">
+          <div className="flex flex-col sm:flex-row justify-between items-center gap-6 sm:gap-4 text-xs sm:text-sm text-slate-400 dark:text-slate-400">
             <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3 text-center sm:text-left">
               <span>© {currentYear} Artur Yusupov. {t.footer.copyright}</span>
               <span className="hidden sm:inline text-slate-600 dark:text-slate-600" aria-hidden="true">•</span>
@@ -134,10 +134,12 @@ const Footer = () => {
               </button>
             </div>
 
-            <div className="flex items-center justify-center gap-1.5 text-center">
-              <span>{t.footer.madeWith}</span>
-              <Code className="w-4 h-4 text-lime-400 dark:text-purple-400 shrink-0" aria-hidden="true" />
-              <span>{t.footer.techUsing}</span>
+            <div className="flex flex-col sm:flex-row items-center justify-center sm:justify-end gap-1 sm:gap-1.5 text-center sm:text-right max-w-md sm:max-w-none mx-auto sm:mx-0">
+              <span className="inline-flex items-center gap-1.5 whitespace-nowrap text-slate-300 dark:text-slate-300 font-medium">
+                <span>{t.footer.madeWith}</span>
+                <Code className="w-4 h-4 text-lime-400 dark:text-purple-400 shrink-0" aria-hidden="true" />
+              </span>
+              <span className="leading-relaxed">{t.footer.techUsing}</span>
             </div>
           </div>
         </div>

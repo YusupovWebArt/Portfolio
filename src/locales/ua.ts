@@ -697,7 +697,7 @@ export const ua: Translation = {
     },
     emailLabel: 'Email',
     locationLabel: 'Локація',
-    locationValue: 'Аліканте / Валенсія, Іспанія',
+    locationValue: 'Севілья, Іспанія',
     locationTag: 'Віддалено / Готовий до релокації',
     faqSource: 'Прямий FAQ',
     chatbot: {

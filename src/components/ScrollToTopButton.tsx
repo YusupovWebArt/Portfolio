@@ -19,7 +19,7 @@ const ScrollToTopButton = () => {
   return (
     <button
       onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-      className={`fixed bottom-8 right-8 z-50 p-3 rounded-full shadow-lg transition-all duration-300 ease-out transform
+      className={`fixed bottom-6 right-6 sm:bottom-8 sm:right-8 z-50 p-3 rounded-full shadow-lg transition-all duration-300 ease-out transform
         bg-gradient-to-r from-purple-600 to-blue-600 dark:from-lime-500 dark:to-lime-600 
         text-white hover:text-white dark:hover:text-slate-950
         hover:shadow-xl hover:shadow-purple-500/25 dark:hover:shadow-lime-500/25

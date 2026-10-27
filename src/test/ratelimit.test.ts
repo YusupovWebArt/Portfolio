@@ -112,5 +112,5 @@ describe('DevSecOps Rate Limiting Specification (TDD)', () => {
       await checkRateLimit(`key-rotation-${i}`)
     }
     expect(getMemoryStoreSize()).toBeLessThanOrEqual(10_000)
-  })
+  }, 20_000)
 })

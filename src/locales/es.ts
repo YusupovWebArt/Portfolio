@@ -697,7 +697,7 @@ export const es: Translation = {
     },
     emailLabel: 'Correo electrónico',
     locationLabel: 'Ubicación',
-    locationValue: 'Alicante / Valencia, España',
+    locationValue: 'Sevilla, España',
     locationTag: 'Remoto / Disponible para traslado',
     faqSource: 'FAQ directo',
     chatbot: {
