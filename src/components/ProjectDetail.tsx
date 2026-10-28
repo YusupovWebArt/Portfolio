@@ -200,6 +200,25 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
     return getRelatedProjects(project, projects, 3)
   }, [project])
 
+  const hasArchitecture = Boolean(
+    project?.architecture?.rows?.length &&
+      project?.architecture?.description?.trim(),
+  )
+  const hasCaseStudy = Boolean(
+    project?.challenges?.length || project?.solutions?.length,
+  )
+
+  const tabOrder = React.useMemo<Array<'stack' | 'features' | 'architecture' | 'case-study'>>(() => [
+    'stack',
+    'features',
+    ...(hasArchitecture ? (['architecture'] as const) : []),
+    ...(hasCaseStudy ? (['case-study'] as const) : []),
+  ], [hasArchitecture, hasCaseStudy])
+
+  // Touch swipe gestures to switch tabs on mobile by swiping across content
+  const touchStartX = useRef<number | null>(null)
+  const touchStartY = useRef<number | null>(null)
+
   if (!project) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -272,13 +291,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
 
   const hasGithub = Boolean(project.githubUrl && project.githubUrl !== '#')
   const metrics = project.detailMetrics ?? []
-  const hasArchitecture = Boolean(
-    project.architecture?.rows?.length &&
-      project.architecture.description?.trim(),
-  )
-  const hasCaseStudy = Boolean(
-    project.challenges?.length || project.solutions?.length,
-  )
+
 
   const activeTab =
     detailTab === 'architecture' && !hasArchitecture
@@ -288,12 +301,6 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
         : detailTab
 
   const handleTabKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
-    const tabOrder: Array<'stack' | 'features' | 'architecture' | 'case-study'> = [
-      'stack',
-      'features',
-      ...(hasArchitecture ? (['architecture'] as const) : []),
-      ...(hasCaseStudy ? (['case-study'] as const) : []),
-    ]
     const currentIndex = tabOrder.indexOf(activeTab)
     let targetIndex = -1
 
@@ -315,6 +322,38 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
       tabBtn?.focus()
     }
   }
+
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0]?.clientX ?? null
+    touchStartY.current = e.touches[0]?.clientY ?? null
+  }
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null || touchStartY.current === null) return
+    const touch = e.changedTouches[0]
+    if (!touch) return
+    const deltaX = touch.clientX - touchStartX.current
+    const deltaY = touch.clientY - touchStartY.current
+
+    if (Math.abs(deltaX) > 50 && Math.abs(deltaX) > Math.abs(deltaY) * 1.5) {
+      const currentIndex = tabOrder.indexOf(activeTab)
+      if (deltaX < 0 && currentIndex < tabOrder.length - 1) {
+        setDetailTab(tabOrder[currentIndex + 1])
+      } else if (deltaX > 0 && currentIndex > 0) {
+        setDetailTab(tabOrder[currentIndex - 1])
+      }
+    }
+
+    touchStartX.current = null
+    touchStartY.current = null
+  }
+
+  // Concise tab labels on mobile for clean fit
+  const stackShort = lang === 'ua' ? 'Стек' : 'Stack'
+  const featuresShort = lang === 'ua' ? 'Функції' : lang === 'es' ? 'Funciones' : 'Features'
+  const architectureShort = lang === 'ua' ? 'Архітектура' : lang === 'es' ? 'Arquitectura' : 'Arch'
+  const caseStudyShort = lang === 'ua' ? 'Кейс' : lang === 'es' ? 'Caso' : 'Case'
 
   return (
     <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-20 sm:pb-12">
@@ -620,25 +659,22 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
       {/* Секция: Technical Stack / Key Features - табы */}
       <section className="mt-12">
         <div className="overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-sm dark:border-slate-600 dark:bg-slate-700">
-          <div className="relative border-b border-slate-200 dark:border-slate-600 bg-slate-50/50 dark:bg-slate-800/40">
-            {/* Mobile Swipe Hint */}
-            {(hasArchitecture || hasCaseStudy) && (
-              <div className="sm:hidden flex items-center justify-end px-4 pt-2.5 pb-1 text-[11px] text-slate-400 dark:text-slate-400 font-medium">
-                <span className="flex items-center gap-1">
-                  <span>{lang === 'ua' ? 'Проведіть вкладки' : lang === 'es' ? 'Deslizar pestañas' : 'Swipe tabs'}</span>
-                  <span className="text-purple-600 dark:text-lime-400 font-bold animate-pulse">→</span>
-                </span>
-              </div>
-            )}
-            {/* Mobile edge gradient fade to indicate scrollable overflow */}
-            {(hasArchitecture || hasCaseStudy) && (
+          {/* Segmented Pill Tab Bar (iOS & Material 3 style) */}
+          <div className="relative p-2 sm:p-2.5 border-b border-slate-200/80 dark:border-slate-600 bg-slate-100/70 dark:bg-slate-800/60">
+            {tabOrder.length > 2 && (
               <div
-                className="pointer-events-none absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-slate-100 dark:from-slate-800 to-transparent sm:hidden z-10"
+                className="pointer-events-none absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-slate-200/90 dark:from-slate-800/95 to-transparent sm:hidden z-10"
                 aria-hidden="true"
               />
             )}
             <div
-              className="flex overflow-x-auto scrollbar-none snap-x snap-mandatory scroll-smooth"
+              className={`p-1 rounded-xl sm:rounded-2xl bg-slate-200/70 dark:bg-slate-900/60 gap-1.5 ${
+                tabOrder.length === 2
+                  ? 'grid grid-cols-2'
+                  : tabOrder.length === 3
+                    ? 'flex overflow-x-auto scrollbar-none snap-x snap-mandatory scroll-smooth sm:grid sm:grid-cols-3'
+                    : 'flex overflow-x-auto scrollbar-none snap-x snap-mandatory scroll-smooth sm:grid sm:grid-cols-4'
+              }`}
               role="tablist"
               aria-label={pr.tabsLabel}
               onKeyDown={handleTabKeyDown}
@@ -649,16 +685,18 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                 id="tab-project-stack"
                 aria-selected={activeTab === 'stack'}
                 aria-controls="panel-project-stack"
+                aria-label={pr.tabs.stack}
                 tabIndex={activeTab === 'stack' ? 0 : -1}
                 onClick={() => setDetailTab('stack')}
-                className={`shrink-0 snap-start sm:flex-1 px-4 sm:px-6 py-3.5 inline-flex items-center justify-center gap-2 text-sm font-semibold whitespace-nowrap transition-colors sm:text-base cursor-pointer ${
+                className={`shrink-0 snap-start flex-1 px-3.5 sm:px-4 py-2.5 sm:py-3 inline-flex items-center justify-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-semibold whitespace-nowrap rounded-lg sm:rounded-xl transition-all duration-200 cursor-pointer ${
                   activeTab === 'stack'
-                    ? 'border-b-2 border-purple-600 text-purple-600 dark:border-lime-400 dark:text-lime-400 font-bold bg-white dark:bg-slate-700/60'
-                    : 'border-b-2 border-transparent text-slate-600 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white'
+                    ? 'bg-white dark:bg-slate-700 text-purple-700 dark:text-lime-400 font-bold shadow-xs border border-slate-200/70 dark:border-slate-600'
+                    : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-white/40 dark:hover:bg-slate-800/40'
                 }`}
               >
-                <Code className="w-4 h-4 shrink-0 text-purple-600 dark:text-lime-400" aria-hidden="true" />
-                <span>{pr.tabs.stack}</span>
+                <Code className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0 text-purple-600 dark:text-lime-400" aria-hidden="true" />
+                <span className="sm:hidden">{stackShort}</span>
+                <span className="hidden sm:inline">{pr.tabs.stack}</span>
               </button>
               <button
                 type="button"
@@ -666,16 +704,18 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                 id="tab-project-features"
                 aria-selected={activeTab === 'features'}
                 aria-controls="panel-project-features"
+                aria-label={pr.tabs.features}
                 tabIndex={activeTab === 'features' ? 0 : -1}
                 onClick={() => setDetailTab('features')}
-                className={`shrink-0 snap-start sm:flex-1 px-4 sm:px-6 py-3.5 inline-flex items-center justify-center gap-2 text-sm font-semibold whitespace-nowrap transition-colors sm:text-base cursor-pointer ${
+                className={`shrink-0 snap-start flex-1 px-3.5 sm:px-4 py-2.5 sm:py-3 inline-flex items-center justify-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-semibold whitespace-nowrap rounded-lg sm:rounded-xl transition-all duration-200 cursor-pointer ${
                   activeTab === 'features'
-                    ? 'border-b-2 border-purple-600 text-purple-600 dark:border-lime-400 dark:text-lime-400 font-bold bg-white dark:bg-slate-700/60'
-                    : 'border-b-2 border-transparent text-slate-600 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white'
+                    ? 'bg-white dark:bg-slate-700 text-purple-700 dark:text-lime-400 font-bold shadow-xs border border-slate-200/70 dark:border-slate-600'
+                    : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-white/40 dark:hover:bg-slate-800/40'
                 }`}
               >
-                <Sparkles className="w-4 h-4 shrink-0 text-purple-600 dark:text-lime-400" aria-hidden="true" />
-                <span>{pr.tabs.features}</span>
+                <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0 text-purple-600 dark:text-lime-400" aria-hidden="true" />
+                <span className="sm:hidden">{featuresShort}</span>
+                <span className="hidden sm:inline">{pr.tabs.features}</span>
               </button>
               {hasArchitecture && (
                 <button
@@ -684,16 +724,18 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                   id="tab-project-architecture"
                   aria-selected={activeTab === 'architecture'}
                   aria-controls="panel-project-architecture"
+                  aria-label={pr.tabs.architecture}
                   tabIndex={activeTab === 'architecture' ? 0 : -1}
                   onClick={() => setDetailTab('architecture')}
-                  className={`shrink-0 snap-start sm:flex-1 px-4 sm:px-6 py-3.5 inline-flex items-center justify-center gap-2 text-sm font-semibold whitespace-nowrap transition-colors sm:text-base cursor-pointer ${
+                  className={`shrink-0 snap-start flex-1 px-3.5 sm:px-4 py-2.5 sm:py-3 inline-flex items-center justify-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-semibold whitespace-nowrap rounded-lg sm:rounded-xl transition-all duration-200 cursor-pointer ${
                     activeTab === 'architecture'
-                      ? 'border-b-2 border-purple-600 text-purple-600 dark:border-lime-400 dark:text-lime-400 font-bold bg-white dark:bg-slate-700/60'
-                      : 'border-b-2 border-transparent text-slate-600 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white'
+                      ? 'bg-white dark:bg-slate-700 text-purple-700 dark:text-lime-400 font-bold shadow-xs border border-slate-200/70 dark:border-slate-600'
+                      : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-white/40 dark:hover:bg-slate-800/40'
                   }`}
                 >
-                  <Cpu className="w-4 h-4 shrink-0 text-purple-600 dark:text-lime-400" aria-hidden="true" />
-                  <span>{pr.tabs.architecture}</span>
+                  <Cpu className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0 text-purple-600 dark:text-lime-400" aria-hidden="true" />
+                  <span className="sm:hidden">{architectureShort}</span>
+                  <span className="hidden sm:inline">{pr.tabs.architecture}</span>
                 </button>
               )}
               {hasCaseStudy && (
@@ -703,22 +745,28 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                   id="tab-project-case-study"
                   aria-selected={activeTab === 'case-study'}
                   aria-controls="panel-project-case-study"
+                  aria-label={pr.tabs.caseStudy}
                   tabIndex={activeTab === 'case-study' ? 0 : -1}
                   onClick={() => setDetailTab('case-study')}
-                  className={`shrink-0 snap-start sm:flex-1 px-4 sm:px-6 py-3.5 inline-flex items-center justify-center gap-2 text-sm font-semibold whitespace-nowrap transition-colors sm:text-base cursor-pointer ${
+                  className={`shrink-0 snap-start flex-1 px-3.5 sm:px-4 py-2.5 sm:py-3 inline-flex items-center justify-center gap-1.5 sm:gap-2 text-xs sm:text-sm font-semibold whitespace-nowrap rounded-lg sm:rounded-xl transition-all duration-200 cursor-pointer ${
                     activeTab === 'case-study'
-                      ? 'border-b-2 border-purple-600 text-purple-600 dark:border-lime-400 dark:text-lime-400 font-bold bg-white dark:bg-slate-700/60'
-                      : 'border-b-2 border-transparent text-slate-600 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white'
+                      ? 'bg-white dark:bg-slate-700 text-purple-700 dark:text-lime-400 font-bold shadow-xs border border-slate-200/70 dark:border-slate-600'
+                      : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-white/40 dark:hover:bg-slate-800/40'
                   }`}
                 >
-                  <BookOpen className="w-4 h-4 shrink-0 text-purple-600 dark:text-lime-400" aria-hidden="true" />
-                  <span>{pr.tabs.caseStudy}</span>
+                  <BookOpen className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0 text-purple-600 dark:text-lime-400" aria-hidden="true" />
+                  <span className="sm:hidden">{caseStudyShort}</span>
+                  <span className="hidden sm:inline">{pr.tabs.caseStudy}</span>
                 </button>
               )}
             </div>
           </div>
 
-          <div className="p-4 sm:p-8">
+          <div
+            className="p-4 sm:p-8"
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+          >
             {activeTab === 'stack' && (
               <div
                 id="panel-project-stack"

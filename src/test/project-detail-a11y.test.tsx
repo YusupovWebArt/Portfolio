@@ -97,4 +97,33 @@ describe('ProjectDetail Accessibility Specification (WCAG 2.2 AA / EAA 2026)', (
     expect(deepDiveLink).toBeDefined()
     expect(deepDiveLink.getAttribute('href')).toContain('/blog/fullstack-ai-lab-interactive-edtech-architecture')
   })
+
+  it('should switch tabs when swiping horizontally across the content area', () => {
+    const wpskillsProject = projectRegistry.find((e) => e.slug === 'fullstack-ai-lab')?.project
+    expect(wpskillsProject).toBeDefined()
+
+    render(
+      <LanguageProvider>
+        <ProjectDetail initialProject={wpskillsProject} />
+      </LanguageProvider>,
+    )
+
+    const stackTab = screen.getByRole('tab', { name: /technical stack|технічний стек|stack técnico/i })
+    const featuresTab = screen.getByRole('tab', { name: /key features|ключові можливості|características clave/i })
+    expect(stackTab).toHaveAttribute('aria-selected', 'true')
+
+    const stackPanel = document.getElementById('panel-project-stack')
+    expect(stackPanel).not.toBeNull()
+    const contentArea = stackPanel?.parentElement
+    expect(contentArea).not.toBeNull()
+
+    fireEvent.touchStart(contentArea, {
+      touches: [{ clientX: 200, clientY: 100 }],
+    })
+    fireEvent.touchEnd(contentArea, {
+      changedTouches: [{ clientX: 100, clientY: 100 }],
+    })
+
+    expect(featuresTab).toHaveAttribute('aria-selected', 'true')
+  })
 })
