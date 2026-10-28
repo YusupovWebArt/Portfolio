@@ -52,7 +52,7 @@ describe('Automated Project SEO/GEO Metadata Specification (TDD)', () => {
     const jsonLd = buildProjectJsonLd(wpskills!, 'wpskills', 'en')
     expect(jsonLd.subjectOf).toEqual({
       '@type': 'TechArticle',
-      url: 'https://www.yusupovartur.com/en/blog/wpskills-interactive-edtech-architecture',
+      url: 'https://www.yusupovartur.com/en/blog/fullstack-ai-lab-interactive-edtech-architecture',
     })
 
     const breadcrumbsBlog = buildBlogCatalogBreadcrumbsJsonLd('es')

@@ -100,7 +100,7 @@ export default function BlogDetailView({
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
         {/* Breadcrumb Navigation */}
         <nav aria-label="Breadcrumb" className="mb-8">
-          <ol className="flex items-center space-x-2 text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+          <ol className="flex flex-wrap items-center gap-2 text-xs sm:text-sm text-slate-500 dark:text-slate-400">
             <li>
               {onBackToPortfolio ? (
                 <button
@@ -133,7 +133,7 @@ export default function BlogDetailView({
               )}
             </li>
             <li aria-hidden="true">/</li>
-            <li className="text-slate-800 dark:text-slate-200 font-medium truncate max-w-xs sm:max-w-md">
+            <li className="text-slate-800 dark:text-slate-200 font-medium">
               {title}
             </li>
           </ol>

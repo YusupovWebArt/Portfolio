@@ -95,6 +95,6 @@ describe('ProjectDetail Accessibility Specification (WCAG 2.2 AA / EAA 2026)', (
       name: /architecture & case study deep-dive|детальний розбір архітектури|análisis profundo de arquitectura/i,
     })
     expect(deepDiveLink).toBeDefined()
-    expect(deepDiveLink.getAttribute('href')).toContain('/blog/wpskills-interactive-edtech-architecture')
+    expect(deepDiveLink.getAttribute('href')).toContain('/blog/fullstack-ai-lab-interactive-edtech-architecture')
   })
 })

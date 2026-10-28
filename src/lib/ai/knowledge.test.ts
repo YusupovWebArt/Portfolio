@@ -79,8 +79,8 @@ describe('RAG Knowledge Base Specification (TDD)', () => {
     expect(nextjsVsWp).toBeDefined()
     expect(nextjsVsWp?.type).toBe('blog')
 
-    const wpskillsDeepDive = kb.blog.find((b) => b.slug === 'wpskills-interactive-edtech-architecture')
-    expect(wpskillsDeepDive).toBeDefined()
+    const fullstackAiLabDeepDive = kb.blog.find((b) => b.slug === 'fullstack-ai-lab-interactive-edtech-architecture')
+    expect(fullstackAiLabDeepDive).toBeDefined()
 
     const unitritionDeepDive = kb.blog.find((b) => b.slug === 'unitrition-headless-healthtech-architecture')
     expect(unitritionDeepDive).toBeDefined()

@@ -90,7 +90,7 @@ describe('BlogCatalogView Specification (TDD)', () => {
     const caseStudiesBtn = screen.getByRole('button', { name: /My Project Case Studies/i })
     fireEvent.click(caseStudiesBtn)
 
-    expect(screen.getByText(/WPSKILLS Architecture Deep-Dive/i)).toBeDefined()
+    expect(screen.getByText(/Fullstack AI Lab Architecture Deep-Dive/i)).toBeDefined()
     expect(screen.getByText(/Unitrition Architecture Deep-Dive/i)).toBeDefined()
     expect(screen.getByText(/Autonomous Hybrid RAG Architecture/i)).toBeDefined()
     expect(screen.queryByText(/Shopify Liquid vs Custom WooCommerce/i)).toBeNull()

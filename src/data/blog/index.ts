@@ -1,6 +1,6 @@
 import type { BlogPost, BlogLocale } from './types'
 import { nextjsVsHeadlessWordPressPost } from './posts/nextjs-vs-headless-wordpress'
-import { wpskillsInteractiveEdtechArchitecturePost } from './posts/wpskills-interactive-edtech-architecture'
+import { fullstackAiLabInteractiveEdtechArchitecturePost } from './posts/fullstack-ai-lab-interactive-edtech-architecture'
 import { unitritionHeadlessHealthtechArchitecturePost } from './posts/unitrition-headless-healthtech-architecture'
 import { autonomousHybridRagPost } from './posts/autonomous-hybrid-rag'
 import { wcag22Eaa2026Post } from './posts/wcag-22-eaa-2026'
@@ -13,7 +13,7 @@ export * from './types'
 
 export const allBlogPosts: BlogPost[] = [
   nextjsVsHeadlessWordPressPost,
-  wpskillsInteractiveEdtechArchitecturePost,
+  fullstackAiLabInteractiveEdtechArchitecturePost,
   unitritionHeadlessHealthtechArchitecturePost,
   autonomousHybridRagPost,
   subSecondCwvBundleOptimizationPost,

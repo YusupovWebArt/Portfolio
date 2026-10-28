@@ -442,7 +442,7 @@ const wpskills: Project = {
   liveUrl: 'https://www.fullstackailab.com',
   githubUrl: '#',
   category: ['nextjs', 'react', 'wordpress', 'fullstack'],
-  deepDiveBlogSlug: 'wpskills-interactive-edtech-architecture',
+  deepDiveBlogSlug: 'fullstack-ai-lab-interactive-edtech-architecture',
 }
 
 export default wpskills

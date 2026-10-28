@@ -1297,7 +1297,7 @@ export function synthesizeLocalRagAnswer(
       return stripEmDashes(
         'У моєму інженерному блозі опубліковані 9 детальних архітектурних розборів для CTO та технічних команд:\n\n' +
           '1. **Next.js 16 проти Headless WordPress та Custom PHP** (/ua/blog/nextjs-vs-headless-wordpress-custom-php-2026) - Об’єктивне порівняння TCO, вартості підтримки, швидкості Core Web Vitals та робочого процесу редакції.\n' +
-          '2. **Повний розбір архітектури WPSKILLS** (/ua/blog/wpskills-interactive-edtech-architecture) - Компіляція 1 100+ MDX-уроків за 90 секунд на Next.js 16 та Rust MDX-RS, інтерактивні симулятори та синхронізація прогресу в Supabase.\n' +
+          '2. **Повний розбір архітектури Fullstack AI Lab** (/ua/blog/fullstack-ai-lab-interactive-edtech-architecture) - Компіляція 1 135+ MDX-уроків за 90 секунд на Next.js 16 та Rust MDX-RS, WebAssembly-пісочниця WordPress та симулятор AI-співбесід.\n' +
           '3. **Повний розбір архітектури Unitrition** (/ua/blog/unitrition-headless-healthtech-architecture) - Headless HealthTech-платформа на Next.js 16, WordPress REST API, Supabase RLS та USDA FoodData Central API.\n' +
           '4. **Автономна архітектура Hybrid RAG у браузері** (/ua/blog/autonomous-hybrid-rag-architecture-browser) - Як реалізувати семантичний RAG-пошук за 5мс без витрат на зовнішні векторні бази даних (Pinecone/Milvus).\n' +
           '5. **WCAG 2.2 AA та European Accessibility Act 2026** (/ua/blog/wcag-22-aa-european-accessibility-act-2026) - Практичний посібник для бізнесу в ЄС щодо обов’язкових стандартів доступності, керування фокусом та CI/CD тестів.\n' +
@@ -1312,7 +1312,7 @@ export function synthesizeLocalRagAnswer(
       return stripEmDashes(
         'En mi blog de ingeniería comparto 9 análisis técnicos en profundidad pensados para CTOs y fundadores:\n\n' +
           '1. **Next.js 16 vs Headless WordPress vs Custom PHP** (/es/blog/nextjs-vs-headless-wordpress-custom-php-2026) - Comparativa objetiva de TCO, costes de mantenimiento, Core Web Vitals y flujo editorial.\n' +
-          '2. **Análisis profundo de la arquitectura WPSKILLS** (/es/blog/wpskills-interactive-edtech-architecture) - Compilación de 1.100+ lecciones MDX en 90 segundos con Next.js 16 y Rust MDX-RS, simuladores interactivos y sincronización personal en Supabase.\n' +
+          '2. **Análisis profundo de la arquitectura Fullstack AI Lab** (/es/blog/fullstack-ai-lab-interactive-edtech-architecture) - Compilación de 1.135+ lecciones MDX en 90 segundos con Next.js 16 y Rust MDX-RS, sandbox WebAssembly de WordPress y simulador de entrevistas con IA.\n' +
           '3. **Análisis profundo de la arquitectura Unitrition** (/es/blog/unitrition-headless-healthtech-architecture) - Plataforma HealthTech Headless con Next.js 16, WordPress, Supabase RLS y API USDA FoodData Central.\n' +
           '4. **Arquitectura de Hybrid RAG autónomo en cliente** (/es/blog/autonomous-hybrid-rag-architecture-browser) - Cómo implementar búsqueda semántica en 5ms sin costes mensuales de bases de datos vectoriales.\n' +
           '5. **WCAG 2.2 AA y European Accessibility Act 2026** (/es/blog/wcag-22-aa-european-accessibility-act-2026) - Guía técnica para empresas en España y la UE sobre cumplimiento normativo, gestión de foco y tests en CI/CD.\n' +
@@ -1326,7 +1326,7 @@ export function synthesizeLocalRagAnswer(
     return stripEmDashes(
       'In my engineering blog, I publish 9 architectural case studies designed for CTOs and technical leads:\n\n' +
         '1. **Next.js 16 vs Headless WordPress vs Custom PHP** (/en/blog/nextjs-vs-headless-wordpress-custom-php-2026) - An objective TCO, maintenance, Core Web Vitals, and editorial workflow comparison.\n' +
-        '2. **WPSKILLS Architecture Deep-Dive** (/en/blog/wpskills-interactive-edtech-architecture) - Compiling 1,100+ MDX lessons in 90 seconds with Next.js 16 & Rust MDX-RS, interactive simulators, and Supabase personal progress sync.\n' +
+        '2. **Fullstack AI Lab Architecture Deep-Dive** (/en/blog/fullstack-ai-lab-interactive-edtech-architecture) - Compiling 1,135+ MDX lessons in 90 seconds with Next.js 16 & Rust MDX-RS, WebAssembly WordPress playground, and AI interview simulator.\n' +
         '3. **Unitrition Architecture Deep-Dive** (/en/blog/unitrition-headless-healthtech-architecture) - Engineering a Headless HealthTech platform with Next.js 16, WordPress REST API, Supabase RLS, and USDA FoodData Central API.\n' +
         '4. **Autonomous Hybrid RAG Architecture** (/en/blog/autonomous-hybrid-rag-architecture-browser) - Building in-browser semantic retrieval under 5ms with zero external vector database overhead.\n' +
         '5. **WCAG 2.2 AA & European Accessibility Act 2026** (/en/blog/wcag-22-aa-european-accessibility-act-2026) - The practical engineering compliance guide for EU and Spanish businesses, covering keyboard focus, contrast, and CI/CD a11y gates.\n' +

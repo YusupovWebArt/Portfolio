@@ -105,7 +105,7 @@ When engineering the flagship **Next.js 16 & Hybrid RAG Portfolio Platform (\`yu
 ### 3. Core Mechanisms: How the Platform Works Under the Hood
 
 #### Mechanism 1: The Three-Stage Hybrid Scoring Pipeline (Okapi BM25 + Damerau-Levenshtein + Cosine Similarity)
-Pure semantic vector search often fails on exact version numbers (\`Next.js 16\` vs \`Next.js 14\`) or specific brand names (\`IT-Magic\`, \`Unitrition\`, \`WPSKILLS\`). Conversely, pure keyword matching fails on conceptual prompts like *"How do you optimize mobile loading speed?"*.
+Pure semantic vector search often fails on exact version numbers (\`Next.js 16\` vs \`Next.js 14\`) or specific brand names (\`IT-Magic\`, \`Unitrition\`, \`Fullstack AI Lab\`). Conversely, pure keyword matching fails on conceptual prompts like *"How do you optimize mobile loading speed?"*.
 
 Our retriever in \`src/lib/ai/rag.ts\` combines three mathematical signals for every knowledge chunk \`d\` and query \`Q\`:
 
@@ -224,7 +224,7 @@ Publishing the full retrieval and synthesis architecture of \`yusupovartur.com\`
 ### 3. Ключові механізми: як платформа працює під капотом
 
 #### Механізм 1: Триетапний гібридний пайплайн ранжування (Okapi BM25 + Дамерау-Левенштейн + Косинусна подібність)
-Чистий векторний пошук часто помиляється на точних назвах версій (\`Next.js 16\` проти \`Next.js 14\`) або власних назвах продуктів (\`IT-Magic\`, \`Unitrition\`, \`WPSKILLS\`). І навпаки, звичайний пошук за підрядком не розуміє концептуальних питань на кшталт *«Як ви оптимізуєте швидкість завантаження на мобільних?»*.
+Чистий векторний пошук часто помиляється на точних назвах версій (\`Next.js 16\` проти \`Next.js 14\`) або власних назвах продуктів (\`IT-Magic\`, \`Unitrition\`, \`Fullstack AI Lab\`). І навпаки, звичайний пошук за підрядком не розуміє концептуальних питань на кшталт *«Як ви оптимізуєте швидкість завантаження на мобільних?»*.
 
 Наш ретривер у \`src/lib/ai/rag.ts\` поєднує три математичні сигнали для кожного документа \`d\` та запиту \`Q\`:
 
@@ -343,7 +343,7 @@ Al diseñar la plataforma insignia **Next.js 16 & Hybrid RAG Portfolio Platform 
 ### 3. Mecanismos Principales: Cómo Funciona la Plataforma Bajo el Capó
 
 #### Mecanismo 1: Pipeline de Puntuación Híbrida en Tres Fases (Okapi BM25 + Damerau-Levenshtein + Similitud Coseno)
-La búsqueda vectorial pura suele fallar ante versiones exactas (\`Next.js 16\` frente a \`Next.js 14\`) o nombres propios de proyectos (\`IT-Magic\`, \`Unitrition\`, \`WPSKILLS\`). Por el contrario, la búsqueda por palabras clave no comprende preguntas conceptuales como *«¿Cómo optimizas la velocidad de carga en móviles?»*.
+La búsqueda vectorial pura suele fallar ante versiones exactas (\`Next.js 16\` frente a \`Next.js 14\`) o nombres propios de proyectos (\`IT-Magic\`, \`Unitrition\`, \`Fullstack AI Lab\`). Por el contrario, la búsqueda por palabras clave no comprende preguntas conceptuales como *«¿Cómo optimizas la velocidad de carga en móviles?»*.
 
 Nuestro motor en \`src/lib/ai/rag.ts\` combina tres señales matemáticas para cada fragmento \`d\` y consulta \`Q\`:
 
