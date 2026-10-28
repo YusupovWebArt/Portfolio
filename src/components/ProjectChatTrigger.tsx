@@ -9,12 +9,14 @@ interface ProjectChatTriggerProps {
   projectSlug: string
   projectTitle: string
   label?: string
+  lang?: 'en' | 'ua' | 'es'
 }
 
 export default function ProjectChatTrigger({
   projectSlug,
   projectTitle,
   label,
+  lang = 'en',
 }: ProjectChatTriggerProps) {
   const handleClick = () => {
     if (typeof window !== 'undefined') {
@@ -29,18 +31,28 @@ export default function ProjectChatTrigger({
     }
   }
 
-  const displayText = label || `Ask AI about ${projectTitle}`
+  const defaultMobileText =
+    lang === 'ua'
+      ? 'Запитати AI про проєкт'
+      : lang === 'es'
+        ? 'Preguntar a la IA'
+        : 'Ask AI about this project'
+
+  const desktopText = label || `Ask AI about ${projectTitle}`
+  const mobileText = label || defaultMobileText
 
   return (
     <button
       type="button"
       onClick={handleClick}
       aria-haspopup="dialog"
+      aria-label={desktopText}
       className="inline-flex w-full items-center justify-between gap-2 px-4 py-3 rounded-xl font-semibold text-sm bg-purple-600/10 hover:bg-purple-600/20 dark:bg-lime-500/10 dark:hover:bg-lime-500/20 text-purple-700 dark:text-lime-400 border border-purple-500/30 hover:border-purple-500/50 dark:border-lime-500/30 dark:hover:border-lime-500/50 shadow-sm transition-all duration-200 cursor-pointer"
     >
       <span className="inline-flex items-center gap-2 min-w-0 text-left">
         <Sparkles className="w-4 h-4 shrink-0 text-purple-600 dark:text-lime-400" aria-hidden />
-        <span className="truncate">{displayText}</span>
+        <span className="hidden sm:inline truncate">{desktopText}</span>
+        <span className="sm:hidden truncate">{mobileText}</span>
       </span>
       <span
         aria-hidden="true"

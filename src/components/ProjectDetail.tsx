@@ -317,7 +317,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
   }
 
   return (
-    <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-10">
+    <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-20 sm:pb-12">
       {/* Breadcrumb Navigation */}
       <nav aria-label={pr.breadcrumb} className="mb-4">
         <ol className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
@@ -361,7 +361,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
         </Link>
       )}
 
-      <section className="rounded-2xl bg-neutral-100 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700 p-6 md:p-8 lg:p-10">
+      <section className="rounded-2xl bg-neutral-100 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700 p-4 sm:p-6 md:p-8 lg:p-10">
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-start">
           <div className="space-y-4">
             <div className="relative bg-white dark:bg-slate-900 rounded-xl overflow-hidden shadow-sm border border-slate-200/90 dark:border-slate-600">
@@ -529,27 +529,52 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
             )}
 
             <div className="flex flex-col gap-3 pt-1">
-              {project.liveUrl && project.liveUrl !== '#' && (
-                <a
-                  href={project.liveUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-4 py-3 text-sm font-semibold hover:bg-slate-800 dark:hover:bg-slate-100 transition"
-                >
-                  {pr.liveSite}
-                  <ArrowUpRight className="w-4 h-4" aria-hidden />
-                </a>
-              )}
-              {hasGithub && (
-                <a
-                  href={project.githubUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-slate-900 dark:border-slate-300 bg-white dark:bg-transparent text-slate-900 dark:text-white px-4 py-3 text-sm font-semibold hover:bg-slate-50 dark:hover:bg-slate-800/50 transition"
-                >
-                  GitHub
-                  <ArrowRight className="w-4 h-4" aria-hidden />
-                </a>
+              {project.liveUrl && project.liveUrl !== '#' && hasGithub ? (
+                <div className="grid grid-cols-2 gap-2.5 sm:flex sm:flex-col sm:gap-3">
+                  <a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex w-full items-center justify-center gap-1.5 sm:gap-2 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-3 sm:px-4 py-3 text-xs sm:text-sm font-semibold hover:bg-slate-800 dark:hover:bg-slate-100 transition truncate"
+                  >
+                    <span>{pr.liveSite}</span>
+                    <ArrowUpRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" aria-hidden />
+                  </a>
+                  <a
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex w-full items-center justify-center gap-1.5 sm:gap-2 rounded-xl border border-slate-900 dark:border-slate-300 bg-white dark:bg-transparent text-slate-900 dark:text-white px-3 sm:px-4 py-3 text-xs sm:text-sm font-semibold hover:bg-slate-50 dark:hover:bg-slate-800/50 transition truncate"
+                  >
+                    <span>GitHub</span>
+                    <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" aria-hidden />
+                  </a>
+                </div>
+              ) : (
+                <>
+                  {project.liveUrl && project.liveUrl !== '#' && (
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 px-4 py-3 text-sm font-semibold hover:bg-slate-800 dark:hover:bg-slate-100 transition"
+                    >
+                      {pr.liveSite}
+                      <ArrowUpRight className="w-4 h-4" aria-hidden />
+                    </a>
+                  )}
+                  {hasGithub && (
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-slate-900 dark:border-slate-300 bg-white dark:bg-transparent text-slate-900 dark:text-white px-4 py-3 text-sm font-semibold hover:bg-slate-50 dark:hover:bg-slate-800/50 transition"
+                    >
+                      GitHub
+                      <ArrowRight className="w-4 h-4" aria-hidden />
+                    </a>
+                  )}
+                </>
               )}
               {project.deepDiveBlogSlug && (() => {
                 const isSpa =
@@ -585,6 +610,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
               <ProjectChatTrigger
                 projectSlug={slug || project.title.toLowerCase().replace(/\s+/g, '-')}
                 projectTitle={project.title}
+                lang={lang}
               />
             </div>
           </div>
@@ -604,8 +630,15 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                 </span>
               </div>
             )}
+            {/* Mobile edge gradient fade to indicate scrollable overflow */}
+            {(hasArchitecture || hasCaseStudy) && (
+              <div
+                className="pointer-events-none absolute right-0 top-0 bottom-0 w-8 bg-gradient-to-l from-slate-100 dark:from-slate-800 to-transparent sm:hidden z-10"
+                aria-hidden="true"
+              />
+            )}
             <div
-              className="flex overflow-x-auto scrollbar-none"
+              className="flex overflow-x-auto scrollbar-none snap-x snap-mandatory scroll-smooth"
               role="tablist"
               aria-label={pr.tabsLabel}
               onKeyDown={handleTabKeyDown}
@@ -618,7 +651,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                 aria-controls="panel-project-stack"
                 tabIndex={activeTab === 'stack' ? 0 : -1}
                 onClick={() => setDetailTab('stack')}
-                className={`shrink-0 sm:flex-1 px-4 sm:px-6 py-3.5 inline-flex items-center justify-center gap-2 text-sm font-semibold whitespace-nowrap transition-colors sm:text-base cursor-pointer ${
+                className={`shrink-0 snap-start sm:flex-1 px-4 sm:px-6 py-3.5 inline-flex items-center justify-center gap-2 text-sm font-semibold whitespace-nowrap transition-colors sm:text-base cursor-pointer ${
                   activeTab === 'stack'
                     ? 'border-b-2 border-purple-600 text-purple-600 dark:border-lime-400 dark:text-lime-400 font-bold bg-white dark:bg-slate-700/60'
                     : 'border-b-2 border-transparent text-slate-600 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white'
@@ -635,7 +668,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                 aria-controls="panel-project-features"
                 tabIndex={activeTab === 'features' ? 0 : -1}
                 onClick={() => setDetailTab('features')}
-                className={`shrink-0 sm:flex-1 px-4 sm:px-6 py-3.5 inline-flex items-center justify-center gap-2 text-sm font-semibold whitespace-nowrap transition-colors sm:text-base cursor-pointer ${
+                className={`shrink-0 snap-start sm:flex-1 px-4 sm:px-6 py-3.5 inline-flex items-center justify-center gap-2 text-sm font-semibold whitespace-nowrap transition-colors sm:text-base cursor-pointer ${
                   activeTab === 'features'
                     ? 'border-b-2 border-purple-600 text-purple-600 dark:border-lime-400 dark:text-lime-400 font-bold bg-white dark:bg-slate-700/60'
                     : 'border-b-2 border-transparent text-slate-600 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white'
@@ -653,7 +686,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                   aria-controls="panel-project-architecture"
                   tabIndex={activeTab === 'architecture' ? 0 : -1}
                   onClick={() => setDetailTab('architecture')}
-                  className={`shrink-0 sm:flex-1 px-4 sm:px-6 py-3.5 inline-flex items-center justify-center gap-2 text-sm font-semibold whitespace-nowrap transition-colors sm:text-base cursor-pointer ${
+                  className={`shrink-0 snap-start sm:flex-1 px-4 sm:px-6 py-3.5 inline-flex items-center justify-center gap-2 text-sm font-semibold whitespace-nowrap transition-colors sm:text-base cursor-pointer ${
                     activeTab === 'architecture'
                       ? 'border-b-2 border-purple-600 text-purple-600 dark:border-lime-400 dark:text-lime-400 font-bold bg-white dark:bg-slate-700/60'
                       : 'border-b-2 border-transparent text-slate-600 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white'
@@ -672,7 +705,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                   aria-controls="panel-project-case-study"
                   tabIndex={activeTab === 'case-study' ? 0 : -1}
                   onClick={() => setDetailTab('case-study')}
-                  className={`shrink-0 sm:flex-1 px-4 sm:px-6 py-3.5 inline-flex items-center justify-center gap-2 text-sm font-semibold whitespace-nowrap transition-colors sm:text-base cursor-pointer ${
+                  className={`shrink-0 snap-start sm:flex-1 px-4 sm:px-6 py-3.5 inline-flex items-center justify-center gap-2 text-sm font-semibold whitespace-nowrap transition-colors sm:text-base cursor-pointer ${
                     activeTab === 'case-study'
                       ? 'border-b-2 border-purple-600 text-purple-600 dark:border-lime-400 dark:text-lime-400 font-bold bg-white dark:bg-slate-700/60'
                       : 'border-b-2 border-transparent text-slate-600 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white'
@@ -685,7 +718,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
             </div>
           </div>
 
-          <div className="p-6 sm:p-8">
+          <div className="p-4 sm:p-8">
             {activeTab === 'stack' && (
               <div
                 id="panel-project-stack"
@@ -720,13 +753,14 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                       <h4 className="font-semibold text-slate-900 dark:text-white mb-2">
                         Frontend:
                       </h4>
-                      <ul className="list-none pl-2 space-y-1 text-slate-600 dark:text-slate-300">
+                      <ul className="list-none space-y-2 text-slate-600 dark:text-slate-300">
                         {project.technologies.frontend.map((tech, idx) => (
                           <li
                             key={idx}
-                            className="relative pl-2 before:absolute before:left-0 before:top-0 before:text-slate-600 dark:before:text-slate-300 before:content-['-']"
+                            className="flex items-start gap-2 text-xs sm:text-sm leading-relaxed"
                           >
-                            {getTechFull(tech)}
+                            <span className="text-purple-600 dark:text-lime-400 font-bold shrink-0 select-none mt-0.5" aria-hidden="true">•</span>
+                            <span className="text-slate-700 dark:text-slate-300">{getTechFull(tech)}</span>
                           </li>
                         ))}
                       </ul>
@@ -740,13 +774,14 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                       <h4 className="font-semibold text-slate-900 dark:text-white mb-2">
                         Backend:
                       </h4>
-                      <ul className="list-none pl-2 space-y-1 text-slate-600 dark:text-slate-300">
+                      <ul className="list-none space-y-2 text-slate-600 dark:text-slate-300">
                         {project.technologies.backend.map((tech, idx) => (
                           <li
                             key={idx}
-                            className="relative pl-2 before:absolute before:left-0 before:top-0 before:text-slate-600 dark:before:text-slate-300 before:content-['-']"
+                            className="flex items-start gap-2 text-xs sm:text-sm leading-relaxed"
                           >
-                            {getTechFull(tech)}
+                            <span className="text-purple-600 dark:text-lime-400 font-bold shrink-0 select-none mt-0.5" aria-hidden="true">•</span>
+                            <span className="text-slate-700 dark:text-slate-300">{getTechFull(tech)}</span>
                           </li>
                         ))}
                       </ul>
@@ -760,13 +795,14 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                       <h4 className="font-semibold text-slate-900 dark:text-white mb-2">
                         API:
                       </h4>
-                      <ul className="list-none pl-2 space-y-1 text-slate-600 dark:text-slate-300">
+                      <ul className="list-none space-y-2 text-slate-600 dark:text-slate-300">
                         {project.technologies.api.map((tech, idx) => (
                           <li
                             key={idx}
-                            className="relative pl-2 before:absolute before:left-0 before:top-0 before:text-slate-600 dark:before:text-slate-300 before:content-['-']"
+                            className="flex items-start gap-2 text-xs sm:text-sm leading-relaxed"
                           >
-                            {getTechFull(tech)}
+                            <span className="text-purple-600 dark:text-lime-400 font-bold shrink-0 select-none mt-0.5" aria-hidden="true">•</span>
+                            <span className="text-slate-700 dark:text-slate-300">{getTechFull(tech)}</span>
                           </li>
                         ))}
                       </ul>
@@ -784,15 +820,16 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                             ? 'Gestión de contenidos (CMS):'
                             : 'Content Management:'}
                       </h4>
-                      <ul className="list-none pl-2 space-y-1 text-slate-600 dark:text-slate-300">
+                      <ul className="list-none space-y-2 text-slate-600 dark:text-slate-300">
                         {project.technologies.contentManagement.map(
                           (tech, idx) => (
                             <li
-                              key={idx}
-                              className="relative pl-2 before:absolute before:left-0 before:top-0 before:text-slate-600 dark:before:text-slate-300 before:content-['-']"
-                            >
-                              {getTechFull(tech)}
-                            </li>
+                            key={idx}
+                            className="flex items-start gap-2 text-xs sm:text-sm leading-relaxed"
+                          >
+                            <span className="text-purple-600 dark:text-lime-400 font-bold shrink-0 select-none mt-0.5" aria-hidden="true">•</span>
+                            <span className="text-slate-700 dark:text-slate-300">{getTechFull(tech)}</span>
+                          </li>
                           ),
                         )}
                       </ul>
@@ -810,15 +847,16 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                             ? 'DevOps y seguridad:'
                             : 'DevOps & Security:'}
                       </h4>
-                      <ul className="list-none pl-2 space-y-1 text-slate-600 dark:text-slate-300">
+                      <ul className="list-none space-y-2 text-slate-600 dark:text-slate-300">
                         {project.technologies.devopsSecurity.map(
                           (tech, idx) => (
                             <li
-                              key={idx}
-                              className="relative pl-2 before:absolute before:left-0 before:top-0 before:text-slate-600 dark:before:text-slate-300 before:content-['-']"
-                            >
-                              {getTechFull(tech)}
-                            </li>
+                            key={idx}
+                            className="flex items-start gap-2 text-xs sm:text-sm leading-relaxed"
+                          >
+                            <span className="text-purple-600 dark:text-lime-400 font-bold shrink-0 select-none mt-0.5" aria-hidden="true">•</span>
+                            <span className="text-slate-700 dark:text-slate-300">{getTechFull(tech)}</span>
+                          </li>
                           ),
                         )}
                       </ul>
@@ -836,13 +874,14 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                             ? 'Analítica:'
                             : 'Analytics:'}
                       </h4>
-                      <ul className="list-none pl-2 space-y-1 text-slate-600 dark:text-slate-300">
+                      <ul className="list-none space-y-2 text-slate-600 dark:text-slate-300">
                         {project.technologies.analytics.map((tech, idx) => (
                           <li
                             key={idx}
-                            className="relative pl-2 before:absolute before:left-0 before:top-0 before:text-slate-600 dark:before:text-slate-300 before:content-['-']"
+                            className="flex items-start gap-2 text-xs sm:text-sm leading-relaxed"
                           >
-                            {getTechFull(tech)}
+                            <span className="text-purple-600 dark:text-lime-400 font-bold shrink-0 select-none mt-0.5" aria-hidden="true">•</span>
+                            <span className="text-slate-700 dark:text-slate-300">{getTechFull(tech)}</span>
                           </li>
                         ))}
                       </ul>
@@ -860,13 +899,14 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                             ? 'Herramientas de IA:'
                             : 'AI Tools:'}
                       </h4>
-                      <ul className="list-none pl-2 space-y-1 text-slate-600 dark:text-slate-300">
+                      <ul className="list-none space-y-2 text-slate-600 dark:text-slate-300">
                         {project.technologies.aiTools.map((tech, idx) => (
                           <li
                             key={idx}
-                            className="relative pl-2 before:absolute before:left-0 before:top-0 before:text-slate-600 dark:before:text-slate-300 before:content-['-']"
+                            className="flex items-start gap-2 text-xs sm:text-sm leading-relaxed"
                           >
-                            {getTechFull(tech)}
+                            <span className="text-purple-600 dark:text-lime-400 font-bold shrink-0 select-none mt-0.5" aria-hidden="true">•</span>
+                            <span className="text-slate-700 dark:text-slate-300">{getTechFull(tech)}</span>
                           </li>
                         ))}
                       </ul>
@@ -880,13 +920,14 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                       <h4 className="font-semibold text-slate-900 dark:text-white mb-2">
                         SEO:
                       </h4>
-                      <ul className="list-none pl-2 space-y-1 text-slate-600 dark:text-slate-300">
+                      <ul className="list-none space-y-2 text-slate-600 dark:text-slate-300">
                         {project.technologies.seo.map((tech, idx) => (
                           <li
                             key={idx}
-                            className="relative pl-2 before:absolute before:left-0 before:top-0 before:text-slate-600 dark:before:text-slate-300 before:content-['-']"
+                            className="flex items-start gap-2 text-xs sm:text-sm leading-relaxed"
                           >
-                            {getTechFull(tech)}
+                            <span className="text-purple-600 dark:text-lime-400 font-bold shrink-0 select-none mt-0.5" aria-hidden="true">•</span>
+                            <span className="text-slate-700 dark:text-slate-300">{getTechFull(tech)}</span>
                           </li>
                         ))}
                       </ul>
@@ -904,15 +945,16 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                             ? 'Optimización técnica:'
                             : 'Technical Optimization:'}
                       </h4>
-                      <ul className="list-none pl-2 space-y-1 text-slate-600 dark:text-slate-300">
+                      <ul className="list-none space-y-2 text-slate-600 dark:text-slate-300">
                         {project.technologies.technicalOptimization.map(
                           (tech, idx) => (
                             <li
-                              key={idx}
-                              className="relative pl-2 before:absolute before:left-0 before:top-0 before:text-slate-600 dark:before:text-slate-300 before:content-['-']"
-                            >
-                              {getTechFull(tech)}
-                            </li>
+                            key={idx}
+                            className="flex items-start gap-2 text-xs sm:text-sm leading-relaxed"
+                          >
+                            <span className="text-purple-600 dark:text-lime-400 font-bold shrink-0 select-none mt-0.5" aria-hidden="true">•</span>
+                            <span className="text-slate-700 dark:text-slate-300">{getTechFull(tech)}</span>
+                          </li>
                           ),
                         )}
                       </ul>
@@ -930,15 +972,16 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                             ? 'Marketing digital:'
                             : 'Digital Marketing:'}
                       </h4>
-                      <ul className="list-none pl-2 space-y-1 text-slate-600 dark:text-slate-300">
+                      <ul className="list-none space-y-2 text-slate-600 dark:text-slate-300">
                         {project.technologies.digitalMarketing.map(
                           (tech, idx) => (
                             <li
-                              key={idx}
-                              className="relative pl-2 before:absolute before:left-0 before:top-0 before:text-slate-600 dark:before:text-slate-300 before:content-['-']"
-                            >
-                              {getTechFull(tech)}
-                            </li>
+                            key={idx}
+                            className="flex items-start gap-2 text-xs sm:text-sm leading-relaxed"
+                          >
+                            <span className="text-purple-600 dark:text-lime-400 font-bold shrink-0 select-none mt-0.5" aria-hidden="true">•</span>
+                            <span className="text-slate-700 dark:text-slate-300">{getTechFull(tech)}</span>
+                          </li>
                           ),
                         )}
                       </ul>
