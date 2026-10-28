@@ -84,13 +84,13 @@ const LangDropdown = ({ lang, label, onSelect, compact = false }: LangDropdownPr
     <div ref={ref} className="relative">
       <button
         type="button"
-        id="lang-dropdown-btn"
+        id={`lang-dropdown-btn-${compact ? 'compact' : 'full'}`}
         onClick={() => setOpen((prev) => !prev)}
         aria-label={`${label}: ${FLAGS[lang].code}`}
         aria-haspopup="listbox"
         aria-expanded={open}
         title={label}
-        className={`flex items-center gap-1.5 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all duration-200 font-semibold text-xs ${
+        className={`flex items-center gap-1.5 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-all duration-200 font-semibold text-xs cursor-pointer ${
           compact ? 'px-2 py-1.5' : 'px-3 py-2 w-full justify-center'
         }`}
       >
@@ -119,7 +119,7 @@ const LangDropdown = ({ lang, label, onSelect, compact = false }: LangDropdownPr
                   onSelect(code)
                   setOpen(false)
                 }}
-                className={`flex items-center gap-2.5 w-full px-3 py-2 text-xs font-semibold transition-colors duration-150 ${
+                className={`flex items-center gap-2.5 w-full px-3 py-2 text-xs font-semibold transition-colors duration-150 cursor-pointer ${
                   lang === code
                     ? 'bg-slate-100 dark:bg-slate-800 text-purple-600 dark:text-lime-400'
                     : 'text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800'
@@ -143,6 +143,7 @@ const Header = () => {
   const { lang, setLang, t } = useLanguage()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeSection, setActiveSection] = useState('home')
+  const headerRef = useRef<HTMLElement>(null)
 
   const navItems = [
     { id: 'home', label: t.header.nav.home },
@@ -154,6 +155,28 @@ const Header = () => {
     { id: 'blog', label: lang === 'ua' ? 'Блог' : lang === 'es' ? 'Blog' : 'Blog' },
     { id: 'contact', label: t.header.nav.contact },
   ]
+
+  // Outside click and Escape key dismissal for mobile drawer
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (headerRef.current && !headerRef.current.contains(e.target as Node)) {
+        setIsMenuOpen(false)
+      }
+    }
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setIsMenuOpen(false)
+      }
+    }
+    if (isMenuOpen) {
+      document.addEventListener('mousedown', handleClickOutside)
+      document.addEventListener('keydown', handleKeyDown)
+    }
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+      document.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [isMenuOpen])
 
   useEffect(() => {
     const handleScroll = () => {
@@ -209,154 +232,171 @@ const Header = () => {
       >
         {t.app.skipToContent}
       </a>
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
-      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          <button
-            type="button"
-            onClick={() => scrollToSection('home')}
-            aria-label="Artur Yusupov - Portfolio Home"
-            className="text-xl font-bold text-slate-900 dark:text-white hover:text-purple-600 dark:hover:text-lime-400 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-600 dark:focus-visible:outline-lime-400 rounded text-left"
-          >
-            Artur Yusupov
-          </button>
-
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8">
-            {navItems.map((item) => (
-              <button
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                className={`text-sm font-medium transition-colors duration-200 ${
-                  activeSection === item.id
-                    ? 'text-purple-600 dark:text-lime-400'
-                    : 'text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white'
-                }`}
-              >
-                {item.label}
-              </button>
-            ))}
-          </nav>
-
-          {/* Desktop: Social Links + Controls */}
-          <div className="hidden md:flex items-center space-x-3">
-            {/* Theme Toggle */}
+      <header
+        ref={headerRef}
+        className="fixed top-0 left-0 right-0 z-50 bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm border-b border-slate-200 dark:border-slate-800 transition-colors duration-300"
+      >
+        <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16 gap-3">
+            {/* Logo / Brand Name - protected against multi-line wrapping */}
             <button
               type="button"
-              onClick={toggleTheme}
-              className="p-2 text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white transition-colors rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800"
-              title={isDark ? t.header.themeToggle.toLight : t.header.themeToggle.toDark}
+              onClick={() => scrollToSection('home')}
+              aria-label="Artur Yusupov - Portfolio Home"
+              className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white hover:text-purple-600 dark:hover:text-lime-400 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-600 dark:focus-visible:outline-lime-400 rounded text-left whitespace-nowrap shrink-0 cursor-pointer"
             >
-              {isDark ? <Sun size={20} /> : <Moon size={20} />}
+              Artur Yusupov
             </button>
 
-            <a
-              href="https://github.com/YusupovWebArt"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="GitHub Profile"
-              className="text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white transition-colors"
-            >
-              <Github size={20} aria-hidden="true" />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/artur-iusupov/"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn Profile"
-              className="text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white transition-colors"
-            >
-              <Linkedin size={20} aria-hidden="true" />
-            </a>
-            <a
-              href="https://x.com/yusupovwebart"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="X Profile"
-              className="text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white transition-colors"
-            >
-              <XIcon size={18} aria-hidden="true" />
-            </a>
-
-            {/* Language Dropdown - Rightmost position with divider */}
-            <div className="pl-4 ml-2 border-l border-slate-200 dark:border-slate-800 flex items-center">
-              <LangDropdown compact lang={lang} label={t.header.langToggle} onSelect={setLang} />
-            </div>
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            type="button"
-            className="md:hidden text-slate-900 dark:text-white"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
-
-        {/* Mobile Menu */}
-        {isMenuOpen && (
-          <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 bg-slate-100 dark:bg-slate-800 rounded-lg mt-2">
+            {/* Desktop Navigation (>= 1280px xl breakpoint: guarantees zero wrapping and ample breathing room) */}
+            <nav className="hidden xl:flex items-center space-x-4 2xl:space-x-7" aria-label="Desktop Navigation">
               {navItems.map((item) => (
                 <button
                   key={item.id}
                   type="button"
                   onClick={() => scrollToSection(item.id)}
-                  className={`block w-full text-left px-3 py-2 text-sm font-medium rounded-md transition-colors ${
+                  className={`text-sm font-medium whitespace-nowrap transition-colors duration-200 cursor-pointer ${
                     activeSection === item.id
-                      ? 'text-purple-600 dark:text-lime-400 bg-slate-200 dark:bg-slate-700'
-                      : 'text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200 dark:hover:bg-slate-700'
+                      ? 'text-purple-600 dark:text-lime-400 font-semibold'
+                      : 'text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white'
                   }`}
                 >
                   {item.label}
                 </button>
               ))}
-              <div className="flex items-center justify-center space-x-4 px-3 py-2 border-t border-slate-200 dark:border-slate-700 mt-2 pt-4">
-                <button
-                  type="button"
-                  onClick={toggleTheme}
-                  className="p-2 text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white transition-colors rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700"
-                >
-                  {isDark ? <Sun size={20} /> : <Moon size={20} />}
-                </button>
-                <a
-                  href="https://github.com/YusupovWebArt"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="GitHub Profile"
-                  className="text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white transition-colors"
-                >
-                  <Github size={20} aria-hidden="true" />
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/artur-iusupov/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="LinkedIn Profile"
-                  className="text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white transition-colors"
-                >
-                  <Linkedin size={20} aria-hidden="true" />
-                </a>
-                <a
-                  href="https://x.com/yusupovwebart"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="X Profile"
-                  className="text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white transition-colors"
-                >
-                  <XIcon size={18} aria-hidden="true" />
-                </a>
+            </nav>
 
-                {/* Language Dropdown in mobile menu */}
+            {/* Desktop: Social Links + Controls (>= 1280px) */}
+            <div className="hidden xl:flex items-center space-x-3">
+              {/* Theme Toggle */}
+              <button
+                type="button"
+                onClick={toggleTheme}
+                className="p-2 text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white transition-colors rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer"
+                title={isDark ? t.header.themeToggle.toLight : t.header.themeToggle.toDark}
+                aria-label={isDark ? t.header.themeToggle.toLight : t.header.themeToggle.toDark}
+              >
+                {isDark ? <Sun size={20} /> : <Moon size={20} />}
+              </button>
+
+              <a
+                href="https://github.com/YusupovWebArt"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub Profile"
+                className="p-1.5 text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white transition-colors"
+              >
+                <Github size={20} aria-hidden="true" />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/artur-iusupov/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn Profile"
+                className="p-1.5 text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white transition-colors"
+              >
+                <Linkedin size={20} aria-hidden="true" />
+              </a>
+              <a
+                href="https://x.com/yusupovwebart"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="X Profile"
+                className="p-1.5 text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white transition-colors"
+              >
+                <XIcon size={18} aria-hidden="true" />
+              </a>
+
+              {/* Language Dropdown - Rightmost position with divider */}
+              <div className="pl-3 ml-1 border-l border-slate-200 dark:border-slate-800 flex items-center">
                 <LangDropdown compact lang={lang} label={t.header.langToggle} onSelect={setLang} />
               </div>
             </div>
+
+            {/* Mobile & Tablet Controls (< 1280px): Quick Theme + Quick Lang + Hamburger */}
+            <div className="flex xl:hidden items-center space-x-1.5 sm:space-x-2">
+              <button
+                type="button"
+                onClick={toggleTheme}
+                className="p-2 text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white transition-colors rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer"
+                title={isDark ? t.header.themeToggle.toLight : t.header.themeToggle.toDark}
+                aria-label={isDark ? t.header.themeToggle.toLight : t.header.themeToggle.toDark}
+              >
+                {isDark ? <Sun size={19} /> : <Moon size={19} />}
+              </button>
+
+              <LangDropdown compact lang={lang} label={t.header.langToggle} onSelect={setLang} />
+
+              <button
+                type="button"
+                className="p-2 text-slate-900 dark:text-white rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-600 dark:focus-visible:outline-lime-400"
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+                aria-expanded={isMenuOpen}
+                aria-controls="mobile-navigation"
+              >
+                {isMenuOpen ? <X size={24} aria-hidden="true" /> : <Menu size={24} aria-hidden="true" />}
+              </button>
+            </div>
           </div>
-        )}
-      </div>
-    </header>
+
+          {/* Mobile & Tablet Drawer Menu (< 1280px) */}
+          {isMenuOpen && (
+            <nav id="mobile-navigation" className="xl:hidden pb-4 animate-fade-in" aria-label="Mobile Navigation">
+              <div className="mt-2 rounded-2xl border border-slate-200/90 dark:border-slate-700/80 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md shadow-2xl p-3 space-y-1 max-h-[calc(100dvh-5rem)] overflow-y-auto custom-scrollbar">
+                {navItems.map((item) => (
+                  <button
+                    key={item.id}
+                    type="button"
+                    onClick={() => scrollToSection(item.id)}
+                    className={`flex items-center justify-between w-full text-left px-4 py-3 rounded-xl text-sm font-semibold transition-all duration-150 cursor-pointer ${
+                      activeSection === item.id
+                        ? 'text-purple-700 dark:text-lime-400 bg-purple-50 dark:bg-lime-950/40 border border-purple-200/60 dark:border-lime-500/30'
+                        : 'text-slate-700 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800/70'
+                    }`}
+                  >
+                    <span>{item.label}</span>
+                    {activeSection === item.id && (
+                      <span className="w-1.5 h-1.5 rounded-full bg-purple-600 dark:text-lime-400" aria-hidden="true" />
+                    )}
+                  </button>
+                ))}
+
+                {/* Social links row inside drawer */}
+                <div className="flex items-center justify-around px-3 py-3 border-t border-slate-200/80 dark:border-slate-800 mt-2 pt-3">
+                  <a
+                    href="https://github.com/YusupovWebArt"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="GitHub Profile"
+                    className="p-2.5 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-colors"
+                  >
+                    <Github size={20} aria-hidden="true" />
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/in/artur-iusupov/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn Profile"
+                    className="p-2.5 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-colors"
+                  >
+                    <Linkedin size={20} aria-hidden="true" />
+                  </a>
+                  <a
+                    href="https://x.com/yusupovwebart"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="X Profile"
+                    className="p-2.5 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-colors"
+                  >
+                    <XIcon size={18} aria-hidden="true" />
+                  </a>
+                </div>
+              </div>
+            </nav>
+          )}
+        </div>
+      </header>
     </>
   )
 }
