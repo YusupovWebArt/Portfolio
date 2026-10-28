@@ -312,12 +312,12 @@ export default function BlogDetailView({
           </div>
         )}
 
-        {/* Executive TL;DR Box */}
+        {/* Key Architectural Takeaways Box */}
         {tldr.length > 0 && (
           <aside className="mb-10 p-6 bg-slate-50 dark:bg-slate-800/80 rounded-2xl border border-purple-200/70 dark:border-lime-500/30 shadow-xs">
             <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-purple-700 dark:text-lime-400 mb-3">
               <CheckCircle2 className="w-4 h-4" aria-hidden="true" />
-              <span>{locale === 'ua' ? 'Ключові тези для CTO та техлідів (TL;DR)' : locale === 'es' ? 'Conclusiones clave para CTOs y líderes técnicos (TL;DR)' : 'Executive Takeaways for CTOs & Tech Leads (TL;DR)'}</span>
+              <span>{locale === 'ua' ? 'Ключові архітектурні тези' : locale === 'es' ? 'Puntos clave de arquitectura' : 'Key Architectural Takeaways'}</span>
             </div>
             <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
               {tldr.map((item, idx) => (
