@@ -235,35 +235,75 @@ export default function MarkdownRenderer({ content, className = '' }: MarkdownRe
         )
 
         elements.push(
-          <div
-            key={`table-${i}`}
-            className="my-8 overflow-x-auto rounded-2xl border border-slate-200 dark:border-slate-700/80 shadow-xs"
-          >
-            <table className="w-full text-left text-xs sm:text-sm border-collapse">
-              <thead className="bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white font-bold border-b border-slate-200 dark:border-slate-700">
-                <tr>
-                  {headerCells.map((th, thIdx) => (
-                    <th key={thIdx} className="px-4 py-3.5 whitespace-nowrap">
-                      {renderInline(th)}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-slate-100 dark:divide-slate-800 text-slate-700 dark:text-slate-300">
-                {bodyRows.map((row, rowIdx) => (
-                  <tr
-                    key={rowIdx}
-                    className="hover:bg-purple-50/40 dark:hover:bg-slate-800/40 transition-colors odd:bg-white even:bg-slate-50/50 dark:odd:bg-slate-900/40 dark:even:bg-slate-800/20"
-                  >
-                    {row.map((td, tdIdx) => (
-                      <td key={tdIdx} className="px-4 py-3 align-top leading-relaxed">
-                        {renderInline(td)}
-                      </td>
+          <div key={`table-${i}`} className="my-8">
+            {/* Desktop & Tablet: Classic structured table */}
+            <div className="hidden sm:block overflow-x-auto rounded-2xl border border-slate-200 dark:border-slate-700/80 shadow-xs">
+              <table className="w-full min-w-[640px] text-left text-sm border-collapse">
+                <thead className="bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white font-bold border-b border-slate-200 dark:border-slate-700">
+                  <tr>
+                    {headerCells.map((th, thIdx) => (
+                      <th key={thIdx} className="px-4 py-3.5 whitespace-nowrap">
+                        {renderInline(th)}
+                      </th>
                     ))}
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody className="divide-y divide-slate-100 dark:divide-slate-800 text-slate-700 dark:text-slate-300">
+                  {bodyRows.map((row, rowIdx) => (
+                    <tr
+                      key={rowIdx}
+                      className="hover:bg-purple-50/40 dark:hover:bg-slate-800/40 transition-colors odd:bg-white even:bg-slate-50/50 dark:odd:bg-slate-900/40 dark:even:bg-slate-800/20"
+                    >
+                      {row.map((td, tdIdx) => (
+                        <td key={tdIdx} className="px-4 py-3.5 align-top leading-relaxed">
+                          {renderInline(td)}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            {/* Mobile: Responsive stacked card view (eliminates awkward horizontal scrolling) */}
+            <div className="sm:hidden space-y-4">
+              {bodyRows.map((row, rowIdx) => (
+                <div
+                  key={rowIdx}
+                  className="p-4 rounded-2xl border border-slate-200 dark:border-slate-700/80 bg-slate-50/70 dark:bg-slate-800/60 shadow-xs space-y-3"
+                >
+                  {/* Primary column (typically Architectural Decision or Metric) */}
+                  {row[0] && (
+                    <div className="border-b border-slate-200/80 dark:border-slate-700/60 pb-2.5">
+                      <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-purple-700 dark:text-lime-400 block mb-1">
+                        {headerCells[0] || 'Decision'}
+                      </span>
+                      <div className="font-bold text-slate-900 dark:text-white text-sm leading-snug">
+                        {renderInline(row[0])}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Secondary & explanatory columns */}
+                  {row.slice(1).map((cell, cellIdx) => {
+                    const actualColIdx = cellIdx + 1;
+                    const headerLabel = headerCells[actualColIdx] || '';
+                    return (
+                      <div key={actualColIdx} className="text-xs leading-relaxed">
+                        {headerLabel && (
+                          <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 block mb-1">
+                            {headerLabel}
+                          </span>
+                        )}
+                        <div className="text-slate-700 dark:text-slate-200">
+                          {renderInline(cell)}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              ))}
+            </div>
           </div>
         )
         continue

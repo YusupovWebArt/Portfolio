@@ -25,8 +25,12 @@ describe('MarkdownRenderer Specification (TDD)', () => {
 
     const rows = container.querySelectorAll('tbody tr')
     expect(rows.length).toBe(2)
-    expect(screen.getByText('First Contentful Paint')).not.toBeNull()
-    expect(screen.getByText('0.3s')).not.toBeNull()
+    expect(screen.getAllByText('First Contentful Paint')).toHaveLength(2)
+    expect(screen.getAllByText('0.3s')).toHaveLength(2)
+
+    // Verify mobile responsive card view
+    const mobileCards = container.querySelectorAll('.sm\\:hidden > div')
+    expect(mobileCards.length).toBe(2)
   })
 
   it('should render headings with semantic tags', () => {
