@@ -10,7 +10,7 @@ describe('Featured Projects Search & Filtering Specification (TDD)', () => {
     sessionStorage.clear()
   })
   it('getProjectTechList should extract technologies from all 10 categories including seo, analytics, technicalOptimization, digitalMarketing', () => {
-    const wpskills = getProjectBySlug('wpskills')
+    const wpskills = getProjectBySlug('fullstack-ai-lab')
     expect(wpskills).toBeDefined()
     if (!wpskills) return
 
@@ -23,7 +23,7 @@ describe('Featured Projects Search & Filtering Specification (TDD)', () => {
   })
 
   it('matchesProjectSearch should support multi-word tokenized queries across different fields', () => {
-    const wpskills = getProjectBySlug('wpskills')
+    const wpskills = getProjectBySlug('fullstack-ai-lab')
     const itMagic = getProjectBySlug('it-magic')
     expect(wpskills).toBeDefined()
     expect(itMagic).toBeDefined()
@@ -85,7 +85,7 @@ describe('Featured Projects Search & Filtering Specification (TDD)', () => {
       name: /view details|детальніше|ver detalles/i,
     })
     expect(viewDetailsLinks.length).toBeGreaterThan(0)
-    expect(viewDetailsLinks[0].getAttribute('href')).toContain('/projects/wpskills')
+    expect(viewDetailsLinks[0].getAttribute('href')).toContain('/projects/fullstack-ai-lab')
 
     fireEvent.click(viewDetailsLinks[0])
     expect(onSelect).toHaveBeenCalledWith(29100)

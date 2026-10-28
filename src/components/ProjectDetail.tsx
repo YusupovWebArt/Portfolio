@@ -19,6 +19,9 @@ import {
   LuX as X,
   LuExternalLink as ExternalLink,
   LuStar,
+  LuCode as Code,
+  LuSparkles as Sparkles,
+  LuCpu as Cpu,
 } from 'react-icons/lu'
 import { Project, TechnologyItem } from './projects/project-types'
 import { useLanguage } from '../contexts/LanguageContext'
@@ -591,80 +594,95 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
       {/* Секция: Technical Stack / Key Features - табы */}
       <section className="mt-12">
         <div className="overflow-hidden rounded-2xl border border-slate-200/80 bg-white shadow-sm dark:border-slate-600 dark:bg-slate-700">
-          <div
-            className="flex border-b border-slate-200 dark:border-slate-600"
-            role="tablist"
-            aria-label={pr.tabsLabel}
-            onKeyDown={handleTabKeyDown}
-          >
-            <button
-              type="button"
-              role="tab"
-              id="tab-project-stack"
-              aria-selected={activeTab === 'stack'}
-              aria-controls="panel-project-stack"
-              tabIndex={activeTab === 'stack' ? 0 : -1}
-              onClick={() => setDetailTab('stack')}
-              className={`min-w-0 flex-1 px-4 py-3.5 text-center text-sm font-semibold transition-colors sm:text-base cursor-pointer ${
-                activeTab === 'stack'
-                  ? 'border-b-2 border-purple-600 text-purple-600 dark:border-lime-400 dark:text-lime-400'
-                  : 'border-b-2 border-transparent text-slate-600 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white'
-              }`}
+          <div className="relative border-b border-slate-200 dark:border-slate-600 bg-slate-50/50 dark:bg-slate-800/40">
+            {/* Mobile Swipe Hint */}
+            {(hasArchitecture || hasCaseStudy) && (
+              <div className="sm:hidden flex items-center justify-end px-4 pt-2.5 pb-1 text-[11px] text-slate-400 dark:text-slate-400 font-medium">
+                <span className="flex items-center gap-1">
+                  <span>{lang === 'ua' ? 'Проведіть вкладки' : lang === 'es' ? 'Deslizar pestañas' : 'Swipe tabs'}</span>
+                  <span className="text-purple-600 dark:text-lime-400 font-bold animate-pulse">→</span>
+                </span>
+              </div>
+            )}
+            <div
+              className="flex overflow-x-auto scrollbar-none"
+              role="tablist"
+              aria-label={pr.tabsLabel}
+              onKeyDown={handleTabKeyDown}
             >
-              {pr.tabs.stack}
-            </button>
-            <button
-              type="button"
-              role="tab"
-              id="tab-project-features"
-              aria-selected={activeTab === 'features'}
-              aria-controls="panel-project-features"
-              tabIndex={activeTab === 'features' ? 0 : -1}
-              onClick={() => setDetailTab('features')}
-              className={`min-w-0 flex-1 px-4 py-3.5 text-center text-sm font-semibold transition-colors sm:text-base cursor-pointer ${
-                activeTab === 'features'
-                  ? 'border-b-2 border-purple-600 text-purple-600 dark:border-lime-400 dark:text-lime-400'
-                  : 'border-b-2 border-transparent text-slate-600 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white'
-              }`}
-            >
-              {pr.tabs.features}
-            </button>
-            {hasArchitecture && (
               <button
                 type="button"
                 role="tab"
-                id="tab-project-architecture"
-                aria-selected={activeTab === 'architecture'}
-                aria-controls="panel-project-architecture"
-                tabIndex={activeTab === 'architecture' ? 0 : -1}
-                onClick={() => setDetailTab('architecture')}
-                className={`min-w-0 flex-1 px-4 py-3.5 text-center text-sm font-semibold transition-colors sm:text-base cursor-pointer ${
-                  activeTab === 'architecture'
-                    ? 'border-b-2 border-purple-600 text-purple-600 dark:border-lime-400 dark:text-lime-400'
+                id="tab-project-stack"
+                aria-selected={activeTab === 'stack'}
+                aria-controls="panel-project-stack"
+                tabIndex={activeTab === 'stack' ? 0 : -1}
+                onClick={() => setDetailTab('stack')}
+                className={`shrink-0 sm:flex-1 px-4 sm:px-6 py-3.5 inline-flex items-center justify-center gap-2 text-sm font-semibold whitespace-nowrap transition-colors sm:text-base cursor-pointer ${
+                  activeTab === 'stack'
+                    ? 'border-b-2 border-purple-600 text-purple-600 dark:border-lime-400 dark:text-lime-400 font-bold bg-white dark:bg-slate-700/60'
                     : 'border-b-2 border-transparent text-slate-600 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white'
                 }`}
               >
-                {pr.tabs.architecture}
+                <Code className="w-4 h-4 shrink-0 text-purple-600 dark:text-lime-400" aria-hidden="true" />
+                <span>{pr.tabs.stack}</span>
               </button>
-            )}
-            {hasCaseStudy && (
               <button
                 type="button"
                 role="tab"
-                id="tab-project-case-study"
-                aria-selected={activeTab === 'case-study'}
-                aria-controls="panel-project-case-study"
-                tabIndex={activeTab === 'case-study' ? 0 : -1}
-                onClick={() => setDetailTab('case-study')}
-                className={`min-w-0 flex-1 px-4 py-3.5 text-center text-sm font-semibold transition-colors sm:text-base cursor-pointer ${
-                  activeTab === 'case-study'
-                    ? 'border-b-2 border-purple-600 text-purple-600 dark:border-lime-400 dark:text-lime-400'
+                id="tab-project-features"
+                aria-selected={activeTab === 'features'}
+                aria-controls="panel-project-features"
+                tabIndex={activeTab === 'features' ? 0 : -1}
+                onClick={() => setDetailTab('features')}
+                className={`shrink-0 sm:flex-1 px-4 sm:px-6 py-3.5 inline-flex items-center justify-center gap-2 text-sm font-semibold whitespace-nowrap transition-colors sm:text-base cursor-pointer ${
+                  activeTab === 'features'
+                    ? 'border-b-2 border-purple-600 text-purple-600 dark:border-lime-400 dark:text-lime-400 font-bold bg-white dark:bg-slate-700/60'
                     : 'border-b-2 border-transparent text-slate-600 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white'
                 }`}
               >
-                {pr.tabs.caseStudy}
+                <Sparkles className="w-4 h-4 shrink-0 text-purple-600 dark:text-lime-400" aria-hidden="true" />
+                <span>{pr.tabs.features}</span>
               </button>
-            )}
+              {hasArchitecture && (
+                <button
+                  type="button"
+                  role="tab"
+                  id="tab-project-architecture"
+                  aria-selected={activeTab === 'architecture'}
+                  aria-controls="panel-project-architecture"
+                  tabIndex={activeTab === 'architecture' ? 0 : -1}
+                  onClick={() => setDetailTab('architecture')}
+                  className={`shrink-0 sm:flex-1 px-4 sm:px-6 py-3.5 inline-flex items-center justify-center gap-2 text-sm font-semibold whitespace-nowrap transition-colors sm:text-base cursor-pointer ${
+                    activeTab === 'architecture'
+                      ? 'border-b-2 border-purple-600 text-purple-600 dark:border-lime-400 dark:text-lime-400 font-bold bg-white dark:bg-slate-700/60'
+                      : 'border-b-2 border-transparent text-slate-600 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white'
+                  }`}
+                >
+                  <Cpu className="w-4 h-4 shrink-0 text-purple-600 dark:text-lime-400" aria-hidden="true" />
+                  <span>{pr.tabs.architecture}</span>
+                </button>
+              )}
+              {hasCaseStudy && (
+                <button
+                  type="button"
+                  role="tab"
+                  id="tab-project-case-study"
+                  aria-selected={activeTab === 'case-study'}
+                  aria-controls="panel-project-case-study"
+                  tabIndex={activeTab === 'case-study' ? 0 : -1}
+                  onClick={() => setDetailTab('case-study')}
+                  className={`shrink-0 sm:flex-1 px-4 sm:px-6 py-3.5 inline-flex items-center justify-center gap-2 text-sm font-semibold whitespace-nowrap transition-colors sm:text-base cursor-pointer ${
+                    activeTab === 'case-study'
+                      ? 'border-b-2 border-purple-600 text-purple-600 dark:border-lime-400 dark:text-lime-400 font-bold bg-white dark:bg-slate-700/60'
+                      : 'border-b-2 border-transparent text-slate-600 hover:text-slate-900 dark:text-slate-200 dark:hover:text-white'
+                  }`}
+                >
+                  <BookOpen className="w-4 h-4 shrink-0 text-purple-600 dark:text-lime-400" aria-hidden="true" />
+                  <span>{pr.tabs.caseStudy}</span>
+                </button>
+              )}
+            </div>
           </div>
 
           <div className="p-6 sm:p-8">

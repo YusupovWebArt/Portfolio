@@ -46,10 +46,10 @@ describe('Automated Project SEO/GEO Metadata Specification (TDD)', () => {
   })
 
   it('should link personal flagship projects to their deep-dive blog articles via subjectOf in JSON-LD', () => {
-    const wpskills = getProjectBySlug('wpskills')
+    const wpskills = getProjectBySlug('fullstack-ai-lab')
     expect(wpskills).toBeDefined()
 
-    const jsonLd = buildProjectJsonLd(wpskills!, 'wpskills', 'en')
+    const jsonLd = buildProjectJsonLd(wpskills!, 'fullstack-ai-lab', 'en')
     expect(jsonLd.subjectOf).toEqual({
       '@type': 'TechArticle',
       url: 'https://www.yusupovartur.com/en/blog/fullstack-ai-lab-interactive-edtech-architecture',

@@ -182,7 +182,7 @@ describe('Hybrid RAG Retriever Specification (TDD)', () => {
     const cards = getRelevantProjectCards('dest projects', { locale: 'en' })
     expect(cards.length).toBeGreaterThanOrEqual(4)
     expect(cards.some((c) => c.slug === 'yusupovartur-nextjs-portfolio')).toBe(true)
-    expect(cards.some((c) => c.slug === 'wpskills')).toBe(true)
+    expect(cards.some((c) => c.slug === 'fullstack-ai-lab')).toBe(true)
     expect(cards.some((c) => c.slug === 'unitrition')).toBe(true)
     expect(cards.some((c) => c.slug === 'it-magic')).toBe(true)
   })

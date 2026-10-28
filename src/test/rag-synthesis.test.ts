@@ -123,14 +123,14 @@ describe('RAG Synthesis & Multilingual Routing Specification (TDD)', () => {
       expect(followUps.length).toBe(3)
     })
 
-    it('should output localized Ukrainian and Spanish features and architecture for WPSKILLS', () => {
-      const featuresUa = synthesizeLocalRagAnswer('Основні можливості та функції проєкту WPSKILLS?', {
+    it('should output localized Ukrainian and Spanish features and architecture for Fullstack AI Lab', () => {
+      const featuresUa = synthesizeLocalRagAnswer('Основні можливості та функції проєкту Fullstack AI Lab?', {
         locale: 'ua',
       })
       expect(featuresUa).toContain('Основні функції проєкту Fullstack AI Lab:')
       expect(featuresUa).toContain('Нативна компіляція на Rust MDX-RS')
 
-      const archEs = synthesizeLocalRagAnswer('¿Cuál es la arquitectura de WPSKILLS?', {
+      const archEs = synthesizeLocalRagAnswer('¿Cuál es la arquitectura de Fullstack AI Lab?', {
         locale: 'es',
       })
       expect(archEs).toContain('Arquitectura e ingeniería de Fullstack AI Lab:')
@@ -138,10 +138,10 @@ describe('RAG Synthesis & Multilingual Routing Specification (TDD)', () => {
       expect(archEs).toContain('Soluciones implementadas:')
     })
 
-    it('should include WPSKILLS in Next.js showcase text and slugs', () => {
+    it('should include Fullstack AI Lab in Next.js showcase text and slugs', () => {
       const showcase = resolveCategoryOrTechShowcase('Show me Next.js projects', 'en')
       expect(showcase).toBeDefined()
-      expect(showcase?.projectSlugs).toContain('wpskills')
+      expect(showcase?.projectSlugs).toContain('fullstack-ai-lab')
       expect(showcase?.answer).toContain('Fullstack AI Lab')
     })
   })

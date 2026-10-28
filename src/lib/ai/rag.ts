@@ -125,7 +125,7 @@ export function detectQueryIntent(query: string): QueryIntent {
   }
 
   if (
-    /(tech\s*stack|stack|technologies|features|architecture|challenges|solutions|case\s*study|стек|функці|архітектур|funciones|arquitectura)/i.test(
+    /(tech\s*stack|\bstack\b|technologies|features|architecture|challenges|solutions|case\s*study|стек|функці|архітектур|funciones|arquitectura)/i.test(
       lower,
     )
   ) {
@@ -1129,7 +1129,7 @@ export function resolveCategoryOrTechShowcase(
   if (/(next\.?js projects|nextjs projects|проєкти на next|react projects|проєкти на react|proyectos next|proyectos react)/i.test(lower)) {
     const projectSlugs = [
       'yusupovartur-nextjs-portfolio',
-      'wpskills',
+      'fullstack-ai-lab',
       'unitrition',
       'webart-react-portfolio',
     ]
@@ -1375,7 +1375,7 @@ export function synthesizeLocalRagAnswer(
         'Ось добірка моїх провідних проєктів, згрупованих за ключовими технологічними стеками (перші та найсильніші приклади з кожного напрямку):\n\n' +
           '- **Next.js 16 & Full-Stack**:\n' +
           '  - **Next.js 16 & Hybrid RAG Portfolio Platform** - корпоративна fullstack-платформа з автономним Hybrid RAG AI-асистентом на 71 кейс.\n' +
-          '  - **WPSKILLS** - інтерактивна інженерна освітня екосистема на 1 100+ MDX-уроків із Rust MDX-RS, симулятором аварій та NotebookLM AI.\n' +
+          '  - **Fullstack AI Lab** - інтерактивна інженерна освітня екосистема на 1 135+ MDX-уроків із Rust MDX-RS, симулятором аварій та NotebookLM AI.\n' +
           '  - **Unitrition** - персоналізована платформа харчування на Next.js 16 App Router, Headless WP, Supabase та USDA API.\n' +
           '- **Custom WordPress & Enterprise**:\n' +
           '  - **IT-Magic** - enterprise-портал для провідного AWS Advanced Consulting Partner із кастомною темою, Schema.org та топовими позиціями в Google.\n' +
@@ -1391,7 +1391,7 @@ export function synthesizeLocalRagAnswer(
         'A continuación presento una selección de mis mejores proyectos organizados por tecnologías clave (los ejemplos destacados de cada categoría):\n\n' +
           '- **Next.js 16 y Full-Stack**:\n' +
           '  - **Next.js 16 & Hybrid RAG Portfolio Platform** - Plataforma fullstack empresarial con motor propio Hybrid RAG y 213+ rutas SSG.\n' +
-          '  - **WPSKILLS** - Ecosistema educativo interactivo con 1.100+ lecciones MDX en Rust MDX-RS, simulador de fallos y NotebookLM AI.\n' +
+          '  - **Fullstack AI Lab** - Ecosistema educativo interactivo con 1.135+ lecciones MDX en Rust MDX-RS, simulador de fallos y NotebookLM AI.\n' +
           '  - **Unitrition** - Plataforma de nutrición personalizada con Next.js 16 App Router, Headless WP, Supabase y API USDA.\n' +
           '- **WordPress a medida y Enterprise**:\n' +
           '  - **IT-Magic** - Portal corporativo para socio consultor de AWS con tema PHP personalizado y optimización SEO técnica.\n' +
@@ -1406,7 +1406,7 @@ export function synthesizeLocalRagAnswer(
       'Here is a curated showcase of my top flagship projects across the primary technology stacks (the leading examples from each category):\n\n' +
         '- **Next.js 16 & Full-Stack**:\n' +
         '  - **Next.js 16 & Hybrid RAG Portfolio Platform** - Enterprise fullstack platform with an autonomous Hybrid RAG engine, 213+ SSG routes, and WCAG 2.2 AA compliance.\n' +
-        '  - **WPSKILLS** - Interactive engineering educational ecosystem with 1,100+ MDX lessons compiled via Rust MDX-RS, outage simulators, and NotebookLM AI.\n' +
+        '  - **Fullstack AI Lab** - Interactive engineering educational ecosystem with 1,135+ MDX lessons compiled via Rust MDX-RS, outage simulators, and NotebookLM AI.\n' +
         '  - **Unitrition** - Personalized nutrition platform built with Next.js 16 App Router, Headless WordPress, Supabase, and USDA API.\n' +
         '- **Custom WordPress & Enterprise**:\n' +
         '  - **IT-Magic** - Enterprise cloud consulting platform for an AWS Advanced Partner with bespoke PHP theme and top Google rankings.\n' +
@@ -1434,7 +1434,7 @@ export function synthesizeLocalRagAnswer(
     )
 
   if (matchedProject && !isGeneralProfileOrServiceQuestion) {
-    if (/(tech\s*stack|technologies|stack|used|built with|tecnolog|стек|технолог)/i.test(lower)) {
+    if (/(tech\s*stack|technologies|\bstack\b|used|built with|tecnolog|стек|технолог)/i.test(lower)) {
       return stripEmDashes(formatProjectStack(matchedProject, lang))
     }
     if (
@@ -1606,7 +1606,7 @@ export function getRelevantProjectCards(
   if (isPersonalProjectsQuery(trimmed)) {
     const personalSlugs = [
       'yusupovartur-nextjs-portfolio',
-      'wpskills',
+      'fullstack-ai-lab',
       'unitrition',
       'webart-react-portfolio',
     ]
@@ -1624,7 +1624,7 @@ export function getRelevantProjectCards(
   if (isBestProjectsQuery(trimmed)) {
     const bestSlugs = [
       'yusupovartur-nextjs-portfolio',
-      'wpskills',
+      'fullstack-ai-lab',
       'unitrition',
       'it-magic',
       'webart-react-portfolio',
@@ -1754,7 +1754,7 @@ export function getContextualFollowUps(
   const resolved = resolveTargetProject(trimmed, options)
   if (resolved) {
     const title = stripEmDashes(resolved.project.title)
-    const askedStack = /(tech\s*stack|technologies|stack|used|built with|tecnolog|стек|технолог)/i.test(lower)
+    const askedStack = /(tech\s*stack|technologies|\bstack\b|used|built with|tecnolog|стек|технолог)/i.test(lower)
     const askedArch = /(architect|arquitectura|архітектур|архитектур|challenge|solution)/i.test(lower)
     const askedFeatures = /(feature|main features|functionality|funciones|caracteristicas|фіч|функці)/i.test(lower)
 

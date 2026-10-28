@@ -82,7 +82,7 @@ describe('ProjectDetail Accessibility Specification (WCAG 2.2 AA / EAA 2026)', (
   })
 
   it('should render Architecture & Case Study Deep-Dive link when deepDiveBlogSlug is defined', () => {
-    const wpskillsProject = projectRegistry.find((e) => e.slug === 'wpskills')?.project
+    const wpskillsProject = projectRegistry.find((e) => e.slug === 'fullstack-ai-lab')?.project
     expect(wpskillsProject).toBeDefined()
 
     render(

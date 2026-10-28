@@ -5,7 +5,7 @@ describe('Related Projects Relevance Specification (TDD)', () => {
   const allProjects = getAllProjectEntries().map((e) => e.project)
 
   it('should recommend Next.js / React / Fullstack projects for WPSKILLS, not legacy WordPress clinics', () => {
-    const wpskills = getProjectBySlug('wpskills')
+    const wpskills = getProjectBySlug('fullstack-ai-lab')
     expect(wpskills).toBeDefined()
 
     const related = getRelatedProjects(wpskills!, allProjects, 3)
@@ -24,7 +24,7 @@ describe('Related Projects Relevance Specification (TDD)', () => {
     expect(slugs).not.toContain('alldaymedicalcare')
 
     // None should be WPSKILLS itself
-    expect(slugs).not.toContain('wpskills')
+    expect(slugs).not.toContain('fullstack-ai-lab')
   })
 
   it('should recommend Next.js / personal flagship projects for Unitrition', () => {
@@ -39,7 +39,7 @@ describe('Related Projects Relevance Specification (TDD)', () => {
       return entry?.slug
     })
 
-    expect(slugs).toContain('wpskills')
+    expect(slugs).toContain('fullstack-ai-lab')
     expect(slugs).toContain('yusupovartur-nextjs-portfolio')
     expect(slugs).not.toContain('911mg')
   })

@@ -71,7 +71,7 @@ import proj_67 from '../components/projects/static/webart-portfolio-website-v2'
 import proj_68 from '../components/projects/react/webart-react-portfolio'
 import proj_69 from '../components/projects/wordpress/website-integration-crm'
 import proj_70 from '../components/projects/nextjs/yusupovartur-nextjs-portfolio'
-import proj_71 from '../components/projects/nextjs/wpskills'
+import proj_71 from '../components/projects/nextjs/fullstack-ai-lab'
 
 export interface ProjectRegistryItem {
   slug: string
@@ -148,7 +148,7 @@ export const projectRegistry: ProjectRegistryItem[] = [
   { slug: 'webart-portfolio-website-v2', project: proj_67 },
   { slug: 'webart-react-portfolio', project: proj_68 },
   { slug: 'website-integration-crm', project: proj_69 },
-  { slug: 'wpskills', project: proj_71 },
+  { slug: 'fullstack-ai-lab', project: proj_71 },
   { slug: 'yusupovartur-nextjs-portfolio', project: proj_70 },
 ]
 

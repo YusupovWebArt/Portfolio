@@ -80,6 +80,16 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: '/:locale(en|ua|es)/projects/wpskills',
+        destination: '/:locale/projects/fullstack-ai-lab',
+        permanent: true,
+      },
+      {
+        source: '/:locale(en|ua|es)/blog/wpskills-interactive-edtech-architecture',
+        destination: '/:locale/blog/fullstack-ai-lab-interactive-edtech-architecture',
+        permanent: true,
+      },
+      {
         source: '/:locale(en|ua|es)/projects/all-day-medical-care-clinic',
         destination: '/:locale/projects/alldaymedicalcare',
         permanent: true,

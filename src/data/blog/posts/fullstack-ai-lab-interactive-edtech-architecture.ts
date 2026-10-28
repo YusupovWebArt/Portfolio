@@ -48,7 +48,7 @@ export const fullstackAiLabInteractiveEdtechArchitecturePost: BlogPost = {
   appliedProjects: [
     {
       projectId: 29100,
-      slug: 'wpskills',
+      slug: 'fullstack-ai-lab',
       name: 'Fullstack AI Lab',
       note: {
         en: 'Flagship interactive Fullstack & WordPress engineering platform (1,135+ MDX lessons, WASM Playground, AI Interview Engine, 4 locales, 98+ PageSpeed, 225/225 tests).',

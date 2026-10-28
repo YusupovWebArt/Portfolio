@@ -46,7 +46,8 @@ export default function ProjectChatTrigger({
         aria-hidden="true"
         className="shrink-0 rounded-full bg-purple-600/15 dark:bg-lime-500/20 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-purple-700 dark:text-lime-300 border border-purple-500/20 dark:border-lime-400/30"
       >
-        Context-Aware RAG
+        <span className="hidden sm:inline">Context-Aware RAG</span>
+        <span className="sm:hidden">AI RAG</span>
       </span>
     </button>
   )

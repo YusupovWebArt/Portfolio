@@ -37,7 +37,7 @@ describe('Standalone SSG Project Pages Specification (TDD)', () => {
     expect(itMagicParams).toBeDefined()
 
     const wpskillsParams = paramsList.find(
-      (p: { locale: string; slug: string }) => p.slug === 'wpskills' && p.locale === 'en',
+      (p: { locale: string; slug: string }) => p.slug === 'fullstack-ai-lab' && p.locale === 'en',
     )
     expect(wpskillsParams).toBeDefined()
   }, 15000)

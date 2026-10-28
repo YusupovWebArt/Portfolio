@@ -1,6 +1,6 @@
 import { Project } from '../project-types'
 
-const wpskills: Project = {
+const fullstackAiLab: Project = {
   id: 29100,
   isPersonal: true,
   title: 'Fullstack AI Lab',
@@ -445,4 +445,4 @@ const wpskills: Project = {
   deepDiveBlogSlug: 'fullstack-ai-lab-interactive-edtech-architecture',
 }
 
-export default wpskills
+export default fullstackAiLab

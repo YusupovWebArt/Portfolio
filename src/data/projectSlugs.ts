@@ -74,6 +74,7 @@ export const PROJECT_SLUG_MAP: Record<string, number> = {
   'webart-portfolio-website-v2': 67,
   'webart-react-portfolio': 68,
   'website-integration-crm': 69,
+  'fullstack-ai-lab': 71,
   'wpskills': 71,
   'yusupovartur-nextjs-portfolio': 70,
 }
@@ -83,7 +84,7 @@ export const PROJECT_ID_MAP: Record<number, string> = {
     Object.entries(PROJECT_SLUG_MAP).map(([slug, id]) => [id, slug])
   ),
   29000: 'unitrition',
-  29100: 'wpskills',
+  29100: 'fullstack-ai-lab',
   29500: 'yusupovartur-nextjs-portfolio',
 }
 

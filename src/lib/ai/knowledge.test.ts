@@ -54,9 +54,9 @@ describe('RAG Knowledge Base Specification (TDD)', () => {
     expect(unitrition).toBeDefined()
     expect(unitrition?.title).toContain('Unitrition')
 
-    const wpskills = findChunkBySlug('wpskills')
-    expect(wpskills).toBeDefined()
-    expect(wpskills?.title).toContain('Fullstack AI Lab')
+    const fullstackAiLab = findChunkBySlug('fullstack-ai-lab')
+    expect(fullstackAiLab).toBeDefined()
+    expect(fullstackAiLab?.title).toContain('Fullstack AI Lab')
   })
 
   it('should include profile, service, and methodology knowledge chunks', () => {
