@@ -90,4 +90,33 @@ describe('Featured Projects Search & Filtering Specification (TDD)', () => {
     fireEvent.click(viewDetailsLinks[0])
     expect(onSelect).toHaveBeenCalledWith(29100)
   })
+
+  it('Fullstack AI Lab must only appear under Next.js and Personal categories, not under WordPress', () => {
+    const fullstackProject = getProjectBySlug('fullstack-ai-lab')
+    expect(fullstackProject).toBeDefined()
+    expect(fullstackProject?.isPersonal).toBe(true)
+    expect(fullstackProject?.category).toContain('nextjs')
+    expect(fullstackProject?.category).not.toContain('wordpress')
+
+    render(
+      <LanguageProvider>
+        <Projects onProjectSelect={vi.fn()} />
+      </LanguageProvider>,
+    )
+
+    // Click WordPress category filter
+    const wpTab = screen.getByRole('button', { name: /^WordPress/i })
+    fireEvent.click(wpTab)
+    expect(screen.queryByText('Fullstack AI Lab')).toBeNull()
+
+    // Click Next.js category filter
+    const nextTab = screen.getByRole('button', { name: /^Next\.js/i })
+    fireEvent.click(nextTab)
+    expect(screen.getByText('Fullstack AI Lab')).toBeDefined()
+
+    // Click Personal Projects filter
+    const personalTab = screen.getByRole('button', { name: /Personal Projects|Власні проєкти|Proyectos Propios/i })
+    fireEvent.click(personalTab)
+    expect(screen.getByText('Fullstack AI Lab')).toBeDefined()
+  })
 })

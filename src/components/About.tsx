@@ -335,27 +335,27 @@ const About = () => {
           <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-12 text-center">
             {ab.myJourney}
           </h3>
-          <div className="grid lg:grid-cols-2 gap-16">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16">
             {/* Education Timeline */}
             <div>
               <h4 className="text-xl font-bold text-slate-900 dark:text-white mb-8 text-center">
                 {ab.educationTitle}
               </h4>
               <div className="relative">
-                <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-purple-400 to-blue-400 dark:from-lime-400 dark:to-lime-600"></div>
+                <div className="absolute left-4 sm:left-6 -translate-x-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-purple-400 to-blue-400 dark:from-lime-400 dark:to-lime-600"></div>
 
                 {education.map((item, index) => (
                   <div
                     key={index}
                     className="relative flex items-start mb-8 last:mb-0"
                   >
-                    <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-blue-500 dark:from-lime-500 dark:to-lime-600 rounded-full flex items-center justify-center text-white font-bold text-sm shadow-lg relative z-10">
+                    <div className="w-8 h-8 sm:w-12 sm:h-12 shrink-0 bg-gradient-to-br from-purple-500 to-blue-500 dark:from-lime-500 dark:to-lime-600 rounded-full flex items-center justify-center text-white font-bold text-[10px] sm:text-xs shadow-lg relative z-10">
                       {item.year.includes("Present")
                         ? "Now"
                         : item.year.split("-")[0]}
                     </div>
-                    <div className="ml-6 flex-1">
-                      <div className="bg-white dark:bg-slate-700 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-600 hover:shadow-md transition-shadow">
+                    <div className="ml-3 sm:ml-6 flex-1 min-w-0">
+                      <div className="bg-white dark:bg-slate-700 p-4 sm:p-6 rounded-xl sm:rounded-2xl shadow-sm border border-slate-200 dark:border-slate-600 hover:shadow-md transition-shadow">
                         <div className="flex flex-wrap items-center justify-between gap-2 mb-1.5">
                           <span className="text-purple-600 dark:text-lime-500 font-bold text-sm">
                             {item.year}
@@ -386,20 +386,20 @@ const About = () => {
                 {ab.workTitle}
               </h4>
               <div className="relative">
-                <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-gradient-to-b from-green-400 to-teal-400 dark:from-lime-400 dark:to-lime-600"></div>
+                <div className="absolute left-4 sm:left-6 -translate-x-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-green-400 to-teal-400 dark:from-lime-400 dark:to-lime-600"></div>
 
                 {workExperience.map((item, index) => (
                   <div
                     key={index}
                     className="relative flex items-start mb-8 last:mb-0"
                   >
-                    <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-teal-500 dark:from-lime-500 dark:to-lime-600 rounded-full flex items-center justify-center text-white font-bold text-xs shadow-lg relative z-10">
+                    <div className="w-8 h-8 sm:w-12 sm:h-12 shrink-0 bg-gradient-to-br from-green-500 to-teal-500 dark:from-lime-500 dark:to-lime-600 rounded-full flex items-center justify-center text-white font-bold text-[10px] sm:text-xs shadow-lg relative z-10">
                       {item.year.includes("Present")
                         ? "Now"
                         : item.year.split("-")[0]}
                     </div>
-                    <div className="ml-6 flex-1">
-                      <div className="bg-white dark:bg-slate-700 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-600 hover:shadow-md transition-shadow">
+                    <div className="ml-3 sm:ml-6 flex-1 min-w-0">
+                      <div className="bg-white dark:bg-slate-700 p-4 sm:p-6 rounded-xl sm:rounded-2xl shadow-sm border border-slate-200 dark:border-slate-600 hover:shadow-md transition-shadow">
                         <div className="text-emerald-700 dark:text-lime-400 font-bold text-sm mb-1">
                           {item.year}
                         </div>
@@ -410,7 +410,7 @@ const About = () => {
                           href={item.companyUrl}
                           target="_blank"
                           rel="noopener noreferrer nofollow"
-                          className="text-teal-700 dark:text-lime-400 font-medium text-sm mb-2 hover:text-teal-800 dark:hover:text-lime-300 transition-colors underline decoration-dotted underline-offset-2"
+                          className="text-teal-700 dark:text-lime-400 font-medium text-sm mb-2 hover:text-teal-800 dark:hover:text-lime-300 transition-colors underline decoration-dotted underline-offset-2 inline-block"
                         >
                           {item.company}
                         </a>

@@ -441,7 +441,7 @@ const fullstackAiLab: Project = {
   ],
   liveUrl: 'https://www.fullstackailab.com',
   githubUrl: '#',
-  category: ['nextjs', 'react', 'wordpress', 'fullstack'],
+  category: ['nextjs'],
   deepDiveBlogSlug: 'fullstack-ai-lab-interactive-edtech-architecture',
 }
 
