@@ -126,4 +126,46 @@ describe('ProjectDetail Accessibility Specification (WCAG 2.2 AA / EAA 2026)', (
 
     expect(featuresTab).toHaveAttribute('aria-selected', 'true')
   })
+
+  it('should open screenshot modal when tapping directly on main carousel image', () => {
+    render(
+      <LanguageProvider>
+        <ProjectDetail initialProject={sampleProject} />
+      </LanguageProvider>,
+    )
+
+    const mainImage = screen.getByAltText(new RegExp(`${sampleProject.title} screenshot 1`, 'i'))
+    fireEvent.click(mainImage)
+
+    const dialog = screen.getByRole('dialog')
+    expect(dialog).toBeDefined()
+    expect(dialog).toHaveAttribute('aria-modal', 'true')
+
+    const closeButton = screen.getByRole('button', { name: /close|закрити|cerrar/i })
+    fireEvent.click(closeButton)
+    expect(screen.queryByRole('dialog')).toBeNull()
+  })
+
+  it('should cycle carousel images when swiping horizontally on mobile', () => {
+    render(
+      <LanguageProvider>
+        <ProjectDetail initialProject={sampleProject} />
+      </LanguageProvider>,
+    )
+
+    const mainImage = screen.getByAltText(new RegExp(`${sampleProject.title} screenshot 1`, 'i'))
+    const carouselContainer = mainImage.closest('.cursor-zoom-in')
+    expect(carouselContainer).not.toBeNull()
+
+    // Swipe left to advance to next screenshot
+    fireEvent.touchStart(carouselContainer!, {
+      touches: [{ clientX: 250, clientY: 100 }],
+    })
+    fireEvent.touchEnd(carouselContainer!, {
+      changedTouches: [{ clientX: 100, clientY: 100 }],
+    })
+
+    const nextImage = screen.getByAltText(new RegExp(`${sampleProject.title} screenshot 2`, 'i'))
+    expect(nextImage).toBeDefined()
+  })
 })

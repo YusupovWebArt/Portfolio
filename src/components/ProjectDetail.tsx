@@ -219,6 +219,97 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
   const touchStartX = useRef<number | null>(null)
   const touchStartY = useRef<number | null>(null)
 
+  const modalTouchStartX = useRef<number | null>(null)
+  const modalTouchStartY = useRef<number | null>(null)
+  const carouselTouchStartX = useRef<number | null>(null)
+  const carouselTouchStartY = useRef<number | null>(null)
+
+  const nextImage = useCallback(() => {
+    if (!project || project.images.length === 0) return
+    setCurrentImageIndex((prev) => (prev + 1) % project.images.length)
+  }, [project])
+
+  const prevImage = useCallback(() => {
+    if (!project || project.images.length === 0) return
+    setCurrentImageIndex(
+      (prev) => (prev - 1 + project.images.length) % project.images.length,
+    )
+  }, [project])
+
+  const nextModalImage = useCallback(() => {
+    if (!project || project.images.length <= 1) return
+    setScreenshotModal((prev) => {
+      if (prev.isFullPage) return prev
+      const currentIndex = project.images.findIndex((img) => img.src === prev.image)
+      const nextIdx = (currentIndex + 1) % project.images.length
+      setCurrentImageIndex(nextIdx)
+      return {
+        ...prev,
+        image: project.images[nextIdx].src,
+        caption: project.images[nextIdx].caption || `Screenshot ${nextIdx + 1}`,
+      }
+    })
+  }, [project])
+
+  const prevModalImage = useCallback(() => {
+    if (!project || project.images.length <= 1) return
+    setScreenshotModal((prev) => {
+      if (prev.isFullPage) return prev
+      const currentIndex = project.images.findIndex((img) => img.src === prev.image)
+      const prevIdx = (currentIndex - 1 + project.images.length) % project.images.length
+      setCurrentImageIndex(prevIdx)
+      return {
+        ...prev,
+        image: project.images[prevIdx].src,
+        caption: project.images[prevIdx].caption || `Screenshot ${prevIdx + 1}`,
+      }
+    })
+  }, [project])
+
+  const handleModalTouchStart = (e: React.TouchEvent) => {
+    if (screenshotModal.isFullPage) return
+    modalTouchStartX.current = e.touches[0].clientX
+    modalTouchStartY.current = e.touches[0].clientY
+  }
+
+  const handleModalTouchEnd = (e: React.TouchEvent) => {
+    if (screenshotModal.isFullPage) return
+    if (modalTouchStartX.current === null || modalTouchStartY.current === null) return
+    const diffX = modalTouchStartX.current - e.changedTouches[0].clientX
+    const diffY = modalTouchStartY.current - e.changedTouches[0].clientY
+    modalTouchStartX.current = null
+    modalTouchStartY.current = null
+
+    if (Math.abs(diffX) > 40 && Math.abs(diffX) > Math.abs(diffY)) {
+      if (diffX > 0) {
+        nextModalImage()
+      } else {
+        prevModalImage()
+      }
+    }
+  }
+
+  const handleCarouselTouchStart = (e: React.TouchEvent) => {
+    carouselTouchStartX.current = e.touches[0].clientX
+    carouselTouchStartY.current = e.touches[0].clientY
+  }
+
+  const handleCarouselTouchEnd = (e: React.TouchEvent) => {
+    if (carouselTouchStartX.current === null || carouselTouchStartY.current === null) return
+    const diffX = carouselTouchStartX.current - e.changedTouches[0].clientX
+    const diffY = carouselTouchStartY.current - e.changedTouches[0].clientY
+    carouselTouchStartX.current = null
+    carouselTouchStartY.current = null
+
+    if (Math.abs(diffX) > 40 && Math.abs(diffX) > Math.abs(diffY)) {
+      if (diffX > 0) {
+        nextImage()
+      } else {
+        prevImage()
+      }
+    }
+  }
+
   if (!project) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -244,16 +335,6 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
           )}
         </div>
       </div>
-    )
-  }
-
-  const nextImage = () => {
-    setCurrentImageIndex((prev) => (prev + 1) % project.images.length)
-  }
-
-  const prevImage = () => {
-    setCurrentImageIndex(
-      (prev) => (prev - 1 + project.images.length) % project.images.length,
     )
   }
 
@@ -403,7 +484,12 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
       <section className="rounded-2xl bg-neutral-100 dark:bg-slate-800/60 border border-slate-200/80 dark:border-slate-700 p-4 sm:p-6 md:p-8 lg:p-10">
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-start">
           <div className="space-y-4">
-            <div className="relative bg-white dark:bg-slate-900 rounded-xl overflow-hidden shadow-sm border border-slate-200/90 dark:border-slate-600">
+            <div
+              className="group relative bg-white dark:bg-slate-900 rounded-xl overflow-hidden shadow-sm border border-slate-200/90 dark:border-slate-600 cursor-zoom-in select-none"
+              onClick={openScreenshotModal}
+              onTouchStart={handleCarouselTouchStart}
+              onTouchEnd={handleCarouselTouchEnd}
+            >
               <img
                 src={(project.images[currentImageIndex] ?? project.images[0])?.src || project.image}
                 alt={`${project.title} screenshot ${currentImageIndex + 1}`}
@@ -411,22 +497,36 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                 style={{
                   viewTransitionName: `project-thumb-${project.id}`,
                 }}
-                className="w-full h-80 md:h-96 object-cover"
+                className="w-full aspect-[16/10] object-cover sm:object-contain bg-slate-900/5 dark:bg-slate-950/40 transition-all"
               />
+
+              {project.images.length > 1 && (
+                <div className="absolute top-3 left-3 z-10 px-2.5 py-1 rounded-full bg-black/60 dark:bg-black/70 backdrop-blur-md text-white text-xs font-medium border border-white/10 pointer-events-none flex items-center gap-1.5 shadow-sm">
+                  <span>{currentImageIndex + 1}</span>
+                  <span className="text-white/40">/</span>
+                  <span>{project.images.length}</span>
+                </div>
+              )}
 
               {project.images.length > 1 && (
                 <>
                   <button
-                    onClick={prevImage}
-                    className="absolute left-3 top-1/2 -translate-y-1/2 bg-white/95 dark:bg-slate-800/95 text-slate-700 dark:text-slate-200 p-2 rounded-full shadow-md transition hover:scale-105 cursor-pointer"
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      prevImage()
+                    }}
+                    className="absolute left-2.5 top-1/2 -translate-y-1/2 bg-black/45 hover:bg-black/75 text-white/90 hover:text-white p-2 rounded-full shadow-md backdrop-blur-md border border-white/15 transition-all hover:scale-105 z-20 cursor-pointer focus-visible:outline-2 focus-visible:outline-white"
                     type="button"
                     aria-label={pr.previousImage}
                   >
                     <ChevronLeft size={20} aria-hidden="true" />
                   </button>
                   <button
-                    onClick={nextImage}
-                    className="absolute right-3 top-1/2 -translate-y-1/2 bg-white/95 dark:bg-slate-800/95 text-slate-700 dark:text-slate-200 p-2 rounded-full shadow-md transition hover:scale-105 cursor-pointer"
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      nextImage()
+                    }}
+                    className="absolute right-2.5 top-1/2 -translate-y-1/2 bg-black/45 hover:bg-black/75 text-white/90 hover:text-white p-2 rounded-full shadow-md backdrop-blur-md border border-white/15 transition-all hover:scale-105 z-20 cursor-pointer focus-visible:outline-2 focus-visible:outline-white"
                     type="button"
                     aria-label={pr.nextImage}
                   >
@@ -435,28 +535,46 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                 </>
               )}
 
+              {project.images.length > 1 && (
+                <div className="absolute bottom-3 left-1/2 -translate-x-1/2 z-10 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-black/50 backdrop-blur-md border border-white/10 pointer-events-none">
+                  {project.images.map((_, idx) => (
+                    <span
+                      key={idx}
+                      className={`h-1.5 rounded-full transition-all duration-300 ${
+                        idx === currentImageIndex
+                          ? 'w-4 bg-white'
+                          : 'w-1.5 bg-white/40'
+                      }`}
+                    />
+                  ))}
+                </div>
+              )}
+
               {project.images.length > 0 && (
                 <button
-                  onClick={openScreenshotModal}
-                  className="absolute bottom-3 right-3 inline-flex items-center gap-1.5 bg-white dark:bg-slate-100 text-slate-800 px-3 py-1.5 rounded-full text-sm font-medium shadow border border-slate-200 dark:border-slate-300 hover:bg-slate-50 dark:hover:bg-white transition cursor-pointer"
-                  title="Zoom"
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    openScreenshotModal()
+                  }}
+                  className="absolute bottom-3 right-3 z-10 inline-flex items-center gap-1.5 bg-black/60 hover:bg-black/80 text-white px-3 py-1.5 rounded-full text-xs sm:text-sm font-medium shadow backdrop-blur-md border border-white/15 transition cursor-pointer focus-visible:outline-2 focus-visible:outline-white"
+                  title={pr.zoom}
                   type="button"
                 >
-                  <Eye className="w-4 h-4" aria-hidden="true" />
+                  <Eye className="w-3.5 h-3.5 sm:w-4 sm:h-4" aria-hidden="true" />
                   {pr.zoom}
                 </button>
               )}
             </div>
 
             {project.images.length > 1 && (
-              <div className="flex min-w-0 items-center gap-1 pb-2 sm:pb-3">
+              <div className="flex min-w-0 items-center gap-1.5 pb-2 sm:pb-3">
                 {thumbScrollState.hasOverflow && (
                   <button
                     type="button"
                     aria-label={pr.scrollThumbsLeft}
                     aria-disabled={!thumbScrollState.canLeft}
                     onClick={() => thumbScrollState.canLeft && scrollThumbnails('left')}
-                    className={`flex h-14 w-8 shrink-0 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-700 shadow-sm transition dark:border-slate-600 dark:bg-slate-800 dark:text-slate-200 sm:h-16 sm:w-9 ${
+                    className={`hidden sm:flex h-14 w-8 shrink-0 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-700 shadow-sm transition dark:border-slate-600 dark:bg-slate-800 dark:text-slate-200 sm:h-15 sm:w-8 ${
                       thumbScrollState.canLeft
                         ? 'hover:bg-slate-50 dark:hover:bg-slate-700 cursor-pointer'
                         : 'cursor-not-allowed opacity-35'
@@ -467,7 +585,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                 )}
                 <div
                   ref={thumbnailScrollRef}
-                  className="scrollbar-none flex min-w-0 flex-1 flex-nowrap gap-2 overflow-x-auto overflow-y-visible scroll-smooth py-2.5 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+                  className="scrollbar-none flex min-w-0 flex-1 flex-nowrap gap-2 overflow-x-auto overflow-y-visible scroll-smooth py-1.5 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
                 >
                   {project.images.map((img, index) => (
                     <button
@@ -475,10 +593,10 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                       type="button"
                       data-thumb-index={index}
                       onClick={() => setCurrentImageIndex(index)}
-                      className={`relative shrink-0 overflow-hidden rounded-lg border-2 transition-colors duration-200 cursor-pointer ${
+                      className={`relative shrink-0 overflow-hidden rounded-lg border-2 transition-all duration-200 cursor-pointer ${
                         index === currentImageIndex
-                          ? 'border-blue-500 dark:border-sky-400'
-                          : 'border-slate-300/60 hover:border-slate-400 dark:border-slate-600 dark:hover:border-slate-500'
+                          ? 'border-purple-600 dark:border-lime-400 ring-2 ring-purple-600/30 dark:ring-lime-400/30 ring-offset-1 dark:ring-offset-slate-900 shadow-sm'
+                          : 'border-slate-300/70 hover:border-slate-400 dark:border-slate-700 dark:hover:border-slate-500 opacity-75 hover:opacity-100'
                       }`}
                       aria-label={`${pr.screenshot} ${index + 1}`}
                       aria-current={index === currentImageIndex ? 'true' : undefined}
@@ -487,7 +605,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                         src={img.src}
                         alt={img.caption || project.title}
                         loading="lazy"
-                        className="h-14 w-14 object-cover sm:h-16 sm:w-16"
+                        className="w-18 h-12 sm:w-22 sm:h-14 aspect-[16/10] object-cover"
                         onLoad={updateThumbScrollState}
                       />
                     </button>
@@ -499,7 +617,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                     aria-label={pr.scrollThumbsRight}
                     aria-disabled={!thumbScrollState.canRight}
                     onClick={() => thumbScrollState.canRight && scrollThumbnails('right')}
-                    className={`flex h-14 w-8 shrink-0 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-700 shadow-sm transition dark:border-slate-600 dark:bg-slate-800 dark:text-slate-200 sm:h-16 sm:w-9 ${
+                    className={`hidden sm:flex h-14 w-8 shrink-0 items-center justify-center rounded-lg border border-slate-200 bg-white text-slate-700 shadow-sm transition dark:border-slate-600 dark:bg-slate-800 dark:text-slate-200 sm:h-15 sm:w-8 ${
                       thumbScrollState.canRight
                         ? 'hover:bg-slate-50 dark:hover:bg-slate-700 cursor-pointer'
                         : 'cursor-not-allowed opacity-35'
@@ -513,11 +631,11 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
             {hasDistinctFullScreenshot && (
               <button
                 onClick={openFullScreenshotModal}
-                className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-purple-100 hover:bg-purple-200 dark:bg-lime-500/10 dark:hover:bg-lime-500/20 text-purple-700 dark:text-lime-400 px-4 py-3 text-sm font-semibold transition cursor-pointer"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-purple-50 hover:bg-purple-100 dark:bg-lime-500/10 dark:hover:bg-lime-500/15 text-purple-700 dark:text-lime-400 border border-purple-200/80 dark:border-lime-500/20 px-4 py-3 text-sm font-semibold transition-all shadow-sm active:scale-[0.99] cursor-pointer"
                 type="button"
               >
-                {pr.fullPageLayout}
                 <Eye className="w-4 h-4" aria-hidden />
+                {pr.fullPageLayout}
               </button>
             )}
           </div>
@@ -1373,109 +1491,147 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
 */}
       {screenshotModal.isOpen && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm p-4"
+          className="fixed inset-0 z-50 flex flex-col justify-between bg-black/95 sm:bg-black/85 backdrop-blur-md sm:backdrop-blur-lg sm:p-4 md:p-6 sm:items-center sm:justify-center"
           onClick={closeScreenshotModal}
         >
-          <div
-            ref={screenshotModalRef}
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="screenshot-modal-title"
-            tabIndex={-1}
-            onClick={(e) => e.stopPropagation()}
-            className="relative bg-white dark:bg-slate-900 rounded-2xl shadow-2xl w-full max-w-5xl overflow-hidden flex flex-col focus:outline-none"
-          >
-            {/* Close Button inside Modal Card (top-right) */}
-            <button
-              className="absolute top-3 right-3 md:top-4 md:right-4 text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-slate-200 p-1.5 md:p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800/80 transition z-50 cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-700 dark:focus-visible:outline-lime-400"
-              onClick={closeScreenshotModal}
-              title={pr.close}
-              aria-label={pr.close}
-              type="button"
-            >
-              <X size={20} aria-hidden="true" />
-            </button>
+          {(() => {
+            const modalImageIndex = project
+              ? project.images.findIndex((img) => img.src === screenshotModal.image)
+              : -1
+            const currentModalIndex = modalImageIndex >= 0 ? modalImageIndex : currentImageIndex
+            const isCarouselSlide =
+              !screenshotModal.isFullPage &&
+              project.images.length > 1 &&
+              modalImageIndex >= 0
 
-            {/* Navigation Arrows (Only show when viewing carousel slides, not full screenshot) */}
-            {!screenshotModal.isFullPage && project.images.length > 1 && project.images.some(img => img.src === screenshotModal.image) && (
-              <>
-                <button
-                  onClick={() =>
-                    setScreenshotModal((prev) => {
-                      const newIndex =
-                        (project.images.findIndex(
-                          (img) => img.src === prev.image,
-                        ) -
-                          1 +
-                          project.images.length) %
-                        project.images.length
-                      return {
-                        ...prev,
-                        image: project.images[newIndex].src,
-                        caption: project.images[newIndex].caption,
-                      }
-                    })
-                  }
-                  className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/95 dark:bg-slate-800/95 text-slate-700 dark:text-slate-200 p-2.5 rounded-full shadow-lg border border-slate-200/50 dark:border-white/5 transition hover:scale-110 z-30 cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-700 dark:focus-visible:outline-lime-400"
-                  type="button"
-                  aria-label={pr.previousImage}
-                >
-                  <ChevronLeft size={24} aria-hidden="true" />
-                </button>
-                <button
-                  onClick={() =>
-                    setScreenshotModal((prev) => {
-                      const newIndex =
-                        (project.images.findIndex(
-                          (img) => img.src === prev.image,
-                        ) +
-                          1) %
-                        project.images.length
-                      return {
-                        ...prev,
-                        image: project.images[newIndex].src,
-                        caption: project.images[newIndex].caption,
-                      }
-                    })
-                  }
-                  className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/95 dark:bg-slate-800/95 text-slate-700 dark:text-slate-200 p-2.5 rounded-full shadow-lg border border-slate-200/50 dark:border-white/5 transition hover:scale-110 z-30 cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-700 dark:focus-visible:outline-lime-400"
-                  type="button"
-                  aria-label={pr.nextImage}
-                >
-                  <ChevronRight size={24} aria-hidden="true" />
-                </button>
-              </>
-            )}
-            
-            {/* Scrollable Image Area with top-padding to clear the close button */}
-            <div className="px-4 md:px-6 pb-4 pt-12 md:pt-14">
-              {(() => {
-                const isFullPage = screenshotModal.isFullPage
-                return (
-                  <div className={`w-full overflow-y-auto max-h-[65vh] md:max-h-[70vh] green-scrollbar rounded-xl border border-slate-200/50 dark:border-slate-800 bg-slate-50 dark:bg-slate-950/40 ${isFullPage ? '' : 'flex items-center justify-center'}`}>
-                    <img
-                      src={screenshotModal.image}
-                      alt={screenshotModal.title}
-                      className={isFullPage ? 'w-full h-auto shadow-2xl mx-auto' : 'max-w-full max-h-[65vh] md:max-h-[70vh] object-contain rounded-lg shadow-2xl mx-auto'}
-                    />
+            return (
+              <div
+                ref={screenshotModalRef}
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="screenshot-modal-title"
+                tabIndex={-1}
+                onClick={(e) => e.stopPropagation()}
+                className="relative w-full h-full sm:h-auto sm:max-h-[92vh] sm:max-w-5xl bg-neutral-950 sm:bg-slate-900/95 sm:rounded-2xl sm:shadow-2xl sm:border sm:border-slate-800 flex flex-col overflow-hidden focus:outline-none"
+              >
+                {/* Top Bar Header */}
+                <div className="relative z-40 flex items-center justify-between w-full px-4 py-3 sm:px-6 sm:py-3.5 bg-gradient-to-b from-black/80 via-black/40 to-transparent sm:bg-slate-900/80 sm:border-b sm:border-slate-800 backdrop-blur-sm">
+                  <div className="flex items-center gap-2 min-w-0">
+                    {isCarouselSlide ? (
+                      <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 text-white text-xs sm:text-sm font-medium border border-white/10 backdrop-blur-md">
+                        <span>{currentModalIndex + 1}</span>
+                        <span className="text-white/40">/</span>
+                        <span>{project.images.length}</span>
+                      </div>
+                    ) : (
+                      <span className="text-white/90 text-xs sm:text-sm font-semibold truncate max-w-[220px] sm:max-w-md">
+                        {screenshotModal.title}
+                      </span>
+                    )}
                   </div>
-                )
-              })()}
-            </div>
 
-            {/* Title & Caption - Statically positioned footer (No overlay!) */}
-            <div className="px-4 md:px-6 py-4 border-t border-slate-100 dark:border-white/5 bg-slate-50/50 dark:bg-slate-950/20 text-left">
-              <h3 id="screenshot-modal-title" className="text-slate-900 dark:text-white text-base font-bold">
-                {screenshotModal.title}
-              </h3>
-              {screenshotModal.caption && (
-                <p className="text-slate-600 dark:text-slate-400 text-xs mt-1">
-                  {screenshotModal.caption}
-                </p>
-              )}
-            </div>
+                  {/* Close Button with 44px minimum tap target */}
+                  <button
+                    className="text-white/80 hover:text-white p-2 sm:p-2.5 rounded-full bg-white/10 hover:bg-white/20 active:scale-95 transition-all backdrop-blur-md cursor-pointer border border-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                    onClick={closeScreenshotModal}
+                    title={pr.close}
+                    aria-label={pr.close}
+                    type="button"
+                  >
+                    <X size={20} aria-hidden="true" />
+                  </button>
+                </div>
 
-          </div>
+                {/* Middle Image Viewport */}
+                <div
+                  className="flex-1 min-h-0 relative flex items-center justify-center p-2 sm:p-4 w-full overflow-hidden select-none touch-pan-y"
+                  onTouchStart={handleModalTouchStart}
+                  onTouchEnd={handleModalTouchEnd}
+                >
+                  {screenshotModal.isFullPage ? (
+                    <div className="w-full h-full overflow-y-auto max-h-[75vh] sm:max-h-[70vh] green-scrollbar rounded-lg">
+                      <img
+                        src={screenshotModal.image}
+                        alt={screenshotModal.title}
+                        className="w-full h-auto shadow-2xl mx-auto"
+                      />
+                    </div>
+                  ) : (
+                    <div className="relative w-full h-full flex items-center justify-center">
+                      <img
+                        src={screenshotModal.image}
+                        alt={screenshotModal.caption || screenshotModal.title}
+                        className="max-w-full max-h-[75vh] sm:max-h-[70vh] object-contain drop-shadow-2xl mx-auto select-none transition-all duration-200"
+                      />
+                    </div>
+                  )}
+
+                  {/* Navigation Arrows for Desktop & Tablet */}
+                  {isCarouselSlide && (
+                    <>
+                      <button
+                        onClick={prevModalImage}
+                        className="hidden sm:flex absolute left-3 top-1/2 -translate-y-1/2 p-2.5 sm:p-3 rounded-full bg-black/50 hover:bg-black/80 text-white backdrop-blur-md border border-white/15 transition-all hover:scale-105 z-30 cursor-pointer focus-visible:outline-2 focus-visible:outline-white"
+                        type="button"
+                        aria-label={pr.previousImage}
+                      >
+                        <ChevronLeft size={24} aria-hidden="true" />
+                      </button>
+                      <button
+                        onClick={nextModalImage}
+                        className="hidden sm:flex absolute right-3 top-1/2 -translate-y-1/2 p-2.5 sm:p-3 rounded-full bg-black/50 hover:bg-black/80 text-white backdrop-blur-md border border-white/15 transition-all hover:scale-105 z-30 cursor-pointer focus-visible:outline-2 focus-visible:outline-white"
+                        type="button"
+                        aria-label={pr.nextImage}
+                      >
+                        <ChevronRight size={24} aria-hidden="true" />
+                      </button>
+                    </>
+                  )}
+                </div>
+
+                {/* Bottom Caption Bar */}
+                <div className="relative z-40 px-4 py-3 sm:px-6 sm:py-3.5 bg-gradient-to-t from-black/90 via-black/60 to-transparent sm:bg-slate-900/80 sm:border-t sm:border-slate-800 backdrop-blur-sm text-left">
+                  <div className="flex items-center justify-between gap-4">
+                    <div className="min-w-0 flex-1">
+                      <h3
+                        id="screenshot-modal-title"
+                        className="text-white text-sm sm:text-base font-bold truncate"
+                      >
+                        {screenshotModal.title}
+                      </h3>
+                      {screenshotModal.caption && (
+                        <p className="text-slate-300 text-xs sm:text-sm mt-0.5 line-clamp-2 sm:line-clamp-none">
+                          {screenshotModal.caption}
+                        </p>
+                      )}
+                    </div>
+
+                    {/* Mobile Navigation Chevrons inside bottom bar */}
+                    {isCarouselSlide && (
+                      <div className="flex sm:hidden items-center gap-1.5 shrink-0">
+                        <button
+                          onClick={prevModalImage}
+                          className="p-2 rounded-full bg-white/10 active:bg-white/20 text-white border border-white/15 transition cursor-pointer"
+                          type="button"
+                          aria-label={pr.previousImage}
+                        >
+                          <ChevronLeft size={18} aria-hidden="true" />
+                        </button>
+                        <button
+                          onClick={nextModalImage}
+                          className="p-2 rounded-full bg-white/10 active:bg-white/20 text-white border border-white/15 transition cursor-pointer"
+                          type="button"
+                          aria-label={pr.nextImage}
+                        >
+                          <ChevronRight size={18} aria-hidden="true" />
+                        </button>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+            )
+          })()}
         </div>
       )}
     </div>
