@@ -52,4 +52,22 @@ describe('Hero CTA Actions Specification (TDD)', () => {
 
     expect(analytics.trackCvDownload).toHaveBeenCalledWith('hero')
   })
+
+  it('should include mobile-safe top clearance padding and responsive badge labels to prevent header clipping', () => {
+    const { container } = render(
+      <LanguageProvider>
+        <Hero />
+      </LanguageProvider>,
+    )
+
+    const section = container.querySelector('#home')
+    expect(section).toBeDefined()
+    expect(section?.className).toContain('pt-20')
+    expect(section?.className).toContain('min-h-[100dvh]')
+
+    // CV link should be safe for mobile in-app webviews
+    const cvLink = screen.getByRole('link', { name: /Download CV|Завантажити резюме|Descargar CV/i })
+    expect(cvLink).toHaveAttribute('target', '_blank')
+    expect(cvLink).toHaveAttribute('rel', 'noopener noreferrer')
+  })
 })
