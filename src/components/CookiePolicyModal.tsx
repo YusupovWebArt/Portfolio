@@ -29,7 +29,7 @@ export const CookiePolicyModal: React.FC<CookiePolicyModalProps> = ({ isOpen, on
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-sm animate-fade-in"
+      className="fixed inset-0 z-[60] flex items-center justify-center p-3 sm:p-4 bg-slate-950/75 backdrop-blur-sm animate-fade-in"
       onClick={onClose}
     >
       <div

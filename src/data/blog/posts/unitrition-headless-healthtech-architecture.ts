@@ -34,7 +34,7 @@ export const unitritionHeadlessHealthtechArchitecturePost: BlogPost = {
       es: 'Ingeniero Web Fullstack y Desarrollador IA',
     },
   },
-  coverImage: '/Portfolio/images/portfolio/sliders/nextjs/unitrition/unitrition-slide1.webp',
+  coverImage: '/Portfolio/images/portfolio/sliders/nextjs/unitrition/unitrition-hero-section.webp',
   appliedProjects: [
     {
       projectId: 29000,

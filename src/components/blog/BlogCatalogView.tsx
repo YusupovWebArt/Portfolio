@@ -517,16 +517,16 @@ export default function BlogCatalogView({
                   {/* Hero Content */}
                   <div className="md:col-span-7 p-6 sm:p-8 flex flex-col justify-between">
                     <div>
-                      <div className="flex items-center gap-4 text-xs text-slate-500 dark:text-slate-400 mb-3">
-                        <span className="flex items-center gap-1">
+                      <div className="flex flex-wrap items-center gap-x-3.5 gap-y-1.5 text-xs text-slate-500 dark:text-slate-400 mb-3">
+                        <span className="inline-flex items-center gap-1 shrink-0 whitespace-nowrap">
                           <Calendar className="w-3.5 h-3.5" aria-hidden="true" />
-                          <time dateTime={featuredPost.date}>{featuredPost.date}</time>
+                          <time dateTime={featuredPost.date} className="tabular-nums">{featuredPost.date}</time>
                         </span>
-                        <span className="flex items-center gap-1">
+                        <span className="inline-flex items-center gap-1 shrink-0 whitespace-nowrap">
                           <Clock className="w-3.5 h-3.5" aria-hidden="true" />
                           <span>{getBlogReadTime(featuredPost, locale)}</span>
                         </span>
-                        <span className="font-semibold text-purple-600 dark:text-lime-400">
+                        <span className="font-semibold text-purple-600 dark:text-lime-400 whitespace-nowrap">
                           {getBlogCategoryLabel(featuredPost, locale)}
                         </span>
                       </div>
@@ -600,12 +600,12 @@ export default function BlogCatalogView({
                       )}
                     </div>
 
-                    <div className="pt-4 border-t border-slate-100 dark:border-slate-700/60 flex items-center justify-between">
-                      <div className="flex flex-wrap gap-1.5">
+                    <div className="pt-4 border-t border-slate-100 dark:border-slate-700/60 flex flex-wrap items-center justify-between gap-y-3 gap-x-2">
+                      <div className="flex flex-wrap gap-1.5 items-center">
                         {featuredPost.tags.slice(0, 4).map((tag) => (
                           <span
                             key={tag}
-                            className="text-[11px] font-medium px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300"
+                            className="text-[11px] font-medium px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 whitespace-nowrap"
                           >
                             {tag}
                           </span>
@@ -616,7 +616,7 @@ export default function BlogCatalogView({
                         <button
                           type="button"
                           onClick={() => onSelectPost(featuredPost.slug)}
-                          className="inline-flex items-center gap-1.5 text-xs font-bold text-purple-600 dark:text-lime-400 hover:text-purple-800 dark:hover:text-lime-300 transition-colors cursor-pointer"
+                          className="inline-flex items-center gap-1.5 text-xs font-bold text-purple-600 dark:text-lime-400 hover:text-purple-800 dark:hover:text-lime-300 transition-colors cursor-pointer whitespace-nowrap ml-auto shrink-0"
                         >
                           <span>
                             {isUa ? 'Читати розбір' : isEs ? 'Leer análisis' : 'Read Deep Dive'}
@@ -626,7 +626,7 @@ export default function BlogCatalogView({
                       ) : (
                         <Link
                           href={`/${locale}/blog/${featuredPost.slug}`}
-                          className="inline-flex items-center gap-1.5 text-xs font-bold text-purple-600 dark:text-lime-400 hover:text-purple-800 dark:hover:text-lime-300 transition-colors"
+                          className="inline-flex items-center gap-1.5 text-xs font-bold text-purple-600 dark:text-lime-400 hover:text-purple-800 dark:hover:text-lime-300 transition-colors whitespace-nowrap ml-auto shrink-0"
                         >
                           <span>
                             {isUa ? 'Читати розбір' : isEs ? 'Leer análisis' : 'Read Deep Dive'}
@@ -677,12 +677,12 @@ export default function BlogCatalogView({
 
                         {/* Card Body */}
                         <div className="p-6">
-                          <div className="flex items-center gap-4 text-xs text-slate-500 dark:text-slate-400 mb-3">
-                            <span className="flex items-center gap-1">
+                          <div className="flex flex-wrap items-center gap-x-3.5 gap-y-1.5 text-xs text-slate-500 dark:text-slate-400 mb-3">
+                            <span className="inline-flex items-center gap-1 shrink-0 whitespace-nowrap">
                               <Calendar className="w-3.5 h-3.5" aria-hidden="true" />
-                              <time dateTime={post.date}>{post.date}</time>
+                              <time dateTime={post.date} className="tabular-nums">{post.date}</time>
                             </span>
-                            <span className="flex items-center gap-1">
+                            <span className="inline-flex items-center gap-1 shrink-0 whitespace-nowrap">
                               <Clock className="w-3.5 h-3.5" aria-hidden="true" />
                               <span>{readTime}</span>
                             </span>
@@ -757,12 +757,12 @@ export default function BlogCatalogView({
                       </div>
 
                       {/* Card Footer */}
-                      <div className="px-6 pb-6 pt-3 border-t border-slate-100 dark:border-slate-700/60 flex items-center justify-between">
-                        <div className="flex flex-wrap gap-1">
+                      <div className="px-6 pb-6 pt-3 border-t border-slate-100 dark:border-slate-700/60 flex flex-wrap items-center justify-between gap-y-2.5 gap-x-2">
+                        <div className="flex flex-wrap gap-1 items-center">
                           {post.tags.slice(0, 3).map((tag) => (
                             <span
                               key={tag}
-                              className="text-[10px] font-medium px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300"
+                              className="text-[10px] font-medium px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 whitespace-nowrap"
                             >
                               {tag}
                             </span>
@@ -773,7 +773,7 @@ export default function BlogCatalogView({
                           <button
                             type="button"
                             onClick={() => onSelectPost(post.slug)}
-                            className="inline-flex items-center gap-1 text-xs font-bold text-purple-600 dark:text-lime-400 hover:text-purple-800 dark:hover:text-lime-300 transition-colors cursor-pointer"
+                            className="inline-flex items-center gap-1 text-xs font-bold text-purple-600 dark:text-lime-400 hover:text-purple-800 dark:hover:text-lime-300 transition-colors cursor-pointer whitespace-nowrap ml-auto shrink-0"
                           >
                             <span>
                               {isUa ? 'Читати' : isEs ? 'Leer' : 'Read'}
@@ -783,7 +783,7 @@ export default function BlogCatalogView({
                         ) : (
                           <Link
                             href={articleUrl}
-                            className="inline-flex items-center gap-1 text-xs font-bold text-purple-600 dark:text-lime-400 hover:text-purple-800 dark:hover:text-lime-300 transition-colors"
+                            className="inline-flex items-center gap-1 text-xs font-bold text-purple-600 dark:text-lime-400 hover:text-purple-800 dark:hover:text-lime-300 transition-colors whitespace-nowrap ml-auto shrink-0"
                           >
                             <span>
                               {isUa ? 'Читати' : isEs ? 'Leer' : 'Read'}
