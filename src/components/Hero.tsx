@@ -5,6 +5,7 @@ import {
   LuBot as Bot,
 } from 'react-icons/lu'
 import { useLanguage } from '../contexts/LanguageContext'
+import { trackAiChatInteraction, trackCvDownload } from '../lib/analytics'
 
 const Hero = () => {
   const { t } = useLanguage()

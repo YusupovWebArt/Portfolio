@@ -6,6 +6,7 @@ import {
   LuFileText as FileText,
   LuArrowRight as ArrowRight,
 } from 'react-icons/lu'
+import { trackCvDownload } from '../../lib/analytics'
 
 interface ContactActionCardProps {
   locale?: 'en' | 'ua' | 'es'
