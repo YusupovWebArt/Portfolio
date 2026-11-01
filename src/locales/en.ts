@@ -124,6 +124,32 @@ export const en: Translation = {
     },
     workTitle: 'My Work Experience',
     work: {
+      itemSolo: {
+        title: 'Solopreneur & Solo Product Engineer',
+        company: 'Independent Products & AI Lab',
+        desc: {
+          solopreneur: {
+            label: 'Solopreneurship & Solo Engineering:',
+            text: 'End-to-end architecture, full-cycle product development, AI agent workflows, and monetization of personal production web applications and EdTech platforms.',
+          },
+          fullstackAiLab: {
+            label: 'Fullstack AI Lab (fullstackailab.com):',
+            text: 'Interactive engineering educational platform with 1,135+ MDX lessons compiled via Rust MDX-RS in under 90s, in-browser WebAssembly WordPress Playground (PHP 8.4 / SQLite VFS), runtime outage simulators, AI technical interview engine, and Google NotebookLM audio generation.',
+          },
+          unitrition: {
+            label: 'Unitrition (unitrition.info):',
+            text: 'Precision nutrition and bread units calculator across 10 specialized clinical diets, built on Next.js 16 App Router, Headless WordPress, Supabase Auth, and real-time USDA FoodData Central API integration.',
+          },
+          portfolioPlatform: {
+            label: 'Next.js 16 & Hybrid RAG Portfolio (yusupovartur.com):',
+            text: 'Flagship portfolio platform pre-rendering 210+ localized static routes across 70+ commercial projects, featuring an autonomous Hybrid RAG AI engine, client-side streaming, WCAG 2.2 AA / EAA 2026 accessibility, and sub-second Core Web Vitals.',
+          },
+          reactPortfolio: {
+            label: 'React Portfolio Platform:',
+            text: 'High-performance SPA with client-side state hydration, interactive project showcases, trilingual i18n parity, and comprehensive Vitest test coverage.',
+          },
+        },
+      },
       item0: {
         title: 'Front-end Developer (Remote Full-time/Part-time)',
         desc: {
@@ -133,7 +159,7 @@ export const en: Translation = {
           },
           lifecycle: {
             label: 'Lifecycle Management:',
-            text: 'Handled full-cycle deployment, database migrations, security patches, and support for US clients.',
+            text: 'Handled full-cycle deployment, database migrations, security patches, and engineering support for US clients through 2026.',
           },
           uiux: {
             label: 'UI/UX Re-engineering:',

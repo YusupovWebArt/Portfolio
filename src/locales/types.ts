@@ -82,6 +82,17 @@ export interface Translation {
     }
     workTitle: string
     work: {
+      itemSolo: {
+        title: string
+        company: string
+        desc: {
+          solopreneur: { label: string; text: string }
+          fullstackAiLab: { label: string; text: string }
+          unitrition: { label: string; text: string }
+          portfolioPlatform: { label: string; text: string }
+          reactPortfolio: { label: string; text: string }
+        }
+      }
       item0: {
         title: string
         desc: {

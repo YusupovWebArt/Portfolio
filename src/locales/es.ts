@@ -123,6 +123,32 @@ export const es: Translation = {
     },
     workTitle: 'Mi experiencia laboral',
     work: {
+      itemSolo: {
+        title: 'Solopreneur y Solo Product Engineer',
+        company: 'Productos propios y AI Lab',
+        desc: {
+          solopreneur: {
+            label: 'Solopreneurship e ingeniería de productos propios:',
+            text: 'Arquitectura integral independiente, desarrollo de productos de ciclo completo, flujos con agentes de IA y monetización de aplicaciones web y plataformas EdTech.',
+          },
+          fullstackAiLab: {
+            label: 'Fullstack AI Lab (fullstackailab.com):',
+            text: 'Plataforma educativa interactiva de ingeniería con más de 1.135 lecciones MDX compiladas con Rust MDX-RS en menos de 90s, sandbox WebAssembly de WordPress en el navegador (PHP 8.4 / SQLite VFS), simuladores de fallos, motor de entrevistas con IA y generación de podcasts para Google NotebookLM.',
+          },
+          unitrition: {
+            label: 'Unitrition (unitrition.info):',
+            text: 'Plataforma de nutrición de precisión y calculadora de unidades de pan para 10 planes dietéticos especializados, construida con Next.js 16 App Router, Headless WordPress, Supabase Auth e integración de la API de USDA FoodData Central.',
+          },
+          portfolioPlatform: {
+            label: 'Next.js 16 & Hybrid RAG Portfolio (yusupovartur.com):',
+            text: 'Plataforma insignia de portafolio que pre-renderiza más de 210 rutas estáticas localizadas para más de 70 proyectos comerciales, con motor autónomo de IA Hybrid RAG, streaming en cliente, accesibilidad WCAG 2.2 AA / EAA 2026 y Core Web Vitals inferiores a 1s.',
+          },
+          reactPortfolio: {
+            label: 'React Portfolio Platform:',
+            text: 'Aplicación SPA de alto rendimiento con hidratación segura de estado en cliente, muestras interactivas de proyectos, paridad i18n trilingüe y cobertura integral de pruebas con Vitest.',
+          },
+        },
+      },
       item0: {
         title: 'Desarrollador Front-end (Remoto a tiempo completo/parcial)',
         desc: {
@@ -132,7 +158,7 @@ export const es: Translation = {
           },
           lifecycle: {
             label: 'Lifecycle Management:',
-            text: 'Gestioné el ciclo completo de despliegue, migraciones de bases de datos, parches de seguridad y soporte para clientes de EE.UU.',
+            text: 'Gestioné el ciclo completo de despliegue, migraciones de bases de datos, parches de seguridad y soporte de ingeniería para clientes de EE.UU. hasta 2026.',
           },
           uiux: {
             label: 'UI/UX Re-engineering:',

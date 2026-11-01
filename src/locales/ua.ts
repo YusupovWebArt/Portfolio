@@ -123,6 +123,32 @@ export const ua: Translation = {
     },
     workTitle: 'Мій досвід роботи',
     work: {
+      itemSolo: {
+        title: 'Солопідприємець & Solo Product Engineer',
+        company: 'Власні продукти та AI Lab',
+        desc: {
+          solopreneur: {
+            label: 'Солопідприємництво та розробка власних продуктів:',
+            text: 'Самостійне проєктування архітектури, повний цикл інженерії продуктів, інтеграція AI-агентів та монетизація авторських веб-застосунків і EdTech-платформ.',
+          },
+          fullstackAiLab: {
+            label: 'Fullstack AI Lab (fullstackailab.com):',
+            text: 'Інтерактивна інженерна освітня платформа з 1 135+ MDX-уроками на базі Rust MDX-RS зі збіркою до 90 секунд, браузерною WebAssembly-пісочницею WordPress (PHP 8.4 / SQLite VFS), симуляторами збоїв, AI-тренажером співбесід та генерацією аудіоподкастів для Google NotebookLM.',
+          },
+          unitrition: {
+            label: 'Unitrition (unitrition.info):',
+            text: 'Платформа персоналізованого харчування та калькулятор хлібних одиниць для 10 спеціалізованих дієтичних планів на базі Next.js 16 App Router, Headless WordPress, Supabase Auth та інтеграції з USDA FoodData Central API.',
+          },
+          portfolioPlatform: {
+            label: 'Next.js 16 & Hybrid RAG Portfolio (yusupovartur.com):',
+            text: 'Флагманська платформа-портфоліо з генерацією 210+ локалізованих статичних маршрутів для 70+ комерційних кейсів, автономним AI Hybrid RAG двигуном, клієнтським стрімінгом, доступністю WCAG 2.2 AA / EAA 2026 та швидкістю Core Web Vitals < 1с.',
+          },
+          reactPortfolio: {
+            label: 'React Portfolio Platform:',
+            text: 'Високопродуктивний SPA-застосунок із безпечною гідратацією стану, інтерактивними шоукейсами проєктів, 3-мовною підтримкою i18n та повним тестовим покриттям на Vitest.',
+          },
+        },
+      },
       item0: {
         title: 'Front-end Developer (Remote Full-time/Part-time)',
         desc: {
@@ -132,7 +158,7 @@ export const ua: Translation = {
           },
           lifecycle: {
             label: 'Lifecycle Management:',
-            text: 'Повний цикл розгортання, міграції баз даних, патчі безпеки та підтримка для клієнтів зі США.',
+            text: 'Повний цикл розгортання, міграції баз даних, патчі безпеки та інженерна підтримка для клієнтів зі США до 2026 року.',
           },
           uiux: {
             label: 'UI/UX Re-engineering:',

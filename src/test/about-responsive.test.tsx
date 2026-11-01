@@ -54,4 +54,27 @@ describe('About My Journey Mobile Responsive Specification (TDD)', () => {
       expect(card.className).toContain('sm:p-6')
     })
   })
+
+  it('should render Solopreneur 2026-Present block and updated Frontdeskhelpers 2021-2026 block with personal projects', () => {
+    render(
+      <LanguageProvider>
+        <About />
+      </LanguageProvider>,
+    )
+
+    // Solopreneur role and active period
+    expect(screen.getByText('2026-Present')).toBeDefined()
+    expect(screen.getByRole('heading', { level: 5, name: /Solopreneur/i })).toBeDefined()
+    expect(screen.getByRole('link', { name: /Independent Products & AI Lab|Власні продукти та AI Lab|Productos propios y AI Lab/i })).toBeDefined()
+
+    // Personal projects listed under Solopreneur
+    expect(screen.getByText(/Fullstack AI Lab \(fullstackailab\.com\):/i)).toBeDefined()
+    expect(screen.getByText(/Unitrition \(unitrition\.info\):/i)).toBeDefined()
+    expect(screen.getByText(/Next\.js 16 & Hybrid RAG Portfolio/i)).toBeDefined()
+    expect(screen.getByText(/React Portfolio Platform:/i)).toBeDefined()
+
+    // Frontdeskhelpers period updated to 2021-2026
+    expect(screen.getByText('2021-2026')).toBeDefined()
+    expect(screen.getByRole('link', { name: 'Frontdeskhelpers' })).toBeDefined()
+  })
 })

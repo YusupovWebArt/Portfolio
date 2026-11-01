@@ -123,7 +123,52 @@ const About = () => {
 
   const workExperience = [
     {
-      year: "2021-Present",
+      year: "2026-Present",
+      title: ab.work.itemSolo.title,
+      company: ab.work.itemSolo.company,
+      companyUrl: "https://www.fullstackailab.com",
+      description: (
+        <ul className="space-y-2 mt-2 list-none">
+          <li className="flex items-start gap-2.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-green-500 dark:bg-lime-500 mt-1.5 shrink-0"></span>
+            <span>
+              <strong className="text-slate-800 dark:text-white">{ab.work.itemSolo.desc.solopreneur.label}</strong>{" "}
+              {ab.work.itemSolo.desc.solopreneur.text}
+            </span>
+          </li>
+          <li className="flex items-start gap-2.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-green-500 dark:bg-lime-500 mt-1.5 shrink-0"></span>
+            <span>
+              <strong className="text-slate-800 dark:text-white">{ab.work.itemSolo.desc.fullstackAiLab.label}</strong>{" "}
+              {ab.work.itemSolo.desc.fullstackAiLab.text}
+            </span>
+          </li>
+          <li className="flex items-start gap-2.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-green-500 dark:bg-lime-500 mt-1.5 shrink-0"></span>
+            <span>
+              <strong className="text-slate-800 dark:text-white">{ab.work.itemSolo.desc.unitrition.label}</strong>{" "}
+              {ab.work.itemSolo.desc.unitrition.text}
+            </span>
+          </li>
+          <li className="flex items-start gap-2.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-green-500 dark:bg-lime-500 mt-1.5 shrink-0"></span>
+            <span>
+              <strong className="text-slate-800 dark:text-white">{ab.work.itemSolo.desc.portfolioPlatform.label}</strong>{" "}
+              {ab.work.itemSolo.desc.portfolioPlatform.text}
+            </span>
+          </li>
+          <li className="flex items-start gap-2.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-green-500 dark:bg-lime-500 mt-1.5 shrink-0"></span>
+            <span>
+              <strong className="text-slate-800 dark:text-white">{ab.work.itemSolo.desc.reactPortfolio.label}</strong>{" "}
+              {ab.work.itemSolo.desc.reactPortfolio.text}
+            </span>
+          </li>
+        </ul>
+      ),
+    },
+    {
+      year: "2021-2026",
       title: ab.work.item0.title,
       company: "Frontdeskhelpers",
       companyUrl: "https://frontdeskhelpers.com/",
