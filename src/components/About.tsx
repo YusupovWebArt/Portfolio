@@ -40,6 +40,13 @@ const About = () => {
       description: (
         <ul className="space-y-2 mt-2 list-none">
           <li className="flex items-start gap-3">
+            <span className="w-2 h-2 rounded-full bg-lime-500 mt-1.5 shrink-0"></span>
+            <span>
+              <strong className="text-slate-800 dark:text-white">{ab.education.item0.description.soloRnd.label}</strong>{" "}
+              {ab.education.item0.description.soloRnd.text}
+            </span>
+          </li>
+          <li className="flex items-start gap-3">
             <span className="w-2 h-2 rounded-full bg-blue-500 mt-1.5 shrink-0"></span>
             <span>
               <strong className="text-slate-800 dark:text-white">{ab.education.item0.description.wp.label}</strong>{" "}
@@ -123,7 +130,7 @@ const About = () => {
 
   const workExperience = [
     {
-      year: "2026-Present",
+      year: "2025-Present",
       title: ab.work.itemSolo.title,
       company: ab.work.itemSolo.company,
       companyUrl: "https://www.fullstackailab.com",
@@ -155,13 +162,6 @@ const About = () => {
             <span>
               <strong className="text-slate-800 dark:text-white">{ab.work.itemSolo.desc.portfolioPlatform.label}</strong>{" "}
               {ab.work.itemSolo.desc.portfolioPlatform.text}
-            </span>
-          </li>
-          <li className="flex items-start gap-2.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-green-500 dark:bg-lime-500 mt-1.5 shrink-0"></span>
-            <span>
-              <strong className="text-slate-800 dark:text-white">{ab.work.itemSolo.desc.reactPortfolio.label}</strong>{" "}
-              {ab.work.itemSolo.desc.reactPortfolio.text}
             </span>
           </li>
         </ul>

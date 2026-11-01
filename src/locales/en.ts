@@ -77,6 +77,10 @@ export const en: Translation = {
         title: 'Advanced Web Engineering & Emerging Tech',
         institution: 'Focus on Scalable Ecosystems and AI Integration',
         description: {
+          soloRnd: {
+            label: 'Solopreneur Product R&D:',
+            text: 'Researching and prototyping core technologies for personal products: Rust MDX-RS compilation, in-browser WebAssembly WordPress (PHP 8.4 / SQLite VFS), and autonomous Hybrid RAG architectures.',
+          },
           wp: {
             label: 'WordPress Backend:',
             text: 'Researching custom plugin hooks, OOP standards, and low-level core architectures.',
@@ -129,24 +133,20 @@ export const en: Translation = {
         company: 'Independent Products & AI Lab',
         desc: {
           solopreneur: {
-            label: 'Solopreneurship & Solo Engineering:',
-            text: 'End-to-end architecture, full-cycle product development, AI agent workflows, and monetization of personal production web applications and EdTech platforms.',
+            label: 'Solopreneurship:',
+            text: 'End-to-end architecture, development, deployment, and monetization of personal production web products and EdTech solutions.',
           },
           fullstackAiLab: {
             label: 'Fullstack AI Lab (fullstackailab.com):',
-            text: 'Interactive engineering educational platform with 1,135+ MDX lessons compiled via Rust MDX-RS in under 90s, in-browser WebAssembly WordPress Playground (PHP 8.4 / SQLite VFS), runtime outage simulators, AI technical interview engine, and Google NotebookLM audio generation.',
+            text: 'Interactive EdTech platform: React 19, Next.js 16, WASM WordPress Playground, and Rust MDX-RS compilation across 1,135+ lessons.',
           },
           unitrition: {
             label: 'Unitrition (unitrition.info):',
-            text: 'Precision nutrition and bread units calculator across 10 specialized clinical diets, built on Next.js 16 App Router, Headless WordPress, Supabase Auth, and real-time USDA FoodData Central API integration.',
+            text: 'HealthTech nutrition and bread units platform built on Headless WordPress, Next.js 16 App Router, Supabase, and USDA API.',
           },
           portfolioPlatform: {
-            label: 'Next.js 16 & Hybrid RAG Portfolio (yusupovartur.com):',
-            text: 'Flagship portfolio platform pre-rendering 210+ localized static routes across 70+ commercial projects, featuring an autonomous Hybrid RAG AI engine, client-side streaming, WCAG 2.2 AA / EAA 2026 accessibility, and sub-second Core Web Vitals.',
-          },
-          reactPortfolio: {
-            label: 'React Portfolio Platform:',
-            text: 'High-performance SPA with client-side state hydration, interactive project showcases, trilingual i18n parity, and comprehensive Vitest test coverage.',
+            label: 'Portfolio Platform (yusupovartur.com):',
+            text: 'Next.js 16 SSG platform pre-rendering 210+ localized routes across 70+ projects with autonomous Hybrid RAG and WCAG 2.2 AA.',
           },
         },
       },

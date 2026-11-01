@@ -55,23 +55,25 @@ describe('About My Journey Mobile Responsive Specification (TDD)', () => {
     })
   })
 
-  it('should render Solopreneur 2026-Present block and updated Frontdeskhelpers 2021-2026 block with personal projects', () => {
+  it('should render Solopreneur 2025-Present block, education Solopreneur Product R&D, and updated Frontdeskhelpers 2021-2026 block with personal projects', () => {
     render(
       <LanguageProvider>
         <About />
       </LanguageProvider>,
     )
 
+    // Solopreneur Product R&D in Education
+    expect(screen.getByText(/Solopreneur Product R&D:/i)).toBeDefined()
+
     // Solopreneur role and active period
-    expect(screen.getByText('2026-Present')).toBeDefined()
+    expect(screen.getByText('2025-Present')).toBeDefined()
     expect(screen.getByRole('heading', { level: 5, name: /Solopreneur/i })).toBeDefined()
     expect(screen.getByRole('link', { name: /Independent Products & AI Lab|Власні продукти та AI Lab|Productos propios y AI Lab/i })).toBeDefined()
 
     // Personal projects listed under Solopreneur
     expect(screen.getByText(/Fullstack AI Lab \(fullstackailab\.com\):/i)).toBeDefined()
     expect(screen.getByText(/Unitrition \(unitrition\.info\):/i)).toBeDefined()
-    expect(screen.getByText(/Next\.js 16 & Hybrid RAG Portfolio/i)).toBeDefined()
-    expect(screen.getByText(/React Portfolio Platform:/i)).toBeDefined()
+    expect(screen.getByText(/Portfolio Platform \(yusupovartur\.com\):/i)).toBeDefined()
 
     // Frontdeskhelpers period updated to 2021-2026
     expect(screen.getByText('2021-2026')).toBeDefined()

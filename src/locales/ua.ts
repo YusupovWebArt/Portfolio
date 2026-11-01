@@ -77,6 +77,10 @@ export const ua: Translation = {
         title: 'Поглиблена веб-інженерія та нові технології',
         institution: 'Акцент на масштабованих екосистемах та AI-інтеграції',
         description: {
+          soloRnd: {
+            label: 'Solopreneur Product R&D:',
+            text: 'Дослідження та прототипування ключових технологій для власних продуктів: компіляція Rust MDX-RS, браузерний WebAssembly WordPress (PHP 8.4 / SQLite VFS) та автономні архітектури Hybrid RAG.',
+          },
           wp: {
             label: 'WordPress Backend:',
             text: 'Дослідження кастомних хуків плагінів, OOP стандартів та низькорівневих core-архітектур.',
@@ -128,24 +132,20 @@ export const ua: Translation = {
         company: 'Власні продукти та AI Lab',
         desc: {
           solopreneur: {
-            label: 'Солопідприємництво та розробка власних продуктів:',
-            text: 'Самостійне проєктування архітектури, повний цикл інженерії продуктів, інтеграція AI-агентів та монетизація авторських веб-застосунків і EdTech-платформ.',
+            label: 'Солопідприємництво:',
+            text: 'Повний цикл архітектури, розробки, релізу та монетизації власних цифрових веб-продуктів та EdTech-рішень.',
           },
           fullstackAiLab: {
             label: 'Fullstack AI Lab (fullstackailab.com):',
-            text: 'Інтерактивна інженерна освітня платформа з 1 135+ MDX-уроками на базі Rust MDX-RS зі збіркою до 90 секунд, браузерною WebAssembly-пісочницею WordPress (PHP 8.4 / SQLite VFS), симуляторами збоїв, AI-тренажером співбесід та генерацією аудіоподкастів для Google NotebookLM.',
+            text: 'Інтерактивна EdTech-платформа: React 19, Next.js 16, пісочниця WASM WordPress та компіляція Rust MDX-RS для 1 135+ уроків.',
           },
           unitrition: {
             label: 'Unitrition (unitrition.info):',
-            text: 'Платформа персоналізованого харчування та калькулятор хлібних одиниць для 10 спеціалізованих дієтичних планів на базі Next.js 16 App Router, Headless WordPress, Supabase Auth та інтеграції з USDA FoodData Central API.',
+            text: 'HealthTech-платформа харчування та хлібних одиниць на Headless WordPress, Next.js 16 App Router, Supabase та USDA API.',
           },
           portfolioPlatform: {
-            label: 'Next.js 16 & Hybrid RAG Portfolio (yusupovartur.com):',
-            text: 'Флагманська платформа-портфоліо з генерацією 210+ локалізованих статичних маршрутів для 70+ комерційних кейсів, автономним AI Hybrid RAG двигуном, клієнтським стрімінгом, доступністю WCAG 2.2 AA / EAA 2026 та швидкістю Core Web Vitals < 1с.',
-          },
-          reactPortfolio: {
-            label: 'React Portfolio Platform:',
-            text: 'Високопродуктивний SPA-застосунок із безпечною гідратацією стану, інтерактивними шоукейсами проєктів, 3-мовною підтримкою i18n та повним тестовим покриттям на Vitest.',
+            label: 'Платформа-портфоліо (yusupovartur.com):',
+            text: 'Next.js 16 SSG-платформа з генерацією 210+ маршрутів для 70+ проєктів, автономним Hybrid RAG та доступністю WCAG 2.2 AA.',
           },
         },
       },

@@ -59,9 +59,12 @@ export interface Translation {
         title: string
         institution: string
         description: {
+          soloRnd: { label: string; text: string }
           wp: { label: string; text: string }
           react: { label: string; text: string }
           ai: { label: string; text: string }
+          seoGeo: { label: string; text: string }
+          emerging: { label: string; text: string }
         }
       }
       item1: {
@@ -90,7 +93,6 @@ export interface Translation {
           fullstackAiLab: { label: string; text: string }
           unitrition: { label: string; text: string }
           portfolioPlatform: { label: string; text: string }
-          reactPortfolio: { label: string; text: string }
         }
       }
       item0: {
