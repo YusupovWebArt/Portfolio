@@ -22,6 +22,7 @@ This document maintains the technical and business roadmap for the Artur Yusupov
 | **Live CI/CD Pipeline & Health Status in Footer** | Medium | DevOps & Trust | Planned |
 | **Dynamic Client-Side CV/Resume PDF Generator** | Low | Utility | Planned |
 | **B2B Cold Outreach Email Templates (ES)** | Low | Marketing & Sales | Planned |
+| **DACH Market Expansion (German Locale / de)** | Medium | Internationalization | Phase 2 Planned |
 
 ---
 
@@ -119,3 +120,16 @@ This document maintains the technical and business roadmap for the Artur Yusupov
   - Sequence 1: White-label React & WordPress development for agencies with capacity overflow.
   - Sequence 2: Legacy code modernization, Core Web Vitals remediation, and speed optimization.
   - Sequence 3: Custom AI agent integration & workflow automation for enterprise clients.
+
+---
+
+## 7. Internationalization: Phase 2 German (DE) Expansion
+
+### DACH Market Entry (Germany, Austria, Switzerland)
+- **Objective:** Unlock high-budget European enterprise contracts by introducing German (`de`) as the sole 4th locale, targeting DACH clients seeking Senior Fullstack / Headless WordPress / Next.js engineering talent.
+- **Key Commercial Drivers:**
+  - **German Regulatory Enforcement (BFSG / EAA 2026):** European Accessibility Act (EN 301 549) carries fines up to 100,000 EUR in Germany. High demand for WCAG 2.2 AA audit and remediation.
+  - **Proven Production Portfolio Anchors:** Leverage existing live German enterprise projects:
+    - *Buhl WISO* (buhl.de - Germany's leading tax software platform).
+    - *Telefontrainingskoffer* (callcenter-akademie.de - German professional B2B training portal).
+  - **Target Architecture:** Add `de` to Next.js localized route params (`app/[locale]/...`), generate localized case study routes and engineering articles in German, and maintain strict key parity in `src/locales/de.ts`.
