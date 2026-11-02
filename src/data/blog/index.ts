@@ -11,6 +11,7 @@ import { legacyMigrationCloudInfrastructurePost } from './posts/legacy-migration
 import { headlessWordPressNextJs16CachingArchitecturePost } from './posts/headless-wordpress-nextjs-16-caching-architecture'
 import { woocommerceHposRedisCaching10kSkusPost } from './posts/woocommerce-hpos-redis-caching-10k-skus'
 import { wasmWordPressPhpInBrowserZeroServerPost } from './posts/wasm-wordpress-php-in-browser-zero-server'
+import { clinicalGovernmentApiHeadlessIntegrationUnitritionPost } from './posts/clinical-government-api-headless-integration-unitrition'
 
 export * from './types'
 
@@ -27,6 +28,7 @@ export const allBlogPosts: BlogPost[] = [
   headlessWordPressNextJs16CachingArchitecturePost,
   woocommerceHposRedisCaching10kSkusPost,
   wasmWordPressPhpInBrowserZeroServerPost,
+  clinicalGovernmentApiHeadlessIntegrationUnitritionPost,
 ]
 
 export function getAllBlogPosts(): BlogPost[] {

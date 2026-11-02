@@ -367,6 +367,29 @@ export const FAQ: FaqItem[] = [
     answerEs:
       'En Fullstack AI Lab, compilo PHP 8.4 a WebAssembly (WASM) con Emscripten y monto WordPress sobre SQLite Virtual File System (VFS). Mediante blueprints declarativos en JSON se instalan plugins y se siembran tablas al instante, logrando arranques en 120ms y cero costes de servidor. Desglose completo: /es/blog/wasm-wordpress-php-in-browser-zero-server',
   },
+  {
+    question: 'How do you integrate clinical food APIs like USDA FoodData Central securely in Next.js?',
+    questionUa: 'Як ви безпечно інтегруєте клінічні API харчування на зразок USDA FoodData Central у Next.js?',
+    questionEs: '¿Cómo integras APIs clínicas de nutrición como USDA FoodData Central de forma segura en Next.js?',
+    keywords: [
+      'usda',
+      'healthtech',
+      'nutrition',
+      'bread units',
+      'хлібні одиниці',
+      'хлебные единицы',
+      'диета',
+      'дієта',
+      'dieta',
+      'hipaa',
+    ],
+    answer:
+      'In Unitrition, I engineered a server-side Next.js 16 Edge Route Handler proxying the USDA FoodData Central API. It masks private credentials, caches responses with sub-30ms stale-while-revalidate headers, normalizes hundreds of nutrient formats, calculates Bread Units (Net Carbs / 12), and isolates patient logs in Supabase PostgreSQL via Row Level Security (RLS). Read full breakdown: /en/blog/clinical-government-api-headless-integration-unitrition',
+    answerUa:
+      'У проєкті Unitrition я створив серверний Next.js 16 Edge Route Handler для проксіювання USDA FoodData Central API. Він маскує приватні ключі, кешує відповіді на edge за 28мс, нормалізує формати нутрієнтів, обчислює Хлібні Одиниці (Чисті вуглеводи / 12) та ізолює дані пацієнтів у Supabase PostgreSQL через Row Level Security (RLS). Повний розбір: /ua/blog/clinical-government-api-headless-integration-unitrition',
+    answerEs:
+      'En Unitrition, diseñé un Route Handler en el edge de Next.js 16 que actúa como proxy para la API USDA FoodData Central. Oculta credenciales privadas, almacena en caché respuestas en 28ms, normaliza nutrientes, calcula Unidades de Pan (Carbohidratos netos / 12) y aísla registros de pacientes en Supabase PostgreSQL con Row Level Security (RLS). Desglose completo: /es/blog/clinical-government-api-headless-integration-unitrition',
+  },
 ]
 
 export function matchesFaqKeyword(text: string, kw: string): boolean {
