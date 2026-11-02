@@ -8,6 +8,7 @@ import { subSecondCwvBundleOptimizationPost } from './posts/sub-second-cwv-bundl
 import { shopifyLiquidVsCustomWooCommercePost } from './posts/shopify-liquid-vs-custom-woocommerce'
 import { clientSideZeroTrustSecurityPost } from './posts/client-side-zero-trust-security'
 import { legacyMigrationCloudInfrastructurePost } from './posts/legacy-migration-cloud-infrastructure'
+import { headlessWordPressNextJs16CachingArchitecturePost } from './posts/headless-wordpress-nextjs-16-caching-architecture'
 
 export * from './types'
 
@@ -21,6 +22,7 @@ export const allBlogPosts: BlogPost[] = [
   shopifyLiquidVsCustomWooCommercePost,
   clientSideZeroTrustSecurityPost,
   legacyMigrationCloudInfrastructurePost,
+  headlessWordPressNextJs16CachingArchitecturePost,
 ]
 
 export function getAllBlogPosts(): BlogPost[] {

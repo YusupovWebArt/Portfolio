@@ -292,6 +292,33 @@ export const FAQ: FaqItem[] = [
     answerEs:
       'Me impulsa resolver problemas complejos, crear experiencias digitales rápidas y amigables para el usuario, y aprender continuamente nuevas tecnologías. Me encanta combinar código limpio con resultados empresariales concretos.',
   },
+  {
+    question: 'How do you handle Headless WordPress and Next.js 16 caching without stale data?',
+    questionUa: 'Як ви налаштовуєте кешування для Headless WordPress та Next.js 16 без застарілих даних?',
+    questionEs: '¿Cómo gestionas la caché entre Headless WordPress y Next.js 16 sin servir contenido obsoleto?',
+    keywords: [
+      'caching',
+      'cache',
+      'headless wordpress',
+      'revalidation',
+      'revalidatetag',
+      'invalidation',
+      'кеш',
+      'кешування',
+      'інвалідація',
+      'ревалідація',
+      'хедлесс',
+      'invalida',
+      'caché',
+      'revalidar',
+    ],
+    answer:
+      'I engineer an event-driven caching loop: a lightweight PHP 8.2 transition_post_status hook signs payload updates with HMAC-SHA256, sending non-blocking webhooks to Next.js 16 App Router. Next.js validates the signature with timing-safe comparison and triggers on-demand revalidateTag(). This yields sub-50ms edge reads with instant 80ms editor publication and 95%+ MySQL query reduction. Read full breakdown: /en/blog/headless-wordpress-nextjs-16-caching-architecture',
+    answerUa:
+      'Я проєктую подієвий цикл кешування: легковаговий хук PHP 8.2 transition_post_status підписує зміни через HMAC-SHA256 і надсилає неблокуючий вебхук у Next.js 16 App Router. Next.js перевіряє підпис і запускає точкову ревалідацію revalidateTag(). Це забезпечує TTFB < 50мс на edge, оновлення контенту за 80мс та скорочення запитів до MySQL на 95%+. Повний розбір: /ua/blog/headless-wordpress-nextjs-16-caching-architecture',
+    answerEs:
+      'Diseño un bucle de caché reactivo: un hook ligero en PHP 8.2 transition_post_status firma actualizaciones con HMAC-SHA256 y envía webhooks no bloqueantes a Next.js 16 App Router. Next.js valida la firma y ejecuta revalidateTag() bajo demanda. Esto logra lecturas sub-50ms en el edge, publicación en 80ms y reducción de más del 95% en MySQL. Desglose completo: /es/blog/headless-wordpress-nextjs-16-caching-architecture',
+  },
 ]
 
 export function matchesFaqKeyword(text: string, kw: string): boolean {
