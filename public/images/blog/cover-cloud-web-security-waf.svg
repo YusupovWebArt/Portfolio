@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+<defs>
+<!-- Background Gradient -->
+<linearGradient id="cloudSecBg" x1="0%" y1="0%" x2="100%" y2="100%">
+<stop offset="0%" stop-color="#050a14" />
+<stop offset="50%" stop-color="#071022" />
+<stop offset="100%" stop-color="#0a192f" />
+</linearGradient>
+<!-- Accent Gradients -->
+<linearGradient id="cyanBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+<stop offset="0%" stop-color="#00f0ff" stop-opacity="0.95" />
+<stop offset="100%" stop-color="#3b82f6" stop-opacity="0.9" />
+</linearGradient>
+<linearGradient id="emeraldTeal" x1="0%" y1="0%" x2="100%" y2="100%">
+<stop offset="0%" stop-color="#10b981" stop-opacity="0.95" />
+<stop offset="100%" stop-color="#06b6d4" stop-opacity="0.9" />
+</linearGradient>
+<linearGradient id="shieldFirewall" x1="0%" y1="0%" x2="0%" y2="100%">
+<stop offset="0%" stop-color="#3b82f6" stop-opacity="0.9" />
+<stop offset="100%" stop-color="#6366f1" stop-opacity="0.8" />
+</linearGradient>
+<linearGradient id="threatRed" x1="0%" y1="0%" x2="100%" y2="100%">
+<stop offset="0%" stop-color="#f43f5e" stop-opacity="0.95" />
+<stop offset="100%" stop-color="#fb7185" stop-opacity="0.85" />
+</linearGradient>
+<filter id="glowSec" x="-20%" y="-20%" width="140%" height="140%">
+<feGaussianBlur stdDeviation="8" result="blur" />
+<feMerge>
+<feMergeNode in="blur" />
+<feMergeNode in="SourceGraphic" />
+</feMerge>
+</filter>
+<pattern id="gridSec" width="40" height="40" patternUnits="userSpaceOnUse">
+<path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.8" stroke-opacity="0.45"/>
+</pattern>
+</defs>
+<!-- Background Layer -->
+<rect width="1200" height="630" fill="url(#cloudSecBg)" />
+<rect width="1200" height="630" fill="url(#gridSec)" />
+<!-- Ambient Light Orbs -->
+<circle cx="280" cy="220" r="230" fill="#00f0ff" opacity="0.08" filter="url(#glowSec)" />
+<circle cx="920" cy="260" r="250" fill="#3b82f6" opacity="0.09" filter="url(#glowSec)" />
+<circle cx="600" cy="180" r="190" fill="#10b981" opacity="0.07" filter="url(#glowSec)" />
+<!-- Central Security Operations Console Frame -->
+<g transform="translate(160, 80)">
+<!-- Main Console Frame -->
+<rect x="40" y="30" width="800" height="410" rx="24" fill="#0b1329" stroke="#1e293b" stroke-width="1.5" opacity="0.96" />
+<rect x="40" y="30" width="800" height="410" rx="24" fill="none" stroke="#00f0ff" stroke-width="1" stroke-opacity="0.35" />
+<!-- Window Controls -->
+<circle cx="75" cy="62" r="5" fill="#f43f5e" opacity="0.8" />
+<circle cx="95" cy="62" r="5" fill="#eab308" opacity="0.8" />
+<circle cx="115" cy="62" r="5" fill="#10b981" opacity="0.8" />
+<line x1="140" y1="62" x2="380" y2="62" stroke="#334155" stroke-width="2" stroke-linecap="round" />
+<!-- Header Badge -->
+<rect x="520" y="50" width="300" height="24" rx="6" fill="#1e293b" />
+<text x="670" y="66" fill="#00f0ff" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" letter-spacing="1" text-anchor="middle">ENTERPRISE CLOUD PERIMETER WAF</text>
+<!-- Left Box: Threat Ingestion & Attack Vectors -->
+<g transform="translate(70, 95)">
+<rect width="210" height="230" rx="14" fill="#0f172a" stroke="#334155" stroke-width="1.2" />
+<rect x="15" y="15" width="180" height="28" rx="6" fill="#1e293b" />
+<text x="105" y="33" fill="#fb7185" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" text-anchor="middle">INGRESS &amp; THREAT VECTORS</text>
+<text x="20" y="70" fill="#94a3b8" font-family="monospace" font-size="11">Layer 7 HTTP Floods</text>
+<text x="190" y="70" fill="#f43f5e" font-family="monospace" font-size="11" text-anchor="end">BLOCKED</text>
+<text x="20" y="98" fill="#94a3b8" font-family="monospace" font-size="11">Rogue AI Scrapers</text>
+<text x="190" y="98" fill="#f43f5e" font-family="monospace" font-size="11" text-anchor="end">403 DROP</text>
+<text x="20" y="126" fill="#94a3b8" font-family="monospace" font-size="11">Credential Stuffing</text>
+<text x="190" y="126" fill="#f43f5e" font-family="monospace" font-size="11" text-anchor="end">CHALLENGE</text>
+<text x="20" y="154" fill="#94a3b8" font-family="monospace" font-size="11">SQLi / XSS Injections</text>
+<text x="190" y="154" fill="#f43f5e" font-family="monospace" font-size="11" text-anchor="end">WAF CRS</text>
+<path d="M 20 178 L 190 178" stroke="#1e293b" stroke-width="1" />
+<circle cx="28" cy="202" r="4" fill="#f43f5e" />
+<text x="40" y="206" fill="#cbd5e1" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600">Rate Limit: 400 req/5m</text>
+</g>
+<!-- Flow Arrow 1 -->
+<path d="M 285 210 L 325 210" stroke="url(#cyanBlue)" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="4 4" />
+<polygon points="328,210 320,205 320,215" fill="#00f0ff" />
+<!-- Center Box: AWS WAFv2 & CloudFront Shield -->
+<g transform="translate(335, 85)">
+<rect width="210" height="250" rx="16" fill="#091428" stroke="#00f0ff" stroke-width="1.8" />
+<!-- Shield Icon Header -->
+<path d="M 105 25 L 140 40 L 140 75 C 140 98 105 115 105 115 C 105 115 70 98 70 75 L 70 40 Z" fill="none" stroke="url(#cyanBlue)" stroke-width="2.5" stroke-linejoin="round" />
+<path d="M 94 65 L 102 73 L 118 55" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+<text x="105" y="140" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" text-anchor="middle">AWS WAFv2 WebACL</text>
+<text x="105" y="160" fill="#00f0ff" font-family="system-ui, -apple-system, sans-serif" font-size="11" text-anchor="middle">CloudFront Edge Inspection</text>
+<rect x="20" y="178" width="170" height="26" rx="6" fill="#1e293b" />
+<text x="105" y="195" fill="#10b981" font-family="monospace" font-size="10" font-weight="600" text-anchor="middle">Managed CRS + IP Rep</text>
+<rect x="20" y="210" width="170" height="26" rx="6" fill="#1e293b" />
+<text x="105" y="227" fill="#38bdf8" font-family="monospace" font-size="10" font-weight="600" text-anchor="middle">Edge Latency: &lt; 1.4ms</text>
+</g>
+<!-- Flow Arrow 2 -->
+<path d="M 550 210 L 590 210" stroke="url(#emeraldTeal)" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="4 4" />
+<polygon points="593,210 585,205 585,215" fill="#10b981" />
+<!-- Right Box: Edge Middleware & Origin Protection -->
+<g transform="translate(600, 95)">
+<rect width="210" height="230" rx="14" fill="#0f172a" stroke="#334155" stroke-width="1.2" />
+<rect x="15" y="15" width="180" height="28" rx="6" fill="#1e293b" />
+<text x="105" y="33" fill="#10b981" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" text-anchor="middle">EDGE &amp; ORIGIN RUNTIME</text>
+<text x="20" y="70" fill="#94a3b8" font-family="monospace" font-size="11">Next.js 16 Edge</text>
+<text x="190" y="70" fill="#38bdf8" font-family="monospace" font-size="11" text-anchor="end">Middleware</text>
+<text x="20" y="98" fill="#94a3b8" font-family="monospace" font-size="11">Redis Upstash</text>
+<text x="190" y="98" fill="#10b981" font-family="monospace" font-size="11" text-anchor="end">Sliding Win</text>
+<text x="20" y="126" fill="#94a3b8" font-family="monospace" font-size="11">Search Crawlers</text>
+<text x="190" y="126" fill="#38bdf8" font-family="monospace" font-size="11" text-anchor="end">rDNS Verify</text>
+<text x="20" y="154" fill="#94a3b8" font-family="monospace" font-size="11">Origin CPU Load</text>
+<text x="190" y="154" fill="#10b981" font-family="monospace" font-size="11" text-anchor="end">-87% Relief</text>
+<path d="M 20 178 L 190 178" stroke="#1e293b" stroke-width="1" />
+<circle cx="28" cy="202" r="4" fill="#10b981" />
+<text x="40" y="206" fill="#cbd5e1" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600">Zero False-Positive Tuning</text>
+</g>
+<!-- Bottom Telemetry Badges -->
+<g transform="translate(60, 360)">
+<rect width="160" height="50" rx="10" fill="#0f172a" stroke="#1e293b" />
+<text x="80" y="22" fill="#64748b" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="700" text-anchor="middle">EDGE DROP RATE</text>
+<text x="80" y="42" fill="#10b981" font-family="monospace" font-size="16" font-weight="700" text-anchor="middle">94.8% BLOCKED</text>
+</g>
+<g transform="translate(245, 360)">
+<rect width="180" height="50" rx="10" fill="#0f172a" stroke="#1e293b" />
+<text x="90" y="22" fill="#64748b" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="700" text-anchor="middle">INSPECTION OVERHEAD</text>
+<text x="90" y="42" fill="#00f0ff" font-family="monospace" font-size="16" font-weight="700" text-anchor="middle">&lt; 1.4ms LATENCY</text>
+</g>
+<g transform="translate(450, 360)">
+<rect width="170" height="50" rx="10" fill="#0f172a" stroke="#1e293b" />
+<text x="85" y="22" fill="#64748b" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="700" text-anchor="middle">ORIGIN CPU RELIEF</text>
+<text x="85" y="42" fill="#10b981" font-family="monospace" font-size="16" font-weight="700" text-anchor="middle">-87% LOAD</text>
+</g>
+<g transform="translate(645, 360)">
+<rect width="165" height="50" rx="10" fill="#0f172a" stroke="#1e293b" />
+<text x="82" y="22" fill="#64748b" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="700" text-anchor="middle">ROBOTS / AI SCRAPERS</text>
+<text x="82" y="42" fill="#a855f7" font-family="monospace" font-size="15" font-weight="700" text-anchor="middle">NEUTRALIZED</text>
+</g>
+</g>
+</svg>

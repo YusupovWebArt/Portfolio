@@ -390,6 +390,31 @@ export const FAQ: FaqItem[] = [
     answerEs:
       'En Unitrition, diseñé un Route Handler en el edge de Next.js 16 que actúa como proxy para la API USDA FoodData Central. Oculta credenciales privadas, almacena en caché respuestas en 28ms, normaliza nutrientes, calcula Unidades de Pan (Carbohidratos netos / 12) y aísla registros de pacientes en Supabase PostgreSQL con Row Level Security (RLS). Desglose completo: /es/blog/clinical-government-api-headless-integration-unitrition',
   },
+  {
+    question: 'How do you protect high-load web applications from Layer 7 DDoS, AI scrapers, and bot floods?',
+    questionUa: 'Як ви захищаєте високонавантажені веб-додатки від DDoS 7-го рівня, AI-скраперів та бот-атак?',
+    questionEs: '¿Cómo proteges aplicaciones web de alto tráfico frente a DDoS L7, scrapers de IA y bots?',
+    keywords: [
+      'waf',
+      'aws waf',
+      'ddos',
+      'rate limit',
+      'rate limiting',
+      'anti-scraping',
+      'боты',
+      'боти',
+      'скрапинг',
+      'скрапінг',
+      'cloudfront security',
+      'layer 7',
+    ],
+    answer:
+      'I deploy a tiered perimeter defense: AWS CloudFront edge PoPs terminate TLS and absorb L3/L4 floods, AWS WAFv2 inspects packets with managed CRS and rate-based rules (400 req/5m per IP), Next.js 16 Edge Middleware applies sliding-window quotas in Redis, and reverse DNS cryptographically validates search crawlers while dropping rogue AI scrapers. Read the full architectural guide: /en/blog/enterprise-cloud-web-security-waf-anti-scraping',
+    answerUa:
+      'Я впроваджую багаторівневий захист периметра: точки присутності AWS CloudFront термінують TLS і гасять L3/L4 повені, AWS WAFv2 аналізує пакети через CRS і ліміти (400 зап/5хв на IP), Next.js 16 Edge Middleware застосовує лічильник ковзного вікна в Redis, а reverse DNS валідує пошукових ботів і блокує несанкціоновані AI-парсери. Повний інженерний розбір: /ua/blog/enterprise-cloud-web-security-waf-anti-scraping',
+    answerEs:
+      'Implemento un perímetro de defensa escalonado: CloudFront Edge PoPs terminan TLS y absorben ataques L3/L4, AWS WAFv2 inspecciona paquetes con CRS y límites de 400 pet/5min por IP, Next.js 16 Edge Middleware aplica ventanas deslizantes en Redis, y reverse DNS valida rastreadores legítimos bloqueando scrapers de IA. Guía técnica completa: /es/blog/enterprise-cloud-web-security-waf-anti-scraping',
+  },
 ]
 
 export function matchesFaqKeyword(text: string, kw: string): boolean {

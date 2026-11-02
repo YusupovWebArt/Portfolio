@@ -65,7 +65,7 @@
 - **Highlights**:
   - Engineered for an AWS Advanced Consulting Partner with 95+ PageSpeed scores, multilingual architecture, and #1 Google rankings for competitive DevOps keywords.
 
-## 4. Complete Engineering Blog Index (13 Articles across EN / UA / ES = 39 Routes)
+## 4. Complete Engineering Blog Index (14 Articles across EN / UA / ES = 42 Routes)
 
 1. **Next.js 16 vs Headless WordPress vs Custom PHP: Objective TCO, Performance & SEO Analysis (2026)**: https://www.yusupovartur.com/en/blog/nextjs-vs-headless-wordpress-custom-php-2026
    - **Published**: 2026-10-18 | **Tags**: Next.js 16, WordPress, PHP 8.2, Headless CMS, Core Web Vitals, TCO
@@ -106,6 +106,9 @@
 13. **Clinical & Governmental API Integrations in Headless Architecture: Real-Time USDA FoodData Central Integration in Unitrition**: https://www.yusupovartur.com/en/blog/clinical-government-api-headless-integration-unitrition
     - **Published**: 2026-11-02 | **Tags**: HealthTech, USDA API, Next.js 16, Supabase RLS, TypeScript, HIPAA Compliance
     - **Summary**: An engineering blueprint for integrating governmental food databases into Next.js 16 and Headless WordPress: server-side API proxying, Bread Units calculation, and HIPAA/GDPR data isolation with Supabase RLS.
+14. **Enterprise Cloud Web Security Blueprint: Mitigating Layer 7 DDoS, AI Scraping, and Bot Floods with AWS WAF & Edge Rate Limiting**: https://www.yusupovartur.com/en/blog/enterprise-cloud-web-security-waf-anti-scraping
+    - **Published**: 2026-10-25 | **Tags**: AWS WAF, Cloud Security, DevSecOps, Rate Limiting, Anti-Scraping, Next.js 16, CloudFront, Redis
+    - **Summary**: An enterprise DevSecOps blueprint for protecting high-load web applications: AWS WAFv2 rule groups, CloudFront edge inspection, sliding-window Redis rate limiting, and bot mitigation without false positives.
 
 ## 5. Complete 71-Project Portfolio Index (213 Localized Case Study Routes)
 
