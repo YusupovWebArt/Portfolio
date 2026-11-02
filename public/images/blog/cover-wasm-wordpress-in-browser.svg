@@ -1,0 +1,169 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="wasmbg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#030712" />
+      <stop offset="50%" stop-color="#020617" />
+      <stop offset="100%" stop-color="#0a0f24" />
+    </linearGradient>
+
+    <!-- Accent Gradients -->
+    <linearGradient id="purpleViolet" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#6366f1" stop-opacity="0.85" />
+    </linearGradient>
+
+    <linearGradient id="cyanBlue" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.95" />
+      <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.9" />
+    </linearGradient>
+
+    <linearGradient id="emeraldLime" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#84cc16" stop-opacity="0.9" />
+    </linearGradient>
+
+    <filter id="glowFilter" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <pattern id="gridPattern" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.8" stroke-opacity="0.45"/>
+    </pattern>
+  </defs>
+
+  <!-- Background Layer -->
+  <rect width="1200" height="630" fill="url(#wasmbg)" />
+  <rect width="1200" height="630" fill="url(#gridPattern)" />
+
+  <!-- Ambient Light Orbs -->
+  <circle cx="280" cy="220" r="230" fill="#6366f1" opacity="0.08" filter="url(#glowFilter)" />
+  <circle cx="920" cy="260" r="250" fill="#06b6d4" opacity="0.09" filter="url(#glowFilter)" />
+  <circle cx="600" cy="200" r="190" fill="#10b981" opacity="0.07" filter="url(#glowFilter)" />
+
+  <!-- Central Architecture Console Frame -->
+  <g transform="translate(160, 80)">
+    <!-- Main Console Frame -->
+    <rect x="40" y="30" width="800" height="410" rx="24" fill="#0f172a" stroke="#1e293b" stroke-width="1.5" opacity="0.96" />
+    <rect x="40" y="30" width="800" height="410" rx="24" fill="none" stroke="#6366f1" stroke-width="1" stroke-opacity="0.35" />
+
+    <!-- Window Controls -->
+    <circle cx="75" cy="62" r="5" fill="#f43f5e" opacity="0.8" />
+    <circle cx="95" cy="62" r="5" fill="#eab308" opacity="0.8" />
+    <circle cx="115" cy="62" r="5" fill="#10b981" opacity="0.8" />
+    <line x1="140" y1="62" x2="380" y2="62" stroke="#334155" stroke-width="2" stroke-linecap="round" />
+
+    <!-- Left Box: PHP 8.4 WASM Binary Engine -->
+    <g transform="translate(75, 105)">
+      <rect width="205" height="280" rx="16" fill="#1e293b" stroke="#6366f1" stroke-width="1.2" stroke-opacity="0.8" />
+      <rect x="15" y="15" width="175" height="32" rx="8" fill="#1e1b4b" />
+      <text x="102" y="36" fill="#a5b4fc" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" text-anchor="middle" letter-spacing="1">PHP 8.4 WASM CORE</text>
+
+      <g transform="translate(15, 60)">
+        <rect width="175" height="54" rx="8" fill="#090d16" stroke="#334155" stroke-width="1" />
+        <text x="12" y="20" fill="#94a3b8" font-family="system-ui" font-size="10">Emscripten Compiler</text>
+        <text x="12" y="42" fill="#818cf8" font-family="monospace" font-size="12" font-weight="600">php-8.4.wasm</text>
+      </g>
+
+      <g transform="translate(15, 122)">
+        <rect width="175" height="54" rx="8" fill="#090d16" stroke="#334155" stroke-width="1" />
+        <text x="12" y="20" fill="#94a3b8" font-family="system-ui" font-size="10">Wire Transfer (Brotli)</text>
+        <text x="12" y="42" fill="#38bdf8" font-family="monospace" font-size="13" font-weight="700">3.8 MB</text>
+        <text x="75" y="42" fill="#64748b" font-family="system-ui" font-size="10">(-72% wire)</text>
+      </g>
+
+      <g transform="translate(15, 184)">
+        <rect width="175" height="54" rx="8" fill="#090d16" stroke="#334155" stroke-width="1" />
+        <text x="12" y="20" fill="#94a3b8" font-family="system-ui" font-size="10">Service Worker Layer</text>
+        <text x="12" y="42" fill="#c084fc" font-family="monospace" font-size="11">0ms loopback</text>
+      </g>
+
+      <rect x="15" y="248" width="175" height="20" rx="4" fill="#6366f1" fill-opacity="0.15" />
+      <text x="102" y="262" fill="#a5b4fc" font-family="monospace" font-size="9" text-anchor="middle">POSIX VFS EMULATED</text>
+    </g>
+
+    <!-- Center Box: SQLite VFS Database Engine -->
+    <g transform="translate(325, 105)">
+      <rect width="215" height="280" rx="16" fill="#1e293b" stroke="#06b6d4" stroke-width="1.2" stroke-opacity="0.8" />
+      <rect x="15" y="15" width="185" height="32" rx="8" fill="#083344" />
+      <text x="107" y="36" fill="#38bdf8" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" text-anchor="middle" letter-spacing="1">SQLITE VFS STORAGE</text>
+
+      <g transform="translate(15, 60)">
+        <rect width="185" height="58" rx="8" fill="#090d16" stroke="#334155" stroke-width="1" />
+        <text x="12" y="22" fill="#94a3b8" font-family="system-ui" font-size="10">Ephemeral Memory</text>
+        <text x="12" y="44" fill="#22d3ee" font-family="monospace" font-size="13" font-weight="700">?storage=temp</text>
+        <text x="125" y="44" fill="#64748b" font-family="system-ui" font-size="10">(120ms)</text>
+      </g>
+
+      <g transform="translate(15, 126)">
+        <rect width="185" height="54" rx="8" fill="#090d16" stroke="#334155" stroke-width="1" />
+        <text x="12" y="20" fill="#94a3b8" font-family="system-ui" font-size="10">Persistent OPFS Driver</text>
+        <text x="12" y="40" fill="#a3e635" font-family="monospace" font-size="11">FileSystemSyncAccess</text>
+      </g>
+
+      <g transform="translate(15, 188)">
+        <rect width="185" height="54" rx="8" fill="#090d16" stroke="#334155" stroke-width="1" />
+        <text x="12" y="20" fill="#94a3b8" font-family="system-ui" font-size="10">Declarative Blueprints</text>
+        <text x="12" y="40" fill="#fbbf24" font-family="monospace" font-size="11">blueprint.json</text>
+      </g>
+
+      <rect x="15" y="250" width="185" height="20" rx="4" fill="#06b6d4" fill-opacity="0.15" />
+      <text x="107" y="264" fill="#22d3ee" font-family="monospace" font-size="9" text-anchor="middle">ZERO MYSQL BACKEND</text>
+    </g>
+
+    <!-- Right Box: Performance & Cost Metrics -->
+    <g transform="translate(580, 105)">
+      <rect width="210" height="280" rx="16" fill="#1e293b" stroke="#10b981" stroke-width="1.2" stroke-opacity="0.8" />
+      <rect x="15" y="15" width="180" height="32" rx="8" fill="#064e3b" />
+      <text x="105" y="36" fill="#34d399" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" text-anchor="middle" letter-spacing="1">ZERO-SERVER SCALE</text>
+
+      <g transform="translate(15, 60)">
+        <rect width="180" height="62" rx="8" fill="#090d16" stroke="#334155" stroke-width="1" />
+        <text x="12" y="22" fill="#94a3b8" font-family="system-ui" font-size="10">Cold Boot Latency</text>
+        <text x="12" y="48" fill="#34d399" font-family="monospace" font-size="20" font-weight="700">120ms</text>
+        <text x="90" y="48" fill="#64748b" font-family="system-ui" font-size="11">(-97% time)</text>
+      </g>
+
+      <g transform="translate(15, 130)">
+        <rect width="180" height="62" rx="8" fill="#090d16" stroke="#334155" stroke-width="1" />
+        <text x="12" y="22" fill="#94a3b8" font-family="system-ui" font-size="10">Monthly Server Bill</text>
+        <text x="12" y="48" fill="#38bdf8" font-family="monospace" font-size="20" font-weight="700">$0.00</text>
+        <text x="80" y="48" fill="#94a3b8" font-family="system-ui" font-size="10">(100% Client)</text>
+      </g>
+
+      <g transform="translate(15, 200)">
+        <rect width="180" height="65" rx="8" fill="#090d16" stroke="#334155" stroke-width="1" />
+        <text x="12" y="22" fill="#94a3b8" font-family="system-ui" font-size="10">Security Blast Radius</text>
+        <text x="12" y="48" fill="#facc15" font-family="monospace" font-size="18" font-weight="700">ZERO</text>
+        <text x="65" y="48" fill="#94a3b8" font-family="system-ui" font-size="10">Tab Isolated</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Bottom Badges / Tech Stack Line -->
+  <g transform="translate(190, 535)">
+    <!-- Badge 1: WebAssembly -->
+    <rect x="0" y="0" width="165" height="32" rx="16" fill="#1e293b" stroke="#6366f1" stroke-width="1" />
+    <text x="82" y="20" fill="#c7d2fe" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" text-anchor="middle">WEBASSEMBLY (WASM)</text>
+
+    <!-- Badge 2: PHP 8.4 Runtime -->
+    <rect x="180" y="0" width="155" height="32" rx="16" fill="#1e293b" stroke="#06b6d4" stroke-width="1" />
+    <text x="257" y="20" fill="#a5f3fc" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" text-anchor="middle">PHP 8.4 RUNTIME</text>
+
+    <!-- Badge 3: SQLite VFS -->
+    <rect x="350" y="0" width="135" height="32" rx="16" fill="#1e293b" stroke="#ca8a04" stroke-width="1" />
+    <text x="417" y="20" fill="#fef08a" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" text-anchor="middle">SQLITE VFS</text>
+
+    <!-- Badge 4: $0 Server TCO -->
+    <rect x="500" y="0" width="175" height="32" rx="16" fill="#1e293b" stroke="#059669" stroke-width="1" />
+    <text x="587" y="20" fill="#6ee7b7" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" text-anchor="middle">$0 SERVER TCO / 120ms</text>
+
+    <!-- Author Pill -->
+    <rect x="690" y="0" width="135" height="32" rx="16" fill="#0f172a" stroke="#334155" stroke-width="1" />
+    <text x="757" y="20" fill="#94a3b8" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="500" text-anchor="middle">ARTUR YUSUPOV</text>
+  </g>
+</svg>

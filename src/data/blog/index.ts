@@ -10,6 +10,7 @@ import { clientSideZeroTrustSecurityPost } from './posts/client-side-zero-trust-
 import { legacyMigrationCloudInfrastructurePost } from './posts/legacy-migration-cloud-infrastructure'
 import { headlessWordPressNextJs16CachingArchitecturePost } from './posts/headless-wordpress-nextjs-16-caching-architecture'
 import { woocommerceHposRedisCaching10kSkusPost } from './posts/woocommerce-hpos-redis-caching-10k-skus'
+import { wasmWordPressPhpInBrowserZeroServerPost } from './posts/wasm-wordpress-php-in-browser-zero-server'
 
 export * from './types'
 
@@ -25,6 +26,7 @@ export const allBlogPosts: BlogPost[] = [
   legacyMigrationCloudInfrastructurePost,
   headlessWordPressNextJs16CachingArchitecturePost,
   woocommerceHposRedisCaching10kSkusPost,
+  wasmWordPressPhpInBrowserZeroServerPost,
 ]
 
 export function getAllBlogPosts(): BlogPost[] {

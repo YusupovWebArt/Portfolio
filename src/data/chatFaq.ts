@@ -344,6 +344,29 @@ export const FAQ: FaqItem[] = [
     answerEs:
       'Migro las tiendas a High-Performance Order Storage (HPOS), trasladando los pedidos de wp_posts/wp_postmeta a tablas dedicadas e indexadas (wp_wc_orders). Junto con una caché de objetos en Redis con aislamiento estricto de sesiones de carrito y consultas refactorizadas con wc_get_orders() en PHP 8.2, la latencia de pago se reduce de 3.8s a 420ms sin deadlocks en MySQL. Desglose completo: /es/blog/woocommerce-hpos-redis-caching-10k-skus',
   },
+  {
+    question: 'How do you run WordPress and PHP 8.4 in the browser without backend servers?',
+    questionUa: 'Як ви запускаєте WordPress та PHP 8.4 у браузері без бекенд-серверів?',
+    questionEs: '¿Cómo ejecutas WordPress y PHP 8.4 en el navegador sin servidores backend?',
+    keywords: [
+      'webassembly',
+      'wasm',
+      'playground',
+      'sqlite vfs',
+      'browser php',
+      'sandbox',
+      'песочница',
+      'вебассембли',
+      'пісочниця',
+      'navegador',
+    ],
+    answer:
+      'In Fullstack AI Lab, I compile PHP 8.4 to WebAssembly (WASM) via Emscripten and mount WordPress onto an in-memory SQLite Virtual File System (VFS). Declarative JSON blueprints install plugins and seed tables instantaneously, delivering 120ms cold boots and zero container fees. Read full breakdown: /en/blog/wasm-wordpress-php-in-browser-zero-server',
+    answerUa:
+      'У проєкті Fullstack AI Lab я компілюю PHP 8.4 у WebAssembly (WASM) через Emscripten та монтую ядро WordPress на віртуальну файлову систему SQLite VFS. Декларативні JSON-блюпринти автоматично встановлюють плагіни та наповнюють БД за мілісекунди, забезпечуючи старт за 120мс та $0 витрат на сервери. Повний розбір: /ua/blog/wasm-wordpress-php-in-browser-zero-server',
+    answerEs:
+      'En Fullstack AI Lab, compilo PHP 8.4 a WebAssembly (WASM) con Emscripten y monto WordPress sobre SQLite Virtual File System (VFS). Mediante blueprints declarativos en JSON se instalan plugins y se siembran tablas al instante, logrando arranques en 120ms y cero costes de servidor. Desglose completo: /es/blog/wasm-wordpress-php-in-browser-zero-server',
+  },
 ]
 
 export function matchesFaqKeyword(text: string, kw: string): boolean {
