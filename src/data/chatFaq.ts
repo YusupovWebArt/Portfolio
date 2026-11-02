@@ -319,6 +319,31 @@ export const FAQ: FaqItem[] = [
     answerEs:
       'Diseño un bucle de caché reactivo: un hook ligero en PHP 8.2 transition_post_status firma actualizaciones con HMAC-SHA256 y envía webhooks no bloqueantes a Next.js 16 App Router. Next.js valida la firma y ejecuta revalidateTag() bajo demanda. Esto logra lecturas sub-50ms en el edge, publicación en 80ms y reducción de más del 95% en MySQL. Desglose completo: /es/blog/headless-wordpress-nextjs-16-caching-architecture',
   },
+  {
+    question: 'How do you fix slow WooCommerce checkout and database deadlocks on large stores?',
+    questionUa: 'Як ви оптимізуєте повільний чекаут WooCommerce та усуваєте дедлоки бази даних на великих магазинах?',
+    questionEs: '¿Cómo solucionas el checkout lento en WooCommerce y los bloqueos de base de datos en tiendas grandes?',
+    keywords: [
+      'woocommerce',
+      'hpos',
+      'checkout',
+      'deadlock',
+      'deadlocks',
+      'slow checkout',
+      'чекаут',
+      'вукомерс',
+      'дедлок',
+      'блокування',
+      'bloqueo',
+      'pedidos',
+    ],
+    answer:
+      'I migrate stores to High-Performance Order Storage (HPOS), moving order data out of wp_posts/wp_postmeta into dedicated indexed tables (wp_wc_orders). Combined with a hardened Redis Object Cache with non-persistent session isolation and PHP 8.2 wc_get_orders() query refactoring, checkout latency drops from 3.8s to 420ms with zero MySQL deadlocks. Read full breakdown: /en/blog/woocommerce-hpos-redis-caching-10k-skus',
+    answerUa:
+      'Я переводжу магазини на High-Performance Order Storage (HPOS), виділяючи замовлення з wp_posts/wp_postmeta в окремі індексовані таблиці (wp_wc_orders). У поєднанні з налаштованим об’єктним кешем Redis із суворою ізоляцією сесій кошика та оптимізованими викликами wc_get_orders() на PHP 8.2, затримка чекауту скорочується з 3.8с до 420мс без дедлоків MySQL. Повний розбір: /ua/blog/woocommerce-hpos-redis-caching-10k-skus',
+    answerEs:
+      'Migro las tiendas a High-Performance Order Storage (HPOS), trasladando los pedidos de wp_posts/wp_postmeta a tablas dedicadas e indexadas (wp_wc_orders). Junto con una caché de objetos en Redis con aislamiento estricto de sesiones de carrito y consultas refactorizadas con wc_get_orders() en PHP 8.2, la latencia de pago se reduce de 3.8s a 420ms sin deadlocks en MySQL. Desglose completo: /es/blog/woocommerce-hpos-redis-caching-10k-skus',
+  },
 ]
 
 export function matchesFaqKeyword(text: string, kw: string): boolean {

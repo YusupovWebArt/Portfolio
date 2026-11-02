@@ -39,7 +39,7 @@
 - **Live URL**: https://www.yusupovartur.com
 - **Stack**: Next.js 16 App Router, React 19 Server Components, TypeScript 6, Tailwind CSS v4, Vercel AI SDK, Custom Hybrid RAG Engine, Vitest.
 - **Highlights**:
-  - Dual-runtime architecture supporting SSR/SSG on Vercel (213 localized project pages, 30 blog routes, and 249 total static routes) and static SPA export on GitHub Pages.
+  - Dual-runtime architecture supporting SSR/SSG on Vercel (213 localized project pages, 33 blog routes, and 252 total static routes) and static SPA export on GitHub Pages.
   - Built-in Hybrid RAG AI Assistant indexing all 71 projects and 9 engineering articles with interactive generative UI cards, timeline estimator, stack comparison matrix, and zero-leak Base64 contact protection.
 
 ### 3.3. Unitrition - Personalized Nutrition & Dietary Platform
@@ -65,7 +65,7 @@
 - **Highlights**:
   - Engineered for an AWS Advanced Consulting Partner with 95+ PageSpeed scores, multilingual architecture, and #1 Google rankings for competitive DevOps keywords.
 
-## 4. Complete Engineering Blog Index (10 Articles across EN / UA / ES = 30 Routes)
+## 4. Complete Engineering Blog Index (11 Articles across EN / UA / ES = 33 Routes)
 
 1. **Next.js 16 vs Headless WordPress vs Custom PHP: Objective TCO, Performance & SEO Analysis (2026)**: https://www.yusupovartur.com/en/blog/nextjs-vs-headless-wordpress-custom-php-2026
    - **Published**: 2026-10-18 | **Tags**: Next.js 16, WordPress, PHP 8.2, Headless CMS, Core Web Vitals, TCO
@@ -97,6 +97,9 @@
 10. **Headless WordPress & Next.js 16: Architecting Hybrid Caching to Eliminate Cache Invalidation Hell**: https://www.yusupovartur.com/en/blog/headless-wordpress-nextjs-16-caching-architecture
     - **Published**: 2026-11-02 | **Tags**: Next.js 16, WordPress, PHP 8.2, Headless CMS, Cache Invalidation, Core Web Vitals
     - **Summary**: An end-to-end engineering breakdown on decoupling WordPress with Next.js 16 App Router using On-Demand Tag Revalidation, HMAC-secured webhooks, and sub-50ms TTFB without database thrashing.
+11. **WooCommerce HPOS & Redis Caching: Scaling 10,000+ SKU Catalogs to Sub-Second Checkout without Database Locks**: https://www.yusupovartur.com/en/blog/woocommerce-hpos-redis-caching-10k-skus
+    - **Published**: 2026-11-02 | **Tags**: WooCommerce, HPOS, Redis, PHP 8.2, MySQL Optimization, High Load E-Commerce
+    - **Summary**: A battle-tested engineering blueprint on migrating WooCommerce to High-Performance Order Storage (HPOS), configuring persistent Redis object caching, and eliminating MySQL postmeta contention during high-concurrency flash sales.
 
 ## 5. Complete 71-Project Portfolio Index (213 Localized Case Study Routes)
 
