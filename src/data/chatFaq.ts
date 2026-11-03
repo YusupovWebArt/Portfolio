@@ -463,6 +463,31 @@ export const FAQ: FaqItem[] = [
     answerEs:
       'Ejecuto modelos transformer cuantizados en INT8 (23MB) directamente en un Web Worker mediante WebAssembly SIMD y almacenamiento en IndexedDB. Las consultas se resuelven en menos de 18ms combinando similitud de coseno vectorial con análisis léxico Okapi BM25 mediante Reciprocal Rank Fusion (RRF), con operatividad 100% offline y coste cero en bases vectoriales. Desglose completo: /es/blog/in-browser-semantic-search-webassembly-embeddings-ecommerce',
   },
+  {
+    question: 'How do you prevent inventory overselling across Shopify, WooCommerce, and ERP systems?',
+    questionUa: 'Як ви запобігаєте оверселінгу залишків між Shopify, WooCommerce та ERP-системами?',
+    questionEs: '¿Cómo evitas la sobreventa de inventario entre Shopify, WooCommerce y sistemas ERP?',
+    keywords: [
+      'omnichannel',
+      'inventory sync',
+      'redlock',
+      'overselling',
+      'оверселлинг',
+      'оверселінг',
+      'синхронизация остатков',
+      'синхронізація залишків',
+      'sincronizacion de inventario',
+      'sobreventa',
+      'bullmq',
+      'distributed lock',
+    ],
+    answer:
+      'I prevent multi-channel race conditions using distributed locking with Redis Redlock, optimistic cart reservations (10-minute TTL), and debounced BullMQ webhook queues with exponential backoff. This eliminates overselling across Shopify, WooCommerce, and central ERP systems during flash sales while maintaining sub-45ms checkout latency. Read full architecture guide: /en/blog/realtime-omnichannel-inventory-sync-redlock',
+    answerUa:
+      'Я запобігаю конфліктам паралельних замовлень за допомогою розподілених блокувань Redis Redlock, оптимістичного резервування в кошику (TTL 10 хв) та дебаунс-черг BullMQ з експоненційним бекофом. Це повністю усуває оверселінг між Shopify, WooCommerce та ERP під час пікових навантажень, зберігаючи затримку чекауту до 45мс. Повний розбір архітектури: /ua/blog/realtime-omnichannel-inventory-sync-redlock',
+    answerEs:
+      'Evito las condiciones de carrera multicanal mediante bloqueos distribuidos con Redis Redlock, reservas optimistas de carrito (TTL de 10 min) y colas BullMQ con debouncing y retroceso exponencial. Esto elimina la sobreventa entre Shopify, WooCommerce y ERP centrales durante picos de venta manteniendo la latencia de pago por debajo de 45ms. Guía de arquitectura completa: /es/blog/realtime-omnichannel-inventory-sync-redlock',
+  },
 ]
 
 export function matchesFaqKeyword(text: string, kw: string): boolean {

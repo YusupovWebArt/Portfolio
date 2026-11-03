@@ -15,6 +15,7 @@ import { clinicalGovernmentApiHeadlessIntegrationUnitritionPost } from './posts/
 import { enterpriseCloudWebSecurityWafAntiScrapingPost } from './posts/enterprise-cloud-web-security-waf-anti-scraping'
 import { headlessMulticurrencyCheckoutWoocommerceStripePost } from './posts/headless-multicurrency-checkout-woocommerce-stripe'
 import { inBrowserSemanticSearchWebassemblyEmbeddingsEcommercePost } from './posts/in-browser-semantic-search-webassembly-embeddings-ecommerce'
+import { realtimeOmnichannelInventorySyncRedlockPost } from './posts/realtime-omnichannel-inventory-sync-redlock'
 
 export * from './types'
 
@@ -35,6 +36,7 @@ export const allBlogPosts: BlogPost[] = [
   enterpriseCloudWebSecurityWafAntiScrapingPost,
   headlessMulticurrencyCheckoutWoocommerceStripePost,
   inBrowserSemanticSearchWebassemblyEmbeddingsEcommercePost,
+  realtimeOmnichannelInventorySyncRedlockPost,
 ]
 
 export function getAllBlogPosts(): BlogPost[] {

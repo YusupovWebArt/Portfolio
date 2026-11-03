@@ -115,6 +115,9 @@
 16. **In-Browser Semantic Product Discovery: Zero-Cost Vector Search with WebAssembly Embeddings & Okapi BM25**: https://www.yusupovartur.com/en/blog/in-browser-semantic-search-webassembly-embeddings-ecommerce
     - **Published**: 2026-10-27 | **Tags**: WebAssembly, Semantic Search, Vector Search, Hybrid RAG, Okapi BM25, ONNX Runtime, Next.js 16, E-Commerce
     - **Summary**: An engineering guide to client-side semantic search for e-commerce: compiling ONNX embedding models to WebAssembly, hybrid BM25 + Cosine ranking, and sub-25ms retrieval with $0 vector database fees.
+17. **Real-Time Omnichannel Inventory Sync: Eliminating Overselling across Shopify, WooCommerce & ERP with Redis Redlock**: https://www.yusupovartur.com/en/blog/realtime-omnichannel-inventory-sync-redlock
+    - **Published**: 2026-10-28 | **Tags**: E-Commerce, Inventory Sync, Redis, Redlock, Shopify, WooCommerce, BullMQ, Distributed Systems
+    - **Summary**: An enterprise architecture blueprint for multi-channel inventory synchronization: distributed locks with Redis Redlock, optimistic cart reservations, and debounced webhook queues preventing overselling.
 
 ## 5. Complete 71-Project Portfolio Index (213 Localized Case Study Routes)
 
