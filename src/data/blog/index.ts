@@ -17,6 +17,7 @@ import { headlessMulticurrencyCheckoutWoocommerceStripePost } from './posts/head
 import { inBrowserSemanticSearchWebassemblyEmbeddingsEcommercePost } from './posts/in-browser-semantic-search-webassembly-embeddings-ecommerce'
 import { realtimeOmnichannelInventorySyncRedlockPost } from './posts/realtime-omnichannel-inventory-sync-redlock'
 import { automatedVisualAccessibilityMetadataMultimodalLlmsEaa2026Post } from './posts/automated-visual-accessibility-metadata-multimodal-llms-eaa2026'
+import { autonomousEdgeAiAgentsToolCallingV8IsolatesPost } from './posts/autonomous-edge-ai-agents-tool-calling-v8-isolates'
 
 export * from './types'
 
@@ -39,6 +40,7 @@ export const allBlogPosts: BlogPost[] = [
   inBrowserSemanticSearchWebassemblyEmbeddingsEcommercePost,
   realtimeOmnichannelInventorySyncRedlockPost,
   automatedVisualAccessibilityMetadataMultimodalLlmsEaa2026Post,
+  autonomousEdgeAiAgentsToolCallingV8IsolatesPost,
 ]
 
 export function getAllBlogPosts(): BlogPost[] {

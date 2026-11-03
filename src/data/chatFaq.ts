@@ -513,6 +513,30 @@ export const FAQ: FaqItem[] = [
     answerEs:
       'Automatizo la accesibilidad visual en catálogos de más de 50.000 SKUs mediante LLMs de visión multimodal y esquemas estructurados Zod. El flujo genera texto alternativo conciso (<125 caracteres), clasifica gráficos decorativos con aria-hidden y sintetiza Schema.org Product e ImageObject JSON-LD a 0,0018 € por SKU con un 99,4% de aprobación WCAG 2.2 AA. Desglose completo: /es/blog/automated-visual-accessibility-metadata-multimodal-llms-eaa2026',
   },
+  {
+    question: 'How do you build autonomous AI agents with zero-cold-start V8 isolates and structured tool calling?',
+    questionUa: 'Як ви створюєте автономних AI-агентів у V8-ізолятах без холодного старту зі структурованим викликом функцій?',
+    questionEs: '¿Cómo construyes agentes de IA autónomos con aisladores V8 sin cold start y tool calling estructurado?',
+    keywords: [
+      'ai agent',
+      'edge agent',
+      'tool calling',
+      'function calling',
+      'v8 isolate',
+      'generative ui',
+      'аи агент',
+      'ai агенти',
+      'вызов функций',
+      'виклик функцій',
+      'agente de ia',
+    ],
+    answer:
+      'I engineer autonomous AI agents on Next.js 16 Edge Route Handlers running in V8 isolates: startup takes under 1ms (zero cold start) with sub-35ms TTFB. Agents execute deterministic business logic through strict JSON Schema tool calling, validating arguments with Zod and streaming real-time Generative UI components to the browser via Server-Sent Events with $0 idle compute costs. Read full architecture guide: /en/blog/autonomous-edge-ai-agents-tool-calling-v8-isolates',
+    answerUa:
+      'Я розробляю автономних AI-агентів на базі Edge Route Handlers у Next.js 16 в ізолятах V8: старт займає менше 1мс (нульовий холодний старт) із TTFB до 35мс. Агенти виконують детерміновану бізнес-логіку через суворий виклик функцій JSON Schema з валідацією Zod та стрімінгом віджетів Generative UI через Server-Sent Events без витрат на простій. Повний розбір архітектури: /ua/blog/autonomous-edge-ai-agents-tool-calling-v8-isolates',
+    answerEs:
+      'Desarrollo agentes de IA autónomos en Route Handlers de Next.js 16 ejecutados en aisladores V8: el arranque toma menos de 1ms (cero cold start) con un TTFB inferior a 35ms. Los agentes ejecutan lógica determinista mediante tool calling estricto con JSON Schema y Zod, transmitiendo componentes interactivos de Generative UI vía Server-Sent Events sin costes de infraestructura en reposo. Guía de arquitectura completa: /es/blog/autonomous-edge-ai-agents-tool-calling-v8-isolates',
+  },
 ]
 
 export function matchesFaqKeyword(text: string, kw: string): boolean {
