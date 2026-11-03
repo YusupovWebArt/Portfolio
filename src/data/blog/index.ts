@@ -29,6 +29,7 @@ import { multiZoneMicroFrontendsEdgeNextjs16AutonomousDeploymentsPost } from './
 import { browserNativeWasmSandboxesSafeAiCodeExecutionNextjs16Post } from './posts/browser-native-wasm-sandboxes-safe-ai-code-execution-nextjs-16'
 import { globalSub20msDatabaseReadLatencyEdgeCloudflareHyperdriveNextjs16Post } from './posts/global-sub-20ms-database-read-latency-edge-cloudflare-hyperdrive-nextjs-16'
 import { clientsideWebgpuPredictivePersonalizationCollaborativeFilteringNextjs16Post } from './posts/clientside-webgpu-predictive-personalization-collaborative-filtering-nextjs-16'
+import { autonomousAiQualityHarnessSpecDrivenDevelopmentSddNextjs16Post } from './posts/autonomous-ai-quality-harness-spec-driven-development-sdd-nextjs-16'
 
 export * from './types'
 
@@ -63,6 +64,7 @@ export const allBlogPosts: BlogPost[] = [
   browserNativeWasmSandboxesSafeAiCodeExecutionNextjs16Post,
   globalSub20msDatabaseReadLatencyEdgeCloudflareHyperdriveNextjs16Post,
   clientsideWebgpuPredictivePersonalizationCollaborativeFilteringNextjs16Post,
+  autonomousAiQualityHarnessSpecDrivenDevelopmentSddNextjs16Post,
 ]
 
 export function getAllBlogPosts(): BlogPost[] {

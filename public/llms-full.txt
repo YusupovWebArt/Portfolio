@@ -157,7 +157,11 @@
 
 30. **Client-Side WebGPU Predictive Personalization: On-Device Collaborative Filtering & Privacy-First Recommendations in Next.js 16**: https://www.yusupovartur.com/en/blog/clientside-webgpu-predictive-personalization-collaborative-filtering-nextjs-16
     - **Published**: 2026-11-03 | **Tags**: WebGPU, Machine Learning, Next.js 16, ONNX Runtime Web, Privacy, Personalization, E-Commerce, TypeScript
-    - **Summary**: An enterprise client-side machine learning architecture: running quantized neural collaborative filtering models (4.2MB ONNX) on user GPUs via WebGPU for sub-12ms real-time product recommendations at  cloud inference cost.
+    - **Summary**: An enterprise client-side machine learning architecture: running quantized neural collaborative filtering models (4.2MB ONNX) on user GPUs via WebGPU for sub-12ms real-time product recommendations at $0 cloud inference cost.
+
+31. **Autonomous AI Quality Harness: Spec-Driven Development (SDD), AST Invariant Enforcement & Self-Healing Testing in Next.js 16**: https://www.yusupovartur.com/en/blog/autonomous-ai-quality-harness-spec-driven-development-sdd-nextjs-16
+    - **Published**: 2026-11-03 | **Tags**: AI Quality Harness, Spec-Driven Development, AST Invariants, Next.js 16, TypeScript, Vitest, DevSecOps, Architecture
+    - **Summary**: An enterprise autonomous AI quality harness: combining 5-phase Spec-Driven Development (SDD) gating, TypeScript Compiler API AST invariant validation, and self-healing Vitest testing loops to eliminate hallucinations and architectural drift.
 
 ## 5. Complete 71-Project Portfolio Index (213 Localized Case Study Routes)
 

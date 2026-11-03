@@ -767,11 +767,36 @@ export const FAQ: FaqItem[] = [
       'on-device ml',
     ],
     answer:
-      'I run quantized neural collaborative filtering models (4.2MB ONNX) directly on the client GPU via WebGPU and ONNX Runtime Web. User interactions (clicks, views, dwell time) generate real-time vector embeddings in IndexedDB with zero cloud inference cost ( GPU servers) and total privacy compliance (GDPR/CCPA/HIPAA), yielding sub-12ms top-10 product ranking in Next.js 16. Read full breakdown: /en/blog/clientside-webgpu-predictive-personalization-collaborative-filtering-nextjs-16',
+      'I run quantized neural collaborative filtering models (4.2MB ONNX) directly on the client GPU via WebGPU and ONNX Runtime Web. User interactions (clicks, views, dwell time) generate real-time vector embeddings in IndexedDB with zero cloud inference cost ($0 GPU servers) and total privacy compliance (GDPR/CCPA/HIPAA), yielding sub-12ms top-10 product ranking in Next.js 16. Read full breakdown: /en/blog/clientside-webgpu-predictive-personalization-collaborative-filtering-nextjs-16',
     answerUa:
-      'Я запускаю квантовані нейромережеві моделі колаборативної фільтрації (4.2 МБ ONNX) безпосередньо на GPU клієнта через WebGPU та ONNX Runtime Web. Дії користувача (кліки, перегляди, час на сторінці) формують векторні ембеддинги в IndexedDB із нульовими витратами на хмарні сервери () і 100% відповідністю стандартам приватності (GDPR/CCPA), забезпечуючи ранжування топ-10 товарів за <12мс у Next.js 16. Детальний розбір: /ua/blog/clientside-webgpu-predictive-personalization-collaborative-filtering-nextjs-16',
+      'Я запускаю квантовані нейромережеві моделі колаборативної фільтрації (4.2 МБ ONNX) безпосередньо на GPU клієнта через WebGPU та ONNX Runtime Web. Дії користувача (кліки, перегляди, час на сторінці) формують векторні ембеддинги в IndexedDB із нульовими витратами на хмарні сервери ($0) і 100% відповідністю стандартам приватності (GDPR/CCPA), забезпечуючи ранжування топ-10 товарів за <12мс у Next.js 16. Детальний розбір: /ua/blog/clientside-webgpu-predictive-personalization-collaborative-filtering-nextjs-16',
     answerEs:
-      'Ejecuto modelos neuronales cuantizados de filtrado colaborativo (4.2MB ONNX) directamente en la GPU del cliente con WebGPU y ONNX Runtime Web. Las interacciones del usuario generan incrustaciones vectoriales en IndexedDB con coste cero de inferencia en la nube () y cumplimiento total de privacidad (GDPR/CCPA), logrando recomendaciones top-10 en menos de 12ms en Next.js 16. Desglose completo: /es/blog/clientside-webgpu-predictive-personalization-collaborative-filtering-nextjs-16',
+      'Ejecuto modelos neuronales cuantizados de filtrado colaborativo (4.2MB ONNX) directamente en la GPU del cliente con WebGPU y ONNX Runtime Web. Las interacciones del usuario generan incrustaciones vectoriales en IndexedDB con coste cero de inferencia en la nube ($0) y cumplimiento total de privacidad (GDPR/CCPA), logrando recomendaciones top-10 en menos de 12ms en Next.js 16. Desglose completo: /es/blog/clientside-webgpu-predictive-personalization-collaborative-filtering-nextjs-16',
+  },
+  {
+    question: 'How do you build an autonomous AI quality harness with Spec-Driven Development in Next.js 16?',
+    questionUa: 'Як ви будуєте автономне середовище якості для AI на базі Spec-Driven Development у Next.js 16?',
+    questionEs: '¿Cómo construyes un entorno de calidad para IA autónoma con Desarrollo Dirigido por Especificaciones en Next.js 16?',
+    keywords: [
+      'sdd',
+      'spec-driven development',
+      'ai quality harness',
+      'ast invariants',
+      'self-healing test',
+      'контроль качества ai',
+      'контроль якості ai',
+      'качество ai',
+      'якість ai',
+      'typescript compiler api',
+      'calidad de ia',
+      'desarrollo dirigido por especificaciones',
+    ],
+    answer:
+      'I engineer autonomous AI quality harnesses by uniting 5-phase Spec-Driven Development (SDD) gating (spec.md -> plan.md -> tasks.md), Abstract Syntax Tree (AST) invariant checks via TypeScript Compiler API (enforcing strict zero-any, boundary firewalls, and typography rules in pre-commit hooks), and self-healing Vitest loops that capture test failures and auto-generate bounded code remedies. Read full architecture guide: /en/blog/autonomous-ai-quality-harness-spec-driven-development-sdd-nextjs-16',
+    answerUa:
+      'Я розробляю автономні середовища якості для AI через поєднання 5-фазового шлюзування SDD (spec.md -> plan.md -> tasks.md), перевірки синтаксичних інваріантів AST за допомогою TypeScript Compiler API (блокування any, контроль меж модулів та правил коду в pre-commit хуках) та циклів самовідновлення у Vitest, які перехоплюють збої тестів та автоматично генерують точкові виправлення. Детальний розбір: /ua/blog/autonomous-ai-quality-harness-spec-driven-development-sdd-nextjs-16',
+    answerEs:
+      'Diseño entornos de calidad para agentes autónomos de IA integrando control de fases SDD (spec.md -> plan.md -> tasks.md), verificación de invariantes AST con TypeScript Compiler API (bloqueo estricto de any, cortafuegos de módulos y sintaxis en pre-commit) y bucles de auto-reparación en Vitest que capturan fallos y generan parches precisos de forma automática. Guía de arquitectura completa: /es/blog/autonomous-ai-quality-harness-spec-driven-development-sdd-nextjs-16',
   },
 ]
 
