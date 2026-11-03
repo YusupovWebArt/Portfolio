@@ -124,6 +124,9 @@
 19. **Autonomous Edge AI Agents: Running Structured Tool Calling & Function Execution with Zero-Cold-Start V8 Isolates**: https://www.yusupovartur.com/en/blog/autonomous-edge-ai-agents-tool-calling-v8-isolates
     - **Published**: 2026-10-30 | **Tags**: AI Agents, V8 Isolates, Next.js 16 Edge, Tool Calling, Function Calling, Generative UI, TypeScript, Server-Sent Events
     - **Summary**: An enterprise architecture blueprint for running autonomous AI agents at the edge: strict JSON Schema tool calling, sub-40ms execution in V8 isolates, and streaming Generative UI.
+20. **Compiling 1,100+ MDX Lessons in Under 90 Seconds: Native Rust MDX-RS vs Babel/Webpack Pipelines in Next.js 16**: https://www.yusupovartur.com/en/blog/compiling-1100-mdx-lessons-native-rust-mdx-rs-nextjs-16
+    - **Published**: 2026-10-31 | **Tags**: Rust, MDX-RS, Next.js 16, Compilers, Performance, EdTech, Build Optimization, TypeScript
+    - **Summary**: An enterprise build architecture guide: slashing Next.js 16 SSG build times from 24 minutes to 78 seconds for 1,135+ interactive MDX lessons using native Rust MDX-RS and AST virtualization.
 
 ## 5. Complete 71-Project Portfolio Index (213 Localized Case Study Routes)
 

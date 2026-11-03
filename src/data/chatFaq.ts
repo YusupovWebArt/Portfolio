@@ -537,6 +537,27 @@ export const FAQ: FaqItem[] = [
     answerEs:
       'Desarrollo agentes de IA autónomos en Route Handlers de Next.js 16 ejecutados en aisladores V8: el arranque toma menos de 1ms (cero cold start) con un TTFB inferior a 35ms. Los agentes ejecutan lógica determinista mediante tool calling estricto con JSON Schema y Zod, transmitiendo componentes interactivos de Generative UI vía Server-Sent Events sin costes de infraestructura en reposo. Guía de arquitectura completa: /es/blog/autonomous-edge-ai-agents-tool-calling-v8-isolates',
   },
+  {
+    question: 'How do you compile 1,100+ MDX lessons in under 90 seconds in Next.js 16?',
+    questionUa: 'Як ви компілюєте 1 100+ MDX-уроків менше ніж за 90 секунд у Next.js 16?',
+    questionEs: '¿Cómo compilas más de 1.100 lecciones MDX en menos de 90 segundos en Next.js 16?',
+    keywords: [
+      'rust mdx',
+      'mdx-rs',
+      'compile mdx',
+      'компиляция mdx',
+      'компіляція mdx',
+      'compilacion mdx',
+      'ast virtualization',
+      'edtech build',
+    ],
+    answer:
+      'I replace slow JavaScript Babel and Unified MDX pipelines with a native Rust MDX-RS compiler via N-API bindings: parsing uses zero-copy byte slices, saturating 98% of multi-core CPU capacity. In Fullstack AI Lab (1,135 lessons), this reduced build time from 24m 14s to 78 seconds (18.6x faster), dropped peak RAM from 4.2GB to 310MB, and eliminated heap OOM crashes. Read full compiler breakdown: /en/blog/compiling-1100-mdx-lessons-native-rust-mdx-rs-nextjs-16',
+    answerUa:
+      'Я замінюю повільні конвеєри Babel та Unified на нативний компілятор Rust MDX-RS через біндінги N-API: парсинг використовує zero-copy зрізи пам’яті, завантажуючи ядра процесора на 98%. У Fullstack AI Lab (1 135 уроків) це скоротило час збірки з 24хв 14с до 78 секунд (у 18.6 раза швидше), знизило RAM з 4.2 ГБ до 310 МБ та усунуло помилки пам’яті. Повний розбір: /ua/blog/compiling-1100-mdx-lessons-native-rust-mdx-rs-nextjs-16',
+    answerEs:
+      'Sustituyo los lentos pipelines de Babel y Unified por el compilador nativo en Rust MDX-RS mediante enlaces N-API: el análisis usa cortes zero-copy saturando el 98% de la CPU multinúcleo. En Fullstack AI Lab (1.135 lecciones), redujo el tiempo de build de 24m 14s a 78 segundos (18,6x más rápido), bajó la RAM de 4,2GB a 310MB y eliminó caídas por memoria. Desglose completo: /es/blog/compiling-1100-mdx-lessons-native-rust-mdx-rs-nextjs-16',
+  },
 ]
 
 export function matchesFaqKeyword(text: string, kw: string): boolean {

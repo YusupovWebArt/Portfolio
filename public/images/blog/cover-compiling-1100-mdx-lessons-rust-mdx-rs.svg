@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#080d1a"/>
+      <stop offset="50%" stop-color="#0d1527"/>
+      <stop offset="100%" stop-color="#09101f"/>
+    </linearGradient>
+    <linearGradient id="primaryGlow" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#f97316"/>
+      <stop offset="50%" stop-color="#eab308"/>
+      <stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <g opacity="0.06" stroke="#f97316" stroke-width="1">
+    <path d="M0,70 H1200 M0,140 H1200 M0,210 H1200 M0,280 H1200 M0,350 H1200 M0,420 H1200 M0,490 H1200 M0,560 H1200"/>
+    <path d="M100,0 V630 M200,0 V630 M300,0 V630 M400,0 V630 M500,0 V630 M600,0 V630 M700,0 V630 M800,0 V630 M900,0 V630 M1000,0 V630 M1100,0 V630"/>
+  </g>
+
+  <circle cx="220" cy="180" r="140" fill="#f97316" opacity="0.08" filter="url(#glow)"/>
+  <circle cx="960" cy="450" r="160" fill="#10b981" opacity="0.08" filter="url(#glow)"/>
+  <circle cx="600" cy="315" r="220" fill="#38bdf8" opacity="0.05" filter="url(#glow)"/>
+
+  <g transform="translate(680, 95)">
+    <rect width="450" height="440" rx="16" fill="#0f172a" stroke="#1e293b" stroke-width="2"/>
+    <rect width="450" height="40" rx="16" fill="#1e293b" opacity="0.5"/>
+    <circle cx="25" cy="20" r="6" fill="#ef4444"/>
+    <circle cx="45" cy="20" r="6" fill="#f59e0b"/>
+    <circle cx="65" cy="20" r="6" fill="#10b981"/>
+    <text x="95" y="25" fill="#94a3b8" font-family="monospace" font-size="12">rust-mdx-rs-compiler.ts</text>
+
+    <g transform="translate(25, 60)" font-family="monospace" font-size="11.5">
+      <text y="20" fill="#f97316">import { <tspan fill="#38bdf8">compileMdxRs</tspan> } from <tspan fill="#10b981">'@edtech/mdx-rs'</tspan></text>
+      <text y="42" fill="#94a3b8">// Native Rust N-API Zero-Copy Compiler</text>
+      <text y="64" fill="#8b5cf6">const <tspan fill="#38bdf8">workerPool</tspan> = new <tspan fill="#eab308">RustWorkerPool</tspan>({</text>
+      <text y="86" fill="#94a3b8">  threads: os.cpus().length, // 16 cores</text>
+      <text y="108" fill="#94a3b8">  astVirtualization: true,</text>
+      <text y="130" fill="#94a3b8">  jsxOutput: 'react-19-server-components',</text>
+      <text y="152" fill="#8b5cf6">})</text>
+
+      <rect y="175" width="400" height="185" rx="8" fill="#0b1120" stroke="#334155" stroke-width="1"/>
+      <text x="15" y="202" fill="#10b981" font-weight="bold">✓ 1,135 Interactive Lessons Compiled</text>
+      <text x="15" y="226" fill="#cbd5e1">• Legacy JS (Babel): <tspan fill="#ef4444">24m 14s (OOM @ 4.2GB)</tspan></text>
+      <text x="15" y="248" fill="#cbd5e1">• Native Rust MDX-RS: <tspan fill="#10b981">1m 18s (78 Seconds)</tspan></text>
+      <text x="15" y="270" fill="#cbd5e1">• Throughput Gain: <tspan fill="#f97316">18.6x Faster</tspan></text>
+      <text x="15" y="292" fill="#cbd5e1">• Peak RAM Consumption: <tspan fill="#38bdf8">310MB (-92.7%)</tspan></text>
+      <text x="15" y="314" fill="#cbd5e1">• CI/CD Runner Savings: <tspan fill="#eab308">$1,200+ / Month</tspan></text>
+      <text x="15" y="336" fill="#cbd5e1">• Memory Exhaustion: <tspan fill="#10b981">0 Heap Crashes</tspan></text>
+    </g>
+  </g>
+
+  <g transform="translate(90, 110)">
+    <g transform="translate(0, 0)">
+      <rect width="230" height="32" rx="16" fill="#f97316" fill-opacity="0.15" stroke="#f97316" stroke-width="1.5"/>
+      <circle cx="16" cy="16" r="5" fill="#f97316"/>
+      <text x="30" y="21" fill="#fb923c" font-family="system-ui, sans-serif" font-size="12" font-weight="700" letter-spacing="0.5">COMPILER ENGINEERING</text>
+    </g>
+
+    <text x="0" y="85" fill="#ffffff" font-family="system-ui, sans-serif" font-size="38" font-weight="800" line-height="1.2">
+      <tspan x="0" dy="0">Compiling 1,100+ MDX</tspan>
+      <tspan x="0" dy="50" fill="url(#primaryGlow)">Lessons in 78 Seconds</tspan>
+      <tspan x="0" dy="50">with Rust MDX-RS</tspan>
+    </text>
+
+    <text x="0" y="260" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="16" font-weight="400">
+      <tspan x="0" dy="0">Replacing sluggish 24-minute Babel/Webpack build pipelines</tspan>
+      <tspan x="0" dy="24">with native Rust N-API tooling: zero heap exhaustion,</tspan>
+      <tspan x="0" dy="24">98% multi-core saturation, and 18.6x faster CI/CD builds.</tspan>
+    </text>
+
+    <g transform="translate(0, 345)">
+      <g transform="translate(0, 0)">
+        <rect width="145" height="58" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+        <text x="15" y="24" fill="#64748b" font-family="system-ui, sans-serif" font-size="11" font-weight="600">BUILD TIME</text>
+        <text x="15" y="47" fill="#10b981" font-family="system-ui, sans-serif" font-size="20" font-weight="800">78s</text>
+      </g>
+      <g transform="translate(160, 0)">
+        <rect width="145" height="58" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+        <text x="15" y="24" fill="#64748b" font-family="system-ui, sans-serif" font-size="11" font-weight="600">SPEEDUP</text>
+        <text x="15" y="47" fill="#f97316" font-family="system-ui, sans-serif" font-size="20" font-weight="800">18.6x</text>
+      </g>
+      <g transform="translate(320, 0)">
+        <rect width="175" height="58" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+        <text x="15" y="24" fill="#64748b" font-family="system-ui, sans-serif" font-size="11" font-weight="600">RAM CONSUMPTION</text>
+        <text x="15" y="47" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="18" font-weight="800">310MB (-92%)</text>
+      </g>
+    </g>
+  </g>
+</svg>

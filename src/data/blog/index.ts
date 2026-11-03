@@ -18,6 +18,7 @@ import { inBrowserSemanticSearchWebassemblyEmbeddingsEcommercePost } from './pos
 import { realtimeOmnichannelInventorySyncRedlockPost } from './posts/realtime-omnichannel-inventory-sync-redlock'
 import { automatedVisualAccessibilityMetadataMultimodalLlmsEaa2026Post } from './posts/automated-visual-accessibility-metadata-multimodal-llms-eaa2026'
 import { autonomousEdgeAiAgentsToolCallingV8IsolatesPost } from './posts/autonomous-edge-ai-agents-tool-calling-v8-isolates'
+import { compiling1100MdxLessonsNativeRustMdxRsNextjs16Post } from './posts/compiling-1100-mdx-lessons-native-rust-mdx-rs-nextjs-16'
 
 export * from './types'
 
@@ -41,6 +42,7 @@ export const allBlogPosts: BlogPost[] = [
   realtimeOmnichannelInventorySyncRedlockPost,
   automatedVisualAccessibilityMetadataMultimodalLlmsEaa2026Post,
   autonomousEdgeAiAgentsToolCallingV8IsolatesPost,
+  compiling1100MdxLessonsNativeRustMdxRsNextjs16Post,
 ]
 
 export function getAllBlogPosts(): BlogPost[] {
