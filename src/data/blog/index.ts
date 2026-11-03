@@ -19,6 +19,7 @@ import { realtimeOmnichannelInventorySyncRedlockPost } from './posts/realtime-om
 import { automatedVisualAccessibilityMetadataMultimodalLlmsEaa2026Post } from './posts/automated-visual-accessibility-metadata-multimodal-llms-eaa2026'
 import { autonomousEdgeAiAgentsToolCallingV8IsolatesPost } from './posts/autonomous-edge-ai-agents-tool-calling-v8-isolates'
 import { compiling1100MdxLessonsNativeRustMdxRsNextjs16Post } from './posts/compiling-1100-mdx-lessons-native-rust-mdx-rs-nextjs-16'
+import { localFirstEcommercePwaOfflineCartCrdtYjsIndexeddbPost } from './posts/local-first-ecommerce-pwa-offline-cart-crdt-yjs-indexeddb'
 
 export * from './types'
 
@@ -43,6 +44,7 @@ export const allBlogPosts: BlogPost[] = [
   automatedVisualAccessibilityMetadataMultimodalLlmsEaa2026Post,
   autonomousEdgeAiAgentsToolCallingV8IsolatesPost,
   compiling1100MdxLessonsNativeRustMdxRsNextjs16Post,
+  localFirstEcommercePwaOfflineCartCrdtYjsIndexeddbPost,
 ]
 
 export function getAllBlogPosts(): BlogPost[] {

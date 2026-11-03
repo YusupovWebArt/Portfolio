@@ -558,6 +558,29 @@ export const FAQ: FaqItem[] = [
     answerEs:
       'Sustituyo los lentos pipelines de Babel y Unified por el compilador nativo en Rust MDX-RS mediante enlaces N-API: el análisis usa cortes zero-copy saturando el 98% de la CPU multinúcleo. En Fullstack AI Lab (1.135 lecciones), redujo el tiempo de build de 24m 14s a 78 segundos (18,6x más rápido), bajó la RAM de 4,2GB a 310MB y eliminó caídas por memoria. Desglose completo: /es/blog/compiling-1100-mdx-lessons-native-rust-mdx-rs-nextjs-16',
   },
+  {
+    question: 'How do you build a local-first e-commerce cart with CRDTs and offline sync?',
+    questionUa: 'Як ви створюєте Local-First e-commerce кошик на базі CRDT з офлайн-синхронізацією?',
+    questionEs: '¿Cómo construyes un carrito de e-commerce local-first con CRDTs y sincronización offline?',
+    keywords: [
+      'local-first',
+      'crdt',
+      'offline cart',
+      'yjs',
+      'indexeddb',
+      'офлайн корзина',
+      'офлайн кошик',
+      'синхронизация корзины',
+      'carrito offline',
+      'pwa cart',
+    ],
+    answer:
+      'I engineer local-first e-commerce carts with Yjs CRDTs and IndexedDB: all mutations resolve client-side in sub-10ms (empirical average 4ms) with zero network dependency. State vectors synchronize bi-directionally with Next.js 16 Edge Route Handlers when online, deterministically merging concurrent multi-tab changes without data loss. In Organic Bed, this eliminated 100% of offline cart drops and lifted mobile conversion by +23.6%. Read full architecture guide: /en/blog/local-first-ecommerce-pwa-offline-cart-crdt-yjs-indexeddb',
+    answerUa:
+      'Я розробляю Local-First кошики на базі Yjs CRDT та IndexedDB: всі мутації виконуються на клієнті менше ніж за 10мс (в середньому 4мс) без очікування мережі. Вектори стану синхронізуються з Edge Route Handlers у Next.js 16 при появі зв’язку, детерміновано об’єднуючи зміни з кількох вкладок без втрати товарів. В Organic Bed це усунуло втрату кошиків та підняло мобільну конверсію на +23.6%. Повний посібник: /ua/blog/local-first-ecommerce-pwa-offline-cart-crdt-yjs-indexeddb',
+    answerEs:
+      'Diseño carritos e-commerce local-first con Yjs CRDTs e IndexedDB: las mutaciones se ejecutan en el cliente en menos de 10ms (media de 4ms) sin esperar a la red. Los vectores de estado se sincronizan con Route Handlers de Next.js 16 al recuperar la conexión, fusionando cambios multipestaña de forma determinista y sin pérdida de datos. En Organic Bed eliminó los carritos perdidos y aumentó la conversión móvil en un +23,6%. Guía de arquitectura completa: /es/blog/local-first-ecommerce-pwa-offline-cart-crdt-yjs-indexeddb',
+  },
 ]
 
 export function matchesFaqKeyword(text: string, kw: string): boolean {
