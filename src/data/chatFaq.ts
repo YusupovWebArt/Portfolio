@@ -728,6 +728,27 @@ export const FAQ: FaqItem[] = [
     answerEs:
       'Diseño entornos de ejecución multilenguaje en el navegador mediante WebContainers, WASI y Next.js 16: ejecutando Node.js, Python y PHP en el cliente a coste cero en servidores ($0). La solución aplica aislamiento Cross-Origin (COOP/COEP) para SharedArrayBuffer, cuotas de memoria en Web Workers y diagnóstico automatizado con IA. Guía completa: /es/blog/browser-native-wasm-sandboxes-safe-ai-code-execution-nextjs-16',
   },
+  {
+    question: 'How do you achieve global sub-20ms database read latency at the edge in Next.js 16?',
+    questionUa: 'Як ви досягаєте глобальної затримки читання БД менше 20 ms на Edge у Next.js 16?',
+    questionEs: '¿Cómo logras una latencia de lectura de base de datos menor a 20 ms en el Edge con Next.js 16?',
+    keywords: [
+      'cloudflare hyperdrive',
+      'turso',
+      'database latency',
+      'edge database',
+      'база данных edge',
+      'база даних edge',
+      'base de datos edge',
+      'embedded replicas',
+    ],
+    answer:
+      'I architect sub-20ms global database read architectures by combining Cloudflare Hyperdrive connection pooling for centralized MySQL/PostgreSQL clusters (reusing pre-warmed TCP pools to cut query times from 280ms to <15ms) with Turso libSQL embedded in-memory SQLite replicas (<2ms reads) and Next.js 16 On-Demand ISR tag invalidation. Read full guide: /en/blog/global-sub-20ms-database-read-latency-edge-cloudflare-hyperdrive-nextjs-16',
+    answerUa:
+      'Я розробляю глобальну архітектуру читання баз даних із затримкою до 20 ms через об’єднання пулінгу Cloudflare Hyperdrive для MySQL/PostgreSQL (перевикористання розігрітих TCP-з’єднань скорочує час з 280 ms до <15 ms) із вбудованими репліками Turso libSQL (<2 ms читання) та інвалідацією тегів у Next.js 16. Детальний розбір: /ua/blog/global-sub-20ms-database-read-latency-edge-cloudflare-hyperdrive-nextjs-16',
+    answerEs:
+      'Arquitecto soluciones de lectura en bases de datos con latencias inferiores a 20 ms a nivel global combinando Cloudflare Hyperdrive para clústeres MySQL/Postgres (reutilizando conexiones TCP para reducir tiempos de 280 ms a <15 ms) con réplicas embebidas en memoria de Turso libSQL (<2 ms) e invalidación ISR en Next.js 16. Guía completa: /es/blog/global-sub-20ms-database-read-latency-edge-cloudflare-hyperdrive-nextjs-16',
+  },
 ]
 
 export function matchesFaqKeyword(text: string, kw: string): boolean {

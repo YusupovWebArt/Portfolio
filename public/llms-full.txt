@@ -151,6 +151,9 @@
 28. **Browser-Native WASM Sandboxes for Safe AI Code Execution: Running Multi-Language Runtimes with WebContainers & WASI in Next.js 16**: https://www.yusupovartur.com/en/blog/browser-native-wasm-sandboxes-safe-ai-code-execution-nextjs-16
     - **Published**: 2026-11-03 | **Tags**: WebAssembly, WASI, WebContainers, Next.js 16, AI Code Execution, EdTech, React 19, TypeScript
     - **Summary**: An enterprise WebAssembly sandbox architecture: running in-browser Node.js, Python, and PHP runtimes at $0 cloud cost with WebContainers, Cross-Origin Isolation (COOP/COEP), and automated AI code repair.
+29. **Global Sub-20ms Database Read Latency at the Edge: Cloudflare Hyperdrive, Turso Embedded Replicas & Next.js 16 Caching**: https://www.yusupovartur.com/en/blog/global-sub-20ms-database-read-latency-edge-cloudflare-hyperdrive-nextjs-16
+    - **Published**: 2026-11-03 | **Tags**: Cloudflare Hyperdrive, Database, Turso, SQLite, MySQL, Edge Computing, Next.js 16, TypeScript
+    - **Summary**: An enterprise edge database architecture: combining Cloudflare Hyperdrive pre-warmed TCP connection pooling for MySQL/PostgreSQL with Turso libSQL in-memory embedded SQLite replicas for sub-20ms worldwide reads.
 
 ## 5. Complete 71-Project Portfolio Index (213 Localized Case Study Routes)
 

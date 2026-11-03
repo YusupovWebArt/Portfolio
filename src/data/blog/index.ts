@@ -27,6 +27,7 @@ import { headlessSubscriptionArchitectureUsageBasedBillingStripeNextjs16Post } f
 import { zeroLeakageCheckoutSecurityPciDssV4CspNextjs16Post } from './posts/zero-leakage-checkout-security-pci-dss-v4-csp-nextjs-16'
 import { multiZoneMicroFrontendsEdgeNextjs16AutonomousDeploymentsPost } from './posts/multi-zone-micro-frontends-edge-nextjs-16-autonomous-deployments'
 import { browserNativeWasmSandboxesSafeAiCodeExecutionNextjs16Post } from './posts/browser-native-wasm-sandboxes-safe-ai-code-execution-nextjs-16'
+import { globalSub20msDatabaseReadLatencyEdgeCloudflareHyperdriveNextjs16Post } from './posts/global-sub-20ms-database-read-latency-edge-cloudflare-hyperdrive-nextjs-16'
 
 export * from './types'
 
@@ -59,6 +60,7 @@ export const allBlogPosts: BlogPost[] = [
   zeroLeakageCheckoutSecurityPciDssV4CspNextjs16Post,
   multiZoneMicroFrontendsEdgeNextjs16AutonomousDeploymentsPost,
   browserNativeWasmSandboxesSafeAiCodeExecutionNextjs16Post,
+  globalSub20msDatabaseReadLatencyEdgeCloudflareHyperdriveNextjs16Post,
 ]
 
 export function getAllBlogPosts(): BlogPost[] {
