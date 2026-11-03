@@ -686,6 +686,27 @@ export const FAQ: FaqItem[] = [
     answerEs:
       'Protejo los procesos de pago en Next.js 16 bajo el estándar obligatorio PCI-DSS v4.0 (Req 6.4.3 y 11.6.1) generando nonces criptográficos dinámicos para CSP Nivel 3 en Edge Middleware (<0.4 ms) y validando hashes SHA-384 con Subresource Integrity (SRI). Esta arquitectura bloquea ataques Magecart y borra credenciales de la memoria del navegador. Guía completa: /es/blog/zero-leakage-checkout-security-pci-dss-v4-csp-nextjs-16',
   },
+  {
+    question: 'How do you scale Next.js 16 applications with Multi-Zone micro-frontends at the edge?',
+    questionUa: 'Як ви масштабуєте додатки Next.js 16 за допомогою Multi-Zone мікрофронтендів на Edge?',
+    questionEs: '¿Cómo escalas aplicaciones Next.js 16 con micro-frontends multi-zona en el Edge?',
+    keywords: [
+      'multi-zone',
+      'micro-frontends',
+      'next.js multi-zones',
+      'микрофронтенды',
+      'мікрофронтенди',
+      'cloudflare workers routing',
+      'turborepo',
+      'zero downtime',
+    ],
+    answer:
+      'I scale enterprise platforms using Next.js 16 Multi-Zones and Cloudflare Workers reverse proxy routing (<4ms overhead): decoupling heavy sub-applications (Storefront, WASM Lab, Tech Blog, User Portal) under a unified apex domain. Each zone builds autonomously in Turborepo with zero-downtime canary deployments and shared View Transitions. Read full guide: /en/blog/multi-zone-micro-frontends-edge-nextjs-16-autonomous-deployments',
+    answerUa:
+      'Я масштабую корпоративні платформи через Next.js 16 Multi-Zones та зворотний проксі Cloudflare Workers (<4 ms затримки): відокремлюю ресурсомісткі модулі (магазин, WASM-лабораторію, блог, кабінет) під єдиним доменом. Кожна зона збирається автономно в Turborepo з нульовим часом простою та спільними View Transitions. Детальний розбір: /ua/blog/multi-zone-micro-frontends-edge-nextjs-16-autonomous-deployments',
+    answerEs:
+      'Escalo plataformas empresariales mediante Next.js 16 Multi-Zones y enrutamiento proxy con Cloudflare Workers (<4 ms de sobrecarga): desacoplando aplicaciones críticas (tienda, laboratorio WASM, blog, portal) bajo un dominio unificado. Cada zona compila de forma aislada en Turborepo con despliegues Canary sin caídas y View Transitions. Guía completa: /es/blog/multi-zone-micro-frontends-edge-nextjs-16-autonomous-deployments',
+  },
 ]
 
 export function matchesFaqKeyword(text: string, kw: string): boolean {

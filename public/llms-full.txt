@@ -145,6 +145,9 @@
 26. **Zero-Leakage Checkout Security: PCI-DSS v4.0 Compliance, Content Security Policy (CSP Level 3) & Subresource Integrity in Next.js 16**: https://www.yusupovartur.com/en/blog/zero-leakage-checkout-security-pci-dss-v4-csp-nextjs-16
     - **Published**: 2026-11-03 | **Tags**: PCI-DSS v4.0, Web Security, Next.js 16, CSP Level 3, Magecart, DevSecOps, FinTech, TypeScript
     - **Summary**: An enterprise checkout security blueprint: PCI-DSS v4.0 requirements 6.4.3 & 11.6.1, dynamic CSP nonces in Next.js 16 Edge Middleware, SHA-384 Subresource Integrity, and in-memory credential zeroization.
+27. **Multi-Zone Micro-Frontends at the Edge: Scaling Enterprise Next.js 16 Applications with Zero-Downtime Autonomous Deployments**: https://www.yusupovartur.com/en/blog/multi-zone-micro-frontends-edge-nextjs-16-autonomous-deployments
+    - **Published**: 2026-11-03 | **Tags**: Next.js 16, Micro-Frontends, Multi-Zones, Cloudflare Workers, Edge Computing, CI/CD, Turborepo, TypeScript
+    - **Summary**: An enterprise micro-frontends architecture: Next.js 16 Multi-Zones, sub-4ms Cloudflare Workers edge reverse proxy routing, shared View Transitions, and autonomous Turborepo CI/CD pipelines.
 
 ## 5. Complete 71-Project Portfolio Index (213 Localized Case Study Routes)
 

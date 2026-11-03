@@ -25,6 +25,7 @@ import { enterpriseB2bHeadlessEcommerceTieredPricingErpSyncWooCommerceHposPost }
 import { voiceDrivenConversationalEcommerceWebSpeechEdgeAiNextjs16Post } from './posts/voice-driven-conversational-ecommerce-web-speech-edge-ai-nextjs-16'
 import { headlessSubscriptionArchitectureUsageBasedBillingStripeNextjs16Post } from './posts/headless-subscription-architecture-usage-based-billing-stripe-nextjs-16'
 import { zeroLeakageCheckoutSecurityPciDssV4CspNextjs16Post } from './posts/zero-leakage-checkout-security-pci-dss-v4-csp-nextjs-16'
+import { multiZoneMicroFrontendsEdgeNextjs16AutonomousDeploymentsPost } from './posts/multi-zone-micro-frontends-edge-nextjs-16-autonomous-deployments'
 
 export * from './types'
 
@@ -55,6 +56,7 @@ export const allBlogPosts: BlogPost[] = [
   voiceDrivenConversationalEcommerceWebSpeechEdgeAiNextjs16Post,
   headlessSubscriptionArchitectureUsageBasedBillingStripeNextjs16Post,
   zeroLeakageCheckoutSecurityPciDssV4CspNextjs16Post,
+  multiZoneMicroFrontendsEdgeNextjs16AutonomousDeploymentsPost,
 ]
 
 export function getAllBlogPosts(): BlogPost[] {
