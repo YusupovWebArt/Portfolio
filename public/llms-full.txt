@@ -139,6 +139,9 @@
 24. **Voice-Driven Conversational E-Commerce: Streaming Web Speech API, Edge AI Function Calling & Real-Time Cart Mutations in Next.js 16**: https://www.yusupovartur.com/en/blog/voice-driven-conversational-ecommerce-web-speech-edge-ai-nextjs-16
     - **Published**: 2026-11-03 | **Tags**: Voice Commerce, Web Speech API, Next.js 16, Edge AI, React 19, Function Calling, WCAG 2.2 AA, TypeScript
     - **Summary**: An enterprise conversational commerce blueprint: native in-browser Web Speech API, sub-180ms V8 edge isolate tool-calling, optimistic React 19 cart mutations, and WCAG 2.2 AA compliance.
+25. **Headless Subscription Architecture: Usage-Based Billing, Mid-Cycle Prorations & Automated Dunning with Stripe Billing & Next.js 16**: https://www.yusupovartur.com/en/blog/headless-subscription-architecture-usage-based-billing-stripe-nextjs-16
+    - **Published**: 2026-11-03 | **Tags**: Stripe Billing, Subscriptions, Next.js 16, SaaS, Webhooks, Redis, TypeScript, FinTech
+    - **Summary**: An enterprise headless subscription blueprint: hybrid recurring tiers, usage-based metering via Redis and Stripe Meter Events, real-time proration previews, and automated BullMQ dunning recovery.
 
 ## 5. Complete 71-Project Portfolio Index (213 Localized Case Study Routes)
 

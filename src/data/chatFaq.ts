@@ -644,6 +644,27 @@ export const FAQ: FaqItem[] = [
     answerEs:
       'Desarrollo experiencias de comercio por voz con latencias inferiores a 180 ms combinando la Web Speech API nativa (0 KB de bundle) con aislados V8 Edge en Next.js 16 para llamadas estructuradas a herramientas. La interfaz se actualiza de forma optimista en menos de 16 ms con Server Actions de React 19 y cumple estrictamente con WCAG 2.2 AA. Guía completa: /es/blog/voice-driven-conversational-ecommerce-web-speech-edge-ai-nextjs-16',
   },
+  {
+    question: 'How do you architect headless subscriptions with Stripe Billing and Next.js 16?',
+    questionUa: 'Як ви проектуєте headless-підписки зі Stripe Billing та Next.js 16?',
+    questionEs: '¿Cómo arquitectas suscripciones headless con Stripe Billing y Next.js 16?',
+    keywords: [
+      'stripe billing',
+      'headless subscriptions',
+      'usage-based billing',
+      'dunning',
+      'подписки stripe',
+      'биллинг stripe',
+      'підписки stripe',
+      'suscripciones stripe',
+    ],
+    answer:
+      'I architect enterprise headless subscription engines using Next.js 16 App Router and Stripe Billing: combining base recurring tiers with high-throughput Stripe Meter Events buffered in Redis. The platform renders mathematically exact mid-cycle proration previews in real time and uses Redis BullMQ webhook workers with automated grace periods to recover 24.8% of failed payments. Read full guide: /en/blog/headless-subscription-architecture-usage-based-billing-stripe-nextjs-16',
+    answerUa:
+      'Я розробляю корпоративні headless-двигуни підписок на базі Next.js 16 App Router та Stripe Billing: поєдную базові плани з обліком навантаження через Stripe Meter Events у Redis. Система формує точні попередні розрахунки переходу між тарифами в реальному часі та використовує черги Redis BullMQ для даннінгу, повертаючи 24.8% невдалих платежів. Детальний розбір: /ua/blog/headless-subscription-architecture-usage-based-billing-stripe-nextjs-16',
+    answerEs:
+      'Diseño motores de suscripción headless empresariales con Next.js 16 App Router y Stripe Billing: combinando cuotas periódicas con eventos de consumo en Stripe Meter Events agrupados en Redis. La plataforma calcula prorrateos exactos a mitad de ciclo en tiempo real y gestiona reintentos con colas Redis BullMQ, recuperando el 24.8% de cobros fallidos. Guía completa: /es/blog/headless-subscription-architecture-usage-based-billing-stripe-nextjs-16',
+  },
 ]
 
 export function matchesFaqKeyword(text: string, kw: string): boolean {
