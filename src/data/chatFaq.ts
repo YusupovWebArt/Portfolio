@@ -415,6 +415,30 @@ export const FAQ: FaqItem[] = [
     answerEs:
       'Implemento un perímetro de defensa escalonado: CloudFront Edge PoPs terminan TLS y absorben ataques L3/L4, AWS WAFv2 inspecciona paquetes con CRS y límites de 400 pet/5min por IP, Next.js 16 Edge Middleware aplica ventanas deslizantes en Redis, y reverse DNS valida rastreadores legítimos bloqueando scrapers de IA. Guía técnica completa: /es/blog/enterprise-cloud-web-security-waf-anti-scraping',
   },
+  {
+    question: 'How do you optimize international multi-currency checkouts in WooCommerce with Next.js and Stripe?',
+    questionUa: 'Як ви оптимізуєте міжнародний мультивалютний чекаут у WooCommerce за допомогою Next.js та Stripe?',
+    questionEs: '¿Cómo optimizas checkouts internacionales multidivisa en WooCommerce con Next.js y Stripe?',
+    keywords: [
+      'checkout',
+      'чекаут',
+      'stripe',
+      'stripe elements',
+      'multicurrency',
+      'мультивалют',
+      'multidivisa',
+      'vat oss',
+      'cart abandonment',
+      'брошенные корзины',
+      'покинуті кошики',
+    ],
+    answer:
+      'I decouple the checkout surface into Next.js 16 with Stripe Payment Element: tax and currency conversions execute on Edge Route Handlers in under 50ms (reducing UI lag by 91%), and orders are provisioned asynchronously in WooCommerce HPOS via idempotent Redis webhooks to eliminate database deadlocks. Read full blueprint: /en/blog/headless-multicurrency-checkout-woocommerce-stripe',
+    answerUa:
+      'Я відокремлюю чекаут у Next.js 16 зі Stripe Payment Element: розрахунок податків і валют відбувається на Edge Route Handlers менше ніж за 50мс (знижуючи затримку UI на 91%), а замовлення створюються в WooCommerce HPOS асинхронно через ідемпотентні вебхуки в Redis без дедлоків бази. Повний посібник: /ua/blog/headless-multicurrency-checkout-woocommerce-stripe',
+    answerEs:
+      'Desacoplo el checkout en Next.js 16 con Stripe Payment Element: el cálculo de impuestos y divisas se ejecuta en Route Handlers en el edge en menos de 50ms (reduciendo la latencia de UI un 91%) y los pedidos se registran de forma asíncrona en WooCommerce HPOS mediante webhooks idempotentes en Redis. Guía completa: /es/blog/headless-multicurrency-checkout-woocommerce-stripe',
+  },
 ]
 
 export function matchesFaqKeyword(text: string, kw: string): boolean {

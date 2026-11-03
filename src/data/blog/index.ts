@@ -13,6 +13,7 @@ import { woocommerceHposRedisCaching10kSkusPost } from './posts/woocommerce-hpos
 import { wasmWordPressPhpInBrowserZeroServerPost } from './posts/wasm-wordpress-php-in-browser-zero-server'
 import { clinicalGovernmentApiHeadlessIntegrationUnitritionPost } from './posts/clinical-government-api-headless-integration-unitrition'
 import { enterpriseCloudWebSecurityWafAntiScrapingPost } from './posts/enterprise-cloud-web-security-waf-anti-scraping'
+import { headlessMulticurrencyCheckoutWoocommerceStripePost } from './posts/headless-multicurrency-checkout-woocommerce-stripe'
 
 export * from './types'
 
@@ -31,6 +32,7 @@ export const allBlogPosts: BlogPost[] = [
   wasmWordPressPhpInBrowserZeroServerPost,
   clinicalGovernmentApiHeadlessIntegrationUnitritionPost,
   enterpriseCloudWebSecurityWafAntiScrapingPost,
+  headlessMulticurrencyCheckoutWoocommerceStripePost,
 ]
 
 export function getAllBlogPosts(): BlogPost[] {
