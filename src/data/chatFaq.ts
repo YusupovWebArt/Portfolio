@@ -602,6 +602,27 @@ export const FAQ: FaqItem[] = [
     answerEs:
       'Implemento SEO programático empresarial en Next.js 16 App Router mediante SSG e ISR: cada página se enriquece con datos deterministas, calculadoras y análisis de LLMs validados con Zod (>900 palabras únicas) para evitar penalizaciones por contenido delgado. Genera grafos interconectados de Schema.org logrando un 98,2% de indexación en Google y más de 140k impresiones mensuales. Guía completa: /es/blog/enterprise-programmatic-seo-pseo-nextjs-16-autonomous-llm-pipelines',
   },
+  {
+    question: 'How do you build enterprise B2B headless e-commerce with Next.js 16 and WooCommerce HPOS?',
+    questionUa: 'Як ви реалізуєте корпоративний B2B headless e-commerce на Next.js 16 та WooCommerce HPOS?',
+    questionEs: '¿Cómo implementas e-commerce B2B headless empresarial con Next.js 16 y WooCommerce HPOS?',
+    keywords: [
+      'b2b ecommerce',
+      'tiered pricing',
+      'b2b headless',
+      'woocommerce hpos',
+      'net-30',
+      'b2b опт',
+      'оптові ціни',
+      'precios mayoristas',
+    ],
+    answer:
+      'I architect enterprise B2B headless commerce platforms with Next.js 16 App Router and WooCommerce HPOS: implementing company-scoped customer catalogs, real-time volume tiered pricing matrices, and Net-30 invoice checkout. The architecture handles ERP stock synchronization via Redis BullMQ queues with HMAC verification and sub-50ms catalog responses through Tag-based ISR. Read full guide: /en/blog/enterprise-b2b-headless-ecommerce-tiered-pricing-erp-sync-woocommerce-hpos',
+    answerUa:
+      'Я проєктую корпоративні B2B headless платформи на Next.js 16 App Router та WooCommerce HPOS: компанійні каталоги з індивідуальними ціновими матрицями за обсяг, Net-30 фактурування та суб-50ms видача через ISR. Система обробляє синхронізацію складів з ERP через черги Redis BullMQ з HMAC-перевіркою та гарантією доставки. Детальний розбір: /ua/blog/enterprise-b2b-headless-ecommerce-tiered-pricing-erp-sync-woocommerce-hpos',
+    answerEs:
+      'Arquitecto plataformas B2B headless empresariales con Next.js 16 App Router y WooCommerce HPOS: implementando catálogos restringidos por empresa, matrices de precios escalonados por volumen y pagos a 30 días (Net-30). La infraestructura sincroniza el ERP mediante colas Redis BullMQ con verificación HMAC y respuestas en menos de 50 ms vía ISR. Guía completa: /es/blog/enterprise-b2b-headless-ecommerce-tiered-pricing-erp-sync-woocommerce-hpos',
+  },
 ]
 
 export function matchesFaqKeyword(text: string, kw: string): boolean {

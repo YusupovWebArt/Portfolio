@@ -21,6 +21,7 @@ import { autonomousEdgeAiAgentsToolCallingV8IsolatesPost } from './posts/autonom
 import { compiling1100MdxLessonsNativeRustMdxRsNextjs16Post } from './posts/compiling-1100-mdx-lessons-native-rust-mdx-rs-nextjs-16'
 import { localFirstEcommercePwaOfflineCartCrdtYjsIndexeddbPost } from './posts/local-first-ecommerce-pwa-offline-cart-crdt-yjs-indexeddb'
 import { enterpriseProgrammaticSeoPseoNextjs16AutonomousLlmPipelinesPost } from './posts/enterprise-programmatic-seo-pseo-nextjs-16-autonomous-llm-pipelines'
+import { enterpriseB2bHeadlessEcommerceTieredPricingErpSyncWooCommerceHposPost } from './posts/enterprise-b2b-headless-ecommerce-tiered-pricing-erp-sync-woocommerce-hpos'
 
 export * from './types'
 
@@ -47,6 +48,7 @@ export const allBlogPosts: BlogPost[] = [
   compiling1100MdxLessonsNativeRustMdxRsNextjs16Post,
   localFirstEcommercePwaOfflineCartCrdtYjsIndexeddbPost,
   enterpriseProgrammaticSeoPseoNextjs16AutonomousLlmPipelinesPost,
+  enterpriseB2bHeadlessEcommerceTieredPricingErpSyncWooCommerceHposPost,
 ]
 
 export function getAllBlogPosts(): BlogPost[] {

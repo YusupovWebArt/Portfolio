@@ -133,6 +133,9 @@
 22. **Enterprise Programmatic SEO (pSEO): Generating 10,000+ High-Intent Next.js 16 Pages with Autonomous LLM Pipelines & Strict JSON-LD Validation**: https://www.yusupovartur.com/en/blog/enterprise-programmatic-seo-pseo-nextjs-16-autonomous-llm-pipelines
     - **Published**: 2026-11-02 | **Tags**: SEO, pSEO, Next.js 16, LLM Pipelines, Schema.org, JSON-LD, Growth Engineering, TypeScript
     - **Summary**: An enterprise growth engineering blueprint: generating 10,000+ high-ranking programmatic SEO pages with Next.js 16 App Router, autonomous LLM enrichment, and Google-compliant JSON-LD.
+23. **Enterprise B2B Headless E-Commerce: Tiered Pricing, Customer-Specific Catalogs & Real-Time ERP Sync with Next.js 16 and WooCommerce HPOS**: https://www.yusupovartur.com/en/blog/enterprise-b2b-headless-ecommerce-tiered-pricing-erp-sync-woocommerce-hpos
+    - **Published**: 2026-11-03 | **Tags**: E-Commerce, B2B, Next.js 16, WooCommerce HPOS, Tiered Pricing, ERP Sync, Redis BullMQ, TypeScript
+    - **Summary**: An enterprise B2B headless architecture: company-scoped catalogs, tiered volume pricing matrices, Net-30 invoice checkouts, and real-time ERP inventory synchronization via Redis BullMQ and WooCommerce HPOS.
 
 ## 5. Complete 71-Project Portfolio Index (213 Localized Case Study Routes)
 
