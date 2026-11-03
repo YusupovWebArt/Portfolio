@@ -20,6 +20,7 @@ import { automatedVisualAccessibilityMetadataMultimodalLlmsEaa2026Post } from '.
 import { autonomousEdgeAiAgentsToolCallingV8IsolatesPost } from './posts/autonomous-edge-ai-agents-tool-calling-v8-isolates'
 import { compiling1100MdxLessonsNativeRustMdxRsNextjs16Post } from './posts/compiling-1100-mdx-lessons-native-rust-mdx-rs-nextjs-16'
 import { localFirstEcommercePwaOfflineCartCrdtYjsIndexeddbPost } from './posts/local-first-ecommerce-pwa-offline-cart-crdt-yjs-indexeddb'
+import { enterpriseProgrammaticSeoPseoNextjs16AutonomousLlmPipelinesPost } from './posts/enterprise-programmatic-seo-pseo-nextjs-16-autonomous-llm-pipelines'
 
 export * from './types'
 
@@ -45,6 +46,7 @@ export const allBlogPosts: BlogPost[] = [
   autonomousEdgeAiAgentsToolCallingV8IsolatesPost,
   compiling1100MdxLessonsNativeRustMdxRsNextjs16Post,
   localFirstEcommercePwaOfflineCartCrdtYjsIndexeddbPost,
+  enterpriseProgrammaticSeoPseoNextjs16AutonomousLlmPipelinesPost,
 ]
 
 export function getAllBlogPosts(): BlogPost[] {

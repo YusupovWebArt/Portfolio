@@ -581,6 +581,27 @@ export const FAQ: FaqItem[] = [
     answerEs:
       'Diseño carritos e-commerce local-first con Yjs CRDTs e IndexedDB: las mutaciones se ejecutan en el cliente en menos de 10ms (media de 4ms) sin esperar a la red. Los vectores de estado se sincronizan con Route Handlers de Next.js 16 al recuperar la conexión, fusionando cambios multipestaña de forma determinista y sin pérdida de datos. En Organic Bed eliminó los carritos perdidos y aumentó la conversión móvil en un +23,6%. Guía de arquitectura completa: /es/blog/local-first-ecommerce-pwa-offline-cart-crdt-yjs-indexeddb',
   },
+  {
+    question: 'How do you build enterprise programmatic SEO (pSEO) with Next.js 16 and avoid Google penalties?',
+    questionUa: 'Як ви створюєте корпоративне програмне SEO (pSEO) на Next.js 16 без санкцій Google?',
+    questionEs: '¿Cómo construyes SEO programático empresarial (pSEO) con Next.js 16 sin penalizaciones de Google?',
+    keywords: [
+      'programmatic seo',
+      'pseo',
+      'программное сео',
+      'програмне сео',
+      'seo programatico',
+      'helpful content',
+      'json-ld graph',
+      'schema.org',
+    ],
+    answer:
+      'I build enterprise programmatic SEO on Next.js 16 App Router using SSG and On-Demand ISR: each page is enriched with deterministic data tables, calculators, and LLM analysis validated through strict Zod schemas (>900 unique words) to prevent thin content. Pages output linked Schema.org graphs (Dataset, Service, FAQPage), achieving a 98.2% Google indexation rate and 140k+ monthly impressions. Read full strategy: /en/blog/enterprise-programmatic-seo-pseo-nextjs-16-autonomous-llm-pipelines',
+    answerUa:
+      'Я розробляю корпоративне програмне SEO на Next.js 16 App Router через поєднання SSG та ISR: кожна сторінка містить детерміновані таблиці, калькулятори та LLM-аналіз, валідований схемами Zod (від 900 унікальних слів) для захисту від фільтрів. Сторінки генерують зв’язані графи Schema.org (Dataset, Service, FAQPage), забезпечуючи 98.2% індексації в Google та 140k+ показів. Повний розбір: /ua/blog/enterprise-programmatic-seo-pseo-nextjs-16-autonomous-llm-pipelines',
+    answerEs:
+      'Implemento SEO programático empresarial en Next.js 16 App Router mediante SSG e ISR: cada página se enriquece con datos deterministas, calculadoras y análisis de LLMs validados con Zod (>900 palabras únicas) para evitar penalizaciones por contenido delgado. Genera grafos interconectados de Schema.org logrando un 98,2% de indexación en Google y más de 140k impresiones mensuales. Guía completa: /es/blog/enterprise-programmatic-seo-pseo-nextjs-16-autonomous-llm-pipelines',
+  },
 ]
 
 export function matchesFaqKeyword(text: string, kw: string): boolean {
