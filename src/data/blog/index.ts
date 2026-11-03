@@ -22,6 +22,7 @@ import { compiling1100MdxLessonsNativeRustMdxRsNextjs16Post } from './posts/comp
 import { localFirstEcommercePwaOfflineCartCrdtYjsIndexeddbPost } from './posts/local-first-ecommerce-pwa-offline-cart-crdt-yjs-indexeddb'
 import { enterpriseProgrammaticSeoPseoNextjs16AutonomousLlmPipelinesPost } from './posts/enterprise-programmatic-seo-pseo-nextjs-16-autonomous-llm-pipelines'
 import { enterpriseB2bHeadlessEcommerceTieredPricingErpSyncWooCommerceHposPost } from './posts/enterprise-b2b-headless-ecommerce-tiered-pricing-erp-sync-woocommerce-hpos'
+import { voiceDrivenConversationalEcommerceWebSpeechEdgeAiNextjs16Post } from './posts/voice-driven-conversational-ecommerce-web-speech-edge-ai-nextjs-16'
 
 export * from './types'
 
@@ -49,6 +50,7 @@ export const allBlogPosts: BlogPost[] = [
   localFirstEcommercePwaOfflineCartCrdtYjsIndexeddbPost,
   enterpriseProgrammaticSeoPseoNextjs16AutonomousLlmPipelinesPost,
   enterpriseB2bHeadlessEcommerceTieredPricingErpSyncWooCommerceHposPost,
+  voiceDrivenConversationalEcommerceWebSpeechEdgeAiNextjs16Post,
 ]
 
 export function getAllBlogPosts(): BlogPost[] {

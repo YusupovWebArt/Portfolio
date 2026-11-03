@@ -623,6 +623,27 @@ export const FAQ: FaqItem[] = [
     answerEs:
       'Arquitecto plataformas B2B headless empresariales con Next.js 16 App Router y WooCommerce HPOS: implementando catálogos restringidos por empresa, matrices de precios escalonados por volumen y pagos a 30 días (Net-30). La infraestructura sincroniza el ERP mediante colas Redis BullMQ con verificación HMAC y respuestas en menos de 50 ms vía ISR. Guía completa: /es/blog/enterprise-b2b-headless-ecommerce-tiered-pricing-erp-sync-woocommerce-hpos',
   },
+  {
+    question: 'How do you build voice-driven conversational e-commerce in Next.js 16?',
+    questionUa: 'Як ви створюєте голосовий діалоговий e-commerce на Next.js 16?',
+    questionEs: '¿Cómo construyes e-commerce conversacional por voz en Next.js 16?',
+    keywords: [
+      'voice commerce',
+      'web speech api',
+      'conversational commerce',
+      'голосовой поиск',
+      'голосовой магазин',
+      'голосовий пошук',
+      'comercio por voz',
+      'speech recognition',
+    ],
+    answer:
+      'I engineer sub-180ms voice commerce experiences using native browser Web Speech API (0 KB extra bundle weight) combined with Next.js 16 V8 Edge Isolates for structured tool-calling (search, cart mutations, coupons). The UI updates optimistically in <16ms via React 19 Server Actions and maintains strict WCAG 2.2 AA accessibility with ARIA live regions. Read full guide: /en/blog/voice-driven-conversational-ecommerce-web-speech-edge-ai-nextjs-16',
+    answerUa:
+      'Я розробляю голосовий e-commerce із затримкою до 180 ms на базі нативного Web Speech API (0 KB оверхеду на бандл) та V8 Edge-ізолятів у Next.js 16 для виклику інструментів кошика. Інтерфейс оптимістично оновлюється за <16 ms через Server Actions у React 19 та відповідає стандарту WCAG 2.2 AA завдяки ARIA live regions. Детальний розбір: /ua/blog/voice-driven-conversational-ecommerce-web-speech-edge-ai-nextjs-16',
+    answerEs:
+      'Desarrollo experiencias de comercio por voz con latencias inferiores a 180 ms combinando la Web Speech API nativa (0 KB de bundle) con aislados V8 Edge en Next.js 16 para llamadas estructuradas a herramientas. La interfaz se actualiza de forma optimista en menos de 16 ms con Server Actions de React 19 y cumple estrictamente con WCAG 2.2 AA. Guía completa: /es/blog/voice-driven-conversational-ecommerce-web-speech-edge-ai-nextjs-16',
+  },
 ]
 
 export function matchesFaqKeyword(text: string, kw: string): boolean {

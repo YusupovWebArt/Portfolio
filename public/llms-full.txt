@@ -136,6 +136,9 @@
 23. **Enterprise B2B Headless E-Commerce: Tiered Pricing, Customer-Specific Catalogs & Real-Time ERP Sync with Next.js 16 and WooCommerce HPOS**: https://www.yusupovartur.com/en/blog/enterprise-b2b-headless-ecommerce-tiered-pricing-erp-sync-woocommerce-hpos
     - **Published**: 2026-11-03 | **Tags**: E-Commerce, B2B, Next.js 16, WooCommerce HPOS, Tiered Pricing, ERP Sync, Redis BullMQ, TypeScript
     - **Summary**: An enterprise B2B headless architecture: company-scoped catalogs, tiered volume pricing matrices, Net-30 invoice checkouts, and real-time ERP inventory synchronization via Redis BullMQ and WooCommerce HPOS.
+24. **Voice-Driven Conversational E-Commerce: Streaming Web Speech API, Edge AI Function Calling & Real-Time Cart Mutations in Next.js 16**: https://www.yusupovartur.com/en/blog/voice-driven-conversational-ecommerce-web-speech-edge-ai-nextjs-16
+    - **Published**: 2026-11-03 | **Tags**: Voice Commerce, Web Speech API, Next.js 16, Edge AI, React 19, Function Calling, WCAG 2.2 AA, TypeScript
+    - **Summary**: An enterprise conversational commerce blueprint: native in-browser Web Speech API, sub-180ms V8 edge isolate tool-calling, optimistic React 19 cart mutations, and WCAG 2.2 AA compliance.
 
 ## 5. Complete 71-Project Portfolio Index (213 Localized Case Study Routes)
 
