@@ -163,6 +163,10 @@
     - **Published**: 2026-11-03 | **Tags**: AI Quality Harness, Spec-Driven Development, AST Invariants, Next.js 16, TypeScript, Vitest, DevSecOps, Architecture
     - **Summary**: An enterprise autonomous AI quality harness: combining 5-phase Spec-Driven Development (SDD) gating, TypeScript Compiler API AST invariant validation, and self-healing Vitest testing loops to eliminate hallucinations and architectural drift.
 
+32. **Zero-Downtime Database Schema Migrations for High-Traffic Applications: Expand-and-Contract Pattern, Shadow Columns & Ghost Workers in Next.js 16**: https://www.yusupovartur.com/en/blog/zero-downtime-database-schema-migrations-expand-contract-nextjs-16
+    - **Published**: 2026-11-03 | **Tags**: Database Migrations, Zero-Downtime, Next.js 16, PostgreSQL, Prisma, High Availability, DevSecOps, TypeScript
+    - **Summary**: An enterprise zero-downtime database migration architecture: executing the 4-phase Expand-and-Contract pattern, dual-writing Server Actions, shadow columns, and rate-limited BullMQ backfills with zero table locks.
+
 ## 5. Complete 71-Project Portfolio Index (213 Localized Case Study Routes)
 
 1. **Next.js 16 & Hybrid RAG Portfolio Platform** (nextjs) - https://www.yusupovartur.com/en/projects/yusupovartur-nextjs-portfolio | Live: https://www.yusupovartur.com/ | Deep-Dive: https://www.yusupovartur.com/en/blog/autonomous-hybrid-rag-architecture-browser
