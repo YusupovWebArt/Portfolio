@@ -33,6 +33,7 @@ import { autonomousAiQualityHarnessSpecDrivenDevelopmentSddNextjs16Post } from '
 import { zeroDowntimeDatabaseSchemaMigrationsExpandContractNextjs16Post } from './posts/zero-downtime-database-schema-migrations-expand-contract-nextjs-16'
 import { distributedEdgeCachingCacheTagsInvalidationMeshNextjs16Post } from './posts/distributed-edge-caching-cache-tags-invalidation-mesh-nextjs-16'
 import { cryptographicPasskeysWebauthnZeroKnowledgeAttestationNextjs16Post } from './posts/cryptographic-passkeys-webauthn-zero-knowledge-attestation-nextjs-16'
+import { realtimeCollaborativeStateSyncWebrtcYjsCrdtNextjs16Post } from './posts/realtime-collaborative-state-sync-webrtc-yjs-crdt-nextjs-16'
 
 export * from './types'
 
@@ -71,6 +72,7 @@ export const allBlogPosts: BlogPost[] = [
   zeroDowntimeDatabaseSchemaMigrationsExpandContractNextjs16Post,
   distributedEdgeCachingCacheTagsInvalidationMeshNextjs16Post,
   cryptographicPasskeysWebauthnZeroKnowledgeAttestationNextjs16Post,
+  realtimeCollaborativeStateSyncWebrtcYjsCrdtNextjs16Post,
 ]
 
 export function getAllBlogPosts(): BlogPost[] {

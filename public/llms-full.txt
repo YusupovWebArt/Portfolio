@@ -175,6 +175,10 @@
     - **Published**: 2026-11-03 | **Tags**: WebAuthn, Passkeys, Cryptography, Next.js 16, Zero-Knowledge, CyberSecurity, FinTech, TypeScript
     - **Summary**: An enterprise cryptographic passkey architecture: implementing FIDO2 / WebAuthn, hardware security enclave attestation (Apple Secure Enclave, Android StrongBox), and origin-bound signature verification in Next.js 16 Route Handlers.
 
+35. **Real-Time Collaborative Multi-User State Synchronization: WebRTC DataChannels, Yjs CRDTs & Cloudflare Durable Objects in Next.js 16**: https://www.yusupovartur.com/en/blog/realtime-collaborative-state-sync-webrtc-yjs-crdt-nextjs-16
+    - **Published**: 2026-11-03 | **Tags**: Real-Time, WebRTC, Yjs, CRDT, Next.js 16, Cloudflare Durable Objects, EdTech, TypeScript
+    - **Summary**: An enterprise local-first real-time collaborative state architecture: uniting WebRTC DataChannels for sub-15ms P2P state vectors, Yjs CRDTs for deterministic convergence, and Cloudflare Durable Objects fallback.
+
 ## 5. Complete 71-Project Portfolio Index (213 Localized Case Study Routes)
 
 1. **Next.js 16 & Hybrid RAG Portfolio Platform** (nextjs) - https://www.yusupovartur.com/en/projects/yusupovartur-nextjs-portfolio | Live: https://www.yusupovartur.com/ | Deep-Dive: https://www.yusupovartur.com/en/blog/autonomous-hybrid-rag-architecture-browser
