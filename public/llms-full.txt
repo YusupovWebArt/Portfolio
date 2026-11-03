@@ -118,6 +118,9 @@
 17. **Real-Time Omnichannel Inventory Sync: Eliminating Overselling across Shopify, WooCommerce & ERP with Redis Redlock**: https://www.yusupovartur.com/en/blog/realtime-omnichannel-inventory-sync-redlock
     - **Published**: 2026-10-28 | **Tags**: E-Commerce, Inventory Sync, Redis, Redlock, Shopify, WooCommerce, BullMQ, Distributed Systems
     - **Summary**: An enterprise architecture blueprint for multi-channel inventory synchronization: distributed locks with Redis Redlock, optimistic cart reservations, and debounced webhook queues preventing overselling.
+18. **Automated Visual Accessibility & Schema.org Product Metadata Generation via Multimodal LLMs: Complying with EAA 2026 at Scale**: https://www.yusupovartur.com/en/blog/automated-visual-accessibility-metadata-multimodal-llms-eaa2026
+    - **Published**: 2026-10-29 | **Tags**: Accessibility, WCAG 2.2 AA, EAA 2026, Multimodal AI, Vision LLM, Zod, Schema.org, E-Commerce
+    - **Summary**: An enterprise engineering blueprint for automating WCAG 2.2 AA visual accessibility and Schema.org Product metadata across 50,000+ SKUs using multimodal Vision LLMs and strict Zod schemas.
 
 ## 5. Complete 71-Project Portfolio Index (213 Localized Case Study Routes)
 

@@ -488,6 +488,31 @@ export const FAQ: FaqItem[] = [
     answerEs:
       'Evito las condiciones de carrera multicanal mediante bloqueos distribuidos con Redis Redlock, reservas optimistas de carrito (TTL de 10 min) y colas BullMQ con debouncing y retroceso exponencial. Esto elimina la sobreventa entre Shopify, WooCommerce y ERP centrales durante picos de venta manteniendo la latencia de pago por debajo de 45ms. Guía de arquitectura completa: /es/blog/realtime-omnichannel-inventory-sync-redlock',
   },
+  {
+    question: 'How do you automate visual accessibility and Schema.org metadata for EAA 2026 compliance?',
+    questionUa: 'Як ви автоматизуєте візуальну доступність та Schema.org метадані для відповідності EAA 2026?',
+    questionEs: '¿Cómo automatizas la accesibilidad visual y los metadatos Schema.org para cumplir con EAA 2026?',
+    keywords: [
+      'visual accessibility',
+      'eaa 2026',
+      'wcag 2.2',
+      'alt text',
+      'multimodal',
+      'vision llm',
+      'schema.org product',
+      'доступность',
+      'доступність',
+      'візуальна доступність',
+      'accesibilidad visual',
+      'texto alternativo',
+    ],
+    answer:
+      'I automate catalog visual accessibility across 50,000+ SKUs using multimodal Vision LLMs with strict Zod structured outputs. The pipeline generates concise, context-aware alt text (<125 chars), filters decorative graphics via aria-hidden, and synthesizes rich Schema.org Product and ImageObject JSON-LD at €0.0018 per SKU with a 99.4% WCAG 2.2 AA audit pass rate. Read full blueprint: /en/blog/automated-visual-accessibility-metadata-multimodal-llms-eaa2026',
+    answerUa:
+      'Я автоматизую візуальну доступність каталогів на 50 000+ SKU за допомогою мультимодальних Vision LLM та суворої валідації через Zod. Конвеєр генерує лаконічний alt-текст (<125 символів), фільтрує декоративні елементи через aria-hidden та створює розмітку Schema.org Product та ImageObject JSON-LD за ціною €0.0018 за SKU з 99.4% проходження аудиту WCAG 2.2 AA. Повний посібник: /ua/blog/automated-visual-accessibility-metadata-multimodal-llms-eaa2026',
+    answerEs:
+      'Automatizo la accesibilidad visual en catálogos de más de 50.000 SKUs mediante LLMs de visión multimodal y esquemas estructurados Zod. El flujo genera texto alternativo conciso (<125 caracteres), clasifica gráficos decorativos con aria-hidden y sintetiza Schema.org Product e ImageObject JSON-LD a 0,0018 € por SKU con un 99,4% de aprobación WCAG 2.2 AA. Desglose completo: /es/blog/automated-visual-accessibility-metadata-multimodal-llms-eaa2026',
+  },
 ]
 
 export function matchesFaqKeyword(text: string, kw: string): boolean {

@@ -16,6 +16,7 @@ import { enterpriseCloudWebSecurityWafAntiScrapingPost } from './posts/enterpris
 import { headlessMulticurrencyCheckoutWoocommerceStripePost } from './posts/headless-multicurrency-checkout-woocommerce-stripe'
 import { inBrowserSemanticSearchWebassemblyEmbeddingsEcommercePost } from './posts/in-browser-semantic-search-webassembly-embeddings-ecommerce'
 import { realtimeOmnichannelInventorySyncRedlockPost } from './posts/realtime-omnichannel-inventory-sync-redlock'
+import { automatedVisualAccessibilityMetadataMultimodalLlmsEaa2026Post } from './posts/automated-visual-accessibility-metadata-multimodal-llms-eaa2026'
 
 export * from './types'
 
@@ -37,6 +38,7 @@ export const allBlogPosts: BlogPost[] = [
   headlessMulticurrencyCheckoutWoocommerceStripePost,
   inBrowserSemanticSearchWebassemblyEmbeddingsEcommercePost,
   realtimeOmnichannelInventorySyncRedlockPost,
+  automatedVisualAccessibilityMetadataMultimodalLlmsEaa2026Post,
 ]
 
 export function getAllBlogPosts(): BlogPost[] {
