@@ -26,6 +26,7 @@ import { voiceDrivenConversationalEcommerceWebSpeechEdgeAiNextjs16Post } from '.
 import { headlessSubscriptionArchitectureUsageBasedBillingStripeNextjs16Post } from './posts/headless-subscription-architecture-usage-based-billing-stripe-nextjs-16'
 import { zeroLeakageCheckoutSecurityPciDssV4CspNextjs16Post } from './posts/zero-leakage-checkout-security-pci-dss-v4-csp-nextjs-16'
 import { multiZoneMicroFrontendsEdgeNextjs16AutonomousDeploymentsPost } from './posts/multi-zone-micro-frontends-edge-nextjs-16-autonomous-deployments'
+import { browserNativeWasmSandboxesSafeAiCodeExecutionNextjs16Post } from './posts/browser-native-wasm-sandboxes-safe-ai-code-execution-nextjs-16'
 
 export * from './types'
 
@@ -57,6 +58,7 @@ export const allBlogPosts: BlogPost[] = [
   headlessSubscriptionArchitectureUsageBasedBillingStripeNextjs16Post,
   zeroLeakageCheckoutSecurityPciDssV4CspNextjs16Post,
   multiZoneMicroFrontendsEdgeNextjs16AutonomousDeploymentsPost,
+  browserNativeWasmSandboxesSafeAiCodeExecutionNextjs16Post,
 ]
 
 export function getAllBlogPosts(): BlogPost[] {

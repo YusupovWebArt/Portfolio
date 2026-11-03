@@ -148,6 +148,9 @@
 27. **Multi-Zone Micro-Frontends at the Edge: Scaling Enterprise Next.js 16 Applications with Zero-Downtime Autonomous Deployments**: https://www.yusupovartur.com/en/blog/multi-zone-micro-frontends-edge-nextjs-16-autonomous-deployments
     - **Published**: 2026-11-03 | **Tags**: Next.js 16, Micro-Frontends, Multi-Zones, Cloudflare Workers, Edge Computing, CI/CD, Turborepo, TypeScript
     - **Summary**: An enterprise micro-frontends architecture: Next.js 16 Multi-Zones, sub-4ms Cloudflare Workers edge reverse proxy routing, shared View Transitions, and autonomous Turborepo CI/CD pipelines.
+28. **Browser-Native WASM Sandboxes for Safe AI Code Execution: Running Multi-Language Runtimes with WebContainers & WASI in Next.js 16**: https://www.yusupovartur.com/en/blog/browser-native-wasm-sandboxes-safe-ai-code-execution-nextjs-16
+    - **Published**: 2026-11-03 | **Tags**: WebAssembly, WASI, WebContainers, Next.js 16, AI Code Execution, EdTech, React 19, TypeScript
+    - **Summary**: An enterprise WebAssembly sandbox architecture: running in-browser Node.js, Python, and PHP runtimes at $0 cloud cost with WebContainers, Cross-Origin Isolation (COOP/COEP), and automated AI code repair.
 
 ## 5. Complete 71-Project Portfolio Index (213 Localized Case Study Routes)
 

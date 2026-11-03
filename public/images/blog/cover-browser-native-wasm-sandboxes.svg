@@ -1,0 +1,120 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#050916"/>
+      <stop offset="50%" stop-color="#0c142e"/>
+      <stop offset="100%" stop-color="#070c1e"/>
+    </linearGradient>
+    <linearGradient id="wasmGlow" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#06b6d4"/>
+      <stop offset="50%" stop-color="#8b5cf6"/>
+      <stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <g opacity="0.06" stroke="#06b6d4" stroke-width="1">
+    <path d="M0,70 H1200 M0,140 H1200 M0,210 H1200 M0,280 H1200 M0,350 H1200 M0,420 H1200 M0,490 H1200 M0,560 H1200"/>
+    <path d="M100,0 V630 M200,0 V630 M300,0 V630 M400,0 V630 M500,0 V630 M600,0 V630 M700,0 V630 M800,0 V630 M900,0 V630 M1000,0 V630 M1100,0 V630"/>
+  </g>
+
+  <circle cx="210" cy="170" r="150" fill="#06b6d4" opacity="0.08" filter="url(#glow)"/>
+  <circle cx="980" cy="440" r="170" fill="#8b5cf6" opacity="0.08" filter="url(#glow)"/>
+  <circle cx="600" cy="320" r="220" fill="#10b981" opacity="0.05" filter="url(#glow)"/>
+
+  <!-- Left: Main Title & Architecture Badges -->
+  <g transform="translate(80, 110)">
+    <rect width="320" height="34" rx="17" fill="#06b6d4" fill-opacity="0.12" stroke="#06b6d4" stroke-opacity="0.4" stroke-width="1"/>
+    <text x="18" y="22" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700" fill="#22d3ee" letter-spacing="1.5">WASM &amp; EDTECH RUNTIMES 2026</text>
+
+    <!-- Main Title -->
+    <text x="0" y="85" font-family="system-ui, -apple-system, sans-serif" font-size="44" font-weight="800" fill="#ffffff" letter-spacing="-0.5">Browser-Native Sandboxes</text>
+    <text x="0" y="138" font-family="system-ui, -apple-system, sans-serif" font-size="44" font-weight="800" fill="url(#wasmGlow)" letter-spacing="-0.5">for Safe AI Code Execution</text>
+
+    <!-- Subtitle description -->
+    <text x="0" y="188" font-family="system-ui, -apple-system, sans-serif" font-size="17" font-weight="400" fill="#94a3b8">WebContainers, WASI Runtimes, In-Memory File Systems</text>
+    <text x="0" y="214" font-family="system-ui, -apple-system, sans-serif" font-size="17" font-weight="400" fill="#94a3b8">&amp; Zero-Cloud Security Isolation in Next.js 16</text>
+
+    <!-- Metrics Badges -->
+    <g transform="translate(0, 260)">
+      <rect width="165" height="70" rx="12" fill="#0f172a" stroke="#1e293b" stroke-width="1.5"/>
+      <text x="16" y="28" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#64748b" letter-spacing="0.5">EXECUTION COST</text>
+      <text x="16" y="54" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="700" fill="#10b981">$0 Serverless</text>
+
+      <rect x="180" width="165" height="70" rx="12" fill="#0f172a" stroke="#1e293b" stroke-width="1.5"/>
+      <text x="196" y="28" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#64748b" letter-spacing="0.5">CONTAINER START</text>
+      <text x="196" y="54" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="700" fill="#22d3ee">&lt; 85 ms</text>
+
+      <rect x="360" width="160" height="70" rx="12" fill="#0f172a" stroke="#1e293b" stroke-width="1.5"/>
+      <text x="376" y="28" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#64748b" letter-spacing="0.5">MEMORY LIMIT</text>
+      <text x="376" y="54" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="700" fill="#a78bfa">V8 Sandboxed</text>
+    </g>
+
+    <!-- Visual Terminal Node -->
+    <g transform="translate(0, 365)" opacity="0.9">
+      <rect width="520" height="48" rx="8" fill="#0f172a" stroke="#1e293b" stroke-width="1"/>
+      <circle cx="28" cy="24" r="5" fill="#10b981"/>
+      <text x="44" y="29" font-family="ui-monospace, monospace" font-size="12" fill="#cbd5e1">node /sandbox/index.js --isolated (PID 1 ready in 42ms)</text>
+    </g>
+  </g>
+
+  <!-- Right: Technical HUD Box -->
+  <g transform="translate(680, 95)">
+    <rect width="450" height="440" rx="16" fill="#0f172a" stroke="#1e293b" stroke-width="2"/>
+    <rect width="450" height="40" rx="16" fill="#1e293b" opacity="0.5"/>
+    <circle cx="25" cy="20" r="5" fill="#ef4444"/>
+    <circle cx="42" cy="20" r="5" fill="#f59e0b"/>
+    <circle cx="59" cy="20" r="5" fill="#10b981"/>
+    <text x="80" y="25" font-family="ui-monospace, monospace" font-size="12" fill="#64748b">wasm-sandbox-runtime.ts</text>
+
+    <!-- Code Block with Syntax Highlights -->
+    <g transform="translate(24, 60)" font-family="ui-monospace, monospace" font-size="11.5">
+      <text y="18" fill="#64748b">// WebContainer WASI client boot</text>
+      <text y="42" fill="#38bdf8">const</text>
+      <text x="45" y="42" fill="#f1f5f9">webcontainer =</text>
+      <text x="160" y="42" fill="#38bdf8">await</text>
+      <text x="205" y="42" fill="#f1f5f9">WebContainer.boot({</text>
+
+      <text y="66" fill="#f1f5f9">  workdirName:</text>
+      <text x="100" y="66" fill="#34d399">'ai-sandbox'</text>
+      <text x="185" y="66" fill="#f1f5f9">,</text>
+
+      <text y="90" fill="#f1f5f9">  forwardPreviewErrors:</text>
+      <text x="175" y="90" fill="#f59e0b">true</text>
+
+      <text y="112" fill="#f1f5f9">});</text>
+
+      <text y="138" fill="#64748b">// Mount virtual filesystem snapshot</text>
+      <text y="160" fill="#38bdf8">await</text>
+      <text x="45" y="160" fill="#f1f5f9">webcontainer.mount(virtualFsTree);</text>
+
+      <text y="186" fill="#38bdf8">const</text>
+      <text x="45" y="186" fill="#f1f5f9">proc =</text>
+      <text x="95" y="186" fill="#38bdf8">await</text>
+      <text x="140" y="186" fill="#f1f5f9">webcontainer.spawn(</text>
+      <text x="295" y="186" fill="#34d399">'node'</text>
+      <text x="340" y="186" fill="#f1f5f9">, [</text>
+      <text x="360" y="186" fill="#34d399">'main.js'</text>
+      <text x="415" y="186" fill="#f1f5f9">]);</text>
+
+      <rect y="244" width="402" height="110" rx="8" fill="#020617" stroke="#334155" stroke-width="1"/>
+      <text x="14" y="268" fill="#64748b">// Runtime Isolation Status</text>
+      <text x="14" y="292" fill="#22d3ee">Security Sandbox:</text>
+      <text x="180" y="292" fill="#f1f5f9">Zero Server Escape Risk</text>
+
+      <text x="14" y="314" fill="#a78bfa">SharedArrayBuffer:</text>
+      <text x="180" y="314" fill="#f1f5f9">COOP/COEP Active</text>
+
+      <text x="14" y="336" fill="#10b981">Host Compute Cost:</text>
+      <text x="180" y="336" fill="#f1f5f9">$0.00 / 10k Sessions</text>
+    </g>
+  </g>
+</svg>
