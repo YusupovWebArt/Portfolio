@@ -167,6 +167,10 @@
     - **Published**: 2026-11-03 | **Tags**: Database Migrations, Zero-Downtime, Next.js 16, PostgreSQL, Prisma, High Availability, DevSecOps, TypeScript
     - **Summary**: An enterprise zero-downtime database migration architecture: executing the 4-phase Expand-and-Contract pattern, dual-writing Server Actions, shadow columns, and rate-limited BullMQ backfills with zero table locks.
 
+33. **Distributed Edge Caching & Cache-Tags Invalidation Mesh: Next.js 16, Cloudflare Workers KV & Sub-80ms Global Purging at Scale**: https://www.yusupovartur.com/en/blog/distributed-edge-caching-cache-tags-invalidation-mesh-nextjs-16
+    - **Published**: 2026-11-03 | **Tags**: Edge Caching, Cache Invalidation, Next.js 16, Cloudflare Workers, Surrogate Keys, CWV, Performance, TypeScript
+    - **Summary**: An enterprise distributed edge caching architecture: uniting Next.js 16 App Router cache tags with Cloudflare Workers KV surrogate keys for sub-80ms global purges across 300+ edge locations with thundering herd protection.
+
 ## 5. Complete 71-Project Portfolio Index (213 Localized Case Study Routes)
 
 1. **Next.js 16 & Hybrid RAG Portfolio Platform** (nextjs) - https://www.yusupovartur.com/en/projects/yusupovartur-nextjs-portfolio | Live: https://www.yusupovartur.com/ | Deep-Dive: https://www.yusupovartur.com/en/blog/autonomous-hybrid-rag-architecture-browser
