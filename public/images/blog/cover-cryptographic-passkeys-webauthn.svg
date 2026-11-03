@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#050b16"/>
+      <stop offset="50%" stop-color="#0b1a2e"/>
+      <stop offset="100%" stop-color="#040913"/>
+    </linearGradient>
+    <linearGradient id="cryptoGlow" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#10b981"/>
+      <stop offset="50%" stop-color="#06b6d4"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <g opacity="0.06" stroke="#10b981" stroke-width="1">
+    <path d="M0,70 H1200 M0,140 H1200 M0,210 H1200 M0,280 H1200 M0,350 H1200 M0,420 H1200 M0,490 H1200 M0,560 H1200"/>
+    <path d="M100,0 V630 M200,0 V630 M300,0 V630 M400,0 V630 M500,0 V630 M600,0 V630 M700,0 V630 M800,0 V630 M900,0 V630 M1000,0 V630 M1100,0 V630"/>
+  </g>
+
+  <circle cx="210" cy="180" r="160" fill="#10b981" opacity="0.08" filter="url(#glow)"/>
+  <circle cx="980" cy="450" r="180" fill="#3b82f6" opacity="0.08" filter="url(#glow)"/>
+  <circle cx="610" cy="310" r="210" fill="#06b6d4" opacity="0.05" filter="url(#glow)"/>
+
+  <!-- Left: Main Title & Architecture Badges -->
+  <g transform="translate(80, 110)">
+    <rect width="360" height="34" rx="17" fill="#10b981" fill-opacity="0.12" stroke="#10b981" stroke-opacity="0.4" stroke-width="1"/>
+    <text x="18" y="22" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700" fill="#34d399" letter-spacing="1.5">CYBERSECURITY &amp; FINTECH 2026</text>
+
+    <!-- Main Title -->
+    <text x="0" y="85" font-family="system-ui, -apple-system, sans-serif" font-size="44" font-weight="800" fill="#ffffff" letter-spacing="-0.5">Cryptographic Passkeys &amp;</text>
+    <text x="0" y="138" font-family="system-ui, -apple-system, sans-serif" font-size="44" font-weight="800" fill="url(#cryptoGlow)" letter-spacing="-0.5">Zero-Knowledge Attestation</text>
+
+    <!-- Subtitle description -->
+    <text x="0" y="188" font-family="system-ui, -apple-system, sans-serif" font-size="17" font-weight="400" fill="#94a3b8">FIDO2 WebAuthn, Hardware Enclave Attestation &amp; Frictionless</text>
+    <text x="0" y="214" font-family="system-ui, -apple-system, sans-serif" font-size="17" font-weight="400" fill="#94a3b8">1-Tap Biometric Checkout in Next.js 16 App Router</text>
+
+    <!-- Metrics Badges -->
+    <g transform="translate(0, 260)">
+      <rect width="165" height="70" rx="12" fill="#0f172a" stroke="#1e293b" stroke-width="1.5"/>
+      <text x="16" y="28" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#64748b" letter-spacing="0.5">CREDENTIAL STUFFING</text>
+      <text x="16" y="54" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="700" fill="#34d399">0.0% Risk</text>
+
+      <rect x="180" width="165" height="70" rx="12" fill="#0f172a" stroke="#1e293b" stroke-width="1.5"/>
+      <text x="196" y="28" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#64748b" letter-spacing="0.5">CHECKOUT FRICTION</text>
+      <text x="196" y="54" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="700" fill="#38bdf8">-40% Drop</text>
+
+      <rect x="360" width="160" height="70" rx="12" fill="#0f172a" stroke="#1e293b" stroke-width="1.5"/>
+      <text x="376" y="28" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#64748b" letter-spacing="0.5">CRYPTO PRIMITIVE</text>
+      <text x="376" y="54" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="700" fill="#60a5fa">ECDSA P-256</text>
+    </g>
+
+    <!-- Visual Architecture Status Node -->
+    <g transform="translate(0, 365)" opacity="0.9">
+      <rect width="520" height="48" rx="8" fill="#0f172a" stroke="#1e293b" stroke-width="1"/>
+      <circle cx="28" cy="24" r="5" fill="#10b981"/>
+      <text x="44" y="29" font-family="ui-monospace, monospace" font-size="12" fill="#cbd5e1">Attestation Flow: Biometric Enclave -&gt; Signed Assertion -&gt; Sub-12ms Verify</text>
+    </g>
+  </g>
+
+  <!-- Right: Technical HUD Box -->
+  <g transform="translate(680, 95)">
+    <rect width="450" height="440" rx="16" fill="#0f172a" stroke="#1e293b" stroke-width="2"/>
+    <rect width="450" height="40" rx="16" fill="#1e293b" opacity="0.5"/>
+    <circle cx="25" cy="20" r="5" fill="#ef4444"/>
+    <circle cx="42" cy="20" r="5" fill="#f59e0b"/>
+    <circle cx="59" cy="20" r="5" fill="#10b981"/>
+    <text x="80" y="25" font-family="ui-monospace, monospace" font-size="12" fill="#64748b">webauthn-assertion-verifier.ts</text>
+
+    <!-- Code Block with Syntax Highlights -->
+    <g transform="translate(24, 60)" font-family="ui-monospace, monospace" font-size="11.5">
+      <text y="18" fill="#64748b">// WebAuthn cryptographic verification in Next.js 16</text>
+      <text y="42" fill="#38bdf8">export async function</text>
+      <text x="175" y="42" fill="#f1f5f9">verifyPasskeyAssertion(</text>
+      <text x="370" y="42" fill="#fbbf24">data</text>
+      <text x="405" y="42" fill="#f1f5f9">) {</text>
+
+      <text y="66" fill="#64748b">  // 1. Verify challenge nonce from secure KV</text>
+      <text y="88" fill="#38bdf8">  const</text>
+      <text x="45" y="88" fill="#f1f5f9">validNonce =</text>
+      <text x="145" y="88" fill="#38bdf8">await</text>
+      <text x="190" y="88" fill="#f1f5f9">verifyChallenge(data.challenge);</text>
+
+      <text y="112" fill="#64748b">  // 2. Hardware enclave signature check</text>
+      <text y="134" fill="#38bdf8">  const</text>
+      <text x="45" y="134" fill="#f1f5f9">isVerified = crypto.verify(</text>
+
+      <text y="156" fill="#34d399">    'SHA256'</text>
+      <text x="125" y="156" fill="#f1f5f9">, signedBuffer,</text>
+
+      <text y="178" fill="#f1f5f9">    publicKeyPem, data.signature</text>
+
+      <text y="200" fill="#f1f5f9">  );</text>
+      <text y="222" fill="#38bdf8">  return</text>
+      <text x="50" y="222" fill="#f1f5f9">{ authenticated: isVerified };</text>
+      <text y="244" fill="#f1f5f9">}</text>
+
+      <rect y="260" width="402" height="100" rx="8" fill="#020617" stroke="#334155" stroke-width="1"/>
+      <text x="14" y="284" fill="#64748b">// Zero-Knowledge Security Audit</text>
+      <text x="14" y="306" fill="#34d399">Phishing Immunity:</text>
+      <text x="165" y="306" fill="#f1f5f9">100% Origin-Bound</text>
+
+      <text x="14" y="326" fill="#38bdf8">Private Key Storage:</text>
+      <text x="165" y="326" fill="#f1f5f9">Hardware Enclave Only</text>
+
+      <text x="14" y="346" fill="#f59e0b">Passkey Verification:</text>
+      <text x="165" y="346" fill="#f1f5f9">Sub-12 ms Runtime</text>
+    </g>
+  </g>
+</svg>

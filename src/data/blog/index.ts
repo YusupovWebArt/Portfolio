@@ -32,6 +32,7 @@ import { clientsideWebgpuPredictivePersonalizationCollaborativeFilteringNextjs16
 import { autonomousAiQualityHarnessSpecDrivenDevelopmentSddNextjs16Post } from './posts/autonomous-ai-quality-harness-spec-driven-development-sdd-nextjs-16'
 import { zeroDowntimeDatabaseSchemaMigrationsExpandContractNextjs16Post } from './posts/zero-downtime-database-schema-migrations-expand-contract-nextjs-16'
 import { distributedEdgeCachingCacheTagsInvalidationMeshNextjs16Post } from './posts/distributed-edge-caching-cache-tags-invalidation-mesh-nextjs-16'
+import { cryptographicPasskeysWebauthnZeroKnowledgeAttestationNextjs16Post } from './posts/cryptographic-passkeys-webauthn-zero-knowledge-attestation-nextjs-16'
 
 export * from './types'
 
@@ -69,6 +70,7 @@ export const allBlogPosts: BlogPost[] = [
   autonomousAiQualityHarnessSpecDrivenDevelopmentSddNextjs16Post,
   zeroDowntimeDatabaseSchemaMigrationsExpandContractNextjs16Post,
   distributedEdgeCachingCacheTagsInvalidationMeshNextjs16Post,
+  cryptographicPasskeysWebauthnZeroKnowledgeAttestationNextjs16Post,
 ]
 
 export function getAllBlogPosts(): BlogPost[] {

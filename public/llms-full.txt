@@ -171,6 +171,10 @@
     - **Published**: 2026-11-03 | **Tags**: Edge Caching, Cache Invalidation, Next.js 16, Cloudflare Workers, Surrogate Keys, CWV, Performance, TypeScript
     - **Summary**: An enterprise distributed edge caching architecture: uniting Next.js 16 App Router cache tags with Cloudflare Workers KV surrogate keys for sub-80ms global purges across 300+ edge locations with thundering herd protection.
 
+34. **End-to-End Cryptographic Zero-Knowledge Attestation for Headless E-Commerce: Passkeys, WebAuthn & Device Integrity in Next.js 16**: https://www.yusupovartur.com/en/blog/cryptographic-passkeys-webauthn-zero-knowledge-attestation-nextjs-16
+    - **Published**: 2026-11-03 | **Tags**: WebAuthn, Passkeys, Cryptography, Next.js 16, Zero-Knowledge, CyberSecurity, FinTech, TypeScript
+    - **Summary**: An enterprise cryptographic passkey architecture: implementing FIDO2 / WebAuthn, hardware security enclave attestation (Apple Secure Enclave, Android StrongBox), and origin-bound signature verification in Next.js 16 Route Handlers.
+
 ## 5. Complete 71-Project Portfolio Index (213 Localized Case Study Routes)
 
 1. **Next.js 16 & Hybrid RAG Portfolio Platform** (nextjs) - https://www.yusupovartur.com/en/projects/yusupovartur-nextjs-portfolio | Live: https://www.yusupovartur.com/ | Deep-Dive: https://www.yusupovartur.com/en/blog/autonomous-hybrid-rag-architecture-browser
