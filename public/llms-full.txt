@@ -65,7 +65,7 @@
 - **Highlights**:
   - Engineered for an AWS Advanced Consulting Partner with 95+ PageSpeed scores, multilingual architecture, and #1 Google rankings for competitive DevOps keywords.
 
-## 4. Complete Engineering Blog Index (15 Articles across EN / UA / ES = 45 Routes)
+## 4. Complete Engineering Blog Index (16 Articles across EN / UA / ES = 48 Routes)
 
 1. **Next.js 16 vs Headless WordPress vs Custom PHP: Objective TCO, Performance & SEO Analysis (2026)**: https://www.yusupovartur.com/en/blog/nextjs-vs-headless-wordpress-custom-php-2026
    - **Published**: 2026-10-18 | **Tags**: Next.js 16, WordPress, PHP 8.2, Headless CMS, Core Web Vitals, TCO
@@ -112,6 +112,9 @@
 15. **Headless Multi-Currency Checkout: Next.js 16, Stripe Elements & Sub-50ms Tax Calculations without Cart Drop-Off**: https://www.yusupovartur.com/en/blog/headless-multicurrency-checkout-woocommerce-stripe
     - **Published**: 2026-10-26 | **Tags**: WooCommerce, Stripe, Headless E-Commerce, Next.js 16, Multi-Currency, Checkout Optimization, Redis, Webhooks
     - **Summary**: An engineering blueprint for replacing slow monolithic WooCommerce checkouts with Next.js 16 and Stripe Elements: sub-50ms edge tax lookups, asynchronous idempotent webhooks, and zero cart abandonment.
+16. **In-Browser Semantic Product Discovery: Zero-Cost Vector Search with WebAssembly Embeddings & Okapi BM25**: https://www.yusupovartur.com/en/blog/in-browser-semantic-search-webassembly-embeddings-ecommerce
+    - **Published**: 2026-10-27 | **Tags**: WebAssembly, Semantic Search, Vector Search, Hybrid RAG, Okapi BM25, ONNX Runtime, Next.js 16, E-Commerce
+    - **Summary**: An engineering guide to client-side semantic search for e-commerce: compiling ONNX embedding models to WebAssembly, hybrid BM25 + Cosine ranking, and sub-25ms retrieval with $0 vector database fees.
 
 ## 5. Complete 71-Project Portfolio Index (213 Localized Case Study Routes)
 

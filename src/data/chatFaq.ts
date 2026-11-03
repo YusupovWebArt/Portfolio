@@ -439,6 +439,30 @@ export const FAQ: FaqItem[] = [
     answerEs:
       'Desacoplo el checkout en Next.js 16 con Stripe Payment Element: el cálculo de impuestos y divisas se ejecuta en Route Handlers en el edge en menos de 50ms (reduciendo la latencia de UI un 91%) y los pedidos se registran de forma asíncrona en WooCommerce HPOS mediante webhooks idempotentes en Redis. Guía completa: /es/blog/headless-multicurrency-checkout-woocommerce-stripe',
   },
+  {
+    question: 'How do you build zero-cost in-browser semantic search using WebAssembly embeddings and BM25?',
+    questionUa: 'Як ви створюєте безкоштовний семантичний пошук у браузері через WebAssembly-ембеддінги та BM25?',
+    questionEs: '¿Cómo construyes búsqueda semántica a coste cero en el navegador con embeddings WebAssembly y BM25?',
+    keywords: [
+      'semantic search',
+      'семантический поиск',
+      'семантичний пошук',
+      'busqueda semantica',
+      'vector search',
+      'векторный поиск',
+      'векторний пошук',
+      'webassembly search',
+      'wasm embeddings',
+      'onnx',
+      'bm25',
+    ],
+    answer:
+      'I execute quantized INT8 transformer models (23MB) directly in a Web Worker using WebAssembly SIMD and IndexedDB model caching. Queries are evaluated in under 18ms by combining dense vector Cosine Similarity with sparse lexical Okapi BM25 via Reciprocal Rank Fusion (RRF), running 100% offline with zero cloud vector database fees. Read full breakdown: /en/blog/in-browser-semantic-search-webassembly-embeddings-ecommerce',
+    answerUa:
+      'Я запускаю квантовані INT8 моделі-трансформери (23 МБ) безпосередньо у Web Worker за допомогою WebAssembly SIMD і кешування в IndexedDB. Запити обробляються менше ніж за 18мс завдяки поєднанню косинусної схожості з лексичним пошуком Okapi BM25 через метод Reciprocal Rank Fusion (RRF), працюючи 100% офлайн без витрат на векторні бази даних. Повний розбір: /ua/blog/in-browser-semantic-search-webassembly-embeddings-ecommerce',
+    answerEs:
+      'Ejecuto modelos transformer cuantizados en INT8 (23MB) directamente en un Web Worker mediante WebAssembly SIMD y almacenamiento en IndexedDB. Las consultas se resuelven en menos de 18ms combinando similitud de coseno vectorial con análisis léxico Okapi BM25 mediante Reciprocal Rank Fusion (RRF), con operatividad 100% offline y coste cero en bases vectoriales. Desglose completo: /es/blog/in-browser-semantic-search-webassembly-embeddings-ecommerce',
+  },
 ]
 
 export function matchesFaqKeyword(text: string, kw: string): boolean {

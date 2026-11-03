@@ -14,6 +14,7 @@ import { wasmWordPressPhpInBrowserZeroServerPost } from './posts/wasm-wordpress-
 import { clinicalGovernmentApiHeadlessIntegrationUnitritionPost } from './posts/clinical-government-api-headless-integration-unitrition'
 import { enterpriseCloudWebSecurityWafAntiScrapingPost } from './posts/enterprise-cloud-web-security-waf-anti-scraping'
 import { headlessMulticurrencyCheckoutWoocommerceStripePost } from './posts/headless-multicurrency-checkout-woocommerce-stripe'
+import { inBrowserSemanticSearchWebassemblyEmbeddingsEcommercePost } from './posts/in-browser-semantic-search-webassembly-embeddings-ecommerce'
 
 export * from './types'
 
@@ -33,6 +34,7 @@ export const allBlogPosts: BlogPost[] = [
   clinicalGovernmentApiHeadlessIntegrationUnitritionPost,
   enterpriseCloudWebSecurityWafAntiScrapingPost,
   headlessMulticurrencyCheckoutWoocommerceStripePost,
+  inBrowserSemanticSearchWebassemblyEmbeddingsEcommercePost,
 ]
 
 export function getAllBlogPosts(): BlogPost[] {
