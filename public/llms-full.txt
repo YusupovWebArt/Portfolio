@@ -142,6 +142,9 @@
 25. **Headless Subscription Architecture: Usage-Based Billing, Mid-Cycle Prorations & Automated Dunning with Stripe Billing & Next.js 16**: https://www.yusupovartur.com/en/blog/headless-subscription-architecture-usage-based-billing-stripe-nextjs-16
     - **Published**: 2026-11-03 | **Tags**: Stripe Billing, Subscriptions, Next.js 16, SaaS, Webhooks, Redis, TypeScript, FinTech
     - **Summary**: An enterprise headless subscription blueprint: hybrid recurring tiers, usage-based metering via Redis and Stripe Meter Events, real-time proration previews, and automated BullMQ dunning recovery.
+26. **Zero-Leakage Checkout Security: PCI-DSS v4.0 Compliance, Content Security Policy (CSP Level 3) & Subresource Integrity in Next.js 16**: https://www.yusupovartur.com/en/blog/zero-leakage-checkout-security-pci-dss-v4-csp-nextjs-16
+    - **Published**: 2026-11-03 | **Tags**: PCI-DSS v4.0, Web Security, Next.js 16, CSP Level 3, Magecart, DevSecOps, FinTech, TypeScript
+    - **Summary**: An enterprise checkout security blueprint: PCI-DSS v4.0 requirements 6.4.3 & 11.6.1, dynamic CSP nonces in Next.js 16 Edge Middleware, SHA-384 Subresource Integrity, and in-memory credential zeroization.
 
 ## 5. Complete 71-Project Portfolio Index (213 Localized Case Study Routes)
 

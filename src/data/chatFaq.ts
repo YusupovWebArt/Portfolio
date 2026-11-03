@@ -665,6 +665,27 @@ export const FAQ: FaqItem[] = [
     answerEs:
       'Diseño motores de suscripción headless empresariales con Next.js 16 App Router y Stripe Billing: combinando cuotas periódicas con eventos de consumo en Stripe Meter Events agrupados en Redis. La plataforma calcula prorrateos exactos a mitad de ciclo en tiempo real y gestiona reintentos con colas Redis BullMQ, recuperando el 24.8% de cobros fallidos. Guía completa: /es/blog/headless-subscription-architecture-usage-based-billing-stripe-nextjs-16',
   },
+  {
+    question: 'How do you secure Next.js 16 e-commerce checkouts for PCI-DSS v4.0 compliance?',
+    questionUa: 'Як ви захищаєте e-commerce чекаути на Next.js 16 для відповідності PCI-DSS v4.0?',
+    questionEs: '¿Cómo proteges pasarelas de pago en Next.js 16 para cumplir con PCI-DSS v4.0?',
+    keywords: [
+      'pci-dss',
+      'pci-dss v4.0',
+      'checkout security',
+      'csp level 3',
+      'magecart',
+      'безопасность чекаута',
+      'безпека чекауту',
+      'seguridad de checkout',
+    ],
+    answer:
+      'I harden Next.js 16 e-commerce checkouts for mandatory PCI-DSS v4.0 (Req 6.4.3 & 11.6.1) compliance by generating dynamic cryptographic CSP Level 3 nonces in Edge Middleware (<0.4ms overhead) and validating Subresource Integrity (SRI) SHA-384 hashes for all assets. This setup neutralizes Magecart supply-chain attacks and clears sensitive credentials from browser memory. Read full guide: /en/blog/zero-leakage-checkout-security-pci-dss-v4-csp-nextjs-16',
+    answerUa:
+      'Я захищаю чекаути на Next.js 16 відповідно до вимог стандарту PCI-DSS v4.0 (6.4.3 та 11.6.1): генерація динамічних nonce для CSP Level 3 в Edge Middleware (<0.4 ms оверхеду) та валідація хешів Subresource Integrity (SRI) SHA-384. Це повністю нейтралізує атаки Magecart та гарантує очищення пам’яті від платіжних даних. Детальний розбір: /ua/blog/zero-leakage-checkout-security-pci-dss-v4-csp-nextjs-16',
+    answerEs:
+      'Protejo los procesos de pago en Next.js 16 bajo el estándar obligatorio PCI-DSS v4.0 (Req 6.4.3 y 11.6.1) generando nonces criptográficos dinámicos para CSP Nivel 3 en Edge Middleware (<0.4 ms) y validando hashes SHA-384 con Subresource Integrity (SRI). Esta arquitectura bloquea ataques Magecart y borra credenciales de la memoria del navegador. Guía completa: /es/blog/zero-leakage-checkout-security-pci-dss-v4-csp-nextjs-16',
+  },
 ]
 
 export function matchesFaqKeyword(text: string, kw: string): boolean {
