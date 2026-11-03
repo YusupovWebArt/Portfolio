@@ -749,6 +749,30 @@ export const FAQ: FaqItem[] = [
     answerEs:
       'Arquitecto soluciones de lectura en bases de datos con latencias inferiores a 20 ms a nivel global combinando Cloudflare Hyperdrive para clústeres MySQL/Postgres (reutilizando conexiones TCP para reducir tiempos de 280 ms a <15 ms) con réplicas embebidas en memoria de Turso libSQL (<2 ms) e invalidación ISR en Next.js 16. Guía completa: /es/blog/global-sub-20ms-database-read-latency-edge-cloudflare-hyperdrive-nextjs-16',
   },
+  {
+    question: 'How do you run client-side WebGPU predictive personalization in Next.js 16?',
+    questionUa: 'Як ви запускаєте клієнтську предиктивну персоналізацію на WebGPU в Next.js 16?',
+    questionEs: '¿Cómo ejecutas la personalización predictiva en cliente con WebGPU en Next.js 16?',
+    keywords: [
+      'webgpu',
+      'predictive personalization',
+      'collaborative filtering',
+      'onnx runtime web',
+      'onnx web',
+      'клиентский ml',
+      'клієнтський ml',
+      'персонализация webgpu',
+      'персоналізація webgpu',
+      'personalizacion webgpu',
+      'on-device ml',
+    ],
+    answer:
+      'I run quantized neural collaborative filtering models (4.2MB ONNX) directly on the client GPU via WebGPU and ONNX Runtime Web. User interactions (clicks, views, dwell time) generate real-time vector embeddings in IndexedDB with zero cloud inference cost ( GPU servers) and total privacy compliance (GDPR/CCPA/HIPAA), yielding sub-12ms top-10 product ranking in Next.js 16. Read full breakdown: /en/blog/clientside-webgpu-predictive-personalization-collaborative-filtering-nextjs-16',
+    answerUa:
+      'Я запускаю квантовані нейромережеві моделі колаборативної фільтрації (4.2 МБ ONNX) безпосередньо на GPU клієнта через WebGPU та ONNX Runtime Web. Дії користувача (кліки, перегляди, час на сторінці) формують векторні ембеддинги в IndexedDB із нульовими витратами на хмарні сервери () і 100% відповідністю стандартам приватності (GDPR/CCPA), забезпечуючи ранжування топ-10 товарів за <12мс у Next.js 16. Детальний розбір: /ua/blog/clientside-webgpu-predictive-personalization-collaborative-filtering-nextjs-16',
+    answerEs:
+      'Ejecuto modelos neuronales cuantizados de filtrado colaborativo (4.2MB ONNX) directamente en la GPU del cliente con WebGPU y ONNX Runtime Web. Las interacciones del usuario generan incrustaciones vectoriales en IndexedDB con coste cero de inferencia en la nube () y cumplimiento total de privacidad (GDPR/CCPA), logrando recomendaciones top-10 en menos de 12ms en Next.js 16. Desglose completo: /es/blog/clientside-webgpu-predictive-personalization-collaborative-filtering-nextjs-16',
+  },
 ]
 
 export function matchesFaqKeyword(text: string, kw: string): boolean {

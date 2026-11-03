@@ -155,6 +155,10 @@
     - **Published**: 2026-11-03 | **Tags**: Cloudflare Hyperdrive, Database, Turso, SQLite, MySQL, Edge Computing, Next.js 16, TypeScript
     - **Summary**: An enterprise edge database architecture: combining Cloudflare Hyperdrive pre-warmed TCP connection pooling for MySQL/PostgreSQL with Turso libSQL in-memory embedded SQLite replicas for sub-20ms worldwide reads.
 
+30. **Client-Side WebGPU Predictive Personalization: On-Device Collaborative Filtering & Privacy-First Recommendations in Next.js 16**: https://www.yusupovartur.com/en/blog/clientside-webgpu-predictive-personalization-collaborative-filtering-nextjs-16
+    - **Published**: 2026-11-03 | **Tags**: WebGPU, Machine Learning, Next.js 16, ONNX Runtime Web, Privacy, Personalization, E-Commerce, TypeScript
+    - **Summary**: An enterprise client-side machine learning architecture: running quantized neural collaborative filtering models (4.2MB ONNX) on user GPUs via WebGPU for sub-12ms real-time product recommendations at  cloud inference cost.
+
 ## 5. Complete 71-Project Portfolio Index (213 Localized Case Study Routes)
 
 1. **Next.js 16 & Hybrid RAG Portfolio Platform** (nextjs) - https://www.yusupovartur.com/en/projects/yusupovartur-nextjs-portfolio | Live: https://www.yusupovartur.com/ | Deep-Dive: https://www.yusupovartur.com/en/blog/autonomous-hybrid-rag-architecture-browser
