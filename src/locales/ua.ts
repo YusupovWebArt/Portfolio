@@ -13,6 +13,8 @@ export const ua: Translation = {
       projects: 'Проєкти',
       skills: 'Навички',
       whyMe: 'Чому я',
+      services: 'Послуги',
+      blog: 'Блог',
       contact: 'Контакти',
     },
     langToggle: 'Змінити мову',

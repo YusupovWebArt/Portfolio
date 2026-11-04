@@ -13,6 +13,8 @@ export const en: Translation = {
       projects: 'Projects',
       skills: 'Skills',
       whyMe: 'Why Me',
+      services: 'Services',
+      blog: 'Blog',
       contact: 'Contact',
     },
     langToggle: 'Switch language',

@@ -6,6 +6,8 @@ import { allServices, getServiceBySlug } from '../../../../src/data/services'
 import {
   buildServiceBreadcrumbsJsonLd,
   buildServiceJsonLd,
+  buildServiceFaqJsonLd,
+  buildSevilleLocalBusinessJsonLd,
   serializeJsonLd,
 } from '../../../../src/lib/seo'
 
@@ -82,6 +84,21 @@ export async function generateMetadata({
       siteName: 'Artur Yusupov - Portfolio & B2B Web Engineering',
       locale: isUa ? 'uk_UA' : isEs ? 'es_ES' : 'en_US',
       type: 'website',
+      images: [
+        {
+          url: 'https://www.yusupovartur.com/images/blog/cover-nextjs-vs-headless-wp.png',
+          width: 1200,
+          height: 630,
+          alt: title,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: ['https://www.yusupovartur.com/images/blog/cover-nextjs-vs-headless-wp.png'],
+      creator: '@yusupovwebart',
     },
     robots: {
       index: true,
@@ -105,6 +122,11 @@ export default async function ServiceDetailPage({
 
   const breadcrumbsJsonLd = buildServiceBreadcrumbsJsonLd(content.title, service.slug, validLocale)
   const serviceJsonLd = buildServiceJsonLd(service, validLocale)
+  const faqJsonLd = buildServiceFaqJsonLd(content.faqs)
+  const localBusinessJsonLd =
+    service.slug === 'custom-web-development-seville'
+      ? buildSevilleLocalBusinessJsonLd(validLocale)
+      : null
 
   return (
     <>
@@ -120,6 +142,20 @@ export default async function ServiceDetailPage({
           __html: serializeJsonLd(serviceJsonLd),
         }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: serializeJsonLd(faqJsonLd),
+        }}
+      />
+      {localBusinessJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: serializeJsonLd(localBusinessJsonLd),
+          }}
+        />
+      )}
       <ServiceDetailView service={service} locale={validLocale} />
     </>
   )

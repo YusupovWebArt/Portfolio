@@ -77,4 +77,16 @@ describe('Responsive Header & Mobile/Tablet Navigation Specification (TDD)', () 
     const langBtns = screen.getAllByRole('button', { name: /switch language/i })
     expect(langBtns.length).toBeGreaterThan(0)
   })
-})
+
+  it('should render crawlable semantic links to Services and Blog for SEO crawlers', () => {
+    renderHeader()
+
+    const servicesLinks = screen.getAllByRole('link', { name: /services/i })
+    expect(servicesLinks.length).toBeGreaterThan(0)
+    expect(servicesLinks[0]).toHaveAttribute('href', '/en/services')
+
+    const blogLinks = screen.getAllByRole('link', { name: /blog/i })
+    expect(blogLinks.length).toBeGreaterThan(0)
+    expect(blogLinks[0]).toHaveAttribute('href', '/en/blog')
+  })
+});

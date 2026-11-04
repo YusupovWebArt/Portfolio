@@ -12,6 +12,8 @@ export interface Translation {
       projects: string
       skills: string
       whyMe: string
+      services: string
+      blog: string
       contact: string
     }
     langToggle: string

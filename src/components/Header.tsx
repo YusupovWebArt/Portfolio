@@ -161,14 +161,14 @@ const Header = () => {
   const headerRef = useRef<HTMLElement>(null)
 
   const navItems = [
-    { id: 'home', label: t.header.nav.home },
-    { id: 'about', label: t.header.nav.about },
-    { id: 'how-i-work', label: t.header.nav.aiWorkflow },
-    { id: 'projects', label: t.header.nav.projects },
-    { id: 'skills', label: t.header.nav.skills },
-    { id: 'b2b-services', label: t.b2bServices.badge },
-    { id: 'blog', label: lang === 'ua' ? 'Блог' : lang === 'es' ? 'Blog' : 'Blog' },
-    { id: 'contact', label: t.header.nav.contact },
+    { id: 'home', label: t.header.nav.home, href: `/${lang}#home` },
+    { id: 'about', label: t.header.nav.about, href: `/${lang}#about` },
+    { id: 'how-i-work', label: t.header.nav.aiWorkflow, href: `/${lang}#how-i-work` },
+    { id: 'projects', label: t.header.nav.projects, href: `/${lang}#projects` },
+    { id: 'skills', label: t.header.nav.skills, href: `/${lang}#skills` },
+    { id: 'services', label: t.header.nav.services, href: `/${lang}/services`, isPage: true },
+    { id: 'blog', label: t.header.nav.blog, href: `/${lang}/blog`, isPage: true },
+    { id: 'contact', label: t.header.nav.contact, href: `/${lang}#contact` },
   ]
 
   // Outside click and Escape key dismissal for mobile drawer
@@ -195,13 +195,25 @@ const Header = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = navItems.map((item) => document.getElementById(item.id))
+      if (typeof window !== 'undefined') {
+        if (window.location.pathname.includes('/services')) {
+          setActiveSection('services')
+          return
+        }
+        if (window.location.pathname.includes('/blog')) {
+          setActiveSection('blog')
+          return
+        }
+      }
+
+      const nonPageItems = navItems.filter((item) => !item.isPage)
+      const sections = nonPageItems.map((item) => document.getElementById(item.id))
       const scrollPosition = window.scrollY + 100
 
       for (let i = sections.length - 1; i >= 0; i--) {
         const section = sections[i]
         if (section && section.offsetTop <= scrollPosition) {
-          setActiveSection(navItems[i].id)
+          setActiveSection(nonPageItems[i].id)
           break
         }
       }
@@ -210,30 +222,36 @@ const Header = () => {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [t])
+  }, [t, lang])
 
-  const scrollToSection = (sectionId: string) => {
+  const handleNavClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    item: { id: string; href: string; isPage?: boolean }
+  ) => {
     const isSpa =
       typeof window !== 'undefined' &&
       (Boolean((window as unknown as { __IS_PORTFOLIO_SPA__?: boolean }).__IS_PORTFOLIO_SPA__) ||
         window.location.pathname.startsWith('/Portfolio') ||
         window.location.port === '5173' ||
         window.location.port === '4173')
-    const element = document.getElementById(sectionId)
 
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
-    } else if (sectionId === 'blog') {
+    if (item.isPage) {
       if (isSpa) {
-        window.open(`https://www.yusupovartur.com/${lang}/blog`, '_blank', 'noopener,noreferrer')
-      } else {
-        window.location.assign(`/${lang}/blog`)
+        e.preventDefault()
+        window.open(`https://www.yusupovartur.com${item.href}`, '_blank', 'noopener,noreferrer')
       }
+      setIsMenuOpen(false)
+      return
+    }
+
+    const element = document.getElementById(item.id)
+    if (element) {
+      e.preventDefault()
+      element.scrollIntoView({ behavior: 'smooth' })
     } else {
       if (isSpa) {
-        window.dispatchEvent(new CustomEvent('navigate-to-section', { detail: sectionId }))
-      } else {
-        window.location.assign(`/${lang}#${sectionId}`)
+        e.preventDefault()
+        window.dispatchEvent(new CustomEvent('navigate-to-section', { detail: item.id }))
       }
     }
     setIsMenuOpen(false)
@@ -256,7 +274,7 @@ const Header = () => {
             {/* Logo / Brand Name - protected against multi-line wrapping */}
             <button
               type="button"
-              onClick={() => scrollToSection('home')}
+              onClick={(e) => handleNavClick(e as unknown as React.MouseEvent<HTMLAnchorElement>, navItems[0])}
               aria-label="Artur Yusupov - Portfolio Home"
               className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white hover:text-purple-600 dark:hover:text-lime-400 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-600 dark:focus-visible:outline-lime-400 rounded text-left whitespace-nowrap shrink-0 cursor-pointer"
             >
@@ -266,10 +284,10 @@ const Header = () => {
             {/* Desktop Navigation (>= 1280px xl breakpoint: guarantees zero wrapping and ample breathing room) */}
             <nav className="hidden xl:flex items-center space-x-4 2xl:space-x-7" aria-label="Desktop Navigation">
               {navItems.map((item) => (
-                <button
+                <a
                   key={item.id}
-                  type="button"
-                  onClick={() => scrollToSection(item.id)}
+                  href={item.href}
+                  onClick={(e) => handleNavClick(e, item)}
                   className={`text-sm font-medium whitespace-nowrap transition-colors duration-200 cursor-pointer ${
                     activeSection === item.id
                       ? 'text-purple-600 dark:text-lime-400 font-semibold'
@@ -277,7 +295,7 @@ const Header = () => {
                   }`}
                 >
                   {item.label}
-                </button>
+                </a>
               ))}
             </nav>
 
@@ -360,10 +378,10 @@ const Header = () => {
             <nav id="mobile-navigation" className="xl:hidden pb-4 animate-fade-in" aria-label="Mobile Navigation">
               <div className="mt-2 rounded-2xl border border-slate-200/90 dark:border-slate-700/80 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md shadow-2xl p-3 space-y-1 max-h-[calc(100dvh-5rem)] overflow-y-auto custom-scrollbar">
                 {navItems.map((item) => (
-                  <button
+                  <a
                     key={item.id}
-                    type="button"
-                    onClick={() => scrollToSection(item.id)}
+                    href={item.href}
+                    onClick={(e) => handleNavClick(e, item)}
                     className={`flex items-center justify-between w-full text-left px-4 py-3 rounded-xl text-sm font-semibold transition-all duration-150 cursor-pointer ${
                       activeSection === item.id
                         ? 'text-purple-700 dark:text-lime-400 bg-purple-50 dark:bg-lime-950/40 border border-purple-200/60 dark:border-lime-500/30'
@@ -374,7 +392,7 @@ const Header = () => {
                     {activeSection === item.id && (
                       <span className="w-1.5 h-1.5 rounded-full bg-purple-600 dark:text-lime-400" aria-hidden="true" />
                     )}
-                  </button>
+                  </a>
                 ))}
 
                 {/* Social links row inside drawer */}

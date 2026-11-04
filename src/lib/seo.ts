@@ -787,3 +787,72 @@ export function buildServiceCatalogJsonLd(services: ServiceItem[], locale = 'en'
     }),
   }
 }
+
+export function buildServiceFaqJsonLd(faqs: { q: string; a: string }[]) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((faq) => ({
+      '@type': 'Question',
+      name: faq.q.replace(/[\u2014\u2013]/g, '-'),
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.a.replace(/[\u2014\u2013]/g, '-'),
+      },
+    })),
+  }
+}
+
+export function buildSevilleLocalBusinessJsonLd(locale = 'en') {
+  const isEs = locale === 'es'
+  const isUa = locale === 'ua'
+  const description = isEs
+    ? 'Servicio profesional de diseno y desarrollo web a medida para empresas, pymes y clinicas en Sevilla y Andalucia.'
+    : isUa
+      ? 'Професійна веб-розробка сайтів під ключ для бізнесу та клінік у Севільї та Андалусії.'
+      : 'Professional custom web development and digital engineering for businesses and clinics in Seville and Andalusia.'
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ProfessionalService',
+    '@id': 'https://www.yusupovartur.com/es/services/custom-web-development-seville#localbusiness',
+    name: isEs ? 'Artur Yusupov - Desarrollo Web Sevilla' : 'Artur Yusupov - Web Development Seville',
+    description,
+    url: `https://www.yusupovartur.com/${locale}/services/custom-web-development-seville`,
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Sevilla',
+      addressRegion: 'Andalucia',
+      postalCode: '41001',
+      addressCountry: 'ES',
+    },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: 37.3891,
+      longitude: -5.9845,
+    },
+    areaServed: [
+      {
+        '@type': 'City',
+        name: 'Sevilla',
+      },
+      {
+        '@type': 'AdministrativeArea',
+        name: 'Andalucia',
+      },
+      {
+        '@type': 'Country',
+        name: 'Spain',
+      },
+    ],
+    priceRange: 'EUR',
+    openingHoursSpecification: [
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+        opens: '09:00',
+        closes: '18:00',
+      },
+    ],
+  }
+}

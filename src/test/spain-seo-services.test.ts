@@ -10,6 +10,8 @@ import {
   buildServiceCatalogJsonLd,
   buildServiceBreadcrumbsJsonLd,
   buildServiceCatalogBreadcrumbsJsonLd,
+  buildServiceFaqJsonLd,
+  buildSevilleLocalBusinessJsonLd,
 } from '../lib/seo'
 import { getProjectBySlug } from '../lib/projects'
 
@@ -171,6 +173,29 @@ describe('Commercial B2B Services Specification & SEO Standards', () => {
 
       expect(breadcrumbs.itemListElement[0].name).toBe('Головна')
       expect(breadcrumbs.itemListElement[1].name).toBe('Послуги')
+    })
+    it('builds a valid FAQPage Schema.org graph for rich search results', () => {
+      const service = getServiceBySlug('headless-wordpress-nextjs-migration')!
+      const faqSchema = buildServiceFaqJsonLd(service.content.es.faqs)
+
+      expect(faqSchema['@context']).toBe('https://schema.org')
+      expect(faqSchema['@type']).toBe('FAQPage')
+      expect(faqSchema.mainEntity).toHaveLength(4)
+      expect(faqSchema.mainEntity[0]['@type']).toBe('Question')
+      expect(faqSchema.mainEntity[0].acceptedAnswer['@type']).toBe('Answer')
+      expect(JSON.stringify(faqSchema)).not.toContain('\u2014')
+    })
+
+    it('builds a valid Seville LocalBusiness Schema.org graph with geo coordinates', () => {
+      const localSchema = buildSevilleLocalBusinessJsonLd('es')
+
+      expect(localSchema['@context']).toBe('https://schema.org')
+      expect(localSchema['@type']).toBe('ProfessionalService')
+      expect(localSchema.address.addressLocality).toBe('Sevilla')
+      expect(localSchema.address.postalCode).toBe('41001')
+      expect(localSchema.geo.latitude).toBe(37.3891)
+      expect(localSchema.geo.longitude).toBe(-5.9845)
+      expect(JSON.stringify(localSchema)).not.toContain('\u2014')
     })
   })
 })

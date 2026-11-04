@@ -34,12 +34,12 @@ describe('RAG Knowledge Base Specification (TDD)', () => {
     const chunks = getAllKnowledgeChunks()
 
     chunks.forEach((chunk) => {
-      expect(chunk.content).not.toContain('—')
+      expect(chunk.content).not.toContain('\u2014')
       if (chunk.contentUa) {
-        expect(chunk.contentUa).not.toContain('—')
+        expect(chunk.contentUa).not.toContain('\u2014')
       }
       if (chunk.contentEs) {
-        expect(chunk.contentEs).not.toContain('—')
+        expect(chunk.contentEs).not.toContain('\u2014')
       }
     })
   })
@@ -63,11 +63,19 @@ describe('RAG Knowledge Base Specification (TDD)', () => {
     const kb = loadKnowledgeBase()
 
     expect(kb.profile.length).toBeGreaterThanOrEqual(1)
-    expect(kb.services.length).toBeGreaterThanOrEqual(1)
+    expect(kb.services).toHaveLength(6)
     expect(kb.methodology.length).toBeGreaterThanOrEqual(1)
 
+    const whiteLabel = findChunkBySlug('white-label-agency-partner')
+    expect(whiteLabel).toBeDefined()
+    expect(whiteLabel?.type).toBe('service')
+
+    const sevilleWeb = findChunkBySlug('custom-web-development-seville')
+    expect(sevilleWeb).toBeDefined()
+    expect(sevilleWeb?.type).toBe('service')
+
     const allChunks = getAllKnowledgeChunks()
-    expect(allChunks.length).toBeGreaterThan(69)
+    expect(allChunks.length).toBeGreaterThan(75)
   })
 
   it('should include blog knowledge chunks for engineering articles', () => {

@@ -18,6 +18,7 @@ import { FaWhatsapp as WhatsappIcon } from 'react-icons/fa'
 import type { ServiceItem, ServiceLocale } from '../../data/services/types'
 import { openWhatsAppDirect } from '../../lib/contacts'
 import { getProjectBySlug } from '../../lib/projects'
+import GoogleAdsSavingsCalculator from './GoogleAdsSavingsCalculator'
 
 interface ServiceDetailViewProps {
   service: ServiceItem
@@ -229,6 +230,11 @@ export default function ServiceDetailView({
             ))}
           </div>
         </section>
+
+        {/* Optional Financial Calculator for Web Performance Service */}
+        {service.slug === 'web-performance-core-web-vitals' && (
+          <GoogleAdsSavingsCalculator locale={locale} />
+        )}
 
         {/* Section 4: Relevant Live Case Studies */}
         {relevantProjects.length > 0 && (

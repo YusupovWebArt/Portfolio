@@ -3,6 +3,7 @@ import { projectRegistry } from '../projectRegistry'
 import { stripEmDashes } from './text'
 import { PUBLIC_PROFILES } from '../profiles'
 import { allBlogPosts } from '../../data/blog'
+import { allServices } from '../../data/services'
 
 export type ProjectFacet = 'overview' | 'stack' | 'features' | 'architecture' | 'case-study'
 
@@ -269,39 +270,91 @@ const buildProfileChunks = (): KnowledgeChunk[] => [
   },
 ]
 
-const buildServiceChunks = (): KnowledgeChunk[] => [
-  {
-    id: 'services-b2b',
-    type: 'service',
-    title: 'B2B Services, Pricing & Engineering Capabilities',
-    slug: 'services',
-    content: stripEmDashes(
-      'Key engineering services provided by Artur Yusupov: 1. Custom WordPress & WooCommerce Development: Bespoke Gutenberg themes, ACF Pro, secure REST API integrations, performance optimization. 2. Next.js & React Engineering: Enterprise single page applications, SSR/SSG architectures, TypeScript strict typing, Tailwind CSS. 3. Cloud & High-Load Migrations: Zero-downtime AWS infrastructure migration, CDN setup, database optimization. 4. AI-Augmented Development: Custom RAG systems, AI chatbot integration with tool calling, and Spec-Driven Development workflows. 5. Engagement Models, Pricing, and Contract Rates: Flexible cooperation formats including full-time remote engineering, dedicated part-time contracts, hourly rate packages, and fixed-price milestone delivery. Transparent estimates and sprint-based billing.'
-    ),
-    contentUa: stripEmDashes(
-      'Ключові послуги Артура Юсупова: 1. Кастомна розробка на WordPress та WooCommerce (Gutenberg, ACF Pro, REST API). 2. Next.js та React інженерія (корпоративні SPA, SSR/SSG, TypeScript, Tailwind). 3. Хмарна міграція та високі навантаження (AWS, CDN, оптимізація баз даних). 4. AI-орієнтована розробка (RAG-системи, AI-чатботи з Tool Calling, SDD). 5. Моделі співпраці, ціни та контрактні тарифи: гнучкі формати, включаючи віддалену розробку full-time, part-time контракти, погодинні ставки та фіксовану вартість за проєкт.'
-    ),
-    contentEs: stripEmDashes(
-      'Servicios de ingeniería ofrecidos por Artur Yusupov: 1. Desarrollo a medida en WordPress y WooCommerce. 2. Ingeniería en Next.js y React con TypeScript y Tailwind. 3. Migraciones a la nube y alta concurrencia en AWS. 4. Desarrollo potenciado por IA con RAG y flujos SDD. 5. Modelos de contratación, precios y tarifas: formatos flexibles que incluyen dedicación completa remota, contratos a tiempo parcial, paquetes por horas y proyectos a precio cerrado.'
-    ),
-    metadata: {
-      keywords: [
-        'services',
-        'wordpress',
-        'nextjs',
-        'react',
-        'woocommerce',
-        'aws',
-        'pricing',
-        'price',
-        'rates',
-        'contract',
-        'hire',
-        'cost',
-      ],
+const buildServiceChunks = (): KnowledgeChunk[] => {
+  const chunks: KnowledgeChunk[] = [
+    {
+      id: 'services-b2b',
+      type: 'service',
+      title: 'B2B Services, Pricing & Engineering Capabilities',
+      slug: 'services',
+      content: stripEmDashes(
+        'Key engineering services provided by Artur Yusupov: 1. White-label web engineering for digital agencies under strict NDA. 2. Headless WordPress and monolith migrations to Next.js 16. 3. Web performance & Core Web Vitals optimization (PageSpeed 95+). 4. Custom web development for businesses and clinics in Seville & Spain. 5. Custom RAG AI Assistants & 24/7 business automation. Flexible cooperation formats including fixed-price milestone delivery, dedicated retainers, and transparent sprint billing.'
+      ),
+      contentUa: stripEmDashes(
+        'Ключові послуги Артура Юсупова: 1. White-label розробка Marca Blanca для digital-агенцій під NDA. 2. Міграція з WordPress на Next.js 16 Headless. 3. Оптимізація Core Web Vitals (PageSpeed 95+). 4. Розробка сайтів під ключ у Севільї та Іспанії. 5. Корпоративні RAG AI-асистенти 24/7.'
+      ),
+      contentEs: stripEmDashes(
+        'Servicios B2B de ingeniería web de Artur Yusupov: 1. Desarrollo web marca blanca para agencias digitales bajo NDA. 2. Migración de WordPress a Next.js 16 Headless. 3. Optimización Core Web Vitals y Google Ads (PageSpeed 95+). 4. Desarrollo web a medida en Sevilla y España para Pymes. 5. Asistentes virtuales de IA con RAG 24/7.'
+      ),
+      metadata: {
+        keywords: [
+          'services',
+          'wordpress',
+          'nextjs',
+          'react',
+          'woocommerce',
+          'aws',
+          'pricing',
+          'price',
+          'rates',
+          'contract',
+          'hire',
+          'cost',
+          'b2b',
+        ],
+      },
     },
-  },
-]
+  ]
+
+  for (const service of allServices) {
+    const en = service.content.en
+    const es = service.content.es
+    const ua = service.content.ua
+
+    const metricsStr = en.metrics.map((m) => `${m.label}: ${m.value}`).join('; ')
+    const probsStr = en.problemsSolved.map((p) => `${p.title}: ${p.desc}`).join('; ')
+    const delivStr = en.deliverables.map((d) => `${d.title}: ${d.items.join(', ')}`).join('; ')
+    const faqsStr = en.faqs.map((f) => `Q: ${f.q} A: ${f.a}`).join(' | ')
+
+    const metricsStrEs = es.metrics.map((m) => `${m.label}: ${m.value}`).join('; ')
+    const probsStrEs = es.problemsSolved.map((p) => `${p.title}: ${p.desc}`).join('; ')
+    const delivStrEs = es.deliverables.map((d) => `${d.title}: ${d.items.join(', ')}`).join('; ')
+    const faqsStrEs = es.faqs.map((f) => `Q: ${f.q} A: ${f.a}`).join(' | ')
+
+    const metricsStrUa = ua.metrics.map((m) => `${m.label}: ${m.value}`).join('; ')
+    const probsStrUa = ua.problemsSolved.map((p) => `${p.title}: ${p.desc}`).join('; ')
+    const delivStrUa = ua.deliverables.map((d) => `${d.title}: ${d.items.join(', ')}`).join('; ')
+    const faqsStrUa = ua.faqs.map((f) => `Q: ${f.q} A: ${f.a}`).join(' | ')
+
+    chunks.push({
+      id: `service-${service.slug}`,
+      type: 'service',
+      title: stripEmDashes(en.title),
+      slug: service.slug,
+      category: service.audience,
+      content: stripEmDashes(
+        `${en.title}. ${en.shortDesc} ${en.heroLead} Metrics: ${metricsStr}. Problems Solved: ${probsStr}. Deliverables: ${delivStr}. FAQs: ${faqsStr}.`
+      ),
+      contentEs: stripEmDashes(
+        `${es.title}. ${es.shortDesc} ${es.heroLead} Métricas: ${metricsStrEs}. Problemas que Resuelve: ${probsStrEs}. Entregables: ${delivStrEs}. Preguntas Frecuentes: ${faqsStrEs}.`
+      ),
+      contentUa: stripEmDashes(
+        `${ua.title}. ${ua.shortDesc} ${ua.heroLead} Метрики: ${metricsStrUa}. Проблеми, які вирішує: ${probsStrUa}. Результати: ${delivStrUa}. Часті питання: ${faqsStrUa}.`
+      ),
+      metadata: {
+        keywords: [
+          'service',
+          service.slug,
+          service.audience,
+          ...en.badge.toLowerCase().split(/\s+/),
+          ...service.relevantProjectSlugs,
+        ],
+      },
+    })
+  }
+
+  return chunks
+}
 
 const buildMethodologyChunks = (): KnowledgeChunk[] => [
   {

@@ -68,6 +68,21 @@ export async function generateMetadata({
       siteName: 'Artur Yusupov - Portfolio & B2B Web Engineering',
       locale: isUa ? 'uk_UA' : isEs ? 'es_ES' : 'en_US',
       type: 'website',
+      images: [
+        {
+          url: 'https://www.yusupovartur.com/images/blog/cover-nextjs-vs-headless-wp.png',
+          width: 1200,
+          height: 630,
+          alt: title,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: ['https://www.yusupovartur.com/images/blog/cover-nextjs-vs-headless-wp.png'],
+      creator: '@yusupovwebart',
     },
     robots: {
       index: true,
