@@ -13,7 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   for (const locale of locales) {
     sitemapEntries.push({
       url: `${baseUrl}/${locale}`,
-      lastModified: new Date('2026-10-22'),
+      lastModified: new Date('2026-11-04'),
       changeFrequency: 'monthly',
       priority: 1.0,
       alternates: {
@@ -21,6 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
           en: `${baseUrl}/en`,
           uk: `${baseUrl}/ua`,
           es: `${baseUrl}/es`,
+          'es-ES': `${baseUrl}/es`,
           'x-default': `${baseUrl}/en`,
         },
       },
@@ -32,7 +33,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     for (const entry of entries) {
       sitemapEntries.push({
         url: `${baseUrl}/${locale}/projects/${entry.slug}`,
-        lastModified: new Date('2026-10-22'),
+        lastModified: new Date('2026-11-04'),
         changeFrequency: 'monthly',
         priority: 0.8,
         alternates: {
@@ -40,6 +41,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
             en: `${baseUrl}/en/projects/${entry.slug}`,
             uk: `${baseUrl}/ua/projects/${entry.slug}`,
             es: `${baseUrl}/es/projects/${entry.slug}`,
+            'es-ES': `${baseUrl}/es/projects/${entry.slug}`,
             'x-default': `${baseUrl}/en/projects/${entry.slug}`,
           },
         },
@@ -51,7 +53,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   for (const locale of locales) {
     sitemapEntries.push({
       url: `${baseUrl}/${locale}/blog`,
-      lastModified: new Date('2026-10-22'),
+      lastModified: new Date('2026-11-04'),
       changeFrequency: 'weekly',
       priority: 0.9,
       alternates: {
@@ -59,6 +61,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
           en: `${baseUrl}/en/blog`,
           uk: `${baseUrl}/ua/blog`,
           es: `${baseUrl}/es/blog`,
+          'es-ES': `${baseUrl}/es/blog`,
           'x-default': `${baseUrl}/en/blog`,
         },
       },
@@ -70,7 +73,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     for (const post of allBlogPosts) {
       sitemapEntries.push({
         url: `${baseUrl}/${locale}/blog/${post.slug}`,
-        lastModified: new Date(post.date || '2026-10-22'),
+        lastModified: new Date(post.date || '2026-11-04'),
         changeFrequency: 'monthly',
         priority: 0.85,
         alternates: {
@@ -78,6 +81,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
             en: `${baseUrl}/en/blog/${post.slug}`,
             uk: `${baseUrl}/ua/blog/${post.slug}`,
             es: `${baseUrl}/es/blog/${post.slug}`,
+            'es-ES': `${baseUrl}/es/blog/${post.slug}`,
             'x-default': `${baseUrl}/en/blog/${post.slug}`,
           },
         },

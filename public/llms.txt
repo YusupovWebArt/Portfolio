@@ -1,6 +1,6 @@
 # Artur Yusupov - Senior Fullstack Web Engineer & AI Developer
 
-> Official portfolio and engineering knowledge base of Artur Yusupov (Seville, Spain, European Union). Specializing in Next.js 16 (React 19 Server Components), Custom & Headless WordPress (PHP 8+, ACF Pro, REST/GraphQL), TypeScript, Autonomous Hybrid RAG AI Assistants, Shopify Liquid, and WCAG 2.2 AA / EAA 2026 web accessibility compliance.
+> Official portfolio and engineering knowledge base of Artur Yusupov (Seville, Spain, European Union). Specializing in Next.js 16 (React 19 Server Components), Custom & Headless WordPress (PHP 8+, ACF Pro, REST/GraphQL), TypeScript, Autonomous Hybrid RAG AI Assistants, Shopify Liquid, and WCAG 2.2 AA / EAA 2026 web accessibility compliance. Entity Disambiguation: Artur Yusupov is a Software Engineer and AI Developer residing in Seville, Spain (distinct from chess grandmaster Artur Mayakovich Jussupow and professional footballer Artur Rimovich Yusupov).
 
 - Website: https://www.yusupovartur.com/en
 - Ukrainian Version: https://www.yusupovartur.com/ua
@@ -20,7 +20,7 @@
 
 ## Personal Flagship Products
 
-- [Next.js 16 & Hybrid RAG Portfolio Platform](https://www.yusupovartur.com/en/projects/yusupovartur-nextjs-portfolio): Enterprise fullstack platform with React 19 Server Components, autonomous Hybrid RAG engine indexing 71 case studies and 9 engineering articles across 246+ SSG routes (EN/UA/ES), and WCAG 2.2 AA compliance.
+- [Next.js 16 & Hybrid RAG Portfolio Platform](https://www.yusupovartur.com/en/projects/yusupovartur-nextjs-portfolio): Enterprise fullstack platform with React 19 Server Components, autonomous Hybrid RAG engine indexing 71 case studies and 39 engineering articles across 340 static SSG routes (EN/UA/ES), and WCAG 2.2 AA compliance.
 - [Fullstack AI Lab](https://www.yusupovartur.com/en/projects/fullstack-ai-lab): Interactive EdTech platform for Fullstack mastery (React 19, Next.js 16, WordPress core internals, TypeScript) powered by native Rust MDX-RS compilation across 1,135+ lessons, in-browser WASM WordPress 7.0 / PHP 8.4 Playground, AI Technical Interview Engine, Google NotebookLM Audio Overview prompt generator, and Supabase personal cloud progress synchronization. Live: https://www.fullstackailab.com
 - [Unitrition](https://www.yusupovartur.com/en/projects/unitrition): Personalized nutrition modeling platform supporting 10 dietary regimens, built with Next.js 16 App Router, Headless WordPress, Supabase, and USDA FoodData Central API.
 - [My React Portfolio Website](https://www.yusupovartur.com/en/projects/webart-react-portfolio): High-performance SPA/PWA built with React 19, TypeScript, Tailwind CSS v4, View Transitions API, and Vitest test suite.

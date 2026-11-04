@@ -6,6 +6,7 @@ import {
   buildProjectJsonLd,
   buildProjectBreadcrumbsJsonLd,
   toAbsoluteAssetUrl,
+  serializeJsonLd,
 } from '../../../../src/lib/seo'
 import ProjectDetailView from '../../../../src/components/ProjectDetailView'
 
@@ -74,6 +75,7 @@ export async function generateMetadata({
         en: `/en/projects/${slug}`,
         uk: `/ua/projects/${slug}`,
         es: `/es/projects/${slug}`,
+        'es-ES': `/es/projects/${slug}`,
         'x-default': `/en/projects/${slug}`,
       },
     },
@@ -115,11 +117,11 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbsJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumbsJsonLd) }}
       />
       <main id="main-content">
         <ProjectDetailView project={project} slug={slug} locale={locale} />

@@ -6,6 +6,10 @@ export function toBcp47Lang(locale = 'en'): string {
   return locale === 'ua' ? 'uk' : locale
 }
 
+export function serializeJsonLd(data: unknown): string {
+  return JSON.stringify(data).replace(/</g, '\\u003c')
+}
+
 export function toAbsoluteAssetUrl(imagePath: string): string {
   if (!imagePath) return `${baseUrl}/images/og-image.jpg`
   if (imagePath.startsWith('http')) return imagePath
@@ -460,6 +464,18 @@ export function buildPersonAndWebsiteJsonLd(locale = 'en') {
       ? 'Portafolio y centro de ingeniería de Artur Yusupov - Desarrollador Fullstack WordPress, ingeniero React/Next.js y especialista en IA y SEO.'
       : 'Engineering portfolio of Artur Yusupov - Senior Fullstack WordPress & Next.js Engineer specializing in high-performance web applications, custom RAG AI assistants, and technical SEO.'
 
+  const disambiguatingDescriptionPerson = isUa
+    ? 'Fullstack веб-інженер, Next.js 16 архітектор та розробник автономних Hybrid RAG AI систем із Севільї, Іспанія (не плутати з однойменним шаховим гросмейстером чи футболістом).'
+    : isEs
+      ? 'Ingeniero de Software Fullstack, Arquitecto Next.js 16 y Desarrollador de Inteligencia Artificial Hybrid RAG residente en Sevilla, España (no confundir con el Gran Maestro de ajedrez ni el futbolista homónimo).'
+      : 'Fullstack Web Engineer, Next.js 16 Architect, and Hybrid RAG AI Systems Developer based in Seville, Spain (distinct from the chess grandmaster or footballer).'
+
+  const disambiguatingDescriptionService = isUa
+    ? 'B2B веб-інженерія, розробка під ключ, субпідряд Marca Blanca для агенцій та AI RAG рішення від Артура Юсупова (Севілья, Іспанія).'
+    : isEs
+      ? 'Servicios B2B de ingeniería web, desarrollo a medida, Marca Blanca para agencias y soluciones de IA RAG por Artur Yusupov (Sevilla, España).'
+      : 'B2B web engineering, custom development, Marca Blanca white-label for agencies, and AI RAG solutions by Artur Yusupov (Seville, Spain).'
+
   return {
     '@context': 'https://schema.org',
     '@graph': [
@@ -480,65 +496,126 @@ export function buildPersonAndWebsiteJsonLd(locale = 'en') {
         name: 'Artur Yusupov',
         jobTitle,
         url: baseUrl,
+        disambiguatingDescription: disambiguatingDescriptionPerson,
         sameAs: [
           'https://github.com/YusupovWebArt',
           'https://www.linkedin.com/in/artur-iusupov/',
           'https://x.com/yusupovwebart',
+          'https://www.fullstackailab.com',
+          'https://unitrition.info',
         ],
         address: {
           '@type': 'PostalAddress',
-          addressLocality: 'Seville',
-          addressRegion: 'Andalusia',
+          addressLocality: isEs ? 'Sevilla' : isUa ? 'Севілья' : 'Seville',
+          addressRegion: isEs ? 'Andalucía' : isUa ? 'Андалусія' : 'Andalusia',
           addressCountry: 'ES',
         },
-        knowsAbout: [
-          'WordPress Development',
-          'Next.js 16',
-          'React 19',
-          'TypeScript',
-          'PHP 8',
-          'Shopify Liquid',
-          'Headless CMS',
-          'Retrieval-Augmented Generation (RAG)',
-          'Core Web Vitals Optimization',
-          'WCAG 2.2 AA Accessibility',
-        ],
+        knowsAbout: isEs
+          ? [
+              'Desarrollo WordPress',
+              'Next.js 16',
+              'React 19',
+              'TypeScript',
+              'PHP 8',
+              'Shopify Liquid',
+              'Headless CMS',
+              'Retrieval-Augmented Generation (RAG)',
+              'Optimización Core Web Vitals',
+              'Accesibilidad Web WCAG 2.2 AA',
+              'European Accessibility Act (EAA 2026)',
+            ]
+          : isUa
+            ? [
+                'Розробка на WordPress',
+                'Next.js 16',
+                'React 19',
+                'TypeScript',
+                'PHP 8',
+                'Shopify Liquid',
+                'Headless CMS',
+                'Retrieval-Augmented Generation (RAG)',
+                'Оптимізація Core Web Vitals',
+                'Доступність WCAG 2.2 AA',
+                'European Accessibility Act (EAA 2026)',
+              ]
+            : [
+                'WordPress Development',
+                'Next.js 16',
+                'React 19',
+                'TypeScript',
+                'PHP 8',
+                'Shopify Liquid',
+                'Headless CMS',
+                'Retrieval-Augmented Generation (RAG)',
+                'Core Web Vitals Optimization',
+                'WCAG 2.2 AA Accessibility',
+                'European Accessibility Act (EAA 2026)',
+              ],
       },
       {
         '@type': 'ProfessionalService',
         '@id': `${baseUrl}/#service`,
-        name: 'Artur Yusupov Web Engineering Services',
+        name: isEs
+          ? 'Servicios de Ingeniería Web Artur Yusupov'
+          : isUa
+            ? 'Послуги веб-інженерії Артура Юсупова'
+            : 'Artur Yusupov Web Engineering Services',
+        disambiguatingDescription: disambiguatingDescriptionService,
         url: `${baseUrl}/${locale}`,
         image: `${baseUrl}/images/og-image.jpg`,
         priceRange: '$$$',
         address: {
           '@type': 'PostalAddress',
-          addressLocality: 'Seville',
+          addressLocality: isEs ? 'Sevilla' : isUa ? 'Севілья' : 'Seville',
+          addressRegion: isEs ? 'Andalucía' : isUa ? 'Андалусія' : 'Andalusia',
           addressCountry: 'ES',
         },
         areaServed: [
           {
             '@type': 'Country',
-            name: 'Spain',
+            name: isEs ? 'España' : isUa ? 'Іспанія' : 'Spain',
           },
           {
             '@type': 'Country',
-            name: 'European Union',
+            name: isEs ? 'Unión Europea' : isUa ? 'Європейський Союз' : 'European Union',
           },
           {
             '@type': 'Country',
-            name: 'Worldwide',
+            name: isEs ? 'Mundial' : isUa ? 'Весь світ' : 'Worldwide',
           },
         ],
-        serviceType: [
-          'Fullstack Web Engineering',
-          'Custom WordPress Theme & Plugin Development',
-          'Headless WordPress & Next.js Architecture',
-          'Shopify E-Commerce Stores',
-          'Autonomous In-Browser AI Assistant Integration',
-          'Core Web Vitals Sub-Second Performance Tuning',
-          'WCAG 2.2 AA Accessibility Audits & Remediation',
-        ],
+        serviceType: isEs
+          ? [
+              'Ingeniería Web Fullstack',
+              'Desarrollo de Temas y Plugins Personalizados de WordPress',
+              'Arquitectura Headless WordPress y Next.js',
+              'Desarrollo Web Marca Blanca para Agencias',
+              'Tiendas Online Shopify y E-Commerce',
+              'Integración de Asistentes de IA con RAG en Navegador',
+              'Optimización de Rendimiento Core Web Vitals Sub-Segundo',
+              'Auditorías y Remediación de Accesibilidad WCAG 2.2 AA',
+            ]
+          : isUa
+            ? [
+                'Fullstack веб-інженерія',
+                'Розробка кастомних тем та плагінів WordPress',
+                'Архітектура Headless WordPress та Next.js',
+                'Розробка Marca Blanca для агенцій',
+                'E-Commerce магазини Shopify',
+                'Інтеграція автономних RAG AI-асистентів',
+                'Оптимізація швидкості Core Web Vitals до 0.8с',
+                'Аудит та імплементація доступності WCAG 2.2 AA',
+              ]
+            : [
+                'Fullstack Web Engineering',
+                'Custom WordPress Theme & Plugin Development',
+                'Headless WordPress & Next.js Architecture',
+                'White-Label Web Development for Agencies',
+                'Shopify E-Commerce Stores',
+                'Autonomous In-Browser AI Assistant Integration',
+                'Core Web Vitals Sub-Second Performance Tuning',
+                'WCAG 2.2 AA Accessibility Audits & Remediation',
+              ],
       },
     ],
   }

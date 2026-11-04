@@ -75,11 +75,6 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
-        source: '/',
-        destination: '/en',
-        permanent: true,
-      },
-      {
         source: '/:locale(en|ua|es)/projects/wpskills',
         destination: '/:locale/projects/fullstack-ai-lab',
         permanent: true,

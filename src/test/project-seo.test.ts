@@ -6,6 +6,8 @@ import {
   buildProjectBreadcrumbsJsonLd,
   buildBlogCatalogBreadcrumbsJsonLd,
   buildWebsiteFaqJsonLd,
+  buildPersonAndWebsiteJsonLd,
+  serializeJsonLd,
   toBcp47Lang,
   toAbsoluteAssetUrl,
   toAbsoluteOgImageUrl,
@@ -111,5 +113,41 @@ describe('Automated Project SEO/GEO Metadata Specification (TDD)', () => {
     for (const post of allBlogPosts) {
       expect(llmsFullContent).toContain(`/en/blog/${post.slug}`)
     }
+  })
+
+  it('should generate valid Person and ProfessionalService JSON-LD with Entity Disambiguation and localized Seville geo-coordinates', () => {
+    const schemaEs = buildPersonAndWebsiteJsonLd('es')
+    expect(schemaEs['@context']).toBe('https://schema.org')
+    expect(schemaEs['@graph']).toHaveLength(3)
+
+    const person = schemaEs['@graph'].find((item) => (item as { '@type': string })['@type'] === 'Person') as {
+      name: string
+      disambiguatingDescription: string
+      address: { addressLocality: string; addressRegion: string; addressCountry: string }
+      sameAs: string[]
+    }
+    expect(person).toBeDefined()
+    expect(person.name).toBe('Artur Yusupov')
+    expect(person.disambiguatingDescription).toContain('Sevilla')
+    expect(person.disambiguatingDescription).toContain('ajedrez')
+    expect(person.address.addressLocality).toBe('Sevilla')
+    expect(person.address.addressRegion).toBe('Andalucía')
+    expect(person.address.addressCountry).toBe('ES')
+    expect(person.sameAs).toContain('https://www.fullstackailab.com')
+    expect(person.sameAs).toContain('https://unitrition.info')
+
+    const service = schemaEs['@graph'].find(
+      (item) => (item as { '@type': string })['@type'] === 'ProfessionalService'
+    ) as {
+      disambiguatingDescription: string
+      areaServed: { name: string }[]
+    }
+    expect(service).toBeDefined()
+    expect(service.disambiguatingDescription).toContain('Marca Blanca')
+    expect(service.areaServed[0].name).toBe('España')
+
+    const serialized = serializeJsonLd(schemaEs)
+    expect(serialized).not.toContain('<')
+    expect(serialized).not.toContain('\u2014')
   })
 })

@@ -11,6 +11,7 @@ import {
   buildBlogPostJsonLd,
   buildBlogBreadcrumbsJsonLd,
   toAbsoluteOgImageUrl,
+  serializeJsonLd,
 } from '../../../../src/lib/seo'
 import BlogDetailView from '../../../../src/components/blog/BlogDetailView'
 
@@ -62,6 +63,7 @@ export async function generateMetadata({
         en: `https://www.yusupovartur.com/en/blog/${slug}`,
         uk: `https://www.yusupovartur.com/ua/blog/${slug}`,
         es: `https://www.yusupovartur.com/es/blog/${slug}`,
+        'es-ES': `https://www.yusupovartur.com/es/blog/${slug}`,
         'x-default': `https://www.yusupovartur.com/en/blog/${slug}`,
       },
     },
@@ -120,11 +122,11 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(articleJsonLd) }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbsJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumbsJsonLd) }}
       />
       <main id="main-content">
         <BlogDetailView post={post} locale={locale || 'en'} />

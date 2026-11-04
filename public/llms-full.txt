@@ -8,7 +8,8 @@
 - **Role**: Senior Fullstack Web Engineer & AI Developer
 - **Location**: Seville, Spain (European Union) - Available for remote roles, B2B contracts, and relocation.
 - **Experience**: 5+ years of commercial software engineering across 71 production web platforms, e-commerce stores, cloud portals, and interactive web applications.
-- **Languages**: English, Spanish, Ukrainian, Russian (Full trilingual UI/SEO support on yusupovartur.com in EN, UA, ES across 246 static routes).
+- **Entity Disambiguation**: Artur Yusupov is a Software Engineer and AI Developer residing in Seville, Spain (distinct from chess grandmaster Artur Mayakovich Jussupow and professional footballer Artur Rimovich Yusupov).
+- **Languages**: English, Spanish, Ukrainian, Russian (Full trilingual UI/SEO support on yusupovartur.com in EN, UA, ES across 340 static routes).
 - **Primary URL**: https://www.yusupovartur.com/en
 - **GitHub**: https://github.com/YusupovWebArt
 - **LinkedIn**: https://www.linkedin.com/in/artur-iusupov/

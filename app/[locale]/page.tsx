@@ -6,7 +6,11 @@ import Skills from '../../src/components/Skills'
 import B2bServices from '../../src/components/B2bServices'
 import Contact from '../../src/components/Contact'
 import Projects from '../../src/components/Projects'
-import { buildWebsiteFaqJsonLd, buildPersonAndWebsiteJsonLd } from '../../src/lib/seo'
+import {
+  buildWebsiteFaqJsonLd,
+  buildPersonAndWebsiteJsonLd,
+  serializeJsonLd,
+} from '../../src/lib/seo'
 
 interface LandingPageProps {
   params?: Promise<{
@@ -24,11 +28,11 @@ export default async function LandingPage({ params }: LandingPageProps) {
     <main id="main-content">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(faqSchema) }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(personWebsiteSchema) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(personWebsiteSchema) }}
       />
       <Hero />
       <About />

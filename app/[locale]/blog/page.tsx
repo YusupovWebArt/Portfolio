@@ -9,6 +9,7 @@ import {
 import {
   buildBlogCatalogJsonLd,
   buildBlogCatalogBreadcrumbsJsonLd,
+  serializeJsonLd,
 } from '../../../src/lib/seo'
 
 interface BlogCatalogPageProps {
@@ -63,6 +64,7 @@ export async function generateMetadata({
         en: 'https://www.yusupovartur.com/en/blog',
         uk: 'https://www.yusupovartur.com/ua/blog',
         es: 'https://www.yusupovartur.com/es/blog',
+        'es-ES': 'https://www.yusupovartur.com/es/blog',
         'x-default': 'https://www.yusupovartur.com/en/blog',
       },
     },
@@ -110,11 +112,11 @@ export default async function BlogCatalogPage({ params }: BlogCatalogPageProps) 
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(catalogJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(catalogJsonLd) }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbsJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(breadcrumbsJsonLd) }}
       />
       <main id="main-content">
         <BlogCatalogView locale={currentLocale} />

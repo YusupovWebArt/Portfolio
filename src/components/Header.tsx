@@ -80,6 +80,19 @@ const LangDropdown = ({ lang, label, onSelect, compact = false }: LangDropdownPr
 
   const CurrentFlag = FLAGS[lang].component
 
+  const getTargetUrl = (targetLang: Lang): string => {
+    if (typeof window === 'undefined') {
+      return `/${targetLang}`
+    }
+    const pathname = window.location.pathname
+    const hash = window.location.hash || ''
+    const match = pathname.match(/^\/(en|ua|es)(.*)/)
+    if (match) {
+      return `/${targetLang}${match[2] || ''}${hash}`
+    }
+    return `/${targetLang}`
+  }
+
   return (
     <div ref={ref} className="relative">
       <button
@@ -102,36 +115,38 @@ const LangDropdown = ({ lang, label, onSelect, compact = false }: LangDropdownPr
         />
       </button>
 
-      {open && (
-        <div
-          role="listbox"
-          aria-label={`${label}: ${FLAGS[lang].code}`}
-          className="absolute right-0 mt-1.5 w-28 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl shadow-xl overflow-hidden z-50 animate-fade-in"
-        >
-          {(Object.entries(FLAGS) as [Lang, { component: React.FC; code: string }][]).map(
-            ([code, { component: FlagComponent, code: itemLabel }]) => (
-              <button
-                key={code}
-                type="button"
-                role="option"
-                aria-selected={lang === code}
-                onClick={() => {
-                  onSelect(code)
-                  setOpen(false)
-                }}
-                className={`flex items-center gap-2.5 w-full px-3 py-2 text-xs font-semibold transition-colors duration-150 cursor-pointer ${
-                  lang === code
-                    ? 'bg-slate-100 dark:bg-slate-800 text-purple-600 dark:text-lime-400'
-                    : 'text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800'
-                }`}
-              >
-                <FlagComponent />
-                <span>{itemLabel}</span>
-              </button>
-            )
-          )}
-        </div>
-      )}
+      <div
+        role="listbox"
+        aria-label={`${label}: ${FLAGS[lang].code}`}
+        className={`absolute right-0 mt-1.5 w-28 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl shadow-xl overflow-hidden z-50 ${
+          open ? 'block animate-fade-in' : 'hidden'
+        }`}
+      >
+        {(Object.entries(FLAGS) as [Lang, { component: React.FC; code: string }][]).map(
+          ([code, { component: FlagComponent, code: itemLabel }]) => (
+            <a
+              key={code}
+              href={getTargetUrl(code)}
+              hrefLang={code === 'ua' ? 'uk' : code}
+              role="option"
+              aria-selected={lang === code}
+              onClick={(e) => {
+                e.preventDefault()
+                onSelect(code)
+                setOpen(false)
+              }}
+              className={`flex items-center gap-2.5 w-full px-3 py-2 text-xs font-semibold transition-colors duration-150 cursor-pointer ${
+                lang === code
+                  ? 'bg-slate-100 dark:bg-slate-800 text-purple-600 dark:text-lime-400'
+                  : 'text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800'
+              }`}
+            >
+              <FlagComponent />
+              <span>{itemLabel}</span>
+            </a>
+          )
+        )}
+      </div>
     </div>
   )
 }
