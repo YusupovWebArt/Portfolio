@@ -847,6 +847,31 @@ export const FAQ: FaqItem[] = [
     answerEs:
       'Elimino el antipatrón de doble escritura en Server Actions de Next.js 16 confirmando entidades de dominio y eventos outbox en una única transacción ACID local. El conector Debezium CDC lee el Write-Ahead Log (WAL) de PostgreSQL mediante pgoutput, transmitiendo eventos a Kafka/Redpanda con latencias inferiores a 18ms. La coherencia entre microservicios se asegura mediante sagas orquestadas con compensaciones automáticas e idempotencia con filtros Bloom en Redis. Guía de arquitectura completa: /es/blog/event-driven-microservices-kafka-outbox-pattern-nextjs-16',
   },
+  {
+    question: 'How do you implement Fine-Grained Authorization and ReBAC with Google Zanzibar in Next.js 16?',
+    questionUa: 'Як ви реалізуєте гранулярну авторизацію та ReBAC на базі Google Zanzibar у Next.js 16?',
+    questionEs: '¿Cómo implementas la autorización granular y ReBAC con Google Zanzibar en Next.js 16?',
+    keywords: [
+      'rebac',
+      'google zanzibar',
+      'openfga',
+      'fine-grained authorization',
+      'гранулярная авторизация',
+      'гранулярна авторизація',
+      'авторизация zanzibar',
+      'авторизація zanzibar',
+      'autorizacion granular',
+      'role explosion',
+      'выбух ролей',
+      'вибух ролей',
+    ],
+    answer:
+      'I replace brittle RBAC role explosion in multi-tenant platforms with Google Zanzibar-inspired Relationship-Based Access Control (ReBAC) using OpenFGA. Permissions are evaluated as graph relationship tuples (user:X is relation of object:Y) with transitive inheritance (e.g., folder editors inherit document write permissions). Combined with Next.js 16 Edge Middleware and Redis evaluation caching, authorization checks resolve in sub-12ms with strict zero-trust validation before all database mutations. Read full architecture breakdown: /en/blog/fine-grained-access-control-rebac-openfga-nextjs-16',
+    answerUa:
+      'Я замінюю крихкий вибух ролей RBAC у багатокористувацьких платформах на модель ReBAC (Relationship-Based Access Control) на базі Google Zanzibar та OpenFGA. Права обчислюються як кортежі зв’язків у графі (user:X має relation до object:Y) з транзитивним успадкуванням (наприклад, редактори папки автоматично отримують права на запис вкладених документів). У поєднанні з Edge Middleware у Next.js 16 та кешуванням у Redis перевірка прав виконується за <12мс із безапеляційною Zero-Trust валідацією перед будь-якою мутацією БД. Детальний розбір: /ua/blog/fine-grained-access-control-rebac-openfga-nextjs-16',
+    answerEs:
+      'Sustituyo la explosión de roles de RBAC tradicional en plataformas SaaS multiinquilino por el modelo ReBAC (Relationship-Based Access Control) inspirado en Google Zanzibar con OpenFGA. Los permisos se evalúan como tuplas de grafos de relaciones con herencia transitiva (los editores de una carpeta heredan permisos de escritura en los documentos). Con Edge Middleware en Next.js 16 y caché en Redis, las comprobaciones se ejecutan en menos de 12ms con validación estricta Zero-Trust previa a cada mutación de base de datos. Guía de arquitectura completa: /es/blog/fine-grained-access-control-rebac-openfga-nextjs-16',
+  },
 
 ]
 

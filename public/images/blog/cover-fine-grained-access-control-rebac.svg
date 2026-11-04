@@ -1,0 +1,147 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#08091a"/>
+      <stop offset="50%" stop-color="#121026"/>
+      <stop offset="100%" stop-color="#070814"/>
+    </linearGradient>
+    <linearGradient id="rebacGlow" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#8b5cf6"/>
+      <stop offset="50%" stop-color="#ec4899"/>
+      <stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <g opacity="0.06" stroke="#8b5cf6" stroke-width="1">
+    <path d="M0,70 H1200 M0,140 H1200 M0,210 H1200 M0,280 H1200 M0,350 H1200 M0,420 H1200 M0,490 H1200 M0,560 H1200"/>
+    <path d="M100,0 V630 M200,0 V630 M300,0 V630 M400,0 V630 M500,0 V630 M600,0 V630 M700,0 V630 M800,0 V630 M900,0 V630 M1000,0 V630 M1100,0 V630"/>
+  </g>
+
+  <circle cx="210" cy="180" r="160" fill="#8b5cf6" opacity="0.08" filter="url(#glow)"/>
+  <circle cx="980" cy="450" r="180" fill="#ec4899" opacity="0.08" filter="url(#glow)"/>
+  <circle cx="610" cy="310" r="210" fill="#10b981" opacity="0.05" filter="url(#glow)"/>
+
+  <!-- Left: Main Title & Architecture Badges -->
+  <g transform="translate(80, 110)">
+    <rect width="360" height="34" rx="17" fill="#8b5cf6" fill-opacity="0.12" stroke="#8b5cf6" stroke-opacity="0.4" stroke-width="1"/>
+    <text x="18" y="22" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700" fill="#c084fc" letter-spacing="1.5">CYBERSECURITY &amp; REBAC 2026</text>
+
+    <!-- Main Title -->
+    <text x="0" y="85" font-family="system-ui, -apple-system, sans-serif" font-size="44" font-weight="800" fill="#ffffff" letter-spacing="-0.5">Google Zanzibar &amp; ReBAC</text>
+    <text x="0" y="138" font-family="system-ui, -apple-system, sans-serif" font-size="44" font-weight="800" fill="url(#rebacGlow)" letter-spacing="-0.5">Fine-Grained Auth</text>
+
+    <!-- Subtitle description -->
+    <text x="0" y="188" font-family="system-ui, -apple-system, sans-serif" font-size="17" font-weight="400" fill="#94a3b8">OpenFGA Graph Tuples, Transitive Resolution, Zero Role Explosion</text>
+    <text x="0" y="214" font-family="system-ui, -apple-system, sans-serif" font-size="17" font-weight="400" fill="#94a3b8">&amp; Edge Permission Verification in Next.js 16 App Router</text>
+
+    <!-- Metrics Badges -->
+    <g transform="translate(0, 260)">
+      <rect width="165" height="70" rx="12" fill="#0f172a" stroke="#1e293b" stroke-width="1.5"/>
+      <text x="16" y="28" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#64748b" letter-spacing="0.5">CHECK LATENCY</text>
+      <text x="16" y="54" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="700" fill="#c084fc">&lt; 12 ms</text>
+
+      <rect x="180" width="165" height="70" rx="12" fill="#0f172a" stroke="#1e293b" stroke-width="1.5"/>
+      <text x="196" y="28" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#64748b" letter-spacing="0.5">ROLE EXPLOSION</text>
+      <text x="196" y="54" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="700" fill="#38bdf8">0% Zero</text>
+
+      <rect x="360" width="160" height="70" rx="12" fill="#0f172a" stroke="#1e293b" stroke-width="1.5"/>
+      <text x="376" y="28" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#64748b" letter-spacing="0.5">GRAPH ENGINE</text>
+      <text x="376" y="54" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="700" fill="#34d399">Zanzibar DSL</text>
+    </g>
+
+    <!-- Tech Stack Pill Bar -->
+    <g transform="translate(0, 355)">
+      <rect width="90" height="26" rx="13" fill="#1e293b"/>
+      <text x="14" y="17" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#94a3b8">Next.js 16</text>
+
+      <rect x="100" width="90" height="26" rx="13" fill="#1e293b"/>
+      <text x="114" y="17" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#94a3b8">OpenFGA</text>
+
+      <rect x="200" width="130" height="26" rx="13" fill="#1e293b"/>
+      <text x="214" y="17" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#94a3b8">Google Zanzibar</text>
+
+      <rect x="340" width="80" height="26" rx="13" fill="#1e293b"/>
+      <text x="354" y="17" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#94a3b8">ReBAC</text>
+
+      <rect x="430" width="85" height="26" rx="13" fill="#1e293b"/>
+      <text x="444" y="17" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600" fill="#94a3b8">TypeScript</text>
+    </g>
+  </g>
+
+  <!-- Right: Zanzibar Relationship Graph & Evaluation View -->
+  <g transform="translate(680, 75)">
+    <!-- Main Frame -->
+    <rect width="450" height="480" rx="20" fill="#0c0e1e" stroke="#1e293b" stroke-width="2"/>
+
+    <!-- Window Header -->
+    <circle cx="28" cy="28" r="6" fill="#ef4444"/>
+    <circle cx="48" cy="28" r="6" fill="#f59e0b"/>
+    <circle cx="68" cy="28" r="6" fill="#10b981"/>
+    <text x="92" y="32" font-family="monospace" font-size="11" fill="#64748b">openfga-rebac-model.fga</text>
+
+    <!-- Node 1: User Identity (Alice) -->
+    <g transform="translate(30, 60)">
+      <rect width="390" height="60" rx="12" fill="#131428" stroke="#8b5cf6" stroke-width="1.5"/>
+      <circle cx="24" cy="30" r="10" fill="#8b5cf6" fill-opacity="0.2"/>
+      <text x="20" y="34" font-family="monospace" font-size="12" font-weight="700" fill="#c084fc">U</text>
+      <text x="45" y="25" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#f8fafc">Subject: user:alice</text>
+      <text x="45" y="45" font-family="monospace" font-size="11" fill="#94a3b8">Member of team:frontend (transitive relation)</text>
+      <rect x="315" y="18" width="60" height="22" rx="11" fill="#8b5cf6" fill-opacity="0.15"/>
+      <text x="327" y="33" font-family="monospace" font-size="10" font-weight="600" fill="#c084fc">MEMBER</text>
+    </g>
+
+    <!-- Arrow 1 -> 2 -->
+    <path d="M225,120 V140" stroke="#8b5cf6" stroke-width="2" stroke-dasharray="4,4"/>
+    <polygon points="225,145 221,137 229,137" fill="#8b5cf6"/>
+
+    <!-- Node 2: Relationship Tuples Store -->
+    <g transform="translate(30, 150)">
+      <rect width="390" height="70" rx="12" fill="#131428" stroke="#ec4899" stroke-opacity="0.5" stroke-width="1.5"/>
+      <circle cx="24" cy="35" r="10" fill="#ec4899" fill-opacity="0.2"/>
+      <text x="20" y="39" font-family="monospace" font-size="12" font-weight="700" fill="#f472b6">T</text>
+      <text x="45" y="27" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#f8fafc">Zanzibar Tuple Store</text>
+      <text x="45" y="47" font-family="monospace" font-size="11" fill="#f472b6">doc:roadmap#editor -&gt; team:frontend#member</text>
+      <rect x="310" y="23" width="65" height="22" rx="11" fill="#ec4899" fill-opacity="0.15"/>
+      <text x="323" y="38" font-family="monospace" font-size="10" font-weight="600" fill="#f472b6">TUPLE</text>
+    </g>
+
+    <!-- Arrow 2 -> 3 -->
+    <path d="M225,220 V240" stroke="#10b981" stroke-width="2" stroke-dasharray="4,4"/>
+    <polygon points="225,245 221,237 229,237" fill="#10b981"/>
+
+    <!-- Node 3: OpenFGA Check Engine -->
+    <g transform="translate(30, 245)">
+      <rect width="390" height="75" rx="12" fill="#091b15" stroke="#10b981" stroke-width="1.5"/>
+      <circle cx="24" cy="37" r="10" fill="#10b981" fill-opacity="0.2"/>
+      <text x="20" y="41" font-family="monospace" font-size="12" font-weight="700" fill="#34d399">?</text>
+      <text x="45" y="27" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#f8fafc">OpenFGA Permission Check (Sub-12ms)</text>
+      <text x="45" y="47" font-family="monospace" font-size="11" fill="#6ee7b7">check(user:alice, can_edit, doc:roadmap)</text>
+      <rect x="310" y="25" width="65" height="22" rx="11" fill="#10b981" fill-opacity="0.2"/>
+      <text x="318" y="40" font-family="monospace" font-size="10" font-weight="700" fill="#34d399">ALLOWED</text>
+    </g>
+
+    <!-- Arrow 3 -> 4 -->
+    <path d="M225,320 V340" stroke="#38bdf8" stroke-width="2" stroke-dasharray="4,4"/>
+    <polygon points="225,345 221,337 229,337" fill="#38bdf8"/>
+
+    <!-- Node 4: Next.js 16 Server Component & Edge Action -->
+    <g transform="translate(30, 350)">
+      <rect width="390" height="95" rx="12" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5"/>
+      <circle cx="24" cy="30" r="10" fill="#38bdf8" fill-opacity="0.2"/>
+      <text x="20" y="34" font-family="monospace" font-size="12" font-weight="700" fill="#38bdf8">R</text>
+      <text x="45" y="26" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#f8fafc">Next.js 16 Server Component Hydration</text>
+      <text x="45" y="46" font-family="monospace" font-size="11" fill="#7dd3fc">Renders: &lt;EditDocumentButton /&gt; with verified ACL</text>
+      <text x="45" y="64" font-family="monospace" font-size="11" fill="#94a3b8">Server Action: enforces check() before mutation</text>
+      <text x="45" y="82" font-family="monospace" font-size="10" fill="#a78bfa">Zero Role Explosion: 1 DSL schema replaces 400 roles</text>
+    </g>
+  </g>
+</svg>

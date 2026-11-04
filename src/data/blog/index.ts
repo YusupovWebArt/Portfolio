@@ -36,6 +36,7 @@ import { cryptographicPasskeysWebauthnZeroKnowledgeAttestationNextjs16Post } fro
 import { realtimeCollaborativeStateSyncWebrtcYjsCrdtNextjs16Post } from './posts/realtime-collaborative-state-sync-webrtc-yjs-crdt-nextjs-16'
 import { multimodalStreamingVoiceVisionEdgeAiAgentsNextjs16Post } from './posts/multimodal-streaming-voice-vision-edge-ai-agents-nextjs-16'
 import { eventDrivenMicroservicesKafkaOutboxPatternNextjs16Post } from './posts/event-driven-microservices-kafka-outbox-pattern-nextjs-16'
+import { fineGrainedAccessControlRebacOpenfgaNextjs16Post } from './posts/fine-grained-access-control-rebac-openfga-nextjs-16'
 
 export * from './types'
 
@@ -77,6 +78,7 @@ export const allBlogPosts: BlogPost[] = [
   realtimeCollaborativeStateSyncWebrtcYjsCrdtNextjs16Post,
   multimodalStreamingVoiceVisionEdgeAiAgentsNextjs16Post,
   eventDrivenMicroservicesKafkaOutboxPatternNextjs16Post,
+  fineGrainedAccessControlRebacOpenfgaNextjs16Post,
 ]
 
 export function getAllBlogPosts(): BlogPost[] {
