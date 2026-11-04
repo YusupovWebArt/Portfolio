@@ -725,6 +725,7 @@ export const es: Translation = {
     locationLabel: 'Ubicación',
     locationValue: 'Sevilla, España',
     locationTag: 'Remoto / Disponible para traslado',
+    quickWhatsApp: 'Escribir por WhatsApp',
     faqSource: 'FAQ directo',
     chatbot: {
       title: 'Consola RAG AI Assistant',

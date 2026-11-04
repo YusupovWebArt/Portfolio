@@ -94,3 +94,41 @@ export function getDecodedContactInfo(): DecodedContactInfo {
     twitterUrl: PUBLIC_PROFILES.twitterUrl,
   }
 }
+
+const DEFAULT_WHATSAPP_MESSAGES: Record<'en' | 'ua' | 'es', string> = {
+  es: 'Hola Artur, me gustaría consultar la disponibilidad para un proyecto web.',
+  en: 'Hi Artur, I would like to inquire about availability for a web project.',
+  ua: 'Привіт Артуре, хочу обговорити розробку веб-проєкту.',
+}
+
+/**
+ * Builds a direct WhatsApp chat URL with localized pre-filled greeting.
+ * Fully decoded on-demand in memory.
+ */
+export function buildWhatsAppDirectUrl(
+  locale: 'en' | 'ua' | 'es' = 'en',
+  customMessage?: string,
+): string {
+  const baseWaUrl = decodeContact(OBFUSCATED_CONTACTS.whatsappUrl)
+  const text = customMessage || DEFAULT_WHATSAPP_MESSAGES[locale] || DEFAULT_WHATSAPP_MESSAGES.en
+  const separator = baseWaUrl.includes('?') ? '&' : '?'
+  return `${baseWaUrl}${separator}text=${encodeURIComponent(text)}`
+}
+
+/**
+ * Triggers 1-click WhatsApp opening directly from client events.
+ */
+export function openWhatsAppDirect(
+  locale: 'en' | 'ua' | 'es' = 'en',
+  customMessage?: string,
+): void {
+  if (typeof window === 'undefined') return
+  const url = buildWhatsAppDirectUrl(locale, customMessage)
+  window.open(url, '_blank', 'noopener,noreferrer')
+}
+
+/**
+ * Slot for verified custom domain mailbox (e.g. info@yusupovartur.com).
+ * Kept null until domain mailbox is active.
+ */
+export const PENDING_DOMAIN_EMAIL: string | null = null

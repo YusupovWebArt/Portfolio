@@ -5,8 +5,10 @@ import {
   LuMessageCircle as MessageCircle,
   LuFileText as FileText,
   LuArrowRight as ArrowRight,
+  LuPhone as Phone,
 } from 'react-icons/lu'
-import { trackCvDownload } from '../../lib/analytics'
+import { trackCvDownload, trackContactClick } from '../../lib/analytics'
+import { openWhatsAppDirect } from '../../lib/contacts'
 
 interface ContactActionCardProps {
   locale?: 'en' | 'ua' | 'es'
@@ -19,6 +21,7 @@ const LABELS = {
     title: 'Connect Directly with Artur',
     subtitle: 'Reveal protected Email, WhatsApp, or Telegram in the Contact section or download the full CV.',
     contactBtn: 'Open Direct Contacts',
+    whatsAppBtn: 'Chat on WhatsApp',
     cvBtn: 'Download CV (PDF)',
   },
   ua: {
@@ -26,6 +29,7 @@ const LABELS = {
     title: 'Прямий зв\'язок з Артуром',
     subtitle: 'Відкрийте захищені Email, WhatsApp або Telegram у секції контактів або завантажте резюме.',
     contactBtn: 'Перейти до контактів',
+    whatsAppBtn: 'Чат у WhatsApp',
     cvBtn: 'Завантажити резюме (PDF)',
   },
   es: {
@@ -33,6 +37,7 @@ const LABELS = {
     title: 'Contacto Directo con Artur',
     subtitle: 'Descubre Email, WhatsApp o Telegram protegidos en la sección de Contacto o descarga el CV.',
     contactBtn: 'Ir a Contactos Directos',
+    whatsAppBtn: 'Escribir por WhatsApp',
     cvBtn: 'Descargar CV (PDF)',
   },
 } as const
@@ -60,6 +65,11 @@ export default function ContactActionCard({
     }
   }
 
+  const handleWhatsAppClick = () => {
+    trackContactClick('whatsapp_direct')
+    openWhatsAppDirect(locale)
+  }
+
   return (
     <div className="mt-3 p-3.5 rounded-2xl bg-gradient-to-br from-purple-50/90 to-indigo-50/70 dark:from-slate-900/95 dark:to-slate-800/90 border border-purple-200/70 dark:border-lime-500/25 shadow-sm text-left space-y-2.5">
       <div className="flex items-center gap-2">
@@ -81,8 +91,17 @@ export default function ContactActionCard({
       <div className="flex flex-wrap items-center gap-2 pt-1">
         <button
           type="button"
+          onClick={handleWhatsAppClick}
+          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-emerald-500 hover:bg-emerald-600 text-white shadow-sm transition-all cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-500"
+        >
+          <Phone className="w-3.5 h-3.5" aria-hidden="true" />
+          <span>{t.whatsAppBtn}</span>
+        </button>
+
+        <button
+          type="button"
           onClick={handleContactClick}
-          className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-purple-600 hover:bg-purple-700 dark:bg-lime-500 dark:hover:bg-lime-400 text-white dark:text-slate-950 shadow-sm transition-all cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-700 dark:focus-visible:outline-lime-400"
+          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-purple-600 hover:bg-purple-700 dark:bg-lime-500 dark:hover:bg-lime-400 text-white dark:text-slate-950 shadow-sm transition-all cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-700 dark:focus-visible:outline-lime-400"
         >
           <MessageCircle className="w-3.5 h-3.5" aria-hidden="true" />
           <span>{t.contactBtn}</span>
@@ -93,7 +112,7 @@ export default function ContactActionCard({
           href="/Portfolio/resume/Artur_Yusupov_Resume.pdf"
           download
           onClick={() => trackCvDownload('chat_card')}
-          className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-semibold bg-white hover:bg-slate-50 dark:bg-slate-800 dark:hover:bg-slate-700 text-purple-700 dark:text-lime-400 border border-purple-200 dark:border-lime-500/30 shadow-sm transition-all cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-700 dark:focus-visible:outline-lime-400"
+          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-white hover:bg-slate-50 dark:bg-slate-800 dark:hover:bg-slate-700 text-purple-700 dark:text-lime-400 border border-purple-200 dark:border-lime-500/30 shadow-sm transition-all cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-700 dark:focus-visible:outline-lime-400"
         >
           <FileText className="w-3.5 h-3.5" aria-hidden="true" />
           <span>{t.cvBtn}</span>

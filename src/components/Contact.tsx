@@ -278,6 +278,14 @@ const Contact = () => {
                     if (item.kind) {
                       trackContactClick(item.kind)
                     }
+                    if (item.kind === 'phone') {
+                      e.preventDefault()
+                      void reveal('phone')
+                      void import('../lib/contacts').then(({ openWhatsAppDirect }) => {
+                        openWhatsAppDirect(lang)
+                      })
+                      return
+                    }
                     if (item.kind && !revealed[item.kind]) {
                       e.preventDefault()
                       void reveal(item.kind)
@@ -310,6 +318,26 @@ const Contact = () => {
                     >
                       {item.value}
                     </div>
+                    {item.kind === 'phone' && (
+                      <div className="mt-2.5">
+                        <button
+                          type="button"
+                          onClick={(e) => {
+                            e.stopPropagation()
+                            e.preventDefault()
+                            trackContactClick('whatsapp_direct')
+                            void reveal('phone')
+                            void import('../lib/contacts').then(({ openWhatsAppDirect }) => {
+                              openWhatsAppDirect(lang)
+                            })
+                          }}
+                          className="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-semibold rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white shadow-sm transition-all cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-500"
+                        >
+                          <Phone className="w-3.5 h-3.5" aria-hidden="true" />
+                          <span>{ct.quickWhatsApp}</span>
+                        </button>
+                      </div>
+                    )}
                   </div>
                 </a>
               ))}

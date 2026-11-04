@@ -324,6 +324,7 @@ export interface Translation {
     locationLabel: string
     locationValue: string
     locationTag: string
+    quickWhatsApp: string
     faqSource: string
     chatbot: {
       title: string

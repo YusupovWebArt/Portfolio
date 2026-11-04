@@ -11,7 +11,14 @@ This document maintains the technical and business roadmap for the Artur Yusupov
 | **Code-Splitting & Bundle Optimization** | High | Performance | **Completed (196 KB main bundle)** |
 | **Native View Transitions API (Card Morphing)** | High | UI/UX & Motion | **Completed (120 FPS GPU)** |
 | **Progressive Web App (PWA) + Offline Mode** | Low | Web Standards 2026 | **Completed (Manifest & SW)** |
-| **Floating WhatsApp Direct Button** | High | Conversion & B2B | Next Up |
+| **1-Click WhatsApp Direct Integration (Zero-Scrape)** | High | Conversion & B2B | **Completed** |
+| **Stage 1 Technical SEO & Entity Disambiguation** | High | SEO & GEO | **Completed** |
+| **Legal Architecture: Privacy & Cookies Pages** | High | Legal & AEPD | Next Up |
+| **Commercial B2B Services Matrix (Wave 1: Marca Blanca & CTO)** | High | B2B & Revenue | Next Up |
+| **Commercial B2B Services Matrix (Wave 2: Pymes Seville & AI RAG)** | High | Local SEO & CRO | Next Up |
+| **Fiscal & Legal Autónomo Architecture (Aviso Legal & IVA/IRPF)** | High | Legal & B2B Trust | Planned (Post-Autónomo Registration) |
+| **Commercial Hero CTA & Pre-sale RAG Funnel Overhaul (/es Locale)** | High | CRO & Funnel B2B | Planned |
+| **Verified Domain Mailbox (hola@yusupovartur.com) & Seville Ecosystem** | Medium | Branding & GEO | Planned |
 | **Interactive Project Cost & Timeline Estimator** | High | Lead Generation | Planned |
 | **Public Repository Switch (Unlimited Actions)** | High | DevOps & Cost | Pending User Action |
 | **Interactive Spec-Driven SDLC Pipeline Visualizer** | Medium | AI & Architecture | Planned |
@@ -26,7 +33,7 @@ This document maintains the technical and business roadmap for the Artur Yusupov
 
 ---
 
-## 1. Performance & Core Web Vitals (Completed )
+## 1. Performance & Core Web Vitals (Completed)
 
 ### Code-Splitting & Dynamic Imports
 - **Achievement:** Separated ProjectDetail.tsx (28.79 KB) via React.lazy + Suspense and extracted 69 case study definitions into a dedicated projects-data.js (428 KB) chunk.
@@ -58,15 +65,15 @@ This document maintains the technical and business roadmap for the Artur Yusupov
 
 ## 3. Conversion & Direct Lead Generation
 
-### Floating WhatsApp Direct Button (https://wa.me/...)
-- **Objective:** Enable instant, low-friction mobile messaging for small businesses and agency owners in Spain/EU.
-- **Specification:**
-  - Floating pill/circle button in the bottom-right corner with a pulse micro-animation.
-  - Base64 obfuscated phone number to adhere to SECURITY.md.
+### 1-Click WhatsApp Direct Integration (Zero-Scrape CRO - Completed)
+- **Objective:** Enable instant, zero-friction mobile messaging for small businesses and agency owners in Spain/EU while eliminating scraper leakage.
+- **Technical Implementation:**
+  - Runtime Base64 on-demand decoding in `src/lib/contacts.ts` (`openWhatsAppDirect`).
   - Pre-filled multilingual greeting template:
     - *ES:* "Hola Artur, me gustaría consultar la disponibilidad para un proyecto web."
-    - *EN:* "Hi Artur, I'd like to inquire about availability for a web project."
+    - *EN:* "Hi Artur, I would like to inquire about availability for a web project."
     - *UA:* "Привіт Артуре, хочу обговорити розробку веб-проєкту."
+  - Direct 1-click CTA button in `Contact.tsx` and `ContactActionCard.tsx` with zero raw phone numbers in the HTML bundle.
 
 ### Interactive Project Cost & Timeline Estimator
 - **Objective:** Interactive 4-step wizard calculating price ranges and delivery timeframes for custom WordPress, Next.js, and speed optimization projects.
@@ -114,7 +121,7 @@ This document maintains the technical and business roadmap for the Artur Yusupov
 
 ## 6. Spanish Agency Outreach (Marca Blanca Strategy)
 
-### 🇪🇸 Cold Outreach Email Sequences
+### Cold Outreach Email Sequences
 - **Objective:** Partner with Spanish marketing, design, and SEO agencies who need senior technical execution under white-label (Marca Blanca).
 - **Deliverables:**
   - Sequence 1: White-label React & WordPress development for agencies with capacity overflow.
@@ -133,3 +140,28 @@ This document maintains the technical and business roadmap for the Artur Yusupov
     - *Buhl WISO* (buhl.de - Germany's leading tax software platform).
     - *Telefontrainingskoffer* (callcenter-akademie.de - German professional B2B training portal).
   - **Target Architecture:** Add `de` to Next.js localized route params (`app/[locale]/...`), generate localized case study routes and engineering articles in German, and maintain strict key parity in `src/locales/de.ts`.
+
+---
+
+## 8. Spanish Market Expansion & Autónomo Lifecycle Roadmap
+
+### 8.1. Fiscal & Legal Autónomo Architecture (Aviso Legal & Invoicing Transparency)
+- **Context:** Following the Gemini Deep Research audit, statutory compliance under Spanish Law 34/2002 (LSSI-CE Art. 10) requires exposing fiscal NIF/NIE and registered business notifications once commercial operations under *Autónomo* status begin.
+- **Action Plan upon Autónomo Activation:**
+  - Activate `/es/aviso-legal` with verified NIF/NIE and Seville professional business address / coworking seat.
+  - Expose B2B invoicing badges across the `/es` footer and service pages: official Spanish invoicing (+21% IVA, IRPF withholding retention for Spanish S.L. clients via Modelo 111, and VIES intra-EU reverse charge).
+  - Add localized FAQ clarifying deductibility of web engineering and AI development expenses for Spanish businesses.
+
+### 8.2. Commercial Hero CTA & Pre-sale RAG Funnel Overhaul (/es Locale)
+- **Context:** Shift `/es` Hero positioning away from HR/recruiter framing ("Descargar CV") toward commercial B2B buyer actions:
+  - Primary CTA: "Solicitar Presupuesto / Auditoría Web Gratuita" triggering project scope qualification.
+  - Secondary CTA: "Probar Asistente IA en Vivo" showcasing the in-browser RAG assistant as a sellable turn-key product capability for client sites.
+  - Move "Descargar CV" to the About section (`About.tsx`) for evaluators arriving from professional platforms.
+  - Tune RAG chat prompt (`src/lib/ai/prompts.ts`) for presale lead qualification and instant WhatsApp referral.
+
+### 8.3. Verified Domain Mailbox & Seville Local Ecosystem
+- **Context:** Decouple personal communication channels from business client acquisition.
+- **Action Plan:**
+  - Setup verified domain email (`hola@yusupovartur.com` or `contacto@yusupovartur.com`) and plug into `PENDING_DOMAIN_EMAIL` slot in `src/lib/contacts.ts`.
+  - Claim and verify Google Business Profile in Seville ("Desarrollador Web y Consultor IA en Sevilla") for Local SEO MAP pack visibility.
+  - Complete Spanish profile on Malt España (`malt.es/profile/arturyusupov`) and Shakers (`shakersworks.com`), linking them to Schema.org `sameAs` array.

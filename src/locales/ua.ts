@@ -725,6 +725,7 @@ export const ua: Translation = {
     locationLabel: 'Локація',
     locationValue: 'Севілья, Іспанія',
     locationTag: 'Віддалено / Готовий до релокації',
+    quickWhatsApp: 'Чат у WhatsApp',
     faqSource: 'Прямий FAQ',
     chatbot: {
       title: 'Консоль RAG AI-асистента',
