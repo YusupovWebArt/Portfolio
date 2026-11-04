@@ -797,7 +797,32 @@ export const FAQ: FaqItem[] = [
       'Я розробляю автономні середовища якості для AI через поєднання 5-фазового шлюзування SDD (spec.md -> plan.md -> tasks.md), перевірки синтаксичних інваріантів AST за допомогою TypeScript Compiler API (блокування any, контроль меж модулів та правил коду в pre-commit хуках) та циклів самовідновлення у Vitest, які перехоплюють збої тестів та автоматично генерують точкові виправлення. Детальний розбір: /ua/blog/autonomous-ai-quality-harness-spec-driven-development-sdd-nextjs-16',
     answerEs:
       'Diseño entornos de calidad para agentes autónomos de IA integrando control de fases SDD (spec.md -> plan.md -> tasks.md), verificación de invariantes AST con TypeScript Compiler API (bloqueo estricto de any, cortafuegos de módulos y sintaxis en pre-commit) y bucles de auto-reparación en Vitest que capturan fallos y generan parches precisos de forma automática. Guía de arquitectura completa: /es/blog/autonomous-ai-quality-harness-spec-driven-development-sdd-nextjs-16',
+  },  {
+    question: 'How do you build streaming voice and vision AI agents at the edge in Next.js 16?',
+    questionUa: 'Як ви створюєте потокових мультимодальних голосових та візуальних AI-агентів на Edge у Next.js 16?',
+    questionEs: '¿Cómo construyes agentes de IA multimodales de voz y visión en streaming en el Edge con Next.js 16?',
+    keywords: [
+      'multimodal ai',
+      'gemini live',
+      'webrtc ai',
+      'generative ui',
+      'voice ai agent',
+      'vision ai',
+      'голосовой ai агент',
+      'голосовий ai агент',
+      'мультимодальный ai',
+      'мультимодальний ai',
+      'agente de voz ia',
+      'ia multimodal',
+    ],
+    answer:
+      'I engineer low-latency multimodal streaming AI agents by connecting browser WebRTC audio/video tracks to Google Gemini Live API over bi-directional WebSockets via Next.js 16 Edge Route Handlers. The agent streams sub-300ms PCM 24kHz audio replies while pushing structured Generative UI tool payloads that dynamically hydrate interactive React 19 components in the client viewport. Read full architecture breakdown: /en/blog/multimodal-streaming-voice-vision-edge-ai-agents-nextjs-16',
+    answerUa:
+      'Я розробляю низьколатентних мультимодальних потокових AI-агентів, підключаючи WebRTC аудіо- та відеотреки браузера до Google Gemini Live API через двонаправлені WebSockets на Edge Route Handlers у Next.js 16. Агент транслює голосові відповіді PCM 24kHz із затримкою до 300мс і одночасно надсилає структуровані інструментальні виклики Generative UI для динамічної гідратації інтерактивних компонентів React 19. Детальний розбір: /ua/blog/multimodal-streaming-voice-vision-edge-ai-agents-nextjs-16',
+    answerEs:
+      'Diseño agentes de IA multimodales en streaming de baja latencia conectando pistas de audio y vídeo WebRTC del navegador a la API Gemini Live mediante WebSockets bidireccionales en Route Handlers de Edge en Next.js 16. El agente transmite respuestas de audio PCM a 24kHz con latencias inferiores a 300ms y emite llamadas estructuradas de Generative UI que hidratan componentes interactivos de React 19 en tiempo real. Guía de arquitectura completa: /es/blog/multimodal-streaming-voice-vision-edge-ai-agents-nextjs-16',
   },
+
 ]
 
 export function matchesFaqKeyword(text: string, kw: string): boolean {

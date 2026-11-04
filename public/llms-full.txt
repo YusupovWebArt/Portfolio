@@ -179,6 +179,10 @@
     - **Published**: 2026-11-03 | **Tags**: Real-Time, WebRTC, Yjs, CRDT, Next.js 16, Cloudflare Durable Objects, EdTech, TypeScript
     - **Summary**: An enterprise local-first real-time collaborative state architecture: uniting WebRTC DataChannels for sub-15ms P2P state vectors, Yjs CRDTs for deterministic convergence, and Cloudflare Durable Objects fallback.
 
+36. **Multi-Modal Streaming Voice & Vision AI Agents at the Edge: Gemini Live API, WebRTC Audio/Video & Next.js 16 Generative UI**: https://www.yusupovartur.com/en/blog/multimodal-streaming-voice-vision-edge-ai-agents-nextjs-16
+    - **Published**: 2026-11-04 | **Tags**: Gemini Live API, WebRTC, Edge AI, Generative UI, Next.js 16, Voice Agents, Vision AI, TypeScript
+    - **Summary**: An enterprise streaming multimodal AI agent architecture: integrating Google Gemini Live API with WebRTC bidirectional audio/video channels, V8 edge isolates, and Next.js 16 Generative UI component hydration.
+
 ## 5. Complete 71-Project Portfolio Index (213 Localized Case Study Routes)
 
 1. **Next.js 16 & Hybrid RAG Portfolio Platform** (nextjs) - https://www.yusupovartur.com/en/projects/yusupovartur-nextjs-portfolio | Live: https://www.yusupovartur.com/ | Deep-Dive: https://www.yusupovartur.com/en/blog/autonomous-hybrid-rag-architecture-browser
