@@ -1,3 +1,5 @@
+import { getServiceBySlug } from '../../data/services'
+import type { ServiceItem } from '../../data/services/types'
 import { getAllKnowledgeChunks, KnowledgeChunk } from './knowledge'
 import { projectRegistry } from '../projectRegistry'
 import { FAQ, getBotAnswer, matchesFaqKeyword } from '../../data/chatFaq'
@@ -1909,3 +1911,23 @@ export function getContextualFollowUps(
 }
 
 
+
+export function resolveTargetService(query: string): ServiceItem | undefined {
+  const lower = foldForSearch(query || '')
+  if (/(marca blanca|white.?label|partner.*agenc|para agencias|аутстаф|аутсорс для агенц|white label)/i.test(lower)) {
+    return getServiceBySlug('white-label-agency-partner')
+  }
+  if (/(headless|migra.*next|migracion|wordpress.*next|миграц.*next|перехід на next)/i.test(lower)) {
+    return getServiceBySlug('headless-wordpress-nextjs-migration')
+  }
+  if (/(speed|core web vitals|cwv|pagespeed|optimiz.*velocidad|прискор|ускорен|page speed|lighthouse)/i.test(lower)) {
+    return getServiceBySlug('web-performance-core-web-vitals')
+  }
+  if (/(sevilla|seville|andalucia|desarrollo.*sevilla|севіль)/i.test(lower)) {
+    return getServiceBySlug('custom-web-development-seville')
+  }
+  if (/(rag|ai assistant|chatbot|asistente ia|чат.?бот|асистент для бізнесу|ai.*business)/i.test(lower)) {
+    return getServiceBySlug('rag-ai-assistants-business')
+  }
+  return undefined
+}

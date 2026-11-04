@@ -15,6 +15,7 @@ import {
   LuSparkles as Sparkles,
 } from 'react-icons/lu'
 import type { BlogPost } from '../../data/blog'
+import { getServiceForBlogPost } from '../../data/services'
 import MarkdownRenderer from './MarkdownRenderer'
 import {
   getBlogTitle,
@@ -57,6 +58,7 @@ export default function BlogDetailView({
   const content = getBlogContent(currentPost, locale)
   const tldr = getBlogTldr(currentPost, locale)
   const relatedPosts = getRelatedBlogPosts(currentPost.slug, 2)
+  const relatedService = getServiceForBlogPost(currentPost.slug)
 
   const handleShare = () => {
     if (typeof navigator !== 'undefined' && navigator.share) {
@@ -396,6 +398,41 @@ export default function BlogDetailView({
             </div>
           </section>
         )}
+
+        {/* Contextual B2B Commercial Service Banner */}
+        {relatedService && (() => {
+          const validLoc = (locale === 'es' || locale === 'ua' ? locale : 'en') as 'en' | 'ua' | 'es'
+          const serviceContent = relatedService.content[validLoc] || relatedService.content.en
+          return (
+            <div className="p-6 sm:p-8 mb-12 rounded-3xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200/90 dark:border-slate-700/80 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+              <div className="max-w-2xl">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-purple-100 text-purple-700 dark:bg-purple-950/70 dark:text-purple-300 border border-purple-200/60 dark:border-purple-800/60 mb-2.5">
+                  <Sparkles className="w-3.5 h-3.5" aria-hidden="true" />
+                  <span>{serviceContent.badge}</span>
+                </div>
+                <h3 className="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-2">
+                  {serviceContent.title}
+                </h3>
+                <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                  {serviceContent.shortDesc}
+                </p>
+              </div>
+              <Link
+                href={`/${locale}/services/${relatedService.slug}`}
+                className="w-full md:w-auto px-6 py-3.5 rounded-xl font-bold text-xs sm:text-sm bg-purple-600 hover:bg-purple-500 text-white transition-all shadow-md flex items-center justify-center gap-2 shrink-0 cursor-pointer"
+              >
+                <span>
+                  {locale === 'ua'
+                    ? 'Переглянути послугу'
+                    : locale === 'es'
+                      ? 'Ver detalles del servicio'
+                      : 'Explore B2B Service'}
+                </span>
+                <ArrowRight className="w-4 h-4" aria-hidden="true" />
+              </Link>
+            </div>
+          )
+        })()}
 
         {/* AI & Engineering Discussion CTA */}
         <div className="p-8 mb-16 rounded-3xl bg-gradient-to-br from-purple-900/90 to-slate-900 text-white border border-purple-500/30 shadow-xl flex flex-col md:flex-row items-center justify-between gap-6">

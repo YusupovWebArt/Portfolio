@@ -1,3 +1,4 @@
+import type { ServiceItem } from './services/types'
 export type FaqItem = {
   question: string
   questionUa: string
@@ -17,6 +18,7 @@ export type Message = {
   showContactCard?: boolean
   showEstimateCalculator?: boolean
   showStackComparison?: boolean
+  serviceCard?: ServiceItem
   followUps?: string[]
   projects?: {
     slug: string

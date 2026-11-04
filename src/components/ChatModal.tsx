@@ -30,6 +30,7 @@ import FormattedChatText from './chat/FormattedChatText'
 import ContactActionCard from './chat/ContactActionCard'
 import StackComparisonCard from './chat/StackComparisonCard'
 import ProjectEstimateCalculatorCard from './chat/ProjectEstimateCalculatorCard'
+import ServiceRecommendationCard from './chat/ServiceRecommendationCard'
 
 export interface ProjectChatContextDetail {
   projectSlug: string
@@ -284,12 +285,14 @@ const ChatModal = ({
         getContextualFollowUps,
         resolveBlogFromQueryOrContext,
         resolveTargetProject,
+        resolveTargetService,
       } = await ragModulePromise
       const sourceLabel = getRagSourceLabel(textToSend, ragOptions)
       const projectCards = getRelevantProjectCards(textToSend, ragOptions)
       const showContact = isHireOrContactQuery(textToSend)
       const showStack = isStackComparisonQuery(textToSend)
       const showEstimate = isEstimateOrCalculatorQuery(textToSend)
+      const targetService = resolveTargetService ? resolveTargetService(textToSend) : undefined
       const followUps = getContextualFollowUps(textToSend, ragOptions)
 
       const resolvedBlog = resolveBlogFromQueryOrContext(textToSend, ragOptions)
@@ -328,6 +331,7 @@ const ChatModal = ({
           showContactCard: showContact,
           showStackComparison: showStack,
           showEstimateCalculator: showEstimate,
+          serviceCard: targetService,
           followUps,
           projects: projectCards.length > 0 ? projectCards : undefined,
           timestamp: new Date(),
@@ -547,7 +551,15 @@ const ChatModal = ({
     setIsTyping(false)
     setMessages([
       {
-        id: `welcome-${Date.now()}`,
+        id: `welcome-${Date.now()}
+
+                  {msg.serviceCard && (
+                    <ServiceRecommendationCard
+                      service={msg.serviceCard}
+                      locale={lang}
+                      onNavigate={handleClose}
+                    />
+                  )}`,
         from: 'bot',
         text: ct.welcomeMessage,
         source: 'Hybrid RAG · 71-Project Knowledge Base',
@@ -870,6 +882,7 @@ const ChatModal = ({
                   className={`relative px-5 py-3.5 text-left rounded-2xl text-sm shadow-sm leading-relaxed ${
                     msg.showStackComparison ||
                     msg.showEstimateCalculator ||
+                    Boolean(msg.serviceCard) ||
                     (msg.projects && msg.projects.length > 0)
                       ? 'w-full max-w-full'
                       : 'max-w-[88%] sm:max-w-3xl'
@@ -903,6 +916,14 @@ const ChatModal = ({
                     <ProjectEstimateCalculatorCard
                       locale={lang}
                       onNavigateToContact={handleClose}
+                    />
+                  )}
+
+                  {msg.serviceCard && (
+                    <ServiceRecommendationCard
+                      service={msg.serviceCard}
+                      locale={lang}
+                      onNavigate={handleClose}
                     />
                   )}
 

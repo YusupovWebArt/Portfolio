@@ -3,6 +3,10 @@ import { describe, it, expect, vi } from 'vitest'
 import { render, screen, fireEvent } from '@testing-library/react'
 import StackComparisonCard from '../components/chat/StackComparisonCard'
 import ProjectEstimateCalculatorCard from '../components/chat/ProjectEstimateCalculatorCard'
+import ServiceRecommendationCard from '../components/chat/ServiceRecommendationCard'
+import { resolveTargetService } from '../lib/ai/rag'
+import { getServiceBySlug } from '../data/services'
+import * as contactsModule from '../lib/contacts'
 
 describe('Generative UI StackComparisonCard & ProjectEstimateCalculatorCard Specification (TDD)', () => {
   it('should render StackComparisonCard and allow switching between stacks', () => {
@@ -57,5 +61,45 @@ describe('Generative UI StackComparisonCard & ProjectEstimateCalculatorCard Spec
     const ctaBtn = screen.getByRole('button', { name: /Discuss My Project & Request Proposal/i })
     fireEvent.click(ctaBtn)
     expect(onNavigate).toHaveBeenCalledTimes(1)
+  })
+
+  it('should correctly classify user queries into B2B commercial services via resolveTargetService', () => {
+    expect(resolveTargetService('necesito un partner de marca blanca para mi agencia')?.slug).toBe(
+      'white-label-agency-partner',
+    )
+    expect(resolveTargetService('quiero migrar wordpress a next.js 16 headless')?.slug).toBe(
+      'headless-wordpress-nextjs-migration',
+    )
+    expect(resolveTargetService('como mejorar el pagespeed y core web vitals')?.slug).toBe(
+      'web-performance-core-web-vitals',
+    )
+    expect(resolveTargetService('desarrollo web a medida en sevilla')?.slug).toBe(
+      'custom-web-development-seville',
+    )
+    expect(resolveTargetService('quiero un chatbot rag ai para empresas')?.slug).toBe(
+      'rag-ai-assistants-business',
+    )
+    expect(resolveTargetService('que tiempo hace hoy')).toBeUndefined()
+  })
+
+  it('should render ServiceRecommendationCard with metrics and trigger WhatsApp action', () => {
+    const service = getServiceBySlug('white-label-agency-partner')!
+    expect(service).toBeDefined()
+
+    const onNavigate = vi.fn()
+    const openSpy = vi.spyOn(contactsModule, 'openWhatsAppDirect').mockImplementation(() => {})
+
+    render(<ServiceRecommendationCard service={service} locale="es" onNavigate={onNavigate} />)
+
+    expect(screen.getByText(service.content.es.title)).toBeInTheDocument()
+    expect(screen.getByText(service.content.es.badge)).toBeInTheDocument()
+    expect(screen.getByText(service.content.es.shortDesc)).toBeInTheDocument()
+
+    // WhatsApp action
+    const whatsappBtn = screen.getByRole('button', { name: /Consultar por WhatsApp/i })
+    fireEvent.click(whatsappBtn)
+    expect(openSpy).toHaveBeenCalledWith(service.content.es.whatsappMessage)
+
+    openSpy.mockRestore()
   })
 })

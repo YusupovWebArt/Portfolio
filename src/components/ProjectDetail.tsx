@@ -29,6 +29,7 @@ import { projectRegistry } from '../lib/projectRegistry'
 import { getRelatedProjects } from '../lib/projects'
 import { useDialogA11y } from '../hooks/useDialogA11y'
 import ProjectChatTrigger from './ProjectChatTrigger'
+import { getServicesForProject } from '../data/services'
 
 interface ProjectDetailProps {
   projectId?: number
@@ -761,6 +762,43 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                           : 'Architecture & Case Study Deep-Dive'}
                     </span>
                     <ArrowRight className="w-4 h-4 shrink-0" aria-hidden />
+                  </a>
+                )
+              })()}
+              {(() => {
+                const currentSlug = slug || project.title.toLowerCase().replace(/\s+/g, '-')
+                const relatedServices = getServicesForProject(currentSlug)
+                if (relatedServices.length === 0) return null
+                const relService = relatedServices[0]
+                const validLoc = (lang === 'es' || lang === 'ua' ? lang : 'en') as 'en' | 'ua' | 'es'
+                const serviceContent = relService.content[validLoc] || relService.content.en
+                const isSpa =
+                  typeof window !== 'undefined' &&
+                  (Boolean((window as unknown as { __IS_PORTFOLIO_SPA__?: boolean }).__IS_PORTFOLIO_SPA__) ||
+                    window.location.hostname.includes('github.io') ||
+                    window.location.pathname.startsWith('/Portfolio'))
+                const serviceHref = isSpa
+                  ? `https://www.yusupovartur.com/${lang}/services/${relService.slug}`
+                  : `/${lang}/services/${relService.slug}`
+
+                return (
+                  <a
+                    href={serviceHref}
+                    target={isSpa ? '_blank' : undefined}
+                    rel={isSpa ? 'noopener noreferrer' : undefined}
+                    className="inline-flex w-full items-center justify-between gap-2.5 rounded-xl bg-purple-50 hover:bg-purple-100 dark:bg-purple-950/40 dark:hover:bg-purple-900/40 text-purple-700 dark:text-purple-300 border border-purple-200/80 dark:border-purple-800/60 p-3 text-xs font-semibold transition group"
+                  >
+                    <div className="flex items-center gap-2 truncate">
+                      <Sparkles className="w-3.5 h-3.5 shrink-0 text-purple-600 dark:text-lime-400" aria-hidden />
+                      <span className="truncate">
+                        {lang === 'ua'
+                          ? `Послуга: ${serviceContent.badge}`
+                          : lang === 'es'
+                            ? `Servicio B2B: ${serviceContent.badge}`
+                            : `B2B Service: ${serviceContent.badge}`}
+                      </span>
+                    </div>
+                    <ArrowRight className="w-3.5 h-3.5 shrink-0 group-hover:translate-x-0.5 transition-transform" aria-hidden />
                   </a>
                 )
               })()}

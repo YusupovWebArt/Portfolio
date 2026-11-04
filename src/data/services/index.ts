@@ -36,3 +36,31 @@ export function getServicesForAudience(audience: 'agencies' | 'pymes'): ServiceI
 export function getServiceLocalizedContent(service: ServiceItem, locale: ServiceLocale) {
   return service.content[locale] || service.content.en
 }
+
+export function getServicesForProject(projectSlug: string): ServiceItem[] {
+  const normalized = projectSlug.trim().toLowerCase()
+  return allServices.filter((s) =>
+    s.relevantProjectSlugs.some((slug) => slug.toLowerCase() === normalized)
+  )
+}
+
+const blogToServiceMap: Record<string, string> = {
+  'nextjs-vs-headless-wordpress': 'headless-wordpress-nextjs-migration',
+  'nextjs-vs-headless-wordpress-custom-php-2026': 'headless-wordpress-nextjs-migration',
+  'headless-wordpress-nextjs-16-caching-architecture': 'headless-wordpress-nextjs-migration',
+  'sub-second-cwv-bundle-optimization': 'web-performance-core-web-vitals',
+  'autonomous-hybrid-rag': 'rag-ai-assistants-business',
+  'multimodal-streaming-voice-vision-edge-ai-agents-nextjs-16': 'rag-ai-assistants-business',
+  'enterprise-b2b-headless-ecommerce-tiered-pricing-erp-sync-woocommerce-hpos': 'white-label-agency-partner',
+  'shopify-liquid-vs-custom-woocommerce': 'white-label-agency-partner',
+  'woocommerce-hpos-redis-caching-10k-skus': 'web-performance-core-web-vitals',
+  'wasm-wordpress-php-in-browser-zero-server': 'headless-wordpress-nextjs-migration',
+  'wcag-22-eaa-2026': 'custom-web-development-seville',
+  'fullstack-ai-lab-interactive-edtech-architecture': 'rag-ai-assistants-business',
+  'unitrition-headless-healthtech-architecture': 'custom-web-development-seville',
+}
+
+export function getServiceForBlogPost(blogSlug: string): ServiceItem | undefined {
+  const targetSlug = blogToServiceMap[blogSlug]
+  return targetSlug ? getServiceBySlug(targetSlug) : undefined
+}

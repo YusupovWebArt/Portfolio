@@ -17,6 +17,7 @@ function renderLink(
   const isExternal = url.startsWith('http://') || url.startsWith('https://')
   const blogMatch = url.match(/\/(?:en|ua|es)\/blog\/([a-zA-Z0-9-]+)/)
   const projectMatch = url.match(/\/(?:en|ua|es)\/projects\/([a-zA-Z0-9-]+)/)
+  const serviceMatch = url.match(/\/(?:en|ua|es)\/services\/([a-zA-Z0-9-]+)/)
 
   const handleClick = (e: React.MouseEvent) => {
     if (
@@ -37,6 +38,12 @@ function renderLink(
         window.dispatchEvent(
           new CustomEvent('open-project', { detail: { slug: projectMatch[1] } }),
         )
+        return
+      }
+      if (serviceMatch) {
+        e.preventDefault()
+        window.dispatchEvent(new CustomEvent('close-ai-chat'))
+        window.location.assign(url)
         return
       }
     }
@@ -68,6 +75,7 @@ function renderInlineSegments(line: string, isBot: boolean): React.ReactNode {
     line.includes('[') ||
     line.includes('/blog/') ||
     line.includes('/projects/') ||
+    line.includes('/services/') ||
     line.includes('http://') ||
     line.includes('https://')
 
@@ -76,7 +84,7 @@ function renderInlineSegments(line: string, isBot: boolean): React.ReactNode {
   }
 
   const tokens = line.split(
-    /(\*\*[^*]+\*\*|\*(?!\s)[^*]+(?<!\s)\*|`[^`]+`|\[[^\]]+\]\([^)]+\)|https?:\/\/[^\s)\]]+|\/(?:en|ua|es)\/(?:blog|projects)\/[a-zA-Z0-9-]+)/g,
+    /(\*\*[^*]+\*\*|\*(?!\s)[^*]+(?<!\s)\*|`[^`]+`|\[[^\]]+\]\([^)]+\)|https?:\/\/[^\s)\]]+|\/(?:en|ua|es)\/(?:blog|projects|services)\/[a-zA-Z0-9-]+)/g,
   )
 
   return tokens.map((token, idx) => {

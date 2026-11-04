@@ -13,22 +13,27 @@ This document maintains the technical and business roadmap for the Artur Yusupov
 | **Progressive Web App (PWA) + Offline Mode** | Low | Web Standards 2026 | **Completed (Manifest & SW)** |
 | **1-Click WhatsApp Direct Integration (Zero-Scrape)** | High | Conversion & B2B | **Completed** |
 | **Stage 1 Technical SEO & Entity Disambiguation** | High | SEO & GEO | **Completed** |
-| **Legal Architecture: Privacy & Cookies Pages** | High | Legal & AEPD | Next Up |
-| **Commercial B2B Services Matrix (Wave 1: Marca Blanca & CTO)** | High | B2B & Revenue | Next Up |
-| **Commercial B2B Services Matrix (Wave 2: Pymes Seville & AI RAG)** | High | Local SEO & CRO | Next Up |
+| **Legal Architecture: Privacy & Cookies Pages** | High | Legal & AEPD | **Completed** |
+| **Commercial B2B Services Matrix (5 Core Services)** | High | B2B & Revenue | **Completed** |
+| **Header Navigation & Semantic Crawlable Links** | High | UX & SEO | **Completed** |
+| **Schema.org FAQPage & Seville LocalBusiness Rich Snippets** | High | SEO & GEO | **Completed** |
+| **Interactive Google Ads ROI / CPC Savings Calculator** | High | CRO & Sales | **Completed** |
+| **Schema.org BreadcrumbList Navigation** | Medium | SEO & SERP | **Completed** |
+| **Portfolio Social Proof in B2B Services** | High | CRO & Trust | **Completed** |
+| **Generative UI Service Card in RAG Chatbot** | High | AI & Sales | **Completed** |
+| **B2B Cold Outreach Email Templates (ES Agencies)** | High | Marketing & Sales | **Completed** |
+| **Interactive "Before & After" Speed Slider** | Medium | Conversion & Proof | Planned in Roadmap |
 | **Fiscal & Legal Autónomo Architecture (Aviso Legal & IVA/IRPF)** | High | Legal & B2B Trust | Planned (Post-Autónomo Registration) |
-| **Commercial Hero CTA & Pre-sale RAG Funnel Overhaul (/es Locale)** | High | CRO & Funnel B2B | Planned |
-| **Verified Domain Mailbox (hola@yusupovartur.com) & Seville Ecosystem** | Medium | Branding & GEO | Planned |
+| **Commercial Hero CTA & Pre-sale RAG Funnel Overhaul (/es Locale)** | High | CRO & Funnel B2B | Planned in Roadmap |
+| **Verified Domain Mailbox (hola@yusupovartur.com) & Seville Ecosystem** | Medium | Branding & GEO | Planned in Roadmap |
 | **Interactive Project Cost & Timeline Estimator** | High | Lead Generation | Planned |
 | **Public Repository Switch (Unlimited Actions)** | High | DevOps & Cost | Pending User Action |
 | **Interactive Spec-Driven SDLC Pipeline Visualizer** | Medium | AI & Architecture | Planned |
-| **Interactive "Before & After" Speed Slider** | Medium | Conversion & Proof | Planned |
 | **Live "Developer Mode" HUD (Inspector for CTOs)** | Medium | Technical Proof | Planned |
 | **Serverless Hybrid RAG AI Chatbot (with Project Matchmaker)** | Medium | AI Architecture | Fully Specified |
 | **Free 2-Minute Loom Video Audit Modal** | Medium | Lead Generation | Planned |
 | **Live CI/CD Pipeline & Health Status in Footer** | Medium | DevOps & Trust | Planned |
 | **Dynamic Client-Side CV/Resume PDF Generator** | Low | Utility | Planned |
-| **B2B Cold Outreach Email Templates (ES)** | Low | Marketing & Sales | Planned |
 | **DACH Market Expansion (German Locale / de)** | Medium | Internationalization | Phase 2 Planned |
 
 ---
@@ -79,8 +84,14 @@ This document maintains the technical and business roadmap for the Artur Yusupov
 - **Objective:** Interactive 4-step wizard calculating price ranges and delivery timeframes for custom WordPress, Next.js, and speed optimization projects.
 - **Specification:** Generates a pre-formatted technical scope string sent directly to WhatsApp or Email in 1 click.
 
-### Interactive "Before & After" Performance Slider
+### Interactive "Before & After" Performance Slider (Roadmap Item)
 - **Objective:** Interactive comparison slider demonstrating typical bloated page scores (PageSpeed 28, LCP 4.8s) vs Artur's engineered architecture (PageSpeed 98, LCP 0.6s).
+- **Placement:** Targeted for `/services/web-performance-core-web-vitals` and the homepage performance block.
+- **Specification:**
+  - Dual visual panels with a draggable center divider (accessible via keyboard left/right arrow keys).
+  - Metrics breakdown: LCP (Largest Contentful Paint), INP (Interaction to Next Paint), CLS (Cumulative Layout Shift).
+  - Business impact indicator: Shows bounce rate reduction from 42% down to 9% and Google Ads CPC discount.
+  - Zero heavy external dependencies: Pure CSS clip-path or canvas with standard touch/pointer events.
 
 ### Free 2-Minute Loom Video Audit Modal
 - **Objective:** High-converting lead magnet offering potential clients a free, recorded architectural & speed audit of their existing website.
