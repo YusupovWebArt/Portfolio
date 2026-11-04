@@ -20,9 +20,18 @@
 - **AI Engineering & Hybrid RAG Systems**: Custom in-browser and server-side Retrieval-Augmented Generation (RAG) assistants, vector embeddings, deterministic fallback engines, and Spec-Driven AI SDLC.
 - **EU Accessibility & DevSecOps Compliance**: WCAG 2.2 Level AA & European Accessibility Act (EAA 2026 / EN 301 549) keyboard/screen-reader engineering, strict CSP/HSTS headers, and zero-leak client-side contact obfuscation.
 
+## Commercial B2B Services (Spain & International)
+
+- [B2B Services Directory](https://www.yusupovartur.com/en/services) (ES: https://www.yusupovartur.com/es/services)
+- [White-Label Web Engineering for Agencies](https://www.yusupovartur.com/en/services/white-label-agency-partner) (ES: https://www.yusupovartur.com/es/services/white-label-agency-partner): Bespoke Next.js 16 and WordPress development under strict NDA, 24-48h scoping turnaround.
+- [Headless WordPress & Legacy Migration](https://www.yusupovartur.com/en/services/headless-wordpress-nextjs-migration) (ES: https://www.yusupovartur.com/es/services/headless-wordpress-nextjs-migration): Decoupled Next.js 16 frontend with sub-second speeds, zero downtime, and 100% SEO preservation.
+- [Core Web Vitals & Performance Optimization](https://www.yusupovartur.com/en/services/web-performance-core-web-vitals) (ES: https://www.yusupovartur.com/es/services/web-performance-core-web-vitals): Sub-0.8s load times, Google Ads Quality Score improvement, and reduced CPC.
+- [Custom Web Development for Seville & Spain SMEs](https://www.yusupovartur.com/en/services/custom-web-development-seville) (ES: https://www.yusupovartur.com/es/services/custom-web-development-seville): Client-generating websites for businesses and clinics, local SEO, EAA 2026 accessibility.
+- [Custom RAG AI Assistants & Business Automation](https://www.yusupovartur.com/en/services/rag-ai-assistants-business) (ES: https://www.yusupovartur.com/es/services/rag-ai-assistants-business): Grounded AI conversational agents answering strictly from business documents with 0% hallucinations.
+
 ## Personal Flagship Products
 
-- [Next.js 16 & Hybrid RAG Portfolio Platform](https://www.yusupovartur.com/en/projects/yusupovartur-nextjs-portfolio): Enterprise fullstack platform with React 19 Server Components, autonomous Hybrid RAG engine indexing 71 case studies and 39 engineering articles across 346 static SSG routes (EN/UA/ES), and WCAG 2.2 AA compliance.
+- [Next.js 16 & Hybrid RAG Portfolio Platform](https://www.yusupovartur.com/en/projects/yusupovartur-nextjs-portfolio): Enterprise fullstack platform with React 19 Server Components, autonomous Hybrid RAG engine indexing 71 case studies and 39 engineering articles across 364 static SSG routes (EN/UA/ES), and WCAG 2.2 AA compliance.
 - [Fullstack AI Lab](https://www.yusupovartur.com/en/projects/fullstack-ai-lab): Interactive EdTech platform for Fullstack mastery (React 19, Next.js 16, WordPress core internals, TypeScript) powered by native Rust MDX-RS compilation across 1,135+ lessons, in-browser WASM WordPress 7.0 / PHP 8.4 Playground, AI Technical Interview Engine, Google NotebookLM Audio Overview prompt generator, and Supabase personal cloud progress synchronization. Live: https://www.fullstackailab.com
 - [Unitrition](https://www.yusupovartur.com/en/projects/unitrition): Personalized nutrition modeling platform supporting 10 dietary regimens, built with Next.js 16 App Router, Headless WordPress, Supabase, and USDA FoodData Central API.
 - [My React Portfolio Website](https://www.yusupovartur.com/en/projects/webart-react-portfolio): High-performance SPA/PWA built with React 19, TypeScript, Tailwind CSS v4, View Transitions API, and Vitest test suite.

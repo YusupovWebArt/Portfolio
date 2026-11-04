@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next'
 import { getAllProjectEntries } from '../src/lib/projects'
 import { allBlogPosts } from '../src/data/blog'
+import { allServices } from '../src/data/services'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://www.yusupovartur.com'
@@ -89,6 +90,47 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   }
 
+
+
+  // B2B Service catalog pages for each locale
+  for (const locale of locales) {
+    sitemapEntries.push({
+      url: `${baseUrl}/${locale}/services`,
+      lastModified: new Date('2026-11-04'),
+      changeFrequency: 'weekly',
+      priority: 0.9,
+      alternates: {
+        languages: {
+          en: `${baseUrl}/en/services`,
+          uk: `${baseUrl}/ua/services`,
+          es: `${baseUrl}/es/services`,
+          'es-ES': `${baseUrl}/es/services`,
+          'x-default': `${baseUrl}/en/services`,
+        },
+      },
+    })
+  }
+
+  // B2B Service detail pages for each locale
+  for (const locale of locales) {
+    for (const service of allServices) {
+      sitemapEntries.push({
+        url: `${baseUrl}/${locale}/services/${service.slug}`,
+        lastModified: new Date('2026-11-04'),
+        changeFrequency: 'weekly',
+        priority: 0.85,
+        alternates: {
+          languages: {
+            en: `${baseUrl}/en/services/${service.slug}`,
+            uk: `${baseUrl}/ua/services/${service.slug}`,
+            es: `${baseUrl}/es/services/${service.slug}`,
+            'es-ES': `${baseUrl}/es/services/${service.slug}`,
+            'x-default': `${baseUrl}/en/services/${service.slug}`,
+          },
+        },
+      })
+    }
+  }
 
   // Legal pages for each locale (Privacy Policy & Cookie Policy)
   const legalSlugs = ['privacy-policy', 'cookie-policy'] as const

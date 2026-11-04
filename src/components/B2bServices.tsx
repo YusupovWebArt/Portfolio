@@ -16,20 +16,39 @@ import {
   LuCheck as Check,
   LuBuilding2 as Building2,
   LuBriefcase as Briefcase,
+  LuArrowRight as ArrowRight,
 } from 'react-icons/lu'
 import { useLanguage } from '../contexts/LanguageContext'
 
 const pymesIcons = [Layout, Zap, Bot, MapPin, ShoppingCart, ShieldCheck]
 const agencyIcons = [Lock, Code2, Sparkles, Search, Handshake]
 
+const pymesSlugs = [
+  'custom-web-development-seville',
+  'web-performance-core-web-vitals',
+  'rag-ai-assistants-business',
+  'custom-web-development-seville',
+  'headless-wordpress-nextjs-migration',
+  'custom-web-development-seville',
+]
+const agencySlugs = [
+  'white-label-agency-partner',
+  'white-label-agency-partner',
+  'web-performance-core-web-vitals',
+  'headless-wordpress-nextjs-migration',
+  'white-label-agency-partner',
+]
+
+
 const B2bServices = () => {
-  const { t } = useLanguage()
+  const { t, lang } = useLanguage()
   const b2b = t.b2bServices
   const [activeTab, setActiveTab] = useState<'pymes' | 'agencies'>('pymes')
 
   const isPymes = activeTab === 'pymes'
   const activeContent = isPymes ? b2b.pymesContent : b2b.agenciesContent
   const activeIcons = isPymes ? pymesIcons : agencyIcons
+  const activeSlugs = isPymes ? pymesSlugs : agencySlugs
 
   return (
     <section
@@ -103,10 +122,24 @@ const B2bServices = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-[1600px] mx-auto">
           {activeContent.cards.map((card, idx) => {
             const IconComponent = activeIcons[idx % activeIcons.length]
+            const targetSlug = activeSlugs[idx % activeSlugs.length]
             return (
-              <div
+              <a
                 key={idx}
-                className="group relative overflow-hidden bg-white dark:bg-slate-900 lg:bg-white/60 lg:dark:bg-slate-900/60 lg:backdrop-blur-xl rounded-3xl p-6 border border-slate-200/80 dark:border-white/10 hover:border-purple-300 dark:hover:border-lime-500/40 transition-all duration-300 shadow-lg hover:shadow-xl flex flex-col justify-between"
+                href={`/${lang}/services/${targetSlug}`}
+                onClick={(e) => {
+                  const isSpa =
+                    typeof window !== 'undefined' &&
+                    (Boolean((window as unknown as { __IS_PORTFOLIO_SPA__?: boolean }).__IS_PORTFOLIO_SPA__) ||
+                      window.location.pathname.startsWith('/Portfolio') ||
+                      window.location.port === '5173' ||
+                      window.location.port === '4173')
+                  if (isSpa) {
+                    e.preventDefault()
+                    window.open(`https://www.yusupovartur.com/${lang}/services/${targetSlug}`, '_blank', 'noopener,noreferrer')
+                  }
+                }}
+                className="group relative overflow-hidden bg-white dark:bg-slate-900 lg:bg-white/60 lg:dark:bg-slate-900/60 lg:backdrop-blur-xl rounded-3xl p-6 border border-slate-200/80 dark:border-white/10 hover:border-purple-300 dark:hover:border-lime-500/40 transition-all duration-300 shadow-lg hover:shadow-xl flex flex-col justify-between cursor-pointer"
               >
                 {/* Ambient hover light glow */}
                 <div className="absolute -top-12 -left-12 w-32 h-32 bg-purple-500 dark:bg-lime-500 rounded-full blur-3xl opacity-0 group-hover:opacity-10 dark:group-hover:opacity-15 transition-opacity duration-300 pointer-events-none" />
@@ -144,10 +177,44 @@ const B2bServices = () => {
                       {card.benefit}
                     </p>
                   </div>
+
+                  <div className="mt-3 pt-2 flex items-center justify-between text-xs font-bold text-purple-600 dark:text-lime-400 group-hover:underline">
+                    <span>{lang === 'es' ? 'Ver detalles del servicio' : lang === 'ua' ? 'Детальніше про послугу' : 'Explore Service'}</span>
+                    <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
+                  </div>
                 </div>
-              </div>
+              </a>
             )
           })}
+        </div>
+
+        {/* Global Catalog Link CTA */}
+        <div className="mt-14 text-center">
+          <a
+            href={`/${lang}/services`}
+            onClick={(e) => {
+              const isSpa =
+                typeof window !== 'undefined' &&
+                (Boolean((window as unknown as { __IS_PORTFOLIO_SPA__?: boolean }).__IS_PORTFOLIO_SPA__) ||
+                  window.location.pathname.startsWith('/Portfolio') ||
+                  window.location.port === '5173' ||
+                  window.location.port === '4173')
+              if (isSpa) {
+                e.preventDefault()
+                window.open(`https://www.yusupovartur.com/${lang}/services`, '_blank', 'noopener,noreferrer')
+              }
+            }}
+            className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-2xl text-sm font-bold text-white bg-slate-900 hover:bg-purple-600 dark:bg-slate-800 dark:hover:bg-slate-700 shadow-md transition-all duration-200"
+          >
+            <span>
+              {lang === 'es'
+                ? 'Explorar Catálogo Completo de Servicios B2B'
+                : lang === 'ua'
+                  ? 'Переглянути повний каталог B2B послуг'
+                  : 'Explore Complete B2B Services Directory'}
+            </span>
+            <ArrowRight className="w-4 h-4" aria-hidden="true" />
+          </a>
         </div>
       </div>
     </section>

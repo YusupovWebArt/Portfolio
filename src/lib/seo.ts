@@ -1,3 +1,4 @@
+import type { ServiceItem } from '../data/services/types'
 import { Project, TechnologyItem } from '../components/projects/project-types'
 
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.yusupovartur.com'
@@ -646,5 +647,143 @@ export function buildLegalBreadcrumbsJsonLd(
         item: `${baseUrl}/${locale}/${slug}`,
       },
     ],
+  }
+}
+
+export function buildServiceBreadcrumbsJsonLd(
+  serviceTitle: string,
+  slug: string,
+  locale = 'en'
+): BreadcrumbListJsonLd {
+  const baseUrl = 'https://www.yusupovartur.com'
+  const homeLabel = locale === 'ua' ? 'Головна' : locale === 'es' ? 'Inicio' : 'Home'
+  const servicesLabel = locale === 'ua' ? 'Послуги' : locale === 'es' ? 'Servicios' : 'Services'
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: homeLabel,
+        item: `${baseUrl}/${locale}`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: servicesLabel,
+        item: `${baseUrl}/${locale}/services`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 3,
+        name: serviceTitle.replace(/[\u2014\u2013]/g, '-'),
+        item: `${baseUrl}/${locale}/services/${slug}`,
+      },
+    ],
+  }
+}
+
+export function buildServiceCatalogBreadcrumbsJsonLd(
+  locale = 'en'
+): BreadcrumbListJsonLd {
+  const baseUrl = 'https://www.yusupovartur.com'
+  const homeLabel = locale === 'ua' ? 'Головна' : locale === 'es' ? 'Inicio' : 'Home'
+  const servicesLabel = locale === 'ua' ? 'Послуги' : locale === 'es' ? 'Servicios' : 'Services'
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: homeLabel,
+        item: `${baseUrl}/${locale}`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: servicesLabel,
+        item: `${baseUrl}/${locale}/services`,
+      },
+    ],
+  }
+}
+
+export function buildServiceJsonLd(service: ServiceItem, locale = 'en') {
+  const baseUrl = 'https://www.yusupovartur.com'
+  const validLoc = (locale === 'es' || locale === 'ua' ? locale : 'en') as 'en' | 'ua' | 'es'
+  const content = service.content[validLoc] || service.content.en
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    '@id': `${baseUrl}/${locale}/services/${service.slug}#service`,
+    name: content.title.replace(/[\u2014\u2013]/g, '-'),
+    description: content.schemaDescription.replace(/[\u2014\u2013]/g, '-'),
+    url: `${baseUrl}/${locale}/services/${service.slug}`,
+    serviceType: content.badge,
+    areaServed: [
+      {
+        '@type': 'Country',
+        name: 'Spain',
+      },
+      {
+        '@type': 'AdministrativeArea',
+        name: 'Andalucía',
+      },
+      {
+        '@type': 'AdministrativeArea',
+        name: 'European Union',
+      },
+    ],
+    provider: {
+      '@type': 'Person',
+      '@id': `${baseUrl}/#person`,
+      name: 'Artur Yusupov',
+      disambiguatingDescription:
+        locale === 'es'
+          ? 'Ingeniero de Software y Desarrollador Fullstack/IA residente en Sevilla, Espana'
+          : locale === 'ua'
+            ? 'Інженер програмного забезпечення та Fullstack/AI розробник, що проживає в Севільї, Іспанія'
+            : 'Software Engineer and Fullstack/AI Developer residing in Seville, Spain',
+      url: `${baseUrl}/${locale}`,
+      jobTitle: 'Senior Fullstack Web Engineer & AI Developer',
+    },
+    offers: {
+      '@type': 'Offer',
+      priceCurrency: 'EUR',
+      availability: 'https://schema.org/InStock',
+      url: `${baseUrl}/${locale}/services/${service.slug}`,
+    },
+  }
+}
+
+export function buildServiceCatalogJsonLd(services: ServiceItem[], locale = 'en') {
+  const baseUrl = 'https://www.yusupovartur.com'
+  const catalogName =
+    locale === 'es'
+      ? 'Servicios B2B de Ingenieria Web y Desarrollo a Medida'
+      : locale === 'ua'
+        ? 'B2B Послуги веб-інженерії та розробки'
+        : 'B2B Web Engineering & Custom Development Services'
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    '@id': `${baseUrl}/${locale}/services#catalog`,
+    name: catalogName,
+    itemListElement: services.map((service, index) => {
+      const validLoc = (locale === 'es' || locale === 'ua' ? locale : 'en') as 'en' | 'ua' | 'es'
+      const content = service.content[validLoc] || service.content.en
+      return {
+        '@type': 'ListItem',
+        position: index + 1,
+        url: `${baseUrl}/${locale}/services/${service.slug}`,
+        name: content.title.replace(/[\u2014\u2013]/g, '-'),
+      }
+    }),
   }
 }
