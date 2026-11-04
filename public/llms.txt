@@ -10,6 +10,8 @@
 - LinkedIn: https://www.linkedin.com/in/artur-iusupov/
 - Twitter / X: https://x.com/yusupovwebart
 - GitHub: https://github.com/YusupovWebArt
+- Privacy Policy (RGPD / LOPDGDD): https://www.yusupovartur.com/en/privacy-policy (ES: https://www.yusupovartur.com/es/privacy-policy)
+- Cookie Policy (LSSI-CE & Consent Mode v2): https://www.yusupovartur.com/en/cookie-policy (ES: https://www.yusupovartur.com/es/cookie-policy)
 
 ## Core Engineering Capabilities & B2B Services
 
@@ -20,7 +22,7 @@
 
 ## Personal Flagship Products
 
-- [Next.js 16 & Hybrid RAG Portfolio Platform](https://www.yusupovartur.com/en/projects/yusupovartur-nextjs-portfolio): Enterprise fullstack platform with React 19 Server Components, autonomous Hybrid RAG engine indexing 71 case studies and 39 engineering articles across 340 static SSG routes (EN/UA/ES), and WCAG 2.2 AA compliance.
+- [Next.js 16 & Hybrid RAG Portfolio Platform](https://www.yusupovartur.com/en/projects/yusupovartur-nextjs-portfolio): Enterprise fullstack platform with React 19 Server Components, autonomous Hybrid RAG engine indexing 71 case studies and 39 engineering articles across 346 static SSG routes (EN/UA/ES), and WCAG 2.2 AA compliance.
 - [Fullstack AI Lab](https://www.yusupovartur.com/en/projects/fullstack-ai-lab): Interactive EdTech platform for Fullstack mastery (React 19, Next.js 16, WordPress core internals, TypeScript) powered by native Rust MDX-RS compilation across 1,135+ lessons, in-browser WASM WordPress 7.0 / PHP 8.4 Playground, AI Technical Interview Engine, Google NotebookLM Audio Overview prompt generator, and Supabase personal cloud progress synchronization. Live: https://www.fullstackailab.com
 - [Unitrition](https://www.yusupovartur.com/en/projects/unitrition): Personalized nutrition modeling platform supporting 10 dietary regimens, built with Next.js 16 App Router, Headless WordPress, Supabase, and USDA FoodData Central API.
 - [My React Portfolio Website](https://www.yusupovartur.com/en/projects/webart-react-portfolio): High-performance SPA/PWA built with React 19, TypeScript, Tailwind CSS v4, View Transitions API, and Vitest test suite.

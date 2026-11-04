@@ -89,5 +89,28 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }
   }
 
+
+  // Legal pages for each locale (Privacy Policy & Cookie Policy)
+  const legalSlugs = ['privacy-policy', 'cookie-policy'] as const
+  for (const locale of locales) {
+    for (const slug of legalSlugs) {
+      sitemapEntries.push({
+        url: `${baseUrl}/${locale}/${slug}`,
+        lastModified: new Date('2026-11-04'),
+        changeFrequency: 'monthly',
+        priority: 0.5,
+        alternates: {
+          languages: {
+            en: `${baseUrl}/en/${slug}`,
+            uk: `${baseUrl}/ua/${slug}`,
+            es: `${baseUrl}/es/${slug}`,
+            'es-ES': `${baseUrl}/es/${slug}`,
+            'x-default': `${baseUrl}/en/${slug}`,
+          },
+        },
+      })
+    }
+  }
+
   return sitemapEntries
 }

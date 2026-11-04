@@ -762,6 +762,8 @@ export const ua: Translation = {
     madeWith: 'Розроблено на',
     techUsing: 'Next.js 16, React 19, TypeScript, Tailwind CSS та гібридному RAG AI-асистенті',
     cookieSettings: 'Налаштування cookies',
+    privacyPolicy: 'Політика конфіденційності',
+    cookiePolicy: 'Політика використання файлів cookie',
   },
   consent: {
     bannerTitle: 'Приватність та згода на cookies',

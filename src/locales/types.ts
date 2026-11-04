@@ -361,6 +361,8 @@ export interface Translation {
     madeWith: string
     techUsing: string
     cookieSettings: string
+    privacyPolicy: string
+    cookiePolicy: string
   }
   consent: {
     bannerTitle: string

@@ -762,6 +762,8 @@ export const es: Translation = {
     madeWith: 'Desarrollado con',
     techUsing: 'Next.js 16, React 19, TypeScript, Tailwind CSS y Asistente de IA RAG Híbrido',
     cookieSettings: 'Configuración de cookies',
+    privacyPolicy: 'Política de Privacidad',
+    cookiePolicy: 'Política de Cookies',
   },
   consent: {
     bannerTitle: 'Privacidad y consentimiento de cookies',

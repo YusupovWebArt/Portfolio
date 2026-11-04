@@ -620,3 +620,31 @@ export function buildPersonAndWebsiteJsonLd(locale = 'en') {
     ],
   }
 }
+
+export function buildLegalBreadcrumbsJsonLd(
+  pageTitle: string,
+  slug: string,
+  locale = 'en'
+): BreadcrumbListJsonLd {
+  const baseUrl = 'https://www.yusupovartur.com'
+  const homeLabel = locale === 'ua' ? 'Головна' : locale === 'es' ? 'Inicio' : 'Home'
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      {
+        '@type': 'ListItem',
+        position: 1,
+        name: homeLabel,
+        item: `${baseUrl}/${locale}`,
+      },
+      {
+        '@type': 'ListItem',
+        position: 2,
+        name: pageTitle.replace(/[\u2014\u2013]/g, '-'),
+        item: `${baseUrl}/${locale}/${slug}`,
+      },
+    ],
+  }
+}

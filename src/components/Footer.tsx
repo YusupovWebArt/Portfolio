@@ -120,9 +120,47 @@ const Footer = () => {
           <div className="w-full h-px bg-slate-800 dark:bg-slate-900 mb-8"></div>
 
           {/* Copyright & Settings */}
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-6 sm:gap-4 text-xs sm:text-sm text-slate-400 dark:text-slate-400">
-            <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-3 text-center sm:text-left">
+          <div className="flex flex-col lg:flex-row justify-between items-center gap-6 sm:gap-4 text-xs sm:text-sm text-slate-400 dark:text-slate-400">
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-x-3 gap-y-2 text-center lg:text-left">
               <span>© {currentYear} Artur Yusupov. {t.footer.copyright}</span>
+              <span className="hidden sm:inline text-slate-600 dark:text-slate-600" aria-hidden="true">•</span>
+              <a
+                href={`/${lang}/privacy-policy`}
+                onClick={(e) => {
+                  const isSpa =
+                    typeof window !== 'undefined' &&
+                    (Boolean((window as unknown as { __IS_PORTFOLIO_SPA__?: boolean }).__IS_PORTFOLIO_SPA__) ||
+                      window.location.pathname.startsWith('/Portfolio') ||
+                      window.location.port === '5173' ||
+                      window.location.port === '4173')
+                  if (isSpa) {
+                    e.preventDefault()
+                    window.open(`https://www.yusupovartur.com/${lang}/privacy-policy`, '_blank', 'noopener,noreferrer')
+                  }
+                }}
+                className="hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-400 dark:focus-visible:outline-lime-400 rounded-md px-1.5 py-0.5 cursor-pointer"
+              >
+                {t.footer.privacyPolicy}
+              </a>
+              <span className="hidden sm:inline text-slate-600 dark:text-slate-600" aria-hidden="true">•</span>
+              <a
+                href={`/${lang}/cookie-policy`}
+                onClick={(e) => {
+                  const isSpa =
+                    typeof window !== 'undefined' &&
+                    (Boolean((window as unknown as { __IS_PORTFOLIO_SPA__?: boolean }).__IS_PORTFOLIO_SPA__) ||
+                      window.location.pathname.startsWith('/Portfolio') ||
+                      window.location.port === '5173' ||
+                      window.location.port === '4173')
+                  if (isSpa) {
+                    e.preventDefault()
+                    window.open(`https://www.yusupovartur.com/${lang}/cookie-policy`, '_blank', 'noopener,noreferrer')
+                  }
+                }}
+                className="hover:text-white transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-400 dark:focus-visible:outline-lime-400 rounded-md px-1.5 py-0.5 cursor-pointer"
+              >
+                {t.footer.cookiePolicy}
+              </a>
               <span className="hidden sm:inline text-slate-600 dark:text-slate-600" aria-hidden="true">•</span>
               <button
                 type="button"

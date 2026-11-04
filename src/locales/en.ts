@@ -763,6 +763,8 @@ export const en: Translation = {
     madeWith: 'Built with',
     techUsing: 'Next.js 16, React 19, TypeScript, Tailwind CSS & Hybrid RAG AI Assistant',
     cookieSettings: 'Cookie Settings',
+    privacyPolicy: 'Privacy Policy',
+    cookiePolicy: 'Cookie Policy',
   },
   consent: {
     bannerTitle: 'Privacy & Cookie Consent',
