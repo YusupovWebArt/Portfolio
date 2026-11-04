@@ -37,6 +37,7 @@ import { realtimeCollaborativeStateSyncWebrtcYjsCrdtNextjs16Post } from './posts
 import { multimodalStreamingVoiceVisionEdgeAiAgentsNextjs16Post } from './posts/multimodal-streaming-voice-vision-edge-ai-agents-nextjs-16'
 import { eventDrivenMicroservicesKafkaOutboxPatternNextjs16Post } from './posts/event-driven-microservices-kafka-outbox-pattern-nextjs-16'
 import { fineGrainedAccessControlRebacOpenfgaNextjs16Post } from './posts/fine-grained-access-control-rebac-openfga-nextjs-16'
+import { deterministicFinancialLedgerDoubleEntryTigerbeetleNextjs16Post } from './posts/deterministic-financial-ledger-double-entry-tigerbeetle-nextjs-16'
 
 export * from './types'
 
@@ -79,6 +80,7 @@ export const allBlogPosts: BlogPost[] = [
   multimodalStreamingVoiceVisionEdgeAiAgentsNextjs16Post,
   eventDrivenMicroservicesKafkaOutboxPatternNextjs16Post,
   fineGrainedAccessControlRebacOpenfgaNextjs16Post,
+  deterministicFinancialLedgerDoubleEntryTigerbeetleNextjs16Post,
 ]
 
 export function getAllBlogPosts(): BlogPost[] {

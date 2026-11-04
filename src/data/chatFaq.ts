@@ -872,6 +872,31 @@ export const FAQ: FaqItem[] = [
     answerEs:
       'Sustituyo la explosión de roles de RBAC tradicional en plataformas SaaS multiinquilino por el modelo ReBAC (Relationship-Based Access Control) inspirado en Google Zanzibar con OpenFGA. Los permisos se evalúan como tuplas de grafos de relaciones con herencia transitiva (los editores de una carpeta heredan permisos de escritura en los documentos). Con Edge Middleware en Next.js 16 y caché en Redis, las comprobaciones se ejecutan en menos de 12ms con validación estricta Zero-Trust previa a cada mutación de base de datos. Guía de arquitectura completa: /es/blog/fine-grained-access-control-rebac-openfga-nextjs-16',
   },
+  {
+    question: 'How do you engineer a deterministic financial ledger with TigerBeetle in Next.js 16?',
+    questionUa: 'Як ви створюєте детермінований фінансовий реєстр на базі TigerBeetle у Next.js 16?',
+    questionEs: '¿Cómo diseñas un libro mayor financiero determinista con TigerBeetle en Next.js 16?',
+    keywords: [
+      'tigerbeetle',
+      'double-entry',
+      'financial ledger',
+      'temporal workflows',
+      'фінансовий реєстр',
+      'подвійний запис',
+      'двойная запись',
+      'финансовый учет',
+      'бухгалтерия',
+      'partida doble',
+      'libro mayor',
+      'idempotency key',
+    ],
+    answer:
+      'I engineer mission-critical financial ledgers using TigerBeetle: enforcing the immutable double-entry equation (Sum(Debits) - Sum(Credits) == 0) with native 128-bit unsigned integer arithmetic (eliminating floating-point drift). High-concurrency checkout mutations execute two-phase transfers (pending authorization hold -> post or void) committing in sub-800 microseconds. Multi-step bank settlements and webhook retries are coordinated via Temporal durable workflows with strict idempotency keys to eliminate duplicate charges. Read full architecture breakdown: /en/blog/deterministic-financial-ledger-double-entry-tigerbeetle-nextjs-16',
+    answerUa:
+      'Я розробляю відмовостійкі фінансові реєстри на базі TigerBeetle: дотримання інваріанта подвійного запису (Сума(Дебет) - Сума(Кредит) == 0) із нативною 128-бітною цілочисельною арифметикою повністю виключає помилки чисел із плаваючою комою. Високонавантажені мутації замовлень використовують двофазні перекази (блокування коштів -> фіксація або скасування) із затримкою до 800 мікросекунд. Банківські платежі та вебхуки координуються довговічними сагами Temporal зі 128-бітними ключами ідемпотентності для захисту від повторних списань. Детальний розбір: /ua/blog/deterministic-financial-ledger-double-entry-tigerbeetle-nextjs-16',
+    answerEs:
+      'Diseño libros mayores financieros de misión crítica con TigerBeetle: aplico el principio estricto de partida doble (Suma(Débitos) - Suma(Créditos) == 0) con aritmética nativa de enteros de 128 bits eliminando desviaciones por redondeo. Las transacciones concurrentes ejecutan transferencias en dos fases (retención pendiente -> liquidación o anulación) con latencias inferiores a 800 microsegundos. Las liquidaciones bancarias se coordinan mediante flujos duraderos de Temporal con claves de idempotencia para prevenir cobros duplicados. Guía de arquitectura completa: /es/blog/deterministic-financial-ledger-double-entry-tigerbeetle-nextjs-16',
+  },
 
 ]
 

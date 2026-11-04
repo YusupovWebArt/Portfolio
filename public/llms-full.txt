@@ -191,6 +191,10 @@
     - **Published**: 2026-11-04 | **Tags**: OpenFGA, ReBAC, Google Zanzibar, Authorization, Next.js 16, CyberSecurity, HealthTech, TypeScript, Multi-Tenancy
     - **Summary**: An enterprise fine-grained authorization architecture: implementing Google Zanzibar-inspired Relationship-Based Access Control (ReBAC) with OpenFGA, sub-12ms Edge Middleware permission checks, and transitive relation graphs in Next.js 16.
 
+39. **Deterministic Financial Ledger & Double-Entry Accounting Engine: TigerBeetle, Idempotency & Temporal Workflows in Next.js 16**: https://www.yusupovartur.com/en/blog/deterministic-financial-ledger-double-entry-tigerbeetle-nextjs-16
+    - **Published**: 2026-11-04 | **Tags**: TigerBeetle, Ledger, Double-Entry, FinTech, Temporal, Next.js 16, TypeScript, Idempotency, Distributed Systems
+    - **Summary**: An enterprise deterministic financial ledger architecture: implementing strict double-entry bookkeeping with TigerBeetle distributed ledger, 128-bit integer arithmetic, and Temporal durable payment sagas in Next.js 16.
+
 ## 5. Complete 71-Project Portfolio Index (213 Localized Case Study Routes)
 
 1. **Next.js 16 & Hybrid RAG Portfolio Platform** (nextjs) - https://www.yusupovartur.com/en/projects/yusupovartur-nextjs-portfolio | Live: https://www.yusupovartur.com/ | Deep-Dive: https://www.yusupovartur.com/en/blog/autonomous-hybrid-rag-architecture-browser
