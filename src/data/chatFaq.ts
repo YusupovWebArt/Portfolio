@@ -822,6 +822,31 @@ export const FAQ: FaqItem[] = [
     answerEs:
       'Diseño agentes de IA multimodales en streaming de baja latencia conectando pistas de audio y vídeo WebRTC del navegador a la API Gemini Live mediante WebSockets bidireccionales en Route Handlers de Edge en Next.js 16. El agente transmite respuestas de audio PCM a 24kHz con latencias inferiores a 300ms y emite llamadas estructuradas de Generative UI que hidratan componentes interactivos de React 19 en tiempo real. Guía de arquitectura completa: /es/blog/multimodal-streaming-voice-vision-edge-ai-agents-nextjs-16',
   },
+  {
+    question: 'How do you implement the Transactional Outbox pattern with Kafka and CDC in Next.js 16?',
+    questionUa: 'Як ви реалізуєте патерн Transactional Outbox з Kafka та CDC у Next.js 16?',
+    questionEs: '¿Cómo implementas el patrón Transactional Outbox con Kafka y CDC en Next.js 16?',
+    keywords: [
+      'transactional outbox',
+      'kafka outbox',
+      'cdc debezium',
+      'debezium',
+      'distributed saga',
+      'dual write',
+      'паттерн outbox',
+      'патерн outbox',
+      'двойная запись',
+      'подвійний запис',
+      'redpanda',
+      'sagas distribuidas',
+    ],
+    answer:
+      'I eliminate the distributed dual-write anti-pattern in Next.js 16 Server Actions by committing domain entities and outbox events in a single local ACID transaction. A Debezium CDC connector reads the PostgreSQL Write-Ahead Log (WAL) via pgoutput logical decoding, streaming events to Kafka/Redpanda with sub-18ms replication lag. Distributed cross-service consistency is guaranteed via orchestrated Sagas with automated compensating rollbacks and Redis Bloom filter idempotency keys. Read full architecture breakdown: /en/blog/event-driven-microservices-kafka-outbox-pattern-nextjs-16',
+    answerUa:
+      'Я усуваю антипатерн подвійного запису (Dual-Write) у Server Actions Next.js 16 завдяки фіксації сутності та події Outbox в єдиній локальній ACID-транзакції. Конектор Debezium CDC читає журнал WAL у PostgreSQL через логічне декодування pgoutput, транслюючи події в Kafka/Redpanda із затримкою до 18мс. Узгодженість між мікросервісами гарантується оркестрованими сагами з автоматичними компенсаційними транзакціями та ключами ідемпотентності з фільтрами Блума в Redis. Детальний розбір: /ua/blog/event-driven-microservices-kafka-outbox-pattern-nextjs-16',
+    answerEs:
+      'Elimino el antipatrón de doble escritura en Server Actions de Next.js 16 confirmando entidades de dominio y eventos outbox en una única transacción ACID local. El conector Debezium CDC lee el Write-Ahead Log (WAL) de PostgreSQL mediante pgoutput, transmitiendo eventos a Kafka/Redpanda con latencias inferiores a 18ms. La coherencia entre microservicios se asegura mediante sagas orquestadas con compensaciones automáticas e idempotencia con filtros Bloom en Redis. Guía de arquitectura completa: /es/blog/event-driven-microservices-kafka-outbox-pattern-nextjs-16',
+  },
 
 ]
 

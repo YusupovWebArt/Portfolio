@@ -35,6 +35,7 @@ import { distributedEdgeCachingCacheTagsInvalidationMeshNextjs16Post } from './p
 import { cryptographicPasskeysWebauthnZeroKnowledgeAttestationNextjs16Post } from './posts/cryptographic-passkeys-webauthn-zero-knowledge-attestation-nextjs-16'
 import { realtimeCollaborativeStateSyncWebrtcYjsCrdtNextjs16Post } from './posts/realtime-collaborative-state-sync-webrtc-yjs-crdt-nextjs-16'
 import { multimodalStreamingVoiceVisionEdgeAiAgentsNextjs16Post } from './posts/multimodal-streaming-voice-vision-edge-ai-agents-nextjs-16'
+import { eventDrivenMicroservicesKafkaOutboxPatternNextjs16Post } from './posts/event-driven-microservices-kafka-outbox-pattern-nextjs-16'
 
 export * from './types'
 
@@ -75,6 +76,7 @@ export const allBlogPosts: BlogPost[] = [
   cryptographicPasskeysWebauthnZeroKnowledgeAttestationNextjs16Post,
   realtimeCollaborativeStateSyncWebrtcYjsCrdtNextjs16Post,
   multimodalStreamingVoiceVisionEdgeAiAgentsNextjs16Post,
+  eventDrivenMicroservicesKafkaOutboxPatternNextjs16Post,
 ]
 
 export function getAllBlogPosts(): BlogPost[] {

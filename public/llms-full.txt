@@ -183,6 +183,10 @@
     - **Published**: 2026-11-04 | **Tags**: Gemini Live API, WebRTC, Edge AI, Generative UI, Next.js 16, Voice Agents, Vision AI, TypeScript
     - **Summary**: An enterprise streaming multimodal AI agent architecture: integrating Google Gemini Live API with WebRTC bidirectional audio/video channels, V8 edge isolates, and Next.js 16 Generative UI component hydration.
 
+37. **Event-Driven Microservices Architecture with Kafka / Redpanda: Transactional Outbox Pattern, CDC & Distributed Sagas in Next.js 16**: https://www.yusupovartur.com/en/blog/event-driven-microservices-kafka-outbox-pattern-nextjs-16
+    - **Published**: 2026-11-04 | **Tags**: Kafka, Microservices, Transactional Outbox, Debezium, CDC, Distributed Sagas, Next.js 16, TypeScript, PostgreSQL, Redpanda
+    - **Summary**: An enterprise event-driven microservices architecture: eliminating the dual-write anti-pattern with PostgreSQL logical replication CDC, Kafka / Redpanda partitioned streaming, idempotency guards, and distributed Saga orchestrations in Next.js 16.
+
 ## 5. Complete 71-Project Portfolio Index (213 Localized Case Study Routes)
 
 1. **Next.js 16 & Hybrid RAG Portfolio Platform** (nextjs) - https://www.yusupovartur.com/en/projects/yusupovartur-nextjs-portfolio | Live: https://www.yusupovartur.com/ | Deep-Dive: https://www.yusupovartur.com/en/blog/autonomous-hybrid-rag-architecture-browser

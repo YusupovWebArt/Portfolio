@@ -16,7 +16,7 @@ import {
 import { FaGithub as Github, FaLinkedin as Linkedin } from 'react-icons/fa'
 import { FaXTwitter as XIcon } from 'react-icons/fa6'
 
-import { FAQ, Message } from '../data/chatFaq'
+import type { FAQItem, Message } from '../data/chatFaq'
 import { useLanguage } from '../contexts/LanguageContext'
 import { PUBLIC_PROFILES } from '../lib/profiles'
 import type { ContactKind, RevealedContact } from '../lib/contacts'
@@ -119,6 +119,13 @@ const Contact = () => {
   ])
   const [input, setInput] = useState('')
   const [isTyping, setIsTyping] = useState(false)
+  const [faqList, setFaqList] = useState<FAQItem[]>([])
+
+  useEffect(() => {
+    void import('../data/chatFaq').then(({ FAQ }) => {
+      setFaqList(FAQ)
+    })
+  }, [])
   const scrollContainerRef = useRef<HTMLDivElement>(null)
 
   // Hydrate chat messages from sessionStorage asynchronously after mount
@@ -219,7 +226,7 @@ const Contact = () => {
     return msg
   })
 
-  const activeSuggestions = FAQ.filter(
+  const activeSuggestions = faqList.filter(
     (faq) => !messages.some((m) => m.from === 'user' && (m.text === faq.question || m.text === faq.questionUa || m.text === faq.questionEs))
   )
 
@@ -435,7 +442,7 @@ const Contact = () => {
                       {ct.chatbot.faqHeader}
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                      {FAQ.slice(0, 4).map((faq, idx) => {
+                      {faqList.slice(0, 4).map((faq, idx) => {
                         const questionText = lang === 'ua' ? faq.questionUa : lang === 'es' ? faq.questionEs : faq.question
                         return (
                           <button
