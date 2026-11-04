@@ -6,10 +6,10 @@
  */
 
 export const OBFUSCATED_CONTACTS = {
-  // Obfuscated personal email address
-  email: 'd2ViLnN1bmxpbmVAZ21haWwuY29t',
-  // Obfuscated mailto link
-  emailMailto: 'bWFpbHRvOndlYi5zdW5saW5lQGdtYWlsLmNvbQ==',
+  // Obfuscated verified domain email address (contacto@yusupovartur.com)
+  email: 'Y29udGFjdG9AeXVzdXBvdmFydHVyLmNvbQ==',
+  // Obfuscated mailto link for domain email
+  emailMailto: 'bWFpbHRvOmNvbnRhY3RvQHl1c3Vwb3ZhcnR1ci5jb20=',
   // Obfuscated phone credential
   phone: 'KzM0NjQyNDEzOTY3',
   // Obfuscated WhatsApp chat URL

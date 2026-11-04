@@ -25,7 +25,7 @@ This document maintains the technical and business roadmap for the Artur Yusupov
 | **Interactive "Before & After" Speed Slider** | Medium | Conversion & Proof | Planned in Roadmap |
 | **Fiscal & Legal Autónomo Architecture (Aviso Legal & IVA/IRPF)** | High | Legal & B2B Trust | Planned (Post-Autónomo Registration) |
 | **Commercial Hero CTA & Pre-sale RAG Funnel Overhaul (/es Locale)** | High | CRO & Funnel B2B | Planned in Roadmap |
-| **Verified Domain Mailbox (hola@yusupovartur.com) & Seville Ecosystem** | Medium | Branding & GEO | Planned in Roadmap |
+| **Verified Domain Mailbox (Custom Domain Routing) & Seville Ecosystem** | Medium | Branding & GEO | **Completed** |
 | **Interactive Project Cost & Timeline Estimator** | High | Lead Generation | Planned |
 | **Public Repository Switch (Unlimited Actions)** | High | DevOps & Cost | Pending User Action |
 | **Interactive Spec-Driven SDLC Pipeline Visualizer** | Medium | AI & Architecture | Planned |
@@ -173,6 +173,6 @@ This document maintains the technical and business roadmap for the Artur Yusupov
 ### 8.3. Verified Domain Mailbox & Seville Local Ecosystem
 - **Context:** Decouple personal communication channels from business client acquisition.
 - **Action Plan:**
-  - Setup verified domain email (`hola@yusupovartur.com` or `contacto@yusupovartur.com`) and plug into `PENDING_DOMAIN_EMAIL` slot in `src/lib/contacts.ts`.
+  - Setup verified domain email via Cloudflare Email Routing and activate Base64 credentials in `src/lib/contacts.ts` (Completed).
   - Claim and verify Google Business Profile in Seville ("Desarrollador Web y Consultor IA en Sevilla") for Local SEO MAP pack visibility.
   - Complete Spanish profile on Malt España (`malt.es/profile/arturyusupov`) and Shakers (`shakersworks.com`), linking them to Schema.org `sameAs` array.
