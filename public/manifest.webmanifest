@@ -2,12 +2,12 @@
   "name": "Artur Yusupov | Full-Stack Web Engineer & AI Developer",
   "short_name": "Artur Yusupov",
   "description": "Portfolio of Artur Yusupov - Full-Stack Web Engineer, Custom WordPress, React 19, Next.js 16, and Spec-Driven AI SDLC Developer.",
-  "start_url": "/Portfolio/",
-  "scope": "/Portfolio/",
+  "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "orientation": "portrait-primary",
-  "background_color": "#0f172a",
-  "theme_color": "#7c3aed",
+  "background_color": "#0b0f19",
+  "theme_color": "#0b0f19",
   "lang": "en",
   "categories": [
     "portfolio",
@@ -17,19 +17,19 @@
   ],
   "icons": [
     {
-      "src": "/Portfolio/images/icons/icon-192x192.png",
+      "src": "/images/icons/icon-192x192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/Portfolio/images/icons/icon-512x512.png",
+      "src": "/images/icons/icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/Portfolio/images/icons/maskable-icon-512x512.png",
+      "src": "/images/icons/maskable-icon-512x512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"

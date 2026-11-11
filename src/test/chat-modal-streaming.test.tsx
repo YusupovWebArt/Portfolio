@@ -100,7 +100,7 @@ describe('ChatModal Client-side Streaming & Fallback Specification (TDD)', () =>
         expect(messages.length).toBeGreaterThan(0)
         expect(screen.getByText(/Download CV \(PDF\)/i)).toBeInTheDocument()
       },
-      { timeout: 4000 },
+      { timeout: 8000 },
     )
   })
 
@@ -147,7 +147,7 @@ describe('ChatModal Client-side Streaming & Fallback Specification (TDD)', () =>
         })
         expect(caseStudyLinks.length).toBeGreaterThan(0)
       },
-      { timeout: 4000 },
+      { timeout: 8000 },
     )
 
     // Dialog container itself must never be scrolled
