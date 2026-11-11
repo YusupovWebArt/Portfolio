@@ -17,7 +17,7 @@ export interface ProjectToolOutput {
 export const showProjectsTool = tool({
   description:
     "Showcase relevant project case studies from Artur's portfolio matching a technology, category, or keyword.",
-  parameters: z.object({
+  inputSchema: z.object({
     category: z
       .string()
       .optional()
@@ -35,7 +35,15 @@ export const showProjectsTool = tool({
       .optional()
       .describe("Maximum number of projects to return (1-6, default 3)"),
   }),
-  execute: async ({ category, technology, limit = 3 }) => {
+  execute: async ({
+    category,
+    technology,
+    limit = 3,
+  }: {
+    category?: string
+    technology?: string
+    limit?: number
+  }) => {
     const allEntries = getAllProjectEntries()
     let filtered = allEntries
 
@@ -51,12 +59,14 @@ export const showProjectsTool = tool({
       filtered = filtered.filter((entry) => {
         const p = entry.project
         if (!p.technologies) return false
-        const allTechs = [
-          ...(p.technologies.frontend || []),
-          ...(p.technologies.backend || []),
-          ...(p.technologies.contentManagement || []),
-          ...(p.technologies.devopsSecurity || []),
-        ]
+        const allTechs: Array<string | { short: string; full?: string }> = Array.isArray(p.technologies)
+          ? p.technologies
+          : [
+              ...(p.technologies.frontend || []),
+              ...(p.technologies.backend || []),
+              ...(p.technologies.contentManagement || []),
+              ...(p.technologies.devopsSecurity || []),
+            ]
         return allTechs.some((t) => {
           const name = typeof t === 'string' ? t : t.short
           return name.toLowerCase().includes(techLower)
@@ -89,7 +99,7 @@ export const showProjectsTool = tool({
 
 export const getContactInfoTool = tool({
   description: 'Retrieve verified public profiles for contacting Artur Yusupov.',
-  parameters: z.object({}),
+  inputSchema: z.object({}),
   execute: async () => ({
     name: PUBLIC_PROFILES.name,
     role: PUBLIC_PROFILES.role,

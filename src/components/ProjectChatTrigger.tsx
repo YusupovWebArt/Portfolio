@@ -38,7 +38,14 @@ export default function ProjectChatTrigger({
         ? 'Preguntar a la IA'
         : 'Ask AI about this project'
 
-  const desktopText = label || `Ask AI about ${projectTitle}`
+  const defaultDesktopText =
+    lang === 'ua'
+      ? `Запитати AI про ${projectTitle}`
+      : lang === 'es'
+        ? `Preguntar a la IA sobre ${projectTitle}`
+        : `Ask AI about ${projectTitle}`
+
+  const desktopText = label || defaultDesktopText
   const mobileText = label || defaultMobileText
 
   return (

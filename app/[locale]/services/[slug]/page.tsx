@@ -53,6 +53,10 @@ export async function generateMetadata({
 
   const title = `${content.title} | Artur Yusupov`
   const description = content.shortDesc
+  const ogImage =
+    service.slug === 'rag-ai-assistants-business'
+      ? 'https://www.yusupovartur.com/images/blog/cover-autonomous-hybrid-rag.png'
+      : 'https://www.yusupovartur.com/images/blog/cover-nextjs-vs-headless-wp.png'
 
   return {
     title,
@@ -86,7 +90,7 @@ export async function generateMetadata({
       type: 'website',
       images: [
         {
-          url: 'https://www.yusupovartur.com/images/blog/cover-nextjs-vs-headless-wp.png',
+          url: ogImage,
           width: 1200,
           height: 630,
           alt: title,
@@ -97,7 +101,7 @@ export async function generateMetadata({
       card: 'summary_large_image',
       title,
       description,
-      images: ['https://www.yusupovartur.com/images/blog/cover-nextjs-vs-headless-wp.png'],
+      images: [ogImage],
       creator: '@yusupovwebart',
     },
     robots: {

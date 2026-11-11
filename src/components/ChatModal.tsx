@@ -258,8 +258,16 @@ const ChatModal = ({
       answeredQuestions: answeredUserQuestions,
     }
     const initialSourceLabel = projectContext?.projectTitle
-      ? `Hybrid RAG · ${projectContext.projectTitle} Case Study`
-      : 'Hybrid RAG · 71-Project Knowledge Base'
+      ? lang === 'ua'
+        ? `Hybrid RAG · Кейс ${projectContext.projectTitle}`
+        : lang === 'es'
+          ? `Hybrid RAG · Caso de estudio ${projectContext.projectTitle}`
+          : `Hybrid RAG · ${projectContext.projectTitle} Case Study`
+      : lang === 'ua'
+        ? 'Hybrid RAG · База знань із 71 проєкту'
+        : lang === 'es'
+          ? 'Hybrid RAG · Base de conocimiento de 71 proyectos'
+          : 'Hybrid RAG · 71-Project Knowledge Base'
 
     setMessages((prev) => [...prev, userMessage])
     setInput('')
@@ -414,12 +422,14 @@ const ChatModal = ({
             getContextualFollowUps,
             resolveBlogFromQueryOrContext,
             resolveTargetProject,
+            resolveTargetService,
           }) => {
             const sourceLabel = getRagSourceLabel(textToSend, ragOptions)
             const projectCards = getRelevantProjectCards(textToSend, ragOptions)
             const showContact = isHireOrContactQuery(textToSend)
             const showStack = isStackComparisonQuery(textToSend)
             const showEstimate = isEstimateOrCalculatorQuery(textToSend)
+            const targetService = resolveTargetService ? resolveTargetService(textToSend) : undefined
             const followUps = getContextualFollowUps(textToSend, ragOptions)
 
             const resolvedBlog = resolveBlogFromQueryOrContext(
@@ -462,6 +472,7 @@ const ChatModal = ({
                       showContactCard: showContact,
                       showStackComparison: showStack,
                       showEstimateCalculator: showEstimate,
+                      serviceCard: targetService,
                       followUps,
                       projects:
                         projectCards.length > 0 ? projectCards : msg.projects,
@@ -490,12 +501,14 @@ const ChatModal = ({
         getContextualFollowUps,
         resolveBlogFromQueryOrContext,
         resolveTargetProject,
+        resolveTargetService,
       } = await ragModulePromise
       const sourceLabel = getRagSourceLabel(textToSend, ragOptions)
       const projectCards = getRelevantProjectCards(textToSend, ragOptions)
       const showContact = isHireOrContactQuery(textToSend)
       const showStack = isStackComparisonQuery(textToSend)
       const showEstimate = isEstimateOrCalculatorQuery(textToSend)
+      const targetService = resolveTargetService ? resolveTargetService(textToSend) : undefined
       const followUps = getContextualFollowUps(textToSend, ragOptions)
 
       const resolvedBlog = resolveBlogFromQueryOrContext(textToSend, ragOptions)
@@ -534,6 +547,7 @@ const ChatModal = ({
           showContactCard: showContact,
           showStackComparison: showStack,
           showEstimateCalculator: showEstimate,
+          serviceCard: targetService,
           followUps,
           projects: projectCards.length > 0 ? projectCards : undefined,
           timestamp: new Date(),
@@ -551,15 +565,7 @@ const ChatModal = ({
     setIsTyping(false)
     setMessages([
       {
-        id: `welcome-${Date.now()}
-
-                  {msg.serviceCard && (
-                    <ServiceRecommendationCard
-                      service={msg.serviceCard}
-                      locale={lang}
-                      onNavigate={handleClose}
-                    />
-                  )}`,
+        id: `welcome-${Date.now()}`,
         from: 'bot',
         text: ct.welcomeMessage,
         source: 'Hybrid RAG · 71-Project Knowledge Base',
@@ -578,16 +584,28 @@ const ChatModal = ({
             : lang === 'es'
               ? `Contexto activo: **${projectContext.projectTitle}**. He cargado su arquitectura, stack técnico, funcionalidades clave y soluciones de ingeniería. Elige una consulta rápida abajo o haz cualquier pregunta sobre este proyecto.`
               : `Active context: **${projectContext.projectTitle}**. I have loaded its architecture, tech stack, key features, and engineering case study. Pick a quick query below or ask any specific question about this project!`
+        const activeSource =
+          lang === 'ua'
+            ? `Активний кейс · ${projectContext.projectTitle}`
+            : lang === 'es'
+              ? `Caso de estudio activo · ${projectContext.projectTitle}`
+              : `Active Case Study · ${projectContext.projectTitle}`
         return {
           ...msg,
           text: contextWelcome,
-          source: `Active Case Study · ${projectContext.projectTitle}`,
+          source: activeSource,
         }
       }
+      const defaultSource =
+        lang === 'ua'
+          ? 'Hybrid RAG · База знань із 71 проєкту'
+          : lang === 'es'
+            ? 'Hybrid RAG · Base de conocimiento de 71 proyectos'
+            : 'Hybrid RAG · 71-Project Knowledge Base'
       return {
         ...msg,
         text: ct.welcomeMessage,
-        source: 'Hybrid RAG · 71-Project Knowledge Base',
+        source: defaultSource,
       }
     }
     return msg

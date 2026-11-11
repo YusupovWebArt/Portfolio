@@ -37,7 +37,7 @@ export default function ServiceRecommendationCard({
   const Icon = iconMap[service.iconName] || Layout
 
   const handleWhatsApp = () => {
-    openWhatsAppDirect(content.whatsappMessage)
+    openWhatsAppDirect(locale, content.whatsappMessage)
   }
 
   const handleServiceClick = (e: React.MouseEvent) => {

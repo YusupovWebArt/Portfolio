@@ -98,7 +98,7 @@ describe('Generative UI StackComparisonCard & ProjectEstimateCalculatorCard Spec
     // WhatsApp action
     const whatsappBtn = screen.getByRole('button', { name: /Consultar por WhatsApp/i })
     fireEvent.click(whatsappBtn)
-    expect(openSpy).toHaveBeenCalledWith(service.content.es.whatsappMessage)
+    expect(openSpy).toHaveBeenCalledWith('es', service.content.es.whatsappMessage)
 
     openSpy.mockRestore()
   })

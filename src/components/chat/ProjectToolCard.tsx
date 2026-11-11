@@ -30,6 +30,20 @@ export default function ProjectToolCard({
         ? 'Ver caso de estudio'
         : 'View Case Study'
 
+  const liveDemoLabel =
+    locale === 'ua'
+      ? 'Демо наживо'
+      : locale === 'es'
+        ? 'Demostración en vivo'
+        : 'Live Demo'
+
+  const githubLabel =
+    locale === 'ua'
+      ? 'Репозиторій GitHub'
+      : locale === 'es'
+        ? 'Repositorio GitHub'
+        : 'GitHub Repository'
+
   const handleCaseStudyClick = (e: React.MouseEvent) => {
     onNavigate?.()
     if (
@@ -102,9 +116,9 @@ export default function ProjectToolCard({
                 href={project.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Live Demo"
+                aria-label={liveDemoLabel}
                 className="p-1 rounded-lg text-slate-400 hover:text-slate-700 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
-                title="Live Demo"
+                title={liveDemoLabel}
               >
                 <ExternalLink className="w-3.5 h-3.5" />
               </a>
@@ -114,9 +128,9 @@ export default function ProjectToolCard({
                 href={project.githubUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="GitHub Repository"
+                aria-label={githubLabel}
                 className="p-1 rounded-lg text-slate-400 hover:text-slate-700 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
-                title="GitHub"
+                title={githubLabel}
               >
                 <Github className="w-3.5 h-3.5" />
               </a>

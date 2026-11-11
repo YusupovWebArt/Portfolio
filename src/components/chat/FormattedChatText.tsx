@@ -15,6 +15,11 @@ function renderLink(
   isBot: boolean,
 ): React.ReactNode {
   const isExternal = url.startsWith('http://') || url.startsWith('https://')
+  const isSafeProtocol = isExternal || url.startsWith('/') || url.startsWith('#')
+  if (!isSafeProtocol) {
+    return <React.Fragment key={key}>{label}</React.Fragment>
+  }
+
   const blogMatch = url.match(/\/(?:en|ua|es)\/blog\/([a-zA-Z0-9-]+)/)
   const projectMatch = url.match(/\/(?:en|ua|es)\/projects\/([a-zA-Z0-9-]+)/)
   const serviceMatch = url.match(/\/(?:en|ua|es)\/services\/([a-zA-Z0-9-]+)/)
@@ -144,7 +149,7 @@ function renderInlineSegments(line: string, isBot: boolean): React.ReactNode {
     if (
       token.startsWith('http://') ||
       token.startsWith('https://') ||
-      /^\/(?:en|ua|es)\/(?:blog|projects)\/[a-zA-Z0-9-]+$/.test(token)
+      /^\/(?:en|ua|es)\/(?:blog|projects|services)\/[a-zA-Z0-9-]+$/.test(token)
     ) {
       return renderLink(token, token, idx, isBot)
     }

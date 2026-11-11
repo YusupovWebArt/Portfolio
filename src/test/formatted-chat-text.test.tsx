@@ -56,4 +56,23 @@ describe('FormattedChatText', () => {
 
     delete (window as unknown as { __IS_PORTFOLIO_SPA__?: boolean }).__IS_PORTFOLIO_SPA__
   })
+
+  it('renders raw service links as accessible clickable links', () => {
+    const raw = 'Visit /en/services/rag-ai-assistants-business for custom RAG solutions.'
+    render(<FormattedChatText text={raw} isBot={true} />)
+
+    const link = screen.getByRole('link', {
+      name: '/en/services/rag-ai-assistants-business',
+    })
+    expect(link).toBeInTheDocument()
+    expect(link).toHaveAttribute('href', '/en/services/rag-ai-assistants-business')
+  })
+
+  it('safely defangs unsafe protocol schemes in markdown links', () => {
+    const raw = 'Click [Unsafe](javascript:void-0) here.'
+    render(<FormattedChatText text={raw} isBot={true} />)
+
+    expect(screen.queryByRole('link', { name: 'Unsafe' })).not.toBeInTheDocument()
+    expect(screen.getByText(/Unsafe/)).toBeInTheDocument()
+  })
 })

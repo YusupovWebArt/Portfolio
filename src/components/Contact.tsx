@@ -12,16 +12,22 @@ import {
   LuTrash2 as Trash2,
   LuDatabase as Database,
   LuArrowRight as ArrowRight,
+  LuMaximize2 as Maximize2,
 } from 'react-icons/lu'
 import { FaGithub as Github, FaLinkedin as Linkedin } from 'react-icons/fa'
 import { FaXTwitter as XIcon } from 'react-icons/fa6'
 
-import type { FAQItem, Message } from '../data/chatFaq'
+import type { FaqItem, Message } from '../data/chatFaq'
 import { useLanguage } from '../contexts/LanguageContext'
 import { PUBLIC_PROFILES } from '../lib/profiles'
 import type { ContactKind, RevealedContact } from '../lib/contacts'
 import { trackContactClick, trackAiChatInteraction } from '../lib/analytics'
 import FormattedChatText from './chat/FormattedChatText'
+import ProjectToolCard from './chat/ProjectToolCard'
+import ServiceRecommendationCard from './chat/ServiceRecommendationCard'
+import StackComparisonCard from './chat/StackComparisonCard'
+import ProjectEstimateCalculatorCard from './chat/ProjectEstimateCalculatorCard'
+import ContactActionCard from './chat/ContactActionCard'
 
 let contactMessageIdCounter = 0
 
@@ -119,7 +125,7 @@ const Contact = () => {
   ])
   const [input, setInput] = useState('')
   const [isTyping, setIsTyping] = useState(false)
-  const [faqList, setFaqList] = useState<FAQItem[]>([])
+  const [faqList, setFaqList] = useState<FaqItem[]>([])
 
   useEffect(() => {
     void import('../data/chatFaq').then(({ FAQ }) => {
@@ -191,18 +197,38 @@ const Contact = () => {
     setInput('')
     setIsTyping(true)
 
-    void import('../lib/ai/rag').then(({ synthesizeLocalRagAnswer, getRagSourceLabel, getContextualFollowUps }) => {
+    void import('../lib/ai/rag').then(({
+      synthesizeLocalRagAnswer,
+      getRagSourceLabel,
+      getContextualFollowUps,
+      getRelevantProjectCards,
+      isHireOrContactQuery,
+      isStackComparisonQuery,
+      isEstimateOrCalculatorQuery,
+      resolveTargetService,
+    }) => {
       setTimeout(() => {
         setIsTyping(false)
+        const showContact = isHireOrContactQuery(textToSend)
+        const showStack = isStackComparisonQuery(textToSend)
+        const showEstimate = isEstimateOrCalculatorQuery(textToSend)
+        const targetService = resolveTargetService ? resolveTargetService(textToSend) : undefined
+        const projectCards = getRelevantProjectCards(textToSend, { locale: lang, history: historyForRag })
+
         const botMsg: Message = {
           id: `bot-${++contactMessageIdCounter}`,
           from: 'bot',
           text: synthesizeLocalRagAnswer(textToSend, { locale: lang, history: historyForRag }),
           source: getRagSourceLabel(textToSend, { locale: lang, history: historyForRag }),
           followUps: getContextualFollowUps(textToSend, { locale: lang, history: historyForRag }),
+          showContactCard: showContact,
+          showStackComparison: showStack,
+          showEstimateCalculator: showEstimate,
+          serviceCard: targetService,
+          projects: projectCards.length > 0 ? projectCards : undefined,
         }
         setMessages((prev) => [...prev, botMsg])
-      }, 950)
+      }, 350)
     }).catch(() => {
       setIsTyping(false)
     })
@@ -405,15 +431,30 @@ const Contact = () => {
                   </div>
                 </div>
                 
-                <button
-                  onClick={handleClearChat}
-                  className="p-1.5 hover:bg-slate-200/60 dark:hover:bg-slate-800 rounded-lg text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-700 dark:focus-visible:outline-lime-400 cursor-pointer"
-                  title={ct.chatbot.clearButton}
-                  aria-label={ct.chatbot.clearButton || 'Clear chat'}
-                  type="button"
-                >
-                  <Trash2 className="w-3.5 h-3.5" aria-hidden="true" />
-                </button>
+                <div className="flex items-center gap-1">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      if (typeof window !== 'undefined') {
+                        window.dispatchEvent(new CustomEvent('open-ai-chat'))
+                      }
+                    }}
+                    title={lang === 'es' ? 'Abrir en modal completo' : lang === 'ua' ? 'Розгорнути на весь екран' : 'Open in full modal'}
+                    aria-label={lang === 'es' ? 'Abrir en modal completo' : lang === 'ua' ? 'Розгорнути на весь екран' : 'Open in full modal'}
+                    className="p-1.5 hover:bg-slate-200/60 dark:hover:bg-slate-800 rounded-lg text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-700 dark:focus-visible:outline-lime-400 cursor-pointer"
+                  >
+                    <Maximize2 className="w-3.5 h-3.5" aria-hidden="true" />
+                  </button>
+                  <button
+                    onClick={handleClearChat}
+                    className="p-1.5 hover:bg-slate-200/60 dark:hover:bg-slate-800 rounded-lg text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-700 dark:focus-visible:outline-lime-400 cursor-pointer"
+                    title={ct.chatbot.clearButton}
+                    aria-label={ct.chatbot.clearButton || 'Clear chat'}
+                    type="button"
+                  >
+                    <Trash2 className="w-3.5 h-3.5" aria-hidden="true" />
+                  </button>
+                </div>
               </div>
 
               {/* Chat History List */}
@@ -441,7 +482,14 @@ const Contact = () => {
                       </div>
 
                       <div
-                        className={`px-4 py-3 rounded-2xl max-w-[85%] text-xs sm:text-[13px] leading-relaxed shadow-sm ${
+                        className={`px-4 py-3 rounded-2xl ${
+                          msg.showStackComparison ||
+                          msg.showEstimateCalculator ||
+                          Boolean(msg.serviceCard) ||
+                          (msg.projects && msg.projects.length > 0)
+                            ? 'w-full max-w-full'
+                            : 'max-w-[85%]'
+                        } text-xs sm:text-[13px] leading-relaxed shadow-sm ${
                           isBot
                             ? 'bg-white dark:bg-slate-800/95 text-slate-800 dark:text-slate-100 rounded-tl-sm border border-slate-200/80 dark:border-slate-700/80 shadow-sm'
                             : 'bg-purple-600 dark:bg-lime-500 text-white dark:text-slate-950 rounded-tr-sm font-medium'
@@ -449,9 +497,51 @@ const Contact = () => {
                       >
                         <FormattedChatText
                           text={msg.text}
-                          srPrefix={`${isBot ? ct.chatbot.a11y?.botPrefix || 'Assistant' : 'You'}: `}
+                          srPrefix={`${isBot ? ct.chatbot.a11y.assistantLabel : ct.chatbot.a11y.userLabel}: `}
                           isBot={isBot}
                         />
+
+                        {msg.showContactCard && (
+                          <ContactActionCard
+                            locale={lang}
+                            onNavigateToContact={() => {}}
+                          />
+                        )}
+
+                        {msg.showStackComparison && (
+                          <StackComparisonCard
+                            locale={lang}
+                            onNavigateToContact={() => {}}
+                          />
+                        )}
+
+                        {msg.showEstimateCalculator && (
+                          <ProjectEstimateCalculatorCard
+                            locale={lang}
+                            onNavigateToContact={() => {}}
+                          />
+                        )}
+
+                        {msg.serviceCard && (
+                          <ServiceRecommendationCard
+                            service={msg.serviceCard}
+                            locale={lang}
+                            onNavigate={() => {}}
+                          />
+                        )}
+
+                        {msg.projects && msg.projects.length > 0 && (
+                          <div className="grid grid-cols-1 gap-2 mt-3">
+                            {msg.projects.map((proj) => (
+                              <ProjectToolCard
+                                key={proj.slug}
+                                project={proj}
+                                locale={lang}
+                              />
+                            ))}
+                          </div>
+                        )}
+
                         {isBot && msg.source && (
                           <div className="mt-2.5 pt-2 border-t border-slate-200/60 dark:border-slate-700/70 flex items-center gap-1.5 text-[11px] font-semibold text-purple-600 dark:text-lime-400">
                             <Database className="w-3 h-3 shrink-0" />

@@ -381,6 +381,7 @@ export function retrieveKnowledge(
 export function formatContextForLLM(
   results: RetrievalResult[],
   maxChars = 3500,
+  locale?: 'en' | 'ua' | 'es',
 ): string {
   if (results.length === 0) return ''
 
@@ -391,7 +392,7 @@ export function formatContextForLLM(
     const facetInfo = item.chunk.facet ? ` · ${item.chunk.facet.toUpperCase()}` : ''
     const chunkBlock = `
 #### [${item.chunk.type.toUpperCase()}${facetInfo}] ${item.chunk.title} (Relevance Score: ${item.score})
-${item.chunk.content}
+${(locale === 'es' && item.chunk.contentEs) || (locale === 'ua' && item.chunk.contentUa) || item.chunk.content}
 `
     if (currentLength + chunkBlock.length > maxChars) {
       break
@@ -886,7 +887,7 @@ export function resolveBlogFromQueryOrContext(
     (Boolean(resolveProjectFromQuery(trimmed)) ||
       isBestProjectsQuery(trimmed) ||
       isPersonalProjectsQuery(trimmed) ||
-      Boolean(resolveCategoryOrTechShowcase(trimmed, options.preferredLocale || 'en')))
+      Boolean(resolveCategoryOrTechShowcase(trimmed, options.locale || 'en')))
 
   // 1. Direct slug match from options.projectSlug (only if query does not target a project/category)
   if (!isProjectOrCategoryQuery && options.projectSlug) {
@@ -947,6 +948,30 @@ export function resolveBlogFromQueryOrContext(
 
   if (/\b(next\.?js.*headless|headless.*next\.?js|headless.*wordpress)/i.test(lower)) {
     return getBlogPostBySlug('nextjs-vs-headless-wordpress-custom-php-2026')
+  }
+
+  if (/\b(fullstack[\s-]*ai[\s-]*lab.*(arch|статт|стат|блог|articulo|deep[\s-]*dive)|edtech architecture|mdx[\s-]*rs|interview simulator)/i.test(lower)) {
+    return getBlogPostBySlug('fullstack-ai-lab-interactive-edtech-architecture')
+  }
+
+  if (/\b(unitrition.*(arch|статт|стат|блог|articulo|deep[\s-]*dive)|healthtech.*(arch|статт|стат|блог)|fooddata|usda api)/i.test(lower)) {
+    return getBlogPostBySlug('unitrition-headless-healthtech-architecture')
+  }
+
+  if (/\b(wasm|webassembly|php in browser|wordpress in browser|sqlite vfs)/i.test(lower)) {
+    return getBlogPostBySlug('wasm-wordpress-php-in-browser-zero-server')
+  }
+
+  if (/\b(hpos|high[\s-]*performance order storage|redis caching.*sku)/i.test(lower)) {
+    return getBlogPostBySlug('woocommerce-hpos-redis-caching-10k-skus')
+  }
+
+  if (/\b(edge ai|v8 isolate|tool calling.*isolate)/i.test(lower)) {
+    return getBlogPostBySlug('autonomous-edge-ai-agents-tool-calling-v8-isolates')
+  }
+
+  if (/\b(programmatic seo|pseo)/i.test(lower)) {
+    return getBlogPostBySlug('enterprise-programmatic-seo-pseo-nextjs-16-autonomous-llm-pipelines')
   }
 
   if (/\b(legacy migration|zero[\s-]*downtime migration|міграці.*хмар|миграци.*облак)/i.test(lower)) {
@@ -1297,7 +1322,7 @@ export function synthesizeLocalRagAnswer(
   if (isBlogArticlesQuery(trimmed)) {
     if (lang === 'ua') {
       return stripEmDashes(
-        'У моєму інженерному блозі опубліковані 9 детальних архітектурних розборів для CTO та технічних команд:\n\n' +
+        `У моєму інженерному блозі опубліковані ${allBlogPosts.length} детальних архітектурних розборів для CTO та технічних команд:\n\n` +
           '1. **Next.js 16 проти Headless WordPress та Custom PHP** (/ua/blog/nextjs-vs-headless-wordpress-custom-php-2026) - Об’єктивне порівняння TCO, вартості підтримки, швидкості Core Web Vitals та робочого процесу редакції.\n' +
           '2. **Повний розбір архітектури Fullstack AI Lab** (/ua/blog/fullstack-ai-lab-interactive-edtech-architecture) - Компіляція 1 135+ MDX-уроків за 90 секунд на Next.js 16 та Rust MDX-RS, WebAssembly-пісочниця WordPress та симулятор AI-співбесід.\n' +
           '3. **Повний розбір архітектури Unitrition** (/ua/blog/unitrition-headless-healthtech-architecture) - Headless HealthTech-платформа на Next.js 16, WordPress REST API, Supabase RLS та USDA FoodData Central API.\n' +
@@ -1307,12 +1332,12 @@ export function synthesizeLocalRagAnswer(
           '7. **Shopify Liquid проти кастомного WooCommerce** (/ua/blog/shopify-liquid-vs-custom-woocommerce) - Архітектурний розбір e-commerce: реальний TCO, швидкість конверсії, масштабування та безпека платежів.\n' +
           '8. **Zero-Trust безпека на стороні клієнта** (/ua/blog/client-side-zero-trust-security) - Захист вебдодатків: Base64-обфускація контактів від спам-ботів, суворі заголовки CSP та ізоляція DOM.\n' +
           '9. **Безшовна міграція легасі-систем у хмару** (/ua/blog/legacy-migration-cloud-infrastructure) - План міграції монолітів та баз даних без зупинки бізнес-транзакцій та зі збереженням 100% SEO-трафіку.\n\n' +
-          'Ви можете відкрити будь-яку статтю за прямим посиланням або запитати мене про будь-яку з цих тем!'
+          `Ви можете відкрити будь-яку статтю за прямим посиланням, переглянути всі ${allBlogPosts.length} статей на /ua/blog або запитати мене про будь-яку з цих тем!`
       )
     }
     if (lang === 'es') {
       return stripEmDashes(
-        'En mi blog de ingeniería comparto 9 análisis técnicos en profundidad pensados para CTOs y fundadores:\n\n' +
+        `En mi blog de ingeniería comparto ${allBlogPosts.length} análisis técnicos en profundidad pensados para CTOs y fundadores:\n\n` +
           '1. **Next.js 16 vs Headless WordPress vs Custom PHP** (/es/blog/nextjs-vs-headless-wordpress-custom-php-2026) - Comparativa objetiva de TCO, costes de mantenimiento, Core Web Vitals y flujo editorial.\n' +
           '2. **Análisis profundo de la arquitectura Fullstack AI Lab** (/es/blog/fullstack-ai-lab-interactive-edtech-architecture) - Compilación de 1.135+ lecciones MDX en 90 segundos con Next.js 16 y Rust MDX-RS, sandbox WebAssembly de WordPress y simulador de entrevistas con IA.\n' +
           '3. **Análisis profundo de la arquitectura Unitrition** (/es/blog/unitrition-headless-healthtech-architecture) - Plataforma HealthTech Headless con Next.js 16, WordPress, Supabase RLS y API USDA FoodData Central.\n' +
@@ -1322,11 +1347,11 @@ export function synthesizeLocalRagAnswer(
           '7. **Shopify Liquid vs WooCommerce a medida** (/es/blog/shopify-liquid-vs-custom-woocommerce) - Desglose de arquitectura e-commerce: TCO real, conversión, escalabilidad y seguridad transaccional.\n' +
           '8. **Seguridad web Zero-Trust en cliente** (/es/blog/client-side-zero-trust-security) - Protección frontend: ofuscación Base64 contra scrapers, cabeceras CSP estrictas y aislamiento de DOM.\n' +
           '9. **Migración cloud sin tiempo de inactividad** (/es/blog/legacy-migration-cloud-infrastructure) - Metodología probada para migrar sistemas heredados a la nube preservando el 100% del SEO y cero caídas operativas.\n\n' +
-          '¡Puedes acceder a los enlaces anteriores para leer el análisis completo o preguntarme cualquier duda sobre estos temas!'
+          `¡Puedes acceder a los enlaces anteriores, explorar los ${allBlogPosts.length} artículos en /es/blog o preguntarme cualquier duda sobre estos temas!`
       )
     }
     return stripEmDashes(
-      'In my engineering blog, I publish 9 architectural case studies designed for CTOs and technical leads:\n\n' +
+      `In my engineering blog, I publish ${allBlogPosts.length} architectural case studies designed for CTOs and technical leads:\n\n` +
         '1. **Next.js 16 vs Headless WordPress vs Custom PHP** (/en/blog/nextjs-vs-headless-wordpress-custom-php-2026) - An objective TCO, maintenance, Core Web Vitals, and editorial workflow comparison.\n' +
         '2. **Fullstack AI Lab Architecture Deep-Dive** (/en/blog/fullstack-ai-lab-interactive-edtech-architecture) - Compiling 1,135+ MDX lessons in 90 seconds with Next.js 16 & Rust MDX-RS, WebAssembly WordPress playground, and AI interview simulator.\n' +
         '3. **Unitrition Architecture Deep-Dive** (/en/blog/unitrition-headless-healthtech-architecture) - Engineering a Headless HealthTech platform with Next.js 16, WordPress REST API, Supabase RLS, and USDA FoodData Central API.\n' +
@@ -1336,7 +1361,7 @@ export function synthesizeLocalRagAnswer(
         '7. **Shopify Liquid vs Custom WooCommerce** (/en/blog/shopify-liquid-vs-custom-woocommerce) - Real-world e-commerce TCO, conversion velocity, payment security, and enterprise checkout architecture.\n' +
         '8. **Client-Side Zero-Trust Web Security** (/en/blog/client-side-zero-trust-security) - Frontend hardening: Base64 obfuscation against scrapers, strict Content Security Policies, and DOM isolation.\n' +
         '9. **Zero-Downtime Legacy System Migration to Cloud** (/en/blog/legacy-migration-cloud-infrastructure) - Transitioning legacy monoliths to high-availability cloud infrastructure with dual-write replication and 100% SEO preservation.\n\n' +
-        'You can read the full articles via the direct links above or ask me any question about these topics!'
+        `You can read the full articles via the direct links above, explore all ${allBlogPosts.length} articles at /en/blog, or ask me any question about these topics!`
     )
   }
 

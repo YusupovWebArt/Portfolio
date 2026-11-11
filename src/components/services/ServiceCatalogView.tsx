@@ -200,7 +200,7 @@ export default function ServiceCatalogView({
 
                   <button
                     type="button"
-                    onClick={() => openWhatsAppDirect(content.whatsappMessage)}
+                    onClick={() => openWhatsAppDirect(locale, content.whatsappMessage)}
                     title={locale === 'es' ? 'Consultar por WhatsApp' : locale === 'ua' ? 'Запитати у WhatsApp' : 'Inquire via WhatsApp'}
                     className="p-2.5 rounded-xl text-white bg-emerald-600 hover:bg-emerald-500 shadow-sm transition-colors cursor-pointer shrink-0"
                   >

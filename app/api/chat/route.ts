@@ -1,5 +1,5 @@
 import { openai } from '@ai-sdk/openai'
-import { streamText } from 'ai'
+import { streamText, stepCountIs } from 'ai'
 import {
   retrieveKnowledge,
   formatContextForLLM,
@@ -218,7 +218,7 @@ export async function POST(req: Request) {
       topK: 5,
     })
 
-    const formattedContext = formatContextForLLM(retrievedChunks)
+    const formattedContext = formatContextForLLM(retrievedChunks, 3500, validatedLocale)
     const system = buildSystemPrompt({
       retrievedContext: formattedContext,
       currentProjectTitle: verifiedProjectTitle,
@@ -250,13 +250,13 @@ export async function POST(req: Request) {
         content: m.content,
       })),
       tools: aiTools,
-      maxSteps: 3,
+      stopWhen: stepCountIs(3),
       maxOutputTokens: 500,
       temperature: 0.2,
       abortSignal: req.signal,
       onFinish: ({ usage }) => {
         if (usage) {
-          console.log(`[api/chat] Usage: prompt=${usage.promptTokens}, completion=${usage.completionTokens}`)
+          console.log(`[api/chat] Usage: input=${usage.inputTokens}, output=${usage.outputTokens}`)
         }
       },
     })

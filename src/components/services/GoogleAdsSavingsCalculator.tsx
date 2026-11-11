@@ -69,7 +69,7 @@ export default function GoogleAdsSavingsCalculator({
           ? `Вітаю Артуре! Я витрачаю близько ${formatCurrency(monthlySpend)} на місяць у Google Ads і хочу оптимізувати швидкість сайту для економії до ${formatCurrency(monthlySavings)}/міс завдяки покращенню Quality Score.`
           : `Hi Artur, I spend around ${formatCurrency(monthlySpend)} per month on Google Ads and want to optimize site velocity to save up to ${formatCurrency(monthlySavings)}/mo on CPC.`
 
-    openWhatsAppDirect(msg)
+    openWhatsAppDirect(locale, msg)
   }
 
   return (

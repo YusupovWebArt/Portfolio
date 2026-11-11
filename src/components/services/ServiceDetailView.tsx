@@ -116,7 +116,7 @@ export default function ServiceDetailView({
           <div className="flex flex-wrap items-center gap-4 mt-8">
             <button
               type="button"
-              onClick={() => openWhatsAppDirect(content.whatsappMessage)}
+              onClick={() => openWhatsAppDirect(locale, content.whatsappMessage)}
               className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-2xl text-sm font-bold text-white bg-emerald-600 hover:bg-emerald-500 shadow-md hover:shadow-lg transition-all duration-200 cursor-pointer"
             >
               <WhatsappIcon className="w-4 h-4 shrink-0" aria-hidden="true" />
@@ -234,6 +234,82 @@ export default function ServiceDetailView({
         {/* Optional Financial Calculator for Web Performance Service */}
         {service.slug === 'web-performance-core-web-vitals' && (
           <GoogleAdsSavingsCalculator locale={locale} />
+        )}
+
+        {/* Interactive Live RAG AI Assistant Demo Trigger */}
+        {service.slug === 'rag-ai-assistants-business' && (
+          <section
+            aria-label="Live RAG AI Assistant Demonstration"
+            className="mb-16 p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-purple-900/10 via-slate-900/40 to-slate-950 border border-purple-500/30 shadow-xl text-white relative overflow-hidden"
+          >
+            <div className="absolute top-0 right-0 w-80 h-80 bg-purple-600/10 rounded-full blur-3xl pointer-events-none" />
+            <div className="relative z-10 max-w-4xl mx-auto">
+              <div className="flex items-center gap-2 mb-3">
+                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
+                <span className="text-xs font-mono uppercase tracking-wider text-purple-400 font-bold">
+                  {locale === 'es'
+                    ? 'Demostración en Vivo · RAG Autónomo'
+                    : locale === 'ua'
+                      ? 'Живе Демо · Автономний RAG'
+                      : 'Live Demo · Autonomous RAG'}
+                </span>
+              </div>
+              <h3 className="text-xl sm:text-2xl font-black text-white tracking-tight mb-2">
+                {locale === 'es'
+                  ? 'Prueba al Asistente RAG en Acción'
+                  : locale === 'ua'
+                    ? 'Протестуйте RAG-асистента в дії'
+                    : 'Test the RAG AI Assistant Live'}
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed mb-6 max-w-2xl">
+                {locale === 'es'
+                  ? 'Este sitio web opera con el mismo motor RAG híbrido que implemento para clientes: indexa 71 proyectos y 39 artículos técnicos con recuperación semántica en <5ms sin costes de base de datos vectorial.'
+                  : locale === 'ua'
+                    ? 'Цей вебсайт працює на тому ж гібридному RAG-рушії, що й клієнтські рішення: індексує 71 проєкт та 39 статей із семантичною видачею за <5мс без витрат на векторні бази даних.'
+                    : 'This portfolio runs on the exact Hybrid RAG architecture engineered for clients: indexing 71 case studies and 39 engineering articles with sub-5ms semantic retrieval and zero vector database fees.'}
+              </p>
+              <div className="flex flex-wrap items-center gap-3">
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (typeof window !== 'undefined') {
+                      window.dispatchEvent(
+                        new CustomEvent('open-ai-chat-context', {
+                          detail: {
+                            projectSlug: 'yusupovartur-nextjs-portfolio',
+                            projectTitle: "Artur's RAG AI Assistant",
+                          },
+                        }),
+                      )
+                    }
+                  }}
+                  className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-2xl text-sm font-bold text-white bg-purple-600 hover:bg-purple-500 shadow-md hover:shadow-lg transition-all duration-200 cursor-pointer"
+                >
+                  <Bot className="w-4 h-4 shrink-0" aria-hidden="true" />
+                  <span>
+                    {locale === 'es'
+                      ? 'Lanzar Demostración de IA'
+                      : locale === 'ua'
+                        ? 'Запустити демо асистента'
+                        : 'Launch AI Live Demo'}
+                  </span>
+                </button>
+                <Link
+                  href={`/${locale}/blog/autonomous-hybrid-rag-architecture-browser`}
+                  className="inline-flex items-center gap-2 px-5 py-3.5 rounded-2xl text-sm font-semibold text-slate-300 hover:text-white bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 transition-colors"
+                >
+                  <span>
+                    {locale === 'es'
+                      ? 'Leer Arquitectura RAG (Blog)'
+                      : locale === 'ua'
+                        ? 'Архітектура RAG (Блог)'
+                        : 'Read RAG Architecture (Blog)'}
+                  </span>
+                  <ArrowRight className="w-4 h-4" aria-hidden="true" />
+                </Link>
+              </div>
+            </div>
+          </section>
         )}
 
         {/* Section 4: Relevant Live Case Studies */}
@@ -359,7 +435,7 @@ export default function ServiceDetailView({
             <div className="flex flex-wrap items-center gap-4">
               <button
                 type="button"
-                onClick={() => openWhatsAppDirect(content.whatsappMessage)}
+                onClick={() => openWhatsAppDirect(locale, content.whatsappMessage)}
                 className="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-2xl text-sm font-bold text-white bg-emerald-600 hover:bg-emerald-500 shadow-md hover:shadow-lg transition-all duration-200 cursor-pointer"
               >
                 <WhatsappIcon className="w-4 h-4 shrink-0" aria-hidden="true" />
