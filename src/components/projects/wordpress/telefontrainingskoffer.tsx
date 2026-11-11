@@ -3,6 +3,7 @@ import { Project } from '../project-types'
 const telefonTrainingskoffer: Project = {
   id: 17500,
   title: 'Telefontrainingskoffer',
+  deepDiveBlogSlug: 'telefontrainingskoffer-interactive-edtech-streaming',
   description: 'Callcenter Akademie',
   descriptionUa: 'Академія кол-центрів',
   descriptionEs: 'Academia de centros de llamadas',

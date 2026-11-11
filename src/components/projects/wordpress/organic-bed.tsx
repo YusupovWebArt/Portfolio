@@ -3,6 +3,7 @@ import { Project } from '../project-types'
 const organicBed: Project = {
   id: 16000,
   title: 'Organic Bed',
+  deepDiveBlogSlug: 'organic-bed-rtl-woocommerce-performance-optimization',
   description:
     'RTL Israeli website offering a range of eco-friendly, organic bedding products.',
   descriptionUa:

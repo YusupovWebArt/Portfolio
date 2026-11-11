@@ -3,6 +3,7 @@ import { Project } from '../project-types'
 const alldayMedicalcare: Project = {
   id: 14500,
   title: 'All Day Medical Care Clinic',
+  deepDiveBlogSlug: 'all-day-medical-care-hipaa-healthtech-portal',
   description:
     'Healthcare provider focused on offering a wide range of medical services.',
   descriptionUa:

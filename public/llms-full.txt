@@ -204,6 +204,22 @@
     - **Published**: 2026-11-04 | **Tags**: TigerBeetle, Ledger, Double-Entry, FinTech, Temporal, Next.js 16, TypeScript, Idempotency, Distributed Systems
     - **Summary**: An enterprise deterministic financial ledger architecture: implementing strict double-entry bookkeeping with TigerBeetle distributed ledger, 128-bit integer arithmetic, and Temporal durable payment sagas in Next.js 16.
 
+40. **High-Performance Tax Software Architecture: Custom WordPress, BaFin Compliance & GDPR for Buhl WISO Germany**: https://www.yusupovartur.com/en/blog/buhl-wiso-fintech-wordpress-architecture-gdpr
+    - **Published**: 2026-11-12 | **Tags**: WordPress, Fintech, GDPR, BaFin, Performance, Nginx, Germany, Security
+    - **Summary**: An architectural case study on engineering a zero-builder custom WordPress portal for Buhl WISO tax software in Germany. Covering BaFin data security, strict GDPR compliance, FastCGI microcaching, and sub-90ms TTFB under peak tax filing seasons.
+
+41. **Interactive EdTech & Real-Time Audio Streaming: Custom WordPress Engineering for Telefontrainingskoffer Germany**: https://www.yusupovartur.com/en/blog/telefontrainingskoffer-interactive-edtech-streaming
+    - **Published**: 2026-11-12 | **Tags**: WordPress, EdTech, Audio Streaming, ACF, FastCGI, GDPR, Germany, Performance
+    - **Summary**: An architectural deep-dive into engineering an interactive training portal for Telefontrainingskoffer, a German professional call-center academy. Details custom ACF layout modeling, lightweight audio streaming, FastCGI caching, and strict DACH GDPR compliance.
+
+42. **Engineering a HIPAA-Compliant Medical Web Portal: Custom Architecture, PHI Encryption & Sub-Second Mobile Speed for All Day Medical Care USA**: https://www.yusupovartur.com/en/blog/all-day-medical-care-hipaa-healthtech-portal
+    - **Published**: 2026-11-12 | **Tags**: WordPress, HealthTech, HIPAA, Security, Encryption, USA, Performance
+    - **Summary**: A production case study detailing the architectural design of a HIPAA-compliant medical clinic portal for All Day Medical Care (USA). Explores Protected Health Information (PHI) encryption, elimination of tracking pixels per HHS rules, and sub-0.8s mobile booking.
+
+43. **Engineering an RTL WooCommerce Store: Bidirectional CSS, WebP Media Pipeline & Sub-Second Checkout for Organic Bed**: https://www.yusupovartur.com/en/blog/organic-bed-rtl-woocommerce-performance-optimization
+    - **Published**: 2026-11-12 | **Tags**: WooCommerce, WordPress, RTL, E-Commerce, WebP, Performance, Core Web Vitals
+    - **Summary**: An architectural case study on building a custom Right-to-Left (RTL) WooCommerce store for Organic Bed. Covers CSS logical properties for bidirectional layouts, an automated WebP image optimization pipeline cutting payload by 72%, and cart checkout speed optimization.
+
 ## 5. Complete 71-Project Portfolio Index (213 Localized Case Study Routes)
 
 1. **Next.js 16 & Hybrid RAG Portfolio Platform** (nextjs) - https://www.yusupovartur.com/en/projects/yusupovartur-nextjs-portfolio | Live: https://www.yusupovartur.com/ | Deep-Dive: https://www.yusupovartur.com/en/blog/autonomous-hybrid-rag-architecture-browser

@@ -38,6 +38,10 @@ import { multimodalStreamingVoiceVisionEdgeAiAgentsNextjs16Post } from './posts/
 import { eventDrivenMicroservicesKafkaOutboxPatternNextjs16Post } from './posts/event-driven-microservices-kafka-outbox-pattern-nextjs-16'
 import { fineGrainedAccessControlRebacOpenfgaNextjs16Post } from './posts/fine-grained-access-control-rebac-openfga-nextjs-16'
 import { deterministicFinancialLedgerDoubleEntryTigerbeetleNextjs16Post } from './posts/deterministic-financial-ledger-double-entry-tigerbeetle-nextjs-16'
+import { buhlWisoFintechWordPressPost } from './posts/buhl-wiso-fintech-wordpress-architecture-gdpr'
+import { telefontrainingskofferPost } from './posts/telefontrainingskoffer-interactive-edtech-streaming'
+import { allDayMedicalCarePost } from './posts/all-day-medical-care-hipaa-healthtech-portal'
+import { organicBedRtlPost } from './posts/organic-bed-rtl-woocommerce-performance-optimization'
 
 export * from './types'
 
@@ -81,6 +85,10 @@ export const allBlogPosts: BlogPost[] = [
   eventDrivenMicroservicesKafkaOutboxPatternNextjs16Post,
   fineGrainedAccessControlRebacOpenfgaNextjs16Post,
   deterministicFinancialLedgerDoubleEntryTigerbeetleNextjs16Post,
+  buhlWisoFintechWordPressPost,
+  telefontrainingskofferPost,
+  allDayMedicalCarePost,
+  organicBedRtlPost,
 ]
 
 export function getAllBlogPosts(): BlogPost[] {

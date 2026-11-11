@@ -1,4 +1,5 @@
 import { describe, it, expect } from 'vitest'
+import { allBlogPosts } from '../../data/blog'
 import {
   loadKnowledgeBase,
   findChunkBySlug,
@@ -82,7 +83,7 @@ describe('RAG Knowledge Base Specification (TDD)', () => {
     const kb = loadKnowledgeBase()
 
     expect(kb.blog).toBeDefined()
-    expect(kb.blog.length).toBe(39)
+    expect(kb.blog.length).toBe(allBlogPosts.length)
     const nextjsVsWp = kb.blog.find((b) => b.slug === 'nextjs-vs-headless-wordpress-custom-php-2026')
     expect(nextjsVsWp).toBeDefined()
     expect(nextjsVsWp?.type).toBe('blog')

@@ -962,6 +962,22 @@ export function resolveBlogFromQueryOrContext(
     return getBlogPostBySlug('wasm-wordpress-php-in-browser-zero-server')
   }
 
+  if (/\b(buhl.*(wiso|tax|податк|налог|arch|статт|стат|блог)|bafin|wiso.*steuer)/i.test(lower)) {
+    return getBlogPostBySlug('buhl-wiso-fintech-wordpress-architecture-gdpr')
+  }
+
+  if (/\b(telefontraining.*(arch|статт|стат|блог|edtech|callcenter|akademie)|callcenter.*akademie)/i.test(lower)) {
+    return getBlogPostBySlug('telefontrainingskoffer-interactive-edtech-streaming')
+  }
+
+  if (/\b(allday.*(medical|care|clinic|arch|статт|стат|блог)|hipaa.*(medical|health|portal)|medical care clinic)/i.test(lower)) {
+    return getBlogPostBySlug('all-day-medical-care-hipaa-healthtech-portal')
+  }
+
+  if (/\b(organic[\s-]*bed.*(arch|статт|стат|блог|woocommerce|rtl)|rtl.*woocommerce)/i.test(lower)) {
+    return getBlogPostBySlug('organic-bed-rtl-woocommerce-performance-optimization')
+  }
+
   if (/\b(hpos|high[\s-]*performance order storage|redis caching.*sku)/i.test(lower)) {
     return getBlogPostBySlug('woocommerce-hpos-redis-caching-10k-skus')
   }

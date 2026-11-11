@@ -3,6 +3,7 @@ import { Project } from '../project-types'
 const buhlDe: Project = {
   id: 15500,
   title: 'Buhl WISO',
+  deepDiveBlogSlug: 'buhl-wiso-fintech-wordpress-architecture-gdpr',
   description: 'Steuer Jetzt Geld zurückholen. Germany',
   descriptionUa: 'Повернення податків уже зараз. Німеччина',
   descriptionEs: 'Recupere su devolución de impuestos ahora. Alemania',
