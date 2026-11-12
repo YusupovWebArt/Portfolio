@@ -1,0 +1,162 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070c17" />
+      <stop offset="50%" stop-color="#020617" />
+      <stop offset="100%" stop-color="#0b1324" />
+    </linearGradient>
+
+    <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a855f7" />
+      <stop offset="100%" stop-color="#6366f1" />
+    </linearGradient>
+
+    <linearGradient id="limeGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#a3e635" />
+      <stop offset="100%" stop-color="#10b981" />
+    </linearGradient>
+
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#0284c7" />
+    </linearGradient>
+
+    <linearGradient id="panelGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" stop-opacity="0.85" />
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.95" />
+    </linearGradient>
+
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="12" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.75" stroke-opacity="0.4"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <rect width="1200" height="630" fill="url(#grid)" />
+
+  <!-- Ambient Glow -->
+  <circle cx="300" cy="220" r="260" fill="#a855f7" opacity="0.10" filter="url(#glow)" />
+  <circle cx="900" cy="360" r="280" fill="#10b981" opacity="0.10" filter="url(#glow)" />
+  <circle cx="600" cy="480" r="220" fill="#38bdf8" opacity="0.08" filter="url(#glow)" />
+
+  <!-- Left Card: Pipeline Architecture -->
+  <g transform="translate(100, 85)">
+    <!-- Main Card Frame -->
+    <rect width="580" height="460" rx="20" fill="url(#panelGrad)" stroke="#334155" stroke-width="1.5" />
+
+    <!-- Card Top Header -->
+    <rect width="580" height="54" rx="20" fill="#0f172a" fill-opacity="0.9" />
+    <path d="M 0 54 L 580 54" stroke="#1e293b" stroke-width="1" />
+    <circle cx="34" cy="27" r="6" fill="#ef4444" />
+    <circle cx="54" cy="27" r="6" fill="#f59e0b" />
+    <circle cx="74" cy="27" r="6" fill="#10b981" />
+    <text x="100" y="33" fill="#94a3b8" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" letter-spacing="1">GITHUB ACTIONS CI / A11Y QUALITY GATE</text>
+
+    <!-- Badge -->
+    <g transform="translate(35, 75)">
+      <rect width="230" height="30" rx="8" fill="#581c87" fill-opacity="0.6" stroke="#a855f7" stroke-width="1" />
+      <text x="16" y="20" fill="#e9d5ff" font-family="system-ui, sans-serif" font-size="12" font-weight="700" letter-spacing="1.5">DEVSECOPS PIPELINE 2026</text>
+    </g>
+
+    <!-- Main Title -->
+    <text x="35" y="145" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="28" font-weight="800">Axe-Core + Playwright</text>
+    <text x="35" y="180" fill="#a3e635" font-family="system-ui, sans-serif" font-size="18" font-weight="600">Zero-Regression Automated Accessibility in CI/CD</text>
+
+    <!-- CI/CD Stages Pipeline Diagram -->
+    <g transform="translate(35, 215)">
+      <rect x="0" y="0" width="510" height="110" rx="12" fill="#0b1120" stroke="#1e293b" stroke-width="1" />
+      
+      <!-- Stage 1: Trigger -->
+      <g transform="translate(20, 20)">
+        <rect width="125" height="70" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1" />
+        <text x="14" y="25" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="10" font-weight="700">1. TRIGGER</text>
+        <text x="14" y="45" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="13" font-weight="700">git push / PR</text>
+        <text x="14" y="60" fill="#64748b" font-family="system-ui, sans-serif" font-size="10">Pre-commit hook</text>
+      </g>
+
+      <!-- Arrow 1 -->
+      <path d="M 152 55 L 175 55" stroke="#a855f7" stroke-width="2" stroke-dasharray="3,3" />
+
+      <!-- Stage 2: Playwright + Axe -->
+      <g transform="translate(182, 20)">
+        <rect width="140" height="70" rx="8" fill="#312e81" fill-opacity="0.6" stroke="#818cf8" stroke-width="1.5" />
+        <text x="12" y="25" fill="#c7d2fe" font-family="system-ui, sans-serif" font-size="10" font-weight="700">2. AXE ENGINE</text>
+        <text x="12" y="45" fill="#a5b4fc" font-family="system-ui, sans-serif" font-size="13" font-weight="700">axe-playwright</text>
+        <text x="12" y="60" fill="#e0e7ff" font-family="system-ui, sans-serif" font-size="10">WCAG 2.2 AA rules</text>
+      </g>
+
+      <!-- Arrow 2 -->
+      <path d="M 328 55 L 350 55" stroke="#10b981" stroke-width="2" />
+
+      <!-- Stage 3: Quality Gate -->
+      <g transform="translate(358, 20)">
+        <rect width="132" height="70" rx="8" fill="#064e3b" fill-opacity="0.6" stroke="#10b981" stroke-width="1.5" />
+        <text x="12" y="25" fill="#86efac" font-family="system-ui, sans-serif" font-size="10" font-weight="700">3. GATE: EXIT 0</text>
+        <text x="12" y="45" fill="#a3e635" font-family="system-ui, sans-serif" font-size="13" font-weight="800">0 Violations</text>
+        <text x="12" y="60" fill="#6ee7b7" font-family="system-ui, sans-serif" font-size="10">Blocks PR merge</text>
+      </g>
+    </g>
+
+    <!-- Key Stats Box -->
+    <g transform="translate(35, 345)">
+      <rect x="0" y="0" width="510" height="85" rx="12" fill="#0b1120" stroke="#1e293b" stroke-width="1" />
+      <g transform="translate(25, 22)">
+        <text x="0" y="16" fill="#a855f7" font-family="system-ui, sans-serif" font-size="22" font-weight="800">100%</text>
+        <text x="0" y="38" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11">Automated DOM Scan</text>
+      </g>
+      <g transform="translate(195, 22)">
+        <text x="0" y="16" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="22" font-weight="800">4.5 : 1</text>
+        <text x="0" y="38" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11">Contrast Matrix Verified</text>
+      </g>
+      <g transform="translate(365, 22)">
+        <text x="0" y="16" fill="#a3e635" font-family="system-ui, sans-serif" font-size="22" font-weight="800">&lt; 3.2s</text>
+        <text x="0" y="38" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11">CI Runner Execution</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Right Visual: Test Matrix & Code Snippet -->
+  <g transform="translate(720, 85)">
+    <!-- Right Panel Frame -->
+    <rect width="380" height="460" rx="20" fill="url(#panelGrad)" stroke="#334155" stroke-width="1.5" />
+
+    <!-- Top Bar -->
+    <rect width="380" height="54" rx="20" fill="#0f172a" fill-opacity="0.9" />
+    <path d="M 0 54 L 380 54" stroke="#1e293b" stroke-width="1" />
+    <text x="25" y="33" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="13" font-weight="700">TEST EXECUTION MATRIX</text>
+    <circle cx="345" cy="27" r="5" fill="#10b981" />
+
+    <!-- Terminal Code Mockup -->
+    <g transform="translate(25, 75)">
+      <rect width="330" height="230" rx="10" fill="#030712" stroke="#1e293b" stroke-width="1" />
+      
+      <!-- Code lines -->
+      <text x="16" y="28" fill="#64748b" font-family="monospace" font-size="11">// Playwright + Axe Spec</text>
+      <text x="16" y="50" fill="#c084fc" font-family="monospace" font-size="11">const <tspan fill="#f8fafc">results</tspan> = <tspan fill="#60a5fa">await</tspan></text>
+      <text x="28" y="72" fill="#60a5fa" font-family="monospace" font-size="11">new <tspan fill="#f8fafc">AxeBuilder</tspan>({ page })</text>
+      <text x="28" y="94" fill="#38bdf8" font-family="monospace" font-size="11">  .withTags(['wcag2a', 'wcag2aa'])</text>
+      <text x="28" y="116" fill="#38bdf8" font-family="monospace" font-size="11">  .analyze();</text>
+      <text x="16" y="146" fill="#a3e635" font-family="monospace" font-size="11">expect(results.violations)</text>
+      <text x="28" y="168" fill="#a3e635" font-family="monospace" font-size="11">  .toEqual([]);</text>
+      <text x="16" y="200" fill="#22c55e" font-family="monospace" font-size="11">✓ 42 pages scanned - 0 errors</text>
+    </g>
+
+    <!-- Bottom Status Card -->
+    <g transform="translate(25, 325)">
+      <rect width="330" height="105" rx="12" fill="#0b1120" stroke="#1e293b" stroke-width="1" />
+      <text x="18" y="26" fill="#cbd5e1" font-family="system-ui, sans-serif" font-size="12" font-weight="700">AUDITED COMPONENT SCOPE</text>
+      <text x="18" y="50" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11">• Focus Trapping &amp; Esc in Modals</text>
+      <text x="18" y="70" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11">• Dark/Light Theme Contrast Matrix</text>
+      <text x="18" y="90" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11">• Accessible Touch Targets (&gt;= 24px)</text>
+    </g>
+  </g>
+</svg>

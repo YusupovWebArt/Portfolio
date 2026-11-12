@@ -220,6 +220,14 @@
     - **Published**: 2026-11-12 | **Tags**: WooCommerce, WordPress, RTL, E-Commerce, WebP, Performance, Core Web Vitals
     - **Summary**: An architectural case study on building a custom Right-to-Left (RTL) WooCommerce store for Organic Bed. Covers CSS logical properties for bidirectional layouts, an automated WebP image optimization pipeline cutting payload by 72%, and cart checkout speed optimization.
 
+44. **European Accessibility Act (EAA 2026) for E-Commerce: Compliance Architecture, Penalties & Remediation Blueprint**: https://www.yusupovartur.com/en/blog/eaa-2026-compliance-ecommerce-audit-remediation
+    - **Published**: 2026-11-12 | **Tags**: EAA 2026, WCAG 2.2 AA, E-Commerce, WooCommerce, React 19, A11y, EN 301 549, Compliance
+    - **Summary**: A comprehensive engineering guide on achieving European Accessibility Act (EAA 2026 / Directive 2019/882 / EN 301 549) and WCAG 2.2 Level AA compliance for online stores in the EU. Legal implications, fines up to 100,000 EUR, checkout accessibility, screen reader patterns, and practical remediation code.
+
+45. **Automated Accessibility Testing in CI/CD: Building a Zero-Regression Pipeline with Axe-Core, Playwright & GitHub Actions**: https://www.yusupovartur.com/en/blog/automated-accessibility-testing-cicd-axe-playwright
+    - **Published**: 2026-11-12 | **Tags**: Playwright, Axe-Core, CI/CD, GitHub Actions, WCAG 2.2 AA, DevSecOps, React 19, A11y
+    - **Summary**: A deep architectural guide to integrating automated accessibility testing into modern CI/CD pipelines. Using @axe-core/playwright, custom rule sets, color contrast matrix validation across light/dark modes, and automated PR quality gates to enforce WCAG 2.2 AA compliance before deployment.
+
 ## 5. Complete 71-Project Portfolio Index (213 Localized Case Study Routes)
 
 1. **Next.js 16 & Hybrid RAG Portfolio Platform** (nextjs) - https://www.yusupovartur.com/en/projects/yusupovartur-nextjs-portfolio | Live: https://www.yusupovartur.com/ | Deep-Dive: https://www.yusupovartur.com/en/blog/autonomous-hybrid-rag-architecture-browser

@@ -926,6 +926,14 @@ export function resolveBlogFromQueryOrContext(
   }
 
   // 4. Distinct article topical phrases
+  if (/\b(axe[\s-]*core|playwright.*(a11y|accessibility|доступност)|automated.*accessibility|ci[\s-]*cd.*accessibility)/i.test(lower)) {
+    return getBlogPostBySlug('automated-accessibility-testing-cicd-axe-playwright')
+  }
+
+  if (/\b(eaa.*(ecommerce|e-commerce|магазин|tienda|store|checkout|штраф|fine|sanction)|ecommerce.*(accessibility|wcag|eaa)|(accessibility|wcag).*checkout)/i.test(lower)) {
+    return getBlogPostBySlug('eaa-2026-compliance-ecommerce-audit-remediation')
+  }
+
   if (/\b(wcag|eaa\b|european accessibility|accessibility act|доступност|доступность|accesibilidad)/i.test(lower)) {
     return getBlogPostBySlug('wcag-22-aa-european-accessibility-act-2026')
   }

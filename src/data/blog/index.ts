@@ -42,6 +42,8 @@ import { buhlWisoFintechWordPressPost } from './posts/buhl-wiso-fintech-wordpres
 import { telefontrainingskofferPost } from './posts/telefontrainingskoffer-interactive-edtech-streaming'
 import { allDayMedicalCarePost } from './posts/all-day-medical-care-hipaa-healthtech-portal'
 import { organicBedRtlPost } from './posts/organic-bed-rtl-woocommerce-performance-optimization'
+import { eaa2026EcommerceCompliancePost } from './posts/eaa-2026-compliance-ecommerce-audit-remediation'
+import { automatedAccessibilityTestingCicdPost } from './posts/automated-accessibility-testing-cicd-axe-playwright'
 
 export * from './types'
 
@@ -89,6 +91,8 @@ export const allBlogPosts: BlogPost[] = [
   telefontrainingskofferPost,
   allDayMedicalCarePost,
   organicBedRtlPost,
+  eaa2026EcommerceCompliancePost,
+  automatedAccessibilityTestingCicdPost,
 ]
 
 export function getAllBlogPosts(): BlogPost[] {
