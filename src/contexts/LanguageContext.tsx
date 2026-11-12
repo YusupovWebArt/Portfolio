@@ -20,21 +20,22 @@ interface LanguageContextType {
 
 /** Detect initial language: initial prop -> URL pathname -> localStorage -> browser language -> fallback EN */
 const getInitialLang = (initialLang?: Lang): Lang => {
-  if (initialLang && (initialLang === 'en' || initialLang === 'ua' || initialLang === 'es')) {
+  if (initialLang && (initialLang === 'en' || initialLang === 'ua' || initialLang === 'es' || initialLang === 'de')) {
     return initialLang
   }
   if (typeof window === 'undefined') return 'en'
   try {
     const path = window.location.pathname
-    const match = path.match(/^\/(en|ua|es)(\/|$)/)
+    const match = path.match(/^\/(en|ua|es|de)(\/|$)/)
     if (match) {
       return match[1] as Lang
     }
     const saved = localStorage.getItem('portfolio_lang')
-    if (saved === 'en' || saved === 'ua' || saved === 'es') return saved as Lang
+    if (saved === 'en' || saved === 'ua' || saved === 'es' || saved === 'de') return saved as Lang
     const browserLang = navigator.language?.toLowerCase() ?? 'en'
     if (browserLang.startsWith('uk') || browserLang.startsWith('ua')) return 'ua'
     if (browserLang.startsWith('es')) return 'es'
+    if (browserLang.startsWith('de')) return 'de'
   } catch {
     // localStorage may be unavailable in some environments
   }
@@ -65,14 +66,14 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({
 
   const [lang, setLangState] = useState<Lang>(detected)
   const [t, setT] = useState<Translation>(() => {
-    if (initialTranslation && (initialLang === 'en' || initialLang === 'ua' || initialLang === 'es')) {
+    if (initialTranslation && (initialLang === 'en' || initialLang === 'ua' || initialLang === 'es' || initialLang === 'de')) {
       return initialTranslation
     }
     return getCachedTranslation(detected) || en
   })
 
   useEffect(() => {
-    if (initialTranslation && (initialLang === 'en' || initialLang === 'ua' || initialLang === 'es')) {
+    if (initialTranslation && (initialLang === 'en' || initialLang === 'ua' || initialLang === 'es' || initialLang === 'de')) {
       registerTranslation(initialLang, initialTranslation)
     }
   }, [initialLang, initialTranslation])
@@ -102,7 +103,7 @@ export const LanguageProvider: React.FC<LanguageProviderProps> = ({
     if (typeof window !== 'undefined') {
       const path = window.location.pathname
       const hash = window.location.hash || ''
-      const match = path.match(/^\/(en|ua|es)(.*)/)
+      const match = path.match(/^\/(en|ua|es|de)(.*)/)
       if (match && match[1] !== newLang) {
         const remainingPath = match[2] || ''
         const newUrl = `/${newLang}${remainingPath}${hash}`

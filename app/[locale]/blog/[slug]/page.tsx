@@ -23,7 +23,7 @@ interface BlogPostPageProps {
 }
 
 export function generateStaticParams() {
-  const locales = ['en', 'ua', 'es']
+  const locales = ['en', 'ua', 'es', 'de']
   const paramsList: { locale: string; slug: string }[] = []
 
   for (const locale of locales) {

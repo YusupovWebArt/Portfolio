@@ -2,8 +2,9 @@ import { describe, it, expect } from "vitest";
 import { en } from "./en";
 import { ua } from "./ua";
 import { es } from "./es";
+import { de } from "./de";
 
-describe("i18n Trilingual Key Parity Specification", () => {
+describe("i18n Multilingual Key Parity Specification (EN / UA / ES / DE)", () => {
   function getKeysDeep(obj: Record<string, unknown>, prefix = ""): string[] {
     let keys: string[] = [];
     for (const key of Object.keys(obj)) {
@@ -21,10 +22,12 @@ describe("i18n Trilingual Key Parity Specification", () => {
   const enKeys = getKeysDeep(en as unknown as Record<string, unknown>);
   const uaKeys = getKeysDeep(ua as unknown as Record<string, unknown>);
   const esKeys = getKeysDeep(es as unknown as Record<string, unknown>);
+  const deKeys = getKeysDeep(de as unknown as Record<string, unknown>);
 
-  it("should have identical key counts across all 3 locales", () => {
+  it("should have identical key counts across all 4 locales", () => {
     expect(uaKeys.length).toBe(enKeys.length);
     expect(esKeys.length).toBe(enKeys.length);
+    expect(deKeys.length).toBe(enKeys.length);
   });
 
   it("should ensure Ukrainian (ua) has every single key from English (en)", () => {
@@ -35,6 +38,11 @@ describe("i18n Trilingual Key Parity Specification", () => {
   it("should ensure Spanish (es) has every single key from English (en)", () => {
     const missingInEs = enKeys.filter((k) => !esKeys.includes(k));
     expect(missingInEs).toEqual([]);
+  });
+
+  it("should ensure German (de) has every single key from English (en)", () => {
+    const missingInDe = enKeys.filter((k) => !deKeys.includes(k));
+    expect(missingInDe).toEqual([]);
   });
 
   it("should contain non-empty string values for all leaf keys", () => {
@@ -54,5 +62,6 @@ describe("i18n Trilingual Key Parity Specification", () => {
     assertNonEmpty(en as unknown as Record<string, unknown>, "en");
     assertNonEmpty(ua as unknown as Record<string, unknown>, "ua");
     assertNonEmpty(es as unknown as Record<string, unknown>, "es");
+    assertNonEmpty(de as unknown as Record<string, unknown>, "de");
   });
 });

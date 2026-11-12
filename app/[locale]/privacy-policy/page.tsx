@@ -11,7 +11,7 @@ interface PrivacyPolicyPageProps {
 }
 
 export function generateStaticParams() {
-  return [{ locale: 'en' }, { locale: 'ua' }, { locale: 'es' }]
+  return [{ locale: 'en' }, { locale: 'ua' }, { locale: 'es' }, { locale: 'de' }]
 }
 
 export async function generateMetadata({

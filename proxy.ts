@@ -2,11 +2,11 @@ import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
 interface LangPreference {
-  locale: 'en' | 'ua' | 'es'
+  locale: 'en' | 'ua' | 'es' | 'de'
   q: number
 }
 
-export function resolvePreferredLocale(acceptLanguageHeader: string | null): 'en' | 'ua' | 'es' {
+export function resolvePreferredLocale(acceptLanguageHeader: string | null): 'en' | 'ua' | 'es' | 'de' {
   if (!acceptLanguageHeader) return 'en'
 
   const items = acceptLanguageHeader.split(',')
@@ -27,7 +27,9 @@ export function resolvePreferredLocale(acceptLanguageHeader: string | null): 'en
       }
     }
 
-    if (tag.startsWith('es')) {
+    if (tag.startsWith('de')) {
+      candidates.push({ locale: 'de', q })
+    } else if (tag.startsWith('es')) {
       candidates.push({ locale: 'es', q })
     } else if (tag.startsWith('uk') || tag.startsWith('ua')) {
       candidates.push({ locale: 'ua', q })

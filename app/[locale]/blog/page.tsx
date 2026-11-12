@@ -19,7 +19,7 @@ interface BlogCatalogPageProps {
 }
 
 export function generateStaticParams() {
-  return [{ locale: 'en' }, { locale: 'ua' }, { locale: 'es' }]
+  return [{ locale: 'en' }, { locale: 'ua' }, { locale: 'es' }, { locale: 'de' }]
 }
 
 export async function generateMetadata({
@@ -28,18 +28,23 @@ export async function generateMetadata({
   const { locale } = await params
   const isUa = locale === 'ua'
   const isEs = locale === 'es'
+  const isDe = locale === 'de'
 
   const title = isUa
     ? 'Інженерний блог та архітектурні кейси | Артур Юсупов'
     : isEs
       ? 'Blog de Ingeniería y Casos de Arquitectura | Artur Yusupov'
-      : 'Engineering Blog & Architectural Case Studies | Artur Yusupov'
+      : isDe
+        ? 'Engineering-Blog & Architektur-Fallstudien | Artur Yusupov'
+        : 'Engineering Blog & Architectural Case Studies | Artur Yusupov'
 
   const description = isUa
     ? 'Глибокі технічні статті про архітектуру вебу, Next.js 16, кастомний WordPress, автономні RAG AI-рушії та доступність WCAG 2.2 AA.'
     : isEs
       ? 'Artículos técnicos en profundidad sobre arquitectura web, Next.js 16, WordPress a medida, motores de IA con RAG y accesibilidad WCAG 2.2 AA.'
-      : 'In-depth engineering articles on web architecture, Next.js 16, custom WordPress, autonomous in-browser RAG AI engines, and WCAG 2.2 AA compliance.'
+      : isDe
+        ? 'Detaillierte technische Artikel über Webarchitektur, Next.js 16, maßgeschneidertes WordPress, autonome RAG-AI-Engines und WCAG 2.2 AA Barrierefreiheit.'
+        : 'In-depth engineering articles on web architecture, Next.js 16, custom WordPress, autonomous in-browser RAG AI engines, and WCAG 2.2 AA compliance.'
 
   const ogImageUrl = 'https://www.yusupovartur.com/images/blog/cover-nextjs-vs-headless-wp.png'
 
@@ -65,6 +70,8 @@ export async function generateMetadata({
         uk: 'https://www.yusupovartur.com/ua/blog',
         es: 'https://www.yusupovartur.com/es/blog',
         'es-ES': 'https://www.yusupovartur.com/es/blog',
+        de: 'https://www.yusupovartur.com/de/blog',
+        'de-DE': 'https://www.yusupovartur.com/de/blog',
         'x-default': 'https://www.yusupovartur.com/en/blog',
       },
     },

@@ -13,6 +13,7 @@ function LanguageConsumer() {
       <button onClick={() => setLang("en")}>Set English</button>
       <button onClick={() => setLang("ua")}>Set Ukrainian</button>
       <button onClick={() => setLang("es")}>Set Spanish</button>
+      <button onClick={() => setLang("de")}>Set German</button>
     </div>
   );
 }
@@ -64,6 +65,22 @@ describe("LanguageContext Specification", () => {
       expect(screen.getByTestId("nav-projects")).toHaveTextContent("Proyectos");
     });
     expect(localStorage.getItem("portfolio_lang")).toBe("es");
+  });
+
+  it("should switch to German and update translated strings and localStorage", async () => {
+    const user = userEvent.setup();
+    render(
+      <LanguageProvider>
+        <LanguageConsumer />
+      </LanguageProvider>
+    );
+
+    await user.click(screen.getByRole("button", { name: /set german/i }));
+    expect(screen.getByTestId("current-lang")).toHaveTextContent("de");
+    await waitFor(() => {
+      expect(screen.getByTestId("nav-projects")).toHaveTextContent("Projekte");
+    });
+    expect(localStorage.getItem("portfolio_lang")).toBe("de");
   });
 
   it("should restore saved language preference from localStorage", async () => {

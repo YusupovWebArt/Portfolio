@@ -4,6 +4,7 @@ import * as path from 'path';
 import { en } from './en';
 import { ua } from './ua';
 import { es } from './es';
+import { de } from './de';
 
 describe('Trilingual i18n Completeness & Hardcoded Strings Specification (TDD)', () => {
   const localesDir = __dirname;
@@ -15,6 +16,7 @@ describe('Trilingual i18n Completeness & Hardcoded Strings Specification (TDD)',
       { code: 'en', dict: en },
       { code: 'ua', dict: ua },
       { code: 'es', dict: es },
+      { code: 'de', dict: de },
     ];
 
     for (const { code, dict } of dictionaries) {
@@ -78,7 +80,7 @@ describe('Trilingual i18n Completeness & Hardcoded Strings Specification (TDD)',
   });
 
   it('should contain zero em dashes across all locale dictionary files', () => {
-    const files = ['en.ts', 'ua.ts', 'es.ts', 'types.ts'];
+    const files = ['en.ts', 'ua.ts', 'es.ts', 'de.ts', 'types.ts'];
     for (const file of files) {
       const content = fs.readFileSync(path.join(localesDir, file), 'utf-8');
       const emDashMatches = content.match(/—/g);

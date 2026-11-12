@@ -18,7 +18,7 @@ interface ProjectPageProps {
 }
 
 export function generateStaticParams() {
-  const locales = ['en', 'ua', 'es']
+  const locales = ['en', 'ua', 'es', 'de']
   const entries = getAllProjectEntries()
 
   const paramsList: { locale: string; slug: string }[] = []

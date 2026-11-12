@@ -15,7 +15,7 @@ import ChatModal from '../../src/components/ChatModal'
 import { toBcp47Lang } from '../../src/lib/seo'
 
 export function generateStaticParams() {
-  return [{ locale: 'en' }, { locale: 'ua' }, { locale: 'es' }]
+  return [{ locale: 'en' }, { locale: 'ua' }, { locale: 'es' }, { locale: 'de' }]
 }
 
 export async function generateMetadata({
@@ -24,23 +24,28 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>
 }): Promise<Metadata> {
   const { locale } = await params
-  const activeLocale = (locale as 'en' | 'ua' | 'es') || 'en'
+  const activeLocale = (locale as 'en' | 'ua' | 'es' | 'de') || 'en'
   const isUa = activeLocale === 'ua'
   const isEs = activeLocale === 'es'
+  const isDe = activeLocale === 'de'
 
   const title = isUa
     ? 'Артур Юсупов - Fullstack веб-інженер та AI-розробник'
     : isEs
       ? 'Artur Yusupov - Ingeniero Web Fullstack y Desarrollador AI'
-      : 'Artur Yusupov - Fullstack Web Engineer & AI Developer'
+      : isDe
+        ? 'Artur Yusupov - Fullstack Web Engineer & AI Developer'
+        : 'Artur Yusupov - Fullstack Web Engineer & AI Developer'
 
   const description = isUa
     ? 'Розробка високопродуктивних веб-продуктів, кастомного WordPress, React 19 застосунків та AI-автоматизації для бізнесу та агенцій в Іспанії.'
     : isEs
       ? 'Desarrollo de productos web de alto rendimiento, WordPress a medida, aplicaciones React 19 y automatización de IA para empresas y agencias en España.'
-      : 'Engineering high-performance web products, custom WordPress, React 19 apps & AI automation for businesses and agencies in Spain.'
+      : isDe
+        ? 'Entwicklung hochperformanter Webprodukte, maßgeschneidertes WordPress, React 19 Anwendungen und AI-Automatisierung für Unternehmen in DACH und Europa.'
+        : 'Engineering high-performance web products, custom WordPress, React 19 apps & AI automation for businesses and agencies in Spain.'
 
-  const ogLocale = isUa ? 'uk_UA' : isEs ? 'es_ES' : 'en_US'
+  const ogLocale = isUa ? 'uk_UA' : isEs ? 'es_ES' : isDe ? 'de_DE' : 'en_US'
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.yusupovartur.com'
 
   return {
@@ -54,6 +59,8 @@ export async function generateMetadata({
         uk: '/ua',
         es: '/es',
         'es-ES': '/es',
+        de: '/de',
+        'de-DE': '/de',
         'x-default': '/en',
       },
     },
@@ -110,6 +117,10 @@ const getLocaleTranslation = async (locale: string) => {
     const mod = await import('../../src/locales/es')
     return mod.es
   }
+  if (locale === 'de') {
+    const mod = await import('../../src/locales/de')
+    return mod.de
+  }
   const mod = await import('../../src/locales/en')
   return mod.en
 }
@@ -122,7 +133,7 @@ export default async function RootLocaleLayout({
   params: Promise<{ locale: string }>
 }) {
   const { locale } = await params
-  const activeLocale = (locale as 'en' | 'ua' | 'es') || 'en'
+  const activeLocale = (locale as 'en' | 'ua' | 'es' | 'de') || 'en'
   const htmlLang = toBcp47Lang(activeLocale)
   const initialTranslation = await getLocaleTranslation(activeLocale)
 

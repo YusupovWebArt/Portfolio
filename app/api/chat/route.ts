@@ -24,7 +24,7 @@ interface ChatRequestMessage {
 interface ChatRequestBody {
   messages: ChatRequestMessage[]
   projectSlug?: string
-  locale?: 'en' | 'ua' | 'es'
+  locale?: 'en' | 'ua' | 'es' | 'de'
 }
 
 const MAX_BODY_BYTES = 16_384 // 16 KB max payload
@@ -81,10 +81,10 @@ export async function POST(req: Request) {
     const { messages, projectSlug, locale } = parsedBody
 
     // 2b. Validate locale against allowed whitelist
-    const validLocales = ['en', 'ua', 'es'] as const
-    const validatedLocale: 'en' | 'ua' | 'es' =
+    const validLocales = ['en', 'ua', 'es', 'de'] as const
+    const validatedLocale: 'en' | 'ua' | 'es' | 'de' =
       typeof locale === 'string' && (validLocales as readonly string[]).includes(locale)
-        ? (locale as 'en' | 'ua' | 'es')
+        ? (locale as 'en' | 'ua' | 'es' | 'de')
         : 'en'
 
     // 3. Messages array validation

@@ -40,10 +40,19 @@ const EsFlag = () => (
   </svg>
 )
 
+const DeFlag = () => (
+  <svg className="w-4 h-4 rounded-full overflow-hidden shrink-0 shadow-xs border border-slate-200/40 dark:border-slate-700/40" viewBox="0 0 640 480" aria-hidden="true">
+    <path fill="#000" d="M0 0h640v160H0z"/>
+    <path fill="#D00" d="M0 160h640v160H0z"/>
+    <path fill="#FFCE00" d="M0 320h640v160H0z"/>
+  </svg>
+)
+
 const FLAGS: Record<Lang, { component: React.FC; code: string }> = {
   en: { component: UkFlag, code: 'EN' },
   ua: { component: UaFlag, code: 'UA' },
   es: { component: EsFlag, code: 'ES' },
+  de: { component: DeFlag, code: 'DE' },
 }
 
 // --- Language Dropdown component ---

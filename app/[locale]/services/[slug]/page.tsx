@@ -19,7 +19,7 @@ interface ServiceDetailPageProps {
 }
 
 export function generateStaticParams() {
-  const locales = ['en', 'ua', 'es']
+  const locales = ['en', 'ua', 'es', 'de']
   const params: { locale: string; slug: string }[] = []
 
   for (const locale of locales) {
