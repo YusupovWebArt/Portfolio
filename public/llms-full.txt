@@ -228,6 +228,14 @@
     - **Published**: 2026-11-12 | **Tags**: Playwright, Axe-Core, CI/CD, GitHub Actions, WCAG 2.2 AA, DevSecOps, React 19, A11y
     - **Summary**: A deep architectural guide to integrating automated accessibility testing into modern CI/CD pipelines. Using @axe-core/playwright, custom rule sets, color contrast matrix validation across light/dark modes, and automated PR quality gates to enforce WCAG 2.2 AA compliance before deployment.
 
+46. **Context Caching in Gemini 2.5 & Claude 3.7: Slashing LLM API Costs by 80% in Production AI Systems**: https://www.yusupovartur.com/en/blog/context-caching-llm-api-cost-optimization
+    - **Published**: 2026-11-12 | **Tags**: LLMOps, Gemini 2.5, Claude 3.7, Context Caching, RAG, Next.js 16, Cost Optimization, AI Engineering
+    - **Summary**: A production engineering guide to implementing context caching with Google Gemini 2.5 and Anthropic Claude 3.7. Prefix token reuse, KV-cache lifetime management, Time-to-First-Token (TTFT) reduction from 3.2s to 420ms, and architectural benchmarks in real-world Next.js 16 RAG systems.
+
+47. **Local-First In-Browser LLMs via WebGPU: Zero-Server Privacy-Preserving Inference in Modern Web Apps**: https://www.yusupovartur.com/en/blog/in-browser-llm-webgpu-zero-server-inference
+    - **Published**: 2026-11-12 | **Tags**: WebGPU, Local LLM, Transformers.js, ONNX Runtime, React 19, Edge AI, Privacy, Llama 3.2
+    - **Summary**: An architectural deep-dive on running quantized 1B-3B parameter Large Language Models (Llama 3.2, Gemma 2, SmolLM2) directly inside client web browsers using WebGPU, Transformers.js v3, and ONNX Runtime Web. Zero hosting costs, 100% offline capability, zero data exfiltration, and sub-second token streaming.
+
 ## 5. Complete 71-Project Portfolio Index (213 Localized Case Study Routes)
 
 1. **Next.js 16 & Hybrid RAG Portfolio Platform** (nextjs) - https://www.yusupovartur.com/en/projects/yusupovartur-nextjs-portfolio | Live: https://www.yusupovartur.com/ | Deep-Dive: https://www.yusupovartur.com/en/blog/autonomous-hybrid-rag-architecture-browser

@@ -926,6 +926,14 @@ export function resolveBlogFromQueryOrContext(
   }
 
   // 4. Distinct article topical phrases
+  if (/\b(context[\s-]*caching|prompt[\s-]*caching|prefix[\s-]*cache|кешування[\s-]*контекст|cash.*llm|gemini.*cache|claude.*cache)/i.test(lower)) {
+    return getBlogPostBySlug('context-caching-llm-api-cost-optimization')
+  }
+
+  if (/\b(webgpu|in[\s-]*browser llm|local[\s-]*first llm|transformers\.js|onnx runtime web|локальн.*llm|браузерн.*llm)/i.test(lower)) {
+    return getBlogPostBySlug('in-browser-llm-webgpu-zero-server-inference')
+  }
+
   if (/\b(axe[\s-]*core|playwright.*(a11y|accessibility|доступност)|automated.*accessibility|ci[\s-]*cd.*accessibility)/i.test(lower)) {
     return getBlogPostBySlug('automated-accessibility-testing-cicd-axe-playwright')
   }

@@ -44,6 +44,8 @@ import { allDayMedicalCarePost } from './posts/all-day-medical-care-hipaa-health
 import { organicBedRtlPost } from './posts/organic-bed-rtl-woocommerce-performance-optimization'
 import { eaa2026EcommerceCompliancePost } from './posts/eaa-2026-compliance-ecommerce-audit-remediation'
 import { automatedAccessibilityTestingCicdPost } from './posts/automated-accessibility-testing-cicd-axe-playwright'
+import { contextCachingLlmApiCostsPost } from './posts/context-caching-llm-api-cost-optimization'
+import { inBrowserLlmWebGpuPost } from './posts/in-browser-llm-webgpu-zero-server-inference'
 
 export * from './types'
 
@@ -93,6 +95,8 @@ export const allBlogPosts: BlogPost[] = [
   organicBedRtlPost,
   eaa2026EcommerceCompliancePost,
   automatedAccessibilityTestingCicdPost,
+  contextCachingLlmApiCostsPost,
+  inBrowserLlmWebGpuPost,
 ]
 
 export function getAllBlogPosts(): BlogPost[] {
