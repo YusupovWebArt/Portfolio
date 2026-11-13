@@ -45,10 +45,12 @@ describe('Multilingual Text & NLP Pipeline Specification (TDD)', () => {
     expect(expandedStack).toContain('technologies')
   })
 
-  it('should accurately detect language between en, ua, and es', () => {
+  it('should accurately detect language between en, ua, es, and de', () => {
     expect(detectLanguage('What technologies do you use?')).toBe('en')
     expect(detectLanguage('Який ваш комерційний досвід?')).toBe('ua')
     expect(detectLanguage('¿Cuáles son sus servicios principales?')).toBe('es')
+    expect(detectLanguage('Über welche Technologien verfügst du für große Projekte?')).toBe('de')
+    expect(foldForSearch('Größe')).toBe('grosse')
   })
 
   it('should sanitize em dashes and en dashes into hyphens', () => {

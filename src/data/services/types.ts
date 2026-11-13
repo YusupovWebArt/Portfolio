@@ -1,4 +1,4 @@
-export type ServiceLocale = 'en' | 'ua' | 'es'
+export type ServiceLocale = 'en' | 'ua' | 'es' | 'de'
 
 export interface ServiceMetric {
   value: string

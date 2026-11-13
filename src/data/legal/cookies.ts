@@ -1,7 +1,7 @@
 import type { CookiePolicyPageData } from './types'
 import { LEGAL_CONFIG } from './legalConfig'
 
-export const cookiePolicyData: Record<'en' | 'ua' | 'es', CookiePolicyPageData> = {
+export const cookiePolicyData: Record<'en' | 'ua' | 'es' | 'de', CookiePolicyPageData> = {
   en: {
     badge: 'LSSI-CE Art. 22.2 & AEPD Guide',
     title: 'Cookie Policy',
@@ -36,7 +36,7 @@ export const cookiePolicyData: Record<'en' | 'ua' | 'es', CookiePolicyPageData> 
       {
         cookie: 'portfolio_lang',
         provider: 'yusupovartur.com (First Party)',
-        purpose: 'Preserves the visitor chosen language navigation (English, Spanish, Ukrainian).',
+        purpose: 'Preserves the visitor chosen language navigation (English, Spanish, Ukrainian, German).',
         expiry: 'Persistent (Local Storage)',
         type: 'Technical / Functional',
       },
@@ -121,7 +121,7 @@ export const cookiePolicyData: Record<'en' | 'ua' | 'es', CookiePolicyPageData> 
       {
         cookie: 'portfolio_lang',
         provider: 'yusupovartur.com (Propia)',
-        purpose: 'Conserva el idioma seleccionado de navegación (español, inglés, ucraniano).',
+        purpose: 'Conserva el idioma seleccionado de navegación (español, inglés, ucraniano, alemán).',
         expiry: 'Persistente (Almacenamiento Local)',
         type: 'Técnica / Preferencias',
       },
@@ -206,7 +206,7 @@ export const cookiePolicyData: Record<'en' | 'ua' | 'es', CookiePolicyPageData> 
       {
         cookie: 'portfolio_lang',
         provider: 'yusupovartur.com (Власні)',
-        purpose: 'Зберігає обрану мову інтерфейсу (англійська, іспанська, українська).',
+        purpose: 'Зберігає обрану мову інтерфейсу (англійська, іспанська, українська, німецька).',
         expiry: 'Постійно (Local Storage)',
         type: 'Технічні / Функціональні',
       },
@@ -253,6 +253,91 @@ export const cookiePolicyData: Record<'en' | 'ua' | 'es', CookiePolicyPageData> 
         title: '4. Оновлення політики та контакти',
         paragraphs: [
           'Ця Політика використання файлів cookie може періодично оновлюватися у зв\'язку зі змінами у законодавстві або структурі сайту.',
+        ],
+      },
+    ],
+  },
+  de: {
+    badge: 'LSSI-CE Art. 22.2 & AEPD-Leitfaden',
+    title: 'Cookie-Richtlinie',
+    subtitle: 'Detaillierte Informationen zur Verwendung von Cookies, Local-Storage-Einträgen und Google Consent Mode v2 auf dieser Website.',
+    lastUpdatedLabel: 'Zuletzt aktualisiert',
+    lastUpdatedDate: LEGAL_CONFIG.lastUpdatedDate,
+    interactiveSettingsLabel: 'Ihre Präferenzen & Cookie-Verwaltung',
+    interactiveSettingsDesc: 'Sie können Ihre Einwilligung für Analyse-Cookies jederzeit über unser interaktives Einstellungs-Panel überprüfen, erteilen oder widerrufen.',
+    openSettingsBtn: 'Cookie-Einstellungen öffnen',
+    tableHeaders: {
+      cookie: 'Name / Schlüssel',
+      provider: 'Anbieter',
+      purpose: 'Technischer Zweck',
+      expiry: 'Speicherdauer',
+      type: 'Kategorie',
+    },
+    tableRows: [
+      {
+        cookie: 'cookie_consent',
+        provider: 'yusupovartur.com (Erstanbieter)',
+        purpose: 'Speichert den Einwilligungsstatus des Besuchers (erteilt oder abgelehnt) gemäß den europäischen Datenschutzrichtlinien.',
+        expiry: '24 Monate',
+        type: 'Unbedingt erforderlich',
+      },
+      {
+        cookie: 'portfolio_theme',
+        provider: 'yusupovartur.com (Erstanbieter)',
+        purpose: 'Speichert das bevorzugte Farbschema des Nutzers (Dark Mode oder Light Mode).',
+        expiry: 'Dauerhaft (Local Storage)',
+        type: 'Technisch / Funktional',
+      },
+      {
+        cookie: 'portfolio_lang',
+        provider: 'yusupovartur.com (Erstanbieter)',
+        purpose: 'Bewahrt die gewählte Navigationssprache (Englisch, Spanisch, Ukrainisch, Deutsch).',
+        expiry: 'Dauerhaft (Local Storage)',
+        type: 'Technisch / Funktional',
+      },
+      {
+        cookie: '_ga, _ga_*',
+        provider: 'Google Ireland Ltd. / Google LLC',
+        purpose: 'Aggregierte statistische Messung von Seitenaufrufen, Absprungraten und Traffic-Quellen über Google Analytics 4.',
+        expiry: '24 Monate / 24 Stunden',
+        type: 'Analytisch (Einwilligung erforderlich)',
+      },
+    ],
+    sections: [
+      {
+        id: 'what-are-cookies',
+        title: '1. Was sind Cookies und Local-Storage-Einträge?',
+        paragraphs: [
+          'Ein Cookie ist eine kleine Textdatei, die beim Besuch bestimmter Webseiten auf Ihrem Computer oder Mobilgerät gespeichert wird. Cookies ermöglichen es einer Website, ein Gerät wiederzuerkennen, Präferenzen zu merken und das Nutzungserlebnis zu verbessern.',
+          'Zusätzlich zu klassischen HTTP-Cookies nutzt diese moderne Webarchitektur HTML5 Local Storage, um UI-Einstellungen (wie Farbschema oder gewählte Sprache) direkt im Browser zu speichern, ohne diese bei Netzwerkanfragen zu übertragen.',
+        ],
+      },
+      {
+        id: 'consent-mode-v2',
+        title: '2. Implementierung von Google Consent Mode v2 Basic',
+        paragraphs: [
+          'Dieses Portfolio erfüllt die Richtlinien der spanischen Datenschutzbehörde AEPD sowie des EU Digital Markets Act (DMA) mithilfe von Google Consent Mode v2 in der strengen Basic-Konfiguration.',
+          'Bei diesem Privacy-First-Ansatz werden Google Analytics 4 Tags strikt blockiert und erst geladen oder ausgeführt, wenn Sie über unser Consent-Banner ausdrücklich einwilligen. Wenn Sie Analyse-Cookies ablehnen, werden keine Mess-Skripte ausgeführt und keine Analyse-Cookies gesetzt.',
+        ],
+      },
+      {
+        id: 'browser-management',
+        title: '3. Cookies im Browser deaktivieren oder löschen',
+        paragraphs: [
+          'Sie können auf Ihrem Gerät gespeicherte Cookies jederzeit über die Einstellungen Ihres verwendeten Browsers zulassen, blockieren oder löschen:',
+        ],
+        bulletPoints: [
+          'Google Chrome: Einstellungen > Datenschutz und Sicherheit > Cookies von Drittanbietern.',
+          'Mozilla Firefox: Einstellungen > Datenschutz & Sicherheit > Cookies und Website-Daten.',
+          'Apple Safari: Einstellungen > Datenschutz > Alle Cookies blockieren.',
+          'Microsoft Edge: Einstellungen > Cookies und Websiteberechtigungen > Cookies verwalten und löschen.',
+        ],
+      },
+      {
+        id: 'updates',
+        title: '4. Aktualisierungen dieser Richtlinie',
+        paragraphs: [
+          'Diese Cookie-Richtlinie kann aufgrund gesetzlicher Anpassungen oder technischer Weiterentwicklungen dieser Website aktualisiert werden. Wir empfehlen eine gelegentliche Überprüfung.',
         ],
       },
     ],

@@ -6,23 +6,27 @@ export const eventDrivenMicroservicesKafkaOutboxPatternNextjs16Post: BlogPost = 
     en: 'Event-Driven Microservices Architecture with Kafka / Redpanda: Transactional Outbox Pattern, CDC & Distributed Sagas in Next.js 16',
     ua: 'Подійно-орієнтована архітектура мікросервісів з Kafka / Redpanda: Transactional Outbox, CDC та розподілені саги в Next.js 16',
     es: 'Arquitectura de microservicios orientada a eventos con Kafka / Redpanda: patrón Transactional Outbox, CDC y sagas distribuidas en Next.js 16',
+    de: 'Event-Driven Microservices-Architektur mit Kafka / Redpanda: Transactional Outbox Pattern, CDC und verteilte Sagas in Next.js 16',
   },
   description: {
     en: 'An enterprise blueprint for zero-loss event-driven architectures: eliminating the dual-write anti-pattern with PostgreSQL logical replication CDC, Kafka / Redpanda partitioned streaming, idempotency guards, and distributed Saga orchestrations in Next.js 16 App Router.',
     ua: 'Корпоративний посібник із надійної подійно-орієнтованої архітектури: усунення антипатерну Dual-Write за допомогою CDC на базі логічної реплікації PostgreSQL, потокової передачі в Kafka / Redpanda, ключів ідемпотентності та розподілених саг у Next.js 16.',
     es: 'Una guía empresarial para arquitecturas orientadas a eventos sin pérdida de datos: eliminación del antipatrón dual-write mediante CDC con replicación lógica de PostgreSQL, streaming particionado en Kafka / Redpanda, idempotencia y sagas distribuidas en Next.js 16.',
+    de: 'Enterprise-Architekturleitfaden fuer verlustfreie ereignisgesteuerte Systeme: Beseitigung des Dual-Write-Antipatterns mittels PostgreSQL Logical Replication CDC, partitioniertem Streaming mit Kafka / Redpanda, Idempotenz-Schutz und verteilten Sagas in Next.js 16 App Router.',
   },
   date: '2026-11-04',
   readTime: {
     en: '16 min read',
     ua: '16 хв читання',
     es: '16 min de lectura',
+    de: '16 Min. Lesezeit',
   },
   category: 'architecture',
   categoryLabel: {
     en: 'Architecture & Cloud',
     ua: 'Архітектура та хмари',
     es: 'Arquitectura y Cloud',
+    de: 'Architektur & Cloud',
   },
   tags: [
     'Kafka',
@@ -42,6 +46,7 @@ export const eventDrivenMicroservicesKafkaOutboxPatternNextjs16Post: BlogPost = 
       en: 'Lead Fullstack Architect & Distributed Systems Engineer',
       ua: 'Провідний Fullstack-архітектор та інженер розподілених систем',
       es: 'Arquitecto Fullstack Principal e Ingeniero de Sistemas Distribuidos',
+      de: 'Fullstack Web-Engineer & KI-Architekt',
     },
   },
   coverImage: '/Portfolio/images/blog/cover-event-driven-microservices-kafka-outbox.svg',
@@ -54,6 +59,7 @@ export const eventDrivenMicroservicesKafkaOutboxPatternNextjs16Post: BlogPost = 
         en: 'Scalable event-driven code compilation and student test execution pipeline streaming async tasks through Redpanda partitions with CDC outbox reliability.',
         ua: 'Масштабований конвеєр компіляції коду та тестування учнівських робіт з передачею завдань через партиції Redpanda та надійним CDC outbox.',
         es: 'Pipeline escalable de compilación y evaluación de ejercicios con transmisión asíncrona mediante particiones de Redpanda y outbox CDC confiable.',
+        de: 'Skalierbare ereignisgesteuerte Code-Kompilierungs- und Testausfuehrungs-Pipeline, die asynchrone Aufgaben ueber Redpanda-Partitionen mit zuverlaessigem CDC-Outbox streamt.',
       },
     },
     {
@@ -64,6 +70,7 @@ export const eventDrivenMicroservicesKafkaOutboxPatternNextjs16Post: BlogPost = 
         en: 'Production Next.js 16 App Router architecture demonstrating zero-loss transactional outbox mutations and distributed event bus telemetry.',
         ua: 'Архітектура Next.js 16 App Router із демонстрацією транзакційних мутацій Outbox без втрати даних та телеметрією розподілених подій.',
         es: 'Arquitectura en Next.js 16 App Router con mutaciones transaccionales outbox sin pérdida de datos y telemetría de bus de eventos distribuido.',
+        de: 'Produktive Next.js 16 App Router-Architektur zur Demonstration verlustfreier transaktionaler Outbox-Mutationen und verteilter Event-Bus-Telemetrie.',
       },
     },
   ],
@@ -82,6 +89,11 @@ export const eventDrivenMicroservicesKafkaOutboxPatternNextjs16Post: BlogPost = 
       'Eliminación del problema de doble escritura en Server Actions de Next.js 16 mediante transacciones ACID atómicas entre tablas de dominio y outbox.',
       'Latencia de replicación de eventos inferior a 18ms con decodificación lógica pgoutput de PostgreSQL y Debezium CDC sin sobrecarga de sondeo.',
       'Consistencia de datos del 100% en microservicios distribuidos de facturación, inventario y logística mediante sagas orquestadas con compensaciones automáticas.',
+    ],
+    de: [
+      'Beseitigung von Dual-Write-Race-Conditions in Next.js 16 Server Actions durch atomare ACID-Transaktionen zwischen Domaenenentitaet und Outbox-Tabelle.',
+      'Erreichen einer Replikationslatenz von unter 18 ms via PostgreSQL pgoutput Logical Decoding und Debezium CDC ohne Polling-Overhead.',
+      '100% Datenkonsistenz ueber verteilte Abrechnungs-, Inventar- und Fulfillment-Microservices mittels orchestrierter Sagas mit automatisierten kompensierenden Rollbacks.',
     ],
   },
   content: {
@@ -493,6 +505,300 @@ Para garantizar la coherencia entre microservicios independientes sin bloqueos d
 ## 4. Semántica Exactly-Once e idempotencia
 
 Mediante filtros Bloom en Redis combinados con restricciones de unicidad en la tabla \`processed_events\` de PostgreSQL, los consumidores de Kafka garantizan el procesamiento de eventos exactamente una vez, protegiendo el sistema contra duplicados causados por rebalanceos de red.
+`,
+    de: `## 1. Das Dual-Write-Dilemma in modernen Fullstack-Webanwendungen
+
+Beim Entwickeln moderner Fullstack-Anwendungen mit Next.js 16 App Router muessen Entwickler haeufig zwei zustandsbehaftete Operationen ausfuehren, wenn ein Benutzer eine Mutation initiiert:
+1. Aktualisieren der primaeren transaktionalen Datenbank (z. B. Einfuegen einer Bestellung in PostgreSQL).
+2. Senden eines asynchronen Ereignisses an einen Message Broker (z. B. Veroeffentlichen einer \`OrderPlaced\`-Nachricht in Apache Kafka oder Redpanda), um nachgelagerte Microservices fuer Abrechnung, Inventarreservierung und Kundenbenachrichtigungen auszuloesen.
+
+Eine naive Implementierung in einer Next.js Server Action sieht typischerweise so aus:
+
+\`\`\`typescript
+// ANTI-PATTERN: Die anfaellige Doppel-Schreiboperation (Dual-Write)
+export async function createOrderAction(formData: OrderInput): Promise<OrderResult> {
+  const order = await db.orders.create({ data: formData }) // Schritt 1: Datenbank-Schreibzugriff
+  await kafkaProducer.send({ topic: 'orders', messages: [{ value: JSON.stringify(order) }] }) // Schritt 2: Netzwerk-RPC
+  return { success: true, orderId: order.id }
+}
+\`\`\`
+
+### Warum direkte Dual-Writes in der Produktion scheitern
+Dieser Ansatz verletzt grundlegende Gesetze verteilter Systeme:
+- **Broker-Ausfall oder Netzwerkpartitionierung:** Ist Kafka temporaer nicht erreichbar, wurde die Datenbanktransaktion bereits bestaetigt. Das Kundenkonto wurde belastet, aber die Nachricht wurde nie veroeffentlicht. Nachgelagerte Inventarservices reservieren die Artikel nie - es entsteht eine Geisterbestellung und stiller Datenverlust.
+- **Abbruch der Server Action:** Ein Absturz des Node.js/V8-Serverless-Isolats oder die Beendigung durch die Hosting-Laufzeit (z. B. beim Scale-Down oder Deployment) zwischen Schritt 1 und Schritt 2 fuehrt zum unwiederbringlichen Verlust der Nachricht.
+- **Umgekehrte Reihenfolge:** Sendet man die Kafka-Nachricht zuerst und fuehrt danach das Datenbank-Commit aus, hinterlaesst ein Datenbank-Deadlock oder ein Constraint-Verstoss ein verwaistes Ereignis in Kafka, was nachgelagerte Services veranlasst, eine Phantom-Bestellung zu verarbeiten.
+
+In hochgradig nebenlaeufigen E-Commerce- und SaaS-Plattformen sind Netzwerkstoerungen unvermeidbar. Dual-Write-Fehler fuehren zu finanziellen Diskrepanzen und erfordern teure manuelle Datenabgleiche.
+
+---
+
+## 2. Das Transactional Outbox Pattern & die CDC-Engine
+
+Das Transactional Outbox Pattern loest das Dual-Write-Dilemma, indem es zwei getrennte Netzwerkoperationen in eine einzige lokale ACID-Transaktion ueberfuehrt. Anstatt direkt ueber das Netzwerk an Kafka zu senden, fuegt die Server Action die Domaenenentitaet und einen Outbox-Ereignisdatensatz innerhalb einer einzigen Transaktionsgrenze in dieselbe Datenbank ein:
+
+\`\`\`sql
+-- Atomare Transaktion: Domaenenmutation + Outbox-Datensatz
+BEGIN;
+  INSERT INTO orders (id, user_id, amount_cents, status, created_at)
+  VALUES ('ord_1029', 'usr_8412', 14900, 'PENDING', NOW());
+
+  INSERT INTO outbox_events (id, aggregate_type, aggregate_id, event_type, payload, status, created_at)
+  VALUES (
+    gen_random_uuid(),
+    'Order',
+    'ord_1029',
+    'OrderCreated',
+    '{"orderId":"ord_1029","userId":"usr_8412","amountCents":14900}',
+    'PENDING',
+    NOW()
+  );
+COMMIT;
+\`\`\`
+
+Entweder gelingen beide Schreiboperationen oder beide werden zurueckgerollt. Es gibt keinen Zwischenzustand, in dem die Bestellung ohne das zugehoerige Ereignis existiert.
+
+### Ereignisuebertragung von der Outbox zu Kafka: Polling vs. CDC
+Sobald das Ereignis sicher in der Tabelle \`outbox_events\` gespeichert ist, stellt sich die Frage: Wie gelangt es zu Kafka?
+
+| Bewertungskriterium | Polling Worker (SELECT ... FOR UPDATE SKIP LOCKED) | Change Data Capture (PostgreSQL Logical Decoding) |
+| :--- | :--- | :--- |
+| **Datenbank-Overhead** | Hoch (konstante CPU-Peaks, Lock Contention, Tabellen-Bloat) | Nahezu null (liest WAL sequentiell ohne Tabellensperren) |
+| **End-to-End-Latenz** | 500 ms - 5.000 ms (abhaengig vom Polling-Intervall) | Unter 18 ms (Echtzeit-Stream-Ingestion) |
+| **Skalierbarkeit** | Nimmt mit wachsender Tabellengroesse und Schreiblast ab | Bewaeltigt 50.000+ Schreibvorgaenge/Sek. mit minimalem WAL-Overhead |
+| **Betriebliche Komplexitaet** | Einfacher Cronjob oder Worker-Loop | Erfordert Debezium oder Kafka-Connect-Connector |
+
+Fuer Enterprise-Systeme ist Change Data Capture (CDC) ueber PostgreSQL Logical Decoding (\`pgoutput\`-Plugin) der Goldstandard. Debezium liest das Write-Ahead-Log (WAL) der Datenbank direkt. Sobald die Transaktion im WAL committet wird, streamt Debezium die Outbox-Zeile mit einer Replikationsverzoegerung von unter 18 ms an Kafka.
+
+---
+
+## 3. Verteilte Sagas & kompensierende Transaktionen
+
+In einer Microservices-Architektur erstreckt sich ein einzelner Geschaeftsprozess ueber mehrere unabhaengig bereitgestellte Services mit jeweils eigener Datenbank:
+1. **Order Service:** Erstellt die ausstehende Bestellung.
+2. **Payment Service:** Autorisiert die Kreditkartenzahlung.
+3. **Inventory Service:** Reserviert physische Lagerartikel.
+4. **Fulfillment Service:** Erzeugt das Versandetikett.
+
+Da Two-Phase-Commit (2PC) in asynchronen Cloud-Umgebungen nicht skaliert, implementieren wir das **Saga-Pattern**: eine Abfolge lokaler Transaktionen, bei der jeder Schritt ein Ereignis veroeffentlicht, das die naechste lokale Transaktion ausloest.
+
+### Orchestrierte vs. choreografierte Sagas
+
+\`\`\`
+[Choreografie]: Order Service -> (OrderCreated) -> Payment Service -> (PaymentCompleted) -> Inventory Service
+  Problem: Zirkulaere Abhaengigkeiten, enge Ereigniskopplung, schwer nachvollziehbarer Zustand.
+
+[Orchestrierung]:
+       +--------------------------------------------+
+       |           Saga-Orchestrator-Mesh           |
+       |  (Zustandsautomat: PENDING -> PAID -> LOCKED) |
+       +--+-------------------+------------------+--+
+          |                   |                  |
+          v                   v                  v
+     Order Service      Payment Service    Inventory Service
+\`\`\`
+
+Wir setzen auf eine **orchestrierte Saga**. Der Saga-Koordinator verwaltet Zustandsuebergaenge, ueberwacht SLA-Timeouts und loest automatisch kompensierende Transaktionen aus, falls ein nachgelagerter Schritt fehlschlaegt.
+
+### Fehlerbehandlung mit kompensierenden Rollbacks
+Wenn der Payment Service erfolgreich war, der Inventory Service jedoch feststellt, dass der Artikel nicht vorraetig ist:
+1. Inventory Service veroeffentlicht \`InventoryReservationFailed\`.
+2. Saga-Orchestrator faengt das Fehlerereignis ab.
+3. Saga-Orchestrator sendet einen kompensierenden Befehl: \`RefundPaymentCommand\` an den Payment Service.
+4. Saga-Orchestrator markiert die Bestellung im Order Service als \`CANCELLED_OUT_OF_STOCK\`.
+5. Alle Services behalten ihre letztendliche Konsistenz bei vollstaendiger Auditierbarkeit.
+
+---
+
+## 4. Exactly-Once-Verarbeitungssemantik & Idempotenz
+
+Kafka bietet standardmaessig **At-Least-Once**-Zustellgarantien. Durch Netzwerk-Wiederholungsversuche, Rebalances oder Consumer-Neustarts koennen und werden Duplikate auftreten. Um eine vollstaendige **Exactly-Once-Verarbeitung** zu erreichen, muessen Konsumenten strikt idempotent ausgelegt sein.
+
+### Die Architektur von Idempotenz-Schluesseln
+Jeder Ereignisumschlag (Event Envelope) enthaelt eine eindeutige \`eventId\` (UUIDv7) und einen fachlichen Idempotenz-Schluessel (\`idempotencyKey = hash(aggregateId + eventType + version)\`).
+
+Wenn ein Consumer ein Ereignis empfaengt:
+1. **Redis Bloom-Filter-Pruefung (Schnellpfad):** Abfrage eines In-Memory-Redis-Bloom-Filters, um festzustellen, ob der Schluessel bereits verarbeitet wurde (< 1 ms). Falls sicher noch nicht gesehen, fortfahren.
+2. **PostgreSQL Processed-Events-Tabelle (Autoritativer Pfad):** Geschaeftslogik ausfuehren und den \`idempotencyKey\` innerhalb derselben ACID-Transaktion in die Tabelle \`processed_events\` schreiben:
+
+\`\`\`sql
+INSERT INTO processed_events (idempotency_key, consumer_group, processed_at)
+VALUES ('ord_1029_PaymentAuthorized_v1', 'payment-worker-group', NOW())
+ON CONFLICT (idempotency_key) DO NOTHING;
+\`\`\`
+
+Trifft eine doppelte Nachricht ein, bricht der Konflikt die doppelte Verarbeitung sofort ab.
+
+---
+
+## 5. End-to-End TypeScript-Implementierung
+
+### Schritt 1: Typdefinitionen & Event Envelope
+
+\`\`\`typescript
+// src/lib/events/types.ts
+export interface EventEnvelope<T = Record<string, unknown>> {
+  readonly id: string
+  readonly traceId: string
+  readonly aggregateType: 'Order' | 'Payment' | 'Inventory'
+  readonly aggregateId: string
+  readonly eventType: string
+  readonly payload: T
+  readonly timestamp: string
+  readonly version: number
+}
+
+export interface OrderCreatedPayload {
+  orderId: string
+  userId: string
+  amountCents: number
+  currency: string
+  items: Array<{ sku: string; quantity: number; priceCents: number }>
+}
+\`\`\`
+
+### Schritt 2: Next.js 16 Server Action mit Transactional Outbox
+
+\`\`\`typescript
+// src/app/actions/orders.ts
+'use server'
+
+import { pool } from '@/lib/db'
+import { v7 as uuidv7 } from 'uuid'
+import type { EventEnvelope, OrderCreatedPayload } from '@/lib/events/types'
+
+export interface CreateOrderResult {
+  readonly success: boolean
+  readonly orderId?: string
+  readonly error?: string
+}
+
+export async function createOrderServerAction(
+  userId: string,
+  items: Array<{ sku: string; quantity: number; priceCents: number }>,
+  traceId: string
+): Promise<CreateOrderResult> {
+  const client = await pool.connect()
+  const orderId = \`ord_\${uuidv7()}\`
+  const totalAmountCents = items.reduce((acc, item) => acc + item.priceCents * item.quantity, 0)
+
+  try {
+    await client.query('BEGIN')
+
+    // 1. Domaenenentitaet einfuegen
+    const insertOrderQuery = \`
+      INSERT INTO orders (id, user_id, amount_cents, status, created_at)
+      VALUES ($1, $2, $3, 'PENDING', NOW())
+    \`
+    await client.query(insertOrderQuery, [orderId, userId, totalAmountCents])
+
+    // 2. Outbox-Ereignis vorbereiten
+    const eventPayload: OrderCreatedPayload = {
+      orderId,
+      userId,
+      amountCents: totalAmountCents,
+      currency: 'EUR',
+      items,
+    }
+
+    const outboxEnvelope: EventEnvelope<OrderCreatedPayload> = {
+      id: uuidv7(),
+      traceId,
+      aggregateType: 'Order',
+      aggregateId: orderId,
+      eventType: 'OrderCreated',
+      payload: eventPayload,
+      timestamp: new Date().toISOString(),
+      version: 1,
+    }
+
+    // 3. Atomar in die Outbox-Tabelle einfuegen
+    const insertOutboxQuery = \`
+      INSERT INTO outbox_events (id, trace_id, aggregate_type, aggregate_id, event_type, payload, status, created_at)
+      VALUES ($1, $2, $3, $4, $5, $6, 'PENDING', NOW())
+    \`
+    await client.query(insertOutboxQuery, [
+      outboxEnvelope.id,
+      outboxEnvelope.traceId,
+      outboxEnvelope.aggregateType,
+      outboxEnvelope.aggregateId,
+      outboxEnvelope.eventType,
+      JSON.stringify(outboxEnvelope.payload),
+    ])
+
+    await client.query('COMMIT')
+    return { success: true, orderId }
+  } catch (err: unknown) {
+    await client.query('ROLLBACK')
+    const message = err instanceof Error ? err.message : 'Unknown database transaction error'
+    return { success: false, error: message }
+  } finally {
+    client.release()
+  }
+}
+\`\`\`
+
+### Schritt 3: Saga-Koordinator mit kompensierenden Transaktionen
+
+\`\`\`typescript
+// src/lib/saga/saga-coordinator.ts
+export type SagaStep = 'PAYMENT_PENDING' | 'PAYMENT_RESERVED' | 'INVENTORY_LOCKED' | 'COMPLETED' | 'FAILED'
+
+export interface SagaState {
+  readonly sagaId: string
+  readonly orderId: string
+  readonly status: SagaStep
+  readonly compensationActions: Array<() => Promise<void>>
+}
+
+export class OrderSagaCoordinator {
+  private readonly state: SagaState
+
+  constructor(sagaId: string, orderId: string) {
+    this.state = {
+      sagaId,
+      orderId,
+      status: 'PAYMENT_PENDING',
+      compensationActions: [],
+    }
+  }
+
+  public registerCompensation(action: () => Promise<void>): void {
+    this.state.compensationActions.unshift(action) // LIFO-Reihenfolge fuer Rollbacks
+  }
+
+  public async executeCompensation(): Promise<void> {
+    for (const rollback of this.state.compensationActions) {
+      try {
+        await rollback()
+      } catch (err: unknown) {
+        // Logging in Dead-Letter Queue (DLQ) fuer manuelle Intervention
+        console.error('Critical: Compensation step failed during Saga rollback', err)
+      }
+    }
+  }
+}
+\`\`\`
+
+---
+
+## 6. Produktions-Benchmarks & vergleichende Metriken
+
+Wir haben diese ereignisgesteuerte Architektur unter simulierter Produktionslast getestet (10.000 parallele Checkout-Anfragen ueber 50 simulierte Worker-Nodes) und klassische direkte RPC/Dual-Writes mit der Transactional Outbox + Debezium CDC-Pipeline verglichen:
+
+| Leistungsmetrik | Direkter Dual-Write (Anti-Pattern) | Outbox + Debezium CDC (Unsere Architektur) | Verbesserung |
+| :--- | :--- | :--- | :--- |
+| **Server Action P99-Latenz** | 340 ms (wartet auf Kafka-ACK) | **24 ms** (nur lokaler DB-Commit) | **14,1x schneller** |
+| **Dual-Write-Datenverlustrate** | 0,84% (Netzwerk-Timeouts, Neustarts) | **0,00% (Verlustfrei)** | **100% Zuverlaessigkeit** |
+| **WAL-zu-Kafka End-to-End-Lag** | N/A (unzuverlaessig) | **17,8 ms** (kontinuierlicher CDC-Stream) | **Sub-20ms Streaming** |
+| **Datenbank Lock Contention** | Hoch (blockierende Verbindungen) | **Niedrig (nicht-blockierendes sequentielles WAL)** | **88% weniger Sperrwartezeit** |
+| **Saga-Fehlerbehebungszeit** | Manuelle Bereinigung (Stunden) | **Unter 120 ms (Automatischer Rollback)** | **Echtzeit-Konsistenz** |
+
+### Wichtige architektonische Erkenntnisse
+1. **Niemals Dual-Writes ueber Netzwerkgrenzen hinweg:** Domaenenmutationen und Outbox-Datensaetze stets in einer einzigen lokalen ACID-Transaktion kombinieren.
+2. **Debezium CDC uebertrifft Polling:** Das Auslesen des PostgreSQL WAL ueber \`pgoutput\` eliminiert die Abfragelast auf Primaertabellen und garantiert Latenzen unter 20 ms.
+3. **Immer fuer At-Least-Once-Messaging entwerfen:** Consumer durch Redis-Bloom-Filter und eindeutige Datenbank-Constraints fuer Idempotenz-Schluessel absichern.
+4. **Verteilte Sagas mit automatischen Rollbacks einsetzen:** Letztendliche Konsistenz durch explizite kompensierende Transaktionen sicherstellen.
 `,
   },
 }

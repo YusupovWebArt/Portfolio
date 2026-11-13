@@ -26,40 +26,54 @@ export default function GoogleAdsSavingsCalculator({
   const annualSavings = monthlySavings * 12
 
   const formatCurrency = (val: number) => {
-    return new Intl.NumberFormat(locale === 'es' ? 'es-ES' : locale === 'ua' ? 'uk-UA' : 'en-US', {
-      style: 'currency',
-      currency: 'EUR',
-      maximumFractionDigits: 0,
-    }).format(val)
+    return new Intl.NumberFormat(
+      locale === 'es' ? 'es-ES' : locale === 'ua' ? 'uk-UA' : locale === 'de' ? 'de-DE' : 'en-US',
+      {
+        style: 'currency',
+        currency: 'EUR',
+        maximumFractionDigits: 0,
+      },
+    ).format(val)
   }
+
+  const perMonthUnit =
+    locale === 'es' ? '/mes' : locale === 'ua' ? '/міс' : locale === 'de' ? '/Monat' : '/mo'
 
   const title =
     locale === 'es'
       ? 'Calculadora de Ahorro Publicitario (Google Ads & CRO)'
       : locale === 'ua'
         ? 'Калькулятор економії бюджету в Google Ads'
-        : 'Google Ads Speed & Quality Score ROI Calculator'
+        : locale === 'de'
+          ? 'Google Ads Spar- & Quality-Score-ROI-Rechner'
+          : 'Google Ads Speed & Quality Score ROI Calculator'
 
   const subtitle =
     locale === 'es'
       ? 'Google premia las landing pages con PageSpeed 95+ otorgando un Nivel de Calidad (Quality Score) superior. Esto reduce directamente el coste que pagas por cada clic (CPC).'
       : locale === 'ua'
         ? 'Google підвищує показник якості (Quality Score) для швидких сайтів з PageSpeed 95+, що знижує ціну за кожен клік (CPC) без втрати позицій.'
-        : 'Google rewards landing pages with PageSpeed 95+ with higher Quality Scores, directly lowering your effective cost-per-click (CPC).'
+        : locale === 'de'
+          ? 'Google belohnt Landingpages mit PageSpeed 95+ durch einen höheren Qualitätsfaktor (Quality Score). Das senkt unmittelbar Ihren effektiven Klickpreis (CPC).'
+          : 'Google rewards landing pages with PageSpeed 95+ with higher Quality Scores, directly lowering your effective cost-per-click (CPC).'
 
   const spendLabel =
     locale === 'es'
       ? 'Tu inversión mensual aproximada en Google Ads:'
       : locale === 'ua'
         ? 'Ваш орієнтовний щомісячний бюджет у Google Ads:'
-        : 'Your approximate monthly Google Ads ad spend:'
+        : locale === 'de'
+          ? 'Ihr geschätztes monatliches Google Ads Budget:'
+          : 'Your approximate monthly Google Ads ad spend:'
 
   const ctaBtnText =
     locale === 'es'
       ? `Ahorrar ${formatCurrency(monthlySavings)}/mes en Google Ads`
       : locale === 'ua'
         ? `Заощаджувати ${formatCurrency(monthlySavings)}/міс у Google Ads`
-        : `Save ${formatCurrency(monthlySavings)}/mo on Google Ads`
+        : locale === 'de'
+          ? `${formatCurrency(monthlySavings)}/Monat bei Google Ads sparen`
+          : `Save ${formatCurrency(monthlySavings)}/mo on Google Ads`
 
   const handleWhatsAppInquiry = () => {
     const msg =
@@ -67,14 +81,16 @@ export default function GoogleAdsSavingsCalculator({
         ? `Hola Artur, invierto aproximadamente ${formatCurrency(monthlySpend)} al mes en Google Ads y me interesa una optimización de velocidad para ahorrar hasta ${formatCurrency(monthlySavings)}/mes reduciendo el CPC.`
         : locale === 'ua'
           ? `Вітаю Артуре! Я витрачаю близько ${formatCurrency(monthlySpend)} на місяць у Google Ads і хочу оптимізувати швидкість сайту для економії до ${formatCurrency(monthlySavings)}/міс завдяки покращенню Quality Score.`
-          : `Hi Artur, I spend around ${formatCurrency(monthlySpend)} per month on Google Ads and want to optimize site velocity to save up to ${formatCurrency(monthlySavings)}/mo on CPC.`
+          : locale === 'de'
+            ? `Hallo Artur, ich investiere monatlich rund ${formatCurrency(monthlySpend)} in Google Ads und möchte meine Website-Geschwindigkeit optimieren, um durch einen besseren CPC bis zu ${formatCurrency(monthlySavings)}/Monat zu sparen.`
+            : `Hi Artur, I spend around ${formatCurrency(monthlySpend)} per month on Google Ads and want to optimize site velocity to save up to ${formatCurrency(monthlySavings)}/mo on CPC.`
 
     openWhatsAppDirect(locale, msg)
   }
 
   return (
     <section
-      aria-label="Google Ads ROI Calculator"
+      aria-label={title}
       className="mb-16 p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-purple-900/10 via-slate-900/40 to-slate-950 border border-purple-500/30 shadow-xl text-white relative overflow-hidden"
     >
       {/* Background Glow */}
@@ -87,7 +103,13 @@ export default function GoogleAdsSavingsCalculator({
             <Calculator className="w-4 h-4" aria-hidden="true" />
           </div>
           <span className="text-xs font-bold uppercase tracking-wider text-purple-400">
-            {locale === 'es' ? 'Simulador Financiero' : locale === 'ua' ? 'Фінансовий симулятор' : 'Financial Simulator'}
+            {locale === 'es'
+              ? 'Simulador Financiero'
+              : locale === 'ua'
+                ? 'Фінансовий симулятор'
+                : locale === 'de'
+                  ? 'Finanz-Simulator'
+                  : 'Financial Simulator'}
           </span>
         </div>
 
@@ -106,7 +128,8 @@ export default function GoogleAdsSavingsCalculator({
               {spendLabel}
             </label>
             <span className="text-xl sm:text-2xl font-black text-purple-400 font-mono">
-              {formatCurrency(monthlySpend)}/mes
+              {formatCurrency(monthlySpend)}
+              {perMonthUnit}
             </span>
           </div>
 
@@ -134,39 +157,87 @@ export default function GoogleAdsSavingsCalculator({
           <div className="p-4 rounded-2xl bg-slate-900/90 border border-purple-500/20 text-left">
             <div className="flex items-center gap-1.5 text-xs text-purple-400 font-bold mb-1">
               <TrendingDown className="w-3.5 h-3.5" aria-hidden="true" />
-              <span>{locale === 'es' ? 'Ahorro Mensual' : locale === 'ua' ? 'Щомісячна економія' : 'Monthly Savings'}</span>
+              <span>
+                {locale === 'es'
+                  ? 'Ahorro Mensual'
+                  : locale === 'ua'
+                    ? 'Щомісячна економія'
+                    : locale === 'de'
+                      ? 'Monatliche Ersparnis'
+                      : 'Monthly Savings'}
+              </span>
             </div>
             <div className="text-2xl sm:text-3xl font-black text-white font-mono">
               ~{formatCurrency(monthlySavings)}
             </div>
             <div className="text-[11px] text-slate-400 mt-0.5">
-              {locale === 'es' ? 'Menor coste por clic (-25% CPC)' : locale === 'ua' ? 'Зниження вартості кліка (-25%)' : 'Reduced cost-per-click (-25%)'}
+              {locale === 'es'
+                ? 'Menor coste por clic (-25% CPC)'
+                : locale === 'ua'
+                  ? 'Зниження вартості кліка (-25%)'
+                  : locale === 'de'
+                    ? 'Geringerer Klickpreis (-25% CPC)'
+                    : 'Reduced cost-per-click (-25%)'}
             </div>
           </div>
 
           <div className="p-4 rounded-2xl bg-slate-900/90 border border-emerald-500/20 text-left">
             <div className="flex items-center gap-1.5 text-xs text-emerald-400 font-bold mb-1">
               <PiggyBank className="w-3.5 h-3.5" aria-hidden="true" />
-              <span>{locale === 'es' ? 'Ahorro Anual Proyectado' : locale === 'ua' ? 'Річна економія бюджету' : 'Projected Annual Savings'}</span>
+              <span>
+                {locale === 'es'
+                  ? 'Ahorro Anual Proyectado'
+                  : locale === 'ua'
+                    ? 'Річна економія бюджету'
+                    : locale === 'de'
+                      ? 'Prognostizierte Jahresersparnis'
+                      : 'Projected Annual Savings'}
+              </span>
             </div>
             <div className="text-2xl sm:text-3xl font-black text-emerald-400 font-mono">
               ~{formatCurrency(annualSavings)}
             </div>
             <div className="text-[11px] text-slate-400 mt-0.5">
-              {locale === 'es' ? 'Dinero reinvertible en negocio' : locale === 'ua' ? 'Кошти, що залишаються в бізнесі' : 'Capital saved and re-investable'}
+              {locale === 'es'
+                ? 'Dinero reinvertible en negocio'
+                : locale === 'ua'
+                  ? 'Кошти, що залишаються в бізнесі'
+                  : locale === 'de'
+                    ? 'Freigesetztes Kapital für Wachstum'
+                    : 'Capital saved and re-investable'}
             </div>
           </div>
 
           <div className="p-4 rounded-2xl bg-slate-900/90 border border-indigo-500/20 text-left">
             <div className="flex items-center gap-1.5 text-xs text-indigo-400 font-bold mb-1">
               <Sparkles className="w-3.5 h-3.5" aria-hidden="true" />
-              <span>{locale === 'es' ? 'Impacto en Conversión' : locale === 'ua' ? 'Ріст конверсії' : 'Conversion Lift'}</span>
+              <span>
+                {locale === 'es'
+                  ? 'Impacto en Conversión'
+                  : locale === 'ua'
+                    ? 'Ріст конверсії'
+                    : locale === 'de'
+                      ? 'Conversion-Steigerung'
+                      : 'Conversion Lift'}
+              </span>
             </div>
             <div className="text-2xl sm:text-3xl font-black text-indigo-400 font-mono">
-              +15% a +25%
+              {locale === 'es'
+                ? '+15% a +25%'
+                : locale === 'ua'
+                  ? '+15% до +25%'
+                  : locale === 'de'
+                    ? '+15% bis +25%'
+                    : '+15% to +25%'}
             </div>
             <div className="text-[11px] text-slate-400 mt-0.5">
-              {locale === 'es' ? 'Más ventas con el mismo tráfico' : locale === 'ua' ? 'Більше заявок за той самий бюджет' : 'More sales from existing visitors'}
+              {locale === 'es'
+                ? 'Más ventas con el mismo tráfico'
+                : locale === 'ua'
+                  ? 'Більше заявок за той самий бюджет'
+                  : locale === 'de'
+                    ? 'Mehr Anfragen bei gleichem Traffic'
+                    : 'More sales from existing visitors'}
             </div>
           </div>
         </div>
@@ -178,7 +249,9 @@ export default function GoogleAdsSavingsCalculator({
               ? '¿Quieres auditar tu Quality Score actual y calcular el retorno exacto de tu web?'
               : locale === 'ua'
                 ? 'Бажаєте перевірити поточний Quality Score вашого сайту та оцінити окупність?'
-                : 'Want to audit your current Quality Score and calculate your exact site ROI?'}
+                : locale === 'de'
+                  ? 'Möchten Sie Ihren aktuellen Quality Score prüfen und den genauen ROI berechnen?'
+                  : 'Want to audit your current Quality Score and calculate your exact site ROI?'}
           </p>
 
           <button

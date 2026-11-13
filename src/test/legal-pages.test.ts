@@ -5,10 +5,10 @@ import { LEGAL_CONFIG } from '../data/legal/legalConfig'
 import { buildLegalBreadcrumbsJsonLd } from '../lib/seo'
 
 describe('Legal & Compliance Data Standards (RGPD / AEPD)', () => {
-  const locales = ['en', 'ua', 'es'] as const
+  const locales = ['en', 'ua', 'es', 'de'] as const
 
   describe('Privacy Policy Data Structure', () => {
-    it('provides complete data for EN, UA, and ES locales', () => {
+    it('provides complete data for EN, UA, ES, and DE locales', () => {
       for (const loc of locales) {
         const page = privacyData[loc]
         expect(page).toBeDefined()
@@ -43,8 +43,8 @@ describe('Legal & Compliance Data Standards (RGPD / AEPD)', () => {
       for (const loc of locales) {
         const page = privacyData[loc]
         const allText = JSON.stringify(page)
-        expect(allText).toMatch(/GDPR|RGPD/)
-        expect(allText).toMatch(/RAG|AI/)
+        expect(allText).toMatch(/GDPR|RGPD|DSGVO/)
+        expect(allText).toMatch(/RAG|AI|KI/)
         expect(allText).toMatch(/Artur Yusupov|Артур Юсупов/)
       }
     })

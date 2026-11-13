@@ -291,7 +291,7 @@ without exposing any plaintext credentials or scraper tokens.`
               {/* Workflow Details Section in 2x2 Grid */}
               <div>
                 <h4 className="text-[10px] font-bold tracking-widest text-slate-400 dark:text-slate-500 uppercase mb-4">
-                  Step Breakdown
+                  {aw.tabs.stepBreakdown}
                 </h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   {currentStep.details.map((detail, detailIndex) => (
@@ -324,7 +324,7 @@ without exposing any plaintext credentials or scraper tokens.`
               {/* Technologies & AI Tools Section */}
               <div>
                 <h4 className="text-[10px] font-bold tracking-widest text-slate-400 dark:text-slate-500 uppercase mb-4">
-                  Technologies & AI Tools
+                  {aw.tabs.techTools}
                 </h4>
                 <div className="flex flex-wrap gap-2">
                   {currentStep.techs.map((tech, techIndex) => (

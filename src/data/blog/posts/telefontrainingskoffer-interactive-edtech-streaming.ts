@@ -7,23 +7,27 @@ export const telefontrainingskofferPost: BlogPost = {
     en: 'Interactive EdTech & Real-Time Audio Streaming: Custom WordPress Engineering for Telefontrainingskoffer Germany',
     ua: 'Інтерактивна EdTech-архітектура та аудіострімінг реального часу: кастомний WordPress для Telefontrainingskoffer Німеччина',
     es: 'Arquitectura EdTech interactiva y streaming de audio en tiempo real: WordPress a medida para Telefontrainingskoffer Alemania',
+    de: 'Interaktive EdTech-Architektur & Echtzeit-Audio-Streaming: Maßgeschneiderte WordPress-Entwicklung für Telefontrainingskoffer Deutschland',
   },
   description: {
     en: 'An architectural deep-dive into engineering an interactive training portal for Telefontrainingskoffer, a German professional call-center academy. Details custom ACF layout modeling, lightweight audio streaming, FastCGI caching, and strict DACH GDPR compliance.',
     ua: 'Архітектурний аналіз розробки навчального порталу для Telefontrainingskoffer - німецької академії кол-центрів: модульне моделювання на ACF, швидкісний аудіострімінг, FastCGI кешування та дотримання норм GDPR у регіоні DACH.',
     es: 'Análisis arquitectónico del desarrollo de un portal de formación para Telefontrainingskoffer, academia alemana de centros de llamadas: modelado con ACF, streaming de audio ligero, caché FastCGI y estricto cumplimiento GDPR en DACH.',
+    de: 'Eine architektonische Fallstudie zur Entwicklung eines interaktiven Schulungsportals für Telefontrainingskoffer, eine deutsche Callcenter-Akademie: Modulare ACF-Strukturierung, leichtgewichtiges Audio-Streaming, FastCGI-Caching und strikte DSGVO-Konformität in der DACH-Region.',
   },
   date: '2026-11-12',
   readTime: {
     en: '8 min read',
     ua: '8 хв читання',
     es: '8 min de lectura',
+    de: '8 Min. Lesezeit',
   },
   category: 'architecture-tco',
   categoryLabel: {
     en: 'Architecture & TCO',
     ua: 'Архітектура та TCO',
     es: 'Arquitectura y TCO',
+    de: 'Architektur & TCO',
   },
   tags: ['WordPress', 'EdTech', 'Audio Streaming', 'ACF', 'FastCGI', 'GDPR', 'Germany', 'Performance'],
   author: {
@@ -32,6 +36,7 @@ export const telefontrainingskofferPost: BlogPost = {
       en: 'Fullstack Web Engineer & AI Developer',
       ua: 'Fullstack веб-інженер та AI-розробник',
       es: 'Ingeniero Web Fullstack y Desarrollador IA',
+      de: 'Fullstack Web-Engineer & KI-Architekt',
     },
   },
   coverImage: '/Portfolio/images/blog/cover-telefontrainingskoffer-edtech.svg',
@@ -44,6 +49,7 @@ export const telefontrainingskofferPost: BlogPost = {
         en: 'Custom WordPress portal engineered for German professional call-center academy training, achieving PageSpeed 96+, sub-0.9s load times, and full GDPR compliance for interactive corporate intake systems.',
         ua: 'Кастомний портал WordPress для німецької академії навчання персоналу кол-центрів: показник PageSpeed 96+, завантаження за <0.9с та повна відповідність вимогам GDPR.',
         es: 'Portal WordPress a medida desarrollado para la academia alemana de formación de centros de llamadas, logrando PageSpeed 96+, carga en <0.9s y total cumplimiento de GDPR.',
+        de: 'Maßgeschneidertes WordPress-Portal für eine deutsche Callcenter-Trainingsakademie mit PageSpeed 96+, Ladezeiten unter 0,9s und vollständiger DSGVO-Konformität für interaktive Buchungssysteme.',
       },
     },
   ],
@@ -65,6 +71,12 @@ export const telefontrainingskofferPost: BlogPost = {
       'Construcción de un motor de contenidos modular con Advanced Custom Fields (ACF) para actualizar módulos formativos sin romper el diseño.',
       'Integración de un reproductor de audio HTML5 accesible y de baja latencia con renderizado de ondas de sonido y sin rastreo externo.',
       'Logro de PageSpeed 96+ y carga en menos de 0.9s mediante microcaché Nginx FastCGI y optimización de recursos.',
+    ],
+    de: [
+      'Entwicklung eines maßgeschneiderten WordPress-Themes für Telefontrainingskoffer, eine führende deutsche Callcenter-Trainingsakademie.',
+      'Aufbau einer leichtgewichtigen, modularen Content-Engine mit Advanced Custom Fields (ACF), damit Dozenten Kursmodule ohne Code-Regressionen aktualisieren können.',
+      'Integration eines barrierefreien HTML5-Audio-Streaming-Players mit geringer Latenz, clientseitigem Waveform-Rendering und ohne externes Tracking.',
+      'Erreichen von PageSpeed 96+ und Ladezeiten unter 0,9s durch Nginx FastCGI-Microcaching und optimierte Asset-Pipelines.',
     ],
   },
   content: {
@@ -170,6 +182,57 @@ En lugar de reproductores externos que instalan cookies de terceros, se configur
 - **CLS:** 0.000
 - **Latencia de inicio de audio:** < 120ms en 4G
 - **Crecimiento de leads corporativos:** +38% en solicitudes de academias de formación en la región DACH.
+`,
+    de: `## Überblick & Geschäftliche Herausforderung
+
+Schulungsplattformen für Callcenter erfordern eine besondere Kombination aus präziser Audiowiedergabe, interaktiver Lehrplanstrukturierung und striktem Datenschutz im Unternehmensumfeld. Für **Telefontrainingskoffer** (Deutschland) benötigten Dozenten eine Plattform, auf der potenzielle Unternehmenskunden und Schulungsteilnehmer Trainingskoffer einsehen, praxisnahe Audiosimulationen von Kundengesprächen anhören und Buchungsanfragen unter strengen deutschen **DSGVO**-Vorgaben einreichen können.
+
+Generische LMS-Systeme und überladene WordPress-Themes bringen schwere JavaScript-Runtimes mit sich, die den Start von Audiodateien verzögern und die mobile Nutzererfahrung beeinträchtigen. Unsere Zielvorgaben lauteten:
+1. **Sofortige Audiowiedergabe:** Puffer-zu-Wiedergabe-Latenz von unter 150ms für Trainings-Audiodateien.
+2. **Modulare Content-Architektur:** Granulare Kontrolle über Trainingsmodule mittels Advanced Custom Fields (ACF).
+3. **Konformität in der DACH-Region:** 100% lokal gehostetes Audio, Video und Webfonts ohne Telemetrie-Abflüsse an US-basierte CDNs.
+4. **Ladezeiten unter einer Sekunde:** Google PageSpeed-Score von mindestens 95 auf Mobilgeräten.
+
+---
+
+## Technischer Stack & Architektur
+
+- **Core-CMS:** WordPress mit purer PHP-Theme-Architektur
+- **Datenmodellierung:** Advanced Custom Fields (ACF Pro) mit strikter Schemavalidierung
+- **Media-Engine:** Native HTML5 Audio API mit eigenem, schlankem JavaScript-Controller (unter 4 KB gzipped)
+- **Caching-Ebene:** Nginx FastCGI-Microcaching + Redis Object Cache
+- **Styling-Pipeline:** Modulares BEM CSS3 mit Critical-CSS-Pfad-Extraktion
+
+---
+
+## Optimierte Audio-Streaming-Architektur
+
+Statt auf externe Cloud-Streaming-Widgets (wie SoundCloud oder Spotify) zu setzen, die Tracking-Cookies und zusätzliche HTTP-Anfragen verursachen, wurde eine selbst gehostete Byte-Range-Audiopipeline implementiert. Nginx übernimmt das Streaming mit HTTP \`206 Partial Content\` direkt vom lokalen Speicher:
+
+\`\`\`nginx
+location ~* \\.(mp3|ogg|wav)$ {
+    add_header Accept-Ranges bytes;
+    expires 30d;
+    add_header Cache-Control "public, no-transform";
+    access_log off;
+    log_not_found off;
+}
+\`\`\`
+
+Der clientseitige Audio-Controller initialisiert sofort, ohne den Haupt-Thread des Browsers zu blockieren:
+- **Null Drittanbieter-Cookies:** Vollständige Konformität mit TDDDG und DSGVO.
+- **Nur Metadaten vorladen:** Der Browser lädt lediglich die anfänglichen Audio-Header (\`preload="metadata"\`), was mobiles Datenvolumen spart, bis der Nutzer die Wiedergabe startet.
+- **Barrierefreie Bedienelemente:** Semantische HTML-\`<audio>\`-Elemente mit vollständiger ARIA-Tastatursteuerung (Leertaste zum Starten/Pausieren, Pfeiltasten zum Spulen).
+
+---
+
+## Produktions-Benchmarks & Ergebnisse
+
+- **Mobiler PageSpeed-Score:** 96 / 100
+- **Time to Interactive (TTI):** 0,88s
+- **Cumulative Layout Shift (CLS):** 0,000
+- **Audio-Initialisierungslatenz:** < 120ms im 4G-Mobilfunknetz
+- **B2B-Leads:** +38% mehr qualifizierte Buchungsanfragen von Unternehmenskunden in der DACH-Region.
 `,
   },
 }

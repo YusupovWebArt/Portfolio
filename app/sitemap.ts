@@ -5,7 +5,7 @@ import { allServices } from '../src/data/services'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://www.yusupovartur.com'
-  const locales = ['en', 'ua', 'es']
+  const locales = ['en', 'ua', 'es', 'de']
   const entries = getAllProjectEntries()
 
   const sitemapEntries: MetadataRoute.Sitemap = []
@@ -23,6 +23,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
           uk: `${baseUrl}/ua`,
           es: `${baseUrl}/es`,
           'es-ES': `${baseUrl}/es`,
+          de: `${baseUrl}/de`,
+          'de-DE': `${baseUrl}/de`,
           'x-default': `${baseUrl}/en`,
         },
       },
@@ -43,6 +45,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
             uk: `${baseUrl}/ua/projects/${entry.slug}`,
             es: `${baseUrl}/es/projects/${entry.slug}`,
             'es-ES': `${baseUrl}/es/projects/${entry.slug}`,
+            de: `${baseUrl}/de/projects/${entry.slug}`,
+            'de-DE': `${baseUrl}/de/projects/${entry.slug}`,
             'x-default': `${baseUrl}/en/projects/${entry.slug}`,
           },
         },
@@ -63,6 +67,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
           uk: `${baseUrl}/ua/blog`,
           es: `${baseUrl}/es/blog`,
           'es-ES': `${baseUrl}/es/blog`,
+          de: `${baseUrl}/de/blog`,
+          'de-DE': `${baseUrl}/de/blog`,
           'x-default': `${baseUrl}/en/blog`,
         },
       },
@@ -83,6 +89,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
             uk: `${baseUrl}/ua/blog/${post.slug}`,
             es: `${baseUrl}/es/blog/${post.slug}`,
             'es-ES': `${baseUrl}/es/blog/${post.slug}`,
+            de: `${baseUrl}/de/blog/${post.slug}`,
+            'de-DE': `${baseUrl}/de/blog/${post.slug}`,
             'x-default': `${baseUrl}/en/blog/${post.slug}`,
           },
         },
@@ -105,6 +113,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
           uk: `${baseUrl}/ua/services`,
           es: `${baseUrl}/es/services`,
           'es-ES': `${baseUrl}/es/services`,
+          de: `${baseUrl}/de/services`,
+          'de-DE': `${baseUrl}/de/services`,
           'x-default': `${baseUrl}/en/services`,
         },
       },
@@ -125,6 +135,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
             uk: `${baseUrl}/ua/services/${service.slug}`,
             es: `${baseUrl}/es/services/${service.slug}`,
             'es-ES': `${baseUrl}/es/services/${service.slug}`,
+            de: `${baseUrl}/de/services/${service.slug}`,
+            'de-DE': `${baseUrl}/de/services/${service.slug}`,
             'x-default': `${baseUrl}/en/services/${service.slug}`,
           },
         },
@@ -147,6 +159,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
             uk: `${baseUrl}/ua/${slug}`,
             es: `${baseUrl}/es/${slug}`,
             'es-ES': `${baseUrl}/es/${slug}`,
+            de: `${baseUrl}/de/${slug}`,
+            'de-DE': `${baseUrl}/de/${slug}`,
             'x-default': `${baseUrl}/en/${slug}`,
           },
         },

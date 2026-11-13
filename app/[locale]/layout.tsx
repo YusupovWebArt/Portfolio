@@ -34,7 +34,7 @@ export async function generateMetadata({
     : isEs
       ? 'Artur Yusupov - Ingeniero Web Fullstack y Desarrollador AI'
       : isDe
-        ? 'Artur Yusupov - Fullstack Web Engineer & AI Developer'
+        ? 'Artur Yusupov - Fullstack Web-Entwickler & KI-Ingenieur'
         : 'Artur Yusupov - Fullstack Web Engineer & AI Developer'
 
   const description = isUa

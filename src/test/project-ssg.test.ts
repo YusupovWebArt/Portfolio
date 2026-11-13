@@ -19,7 +19,7 @@ describe('Standalone SSG Project Pages Specification (TDD)', () => {
   })
 
   it(
-    'should generate static params for all 71 projects across en, ua, and es locales',
+    'should generate static params for all 71 projects across en, ua, es, and de locales',
     async () => {
     const kb = loadKnowledgeBase()
     expect(kb.projects.length).toBe(71)
@@ -28,13 +28,18 @@ describe('Standalone SSG Project Pages Specification (TDD)', () => {
     const mod = await import('../../app/[locale]/projects/[slug]/page')
     const paramsList = await mod.generateStaticParams()
 
-    // 71 projects * 3 locales = 213 pre-rendered paths
-    expect(paramsList).toHaveLength(213)
+    // 71 projects * 4 locales = 284 pre-rendered paths
+    expect(paramsList).toHaveLength(284)
 
     const itMagicParams = paramsList.find(
       (p: { locale: string; slug: string }) => p.slug === 'it-magic' && p.locale === 'en',
     )
     expect(itMagicParams).toBeDefined()
+
+    const itMagicDeParams = paramsList.find(
+      (p: { locale: string; slug: string }) => p.slug === 'it-magic' && p.locale === 'de',
+    )
+    expect(itMagicDeParams).toBeDefined()
 
     const wpskillsParams = paramsList.find(
       (p: { locale: string; slug: string }) => p.slug === 'fullstack-ai-lab' && p.locale === 'en',

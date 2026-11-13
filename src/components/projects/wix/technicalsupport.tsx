@@ -9,12 +9,16 @@ const technicalsupport: Project = {
     'Американська агенція з веб-розробки та цифрового маркетингу, заснована у 2015 році.',
   descriptionEs:
     'Agencia estadounidense de desarrollo web y marketing digital fundada en 2015.',
+  descriptionDe:
+    '2015 gegründete US-amerikanische Agentur für Webentwicklung und digitales Marketing.',
   fullDescription:
     'TST (Technical Support Team) is a US-based web development and digital marketing agency founded in 2015. The agency website was built on Wix with Velo for pixel-perfect design control, featuring seamless app integrations, lead capture contact forms, SEO configuration, and site analytics to support the agency\'s own digital marketing efforts.',
   fullDescriptionUa:
-    'TST (Technical Support Team) — це американська агенція з веб-розробки та цифрового маркетингу, заснована у 2015 році. Вебсайт агенції розроблено на Wix із використанням Velo для піксельно точного контролю дизайну, з безшовними інтеграціями додатків, формами збору лідів, налаштуванням SEO та аналітикою для підтримки власних маркетингових зусиль агенції.',
+    'TST (Technical Support Team) - це американська агенція з веб-розробки та цифрового маркетингу, заснована у 2015 році. Вебсайт агенції розроблено на Wix із використанням Velo для піксельно точного контролю дизайну, з безшовними інтеграціями додатків, формами збору лідів, налаштуванням SEO та аналітикою для підтримки власних маркетингових зусиль агенції.',
   fullDescriptionEs:
     'TST (Technical Support Team) es una agencia estadounidense de desarrollo web y marketing digital fundada en 2015. El sitio web de la agencia se construyó en Wix con Velo para un control de diseño milimétrico, ofreciendo integraciones fluidas de aplicaciones, formularios de captación de clientes potenciales, configuración SEO y analítica web.',
+  fullDescriptionDe:
+    'TST (Technical Support Team) ist eine 2015 gegründete US-amerikanische Agentur für Webentwicklung und digitales Marketing. Die Agentur-Website wurde auf Wix mit Velo für pixelgenaue Designkontrolle erstellt und bietet nahtlose App-Integrationen, Kontaktformulare zur Lead-Erfassung, SEO-Konfiguration sowie Website-Analysen zur Unterstützung des eigenen digitalen Marketings.',
   detailHeroLine: 'WIX · DIGITAL AGENCY WEBSITE',
   detailMetrics: [
     { value: '90+', label: 'PageSpeed Score', accent: 'green' },
@@ -43,6 +47,12 @@ const technicalsupport: Project = {
     ],
     description:
       'The TST agency site runs on Wix with Velo enabling custom interactive components and advanced form logic for lead capture. The Wix App Market provides contact forms, live chat, and marketing integrations. Wix-managed hosting and CDN ensure fast, reliable delivery for US visitors, with SSL securing all data exchange.',
+    descriptionUa:
+      'Сайт агенції TST працює на Wix із використанням Velo, що забезпечує кастомні інтерактивні компоненти та розширену логіку форм для збору лідів. Wix App Market надає контактні форми, онлайн-чат та маркетингові інтеграції. Керований хостинг і CDN Wix гарантують швидку й надійну доставку для відвідувачів зі США із захистом SSL.',
+    descriptionEs:
+      'El sitio de la agencia TST funciona en Wix con Velo permitiendo componentes interactivos personalizados y lógica avanzada de formularios para la captación de leads. El Wix App Market proporciona formularios de contacto, chat en vivo e integraciones de marketing. El alojamiento gestionado y la CDN de Wix aseguran una entrega rápida y fiable en EE. UU. con SSL.',
+    descriptionDe:
+      'Die TST-Agentur-Website läuft auf Wix mit Velo und ermöglicht individuelle interaktive Komponenten sowie erweiterte Formularlogik zur Lead-Erfassung. Der Wix App Market stellt Kontaktformulare, Live-Chat und Marketing-Integrationen bereit. Verwaltetes Wix-Hosting und CDN sorgen für eine schnelle, zuverlässige Auslieferung in den USA bei vollständiger SSL-Verschlüsselung.',
   },
   image: '/Portfolio/images/portfolio/thumbs/wix/technicalsupport_thumb.webp',
   fullScreenshot:
@@ -91,27 +101,63 @@ const technicalsupport: Project = {
   features: [
     {
       title: 'Professional Agency Design',
+      titleUa: 'Професійний дизайн агенції',
+      titleEs: 'Diseño profesional de agencia',
+      titleDe: 'Professionelles Agentur-Design',
       description: 'The TST website was built with a clean, authoritative agency aesthetic using Wix Editor and Velo, featuring a structured services layout, case study sections, and professional brand identity.',
+      descriptionUa: 'Вебсайт TST створено у чистому, авторитетному стилі цифрової агенції за допомогою Wix Editor та Velo зі структурованим описом послуг, секціями кейсів та професійною айдентикою.',
+      descriptionEs: 'El sitio web de TST fue construido con una estética de agencia limpia y sólida usando Wix Editor y Velo, con un diseño estructurado de servicios, casos de estudio e identidad profesional.',
+      descriptionDe: 'Die TST-Website wurde mit Wix Editor und Velo in einer klaren, seriösen Agentur-Ästhetik erstellt und bietet ein strukturiertes Leistungs-Layout, Fallstudien-Bereiche sowie eine professionelle Markenidentität.',
     },
     {
       title: 'Lead Capture Contact Forms',
+      titleUa: 'Контактні форми для збору лідів',
+      titleEs: 'Formularios de contacto para captar leads',
+      titleDe: 'Kontaktformulare zur Lead-Erfassung',
       description: 'Custom contact and project inquiry forms were implemented via the Wix App Market, enabling prospective clients to submit service requests and receive timely follow-up from the TST team.',
+      descriptionUa: 'Кастомні форми зворотного зв\'язку та запитів на проєкти реалізовано через Wix App Market, що дозволяє потенційним клієнтам надсилати заявки та оперативно отримувати відповідь команди TST.',
+      descriptionEs: 'Se implementaron formularios personalizados de contacto y consulta de proyectos mediante el Wix App Market, permitiendo a los clientes potenciales enviar solicitudes y recibir seguimiento rápido.',
+      descriptionDe: 'Über den Wix App Market wurden maßgeschneiderte Kontakt- und Projektanfrageformulare implementiert, über die potenzielle Kunden Leistungsanfragen stellen und zeitnahes Feedback vom TST-Team erhalten können.',
     },
     {
       title: 'Services & Portfolio Pages',
-      description: 'Dedicated pages were built for each service offering — web development, SEO, and digital marketing — with supporting case studies and clear calls to action to convert visitors into leads.',
+      titleUa: 'Сторінки послуг та портфоліо',
+      titleEs: 'Páginas de servicios y portafolio',
+      titleDe: 'Leistungs- und Portfolio-Seiten',
+      description: 'Dedicated pages were built for each service offering - web development, SEO, and digital marketing - with supporting case studies and clear calls to action to convert visitors into leads.',
+      descriptionUa: 'Для кожного напряму послуг - веб-розробки, SEO та цифрового маркетингу - створено окремі сторінки з прикладами робіт і чіткими закликами до дії для конверсії відвідувачів у ліди.',
+      descriptionEs: 'Se crearon páginas dedicadas para cada servicio - desarrollo web, SEO y marketing digital - con casos de estudio y llamadas a la acción claras para convertir visitantes en clientes potenciales.',
+      descriptionDe: 'Für jedes Leistungsangebot - Webentwicklung, SEO und digitales Marketing - wurden eigene Seiten mit Fallstudien und klaren Handlungsaufforderungen erstellt, um Besucher in Leads umzuwandeln.',
     },
     {
       title: 'SEO Configuration',
+      titleUa: 'Налаштування SEO',
+      titleEs: 'Configuración de SEO',
+      titleDe: 'SEO-Konfiguration',
       description: 'On-page SEO was fully configured across all service and location pages using Wix SEO tools, targeting keywords relevant to US web development and digital marketing agency searches.',
+      descriptionUa: 'За допомогою Wix SEO Tools на всіх сторінках послуг і локацій налаштовано on-page SEO, орієнтоване на ключові запити щодо веб-розробки та цифрового маркетингу в США.',
+      descriptionEs: 'El SEO on-page se configuró completamente en todas las páginas de servicios usando las herramientas SEO de Wix, apuntando a palabras clave de desarrollo web y marketing digital en EE. UU.',
+      descriptionDe: 'Mithilfe der Wix-SEO-Tools wurde auf allen Leistungs- und Standortseiten das On-Page-SEO vollständig für US-relevante Suchbegriffe rund um Webentwicklung und Digital-Marketing-Agenturen konfiguriert.',
     },
     {
       title: 'Analytics & Performance Tracking',
+      titleUa: 'Аналітика та відстеження ефективності',
+      titleEs: 'Analítica y seguimiento del rendimiento',
+      titleDe: 'Analyse und Performance-Tracking',
       description: 'Google Analytics and Wix Analytics were both configured to give the TST team full visibility into website traffic, lead form conversion rates, and top-performing content pages.',
+      descriptionUa: 'Налаштовано Google Analytics та Wix Analytics для повного контролю командою TST над трафіком сайту, конверсією лід-форм та ефективністю контентних сторінок.',
+      descriptionEs: 'Se configuraron tanto Google Analytics como Wix Analytics para ofrecer al equipo de TST visibilidad completa sobre el tráfico web, las tasas de conversión de formularios y las páginas con mejor rendimiento.',
+      descriptionDe: 'Sowohl Google Analytics als auch Wix Analytics wurden eingerichtet, um dem TST-Team vollen Einblick in den Website-Traffic, die Konversionsraten der Formulare und die erfolgreichsten Inhaltsseiten zu bieten.',
     },
   ],
   challenges: [],
+  challengesUa: [],
+  challengesEs: [],
+  challengesDe: [],
   solutions: [],
+  solutionsUa: [],
+  solutionsEs: [],
+  solutionsDe: [],
   liveUrl: 'https://www.technicalsupport.team/',
   githubUrl: '#',
   category: ['wix'],

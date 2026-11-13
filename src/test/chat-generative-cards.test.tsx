@@ -79,7 +79,24 @@ describe('Generative UI StackComparisonCard & ProjectEstimateCalculatorCard Spec
     expect(resolveTargetService('quiero un chatbot rag ai para empresas')?.slug).toBe(
       'rag-ai-assistants-business',
     )
+    expect(resolveTargetService('ich suche einen white label partner fuer agenturen')?.slug).toBe(
+      'white-label-agency-partner',
+    )
+    expect(resolveTargetService('ki assistent fuer unternehmen')?.slug).toBe(
+      'rag-ai-assistants-business',
+    )
     expect(resolveTargetService('que tiempo hace hoy')).toBeUndefined()
+  })
+
+  it('should render StackComparisonCard and ProjectEstimateCalculatorCard in German', () => {
+    const onNavigate = vi.fn()
+    const { unmount } = render(<StackComparisonCard locale="de" onNavigateToContact={onNavigate} />)
+    expect(screen.getByText('Architektur-Stack-Vergleich')).toBeInTheDocument()
+    unmount()
+
+    render(<ProjectEstimateCalculatorCard locale="de" onNavigateToContact={onNavigate} />)
+    expect(screen.getByText('Interaktiver Projektzeit-Kalkulator')).toBeInTheDocument()
+    expect(screen.getByText('Umfang und Zeitplan für Ihr Projekt schätzen')).toBeInTheDocument()
   })
 
   it('should render ServiceRecommendationCard with metrics and trigger WhatsApp action', () => {

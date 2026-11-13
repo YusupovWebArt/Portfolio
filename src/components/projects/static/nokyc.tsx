@@ -6,12 +6,15 @@ const nokyc: Project = {
   description: 'Pure HTML/CSS/JS code.',
   descriptionUa: 'Чистий код HTML/CSS/JS.',
   descriptionEs: 'Código puro HTML/CSS/JS.',
+  descriptionDe: 'Reiner HTML/CSS/JS-Code.',
   fullDescription:
     'A static informational website built with pure HTML5, CSS3, and vanilla JavaScript. The site delivers a clean, fast-loading multi-section layout without any frameworks or CMS, showcasing efficient hand-coded frontend development deployed on GitHub Pages.',
   fullDescriptionUa:
     'Статичний інформаційний вебсайт, створений на чистому HTML5, CSS3 та JavaScript. Сайт забезпечує чистий, швидкий багатосекційний макет без будь-яких фреймворків чи CMS, демонструючи ефективну ручну frontend-розробку, розміщену на GitHub Pages.',
   fullDescriptionEs:
     'Un sitio web informativo estático desarrollado con HTML5 puro, CSS3 y JavaScript vanilla. El sitio ofrece una maquetación multisección limpia y de carga rápida sin ningún framework ni CMS, demostrando un desarrollo frontend eficiente y codificado a mano desplegado en GitHub Pages.',
+  fullDescriptionDe:
+    'Eine statische Informations-Website, entwickelt mit reinem HTML5, CSS3 und Vanilla JavaScript. Die Website bietet ein klares, schnell ladendes Mehrspalten- und Mehrsektions-Layout ohne Frameworks oder CMS und demonstriert effiziente handcodierte Frontend-Entwicklung mit Bereitstellung auf GitHub Pages.',
   detailHeroLine: 'STATIC HTML · CSS3 · JAVASCRIPT',
   detailMetrics: [
     { value: 'HTML5', label: 'Semantic Markup', accent: 'green' },
@@ -39,7 +42,13 @@ const nokyc: Project = {
       },
     ],
     description:
-      'A zero-dependency static site — semantic HTML5 structures the content, custom CSS3 provides a responsive and styled layout, and vanilla JavaScript adds interactive behaviour. Deployed directly to GitHub Pages for cost-free global delivery via CDN.',
+      'A zero-dependency static site - semantic HTML5 structures the content, custom CSS3 provides a responsive and styled layout, and vanilla JavaScript adds interactive behaviour. Deployed directly to GitHub Pages for cost-free global delivery via CDN.',
+    descriptionUa:
+      'Статичний сайт без залежностей - семантичний HTML5 структурує контент, кастомний CSS3 забезпечує адаптивний стилізований макет, а чистий JavaScript додає інтерактивну поведінку. Розгорнутий безпосередньо на GitHub Pages для безкоштовної глобальної доставки через CDN.',
+    descriptionEs:
+      'Un sitio estático sin dependencias: el HTML5 semántico estructura el contenido, el CSS3 personalizado proporciona un diseño responsivo y estilizado, y el JavaScript vanilla añade comportamiento interactivo. Desplegado directamente en GitHub Pages para una entrega global sin coste vía CDN.',
+    descriptionDe:
+      'Eine statische Website ohne Abhängigkeiten - semantisches HTML5 strukturiert den Inhalt, individuelles CSS3 sorgt für ein responsives Layout und Vanilla JavaScript fügt interaktives Verhalten hinzu. Direkt auf GitHub Pages bereitgestellt für kostenfreie globale Auslieferung über CDN.',
   },
   image: '/Portfolio/images/portfolio/thumbs/html-css-js/nokyc_thumb.webp',
   fullScreenshot:
@@ -72,22 +81,55 @@ const nokyc: Project = {
   features: [
     {
       title: 'Pure Static Frontend',
+      titleUa: 'Чистий статичний фронтенд',
+      titleEs: 'Frontend estático puro',
+      titleDe: 'Reines statisches Frontend',
       description:
-        'Developed with no frameworks or build tools — raw HTML, CSS, and JavaScript produce a lightweight, fast-loading site with minimal dependencies.',
+        'Developed with no frameworks or build tools - raw HTML, CSS, and JavaScript produce a lightweight, fast-loading site with minimal dependencies.',
+      descriptionUa:
+        'Розроблено без фреймворків чи інструментів збірки - чисті HTML, CSS та JavaScript створюють легкий і швидкий сайт із мінімальними залежностями.',
+      descriptionEs:
+        'Desarrollado sin frameworks ni herramientas de compilación: HTML, CSS y JavaScript puros producen un sitio ligero y de carga rápida con dependencias mínimas.',
+      descriptionDe:
+        'Entwickelt ohne Frameworks oder Build-Tools - reines HTML, CSS und JavaScript erzeugen eine leichtgewichtige, schnell ladende Website mit minimalen Abhängigkeiten.',
     },
     {
       title: 'Responsive Multi-Section Layout',
+      titleUa: 'Адаптивний багатосекційний макет',
+      titleEs: 'Diseño multisección responsivo',
+      titleDe: 'Responsives Mehrsektions-Layout',
       description:
         'CSS3 Flexbox and media queries create a fully responsive layout that adapts cleanly to mobile, tablet, and desktop viewports.',
+      descriptionUa:
+        'CSS3 Flexbox та медіа-запити створюють повністю адаптивний макет, який чітко підлаштовується під екрани мобільних пристроїв, планшетів та десктопів.',
+      descriptionEs:
+        'CSS3 Flexbox y las media queries crean un diseño totalmente responsivo que se adapta limpiamente a pantallas móviles, tabletas y escritorios.',
+      descriptionDe:
+        'CSS3 Flexbox und Media Queries schaffen ein vollständig responsives Layout, das sich sauber an Smartphone-, Tablet- und Desktop-Ansichten anpasst.',
     },
     {
       title: 'Interactive Navigation',
+      titleUa: 'Інтерактивна навігація',
+      titleEs: 'Navegación interactiva',
+      titleDe: 'Interaktive Navigation',
       description:
         'Vanilla JavaScript powers the mobile hamburger menu and smooth scroll behaviour for an enhanced user experience without framework overhead.',
+      descriptionUa:
+        'Чистий JavaScript забезпечує роботу мобільного гамбургер-меню та плавної прокрутки для покращеного користувацького досвіду без навантаження фреймворків.',
+      descriptionEs:
+        'JavaScript vanilla impulsa el menú hamburguesa móvil y el desplazamiento suave para mejorar la experiencia de usuario sin la sobrecarga de un framework.',
+      descriptionDe:
+        'Vanilla JavaScript steuert das mobile Hamburger-Menü und das sanfte Scrollverhalten für eine verbesserte Benutzererfahrung ohne Framework-Overhead.',
     },
   ],
   challenges: [],
+  challengesUa: [],
+  challengesEs: [],
+  challengesDe: [],
   solutions: [],
+  solutionsUa: [],
+  solutionsEs: [],
+  solutionsDe: [],
   liveUrl: 'https://yusupovwebart.github.io/nokyc/',
   githubUrl: 'https://github.com/YusupovWebArt/nokyc',
   category: ['static'],

@@ -16,7 +16,7 @@ import { openWhatsAppDirect } from '../../lib/contacts'
 
 interface ServiceRecommendationCardProps {
   service: ServiceItem
-  locale?: 'en' | 'ua' | 'es'
+  locale?: 'en' | 'ua' | 'es' | 'de'
   onNavigate?: () => void
 }
 
@@ -56,14 +56,18 @@ export default function ServiceRecommendationCard({
       ? 'Обговорити у WhatsApp'
       : locale === 'es'
         ? 'Consultar por WhatsApp'
-        : 'Inquire on WhatsApp'
+        : locale === 'de'
+          ? 'Auf WhatsApp anfragen'
+          : 'Inquire on WhatsApp'
 
   const viewServiceText =
     locale === 'ua'
       ? 'Деталі послуги'
       : locale === 'es'
         ? 'Ver servicio completo'
-        : 'Full Service Details'
+        : locale === 'de'
+          ? 'Alle Leistungsdetails'
+          : 'Full Service Details'
 
   return (
     <div className="w-full my-3 p-4 bg-gradient-to-br from-white to-purple-50/50 dark:from-slate-900 dark:to-slate-950 border border-purple-200/80 dark:border-purple-800/60 rounded-2xl shadow-sm text-left flex flex-col gap-3">
@@ -75,7 +79,15 @@ export default function ServiceRecommendationCard({
         </span>
         <span className="inline-flex items-center gap-1 text-[10px] font-medium text-emerald-600 dark:text-emerald-400">
           <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" aria-hidden="true" />
-          <span>{locale === 'es' ? 'Presupuesto 24-48h' : locale === 'ua' ? 'Оцінка 24-48г' : '24-48h Estimate'}</span>
+          <span>
+            {locale === 'es'
+              ? 'Presupuesto 24-48h'
+              : locale === 'ua'
+                ? 'Оцінка 24-48г'
+                : locale === 'de'
+                  ? '24-48 Std. Kostenschätzung'
+                  : '24-48h Estimate'}
+          </span>
         </span>
       </div>
 

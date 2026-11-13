@@ -9,7 +9,7 @@ interface ProjectChatTriggerProps {
   projectSlug: string
   projectTitle: string
   label?: string
-  lang?: 'en' | 'ua' | 'es'
+  lang?: 'en' | 'ua' | 'es' | 'de'
 }
 
 export default function ProjectChatTrigger({
@@ -36,14 +36,18 @@ export default function ProjectChatTrigger({
       ? 'Запитати AI про проєкт'
       : lang === 'es'
         ? 'Preguntar a la IA'
-        : 'Ask AI about this project'
+        : lang === 'de'
+          ? 'KI zum Projekt fragen'
+          : 'Ask AI about this project'
 
   const defaultDesktopText =
     lang === 'ua'
       ? `Запитати AI про ${projectTitle}`
       : lang === 'es'
         ? `Preguntar a la IA sobre ${projectTitle}`
-        : `Ask AI about ${projectTitle}`
+        : lang === 'de'
+          ? `KI zu ${projectTitle} fragen`
+          : `Ask AI about ${projectTitle}`
 
   const desktopText = label || defaultDesktopText
   const mobileText = label || defaultMobileText

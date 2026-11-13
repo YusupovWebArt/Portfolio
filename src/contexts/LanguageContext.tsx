@@ -51,6 +51,11 @@ export const useLanguage = (): LanguageContextType => {
   return ctx
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
+export const useOptionalLanguage = (): LanguageContextType | undefined => {
+  return useContext(LanguageContext)
+}
+
 export interface LanguageProviderProps {
   children: React.ReactNode
   initialLang?: Lang

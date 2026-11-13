@@ -9,12 +9,16 @@ const itMagic: Project = {
     'Проєкт IT-Magic представляє комплексного провайдера AWS та DevOps рішень - від проєктування інфраструктури та міграції до постійної підтримки та оптимізації.',
   descriptionEs:
     'El proyecto IT-Magic representa un proveedor integral de soluciones AWS y DevOps, desde el diseño de infraestructuras y la migración hasta el soporte continuo y la optimización.',
+  descriptionDe:
+    'Das Projekt IT-Magic repräsentiert einen ganzheitlichen End-to-End-Anbieter für AWS- und DevOps-Lösungen - vom Infrastrukturdesign und der Migration bis hin zu laufendem Support und Optimierung.',
   fullDescription:
     'Development of a custom-themed enterprise website for IT-Magic, highlighting the company’s AWS, DevOps, infrastructure management, and cloud consulting services. Built with a custom WordPress theme combined with Elementor for flexible template design, bespoke PHP logic, and Advanced Custom Fields (ACF). To optimize high-volume tech blogging, it implements automated call-to-action injections and Schema.org markup. For several years, served as the sole developer responsible for ongoing feature updates, technical maintenance, landing page designs, Nginx/MySQL tuning, and deep technical SEO optimizations.',
   fullDescriptionUa:
     'Розробка корпоративного веб-сайту з кастомною темою для IT-Magic, який висвітлює послуги компанії з AWS, DevOps, управління інфраструктурою та хмарного консалтингу. Побудовано на кастомній темі WordPress у поєднанні з Elementor, власною PHP-логікою та ACF. Кілька років виступав єдиним розробником, відповідальним за оновлення функціоналу, технічне обслуговування, дизайн лендінгів, налаштування Nginx/MySQL та глибоку SEO-оптимізацію.',
   fullDescriptionEs:
     'Desarrollo del sitio web corporativo con tema personalizado para IT-Magic, que destaca los servicios de la empresa en AWS, DevOps, gestión de infraestructuras y consultoría cloud. Construido con un tema WordPress personalizado combinado con Elementor, lógica PHP propia y Advanced Custom Fields (ACF). Para optimizar un blog técnico de alto volumen, implementa inyecciones automáticas de llamadas a la acción y marcado Schema.org. Durante varios años actuó como único desarrollador responsable de las actualizaciones de funcionalidades, el mantenimiento técnico, los diseños de landing pages, la configuración de Nginx/MySQL y las optimizaciones SEO técnicas en profundidad.',
+  fullDescriptionDe:
+    'Entwicklung einer Unternehmenswebsite mit maßgeschneidertem Theme für IT-Magic, die die Leistungen des Unternehmens in den Bereichen AWS, DevOps, Infrastrukturmanagement und Cloud-Beratung präsentiert. Realisiert mit einem individuellen WordPress-Theme in Kombination mit Elementor für flexibles Template-Design, eigener PHP-Logik und Advanced Custom Fields (ACF). Zur Optimierung des umfangreichen Tech-Blogs wurden automatisierte Call-to-Action-Einbindungen und Schema.org-Markup implementiert. Über mehrere Jahre hinweg als alleiniger Entwickler verantwortlich für laufende Feature-Updates, technische Wartung, Landingpage-Designs, Nginx-/MySQL-Tuning und tiefgreifende technische SEO-Optimierungen.',
   detailHeroLine: 'CUSTOM WORDPRESS · AWS & DEVOPS SOLUTIONS PORTAL',
   detailMetrics: [
     { value: '95+', label: 'PageSpeed', accent: 'green' },
@@ -45,6 +49,8 @@ const itMagic: Project = {
       'A robust corporate portal built using a custom WordPress theme integrated with Elementor and Advanced Custom Fields (ACF). Dynamic call-to-actions (CTAs) and blog metadata are rendered server-side via the Advanced Views engine. Served with optimized Nginx rules and Cloudflare edge caching for superior page load speeds.',
     descriptionEs:
       'Un portal corporativo robusto desarrollado con un tema de WordPress personalizado integrado con Elementor y Advanced Custom Fields (ACF). Las llamadas a la accion (CTA) dinamicas y los metadatos del blog se renderizan en el servidor mediante el motor Advanced Views. Se sirve con reglas optimizadas de Nginx y almacenamiento en cache perimetral de Cloudflare para maximizar la velocidad de carga.',
+    descriptionDe:
+      'Ein leistungsstarkes Unternehmensportal auf Basis eines individuellen WordPress-Themes mit Integration von Elementor und Advanced Custom Fields (ACF). Dynamische Call-to-Actions (CTAs) und Blog-Metadaten werden serverseitig über die Advanced-Views-Engine gerendert. Ausgeliefert mit optimierten Nginx-Regeln und Cloudflare-Edge-Caching für erstklassige Seitenladezeiten.',
   },
   image: '/Portfolio/images/portfolio/thumbs/wordpress/it-magic_thumb.webp',
   fullScreenshot:
@@ -193,59 +199,90 @@ const itMagic: Project = {
     {
       title: 'Custom WordPress Theme Development',
       titleEs: 'Desarrollo de tema personalizado para WordPress',
+      titleDe: 'Individuelle WordPress-Theme-Entwicklung',
       description:
         'Built a secure, bespoke theme using clean PHP 8.0 and custom CSS3 styles, designed to showcase the company\'s AWS, DevOps, and cloud consulting services.',
       descriptionEs:
         'Construccion de un tema a medida seguro utilizando PHP 8.0 limpio y estilos CSS3 personalizados, disenado para destacar los servicios de consultoria cloud, DevOps y AWS de la compania.',
+      descriptionDe:
+        'Entwicklung eines sicheren, maßgeschneiderten Themes mit sauberem PHP 8.0 und individuellen CSS3-Stilen zur Präsentation der AWS-, DevOps- und Cloud-Beratungsleistungen des Unternehmens.',
     },
     {
       title: 'Modular ACF & Advanced Views',
       titleEs: 'ACF modular y Advanced Views',
+      titleDe: 'Modulares ACF & Advanced Views',
       description:
         'Integrated Advanced Custom Fields (ACF) and Advanced Views to feed dynamic call-to-actions, pricing tables, and banners directly from the WordPress administration panel.',
       descriptionEs:
         'Integracion de Advanced Custom Fields (ACF) y Advanced Views para suministrar llamadas a la accion dinamicas, tablas de tarifas y banners directamente desde el panel de administracion de WordPress.',
+      descriptionDe:
+        'Integration von Advanced Custom Fields (ACF) und Advanced Views zur direkten Steuerung dynamischer Call-to-Actions, Preistabellen und Banner über das WordPress-Administrationspanel.',
     },
     {
       title: 'Ongoing Sole Development & Maintenance',
       titleEs: 'Desarrollo y mantenimiento continuo en solitario',
+      titleDe: 'Laufende Alleinentwicklung und Wartung',
       description:
         'Directly responsible for continuous features updates, technical maintenance, landing page creation, and Nginx/database optimizations for several years.',
       descriptionEs:
         'Responsable directo de actualizaciones continuas de funciones, mantenimiento tecnico, creacion de landing pages y optimizacion de Nginx y base de datos durante varios anos.',
+      descriptionDe:
+        'Über mehrere Jahre hinweg direkt verantwortlich für kontinuierliche Funktionsupdates, technische Wartung, Erstellung von Landingpages sowie Nginx- und Datenbankoptimierungen.',
     },
     {
       title: 'Technical SEO & Schema Markup',
       titleEs: 'SEO tecnico y marcado Schema.org',
+      titleDe: 'Technisches SEO & Schema-Markup',
       description:
         'Partnered with SEO strategists to build semantic page hierarchies, JSON-LD Schema.org markups, and structured blog grids, successfully boosting Google search rankings.',
       descriptionEs:
         'Colaboracion con estrategas de SEO para estructurar jerarquias semanticas, marcado JSON-LD Schema.org y rejillas de blog optimizadas, impulsando el posicionamiento en Google.',
+      descriptionDe:
+        'Zusammenarbeit mit SEO-Strategen zum Aufbau semantischer Seitenhierarchien, JSON-LD-Schema.org-Markups und strukturierter Blog-Grids, wodurch die Google-Rankings nachhaltig gesteigert wurden.',
     },
     {
       title: 'Conversion Rate Optimization (CRO)',
       titleEs: 'Optimizacion de la tasa de conversion (CRO)',
+      titleDe: 'Conversion-Rate-Optimierung (CRO)',
       description:
         'Optimized client contact forms, lead funnels, and dynamic widgets to maximize business inquiries for AWS migration and DevOps consulting.',
       descriptionEs:
         'Optimizacion de formularios de contacto, embudos de captacion de leads y widgets dinamicos para maximizar las solicitudes de consultoria en migracion a AWS y DevOps.',
+      descriptionDe:
+        'Optimierung von Kontaktformularen, Lead-Funnels und dynamischen Widgets zur Maximierung von Geschäftsanfragen für AWS-Migrationen und DevOps-Beratung.',
     },
   ],
   challenges: [
     'Optimizing page load speeds and Core Web Vitals metrics on a WordPress site utilizing the Elementor page builder.',
     'Dynamic injection of contextual, category-based Call-to-Actions (CTAs) across hundreds of complex technical blog posts.',
   ],
+  challengesUa: [
+    'Оптимізація швидкості завантаження сторінок та показників Core Web Vitals на сайті WordPress із використанням конструктора Elementor.',
+    'Динамічна вставка контекстних закликів до дії (CTA) на основі категорій у сотнях складних технічних статей блогу.',
+  ],
   challengesEs: [
     'Optimizacion de la velocidad de carga de pagina y metricas de Core Web Vitals en un sitio WordPress que utiliza el constructor Elementor.',
     'Inyeccion dinamica de llamadas a la accion (CTA) contextuales basadas en categorias en cientos de articulos tecnicos del blog.',
+  ],
+  challengesDe: [
+    'Optimierung der Seitenladezeiten und Core-Web-Vitals-Metriken auf einer WordPress-Website, die den Elementor Page Builder verwendet.',
+    'Dynamische Einbindung kontextbezogener, kategoriebasierter Call-to-Actions (CTAs) über Hunderte komplexer technischer Blogbeiträge hinweg.',
   ],
   solutions: [
     'Configured robust server-side Nginx caching, deferred render-blocking CSS/JS files, and converted all graphical assets to next-gen WebP format, achieving sub-second load times.',
     'Utilized the Advanced Views plugin combined with ACF database relations to dynamically render relevant CTA blocks based on the article\'s DevOps or AWS category.',
   ],
+  solutionsUa: [
+    'Налаштовано надійне серверне кешування Nginx, відкладено завантаження CSS/JS, що блокують рендеринг, та конвертовано всі графічні ресурси у формат WebP, досягнувши завантаження менш ніж за секунду.',
+    'Використано плагін Advanced Views у поєднанні зі зв\'язками бази даних ACF для динамічного рендерингу відповідних блоків CTA залежно від категорії статті (DevOps або AWS).',
+  ],
   solutionsEs: [
     'Configuracion de almacenamiento en cache robusto de Nginx a nivel de servidor, aplazamiento de archivos CSS/JS que bloquean el renderizado y conversion de recursos graficos al formato WebP de ultima generacion, logrando tiempos de carga sub-segundo.',
     'Utilizacion del plugin Advanced Views combinado con relaciones de base de datos ACF para renderizar dinamicamente bloques CTA relevantes segun la categoria DevOps o AWS del articulo.',
+  ],
+  solutionsDe: [
+    'Konfiguration von robustem serverseitigem Nginx-Caching, verzögertes Laden renderblockierender CSS/JS-Dateien und Konvertierung aller Grafik-Assets in das moderne WebP-Format für Ladezeiten im Sub-Sekunden-Bereich.',
+    'Einsatz des Plugins Advanced Views in Kombination mit ACF-Datenbankrelationen, um passende CTA-Blöcke dynamisch anhand der jeweiligen DevOps- oder AWS-Kategorie des Artikels zu rendern.',
   ],
   liveUrl: 'https://itmagic.pro/',
   githubUrl: '#',

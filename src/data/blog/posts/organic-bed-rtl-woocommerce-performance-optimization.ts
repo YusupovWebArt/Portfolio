@@ -7,23 +7,27 @@ export const organicBedRtlPost: BlogPost = {
     en: 'Engineering an RTL WooCommerce Store: Bidirectional CSS, WebP Media Pipeline & Sub-Second Checkout for Organic Bed',
     ua: 'Інжиніринг RTL-магазину на WooCommerce: двонаправлений CSS, медіапайплайн WebP та субсекундний чекаут для Organic Bed',
     es: 'Ingeniería de una tienda WooCommerce RTL: CSS bidireccional, optimización WebP y checkout sub-segundo para Organic Bed',
+    de: 'Engineering eines RTL-WooCommerce-Stores: Bidirektionales CSS, WebP-Medienpipeline & Sub-Sekunden-Checkout für Organic Bed',
   },
   description: {
     en: 'An architectural case study on building a custom Right-to-Left (RTL) WooCommerce store for Organic Bed. Covers CSS logical properties for bidirectional layouts, an automated WebP image optimization pipeline cutting payload by 72%, and cart checkout speed optimization.',
     ua: 'Інженерний кейс розробки кастомного RTL-магазину на WooCommerce для Organic Bed: логічні властивості CSS для автоматичного дзеркалення, WebP-компресія із скороченням ваги фотографій на 72% та оптимізація швидкості оформлення замовлення.',
     es: 'Caso de estudio de ingeniería sobre el desarrollo de una tienda WooCommerce RTL para Organic Bed: propiedades lógicas CSS para diseño bidireccional, compresión WebP con ahorro del 72% y optimización de velocidad de pago.',
+    de: 'Eine architektonische Fallstudie über den Aufbau eines maßgeschneiderten Right-to-Left (RTL) WooCommerce-Stores für Organic Bed. Behandelt logische CSS-Eigenschaften für bidirektionale Layouts, eine automatisierte WebP-Bildoptimierungspipeline mit 72% geringerer Datenlast und die Beschleunigung des Warenkorb-Checkouts.',
   },
   date: '2026-11-12',
   readTime: {
     en: '8 min read',
     ua: '8 хв читання',
     es: '8 min de lectura',
+    de: '8 Min. Lesezeit',
   },
   category: 'headless-ecommerce',
   categoryLabel: {
     en: 'Headless & E-Commerce',
     ua: 'Headless та E-Commerce',
     es: 'Headless y Comercio Electrónico',
+    de: 'Headless & E-Commerce',
   },
   tags: ['WooCommerce', 'WordPress', 'RTL', 'E-Commerce', 'WebP', 'Performance', 'Core Web Vitals'],
   author: {
@@ -32,6 +36,7 @@ export const organicBedRtlPost: BlogPost = {
       en: 'Fullstack Web Engineer & AI Developer',
       ua: 'Fullstack веб-інженер та AI-розробник',
       es: 'Ingeniero Web Fullstack y Desarrollador IA',
+      de: 'Fullstack Web-Engineer & KI-Entwickler',
     },
   },
   coverImage: '/Portfolio/images/blog/cover-organic-bed-rtl-ecommerce.svg',
@@ -44,6 +49,7 @@ export const organicBedRtlPost: BlogPost = {
         en: 'Custom Right-to-Left (RTL) WooCommerce store engineered from scratch with bidirectional CSS logical properties, high-res WebP image pipeline, and PageSpeed 90+ checkout performance.',
         ua: 'Кастомний інтернет-магазин WooCommerce із повною підтримкою RTL (іврит) на базі логічних властивостей CSS, автоматичного стиснення WebP та показником PageSpeed 90+.',
         es: 'Tienda WooCommerce RTL a medida desarrollada con propiedades lógicas CSS bidireccionales, compresión de imágenes WebP y rendimiento PageSpeed 90+ en el checkout.',
+        de: 'Maßgeschneiderter Right-to-Left (RTL) WooCommerce-Shop, von Grund auf entwickelt mit bidirektionalen logischen CSS-Eigenschaften, hochauflösender WebP-Bildpipeline und PageSpeed 90+ Checkout-Performance.',
       },
     },
   ],
@@ -65,6 +71,12 @@ export const organicBedRtlPost: BlogPost = {
       'Uso de propiedades lógicas de CSS (margin-inline, inset-inline) para eliminar hojas de estilo RTL duplicadas y evitar conflictos de especificidad.',
       'Canalización automatizada de imágenes WebP que reduce el peso de las fotografías de producto un 72% manteniendo el detalle textil.',
       'Obtención de PageSpeed 90+ y eliminación de saltos de diseño en el pago (CLS 0.000).',
+    ],
+    de: [
+      'Entwicklung eines individuellen WordPress- & WooCommerce-Themes mit vollständiger Right-to-Left (RTL)-Unterstützung für den israelischen Markt für Bio-Bettwäsche.',
+      'Einsatz von CSS Logical Properties (margin-inline, inset-inline), um aufgeblähte sekundäre RTL-Stylesheets zu eliminieren und Spezifitätskonflikte zu vermeiden.',
+      'Aufbau einer automatisierten WebP-Asset-Optimierungspipeline, die die Datenlast hochauflösender Textilfotografie ohne Qualitätsverlust um 72% reduziert.',
+      'Erzielung von PageSpeed 90+ und Eliminierung von Layout-Verschiebungen im Checkout (CLS 0.000) für konversionsstarke Kauftrichter.',
     ],
   },
   content: {
@@ -161,6 +173,56 @@ En la tienda de **Organic Bed** (Israel), implementamos una solución moderna ba
 - **Puntuación PageSpeed:** 92 / 100.
 - **CLS:** 0.000.
 - **Incremento en conversión:** +19.4% en compras finalizadas.
+`,
+    de: `## Die Komplexität von Right-to-Left (RTL) E-Commerce
+
+Die Entwicklung einer E-Commerce-Plattform für Sprachregionen mit Schreibrichtung von rechts nach links (RTL, wie Hebräisch oder Arabisch) bringt besondere technische Herausforderungen mit sich. Traditionell pflegen Entwickler getrennte Stylesheets (z. B. \`style.css\` und \`rtl.css\`), in denen Außenabstände, Innenabstände und Floats manuell überschrieben werden. Dieser veraltete Workflow führt zu erheblichem Wartungsaufwand, Spezifitätskonflikten und kumulativen Layout-Verschiebungen (CLS).
+
+Bei der Entwicklung des digitalen Flagship-Stores für **Organic Bed** (Israel) bestand unser Ziel darin, ein maßgeschneidertes WooCommerce-Erlebnis bereitzustellen, das sich auf Hebräisch nativ anfühlt, auf Mobilgeräten in unter einer Sekunde lädt und luxuriöse Bio-Bettwäschetexturen ohne Bandbreitenballast präsentiert.
+
+---
+
+## Moderne bidirektionale Architektur: CSS Logical Properties
+
+Anstatt Override-Dateien zu schreiben, wurde das gesamte Theme mit **CSS Logical Properties** aufgebaut. Moderne Browser werten Richtungen dynamisch anhand des Attributs \`dir="rtl"\` auf dem \`<html>\`-Element aus:
+
+\`\`\`css
+/* Legacy manual override approach (fragile & bloat) */
+.product-card { margin-left: 20px; float: left; text-align: left; }
+html[dir="rtl"] .product-card { margin-left: 0; margin-right: 20px; float: right; text-align: right; }
+
+/* Modern bidirectional logic (single clean rule) */
+.product-card {
+  margin-inline-start: 1.25rem;
+  text-align: start;
+}
+\`\`\`
+
+Erzielte Vorteile:
+- **Kein dupliziertes CSS:** Das Theme liefert ein einziges, schlankes Stylesheet für sowohl LTR- als auch RTL-Richtungen aus.
+- **Keine Spezifitäts-Hacks:** Keine \`!important\`-Überschreibungen nötig, um Core-WooCommerce-Stile auszuhebeln.
+- **Fehlerfreie horizontale Swiper:** Produktkarussells kehren Wischphysik und Navigationspfeile automatisch basierend auf der Dokumentrichtung um.
+
+---
+
+## Hochauflösende Medienpipeline: 72% Bandbreitenersparnis
+
+Käufer von Bettwäsche benötigen hochauflösende Fotografien, um Gewebestrukturen und Nähte zu beurteilen. Die Auslieferung unbearbeiteter JPEGs/PNGs verschlechterte den mobilen LCP auf über 3,4 Sekunden.
+
+Wir haben eine automatisierte Medienpipeline eingeführt:
+1. **Verlustbehaftete & verlustfreie WebP-Generierung:** Original-Kameraaufnahmen (durchschnittlich 2,4 MB) werden in das WebP-Format konvertiert, wodurch die Dateigrößen ohne erkennbaren Verlust der Textilstruktur auf **180 - 240 KB** sinken.
+2. **Native responsive Bildgrößen:** Nutzung von HTML5 \`<picture>\` mit \`srcset\` und \`sizes\`, um exakte Pixelabmessungen passend für Mobil- und Desktop-Viewports auszuliefern.
+3. **Fetch Priority:** Hochpriorisierte Hero-Bilder nutzen \`fetchpriority="high"\`, damit Browser-Download-Threads das Hauptmotiv sofort abrufen.
+
+---
+
+## Checkout-Optimierung & Core Web Vitals
+
+Warenkorbabbrüche im E-Commerce sind häufig auf eine träge Checkout-Validierung zurückzuführen. Im Checkout von Organic Bed:
+- Ungenutzte WooCommerce-Skripte (wie Passwort-Stärkeanzeigen und Cart-Fragmente) wurden auf nicht essenziellen Seiten bedingt deregistriert.
+- Schnelle AJAX-Checkout-Trigger wurden optimiert, um vollständige Seiten-Rerenders zu verhindern.
+- **CLS-Wert:** Durch explizite Seitenverhältnisse auf allen Produktkarten konstant bei **0.000** gehalten.
+- **Mobile PageSpeed:** 92 / 100.
 `,
   },
 }

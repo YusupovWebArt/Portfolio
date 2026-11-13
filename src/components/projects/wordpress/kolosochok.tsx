@@ -9,12 +9,16 @@ const kolosochok: Project = {
     'Український приватний етно-садок у Києві, що пропонує культурно занурену дошкільну освіту.',
   descriptionEs:
     'Jardín de infancia privado etno-ucraniano en Kiev que ofrece educación preescolar con inmersión cultural.',
+  descriptionDe:
+    'Privater ukrainischer Ethno-Kindergarten in Kyjiw mit kulturell immersiver Vorschulbildung.',
   fullDescription:
     'A custom WordPress theme built from scratch for a Ukrainian ethno-kindergarten in Kyiv, using Elementor extended with custom CSS3 and JavaScript. The site presents the kindergarten\'s philosophy, curriculum, teachers, and facilities in a warm and culturally rich design that reflects the Ukrainian ethno aesthetic, attracting Kyiv families seeking culturally immersive preschool education.',
   fullDescriptionUa:
     'Кастомна тема WordPress, створена з нуля для українського етно-садка в Києві з використанням Elementor, розширеного кастомними CSS3 та JavaScript. Сайт презентує філософію дитячого садка, навчальну програму, вихователів та приміщення у теплому й культурно багатому дизайні, що відображає українську етно-естетику та приваблює київські родини, які шукають культурно занурену дошкільну освіту.',
   fullDescriptionEs:
     'Tema WordPress personalizada construida desde cero para un jardín de infancia etno-ucraniano en Kiev, utilizando Elementor ampliado con CSS3 y JavaScript propios. El sitio presenta la filosofía del jardín de infancia, el currículo, los educadores y las instalaciones en un diseño cálido y culturalmente rico que refleja la estética etno-ucraniana, atrayendo a las familias de Kiev que buscan una educación preescolar con inmersión cultural.',
+  fullDescriptionDe:
+    'Ein von Grund auf neu entwickeltes WordPress-Theme für einen ukrainischen Ethno-Kindergarten in Kyjiw auf Basis von Elementor, erweitert durch maßgeschneidertes CSS3 und JavaScript. Die Website präsentiert die Philosophie, das Bildungsprogramm, die Pädagogen und die Räumlichkeiten des Kindergartens in einem warmen, kulturell geprägten Design, das die ukrainische Ethno-Ästhetik widerspiegelt und Familien in Kyjiw anspricht, die eine kulturell verwurzelte Vorschulbildung suchen.',
   detailHeroLine: 'CUSTOM WORDPRESS · ETHNO-KINDERGARTEN · KYIV, UKRAINE',
   detailMetrics: [
     { value: '90+', label: 'PageSpeed Score', accent: 'green' },
@@ -43,6 +47,8 @@ const kolosochok: Project = {
     ],
     description:
       'WordPress with Elementor manages the page layout and content, extended with custom CSS3 and JavaScript for a warm, ethno-themed visual design. MySQL stores all kindergarten content including teacher profiles, program pages, and gallery images. Cloudflare CDN delivers content quickly to Kyiv-area parents browsing on mobile.',
+    descriptionDe:
+      'WordPress mit Elementor verwaltet das Seitenlayout und die Inhalte, erweitert um individuelles CSS3 und JavaScript für ein warmes, ethno-inspiriertes visuelles Design. MySQL speichert sämtliche Inhalte des Kindergartens, darunter Erzieherprofile, Programmseiten und Galeriebilder. Cloudflare CDN liefert die Inhalte schnell an Eltern im Raum Kyjiw auf mobilen Endgeräten aus.',
   },
   image: '/Portfolio/images/portfolio/thumbs/wordpress/kolosochok_thumb.webp',
   fullScreenshot:
@@ -100,32 +106,53 @@ const kolosochok: Project = {
   features: [
     {
       title: 'Ukrainian Ethno-Themed Design',
+      titleDe: 'Ukrainisches Ethno-Design',
       description:
         'Custom CSS3 and Elementor layouts create a warm, culturally immersive aesthetic rooted in Ukrainian folk art traditions, reflecting the kindergarten\'s unique educational philosophy.',
+      descriptionDe:
+        'Individuelles CSS3 und Elementor-Layouts schaffen eine warme, kulturell geprägte Ästhetik, die in der ukrainischen Volkskunst verwurzelt ist und die einzigartige pädagogische Philosophie des Kindergartens widerspiegelt.',
     },
     {
       title: 'Educational Program Pages',
+      titleDe: 'Seiten zum Bildungsprogramm',
       description:
         'Dedicated pages present the kindergarten\'s curriculum, cultural activities, language programs, and daily schedule to help parents understand the ethno-immersive preschool experience.',
+      descriptionDe:
+        'Eigene Unterseiten präsentieren den Lehrplan, kulturelle Aktivitäten, Sprachprogramme und den Tagesablauf, damit Eltern das ethno-immersive Vorschulkonzept umfassend kennenlernen können.',
     },
     {
       title: 'Teacher Profile Section',
+      titleDe: 'Bereich für Pädagogenprofile',
       description:
         'Individual teacher profiles build trust with parents by showcasing qualifications, experience, and the team\'s dedication to Ukrainian cultural education.',
+      descriptionDe:
+        'Individuelle Profile der Erzieherinnen und Erzieher schaffen Vertrauen bei den Eltern, indem sie Qualifikationen, Erfahrung und das Engagement des Teams für ukrainische Kulturpädagogik vorstellen.',
     },
     {
       title: 'Local SEO & Google Maps',
+      titleDe: 'Lokales SEO & Google Maps',
       description:
         'Local SEO strategy with ChildCare Schema.org markup and Google Maps integration drives visibility in Kyiv search results, helping families find the kindergarten easily.',
+      descriptionDe:
+        'Eine lokale SEO-Strategie mit ChildCare-Schema.org-Markup und Google-Maps-Integration steigert die Sichtbarkeit in den Suchergebnissen in Kyjiw und hilft Familien, den Kindergarten leicht zu finden.',
     },
     {
       title: 'Responsive & Mobile-Optimized',
+      titleDe: 'Responsiv und mobil optimiert',
       description:
         'Fully responsive design ensures parents in Kyiv can explore programs and contact the kindergarten seamlessly from smartphones during busy daily routines.',
+      descriptionDe:
+        'Das vollständig responsive Design stellt sicher, dass Eltern in Kyjiw auch unterwegs im hektischen Alltag bequem per Smartphone Programme erkunden und den Kindergarten kontaktieren können.',
     },
   ],
   challenges: [],
+  challengesUa: [],
+  challengesEs: [],
+  challengesDe: [],
   solutions: [],
+  solutionsUa: [],
+  solutionsEs: [],
+  solutionsDe: [],
   liveUrl: 'https://kolosochok.kiev.ua/',
   githubUrl: '#',
   category: ['wordpress'],

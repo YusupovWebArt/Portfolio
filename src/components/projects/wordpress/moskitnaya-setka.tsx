@@ -6,12 +6,15 @@ const moskitnayaSetka: Project = {
   description: 'Ukrainian Mosquito net store.',
   descriptionUa: 'Український інтернет-магазин москітних сіток.',
   descriptionEs: 'Tienda en línea ucraniana de mosquiteras.',
+  descriptionDe: 'Ukrainischer Online-Shop für Insektenschutzgitter.',
   fullDescription:
     'Moskitnaya Setka is a Ukrainian WooCommerce-based online store built on a fully custom WordPress theme developed from scratch. The project included a complete product catalogue setup, responsive design, SEO optimization with Schema.org markup, and Google Maps integration to support local customer discovery.',
   fullDescriptionUa:
-    'Moskitnaya Setka — це український інтернет-магазин на базі WooCommerce, побудований на повністю унікальній темі WordPress, розробленій з нуля. Проєкт включав повне налаштування каталогу товарів, адаптивний дизайн, SEO-оптимізацію з розміткою Schema.org та інтеграцію з Google Maps API для пошуку сайту локальними клієнтами.',
+    'Moskitnaya Setka - це український інтернет-магазин на базі WooCommerce, побудований на повністю унікальній темі WordPress, розробленій з нуля. Проєкт включав повне налаштування каталогу товарів, адаптивний дизайн, SEO-оптимізацію з розміткою Schema.org та інтеграцію з Google Maps API для пошуку сайту локальними клієнтами.',
   fullDescriptionEs:
     'Moskitnaya Setka es una tienda en línea ucraniana basada en WooCommerce, construida sobre un tema de WordPress completamente personalizado desarrollado desde cero. El proyecto incluyó la configuración completa del catálogo de productos, diseño responsivo, optimización SEO con marcado Schema.org e integración con Google Maps API para facilitar que los clientes locales encuentren la tienda.',
+  fullDescriptionDe:
+    'Moskitnaya Setka ist ein ukrainischer Online-Shop auf WooCommerce-Basis, der auf einem vollständig von Grund auf entwickelten WordPress-Theme aufbaut. Das Projekt umfasste die komplette Einrichtung des Produktkatalogs, responsives Design, SEO-Optimierung mit Schema.org-Markup sowie eine Google-Maps-Integration zur Unterstützung der lokalen Kundengewinnung.',
   detailHeroLine: 'CUSTOM WORDPRESS · WOOCOMMERCE STORE',
   detailMetrics: [
     { value: '90+', label: 'PageSpeed Score', accent: 'green' },
@@ -40,6 +43,8 @@ const moskitnayaSetka: Project = {
     ],
     description:
       'A custom WordPress theme built from scratch hosts the WooCommerce store, handling product display, cart, and checkout. Custom CSS3 and JavaScript deliver a tailored shopping experience, while Nginx caching and Cloudflare CDN ensure fast load times for Ukrainian customers.',
+    descriptionDe:
+      'Ein von Grund auf neu entwickeltes WordPress-Theme bildet das Fundament des WooCommerce-Shops und steuert Produktdarstellung, Warenkorb und Checkout. Individuelles CSS3 und JavaScript sorgen für ein maßgeschneidertes Einkaufserlebnis, während Nginx-Caching und Cloudflare CDN schnelle Ladezeiten für ukrainische Kunden sicherstellen.',
   },
   image:
     '/Portfolio/images/portfolio/thumbs/wordpress/moskitnaya-setka_thumb.webp',
@@ -112,32 +117,53 @@ const moskitnayaSetka: Project = {
   features: [
     {
       title: 'Custom WordPress Theme from Scratch',
+      titleDe: 'Individuelles WordPress-Theme von Grund auf',
       description:
         'The entire WordPress theme was built from scratch, giving full design control and ensuring optimal performance without the overhead of third-party theme bloat.',
+      descriptionDe:
+        'Das gesamte WordPress-Theme wurde von Grund auf neu entwickelt, was volle Designkontrolle und optimale Performance ohne unnötigen Ballast durch Drittanbieter-Themes ermöglicht.',
     },
     {
       title: 'WooCommerce Integration',
+      titleDe: 'WooCommerce-Integration',
       description:
         'WooCommerce was integrated to deliver robust e-commerce functionality including product catalogue management, secure shopping cart, and payment gateway support.',
+      descriptionDe:
+        'WooCommerce wurde integriert, um leistungsstarke E-Commerce-Funktionen einschließlich Produktkatalogverwaltung, sicherem Warenkorb und Zahlungs-Gateway-Unterstützung bereitzustellen.',
     },
     {
       title: 'Full Product Catalogue Setup',
+      titleDe: 'Vollständige Einrichtung des Produktkatalogs',
       description:
         'All mosquito net products were entered with detailed descriptions, specifications, images, and categories to maximize customer comprehension and conversion rates.',
+      descriptionDe:
+        'Alle Insektenschutzprodukte wurden mit detaillierten Beschreibungen, Spezifikationen, Bildern und Kategorien eingepflegt, um die Kundenorientierung und Conversion-Raten zu maximieren.',
     },
     {
       title: 'Responsive Design',
+      titleDe: 'Responsives Design',
       description:
         'The store is fully responsive across all device types, providing a seamless shopping experience from mobile browsing through to desktop checkout.',
+      descriptionDe:
+        'Der Shop ist auf allen Gerätetypen vollständig responsiv und bietet ein nahtloses Einkaufserlebnis vom mobilen Stöbern bis zum Checkout am Desktop.',
     },
     {
       title: 'SEO Optimization',
+      titleDe: 'SEO-Optimierung',
       description:
         'Technical SEO with Schema.org product markup, optimized meta tags, and a clean URL structure drives organic search visibility in the Ukrainian market.',
+      descriptionDe:
+        'Technisches SEO mit Schema.org-Produkt-Markup, optimierten Meta-Tags und einer sauberen URL-Struktur steigert die organische Sichtbarkeit auf dem ukrainischen Markt.',
     },
   ],
   challenges: [],
+  challengesUa: [],
+  challengesEs: [],
+  challengesDe: [],
   solutions: [],
+  solutionsUa: [],
+  solutionsEs: [],
+  solutionsDe: [],
   liveUrl: 'https://moskitnaya-setka.com.ua/',
   githubUrl: '#',
   category: ['wordpress'],

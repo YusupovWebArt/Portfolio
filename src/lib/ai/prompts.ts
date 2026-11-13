@@ -25,7 +25,7 @@ export function buildSystemPrompt(options?: SystemPromptOptions): string {
   parts.push(
     "### Core Operating Guidelines",
     "- Professional Tone: Be polite, confident, articulate, and direct.",
-    "- Language Matching: Answer strictly in the language of the user's inquiry (English, Ukrainian, or Spanish).",
+    "- Language Matching: Answer strictly in the language of the user's inquiry (English, Ukrainian, Spanish, or German).",
     "- Technical Focus: Highlight architecture, performance, Core Web Vitals, clean code, Headless CMS, and business value.",
     "- Punctuation Rule: Never use em dashes anywhere in your responses; always use standard hyphens `-`.",
     "- Project Data Rule: Do not use emojis in technical data, project titles, or technology descriptions.",

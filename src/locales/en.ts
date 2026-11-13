@@ -33,6 +33,8 @@ export const en: Translation = {
     sectionTitle: 'About Me',
     availableForProjects: 'Available for Projects',
     myJourney: 'My Journey',
+    presentLabel: 'Present',
+    nowLabel: 'Now',
     bio: {
       p1: 'I am a results-driven Fullstack Web Engineer with 5+ years of experience engineering, scaling, and technically optimizing high-load platforms, with a deep architectural specialization in WordPress. My expertise lies at the sharp intersection of modern frontend ecosystems (React, Next.js) and enterprise-grade WordPress engineering - ranging from custom PHP 8+ architectures and secure plugin development to high-performance Headless CMS configurations and deep performance engineering.',
       p2: 'My core competitive edge is a sophisticated, AI-first engineering philosophy. Rather than treating AI as a superficial coding assistant, I systematically integrate next-generation systems - including Claude Code, Cursor, Google Antigravity, and custom Retrieval-Augmented Generation (RAG) pipelines - directly into the Software Development Life Cycle (SDLC), following a Spec-Driven Development (SDD) methodology: I define the technical specification first, then have AI implement and verify against it rather than improvise. I heavily leverage AI to build context-aware RAG assistants, automate complex development workflows, and conduct deep technical research. By blending my practical architectural experience with AI-augmented development, I fast-track complex refactoring, automate regression checks, and drastically compress Time-to-Market - all while enforcing strict code quality, security, and architectural integrity.',
@@ -78,6 +80,7 @@ export const en: Translation = {
       item0: {
         title: 'Advanced Web Engineering & Emerging Tech',
         institution: 'Focus on Scalable Ecosystems and AI Integration',
+        badge: 'R&D / Tech Research',
         description: {
           soloRnd: {
             label: 'Solopreneur Product R&D:',
@@ -108,6 +111,7 @@ export const en: Translation = {
       item1: {
         title: 'Professional Courses & Self-Study',
         institution: 'Continuous Learning Platforms',
+        badge: 'Continuing Education',
         description: {
           intro:
             'Consistent professional development across leading platforms:',
@@ -116,6 +120,7 @@ export const en: Translation = {
       item2: {
         title: 'National Technical University (Ukraine)',
         institution: 'VNTU - Vinnitsa National Technical University (Ukraine)',
+        badge: 'Academic Degree',
         description: {
           spec: {
             label: 'Specialization:',
@@ -196,6 +201,7 @@ export const en: Translation = {
       },
       item2: {
         title: 'Freelance and Personal projects',
+        company: 'Web-developer (WordPress, Shopify, WIX), SEO-specialist.',
         desc: {
           delivered: {
             label: '30+ Delivered Projects:',
@@ -227,6 +233,8 @@ export const en: Translation = {
       of: 'of',
       choosePhase: 'Development Phases',
       swipe: 'Swipe',
+      stepBreakdown: 'Step Breakdown',
+      techTools: 'Technologies & AI Tools',
     },
     categories: [
       {
@@ -384,6 +392,7 @@ export const en: Translation = {
     showLess: 'Show less',
     categories: {
       wp: {
+        title: 'WordPress Development',
         description: 'Custom Themes & Plugins. Ecommerce.',
         skillDetails: [
           {
@@ -409,6 +418,7 @@ export const en: Translation = {
         ],
       },
       app: {
+        title: 'App Development',
         description:
           'Building fast, scalable web applications using React, Next.js, TypeScript, and Tailwind CSS.',
         skillDetails: [
@@ -435,6 +445,7 @@ export const en: Translation = {
         ],
       },
       ai: {
+        title: 'AI Tools & Automation',
         description: 'Modern AI tools and automation for enhanced development productivity',
         skillDetails: [
           {
@@ -460,6 +471,7 @@ export const en: Translation = {
         ],
       },
       seo: {
+        title: 'SEO & Performance',
         description: 'Search engine optimization and web performance enhancement',
         skillDetails: [
           {
@@ -485,6 +497,7 @@ export const en: Translation = {
         ],
       },
       layout: {
+        title: 'Website Layout & Structure',
         description: 'Modern layout systems and responsive design architecture',
         skillDetails: [
           {
@@ -510,6 +523,7 @@ export const en: Translation = {
         ],
       },
       design: {
+        title: 'Design Understanding',
         description: 'Visual design principles and user experience optimization',
         skillDetails: [
           {
@@ -538,6 +552,40 @@ export const en: Translation = {
     workTools: {
       sectionLabel: 'Work Environment',
       sectionTitle: 'Work Organization Tools',
+      items: [
+        {
+          name: 'AI IDEs & Copilots',
+          description: 'Claude Code, Google Antigravity, Cursor, Devin, Windsurf',
+        },
+        {
+          name: 'Figma, Pencil & Claude Design',
+          description: 'UI/UX Design, wireframing & prototyping',
+        },
+        {
+          name: 'Redmine & Jira',
+          description: 'Agile task tracking & project management',
+        },
+        {
+          name: 'Notion, Miro & NotebookLM',
+          description: 'Collaboration, mind mapping & AI research',
+        },
+        {
+          name: 'Slack, MS Teams & Workspace',
+          description: 'Team communication & cloud workspace',
+        },
+        {
+          name: 'GitHub & GitLab',
+          description: 'Git workflows & CI/CD automation',
+        },
+        {
+          name: 'Vercel & Netlify',
+          description: 'Serverless cloud hosting platforms',
+        },
+        {
+          name: 'Local WP, XAMPP & Docker',
+          description: 'Local development & server environments',
+        },
+      ],
     },
     softSkills: {
       sectionLabel: 'Personal Attributes',

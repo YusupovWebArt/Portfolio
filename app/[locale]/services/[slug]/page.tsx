@@ -46,9 +46,10 @@ export async function generateMetadata({
     }
   }
 
-  const validLocale = (locale === 'es' || locale === 'ua' ? locale : 'en') as 'en' | 'ua' | 'es'
+  const validLocale = (locale === 'es' || locale === 'ua' || locale === 'de' ? locale : 'en') as 'en' | 'ua' | 'es' | 'de'
   const isUa = validLocale === 'ua'
   const isEs = validLocale === 'es'
+  const isDe = validLocale === 'de'
   const content = service.content[validLocale] || service.content.en
 
   const title = `${content.title} | Artur Yusupov`
@@ -78,6 +79,8 @@ export async function generateMetadata({
         uk: `https://www.yusupovartur.com/ua/services/${service.slug}`,
         es: `https://www.yusupovartur.com/es/services/${service.slug}`,
         'es-ES': `https://www.yusupovartur.com/es/services/${service.slug}`,
+        de: `https://www.yusupovartur.com/de/services/${service.slug}`,
+        'de-DE': `https://www.yusupovartur.com/de/services/${service.slug}`,
         'x-default': `https://www.yusupovartur.com/en/services/${service.slug}`,
       },
     },
@@ -86,7 +89,7 @@ export async function generateMetadata({
       description,
       url: `https://www.yusupovartur.com/${locale}/services/${service.slug}`,
       siteName: 'Artur Yusupov - Portfolio & B2B Web Engineering',
-      locale: isUa ? 'uk_UA' : isEs ? 'es_ES' : 'en_US',
+      locale: isUa ? 'uk_UA' : isEs ? 'es_ES' : isDe ? 'de_DE' : 'en_US',
       type: 'website',
       images: [
         {
@@ -121,7 +124,7 @@ export default async function ServiceDetailPage({
     notFound()
   }
 
-  const validLocale = (locale === 'es' || locale === 'ua' ? locale : 'en') as 'en' | 'ua' | 'es'
+  const validLocale = (locale === 'es' || locale === 'ua' || locale === 'de' ? locale : 'en') as 'en' | 'ua' | 'es' | 'de'
   const content = service.content[validLocale] || service.content.en
 
   const breadcrumbsJsonLd = buildServiceBreadcrumbsJsonLd(content.title, service.slug, validLocale)

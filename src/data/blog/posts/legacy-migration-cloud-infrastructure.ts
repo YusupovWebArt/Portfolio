@@ -6,23 +6,27 @@ export const legacyMigrationCloudInfrastructurePost: BlogPost = {
     en: 'Zero-Downtime Legacy System Migration: Cloud Infrastructure, SEO Preservation & High-Load Reliability',
     ua: 'Безшовна міграція легасі-систем: хмарна інфраструктура, збереження 100% SEO та високі навантаження',
     es: 'Migración de sistemas heredados sin tiempo de inactividad: Infraestructura cloud, preservación SEO y alta disponibilidad',
+    de: 'Zero-Downtime-Migration von Altsystemen: Cloud-Infrastruktur, 100 % SEO-Erhalt & Hochlast-Zuverlaessigkeit',
   },
   description: {
     en: 'A battle-tested blueprint for migrating legacy monolithic portals and high-traffic databases to modern cloud architectures with dual-write replication, automated 301/308 redirect mapping, and zero interruption to customer transactions.',
     ua: 'Перевірений на практиці план міграції монолітних порталів та навантажених баз даних у сучасну хмарну інфраструктуру з реплікацією даних, збереженням 100% пошукового трафіку та нульовим простоєм.',
     es: 'Metodología probada para migrar portales monolíticos heredados y bases de datos con alto tráfico a la nube mediante replicación continua, mapeo exhaustivo de redirecciones 301/308 y cero paradas operativas.',
+    de: 'Ein praxiserprobter Leitfaden fuer die Migration monolithischer Legacy-Portale und hochbelasteter Datenbanken in moderne Cloud-Architekturen: Dual-Write-Replikation, automatisiertes 301/308-Redirect-Mapping und null Ausfallzeiten fuer Kundentransaktionen.',
   },
   date: '2026-10-19',
   readTime: {
     en: '9 min read',
     ua: '9 хв читання',
     es: '9 min de lectura',
+    de: '9 Min. Lesezeit',
   },
   category: 'ecommerce-cms',
   categoryLabel: {
     en: 'E-Commerce & CMS Engineering',
     ua: 'E-Commerce та інженерія CMS',
     es: 'E-Commerce e Ingeniería CMS',
+    de: 'E-Commerce & CMS-Engineering',
   },
   tags: ['Cloud Migration', 'AWS', 'Database Optimization', 'Nginx', '301 Redirects', 'Zero Downtime'],
   author: {
@@ -31,6 +35,7 @@ export const legacyMigrationCloudInfrastructurePost: BlogPost = {
       en: 'Senior Fullstack Web Engineer & AI Developer',
       ua: 'Senior Fullstack веб-інженер та AI-розробник',
       es: 'Ingeniero Web Fullstack Senior y Desarrollador IA',
+      de: 'Fullstack Web-Engineer & KI-Architekt',
     },
   },
   coverImage: '/Portfolio/images/blog/cover-cloud-migration.svg',
@@ -43,6 +48,7 @@ export const legacyMigrationCloudInfrastructurePost: BlogPost = {
         en: 'Orchestrated seamless database cutover and multi-AZ load balancing with zero dropped customer requests.',
         ua: 'Організовано безшовне перемикання бази даних та балансування навантаження multi-AZ без втрати запитів.',
         es: 'Transición transparente de base de datos y balanceo multi-AZ sin pérdidas de solicitudes de usuarios.',
+        de: 'Nahtloses Datenbank-Cutover und Multi-AZ-Loadbalancing ohne verlorene Benutzeranfragen orchestriert.',
       },
     },
     {
@@ -53,6 +59,7 @@ export const legacyMigrationCloudInfrastructurePost: BlogPost = {
         en: 'Engineered auto-scaling edge CDN routes and automated rollback triggers during enterprise infrastructure updates.',
         ua: 'Спроектовано автоматичне масштабування CDN та сценарії відкату для оновлення інфраструктури.',
         es: 'Diseño de CDN con autoescalado y mecanismos de reversión automática durante actualizaciones críticas.',
+        de: 'Auto-Scaling Edge-CDN-Routen und automatisierte Rollback-Trigger fuer unternehmensweite Infrastruktur-Updates implementiert.',
       },
     },
     {
@@ -63,6 +70,7 @@ export const legacyMigrationCloudInfrastructurePost: BlogPost = {
         en: 'Migrated 400+ legacy service landing pages with 100% preservation of organic Google index rankings via exact 301 redirect trees.',
         ua: 'Збережено 100% органічних позицій Google під час перенесення 400+ сторінок послуг завдяки чіткій карті редиректів 301.',
         es: 'Conservación del 100% del tráfico orgánico en Google al migrar más de 400 páginas con mapeo exacto de redirecciones 301.',
+        de: 'Migration von ueber 400 Service-Landingpages bei 100 % Erhalt der organischen Google-Rankings durch exakte 301-Redirect-Baeume.',
       },
     },
   ],
@@ -84,6 +92,12 @@ export const legacyMigrationCloudInfrastructurePost: BlogPost = {
       'La autoridad SEO se mantiene mediante el rastreo íntegro de URLs antiguas y reglas de redirección 301/308 en el proxy inverso.',
       'El despliegue canary con derivación progresiva del 10% al 100% del tráfico detecta anomalías antes del cambio definitivo.',
       'Es indispensable contar con rollback automatizado: si los errores superan el 0.5%, el tráfico regresa a los nodos anteriores.',
+    ],
+    de: [
+      'Zero Downtime wird durch synchrone Dual-Write-Datenbankreplikation und fruehzeitige Senkung der DNS-TTL vor dem Cutover erreicht.',
+      'SEO-Autoritaet und Backlink-Equity erfordern vollstaendiges Crawl-Mapping und deterministische 301/308-Redirect-Regeln auf Reverse-Proxy-Ebene.',
+      'Canary-Deployment mit schrittweiser Traffic-Verlagerung von 10 % auf 100 % ermoeglicht Echtzeit-Anomalieerkennung vor der vollstaendigen Umschaltung.',
+      'Automatisierte Rollback-Trigger sind Pflicht: Steigt die Fehlerrate waehrend der Canary-Phase ueber 0,5 %, wird der Traffic sofort auf Legacy-Knoten zurueckgeleitet.',
     ],
   },
   content: {
@@ -284,5 +298,80 @@ Se transfiere inicialmente el 10% de los usuarios. Tras verificar métricas de l
 - **Disponibilidad:** 100% durante todo el proceso.
 - **Tráfico SEO:** retención íntegra del volumen orgánico.
 - **Latencia P95:** mejorada en un 48%.`,
+
+    de: `### Risikominimierung bei Enterprise-Migrationen
+
+Die Migration eines etablierten Unternehmensportals gehoert zu den riskantesten Engineering-Vorhaben. Fehlerhafte Migrationen koennen zu Datenbank-Inkonsistenzen, Transaktionsabbruechen und verheerenden Verlusten bei organischen Suchmaschinen-Rankings fuehren, deren Wiederherstellung Monate dauern kann.
+
+Nachfolgend ist das exakte phasenbasierte Vorgehensmodell beschrieben, das sich in kommerziellen Cloud-Migrationen bewaehrt hat.
+
+---
+
+### Phase 1: DNS-Vorbereitung & Pre-Migration-Crawl
+
+Sieben Tage vor der Migration:
+1. DNS-TTL auf den zustaendigen Nameservern auf 300 Sekunden (5 Minuten) reduzieren, um eine schnelle Propagierung beim Cutover sicherzustellen.
+2. Vollstaendigen rekursiven Crawl des Altsystems durchfuehren, um saemtliche indexierbaren URLs, Canonicals, HTTP-Statuscodes und Query-Strings lueckenlos zu erfassen.
+
+---
+
+### Phase 2: Dual-Write & kontinuierliche Datenbankreplikation
+
+Um Wartungsfenster zu vermeiden, erfolgt die Datenbankmigration ueber logische Replikations-Streams:
+
+\`\`\`bash
+# PostgreSQL logischer Replikations-Stream
+CREATE PUBLICATION migration_pub FOR ALL TABLES;
+# Ziel-AWS-RDS-Instanz
+CREATE SUBSCRIPTION migration_sub
+  CONNECTION 'host=legacy-db.internal dbname=app user=rep_user password=secret'
+  PUBLICATION migration_pub;
+\`\`\`
+
+Beide Datenbanken bleiben synchronisiert, bis der finale Umschaltbefehl ausgeloest wird.
+
+---
+
+### Phase 3: Hochperformantes 301/308-Redirect-Mapping in Nginx
+
+Fuer den vollstaendigen SEO-Erhalt muss die URL-Normalisierung direkt auf Reverse-Proxy-Ebene in Mikrosekunden ausgefuehrt werden, bevor Anfragen die Anwendungsschicht erreichen:
+
+\`\`\`nginx
+# /etc/nginx/conf.d/seo-redirects.map
+map $uri $redirect_target {
+    default "";
+    /legacy-services/custom-software /de/projects/custom-software;
+    /about-us.php /de#about;
+    /old-contact-form /de#contact;
+}
+
+server {
+    listen 443 ssl http2;
+    server_name www.domain.com;
+
+    if ($redirect_target != "") {
+        return 301 $redirect_target;
+    }
+}
+\`\`\`
+
+---
+
+### Phase 4: Canary-Traffic-Routing & sofortiges Rollback
+
+Ueber gewichtete Records in AWS Route 53 werden zunaechst 10 % des Produktivverkehrs auf das neue Cloud-Cluster geleitet. Die Telemetrie wird in Echtzeit ueberwacht:
+- 5xx-HTTP-Fehlerraten
+- Auslastung des Datenbank-Verbindungspools
+- P99-Latenz-Perzentile
+
+Bleiben alle Metriken ueber 120 Minuten stabil, wird die Gewichtung auf 100 % erhoeht, wodurch der Uebergang ohne unterbrochene Nutzersitzungen abgeschlossen wird.
+
+---
+
+### Produktionsergebnisse
+
+- **Verfuegbarkeit waehrend der Migration:** 100 % (null Minuten Ausfallzeit).
+- **SEO-Ranking-Erhalt:** 100 % der organischen Impressionen nach 30 Tagen unveraendert beibehalten.
+- **P95-Antwortlatenz:** um 48 % reduziert nach dem Wechsel auf Cloud-Native-Compute.`,
   },
 }

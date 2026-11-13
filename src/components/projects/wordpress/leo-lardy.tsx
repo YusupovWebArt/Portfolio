@@ -6,12 +6,15 @@ const leoLardy: Project = {
   description: 'French visually driven creative platform.',
   descriptionUa: 'Французька візуальна креативна платформа.',
   descriptionEs: 'Plataforma creativa francesa de carácter visual.',
+  descriptionDe: 'Französische visuell geprägte Kreativplattform.',
   fullDescription:
     'Leo Lardy is a premium French creative platform built on WordPress with a fully customized theme, bespoke CSS3 animations, and JavaScript-driven interactions. The site reflects a high-end visual identity with fast load times, SEO best practices, and Google Maps integration for location-aware content.',
   fullDescriptionUa:
-    'Leo Lardy — це преміальна французька креативна платформа, створена на WordPress із повністю кастомізованою темою, унікальними CSS3-анімаціями та інтерактивними елементами на JavaScript. Сайт відображає вишукану візуальну айдентику, забезпечує високу швидкість завантаження, відповідає кращим SEO-практикам та інтегрований з Google Maps API для відображення геолокаційного контенту.',
+    'Leo Lardy - це преміальна французька креативна платформа, створена на WordPress із повністю кастомізованою темою, унікальними CSS3-анімаціями та інтерактивними елементами на JavaScript. Сайт відображає вишукану візуальну айдентику, забезпечує високу швидкість завантаження, відповідає кращим SEO-практикам та інтегрований з Google Maps API для відображення геолокаційного контенту.',
   fullDescriptionEs:
     'Leo Lardy es una plataforma creativa francesa premium desarrollada en WordPress con un tema completamente personalizado, animaciones CSS3 exclusivas e interacciones basadas en JavaScript. El sitio refleja una identidad visual de alto nivel, con tiempos de carga reducidos, buenas prácticas de SEO e integración con Google Maps API para contenido con información de ubicación.',
+  fullDescriptionDe:
+    'Leo Lardy ist eine hochwertige französische Kreativplattform auf WordPress-Basis mit einem vollständig angepassten Theme, maßgeschneiderten CSS3-Animationen und JavaScript-gesteuerten Interaktionen. Die Website vermittelt eine erstklassige visuelle Identität mit schnellen Ladezeiten, bewährten SEO-Praktiken und einer Google-Maps-Integration für standortbezogene Inhalte.',
   detailHeroLine: 'CUSTOM WORDPRESS · CREATIVE PLATFORM',
   detailMetrics: [
     { value: '90+', label: 'PageSpeed Score', accent: 'green' },
@@ -40,6 +43,8 @@ const leoLardy: Project = {
     ],
     description:
       'The site is powered by a premium WordPress theme heavily customized with CSS3 and ES6 JavaScript to match the client\'s visual requirements. PHP handles dynamic content and form processing, while Cloudflare CDN and Nginx caching ensure fast global delivery.',
+    descriptionDe:
+      'Die Website basiert auf einem Premium-WordPress-Theme, das umfassend mit CSS3 und ES6-JavaScript an die visuellen Anforderungen des Kunden angepasst wurde. PHP übernimmt dynamische Inhalte und die Formularverarbeitung, während Cloudflare CDN und Nginx-Caching für eine schnelle weltweite Auslieferung sorgen.',
   },
   image: '/Portfolio/images/portfolio/thumbs/wordpress/leo-lardy_thumb.webp',
   fullScreenshot:
@@ -102,27 +107,45 @@ const leoLardy: Project = {
   features: [
     {
       title: 'Premium WordPress Theme Customization',
+      titleDe: 'Anpassung eines Premium-WordPress-Themes',
       description:
         'A premium WordPress theme was extensively customized using CSS3 and JavaScript to precisely match the client\'s creative vision and brand identity requirements.',
+      descriptionDe:
+        'Ein Premium-WordPress-Theme wurde umfassend mit CSS3 und JavaScript angepasst, um die kreative Vision und die Markenidentität des Kunden präzise umzusetzen.',
     },
     {
       title: 'Custom CSS3 & JavaScript Interactions',
+      titleDe: 'Individuelle CSS3- und JavaScript-Interaktionen',
       description:
         'Bespoke CSS3 animations and ES6 JavaScript components deliver a unique, dynamic user experience with smooth transitions and personalized visual effects.',
+      descriptionDe:
+        'Maßgeschneiderte CSS3-Animationen und ES6-JavaScript-Komponenten bieten ein einzigartiges, dynamisches Nutzererlebnis mit fließenden Übergängen und individuellen visuellen Effekten.',
     },
     {
       title: 'Responsive Design',
+      titleDe: 'Responsives Design',
       description:
         'The layout is fully responsive across all device types, ensuring seamless navigation and consistent aesthetics on desktops, tablets, and smartphones.',
+      descriptionDe:
+        'Das Layout ist auf allen Gerätetypen vollständig responsiv und gewährleistet eine nahtlose Navigation sowie eine konsistente Ästhetik auf Desktops, Tablets und Smartphones.',
     },
     {
       title: 'SEO Optimization',
+      titleDe: 'SEO-Optimierung',
       description:
         'Built with technical SEO best practices including optimized meta tags, Schema.org structured data, and fast load times to maximize search engine visibility.',
+      descriptionDe:
+        'Umgesetzt nach bewährten Methoden des technischen SEO inklusive optimierter Meta-Tags, strukturierter Schema.org-Daten und schneller Ladezeiten zur Maximierung der Suchmaschinensichtbarkeit.',
     },
   ],
   challenges: [],
+  challengesUa: [],
+  challengesEs: [],
+  challengesDe: [],
   solutions: [],
+  solutionsUa: [],
+  solutionsEs: [],
+  solutionsDe: [],
   liveUrl: 'https://lardyleo.com/',
   githubUrl: '#',
   category: ['wordpress'],

@@ -6,12 +6,15 @@ const fluffyNinja: Project = {
   description: 'Creative cloth store. France',
   descriptionUa: 'Магазин креативного одягу. Франція',
   descriptionEs: 'Tienda de moda creativa. Francia.',
+  descriptionDe: 'Shop für kreative Mode. Frankreich.',
   fullDescription:
-    'A custom WooCommerce store built on a hand-coded WordPress theme for a French creative clothing brand. Custom CSS3, JavaScript, and PHP deliver a playful and unique visual identity, while WooCommerce provides the full e-commerce infrastructure — product catalog, cart, and checkout. Full SEO optimization and Schema.org markup support organic search visibility in the French fashion market.',
+    'A custom WooCommerce store built on a hand-coded WordPress theme for a French creative clothing brand. Custom CSS3, JavaScript, and PHP deliver a playful and unique visual identity, while WooCommerce provides the full e-commerce infrastructure - product catalog, cart, and checkout. Full SEO optimization and Schema.org markup support organic search visibility in the French fashion market.',
   fullDescriptionUa:
-    'Кастомний магазин WooCommerce, побудований на написаній вручну темі WordPress для французького бренду креативного одягу. Кастомні CSS3, JavaScript та PHP забезпечують грайливу й унікальну візуальну айдентику, тоді як WooCommerce надає повну e-commerce інфраструктуру — каталог товарів, кошик та оформлення замовлення. Повна SEO-оптимізація та мікророзмітка Schema.org підтримують видимість в органічному пошуку на французькому ринку моди.',
+    'Кастомний магазин WooCommerce, побудований на написаній вручну темі WordPress для французького бренду креативного одягу. Кастомні CSS3, JavaScript та PHP забезпечують грайливу й унікальну візуальну айдентику, тоді як WooCommerce надає повну e-commerce інфраструктуру - каталог товарів, кошик та оформлення замовлення. Повна SEO-оптимізація та мікророзмітка Schema.org підтримують видимість в органічному пошуку на французькому ринку моди.',
   fullDescriptionEs:
     'Tienda WooCommerce personalizada construida sobre un tema WordPress codificado a mano para una marca de moda creativa francesa. CSS3, JavaScript y PHP propios otorgan una identidad visual lúdica y única, mientras que WooCommerce proporciona la infraestructura completa de e-commerce: catálogo de productos, carrito y proceso de compra. La optimización SEO completa y el marcado Schema.org impulsan la visibilidad en la búsqueda orgánica en el mercado de la moda francés.',
+  fullDescriptionDe:
+    'Ein maßgeschneiderter WooCommerce-Shop auf Basis eines handcodierten WordPress-Themes für eine französische Kreativmodemarke. Individuelles CSS3, JavaScript und PHP verleihen dem Shop eine verspielte und einzigartige visuelle Identität, während WooCommerce die vollständige E-Commerce-Infrastruktur bereitstellt - Produktkatalog, Warenkorb und Checkout. Umfassende SEO-Optimierung und Schema.org-Markup fördern die organische Sichtbarkeit auf dem französischen Modemarkt.',
   detailHeroLine: 'CUSTOM WORDPRESS · CREATIVE FASHION · E-COMMERCE · FRANCE',
   detailMetrics: [
     { value: '90+', label: 'PageSpeed Score', accent: 'green' },
@@ -40,6 +43,8 @@ const fluffyNinja: Project = {
     ],
     description:
       'A custom PHP WordPress theme powers the Fluffy Ninja store with WooCommerce managing the complete e-commerce layer. MySQL stores all product data, order records, and customer information. Cloudflare CDN delivers product photography fast to French shoppers globally, while Nginx handles server-side performance.',
+    descriptionDe:
+      'Ein maßgeschneidertes PHP-WordPress-Theme betreibt den Fluffy-Ninja-Shop, während WooCommerce die gesamte E-Commerce-Ebene verwaltet. MySQL speichert alle Produktdaten, Bestelldatensätze und Kundeninformationen. Cloudflare CDN liefert Produktfotografien schnell an französische und internationale Käufer aus, während Nginx die serverseitige Performance sicherstellt.',
   },
   image: '/Portfolio/images/portfolio/thumbs/wordpress/fluffy-ninja_thumb.webp',
   fullScreenshot:
@@ -93,32 +98,53 @@ const fluffyNinja: Project = {
   features: [
     {
       title: 'Custom WordPress Theme from Scratch',
+      titleDe: 'Individuelles WordPress-Theme von Grund auf',
       description:
         'The store theme was hand-coded in PHP, giving Fluffy Ninja a completely unique and creative visual identity that stands out in the French fashion market.',
+      descriptionDe:
+        'Das Shop-Theme wurde in PHP handcodiert und verleiht Fluffy Ninja eine völlig eigenständige und kreative visuelle Identität, die sich auf dem französischen Modemarkt abhebt.',
     },
     {
       title: 'WooCommerce E-Commerce Integration',
+      titleDe: 'WooCommerce E-Commerce-Integration',
       description:
         'Full WooCommerce setup provides product management, variant configuration, secure checkout, and payment gateway support for the clothing store.',
+      descriptionDe:
+        'Die vollständige WooCommerce-Einrichtung bietet Produktverwaltung, Variantenkonfiguration, sicheren Checkout und Unterstützung für Zahlungs-Gateways im Modeshop.',
     },
     {
       title: 'Creative Brand Aesthetic',
+      titleDe: 'Kreative Markenästhetik',
       description:
         'Custom CSS3 and JavaScript implement the Fluffy Ninja brand\'s playful personality through unique animations, color schemes, and interactive product browsing experiences.',
+      descriptionDe:
+        'Maßgeschneidertes CSS3 und JavaScript setzen die verspielte Persönlichkeit der Marke Fluffy Ninja durch einzigartige Animationen, Farbschemata und interaktives Produkt-Browsing um.',
     },
     {
       title: 'SEO & Schema.org for Products',
+      titleDe: 'SEO & Schema.org für Produkte',
       description:
         'JSON-LD Product schema and optimized meta tags drive rich search snippets with pricing and availability, improving visibility for French fashion shoppers searching online.',
+      descriptionDe:
+        'JSON-LD-Produkt-Schema und optimierte Meta-Tags erzeugen Rich-Such-Snippets mit Preisen und Verfügbarkeit und verbessern die Sichtbarkeit für französische Modekäufer bei der Online-Suche.',
     },
     {
       title: 'Responsive & Fast Shopping Experience',
+      titleDe: 'Responsives und schnelles Einkaufserlebnis',
       description:
         'Fully responsive design with WebP product images and Cloudflare CDN ensures a fast, visually engaging shopping experience across all devices.',
+      descriptionDe:
+        'Ein vollständig responsives Design mit WebP-Produktbildern und Cloudflare CDN sorgt für ein schnelles, visuell ansprechendes Einkaufserlebnis auf allen Endgeräten.',
     },
   ],
   challenges: [],
+  challengesUa: [],
+  challengesEs: [],
+  challengesDe: [],
   solutions: [],
+  solutionsUa: [],
+  solutionsEs: [],
+  solutionsDe: [],
   liveUrl: 'https://fluffy-ninja.com/',
   githubUrl: '#',
   category: ['wordpress'],

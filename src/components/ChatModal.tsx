@@ -262,12 +262,16 @@ const ChatModal = ({
         ? `Hybrid RAG · Кейс ${projectContext.projectTitle}`
         : lang === 'es'
           ? `Hybrid RAG · Caso de estudio ${projectContext.projectTitle}`
-          : `Hybrid RAG · ${projectContext.projectTitle} Case Study`
+          : lang === 'de'
+            ? `Hybrid RAG · Fallstudie ${projectContext.projectTitle}`
+            : `Hybrid RAG · ${projectContext.projectTitle} Case Study`
       : lang === 'ua'
         ? 'Hybrid RAG · База знань із 71 проєкту'
         : lang === 'es'
           ? 'Hybrid RAG · Base de conocimiento de 71 proyectos'
-          : 'Hybrid RAG · 71-Project Knowledge Base'
+          : lang === 'de'
+            ? 'Hybrid RAG · Wissensdatenbank mit 71 Projekten'
+            : 'Hybrid RAG · 71-Project Knowledge Base'
 
     setMessages((prev) => [...prev, userMessage])
     setInput('')
@@ -306,11 +310,8 @@ const ChatModal = ({
       const resolvedBlog = resolveBlogFromQueryOrContext(textToSend, ragOptions)
       if (resolvedBlog) {
         const blogTitle =
-          lang === 'ua'
-            ? resolvedBlog.title.ua
-            : lang === 'es'
-              ? resolvedBlog.title.es
-              : resolvedBlog.title.en
+          (resolvedBlog.title as Partial<Record<'en' | 'ua' | 'es' | 'de', string>>)[lang] ||
+          resolvedBlog.title.en
         setProjectContext({
           projectSlug: resolvedBlog.slug,
           projectTitle: blogTitle,
@@ -438,11 +439,8 @@ const ChatModal = ({
             )
             if (resolvedBlog) {
               const blogTitle =
-                lang === 'ua'
-                  ? resolvedBlog.title.ua
-                  : lang === 'es'
-                    ? resolvedBlog.title.es
-                    : resolvedBlog.title.en
+                (resolvedBlog.title as Partial<Record<'en' | 'ua' | 'es' | 'de', string>>)[lang] ||
+                resolvedBlog.title.en
               setProjectContext({
                 projectSlug: resolvedBlog.slug,
                 projectTitle: blogTitle,
@@ -514,11 +512,8 @@ const ChatModal = ({
       const resolvedBlog = resolveBlogFromQueryOrContext(textToSend, ragOptions)
       if (resolvedBlog) {
         const blogTitle =
-          lang === 'ua'
-            ? resolvedBlog.title.ua
-            : lang === 'es'
-              ? resolvedBlog.title.es
-              : resolvedBlog.title.en
+          (resolvedBlog.title as Partial<Record<'en' | 'ua' | 'es' | 'de', string>>)[lang] ||
+          resolvedBlog.title.en
         setProjectContext({
           projectSlug: resolvedBlog.slug,
           projectTitle: blogTitle,
@@ -583,13 +578,17 @@ const ChatModal = ({
             ? `Активний контекст: **${projectContext.projectTitle}**. Я завантажив його архітектуру, технічний стек, ключові функції та інженерні рішення. Оберіть швидкий запит нижче або поставте своє запитання щодо цього проєкту!`
             : lang === 'es'
               ? `Contexto activo: **${projectContext.projectTitle}**. He cargado su arquitectura, stack técnico, funcionalidades clave y soluciones de ingeniería. Elige una consulta rápida abajo o haz cualquier pregunta sobre este proyecto.`
-              : `Active context: **${projectContext.projectTitle}**. I have loaded its architecture, tech stack, key features, and engineering case study. Pick a quick query below or ask any specific question about this project!`
+              : lang === 'de'
+                ? `Aktiver Kontext: **${projectContext.projectTitle}**. Ich habe Architektur, Tech-Stack, Schlüsselfunktionen und Engineering-Details geladen. Wählen Sie unten eine Schnellabfrage oder stellen Sie Ihre konkrete Frage zu diesem Projekt!`
+                : `Active context: **${projectContext.projectTitle}**. I have loaded its architecture, tech stack, key features, and engineering case study. Pick a quick query below or ask any specific question about this project!`
         const activeSource =
           lang === 'ua'
             ? `Активний кейс · ${projectContext.projectTitle}`
             : lang === 'es'
               ? `Caso de estudio activo · ${projectContext.projectTitle}`
-              : `Active Case Study · ${projectContext.projectTitle}`
+              : lang === 'de'
+                ? `Aktive Fallstudie · ${projectContext.projectTitle}`
+                : `Active Case Study · ${projectContext.projectTitle}`
         return {
           ...msg,
           text: contextWelcome,
@@ -601,7 +600,9 @@ const ChatModal = ({
           ? 'Hybrid RAG · База знань із 71 проєкту'
           : lang === 'es'
             ? 'Hybrid RAG · Base de conocimiento de 71 proyectos'
-            : 'Hybrid RAG · 71-Project Knowledge Base'
+            : lang === 'de'
+              ? 'Hybrid RAG · Wissensdatenbank mit 71 Projekten'
+              : 'Hybrid RAG · 71-Project Knowledge Base'
       return {
         ...msg,
         text: ct.welcomeMessage,
@@ -668,7 +669,34 @@ const ChatModal = ({
               prompt: `Preguntar sobre ${projectContext.projectTitle}: ¿Qué retos de ingeniería y soluciones se implementaron?`,
             },
           ]
-        : [
+        : lang === 'de'
+          ? [
+              {
+                icon: Layers,
+                title: 'Tech-Stack & Versionen',
+                subtitle: ct.quickQueryStack,
+                prompt: `Frage zu ${projectContext.projectTitle}: ${ct.quickQueryStack}`,
+              },
+              {
+                icon: Cpu,
+                title: 'Systemarchitektur',
+                subtitle: ct.quickQueryArchitecture,
+                prompt: `Frage zu ${projectContext.projectTitle}: ${ct.quickQueryArchitecture}`,
+              },
+              {
+                icon: Sparkles,
+                title: 'Funktionen & Metriken',
+                subtitle: ct.quickQueryFeatures,
+                prompt: `Frage zu ${projectContext.projectTitle}: ${ct.quickQueryFeatures}`,
+              },
+              {
+                icon: Wrench,
+                title: 'Herausforderungen & Lösungen',
+                subtitle: 'Welche technischen Herausforderungen wurden gelöst?',
+                prompt: `Frage zu ${projectContext.projectTitle}: Welche technischen Herausforderungen und Lösungen wurden im Projekt umgesetzt?`,
+              },
+            ]
+          : [
             {
               icon: Layers,
               title: 'Tech Stack & Versions',
@@ -701,7 +729,9 @@ const ChatModal = ({
       ? `Введіть запитання про ${projectContext.projectTitle}...`
       : lang === 'es'
         ? `Escribe una pregunta sobre ${projectContext.projectTitle}...`
-        : `Type a question about ${projectContext.projectTitle}...`
+        : lang === 'de'
+          ? `Frage zu ${projectContext.projectTitle} eingeben...`
+          : `Type a question about ${projectContext.projectTitle}...`
     : ct.placeholder
 
   // Dynamic contextual follow-ups from the latest bot message, or fallback to unanswered FAQ items
@@ -713,7 +743,8 @@ const ChatModal = ({
           m.from === 'user' &&
           (m.text === faq.question ||
             m.text === faq.questionUa ||
-            m.text === faq.questionEs),
+            m.text === faq.questionEs ||
+            m.text === faq.questionDe),
       ),
   )
     .slice(0, 3)
@@ -722,7 +753,9 @@ const ChatModal = ({
         ? faq.questionUa
         : lang === 'es'
           ? faq.questionEs
-          : faq.question,
+          : lang === 'de'
+            ? faq.questionDe
+            : faq.question,
     )
 
   const suggestionChips: string[] =
@@ -735,14 +768,18 @@ const ChatModal = ({
       ? 'Скопіювати відповідь'
       : lang === 'es'
         ? 'Copiar respuesta'
-        : 'Copy response'
+        : lang === 'de'
+          ? 'Antwort kopieren'
+          : 'Copy response'
 
   const stopLabel =
     lang === 'ua'
       ? 'Зупинити генерацію'
       : lang === 'es'
         ? 'Detener generación'
-        : 'Stop generating'
+        : lang === 'de'
+          ? 'Generierung stoppen'
+          : 'Stop generating'
 
   const modalNode = (
     <div className="fixed inset-0 bg-slate-900/40 dark:bg-black/60 backdrop-blur-sm flex items-center justify-center z-[70] p-3 sm:p-6 text-left transition-all duration-300">
@@ -806,12 +843,16 @@ const ChatModal = ({
                     ? 'Зменшити вікно'
                     : lang === 'es'
                       ? 'Restaurar ventana'
-                      : 'Restore window'
+                      : lang === 'de'
+                        ? 'Fenster verkleinern'
+                        : 'Restore window'
                   : lang === 'ua'
                     ? 'Розгорнути вікно'
                     : lang === 'es'
                       ? 'Maximizar ventana'
-                      : 'Maximize window'
+                      : lang === 'de'
+                        ? 'Fenster maximieren'
+                        : 'Maximize window'
               }
               aria-label={
                 isMaximized
@@ -819,12 +860,16 @@ const ChatModal = ({
                     ? 'Зменшити вікно'
                     : lang === 'es'
                       ? 'Restaurar ventana'
-                      : 'Restore window'
+                      : lang === 'de'
+                        ? 'Fenster verkleinern'
+                        : 'Restore window'
                   : lang === 'ua'
                     ? 'Розгорнути вікно'
                     : lang === 'es'
                       ? 'Maximizar ventana'
-                      : 'Maximize window'
+                      : lang === 'de'
+                        ? 'Fenster maximieren'
+                        : 'Maximize window'
               }
               type="button"
             >
@@ -1041,12 +1086,16 @@ const ChatModal = ({
                         ? 'Сховати загальні питання портфоліо'
                         : lang === 'es'
                           ? 'Ocultar preguntas generales del portfolio'
-                          : 'Hide general portfolio FAQs'
+                          : lang === 'de'
+                            ? 'Allgemeine Portfolio-FAQs ausblenden'
+                            : 'Hide general portfolio FAQs'
                       : lang === 'ua'
                         ? 'Показати загальні питання портфоліо (8)'
                         : lang === 'es'
                           ? 'Mostrar preguntas generales del portfolio (8)'
-                          : 'Show general portfolio FAQs (8)'}
+                          : lang === 'de'
+                            ? 'Allgemeine Portfolio-FAQs anzeigen (8)'
+                            : 'Show general portfolio FAQs (8)'}
                   </span>
                   {showGeneralFaqs ? (
                     <ChevronUp className="w-3.5 h-3.5" aria-hidden="true" />
@@ -1063,7 +1112,14 @@ const ChatModal = ({
               {(!projectContext || showGeneralFaqs) && (
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                   {FAQ.slice(0, 8).map((faq, idx) => {
-                    const questionText = lang === 'ua' ? faq.questionUa : lang === 'es' ? faq.questionEs : faq.question
+                    const questionText =
+                      lang === 'ua'
+                        ? faq.questionUa
+                        : lang === 'es'
+                          ? faq.questionEs
+                          : lang === 'de'
+                            ? faq.questionDe
+                            : faq.question
                     return (
                       <button
                         key={idx}

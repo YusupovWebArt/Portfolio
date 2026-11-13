@@ -95,10 +95,11 @@ export function getDecodedContactInfo(): DecodedContactInfo {
   }
 }
 
-const DEFAULT_WHATSAPP_MESSAGES: Record<'en' | 'ua' | 'es', string> = {
+const DEFAULT_WHATSAPP_MESSAGES: Record<'en' | 'ua' | 'es' | 'de', string> = {
   es: 'Hola Artur, me gustaría consultar la disponibilidad para un proyecto web.',
   en: 'Hi Artur, I would like to inquire about availability for a web project.',
   ua: 'Привіт Артуре, хочу обговорити розробку веб-проєкту.',
+  de: 'Hallo Artur, ich möchte mich nach der Verfügbarkeit für ein Webprojekt erkundigen.',
 }
 
 /**
@@ -106,7 +107,7 @@ const DEFAULT_WHATSAPP_MESSAGES: Record<'en' | 'ua' | 'es', string> = {
  * Fully decoded on-demand in memory.
  */
 export function buildWhatsAppDirectUrl(
-  locale: 'en' | 'ua' | 'es' = 'en',
+  locale: 'en' | 'ua' | 'es' | 'de' = 'en',
   customMessage?: string,
 ): string {
   const baseWaUrl = decodeContact(OBFUSCATED_CONTACTS.whatsappUrl)
@@ -119,7 +120,7 @@ export function buildWhatsAppDirectUrl(
  * Triggers 1-click WhatsApp opening directly from client events.
  */
 export function openWhatsAppDirect(
-  locale: 'en' | 'ua' | 'es' = 'en',
+  locale: 'en' | 'ua' | 'es' | 'de' = 'en',
   customMessage?: string,
 ): void {
   if (typeof window === 'undefined') return

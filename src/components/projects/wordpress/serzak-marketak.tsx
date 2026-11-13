@@ -9,12 +9,16 @@ const serzakMarketak: Project = {
     'Чеське агентство цифрового маркетингу, засноване та кероване маркетологом Сергієм Венгрином.',
   descriptionEs:
     'Agencia de marketing digital con sede en la República Checa, fundada y dirigida por el especialista en marketing Serhiy Venhryn.',
+  descriptionDe:
+    'Tschechische Digital-Marketing-Agentur, gegründet und geleitet vom Marketing-Spezialisten Serhiy Venhryn.',
   fullDescription:
     'Serzak Marketak is a digital marketing agency website based in the Czech Republic, built on a custom WordPress theme from scratch with Elementor page builder enhanced by advanced CSS3 and JavaScript. The site showcases the agency\'s services, portfolio, and expertise, with multilingual-ready SEO and Schema.org markup to support business development across the Czech and Ukrainian markets.',
   fullDescriptionUa:
-    'Serzak Marketak — це вебсайт агентства цифрового маркетингу в Чехії, побудований на унікальній темі WordPress з нуля з використанням конструктора сторінок Elementor, доповненого розширеним CSS3 та JavaScript. Сайт демонструє послуги, портфоліо та експертизу агентства, підтримує мультимовне SEO та розмітку Schema.org для розвитку бізнесу на ринках Чехії та України.',
+    'Serzak Marketak - це вебсайт агентства цифрового маркетингу в Чехії, побудований на унікальній темі WordPress з нуля з використанням конструктора сторінок Elementor, доповненого розширеним CSS3 та JavaScript. Сайт демонструє послуги, портфоліо та експертизу агентства, підтримує мультимовне SEO та розмітку Schema.org для розвитку бізнесу на ринках Чехії та України.',
   fullDescriptionEs:
     'Serzak Marketak es el sitio web de una agencia de marketing digital con sede en la República Checa, construido sobre un tema de WordPress personalizado desde cero con el constructor de páginas Elementor, mejorado con CSS3 avanzado y JavaScript. El sitio presenta los servicios, el portafolio y la experiencia de la agencia, con SEO preparado para múltiples idiomas y marcado Schema.org para impulsar el desarrollo de negocio en los mercados checo y ucraniano.',
+  fullDescriptionDe:
+    'Serzak Marketak ist die Website einer Digital-Marketing-Agentur mit Sitz in der Tschechischen Republik, die von Grund auf mit einem individuellen WordPress-Theme sowie dem Elementor Page Builder und erweitertem CSS3 und JavaScript entwickelt wurde. Die Website präsentiert das Leistungsangebot, das Portfolio und die Expertise der Agentur und verfügt über mehrsprachiges SEO sowie Schema.org-Markup zur Geschäftsentwicklung auf dem tschechischen und ukrainischen Markt.',
   detailHeroLine: 'CUSTOM WORDPRESS · DIGITAL MARKETING AGENCY',
   detailMetrics: [
     { value: '90+', label: 'PageSpeed Score', accent: 'green' },
@@ -43,6 +47,12 @@ const serzakMarketak: Project = {
     ],
     description:
       'A custom WordPress theme built from scratch provides the structural foundation and brand identity. Elementor handles page layouts with the client\'s future editing needs in mind, substantially enhanced with custom CSS3 animations and JavaScript interactions. Nginx caching and Cloudflare CDN ensure fast delivery to clients in the Czech Republic and beyond.',
+    descriptionUa:
+      'Індивідуальна тема WordPress, створена з нуля, забезпечує структурну основу та айдентику бренду. Elementor відповідає за макети сторінок з урахуванням майбутніх потреб клієнта в редагуванні, будучи суттєво доповненим кастомними CSS3-анімаціями та JavaScript-інтерактивністю. Кешування Nginx та Cloudflare CDN гарантують швидку доставку контенту клієнтам у Чехії та за її межами.',
+    descriptionEs:
+      'Un tema de WordPress personalizado creado desde cero proporciona la base estructural y la identidad de marca. Elementor gestiona los diseños de página pensando en las futuras necesidades de edición del cliente, mejorado sustancialmente con animaciones CSS3 personalizadas e interacciones JavaScript. El almacenamiento en caché de Nginx y Cloudflare CDN garantizan una entrega rápida a los clientes en la República Checa y otros mercados.',
+    descriptionDe:
+      'Ein von Grund auf neu entwickeltes WordPress-Theme bildet das strukturelle Fundament und die Markenidentität. Elementor steuert die Seitenlayouts im Hinblick auf künftige Bearbeitungsanforderungen des Kunden und wird durch individuelle CSS3-Animationen sowie JavaScript-Interaktionen deutlich erweitert. Nginx-Caching und Cloudflare CDN gewährleisten schnelle Ladezeiten für Kunden in Tschechien und darüber hinaus.',
   },
   image:
     '/Portfolio/images/portfolio/thumbs/wordpress/serzakmarketak_thumb.webp',
@@ -111,32 +121,83 @@ const serzakMarketak: Project = {
   features: [
     {
       title: 'Custom WordPress Theme from Scratch',
+      titleUa: 'Індивідуальна тема WordPress з нуля',
+      titleEs: 'Tema de WordPress personalizado desde cero',
+      titleDe: 'Individuelles WordPress-Theme von Grund auf',
       description:
         'A fully custom WordPress theme was built to establish a distinctive digital agency brand identity with complete control over design, typography, and layout structure.',
+      descriptionUa:
+        'Повністю кастомна тема WordPress була розроблена для формування виразної айдентики цифрового агентства з повним контролем над дизайном, типографікою та структурою макета.',
+      descriptionEs:
+        'Se construyó un tema de WordPress totalmente personalizado para establecer una identidad de marca distintiva para la agencia digital con control total sobre el diseño, la tipografía y la estructura.',
+      descriptionDe:
+        'Ein vollständig maßgeschneidertes WordPress-Theme wurde entwickelt, um eine unverwechselbare Markenidentität der Digitalagentur mit voller Kontrolle über Design, Typografie und Layoutstruktur zu schaffen.',
     },
     {
       title: 'Elementor with Advanced CSS3 & JavaScript',
+      titleUa: 'Elementor із розширеним CSS3 та JavaScript',
+      titleEs: 'Elementor con CSS3 y JavaScript avanzados',
+      titleDe: 'Elementor mit erweitertem CSS3 und JavaScript',
       description:
         'Elementor was integrated at the client\'s request for self-editing capability, and significantly enhanced with custom CSS3 animations and JavaScript interactions to deliver a polished, high-end agency look.',
+      descriptionUa:
+        'Elementor було інтегровано за запитом клієнта для можливості самостійного редагування та суттєво розширено кастомними CSS3-анімаціями і JavaScript-інтерактивністю для створення преміального вигляду агентства.',
+      descriptionEs:
+        'Elementor se integró a petición del cliente para permitir la autoedición y se mejoró significativamente con animaciones CSS3 personalizadas e interacciones JavaScript para lograr una imagen de agencia de alto nivel.',
+      descriptionDe:
+        'Elementor wurde auf Wunsch des Kunden für die Selbstbearbeitung integriert und durch individuelle CSS3-Animationen sowie JavaScript-Interaktionen erheblich erweitert, um einen hochwertigen Agenturauftritt zu erzielen.',
     },
     {
       title: 'Services & Portfolio Showcase',
+      titleUa: 'Вітрина послуг та портфоліо',
+      titleEs: 'Escaparate de servicios y portafolio',
+      titleDe: 'Leistungs- und Portfolio-Präsentation',
       description:
         'Dedicated sections present the agency\'s digital marketing services including SEO, PPC, and social media, alongside portfolio case studies demonstrating measurable client results.',
+      descriptionUa:
+        'Спеціалізовані розділи презентують послуги цифрового маркетингу агентства, включаючи SEO, PPC та соціальні мережі, разом із кейсами портфоліо, що демонструють вимірювані результати клієнтів.',
+      descriptionEs:
+        'Secciones dedicadas presentan los servicios de marketing digital de la agencia, incluyendo SEO, PPC y redes sociales, junto con casos de estudio del portafolio que demuestran resultados medibles.',
+      descriptionDe:
+        'Dedizierte Bereiche präsentieren die Digital-Marketing-Leistungen der Agentur - darunter SEO, PPC und Social Media - ergänzt durch Portfolio-Fallstudien mit messbaren Kundenergebnissen.',
     },
     {
       title: 'Responsive Design',
+      titleUa: 'Адаптивний дизайн',
+      titleEs: 'Diseño responsivo',
+      titleDe: 'Responsives Design',
       description:
         'The site is fully responsive across all devices, ensuring prospective clients have a seamless experience whether browsing on desktop, tablet, or mobile.',
+      descriptionUa:
+        'Сайт повністю адаптивний на всіх пристроях, що гарантує потенційним клієнтам бездоганний досвід перегляду на комп\'ютері, планшеті чи смартфоні.',
+      descriptionEs:
+        'El sitio es totalmente responsivo en todos los dispositivos, garantizando que los clientes potenciales disfruten de una experiencia fluida tanto en escritorio como en tableta o móvil.',
+      descriptionDe:
+        'Die Website ist auf allen Endgeräten vollständig responsiv und bietet potenziellen Kunden auf Desktop, Tablet und Smartphone ein nahtloses Nutzungserlebnis.',
     },
     {
       title: 'SEO Optimization',
+      titleUa: 'SEO-оптимізація',
+      titleEs: 'Optimización SEO',
+      titleDe: 'SEO-Optimierung',
       description:
         'Technical SEO with Schema.org markup and multilingual meta tags helps the agency rank for digital marketing queries in both the Czech and Ukrainian markets.',
+      descriptionUa:
+        'Технічне SEO з розміткою Schema.org та мультимовними мета-тегами допомагає агентству ранжуватися за запитами цифрового маркетингу на ринках Чехії та України.',
+      descriptionEs:
+        'El SEO técnico con marcado Schema.org y metaetiquetas multilingües ayuda a la agencia a posicionarse para consultas de marketing digital tanto en el mercado checo como en el ucraniano.',
+      descriptionDe:
+        'Technisches SEO mit Schema.org-Markup und mehrsprachigen Meta-Tags unterstützt die Agentur beim Ranking für Digital-Marketing-Suchanfragen im tschechischen und ukrainischen Markt.',
     },
   ],
   challenges: [],
+  challengesUa: [],
+  challengesEs: [],
+  challengesDe: [],
   solutions: [],
+  solutionsUa: [],
+  solutionsEs: [],
+  solutionsDe: [],
   liveUrl: 'https://serzakmarketak.cz/',
   githubUrl: '#',
   category: ['wordpress'],

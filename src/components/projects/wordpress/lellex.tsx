@@ -6,12 +6,15 @@ const lellex: Project = {
   description: 'Video Production.',
   descriptionUa: 'Відеопродакшн.',
   descriptionEs: 'Producción de vídeo.',
+  descriptionDe: 'Videoproduktion.',
   fullDescription:
     'A unique custom WordPress theme built entirely from scratch based on a Figma design layout, using hand-coded HTML, CSS3, JavaScript, and PHP for a video production company. The site showcases the studio\'s portfolio, services, and reel in a visually bold format designed to attract creative clients seeking professional video production services.',
   fullDescriptionUa:
     'Унікальна кастомна тема WordPress, створена повністю з нуля на основі макета з Figma, з використанням написаних вручну HTML, CSS3, JavaScript та PHP для відеопродакшн-студії. Сайт презентує портфоліо, послуги та шоуріл студії у візуально сміливому форматі, розробленому для залучення креативних клієнтів, які шукають професійні послуги з виробництва відео.',
   fullDescriptionEs:
     'Tema WordPress única y completamente personalizada, construida desde cero a partir de un diseño en Figma, utilizando HTML, CSS3, JavaScript y PHP codificados a mano para una empresa de producción de vídeo. El sitio presenta el portfolio, los servicios y el showreel del estudio en un formato visualmente audaz, diseñado para atraer a clientes creativos que buscan servicios profesionales de producción de vídeo.',
+  fullDescriptionDe:
+    'Ein einzigartiges, vollständig von Grund auf anhand eines Figma-Designlayouts entwickeltes WordPress-Theme mit handcodiertem HTML, CSS3, JavaScript und PHP für ein Videoproduktionsunternehmen. Die Website präsentiert das Portfolio, die Leistungen und das Showreel des Studios in einem visuell ausdrucksstarken Format, um kreative Kunden für professionelle Videoproduktionen zu gewinnen.',
   detailHeroLine: 'CUSTOM WORDPRESS · VIDEO PRODUCTION · FIGMA-TO-CODE',
   detailMetrics: [
     { value: '90+', label: 'PageSpeed Score', accent: 'green' },
@@ -39,7 +42,9 @@ const lellex: Project = {
       },
     ],
     description:
-      'The WordPress theme was built pixel-perfect from a Figma design file using hand-coded PHP, HTML5, CSS3, and JavaScript — with no page builder involved. MySQL stores all portfolio content, pages, and media. Cloudflare CDN ensures fast delivery of video thumbnails and production imagery globally.',
+      'The WordPress theme was built pixel-perfect from a Figma design file using hand-coded PHP, HTML5, CSS3, and JavaScript - with no page builder involved. MySQL stores all portfolio content, pages, and media. Cloudflare CDN ensures fast delivery of video thumbnails and production imagery globally.',
+    descriptionDe:
+      'Das WordPress-Theme wurde pixelgenau aus einer Figma-Designdatei mit handcodiertem PHP, HTML5, CSS3 und JavaScript umgesetzt - ganz ohne Page Builder. MySQL speichert sämtliche Portfolio-Inhalte, Seiten und Medien. Cloudflare CDN sorgt weltweit für eine schnelle Auslieferung von Video-Thumbnails und Produktionsbildern.',
   },
   image:
     '/Portfolio/images/portfolio/thumbs/wordpress/lellexvideoproduction_thumb.webp',
@@ -88,32 +93,53 @@ const lellex: Project = {
   features: [
     {
       title: 'Figma-to-Code Custom WordPress Theme',
+      titleDe: 'Figma-to-Code individuelles WordPress-Theme',
       description:
         'The entire WordPress theme was hand-coded directly from a Figma design file, achieving pixel-perfect fidelity to the client\'s creative vision without any page builder constraints.',
+      descriptionDe:
+        'Das gesamte WordPress-Theme wurde direkt anhand einer Figma-Designdatei handcodiert und erreicht pixelgenaue Treue zur kreativen Vision des Kunden ohne Einschränkungen durch Page Builder.',
     },
     {
       title: 'Video Portfolio Showcase',
+      titleDe: 'Video-Portfolio-Präsentation',
       description:
         'A visually bold portfolio section displays the studio\'s video production projects, showreel, and client work in an engaging layout designed to impress creative buyers.',
+      descriptionDe:
+        'Ein visuell markanter Portfolio-Bereich präsentiert die Videoproduktionsprojekte, das Showreel und die Kundenarbeiten des Studios in einem ansprechenden Layout, das kreative Auftraggeber überzeugt.',
     },
     {
       title: 'Custom CSS3 Animations',
+      titleDe: 'Individuelle CSS3-Animationen',
       description:
         'CSS3 animations and transitions bring the design to life, reflecting the dynamic nature of a video production studio and creating a memorable first impression.',
+      descriptionDe:
+        'CSS3-Animationen und -Übergänge erwecken das Design zum Leben, spiegeln den dynamischen Charakter eines Videoproduktionsstudios wider und sorgen für einen bleibenden ersten Eindruck.',
     },
     {
       title: 'SEO Optimization',
+      titleDe: 'SEO-Optimierung',
       description:
         'Technical SEO targets video production studio and creative agency keywords, helping potential clients discover Lellex through organic search.',
+      descriptionDe:
+        'Technisches SEO zielt auf relevante Suchbegriffe für Videoproduktionsstudios und Kreativagenturen ab, sodass potenzielle Kunden Lellex über die organische Suche finden.',
     },
     {
       title: 'Responsive Design',
+      titleDe: 'Responsives Design',
       description:
         'Fully responsive layout ensures the studio\'s portfolio and services are presented beautifully across desktop, tablet, and mobile devices for all prospective clients.',
+      descriptionDe:
+        'Ein vollständig responsives Layout stellt sicher, dass Portfolio und Leistungen des Studios auf Desktop-, Tablet- und Mobilgeräten für alle Interessenten optimal dargestellt werden.',
     },
   ],
   challenges: [],
+  challengesUa: [],
+  challengesEs: [],
+  challengesDe: [],
   solutions: [],
+  solutionsUa: [],
+  solutionsEs: [],
+  solutionsDe: [],
   liveUrl: 'https://lellexvideoproduction.com/',
   githubUrl: '#',
   category: ['wordpress'],

@@ -20,9 +20,9 @@ function renderLink(
     return <React.Fragment key={key}>{label}</React.Fragment>
   }
 
-  const blogMatch = url.match(/\/(?:en|ua|es)\/blog\/([a-zA-Z0-9-]+)/)
-  const projectMatch = url.match(/\/(?:en|ua|es)\/projects\/([a-zA-Z0-9-]+)/)
-  const serviceMatch = url.match(/\/(?:en|ua|es)\/services\/([a-zA-Z0-9-]+)/)
+  const blogMatch = url.match(/\/(?:en|ua|es|de)\/blog\/([a-zA-Z0-9-]+)/)
+  const projectMatch = url.match(/\/(?:en|ua|es|de)\/projects\/([a-zA-Z0-9-]+)/)
+  const serviceMatch = url.match(/\/(?:en|ua|es|de)\/services\/([a-zA-Z0-9-]+)/)
 
   const handleClick = (e: React.MouseEvent) => {
     if (
@@ -89,7 +89,7 @@ function renderInlineSegments(line: string, isBot: boolean): React.ReactNode {
   }
 
   const tokens = line.split(
-    /(\*\*[^*]+\*\*|\*(?!\s)[^*]+(?<!\s)\*|`[^`]+`|\[[^\]]+\]\([^)]+\)|https?:\/\/[^\s)\]]+|\/(?:en|ua|es)\/(?:blog|projects|services)\/[a-zA-Z0-9-]+)/g,
+    /(\*\*[^*]+\*\*|\*(?!\s)[^*]+(?<!\s)\*|`[^`]+`|\[[^\]]+\]\([^)]+\)|https?:\/\/[^\s)\]]+|\/(?:en|ua|es|de)\/(?:blog|projects|services)\/[a-zA-Z0-9-]+)/g,
   )
 
   return tokens.map((token, idx) => {
@@ -149,7 +149,7 @@ function renderInlineSegments(line: string, isBot: boolean): React.ReactNode {
     if (
       token.startsWith('http://') ||
       token.startsWith('https://') ||
-      /^\/(?:en|ua|es)\/(?:blog|projects|services)\/[a-zA-Z0-9-]+$/.test(token)
+      /^\/(?:en|ua|es|de)\/(?:blog|projects|services)\/[a-zA-Z0-9-]+$/.test(token)
     ) {
       return renderLink(token, token, idx, isBot)
     }

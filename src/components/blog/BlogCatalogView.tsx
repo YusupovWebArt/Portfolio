@@ -70,12 +70,19 @@ export default function BlogCatalogView({
 
   const isUa = locale === 'ua'
   const isEs = locale === 'es'
+  const isDe = locale === 'de'
 
   const categories = useMemo(
     () => [
       {
         id: 'all',
-        label: isUa ? 'Всі інженерні статті' : isEs ? 'Todos los artículos' : 'All Engineering Articles',
+        label: isUa
+          ? 'Всі інженерні статті'
+          : isEs
+            ? 'Todos los artículos'
+            : isDe
+              ? 'Alle Engineering-Artikel'
+              : 'All Engineering Articles',
       },
       {
         id: 'project-case-studies',
@@ -83,30 +90,62 @@ export default function BlogCatalogView({
           ? 'Розбори моїх проєктів'
           : isEs
             ? 'Casos de Estudio de Mis Proyectos'
-            : 'My Project Case Studies',
+            : isDe
+              ? 'Meine Projekt-Fallstudien'
+              : 'My Project Case Studies',
       },
       {
         id: 'architecture-tco',
-        label: isUa ? 'Архітектура та TCO' : isEs ? 'Arquitectura y TCO' : 'Architecture & TCO',
+        label: isUa
+          ? 'Архітектура та TCO'
+          : isEs
+            ? 'Arquitectura y TCO'
+            : isDe
+              ? 'Architektur & TCO'
+              : 'Architecture & TCO',
       },
       {
         id: 'ai-engineering',
-        label: isUa ? 'AI та RAG інженерія' : isEs ? 'Ingeniería de IA y RAG' : 'AI & RAG Engineering',
+        label: isUa
+          ? 'AI та RAG інженерія'
+          : isEs
+            ? 'Ingeniería de IA y RAG'
+            : isDe
+              ? 'KI- & RAG-Engineering'
+              : 'AI & RAG Engineering',
       },
       {
         id: 'accessibility-compliance',
-        label: isUa ? 'Доступність (WCAG / EAA)' : isEs ? 'Accesibilidad (WCAG / EAA)' : 'Accessibility & Compliance',
+        label: isUa
+          ? 'Доступність (WCAG / EAA)'
+          : isEs
+            ? 'Accesibilidad (WCAG / EAA)'
+            : isDe
+              ? 'Barrierefreiheit (WCAG / EAA)'
+              : 'Accessibility & Compliance',
       },
       {
         id: 'performance-cwv',
-        label: isUa ? 'Продуктивність та CWV' : isEs ? 'Rendimiento y CWV' : 'Performance & Core Web Vitals',
+        label: isUa
+          ? 'Продуктивність та CWV'
+          : isEs
+            ? 'Rendimiento y CWV'
+            : isDe
+              ? 'Performance & Core Web Vitals'
+              : 'Performance & Core Web Vitals',
       },
       {
         id: 'ecommerce-cms',
-        label: isUa ? 'E-Commerce та CMS' : isEs ? 'E-Commerce e Ingeniería CMS' : 'E-Commerce & CMS Engineering',
+        label: isUa
+          ? 'E-Commerce та CMS'
+          : isEs
+            ? 'E-Commerce e Ingeniería CMS'
+            : isDe
+              ? 'E-Commerce- & CMS-Engineering'
+              : 'E-Commerce & CMS Engineering',
       },
     ],
-    [isUa, isEs],
+    [isUa, isEs, isDe],
   )
 
   const popularTags = useMemo(
@@ -195,7 +234,9 @@ export default function BlogCatalogView({
               ? 'Архітектурний аудит'
               : isEs
                 ? 'Auditoría de Arquitectura'
-                : 'Architecture Audit',
+                : isDe
+                  ? 'Architektur-Audit'
+                  : 'Architecture Audit',
           },
         }),
       )
@@ -206,13 +247,17 @@ export default function BlogCatalogView({
     ? 'Інженерний блог та архітектурні розбори'
     : isEs
       ? 'Blog de Ingeniería y Casos de Arquitectura'
-      : 'Engineering Blog & Architectural Deep Dives'
+      : isDe
+        ? 'Engineering-Blog & Architektur-Analysen'
+        : 'Engineering Blog & Architectural Deep Dives'
 
   const headerSubtitle = isUa
     ? 'Практичні технічні статті про архітектуру вебу, Next.js 16, кастомний WordPress, автономні RAG AI-рушії та стандарти доступності WCAG 2.2 AA.'
     : isEs
       ? 'Artículos técnicos en profundidad sobre arquitectura web, Next.js 16, WordPress a medida, motores de IA con RAG en cliente y accesibilidad WCAG 2.2 AA.'
-      : 'In-depth engineering writeups on modern web architecture, Next.js 16, custom WordPress, autonomous in-browser RAG AI engines, and WCAG 2.2 AA compliance.'
+      : isDe
+        ? 'Praxisnahe Fachartikel über moderne Web-Architektur, Next.js 16, Custom WordPress, autonome In-Browser-RAG-KI-Engines und WCAG 2.2 AA Barrierefreiheit.'
+        : 'In-depth engineering writeups on modern web architecture, Next.js 16, custom WordPress, autonomous in-browser RAG AI engines, and WCAG 2.2 AA compliance.'
 
   // Determine featured post (rendered on Page 1 only when not actively filtering)
   const featuredPost: BlogPost | null =
@@ -246,7 +291,9 @@ export default function BlogCatalogView({
                   ? 'Назад до портфоліо'
                   : isEs
                     ? 'Volver al portafolio'
-                    : 'Back to Portfolio'}
+                    : isDe
+                      ? 'Zurück zum Portfolio'
+                      : 'Back to Portfolio'}
               </span>
             </button>
           </div>
@@ -261,7 +308,9 @@ export default function BlogCatalogView({
                 ? 'Інженерний хаб знань'
                 : isEs
                   ? 'Centro de Conocimiento Técnico'
-                  : 'Engineering Knowledge Hub'}
+                  : isDe
+                    ? 'Engineering-Wissenshub'
+                    : 'Engineering Knowledge Hub'}
             </span>
           </div>
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-4">
@@ -283,7 +332,7 @@ export default function BlogCatalogView({
                 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2 flex items-center gap-1.5"
               >
                 <Search className="w-3.5 h-3.5" aria-hidden="true" />
-                <span>{isUa ? 'Пошук статей' : isEs ? 'Buscar artículos' : 'Search Articles'}</span>
+                <span>{isUa ? 'Пошук статей' : isEs ? 'Buscar artículos' : isDe ? 'Artikel suchen' : 'Search Articles'}</span>
               </label>
               <div className="relative mt-2">
                 <input
@@ -296,7 +345,9 @@ export default function BlogCatalogView({
                       ? 'Введіть тему, Next.js, TCO...'
                       : isEs
                         ? 'Tema, Next.js, TCO...'
-                        : 'Topic, Next.js, TCO...'
+                        : isDe
+                          ? 'Thema, Next.js, TCO...'
+                          : 'Topic, Next.js, TCO...'
                   }
                   className="w-full pl-9 pr-8 py-2 text-xs sm:text-sm rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-purple-500 dark:focus:ring-lime-400 transition"
                 />
@@ -309,7 +360,7 @@ export default function BlogCatalogView({
                     type="button"
                     onClick={() => setSearchQuery('')}
                     className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 p-0.5 rounded cursor-pointer"
-                    aria-label={isUa ? 'Очистити пошук' : isEs ? 'Limpiar búsqueda' : 'Clear search'}
+                    aria-label={isUa ? 'Очистити пошук' : isEs ? 'Limpiar búsqueda' : isDe ? 'Suche leeren' : 'Clear search'}
                   >
                     <X className="w-3.5 h-3.5" aria-hidden="true" />
                   </button>
@@ -321,9 +372,9 @@ export default function BlogCatalogView({
             <div className="bg-white dark:bg-slate-800/90 rounded-2xl p-4 sm:p-5 border border-slate-200/80 dark:border-slate-700/70 shadow-sm">
               <div className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-3 flex items-center gap-1.5">
                 <FolderOpen className="w-3.5 h-3.5" aria-hidden="true" />
-                <span>{isUa ? 'Рубрики' : isEs ? 'Categorías' : 'Categories'}</span>
+                <span>{isUa ? 'Рубрики' : isEs ? 'Categorías' : isDe ? 'Kategorien' : 'Categories'}</span>
               </div>
-              <nav className="space-y-1.5" aria-label="Blog Categories">
+              <nav className="space-y-1.5" aria-label={isUa ? 'Рубрики блогу' : isEs ? 'Categorías del blog' : isDe ? 'Blog-Kategorien' : 'Blog Categories'}>
                 {categories.map((cat) => {
                   const isActive = selectedCategory === cat.id
                   const count = categoryCounts[cat.id] || 0
@@ -358,7 +409,7 @@ export default function BlogCatalogView({
             <div className="bg-white dark:bg-slate-800/90 rounded-2xl p-4 sm:p-5 border border-slate-200/80 dark:border-slate-700/70 shadow-sm">
               <div className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-3 flex items-center gap-1.5">
                 <SlidersHorizontal className="w-3.5 h-3.5" aria-hidden="true" />
-                <span>{isUa ? 'Фільтр за стеком' : isEs ? 'Filtrar por stack' : 'Tech Stack Filter'}</span>
+                <span>{isUa ? 'Фільтр за стеком' : isEs ? 'Filtrar por stack' : isDe ? 'Nach Tech-Stack filtern' : 'Tech Stack Filter'}</span>
               </div>
               <div className="flex flex-wrap gap-1.5">
                 {popularTags.map((tag) => {
@@ -391,7 +442,9 @@ export default function BlogCatalogView({
                     ? 'B2B & CTO Консалтинг'
                     : isEs
                       ? 'Consultoría B2B y CTO'
-                      : 'B2B & CTO Advisory'}
+                      : isDe
+                        ? 'B2B- & CTO-Beratung'
+                        : 'B2B & CTO Advisory'}
                 </span>
               </div>
               <h4 className="text-sm font-bold text-white mb-2 leading-snug">
@@ -399,14 +452,18 @@ export default function BlogCatalogView({
                   ? 'Потрібен архітектурний аудит або консультація?'
                   : isEs
                     ? '¿Necesitas una auditoría técnica o consultoría?'
-                    : 'Need an Architecture Audit or Technical Advisory?'}
+                    : isDe
+                      ? 'Benötigen Sie ein Architektur-Audit oder technische Beratung?'
+                      : 'Need an Architecture Audit or Technical Advisory?'}
               </h4>
               <p className="text-xs text-slate-400 leading-relaxed mb-4">
                 {isUa
                   ? 'Аналіз TCO, міграція в хмару, субсекундна оптимізація Core Web Vitals та інтеграція автономного AI.'
                   : isEs
                     ? 'Análisis de TCO, migración cloud, optimización Core Web Vitals subsegundo e integración de IA.'
-                    : 'TCO assessment, cloud migrations, sub-second Core Web Vitals optimization, and autonomous AI integration.'}
+                    : isDe
+                      ? 'TCO-Analyse, Cloud-Migration, Subsekunden-Optimierung der Core Web Vitals und Integration autonomer KI-Systeme.'
+                      : 'TCO assessment, cloud migrations, sub-second Core Web Vitals optimization, and autonomous AI integration.'}
               </p>
               <div className="flex flex-col gap-2">
                 <button
@@ -420,7 +477,9 @@ export default function BlogCatalogView({
                       ? 'Запитати AI-асистента'
                       : isEs
                         ? 'Consultar al Asistente IA'
-                        : 'Ask AI Assistant'}
+                        : isDe
+                          ? 'KI-Assistenten fragen'
+                          : 'Ask AI Assistant'}
                   </span>
                 </button>
                 <a
@@ -442,7 +501,9 @@ export default function BlogCatalogView({
                       ? 'Зв’язатися напряму'
                       : isEs
                         ? 'Contactar directamente'
-                        : 'Contact Directly'}
+                        : isDe
+                          ? 'Direkt kontaktieren'
+                          : 'Contact Directly'}
                   </span>
                 </a>
               </div>
@@ -456,7 +517,7 @@ export default function BlogCatalogView({
               <div className="flex flex-wrap items-center justify-between gap-3 p-4 bg-purple-50 dark:bg-slate-800/80 rounded-2xl border border-purple-200/80 dark:border-lime-500/20">
                 <div className="flex flex-wrap items-center gap-2 text-xs text-slate-700 dark:text-slate-300">
                   <span className="font-semibold text-slate-900 dark:text-white">
-                    {isUa ? 'Активні фільтри:' : isEs ? 'Filtros activos:' : 'Active filters:'}
+                    {isUa ? 'Активні фільтри:' : isEs ? 'Filtros activos:' : isDe ? 'Aktive Filter:' : 'Active filters:'}
                   </span>
                   {selectedCategory !== 'all' && (
                     <span className="px-2 py-0.5 rounded-md bg-purple-200 dark:bg-lime-500/20 text-purple-900 dark:text-lime-300 font-bold text-[11px]">
@@ -475,7 +536,7 @@ export default function BlogCatalogView({
                   )}
                   <span className="text-slate-500 dark:text-slate-400">
                     ({filteredPosts.length}{' '}
-                    {isUa ? 'знайдено' : isEs ? 'encontrados' : 'found'})
+                    {isUa ? 'знайдено' : isEs ? 'encontrados' : isDe ? 'gefunden' : 'found'})
                   </span>
                 </div>
                 <button
@@ -485,7 +546,7 @@ export default function BlogCatalogView({
                 >
                   <X className="w-3 h-3" aria-hidden="true" />
                   <span>
-                    {isUa ? 'Скинути всі' : isEs ? 'Restablecer' : 'Reset all'}
+                    {isUa ? 'Скинути всі' : isEs ? 'Restablecer' : isDe ? 'Alle zurücksetzen' : 'Reset all'}
                   </span>
                 </button>
               </div>
@@ -509,7 +570,9 @@ export default function BlogCatalogView({
                           ? 'Флагманський кейс'
                           : isEs
                             ? 'Estudio Destacado'
-                            : 'Flagship Deep Dive'}
+                            : isDe
+                              ? 'Flaggschiff-Analyse'
+                              : 'Flagship Deep Dive'}
                       </span>
                     </div>
                   </div>
@@ -559,7 +622,9 @@ export default function BlogCatalogView({
                               ? 'Застосовано в продакшені:'
                               : isEs
                                 ? 'Aplicado en producción:'
-                                : 'Applied in Production:'}
+                                : isDe
+                                  ? 'Im Produktiveinsatz:'
+                                  : 'Applied in Production:'}
                           </span>
                           <div className="flex flex-wrap gap-1.5">
                             {featuredPost.appliedProjects.map((proj) => {
@@ -619,7 +684,7 @@ export default function BlogCatalogView({
                           className="inline-flex items-center gap-1.5 text-xs font-bold text-purple-600 dark:text-lime-400 hover:text-purple-800 dark:hover:text-lime-300 transition-colors cursor-pointer whitespace-nowrap ml-auto shrink-0"
                         >
                           <span>
-                            {isUa ? 'Читати розбір' : isEs ? 'Leer análisis' : 'Read Deep Dive'}
+                            {isUa ? 'Читати розбір' : isEs ? 'Leer análisis' : isDe ? 'Analyse lesen' : 'Read Deep Dive'}
                           </span>
                           <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
                         </button>
@@ -629,7 +694,7 @@ export default function BlogCatalogView({
                           className="inline-flex items-center gap-1.5 text-xs font-bold text-purple-600 dark:text-lime-400 hover:text-purple-800 dark:hover:text-lime-300 transition-colors whitespace-nowrap ml-auto shrink-0"
                         >
                           <span>
-                            {isUa ? 'Читати розбір' : isEs ? 'Leer análisis' : 'Read Deep Dive'}
+                            {isUa ? 'Читати розбір' : isEs ? 'Leer análisis' : isDe ? 'Analyse lesen' : 'Read Deep Dive'}
                           </span>
                           <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
                         </Link>
@@ -714,7 +779,9 @@ export default function BlogCatalogView({
                                   ? 'Застосовано в продакшені:'
                                   : isEs
                                     ? 'Aplicado en producción:'
-                                    : 'Applied in Production:'}
+                                    : isDe
+                                      ? 'Im Produktiveinsatz:'
+                                      : 'Applied in Production:'}
                               </span>
                               <div className="flex flex-wrap gap-1.5">
                                 {post.appliedProjects.map((proj) => {
@@ -776,7 +843,7 @@ export default function BlogCatalogView({
                             className="inline-flex items-center gap-1 text-xs font-bold text-purple-600 dark:text-lime-400 hover:text-purple-800 dark:hover:text-lime-300 transition-colors cursor-pointer whitespace-nowrap ml-auto shrink-0"
                           >
                             <span>
-                              {isUa ? 'Читати' : isEs ? 'Leer' : 'Read'}
+                              {isUa ? 'Читати' : isEs ? 'Leer' : isDe ? 'Lesen' : 'Read'}
                             </span>
                             <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
                           </button>
@@ -786,7 +853,7 @@ export default function BlogCatalogView({
                             className="inline-flex items-center gap-1 text-xs font-bold text-purple-600 dark:text-lime-400 hover:text-purple-800 dark:hover:text-lime-300 transition-colors whitespace-nowrap ml-auto shrink-0"
                           >
                             <span>
-                              {isUa ? 'Читати' : isEs ? 'Leer' : 'Read'}
+                              {isUa ? 'Читати' : isEs ? 'Leer' : isDe ? 'Lesen' : 'Read'}
                             </span>
                             <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
                           </Link>
@@ -804,7 +871,9 @@ export default function BlogCatalogView({
                       ? 'Навігація по сторінках статей'
                       : isEs
                         ? 'Paginación de artículos'
-                        : 'Articles pagination'
+                        : isDe
+                          ? 'Artikel-Seitennavigation'
+                          : 'Articles pagination'
                   }
                   className="flex items-center justify-center mt-12 gap-1.5 sm:gap-2 select-none"
                 >
@@ -820,13 +889,15 @@ export default function BlogCatalogView({
                         ? 'Назад (попередня сторінка)'
                         : isEs
                           ? 'Anterior (página anterior)'
-                          : 'Prev (previous page)'
+                          : isDe
+                            ? 'Zurück (vorherige Seite)'
+                            : 'Prev (previous page)'
                     }
                     className="p-2 sm:px-3 sm:py-2 rounded-xl text-xs sm:text-sm font-semibold transition border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 disabled:opacity-40 disabled:cursor-not-allowed hover:not-disabled:bg-slate-100 dark:hover:not-disabled:bg-slate-700 cursor-pointer flex items-center gap-1"
                   >
                     <ChevronLeft className="w-4 h-4" aria-hidden="true" />
                     <span className="hidden sm:inline">
-                      {isUa ? 'Назад' : isEs ? 'Anterior' : 'Prev'}
+                      {isUa ? 'Назад' : isEs ? 'Anterior' : isDe ? 'Zurück' : 'Prev'}
                     </span>
                   </button>
 
@@ -850,7 +921,7 @@ export default function BlogCatalogView({
                           const el = document.getElementById('blog-catalog-top'); if (typeof el?.scrollIntoView === 'function') el.scrollIntoView({ behavior: 'smooth' })
                         }}
                         aria-current={isCurrent ? 'page' : undefined}
-                        aria-label={`${isUa ? 'Сторінка' : isEs ? 'Página' : 'Page'} ${page}`}
+                        aria-label={`${isUa ? 'Сторінка' : isEs ? 'Página' : isDe ? 'Seite' : 'Page'} ${page}`}
                         type="button"
                         className={`min-w-9 h-9 sm:min-w-10 sm:h-10 px-2.5 rounded-xl font-bold text-xs sm:text-sm transition cursor-pointer flex items-center justify-center ${
                           isCurrent
@@ -875,12 +946,14 @@ export default function BlogCatalogView({
                         ? 'Вперед (наступна сторінка)'
                         : isEs
                           ? 'Siguiente (página siguiente)'
-                          : 'Next (next page)'
+                          : isDe
+                            ? 'Weiter (nächste Seite)'
+                            : 'Next (next page)'
                     }
                     className="p-2 sm:px-3 sm:py-2 rounded-xl text-xs sm:text-sm font-semibold transition border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 disabled:opacity-40 disabled:cursor-not-allowed hover:not-disabled:bg-slate-100 dark:hover:not-disabled:bg-slate-700 cursor-pointer flex items-center gap-1"
                   >
                     <span className="hidden sm:inline">
-                      {isUa ? 'Вперед' : isEs ? 'Siguiente' : 'Next'}
+                      {isUa ? 'Вперед' : isEs ? 'Siguiente' : isDe ? 'Weiter' : 'Next'}
                     </span>
                     <ChevronRight className="w-4 h-4" aria-hidden="true" />
                   </button>
@@ -896,21 +969,31 @@ export default function BlogCatalogView({
                     ? 'Статей не знайдено'
                     : isEs
                       ? 'No se encontraron artículos'
-                      : 'No Articles Found'}
+                      : isDe
+                        ? 'Keine Artikel gefunden'
+                        : 'No Articles Found'}
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 max-w-md mx-auto mb-6">
                   {isUa
                     ? 'Спробуйте змінити пошуковий запит або скинути фільтри рубрик та технологій.'
                     : isEs
                       ? 'Intenta modificar el término de búsqueda o restablecer los filtros de categorías.'
-                      : 'Try adjusting your search query or resetting category and technology filters.'}
+                      : isDe
+                        ? 'Versuchen Sie, den Suchbegriff anzupassen oder die Kategorie- und Technologiefilter zurückzusetzen.'
+                        : 'Try adjusting your search query or resetting category and technology filters.'}
                 </p>
                 <button
                   type="button"
                   onClick={handleResetFilters}
                   className="px-4 py-2 rounded-xl text-xs font-bold bg-purple-600 text-white dark:bg-lime-500 dark:text-slate-950 hover:opacity-90 transition cursor-pointer"
                 >
-                  {isUa ? 'Скинути всі фільтри' : isEs ? 'Restablecer todos los filtros' : 'Reset All Filters'}
+                  {isUa
+                    ? 'Скинути всі фільтри'
+                    : isEs
+                      ? 'Restablecer todos los filtros'
+                      : isDe
+                        ? 'Alle Filter zurücksetzen'
+                        : 'Reset All Filters'}
                 </button>
               </div>
             )}

@@ -53,6 +53,8 @@ export async function generateMetadata({
   const title = `${getBlogTitle(post, locale)} | Artur Yusupov`
   const description = getBlogDescription(post, locale)
   const ogImageUrl = toAbsoluteOgImageUrl(post.coverImage)
+  const ogLocale =
+    locale === 'ua' ? 'uk_UA' : locale === 'es' ? 'es_ES' : locale === 'de' ? 'de_DE' : 'en_US'
 
   return {
     title,
@@ -64,6 +66,8 @@ export async function generateMetadata({
         uk: `https://www.yusupovartur.com/ua/blog/${slug}`,
         es: `https://www.yusupovartur.com/es/blog/${slug}`,
         'es-ES': `https://www.yusupovartur.com/es/blog/${slug}`,
+        de: `https://www.yusupovartur.com/de/blog/${slug}`,
+        'de-DE': `https://www.yusupovartur.com/de/blog/${slug}`,
         'x-default': `https://www.yusupovartur.com/en/blog/${slug}`,
       },
     },
@@ -71,6 +75,7 @@ export async function generateMetadata({
       title,
       description,
       url: `https://www.yusupovartur.com/${locale}/blog/${slug}`,
+      locale: ogLocale,
       type: 'article',
       publishedTime: `${post.date}T00:00:00Z`,
       authors: ['Artur Yusupov'],
@@ -109,7 +114,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
     locale,
     {
       tags: post.tags,
-      readTime: post.readTime[locale === 'ua' || locale === 'es' ? locale : 'en'] || post.readTime.en,
+      readTime: (post.readTime as Record<string, string>)[locale] || post.readTime.en,
       appliedProjects: post.appliedProjects?.map((p) => ({
         slug: p.slug,
         name: p.name,

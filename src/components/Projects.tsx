@@ -53,7 +53,9 @@ const getFilterLabel = (id: string, filterAllLabel: string, currentLang?: string
       ? 'Власні проєкти'
       : currentLang === 'es'
         ? 'Proyectos propios'
-        : 'Personal Projects'
+        : currentLang === 'de'
+          ? 'Eigene Projekte'
+          : 'Personal Projects'
   }
   switch (id) {
     case 'wordpress': return 'WordPress'
@@ -234,14 +236,18 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
       ? 'Пошук серед 70+ проєктів за назвою чи стеком (Next.js, AWS, Tailwind, Shopify)...'
       : lang === 'es'
         ? 'Buscar en 70+ proyectos por nombre o tecnología (Next.js, AWS, Tailwind, Shopify)...'
-        : 'Search 70+ projects by name or technology (Next.js, AWS, Tailwind, Shopify)...'
+        : lang === 'de'
+          ? 'Über 70 Projekte nach Name oder Technologie durchsuchen (Next.js, AWS, Tailwind, Shopify)...'
+          : 'Search 70+ projects by name or technology (Next.js, AWS, Tailwind, Shopify)...'
 
   const countLabel =
     lang === 'ua'
       ? `Показано ${filteredProjects.length} з ${projects.length} проєктів`
       : lang === 'es'
         ? `Mostrando ${filteredProjects.length} de ${projects.length} proyectos`
-        : `Showing ${filteredProjects.length} of ${projects.length} projects`
+        : lang === 'de'
+          ? `${filteredProjects.length} von ${projects.length} Projekten angezeigt`
+          : `Showing ${filteredProjects.length} of ${projects.length} projects`
 
   return (
     <section
@@ -277,8 +283,24 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
                 type="button"
                 onClick={() => setSearchQuery('')}
                 className="pr-4 text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition-colors cursor-pointer"
-                aria-label="Clear search"
-                title="Clear search"
+                aria-label={
+                  lang === 'ua'
+                    ? 'Очистити пошук'
+                    : lang === 'es'
+                      ? 'Limpiar búsqueda'
+                      : lang === 'de'
+                        ? 'Suche leeren'
+                        : 'Clear search'
+                }
+                title={
+                  lang === 'ua'
+                    ? 'Очистити пошук'
+                    : lang === 'es'
+                      ? 'Limpiar búsqueda'
+                      : lang === 'de'
+                        ? 'Suche leeren'
+                        : 'Clear search'
+                }
               >
                 <X className="w-4 h-4" aria-hidden="true" />
               </button>
@@ -316,7 +338,9 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
                 ? 'Проєктів не знайдено'
                 : lang === 'es'
                   ? 'No se encontraron proyectos'
-                  : 'No projects found'}
+                  : lang === 'de'
+                    ? 'Keine Projekte gefunden'
+                    : 'No projects found'}
             </h3>
             <p className="text-sm text-slate-500 dark:text-slate-400 mb-6">
               {globalSearchMatches.length > 0
@@ -324,12 +348,16 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
                   ? `У вибраній категорії збігів немає, але знайдено ${globalSearchMatches.length} проєкт(ів) в усіх категоріях.`
                   : lang === 'es'
                     ? `No hay coincidencias en esta categoría, pero se encontraron ${globalSearchMatches.length} proyecto(s) en todas las categorías.`
-                    : `No matches in this category, but found ${globalSearchMatches.length} matching project(s) across all categories.`
+                    : lang === 'de'
+                      ? `Keine Treffer in dieser Kategorie, aber ${globalSearchMatches.length} passende(s) Projekt(e) in allen Kategorien gefunden.`
+                      : `No matches in this category, but found ${globalSearchMatches.length} matching project(s) across all categories.`
                 : lang === 'ua'
                   ? 'Спробуйте змінити пошуковий запит або скинути активний фільтр категорій.'
                   : lang === 'es'
                     ? 'Prueba a cambiar los términos de búsqueda o restablecer los filtros.'
-                    : 'Try adjusting your search keywords or resetting the category filter.'}
+                    : lang === 'de'
+                      ? 'Versuchen Sie, die Suchbegriffe anzupassen oder den Kategoriefilter zurückzusetzen.'
+                      : 'Try adjusting your search keywords or resetting the category filter.'}
             </p>
             <div className="flex flex-wrap items-center justify-center gap-3">
               {globalSearchMatches.length > 0 && (
@@ -342,7 +370,9 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
                     ? `Показати в усіх категоріях (${globalSearchMatches.length})`
                     : lang === 'es'
                       ? `Mostrar en todas las categorías (${globalSearchMatches.length})`
-                      : `Show in all categories (${globalSearchMatches.length})`}
+                      : lang === 'de'
+                        ? `In allen Kategorien anzeigen (${globalSearchMatches.length})`
+                        : `Show in all categories (${globalSearchMatches.length})`}
                 </button>
               )}
               <button
@@ -357,7 +387,13 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
                     : 'bg-purple-600 hover:bg-purple-700 dark:bg-lime-500 dark:hover:bg-lime-400 text-white dark:text-slate-950'
                 }`}
               >
-                {lang === 'ua' ? 'Скинути всі фільтри' : lang === 'es' ? 'Restablecer filtros' : 'Reset all filters'}
+                {lang === 'ua'
+                  ? 'Скинути всі фільтри'
+                  : lang === 'es'
+                    ? 'Restablecer filtros'
+                    : lang === 'de'
+                      ? 'Alle Filter zurücksetzen'
+                      : 'Reset all filters'}
               </button>
             </div>
           </div>
@@ -401,7 +437,9 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
                           ? 'Власний проєкт'
                           : lang === 'es'
                             ? 'Proyecto propio'
-                            : 'Personal Project'}
+                            : lang === 'de'
+                              ? 'Eigenes Projekt'
+                              : 'Personal Project'}
                       </span>
                     </div>
                   )}
@@ -423,8 +461,10 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
                   {lang === 'ua' && project.descriptionUa
                     ? project.descriptionUa
                     : lang === 'es' && project.descriptionEs
-                    ? project.descriptionEs
-                    : project.description}
+                      ? project.descriptionEs
+                      : lang === 'de' && project.descriptionDe
+                        ? project.descriptionDe
+                        : project.description}
                 </p>
 
                 {/* Interactive Technology Badges (Top 4 + Expandable on click) */}
@@ -442,7 +482,15 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
                     <button
                       type="button"
                       onClick={(e) => toggleTechExpanded(project.id, e)}
-                      title={`Show all ${allTech.length} technologies`}
+                      title={
+                        lang === 'ua'
+                          ? `Показати всі ${allTech.length} технологій`
+                          : lang === 'es'
+                            ? `Mostrar las ${allTech.length} tecnologías`
+                            : lang === 'de'
+                              ? `Alle ${allTech.length} Technologien anzeigen`
+                              : `Show all ${allTech.length} technologies`
+                      }
                       className="bg-purple-50 dark:bg-purple-950/50 hover:bg-purple-100 dark:hover:bg-purple-900/70 text-purple-700 dark:text-lime-400 border border-purple-200/60 dark:border-lime-500/30 px-2 py-0.5 rounded-md text-[11px] font-semibold cursor-pointer transition-colors"
                     >
                       +{remainingCount}
@@ -452,10 +500,18 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
                     <button
                       type="button"
                       onClick={(e) => toggleTechExpanded(project.id, e)}
-                      title="Collapse technologies"
+                      title={
+                        lang === 'ua'
+                          ? 'Згорнути технології'
+                          : lang === 'es'
+                            ? 'Contraer tecnologías'
+                            : lang === 'de'
+                              ? 'Technologien einklappen'
+                              : 'Collapse technologies'
+                      }
                       className="bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-200 border border-slate-300 dark:border-slate-600 px-2 py-0.5 rounded-md text-[11px] font-medium cursor-pointer transition-colors"
                     >
-                      - less
+                      {lang === 'ua' ? '- менше' : lang === 'es' ? '- menos' : lang === 'de' ? '- weniger' : '- less'}
                     </button>
                   )}
                 </div>
@@ -493,7 +549,15 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
         {/* Пагинация */}
         {totalPages > 1 && (
           <nav
-            aria-label={lang === 'ua' ? 'Навігація по сторінках проєктів' : lang === 'es' ? 'Paginación de proyectos' : 'Projects pagination'}
+            aria-label={
+              lang === 'ua'
+                ? 'Навігація по сторінках проєктів'
+                : lang === 'es'
+                  ? 'Paginación de proyectos'
+                  : lang === 'de'
+                    ? 'Projekt-Seitennavigation'
+                    : 'Projects pagination'
+            }
             className="flex items-center justify-center mt-10 gap-1.5 sm:gap-2 select-none"
           >
             <button
@@ -503,11 +567,21 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
                 document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })
               }}
               disabled={currentPage === 1}
-              aria-label={lang === 'ua' ? 'Назад (попередня сторінка)' : lang === 'es' ? 'Anterior (página anterior)' : 'Prev (previous page)'}
+              aria-label={
+                lang === 'ua'
+                  ? 'Назад (попередня сторінка)'
+                  : lang === 'es'
+                    ? 'Anterior (página anterior)'
+                    : lang === 'de'
+                      ? 'Zurück (vorherige Seite)'
+                      : 'Prev (previous page)'
+              }
               className="p-2 sm:px-3 sm:py-2 rounded-xl text-xs sm:text-sm font-semibold transition border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 disabled:opacity-40 disabled:cursor-not-allowed hover:not-disabled:bg-slate-100 dark:hover:not-disabled:bg-slate-700 cursor-pointer flex items-center gap-1"
             >
               <ChevronLeft className="w-4 h-4" aria-hidden="true" />
-              <span className="hidden sm:inline">{lang === 'ua' ? 'Назад' : lang === 'es' ? 'Anterior' : 'Prev'}</span>
+              <span className="hidden sm:inline">
+                {lang === 'ua' ? 'Назад' : lang === 'es' ? 'Anterior' : lang === 'de' ? 'Zurück' : 'Prev'}
+              </span>
             </button>
 
             {getPaginationPages(currentPage, totalPages).map((page, idx) => {
@@ -530,7 +604,7 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
                     document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })
                   }}
                   aria-current={isCurrent ? 'page' : undefined}
-                  aria-label={`${lang === 'ua' ? 'Сторінка' : lang === 'es' ? 'Página' : 'Page'} ${page}`}
+                  aria-label={`${lang === 'ua' ? 'Сторінка' : lang === 'es' ? 'Página' : lang === 'de' ? 'Seite' : 'Page'} ${page}`}
                   type="button"
                   className={`min-w-9 h-9 sm:min-w-10 sm:h-10 px-2.5 rounded-xl font-bold text-xs sm:text-sm transition cursor-pointer flex items-center justify-center ${
                     isCurrent
@@ -550,10 +624,20 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
                 document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })
               }}
               disabled={currentPage === totalPages}
-              aria-label={lang === 'ua' ? 'Вперед (наступна сторінка)' : lang === 'es' ? 'Siguiente (página siguiente)' : 'Next (next page)'}
+              aria-label={
+                lang === 'ua'
+                  ? 'Вперед (наступна сторінка)'
+                  : lang === 'es'
+                    ? 'Siguiente (página siguiente)'
+                    : lang === 'de'
+                      ? 'Weiter (nächste Seite)'
+                      : 'Next (next page)'
+              }
               className="p-2 sm:px-3 sm:py-2 rounded-xl text-xs sm:text-sm font-semibold transition border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 disabled:opacity-40 disabled:cursor-not-allowed hover:not-disabled:bg-slate-100 dark:hover:not-disabled:bg-slate-700 cursor-pointer flex items-center gap-1"
             >
-              <span className="hidden sm:inline">{lang === 'ua' ? 'Вперед' : lang === 'es' ? 'Siguiente' : 'Next'}</span>
+              <span className="hidden sm:inline">
+                {lang === 'ua' ? 'Вперед' : lang === 'es' ? 'Siguiente' : lang === 'de' ? 'Weiter' : 'Next'}
+              </span>
               <ChevronRight className="w-4 h-4" aria-hidden="true" />
             </button>
           </nav>

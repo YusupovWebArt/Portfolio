@@ -44,7 +44,7 @@ export interface ChatHistoryEntry {
 export interface LocalSynthesisOptions {
   projectSlug?: string
   projectTitle?: string
-  locale?: 'en' | 'ua' | 'es'
+  locale?: 'en' | 'ua' | 'es' | 'de'
   history?: ChatHistoryEntry[]
   answeredQuestions?: string[]
 }
@@ -87,7 +87,7 @@ export function detectQueryIntent(query: string): QueryIntent {
   const lower = foldForSearch(query)
 
   if (
-    /(blog|article|articles|writeup|read\s+about|статт|стат|блог|допис|дописи|articulo|articulos)/i.test(
+    /(blog|article|articles|writeup|read\s+about|статт|стат|блог|допис|дописи|articulo|articulos|artikel|blogartikel|fachartikel|beitrag|beitrage|beitraege)/i.test(
       lower,
     )
   ) {
@@ -95,7 +95,7 @@ export function detectQueryIntent(query: string): QueryIntent {
   }
 
   if (
-    /(service|services|pricing|price|rates|cost|hire|b2b|offer|послуг|цін|вартіст|цена|стоимост|servicios|servicio|precio|contratar|tarifas)/i.test(
+    /(service|services|pricing|price|rates|cost|hire|b2b|offer|послуг|цін|вартіст|цена|стоимост|servicios|servicio|precio|contratar|tarifas|leistungen|dienstleistung|dienstleistungen|preise|preis|kosten|honorar|beauftragen|angebot)/i.test(
       lower,
     )
   ) {
@@ -103,7 +103,7 @@ export function detectQueryIntent(query: string): QueryIntent {
   }
 
   if (
-    /(who\s+is|who\s+are\s+you|about\s+artur|about\s+yourself|bio|developer|engineer|experience|years\s+of|location|spain|seville|хто|про\s+себе|досвід|опыт|quien|sobre\s+ti|experiencia|donde)/i.test(
+    /(who\s+is|who\s+are\s+you|about\s+artur|about\s+yourself|bio|developer|engineer|experience|years\s+of|location|spain|seville|хто|про\s+себе|досвід|опыт|quien|sobre\s+ti|experiencia|donde|wer\s+ist|wer\s+bist|ueber\s+dich|uber\s+dich|ueber\s+artur|uber\s+artur|entwickler|erfahrung|jahre|standort|spanien)/i.test(
       lower,
     )
   ) {
@@ -111,7 +111,7 @@ export function detectQueryIntent(query: string): QueryIntent {
   }
 
   if (
-    /(contact|email|phone|whatsapp|telegram|linkedin|reach|call|контакт|зв'язат|написат|contacto|escribir)/i.test(
+    /(contact|email|phone|whatsapp|telegram|linkedin|reach|call|контакт|зв'язат|написат|contacto|escribir|kontakt|telefon|schreiben|erreich)/i.test(
       lower,
     )
   ) {
@@ -119,7 +119,7 @@ export function detectQueryIntent(query: string): QueryIntent {
   }
 
   if (
-    /(methodology|sdd|tdd|vitest|playwright|wcag|eaa|accessibility|devsecops|quality|ai-harness|методолог|тест)/i.test(
+    /(methodology|sdd|tdd|vitest|playwright|wcag|eaa|accessibility|devsecops|quality|ai-harness|методолог|тест|methodik|barrierefreiheit|qualitat|qualitaet)/i.test(
       lower,
     )
   ) {
@@ -127,7 +127,7 @@ export function detectQueryIntent(query: string): QueryIntent {
   }
 
   if (
-    /(tech\s*stack|\bstack\b|technologies|features|architecture|challenges|solutions|case\s*study|стек|функці|архітектур|funciones|arquitectura)/i.test(
+    /(tech\s*stack|\bstack\b|technologies|features|architecture|challenges|solutions|case\s*study|стек|функці|архітектур|funciones|arquitectura|technologien|funktionen|funktion|architektur|herausforderung|losung|loesung|fallstudie)/i.test(
       lower,
     )
   ) {
@@ -163,6 +163,7 @@ function buildBM25Index(chunks: KnowledgeChunk[]): BM25Index {
       chunk.content,
       chunk.contentUa || '',
       chunk.contentEs || '',
+      chunk.contentDe || '',
       chunk.technologies?.join(' ') || '',
       chunk.category || '',
       chunk.metadata?.keywords?.join(' ') || '',
@@ -241,6 +242,7 @@ export function retrieveKnowledge(
   if (baseTokens.length === 0) {
     return []
   }
+  const baseTokenSet = new Set(baseTokens)
   const queryTokens = expandTokens(baseTokens)
   const lowerQuery = foldForSearch(trimmed)
 
@@ -268,7 +270,7 @@ export function retrieveKnowledge(
     let score = 0
     const matchReasons: string[] = []
 
-    // 2. Legitimate BM25 scoring across all query tokens
+    // 2. Legitimate BM25 scoring across all query tokens (synonyms damped at 0.4x)
     for (const token of queryTokens) {
       const tf = termFrequencies.get(token) || 0
       if (tf > 0) {
@@ -279,7 +281,9 @@ export function retrieveKnowledge(
         )
 
         const lengthNorm = 1 - b + b * (docLength / index.avgDocLength)
-        const termScore = idf * ((tf * (k1 + 1)) / (tf + k1 * lengthNorm))
+        const tokenWeight = baseTokenSet.has(token) ? 1.0 : 0.4
+        const termScore =
+          tokenWeight * idf * ((tf * (k1 + 1)) / (tf + k1 * lengthNorm))
 
         score += termScore
         if (!matchReasons.includes(`bm25-match:${token}`)) {
@@ -294,17 +298,32 @@ export function retrieveKnowledge(
       chunk.slug?.toLowerCase() === currentProjectSlug.toLowerCase()
     ) {
       if (!isGeneralIntentQuery || isQuerySpecificallyAboutCurrentProject) {
-        const boost = isQuerySpecificallyAboutCurrentProject ? 4.0 : 2.5
+        const boost = isQuerySpecificallyAboutCurrentProject ? 6.0 : 3.0
         score += boost
         matchReasons.push('active-project-context')
       }
     }
 
-    // 4. Exact Title Match (non-empty query tokens)
+    // 4. Exact Title Match & Title Token Overlap (non-empty query tokens)
     const lowerTitle = foldForSearch(chunk.title)
     if (lowerTitle.includes(lowerQuery) || (lowerQuery.length > 3 && lowerTitle.includes(lowerQuery))) {
       score += 3.5
       matchReasons.push('title-match')
+    } else {
+      if (lowerQuery.length >= 10 && lowerTitle.includes(lowerQuery.slice(0, 11))) {
+        score += 4.5
+        matchReasons.push('title-prefix-match')
+      }
+      let titleTokenHits = 0
+      for (const bt of baseTokens) {
+        if (bt.length >= 2 && lowerTitle.includes(bt)) {
+          titleTokenHits++
+        }
+      }
+      if (titleTokenHits >= 2) {
+        score += titleTokenHits * 0.85
+        matchReasons.push('title-token-overlap')
+      }
     }
 
     // 5. Technology Match (capped bonus)
@@ -381,7 +400,7 @@ export function retrieveKnowledge(
 export function formatContextForLLM(
   results: RetrievalResult[],
   maxChars = 3500,
-  locale?: 'en' | 'ua' | 'es',
+  locale?: 'en' | 'ua' | 'es' | 'de',
 ): string {
   if (results.length === 0) return ''
 
@@ -392,7 +411,7 @@ export function formatContextForLLM(
     const facetInfo = item.chunk.facet ? ` · ${item.chunk.facet.toUpperCase()}` : ''
     const chunkBlock = `
 #### [${item.chunk.type.toUpperCase()}${facetInfo}] ${item.chunk.title} (Relevance Score: ${item.score})
-${(locale === 'es' && item.chunk.contentEs) || (locale === 'ua' && item.chunk.contentUa) || item.chunk.content}
+${(locale === 'de' && item.chunk.contentDe) || (locale === 'es' && item.chunk.contentEs) || (locale === 'ua' && item.chunk.contentUa) || item.chunk.content}
 `
     if (currentLength + chunkBlock.length > maxChars) {
       break
@@ -409,9 +428,10 @@ function formatTechItems(items?: TechnologyItem[]): string {
   return items.map((t) => (typeof t === 'string' ? t : t.full || t.short)).join(', ')
 }
 
-function formatProjectStack(project: Project, lang: 'en' | 'ua' | 'es'): string {
+function formatProjectStack(project: Project, lang: 'en' | 'ua' | 'es' | 'de'): string {
   if (Array.isArray(project.technologies)) {
     const list = formatTechItems(project.technologies)
+    if (lang === 'de') return `Technologie-Stack von ${project.title}: ${list}`
     if (lang === 'es') return `Stack tecnológico de ${project.title}: ${list}`
     if (lang === 'ua') return `Технологічний стек проєкту ${project.title}: ${list}`
     return `Technology stack used in ${project.title}: ${list}`
@@ -436,16 +456,18 @@ function formatProjectStack(project: Project, lang: 'en' | 'ua' | 'es'): string 
   addSection('AI Tools', t.aiTools)
 
   const header =
-    lang === 'es'
-      ? `Stack tecnológico utilizado en ${project.title}:`
-      : lang === 'ua'
-        ? `Технологічний стек проєкту ${project.title}:`
-        : `Technology stack used in ${project.title}:`
+    lang === 'de'
+      ? `Verwendeter Technologie-Stack in ${project.title}:`
+      : lang === 'es'
+        ? `Stack tecnológico utilizado en ${project.title}:`
+        : lang === 'ua'
+          ? `Технологічний стек проєкту ${project.title}:`
+          : `Technology stack used in ${project.title}:`
 
   return `${header}\n${sections.join('\n')}`
 }
 
-function formatProjectFeatures(project: Project, lang: 'en' | 'ua' | 'es'): string {
+function formatProjectFeatures(project: Project, lang: 'en' | 'ua' | 'es' | 'de'): string {
   const lines: string[] = []
   if (Array.isArray(project.features)) {
     for (const f of project.features.slice(0, 6)) {
@@ -456,65 +478,79 @@ function formatProjectFeatures(project: Project, lang: 'en' | 'ua' | 'es'): stri
           title: string
           titleUa?: string
           titleEs?: string
+          titleDe?: string
           description: string
           descriptionUa?: string
           descriptionEs?: string
+          descriptionDe?: string
         }
         const fTitle =
-          lang === 'es' && feat.titleEs
-            ? feat.titleEs
-            : lang === 'ua' && feat.titleUa
-              ? feat.titleUa
-              : feat.title
+          lang === 'de' && feat.titleDe
+            ? feat.titleDe
+            : lang === 'es' && feat.titleEs
+              ? feat.titleEs
+              : lang === 'ua' && feat.titleUa
+                ? feat.titleUa
+                : feat.title
         const fDesc =
-          lang === 'es' && feat.descriptionEs
-            ? feat.descriptionEs
-            : lang === 'ua' && feat.descriptionUa
-              ? feat.descriptionUa
-              : feat.description
+          lang === 'de' && feat.descriptionDe
+            ? feat.descriptionDe
+            : lang === 'es' && feat.descriptionEs
+              ? feat.descriptionEs
+              : lang === 'ua' && feat.descriptionUa
+                ? feat.descriptionUa
+                : feat.description
         lines.push(`- ${fTitle}: ${fDesc}`)
       }
     }
   }
 
   const header =
-    lang === 'es'
-      ? `Funciones principales de ${project.title}:`
-      : lang === 'ua'
-        ? `Основні функції проєкту ${project.title}:`
-        : `Key features of ${project.title}:`
+    lang === 'de'
+      ? `Hauptfunktionen von ${project.title}:`
+      : lang === 'es'
+        ? `Funciones principales de ${project.title}:`
+        : lang === 'ua'
+          ? `Основні функції проєкту ${project.title}:`
+          : `Key features of ${project.title}:`
 
   if (lines.length === 0) {
     const desc =
-      lang === 'es' && project.descriptionEs
-        ? project.descriptionEs
-        : lang === 'ua' && project.descriptionUa
-          ? project.descriptionUa
-          : project.description
+      lang === 'de' && project.descriptionDe
+        ? project.descriptionDe
+        : lang === 'es' && project.descriptionEs
+          ? project.descriptionEs
+          : lang === 'ua' && project.descriptionUa
+            ? project.descriptionUa
+            : project.description
     return `${header}\n${desc}`
   }
 
   return `${header}\n${lines.join('\n')}`
 }
 
-function formatProjectArchitecture(project: Project, lang: 'en' | 'ua' | 'es'): string {
+function formatProjectArchitecture(project: Project, lang: 'en' | 'ua' | 'es' | 'de'): string {
   const parts: string[] = []
   const header =
-    lang === 'es'
-      ? `Arquitectura e ingeniería de ${project.title}:`
-      : lang === 'ua'
-        ? `Архітектура та інженерія проєкту ${project.title}:`
-        : `Architecture and engineering of ${project.title}:`
+    lang === 'de'
+      ? `Architektur & Engineering von ${project.title}:`
+      : lang === 'es'
+        ? `Arquitectura e ingeniería de ${project.title}:`
+        : lang === 'ua'
+          ? `Архітектура та інженерія проєкту ${project.title}:`
+          : `Architecture and engineering of ${project.title}:`
 
   parts.push(header)
 
   if (project.architecture) {
     const archDesc =
-      lang === 'es' && project.architecture.descriptionEs
-        ? project.architecture.descriptionEs
-        : lang === 'ua' && project.architecture.descriptionUa
-          ? project.architecture.descriptionUa
-          : project.architecture.description
+      lang === 'de' && project.architecture.descriptionDe
+        ? project.architecture.descriptionDe
+        : lang === 'es' && project.architecture.descriptionEs
+          ? project.architecture.descriptionEs
+          : lang === 'ua' && project.architecture.descriptionUa
+            ? project.architecture.descriptionUa
+            : project.architecture.description
     if (archDesc) {
       parts.push(archDesc)
     }
@@ -527,15 +563,23 @@ function formatProjectArchitecture(project: Project, lang: 'en' | 'ua' | 'es'): 
   }
 
   const localizedChallenges =
-    lang === 'es' && project.challengesEs?.length
-      ? project.challengesEs
-      : lang === 'ua' && project.challengesUa?.length
-        ? project.challengesUa
-        : project.challenges
+    lang === 'de' && project.challengesDe?.length
+      ? project.challengesDe
+      : lang === 'es' && project.challengesEs?.length
+        ? project.challengesEs
+        : lang === 'ua' && project.challengesUa?.length
+          ? project.challengesUa
+          : project.challenges
 
   if (localizedChallenges && localizedChallenges.length > 0) {
     const chLabel =
-      lang === 'es' ? 'Desafíos clave:' : lang === 'ua' ? 'Ключові виклики:' : 'Key challenges:'
+      lang === 'de'
+        ? 'Zentrale Herausforderungen:'
+        : lang === 'es'
+          ? 'Desafíos clave:'
+          : lang === 'ua'
+            ? 'Ключові виклики:'
+            : 'Key challenges:'
     parts.push(
       `${chLabel}\n${localizedChallenges
         .slice(0, 3)
@@ -545,19 +589,23 @@ function formatProjectArchitecture(project: Project, lang: 'en' | 'ua' | 'es'): 
   }
 
   const localizedSolutions =
-    lang === 'es' && project.solutionsEs?.length
-      ? project.solutionsEs
-      : lang === 'ua' && project.solutionsUa?.length
-        ? project.solutionsUa
-        : project.solutions
+    lang === 'de' && project.solutionsDe?.length
+      ? project.solutionsDe
+      : lang === 'es' && project.solutionsEs?.length
+        ? project.solutionsEs
+        : lang === 'ua' && project.solutionsUa?.length
+          ? project.solutionsUa
+          : project.solutions
 
   if (localizedSolutions && localizedSolutions.length > 0) {
     const solLabel =
-      lang === 'es'
-        ? 'Soluciones implementadas:'
-        : lang === 'ua'
-          ? 'Реалізовані рішення:'
-          : 'Solutions implemented:'
+      lang === 'de'
+        ? 'Umgesetzte Lösungen:'
+        : lang === 'es'
+          ? 'Soluciones implementadas:'
+          : lang === 'ua'
+            ? 'Реалізовані рішення:'
+            : 'Solutions implemented:'
     parts.push(
       `${solLabel}\n${localizedSolutions
         .slice(0, 3)
@@ -569,19 +617,28 @@ function formatProjectArchitecture(project: Project, lang: 'en' | 'ua' | 'es'): 
   return parts.join('\n\n')
 }
 
-function formatProjectOverview(project: Project, lang: 'en' | 'ua' | 'es'): string {
+function formatProjectOverview(project: Project, lang: 'en' | 'ua' | 'es' | 'de'): string {
   const desc =
-    lang === 'es' && project.fullDescriptionEs
-      ? project.fullDescriptionEs
-      : lang === 'ua' && project.fullDescriptionUa
-        ? project.fullDescriptionUa
-        : project.fullDescription || project.description
+    lang === 'de' && (project.fullDescriptionDe || project.descriptionDe)
+      ? project.fullDescriptionDe || project.descriptionDe
+      : lang === 'es' && (project.fullDescriptionEs || project.descriptionEs)
+        ? project.fullDescriptionEs || project.descriptionEs
+        : lang === 'ua' && (project.fullDescriptionUa || project.descriptionUa)
+          ? project.fullDescriptionUa || project.descriptionUa
+          : project.fullDescription || project.description
 
   const parts: string[] = [`${project.title} - ${desc}`]
 
   if (project.detailMetrics && project.detailMetrics.length > 0) {
     const metricsStr = project.detailMetrics.map((m) => `${m.label}: ${m.value}`).join(' | ')
-    const mLabel = lang === 'es' ? 'Métricas' : lang === 'ua' ? 'Метрики' : 'Metrics'
+    const mLabel =
+      lang === 'de'
+        ? 'Kennzahlen'
+        : lang === 'es'
+          ? 'Métricas'
+          : lang === 'ua'
+            ? 'Метрики'
+            : 'Metrics'
     parts.push(`${mLabel}: ${metricsStr}`)
   }
 
@@ -787,31 +844,31 @@ export function inferProjectFromHistory(
 
 export function isHireOrContactQuery(query: string): boolean {
   const lower = foldForSearch(query || '')
-  return /(hire|rates|pricing|price|cost|contact|reach|email|telegram|whatsapp|freelance|contract|available|availability|resume|\bcv\b|найняти|послуги|ціни|вартість|контакт|зв'яз|резюме|contratar|servicios|precio|tarifa|contacto|disponib|curriculum)/i.test(
+  return /(hire|rates|pricing|price|cost|contact|reach|email|telegram|whatsapp|freelance|contract|available|availability|resume|\bcv\b|найняти|послуги|ціни|вартість|контакт|зв'яз|резюме|contratar|servicios|precio|tarifa|contacto|disponib|curriculum|beauftragen|einstellen|dienstleistung|leistungen|preise|preis|kosten|honorar|kontakt|lebenslauf|verfugbar|verfuegbar|stundensatz)/i.test(
     lower,
   )
 }
 
 export function isStackComparisonQuery(query: string): boolean {
   const lower = foldForSearch(query || '')
-  return /(vs|versus|compare|comparison|which stack|what tech to choose|what tech is better|which tech|better|wordpress.*next|next.*wordpress|react.*next|shopify.*wordpress|порівня|порівняти|що краще|вибрати стек|разница|что лучше|сравнить|сравнение|comparar|comparativa|que elegir|diferencia entre)/i.test(
+  return /(vs|versus|compare|comparison|which stack|what tech to choose|what tech is better|which tech|better|wordpress.*next|next.*wordpress|react.*next|shopify.*wordpress|порівня|порівняти|що краще|вибрати стек|разница|что лучше|сравнить|сравнение|comparar|comparativa|que elegir|diferencia entre|vergleichen|vergleich|welcher\s+stack|welche\s+technolog|unterschied|gegenuber|gegenueber)/i.test(
     lower,
   )
 }
 
 export function isEstimateOrCalculatorQuery(query: string): boolean {
   const lower = foldForSearch(query || '')
-  return /(estimate|estimator|timeline|calculator|how long|timeframe|scope|phases|duration|термін|оцінка|термінів|калькулятор|тривалість|скільки часу|этапы|сроки|калькулятор|сколько времени|tiempo|plazos|calculadora|cuanto tiempo|duracion|fases)/i.test(
+  return /(estimate|estimator|timeline|calculator|how long|timeframe|scope|phases|duration|термін|оцінка|термінів|калькулятор|тривалість|скільки часу|этапы|сроки|калькулятор|сколько времени|tiempo|plazos|calculadora|cuanto tiempo|duracion|fases|schatzung|schaetzung|kostenvoranschlag|zeitplan|zeitrahmen|rechner|wie\s+lange|dauer|wochen|phasen|aufwand)/i.test(
     lower,
   )
 }
 
 export function isBestProjectsQuery(query: string): boolean {
   const lower = foldForSearch(query || '')
-  const hasBest = /(best|top|featured|dest|bedt|highlight|showcase|flagship|кращ|кращі|кращих|найкращ|лучш|лучшие|лучших|топ|mejores|destacados)/i.test(
+  const hasBest = /(best|top|featured|dest|bedt|highlight|showcase|flagship|кращ|кращі|кращих|найкращ|лучш|лучшие|лучших|топ|mejores|destacados|beste|besten|wichtigste|wichtigsten|ausgewahlte|ausgewaehlte|vorzeige)/i.test(
     lower,
   )
-  const hasProjectsWord = /(project|work|portfolio|case|example|sample|проєкт|проект|робіт|работ|портфоліо|портфолио|кейси|кейсы|proyecto|trabajo)/i.test(
+  const hasProjectsWord = /(project|work|portfolio|case|example|sample|проєкт|проект|робіт|работ|портфоліо|портфолио|кейси|кейсы|proyecto|trabajo|projekt|projekte|arbeit|arbeiten|fallstudie)/i.test(
     lower,
   )
   return hasBest && (hasProjectsWord || lower.length < 16)
@@ -819,34 +876,45 @@ export function isBestProjectsQuery(query: string): boolean {
 
 export function isPersonalProjectsQuery(query: string): boolean {
   const lower = foldForSearch(query || '')
-  return /(personal|own|pet project|flagship product|авторськ|власн|личн|собственн|propios|personal)/i.test(
+  return /(personal|own|pet project|flagship product|авторськ|власн|личн|собственн|propios|personal|eigen|eigene|eigenes|personlich|persoenlich|flaggschiff)/i.test(
     lower,
-  ) && /(project|app|platform|portfolio|product|work|проєкт|проект|додат|продукт|платформ|робот|proyecto|aplicacion|producto)/i.test(
+  ) && /(project|app|platform|portfolio|product|work|проєкт|проект|додат|продукт|платформ|робот|proyecto|aplicacion|producto|projekt|projekte|anwendung|plattform|produkt|produkte|arbeit)/i.test(
     lower,
   )
 }
 
 export function isBlogArticlesQuery(query: string): boolean {
   const lower = foldForSearch(query || '')
-  return /(blog|article|articles|writeup|read\s+about|статт|стат|блог|допис|дописи|articulo|articulos)/i.test(
+  return /(blog|article|articles|writeup|read\s+about|статт|стат|блог|допис|дописи|articulo|articulos|artikel|blogartikel|fachartikel|beitrag|beitrage|beitraege)/i.test(
     lower,
   )
 }
 
 /**
  * Resolves the appropriate response language by analyzing query characters first
- * (Cyrillic -> 'ua', Spanish markers -> 'es', neutral / English -> preferredLocale or 'en').
+ * (Cyrillic -> 'ua', German umlauts/eszett/markers -> 'de', Spanish markers -> 'es', neutral / English -> preferredLocale or 'en').
  */
 export function resolveResponseLanguage(
   query: string,
-  preferredLocale?: 'en' | 'ua' | 'es',
-): 'en' | 'ua' | 'es' {
+  preferredLocale?: 'en' | 'ua' | 'es' | 'de',
+): 'en' | 'ua' | 'es' | 'de' {
   const trimmed = query ? query.trim() : ''
   if (!trimmed) return preferredLocale || 'en'
 
   // Cyrillic characters (Russian or Ukrainian queries) -> 'ua'
   if (/[а-яіїєґё]/i.test(trimmed)) {
     return 'ua'
+  }
+
+  // German umlauts/eszett (checking 'ü' excluding Spanish 'güe'/'güi') or explicit German query keywords
+  if (
+    /[äöß]/i.test(trimmed) ||
+    /(?:^|[^g])ü|gü(?![ei])/i.test(trimmed) ||
+    /\b(wie|wer|wo|warum|welche|welcher|welches|welchen|welchem|kannst|koennen|können|moechte|möchte|moechten|möchten|ueber|über|fuer|für|und|oder|dein|deine|deinen|deiner|deines|mein|meine|meinen|meiner|mich|mir|dir|dich|ihre|ihren|hallo|guten|bitte|danke|nicht|kein|keine|keinen|auch|noch|sehr|mehr|bist|hast|gibt|wird|projekte|projekt|leistungen|dienstleistungen|preise|kosten|erfahrung|entwickler|entwicklerin|architektur|standort|lebenslauf|vergleich|vergleichen|schaetzung|schätzung|dauer|wochen|rechner|beauftragen|einstellen|artikel|blogartikel|fachartikel|barrierefreiheit|verfuegbar|verfügbar|erzaehl|erzähl|zeig|zeige|deutsch|eigene|eigenen|persoenlich|persönlich)\b/i.test(
+      trimmed,
+    )
+  ) {
+    return 'de'
   }
 
   // Spanish diacritics or explicit Spanish query keywords
@@ -897,12 +965,15 @@ export function resolveBlogFromQueryOrContext(
 
   // 2. Direct title match from options.projectTitle (only if query does not target a project/category)
   if (!isProjectOrCategoryQuery && options.projectTitle) {
-    const byTitle = allBlogPosts.find(
-      (p) =>
+    const byTitle = allBlogPosts.find((p) => {
+      const t = p.title as Partial<Record<'en' | 'ua' | 'es' | 'de', string>>
+      return (
         foldForSearch(p.title.en) === foldForSearch(options.projectTitle!) ||
         foldForSearch(p.title.ua) === foldForSearch(options.projectTitle!) ||
-        foldForSearch(p.title.es) === foldForSearch(options.projectTitle!),
-    )
+        foldForSearch(p.title.es) === foldForSearch(options.projectTitle!) ||
+        (t.de ? foldForSearch(t.de) === foldForSearch(options.projectTitle!) : false)
+      )
+    })
     if (byTitle) return byTitle
   }
 
@@ -913,13 +984,16 @@ export function resolveBlogFromQueryOrContext(
     if (lower.includes(post.slug.toLowerCase())) {
       return post
     }
+    const t = post.title as Partial<Record<'en' | 'ua' | 'es' | 'de', string>>
     const tEn = foldForSearch(post.title.en)
     const tUa = foldForSearch(post.title.ua)
     const tEs = foldForSearch(post.title.es)
+    const tDe = t.de ? foldForSearch(t.de) : ''
     if (
       (tEn.length > 8 && lower.includes(tEn)) ||
       (tUa.length > 8 && lower.includes(tUa)) ||
-      (tEs.length > 8 && lower.includes(tEs))
+      (tEs.length > 8 && lower.includes(tEs)) ||
+      (tDe.length > 8 && lower.includes(tDe))
     ) {
       return post
     }
@@ -934,19 +1008,19 @@ export function resolveBlogFromQueryOrContext(
     return getBlogPostBySlug('in-browser-llm-webgpu-zero-server-inference')
   }
 
-  if (/\b(axe[\s-]*core|playwright.*(a11y|accessibility|доступност)|automated.*accessibility|ci[\s-]*cd.*accessibility)/i.test(lower)) {
+  if (/\b(axe[\s-]*core|playwright.*(a11y|accessibility|доступност|barrierefrei)|automated.*accessibility|ci[\s-]*cd.*accessibility)/i.test(lower)) {
     return getBlogPostBySlug('automated-accessibility-testing-cicd-axe-playwright')
   }
 
-  if (/\b(eaa.*(ecommerce|e-commerce|магазин|tienda|store|checkout|штраф|fine|sanction)|ecommerce.*(accessibility|wcag|eaa)|(accessibility|wcag).*checkout)/i.test(lower)) {
+  if (/\b(eaa.*(ecommerce|e-commerce|магазин|tienda|store|checkout|onlineshop|kasse|bussgeld|штраф|fine|sanction)|ecommerce.*(accessibility|wcag|eaa)|(accessibility|wcag).*checkout)/i.test(lower)) {
     return getBlogPostBySlug('eaa-2026-compliance-ecommerce-audit-remediation')
   }
 
-  if (/\b(wcag|eaa\b|european accessibility|accessibility act|доступност|доступность|accesibilidad)/i.test(lower)) {
+  if (/\b(wcag|eaa\b|european accessibility|accessibility act|bfsg|barrierefreiheit|доступност|доступность|accesibilidad)/i.test(lower)) {
     return getBlogPostBySlug('wcag-22-aa-european-accessibility-act-2026')
   }
 
-  if (/\b(zero[\s-]*trust|client[\s-]*side security|обфускац)/i.test(lower)) {
+  if (/\b(zero[\s-]*trust|client[\s-]*side security|обфускац|obfuskation)/i.test(lower)) {
     return getBlogPostBySlug('client-side-zero-trust-security')
   }
 
@@ -966,11 +1040,11 @@ export function resolveBlogFromQueryOrContext(
     return getBlogPostBySlug('nextjs-vs-headless-wordpress-custom-php-2026')
   }
 
-  if (/\b(fullstack[\s-]*ai[\s-]*lab.*(arch|статт|стат|блог|articulo|deep[\s-]*dive)|edtech architecture|mdx[\s-]*rs|interview simulator)/i.test(lower)) {
+  if (/\b(fullstack[\s-]*ai[\s-]*lab.*(arch|статт|стат|блог|articulo|artikel|deep[\s-]*dive)|edtech architecture|mdx[\s-]*rs|interview simulator)/i.test(lower)) {
     return getBlogPostBySlug('fullstack-ai-lab-interactive-edtech-architecture')
   }
 
-  if (/\b(unitrition.*(arch|статт|стат|блог|articulo|deep[\s-]*dive)|healthtech.*(arch|статт|стат|блог)|fooddata|usda api)/i.test(lower)) {
+  if (/\b(unitrition.*(arch|статт|стат|блог|articulo|artikel|deep[\s-]*dive)|healthtech.*(arch|статт|стат|блог|artikel)|fooddata|usda api)/i.test(lower)) {
     return getBlogPostBySlug('unitrition-headless-healthtech-architecture')
   }
 
@@ -978,19 +1052,19 @@ export function resolveBlogFromQueryOrContext(
     return getBlogPostBySlug('wasm-wordpress-php-in-browser-zero-server')
   }
 
-  if (/\b(buhl.*(wiso|tax|податк|налог|arch|статт|стат|блог)|bafin|wiso.*steuer)/i.test(lower)) {
+  if (/\b(buhl.*(wiso|tax|податк|налог|steuer|arch|статт|стат|блог|artikel)|bafin|wiso.*steuer|dsgvo)/i.test(lower)) {
     return getBlogPostBySlug('buhl-wiso-fintech-wordpress-architecture-gdpr')
   }
 
-  if (/\b(telefontraining.*(arch|статт|стат|блог|edtech|callcenter|akademie)|callcenter.*akademie)/i.test(lower)) {
+  if (/\b(telefontraining.*(arch|статт|стат|блог|artikel|edtech|callcenter|akademie)|callcenter.*akademie)/i.test(lower)) {
     return getBlogPostBySlug('telefontrainingskoffer-interactive-edtech-streaming')
   }
 
-  if (/\b(allday.*(medical|care|clinic|arch|статт|стат|блог)|hipaa.*(medical|health|portal)|medical care clinic)/i.test(lower)) {
+  if (/\b(allday.*(medical|care|clinic|arch|статт|стат|блог|artikel)|hipaa.*(medical|health|portal)|medical care clinic)/i.test(lower)) {
     return getBlogPostBySlug('all-day-medical-care-hipaa-healthtech-portal')
   }
 
-  if (/\b(organic[\s-]*bed.*(arch|статт|стат|блог|woocommerce|rtl)|rtl.*woocommerce)/i.test(lower)) {
+  if (/\b(organic[\s-]*bed.*(arch|статт|стат|блог|artikel|woocommerce|rtl)|rtl.*woocommerce)/i.test(lower)) {
     return getBlogPostBySlug('organic-bed-rtl-woocommerce-performance-optimization')
   }
 
@@ -1006,7 +1080,7 @@ export function resolveBlogFromQueryOrContext(
     return getBlogPostBySlug('enterprise-programmatic-seo-pseo-nextjs-16-autonomous-llm-pipelines')
   }
 
-  if (/\b(legacy migration|zero[\s-]*downtime migration|міграці.*хмар|миграци.*облак)/i.test(lower)) {
+  if (/\b(legacy migration|zero[\s-]*downtime migration|altlast.*migration|cloud[\s-]*migration|міграці.*хмар|миграци.*облак)/i.test(lower)) {
     return getBlogPostBySlug('legacy-migration-cloud-infrastructure')
   }
 
@@ -1016,7 +1090,7 @@ export function resolveBlogFromQueryOrContext(
 /**
  * Formats a blog article into a rich markdown response with link, TL;DR, and applied case studies.
  */
-export function formatBlogPostDetails(post: BlogPost, lang: 'en' | 'ua' | 'es'): string {
+export function formatBlogPostDetails(post: BlogPost, lang: 'en' | 'ua' | 'es' | 'de'): string {
   const title = getBlogTitle(post, lang)
   const desc = getBlogDescription(post, lang)
   const categoryLabel = getBlogCategoryLabel(post, lang)
@@ -1037,7 +1111,9 @@ export function formatBlogPostDetails(post: BlogPost, lang: 'en' | 'ua' | 'es'):
         ? 'Ключові архітектурні тези:'
         : lang === 'es'
           ? 'Conclusiones arquitectónicas clave:'
-          : 'Key Architectural Takeaways:'
+          : lang === 'de'
+            ? 'Wichtigste Architektur-Erkenntnisse:'
+            : 'Key Architectural Takeaways:'
     lines.push('', tldrHeader)
     tldr.forEach((item) => {
       lines.push(`- ${item}`)
@@ -1050,10 +1126,13 @@ export function formatBlogPostDetails(post: BlogPost, lang: 'en' | 'ua' | 'es'):
         ? 'Практичне впровадження у реальних кейсах:'
         : lang === 'es'
           ? 'Implementación práctica en proyectos reales:'
-          : 'Production implementation in case studies:'
+          : lang === 'de'
+            ? 'Praxiseinsatz in Fallstudien:'
+            : 'Production implementation in case studies:'
     lines.push('', appliedHeader)
     post.appliedProjects.forEach((p) => {
-      const note = p.note[lang] || p.note.en
+      const noteMap = p.note as Partial<Record<'en' | 'ua' | 'es' | 'de', string>>
+      const note = noteMap[lang] || p.note.en
       lines.push(`- **${p.name}**: ${note}`)
     })
   }
@@ -1063,7 +1142,9 @@ export function formatBlogPostDetails(post: BlogPost, lang: 'en' | 'ua' | 'es'):
       ? `Повний технічний розбір читайте у статті: [Читати статтю](${articleUrl})`
       : lang === 'es'
         ? `Lee el análisis técnico completo en: [Leer artículo](${articleUrl})`
-        : `Read the full architectural case study: [Read Full Article](${articleUrl})`
+        : lang === 'de'
+          ? `Vollständigen Fachartikel lesen: [Artikel lesen](${articleUrl})`
+          : `Read the full architectural case study: [Read Full Article](${articleUrl})`
 
   lines.push('', readMoreText)
   return lines.join('\n')
@@ -1077,7 +1158,7 @@ export interface CategoryShowcaseResult {
 
 export function resolveCategoryOrTechShowcase(
   query: string,
-  lang: 'en' | 'ua' | 'es',
+  lang: 'en' | 'ua' | 'es' | 'de',
 ): CategoryShowcaseResult | undefined {
   const trimmed = query ? query.trim() : ''
   const lower = foldForSearch(trimmed)
@@ -1089,8 +1170,10 @@ export function resolveCategoryOrTechShowcase(
   // 1. Shopify & E-commerce
   if (
     /(shopify|шопифай|шопіфай)/i.test(lower) ||
-    (/(e[\s-]*commerce|онлайн[\s-]*магазин|інтернет[\s-]*магазин|tienda online)/i.test(lower) &&
-      !/(vs|versus|compare|порівня)/i.test(lower))
+    (/(e[\s-]*commerce|онлайн[\s-]*магазин|інтернет[\s-]*магазин|tienda online|online[\s-]*shop|onlineshop|webshop)/i.test(
+      lower,
+    ) &&
+      !/(vs|versus|compare|порівня|vergleich)/i.test(lower))
   ) {
     const projectSlugs = ['kidzely', 'artezioeu', 'cartooniko', 'prezentify', 'secondchancedecor']
     const answer =
@@ -1108,18 +1191,25 @@ export function resolveCategoryOrTechShowcase(
             '- **Cartooniko**: Plataforma interactiva con tema personalizado en Liquid e integraciones de aplicaciones.\n' +
             '- **Prezentify**: Tienda de regalos con filtros dinámicos y carrito optimizado.\n\n' +
             'A continuación puedes explorar las tarjetas interactivas de estos proyectos:'
-          : 'I develop high-performance e-commerce solutions using Shopify Liquid and tailored online storefronts:\n\n' +
-            '- **Kidzely**: International consumer e-commerce store with optimized checkout velocity, mobile UX, and high conversion speed.\n' +
-            '- **Artezio EU**: European multi-currency storefront with automated inventory management and ERP sync.\n' +
-            '- **Cartooniko**: Interactive retail store featuring custom Liquid templating and third-party app integration.\n' +
-            '- **Prezentify**: Gift commerce portal with responsive product filtering and frictionless cart workflows.\n\n' +
-            'Explore the project case studies below:'
+          : lang === 'de'
+            ? 'Ich entwickle performante E-Commerce-Lösungen mit Shopify Liquid sowie maßgeschneiderte Onlineshops:\n\n' +
+              '- **Kidzely**: Internationaler Shop mit optimiertem Checkout, flüssiger Mobile-UX und hoher Ladegeschwindigkeit.\n' +
+              '- **Artezio EU**: Europäischer Multi-Währungs-Onlineshop mit automatisierter Bestands- und ERP-Synchronisierung.\n' +
+              '- **Cartooniko**: Interaktiver Store mit individuellem Liquid-Theme und nahtlosen App-Integrationen.\n' +
+              '- **Prezentify**: Geschenkeshop mit dynamischen Produktfiltern und reibungslosem Warenkorb-Flow.\n\n' +
+              'Nachfolgend finden Sie die interaktiven Fallstudienkarten:'
+            : 'I develop high-performance e-commerce solutions using Shopify Liquid and tailored online storefronts:\n\n' +
+              '- **Kidzely**: International consumer e-commerce store with optimized checkout velocity, mobile UX, and high conversion speed.\n' +
+              '- **Artezio EU**: European multi-currency storefront with automated inventory management and ERP sync.\n' +
+              '- **Cartooniko**: Interactive retail store featuring custom Liquid templating and third-party app integration.\n' +
+              '- **Prezentify**: Gift commerce portal with responsive product filtering and frictionless cart workflows.\n\n' +
+              'Explore the project case studies below:'
 
     return { category: 'Shopify & E-Commerce', answer, projectSlugs }
   }
 
   // 2. AWS & Cloud Infrastructure
-  if (/(aws\b|amazon web services|cloud delivery|хмарн.*інфраструктур|infraestructura cloud)/i.test(lower)) {
+  if (/(aws\b|amazon web services|cloud delivery|хмарн.*інфраструктур|infraestructura cloud|cloud[\s-]*infrastruktur)/i.test(lower)) {
     const projectSlugs = [
       'it-magic',
       'aws-migration-services',
@@ -1141,18 +1231,25 @@ export function resolveCategoryOrTechShowcase(
             '- **AWS for E-commerce**: Arquitectura cloud elástica para retail online con 99.99% de disponibilidad.\n' +
             '- **Cloud Delivery Solution**: Distribución de contenido global mediante CloudFront CDN y cifrado SSL/TLS.\n\n' +
             'A continuación puedes acceder a los casos de estudio detallados:'
-          : 'My portfolio includes a specialized series of enterprise projects for AWS Cloud infrastructure and consulting:\n\n' +
-            '- **IT-Magic**: Corporate platform for a leading AWS Advanced Consulting Partner with bespoke architecture and top Google rankings.\n' +
-            '- **AWS Migration Services**: High-conversion B2B portal for zero-downtime enterprise AWS cloud migrations.\n' +
-            '- **AWS for E-commerce**: Elastic cloud architecture for high-traffic retail platforms guaranteeing 99.99% uptime.\n' +
-            '- **Cloud Delivery Solution**: High-availability CDN delivery network powered by AWS CloudFront and automated SSL/TLS.\n\n' +
-            'Explore the detailed case study cards below:'
+          : lang === 'de'
+            ? 'Mein Portfolio umfasst eine spezialisierte Reihe von Enterprise-Projekten für AWS-Cloud-Infrastruktur und Consulting:\n\n' +
+              '- **IT-Magic**: Unternehmensplattform für einen führenden AWS Advanced Consulting Partner mit maßgeschneiderter Architektur und Top-Rankings.\n' +
+              '- **AWS Migration Services**: Konversionsstarkes B2B-Portal für Zero-Downtime-Enterprise-Migrationen in die AWS-Cloud.\n' +
+              '- **AWS for E-commerce**: Elastische Cloud-Architektur für Online-Handel mit 99,99 % Verfügbarkeit.\n' +
+              '- **Cloud Delivery Solution**: Hochverfügbares CDN-Netzwerk auf Basis von AWS CloudFront mit automatisiertem SSL/TLS.\n\n' +
+              'Entdecken Sie die detaillierten Fallstudien unten:'
+            : 'My portfolio includes a specialized series of enterprise projects for AWS Cloud infrastructure and consulting:\n\n' +
+              '- **IT-Magic**: Corporate platform for a leading AWS Advanced Consulting Partner with bespoke architecture and top Google rankings.\n' +
+              '- **AWS Migration Services**: High-conversion B2B portal for zero-downtime enterprise AWS cloud migrations.\n' +
+              '- **AWS for E-commerce**: Elastic cloud architecture for high-traffic retail platforms guaranteeing 99.99% uptime.\n' +
+              '- **Cloud Delivery Solution**: High-availability CDN delivery network powered by AWS CloudFront and automated SSL/TLS.\n\n' +
+              'Explore the detailed case study cards below:'
 
     return { category: 'AWS Cloud Infrastructure', answer, projectSlugs }
   }
 
   // 3. WordPress & Custom PHP
-  if (/(wordpress projects|wordpress сайти|проєкти на wordpress|сайты на вордпресс|proyectos wordpress|temas wordpress)/i.test(lower)) {
+  if (/(wordpress projects|wordpress сайти|проєкти на wordpress|сайты на вордпресс|proyectos wordpress|temas wordpress|wordpress[\s-]*projekte|wordpress[\s-]*themes|projekte\s+mit\s+wordpress)/i.test(lower)) {
     const projectSlugs = [
       'it-magic',
       'aws-migration-services',
@@ -1174,18 +1271,25 @@ export function resolveCategoryOrTechShowcase(
             '- **Front Desk Helpers**: Gran plataforma corporativa con blog técnico y base de conocimientos optimizada.\n' +
             '- **Adwoods Design**: Sitio para agencia creativa con animaciones fluidas y catálogo interactivo.\n\n' +
             'A continuación puedes ver las tarjetas interactivas de estos proyectos:'
-          : 'In the WordPress ecosystem, I specialize in clean bespoke engineering (PHP 8+, ACF Pro, Tailwind CSS) without heavy visual builders:\n\n' +
-            '- **IT-Magic**: Enterprise corporate portal for an AWS Advanced Partner scoring 95+ on Google Lighthouse.\n' +
-            '- **AWS Migration Services**: High-impact B2B platform with bespoke Custom Post Types and optimized lead funnels.\n' +
-            '- **Front Desk Helpers**: Scalable outsourcing service platform with custom knowledge base and multi-tier blog.\n' +
-            '- **Adwoods Design**: Creative agency web platform featuring fluid UI transitions and portfolio taxonomy.\n\n' +
-            'Explore the interactive project cards below:'
+          : lang === 'de'
+            ? 'Im WordPress-Ökosystem bin ich auf saubere Individualentwicklung (PHP 8+, ACF Pro, Tailwind CSS) ohne schwere Page-Builder spezialisiert:\n\n' +
+              '- **IT-Magic**: Enterprise-Unternehmensportal für einen AWS Advanced Partner mit über 95 Punkten in Google Lighthouse.\n' +
+              '- **AWS Migration Services**: B2B-Plattform mit Custom Post Types (CPT) und optimierten Lead-Funnels.\n' +
+              '- **Front Desk Helpers**: Skalierbare Outsourcing-Plattform mit technischem Blog und Wissensdatenbank.\n' +
+              '- **Adwoods Design**: Kreativagentur-Website mit flüssigen UI-Übergängen und Projektkatalog.\n\n' +
+              'Entdecken Sie die interaktiven Projektkarten unten:'
+            : 'In the WordPress ecosystem, I specialize in clean bespoke engineering (PHP 8+, ACF Pro, Tailwind CSS) without heavy visual builders:\n\n' +
+              '- **IT-Magic**: Enterprise corporate portal for an AWS Advanced Partner scoring 95+ on Google Lighthouse.\n' +
+              '- **AWS Migration Services**: High-impact B2B platform with bespoke Custom Post Types and optimized lead funnels.\n' +
+              '- **Front Desk Helpers**: Scalable outsourcing service platform with custom knowledge base and multi-tier blog.\n' +
+              '- **Adwoods Design**: Creative agency web platform featuring fluid UI transitions and portfolio taxonomy.\n\n' +
+              'Explore the interactive project cards below:'
 
     return { category: 'Custom WordPress & PHP', answer, projectSlugs }
   }
 
   // 4. Next.js & Modern React
-  if (/(next\.?js projects|nextjs projects|проєкти на next|react projects|проєкти на react|proyectos next|proyectos react)/i.test(lower)) {
+  if (/(next\.?js projects|nextjs projects|проєкти на next|react projects|проєкти на react|proyectos next|proyectos react|next\.?js[\s-]*projekte|react[\s-]*projekte|projekte\s+mit\s+next|projekte\s+mit\s+react)/i.test(lower)) {
     const projectSlugs = [
       'yusupovartur-nextjs-portfolio',
       'fullstack-ai-lab',
@@ -1195,24 +1299,31 @@ export function resolveCategoryOrTechShowcase(
     const answer =
       lang === 'ua'
         ? 'У напрямку Next.js 16 та React 19 я створюю надшвидкі масштабовані веб-платформи:\n\n' +
-          '- **Next.js 16 Portfolio Platform**: Повноцінна fullstack-платформа на React 19 Server Components із автономним Hybrid RAG AI-рушієм, SSG 213+ сторінками та WCAG 2.2 AA.\n' +
+          '- **Next.js 16 Portfolio Platform**: Повноцінна fullstack-платформа на React 19 Server Components із автономним Hybrid RAG AI-рушієм, SSG 284+ сторінками (EN/UA/ES/DE) та WCAG 2.2 AA.\n' +
           '- **Fullstack AI Lab**: Інтерактивна інженерна освітня платформа на Next.js 16, React 19, нативному Rust-компіляторі MDX-RS (1 135+ уроків), симуляторах рантайму, WASM-пісочниці та Supabase.\n' +
           '- **Unitrition**: Платформа персоналізованого харчування на Next.js 16 App Router, Headless WordPress, Supabase та USDA API.\n' +
           '- **My React Portfolio Website**: Високопродуктивний SPA на React 19, TypeScript та Tailwind CSS v4 із Vitest тест-сьютом.\n\n' +
           'Ознайомтеся з картками проєктів нижче:'
         : lang === 'es'
           ? 'En Next.js 16 y React 19 desarrollo plataformas web ultrarrápidas y accesibles:\n\n' +
-            '- **Next.js 16 Portfolio Platform**: Plataforma fullstack con React 19 Server Components, motor Hybrid RAG autónomo, 213+ páginas SSG y WCAG 2.2 AA.\n' +
+            '- **Next.js 16 Portfolio Platform**: Plataforma fullstack con React 19 Server Components, motor Hybrid RAG autónomo, 284+ páginas SSG (EN/UA/ES/DE) y WCAG 2.2 AA.\n' +
             '- **Fullstack AI Lab**: Plataforma educativa interactiva de ingeniería con Next.js 16, React 19, compilador Rust MDX-RS (1.135+ lecciones), simuladores, sandbox WASM y Supabase.\n' +
             '- **Unitrition**: Plataforma de nutrición con Next.js 16 App Router, Headless WordPress, Supabase y API de USDA.\n' +
             '- **My React Portfolio Website**: Aplicación SPA de alto rendimiento con React 19, TypeScript y pruebas Vitest.\n\n' +
             'Explora los proyectos a continuación:'
-          : 'In Next.js 16 and React 19, I architect sub-second, accessible web applications:\n\n' +
-            '- **Next.js 16 Portfolio Platform**: Enterprise fullstack system with React 19 Server Components, autonomous Hybrid RAG, 213+ SSG pages, and WCAG 2.2 AA.\n' +
-            '- **Fullstack AI Lab**: Interactive engineering educational platform built with Next.js 16, React 19, native Rust MDX-RS compilation (1,135+ lessons), runtime simulators, in-browser WASM playground, and Supabase.\n' +
-            '- **Unitrition**: Personalized nutrition modeling platform built with Next.js 16 App Router, Headless WordPress, Supabase, and USDA API.\n' +
-            '- **My React Portfolio Website**: High-performance single page application built with React 19, TypeScript, and 29 Vitest specs.\n\n' +
-            'Explore the project cards below:'
+          : lang === 'de'
+            ? 'Mit Next.js 16 und React 19 entwickle ich extrem schnelle und barrierefreie Web-Plattformen:\n\n' +
+              '- **Next.js 16 Portfolio Platform**: Enterprise-Fullstack-Plattform mit React 19 Server Components, autonomer Hybrid-RAG-Engine, 284+ SSG-Routen (EN/UA/ES/DE) und WCAG 2.2 AA.\n' +
+              '- **Fullstack AI Lab**: Interaktive Engineering-Lernplattform auf Basis von Next.js 16, React 19, nativem Rust MDX-RS Compiler (1.135+ Lektionen), Laufzeit-Simulatoren, WASM-Sandbox und Supabase.\n' +
+              '- **Unitrition**: Personalisierte Ernährungsplattform auf Next.js 16 App Router, Headless WordPress, Supabase und USDA API.\n' +
+              '- **My React Portfolio Website**: Hochperformante SPA mit React 19, TypeScript, Tailwind CSS v4 und Vitest-Testsuite.\n\n' +
+              'Entdecken Sie die Projektkarten unten:'
+            : 'In Next.js 16 and React 19, I architect sub-second, accessible web applications:\n\n' +
+              '- **Next.js 16 Portfolio Platform**: Enterprise fullstack system with React 19 Server Components, autonomous Hybrid RAG, 284+ SSG pages (EN/UA/ES/DE), and WCAG 2.2 AA.\n' +
+              '- **Fullstack AI Lab**: Interactive engineering educational platform built with Next.js 16, React 19, native Rust MDX-RS compilation (1,135+ lessons), runtime simulators, in-browser WASM playground, and Supabase.\n' +
+              '- **Unitrition**: Personalized nutrition modeling platform built with Next.js 16 App Router, Headless WordPress, Supabase, and USDA API.\n' +
+              '- **My React Portfolio Website**: High-performance single page application built with React 19, TypeScript, and 29 Vitest specs.\n\n' +
+              'Explore the project cards below:'
 
     return { category: 'Next.js & React Applications', answer, projectSlugs }
   }
@@ -1236,7 +1347,7 @@ export function resolveTargetProject(
   }
 
   const isGeneralOrShowcase =
-    /(who is artur|about yourself|quien es artur|хто такий артур|how many years|скільки років|cuantos anos|where are you located|де ви знаходитесь|donde estas|services|rates|cost|hire|послуги|ціни|precio|contratar|what projects|best projects|all projects|show me.*projects|яких проєкт|які проєкти|que proyectos)/i.test(
+    /(who is artur|about yourself|quien es artur|хто такий артур|wer ist artur|ueber dich|uber dich|how many years|скільки років|cuantos anos|wie viele jahre|where are you located|де ви знаходитесь|donde estas|wo ist dein standort|services|rates|cost|hire|послуги|ціни|precio|contratar|leistungen|dienstleistungen|preise|kosten|beauftragen|what projects|best projects|all projects|show me.*projects|яких проєкт|які проєкти|que proyectos|welche projekte|beste projekte|alle projekte|zeig.*projekte)/i.test(
       lower,
     )
 
@@ -1282,7 +1393,8 @@ export function synthesizeLocalRagAnswer(
     if (
       lower === foldForSearch(item.question) ||
       lower === foldForSearch(item.questionUa) ||
-      lower === foldForSearch(item.questionEs)
+      lower === foldForSearch(item.questionEs) ||
+      (item.questionDe ? lower === foldForSearch(item.questionDe) : false)
     ) {
       return stripEmDashes(getBotAnswer(trimmed, lang))
     }
@@ -1308,6 +1420,16 @@ export function synthesizeLocalRagAnswer(
           '- **WordPress a medida (PHP 8+)**: Temas limpios con ACF Pro y Tailwind CSS, sin cuotas mensuales y rendimiento 90+ Lighthouse.\n' +
           '- **Shopify**: Comercio electrónico internacional, pasarelas de pago globales y gestión ágil de catálogo.\n\n' +
           'A continuación puedes consultar la matriz comparativa interactiva:'
+      )
+    }
+    if (lang === 'de') {
+      return stripEmDashes(
+        'Ich bin auf vier Web-Architekturen spezialisiert, die jeweils auf konkrete Geschäftsziele zugeschnitten sind:\n\n' +
+          '- **Next.js 16 (App Router)**: SaaS, Portale, Web-Apps, Sub-Second Core Web Vitals (98-100 Lighthouse) sowie eingebettete KI/RAG-Systeme.\n' +
+          '- **Headless WordPress**: Redaktionsteams, die ein vertrautes WordPress-CMS mit einem entkoppelten Next.js-/React-Frontend verbinden möchten.\n' +
+          '- **Individuelles WordPress (PHP 8+)**: Maßgeschneiderte PHP-Themes mit ACF Pro und Tailwind CSS ohne laufende SaaS-Gebühren (90+ Lighthouse).\n' +
+          '- **Shopify**: Internationale E-Commerce-Marken, schneller Multi-Währungs-Checkout und Bestandsautomatisierung.\n\n' +
+          'Nutzen Sie die interaktive Vergleichsmatrix unten für alle Details:'
       )
     }
     return stripEmDashes(
@@ -1339,6 +1461,16 @@ export function synthesizeLocalRagAnswer(
           '- **Tienda Online**: 3-6 semanas (Shopify o WooCommerce)\n' +
           '- **Aplicación Web / SaaS**: 4-8 semanas (Next.js 16 + TypeScript + API/Base de datos)\n\n' +
           'Utiliza la calculadora interactiva a continuación para calcular el cronograma dinámico según los módulos adicionales:'
+      )
+    }
+    if (lang === 'de') {
+      return stripEmDashes(
+        'Geschätzte Projektlaufzeiten nach Architektur-Typ:\n\n' +
+          '- **Landingpage / Promo**: 1-2 Wochen (Next.js oder Custom WP + Tailwind CSS)\n' +
+          '- **Unternehmenswebsite**: 2-4 Wochen (PHP 8+ oder Headless WP + ACF Pro)\n' +
+          '- **Onlineshop**: 3-6 Wochen (Shopify oder WooCommerce)\n' +
+          '- **Web-App / SaaS**: 4-8 Wochen (Next.js 16 + TypeScript + API/Datenbank)\n\n' +
+          'Nutzen Sie den interaktiven Kalkulator unten, um die individuelle Umsetzungsdauer anhand Ihrer gewünschten Module zu berechnen:'
       )
     }
     return stripEmDashes(
@@ -1382,6 +1514,21 @@ export function synthesizeLocalRagAnswer(
           `¡Puedes acceder a los enlaces anteriores, explorar los ${allBlogPosts.length} artículos en /es/blog o preguntarme cualquier duda sobre estos temas!`
       )
     }
+    if (lang === 'de') {
+      return stripEmDashes(
+        `In meinem Engineering-Blog veröffentliche ich ${allBlogPosts.length} tiefgehende Architektur-Analysen für CTOs und technische Entscheider:\n\n` +
+          '1. **Next.js 16 vs. Headless WordPress vs. Custom PHP** (/de/blog/nextjs-vs-headless-wordpress-custom-php-2026) - Objektiver Vergleich von TCO, Wartungskosten, Core Web Vitals und redaktionellem Workflow.\n' +
+          '2. **Fullstack AI Lab Architektur-Deep-Dive** (/de/blog/fullstack-ai-lab-interactive-edtech-architecture) - Kompilierung von 1.135+ MDX-Lektionen in 90 Sekunden mit Next.js 16 & Rust MDX-RS, WebAssembly WordPress-Sandbox und KI-Interview-Simulator.\n' +
+          '3. **Unitrition Architektur-Deep-Dive** (/de/blog/unitrition-headless-healthtech-architecture) - Entwicklung einer Headless-HealthTech-Plattform mit Next.js 16, WordPress REST API, Supabase RLS und USDA FoodData Central API.\n' +
+          '4. **Autonome Hybrid-RAG-Architektur im Browser** (/de/blog/autonomous-hybrid-rag-architecture-browser) - Semantisches Retrieval unter 5ms ohne laufende Kosten für externe Vektordatenbanken.\n' +
+          '5. **WCAG 2.2 AA & European Accessibility Act 2026** (/de/blog/wcag-22-aa-european-accessibility-act-2026) - Praxisnahe Compliance-Anleitung für Unternehmen in der EU rund um Fokus-Management, Kontraste und CI/CD-Barrierefreiheits-Gates.\n' +
+          '6. **Sub-Second Core Web Vitals & Bundle-Optimierung** (/de/blog/sub-second-cwv-bundle-optimization) - Reduktion des initialen JS von 480KB auf 98KB, Tree-Shaking, WebP/AVIF-Pipelines und INP unter 50ms.\n' +
+          '7. **Shopify Liquid vs. Custom WooCommerce** (/de/blog/shopify-liquid-vs-custom-woocommerce) - Realistische E-Commerce-TCO, Conversion-Geschwindigkeit, Zahlungssicherheit und Enterprise-Checkout-Architektur.\n' +
+          '8. **Client-seitige Zero-Trust-Web-Sicherheit** (/de/blog/client-side-zero-trust-security) - Frontend-Härtung mit Base64-Kontaktobfuskation gegen Scraper, strengen Content-Security-Policies und DOM-Isolation.\n' +
+          '9. **Zero-Downtime-Migration von Legacy-Systemen in die Cloud** (/de/blog/legacy-migration-cloud-infrastructure) - Strukturierter Übergang alter Monolithen in hochverfügbare Cloud-Infrastruktur bei 100 % SEO-Erhalt.\n\n' +
+          `Sie können jeden Artikel direkt über die Links oben lesen, alle ${allBlogPosts.length} Fachbeiträge auf /de/blog durchsuchen oder mir direkt Fragen dazu stellen!`
+      )
+    }
     return stripEmDashes(
       `In my engineering blog, I publish ${allBlogPosts.length} architectural case studies designed for CTOs and technical leads:\n\n` +
         '1. **Next.js 16 vs Headless WordPress vs Custom PHP** (/en/blog/nextjs-vs-headless-wordpress-custom-php-2026) - An objective TCO, maintenance, Core Web Vitals, and editorial workflow comparison.\n' +
@@ -1401,29 +1548,39 @@ export function synthesizeLocalRagAnswer(
     if (lang === 'ua') {
       return stripEmDashes(
         'Мої власні авторські розробки (Personal Flagship Products), де я виступаю архітектором, Product Owner та Lead Fullstack інженером:\n\n' +
-          '1. **Next.js 16 & Hybrid RAG Portfolio Platform** (yusupovartur.com) - Enterprise fullstack-платформа на Next.js 16 App Router, React 19 Server Components, TypeScript 6 та кастомному автономному AI Hybrid RAG двигуні, що індексує 71 проєкт на 213+ SSG маршрутах (EN/UA/ES) із WCAG 2.2 AA.\n' +
+          '1. **Next.js 16 & Hybrid RAG Portfolio Platform** (yusupovartur.com) - Enterprise fullstack-платформа на Next.js 16 App Router, React 19 Server Components, TypeScript 6 та кастомному автономному AI Hybrid RAG двигуні, що індексує 71 проєкт на 284+ SSG маршрутах (EN/UA/ES/DE) із WCAG 2.2 AA.\n' +
           '2. **Fullstack AI Lab** (fullstackailab.com) - Інтерактивна освітня інженерна платформа для вивчення Fullstack (React 19, Next.js 16, TypeScript, WordPress core) на базі нативного Rust-компілятора MDX-RS (1 135+ уроків), симуляторів рантайму, WASM-пісочниці, генератора аудіопідкастів для Google NotebookLM та гейміфікації на Supabase.\n' +
           '3. **Unitrition** (unitrition.info) - Повнофункціональна платформа персоналізованого харчування для 10 дієтичних планів на базі Headless WordPress, Next.js 16, Supabase та інтеграції USDA FoodData Central API.\n' +
-          '4. **My React Portfolio Website** - Високопродуктивний односторінковий застосунок-портфоліо на React 19, TypeScript, Tailwind CSS v4 та 3-мовній i18n екосистемі із 29 Vitest тестами.\n\n' +
+          '4. **My React Portfolio Website** - Високопродуктивний односторінковий застосунок-портфоліо на React 19, TypeScript, Tailwind CSS v4 та 4-мовній i18n екосистемі із 29 Vitest тестами.\n\n' +
           'Нижче доступні картки цих проєктів із прямим переходом до кейсів:'
       )
     }
     if (lang === 'es') {
       return stripEmDashes(
         'Mis proyectos propios destacados (Personal Flagship Products), donde actúo como arquitecto, Product Owner y Lead Fullstack Engineer:\n\n' +
-          '1. **Next.js 16 & Hybrid RAG Portfolio Platform** (yusupovartur.com) - Plataforma fullstack empresarial con Next.js 16 App Router, React 19 Server Components, TypeScript 6 y motor propio Hybrid RAG que indexa 71 proyectos en más de 213 rutas SSG (EN/UA/ES) con WCAG 2.2 AA.\n' +
+          '1. **Next.js 16 & Hybrid RAG Portfolio Platform** (yusupovartur.com) - Plataforma fullstack empresarial con Next.js 16 App Router, React 19 Server Components, TypeScript 6 y motor propio Hybrid RAG que indexa 71 proyectos en más de 284 rutas SSG (EN/UA/ES/DE) con WCAG 2.2 AA.\n' +
           '2. **Fullstack AI Lab** (fullstackailab.com) - Plataforma educativa interactiva de ingeniería Fullstack (React 19, Next.js 16, TypeScript, WordPress core) impulsada por compilación Rust MDX-RS (1.135+ lecciones), simuladores de ejecución, sandbox WASM, generador de podcasts para Google NotebookLM y gamificación en Supabase.\n' +
           '3. **Unitrition** (unitrition.info) - Plataforma completa de nutrición personalizada para 10 dietas, construida con Headless WordPress, Next.js 16 App Router, Supabase y API de USDA.\n' +
-          '4. **My React Portfolio Website** - Aplicación SPA de alto rendimiento desarrollada con React 19, TypeScript, Tailwind CSS v4 y sistema i18n trilingüe respaldada por 29 pruebas Vitest.\n\n' +
+          '4. **My React Portfolio Website** - Aplicación SPA de alto rendimiento desarrollada con React 19, TypeScript, Tailwind CSS v4 y sistema i18n cuatrilingüe respaldada por 29 pruebas Vitest.\n\n' +
           'A continuación puedes explorar las tarjetas de estos proyectos:'
+      )
+    }
+    if (lang === 'de') {
+      return stripEmDashes(
+        'Meine eigenen Flagship-Produkte (Personal Flagship Products), bei denen ich als Architekt, Product Owner und Lead Fullstack Engineer verantwortlich bin:\n\n' +
+          '1. **Next.js 16 & Hybrid RAG Portfolio Platform** (yusupovartur.com) - Enterprise-Fullstack-Plattform mit Next.js 16 App Router, React 19 Server Components, TypeScript 6 und einer eigenen autonomen Hybrid-RAG-Engine, die 71 Fallstudien auf 284+ SSG-Routen (EN/UA/ES/DE) inklusive WCAG 2.2 AA indexiert.\n' +
+          '2. **Fullstack AI Lab** (fullstackailab.com) - Interaktive Engineering-Lernplattform für Fullstack-Entwicklung (React 19, Next.js 16, TypeScript, WordPress Core) auf Basis von nativer Rust MDX-RS-Kompilierung (1.135+ Lektionen), Laufzeit-Simulatoren, In-Browser-WASM-Sandbox, Google NotebookLM Audio-Prompt-Generator und Supabase-Gamification.\n' +
+          '3. **Unitrition** (unitrition.info) - Umfassende Plattform zur personalisierten Ernährungsmodellierung für 10 Ernährungspläne, umgesetzt mit Headless WordPress, Next.js 16 App Router, Supabase und USDA API.\n' +
+          '4. **My React Portfolio Website** - Performante Single-Page-Portfolio-Applikation auf Basis von React 19, TypeScript, Tailwind CSS v4 und 4-sprachiger i18n-Architektur mit 29 Vitest-Specs.\n\n' +
+          'Nachfolgend können Sie die Fallstudienkarten direkt erkunden:'
       )
     }
     return stripEmDashes(
       'My personal flagship products where I act as Architect, Product Owner, and Lead Fullstack Engineer:\n\n' +
-        '1. **Next.js 16 & Hybrid RAG Portfolio Platform** (yusupovartur.com) - Enterprise fullstack platform with Next.js 16 App Router, React 19 Server Components, TypeScript 6, and a custom autonomous Hybrid RAG engine indexing 71 case studies across 213+ SSG routes (EN/UA/ES) with WCAG 2.2 AA.\n' +
+        '1. **Next.js 16 & Hybrid RAG Portfolio Platform** (yusupovartur.com) - Enterprise fullstack platform with Next.js 16 App Router, React 19 Server Components, TypeScript 6, and a custom autonomous Hybrid RAG engine indexing 71 case studies across 284+ SSG routes (EN/UA/ES/DE) with WCAG 2.2 AA.\n' +
         '2. **Fullstack AI Lab** (fullstackailab.com) - Interactive engineering educational platform for Fullstack mastery (React 19, Next.js 16, TypeScript, WordPress core internals) powered by native Rust MDX-RS compilation (1,135+ lessons), runtime simulators, in-browser WASM playground, Google NotebookLM audio prompt engine, and Supabase gamification.\n' +
         '3. **Unitrition** (unitrition.info) - Comprehensive dietary modeling platform supporting 10 nutrition plans, built with Headless WordPress, Next.js 16 App Router, Supabase, and USDA API integration.\n' +
-        '4. **My React Portfolio Website** - High-performance single-page portfolio application built with React 19, TypeScript, Tailwind CSS v4, and 3-language i18n backed by 29 Vitest specs.\n\n' +
+        '4. **My React Portfolio Website** - High-performance single-page portfolio application built with React 19, TypeScript, Tailwind CSS v4, and 4-language i18n backed by 29 Vitest specs.\n\n' +
         'Explore the case study cards below:'
     )
   }
@@ -1449,7 +1606,7 @@ export function synthesizeLocalRagAnswer(
       return stripEmDashes(
         'A continuación presento una selección de mis mejores proyectos organizados por tecnologías clave (los ejemplos destacados de cada categoría):\n\n' +
           '- **Next.js 16 y Full-Stack**:\n' +
-          '  - **Next.js 16 & Hybrid RAG Portfolio Platform** - Plataforma fullstack empresarial con motor propio Hybrid RAG y 213+ rutas SSG.\n' +
+          '  - **Next.js 16 & Hybrid RAG Portfolio Platform** - Plataforma fullstack empresarial con motor propio Hybrid RAG y 284+ rutas SSG.\n' +
           '  - **Fullstack AI Lab** - Ecosistema educativo interactivo con 1.135+ lecciones MDX en Rust MDX-RS, simulador de fallos y NotebookLM AI.\n' +
           '  - **Unitrition** - Plataforma de nutrición personalizada con Next.js 16 App Router, Headless WP, Supabase y API USDA.\n' +
           '- **WordPress a medida y Enterprise**:\n' +
@@ -1461,10 +1618,26 @@ export function synthesizeLocalRagAnswer(
           'Descubre las tarjetas interactivas de los proyectos destacados a continuación:'
       )
     }
+    if (lang === 'de') {
+      return stripEmDashes(
+        'Hier ist eine kuratierte Auswahl meiner wichtigsten Flagship-Projekte, geordnet nach den zentralen Technologie-Stacks:\n\n' +
+          '- **Next.js 16 & Full-Stack**:\n' +
+          '  - **Next.js 16 & Hybrid RAG Portfolio Platform** - Enterprise-Fullstack-Plattform mit autonomer Hybrid-RAG-Engine, 284+ SSG-Routen und WCAG 2.2 AA.\n' +
+          '  - **Fullstack AI Lab** - Interaktive Engineering-Lernplattform mit 1.135+ MDX-Lektionen über Rust MDX-RS, Laufzeit-Simulatoren und NotebookLM AI.\n' +
+          '  - **Unitrition** - Personalisierte Ernährungsplattform mit Next.js 16 App Router, Headless WordPress, Supabase und USDA API.\n' +
+          '- **Custom WordPress & Enterprise**:\n' +
+          '  - **IT-Magic** - Enterprise-Cloud-Consulting-Plattform für einen AWS Advanced Partner mit maßgeschneidertem PHP-Theme und Top-Rankings.\n' +
+          '- **React 19 & Web-Apps**:\n' +
+          '  - **My React Portfolio Website** - Performante SPA/PWA auf Basis von React 19, TypeScript, View Transitions API und 29 Vitest-Specs.\n' +
+          '- **Shopify & E-Commerce**:\n' +
+          '  - **Kidzely** - Internationaler Onlineshop mit optimiertem Checkout und mobiler UX.\n\n' +
+          'Entdecken Sie die interaktiven Fallstudienkarten direkt unten:'
+      )
+    }
     return stripEmDashes(
       'Here is a curated showcase of my top flagship projects across the primary technology stacks (the leading examples from each category):\n\n' +
         '- **Next.js 16 & Full-Stack**:\n' +
-        '  - **Next.js 16 & Hybrid RAG Portfolio Platform** - Enterprise fullstack platform with an autonomous Hybrid RAG engine, 213+ SSG routes, and WCAG 2.2 AA compliance.\n' +
+        '  - **Next.js 16 & Hybrid RAG Portfolio Platform** - Enterprise fullstack platform with an autonomous Hybrid RAG engine, 284+ SSG routes, and WCAG 2.2 AA compliance.\n' +
         '  - **Fullstack AI Lab** - Interactive engineering educational ecosystem with 1,135+ MDX lessons compiled via Rust MDX-RS, outage simulators, and NotebookLM AI.\n' +
         '  - **Unitrition** - Personalized nutrition platform built with Next.js 16 App Router, Headless WordPress, Supabase, and USDA API.\n' +
         '- **Custom WordPress & Enterprise**:\n' +
@@ -1488,23 +1661,23 @@ export function synthesizeLocalRagAnswer(
   const matchedProject = resolvedEntry?.project
 
   const isGeneralProfileOrServiceQuestion =
-    /(who is artur|about yourself|quien es artur|хто такий артур|how many years|скільки років|cuantos anos|where are you located|де ви знаходитесь|donde estas|services|rates|cost|послуги|ціни|precio)/i.test(
+    /(who is artur|about yourself|quien es artur|хто такий артур|wer ist artur|ueber dich|uber dich|how many years|скільки років|cuantos anos|wie viele jahre|where are you located|де ви знаходитесь|donde estas|wo ist dein standort|wo befindest|services|rates|cost|послуги|ціни|precio|leistungen|dienstleistungen|preise|kosten|beauftragen)/i.test(
       lower,
     )
 
   if (matchedProject && !isGeneralProfileOrServiceQuestion) {
-    if (/(tech\s*stack|technologies|\bstack\b|used|built with|tecnolog|стек|технолог)/i.test(lower)) {
+    if (/(tech\s*stack|technologies|\bstack\b|used|built with|tecnolog|стек|технолог|verwendet|gebaut mit)/i.test(lower)) {
       return stripEmDashes(formatProjectStack(matchedProject, lang))
     }
     if (
-      /(feature|main features|functionality|funciones|caracteristicas|фіч|функці|можливост|возможност|особенност)/i.test(
+      /(feature|main features|functionality|funciones|caracteristicas|фіч|функці|можливост|возможност|особенност|funktionen|funktion|eigenschaften)/i.test(
         lower,
       )
     ) {
       return stripEmDashes(formatProjectFeatures(matchedProject, lang))
     }
     if (
-      /(architect|arquitectura|архітектур|архитектур|challenge|solution|case study|how it works|как устроен|як влаштован)/i.test(
+      /(architect|arquitectura|архітектур|архитектур|challenge|solution|case study|how it works|как устроен|як влаштован|architektur|herausforderung|losung|loesung|fallstudie|wie es funktioniert)/i.test(
         lower,
       )
     ) {
@@ -1547,11 +1720,13 @@ export function synthesizeLocalRagAnswer(
       }
     }
     const text =
-      lang === 'es' && top.contentEs
-        ? top.contentEs
-        : lang === 'ua' && top.contentUa
-          ? top.contentUa
-          : top.content
+      lang === 'de' && top.contentDe
+        ? top.contentDe
+        : lang === 'es' && top.contentEs
+          ? top.contentEs
+          : lang === 'ua' && top.contentUa
+            ? top.contentUa
+            : top.content
     return stripEmDashes(text)
   }
 
@@ -1621,14 +1796,16 @@ export interface ChatProjectCardItem {
 function toProjectCardItem(
   slug: string,
   project: Project,
-  lang: 'en' | 'ua' | 'es',
+  lang: 'en' | 'ua' | 'es' | 'de',
 ): ChatProjectCardItem {
   const rawDesc =
-    lang === 'es' && project.descriptionEs
-      ? project.descriptionEs
-      : lang === 'ua' && project.descriptionUa
-        ? project.descriptionUa
-        : project.description
+    lang === 'de' && project.descriptionDe
+      ? project.descriptionDe
+      : lang === 'es' && project.descriptionEs
+        ? project.descriptionEs
+        : lang === 'ua' && project.descriptionUa
+          ? project.descriptionUa
+          : project.description
 
   return {
     slug,
@@ -1653,7 +1830,7 @@ export function getRelevantProjectCards(
   const lang = resolveResponseLanguage(trimmed, options.locale)
 
   const isGeneralProfileOrServiceQuestion =
-    /(who is artur|about yourself|quien es artur|хто такий артур|how many years|скільки років|cuantos anos|where are you located|де ви знаходитесь|donde estas|services|rates|cost|hire|послуги|ціни|precio|contratar|workflow|ai & rag|seo|english|motivat)/i.test(
+    /(who is artur|about yourself|quien es artur|хто такий артур|wer ist artur|ueber dich|uber dich|how many years|скільки років|cuantos anos|wie viele jahre|where are you located|де ви знаходитесь|donde estas|wo ist dein standort|wo befindest|services|rates|cost|hire|послуги|ціни|precio|contratar|leistungen|dienstleistungen|preise|kosten|beauftragen|workflow|ai & rag|seo|english|englisch|motivat|motiviert)/i.test(
       lower,
     )
 
@@ -1733,7 +1910,7 @@ export function getRelevantProjectCards(
 
   // 6. Check if user is asking to see completed projects / portfolio / work examples
   const isProjectsShowcaseQuery =
-    /(projects|tell me about your work|completed|show me.*project|portfolio|проєкт|портфоліо|проект|портфолио|proyectos|portafolio|trabajo)/i.test(
+    /(projects|tell me about your work|completed|show me.*project|portfolio|проєкт|портфоліо|проект|портфолио|proyectos|portafolio|trabajo|projekte|erzaehl.*arbeit|erzahl.*arbeit|abgeschlossen|zeig.*projekt|arbeitsproben)/i.test(
       lower,
     )
 
@@ -1802,20 +1979,26 @@ export function getContextualFollowUps(
               '¿Cómo está estructurada la plataforma Next.js 16?',
               '¿Cuánto tiempo tardaría el desarrollo? / Calculadora',
             ]
-          : [
-              'What other architectural articles are in the blog?',
-              'How is Next.js 16 Portfolio Platform architected?',
-              'Estimate timeline for my project / Calculator',
-            ]
+          : lang === 'de'
+            ? [
+                'Welche weiteren Architektur-Artikel gibt es im Blog?',
+                'Wie ist die Next.js 16 Portfolio Platform aufgebaut?',
+                'Wie lange dauert die Entwicklung? / Kalkulator',
+              ]
+            : [
+                'What other architectural articles are in the blog?',
+                'How is Next.js 16 Portfolio Platform architected?',
+                'Estimate timeline for my project / Calculator',
+              ]
     return candidates.filter((q) => !answeredSet.has(foldForSearch(q))).slice(0, 3)
   }
 
   const resolved = resolveTargetProject(trimmed, options)
   if (resolved) {
     const title = stripEmDashes(resolved.project.title)
-    const askedStack = /(tech\s*stack|technologies|\bstack\b|used|built with|tecnolog|стек|технолог)/i.test(lower)
-    const askedArch = /(architect|arquitectura|архітектур|архитектур|challenge|solution)/i.test(lower)
-    const askedFeatures = /(feature|main features|functionality|funciones|caracteristicas|фіч|функці)/i.test(lower)
+    const askedStack = /(tech\s*stack|technologies|\bstack\b|used|built with|tecnolog|стек|технолог|verwendet|gebaut mit)/i.test(lower)
+    const askedArch = /(architect|arquitectura|архітектур|архитектур|challenge|solution|architektur|herausforderung|losung|loesung)/i.test(lower)
+    const askedFeatures = /(feature|main features|functionality|funciones|caracteristicas|фіч|функці|funktionen|funktion|eigenschaften)/i.test(lower)
 
     const candidates: Array<{ skip: boolean; text: string }> =
       lang === 'ua'
@@ -1832,12 +2015,19 @@ export function getContextualFollowUps(
               { skip: askedFeatures, text: `¿Cuáles son las funciones principales de ${title}?` },
               { skip: false, text: '¿Qué proyectos has completado? / Cuéntame sobre tu trabajo' },
             ]
-          : [
-              { skip: askedStack, text: `What tech stack was used in ${title}?` },
-              { skip: askedArch, text: `How is ${title} architected?` },
-              { skip: askedFeatures, text: `What are the key features of ${title}?` },
-              { skip: false, text: 'What projects have you completed? / Tell me about your work' },
-            ]
+          : lang === 'de'
+            ? [
+                { skip: askedStack, text: `Welcher Technologie-Stack wurde in ${title} verwendet?` },
+                { skip: askedArch, text: `Wie sieht die Architektur von ${title} aus?` },
+                { skip: askedFeatures, text: `Was sind die Hauptfunktionen von ${title}?` },
+                { skip: false, text: 'Welche Projekte hast du umgesetzt? / Erzähl mir von deiner Arbeit' },
+              ]
+            : [
+                { skip: askedStack, text: `What tech stack was used in ${title}?` },
+                { skip: askedArch, text: `How is ${title} architected?` },
+                { skip: askedFeatures, text: `What are the key features of ${title}?` },
+                { skip: false, text: 'What projects have you completed? / Tell me about your work' },
+              ]
 
     return candidates
       .filter((c) => !c.skip && !answeredSet.has(foldForSearch(c.text)))
@@ -1859,16 +2049,22 @@ export function getContextualFollowUps(
               '¿Cómo está estructurada la plataforma Next.js 16?',
               'Cuéntame más sobre el proyecto IT-Magic',
             ]
-          : [
-              'What tech stack was used in Unitrition?',
-              'How is Next.js 16 Portfolio Platform architected?',
-              'Tell me more about the IT-Magic project',
-            ]
+          : lang === 'de'
+            ? [
+                'Welcher Technologie-Stack wurde in Unitrition verwendet?',
+                'Wie ist die Next.js 16 Portfolio Platform aufgebaut?',
+                'Erzähl mir mehr über das Projekt IT-Magic',
+              ]
+            : [
+                'What tech stack was used in Unitrition?',
+                'How is Next.js 16 Portfolio Platform architected?',
+                'Tell me more about the IT-Magic project',
+              ]
     return flagshipFollowUps.filter((q) => !answeredSet.has(foldForSearch(q))).slice(0, 3)
   }
 
   const isProjectsShowcaseQuery =
-    /(projects|tell me about your work|completed|show me.*project|portfolio|проєкт|портфоліо|проект|портфолио|proyectos|portafolio|trabajo)/i.test(
+    /(projects|tell me about your work|completed|show me.*project|portfolio|проєкт|портфоліо|проект|портфолио|proyectos|portafolio|trabajo|projekte|erzaehl.*arbeit|erzahl.*arbeit|abgeschlossen|zeig.*projekt|arbeitsproben)/i.test(
       lower,
     )
 
@@ -1886,11 +2082,17 @@ export function getContextualFollowUps(
               '¿Qué stack tecnológico se usó en Unitrition?',
               '¿Qué servicios ofreces? / ¿Puedo contratarte?',
             ]
-          : [
-              'How is IT-Magic architected?',
-              'What tech stack was used in Unitrition?',
-              'What are your rates and how to hire you?',
-            ]
+          : lang === 'de'
+            ? [
+                'Wie sieht die Architektur von IT-Magic aus?',
+                'Welcher Technologie-Stack wurde in Unitrition verwendet?',
+                'Welche Leistungen bietest du an? / Kann ich dich beauftragen?',
+              ]
+            : [
+                'How is IT-Magic architected?',
+                'What tech stack was used in Unitrition?',
+                'What are your rates and how to hire you?',
+              ]
     return showcaseFollowUps.filter((q) => !answeredSet.has(foldForSearch(q))).slice(0, 3)
   }
 
@@ -1908,11 +2110,17 @@ export function getContextualFollowUps(
               '¿Qué stack tecnológico se usó en Unitrition?',
               '¿Cuáles son tus tarifas y cómo contratarte?',
             ]
-          : [
-              'Estimate timeline for my project / Calculator',
-              'What tech stack was used in Unitrition?',
-              'What are your rates and how to hire you?',
-            ]
+          : lang === 'de'
+            ? [
+                'Wie lange dauert die Entwicklung? / Kalkulator',
+                'Welcher Technologie-Stack wurde in Unitrition verwendet?',
+                'Wie sind deine Konditionen und wie kann ich dich beauftragen?',
+              ]
+            : [
+                'Estimate timeline for my project / Calculator',
+                'What tech stack was used in Unitrition?',
+                'What are your rates and how to hire you?',
+              ]
     return stackFollowUps.filter((q) => !answeredSet.has(foldForSearch(q))).slice(0, 3)
   }
 
@@ -1930,11 +2138,17 @@ export function getContextualFollowUps(
               '¿Qué proyectos has completado? / Portafolio',
               '¿Puedo contratarte? / Tarifas y Contacto',
             ]
-          : [
-              'Next.js vs Headless WordPress comparison',
-              'What projects have you completed? / Portfolio',
-              'Can I hire you? / Rates & Contacts',
-            ]
+          : lang === 'de'
+            ? [
+                'Next.js vs. Headless WordPress: Stack-Vergleich',
+                'Welche Projekte hast du umgesetzt? / Portfolio',
+                'Kann ich dich beauftragen? / Preise & Kontakt',
+              ]
+            : [
+                'Next.js vs Headless WordPress comparison',
+                'What projects have you completed? / Portfolio',
+                'Can I hire you? / Rates & Contacts',
+              ]
     return estimateFollowUps.filter((q) => !answeredSet.has(foldForSearch(q))).slice(0, 3)
   }
 
@@ -1952,16 +2166,28 @@ export function getContextualFollowUps(
               'WordPress vs Next.js: comparativa de stacks',
               '¿Cuánto tiempo tardaría el desarrollo? / Calculadora',
             ]
-          : [
-              'How does in-browser Hybrid RAG work?',
-              'Next.js vs Headless WordPress comparison',
-              'Estimate timeline for my project / Calculator',
-            ]
+          : lang === 'de'
+            ? [
+                'Wie funktioniert autonomes Hybrid RAG im Browser?',
+                'Next.js vs. Headless WordPress: Stack-Vergleich',
+                'Wie lange dauert die Entwicklung? / Kalkulator',
+              ]
+            : [
+                'How does in-browser Hybrid RAG work?',
+                'Next.js vs Headless WordPress comparison',
+                'Estimate timeline for my project / Calculator',
+              ]
     return blogFollowUps.filter((q) => !answeredSet.has(foldForSearch(q))).slice(0, 3)
   }
 
   return FAQ.map((faq) =>
-    lang === 'ua' ? faq.questionUa : lang === 'es' ? faq.questionEs : faq.question,
+    lang === 'ua'
+      ? faq.questionUa
+      : lang === 'es'
+        ? faq.questionEs
+        : lang === 'de'
+          ? faq.questionDe || faq.question
+          : faq.question,
   )
     .filter((q) => !answeredSet.has(foldForSearch(q)))
     .slice(0, 3)
@@ -1971,19 +2197,19 @@ export function getContextualFollowUps(
 
 export function resolveTargetService(query: string): ServiceItem | undefined {
   const lower = foldForSearch(query || '')
-  if (/(marca blanca|white.?label|partner.*agenc|para agencias|аутстаф|аутсорс для агенц|white label)/i.test(lower)) {
+  if (/(marca blanca|white.?label|partner.*agenc|partner.*agentur|para agencias|fuer agenturen|fur agenturen|subunternehmer|аутстаф|аутсорс для агенц|white label)/i.test(lower)) {
     return getServiceBySlug('white-label-agency-partner')
   }
-  if (/(headless|migra.*next|migracion|wordpress.*next|миграц.*next|перехід на next)/i.test(lower)) {
+  if (/(headless|migra.*next|migracion|wordpress.*next|umzug.*next|миграц.*next|перехід на next)/i.test(lower)) {
     return getServiceBySlug('headless-wordpress-nextjs-migration')
   }
-  if (/(speed|core web vitals|cwv|pagespeed|optimiz.*velocidad|прискор|ускорен|page speed|lighthouse)/i.test(lower)) {
+  if (/(speed|core web vitals|cwv|pagespeed|optimiz.*velocidad|ladezeit|geschwindigkeit|прискор|ускорен|page speed|lighthouse)/i.test(lower)) {
     return getServiceBySlug('web-performance-core-web-vitals')
   }
-  if (/(sevilla|seville|andalucia|desarrollo.*sevilla|севіль)/i.test(lower)) {
+  if (/(sevilla|seville|andalucia|desarrollo.*sevilla|webentwicklung.*sevilla|севіль)/i.test(lower)) {
     return getServiceBySlug('custom-web-development-seville')
   }
-  if (/(rag|ai assistant|chatbot|asistente ia|чат.?бот|асистент для бізнесу|ai.*business)/i.test(lower)) {
+  if (/(rag|ai assistant|chatbot|asistente ia|ki[\s-]*assistent|чат.?бот|асистент для бізнесу|ai.*business|ki.*unternehmen)/i.test(lower)) {
     return getServiceBySlug('rag-ai-assistants-business')
   }
   return undefined

@@ -291,5 +291,100 @@ export const whiteLabelAgencyService: ServiceItem = {
       whatsappMessage: 'Вітаю Артуре! Звертаюся від digital-агенції. Маємо новий веб-проєкт та хочемо обговорити white-label співпрацю.',
       schemaDescription: 'Послуги white-label веб-розробки для digital-агенцій, дизайн-студій та IT-компаній в Іспанії та ЄС. React 19, Next.js 16 та WordPress під NDA.',
     },
+    de: {
+      badge: 'White-Label / B2B-Partner',
+      title: 'White-Label Web-Engineering für Digitalagenturen & Tech-Startups',
+      shortDesc: 'Senior-Entwicklungskapazität in React 19, Next.js 16 und maßgeschneidertem WordPress unter strengem NDA. Ohne Zwischenhändler, planbare Lieferung und Angebot innerhalb von 24-48 Stunden.',
+      heroLead: 'Ich unterstütze Marketingagenturen, Beratungen und Designstudios dabei, ihre technische Kapazität ohne Fixkosten für Festanstellungen zu erweitern. Der gesamte Code wird unter Ihrer Marke produktionsreif und nach europäischen Barrierefreiheits- und Performance-Standards geliefert.',
+      metrics: [
+        { value: '24-48h', label: 'Technische Einschätzung und Angebot' },
+        { value: '100%', label: 'Vertraulichkeit mit unterzeichnetem NDA' },
+        { value: '0€', label: 'Personalfixkosten oder Lohnnebenkosten' },
+        { value: '<0.8s', label: 'Ladezeit-Benchmark in Produktion' },
+      ],
+      problemsSolved: [
+        {
+          title: 'Engpässe und verschobene Kunden-Deadlines durch Mangel an Senior-Entwicklern',
+          desc: 'Ihr internes Team ist ausgelastet oder es fehlt spezialisiertes Know-how in modernen Stacks (Next.js 16, Headless WP oder WCAG 2.2). Ich übernehme die komplette technische Umsetzung, damit Sie keine lukrativen Aufträge ablehnen müssen.',
+        },
+        {
+          title: 'Unzuverlässige Freelancer, die mitten im Sprint abtauchen',
+          desc: 'Direkte Kommunikation in Ihren privaten Team-Kanälen (Slack, WhatsApp, ClickUp), pünktliche Meilenstein-Lieferung und sauberer TypeScript-Code, auf dem jedes Team problemlos aufbauen kann.',
+        },
+        {
+          title: 'Reputationsrisiko gegenüber dem Endkunden',
+          desc: 'Ihre Agentur behält 100% der Kundenbeziehung. Ich kontaktiere Ihre Kunden niemals direkt und veröffentliche White-Label-Projekte ohne ausdrückliche Genehmigung nicht in öffentlichen Portfolios.',
+        },
+      ],
+      deliverables: [
+        {
+          title: 'Frontend & Moderne Webanwendungen',
+          items: [
+            'Next.js 16 Anwendungen mit App Router, React 19 Server Components und striktem TypeScript.',
+            'Pixelgenaue Umsetzung von Figma-Designs mit Tailwind CSS v4, flüssigen Mikro-Interaktionen und responsiven Layouts.',
+            'Native Konformität mit dem European Accessibility Act (EAA 2026 / WCAG 2.2 AA).',
+          ],
+        },
+        {
+          title: 'Erweiterte WordPress- & WooCommerce-Architektur',
+          items: [
+            'Maßgeschneiderte PHP 8+ Themes und Plugins mit flexiblen ACF Pro Blöcken ohne schwerfällige Page Builder.',
+            'Konversionsstarke Online-Shops mit sicheren Payment-Gateways (Stripe, PayPal, lokale Anbieter).',
+            'Ausfallfreie Migrationen unter vollständigem Erhalt von SEO-Rankings, kanonischen URLs und aktiven Warenkörben.',
+          ],
+        },
+        {
+          title: 'QA-Engineering, Deployment & Übergabe',
+          items: [
+            'Continuous-Integration-Pipelines (CI/CD) mit GitHub Actions und automatisierten Staging-Previews.',
+            '30 Tage Nachlaufgarantie nach dem Launch inklusive kostenloser Fehlerbehebung und technischer Feinanpassungen.',
+          ],
+        },
+      ],
+      workflowSteps: [
+        {
+          step: 'Schritt 1',
+          title: 'NDA-Unterzeichnung & Briefing-Analyse',
+          desc: 'Wir unterzeichnen eine gegenseitige Vertraulichkeitsvereinbarung. Ich prüfe Ihre Figma-Prototypen oder Projektspezifikationen innerhalb von 24-48 Stunden.',
+        },
+        {
+          step: 'Schritt 2',
+          title: 'Festpreisangebot & Meilenstein-Zeitplan',
+          desc: 'Sie erhalten ein transparentes technisches Angebot zum Festpreis oder auf Basis eines reservierten Stundenkontingents ohne versteckte Kosten.',
+        },
+        {
+          step: 'Schritt 3',
+          title: 'Agile Entwicklung & Staging-Abnahme',
+          desc: 'Saubere Git-Commits und Sprint-Reviews. Ihr Team testet laufende Funktionen in Echtzeit auf einer geschützten Staging-Umgebung.',
+        },
+        {
+          step: 'Schritt 4',
+          title: 'Produktions-Launch & vollständige Rechteübergabe',
+          desc: 'Deployment auf die Infrastruktur des Kunden, DNS/SSL-Konfiguration und lückenlose Übergabe des Code-Repositories.',
+        },
+      ],
+      faqs: [
+        {
+          q: 'Wie stellen wir sicher, dass der Endkunde keinen externen Partner bemerkt?',
+          a: 'Ich kann über eine E-Mail-Adresse Ihrer Domain kommunizieren oder direkt in Ihrem internen Projektmanagement-Tool (Slack, Jira, ClickUp) mitarbeiten. Im Code oder Footer erscheinen keinerlei Hinweise auf mich.',
+        },
+        {
+          q: 'Welches Abrechnungsmodell bieten Sie für Agentur-Partnerschaften?',
+          a: 'Wir können Projekte mit festem Meilenstein-Budget (50% Anzahlung / 50% bei Go-Live) oder über ein monatliches Stundenkontingent mit Vorzugskonditionen für wiederkehrende Agentur-Partner abrechnen.',
+        },
+        {
+          q: 'Was passiert, wenn nach dem Launch ein kritischer Fehler auftritt?',
+          a: 'Alle Lieferungen beinhalten eine 30-tägige Gewährleistung für Fehlerbehebungen. Zudem biete ich laufende SLA-Wartungspakete für Sicherheitsupdates und technischen Support.',
+        },
+        {
+          q: 'Auf welche Technologien sind Sie für Agenturprojekte spezialisiert?',
+          a: 'Next.js 16, React 19, TypeScript, Tailwind CSS, maßgeschneidertes WordPress (PHP 8+, ACF Pro, WooCommerce), Headless CMS (REST / GraphQL), Shopify Liquid sowie Core Web Vitals Optimierung.',
+        },
+      ],
+      ctaHeadline: 'Steht eine Deadline bevor oder suchen Sie einen verlässlichen Tech-Partner?',
+      ctaLead: 'Schreiben Sie mir direkt per WhatsApp. Wir besprechen Ihr Briefing und Sie erhalten innerhalb von 24 Stunden eine fundierte Einschätzung.',
+      whatsappMessage: 'Hallo Artur, ich melde mich von einer Digitalagentur. Wir haben ein Webprojekt und möchten über eine White-Label-Zusammenarbeit sprechen.',
+      schemaDescription: 'White-Label Web-Engineering für Digitalagenturen, Designstudios und Tech-Unternehmen in Spanien und der EU. React 19, Next.js 16 und WordPress unter NDA.',
+    },
   },
 }

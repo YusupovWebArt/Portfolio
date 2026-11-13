@@ -6,23 +6,27 @@ export const contextCachingLlmApiCostsPost: BlogPost = {
     en: 'Context Caching in Gemini 2.5 & Claude 3.7: Slashing LLM API Costs by 80% in Production AI Systems',
     ua: 'Кешування контексту в Gemini 2.5 та Claude 3.7: скорочення витрат на LLM API на 80% у продакшн AI-системах',
     es: 'Caché de contexto en Gemini 2.5 y Claude 3.7: reduciendo costes de API de LLM un 80% en sistemas de IA en producción',
+    de: 'Kontext-Caching in Gemini 2.5 & Claude 3.7: Reduzierung der LLM-API-Kosten um 80% in produktiven KI-Systemen',
   },
   description: {
     en: 'A production engineering guide to implementing context caching with Google Gemini 2.5 and Anthropic Claude 3.7. Prefix token reuse, KV-cache lifetime management, Time-to-First-Token (TTFT) reduction from 3.2s to 420ms, and architectural benchmarks in real-world Next.js 16 RAG systems.',
     ua: 'Інженерний посібник з впровадження кешування контексту в Google Gemini 2.5 та Anthropic Claude 3.7: повторне використання KV-кешу префіксів токенів, скорочення затримки TTFT з 3.2с до 420мс та бенчмарки в Next.js 16 RAG-системах.',
     es: 'Guía técnica de producción para implementar caché de contexto con Google Gemini 2.5 y Anthropic Claude 3.7: reutilización de prefijos de tokens, reducción del TTFT de 3.2s a 420ms y benchmarks en sistemas RAG sobre Next.js 16.',
+    de: 'Ein produktionsorientierter Leitfaden zur Implementierung von Kontext-Caching mit Google Gemini 2.5 und Anthropic Claude 3.7: Wiederverwendung von Token-Präfixen, KV-Cache-Lebenszyklusverwaltung, Reduzierung der Time-to-First-Token (TTFT) von 3,2s auf 420ms und Architektur-Benchmarks in Next.js 16 RAG-Systemen.',
   },
   date: '2026-11-12',
   readTime: {
     en: '9 min read',
     ua: '9 хв читання',
     es: '9 min de lectura',
+    de: '9 Min. Lesezeit',
   },
   category: 'ai-rag',
   categoryLabel: {
     en: 'AI & RAG Engineering',
     ua: 'AI та RAG-інженерія',
     es: 'Ingeniería de IA y RAG',
+    de: 'KI- & RAG-Engineering',
   },
   tags: ['LLMOps', 'Gemini 2.5', 'Claude 3.7', 'Context Caching', 'RAG', 'Next.js 16', 'Cost Optimization', 'AI Engineering'],
   author: {
@@ -31,6 +35,7 @@ export const contextCachingLlmApiCostsPost: BlogPost = {
       en: 'Fullstack Web Engineer & AI Developer',
       ua: 'Fullstack веб-інженер та AI-розробник',
       es: 'Ingeniero Web Fullstack y Desarrollador IA',
+      de: 'Fullstack Web-Engineer & KI-Architekt',
     },
   },
   coverImage: '/Portfolio/images/blog/cover-context-caching-llm-api-costs.svg',
@@ -43,6 +48,7 @@ export const contextCachingLlmApiCostsPost: BlogPost = {
         en: 'Integrated prompt context caching for Artur Assistant, reusing static portfolio knowledge base tokens across conversational turns to cut API latency and overhead.',
         ua: 'Інтегровано кешування контексту для асистента Artur Assistant з повторним використанням токенів бази знань портфоліо для мінімізації затримки та витрат на API.',
         es: 'Integración de caché de contexto para Artur Assistant, reutilizando los tokens de la base de conocimiento del portfolio entre turnos conversacionales.',
+        de: 'Integriertes Prompt-Kontext-Caching für Artur Assistant: Wiederverwendung statischer Portfolio-Wissensbasis-Tokens über Konversationsrunden hinweg zur Minimierung von Latenz und API-Kosten.',
       },
     },
     {
@@ -53,6 +59,7 @@ export const contextCachingLlmApiCostsPost: BlogPost = {
         en: 'Production dietary advisory LLM caching FDA and clinical nutrition schemas in Gemini context cache to enable sub-500ms meal recommendations.',
         ua: 'Клінічний дієтологічний LLM-модуль із кешуванням схем FDA в контексті Gemini для надання рекомендацій із затримкою до 500мс.',
         es: 'Módulo de asesoramiento nutricional con LLM que cachea esquemas de la FDA en Gemini para ofrecer recomendaciones de dietas en menos de 500ms.',
+        de: 'Klinisches Ernährungsberatungs-LLM mit Caching von FDA- und Nährwert-Schemata im Gemini-Kontextcache für Mahlzeitenempfehlungen unter 500ms.',
       },
     },
     {
@@ -63,6 +70,7 @@ export const contextCachingLlmApiCostsPost: BlogPost = {
         en: 'Educational AI development platform teaching prompt engineering with ephemeral Claude cache controls and token cost visualizations.',
         ua: 'Освітня платформа розробки AI, що демонструє роботу ефемерних точок кешування Claude та візуалізує вартість токенів.',
         es: 'Plataforma educativa de IA que ilustra el funcionamiento de puntos de control de caché efímeros en Claude y visualización de costes por token.',
+        de: 'Didaktische KI-Entwicklungsplattform zur Demonstration von Prompt Engineering mit ephemeren Claude-Cache-Steuerungen und Token-Kosten-Visualisierungen.',
       },
     },
   ],
@@ -84,6 +92,12 @@ export const contextCachingLlmApiCostsPost: BlogPost = {
       'La caché de contexto almacena los tensores Key-Value (KV) directamente en la memoria del acelerador, evitando recalcular las capas de atención del transformer.',
       'Google Gemini 2.5 permite crear contenido en caché explícito con tiempos de vida (TTL) configurables, ofreciendo hasta un 80% de descuento en tokens de entrada.',
       'Anthropic Claude 3.7 implementa caché de prompts con puntos de ruptura efímeros, reduciendo la latencia de respuesta (TTFT) de 3.2s a solo 420ms.',
+    ],
+    de: [
+      'Das wiederholte Übertragen umfangreicher statischer Systemanweisungen und RAG-Kontext-Chunks bei jeder Nutzeranfrage ist die Hauptursache für untragbare LLM-API-Kosten.',
+      'Kontext-Caching speichert berechnete Key-Value-Tensoren (KV) direkt im Beschleunigerspeicher, sodass LLM-Provider die Neuberechnung der Transformer-Attention überspringen können.',
+      'Google Gemini 2.5 bietet explizites Cached-Content-Management mit konfigurierbaren TTLs und bis zu 80% Ersparnis auf zwischengespeicherte Eingabe-Tokens.',
+      'Anthropic Claude 3.7 ermöglicht automatisches Prompt-Caching über ephemere Breakpoints und senkt die Eingabelatenz um bis zu 87% (TTFT sinkt von 3,2s auf 420ms).',
     ],
   },
   content: {
@@ -386,6 +400,160 @@ Tanto Gemini 2.5 como Claude 3.7 ofrecen APIs de nivel empresarial para gestiona
 - **Reducción del 80% al 90%** en costes de entrada de tokens.
 - **Latencia inicial (TTFT)** reducida en un 87%.
 - Máxima escalabilidad para asistentes con bases de conocimiento complejas sin degradación del rendimiento.
+`,
+    de: `### 1. Die Produktionsökonomie moderner LLM-Anwendungen
+
+In frühen Prototypen übergeben Entwickler üblicherweise den gesamten System-Prompt, Rollendefinitionen und abgerufene RAG-Kontexte bei jedem einzelnen Nutzerdialog. Wenn Wissensdatenbanken auf Zehntausende von Tokens anwachsen, wird dieser Ansatz wirtschaftlich untragbar:
+
+\`\`\`
+Tägliches Kostenmodell ohne Caching (10.000 Anfragen/Tag, 100k-Token-Prompt):
+Tägliche Eingabe-Tokens: 10.000 * 100.000 = 1.000.000.000 Tokens (1 Milliarde Tokens)
+Standard-Eingabepreis (3,00 $ pro 1M Tokens): 3.000 $ / Tag -> 90.000 $ / Monat!
+\`\`\`
+
+Mit **Kontext-Caching** wird das identische 100k-Token-Präfix genau einmal geparst und berechnet und anschließend über Tausende von Anfragen hinweg wiederverwendet:
+
+\`\`\`
+Tägliches Kostenmodell mit Kontext-Caching (80% Rabatt bei Cache-Hits):
+Gecachter Eingabepreis (0,60 $ pro 1M Tokens): 600 $ / Tag -> 18.000 $ / Monat
+Netto-Monatsersparnis: 72.000 $ (-80%)
+\`\`\`
+
+Neben der direkten Kostenersparnis beseitigt Kontext-Caching den Rechenengpass der Transformer-Attention und senkt die Time-to-First-Token (TTFT) von mehreren Sekunden auf wenige hundert Millisekunden.
+
+---
+
+### 2. Unter der Haube: Mechanik des Präfix-KV-Caches
+
+In einer Transformer-Architektur wird die Eingabesequenz in Queries (Q), Keys (K) und Values (V) projiziert. Bei der Generierung neuer Tokens berechnet das Modell die Attention über alle bisherigen Tokens.
+
+Ohne Caching wiederholt jeder API-Aufruf die Matrixmultiplikationen für das gesamte Token-Präfix. Beim Kontext-Caching behält der Cloud-Provider die berechneten KV-Tensoren im schnellen High-Bandwidth-Memory (HBM) der GPUs oder TPUs.
+
+\`\`\`
+Prompt-Struktur für maximale Cache-Hit-Raten:
+┌────────────────────────────────────────────────────────────┬────────────────────────┐
+│ STATISCHES PRÄFIX (GECACHT: 99% HIT-RATE)                  │ DYNAMISCHES DELTA      │
+│ 1. System-Persona & strikte Formatierungsrichtlinien       │ 1. Nutzernachricht     │
+│ 2. Kanonische FAQ & Chunks der Wissensdatenbank            │ 2. Verlauf der         │
+│ 3. Tool-Deklarationen & JSON-Schema-Definitionen           │    aktuellen Sitzung   │
+└────────────────────────────────────────────────────────────┴────────────────────────┘
+\`\`\`
+
+Für maximale Cache-Trefferquoten müssen Entwickler Prompts mit strikter deterministischer Reihenfolge strukturieren: Statische Referenzdaten müssen zwingend vor dynamischen Konversationsrunden platziert werden.
+
+---
+
+### 3. Implementierung in Google Gemini 2.5
+
+Das Google Gen AI SDK (\`@google/genai\`) bietet eine explizite Cache-Verwaltung:
+
+\`\`\`typescript
+import { GoogleGenAI } from '@google/genai';
+
+const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+
+// 1. Persistenten Kontext-Cache erstellen
+export async function createPortfolioKnowledgeCache(knowledgeBaseText: string) {
+  const cache = await ai.caches.create({
+    model: 'gemini-2.5-pro',
+    config: {
+      displayName: 'portfolio-knowledge-v1',
+      ttl: '3600s', // 1 Stunde Lebensdauer, verlaengert sich bei Folgeanfragen
+      systemInstruction: 'You are Artur Assistant, an expert AI engineer.',
+      contents: [
+        {
+          role: 'user',
+          parts: [{ text: knowledgeBaseText }],
+        },
+      ],
+    },
+  });
+
+  return cache.name; // z. B. 'cachedContents/abc123xyz'
+}
+
+// 2. Modell unter Nutzung des aktiven Caches abfragen
+export async function queryCachedAssistant(cacheName: string, userQuery: string) {
+  const response = await ai.models.generateContent({
+    model: 'gemini-2.5-pro',
+    contents: userQuery,
+    config: {
+      cachedContent: cacheName,
+      temperature: 0.2,
+    },
+  });
+
+  return response.text;
+}
+\`\`\`
+
+---
+
+### 4. Implementierung in Anthropic Claude 3.7
+
+Anthropic setzt auf einen deklarativen Breakpoint-Ansatz über den Parameter \`cache_control\`:
+
+\`\`\`typescript
+import Anthropic from '@anthropic-ai/sdk';
+
+const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+
+export async function askClaudeWithPromptCache(staticKb: string, userQuestion: string) {
+  const response = await anthropic.messages.create({
+    model: 'claude-3-7-sonnet-20250219',
+    max_tokens: 1024,
+    system: [
+      {
+        type: 'text',
+        text: 'You are an autonomous senior web architect assistant.',
+      },
+      {
+        type: 'text',
+        text: staticKb,
+        // Cache-Breakpoint auf dem statischen Wissensblock definieren
+        cache_control: { type: 'ephemeral' },
+      },
+    ],
+    messages: [
+      { role: 'user', content: userQuestion },
+    ],
+    extra_headers: {
+      'anthropic-beta': 'prompt-caching-2024-07-31',
+    },
+  });
+
+  // Caching-Effizienz anhand der Nutzungsmetadaten pruefen
+  const usage = response.usage as any;
+  console.log({
+    inputTokens: usage.input_tokens,
+    cacheCreationTokens: usage.cache_creation_input_tokens || 0,
+    cacheReadTokens: usage.cache_read_input_tokens || 0, // Mit 90% Rabatt berechnet!
+  });
+
+  return response.content[0];
+}
+\`\`\`
+
+---
+
+### 5. Architektur-Benchmarks: Next.js 16 RAG in der Produktion
+
+Der Benchmark über 1.000 Anfragen gegen eine Wissensbasis mit 95.000 Tokens belegt signifikante Gewinne bei Finanzen und Latenz:
+
+| Metrik | Basis (Ohne Cache) | Gemini 2.5 Caching | Claude 3.7 Caching |
+| :--- | :--- | :--- | :--- |
+| **TTFT (Latenz)** | 3.420 ms | 480 ms (-86%) | 410 ms (-88%) |
+| **Eingabekosten / 1k Anfr.** | 285,00 $ | 57,00 $ (-80%) | 28,50 $ (-90%) |
+| **Durchsatz (Tokens/s)** | 28 tok/s | 94 tok/s | 108 tok/s |
+| **Kaltstart-Overhead** | 0 ms | +800 ms (1. Aufruf) | +950 ms (1. Aufruf) |
+
+---
+
+### 6. Invalidierungs- und Eviction-Strategien
+
+1. **Hash-basierte Invalidierung:** Berechnung des SHA-256-Hashs der kompilierten Wissensbasis. Ändert sich die Dokumentation, wird der Cache-Schlüssel inkrementiert, was einen einzelnen kalten Schreibvorgang auslöst, während vorherige Caches bis zum TTL-Ablauf erhalten bleiben.
+2. **Git-Commit-Webhook-Invalidierung:** Automatisierte Cache-Neugenerierung im Rahmen von GitHub Actions Deployment-Workflows anstoßen.
+3. **Graceful Fallback:** Läuft ein Cache ab oder schlägt der Abruf fehl, fängt die Anwendung die Ausnahme ab und wechselt unterbrechungsfrei zur ungecachten Inferenz.
 `,
   },
 }

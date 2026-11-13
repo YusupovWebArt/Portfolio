@@ -2,7 +2,7 @@
  * Multilingual NLP and search text processing pipeline.
  * Provides Unicode NFKC normalization, diacritic folding (Spanish/accents),
  * Cyrillic-safe tokenization (Ukrainian/Russian), stop-word filtering,
- * query expansion across EN/UA/ES, and prompt-injection sanitization.
+ * query expansion across EN/UA/ES/DE, and prompt-injection sanitization.
  */
 
 const SHORT_TECH_WHITELIST = new Set([
@@ -151,6 +151,82 @@ const MULTILINGUAL_STOP_WORDS = new Set([
   'вы',
   'ты',
   'мне',
+  // German
+  'der',
+  'die',
+  'das',
+  'den',
+  'dem',
+  'des',
+  'ein',
+  'eine',
+  'einen',
+  'einem',
+  'einer',
+  'eines',
+  'und',
+  'oder',
+  'aber',
+  'als',
+  'am',
+  'an',
+  'auf',
+  'aus',
+  'bei',
+  'bis',
+  'durch',
+  'fur',
+  'für',
+  'gegen',
+  'im',
+  'mit',
+  'nach',
+  'ohne',
+  'seit',
+  'uber',
+  'über',
+  'um',
+  'unter',
+  'von',
+  'vor',
+  'zu',
+  'zum',
+  'zur',
+  'ich',
+  'du',
+  'sie',
+  'wir',
+  'ihr',
+  'mir',
+  'mich',
+  'dir',
+  'dich',
+  'uns',
+  'euch',
+  'ist',
+  'sind',
+  'war',
+  'waren',
+  'bin',
+  'bist',
+  'haben',
+  'hat',
+  'wird',
+  'werden',
+  'kann',
+  'konnen',
+  'können',
+  'wie',
+  'was',
+  'wer',
+  'wo',
+  'wann',
+  'warum',
+  'welche',
+  'welcher',
+  'welches',
+  'bitte',
+  'gibt',
 ])
 
 const SYNONYM_EXPANSIONS: Record<string, string[]> = {
@@ -223,6 +299,36 @@ const SYNONYM_EXPANSIONS: Record<string, string[]> = {
   контакты: ['contact', 'email', 'telegram', 'whatsapp'],
   contacto: ['contact', 'email', 'telegram', 'whatsapp'],
   contactar: ['contact', 'email', 'telegram', 'whatsapp'],
+
+  // German cross-language synonyms
+  technologie: ['technologies', 'stack', 'tech'],
+  technologien: ['technologies', 'stack', 'tech'],
+  techstack: ['stack', 'technologies', 'tech'],
+  werkzeuge: ['technologies', 'tools', 'stack'],
+  leistungen: ['services', 'offerings', 'solutions'],
+  dienstleistungen: ['services', 'offerings', 'solutions'],
+  service: ['services', 'offerings', 'solutions'],
+  preis: ['pricing', 'rates', 'cost', 'service'],
+  preise: ['pricing', 'rates', 'cost', 'service'],
+  kosten: ['pricing', 'rates', 'cost', 'service'],
+  honorar: ['pricing', 'rates', 'cost', 'service'],
+  stundensatz: ['pricing', 'rates', 'cost', 'service'],
+  architektur: ['architecture', 'infrastructure', 'backend'],
+  funktionen: ['features', 'capabilities', 'functionality'],
+  herausforderungen: ['challenges', 'problems'],
+  losungen: ['solutions'],
+  erfahrung: ['experience', 'profile', 'bio', 'years'],
+  werdegang: ['experience', 'profile', 'bio'],
+  lebenslauf: ['experience', 'profile', 'bio'],
+  kontakt: ['contact', 'email', 'telegram', 'whatsapp'],
+  kontaktieren: ['contact', 'email', 'telegram', 'whatsapp'],
+  erreichen: ['contact', 'email', 'telegram', 'whatsapp'],
+  projekte: ['projects', 'portfolio'],
+  projekt: ['project', 'portfolio'],
+  artikel: ['blog', 'article'],
+  zeitplan: ['timeline', 'estimate'],
+  dauer: ['timeline', 'duration', 'estimate'],
+  rechner: ['calculator', 'estimate'],
 }
 
 /**
@@ -253,6 +359,7 @@ export function foldForSearch(text: string): string {
     .replace(/[úùûü]/g, 'u')
     .replace(/[ñ]/g, 'n')
     .replace(/[ç]/g, 'c')
+    .replace(/ß/g, 'ss')
 }
 
 export interface TokenizeOptions {
@@ -322,14 +429,23 @@ export function expandTokens(tokens: string[]): string[] {
 }
 
 /**
- * Detects query language among 'en', 'ua', and 'es'.
+ * Detects query language among 'en', 'ua', 'es', and 'de'.
  */
-export function detectLanguage(text: string): 'en' | 'ua' | 'es' {
+export function detectLanguage(text: string): 'en' | 'ua' | 'es' | 'de' {
   if (/[а-яіїєґё]/i.test(text)) {
     return 'ua'
   }
   if (
-    /[¿¡áéíóúüñ]/i.test(text) ||
+    /[äöüß]/i.test(text) ||
+    /\b(ich|und|der|die|das|für|fur|über|uber|welche|welcher|welches|projekte|projekt|erfahrung|leistungen|preise|kosten|kontakt|warum|wann|kannst|erzähl|erzahl|zeige|hallo|guten|entwickler|webentwicklung|wochen|kostenpunkt)\b/i.test(
+      text,
+    )
+  ) {
+    return 'de'
+  }
+  if (
+    /[¿¡áéíóúñ]/i.test(text) ||
+    (/[ü]/i.test(text) && !/\b(für|über|zurück)\b/i.test(text)) ||
     /\b(que|como|para|por|con|sobre|servicios|hola|quien|cuales|cuanto|experiencia)\b/i.test(text)
   ) {
     return 'es'

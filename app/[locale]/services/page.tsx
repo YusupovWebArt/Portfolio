@@ -24,18 +24,23 @@ export async function generateMetadata({
   const { locale } = await params
   const isUa = locale === 'ua'
   const isEs = locale === 'es'
+  const isDe = locale === 'de'
 
   const title = isUa
     ? 'B2B Послуги веб-інженерії та розробки під ключ | Артур Юсупов'
     : isEs
       ? 'Servicios B2B de Ingeniería Web y Desarrollo a Medida | Artur Yusupov'
-      : 'B2B Web Engineering & Custom Development Services | Artur Yusupov'
+      : isDe
+        ? 'B2B Web-Engineering & Maßgeschneiderte Entwicklung | Artur Yusupov'
+        : 'B2B Web Engineering & Custom Development Services | Artur Yusupov'
 
   const description = isUa
     ? 'Професійні послуги веб-розробки для digital-агенцій та бізнесу в Іспанії. White-label, міграції на Next.js 16, прискорення сайтів та корпоративні RAG AI-асистенти.'
     : isEs
       ? 'Servicios profesionales de desarrollo web para agencias y pymes en España. Marca blanca, migraciones Next.js 16, optimización Core Web Vitals y asistentes IA RAG.'
-      : 'Professional web development services for agencies and businesses in Spain. White-label engineering, Next.js 16 migrations, Core Web Vitals, and RAG AI assistants.'
+      : isDe
+        ? 'Professionelle Webentwicklung für Digitalagenturen und Unternehmen in DACH und Europa. White-Label-Engineering, Next.js 16 Migrationen, Core Web Vitals und RAG-KI-Assistenten.'
+        : 'Professional web development services for agencies and businesses in Spain. White-label engineering, Next.js 16 migrations, Core Web Vitals, and RAG AI assistants.'
 
   return {
     title,
@@ -58,6 +63,8 @@ export async function generateMetadata({
         uk: 'https://www.yusupovartur.com/ua/services',
         es: 'https://www.yusupovartur.com/es/services',
         'es-ES': 'https://www.yusupovartur.com/es/services',
+        de: 'https://www.yusupovartur.com/de/services',
+        'de-DE': 'https://www.yusupovartur.com/de/services',
         'x-default': 'https://www.yusupovartur.com/en/services',
       },
     },
@@ -66,7 +73,7 @@ export async function generateMetadata({
       description,
       url: `https://www.yusupovartur.com/${locale}/services`,
       siteName: 'Artur Yusupov - Portfolio & B2B Web Engineering',
-      locale: isUa ? 'uk_UA' : isEs ? 'es_ES' : 'en_US',
+      locale: isUa ? 'uk_UA' : isEs ? 'es_ES' : isDe ? 'de_DE' : 'en_US',
       type: 'website',
       images: [
         {
@@ -95,7 +102,7 @@ export default async function ServiceCatalogPage({
   params,
 }: ServiceCatalogPageProps) {
   const { locale } = await params
-  const validLocale = (locale === 'es' || locale === 'ua' ? locale : 'en') as 'en' | 'ua' | 'es'
+  const validLocale = (locale === 'es' || locale === 'ua' || locale === 'de' ? locale : 'en') as 'en' | 'ua' | 'es' | 'de'
 
   const breadcrumbsJsonLd = buildServiceCatalogBreadcrumbsJsonLd(validLocale)
   const catalogJsonLd = buildServiceCatalogJsonLd(allServices, validLocale)

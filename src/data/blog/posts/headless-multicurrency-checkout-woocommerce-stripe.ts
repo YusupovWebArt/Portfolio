@@ -6,23 +6,27 @@ export const headlessMulticurrencyCheckoutWoocommerceStripePost: BlogPost = {
     en: 'Headless Multi-Currency Checkout: Next.js 16, Stripe Elements & Sub-50ms Tax Calculations without Cart Drop-Off',
     ua: 'Headless-чекаут із мультивалютністю: Next.js 16, Stripe Elements та розрахунок податків за 50мс без втрати кошиків',
     es: 'Checkout Headless Multidivisa: Next.js 16, Stripe Elements y Cálculo de Impuestos en 50ms sin Abandono de Carrito',
+    de: 'Headless-Multi-Währungs-Checkout: Next.js 16, Stripe Elements & Steuerberechnung in unter 50 ms ohne Warenkorbabbruch',
   },
   description: {
     en: 'An engineering blueprint for replacing slow monolithic WooCommerce checkouts with Next.js 16 and Stripe Elements: sub-50ms edge tax lookups, asynchronous idempotent webhooks, and zero cart abandonment.',
     ua: 'Інженерний посібник із заміни повільного чекауту WooCommerce на Next.js 16 та Stripe Elements: розрахунок податків на edge за 50мс, асинхронні ідемпотентні вебхуки та усунення втрати замовлень.',
     es: 'Guía técnica para sustituir el lento checkout de WooCommerce por Next.js 16 y Stripe Elements: cálculo de impuestos en el edge en 50ms, webhooks idempotentes y cero pérdida de conversiones.',
+    de: 'Ein technischer Blueprint zum Ersatz langsamer monolithischer WooCommerce-Checkouts durch Next.js 16 und Stripe Elements: Edge-Steuerberechnungen in unter 50 ms, asynchrone idempotente Webhooks und null Warenkorbabbrüche.',
   },
   date: '2026-10-26',
   readTime: {
     en: '10 min read',
     ua: '10 хв читання',
     es: '10 min de lectura',
+    de: '10 Min. Lesezeit',
   },
   category: 'architecture-tco',
   categoryLabel: {
     en: 'Architecture & TCO',
     ua: 'Архітектура та TCO',
     es: 'Arquitectura y TCO',
+    de: 'Architektur & TCO',
   },
   tags: ['WooCommerce', 'Stripe', 'Headless E-Commerce', 'Next.js 16', 'Multi-Currency', 'Checkout Optimization', 'Redis', 'Webhooks'],
   author: {
@@ -31,6 +35,7 @@ export const headlessMulticurrencyCheckoutWoocommerceStripePost: BlogPost = {
       en: 'Senior Fullstack Web Engineer & E-Commerce Architect',
       ua: 'Senior Fullstack веб-інженер та e-commerce архітектор',
       es: 'Ingeniero Web Fullstack Senior y Arquitecto E-Commerce',
+      de: 'Senior Fullstack Web-Engineer & E-Commerce-Architekt',
     },
   },
   coverImage: '/Portfolio/images/blog/cover-headless-multicurrency-checkout.svg',
@@ -43,6 +48,7 @@ export const headlessMulticurrencyCheckoutWoocommerceStripePost: BlogPost = {
         en: 'Bespoke international WooCommerce store engineered with multi-currency checkout, custom schema optimizations, sub-second checkout transitions, and zero database locks.',
         ua: 'Кастомний міжнародний WooCommerce-магазин з мультивалютним чекаутом, оптимізацією схеми БД, субсекундним оформленням замовлення та нульовими блокуваннями бази даних.',
         es: 'Tienda WooCommerce internacional personalizada con checkout multidivisa, optimizaciones de base de datos, transiciones subsegundo y cero bloqueos de concurrencia.',
+        de: 'Maßgeschneiderter internationaler WooCommerce-Shop mit Multi-Währungs-Checkout, Schema-Optimierungen, Checkout-Übergängen im Subsekundenbereich und null Datenbanksperren.',
       },
     },
     {
@@ -53,6 +59,7 @@ export const headlessMulticurrencyCheckoutWoocommerceStripePost: BlogPost = {
         en: 'High-conversion multi-region e-commerce platform processing hundreds of concurrent daily checkouts with sub-500ms transaction settlement.',
         ua: 'Висококонверсійний інтернет-магазин для кількох регіонів, що обробляє сотні одночасних чекаутів щодня з фіксацією замовлень менше ніж за 500мс.',
         es: 'Plataforma de comercio electrónico multirregión con alta conversión que procesa cientos de pedidos concurrentes diarios con confirmación en menos de 500ms.',
+        de: 'Konversionsstarke Multi-Regionen-E-Commerce-Plattform, die täglich hunderte gleichzeitige Checkouts mit einer Transaktionsabwicklung in unter 500 ms verarbeitet.',
       },
     },
     {
@@ -63,6 +70,7 @@ export const headlessMulticurrencyCheckoutWoocommerceStripePost: BlogPost = {
         en: 'Decoupled Next.js 16 App Router architecture isolating dynamic calculation and payment routines from backend content management systems.',
         ua: 'Архітектура Next.js 16 App Router, що ізолює динамічні розрахунки та платіжні сценарії від бекенд-системи управління контентом.',
         es: 'Arquitectura desacoplada en Next.js 16 App Router que aísla los cálculos dinámicos y pasarelas de pago de los sistemas de gestión de contenido.',
+        de: 'Entkoppelte Next.js 16 App Router-Architektur, die dynamische Berechnungen und Zahlungsroutinen vom Backend-Content-Management-System isoliert.',
       },
     },
   ],
@@ -88,6 +96,13 @@ export const headlessMulticurrencyCheckoutWoocommerceStripePost: BlogPost = {
       'Los Route Handlers en el Edge calculan el IVA comunitario (OSS) e impuestos regionales en menos de 42ms utilizando cabeceras de geolocalización (x-vercel-ip-country) y tablas de tipos en memoria.',
       'La aritmética entera en unidades menores (céntimos) elimina discrepancias por redondeo de coma flotante entre Stripe Payment Intents y la contabilidad de WooCommerce.',
       'La recepción asíncrona de webhooks de Stripe con bloqueos distribuidos en Redis (SETNX con TTL de 24 horas) garantiza cero pedidos duplicados y cero bloqueos de concurrencia en ventas masivas.',
+    ],
+    de: [
+      'Monolithische WooCommerce-Checkouts blockieren Benutzereingaben durch synchrone AJAX-Aufrufe (update_order_review) bei jeder Adressänderung, was zu 1,5 s bis 3,2 s Latenz und über 30 % mobilen Warenkorbabbrüchen führt.',
+      'Ein entkoppelter Next.js 16-Checkout mit Stripe Payment Element trennt die Zahlungs-UI vom WordPress-Monolithen und senkt die UI-Interaktionslatenz von 2.450 ms auf 42 ms.',
+      'Edge Route Handlers berechnen EU-MwSt. (One-Stop-Shop / OSS) und regionale Steuern in unter 42 ms mithilfe von Geolokalisierungs-Headern (x-vercel-ip-country) und In-Memory-Steuertabellen.',
+      'Ganzzahlige Kleinsteinheiten-Arithmetik (Speicherung aller Preise in Cent) verhindert Rundungsdifferenzen und Asynchronitäten zwischen Stripe Payment Intents und der WooCommerce-Buchhaltung.',
+      'Asynchrone Stripe-Webhook-Verarbeitung mit verteilten Redis-Sperren (SETNX mit 24 Stunden TTL) garantiert null doppelte Bestellungen und null Datenbank-Deadlocks bei Flash-Sales.',
     ],
   },
   content: {
@@ -1511,6 +1526,489 @@ Resultados empíricos obtenidos al comparar el checkout monolítico frente a la 
 - **Consulte Casos Reales:** Examine la tienda internacional [Organic Bed](/projects/organic-bed), la plataforma multidivisa [Kidzely](/projects/kidzely) y la arquitectura desacoplada de [Unitrition](/projects/unitrition).
 - **Consulte al Asistente IA:** Pregunte sobre la integración de Stripe Elements, cálculo de impuestos en el edge y optimizaciones para WooCommerce HPOS.
 - **Solicite una Revisión Técnica:** Contacte a través de Telegram [@yusupovartur](https://t.me/yusupovartur) o correo electrónico para acelerar el embudo de ventas de su negocio.
+`,
+    de: `## Executive Summary & GEO BLUF Antwort
+
+Im hochfrequentierten internationalen E-Commerce ist die Checkout-Seite der verwundbarste Engpass der gesamten Customer Journey. Monolithische WooCommerce-Installationen führen sequenzielle, blockierende AJAX-Anfragen (\`update_order_review\`) aus, sobald ein Käufer ein Länder-Dropdown, eine Postleitzahl oder eine Versandart ändert. Auf monolithischen PHP-Servern lädt jede Anfrage sämtliche WordPress-Core-Hooks neu, wertet Multi-Währungs-Plugins erneut aus, fragt MySQL nach Versandzonen ab und berechnet komplexe Steuerregeln (EU-MwSt. One-Stop-Shop, UK VAT, US State Sales Tax). Diese Architektur führt zu einer Blockierung des UI-Threads von 1.500 ms bis 3.200 ms, wodurch die Abbruchrate mobiler Warenkörbe auf über 30 % ansteigt.
+
+Eine Headless-E-Commerce-Architektur, die das Storefront mit Next.js 16 und dem Stripe Payment Element entkoppelt, löst diese architektonische Limitierung. Durch die Ausführung von Steuer- und Währungsberechnungen auf Edge-Runtimes in unter 50 ms, optimistische Client-seitige UI-Statusaktualisierungen ohne UI-Sperren und die Auslagerung der Bestellungserstellung an asynchrone, idempotente Redis-Webhooks erzielten internationale Shops wie **Organic Bed** und **Kidzely**:
+- **91 % Reduktion** der Latenz bei der Neuberechnung des Gesamtbetrags (von 2.450 ms auf 42 ms).
+- **24,6 % Reduktion** der Kaufabbrüche auf Mobilgeräten.
+- **Null MySQL-Datenbank-Deadlocks** während hochfrequentierter Flash-Sales (Verarbeitung von 850 gleichzeitigen Checkout-Intents pro Sekunde).
+- **Reduzierung des PCI-DSS-Umfangs** auf SAQ A (keine Karteninhaberdaten berühren den Ursprungsserver).
+
+---
+
+## Anatomische Engpässe des monolithischen WooCommerce-Checkouts
+
+Um zu verstehen, warum Headless-Checkouts monolithische Architekturen übertreffen, müssen wir die internen Fehlermodi der traditionellen WooCommerce-Checkout-Verarbeitung untersuchen:
+
+### 1. Die synchrone AJAX-Falle von \`update_order_review\`
+Jedes Mal, wenn ein Benutzer ein Checkout-Feld bearbeitet (z. B. die Eingabe einer Postleitzahl), führt WooCommerce \`wc-ajax=update_order_review\` aus. Das Frontend ruft jQuery \`blockUI\` auf und deaktiviert sämtliche Formulareingaben vollständig, sodass der Benutzer weder seinen Namen noch seine Adresse oder Kartendaten eingeben kann. Wenn der Ursprungsserver 2,2 Sekunden benötigt, um Versandtabellen und Währungsumrechnungen zu verarbeiten, erlebt der Nutzer eine stockende Oberfläche. In Mobilfunknetzen mit 150 ms Paket-Jitter zerstört diese synchrone Sperre den gesamten Checkout-Fluss.
+
+### 2. Multi-Währungs-Plugin-Overhead & Postmeta-Konflikte
+Herkömmliche Multi-Währungs-Plugins klinken sich in \`woocommerce_product_get_price\` und \`woocommerce_cart_calculate_fees\` ein. Bei einem Warenkorb mit 12 Artikeln löst WooCommerce über 200 Hook-Auswertungen pro AJAX-Durchlauf aus. Bei hohem Traffic versuchen mehrere gleichzeitige Käufer, Sitzungszeilen in \`wp_options\` zu aktualisieren oder \`wp_postmeta\` zu sperren, was zu MySQL-Transaktions-Deadlocks, 504 Gateway Timeouts und beschädigten Warenkorbzuständen führt.
+
+### 3. Asymmetrische PCI-DSS-Compliance-Verpflichtungen
+Wenn Checkout-Formulare direkt auf monolithischen Ursprungsservern gerendert werden, fällt der Händler unter PCI DSS SAQ A-EP (Self-Assessment Questionnaire A-EP), was umfangreiche vierteljährliche Schwachstellenscans, Code-Reviews und strenge Server-Härtungsprotokolle erfordert. Im Gegensatz dazu reduziert der Einsatz des Stripe Payment Elements in einem isolierten Next.js-Frontend die Compliance auf den minimalen SAQ-A-Standard, da Zahlungseingaben in von Stripe gehosteten Iframes mit direkter Tokenisierung gerendert werden.
+
+---
+
+## Architektur-Blueprint: Mehrstufige Edge-Steuerberechnung & Event-Driven Stripe Checkout
+
+Das folgende Diagramm veranschaulicht, wie Checkout-Anfragen isoliert, auf Edge-PoPs ausgewertet und asynchron verarbeitet werden, ohne den WordPress-Ursprungsserver zu belasten:
+
+\`\`\`
+[ Client-Browser: Interaktive Next.js 16 Checkout-Ansicht ]
+   ├── Schritt 1: Nutzer gibt Postleitzahl ein & wählt Land
+   │      │
+   │      ▼ Nicht-blockierender Fetch (Edge-Geolokalisierungs-Header)
+[ Next.js 16 Edge Route Handler: /api/checkout/calculate-tax ]
+   ├── Edge-Cache (Stale-While-Revalidate, < 35 ms)
+   ├── Wertet EU-MwSt./OSS-Sätze & US-Steuerklassen aus
+   └── Liefert Steueraufschlüsselung & Kleinsteinheiten (Cent)
+          │
+          ▼ Optimistisches UI-Update (0 ms Main-Thread-Sperre)
+[ Stripe Payment Element (Next.js 16 Client Component) ]
+   ├── Einheitliche UI: Apple Pay / Google Pay / Klarna / iDEAL / Karten
+   └── Sendet tokenisierten Intent direkt an die Stripe-API (< 180 ms)
+          │
+          ▼ Zahlung bestätigt (Stripe Event Dispatch)
+[ Next.js 16 Webhook Handler: /api/webhooks/stripe ]
+   ├── Verifiziert Stripe-Signature HMAC-SHA256
+   ├── Idempotenz-Prüfung in Upstash Redis (SETNX mit 24h TTL)
+   └── Reiht Job in BullMQ-Queue ein (< 15 ms Antwort an Stripe)
+          │
+          ▼ Asynchrone Bestellbereitstellung
+[ Headless WooCommerce Backend (Ursprungsserver) ]
+   ├── High-Performance Order Storage (HPOS) Insert
+   └── Bestandsabzug & Versand der Kundenquittung
+\`\`\`
+
+---
+
+## Produktionsimplementierung: Edge-Steuer-Engine & Client-Architektur
+
+### 1. Next.js 16 Edge Route Handler: Multi-Währungs- & Steuer-Normalisierer in unter 50 ms
+
+Dieser Edge Route Handler wird auf CloudFront- / Vercel-Edge-PoPs ausgeführt. Er liest die Geolokalisierungs-Header des Clients aus, berechnet EU-MwSt.-One-Stop-Shop-Sätze (OSS) oder US-Steuern aus einem In-Memory-Verzeichnis und rechnet Beträge in ganzzahlige Kleinsteinheiten (Cent) um, um Gleitkommadifferenzen auszuschließen:
+
+\`\`\`typescript
+import { NextResponse } from 'next/server'
+import type { NextRequest } from 'next/server'
+
+interface TaxCalculationRequest {
+  country: string
+  postalCode?: string
+  currency: 'EUR' | 'USD' | 'GBP' | 'ILS'
+  items: Array<{
+    id: string
+    quantity: number
+    unitPriceMajor: number // Hauptwährungseinheiten (z. B. 129.50)
+  }>
+}
+
+interface TaxCalculationResponse {
+  currency: string
+  subtotalMinor: number // Cent (z. B. 12950)
+  taxRatePercent: number
+  taxMinor: number
+  totalMinor: number
+  isReverseCharge: boolean
+  resolvedCountry: string
+}
+
+// In-Memory-Verzeichnis der EU-MwSt.-OSS-Sätze (standardisierte Sätze 2026)
+const EU_VAT_RATES: Record<string, number> = {
+  AT: 20, BE: 21, BG: 20, CY: 19, CZ: 21, DE: 19, DK: 25, EE: 22,
+  ES: 21, FI: 25.5, FR: 20, GR: 24, HR: 25, HU: 27, IE: 23, IT: 22,
+  LT: 21, LU: 17, LV: 21, MT: 18, NL: 21, PL: 23, PT: 23, RO: 19,
+  SE: 25, SI: 22, SK: 20,
+}
+
+// Feste Wechselkurs-Multiplikatoren relativ zur Basis EUR (Produktion nutzt Redis-Feed)
+const CURRENCY_MULTIPLIERS: Record<string, number> = {
+  EUR: 1.0,
+  USD: 1.08,
+  GBP: 0.85,
+  ILS: 4.02,
+}
+
+export const runtime = 'edge'
+
+export async function POST(request: NextRequest): Promise<NextResponse> {
+  const startTime = Date.now()
+
+  try {
+    const body = (await request.json()) as TaxCalculationRequest
+    const clientCountry =
+      body.country || request.headers.get('x-vercel-ip-country') || 'ES'
+    const targetCurrency = body.currency || 'EUR'
+    const exchangeRate = CURRENCY_MULTIPLIERS[targetCurrency] ?? 1.0
+
+    // 1. Zwischensumme strikt in ganzzahligen Kleinsteinheiten (Cent) berechnen
+    let subtotalMinor = 0
+    for (const item of body.items) {
+      const convertedPriceMajor = item.unitPriceMajor * exchangeRate
+      const itemPriceMinor = Math.round(convertedPriceMajor * 100)
+      subtotalMinor += itemPriceMinor * item.quantity
+    }
+
+    // 2. Steuersatz auflösen
+    let taxRatePercent = 0
+    const upperCountry = clientCountry.toUpperCase()
+
+    if (EU_VAT_RATES[upperCountry] !== undefined) {
+      taxRatePercent = EU_VAT_RATES[upperCountry]
+    } else if (upperCountry === 'US') {
+      // Basis-Schätzung; Produktion fragt TaxJar / Stripe Tax API ab, falls Nexus besteht
+      taxRatePercent = 7.25
+    }
+
+    // 3. Steuer und Gesamtsumme in Kleinsteinheiten berechnen
+    const taxMinor = Math.round((subtotalMinor * taxRatePercent) / 100)
+    const totalMinor = subtotalMinor + taxMinor
+
+    const responsePayload: TaxCalculationResponse = {
+      currency: targetCurrency,
+      subtotalMinor,
+      taxRatePercent,
+      taxMinor,
+      totalMinor,
+      isReverseCharge: false,
+      resolvedCountry: upperCountry,
+    }
+
+    const duration = Date.now() - startTime
+
+    return NextResponse.json(responsePayload, {
+      status: 200,
+      headers: {
+        'Cache-Control': 'public, s-maxage=60, stale-while-revalidate=300',
+        'X-Edge-Calculation-Ms': duration.toString(),
+      },
+    })
+  } catch {
+    return NextResponse.json(
+      { error: 'Ungültige Berechnungsdaten' },
+      { status: 400 }
+    )
+  }
+}
+\`\`\`
+
+---
+
+### 2. Next.js 16 Client Component: Stripe Payment Element mit Optimistic UI
+
+Diese React 19 Client-Komponente bindet das Stripe Payment Element ein. Sie stellt sicher, dass das Checkout-Formular vollständig interaktiv bleibt, ohne Benutzereingaben während asynchroner Steuer- und Währungsberechnungen einzufrieren:
+
+\`\`\`tsx
+'use client'
+
+import React, { useState, useEffect, useTransition } from 'react'
+import { loadStripe } from '@stripe/stripe-js'
+import { Elements, PaymentElement, useStripe, useElements } from '@stripe/react-stripe-js'
+
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!)
+
+interface CheckoutProps {
+  items: Array<{ id: string; quantity: number; unitPriceMajor: number }>
+  defaultCurrency: 'EUR' | 'USD' | 'GBP' | 'ILS'
+}
+
+export function HeadlessCheckout({ items, defaultCurrency }: CheckoutProps) {
+  const [currency, setCurrency] = useState(defaultCurrency)
+  const [country, setCountry] = useState('ES')
+  const [clientSecret, setClientSecret] = useState<string | null>(null)
+  const [totals, setTotals] = useState<{ totalMinor: number; taxMinor: number } | null>(null)
+  const [isPending, startTransition] = useTransition()
+
+  // Steuer neu berechnen und PaymentIntent optimistisch aktualisieren
+  useEffect(() => {
+    let active = true
+
+    async function updateOrderFinancials() {
+      const res = await fetch('/api/checkout/calculate-tax', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ country, currency, items }),
+      })
+
+      if (!res.ok) return
+      const data = await res.json()
+
+      if (!active) return
+
+      startTransition(() => {
+        setTotals({ totalMinor: data.totalMinor, taxMinor: data.taxMinor })
+      })
+
+      // Stripe PaymentIntent mit aktualisierten Kleinsteinheiten abrufen oder aktualisieren
+      const intentRes = await fetch('/api/checkout/create-intent', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ amountMinor: data.totalMinor, currency }),
+      })
+
+      const intentData = await intentRes.json()
+      if (active && intentData.clientSecret) {
+        setClientSecret(intentData.clientSecret)
+      }
+    }
+
+    updateOrderFinancials()
+
+    return () => {
+      active = false
+    }
+  }, [country, currency, items])
+
+  return (
+    <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 max-w-6xl mx-auto p-6">
+      {/* Linke Spalte: Kundendaten & Optimistische Steuerung */}
+      <div className="lg:col-span-7 space-y-6">
+        <div className="bg-slate-900 border border-slate-800 rounded-xl p-6">
+          <h2 className="text-xl font-bold text-white mb-4">Rechnung & Versand</h2>
+          <div className="grid grid-cols-2 gap-4">
+            <div>
+              <label className="block text-xs font-semibold text-slate-400 mb-1">Land</label>
+              <select
+                value={country}
+                onChange={(e) => setCountry(e.target.value)}
+                className="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white"
+              >
+                <option value="ES">Spanien (21% MwSt.)</option>
+                <option value="DE">Deutschland (19% MwSt.)</option>
+                <option value="FR">Frankreich (20% MwSt.)</option>
+                <option value="US">Vereinigte Staaten (State Tax)</option>
+                <option value="GB">Vereinigtes Königreich (20% VAT)</option>
+              </select>
+            </div>
+            <div>
+              <label className="block text-xs font-semibold text-slate-400 mb-1">Währung</label>
+              <select
+                value={currency}
+                onChange={(e) => setCurrency(e.target.value as any)}
+                className="w-full bg-slate-800 border border-slate-700 rounded-lg p-2.5 text-white"
+              >
+                <option value="EUR">EUR (€)</option>
+                <option value="USD">USD ($)</option>
+                <option value="GBP">GBP (£)</option>
+                <option value="ILS">ILS (₪)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        {clientSecret && (
+          <Elements stripe={stripePromise} options={{ clientSecret, appearance: { theme: 'night' } }}>
+            <PaymentExecutionForm totals={totals} isPending={isPending} />
+          </Elements>
+        )}
+      </div>
+
+      {/* Rechte Spalte: Bestellübersicht */}
+      <div className="lg:col-span-5 bg-slate-900/60 border border-slate-800 rounded-xl p-6 h-fit">
+        <h3 className="text-lg font-bold text-white mb-4">Bestellübersicht</h3>
+        <div className="space-y-3 text-sm">
+          <div className="flex justify-between text-slate-400">
+            <span>Geschätzte Steuer</span>
+            <span className="text-white">
+              {totals ? (totals.taxMinor / 100).toFixed(2) : '...'} {currency}
+            </span>
+          </div>
+          <div className="border-t border-slate-800 pt-3 flex justify-between font-bold text-base text-white">
+            <span>Gesamtbetrag</span>
+            <span className="text-emerald-400">
+              {totals ? (totals.totalMinor / 100).toFixed(2) : '...'} {currency}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function PaymentExecutionForm({ totals, isPending }: { totals: any; isPending: boolean }) {
+  const stripe = useStripe()
+  const elements = useElements()
+  const [submitting, setSubmitting] = useState(false)
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!stripe || !elements) return
+
+    setSubmitting(true)
+    setErrorMessage(null)
+
+    const { error } = await stripe.confirmPayment({
+      elements,
+      confirmParams: {
+        return_url: \`\${window.location.origin}/checkout/success\`,
+      },
+    })
+
+    if (error) {
+      setErrorMessage(error.message ?? 'Zahlung fehlgeschlagen')
+      setSubmitting(false)
+    }
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="bg-slate-900 border border-slate-800 rounded-xl p-6">
+      <PaymentElement />
+      {errorMessage && <div className="text-rose-400 text-sm mt-4">{errorMessage}</div>}
+      <button
+        disabled={!stripe || submitting || isPending}
+        className="w-full mt-6 bg-emerald-500 hover:bg-emerald-400 disabled:bg-slate-800 text-slate-950 font-bold py-3 px-6 rounded-lg transition-colors cursor-pointer"
+      >
+        {submitting ? 'Zahlung wird autorisiert...' : 'Sichere Bestellung abschließen'}
+      </button>
+    </form>
+  )
+}
+\`\`\`
+
+---
+
+### 3. Asynchroner Stripe-Webhook-Handler mit verteilter Redis-Idempotenz
+
+Dieser Route Handler empfängt bestätigte Zahlungen von Stripe, überprüft die HMAC-SHA256-Signatur, validiert die Idempotenz in Redis mittels atomarem \`SETNX\` (um doppelte Bestellungen bei Stripe-Wiederholungsversuchen zu verhindern) und gibt innerhalb von 15 ms HTTP 200 zurück:
+
+\`\`\`typescript
+import { NextResponse } from 'next/server'
+import type { NextRequest } from 'next/server'
+import Stripe from 'stripe'
+
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
+  apiVersion: '2025-02-24.acacia' as any,
+})
+
+const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET!
+const redisUrl = process.env.UPSTASH_REDIS_REST_URL!
+const redisToken = process.env.UPSTASH_REDIS_REST_TOKEN!
+
+async function acquireIdempotencyLock(eventId: string): Promise<boolean> {
+  const key = \`webhook_processed:\${eventId}\`
+
+  // Atomares Redis SET key value EX 86400 NX (24 Stunden Ablaufzeit)
+  const res = await fetch(\`\${redisUrl}/set/\${key}/1?ex=86400&nx\`, {
+    headers: { Authorization: \`Bearer \${redisToken}\` },
+  })
+
+  const data = await res.json()
+  return data.result === 'OK'
+}
+
+export async function POST(request: NextRequest): Promise<NextResponse> {
+  const payload = await request.text()
+  const signature = request.headers.get('stripe-signature')
+
+  if (!signature) {
+    return NextResponse.json({ error: 'Stripe-Signatur fehlt' }, { status: 400 })
+  }
+
+  let event: Stripe.Event
+
+  try {
+    event = stripe.webhooks.constructEvent(payload, signature, webhookSecret)
+  } catch (err: any) {
+    return NextResponse.json({ error: 'Webhook-Signaturprüfung fehlgeschlagen' }, { status: 400 })
+  }
+
+  // Erfolgreiche Zahlung / PaymentIntent verarbeiten
+  if (event.type === 'payment_intent.succeeded') {
+    const paymentIntent = event.data.object as Stripe.PaymentIntent
+
+    // Doppelte Bestellverarbeitung verhindern, falls Stripe das Event erneut sendet
+    const isFirstAttempt = await acquireIdempotencyLock(event.id)
+    if (!isFirstAttempt) {
+      return NextResponse.json({ received: true, note: 'Event bereits verarbeitet' }, { status: 200 })
+    }
+
+    // Hintergrund-Job an WooCommerce HPOS übergeben
+    await dispatchOrderToWooCommerceQueue({
+      paymentIntentId: paymentIntent.id,
+      amountMinor: paymentIntent.amount,
+      currency: paymentIntent.currency,
+      customerEmail: paymentIntent.receipt_email,
+      metadata: paymentIntent.metadata,
+    })
+  }
+
+  return NextResponse.json({ received: true }, { status: 200 })
+}
+
+async function dispatchOrderToWooCommerceQueue(orderData: Record<string, any>) {
+  // Bestelldaten in eine asynchrone Redis-Queue (BullMQ oder Edge REST API) schieben
+  await fetch(\`\${redisUrl}/rpush/queue:orders\`, {
+    method: 'POST',
+    headers: {
+      Authorization: \`Bearer \${redisToken}\`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(orderData),
+  })
+}
+\`\`\`
+
+---
+
+## Empirische Benchmarks & Konversionsanalyse
+
+Die folgenden Produktionsmetriken vergleichen einen monolithischen Standard-WooCommerce-Checkout mit unserer entkoppelten Next.js 16 + Stripe Elements-Architektur im hochfrequentierten E-Commerce-Betrieb:
+
+| Bewertungsmetrik | Monolithischer WooCommerce-Checkout | Entkoppeltes Next.js 16 + Stripe Elements | Technischer & geschäftlicher Einfluss |
+| :--- | :--- | :--- | :--- |
+| **Feld-zu-Gesamtsumme-Latenz** | 2.450 ms (sequenzieller AJAX-Block) | 42 ms (Edge Route Handler) | **98,2 % Reduktion der UI-Verzögerung** |
+| **Mobiler Warenkorbabbruch** | 38,4 % Abbruch im Checkout | 13,8 % Abbruch im Checkout | **24,6 % mehr abgeschlossene Käufe** |
+| **Interaction to Next Paint (INP)** | 340 ms (Schlecht - friert Formular ein) | 28 ms (Gut - null Thread-Sperre) | Besteht Google Core Web Vitals |
+| **Gleichzeitige Spitzentransaktionen** | 45 Checkouts/Sek. (DB-Locks & 504) | 850 Checkouts/Sek. (Redis-entkoppelt) | 18,8x höhere Parallelitätsgrenze |
+| **Datenbank-Thread-Konflikte** | 88 % Pool-Sperre bei Sales | 4 % Pool-Auslastung (asynchrone Queues) | Eliminiert MySQL-Deadlocks |
+| **PCI-DSS-Compliance-Umfang** | SAQ A-EP (Ursprungsserver-Audits) | SAQ A (Volle Stripe-Token-Isolation) | Vereinfacht Compliance & Risiko |
+
+---
+
+## Fehlermodi, Post-Mortems & Operative Kompromisse
+
+### 1. Die asynchrone Webhook-Race-Condition
+- **Fehlermodus:** Bei extrem schnellen Checkouts wurden Käufer nach der Zahlung innerhalb von 400 ms auf \`/checkout/success\` weitergeleitet, während der asynchrone Stripe-Webhook die Erstellung der Bestellung in WooCommerce noch nicht abgeschlossen hatte. Die Dankesseite zeigte *"Bestellung nicht gefunden"*, was zu Verunsicherung und doppelten Zahlungsversuchen führte.
+- **Ursache:** Die asynchrone Entkopplung erzeugt eine kurzzeitige Eventual-Consistency-Verzögerung zwischen Zahlungs-Gateway und CMS-Datenbank.
+- **Produktionslösung:** Das Next.js-Frontend stellt nach Bestätigung des PaymentIntents ein signiertes, kurzlebiges JWT aus. Die Seite \`/checkout/success\` zeigt sofort eine optimistische Bestätigung samt Stripe-Transaktionsbeleg an, während ein leichtgewichtiger Polling-Hook im Hintergrund mit exponentiellem Backoff den Status der WooCommerce-Bestell-ID abfragt.
+
+### 2. Gleitkomma-Währungsabweichung zwischen Stripe und WooCommerce
+- **Fehlermodus:** Eine Bestellung mit drei Positionen wies in WooCommerce einen Gesamtbetrag von 129,99 € aus, während Stripe 130,00 € abbuchte, was zu Abstimmungsfehlern in der Buchhaltung und Rückbuchungswarnungen führte.
+- **Ursache:** Gleitkomma-Arithmetik in JavaScript (\`0.1 + 0.2 = 0.30000000000000004\`) und abweichende Rundungsstrategien zwischen PHP (\`round()\` mit \`PHP_ROUND_HALF_UP\`) und den ganzzahligen Kleinsteinheiten von Stripe.
+- **Produktionslösung:** Absolutes Verbot von Gleitkommazahlen bei Zahlungsberechnungen. Alle Katalogpreise werden an der API-Grenze in ganzzahlige Cent umgewandelt (\`Math.round(price * 100)\`), und sämtliche Rabatte, Steuern und Versandkosten werden strikt in ganzzahligen Kleinsteinheiten berechnet.
+
+### 3. Ausfall des VIES-Dienstes der Europäischen Kommission bei B2B-Reverse-Charge
+- **Fehlermodus:** B2B-Käufer, die eine gültige EU-USt-IdNr. eingaben, erlebten Checkout-Timeouts von 15 Sekunden, als die VIES-SOAP-API der Europäischen Kommission ausfiel, was den Kaufabschluss verhinderte.
+- **Ursache:** Synchrone Abhängigkeit von externen Behördendiensten im kritischen Checkout-Pfad.
+- **Produktionslösung:** Implementierung eines Edge-VIES-Proxys mit einem 2-Sekunden-Timeout und einem Stale-While-Revalidate-Redis-Cache für verifizierte Unternehmens-USt-IdNrn. Ist VIES nicht erreichbar, berechnet das System die reguläre Inlands-MwSt. und markiert die Bestellung für eine automatische Steuerrückerstattung nach dem Checkout, sobald VIES wieder verfügbar ist. So bleibt der Checkout-Trichter zu 100 % offen.
+
+---
+
+## E-Commerce-Architektur-Checkliste
+
+Um Checkout-Latenz zu beseitigen und abgebrochene Warenkörbe im internationalen E-Commerce zurückzugewinnen:
+
+1. **Zahlungsoberfläche entkoppeln:** Migrieren Sie weg von monolithischen PHP-Checkout-Formularen. Nutzen Sie Next.js 16 mit dem Stripe Payment Element, um PCI-DSS-Compliance und UI-Reaktionsfähigkeit zu isolieren.
+2. **Steuern am Edge berechnen:** Führen Sie EU-MwSt.-OSS- und regionale Steuersatzabfragen in Next.js Edge Route Handlern mit Geolokalisierungs-Headern (\`x-vercel-ip-country\`) bei einer Latenz von unter 50 ms aus.
+3. **Ganzzahlige Kleinsteinheiten-Arithmetik erzwingen:** Speichern und berechnen Sie alle Preise, Gebühren und Steuern in Cent, um 1-Cent-Gleitkommafehler bei der Abstimmung auszuschließen.
+4. **Redis-Idempotenz für Webhooks implementieren:** Verarbeiten Sie Stripe-Webhooks niemals ohne eine atomare \`SETNX\`-Sperre auf die \`event.id\`, um doppelte Bestellungen zu verhindern.
+5. **Bestellungserstellung über Queues entkoppeln:** Lassen Sie die Zahlungsbestätigung niemals auf synchrone WooCommerce-Datenbank-Schreibvorgänge warten. Reihen Sie Bestellungen asynchron ein, um MySQL-Deadlocks bei Traffic-Spitzen zu vermeiden.
+
+---
+
+### Benötigen Sie eine hochkonvertierende Headless-Checkout-Architektur?
+
+Verliert Ihr E-Commerce-Shop internationale Kunden durch träge Checkout-Seiten, Reibungsverluste bei der Währungsumrechnung oder Serverabstürze während Verkaufsaktionen? Artur Yusupov entwickelt hochperformante Checkout-Plattformen auf Basis von Headless WooCommerce, Shopify und Next.js 16.
+
+- **Verifizierte Projekte entdecken:** Sehen Sie sich den internationalen Shop [Organic Bed](/projects/organic-bed), die Multi-Regionen-E-Commerce-Plattform [Kidzely](/projects/kidzely) und die entkoppelte Architektur von [Unitrition](/projects/unitrition) an.
+- **KI-Assistenten befragen:** Fragen Sie Arturs interaktiven Assistenten nach der Integration des Stripe Payment Elements, Edge-Steueralgorithmen und WooCommerce-HPOS-Optimierungen.
+- **Architektur-Review vereinbaren:** Kontaktieren Sie uns über Telegram [@yusupovartur](https://t.me/yusupovartur) oder per E-Mail, um einen Checkout-Funnel im Subsekundenbereich für Ihre Marke zu entwickeln.
 `,
   },
 }

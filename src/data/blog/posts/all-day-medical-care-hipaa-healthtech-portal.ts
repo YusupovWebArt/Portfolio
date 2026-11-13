@@ -7,23 +7,27 @@ export const allDayMedicalCarePost: BlogPost = {
     en: 'Engineering a HIPAA-Compliant Medical Web Portal: Custom Architecture, PHI Encryption & Sub-Second Mobile Speed for All Day Medical Care USA',
     ua: 'Інжиніринг медичного веб-порталу за стандартом HIPAA: кастомна архітектура, шифрування PHI та субсекундна швидкість для All Day Medical Care США',
     es: 'Ingeniería de un portal web médico conforme a HIPAA: arquitectura a medida, cifrado PHI y velocidad móvil sub-segundo para All Day Medical Care EE.UU.',
+    de: 'Engineering eines HIPAA-konformen medizinischen Webportals: Maßgeschneiderte Architektur, PHI-Verschlüsselung & Sub-Sekunden-Mobilgeschwindigkeit für All Day Medical Care USA',
   },
   description: {
     en: 'A production case study detailing the architectural design of a HIPAA-compliant medical clinic portal for All Day Medical Care (USA). Explores Protected Health Information (PHI) encryption, elimination of tracking pixels per HHS rules, and sub-0.8s mobile booking.',
     ua: 'Практичний інженерний кейс розробки захищеного медичного порталу за стандартом HIPAA для All Day Medical Care (США): шифрування медичних даних (PHI), відмова від пікселів стеження за нормами HHS та швидкий запис на прийом за <0.8с.',
     es: 'Caso práctico de ingeniería sobre el diseño de un portal médico conforme a HIPAA para All Day Medical Care (EE.UU.): cifrado de datos sanitarios protegidos (PHI), eliminación de píxeles de rastreo y citas móviles en menos de 0.8s.',
+    de: 'Eine Produktions-Fallstudie zum Architekturentwurf eines HIPAA-konformen Klinikportals für All Day Medical Care (USA): Verschlüsselung geschützter Gesundheitsdaten (PHI), Entfernung von Tracking-Pixeln gemäß HHS-Richtlinien und mobile Terminbuchung in unter 0,8s.',
   },
   date: '2026-11-12',
   readTime: {
     en: '9 min read',
     ua: '9 хв читання',
     es: '9 min de lectura',
+    de: '9 Min. Lesezeit',
   },
   category: 'architecture-tco',
   categoryLabel: {
     en: 'Architecture & TCO',
     ua: 'Архітектура та TCO',
     es: 'Arquitectura y TCO',
+    de: 'Architektur & TCO',
   },
   tags: ['WordPress', 'HealthTech', 'HIPAA', 'Security', 'Encryption', 'USA', 'Performance'],
   author: {
@@ -32,6 +36,7 @@ export const allDayMedicalCarePost: BlogPost = {
       en: 'Fullstack Web Engineer & AI Developer',
       ua: 'Fullstack веб-інженер та AI-розробник',
       es: 'Ingeniero Web Fullstack y Desarrollador IA',
+      de: 'Fullstack Web-Engineer & KI-Entwickler',
     },
   },
   coverImage: '/Portfolio/images/blog/cover-allday-medical-hipaa.svg',
@@ -44,6 +49,7 @@ export const allDayMedicalCarePost: BlogPost = {
         en: 'Custom medical clinic portal engineered for All Day Medical Care (USA), ensuring complete HIPAA Security Rule compliance, zero unencrypted PHI persistence, and rapid mobile booking flows.',
         ua: 'Кастомний портал медичної клініки All Day Medical Care (США) з дотриманням правил безпеки HIPAA, шифруванням PHI та швидким мобільним записом пацієнтів.',
         es: 'Portal médico a medida desarrollado para All Day Medical Care (EE.UU.), garantizando el cumplimiento de la norma de seguridad HIPAA, cifrado de PHI y citas móviles ágiles.',
+        de: 'Maßgeschneidertes medizinisches Klinikportal für All Day Medical Care (USA) mit vollständiger Einhaltung der HIPAA Security Rule, null unverschlüsselter PHI-Speicherung und schnellen mobilen Buchungsprozessen.',
       },
     },
   ],
@@ -65,6 +71,12 @@ export const allDayMedicalCarePost: BlogPost = {
       'Supresión de píxeles publicitarios de terceros según las directrices del Departamento de Salud de EE.UU. (HHS) sobre privacidad de pacientes.',
       'Implementación de túneles de transmisión cifrados con TLS 1.3 y AES-256 GCM, evitando la exposición en texto plano de información médica (PHI).',
       'Optimización del flujo de citas de atención urgente para lograr un LCP móvil inferior a 0.8s.',
+    ],
+    de: [
+      'Entwicklung eines HIPAA-konformen medizinischen Klinik-Webportals für All Day Medical Care in den Vereinigten Staaten.',
+      'Entfernung von Drittanbieter-Tracking-Pixeln (Meta Pixel, nicht-anonymisierter Google Tag Manager) gemäß den Datenschutzrichtlinien des US-Gesundheitsministeriums (HHS).',
+      'Aufbau verschlüsselter Übertragungspipelines mit TLS 1.3 und AES-256-GCM-Verschlüsselung, sodass keine geschützten Gesundheitsdaten (PHI) im Klartext offengelegt werden.',
+      'Optimierung der Seiten für die Akutversorgung-Terminbuchung (Urgent Care) auf eine mobile LCP-Zeit von unter 0,8s.',
     ],
   },
   content: {
@@ -147,6 +159,40 @@ Para la clínica **All Day Medical Care**, diseñamos una arquitectura orientada
 - **LCP Móvil:** 0.72s
 - **TBT:** 0ms
 - **Incremento en reservas:** +31.2% en solicitudes completadas desde teléfonos móviles.
+`,
+    de: `## Die regulatorische Landschaft für US-Gesundheitsplattformen im Web
+
+In den Vereinigten Staaten unterliegen medizinische Webplattformen der bundesstaatlichen Gesetzgebung des **Health Insurance Portability and Accountability Act (HIPAA)**. Jüngste Durchsetzungsmaßnahmen des **Office for Civil Rights (OCR) im US-Gesundheitsministerium (HHS)** haben unmissverständlich klargestellt, dass selbst öffentlich zugängliche Klinik-Websites Strafen in Millionenhöhe auslösen können, wenn Terminanfragen oder Symptombeschreibungen von Patienten IP-Adressen oder Identifikatoren an Werbenetzwerke von Drittanbietern (z. B. Meta Pixel, Google Analytics) weitergeben.
+
+Für die **All Day Medical Care Clinic** haben wir ein hochperformantes Webportal von Grund auf so konzipiert, dass **null PHI-Datenlecks**, eine verzögerungsfreie Notfall-Terminbuchung (Urgent Care) und ein robuster kryptografischer Datenschutz garantiert sind.
+
+---
+
+## Sicherheitsarchitektur-Blueprint: Die 4 HIPAA-Schutzmaßnahmen
+
+### 1. Null Tracking an klinischen Touchpoints
+Standardmäßige kommerzielle Analysetools wurden entkoppelt. Jegliches Besucher-Tracking auf Seiten, die Krankheitsbilder, ärztliche Fachgebiete und Buchungskalender beschreiben, wird strikt anonymisiert oder vollständig eliminiert. Innerhalb klinischer Unterpfade sind keinerlei Marketing-Tags von Drittanbietern zulässig.
+
+### 2. Ende-zu-Ende-verschlüsselte Übertragung (TLS 1.3)
+Die gesamte Kommunikation erfordert TLS 1.3 mit Forward Secrecy. HTTP Strict Transport Security (\`HSTS\`) wird inklusive Preloading erzwungen (\`max-age=63072000; includeSubDomains; preload\`).
+
+### 3. Serverseitiges Lead-Offloading ohne Klartext-Speicherung
+Aufnahmeformulare speichern keine Krankenakten in regulären WordPress-MySQL-Datenbanktabellen. Stattdessen werden übermittelte Daten sofort validiert, im Arbeitsspeicher verschlüsselt und über eine authentifizierte REST-API via Mutual TLS (mTLS) direkt an das zertifizierte elektronische Patientenaktensystem (EHR) der Klinik übertragen.
+
+### 4. Zero-Trust Content Security Policy (CSP)
+\`\`\`http
+Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://api.alldaymedicalcare.com; frame-ancestors 'none';
+\`\`\`
+
+---
+
+## Performance & Barrierefreiheit für Patienten
+
+Wenn Patienten dringende medizinische Versorgung benötigen, wirken sich Ladeverzögerungen der Website unmittelbar auf die gesundheitliche Versorgung und die Absprungrate aus. Durch das Entfernen externer Marketing-Payloads und die Optimierung des kritischen CSS-Pfads erreichten wir:
+- **Mobile Largest Contentful Paint (LCP):** 0,72s
+- **Cumulative Layout Shift (CLS):** 0,000
+- **Total Blocking Time (TBT):** 0ms
+- **Termin-Konversionsrate:** +31,2% Steigerung bei abgeschlossenen Online-Terminreservierungen.
 `,
   },
 }

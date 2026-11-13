@@ -6,23 +6,27 @@ export const enterpriseCloudWebSecurityWafAntiScrapingPost: BlogPost = {
     en: 'Enterprise Cloud Web Security Blueprint: Mitigating Layer 7 DDoS, AI Scraping, and Bot Floods with AWS WAF & Edge Rate Limiting',
     ua: 'Архітектура хмарної безпеки веб-додатків: захист від DDoS 7-го рівня, AI-скрапінгу та бот-атак через AWS WAF і Edge Rate Limiting',
     es: 'Arquitectura de Seguridad Cloud para Aplicaciones Web: Mitigación de DDoS L7, Scraping de IA y Bots con AWS WAF y Rate Limiting',
+    de: 'Enterprise Cloud-Web-Security-Blueprint: Schutz vor Layer-7-DDoS, KI-Scraping und Bot-Angriffen mit AWS WAF & Edge Rate Limiting',
   },
   description: {
     en: 'An enterprise DevSecOps blueprint for protecting high-load web applications: AWS WAFv2 rule groups, CloudFront edge inspection, sliding-window Redis rate limiting, and bot mitigation without false positives.',
     ua: 'Корпоративний DevSecOps-посібник із захисту високонавантажених веб-додатків: групи правил AWS WAFv2, інспекція трафіку на CloudFront, ковзне вікно обмеження запитів у Redis та блокування ботів без хибних спрацьовувань.',
     es: 'Guía técnica de DevSecOps para blindar aplicaciones web de alto tráfico: grupos de reglas AWS WAFv2, inspección en CloudFront, rate limiting con ventana deslizante en Redis y defensa contra bots sin falsos positivos.',
+    de: 'Ein Enterprise-DevSecOps-Blueprint zum Schutz hochbelasteter Webanwendungen: AWS WAFv2-Regelgruppen, CloudFront-Edge-Inspektion, Sliding-Window-Rate-Limiting in Redis und Bot-Abwehr ohne Fehlalarme.',
   },
   date: '2026-10-25',
   readTime: {
     en: '10 min read',
     ua: '10 хв читання',
     es: '10 min de lectura',
+    de: '10 Min. Lesezeit',
   },
   category: 'architecture-tco',
   categoryLabel: {
     en: 'Architecture & TCO',
     ua: 'Архітектура та TCO',
     es: 'Arquitectura y TCO',
+    de: 'Architektur & TCO',
   },
   tags: ['AWS WAF', 'Cloud Security', 'DevSecOps', 'Rate Limiting', 'Anti-Scraping', 'Next.js 16', 'CloudFront', 'Redis'],
   author: {
@@ -31,6 +35,7 @@ export const enterpriseCloudWebSecurityWafAntiScrapingPost: BlogPost = {
       en: 'Senior Fullstack Web Engineer & Cloud Architect',
       ua: 'Senior Fullstack веб-інженер та хмарний архітектор',
       es: 'Ingeniero Web Fullstack Senior y Arquitecto Cloud',
+      de: 'Senior Fullstack Web-Engineer & Cloud-Architekt',
     },
   },
   coverImage: '/Portfolio/images/blog/cover-cloud-web-security-waf.svg',
@@ -43,6 +48,7 @@ export const enterpriseCloudWebSecurityWafAntiScrapingPost: BlogPost = {
         en: 'Designed and deployed AWS WAFv2 perimeter rulesets, automated compliance scanning, and threat detection pipelines for enterprise cloud workloads.',
         ua: 'Спроектовано та розгорнуто правила периметра AWS WAFv2, автоматизоване сканування відповідності стандартам та конвеєри виявлення загроз для корпоративних хмарних середовищ.',
         es: 'Diseño y despliegue de conjuntos de reglas perimetrales AWS WAFv2, escaneo automatizado de cumplimiento y detección de amenazas para infraestructuras cloud corporativas.',
+        de: 'Entwicklung und Bereitstellung von AWS WAFv2-Perimeter-Regelsätzen, automatisierten Compliance-Scans und Bedrohungserkennungs-Pipelines für Enterprise-Cloud-Workloads.',
       },
     },
     {
@@ -53,6 +59,7 @@ export const enterpriseCloudWebSecurityWafAntiScrapingPost: BlogPost = {
         en: 'High-traffic cryptocurrency media platform hardened against aggressive financial scrapers and sudden traffic spikes using transient caching and origin shielding.',
         ua: 'Високонавантажений криптовалютний портал, захищений від агресивних скраперів фінансових даних та раптових сплесків трафіку за допомогою транзієнтного кешування та захисту джерела.',
         es: 'Portal de medios de criptomonedas de alto tráfico protegido contra scrapers financieros agresivos y picos repentinos mediante caché transitoria y protección de origen.',
+        de: 'Hochfrequentierte Kryptowährungs-Medienplattform, gehärtet gegen aggressive Finanz-Scraper und plötzliche Traffic-Spitzen durch transientes Caching und Origin Shielding.',
       },
     },
     {
@@ -63,6 +70,7 @@ export const enterpriseCloudWebSecurityWafAntiScrapingPost: BlogPost = {
         en: 'Showcasing enterprise-grade AWS consulting architectures, multi-region failover, auto-scaling clusters, and zero-downtime high-availability portals.',
         ua: 'Презентація архітектури корпоративного AWS-консалтингу, багаторегіонального відмовостійкого кластера та порталів високої доступності без простоїв.',
         es: 'Presentación de arquitecturas de consultoría AWS de nivel empresarial, conmutación por error multirregión y portales de alta disponibilidad con cero tiempo de inactividad.',
+        de: 'Präsentation von Enterprise-AWS-Beratungsarchitekturen, Multi-Region-Failover, Auto-Scaling-Clustern und hochverfügbaren Zero-Downtime-Portalen.',
       },
     },
   ],
@@ -88,6 +96,13 @@ export const enterpriseCloudWebSecurityWafAntiScrapingPost: BlogPost = {
       'El algoritmo de ventana deslizante en Redis ejecutado en el Edge bloquea el 94.8% del tráfico malicioso con una latencia inferior a 1.4ms, manteniendo el uso de CPU de origen bajo el 15%.',
       'El control de bots verificado distingue motores de búsqueda legítimos (Googlebot/Bingbot mediante reverse DNS) de scrapers de IA no autorizados que extraen datasets.',
       'El despliegue en producción exige excepciones para webhooks con firma HMAC y heurística de cookies ante CGNAT para evitar falsos positivos en redes corporativas con IP compartida.',
+    ],
+    de: [
+      'Origin-seitiges Rate-Limiting in Node.js oder PHP versagt bei modernen volumetrischen Layer-7-Angriffen, da Socket-Allokation und CPU-Overhead die Backend-Server-Pools dennoch erschöpfen.',
+      'Ein widerstandsfähiger Sicherheitsperimeter im Jahr 2026 kombiniert AWS CloudFront-Edge-Inspektion, verwaltete AWS WAFv2-Regelgruppen (CRS, IP-Reputation und 400 Req/5Min Rate-Regeln) sowie Next.js 16 Edge Middleware.',
+      'Sliding-Window-Rate-Limiting in Redis am Edge verwirft 94,8% des bösartigen Bot-Traffics bei unter 1,4ms Prüf-Overhead und hält die Origin-CPU-Auslastung unter 15%.',
+      'Verifizierte Bot-Kontrolle unterscheidet echte Suchmaschinen (Googlebot/Bingbot per Reverse-DNS-Validierung) von unautorisierten KI-Scrapern, die Datensätze abgreifen wollen.',
+      'Produktionshärtung erfordert Webhook-Ausnahmen (HMAC-Header) und CGNAT-Session-Heuristiken, um Fehlalarme für Unternehmenskunden hinter einer gemeinsamen Firmen-IP zu verhindern.',
     ],
   },
   content: {
@@ -1572,6 +1587,508 @@ Comparativa empírica entre un servidor de origen sin blindaje y la arquitectura
 - **Consulte Casos Reales:** Examine la plataforma [AWS Security Services](/projects/aws-security-service), el portal [Octobit](/projects/octobit) y los proyectos de [IT-Magic](/projects/it-magic).
 - **Consulte al Asistente IA:** Pregunte sobre configuración de WAF, algoritmos en Redis o protección contra bots.
 - **Solicite una Revisión Técnica:** Contacte directamente por Telegram [@yusupovartur](https://t.me/yusupovartur) o correo electrónico para asegurar su infraestructura de producción.
+`,
+    de: `## Executive Summary & GEO BLUF-Antwort
+
+Moderne Webanwendungen stehen vor einer grundlegenden Asymmetrie in der Anwendungsschicht-Sicherheit (Layer 7): Das Erzeugen einer bösartigen HTTP/2- oder HTTP/3-Anfrage kostet einen Angreifer Bruchteile einer Millisekunde, während die Auswertung und Beantwortung dieser Anfrage auf einem Origin-Server TCP-Handshake-Aushandlung, TLS-Sitzungsaufbau, Runtime-Thread-Allokation, Datenbank-Abfrageplanung und Template-Serialisierung erfordert. Origin-seitige Schutzmaßnahmen wie Nginx \`limit_req\` oder Anwendungs-Middleware innerhalb von Node.js oder PHP versagen unter volumetrischem Druck, da allein die Socket-Allokation die Server-Verbindungspools erschöpft und die Kosten für das Cloud-Autoscaling in untragbare Höhen treibt (Economic Denial of Sustainability / YoYo-Angriffe).
+
+Eine robuste Cloud-Sicherheitsarchitektur im Jahr 2026 setzt auf einen mehrstufigen Perimeter:
+1. **Edge-Paketfilterung & TLS-Terminierung:** Amazon CloudFront Edge Points of Presence (PoPs) terminieren Verbindungen nah am Nutzer und verwerfen Layer-3/4-Floods automatisch über AWS Shield.
+2. **AWS WAFv2 WebACL-Inspektion:** Prüft HTTP-Header, Request-Bodies, Query-Strings und IP-Reputation mithilfe von AWS Managed Rules (Core Rule Set, Known Bad Inputs) und ratenbasierten Auslösern (z. B. 400 Anfragen pro 5-Minuten-Zeitfenster pro IP) mit unter 1,4ms Latenz.
+3. **Next.js 16 Edge Middleware Rate Limiting:** Hochfrequente dynamische API-Endpunkte werden durch einen verteilten Sliding-Window-Zähler in Redis geschützt und geben RFC-konforme Header zurück (\`X-RateLimit-Limit\`, \`X-RateLimit-Remaining\`, \`Retry-After\`).
+4. **Verifizierte Bot-Klassifizierung:** Reverse-DNS-Verifizierung lässt legitime Suchmaschinen-Crawler (Googlebot, Bingbot) passieren, während unautorisierte KI-Datensatz-Scraper (Bytespider, ClaudeBot, GPTBot) abgewiesen werden, bevor sie dynamische Backend-Rechenleistung beanspruchen.
+
+In Produktivumgebungen für **AWS Security Services** und **Octobit** blockierte diese mehrstufige Architektur 94,8% des feindlichen Traffics an den Edge-PoPs, senkte die Origin-CPU-Last bei anhaltenden Scraping-Wellen um 87% und eliminierte Fehlalarme für Unternehmenskunden.
+
+---
+
+## Die moderne Bedrohungslandschaft: KI-Crawler, Layer-7-Floods und asymmetrische Cloud-Kosten
+
+Klassische Web-Sicherheit konzentrierte sich auf das Blockieren volumetrischer Layer-3/4-SYN-Floods. Heute sieht sich Web-Infrastruktur mit drei hochentwickelten Angriffsvektoren konfrontiert:
+
+### 1. Unregulierte KI-Modell-Crawler & aggressive Scraper
+Kommerzielle KI-Unternehmen und autonome Scraping-Netzwerke nutzen verteilte Botnetze (oft über Residential-Proxy-Pools), um proprietäre Fachartikel, Produktkataloge und Echtzeit-Marktdaten abzugreifen. Bots wie \`Bytespider\`, \`ClaudeBot\` und \`CCBot\` ignorieren häufig die \`robots.txt\` und feuern Hunderte Anfragen pro Sekunde auf dynamische Facettenfilter, Paginierungs-Endpunkte und Export-APIs ab. Für Content-Plattformen wie **Octobit** führt unkontrolliertes Scraping zu erschöpften Datenbank-Verbindungspools und verunreinigten Caches.
+
+### 2. Low-and-Slow Layer-7-Applikations-Floods
+Anders als volumetrische DDoS-Angriffe, die die Netzwerkbandbreite sättigen wollen, zielen Layer-7-Angriffe gezielt auf rechenintensive Endpunkte:
+- Komplexe Facettenfilter-Abfragen mit Multi-Table-Joins.
+- PDF- und Bildgenerierungs-Endpunkte.
+- Authentifizierungs- und Passwort-Reset-Hashing-Routinen (Bcrypt/Argon2).
+Indem Angreifer lediglich 50 bis 100 Anfragen pro Sekunde über Tausende rotierender Residential-IPs senden, umgehen sie einfache Rate-Limits und treiben die Origin-CPU-Auslastung auf 100%.
+
+### 3. Economic Denial of Sustainability (EDoS / YoYo-Angriffe)
+In serverlosen und automatisch skalierenden Cloud-Architekturen (AWS ECS, EKS, Lambda, Vercel) skaliert die Infrastruktur bei steigender Nachfrage automatisch hoch. Angreifer nutzen diese Elastizität durch pulsierende Traffic-Wellen aus: Sie lösen massive Scale-Outs aus, stoppen abrupt und wiederholen den Zyklus. Das Unternehmen erleidet Tausende Euro an Cloud-Compute-, NAT-Gateway-Transfer- und Datenbank-Read-Replica-Kosten, ohne dass ein vollständiger Ausfall auftritt. Sicherheit ist nicht mehr nur eine Frage der Verfügbarkeit, sondern ein direkter Treiber der Total Cost of Ownership (TCO).
+
+---
+
+## Perimeter-Architektur: Mehrstufiger Edge-Verteidigungsfluss
+
+Der folgende Architektur-Blueprint zeigt, wie eingehende Anfragen über Edge-PoPs analysiert, validiert und gefiltert werden, bevor auf den Origin-Servern jegliche Rechenlast entsteht:
+
+\`\`\`
+[ Incoming HTTP/HTTPS Traffic (Legitimate Users, Bots, Scrapers, Attackers) ]
+                               │
+                               ▼
+        ┌──────────────────────────────────────────────┐
+        │       AWS Route 53 DNS + AWS Shield          │
+        │  - Anycast routing & DNS spoofing defense    │
+        │  - Automated Layer 3/4 DDoS mitigation       │
+        └──────────────────────┬───────────────────────┘
+                               │
+                               ▼
+        ┌──────────────────────────────────────────────┐
+        │      Amazon CloudFront CDN + Edge PoPs       │
+        │  - TLS 1.3 Termination & Geo-restriction     │
+        │  - Static Asset Edge Caching & Stale-Reval   │
+        │  - Query string & Header Normalization       │
+        └──────────────────────┬───────────────────────┘
+                               │
+                               ▼
+        ┌──────────────────────────────────────────────┐
+        │               AWS WAFv2 Engine               │
+        │  - AWS Managed Rules (Core Rule Set - CRS)   │
+        │  - Amazon IP Reputation & Known Bad Inputs   │
+        │  - Rate-Based Rule: 400 req / 5 min per IP   │
+        │  - Bot Control & AI Scraper Signatures       │
+        │  - Webhook Bypass via HMAC Secret Headers    │
+        └──────────────────────┬───────────────────────┘
+                               │ Passed WAF Inspection (< 1.4ms)
+                               ▼
+        ┌──────────────────────────────────────────────┐
+        │        Next.js 16 Edge Middleware            │
+        │  - Distributed Redis Sliding-Window Limiter  │
+        │  - Authenticated Session Token Validation    │
+        │  - Strict Content Security Policy (CSP)      │
+        │  - Reverse DNS Search Engine Verification    │
+        └──────────────────────┬───────────────────────┘
+                               │ Authenticated & Under Quota
+                               ▼
+        ┌──────────────────────────────────────────────┐
+        │           Protected Origin Server            │
+        │  - Headless WordPress API / Node.js Backend  │
+        │  - Database connection pool 100% stable      │
+        └──────────────────────────────────────────────┘
+\`\`\`
+
+---
+
+## Produktive Implementierung: Infrastructure as Code & Edge-Code
+
+### 1. Terraform: AWS WAFv2 WebACL mit Managed Rules und Rate-Limits
+
+Die Bereitstellung von AWS WAF über Terraform garantiert konsistente, prüfbare Regelsätze über alle Umgebungen hinweg. Die folgende Konfiguration erstellt eine mit Amazon CloudFront verknüpfte Edge-WebACL, einschließlich AWS Managed Core Rule Set, IP-Reputationslisten, einer benutzerdefinierten Rate-Limiting-Regel für API-Pfade und einer Ausnahme für verifizierte Drittanbieter-Webhooks:
+
+\`\`\`hcl
+# AWS WAFv2 WebACL for CloudFront Perimeter Protection
+resource "aws_wafv2_web_acl" "edge_perimeter_waf" {
+  name        = "production-edge-perimeter-waf"
+  description = "Enterprise perimeter security: CRS, IP Reputation, and Edge Rate Limiting"
+  scope       = "CLOUDFRONT"
+
+  default_action {
+    allow {}
+  }
+
+  visibility_config {
+    cloudwatch_metrics_enabled = true
+    metric_name                = "ProductionEdgePerimeterWAF"
+    sampled_requests_enabled   = true
+  }
+
+  # Rule 1: Allow Verified Payment & Partner Webhooks (HMAC Secret Header)
+  rule {
+    name     = "AllowVerifiedWebhooks"
+    priority = 0
+
+    action {
+      allow {}
+    }
+
+    statement {
+      and_statement {
+        statement {
+          byte_match_statement {
+            search_string         = "/api/webhooks/"
+            field_to_match {
+              uri_path {}
+            }
+            text_transformation {
+              priority = 0
+              type     = "LOWERCASE"
+            }
+            positional_constraint = "STARTS_WITH"
+          }
+        }
+        statement {
+          byte_match_statement {
+            search_string         = var.webhook_secret_token
+            field_to_match {
+              single_header {
+                name = "x-webhook-signature"
+              }
+            }
+            text_transformation {
+              priority = 0
+              type     = "NONE"
+            }
+            positional_constraint = "EXACTLY"
+          }
+        }
+      }
+    }
+
+    visibility_config {
+      cloudwatch_metrics_enabled = true
+      metric_name                = "AllowVerifiedWebhooksRule"
+      sampled_requests_enabled   = true
+    }
+  }
+
+  # Rule 2: AWS Managed Rules - Common Rule Set (CRS)
+  rule {
+    name     = "AWSManagedRulesCommonRuleSet"
+    priority = 10
+
+    override_action {
+      none {}
+    }
+
+    statement {
+      managed_rule_group_statement {
+        name        = "AWSManagedRulesCommonRuleSet"
+        vendor_name = "AWS"
+      }
+    }
+
+    visibility_config {
+      cloudwatch_metrics_enabled = true
+      metric_name                = "AWSCommonRuleSetMetric"
+      sampled_requests_enabled   = true
+    }
+  }
+
+  # Rule 3: AWS Managed Rules - Amazon IP Reputation List
+  rule {
+    name     = "AWSManagedRulesAmazonIpReputationList"
+    priority = 20
+
+    override_action {
+      none {}
+    }
+
+    statement {
+      managed_rule_group_statement {
+        name        = "AWSManagedRulesAmazonIpReputationList"
+        vendor_name = "AWS"
+      }
+    }
+
+    visibility_config {
+      cloudwatch_metrics_enabled = true
+      metric_name                = "AWSIPReputationMetric"
+      sampled_requests_enabled   = true
+    }
+  }
+
+  # Rule 4: Rate-Based Rule - Limit to 400 requests per 5 minutes per IP on API routes
+  rule {
+    name     = "RateLimitPerIpApi"
+    priority = 30
+
+    action {
+      block {
+        custom_response {
+          response_code            = 429
+          custom_response_body_key = "rate_limit_exceeded"
+        }
+      }
+    }
+
+    statement {
+      rate_based_statement {
+        limit              = 400
+        aggregate_key_type = "IP"
+
+        scope_down_statement {
+          byte_match_statement {
+            search_string         = "/api/"
+            field_to_match {
+              uri_path {}
+            }
+            text_transformation {
+              priority = 0
+              type     = "LOWERCASE"
+            }
+            positional_constraint = "STARTS_WITH"
+          }
+        }
+      }
+    }
+
+    visibility_config {
+      cloudwatch_metrics_enabled = true
+      metric_name                = "RateLimitPerIpApiMetric"
+      sampled_requests_enabled   = true
+    }
+  }
+
+  custom_response_body {
+    key          = "rate_limit_exceeded"
+    content_type = "APPLICATION_JSON"
+    content      = "{\\"error\\":\\"Too Many Requests\\",\\"message\\":\\"API rate limit exceeded. Please retry in 5 minutes.\\",\\"status\\":429}"
+  }
+}
+\`\`\`
+
+---
+
+### 2. Next.js 16 Edge Middleware: Verteilter Sliding-Window-Rate-Limiter in Redis
+
+Während AWS WAF den Traffic im 5-Minuten-Aggregationsfenster prüft, erfordert der feingranulare Anwendungsschutz eine Durchsetzung im Sekunden- und Minutenbereich. Die folgende Next.js 16 Edge Middleware nutzt Redis (über die Upstash REST API), um Sliding-Window-Kontingente ohne Cold-Start-Verzögerungen zu berechnen:
+
+\`\`\`typescript
+import { NextResponse } from 'next/server'
+import type { NextRequest } from 'next/server'
+
+interface RateLimitConfig {
+  limit: number
+  windowMs: number
+}
+
+interface RateLimitResult {
+  allowed: boolean
+  remaining: number
+  resetSeconds: number
+}
+
+const API_RATE_CONFIG: RateLimitConfig = {
+  limit: 60, // 60 requests
+  windowMs: 60 * 1000, // per 60 seconds
+}
+
+// In-memory fallback for transient edge network disruptions
+const localFallbackCounter = new Map<string, { count: number; expiresAt: number }>()
+
+function checkLocalFallback(identifier: string, config: RateLimitConfig): RateLimitResult {
+  const now = Date.now()
+  const record = localFallbackCounter.get(identifier)
+
+  if (!record || record.expiresAt < now) {
+    localFallbackCounter.set(identifier, { count: 1, expiresAt: now + config.windowMs })
+    return { allowed: true, remaining: config.limit - 1, resetSeconds: Math.ceil(config.windowMs / 1000) }
+  }
+
+  if (record.count >= config.limit) {
+    return { allowed: false, remaining: 0, resetSeconds: Math.ceil((record.expiresAt - now) / 1000) }
+  }
+
+  record.count += 1
+  return { allowed: true, remaining: config.limit - record.count, resetSeconds: Math.ceil((record.expiresAt - now) / 1000) }
+}
+
+async function checkRedisSlidingWindow(
+  identifier: string,
+  config: RateLimitConfig
+): Promise<RateLimitResult> {
+  const redisUrl = process.env.UPSTASH_REDIS_REST_URL
+  const redisToken = process.env.UPSTASH_REDIS_REST_TOKEN
+
+  if (!redisUrl || !redisToken) {
+    return checkLocalFallback(identifier, config)
+  }
+
+  const now = Date.now()
+  const windowStart = now - config.windowMs
+  const key = \`rate_limit:\${identifier}\`
+
+  try {
+    // Pipeline atomic Redis commands: ZREMRANGEBYSCORE, ZADD, ZCARD, EXPIRE
+    const pipelineResponse = await fetch(\`\${redisUrl}/pipeline\`, {
+      method: 'POST',
+      headers: {
+        Authorization: \`Bearer \${redisToken}\`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify([
+        ['ZREMRANGEBYSCORE', key, 0, windowStart],
+        ['ZADD', key, now, \`\${now}-\${Math.random().toString(36).substring(2, 8)}\`],
+        ['ZCARD', key],
+        ['EXPIRE', key, Math.ceil(config.windowMs / 1000)],
+      ]),
+      cache: 'no-store',
+    })
+
+    if (!pipelineResponse.ok) {
+      return checkLocalFallback(identifier, config)
+    }
+
+    const data = (await pipelineResponse.json()) as Array<{ result: number }>
+    const currentCount = data[2]?.result ?? 0
+    const allowed = currentCount <= config.limit
+    const remaining = Math.max(0, config.limit - currentCount)
+    const resetSeconds = Math.ceil(config.windowMs / 1000)
+
+    return { allowed, remaining, resetSeconds }
+  } catch {
+    // Graceful degradation: never block users if Redis is temporarily unreachable
+    return checkLocalFallback(identifier, config)
+  }
+}
+
+export async function middleware(request: NextRequest): Promise<NextResponse> {
+  const { pathname } = request.nextUrl
+
+  // Guard dynamic API and calculation endpoints
+  if (pathname.startsWith('/api/')) {
+    const forwardedFor = request.headers.get('x-forwarded-for')
+    const ip = forwardedFor ? forwardedFor.split(',')[0].trim() : (request.ip ?? '127.0.0.1')
+    const token = request.cookies.get('session_token')?.value
+    const identifier = token ? \`user:\${token}\` : \`ip:\${ip}\`
+
+    const result = await checkRedisSlidingWindow(identifier, API_RATE_CONFIG)
+
+    if (!result.allowed) {
+      return new NextResponse(
+        JSON.stringify({
+          error: 'Too Many Requests',
+          message: 'Rate limit quota exceeded. Please slow down your requests.',
+          retryAfter: result.resetSeconds,
+        }),
+        {
+          status: 429,
+          headers: {
+            'Content-Type': 'application/json',
+            'X-RateLimit-Limit': API_RATE_CONFIG.limit.toString(),
+            'X-RateLimit-Remaining': '0',
+            'Retry-After': result.resetSeconds.toString(),
+          },
+        }
+      )
+    }
+
+    const response = NextResponse.next()
+    response.headers.set('X-RateLimit-Limit', API_RATE_CONFIG.limit.toString())
+    response.headers.set('X-RateLimit-Remaining', result.remaining.toString())
+    return response
+  }
+
+  return NextResponse.next()
+}
+\`\`\`
+
+---
+
+### 3. Kryptografische Bot-Verifizierung: Echte Suchmaschinen vs. bösartige KI-Scraper
+
+Das Blockieren von User-Agents über einfachen Textabgleich schlägt fehl, da bösartige Bots ihre Header als \`Googlebot\` oder \`Mozilla/5.0\` fälschen. Echte Suchmaschinen-Crawler müssen per **Reverse-DNS-Abfrage** und anschließender Forward-DNS-Bestätigung validiert werden:
+
+\`\`\`typescript
+import dns from 'dns/promises'
+
+interface BotVerificationResult {
+  isSearchEngine: boolean
+  provider: 'google' | 'bing' | 'unknown'
+}
+
+export async function verifyLegitimateSearchBot(ip: string, userAgent: string): Promise<BotVerificationResult> {
+  const ua = userAgent.toLowerCase()
+
+  // Fast check: does User-Agent claim to be Google or Bing?
+  const isClaimingGoogle = ua.includes('googlebot')
+  const isClaimingBing = ua.includes('bingbot')
+
+  if (!isClaimingGoogle && !isClaimingBing) {
+    return { isSearchEngine: false, provider: 'unknown' }
+  }
+
+  try {
+    // Step 1: Perform reverse DNS lookup to get hostnames associated with IP
+    const hostnames = await dns.reverse(ip)
+
+    for (const host of hostnames) {
+      // Step 2: Validate verified domain suffix
+      const isGoogleDomain = host.endsWith('.googlebot.com') || host.endsWith('.google.com')
+      const isBingDomain = host.endsWith('.search.msn.com')
+
+      if (isClaimingGoogle && isGoogleDomain) {
+        // Step 3: Forward DNS lookup to prevent DNS spoofing
+        const forwardIps = await dns.resolve(host)
+        if (forwardIps.includes(ip)) {
+          return { isSearchEngine: true, provider: 'google' }
+        }
+      }
+
+      if (isClaimingBing && isBingDomain) {
+        const forwardIps = await dns.resolve(host)
+        if (forwardIps.includes(ip)) {
+          return { isSearchEngine: true, provider: 'bing' }
+        }
+      }
+    }
+
+    // IP claimed to be Googlebot/Bingbot but failed reverse DNS verification = Malicious Spoofer
+    return { isSearchEngine: false, provider: 'unknown' }
+  } catch {
+    return { isSearchEngine: false, provider: 'unknown' }
+  }
+}
+\`\`\`
+
+---
+
+## Empirische Benchmarks & TCO-Leistungsanalyse
+
+Die folgenden Produktionsmetriken vergleichen eine ungeschützte Origin-Architektur mit unserem mehrstufigen Perimeter aus AWS WAF, CloudFront und Redis-Sliding-Window unter einem synthetischen Angriff von 10.000 Anfragen pro Minute:
+
+| Bewertungsmetrik | Basis-Origin (Nginx + Node.js) | Mehrstufiger Edge-Perimeter (AWS WAF + Redis) | Operativer & finanzieller Effekt |
+| :--- | :--- | :--- | :--- |
+| **Edge-Bedrohungs-Abwehrrate** | 0,0% (gesamter Traffic trifft Origin) | 94,8% an Edge-PoPs blockiert | Verhindert Backend-Server-Überlastung |
+| **WAF-Prüf-Overhead** | N/A (keine WAF-Prüfung) | 1,32 ms durchschnittliche Latenz | Unter 2ms Overhead, für Nutzer unmerklich |
+| **Origin-CPU-Auslastung** | 96% (Thread-Blockierung & Throttling) | 12% bis 14% im Normalbetrieb | Server bleibt für echte Nutzer reaktionsschnell |
+| **Datenbank-Pool-Sättigung** | 100% (Pool-Erschöpfung & 504-Fehler) | 8% maximale Pool-Auslastung | Null Datenbankabstürze oder Sperren |
+| **Monatliche Compute-Kosten unter Angriff** | 4.280 $ / Monat (Autoscale-Explosion) | 640 $ / Monat (fixe WAF + Cache) | **85% Reduzierung der Infrastruktur-TCO** |
+| **Störung der Suchmaschinen-Indexierung** | Hoch (503-Fehler bei Googlebot) | 0,0% (verifizierter Bot-Bypass) | SEO-Rankings zu 100% geschützt |
+
+---
+
+## Fehlerszenarien, Post-Mortems & operative Abwägungen
+
+### 1. Die Corporate-CGNAT-Fehlalarm-Falle
+- **Fehlerszenario:** Ein Großkunde mit 800 Mitarbeitern an einem Bürostandort erhielt beim Zugriff auf unser Kundenportal 429 Too Many Requests-Fehler. Da das Büro den gesamten Datenverkehr über eine einzige öffentliche Carrier-Grade-NAT-IP-Adresse (CGNAT) leitete, überschritt der gebündelte Traffic das WAF-Limit von 400 Req/5Min.
+- **Ursache:** Ausschließliche Aggregation nach IP-Adresse ohne Berücksichtigung von Unternehmens-Proxy-Gateways.
+- **Produktive Lösung:** Erweiterung der Next.js Edge Middleware zur Priorisierung authentifizierter Session-Identifier: \`identifier = token ? \`user:\${token}\` : \`ip:\${ip}\`\`. Nicht authentifizierte Anfragen unterliegen weiterhin dem IP-Limit, während authentifizierte Sitzungen unabhängig vom gemeinsam genutzten Gateway individuelle Nutzerkontingente erhalten.
+
+### 2. Stille Payment-Webhook-Ausfälle während Flash-Sales
+- **Fehlerszenario:** Während eines hochfrequentierten Produkt-Drops wurden Stripe-Zahlungsbenachrichtigungen für Hunderte erfolgreicher Transaktionen mit 403 Forbidden verworfen, was die Bestellausführung verzögerte.
+- **Ursache:** Eine generische WAF-Rate-Limiting-Regel stufte hochfrequente Webhook-Spitzen von Stripe-IP-Bereichen als Bot-Flood ein.
+- **Produktive Lösung:** Einrichtung von Regel 0 (Priority 0) in AWS WAF: Dedizierte Pfadprüfung auf \`/api/webhooks/*\` in Kombination mit kryptografischem \`x-webhook-signature\`-Header-Abgleich. Legitime Webhooks umgehen das ratenbasierte Blockieren und bleiben gleichzeitig gegen unautorisierte Fälschungen geschützt.
+
+### 3. Cache-Invalidierungs-Stampede durch Query-Parameter-Cache-Busting
+- **Fehlerszenario:** Scraper hängten zufällige Query-Strings (\`/catalog?_rand=893412\`) an jede Anfrage an, wodurch CloudFront jede Anfrage als Cache-Miss behandelte und die Origin-Datenbank-Worker überlastete.
+- **Ursache:** Die Standard-CloudFront-Cache-Policy leitete sämtliche Query-Strings ohne Normalisierung an die Origin-Server weiter.
+- **Produktive Lösung:** Konfiguration der CloudFront Cache Policy mit einer Query-String-Allowlist: Nur freigegebene funktionale Parameter (\`page\`, \`sort\`, \`category\`) werden in den Cache-Schlüssel aufgenommen; alle beliebigen sonstigen Query-Parameter werden am Edge vor der Cache-Auswertung entfernt.
+
+---
+
+## Enterprise-DevSecOps-Checkliste
+
+So härten Sie Webanwendungen gegen Layer-7-Angriffe, automatisiertes Scraping und asymmetrische Compute-Kosten:
+
+1. **Traffic am CDN-Edge terminieren:** Geben Sie Origin-Server-IP-Adressen niemals direkt im öffentlichen DNS preis. Leiten Sie alle Apex- und Subdomain-Einträge über CloudFront oder Cloudflare.
+2. **Managed Rulesets zuerst aktivieren:** Aktivieren Sie \`AWSManagedRulesCommonRuleSet\` und \`AWSManagedRulesAmazonIpReputationList\`, um automatisierte Exploit-Scanner herauszufiltern, bevor Sie eigene Regeln schreiben.
+3. **Zweistufiges Rate-Limiting implementieren:** Setzen Sie Makro-IP-Quoten (400 Req/5Min) in AWS WAF und Mikro-Sliding-Window-Limits (60 Req/1Min) in Redis in der Edge Middleware durch.
+4. **Kritische Webhooks isolieren und freigeben:** Stellen Sie sicher, dass Zahlungsgateways (Stripe, PayPal) und Git-Webhooks explizite WAF-Bypass-Regeln mit HMAC-Signaturprüfung besitzen.
+5. **Reverse-DNS für Suchmaschinen-Crawler erzwingen:** Verifizieren Sie Googlebot und Bingbot per bidirektionaler DNS-Auflösung und verwerfen Sie gefälschte User-Agents direkt am Perimeter.
+
+---
+
+### Benötigen Sie ein Enterprise Cloud Security Audit?
+
+Ist Ihre Webanwendung anfällig für Layer-7-DDoS-Angriffe, unautorisierte KI-Scraper oder explodierende Cloud-Rechnungen? Artur Yusupov bietet umfassende Cloud-Perimeter-Audits, AWS WAFv2-Implementierungen und Next.js-Edge-Rate-Limiting-Architekturen.
+
+- **Verifizierte Projekte entdecken:** Sehen Sie sich die Beratungsplattform [AWS Security Services](/projects/aws-security-service), das Krypto-Portal [Octobit](/projects/octobit) und die AWS-Infrastruktur-Fallstudien von [IT-Magic](/projects/it-magic) an.
+- **KI-Assistenten fragen:** Stellen Sie Arturs interaktivem Assistenten Fragen zur Feinabstimmung von AWS WAF-Regeln, zu Sliding-Window-Algorithmen in Redis oder zu Bot-Abwehrstrategien.
+- **Security-Review vereinbaren:** Kontaktieren Sie ihn direkt über Telegram [@yusupovartur](https://t.me/yusupovartur) oder per E-Mail, um Ihre Produktivinfrastruktur abzusichern.
 `,
   },
 }

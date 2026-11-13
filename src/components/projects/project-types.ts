@@ -9,9 +9,11 @@ export interface ProjectFeature {
   title: string
   titleUa?: string
   titleEs?: string
+  titleDe?: string
   description: string
   descriptionUa?: string
   descriptionEs?: string
+  descriptionDe?: string
 }
 
 export type TechnologyItem =
@@ -61,6 +63,7 @@ export interface ProjectArchitecture {
   description: string
   descriptionUa?: string
   descriptionEs?: string
+  descriptionDe?: string
 }
 
 export interface Project {
@@ -69,9 +72,11 @@ export interface Project {
   description: string
   descriptionUa?: string
   descriptionEs?: string
+  descriptionDe?: string
   fullDescription: string
   fullDescriptionUa?: string
   fullDescriptionEs?: string
+  fullDescriptionDe?: string
   /** Строка над заголовком на детальной странице, напр. «FULLSTACK · HEADLESS CMS». */
   detailHeroLine?: string
   /** До четырёх метрик; для Next.js часто PageSpeed / load / Rendering / Auto-deploy, для WordPress - свои пары. */
@@ -86,9 +91,11 @@ export interface Project {
   challenges?: string[]
   challengesUa?: string[]
   challengesEs?: string[]
+  challengesDe?: string[]
   solutions?: string[]
   solutionsUa?: string[]
   solutionsEs?: string[]
+  solutionsDe?: string[]
   liveUrl: string
   githubUrl: string
   category: string[]

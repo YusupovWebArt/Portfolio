@@ -79,6 +79,11 @@ describe('Automated Project SEO/GEO Metadata Specification (TDD)', () => {
     const breadcrumbsUa = buildProjectBreadcrumbsJsonLd(project!, 'unitrition', 'ua')
     expect(breadcrumbsUa.itemListElement[0].name).toBe('Головна')
     expect(breadcrumbsUa.itemListElement[1].name).toBe('Проєкти')
+
+    const breadcrumbsDe = buildProjectBreadcrumbsJsonLd(project!, 'unitrition', 'de')
+    expect(breadcrumbsDe.itemListElement[0].name).toBe('Startseite')
+    expect(breadcrumbsDe.itemListElement[1].name).toBe('Projekte')
+    expect(toBcp47Lang('de')).toBe('de')
   })
 
   it('should generate valid FAQPage Schema.org structured data for GEO AI search', () => {

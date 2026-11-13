@@ -126,4 +126,13 @@ describe('BlogCatalogView Specification (TDD)', () => {
     // Page 1 standard posts should no longer be visible
     expect(screen.queryByText(allBlogPosts[1].title.en)).toBeNull()
   })
+
+  it('renders German UI labels when locale is de', () => {
+    render(<BlogCatalogView locale="de" />)
+
+    expect(
+      screen.getByRole('heading', { name: /Engineering-Blog & Architektur-Analysen/i }),
+    ).toBeDefined()
+    expect(screen.getByText('Alle Engineering-Artikel')).toBeDefined()
+  })
 })

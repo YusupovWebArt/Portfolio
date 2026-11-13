@@ -291,5 +291,100 @@ export const ragAiAssistantsService: ServiceItem = {
       whatsappMessage: 'Вітаю Артуре! Хочу дізнатися більше про впровадження RAG AI-асистента для мого бізнесу.',
       schemaDescription: 'Розробка та впровадження корпоративних RAG AI-асистентів для бізнесу та клінік в Іспанії та Європі. Цілодобова консультація, 0% галюцинацій та відповідність GDPR.',
     },
+    de: {
+      badge: 'Künstliche Intelligenz / B2B RAG & Automatisierung',
+      title: 'Maßgeschneiderte RAG-KI-Assistenten & 24/7 Automatisierung für Unternehmen',
+      shortDesc: 'Setzen Sie einen intelligenten KI-Berater ein, der Kundenfragen strikt anhand Ihrer verifizierten Dokumente und Preislisten beantwortet. Keine Halluzinationen, 24/7-Verfügbarkeit und direkte Lead-Qualifizierung.',
+      heroLead: 'Klassische Chatbots frustrieren Besucher mit starren Menü-Bäumen. Ich entwickle autonome Retrieval-Augmented-Generation-Assistenten (RAG), die natürliche Sprache verstehen, Ihre Unternehmensdokumente in Millisekunden durchsuchen und qualifizierte Leads direkt per WhatsApp übergeben.',
+      metrics: [
+        { value: '24/7', label: 'Durchgehende Lead-Qualifizierung' },
+        { value: '0%', label: 'Halluzinationen oder erfundene Preise' },
+        { value: '<500ms', label: 'Semantische Vektor-Antwort in Echtzeit' },
+        { value: '100%', label: 'DSGVO-Konformität & Datenschutz-Schutz' },
+      ],
+      problemsSolved: [
+        {
+          title: 'Potenzielle Kunden wandern zur Konkurrenz ab, wenn außerhalb der Geschäftszeiten niemand antwortet',
+          desc: 'Abend- oder Wochenendanfragen bleiben oft stundenlang unbeantwortet. Ein RAG-Assistent begrüßt Interessenten sofort, beantwortet Fach- und Preisfragen und koordiniert direkt den Kontakt.',
+        },
+        {
+          title: 'Sorge, dass die KI falsche Preise oder unhaltbare Versprechen erfindet',
+          desc: 'Die RAG-Architektur setzt harte Grenzen: Alle Antworten stützen sich ausschließlich auf Ihre geprüften Handbücher, Preislisten und Leistungsbeschreibungen. Fehlt eine Information, eskaliert der Assistent sauber an Ihr Team.',
+        },
+        {
+          title: 'Support-Teams verlieren täglich Stunden mit denselben Standardfragen',
+          desc: 'Automatisieren Sie Auskünfte zu Abläufen, Terminvorbereitungen, Lieferfenstern oder Voraussetzungen - so gewinnt Ihr Team Zeit für wertschöpfende Beratungen.',
+        },
+      ],
+      deliverables: [
+        {
+          title: 'Wissensdatenbank & Vektor-Index-Engineering',
+          items: [
+            'Aufbereitung und semantisches Chunking Ihrer Unternehmensunterlagen (PDFs, Produktkataloge, Preislisten, FAQs).',
+            'Hybride Vektor-Ähnlichkeitssuche unter 50ms kombiniert mit lexikalischem BM25-Ranking.',
+            'Strikte Sicherheits-Guardrails gegen Prompt-Injection und themenfremde Abschweifungen.',
+          ],
+        },
+        {
+          title: 'Frontend-Konsole & Interaktive UI-Komponenten',
+          items: [
+            'Maßgeschneiderte Chat-Oberfläche im Corporate Design Ihres Unternehmens für Desktop und Mobile.',
+            'Generative UI-Karten (interaktive Stack-Vergleiche, Budget-Rechner und Termin-Trigger).',
+            '1-Klick-Übergabe an WhatsApp inklusive zusammengefasstem Gesprächskontext für Ihr Vertriebsteam.',
+          ],
+        },
+        {
+          title: 'Europäischer Datenschutz (DSGVO / GDPR)',
+          items: [
+            'Flüchtige Verarbeitung im Arbeitsspeicher ohne dauerhafte Speicherung sensibler Kundendaten.',
+            'Transparente Datenschutzhinweise speziell abgestimmt auf kommerzielle KI-Assistenten.',
+          ],
+        },
+      ],
+      workflowSteps: [
+        {
+          step: 'Phase 1',
+          title: 'Wissensaufnahme & Anwendungsfall-Analyse',
+          desc: 'Wir sammeln Ihre Leitfäden, Kataloge und häufigsten Kundenfragen als verlässliche Faktengrundlage.',
+        },
+        {
+          step: 'Phase 2',
+          title: 'Vektor-Index-Aufbau & Präzisions-Tuning',
+          desc: 'Wir konfigurieren Embeddings, kalibrieren Schwellenwerte und testen die Faktentreue unter realen Szenarien auf 100%.',
+        },
+        {
+          step: 'Phase 3',
+          title: 'Frontend-Einbindung & CRM-Übergabe',
+          desc: 'Wir integrieren die Chat-Konsole nahtlos in Farbschema und Typografie Ihrer bestehenden Website.',
+        },
+        {
+          step: 'Phase 4',
+          title: 'Go-Live & laufende Feinabstimmung',
+          desc: 'Im ersten Monat werten wir echte Nutzeranfragen aus, um Nuancen zu verfeinern und die Wissensbasis gezielt zu erweitern.',
+        },
+      ],
+      faqs: [
+        {
+          q: 'Wie unterscheidet sich ein RAG-Assistent von einem klassischen regelbasierten Chatbot?',
+          a: 'Regelbasierte Bots folgen starren Entscheidungsbäumen und scheitern bei freien Formulierungen. Ein RAG-Assistent versteht echte Bedeutung in beliebigen Sprachen und zieht präzise Antworten direkt aus Ihren Dokumenten.',
+        },
+        {
+          q: 'Lässt sich der Assistent in bestehende WordPress-, Shopify- oder Next.js-Websites integrieren?',
+          a: 'Ja. Der Assistent wird als leichtgewichtiges Widget oder eigene interaktive Seite eingebettet - ohne die Ladezeit Ihrer Website zu beeinträchtigen.',
+        },
+        {
+          q: 'Wie hoch sind die laufenden monatlichen KI-API-Kosten?',
+          a: 'Moderne Sprachmodell-APIs (wie OpenAI oder Google Gemini) sind sehr kosteneffizient: Für typische Unternehmen liegen die API-Kosten bei etwa 5 bis 20 Euro pro Monat für Tausende Gespräche.',
+        },
+        {
+          q: 'Entspricht diese Lösung dem europäischen Datenschutzrecht (DSGVO)?',
+          a: 'Ja. Das System verarbeitet Gespräche flüchtig ohne dauerhafte Speicherung personenbezogener Daten und nutzt Enterprise-Schnittstellen unter europäischen Datenschutzvereinbarungen.',
+        },
+      ],
+      ctaHeadline: 'Bereit, Leads rund um die Uhr automatisch zu qualifizieren?',
+      ctaLead: 'Melden Sie sich per WhatsApp. Ich zeige Ihnen eine Live-Demonstration eines RAG-Assistenten abgestimmt auf Ihre Branche.',
+      whatsappMessage: 'Hallo Artur, ich möchte mehr über die Einführung eines maßgeschneiderten RAG-KI-Assistenten für mein Unternehmen erfahren.',
+      schemaDescription: 'Entwicklung maßgeschneiderter RAG-KI-Assistenten und Geschäftsautomatisierung für Unternehmen und Kliniken in Spanien und der EU. 24/7 Qualifizierung, keine Halluzinationen und DSGVO-konform.',
+    },
   },
 }

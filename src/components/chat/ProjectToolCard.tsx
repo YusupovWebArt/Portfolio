@@ -28,21 +28,27 @@ export default function ProjectToolCard({
       ? 'Переглянути кейс'
       : locale === 'es'
         ? 'Ver caso de estudio'
-        : 'View Case Study'
+        : locale === 'de'
+          ? 'Fallstudie ansehen'
+          : 'View Case Study'
 
   const liveDemoLabel =
     locale === 'ua'
       ? 'Демо наживо'
       : locale === 'es'
         ? 'Demostración en vivo'
-        : 'Live Demo'
+        : locale === 'de'
+          ? 'Live-Demo'
+          : 'Live Demo'
 
   const githubLabel =
     locale === 'ua'
       ? 'Репозиторій GitHub'
       : locale === 'es'
         ? 'Repositorio GitHub'
-        : 'GitHub Repository'
+        : locale === 'de'
+          ? 'GitHub-Repository'
+          : 'GitHub Repository'
 
   const handleCaseStudyClick = (e: React.MouseEvent) => {
     onNavigate?.()
@@ -80,7 +86,9 @@ export default function ProjectToolCard({
                 ? 'Власний проєкт'
                 : locale === 'es'
                   ? 'Proyecto propio'
-                  : 'Personal'}
+                  : locale === 'de'
+                    ? 'Eigenes Projekt'
+                    : 'Personal'}
             </span>
           </div>
         ) : (

@@ -33,6 +33,8 @@ export const ua: Translation = {
     sectionTitle: 'Про мене',
     availableForProjects: 'Відкритий до проєктів',
     myJourney: 'Мій професійний шлях',
+    presentLabel: 'Дотепер',
+    nowLabel: 'Зараз',
     bio: {
       p1: 'Я - цілеспрямований Fullstack Web Engineer з 5+ роками досвіду у розробці, масштабуванні та технічній оптимізації високонавантажених платформ із глибокою архітектурною спеціалізацією у WordPress. Моя експертиза перебуває на перетині сучасних фронтенд-екосистем (React, Next.js) та корпоративної WordPress-інженерії - від кастомних PHP 8+ архітектур та захищеної розробки плагінів до продуктивних Headless CMS конфігурацій та глибокої оптимізації продуктивності.',
       p2: 'Моя ключова конкурентна перевага - витончена AI-орієнтована інженерна філософія. Замість того, щоб використовувати AI лише як допоміжний інструмент написання коду, я системно інтегрую системи нового покоління - включаючи Claude Code, Cursor, Google Antigravity та кастомні пайплайни Retrieval-Augmented Generation (RAG) - безпосередньо у SDLC, дотримуючись методології Spec-Driven Development (SDD): спочатку я визначаю технічну специфікацію, а потім AI реалізує та перевіряє її, замість того щоб імпровізувати. Я активно задіюю AI для побудови контекстно-залежних RAG-асистентів, автоматизації складних процесів розробки та проведення глибоких технічних досліджень. Поєднуючи практичний архітектурний досвід з AI-посиленою розробкою, я прискорюю складні рефакторинги, автоматизую регресійні перевірки та суттєво скорочую Time-to-Market - при цьому жорстко дотримуючись якості коду, безпеки та архітектурної цілісності.',
@@ -78,6 +80,7 @@ export const ua: Translation = {
       item0: {
         title: 'Поглиблена веб-інженерія та нові технології',
         institution: 'Акцент на масштабованих екосистемах та AI-інтеграції',
+        badge: 'R&D / Технічні дослідження',
         description: {
           soloRnd: {
             label: 'Solopreneur Product R&D:',
@@ -108,6 +111,7 @@ export const ua: Translation = {
       item1: {
         title: 'Фахові курси та самоосвіта',
         institution: 'Платформи безперервного навчання',
+        badge: 'Безперервна освіта',
         description: {
           intro: 'Постійний фаховий розвиток на провідних платформах:',
         },
@@ -115,6 +119,7 @@ export const ua: Translation = {
       item2: {
         title: 'Вінницький Національний Технічний Університет (Україна)',
         institution: 'ВНТУ - Вінницький національний технічний університет',
+        badge: 'Академічний ступінь',
         description: {
           spec: {
             label: 'Спеціалізація:',
@@ -152,32 +157,32 @@ export const ua: Translation = {
         },
       },
       item0: {
-        title: 'Front-end Developer (Remote Full-time/Part-time)',
+        title: 'Front-end розробник (Віддалено, Full-time/Part-time)',
         desc: {
           wpWix: {
             label: 'Кастомна розробка WordPress & Wix:',
             text: 'Розробляв продуктивні теми та плагіни з нуля (PHP 8.x, OOP, WPCS) та керував розширеними Wix-платформами.',
           },
           lifecycle: {
-            label: 'Lifecycle Management:',
+            label: 'Керування життєвим циклом:',
             text: 'Повний цикл розгортання, міграції баз даних, патчі безпеки та інженерна підтримка для клієнтів зі США до 2026 року.',
           },
           uiux: {
-            label: 'UI/UX Re-engineering:',
+            label: 'UI/UX реінжиніринг:',
             text: 'Очолював редизайни застарілих сайтів, перетворюючи їх на сучасні адаптивні фронтенди.',
           },
           perf: {
-            label: 'Performance & SEO:',
+            label: 'Продуктивність та SEO:',
             text: 'Оптимізував структуру верстки під Core Web Vitals, досягаючи стабільних показників Lighthouse 90+.',
           },
           agile: {
-            label: 'Agile Delivery:',
-            text: 'Працював у активному Scrum-середовищі разом з міжнародними кросс-функціональними командами.',
+            label: 'Agile-розробка:',
+            text: 'Працював у активному Scrum-середовищі разом з міжнародними крос-функціональними командами.',
           },
         },
       },
       item1: {
-        title: 'Front-end Developer (Remote Part-time)',
+        title: 'Front-end розробник (Віддалено, Part-time)',
         desc: {
           bespoke: {
             label: 'Розробка кастомних тем:',
@@ -195,6 +200,7 @@ export const ua: Translation = {
       },
       item2: {
         title: 'Фриланс та особисті проєкти',
+        company: 'Веб-розробник (WordPress, Shopify, WIX), SEO-спеціаліст.',
         desc: {
           delivered: {
             label: '30+ завершених проєктів:',
@@ -226,6 +232,8 @@ export const ua: Translation = {
       of: 'з',
       choosePhase: 'Етапи розробки',
       swipe: 'Проведіть',
+      stepBreakdown: 'Деталізація кроків',
+      techTools: 'Технології та AI-інструменти',
     },
     categories: [
       {
@@ -383,6 +391,7 @@ export const ua: Translation = {
     showLess: 'Згорнути',
     categories: {
       wp: {
+        title: 'WordPress-розробка',
         description: 'Кастомні теми та плагіни. Електронна комерція.',
         skillDetails: [
           {
@@ -408,6 +417,7 @@ export const ua: Translation = {
         ],
       },
       app: {
+        title: 'Розробка застосунків',
         description:
           'Розробка швидких, масштабованих веб-застосунків з використанням React, Next.js, TypeScript та Tailwind CSS.',
         skillDetails: [
@@ -434,6 +444,7 @@ export const ua: Translation = {
         ],
       },
       ai: {
+        title: 'AI-інструменти та автоматизація',
         description: 'Сучасні AI-інструменти та автоматизація для підвищення продуктивності розробки',
         skillDetails: [
           {
@@ -459,6 +470,7 @@ export const ua: Translation = {
         ],
       },
       seo: {
+        title: 'SEO та продуктивність',
         description: 'Оптимізація для пошукових систем та підвищення продуктивності веб-сайтів',
         skillDetails: [
           {
@@ -484,6 +496,7 @@ export const ua: Translation = {
         ],
       },
       layout: {
+        title: 'Верстка та структура сайтів',
         description: 'Сучасні системи верстки та архітектура адаптивного дизайну',
         skillDetails: [
           {
@@ -509,6 +522,7 @@ export const ua: Translation = {
         ],
       },
       design: {
+        title: 'Розуміння дизайну',
         description: 'Принципи візуального дизайну та оптимізація досвіду користувача',
         skillDetails: [
           {
@@ -537,6 +551,40 @@ export const ua: Translation = {
     workTools: {
       sectionLabel: 'Робоче середовище',
       sectionTitle: 'Інструменти організації роботи',
+      items: [
+        {
+          name: 'AI IDE та копілоти',
+          description: 'Claude Code, Google Antigravity, Cursor, Devin, Windsurf',
+        },
+        {
+          name: 'Figma, Pencil та Claude Design',
+          description: 'UI/UX дизайн, вайрфреймінг та прототипування',
+        },
+        {
+          name: 'Redmine та Jira',
+          description: 'Agile-трекінг завдань та управління проєктами',
+        },
+        {
+          name: 'Notion, Miro та NotebookLM',
+          description: 'Командна робота, ментальні карти та AI-дослідження',
+        },
+        {
+          name: 'Slack, MS Teams та Workspace',
+          description: 'Командна комунікація та хмарний робочий простір',
+        },
+        {
+          name: 'GitHub та GitLab',
+          description: 'Git-процеси та автоматизація CI/CD',
+        },
+        {
+          name: 'Vercel та Netlify',
+          description: 'Хмарні платформи serverless-хостингу',
+        },
+        {
+          name: 'Local WP, XAMPP та Docker',
+          description: 'Локальна розробка та серверні середовища',
+        },
+      ],
     },
     softSkills: {
       sectionLabel: 'Особисті якості',

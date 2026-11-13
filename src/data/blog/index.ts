@@ -111,32 +111,33 @@ export function getRelatedBlogPosts(currentSlug: string, limit = 2): BlogPost[] 
   return allBlogPosts.filter((p) => p.slug !== currentSlug).slice(0, limit)
 }
 
+function getLocalizedBlogField<T>(record: Record<BlogLocale, T>, locale: string): T {
+  if (locale === 'de') return record.de
+  if (locale === 'ua') return record.ua
+  if (locale === 'es') return record.es
+  return record.en
+}
+
 export function getBlogTitle(post: BlogPost, locale: string): string {
-  const l = (locale === 'ua' || locale === 'es' ? locale : 'en') as BlogLocale
-  return post.title[l] || post.title.en
+  return getLocalizedBlogField(post.title, locale) || post.title.en
 }
 
 export function getBlogDescription(post: BlogPost, locale: string): string {
-  const l = (locale === 'ua' || locale === 'es' ? locale : 'en') as BlogLocale
-  return post.description[l] || post.description.en
+  return getLocalizedBlogField(post.description, locale) || post.description.en
 }
 
 export function getBlogReadTime(post: BlogPost, locale: string): string {
-  const l = (locale === 'ua' || locale === 'es' ? locale : 'en') as BlogLocale
-  return post.readTime[l] || post.readTime.en
+  return getLocalizedBlogField(post.readTime, locale) || post.readTime.en
 }
 
 export function getBlogCategoryLabel(post: BlogPost, locale: string): string {
-  const l = (locale === 'ua' || locale === 'es' ? locale : 'en') as BlogLocale
-  return post.categoryLabel[l] || post.categoryLabel.en
+  return getLocalizedBlogField(post.categoryLabel, locale) || post.categoryLabel.en
 }
 
 export function getBlogContent(post: BlogPost, locale: string): string {
-  const l = (locale === 'ua' || locale === 'es' ? locale : 'en') as BlogLocale
-  return post.content[l] || post.content.en
+  return getLocalizedBlogField(post.content, locale) || post.content.en
 }
 
 export function getBlogTldr(post: BlogPost, locale: string): string[] {
-  const l = (locale === 'ua' || locale === 'es' ? locale : 'en') as BlogLocale
-  return post.tldr[l] || post.tldr.en
+  return getLocalizedBlogField(post.tldr, locale) || post.tldr.en
 }

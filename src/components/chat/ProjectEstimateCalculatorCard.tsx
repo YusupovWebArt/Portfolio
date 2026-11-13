@@ -11,7 +11,7 @@ import {
 } from 'react-icons/lu'
 
 interface ProjectEstimateCalculatorCardProps {
-  locale?: 'en' | 'ua' | 'es'
+  locale?: 'en' | 'ua' | 'es' | 'de'
   onNavigateToContact?: () => void
 }
 
@@ -31,7 +31,7 @@ const LABELS = {
     },
     addonsTitle: '2. Select Features & Modules',
     addons: {
-      i18n: '3-Language i18n (EN/UA/ES)',
+      i18n: '4-Language i18n (EN/UA/ES/DE)',
       ragAi: 'Hybrid RAG AI Assistant',
       headless: 'Headless CMS Architecture',
       seoPseo: 'Programmatic SEO & Schema.org',
@@ -59,7 +59,7 @@ const LABELS = {
     },
     addonsTitle: '2. Оберіть додаткові модулі',
     addons: {
-      i18n: 'Мультимовність (EN/UA/ES)',
+      i18n: 'Мультимовність (EN/UA/ES/DE)',
       ragAi: 'Вбудований Hybrid RAG AI-асистент',
       headless: 'Headless CMS архітектура',
       seoPseo: 'Програмне SEO та Schema.org',
@@ -87,7 +87,7 @@ const LABELS = {
     },
     addonsTitle: '2. Selecciona módulos adicionales',
     addons: {
-      i18n: 'Multiidioma 3 idiomas (EN/UA/ES)',
+      i18n: 'Multiidioma 4 idiomas (EN/UA/ES/DE)',
       ragAi: 'Asistente IA Hybrid RAG',
       headless: 'Arquitectura Headless CMS',
       seoPseo: 'SEO Programático y Schema.org',
@@ -102,6 +102,34 @@ const LABELS = {
       'Optimización CWV, seguridad y despliegue',
     ],
     cta: 'Consultar mi proyecto y solicitar propuesta',
+  },
+  de: {
+    badge: 'Interaktiver Projektzeit-Kalkulator',
+    title: 'Umfang und Zeitplan für Ihr Projekt schätzen',
+    archetypeTitle: '1. Projekttyp wählen',
+    archetypes: {
+      landing: 'Landingpage / Promo',
+      business: 'Unternehmenswebsite',
+      ecommerce: 'E-Commerce-Shop',
+      webapp: 'Web-App / SaaS',
+    },
+    addonsTitle: '2. Funktionen & Module wählen',
+    addons: {
+      i18n: '4-Sprachen i18n (EN/UA/ES/DE)',
+      ragAi: 'Hybrid RAG KI-Assistent',
+      headless: 'Headless-CMS-Architektur',
+      seoPseo: 'Programmatic SEO & Schema.org',
+    },
+    timelineLabel: 'Geschätzte Entwicklungsdauer',
+    recommendedStack: 'Empfohlene Architektur',
+    phasesTitle: 'Phasenweiser SDD-Lieferplan',
+    phases: [
+      'Analyse & Spezifikationsarchitektur (SDD)',
+      'UI/UX-Prototyping & Design-System',
+      'Kernentwicklung & TDD-Testabdeckung',
+      'CWV-Optimierung, Sicherheit & Produktivstart',
+    ],
+    cta: 'Mein Projekt besprechen & Angebot anfordern',
   },
 } as const
 
@@ -168,7 +196,9 @@ export default function ProjectEstimateCalculatorCard({
       ? `${totalMin}-${totalMax} тижнів`
       : locale === 'es'
         ? `${totalMin}-${totalMax} semanas`
-        : `${totalMin}-${totalMax} weeks`
+        : locale === 'de'
+          ? `${totalMin}-${totalMax} Wochen`
+          : `${totalMin}-${totalMax} weeks`
 
   const handleContactClick = () => {
     onNavigateToContact?.()

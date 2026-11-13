@@ -11,12 +11,18 @@ import type { LegalPageData } from '../../data/legal/types'
 
 interface LegalPageViewProps {
   data: LegalPageData
-  locale: 'en' | 'ua' | 'es'
+  locale: 'en' | 'ua' | 'es' | 'de'
 }
 
 export default function LegalPageView({ data, locale }: LegalPageViewProps) {
   const backLabel =
-    locale === 'es' ? 'Volver al Inicio' : locale === 'ua' ? 'На головну' : 'Back to Home'
+    locale === 'es'
+      ? 'Volver al Inicio'
+      : locale === 'ua'
+        ? 'На головну'
+        : locale === 'de'
+          ? 'Zurück zur Startseite'
+          : 'Back to Home'
 
   return (
     <article className="min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100 pt-28 pb-20 selection:bg-purple-500 selection:text-white">

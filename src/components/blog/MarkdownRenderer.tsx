@@ -5,14 +5,59 @@ import {
   LuCopy as Copy,
   LuCheck as Check,
 } from 'react-icons/lu'
+import { useOptionalLanguage } from '../../contexts/LanguageContext'
+
+const MARKDOWN_UI_LABELS = {
+  en: {
+    copy: 'Copy',
+    copied: 'Copied!',
+    copyTitle: 'Copy code',
+    copyAria: 'Copy code to clipboard',
+    copiedAria: 'Code copied',
+    decision: 'Decision',
+  },
+  ua: {
+    copy: 'Копіювати',
+    copied: 'Скопійовано!',
+    copyTitle: 'Копіювати код',
+    copyAria: 'Копіювати код у буфер обміну',
+    copiedAria: 'Код скопійовано',
+    decision: 'Рішення',
+  },
+  es: {
+    copy: 'Copiar',
+    copied: '¡Copiado!',
+    copyTitle: 'Copiar código',
+    copyAria: 'Copiar código al portapapeles',
+    copiedAria: 'Código copiado',
+    decision: 'Decisión',
+  },
+  de: {
+    copy: 'Kopieren',
+    copied: 'Kopiert!',
+    copyTitle: 'Code kopieren',
+    copyAria: 'Code in die Zwischenablage kopieren',
+    copiedAria: 'Code kopiert',
+    decision: 'Entscheidung',
+  },
+} as const
+
+type MarkdownLocale = keyof typeof MARKDOWN_UI_LABELS
+
+function getMarkdownLabels(locale?: string) {
+  const key = (locale === 'ua' || locale === 'es' || locale === 'de' ? locale : 'en') as MarkdownLocale
+  return MARKDOWN_UI_LABELS[key]
+}
 
 interface MarkdownRendererProps {
   content: string
   className?: string
+  locale?: string
 }
 
-function CodeBlock({ code, language }: { code: string; language: string }) {
+function CodeBlock({ code, language, locale }: { code: string; language: string; locale?: string }) {
   const [copied, setCopied] = useState(false)
+  const labels = getMarkdownLabels(locale)
 
   const handleCopy = () => {
     if (typeof navigator !== 'undefined' && navigator.clipboard) {
@@ -41,18 +86,18 @@ function CodeBlock({ code, language }: { code: string; language: string }) {
           type="button"
           onClick={handleCopy}
           className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md text-xs font-medium text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-700 transition cursor-pointer"
-          aria-label={copied ? 'Code copied' : 'Copy code to clipboard'}
-          title={copied ? 'Copied!' : 'Copy code'}
+          aria-label={copied ? labels.copiedAria : labels.copyAria}
+          title={copied ? labels.copied : labels.copyTitle}
         >
           {copied ? (
             <>
               <Check className="w-3.5 h-3.5 text-lime-400" aria-hidden="true" />
-              <span className="text-lime-400 font-semibold text-[11px]">Copied!</span>
+              <span className="text-lime-400 font-semibold text-[11px]">{labels.copied}</span>
             </>
           ) : (
             <>
               <Copy className="w-3.5 h-3.5 text-slate-400" aria-hidden="true" />
-              <span className="text-[11px]">Copy</span>
+              <span className="text-[11px]">{labels.copy}</span>
             </>
           )}
         </button>
@@ -122,7 +167,10 @@ function renderInline(text: string): React.ReactNode[] {
   return tokens
 }
 
-export default function MarkdownRenderer({ content, className = '' }: MarkdownRendererProps) {
+export default function MarkdownRenderer({ content, className = '', locale }: MarkdownRendererProps) {
+  const languageCtx = useOptionalLanguage()
+  const activeLocale = locale || languageCtx?.lang || 'en'
+  const labels = getMarkdownLabels(activeLocale)
   const lines = content.replace(/\r\n/g, '\n').split('\n')
   const elements: React.ReactNode[] = []
   let i = 0
@@ -166,6 +214,7 @@ export default function MarkdownRenderer({ content, className = '' }: MarkdownRe
           key={`code-${i}`}
           code={codeLines.join('\n')}
           language={language}
+          locale={activeLocale}
         />
       )
       continue
@@ -276,7 +325,7 @@ export default function MarkdownRenderer({ content, className = '' }: MarkdownRe
                   {row[0] && (
                     <div className="border-b border-slate-200/80 dark:border-slate-700/60 pb-2.5">
                       <span className="text-[10px] font-mono font-bold uppercase tracking-wider text-purple-700 dark:text-lime-400 block mb-1">
-                        {headerCells[0] || 'Decision'}
+                        {headerCells[0] || labels.decision}
                       </span>
                       <div className="font-bold text-slate-900 dark:text-white text-sm leading-snug">
                         {renderInline(row[0])}

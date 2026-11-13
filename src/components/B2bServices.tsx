@@ -179,7 +179,15 @@ const B2bServices = () => {
                   </div>
 
                   <div className="mt-3 pt-2 flex items-center justify-between text-xs font-bold text-purple-600 dark:text-lime-400 group-hover:underline">
-                    <span>{lang === 'es' ? 'Ver detalles del servicio' : lang === 'ua' ? 'Детальніше про послугу' : 'Explore Service'}</span>
+                    <span>
+                      {lang === 'es'
+                        ? 'Ver detalles del servicio'
+                        : lang === 'ua'
+                          ? 'Детальніше про послугу'
+                          : lang === 'de'
+                            ? 'Leistungsdetails ansehen'
+                            : 'Explore Service'}
+                    </span>
                     <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
                   </div>
                 </div>
@@ -211,7 +219,9 @@ const B2bServices = () => {
                 ? 'Explorar Catálogo Completo de Servicios B2B'
                 : lang === 'ua'
                   ? 'Переглянути повний каталог B2B послуг'
-                  : 'Explore Complete B2B Services Directory'}
+                  : lang === 'de'
+                    ? 'Gesamten B2B-Leistungskatalog entdecken'
+                    : 'Explore Complete B2B Services Directory'}
             </span>
             <ArrowRight className="w-4 h-4" aria-hidden="true" />
           </a>

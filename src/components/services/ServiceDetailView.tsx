@@ -52,7 +52,13 @@ export default function ServiceDetailView({
     .filter((p): p is { slug: string; project: NonNullable<typeof p.project> } => Boolean(p.project))
 
   const backToServicesLabel =
-    locale === 'es' ? 'Todos los Servicios' : locale === 'ua' ? 'Усі послуги' : 'All Services'
+    locale === 'es'
+      ? 'Todos los Servicios'
+      : locale === 'ua'
+        ? 'Усі послуги'
+        : locale === 'de'
+          ? 'Alle Leistungen'
+          : 'All Services'
 
   return (
     <article className="min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100 pt-28 pb-24 selection:bg-purple-500 selection:text-white">
@@ -63,7 +69,13 @@ export default function ServiceDetailView({
             href={`/${locale}`}
             className="hover:text-purple-600 dark:hover:text-lime-400 transition-colors"
           >
-            {locale === 'es' ? 'Inicio' : locale === 'ua' ? 'Головна' : 'Home'}
+            {locale === 'es'
+              ? 'Inicio'
+              : locale === 'ua'
+                ? 'Головна'
+                : locale === 'de'
+                  ? 'Startseite'
+                  : 'Home'}
           </Link>
           <span>/</span>
           <Link
@@ -125,7 +137,9 @@ export default function ServiceDetailView({
                   ? 'Consultar Disponibilidad por WhatsApp'
                   : locale === 'ua'
                     ? 'Запитати у WhatsApp'
-                    : 'Check Availability via WhatsApp'}
+                    : locale === 'de'
+                      ? 'Verfügbarkeit per WhatsApp anfragen'
+                      : 'Check Availability via WhatsApp'}
               </span>
             </button>
 
@@ -146,7 +160,9 @@ export default function ServiceDetailView({
               ? 'Desafíos Críticos que Resolvemos'
               : locale === 'ua'
                 ? 'Критичні проблеми, які ми вирішуємо'
-                : 'Key Business Challenges We Solve'}
+                : locale === 'de'
+                  ? 'Zentrale Herausforderungen, die wir lösen'
+                  : 'Key Business Challenges We Solve'}
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -176,7 +192,9 @@ export default function ServiceDetailView({
               ? 'Alcance y Entregables Técnicos'
               : locale === 'ua'
                 ? 'Обсяг робіт та технічні результати'
-                : 'Scope of Work & Deliverables'}
+                : locale === 'de'
+                  ? 'Leistungsumfang & Technische Ergebnisse'
+                  : 'Scope of Work & Deliverables'}
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -208,7 +226,9 @@ export default function ServiceDetailView({
               ? 'Metodología de Trabajo y Fases'
               : locale === 'ua'
                 ? 'Методологія та етапи розробки'
-                : 'Execution Methodology & Phases'}
+                : locale === 'de'
+                  ? 'Arbeitsmethodik & Projektphasen'
+                  : 'Execution Methodology & Phases'}
           </h2>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -239,7 +259,15 @@ export default function ServiceDetailView({
         {/* Interactive Live RAG AI Assistant Demo Trigger */}
         {service.slug === 'rag-ai-assistants-business' && (
           <section
-            aria-label="Live RAG AI Assistant Demonstration"
+            aria-label={
+              locale === 'es'
+                ? 'Demostración en vivo del Asistente de IA RAG'
+                : locale === 'ua'
+                  ? 'Жива демонстрація RAG AI-асистента'
+                  : locale === 'de'
+                    ? 'Live-Demonstration des RAG-KI-Assistenten'
+                    : 'Live RAG AI Assistant Demonstration'
+            }
             className="mb-16 p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-purple-900/10 via-slate-900/40 to-slate-950 border border-purple-500/30 shadow-xl text-white relative overflow-hidden"
           >
             <div className="absolute top-0 right-0 w-80 h-80 bg-purple-600/10 rounded-full blur-3xl pointer-events-none" />
@@ -251,7 +279,9 @@ export default function ServiceDetailView({
                     ? 'Demostración en Vivo · RAG Autónomo'
                     : locale === 'ua'
                       ? 'Живе Демо · Автономний RAG'
-                      : 'Live Demo · Autonomous RAG'}
+                      : locale === 'de'
+                        ? 'Live-Demo · Autonomes RAG'
+                        : 'Live Demo · Autonomous RAG'}
                 </span>
               </div>
               <h3 className="text-xl sm:text-2xl font-black text-white tracking-tight mb-2">
@@ -259,14 +289,18 @@ export default function ServiceDetailView({
                   ? 'Prueba al Asistente RAG en Acción'
                   : locale === 'ua'
                     ? 'Протестуйте RAG-асистента в дії'
-                    : 'Test the RAG AI Assistant Live'}
+                    : locale === 'de'
+                      ? 'RAG-KI-Assistenten live testen'
+                      : 'Test the RAG AI Assistant Live'}
               </h3>
               <p className="text-xs sm:text-sm text-slate-300 leading-relaxed mb-6 max-w-2xl">
                 {locale === 'es'
-                  ? 'Este sitio web opera con el mismo motor RAG híbrido que implemento para clientes: indexa 71 proyectos y 39 artículos técnicos con recuperación semántica en <5ms sin costes de base de datos vectorial.'
+                  ? 'Este sitio web opera con el mismo motor RAG híbrido que implemento para clientes: indexa 71 proyectos y 47 artículos técnicos con recuperación semántica en <5ms sin costes de base de datos vectorial.'
                   : locale === 'ua'
-                    ? 'Цей вебсайт працює на тому ж гібридному RAG-рушії, що й клієнтські рішення: індексує 71 проєкт та 39 статей із семантичною видачею за <5мс без витрат на векторні бази даних.'
-                    : 'This portfolio runs on the exact Hybrid RAG architecture engineered for clients: indexing 71 case studies and 39 engineering articles with sub-5ms semantic retrieval and zero vector database fees.'}
+                    ? 'Цей вебсайт працює на тому ж гібридному RAG-рушії, що й клієнтські рішення: індексує 71 проєкт та 47 статей із семантичною видачею за <5мс без витрат на векторні бази даних.'
+                    : locale === 'de'
+                      ? 'Dieses Portfolio läuft auf derselben Hybrid-RAG-Engine, die ich für Kunden entwickle: Es indexiert 71 Projekte und 47 Fachartikel mit semantischer Suche unter 5ms ganz ohne Vektor-Datenbank-Gebühren.'
+                      : 'This portfolio runs on the exact Hybrid RAG architecture engineered for clients: indexing 71 case studies and 47 engineering articles with sub-5ms semantic retrieval and zero vector database fees.'}
               </p>
               <div className="flex flex-wrap items-center gap-3">
                 <button
@@ -291,7 +325,9 @@ export default function ServiceDetailView({
                       ? 'Lanzar Demostración de IA'
                       : locale === 'ua'
                         ? 'Запустити демо асистента'
-                        : 'Launch AI Live Demo'}
+                        : locale === 'de'
+                          ? 'KI-Live-Demo starten'
+                          : 'Launch AI Live Demo'}
                   </span>
                 </button>
                 <Link
@@ -303,7 +339,9 @@ export default function ServiceDetailView({
                       ? 'Leer Arquitectura RAG (Blog)'
                       : locale === 'ua'
                         ? 'Архітектура RAG (Блог)'
-                        : 'Read RAG Architecture (Blog)'}
+                        : locale === 'de'
+                          ? 'RAG-Architektur lesen (Blog)'
+                          : 'Read RAG Architecture (Blog)'}
                   </span>
                   <ArrowRight className="w-4 h-4" aria-hidden="true" />
                 </Link>
@@ -322,14 +360,18 @@ export default function ServiceDetailView({
                     ? 'Casos Reales Aplicados en Producción'
                     : locale === 'ua'
                       ? 'Реальні кейси з портфоліо'
-                      : 'Verified Production Case Studies'}
+                      : locale === 'de'
+                        ? 'Verifizierte Praxis-Fallstudien'
+                        : 'Verified Production Case Studies'}
                 </h2>
                 <p className="text-xs sm:text-sm text-slate-600 dark:text-slate-400 mt-1">
                   {locale === 'es'
                     ? 'Proyectos de nuestra base de 71 casos reales que aplican esta tecnología.'
                     : locale === 'ua'
                       ? 'Проєкти з нашого каталогу 71 кейсу, створені за цими стандартами.'
-                      : 'Real-world projects from our 71-case catalog built with these technologies.'}
+                      : locale === 'de'
+                        ? 'Ausgewählte Projekte aus unserem 71-Fallstudien-Katalog mit diesen Technologien.'
+                        : 'Real-world projects from our 71-case catalog built with these technologies.'}
                 </p>
               </div>
 
@@ -337,38 +379,63 @@ export default function ServiceDetailView({
                 href={`/${locale}#projects`}
                 className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-purple-600 dark:text-lime-400 hover:underline"
               >
-                <span>{locale === 'es' ? 'Ver catálogo de 71 proyectos' : locale === 'ua' ? 'Усі 71 проєкт' : 'View all 71 projects'}</span>
+                <span>
+                  {locale === 'es'
+                    ? 'Ver catálogo de 71 proyectos'
+                    : locale === 'ua'
+                      ? 'Усі 71 проєкт'
+                      : locale === 'de'
+                        ? 'Alle 71 Projekte ansehen'
+                        : 'View all 71 projects'}
+                </span>
                 <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
               </Link>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {relevantProjects.map(({ slug, project }) => (
-                <Link
-                  key={slug}
-                  href={`/${locale}/projects/${slug}`}
-                  className="group flex flex-col justify-between p-5 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-lg hover:border-purple-300 dark:hover:border-lime-500/40 transition-all duration-300"
-                >
-                  <div>
-                    <div className="flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400 mb-2 font-medium">
-                      <span>{project.category[0] || 'Web'}</span>
-                      <ExternalLink className="w-3.5 h-3.5 group-hover:text-purple-600 dark:group-hover:text-lime-400 transition-colors" aria-hidden="true" />
+              {relevantProjects.map(({ slug, project }) => {
+                const localizedDesc =
+                  locale === 'ua' && project.descriptionUa
+                    ? project.descriptionUa
+                    : locale === 'es' && project.descriptionEs
+                      ? project.descriptionEs
+                      : locale === 'de' && project.descriptionDe
+                        ? project.descriptionDe
+                        : project.description
+
+                return (
+                  <Link
+                    key={slug}
+                    href={`/${locale}/projects/${slug}`}
+                    className="group flex flex-col justify-between p-5 rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm hover:shadow-lg hover:border-purple-300 dark:hover:border-lime-500/40 transition-all duration-300"
+                  >
+                    <div>
+                      <div className="flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400 mb-2 font-medium">
+                        <span>{project.category[0] || 'Web'}</span>
+                        <ExternalLink className="w-3.5 h-3.5 group-hover:text-purple-600 dark:group-hover:text-lime-400 transition-colors" aria-hidden="true" />
+                      </div>
+
+                      <h3 className="text-base font-bold text-slate-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-lime-400 transition-colors mb-2 line-clamp-1">
+                        {project.title}
+                      </h3>
+
+                      <p className="text-xs text-slate-600 dark:text-slate-400 line-clamp-2 leading-relaxed mb-4">
+                        {localizedDesc}
+                      </p>
                     </div>
 
-                    <h3 className="text-base font-bold text-slate-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-lime-400 transition-colors mb-2 line-clamp-1">
-                      {project.title}
-                    </h3>
-
-                    <p className="text-xs text-slate-600 dark:text-slate-400 line-clamp-2 leading-relaxed mb-4">
-                      {project.description}
-                    </p>
-                  </div>
-
-                  <div className="pt-3 border-t border-slate-100 dark:border-slate-800 text-[11px] font-semibold text-purple-600 dark:text-lime-400">
-                    {locale === 'es' ? 'Ver análisis técnico ->' : locale === 'ua' ? 'Детальний розбір ->' : 'Case study ->'}
-                  </div>
-                </Link>
-              ))}
+                    <div className="pt-3 border-t border-slate-100 dark:border-slate-800 text-[11px] font-semibold text-purple-600 dark:text-lime-400">
+                      {locale === 'es'
+                        ? 'Ver análisis técnico ->'
+                        : locale === 'ua'
+                          ? 'Детальний розбір ->'
+                          : locale === 'de'
+                            ? 'Zur Fallstudie ->'
+                            : 'Case study ->'}
+                    </div>
+                  </Link>
+                )
+              })}
             </div>
           </section>
         )}
@@ -380,7 +447,9 @@ export default function ServiceDetailView({
               ? 'Preguntas Frecuentes'
               : locale === 'ua'
                 ? 'Часті запитання'
-                : 'Frequently Asked Questions'}
+                : locale === 'de'
+                  ? 'Häufig gestellte Fragen'
+                  : 'Frequently Asked Questions'}
           </h2>
 
           <div className="space-y-4 max-w-4xl">
@@ -421,7 +490,13 @@ export default function ServiceDetailView({
         <section className="p-8 sm:p-12 rounded-3xl bg-gradient-to-br from-slate-900 via-slate-900 to-slate-950 text-white shadow-2xl relative overflow-hidden">
           <div className="relative z-10 max-w-3xl">
             <span className="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-purple-500/20 text-purple-300 border border-purple-500/30 mb-4">
-              {locale === 'es' ? 'Contacto Directo' : locale === 'ua' ? 'Прямий зв\'язок' : 'Direct Inquiry'}
+              {locale === 'es'
+                ? 'Contacto Directo'
+                : locale === 'ua'
+                  ? 'Прямий зв\'язок'
+                  : locale === 'de'
+                    ? 'Direkte Anfrage'
+                    : 'Direct Inquiry'}
             </span>
 
             <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight mb-4">
@@ -444,7 +519,9 @@ export default function ServiceDetailView({
                     ? 'Enviar Mensaje por WhatsApp'
                     : locale === 'ua'
                       ? 'Написати у WhatsApp'
-                      : 'Send WhatsApp Message'}
+                      : locale === 'de'
+                        ? 'WhatsApp-Nachricht senden'
+                        : 'Send WhatsApp Message'}
                 </span>
               </button>
 
@@ -452,7 +529,15 @@ export default function ServiceDetailView({
                 href={`/${locale}#contact`}
                 className="inline-flex items-center gap-2 px-5 py-3.5 rounded-2xl text-sm font-semibold text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-700 transition-colors"
               >
-                <span>{locale === 'es' ? 'Ver otros canales de contacto' : locale === 'ua' ? 'Інші контакти' : 'Alternative Contacts'}</span>
+                <span>
+                  {locale === 'es'
+                    ? 'Ver otros canales de contacto'
+                    : locale === 'ua'
+                      ? 'Інші контакти'
+                      : locale === 'de'
+                        ? 'Weitere Kontaktwege'
+                        : 'Alternative Contacts'}
+                </span>
               </Link>
             </div>
           </div>

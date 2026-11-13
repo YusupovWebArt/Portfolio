@@ -97,7 +97,7 @@ const Footer = () => {
               }}
               className="text-slate-300 dark:text-slate-400 hover:text-white transition-colors cursor-pointer"
             >
-              {lang === 'ua' ? 'Блог' : lang === 'es' ? 'Blog' : 'Blog'}
+              {lang === 'ua' ? 'Блог' : 'Blog'}
             </a>
             <a
               href="#contact"

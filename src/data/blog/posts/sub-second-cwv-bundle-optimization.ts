@@ -7,23 +7,27 @@ export const subSecondCwvBundleOptimizationPost: BlogPost = {
     en: 'Sub-Second Core Web Vitals: Reducing Bundle Size, Asset Pipelines & Modern Hydration Strategies (2026)',
     ua: 'Субсекундні показники Core Web Vitals: оптимізація бандлу, медіа-пайплайни та сучасна гідратація (2026)',
     es: 'Core Web Vitals subsegundo: Reducción del bundle, pipeline de assets y estrategias modernas de hidratación (2026)',
+    de: 'Sub-Sekunden Core Web Vitals: Bundle-Groessen-Reduzierung, Asset-Pipelines & moderne Hydratisierungsstrategien (2026)',
   },
   description: {
     en: 'A comprehensive engineering guide on achieving sub-second Largest Contentful Paint (LCP < 1.0s), zero Layout Shift (CLS = 0), and 98+ PageSpeed scores in high-traffic applications using Rollup chunk splitting, WebP pipelines, and delayed non-critical hydration.',
     ua: 'Вичерпний інженерний посібник із досягнення LCP < 1.0с, нульового зсуву CLS та 98+ PageSpeed у навантажених додатках завдяки розділенню чанків у Rollup, WebP-конвертації та відкладеній гідратації.',
     es: 'Guía técnica exhaustiva para lograr Largest Contentful Paint subsegundo (LCP < 1.0s), cero CLS y más de 98 en PageSpeed mediante división de chunks en Rollup, pipeline WebP e hidratación diferida.',
+    de: 'Ein umfassender technischer Leitfaden zur Erzielung von Sub-Sekunden Largest Contentful Paint (LCP < 1,0s), null Layout Shift (CLS = 0) und 98+ PageSpeed-Werten in hochbelasteten Webanwendungen durch Rollup-Chunk-Splitting, WebP-Pipelines und verzoegerte Hydratisierung.',
   },
   date: '2026-10-19',
   readTime: {
     en: '7 min read',
     ua: '7 хв читання',
     es: '7 min de lectura',
+    de: '7 Min. Lesezeit',
   },
   category: 'performance-cwv',
   categoryLabel: {
     en: 'Performance & Core Web Vitals',
     ua: 'Продуктивність та Core Web Vitals',
     es: 'Rendimiento y Core Web Vitals',
+    de: 'Performance & Core Web Vitals',
   },
   tags: ['Core Web Vitals', 'Performance', 'Bundle Size', 'Vite', 'Next.js', 'WebP', 'Hydration'],
   author: {
@@ -32,6 +36,7 @@ export const subSecondCwvBundleOptimizationPost: BlogPost = {
       en: 'Senior Fullstack Web Engineer & AI Developer',
       ua: 'Senior Fullstack веб-інженер та AI-розробник',
       es: 'Ingeniero Web Fullstack Senior y Desarrollador IA',
+      de: 'Fullstack Web-Engineer & KI-Architekt',
     },
   },
   coverImage: '/Portfolio/images/blog/cover-sub-second-cwv.svg',
@@ -44,6 +49,7 @@ export const subSecondCwvBundleOptimizationPost: BlogPost = {
         en: 'Reference Vite + React 19 SPA implementation with Rollup vendor chunk isolation, zero-CLS responsive containers, and Base64 contact obfuscation.',
         ua: 'Еталонна реалізація Vite + React 19 SPA з ізоляцією вендорних чанків у Rollup, контейнерами без CLS та Base64-обфускацією контактів.',
         es: 'Implementación de referencia SPA con Vite + React 19, aislamiento de chunks vendor en Rollup, contenedores sin CLS y ofuscación de contacto Base64.',
+        de: 'Referenz-Implementierung einer Vite + React 19 SPA mit Rollup-Vendor-Chunk-Isolation, CLS-freien responsiven Containern und Base64-Kontaktobfuskation.',
       },
     },
     {
@@ -54,6 +60,7 @@ export const subSecondCwvBundleOptimizationPost: BlogPost = {
         en: 'Achieved 0.3s First Contentful Paint and 99 PageSpeed on mobile using route prefetching and lean component lazy-loading.',
         ua: 'Досягнуто 0.3с First Contentful Paint та 99 PageSpeed на мобільних пристроях завдяки префетчингу та ледачому завантаженню компонентів.',
         es: 'Se alcanzó un FCP de 0.3s y 99 en PageSpeed móvil gracias a precarga de rutas y lazy loading de componentes.',
+        de: 'Erreichte 0,3s First Contentful Paint und 99 PageSpeed auf Mobilgeraeten durch Route-Prefetching und schlankes Komponenten-Lazy-Loading.',
       },
     },
     {
@@ -64,6 +71,7 @@ export const subSecondCwvBundleOptimizationPost: BlogPost = {
         en: 'Eliminated render-blocking CSS/JS assets, slashing TTFB by 64% and keeping Cumulative Layout Shift at 0.00.',
         ua: 'Усунено блокуючі рендеринг CSS/JS ресурси, скорочено TTFB на 64% та зафіксовано CLS на рівні 0.00.',
         es: 'Se eliminaron recursos bloqueantes de renderizado, reduciendo el TTFB en un 64% y manteniendo el CLS en 0.00.',
+        de: 'Render-blockierende CSS/JS-Ressourcen eliminiert, TTFB um 64 % gesenkt und Cumulative Layout Shift bei 0,00 gehalten.',
       },
     },
     {
@@ -74,6 +82,7 @@ export const subSecondCwvBundleOptimizationPost: BlogPost = {
         en: 'Converted dynamic image catalogs to WebP with responsive srcset, cutting payload sizes by 4.2 MB per initial pageview.',
         ua: 'Переведено динамічний каталог автопарку на WebP з адаптивними srcset, зменшивши початковий трафік на 4.2 МБ.',
         es: 'Conversión de catálogos dinámicos a WebP con srcset adaptable, ahorrando 4.2 MB en la carga inicial.',
+        de: 'Dynamische Fahrzeugkataloge auf WebP mit responsivem srcset umgestellt, wodurch die Datenlast pro Aufruf um 4,2 MB sank.',
       },
     },
   ],
@@ -95,6 +104,12 @@ export const subSecondCwvBundleOptimizationPost: BlogPost = {
       'La separación precisa de dependencias en chunks independientes maximiza la tasa de acierto del almacenamiento en caché HTTP.',
       'El Cumulative Layout Shift (CLS) se elimina reservando espacio con aspect-ratio estricto antes de renderizar elementos dinámicos.',
       'Los módulos secundarios (asistentes de chat, modales) deben hidratarse únicamente tras la interacción o mediante requestIdleCallback.',
+    ],
+    de: [
+      'Die initiale JavaScript-Payload muss unter 150 KB Gzip bleiben, um Sub-Sekunden-Ausfuehrung auf Mittelklasse-Smartphones zu gewaehrleisten.',
+      'Manuelles Chunk-Splitting mit feingranularer Vendor-Trennung isoliert Drittanbieter-Bibliotheken von App-Code-Aenderungen und maximiert HTTP-Cache-Treffer.',
+      'Cumulative Layout Shift (CLS) wird durch strikte Container mit festem aspect-ratio eliminiert, indem Layout-Platz vor dem Einfuegen ins DOM reserviert wird.',
+      'Nicht-kritische UI-Elemente (Chatbots, Modals, Feedback-Formulare) sollten stets nach Leerlaufzeiten oder Nutzerinteraktion via requestIdleCallback hydratisiert werden.',
     ],
   },
   content: {
@@ -439,5 +454,123 @@ export function ChatTrigger() {
 - **Manual Chunk Splitting (\`manualChunks\`):** Separación de dependencias externas estables (\`react\`, \`lucide-react\`) del código de aplicación para conservar la caché HTTP entre despliegues.
 - **Hidratación Diferida (\`requestIdleCallback\`):** Posposición de la carga y ejecución de widgets interactivos secundarios (modales, asistente de chat) hasta que el hilo principal del navegador esté inactivo.
 - **Ofuscación Base64 en Cliente (\`atob\`):** Almacenamiento de datos de contacto (correo, teléfono, Telegram) codificados en Base64 y decodificados únicamente en tiempo de ejecución o interacción del usuario para evitar el rastreo de bots de spam.`,
+
+    de: `### Die Kosten clientseitigen Overheads
+
+Moderne Single Page Applications und SSR-Frameworks liefern haeufig ueberdimensionierte JavaScript-Bundles aus, die den Single Thread auf Mobilprozessoren stark belasten. Lange Haupt-Thread-Aufgaben verzoegern den First Input Delay (FID) und Interaction to Next Paint (INP), was zu messbaren Einbussen bei kommerziellen Konversionsraten fuehrt.
+
+Um konsistente 98+ Google Lighthouse Scores unter realer Produktionslast zu erreichen, muessen drei fundamentale architektonische Saeulen umgesetzt werden:
+
+1. Deterministisches manuelles Chunking in der Build-Pipeline
+2. Bandbreiten-Quotas auf Asset-Ebene mit automatisierten WebP-Pipelines
+3. Verzoegerte Hydratisierung sekundaerer UI-Flaechen
+
+---
+
+### Schritt 1: Deterministische Trennung von Vendor-Chunks
+
+Wenn moderne Bundler saemtliche Drittanbieter-Bibliotheken in ein einziges monolithisches Vendor-Bundle packen, fuehrt jede kleine Aenderung im Anwendungscode dazu, dass der gesamte Cache-Chunk fuer wiederkehrende Besucher ungueltig wird.
+
+Die Konfiguration feingranularer manueller Rollup-Chunks schafft langlebige Cache-Grenzen:
+
+\`\`\`typescript
+// vite.config.ts / rollup.config.ts
+export default defineConfig({
+  build: {
+    target: 'esnext',
+    cssCodeSplit: true,
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            if (id.includes('react') || id.includes('react-dom')) {
+              return 'vendor-react'
+            }
+            if (id.includes('lucide-react')) {
+              return 'vendor-icons'
+            }
+            if (id.includes('framer-motion')) {
+              return 'vendor-motion'
+            }
+            return 'vendor-misc'
+          }
+        },
+      },
+    },
+  },
+})
+\`\`\`
+
+---
+
+### Schritt 2: CLS-freie Medien-Container
+
+Cumulative Layout Shift entsteht haeufig, wenn hochaufloesende Hero-Bilder oder asynchrone Einbettungen ohne feste Seitenverhaeltnisse gerendert werden. Die Reservierung praeziser Bounding-Boxes verhindert, dass die Browser-Layout-Engine aufwaendige Re-Flows anstoesst:
+
+\`\`\`html
+<!-- Anti-CLS Responsiver Container -->
+<div class="relative w-full aspect-video overflow-hidden rounded-2xl bg-slate-900">
+  <picture>
+    <source srcset="/images/hero-1200.webp" type="image/webp" media="(min-width: 1024px)" />
+    <source srcset="/images/hero-768.webp" type="image/webp" media="(min-width: 640px)" />
+    <img
+      src="/images/hero-fallback.jpg"
+      alt="Engineering Dashboard"
+      width="1200"
+      height="675"
+      loading="eager"
+      fetchpriority="high"
+      class="w-full h-full object-cover"
+    />
+  </picture>
+</div>
+\`\`\`
+
+---
+
+### Schritt 3: Progressive & Idle-Time-Hydratisierung
+
+Eine Enterprise-Landingpage benoetigt weder einen KI-Chatbot noch interaktive Code-Playgrounds oder Feedback-Modals waehrend des ersten Rendervorgangs. Die Verlagerung dieser Komponenten in dynamische Imports, die ueber \`requestIdleCallback\` ausgeloest werden, spart ueber 180ms Main-Thread-Rechenzeit beim First Contentful Paint:
+
+\`\`\`typescript
+import { lazy, useState, useEffect } from 'react'
+
+const LazyInteractiveChat = lazy(() => import('./ChatModal'))
+
+export function ChatTrigger() {
+  const [shouldLoad, setShouldLoad] = useState(false)
+
+  useEffect(() => {
+    if ('requestIdleCallback' in window) {
+      const handle = window.requestIdleCallback(() => setShouldLoad(true), { timeout: 3000 })
+      return () => window.cancelIdleCallback(handle)
+    } else {
+      const timer = setTimeout(() => setShouldLoad(true), 2000)
+      return () => clearTimeout(timer)
+    }
+  }, [])
+
+  if (!shouldLoad) return null
+  return <LazyInteractiveChat />
+}
+\`\`\`
+
+---
+
+### Zentrale Produktions-Telemetrie
+
+- **First Contentful Paint (FCP):** reduziert von 1,6s auf 0,3s ueber gepruefte 4G-Mobilfunkprofile.
+- **Largest Contentful Paint (LCP):** konsistent unter 0,9s auf statischen SSG-Edges gehalten.
+- **Cumulative Layout Shift (CLS):** 0,00 ueber alle responsiven Breakpoints.
+- **Total Blocking Time (TBT):** sank unter 40ms, was eine verzoegerungsfreie Beruehrungseingabe ermoeglicht.
+
+---
+
+### Schritt 4: Technisches Glossar & Clientseitige Sicherheit
+
+- **Tree-Shaking:** Statische Dead-Code-Eliminierung durch Rollup/Vite auf Basis von ES-Modul-Import/Export-Graphanalysen, sodass ungenutzte Icons oder Hilfsfunktionen aus dem Produktiv-Bundle ausgeschlossen werden.
+- **Manual Chunk Splitting (\`manualChunks\`):** Trennung stabiler Drittanbieter-Abhaengigkeiten (\`react\`, \`lucide-react\`) von sich haeufig aenderndem App-Code, damit wiederkehrende Besucher gecachte Vendor-Bundles ueber Deployments hinweg beibehalten.
+- **Verzoegerte Hydratisierung (\`requestIdleCallback\`):** Aufschub der Ausfuehrung und Bindung nicht-kritischer interaktiver Widgets (wie Modals oder Chat-Assistenten), bis der Haupt-Thread des Browsers im Leerlauf ist.
+- **Clientseitige Base64-Obfuskation (\`atob\`):** Speicherung sensibler Kontaktendpunkte (E-Mail, Telefon, Telegram) als Base64-kodierte Zeichenketten im statischen Bundle und Entschluesselung erst bei expliziter Nutzerinteraktion oder beim Mounten zur Laufzeit, um automatisiertes Bot-Scraping zu unterbinden.`,
   },
 }

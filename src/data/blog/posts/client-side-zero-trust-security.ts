@@ -6,23 +6,27 @@ export const clientSideZeroTrustSecurityPost: BlogPost = {
     en: 'Client-Side Zero-Trust Security: PII Obfuscation, Anti-Scraping & CSP Defense for Web Apps',
     ua: 'Клієнтська безпека Zero-Trust: обфускація персональних даних, захист від скрапінгу та CSP',
     es: 'Seguridad Zero-Trust en cliente: Ofuscación de PII, protección antiscraping y políticas CSP',
+    de: 'Client-Side Zero-Trust-Sicherheit: PII-Obfuskation, Anti-Scraping & CSP-Schutz fuer Web-Apps',
   },
   description: {
     en: 'How to safeguard sensitive business contacts, protect clinical and personal data from automated scrapers, and enforce strict Content Security Policies (CSP) without degrading user experience or Core Web Vitals.',
     ua: 'Як захистити контактні дані бізнесу від автоматичних скраперів, впровадити безпеку медичних і персональних даних та налаштувати суворі політики CSP без втрати швидкості.',
     es: 'Cómo proteger los datos de contacto y la información confidencial frente a bots de scraping, aplicando políticas de seguridad CSP estrictas sin perjudicar la experiencia de usuario.',
+    de: 'Wie man sensible Geschaeftskontakte absichert, klinische sowie personenbezogene Daten vor automatisierten Scrapern schuetzt und strikte Content Security Policies (CSP) ohne Einbussen bei User Experience oder Core Web Vitals durchsetzt.',
   },
   date: '2026-10-19',
   readTime: {
     en: '7 min read',
     ua: '7 хв читання',
     es: '7 min de lectura',
+    de: '7 Min. Lesezeit',
   },
   category: 'architecture-tco',
   categoryLabel: {
     en: 'Architecture & TCO',
     ua: 'Архітектура та TCO',
     es: 'Arquitectura y TCO',
+    de: 'Architektur & TCO',
   },
   tags: ['DevSecOps', 'Security', 'CSP', 'Base64', 'Anti-Scraping', 'Privacy'],
   author: {
@@ -31,6 +35,7 @@ export const clientSideZeroTrustSecurityPost: BlogPost = {
       en: 'Senior Fullstack Web Engineer & AI Developer',
       ua: 'Senior Fullstack веб-інженер та AI-розробник',
       es: 'Ingeniero Web Fullstack Senior y Desarrollador IA',
+      de: 'Senior Fullstack Web-Engineer & KI-Entwickler',
     },
   },
   coverImage: '/Portfolio/images/blog/cover-client-side-security.svg',
@@ -43,6 +48,7 @@ export const clientSideZeroTrustSecurityPost: BlogPost = {
         en: 'Configured end-to-end cloud perimeter defenses, strict HTTP security headers, and automated vulnerability scanning.',
         ua: 'Налаштовано хмарний захист периметра, суворі HTTP-заголовки безпеки та автоматичне сканування вразливостей.',
         es: 'Configuración de perímetro de seguridad en la nube, cabeceras HTTP estrictas y análisis automatizado de vulnerabilidades.',
+        de: 'Konfiguration von End-to-End-Cloud-Perimeterschutz, strikten HTTP-Sicherheitsheadern und automatisierten Schwachstellenscans.',
       },
     },
     {
@@ -53,6 +59,7 @@ export const clientSideZeroTrustSecurityPost: BlogPost = {
         en: 'Implemented HIPAA-aligned privacy protections, obfuscated clinical contact routing, and sanitized patient intake endpoints.',
         ua: 'Впроваджено стандарти захисту медичних даних, захищений маршрутизатор контактів та очищення вхідних запитів.',
         es: 'Implementación de privacidad médica, ofuscación de contactos clínicos y validación estricta de formularios.',
+        de: 'Implementierung von HIPAA-konformem Datenschutz, obfuskiertem klinischem Kontakt-Routing und bereinigten Patientenaufnahme-Endpunkten.',
       },
     },
     {
@@ -63,6 +70,7 @@ export const clientSideZeroTrustSecurityPost: BlogPost = {
         en: 'Zero-commit secret architecture with Base64 runtime decryption and strict Content Security Policy directives.',
         ua: 'Архітектура нульових секретів у репозиторії, клієнтське Base64-декодування та строгий CSP.',
         es: 'Arquitectura de cero credenciales en código, descifrado Base64 en ejecución y cabeceras CSP completas.',
+        de: 'Zero-Commit-Secret-Architektur mit Base64-Laufzeitentschluesselung und strikten Content-Security-Policy-Direktiven.',
       },
     },
   ],
@@ -84,6 +92,12 @@ export const clientSideZeroTrustSecurityPost: BlogPost = {
       'El descifrado Base64 al interactuar el usuario (clic o toque) detiene el 99.4% del scraping automático sin recurrir a CAPTCHAs.',
       'Una política Content Security Policy estricta bloquea ataques XSS y la inyección no autorizada de código de terceros.',
       'Las políticas de cero credenciales en repositorios aseguran que ninguna clave privada llegue al historial de Git.',
+    ],
+    de: [
+      'Unverschluesselte E-Mail-Adressen und Telefonnummern in statischem HTML werden innerhalb weniger Minuten nach der Indexierung von autonomen Scrapern abgegriffen.',
+      'Base64-Laufzeitdekodierung bei verifizierten Benutzerinteraktionen (Klicks oder Beruehrungen) stoppt 99,4 % des Bot-Scrapings ohne CAPTCHA-Reibungsverluste.',
+      'Eine strikte Content Security Policy mit Nonces blockiert Cross-Site Scripting (XSS) und unbefugte Drittanbieter-Telemetrie-Injektionen.',
+      'Zero-Commit-Richtlinien mit Pre-Commit-Git-Hooks garantieren, dass Entwicklungs-Tokens und private API-Schluessel niemals in die Versionskontrolle gelangen.',
     ],
   },
   content: {
@@ -334,5 +348,92 @@ Prevención de subida de claves privadas mediante comprobaciones automáticas an
 
 - **99.4% de reducción** en correos no deseados recibidos.
 - **Calificación A+** en pruebas de SecurityHeaders.com.`,
+    de: `### Die automatisierte Bedrohung fuer den Web-Datenschutz
+
+Jede oeffentlich zugaengliche Web-Plattform wird kontinuierlich von verteilten Scraper-Bots analysiert. Das Speichern von administrativen E-Mail-Adressen, Kundenservice-Telefonnummern oder direkten Geschaeftskontakten im Klartext-HTML setzt Unternehmen einem hohen Aufkommen an Phishing-, Spoofing- und Spam-Kampagnen aus.
+
+Die Implementierung eines Zero-Trust-Client-Sicherheitsmodells bietet Schutz auf mehreren Ebenen.
+
+---
+
+### Ebene 1: Client-seitige Base64-Kontaktobfuskation
+
+Anstatt \`mailto:contact@domain.com\` direkt im statischen DOM offenzulegen, sollten Kontakte als Base64-Strings gespeichert und ausschliesslich als Reaktion auf eine explizite Benutzerinteraktion dekodiert werden:
+
+\`\`\`typescript
+import React, { useState } from 'react'
+
+interface SecureContactProps {
+  encodedEmail: string // e.g. "Y29udGFjdEBkb21haW4uY29t"
+  label: string
+}
+
+export function SecureContactLink({ encodedEmail, label }: SecureContactProps) {
+  const [decrypted, setDecrypted] = useState<string | null>(null)
+
+  const handleReveal = () => {
+    if (!decrypted && typeof window !== 'undefined') {
+      try {
+        const decoded = window.atob(encodedEmail)
+        setDecrypted(decoded)
+        window.location.href = \`mailto:\${decoded}\`
+      } catch (err) {
+        console.error('Decoding error', err)
+      }
+    }
+  }
+
+  return (
+    <button
+      type="button"
+      onClick={handleReveal}
+      className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-800 text-white hover:bg-slate-700 transition"
+      aria-label={label}
+    >
+      <span>{decrypted || label}</span>
+    </button>
+  )
+}
+\`\`\`
+
+---
+
+### Ebene 2: Defense-in-Depth mit Content Security Policy (CSP)
+
+Eine robuste CSP schraenkt die Domains ein, von denen Skripte, Styles und Schriftarten geladen werden duerfen, und verhindert boesartige Skript-Injektionen selbst dann, wenn eine Anwendungsabhaengigkeit kompromittiert wird:
+
+\`\`\`javascript
+// next.config.ts / securityHeaders.js
+const ContentSecurityPolicy = \`
+  default-src 'self';
+  script-src 'self' 'unsafe-inline' https://va.vercel-scripts.com;
+  style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+  img-src 'self' blob: data: https:;
+  font-src 'self' https://fonts.gstatic.com;
+  connect-src 'self' https://api.openai.com;
+  frame-ancestors 'none';
+  base-uri 'self';
+  form-action 'self';
+\`
+\`\`\`
+
+---
+
+### Ebene 3: Durchsetzung von Zero-Commit-Secrets
+
+API-Tokens und Server-Zugangsdaten duerfen niemals in die Repository-Historie committet werden. Automatisierte Git-Hooks sichern die Pipeline ab:
+
+\`\`\`bash
+# .husky/pre-commit
+pnpm exec gitleaks protect --staged --verbose
+\`\`\`
+
+---
+
+### Sicherheits-Telemetrie & Nachweis
+
+- **99,4 % Rueckgang** bei automatisierten Kontaktabgriffen.
+- **Note A+** in den Testsuiten von Mozilla Observatory und SecurityHeaders.com.
+- Null Vorfaelle von offengelegten Zugangsdaten ueber alle Produktions-Deployments hinweg.`,
   },
 }

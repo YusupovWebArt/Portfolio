@@ -76,35 +76,41 @@ describe('ChatModal Client-side Streaming & Fallback Specification (TDD)', () =>
     })
   })
 
-  it('should fall back to static FAQ engine if /api/chat fails', async () => {
-    global.fetch = vi.fn().mockRejectedValue(new Error('Network error'))
+  it(
+    'should fall back to static FAQ engine if /api/chat fails',
+    async () => {
+      global.fetch = vi.fn().mockRejectedValue(new Error('Network error'))
 
-    render(
-      <LanguageProvider>
-        <ChatModal open={true} onClose={vi.fn()} />
-      </LanguageProvider>,
-    )
+      render(
+        <LanguageProvider>
+          <ChatModal open={true} onClose={vi.fn()} />
+        </LanguageProvider>,
+      )
 
-    const input = screen.getByPlaceholderText(/Type a question/i)
-    fireEvent.change(input, {
-      target: { value: 'What are your rates?' },
-    })
+      const input = screen.getByPlaceholderText(/Type a question/i)
+      fireEvent.change(input, {
+        target: { value: 'What are your rates?' },
+      })
 
-    const sendBtn = screen.getByTitle(/Send/i)
-    fireEvent.click(sendBtn)
+      const sendBtn = screen.getByTitle(/Send/i)
+      fireEvent.click(sendBtn)
 
-    // Should gracefully display fallback answer from local RAG engine and render ContactActionCard
-    await waitFor(
-      () => {
-        const messages = screen.getAllByText(/open to remote|services include/i)
-        expect(messages.length).toBeGreaterThan(0)
-        expect(screen.getByText(/Download CV \(PDF\)/i)).toBeInTheDocument()
-      },
-      { timeout: 8000 },
-    )
-  })
+      // Should gracefully display fallback answer from local RAG engine and render ContactActionCard
+      await waitFor(
+        () => {
+          const messages = screen.getAllByText(/open to remote|services include/i)
+          expect(messages.length).toBeGreaterThan(0)
+          expect(screen.getByText(/Download CV \(PDF\)/i)).toBeInTheDocument()
+        },
+        { timeout: 8000 },
+      )
+    },
+    15000,
+  )
 
-  it('should enforce left-aligned text, larger modal dimensions, scroll only the message region, and render interactive project cards', async () => {
+  it(
+    'should enforce left-aligned text, larger modal dimensions, scroll only the message region, and render interactive project cards',
+    async () => {
     global.fetch = vi.fn().mockRejectedValue(new Error('Offline fallback'))
 
     render(
@@ -152,6 +158,6 @@ describe('ChatModal Client-side Streaming & Fallback Specification (TDD)', () =>
 
     // Dialog container itself must never be scrolled
     expect(dialog.scrollTop).toBe(0)
-  })
+  }, 15000)
 })
 

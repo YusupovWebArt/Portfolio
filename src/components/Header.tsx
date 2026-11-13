@@ -95,7 +95,7 @@ const LangDropdown = ({ lang, label, onSelect, compact = false }: LangDropdownPr
     }
     const pathname = window.location.pathname
     const hash = window.location.hash || ''
-    const match = pathname.match(/^\/(en|ua|es)(.*)/)
+    const match = pathname.match(/^\/(en|ua|es|de)(.*)/)
     if (match) {
       return `/${targetLang}${match[2] || ''}${hash}`
     }
@@ -284,14 +284,33 @@ const Header = () => {
             <button
               type="button"
               onClick={(e) => handleNavClick(e as unknown as React.MouseEvent<HTMLAnchorElement>, navItems[0])}
-              aria-label="Artur Yusupov - Portfolio Home"
+              aria-label={
+                lang === 'ua'
+                  ? 'Артур Юсупов - Головна сторінка портфоліо'
+                  : lang === 'es'
+                    ? 'Artur Yusupov - Inicio del Portafolio'
+                    : lang === 'de'
+                      ? 'Artur Yusupov - Portfolio-Startseite'
+                      : 'Artur Yusupov - Portfolio Home'
+              }
               className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white hover:text-purple-600 dark:hover:text-lime-400 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-600 dark:focus-visible:outline-lime-400 rounded text-left whitespace-nowrap shrink-0 cursor-pointer"
             >
               Artur Yusupov
             </button>
 
             {/* Desktop Navigation (>= 1280px xl breakpoint: guarantees zero wrapping and ample breathing room) */}
-            <nav className="hidden xl:flex items-center space-x-4 2xl:space-x-7" aria-label="Desktop Navigation">
+            <nav
+              className="hidden xl:flex items-center space-x-4 2xl:space-x-7"
+              aria-label={
+                lang === 'ua'
+                  ? 'Десктопна навігація'
+                  : lang === 'es'
+                    ? 'Navegación de escritorio'
+                    : lang === 'de'
+                      ? 'Desktop-Navigation'
+                      : 'Desktop Navigation'
+              }
+            >
               {navItems.map((item) => (
                 <a
                   key={item.id}
@@ -325,7 +344,15 @@ const Header = () => {
                 href="https://github.com/YusupovWebArt"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="GitHub Profile"
+                aria-label={
+                  lang === 'ua'
+                    ? 'Профіль GitHub'
+                    : lang === 'es'
+                      ? 'Perfil de GitHub'
+                      : lang === 'de'
+                        ? 'GitHub-Profil'
+                        : 'GitHub Profile'
+                }
                 className="p-1.5 text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white transition-colors"
               >
                 <Github size={20} aria-hidden="true" />
@@ -334,7 +361,15 @@ const Header = () => {
                 href="https://www.linkedin.com/in/artur-iusupov/"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="LinkedIn Profile"
+                aria-label={
+                  lang === 'ua'
+                    ? 'Профіль LinkedIn'
+                    : lang === 'es'
+                      ? 'Perfil de LinkedIn'
+                      : lang === 'de'
+                        ? 'LinkedIn-Profil'
+                        : 'LinkedIn Profile'
+                }
                 className="p-1.5 text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white transition-colors"
               >
                 <Linkedin size={20} aria-hidden="true" />
@@ -343,7 +378,15 @@ const Header = () => {
                 href="https://x.com/yusupovwebart"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="X Profile"
+                aria-label={
+                  lang === 'ua'
+                    ? 'Профіль X'
+                    : lang === 'es'
+                      ? 'Perfil de X'
+                      : lang === 'de'
+                        ? 'X-Profil'
+                        : 'X Profile'
+                }
                 className="p-1.5 text-slate-600 dark:text-gray-300 hover:text-slate-900 dark:hover:text-white transition-colors"
               >
                 <XIcon size={18} aria-hidden="true" />
@@ -373,7 +416,23 @@ const Header = () => {
                 type="button"
                 className="p-2 text-slate-900 dark:text-white rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-600 dark:focus-visible:outline-lime-400"
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+                aria-label={
+                  isMenuOpen
+                    ? lang === 'ua'
+                      ? 'Закрити меню навігації'
+                      : lang === 'es'
+                        ? 'Cerrar menú de navegación'
+                        : lang === 'de'
+                          ? 'Navigationsmenü schließen'
+                          : 'Close navigation menu'
+                    : lang === 'ua'
+                      ? 'Відкрити меню навігації'
+                      : lang === 'es'
+                        ? 'Abrir menú de navegación'
+                        : lang === 'de'
+                          ? 'Navigationsmenü öffnen'
+                          : 'Open navigation menu'
+                }
                 aria-expanded={isMenuOpen}
                 aria-controls="mobile-navigation"
               >
@@ -384,7 +443,19 @@ const Header = () => {
 
           {/* Mobile & Tablet Drawer Menu (< 1280px) */}
           {isMenuOpen && (
-            <nav id="mobile-navigation" className="xl:hidden pb-4 animate-fade-in" aria-label="Mobile Navigation">
+            <nav
+              id="mobile-navigation"
+              className="xl:hidden pb-4 animate-fade-in"
+              aria-label={
+                lang === 'ua'
+                  ? 'Мобільна навігація'
+                  : lang === 'es'
+                    ? 'Navegación móvil'
+                    : lang === 'de'
+                      ? 'Mobile Navigation'
+                      : 'Mobile Navigation'
+              }
+            >
               <div className="mt-2 rounded-2xl border border-slate-200/90 dark:border-slate-700/80 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md shadow-2xl p-3 space-y-1 max-h-[calc(100dvh-5rem)] overflow-y-auto custom-scrollbar">
                 {navItems.map((item) => (
                   <a
@@ -410,7 +481,15 @@ const Header = () => {
                     href="https://github.com/YusupovWebArt"
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="GitHub Profile"
+                    aria-label={
+                      lang === 'ua'
+                        ? 'Профіль GitHub'
+                        : lang === 'es'
+                          ? 'Perfil de GitHub'
+                          : lang === 'de'
+                            ? 'GitHub-Profil'
+                            : 'GitHub Profile'
+                    }
                     className="p-2.5 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-colors"
                   >
                     <Github size={20} aria-hidden="true" />
@@ -419,7 +498,15 @@ const Header = () => {
                     href="https://www.linkedin.com/in/artur-iusupov/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="LinkedIn Profile"
+                    aria-label={
+                      lang === 'ua'
+                        ? 'Профіль LinkedIn'
+                        : lang === 'es'
+                          ? 'Perfil de LinkedIn'
+                          : lang === 'de'
+                            ? 'LinkedIn-Profil'
+                            : 'LinkedIn Profile'
+                    }
                     className="p-2.5 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-colors"
                   >
                     <Linkedin size={20} aria-hidden="true" />
@@ -428,7 +515,15 @@ const Header = () => {
                     href="https://x.com/yusupovwebart"
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="X Profile"
+                    aria-label={
+                      lang === 'ua'
+                        ? 'Профіль X'
+                        : lang === 'es'
+                          ? 'Perfil de X'
+                          : lang === 'de'
+                            ? 'X-Profil'
+                            : 'X Profile'
+                    }
                     className="p-2.5 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-colors"
                   >
                     <XIcon size={18} aria-hidden="true" />

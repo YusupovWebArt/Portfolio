@@ -226,6 +226,17 @@ const SEARCH_SYNONYMS: Record<string, string[]> = {
   // Architecture / CRM / SaaS
   'crm': ['інтеграція', 'integration', 'crm'],
   'saas': ['платформа', 'platform', 'app'],
+
+  // German synonyms
+  'klinik': ['clinic', 'medical', 'healthcare'],
+  'medizin': ['medical', 'healthcare', 'clinic'],
+  'zahnarzt': ['dental', 'clinic'],
+  'laden': ['store', 'shop', 'ecommerce'],
+  'onlineshop': ['ecommerce', 'store', 'shopify', 'woocommerce'],
+  'bildung': ['education', 'edtech', 'learning'],
+  'lernen': ['education', 'edtech', 'learning'],
+  'bau': ['construction', 'timber'],
+  'plattform': ['platform', 'saas', 'app'],
 }
 
 export function matchesProjectSearch(project: Project, rawQuery: string): boolean {
@@ -239,18 +250,23 @@ export function matchesProjectSearch(project: Project, rawQuery: string): boolea
     project.description,
     project.descriptionUa || '',
     project.descriptionEs || '',
+    project.descriptionDe || '',
     project.fullDescription || '',
     project.fullDescriptionUa || '',
     project.fullDescriptionEs || '',
+    project.fullDescriptionDe || '',
     project.challenges || '',
     project.challengesUa || '',
     project.challengesEs || '',
+    project.challengesDe || '',
     project.solutions || '',
     project.solutionsUa || '',
     project.solutionsEs || '',
+    project.solutionsDe || '',
     project.architecture?.description || '',
     project.architecture?.descriptionUa || '',
     project.architecture?.descriptionEs || '',
+    project.architecture?.descriptionDe || '',
   ]
 
   const allTech = getProjectTechList(project)
@@ -271,17 +287,21 @@ export function matchesProjectSearch(project: Project, rawQuery: string): boolea
           title?: string
           titleUa?: string
           titleEs?: string
+          titleDe?: string
           description?: string
           descriptionUa?: string
           descriptionEs?: string
+          descriptionDe?: string
         }
         parts.push(
           f.title || '',
           f.titleUa || '',
           f.titleEs || '',
+          f.titleDe || '',
           f.description || '',
           f.descriptionUa || '',
           f.descriptionEs || '',
+          f.descriptionDe || '',
         )
       }
     }
@@ -319,7 +339,7 @@ export function getProjectSearchRelevanceScore(project: Project, rawQuery: strin
     .map((t) => (typeof t === 'string' ? t : `${t.short} ${t.full || ''}`))
     .join(' ')
     .toLowerCase()
-  const descLower = `${project.description} ${project.descriptionUa || ''} ${project.descriptionEs || ''}`.toLowerCase()
+  const descLower = `${project.description} ${project.descriptionUa || ''} ${project.descriptionEs || ''} ${project.descriptionDe || ''}`.toLowerCase()
 
   for (const token of tokens) {
     if (titleLower === token) {

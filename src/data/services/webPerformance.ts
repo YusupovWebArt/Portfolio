@@ -288,5 +288,99 @@ export const webPerformanceService: ServiceItem = {
       whatsappMessage: 'Вітаю Артуре! Хочу оптимізувати швидкість завантаження сайту та показники Core Web Vitals.',
       schemaDescription: 'Послуги інженерної оптимізації швидкості сайтів та Core Web Vitals в Іспанії та Європі. PageSpeed 95+, зниження вартості реклами в Google Ads та зростання конверсії.',
     },
+    de: {
+      badge: 'Extreme Performance / CRO & Google Ads',
+      title: 'Core Web Vitals & Sub-Sekunden-Performance-Optimierung (PageSpeed 95+)',
+      shortDesc: 'Beschleunigen Sie Ihre Webplattform auf unter 0.8s Ladezeit. Verbessern Sie Ihren Google Ads Qualitätsfaktor, senken Sie Ihren CPC und steigern Sie mobile Conversions.',
+      heroLead: 'Jede zusätzliche Sekunde mobiler Ladezeit kostet bis zu 20% Ihrer Werbe-Conversions. Ich optimiere die Codebasis auf Engineering-Ebene (Bundle-Splitting, Asset-Pipelines, Edge-Caching), um alle Metriken in den grünen Bereich zu bringen und Ihren ROI zu maximieren.',
+      metrics: [
+        { value: '<0.8s', label: 'Largest Contentful Paint (LCP)' },
+        { value: '-25%', label: 'Geschätzte CPC-Senkung bei Google Ads' },
+        { value: '+18%', label: 'Durchschnittlicher mobiler Conversion-Anstieg' },
+        { value: '95-100', label: 'Mobiler PageSpeed Insights Score' },
+      ],
+      problemsSolved: [
+        {
+          title: 'Verschwendete Google Ads Budgets durch langsame Landingpages',
+          desc: 'Google straft träge Landingpages mit einem schlechteren Qualitätsfaktor ab, was Ihre Klickpreise erhöht und Impressionen reduziert. Eine schnelle Website senkt direkt Ihre Akquisitionskosten.',
+        },
+        {
+          title: 'Mobile Besucher springen ab, bevor interaktive Elemente geladen sind',
+          desc: 'Über 50% des Traffics stammt von Smartphones in wechselhaften Mobilfunknetzen. Wir optimieren den kritischen Rendering-Pfad für sofortige Interaktivität.',
+        },
+        {
+          title: 'Warnungen in der Google Search Console wegen schwacher INP- oder CLS-Werte',
+          desc: 'Google nutzt echte Nutzerdaten (CrUX) als direktes Ranking-Signal. Wir beseitigen unerwartete Layout-Verschiebungen (CLS) und spürbare Klick-Verzögerungen (INP).',
+        },
+      ],
+      deliverables: [
+        {
+          title: 'Tiefgreifendes Engineering-Audit & Engpass-Diagnose',
+          items: [
+            'Analyse der Server-Antwortzeit (TTFB), Audit von Drittanbieter-Skripten und Rendering-blockierenden Ressourcen.',
+            'Detaillierter technischer Bericht mit Vorher-Nachher-Messwerten in Millisekunden über alle Core Web Vitals.',
+          ],
+        },
+        {
+          title: 'Gezielte Codebase-Optimierungen',
+          items: [
+            'Radikale Reduzierung der JavaScript-Nutzlast (Tree-Shaking, verzögertes Laden von Tag-Managern, dynamische Imports).',
+            'Konvertierung der Bild-Pipeline in WebP/AVIF mit responsiven srcset-Größen.',
+            'Strategisches Font-Preloading zur Eliminierung von Layout-Sprüngen (FOIT / FOUT).',
+          ],
+        },
+        {
+          title: 'Erweitertes Edge-Caching & Netzwerk-Tuning',
+          items: [
+            'Optimierte HTTP Cache-Control-Header und Brotli-Komprimierung.',
+            'Edge-CDN-Konfiguration (Cloudflare oder CloudFront) für Asset-Auslieferung unter 30ms Latenz.',
+          ],
+        },
+      ],
+      workflowSteps: [
+        {
+          step: 'Schritt 1',
+          title: 'Baseline-Messung & Diagnose-Audit',
+          desc: 'Wir erfassen synthetische Laborwerte und reale Nutzerdaten (CrUX), um verbindliche Performance-KPIs festzulegen.',
+        },
+        {
+          step: 'Schritt 2',
+          title: 'Codebase-Optimierung im Staging',
+          desc: 'Wir setzen alle Performance-Maßnahmen auf einem isolierten Staging-Klon ohne Risiko für den Live-Betrieb um.',
+        },
+        {
+          step: 'Schritt 3',
+          title: 'Checkout- & Tracking-Validierung',
+          desc: 'Wir testen Bestellprozesse, Formulare, Tracking-Pixel und Analytics-Events auf fehlerfreie Funktion.',
+        },
+        {
+          step: 'Schritt 4',
+          title: 'Produktions-Rollout & KPI-Monitoring',
+          desc: 'Wir übertragen die Optimierungen live und überwachen die Score-Steigerungen in PageSpeed und Search Console.',
+        },
+      ],
+      faqs: [
+        {
+          q: 'Verändert die Code-Optimierung das visuelle Design oder bestehende Funktionen?',
+          a: 'Nein. Ziel des Performance-Engineerings ist es, Ihr exaktes Design beizubehalten und alle Ressourcen maximal effizient ohne Blockierung des Browser-Threads zu laden.',
+        },
+        {
+          q: 'Worin liegt der Unterschied zu einem WordPress-Cache-Plugin?',
+          a: 'Cache-Plugins speichern lediglich statisches HTML. Sie beheben weder überladenes JavaScript noch blockierende Tracking-Tags oder unoptimierte Webfonts. Ich optimiere direkt den Quellcode.',
+        },
+        {
+          q: 'Wie wirkt sich Ladegeschwindigkeit auf meine Google Ads Kampagnen aus?',
+          a: 'Google bewertet das Landingpage-Erlebnis für den Qualitätsfaktor. Eine schnelle Seite ermöglicht bessere Anzeigenpositionen bei geringerem Preis pro Klick.',
+        },
+        {
+          q: 'Bieten Sie eine messbare Ergebnisgarantie?',
+          a: 'Ja. Wir vereinbaren vorab konkrete Core Web Vitals Ziele (z. B. Mobile Score über 90 oder LCP unter 1.2s). Werden diese nicht erreicht, entfällt die Abschlusszahlung.',
+        },
+      ],
+      ctaHeadline: 'Lädt Ihre Website auf dem Smartphone länger als 2 Sekunden?',
+      ctaLead: 'Senden Sie mir Ihre URL per WhatsApp. Ich führe einen schnellen Speed-Check durch und zeige Ihnen die größten Bremsklötze.',
+      whatsappMessage: 'Hallo Artur, ich möchte die Ladegeschwindigkeit und die Core Web Vitals meiner Website optimieren lassen.',
+      schemaDescription: 'Web-Performance-Optimierung und Core Web Vitals Tuning in Spanien und der EU. PageSpeed 95+, höherer Google Ads Qualitätsfaktor und mehr mobile Conversions.',
+    },
   },
 }

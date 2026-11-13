@@ -20,18 +20,23 @@ export async function generateMetadata({
   const { locale } = await params
   const isUa = locale === 'ua'
   const isEs = locale === 'es'
+  const isDe = locale === 'de'
 
   const title = isUa
     ? 'Політика конфіденційності | Артур Юсупов'
     : isEs
       ? 'Política de Privacidad | Artur Yusupov'
-      : 'Privacy Policy | Artur Yusupov'
+      : isDe
+        ? 'Datenschutzerklärung | Artur Yusupov'
+        : 'Privacy Policy | Artur Yusupov'
 
   const description = isUa
     ? 'Прозора політика захисту персональних даних відповідно до GDPR та LOPDGDD. Керування аналітикою та ефемерна обробка запитів RAG AI-асистента.'
     : isEs
       ? 'Aviso de privacidad y protección de datos conforme al RGPD y LOPDGDD. Información transparente sobre telemetría y procesamiento efímero del Asistente de IA.'
-      : 'Transparent privacy and personal data protection policy under GDPR and LOPDGDD. Learn about telemetry controls and ephemeral RAG AI Assistant processing.'
+      : isDe
+        ? 'Transparente Datenschutzerklärung gemäß DSGVO (GDPR) und LOPDGDD. Informationen zur Telemetrie-Steuerung und flüchtigen Verarbeitung des RAG-KI-Assistenten.'
+        : 'Transparent privacy and personal data protection policy under GDPR and LOPDGDD. Learn about telemetry controls and ephemeral RAG AI Assistant processing.'
 
   return {
     title,
@@ -54,6 +59,8 @@ export async function generateMetadata({
         uk: 'https://www.yusupovartur.com/ua/privacy-policy',
         es: 'https://www.yusupovartur.com/es/privacy-policy',
         'es-ES': 'https://www.yusupovartur.com/es/privacy-policy',
+        de: 'https://www.yusupovartur.com/de/privacy-policy',
+        'de-DE': 'https://www.yusupovartur.com/de/privacy-policy',
         'x-default': 'https://www.yusupovartur.com/en/privacy-policy',
       },
     },
@@ -62,7 +69,7 @@ export async function generateMetadata({
       description,
       url: `https://www.yusupovartur.com/${locale}/privacy-policy`,
       siteName: 'Artur Yusupov - Portfolio & B2B Web Engineering',
-      locale: isUa ? 'uk_UA' : isEs ? 'es_ES' : 'en_US',
+      locale: isUa ? 'uk_UA' : isEs ? 'es_ES' : isDe ? 'de_DE' : 'en_US',
       type: 'website',
     },
     robots: {
@@ -76,7 +83,7 @@ export default async function PrivacyPolicyPage({
   params,
 }: PrivacyPolicyPageProps) {
   const { locale } = await params
-  const validLocale = (locale === 'es' || locale === 'ua' ? locale : 'en') as 'en' | 'ua' | 'es'
+  const validLocale = (locale === 'es' || locale === 'ua' || locale === 'de' ? locale : 'en') as 'en' | 'ua' | 'es' | 'de'
   const data = privacyData[validLocale]
   const breadcrumbsJsonLd = buildLegalBreadcrumbsJsonLd(data.title, 'privacy-policy', validLocale)
 

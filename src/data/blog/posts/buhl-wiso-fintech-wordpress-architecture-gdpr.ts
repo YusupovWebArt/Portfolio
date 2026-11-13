@@ -7,23 +7,27 @@ export const buhlWisoFintechWordPressPost: BlogPost = {
     en: 'High-Performance Tax Software Architecture: Custom WordPress, BaFin Compliance & GDPR for Buhl WISO Germany',
     ua: 'Архітектура високонавантаженого податкового ПЗ: кастомний WordPress, комплаєнс BaFin та GDPR для Buhl WISO Німеччина',
     es: 'Arquitectura de software fiscal de alto rendimiento: WordPress a medida, cumplimiento BaFin y GDPR para Buhl WISO Alemania',
+    de: 'Hochleistungsfähige Steuersoftware-Architektur: Maßgeschneidertes WordPress, BaFin-Compliance & DSGVO für Buhl WISO Deutschland',
   },
   description: {
     en: 'An architectural case study on engineering a zero-builder custom WordPress portal for Buhl WISO tax software in Germany. Covering BaFin data security, strict GDPR compliance, FastCGI microcaching, and sub-90ms TTFB under peak tax filing seasons.',
     ua: 'Інженерний кейс розробки кастомного порталу на WordPress з нуля для податкового ПЗ Buhl WISO в Німеччині: безпека даних за нормами BaFin, суворий GDPR, FastCGI мікрокешування та TTFB < 90мс у піковий податковий сезон.',
     es: 'Caso de estudio de ingeniería sobre el desarrollo de un portal WordPress a medida sin constructores visuales para el software fiscal Buhl WISO en Alemania. Seguridad de datos BaFin, GDPR estricto, microcaché FastCGI y TTFB sub-90ms.',
+    de: 'Eine architektonische Fallstudie über die Entwicklung eines maßgeschneiderten WordPress-Portals ohne Page-Builder für die Steuersoftware Buhl WISO in Deutschland. Mit BaFin-Datensicherheit, strikter DSGVO-Konformität, FastCGI-Mikrocaching und Sub-90ms-TTFB während saisonaler Spitzen zur Steuerabgabe.',
   },
   date: '2026-11-12',
   readTime: {
     en: '9 min read',
     ua: '9 хв читання',
     es: '9 min de lectura',
+    de: '9 Min. Lesezeit',
   },
   category: 'architecture-tco',
   categoryLabel: {
     en: 'Architecture & TCO',
     ua: 'Архітектура та TCO',
     es: 'Arquitectura y TCO',
+    de: 'Architektur & TCO',
   },
   tags: ['WordPress', 'Fintech', 'GDPR', 'BaFin', 'Performance', 'Nginx', 'Germany', 'Security'],
   author: {
@@ -32,6 +36,7 @@ export const buhlWisoFintechWordPressPost: BlogPost = {
       en: 'Fullstack Web Engineer & AI Developer',
       ua: 'Fullstack веб-інженер та AI-розробник',
       es: 'Ingeniero Web Fullstack y Desarrollador IA',
+      de: 'Fullstack Web-Engineer & KI-Architekt',
     },
   },
   coverImage: '/Portfolio/images/blog/cover-buhl-wiso-fintech.svg',
@@ -44,6 +49,7 @@ export const buhlWisoFintechWordPressPost: BlogPost = {
         en: 'Custom zero-builder WordPress theme engineered for Buhl WISO tax-return software in Germany, achieving PageSpeed 98/100, sub-90ms TTFB in Frankfurt, and strict GDPR privacy compliance.',
         ua: 'Кастомна тема WordPress без візуальних білдерів для податкового ПЗ Buhl WISO в Німеччині: швидкість PageSpeed 98/100, TTFB < 90мс у Франкфурті та суворий комплаєнс GDPR.',
         es: 'Tema WordPress a medida sin maquetadores visuales desarrollado para el software fiscal Buhl WISO en Alemania, logrando PageSpeed 98/100, TTFB sub-90ms en Frankfurt y cumplimiento riguroso de GDPR.',
+        de: 'Maßgeschneidertes WordPress-Theme ohne Page-Builder für die Steuersoftware Buhl WISO in Deutschland: PageSpeed 98/100, Sub-90ms-TTFB in Frankfurt und strikte DSGVO-Datenschutzkonformität.',
       },
     },
   ],
@@ -65,6 +71,12 @@ export const buhlWisoFintechWordPressPost: BlogPost = {
       'Eliminación de la sobrecarga de maquetadores (Elementor/Divi): reducción de la profundidad del DOM de 32 a 5 niveles y recorte del 84% en CSS.',
       'Cumplimiento estricto de privacidad alemana: sin fugas a rastreadores de terceros, fuentes locales y adhesión a normativas BaFin/GDPR.',
       'Obtención de PageSpeed 98/100 y TTFB inferior a 90ms con microcaché Nginx FastCGI durante picos de entrega de declaraciones fiscales.',
+    ],
+    de: [
+      'Entwicklung eines maßgeschneiderten WordPress-Themes ohne Page-Builder für die Steuersoftware Buhl WISO im regulierten deutschen Markt.',
+      'Vollständige Eliminierung von Page-Builder-Overhead (Elementor/Divi): Reduzierung der DOM-Tiefe von 32 auf 5 Ebenen und 84% Einsparung beim CSS-Payload.',
+      'Umsetzung strikter deutscher Datenschutzauflagen: null externe Font- oder Skript-Leaks, lokales Asset-Hosting und BaFin-/DSGVO-Konformität.',
+      'Erreichen von PageSpeed 98/100 und Sub-90ms-TTFB durch Nginx-FastCGI-Mikrocaching bei maximaler Verfügbarkeit während der Steuerabgabe-Deadlines.',
     ],
   },
   content: {
@@ -250,6 +262,98 @@ Bajo la jurisdicción alemana, el software fiscal debe garantizar la máxima con
 - **Largest Contentful Paint (LCP):** 0.85s en conexiones 4G
 - **Cumulative Layout Shift (CLS):** 0.000
 - **Incremento de conversión:** +24.6% en descargas directas del software frente a plantillas tradicionales.
+`,
+    de: `## Executive Overview & Die Problemstellung
+
+Steuererklärungssoftware in Deutschland unterliegt einigen der weltweit strengsten technischen, rechtlichen und regulatorischen Vorgaben. Bei der Vermarktung von **Buhl WISO** - Deutschlands führender digitaler Steuersoftware (Steuererklärung) - müssen Landingpages massive saisonale Traffic-Spitzen bewältigen, Ladezeiten im Subsekundenbereich liefern und die Datenschutzrichtlinien der **DSGVO (GDPR)** sowie der **BaFin (Bundesanstalt für Finanzdienstleistungsaufsicht)** lückenlos einhalten.
+
+Die meisten Digitalagenturen versuchen, kommerzielle Landingpages mit visuellen Page-Buildern wie Elementor, Divi oder WPBakery umzusetzen. In einem hochregulierten Fintech-Umfeld scheitert dieser Ansatz regelmäßig:
+- **Exzessive DOM-Komplexität:** Typische Builder-Seiten erzeugen über 2.500 DOM-Knoten und mehr als 30 verschachtelte Wrapper, was mobile CPUs überlastet.
+- **Datenschutz-Leaks:** Standard-Builder binden externe Google Fonts, CDNs und Telemetrie-Skripte ein, was deutsche Gerichtsentscheidungen zur Übertragung von IP-Adressen ohne ausdrückliche Einwilligung direkt verletzt.
+- **Server-Überlastung:** Dynamische Datenbankabfragen bei jedem Seitenaufruf führen zu MySQL-Abstürzen, wenn Millionen deutsche Steuerzahler in den letzten Wochen vor der Abgabefrist ihre Erklärung einreichen.
+
+Um diese Herausforderungen zu lösen, haben wir eine **maßgeschneiderte WordPress-Architektur ohne Page-Builder** entwickelt, die vollständig auf reinem PHP, semantischem HTML5, modernem Vanilla JavaScript und serverseitigem FastCGI-Mikrocaching basiert.
+
+---
+
+## Architektonischer Vergleich: Page-Builder vs. maßgeschneidertes PHP
+
+| Metrik / Anforderung | Visueller Page-Builder (Elementor/Divi) | Maßgeschneiderte PHP-Architektur für Buhl WISO | Geschäftlicher Nutzen |
+| :--- | :--- | :--- | :--- |
+| **DOM-Baumtiefe** | 28 - 34 verschachtelte Ebenen | 4 - 6 semantische Ebenen | 65% schnellere Layout-Neuberechnung |
+| **CSS-Bundle-Größe** | 480 KB - 850 KB (92% ungenutzt) | 48 KB (100% modularer kritischer CSS-Code) | Sub-0,8s mobiles LCP |
+| **Drittanbieter-Anfragen** | 18 - 25 externe Skripte/Fonts | 0 (100% selbst gehostete Assets) | Null DSGVO-Abmahnrisiko |
+| **Spitzen-Durchsatz** | ~45 Anfr./Sek. vor MySQL-Sperre | 1.400+ Anfr./Sek. (FastCGI-Cache) | 99,99% Uptime während der Steuersaison |
+| **Mobile PageSpeed** | 48 - 65 / 100 | 96 - 98 / 100 | Höherer Google Ads Quality Score |
+
+---
+
+## Compliance-Architektur: BaFin, DSGVO & Null-Drittanbieter-Footprint
+
+Unter deutscher Bundesgerichtsbarkeit muss bei der Vermarktung von Finanzsoftware garantiert werden, dass Nutzerinteraktionen absolut vertraulich bleiben:
+
+### 1. Autonome Asset-Bereitstellung
+Externe Font-CDNs (wie fonts.googleapis.com) wurden vollständig verbannt. Sämtliche Typografie wird lokal im modernen WOFF2-Format mit \`font-display: swap\` bereitgestellt und im Dokumentkopf vorab geladen.
+
+### 2. Abgesicherte Lead-Erfassung & CSRF-Schutz
+Die Formularverarbeitung nutzt nonce-validierte Endpunkte mit serverseitigem Rate-Limiting und Eingabebereinigung. Finanzdaten werden zu keinem Zeitpunkt in Klartext-Datenbanktabellen gespeichert.
+
+### 3. Strikte Content Security Policy (CSP)
+Ein restriktiver CSP-Header erzwingt die Herkunftsvalidierung, neutralisiert Cross-Site-Scripting (XSS) vollständig und blockiert unautorisierte Tracking-Pixel:
+
+\`\`\`http
+Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; frame-ancestors 'none';
+\`\`\`
+
+---
+
+## Hochlast-Performance: Nginx FastCGI-Mikrocaching
+
+Um saisonalen Lastspitzen standzuhalten, wenn Millionen Steuerzahler WISO gleichzeitig herunterladen, haben wir eine FastCGI-Cache-Schicht in Nginx implementiert. Statische anonyme Anfragen umgehen die PHP-FPM-Ausführung vollständig:
+
+\`\`\`nginx
+# Nginx FastCGI Cache-Konfiguration fuer Buhl WISO
+fastcgi_cache_path /var/run/nginx-cache levels=1:2 keys_zone=BUHL_CACHE:100m inactive=60m max_size=1g;
+fastcgi_cache_key "$scheme$request_method$host$request_uri";
+
+server {
+    server_name buhl-wiso.de;
+    
+    set $skip_cache 0;
+    
+    # Cache fuer POST-Anfragen oder authentifizierte Sitzungen umgehen
+    if ($request_method = POST) { set $skip_cache 1; }
+    if ($query_string != "") { set $skip_cache 1; }
+    if ($http_cookie ~* "comment_author|wordpress_[a-f0-9]+|wp-postpass|wordpress_logged_in") {
+        set $skip_cache 1;
+    }
+
+    location ~ \\.php$ {
+        fastcgi_pass unix:/var/run/php/php8.2-fpm.sock;
+        fastcgi_index index.php;
+        include fastcgi_params;
+        
+        fastcgi_cache BUHL_CACHE;
+        fastcgi_cache_valid 200 301 302 60m;
+        fastcgi_cache_bypass $skip_cache;
+        fastcgi_no_cache $skip_cache;
+        
+        add_header X-Cache-Status $upstream_cache_status;
+    }
+}
+\`\`\`
+
+Mit aktiviertem FastCGI-Mikrocaching sank die Antwortzeit für gecachte Anfragen in Frankfurt auf **22ms**, wobei der Server bei simulierten Lasttests mit 5.000 parallelen Sitzungen bei unter 8% CPU-Auslastung operierte.
+
+---
+
+## Verifizierte Produktionsmetriken
+
+- **Google PageSpeed Mobile Score:** 98 / 100
+- **Time to First Byte (TTFB):** 84ms an mitteleuropäischen Standorten
+- **Largest Contentful Paint (LCP):** 0,85s über 4G-Mobilfunkverbindungen
+- **Cumulative Layout Shift (CLS):** 0.000 (Vollständige Layout-Stabilität)
+- **Conversion-Rate-Steigerung:** +24,6% mehr direkte Software-Downloads im Vergleich zu früheren Builder-Templates.
 `,
   },
 }

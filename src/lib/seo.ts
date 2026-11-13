@@ -107,7 +107,9 @@ export function buildProjectJsonLd(
       ? project.descriptionUa
       : locale === 'es' && project.descriptionEs
         ? project.descriptionEs
-        : project.description
+        : locale === 'de' && project.descriptionDe
+          ? project.descriptionDe
+          : project.description
 
   const keywords = extractProjectKeywords(project)
 
@@ -162,8 +164,10 @@ export function buildProjectBreadcrumbsJsonLd(
   slug: string,
   locale = 'en',
 ): BreadcrumbListJsonLd {
-  const homeLabel = locale === 'ua' ? 'Головна' : locale === 'es' ? 'Inicio' : 'Home'
-  const projectsLabel = locale === 'ua' ? 'Проєкти' : locale === 'es' ? 'Proyectos' : 'Projects'
+  const homeLabel =
+    locale === 'ua' ? 'Головна' : locale === 'es' ? 'Inicio' : locale === 'de' ? 'Startseite' : 'Home'
+  const projectsLabel =
+    locale === 'ua' ? 'Проєкти' : locale === 'es' ? 'Proyectos' : locale === 'de' ? 'Projekte' : 'Projects'
 
   return {
     '@context': 'https://schema.org',
@@ -207,36 +211,76 @@ export interface FaqPageJsonLd {
 export function buildWebsiteFaqJsonLd(locale = 'en'): FaqPageJsonLd {
   const faqItems = [
     {
-      q: locale === 'ua' ? 'Хто такий Артур Юсупов?' : locale === 'es' ? '¿Quién es Artur Yusupov?' : 'Who is Artur Yusupov?',
-      a: locale === 'ua'
-        ? 'Артур Юсупов - Fullstack WordPress-розробник та Next.js/React інженер із понад 5 роками комерційного досвіду, що спеціалізується на високопродуктивних веб-додатках, архітектурі Headless CMS та кастомних RAG AI-асистентах.'
-        : locale === 'es'
-          ? 'Artur Yusupov es un desarrollador Fullstack de WordPress e ingeniero Next.js/React con más de 5 años de experiencia comercial, especializado en aplicaciones web de alto rendimiento, Headless CMS y asistentes de IA con arquitectura RAG.'
-          : 'Artur Yusupov is a Fullstack WordPress Developer and Next.js / React Engineer with over 5+ years of commercial experience, specializing in high-performance web applications, Headless CMS architectures, and custom RAG AI assistants.',
+      q:
+        locale === 'ua'
+          ? 'Хто такий Артур Юсупов?'
+          : locale === 'es'
+            ? '¿Quién es Artur Yusupov?'
+            : locale === 'de'
+              ? 'Wer ist Artur Yusupov?'
+              : 'Who is Artur Yusupov?',
+      a:
+        locale === 'ua'
+          ? 'Артур Юсупов - Fullstack WordPress-розробник та Next.js/React інженер із понад 5 роками комерційного досвіду, що спеціалізується на високопродуктивних веб-додатках, архітектурі Headless CMS та кастомних RAG AI-асистентах.'
+          : locale === 'es'
+            ? 'Artur Yusupov es un desarrollador Fullstack de WordPress e ingeniero Next.js/React con más de 5 años de experiencia comercial, especializado en aplicaciones web de alto rendimiento, Headless CMS y asistentes de IA con arquitectura RAG.'
+            : locale === 'de'
+              ? 'Artur Yusupov ist Fullstack-WordPress-Entwickler und Next.js/React-Ingenieur mit über 5 Jahren kommerzieller Erfahrung, spezialisiert auf hochperformante Webanwendungen, Headless-CMS-Architekturen und maßgeschneiderte RAG-KI-Assistenten.'
+              : 'Artur Yusupov is a Fullstack WordPress Developer and Next.js / React Engineer with over 5+ years of commercial experience, specializing in high-performance web applications, Headless CMS architectures, and custom RAG AI assistants.',
     },
     {
-      q: locale === 'ua' ? 'Які архітектурні стеки ви розробляєте?' : locale === 'es' ? '¿Qué arquitecturas y tecnologías desarrollas?' : 'What architectural stacks do you engineer?',
-      a: locale === 'ua'
-        ? 'Основний стек включає Next.js 16 (App Router + RSC), кастомні теми WordPress на PHP 8+ з ACF Pro, Headless WordPress (Next.js + WP REST API), TypeScript, Tailwind CSS та Shopify Liquid.'
-        : locale === 'es'
-          ? 'El stack principal incluye Next.js 16 (App Router + RSC), temas personalizados de WordPress en PHP 8+ con ACF Pro, Headless WordPress (Next.js + WP REST API), TypeScript, Tailwind CSS y Shopify Liquid.'
-          : 'The core stack includes Next.js 16 (App Router + RSC), custom WordPress themes on PHP 8+ with ACF Pro, Headless WordPress (Next.js + WP REST API), TypeScript, Tailwind CSS, and Shopify Liquid.',
+      q:
+        locale === 'ua'
+          ? 'Які архітектурні стеки ви розробляєте?'
+          : locale === 'es'
+            ? '¿Qué arquitecturas y tecnologías desarrollas?'
+            : locale === 'de'
+              ? 'Welche Architekturen und Technologie-Stacks entwickeln Sie?'
+              : 'What architectural stacks do you engineer?',
+      a:
+        locale === 'ua'
+          ? 'Основний стек включає Next.js 16 (App Router + RSC), кастомні теми WordPress на PHP 8+ з ACF Pro, Headless WordPress (Next.js + WP REST API), TypeScript, Tailwind CSS та Shopify Liquid.'
+          : locale === 'es'
+            ? 'El stack principal incluye Next.js 16 (App Router + RSC), temas personalizados de WordPress en PHP 8+ con ACF Pro, Headless WordPress (Next.js + WP REST API), TypeScript, Tailwind CSS y Shopify Liquid.'
+            : locale === 'de'
+              ? 'Der Kern-Stack umfasst Next.js 16 (App Router + RSC), maßgeschneiderte WordPress-Themes auf PHP 8+ mit ACF Pro, Headless WordPress (Next.js + WP REST API), TypeScript, Tailwind CSS und Shopify Liquid.'
+              : 'The core stack includes Next.js 16 (App Router + RSC), custom WordPress themes on PHP 8+ with ACF Pro, Headless WordPress (Next.js + WP REST API), TypeScript, Tailwind CSS, and Shopify Liquid.',
     },
     {
-      q: locale === 'ua' ? 'Як ви гарантуєте показники Core Web Vitals?' : locale === 'es' ? '¿Cómo garantizas las métricas de Core Web Vitals?' : 'How do you guarantee Core Web Vitals performance?',
-      a: locale === 'ua'
-        ? 'Всі проєкти оптимізуються під оцінку 95+ у Lighthouse, субсекундний LCP (до 0.8с), нульовий CLS (0.00) та миттєвий відгук INP завдяки кодовому розділенню, WebP/AVIF пайплайнам та серверному рендерингу.'
-        : locale === 'es'
-          ? 'Todos los proyectos se optimizan para una puntuación de 95+ en Lighthouse, LCP subsegundo (menos de 0.8s), CLS cero (0.00) e INP inmediato mediante división de código, optimización WebP/AVIF y renderizado en servidor.'
-          : 'All projects are strictly optimized for 95+ Lighthouse scores, sub-second LCP (<0.8s), zero CLS (0.00), and responsive INP via route code-splitting, WebP/AVIF image pipelines, and server-side rendering.',
+      q:
+        locale === 'ua'
+          ? 'Як ви гарантуєте показники Core Web Vitals?'
+          : locale === 'es'
+            ? '¿Cómo garantizas las métricas de Core Web Vitals?'
+            : locale === 'de'
+              ? 'Wie garantieren Sie optimale Core Web Vitals Werte?'
+              : 'How do you guarantee Core Web Vitals performance?',
+      a:
+        locale === 'ua'
+          ? 'Всі проєкти оптимізуються під оцінку 95+ у Lighthouse, субсекундний LCP (до 0.8с), нульовий CLS (0.00) та миттєвий відгук INP завдяки кодовому розділенню, WebP/AVIF пайплайнам та серверному рендерингу.'
+          : locale === 'es'
+            ? 'Todos los proyectos se optimizan para una puntuación de 95+ en Lighthouse, LCP subsegundo (menos de 0.8s), CLS cero (0.00) e INP inmediato mediante división de código, optimización WebP/AVIF y renderizado en servidor.'
+            : locale === 'de'
+              ? 'Alle Projekte werden auf Lighthouse-Werte von 95+, ein LCP unter 0.8s, null CLS (0.00) und reaktionsschnelles INP durch Code-Splitting, WebP/AVIF-Pipelines und Server-Side Rendering optimiert.'
+              : 'All projects are strictly optimized for 95+ Lighthouse scores, sub-second LCP (<0.8s), zero CLS (0.00), and responsive INP via route code-splitting, WebP/AVIF image pipelines, and server-side rendering.',
     },
     {
-      q: locale === 'ua' ? 'Чи доступні ви для віддаленої роботи та B2B проєктів?' : locale === 'es' ? '¿Estás disponible para contratos remotos y proyectos B2B?' : 'Are you available for remote contracts and B2B projects?',
-      a: locale === 'ua'
-        ? 'Так, відкритий до віддаленої співпраці, контрактних ролей та розробки під ключ з офіційною реєстрацією в Іспанії (ЄС).'
-        : locale === 'es'
-          ? 'Sí, disponible para colaboraciones remotas, contratos B2B y desarrollo llave en mano con sede en Sevilla, España (Unión Europea).'
-          : 'Yes, available for remote roles, contract engagements, and turnkey engineering projects with registered business operations in Seville, Spain (EU).',
+      q:
+        locale === 'ua'
+          ? 'Чи доступні ви для віддаленої роботи та B2B проєктів?'
+          : locale === 'es'
+            ? '¿Estás disponible para contratos remotos y proyectos B2B?'
+            : locale === 'de'
+              ? 'Stehen Sie für Remote-Verträge und B2B-Projekte zur Verfügung?'
+              : 'Are you available for remote contracts and B2B projects?',
+      a:
+        locale === 'ua'
+          ? 'Так, відкритий до віддаленої співпраці, контрактних ролей та розробки під ключ з офіційною реєстрацією в Іспанії (ЄС).'
+          : locale === 'es'
+            ? 'Sí, disponible para colaboraciones remotas, contratos B2B y desarrollo llave en mano con sede en Sevilla, España (Unión Europea).'
+            : locale === 'de'
+              ? 'Ja, verfügbar für Remote-Zusammenarbeit, B2B-Verträge und schlüsselfertige Webentwicklung mit Standort in Sevilla, Spanien (Europäische Union).'
+              : 'Yes, available for remote roles, contract engagements, and turnkey engineering projects with registered business operations in Seville, Spain (EU).',
     },
   ]
 
@@ -268,18 +312,23 @@ export function buildBlogCatalogJsonLd(
 ) {
   const isUa = locale === 'ua'
   const isEs = locale === 'es'
+  const isDe = locale === 'de'
 
   const title = isUa
     ? 'Інженерний блог та архітектурні кейси | Артур Юсупов'
     : isEs
       ? 'Blog de Ingeniería y Casos de Arquitectura | Artur Yusupov'
-      : 'Engineering Blog & Architectural Case Studies | Artur Yusupov'
+      : isDe
+        ? 'Engineering-Blog & Architektur-Fallstudien | Artur Yusupov'
+        : 'Engineering Blog & Architectural Case Studies | Artur Yusupov'
 
   const description = isUa
     ? 'Глибокі технічні статті про архітектуру вебу, Next.js 16, кастомний WordPress, автономні RAG AI-рушії та доступність WCAG 2.2 AA.'
     : isEs
       ? 'Artículos técnicos en profundidad sobre arquitectura web, Next.js 16, WordPress a medida, motores de IA con RAG y accesibilidad WCAG 2.2 AA.'
-      : 'In-depth engineering articles on web architecture, Next.js 16, custom WordPress, autonomous in-browser RAG AI engines, and WCAG 2.2 AA compliance.'
+      : isDe
+        ? 'Fundierte Fachartikel über Webarchitektur, Next.js 16, maßgeschneidertes WordPress, autonome RAG-KI-Engines und WCAG 2.2 AA Barrierefreiheit.'
+        : 'In-depth engineering articles on web architecture, Next.js 16, custom WordPress, autonomous in-browser RAG AI engines, and WCAG 2.2 AA compliance.'
 
   return {
     '@context': 'https://schema.org',
@@ -387,13 +436,16 @@ export function buildBlogPostJsonLd(
 export function buildBlogCatalogBreadcrumbsJsonLd(
   locale = 'en',
 ): BreadcrumbListJsonLd {
-  const homeLabel = locale === 'ua' ? 'Головна' : locale === 'es' ? 'Inicio' : 'Home'
+  const homeLabel =
+    locale === 'ua' ? 'Головна' : locale === 'es' ? 'Inicio' : locale === 'de' ? 'Startseite' : 'Home'
   const blogLabel =
     locale === 'ua'
       ? 'Інженерний блог'
       : locale === 'es'
         ? 'Blog de Ingeniería'
-        : 'Engineering Blog'
+        : locale === 'de'
+          ? 'Engineering-Blog'
+          : 'Engineering Blog'
 
   return {
     '@context': 'https://schema.org',
@@ -420,7 +472,8 @@ export function buildBlogBreadcrumbsJsonLd(
   slug: string,
   locale = 'en',
 ): BreadcrumbListJsonLd {
-  const homeLabel = locale === 'ua' ? 'Головна' : locale === 'es' ? 'Inicio' : 'Home'
+  const homeLabel =
+    locale === 'ua' ? 'Головна' : locale === 'es' ? 'Inicio' : locale === 'de' ? 'Startseite' : 'Home'
   const blogLabel = locale === 'ua' ? 'Блог' : 'Blog'
 
   return {
@@ -452,30 +505,39 @@ export function buildBlogBreadcrumbsJsonLd(
 export function buildPersonAndWebsiteJsonLd(locale = 'en') {
   const isUa = locale === 'ua'
   const isEs = locale === 'es'
+  const isDe = locale === 'de'
 
   const jobTitle = isUa
     ? 'Senior Fullstack Web Engineer & AI Developer'
     : isEs
       ? 'Ingeniero Web Fullstack Senior y Desarrollador IA'
-      : 'Senior Fullstack Web Engineer & AI Developer'
+      : isDe
+        ? 'Senior Fullstack Web-Ingenieur & KI-Entwickler'
+        : 'Senior Fullstack Web Engineer & AI Developer'
 
   const description = isUa
     ? 'Портфоліо та інженерний хаб Артура Юсупова - Fullstack WordPress-розробника, React/Next.js інженера та спеціаліста з AI-інтеграцій та SEO.'
     : isEs
       ? 'Portafolio y centro de ingeniería de Artur Yusupov - Desarrollador Fullstack WordPress, ingeniero React/Next.js y especialista en IA y SEO.'
-      : 'Engineering portfolio of Artur Yusupov - Senior Fullstack WordPress & Next.js Engineer specializing in high-performance web applications, custom RAG AI assistants, and technical SEO.'
+      : isDe
+        ? 'Portfolio und Engineering-Hub von Artur Yusupov - Senior Fullstack WordPress & Next.js Entwickler, spezialisiert auf performante Webanwendungen, RAG-KI-Assistenten und technisches SEO.'
+        : 'Engineering portfolio of Artur Yusupov - Senior Fullstack WordPress & Next.js Engineer specializing in high-performance web applications, custom RAG AI assistants, and technical SEO.'
 
   const disambiguatingDescriptionPerson = isUa
     ? 'Fullstack веб-інженер, Next.js 16 архітектор та розробник автономних Hybrid RAG AI систем із Севільї, Іспанія (не плутати з однойменним шаховим гросмейстером чи футболістом).'
     : isEs
       ? 'Ingeniero de Software Fullstack, Arquitecto Next.js 16 y Desarrollador de Inteligencia Artificial Hybrid RAG residente en Sevilla, España (no confundir con el Gran Maestro de ajedrez ni el futbolista homónimo).'
-      : 'Fullstack Web Engineer, Next.js 16 Architect, and Hybrid RAG AI Systems Developer based in Seville, Spain (distinct from the chess grandmaster or footballer).'
+      : isDe
+        ? 'Fullstack Web-Ingenieur, Next.js 16 Architekt und Entwickler autonomer Hybrid-RAG-KI-Systeme mit Sitz in Sevilla, Spanien (nicht zu verwechseln mit dem gleichnamigen Schachgroßmeister oder Fußballspieler).'
+        : 'Fullstack Web Engineer, Next.js 16 Architect, and Hybrid RAG AI Systems Developer based in Seville, Spain (distinct from the chess grandmaster or footballer).'
 
   const disambiguatingDescriptionService = isUa
     ? 'B2B веб-інженерія, розробка під ключ, субпідряд Marca Blanca для агенцій та AI RAG рішення від Артура Юсупова (Севілья, Іспанія).'
     : isEs
       ? 'Servicios B2B de ingeniería web, desarrollo a medida, Marca Blanca para agencias y soluciones de IA RAG por Artur Yusupov (Sevilla, España).'
-      : 'B2B web engineering, custom development, Marca Blanca white-label for agencies, and AI RAG solutions by Artur Yusupov (Seville, Spain).'
+      : isDe
+        ? 'B2B Web-Engineering, maßgeschneiderte Webentwicklung, White-Label-Partnerschaften für Agenturen und RAG-KI-Lösungen von Artur Yusupov (Sevilla, Spanien).'
+        : 'B2B web engineering, custom development, Marca Blanca white-label for agencies, and AI RAG solutions by Artur Yusupov (Seville, Spain).'
 
   return {
     '@context': 'https://schema.org',
@@ -507,8 +569,8 @@ export function buildPersonAndWebsiteJsonLd(locale = 'en') {
         ],
         address: {
           '@type': 'PostalAddress',
-          addressLocality: isEs ? 'Sevilla' : isUa ? 'Севілья' : 'Seville',
-          addressRegion: isEs ? 'Andalucía' : isUa ? 'Андалусія' : 'Andalusia',
+          addressLocality: isEs ? 'Sevilla' : isUa ? 'Севілья' : isDe ? 'Sevilla' : 'Seville',
+          addressRegion: isEs ? 'Andalucía' : isUa ? 'Андалусія' : isDe ? 'Andalusien' : 'Andalusia',
           addressCountry: 'ES',
         },
         knowsAbout: isEs
@@ -539,19 +601,33 @@ export function buildPersonAndWebsiteJsonLd(locale = 'en') {
                 'Доступність WCAG 2.2 AA',
                 'European Accessibility Act (EAA 2026)',
               ]
-            : [
-                'WordPress Development',
-                'Next.js 16',
-                'React 19',
-                'TypeScript',
-                'PHP 8',
-                'Shopify Liquid',
-                'Headless CMS',
-                'Retrieval-Augmented Generation (RAG)',
-                'Core Web Vitals Optimization',
-                'WCAG 2.2 AA Accessibility',
-                'European Accessibility Act (EAA 2026)',
-              ],
+            : isDe
+              ? [
+                  'WordPress-Entwicklung',
+                  'Next.js 16',
+                  'React 19',
+                  'TypeScript',
+                  'PHP 8',
+                  'Shopify Liquid',
+                  'Headless CMS',
+                  'Retrieval-Augmented Generation (RAG)',
+                  'Core Web Vitals Optimierung',
+                  'Barrierefreiheit WCAG 2.2 AA',
+                  'European Accessibility Act (EAA 2026)',
+                ]
+              : [
+                  'WordPress Development',
+                  'Next.js 16',
+                  'React 19',
+                  'TypeScript',
+                  'PHP 8',
+                  'Shopify Liquid',
+                  'Headless CMS',
+                  'Retrieval-Augmented Generation (RAG)',
+                  'Core Web Vitals Optimization',
+                  'WCAG 2.2 AA Accessibility',
+                  'European Accessibility Act (EAA 2026)',
+                ],
       },
       {
         '@type': 'ProfessionalService',
@@ -560,29 +636,31 @@ export function buildPersonAndWebsiteJsonLd(locale = 'en') {
           ? 'Servicios de Ingeniería Web Artur Yusupov'
           : isUa
             ? 'Послуги веб-інженерії Артура Юсупова'
-            : 'Artur Yusupov Web Engineering Services',
+            : isDe
+              ? 'Web-Engineering-Dienstleistungen von Artur Yusupov'
+              : 'Artur Yusupov Web Engineering Services',
         disambiguatingDescription: disambiguatingDescriptionService,
         url: `${baseUrl}/${locale}`,
         image: `${baseUrl}/images/og-image.jpg`,
         priceRange: '$$$',
         address: {
           '@type': 'PostalAddress',
-          addressLocality: isEs ? 'Sevilla' : isUa ? 'Севілья' : 'Seville',
-          addressRegion: isEs ? 'Andalucía' : isUa ? 'Андалусія' : 'Andalusia',
+          addressLocality: isEs ? 'Sevilla' : isUa ? 'Севілья' : isDe ? 'Sevilla' : 'Seville',
+          addressRegion: isEs ? 'Andalucía' : isUa ? 'Андалусія' : isDe ? 'Andalusien' : 'Andalusia',
           addressCountry: 'ES',
         },
         areaServed: [
           {
             '@type': 'Country',
-            name: isEs ? 'España' : isUa ? 'Іспанія' : 'Spain',
+            name: isEs ? 'España' : isUa ? 'Іспанія' : isDe ? 'Spanien' : 'Spain',
           },
           {
             '@type': 'Country',
-            name: isEs ? 'Unión Europea' : isUa ? 'Європейський Союз' : 'European Union',
+            name: isEs ? 'Unión Europea' : isUa ? 'Європейський Союз' : isDe ? 'Europäische Union' : 'European Union',
           },
           {
             '@type': 'Country',
-            name: isEs ? 'Mundial' : isUa ? 'Весь світ' : 'Worldwide',
+            name: isEs ? 'Mundial' : isUa ? 'Весь світ' : isDe ? 'Weltweit' : 'Worldwide',
           },
         ],
         serviceType: isEs
@@ -607,16 +685,27 @@ export function buildPersonAndWebsiteJsonLd(locale = 'en') {
                 'Оптимізація швидкості Core Web Vitals до 0.8с',
                 'Аудит та імплементація доступності WCAG 2.2 AA',
               ]
-            : [
-                'Fullstack Web Engineering',
-                'Custom WordPress Theme & Plugin Development',
-                'Headless WordPress & Next.js Architecture',
-                'White-Label Web Development for Agencies',
-                'Shopify E-Commerce Stores',
-                'Autonomous In-Browser AI Assistant Integration',
-                'Core Web Vitals Sub-Second Performance Tuning',
-                'WCAG 2.2 AA Accessibility Audits & Remediation',
-              ],
+            : isDe
+              ? [
+                  'Fullstack Web-Engineering',
+                  'Maßgeschneiderte WordPress-Theme- & Plugin-Entwicklung',
+                  'Headless WordPress & Next.js Architektur',
+                  'White-Label Webentwicklung für Agenturen',
+                  'Shopify E-Commerce Shops',
+                  'Integration autonomer Browser-RAG-KI-Assistenten',
+                  'Core Web Vitals Sub-Sekunden Performance-Tuning',
+                  'WCAG 2.2 AA Barrierefreiheits-Audits & Behebung',
+                ]
+              : [
+                  'Fullstack Web Engineering',
+                  'Custom WordPress Theme & Plugin Development',
+                  'Headless WordPress & Next.js Architecture',
+                  'White-Label Web Development for Agencies',
+                  'Shopify E-Commerce Stores',
+                  'Autonomous In-Browser AI Assistant Integration',
+                  'Core Web Vitals Sub-Second Performance Tuning',
+                  'WCAG 2.2 AA Accessibility Audits & Remediation',
+                ],
       },
     ],
   }
@@ -628,7 +717,8 @@ export function buildLegalBreadcrumbsJsonLd(
   locale = 'en'
 ): BreadcrumbListJsonLd {
   const baseUrl = 'https://www.yusupovartur.com'
-  const homeLabel = locale === 'ua' ? 'Головна' : locale === 'es' ? 'Inicio' : 'Home'
+  const homeLabel =
+    locale === 'ua' ? 'Головна' : locale === 'es' ? 'Inicio' : locale === 'de' ? 'Startseite' : 'Home'
 
   return {
     '@context': 'https://schema.org',
@@ -656,8 +746,10 @@ export function buildServiceBreadcrumbsJsonLd(
   locale = 'en'
 ): BreadcrumbListJsonLd {
   const baseUrl = 'https://www.yusupovartur.com'
-  const homeLabel = locale === 'ua' ? 'Головна' : locale === 'es' ? 'Inicio' : 'Home'
-  const servicesLabel = locale === 'ua' ? 'Послуги' : locale === 'es' ? 'Servicios' : 'Services'
+  const homeLabel =
+    locale === 'ua' ? 'Головна' : locale === 'es' ? 'Inicio' : locale === 'de' ? 'Startseite' : 'Home'
+  const servicesLabel =
+    locale === 'ua' ? 'Послуги' : locale === 'es' ? 'Servicios' : locale === 'de' ? 'Leistungen' : 'Services'
 
   return {
     '@context': 'https://schema.org',
@@ -689,8 +781,10 @@ export function buildServiceCatalogBreadcrumbsJsonLd(
   locale = 'en'
 ): BreadcrumbListJsonLd {
   const baseUrl = 'https://www.yusupovartur.com'
-  const homeLabel = locale === 'ua' ? 'Головна' : locale === 'es' ? 'Inicio' : 'Home'
-  const servicesLabel = locale === 'ua' ? 'Послуги' : locale === 'es' ? 'Servicios' : 'Services'
+  const homeLabel =
+    locale === 'ua' ? 'Головна' : locale === 'es' ? 'Inicio' : locale === 'de' ? 'Startseite' : 'Home'
+  const servicesLabel =
+    locale === 'ua' ? 'Послуги' : locale === 'es' ? 'Servicios' : locale === 'de' ? 'Leistungen' : 'Services'
 
   return {
     '@context': 'https://schema.org',
@@ -714,7 +808,7 @@ export function buildServiceCatalogBreadcrumbsJsonLd(
 
 export function buildServiceJsonLd(service: ServiceItem, locale = 'en') {
   const baseUrl = 'https://www.yusupovartur.com'
-  const validLoc = (locale === 'es' || locale === 'ua' ? locale : 'en') as 'en' | 'ua' | 'es'
+  const validLoc = (locale === 'es' || locale === 'ua' || locale === 'de' ? locale : 'en') as 'en' | 'ua' | 'es' | 'de'
   const content = service.content[validLoc] || service.content.en
 
   return {
@@ -745,10 +839,12 @@ export function buildServiceJsonLd(service: ServiceItem, locale = 'en') {
       name: 'Artur Yusupov',
       disambiguatingDescription:
         locale === 'es'
-          ? 'Ingeniero de Software y Desarrollador Fullstack/IA residente en Sevilla, Espana'
+          ? 'Ingeniero de Software y Desarrollador Fullstack/IA residente en Sevilla, España'
           : locale === 'ua'
             ? 'Інженер програмного забезпечення та Fullstack/AI розробник, що проживає в Севільї, Іспанія'
-            : 'Software Engineer and Fullstack/AI Developer residing in Seville, Spain',
+            : locale === 'de'
+              ? 'Software-Ingenieur und Fullstack-/KI-Entwickler mit Sitz in Sevilla, Spanien'
+              : 'Software Engineer and Fullstack/AI Developer residing in Seville, Spain',
       url: `${baseUrl}/${locale}`,
       jobTitle: 'Senior Fullstack Web Engineer & AI Developer',
     },
@@ -765,10 +861,12 @@ export function buildServiceCatalogJsonLd(services: ServiceItem[], locale = 'en'
   const baseUrl = 'https://www.yusupovartur.com'
   const catalogName =
     locale === 'es'
-      ? 'Servicios B2B de Ingenieria Web y Desarrollo a Medida'
+      ? 'Servicios B2B de Ingeniería Web y Desarrollo a Medida'
       : locale === 'ua'
         ? 'B2B Послуги веб-інженерії та розробки'
-        : 'B2B Web Engineering & Custom Development Services'
+        : locale === 'de'
+          ? 'B2B Web-Engineering & Maßgeschneiderte Entwicklungsleistungen'
+          : 'B2B Web Engineering & Custom Development Services'
 
   return {
     '@context': 'https://schema.org',
@@ -776,7 +874,7 @@ export function buildServiceCatalogJsonLd(services: ServiceItem[], locale = 'en'
     '@id': `${baseUrl}/${locale}/services#catalog`,
     name: catalogName,
     itemListElement: services.map((service, index) => {
-      const validLoc = (locale === 'es' || locale === 'ua' ? locale : 'en') as 'en' | 'ua' | 'es'
+      const validLoc = (locale === 'es' || locale === 'ua' || locale === 'de' ? locale : 'en') as 'en' | 'ua' | 'es' | 'de'
       const content = service.content[validLoc] || service.content.en
       return {
         '@type': 'ListItem',
@@ -806,23 +904,32 @@ export function buildServiceFaqJsonLd(faqs: { q: string; a: string }[]) {
 export function buildSevilleLocalBusinessJsonLd(locale = 'en') {
   const isEs = locale === 'es'
   const isUa = locale === 'ua'
+  const isDe = locale === 'de'
   const description = isEs
-    ? 'Servicio profesional de diseno y desarrollo web a medida para empresas, pymes y clinicas en Sevilla y Andalucia.'
+    ? 'Servicio profesional de diseño y desarrollo web a medida para empresas, pymes y clínicas en Sevilla y Andalucía.'
     : isUa
       ? 'Професійна веб-розробка сайтів під ключ для бізнесу та клінік у Севільї та Андалусії.'
-      : 'Professional custom web development and digital engineering for businesses and clinics in Seville and Andalusia.'
+      : isDe
+        ? 'Professionelle maßgeschneiderte Webentwicklung und digitales Engineering für Unternehmen und Kliniken in Sevilla und Andalusien.'
+        : 'Professional custom web development and digital engineering for businesses and clinics in Seville and Andalusia.'
 
   return {
     '@context': 'https://schema.org',
     '@type': 'ProfessionalService',
     '@id': 'https://www.yusupovartur.com/es/services/custom-web-development-seville#localbusiness',
-    name: isEs ? 'Artur Yusupov - Desarrollo Web Sevilla' : 'Artur Yusupov - Web Development Seville',
+    name: isEs
+      ? 'Artur Yusupov - Desarrollo Web Sevilla'
+      : isUa
+        ? 'Артур Юсупов - Веб-розробка Севілья'
+        : isDe
+          ? 'Artur Yusupov - Webentwicklung Sevilla'
+          : 'Artur Yusupov - Web Development Seville',
     description,
     url: `https://www.yusupovartur.com/${locale}/services/custom-web-development-seville`,
     address: {
       '@type': 'PostalAddress',
       addressLocality: 'Sevilla',
-      addressRegion: 'Andalucia',
+      addressRegion: 'Andalucía',
       postalCode: '41001',
       addressCountry: 'ES',
     },
@@ -838,7 +945,7 @@ export function buildSevilleLocalBusinessJsonLd(locale = 'en') {
       },
       {
         '@type': 'AdministrativeArea',
-        name: 'Andalucia',
+        name: 'Andalucía',
       },
       {
         '@type': 'Country',

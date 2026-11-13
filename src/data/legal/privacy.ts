@@ -1,7 +1,7 @@
 import type { LegalPageData } from './types'
 import { LEGAL_CONFIG } from './legalConfig'
 
-export const privacyData: Record<'en' | 'ua' | 'es', LegalPageData> = {
+export const privacyData: Record<'en' | 'ua' | 'es' | 'de', LegalPageData> = {
   en: {
     badge: 'RGPD / EU Data Protection Regulation',
     title: 'Privacy Policy',
@@ -196,6 +196,72 @@ export const privacyData: Record<'en' | 'ua' | 'es', LegalPageData> = {
         paragraphs: [
           'Користувачі мають право на доступ до своїх даних, виправлення, видалення ("право бути забутим"), обмеження обробки та перенесення даних відповідно до норм GDPR.',
           'Для реалізації прав можна надіслати запит через прямі канали зв\'язку сайту, а також звернутися зі скаргою до Іспанського агентства захисту даних (AEPD, www.aepd.es).',
+        ],
+      },
+    ],
+  },
+  de: {
+    badge: 'DSGVO (GDPR) / EU-Datenschutz-Grundverordnung',
+    title: 'Datenschutzerklärung',
+    subtitle: 'Transparente Hinweise zur Verarbeitung personenbezogener Daten, zur Analyse-Telemetrie und zur Nutzung des RAG-KI-Assistenten.',
+    lastUpdatedLabel: 'Zuletzt aktualisiert',
+    lastUpdatedDate: LEGAL_CONFIG.lastUpdatedDate,
+    sections: [
+      {
+        id: 'controller',
+        title: '1. Verantwortlicher für die Datenverarbeitung',
+        paragraphs: [
+          `Verantwortlicher im Sinne der Datenschutz-Grundverordnung für über diese Website (https://www.yusupovartur.com) erhobene personenbezogene Daten ist Artur Yusupov, tätig als unabhängiger Software-Ingenieur und Technologieberater mit Sitz in ${LEGAL_CONFIG.location}.`,
+          'Direkte Anfragen zum Datenschutz sowie zur Wahrnehmung Ihrer Betroffenenrechte können über die verifizierten Kontaktkanäle auf dieser Website gestellt werden.',
+        ],
+      },
+      {
+        id: 'purposes',
+        title: '2. Zwecke der Verarbeitung & Rechtsgrundlagen',
+        paragraphs: [
+          'Personenbezogene Daten werden gemäß der Verordnung (EU) 2016/679 (DSGVO / GDPR) und dem spanischen Organgesetz 3/2018 (LOPDGDD) für folgende klar definierte Zwecke verarbeitet:',
+        ],
+        bulletPoints: [
+          'Geschäftliche Anfragen: Bearbeitung direkter Projektanfragen, technischer Kostenvoranschläge und geschäftlicher Korrespondenz (Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO - vorvertragliche Maßnahmen).',
+          'Reichweitenanalyse & Performance: Aggregierte, anonymisierte Nutzungsstatistiken über Google Analytics 4, die ausschließlich nach vorheriger ausdrücklicher Einwilligung aktiviert werden (Rechtsgrundlage: Art. 6 Abs. 1 lit. a DSGVO und Art. 22.2 LSSI-CE).',
+          'Sicherheit & Missbrauchsprävention: Überwachung der technischen Infrastruktur, Edge-Firewall-Rate-Limiting und Abwehr automatisierter Angriffe (Rechtsgrundlage: Art. 6 Abs. 1 lit. f DSGVO - berechtigtes Interesse an der IT-Sicherheit).',
+        ],
+      },
+      {
+        id: 'ai-assistant',
+        title: '3. Verarbeitungsregeln im autonomen RAG-KI-Assistenten',
+        paragraphs: [
+          'Diese Plattform integriert eine interaktive Hybrid-RAG-KI-Konsole (Retrieval-Augmented Generation), die technische Fragen zu Artur Yusupovs Portfolio, Softwarearchitekturen und Fallstudien beantwortet.',
+          'Strenge Datenschutz- und Sicherheitsstandards für die KI-Konsole:',
+        ],
+        bulletPoints: [
+          'Flüchtige Echtzeitverarbeitung: Nutzereingaben und synthetisierte KI-Antworten werden ausschließlich flüchtig im Arbeitsspeicher verarbeitet. Es erfolgt keine dauerhafte Datenbankprotokollierung, kein Profiling und kein Modelltraining mit Ihren Eingaben.',
+          'Lokaler Sitzungsverlauf: Der temporäre Chatverlauf wird ausschließlich im sessionStorage Ihres Browsers vorgehalten und beim Klicken auf "Chat leeren" oder beim Schließen des Tabs sofort gelöscht.',
+          'Verbot sensibler Daten: Besuchern ist es ausdrücklich untersagt, Geschäftsgeheimnisse, vertrauliche Zugangsdaten Dritter, Gesundheitsdaten oder besondere Kategorien personenbezogener Daten (Art. 9 DSGVO) in die Chat-Konsole einzugeben.',
+        ],
+      },
+      {
+        id: 'recipients',
+        title: '4. Empfänger & internationale Datentransfers',
+        paragraphs: [
+          'Personenbezogene Daten werden niemals zu kommerziellen oder Werbezwecken verkauft, vermietet oder an unbefugte Dritte weitergegeben.',
+          'Statistische Telemetriedaten über Google Analytics 4 werden unter dem EU-US Data Privacy Framework mit aktivierter IP-Anonymisierung verarbeitet. Hosting und Auslieferung statischer Assets erfolgen über Vercel Edge Network und Cloudflare mit strengen Content Security Policies (CSP).',
+        ],
+      },
+      {
+        id: 'retention',
+        title: '5. Speicherdauer',
+        paragraphs: [
+          'Kontaktdaten aus direkten Anfragen werden nur so lange gespeichert, wie es für die Bearbeitung des Anliegens und den Abschluss vorvertraglicher oder vertraglicher Abstimmungen erforderlich ist.',
+          'Analyse-Cookies verfallen nach maximal 14 bis 24 Monaten oder sofort bei Widerruf Ihrer Einwilligung.',
+        ],
+      },
+      {
+        id: 'rights',
+        title: '6. Ihre Rechte (DSGVO) & Aufsichtsbehörde',
+        paragraphs: [
+          'Sie haben nach der DSGVO (GDPR) und LOPDGDD jederzeit das Recht auf Auskunft, Berichtigung, Löschung ("Recht auf Vergessenwerden"), Einschränkung der Verarbeitung, Datenübertragbarkeit sowie Widerspruch.',
+          'Zur Wahrnehmung dieser Rechte können Sie uns über die direkten Kontaktkanäle der Website schreiben. Zudem steht Ihnen das Recht auf Beschwerde bei der zuständigen Datenschutzaufsichtsbehörde (z. B. der spanischen Agencia Española de Protección de Datos - AEPD unter www.aepd.es) zu.',
         ],
       },
     ],

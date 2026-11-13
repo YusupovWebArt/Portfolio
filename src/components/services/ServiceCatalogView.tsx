@@ -37,26 +37,57 @@ export default function ServiceCatalogView({
   const [filter, setFilter] = useState<'all' | 'agencies' | 'pymes'>('all')
 
   const backLabel =
-    locale === 'es' ? 'Volver al Inicio' : locale === 'ua' ? 'На головну' : 'Back to Home'
+    locale === 'es'
+      ? 'Volver al Inicio'
+      : locale === 'ua'
+        ? 'На головну'
+        : locale === 'de'
+          ? 'Zurück zur Startseite'
+          : 'Back to Home'
 
   const catalogTitle =
     locale === 'es'
       ? 'Servicios B2B de Ingeniería Web y Desarrollo a Medida'
       : locale === 'ua'
         ? 'B2B Послуги веб-інженерії та розробки під ключ'
-        : 'B2B Web Engineering & Custom Development Services'
+        : locale === 'de'
+          ? 'B2B Web-Engineering & Maßgeschneiderte Entwicklung'
+          : 'B2B Web Engineering & Custom Development Services'
 
   const catalogSubtitle =
     locale === 'es'
       ? 'Soluciones técnicas de alto impacto para agencias digitales, directores de tecnología y empresas en España. Desarrollos orientados a resultados, máxima velocidad y cumplimiento de accesibilidad europea.'
       : locale === 'ua'
         ? 'Високоефективні технічні рішення для digital-агенцій, технічних директорів та бізнесу в Іспанії. Фокус на вимірні результати, швидкість та європейську доступність.'
-        : 'High-impact technical engineering solutions for digital agencies, CTOs, and businesses in Spain. Focused on measurable business outcomes, sub-second speed, and European accessibility compliance.'
+        : locale === 'de'
+          ? 'Wirkungsstarke technische Lösungen für Digitalagenturen, CTOs und Unternehmen in DACH und Europa. Fokus auf messbare Geschäftsergebnisse, Sub-Sekunden-Geschwindigkeit und europäische Barrierefreiheit.'
+          : 'High-impact technical engineering solutions for digital agencies, CTOs, and businesses in Spain. Focused on measurable business outcomes, sub-second speed, and European accessibility compliance.'
 
   const tabLabels = {
-    all: locale === 'es' ? 'Todos los Servicios' : locale === 'ua' ? 'Усі послуги' : 'All Services',
-    agencies: locale === 'es' ? 'Para Agencias (Marca Blanca)' : locale === 'ua' ? 'Для агенцій (White-Label)' : 'For Agencies (White-Label)',
-    pymes: locale === 'es' ? 'Para Empresas y Clínicas' : locale === 'ua' ? 'Для бізнесу та клінік' : 'For Businesses & Clinics',
+    all:
+      locale === 'es'
+        ? 'Todos los Servicios'
+        : locale === 'ua'
+          ? 'Усі послуги'
+          : locale === 'de'
+            ? 'Alle Leistungen'
+            : 'All Services',
+    agencies:
+      locale === 'es'
+        ? 'Para Agencias (Marca Blanca)'
+        : locale === 'ua'
+          ? 'Для агенцій (White-Label)'
+          : locale === 'de'
+            ? 'Für Agenturen (White-Label)'
+            : 'For Agencies (White-Label)',
+    pymes:
+      locale === 'es'
+        ? 'Para Empresas y Clínicas'
+        : locale === 'ua'
+          ? 'Для бізнесу та клінік'
+          : locale === 'de'
+            ? 'Für Unternehmen & Kliniken'
+            : 'For Businesses & Clinics',
   }
 
   const filteredServices = services.filter((s) => {
@@ -85,7 +116,9 @@ export default function ServiceCatalogView({
               ? 'Catálogo Comercial B2B'
               : locale === 'ua'
                 ? 'Комерційний каталог B2B'
-                : 'Commercial B2B Directory'}
+                : locale === 'de'
+                  ? 'Kommerzieller B2B-Katalog'
+                  : 'Commercial B2B Directory'}
           </div>
 
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight">
@@ -194,14 +227,30 @@ export default function ServiceCatalogView({
                     href={`/${locale}/services/${service.slug}`}
                     className="flex-1 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-white bg-slate-900 hover:bg-purple-600 dark:bg-slate-800 dark:hover:bg-slate-700 shadow-sm transition-colors"
                   >
-                    <span>{locale === 'es' ? 'Ver Detalles' : locale === 'ua' ? 'Детальніше' : 'Explore Service'}</span>
+                    <span>
+                      {locale === 'es'
+                        ? 'Ver Detalles'
+                        : locale === 'ua'
+                          ? 'Детальніше'
+                          : locale === 'de'
+                            ? 'Details ansehen'
+                            : 'Explore Service'}
+                    </span>
                     <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
                   </Link>
 
                   <button
                     type="button"
                     onClick={() => openWhatsAppDirect(locale, content.whatsappMessage)}
-                    title={locale === 'es' ? 'Consultar por WhatsApp' : locale === 'ua' ? 'Запитати у WhatsApp' : 'Inquire via WhatsApp'}
+                    title={
+                      locale === 'es'
+                        ? 'Consultar por WhatsApp'
+                        : locale === 'ua'
+                          ? 'Запитати у WhatsApp'
+                          : locale === 'de'
+                            ? 'Per WhatsApp anfragen'
+                            : 'Inquire via WhatsApp'
+                    }
                     className="p-2.5 rounded-xl text-white bg-emerald-600 hover:bg-emerald-500 shadow-sm transition-colors cursor-pointer shrink-0"
                   >
                     <WhatsappIcon className="w-4 h-4" aria-hidden="true" />

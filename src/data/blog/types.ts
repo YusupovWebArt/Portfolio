@@ -1,4 +1,4 @@
-export type BlogLocale = 'en' | 'ua' | 'es'
+export type BlogLocale = 'en' | 'ua' | 'es' | 'de'
 
 export interface BlogReferenceProject {
   projectId: number

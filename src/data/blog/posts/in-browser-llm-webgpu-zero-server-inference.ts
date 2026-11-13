@@ -6,23 +6,27 @@ export const inBrowserLlmWebGpuPost: BlogPost = {
     en: 'Local-First In-Browser LLMs via WebGPU: Zero-Server Privacy-Preserving Inference in Modern Web Apps',
     ua: 'Local-First LLM у браузері через WebGPU: інференс без серверів та повна приватність у веб-застосунках',
     es: 'LLMs locales en el navegador mediante WebGPU: inferencia sin servidores y privacidad total en aplicaciones web',
+    de: 'Local-First In-Browser-LLMs via WebGPU: Serverlose datenschutzkonforme Inferenz in modernen Web-Apps',
   },
   description: {
     en: 'An architectural deep-dive on running quantized 1B-3B parameter Large Language Models (Llama 3.2, Gemma 2, SmolLM2) directly inside client web browsers using WebGPU, Transformers.js v3, and ONNX Runtime Web. Zero hosting costs, 100% offline capability, zero data exfiltration, and sub-second token streaming.',
     ua: 'Глибокий інженерний розбір запуску квантованих мовних моделей на 1B-3B параметрів (Llama 3.2, Gemma 2, SmolLM2) безпосередньо у браузері клієнта через WebGPU, Transformers.js v3 та ONNX Runtime Web: нульові витрати на серверний інференс та повна конфіденційність.',
     es: 'Análisis arquitectónico sobre la ejecución de modelos de lenguaje cuantizados de 1B-3B parámetros (Llama 3.2, Gemma 2, SmolLM2) directamente en el navegador del cliente mediante WebGPU, Transformers.js v3 y ONNX Runtime Web: coste cero de servidores y privacidad absoluta.',
+    de: 'Ein architektonischer Deep-Dive zur Ausfuehrung quantisierter Large Language Models mit 1B-3B Parametern (Llama 3.2, Gemma 2, SmolLM2) direkt im Browser via WebGPU, Transformers.js v3 und ONNX Runtime Web: Null Hosting-Kosten, 100 % Offline-Faehigkeit, kein Datenabfluss und Sub-Sekunden-Token-Streaming.',
   },
   date: '2026-11-12',
   readTime: {
     en: '10 min read',
     ua: '10 хв читання',
     es: '10 min de lectura',
+    de: '10 Min. Lesezeit',
   },
   category: 'ai-rag',
   categoryLabel: {
     en: 'AI & RAG Engineering',
     ua: 'AI та RAG-інженерія',
     es: 'Ingeniería de IA y RAG',
+    de: 'KI- & RAG-Engineering',
   },
   tags: ['WebGPU', 'Local LLM', 'Transformers.js', 'ONNX Runtime', 'React 19', 'Edge AI', 'Privacy', 'Llama 3.2'],
   author: {
@@ -31,6 +35,7 @@ export const inBrowserLlmWebGpuPost: BlogPost = {
       en: 'Fullstack Web Engineer & AI Developer',
       ua: 'Fullstack веб-інженер та AI-розробник',
       es: 'Ingeniero Web Fullstack y Desarrollador IA',
+      de: 'Fullstack Web-Engineer & KI-Architekt',
     },
   },
   coverImage: '/Portfolio/images/blog/cover-webgpu-in-browser-llm.svg',
@@ -43,6 +48,7 @@ export const inBrowserLlmWebGpuPost: BlogPost = {
         en: 'Employs client-side in-browser semantic vector retrieval with cosine similarity calculation and offline knowledge matching.',
         ua: 'Використовує клієнтський браузерний семантичний векторний пошук із розрахунком косинусної подібності та офлайн-базою знань.',
         es: 'Implementa búsqueda vectorial semántica en el navegador con cálculo de similitud coseno y base de conocimiento offline.',
+        de: 'Nutzt clientseitiges semantisches Vektor-Retrieval im Browser mit Kosinus-Aehnlichkeitsberechnung und Offline-Wissensabgleich.',
       },
     },
     {
@@ -53,6 +59,7 @@ export const inBrowserLlmWebGpuPost: BlogPost = {
         en: 'Features interactive client-side WebGPU neural network playgrounds running zero-server token generation and live parameter adjustments.',
         ua: 'Містить інтерактивні браузерні пісочниці нейромереж на WebGPU із генерацією токенів без серверів та живим налаштуванням параметрів.',
         es: 'Ofrece entornos de experimentación con redes neuronales sobre WebGPU sin servidores y ajuste de hiperparámetros en tiempo real.',
+        de: 'Bietet interaktive clientseitige WebGPU-Neuronale-Netze-Playgrounds mit serverloser Token-Generierung und Echtzeit-Parameteranpassungen.',
       },
     },
     {
@@ -63,6 +70,7 @@ export const inBrowserLlmWebGpuPost: BlogPost = {
         en: 'Researched zero-exfiltration healthcare architectures where patient symptoms are analyzed strictly on-device to ensure HIPAA compliance.',
         ua: 'Дослідницька архітектура для медичних даних із нульовим витоком інформації, де аналіз симптомів виконується локально на пристрої пацієнта.',
         es: 'Arquitectura médica con cero exfiltración de datos donde el análisis de síntomas se procesa localmente en el dispositivo para garantizar HIPAA.',
+        de: 'Untersuchte HIPAA-konforme Healthcare-Architekturen ohne Datenexfiltration, bei denen Patientensymptome ausschliesslich auf dem Endgeraet analysiert werden.',
       },
     },
   ],
@@ -84,6 +92,12 @@ export const inBrowserLlmWebGpuPost: BlogPost = {
       'WebGPU permite acceder directamente a la GPU del cliente mediante compute shaders (WGSL), alcanzando hasta 35 tokens por segundo en dispositivos de consumo.',
       'Los modelos modernos de 1B a 3B parámetros (Llama 3.2 1B, SmolLM2) cuantizados a 4 bits (q4f16) requieren menos de 700MB de almacenamiento.',
       'Aislar el cómputo en un Web Worker dedicado asegura que la interfaz de usuario en React se mantenga fluida a 60 FPS durante la generación.',
+    ],
+    de: [
+      'Cloud-gehostete LLMs verursachen erhebliche Infrastrukturkosten, unberechenbare API-Latenzen und Datenschutzrisiken bei sensiblen Benutzereingaben.',
+      'WebGPU ermoeglicht direkten Zugriff auf die Client-GPU ueber Compute Shader (WGSL) und liefert bis zu 35 Tokens pro Sekunde auf regulaeren Notebooks und Mobilgeraeten.',
+      'Moderne Modelle mit 1B bis 3B Parametern (wie Llama 3.2 1B und SmolLM2), quantisiert auf 4-Bit-Praezision (q4f16), benoetigen weniger als 700 MB Speicher.',
+      'Die Isolation der Modellausfuehrung in einem dedizierten Web Worker garantiert, dass der Main Thread bei kontinuierlichem Streaming fluessige 60 FPS beibehaelt.',
     ],
   },
   content: {
@@ -323,6 +337,164 @@ Modelos como **Llama 3.2 1B** y **SmolLM2**, cuantizados a 4 bits (\`q4f16\`), o
 ### 4. Aislamiento en Web Workers y arquitectura híbrida
 
 Ejecutar la inferencia en un **Web Worker** dedicado evita congelar el hilo principal de renderizado en React, manteniendo 60 FPS constantes. Si el dispositivo no cuenta con aceleración WebGPU, el sistema conmuta automáticamente hacia la API en la nube como mecanismo de fallback transparente.
+`,
+    de: `
+### 1. Der Paradigmenwechsel: Warum Local-First-KI entscheidend ist
+
+In den vergangenen drei Jahren war die zentralisierte Cloud-Inferenz das Standardmuster im KI-Engineering: Der Client sendet sensible Benutzer-Prompts ueber HTTPS an eine externe API (OpenAI, Anthropic oder Cloud-GPU-Cluster), wartet auf den Netzwerk-Roundtrip und streamt Tokens zurueck.
+
+Im Jahr 2026 beschleunigen drei zentrale Kraefte den Uebergang zu **Local-First In-Browser-KI**:
+
+1. **Null Server-Inferenzkosten:** Sobald eine Anwendung geladen ist, kostet die Inferenz auf der Client-Hardware den Entwickler exakt $0.00 an Cloud-GPU-Rechenleistung.
+2. **Absoluter Datenschutz:** Fuer regulierte Sektoren (wie das Gesundheitswesen unter HIPAA oder europaeische Unternehmen unter der DSGVO) verlassen vertrauliche Gesundheitsdaten, proprietaere Finanzdokumente oder persoenliche Notizen niemals das Geraet des Nutzers.
+3. **Offline-Resilienz:** PWAs mit lokalen Modellen funktionieren fehlerfrei im Flugzeug, bei abgelegenen Ausseneinsaetzen oder bei Netzwerkausfaellen.
+
+---
+
+### 2. WebGPU vs. WebGL: Der technische Quantensprung
+
+Fruehere Browser-Machine-Learning-Frameworks basierten auf WebGL, was Entwickler dazu zwang, allgemeine Matrixoperationen als 2D-Pixel-Rendering-Shader zu tarnen.
+
+\`\`\`
+WebGL (Legacy ML Hack)          vs          WebGPU (Modern Compute Native)
+┌─────────────────────────┐                 ┌─────────────────────────┐
+│ Fragment Shaders        │                 │ Pure Compute Shaders    │
+│ Textures as Arrays      │                 │ Direct Memory Buffers   │
+│ CPU-GPU sync overhead   │                 │ Async Command Encoders  │
+│ Max 8-12 tokens/sec     │                 │ 35-50+ tokens/sec (f16) │
+└─────────────────────────┘                 └─────────────────────────┘
+\`\`\`
+
+WebGPU fuehrt native **Compute Shader** ein, die in WGSL (WebGPU Shading Language) geschrieben sind, unterstuetzt vollstaendig 16-Bit-Gleitkomma-Berechnungen (\`f16\`) und bietet speicherabgebildete Puffer ohne Overhead, die direkt an die Hardware-Ausfuehrung von Apple Metal, DirectX 12 und Vulkan angebunden sind.
+
+---
+
+### 3. Laden quantisierter Modelle mit Transformers.js v3
+
+Dank Fortschritten bei der Quantisierung (AWQ und GGUF/ONNX) koennen modernste kleine Sprachmodelle wie **Meta Llama 3.2 1B** und **HuggingFace SmolLM2** ohne spuerbaren Verlust an Argumentationsfaehigkeit auf 600 MB - 800 MB komprimiert werden.
+
+\`\`\`typescript
+// src/lib/ai/local-llm-engine.ts
+import { pipeline, env } from '@huggingface/transformers';
+
+// WebGPU-Backend und lokale Gewichtungs-Persistenz konfigurieren
+env.backends.onnx.wasm.proxy = true;
+
+export interface GenerationProgress {
+  status: 'loading' | 'ready' | 'generating';
+  progress?: number;
+  tokensPerSec?: number;
+}
+
+export async function initializeLocalLLM(onProgress?: (p: GenerationProgress) => void) {
+  // Pruefen, ob der Browser WebGPU unterstuetzt
+  if (!navigator.gpu) {
+    throw new Error('WebGPU is not supported in this browser. Fallback to Cloud API.');
+  }
+
+  onProgress?.({ status: 'loading', progress: 0 });
+
+  // 4-Bit-quantisiertes Llama 3.2 1B Instruct laden
+  const generator = await pipeline(
+    'text-generation',
+    'onnx-community/Llama-3.2-1B-Instruct',
+    {
+      device: 'webgpu',
+      dtype: 'q4f16', // 4-Bit-Gewichte mit 16-Bit-Float-Aktivierungsmathematik
+      progress_callback: (info: any) => {
+        if (info.status === 'progress') {
+          onProgress?.({ status: 'loading', progress: Math.round(info.progress || 0) });
+        }
+      },
+    }
+  );
+
+  onProgress?.({ status: 'ready' });
+  return generator;
+}
+\`\`\`
+
+---
+
+### 4. Web-Worker-Isolation: 60 FPS fuer die Benutzeroberflaeche
+
+Das Ausfuehren von Matrixmultiplikationen auf dem Haupt-Thread blockiert sofort die Benutzeroberflaeche des Browsers, was zu sichtbarem Ruckeln beim Scrollen und ausgelassenen Frames fuehrt. Um dies zu verhindern, muss die Modellausfuehrung strikt in einem dedizierten Web Worker isoliert werden:
+
+\`\`\`typescript
+// worker/llm-worker.ts
+import { initializeLocalLLM } from '../src/lib/ai/local-llm-engine';
+
+let generator: any = null;
+
+self.onmessage = async (e: MessageEvent) => {
+  const { type, payload } = e.data;
+
+  if (type === 'INIT') {
+    generator = await initializeLocalLLM((p) => self.postMessage({ type: 'STATUS', payload: p }));
+    self.postMessage({ type: 'READY' });
+  }
+
+  if (type === 'GENERATE') {
+    const { messages, maxTokens = 512 } = payload;
+    let startTime = performance.now();
+    let tokenCount = 0;
+
+    const output = await generator(messages, {
+      max_new_tokens: maxTokens,
+      temperature: 0.3,
+      streamer: {
+        put: (tokens: any) => {
+          tokenCount++;
+          self.postMessage({ type: 'TOKEN', payload: tokens });
+        },
+        end: () => {
+          const elapsed = (performance.now() - startTime) / 1000;
+          self.postMessage({
+            type: 'COMPLETE',
+            payload: { tokensPerSec: Math.round(tokenCount / elapsed) },
+          });
+        },
+      },
+    });
+  }
+};
+\`\`\`
+
+---
+
+### 5. Persistentes Caching ueber das Origin Private File System (OPFS)
+
+Das Herunterladen eines 650-MB-Modells bei jedem Seitenaufruf wuerde die Nutzerbindung zerstoeren. Moderne Browser unterstuetzen das **Origin Private File System (OPFS)** und die **Cache API**, wodurch Modellgewichte einmalig abgerufen und dauerhaft auf dem Speicher des Clients abgelegt werden:
+
+\`\`\`typescript
+// Pruefen, ob Modellgewichte bereits lokal gecacht sind
+export async function isModelCachedLocally(modelId: string): Promise<boolean> {
+  const cacheNames = await caches.keys();
+  for (const name of cacheNames) {
+    if (name.includes(modelId)) return true;
+  }
+  return false;
+}
+\`\`\`
+
+---
+
+### 6. Hybride Fallback-Architektur
+
+In Produktionsumgebungen sollte eine robuste Webanwendung niemals von einer 100%igen WebGPU-Verfuegbarkeit ausgehen. Das empfohlene Architekturmuster ist ein **Smart Hybrid Fallback**:
+
+\`\`\`
+User Query
+    │
+    ▼
+Does browser support WebGPU?
+    ├── YES ──> Check device memory (> 4GB RAM)
+    │               ├── YES ──> In-Browser Local LLM ($0.00 cost, 100% private)
+    │               └── NO  ──> Fallback to Cloud RAG API (Gemini / Claude)
+    └── NO  ──> Fallback to Cloud RAG API (Gemini / Claude)
+\`\`\`
+
+Dieses Muster bietet das Beste aus beiden Welten: kostenlose, private Inferenz fuer 80 % der modernen Desktop- und High-End-Mobilnutzer, kombiniert mit einem zuverlaessigen Cloud-Fallback fuer aeltere Geraete.
 `,
   },
 }

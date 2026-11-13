@@ -20,18 +20,23 @@ export async function generateMetadata({
   const { locale } = await params
   const isUa = locale === 'ua'
   const isEs = locale === 'es'
+  const isDe = locale === 'de'
 
   const title = isUa
     ? 'Політика використання файлів cookie | Артур Юсупов'
     : isEs
       ? 'Política de Cookies | Artur Yusupov'
-      : 'Cookie Policy | Artur Yusupov'
+      : isDe
+        ? 'Cookie-Richtlinie | Artur Yusupov'
+        : 'Cookie Policy | Artur Yusupov'
 
   const description = isUa
     ? 'Інформація про файли cookie та локальне сховище. Архітектура Google Consent Mode v2 Basic та інтерактивне керування згодою.'
     : isEs
       ? 'Información sobre cookies y almacenamiento local. Google Consent Mode v2 Basic y gestión interactiva del consentimiento conforme a la AEPD.'
-      : 'Information on cookies and local storage identifiers. Google Consent Mode v2 Basic architecture and granular consent management.'
+      : isDe
+        ? 'Informationen über Cookies und Local-Storage-Einträge. Google Consent Mode v2 Basic Architektur und granulare Einwilligungsverwaltung.'
+        : 'Information on cookies and local storage identifiers. Google Consent Mode v2 Basic architecture and granular consent management.'
 
   return {
     title,
@@ -54,6 +59,8 @@ export async function generateMetadata({
         uk: 'https://www.yusupovartur.com/ua/cookie-policy',
         es: 'https://www.yusupovartur.com/es/cookie-policy',
         'es-ES': 'https://www.yusupovartur.com/es/cookie-policy',
+        de: 'https://www.yusupovartur.com/de/cookie-policy',
+        'de-DE': 'https://www.yusupovartur.com/de/cookie-policy',
         'x-default': 'https://www.yusupovartur.com/en/cookie-policy',
       },
     },
@@ -62,7 +69,7 @@ export async function generateMetadata({
       description,
       url: `https://www.yusupovartur.com/${locale}/cookie-policy`,
       siteName: 'Artur Yusupov - Portfolio & B2B Web Engineering',
-      locale: isUa ? 'uk_UA' : isEs ? 'es_ES' : 'en_US',
+      locale: isUa ? 'uk_UA' : isEs ? 'es_ES' : isDe ? 'de_DE' : 'en_US',
       type: 'website',
     },
     robots: {
@@ -76,7 +83,7 @@ export default async function CookiePolicyPage({
   params,
 }: CookiePolicyPageProps) {
   const { locale } = await params
-  const validLocale = (locale === 'es' || locale === 'ua' ? locale : 'en') as 'en' | 'ua' | 'es'
+  const validLocale = (locale === 'es' || locale === 'ua' || locale === 'de' ? locale : 'en') as 'en' | 'ua' | 'es' | 'de'
   const data = cookiePolicyData[validLocale]
   const breadcrumbsJsonLd = buildLegalBreadcrumbsJsonLd(data.title, 'cookie-policy', validLocale)
 

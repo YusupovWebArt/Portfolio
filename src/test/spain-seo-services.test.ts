@@ -16,7 +16,7 @@ import {
 import { getProjectBySlug } from '../lib/projects'
 
 describe('Commercial B2B Services Specification & SEO Standards', () => {
-  const locales = ['en', 'ua', 'es'] as const
+  const locales = ['en', 'ua', 'es', 'de'] as const
   const expectedSlugs = [
     'white-label-agency-partner',
     'headless-wordpress-nextjs-migration',

@@ -90,7 +90,9 @@ export default function BlogDetailView({
                 ? `Розкажи детальніше про тему статті: "${title}"`
                 : locale === 'es'
                   ? `Cuéntame más sobre el artículo: "${title}"`
-                  : `Tell me more about the article: "${title}"`,
+                  : locale === 'de'
+                    ? `Erkläre mir mehr über den Artikel: "${title}"`
+                    : `Tell me more about the article: "${title}"`,
           },
         }),
       )
@@ -110,11 +112,11 @@ export default function BlogDetailView({
                   onClick={onBackToPortfolio}
                   className="hover:text-purple-600 dark:hover:text-lime-400 transition cursor-pointer"
                 >
-                  {locale === 'ua' ? 'Головна' : locale === 'es' ? 'Inicio' : 'Home'}
+                  {locale === 'ua' ? 'Головна' : locale === 'es' ? 'Inicio' : locale === 'de' ? 'Startseite' : 'Home'}
                 </button>
               ) : (
                 <Link href={`/${locale}`} className="hover:text-purple-600 dark:hover:text-lime-400 transition">
-                  {locale === 'ua' ? 'Головна' : locale === 'es' ? 'Inicio' : 'Home'}
+                  {locale === 'ua' ? 'Головна' : locale === 'es' ? 'Inicio' : locale === 'de' ? 'Startseite' : 'Home'}
                 </Link>
               )}
             </li>
@@ -126,11 +128,11 @@ export default function BlogDetailView({
                   onClick={onBack}
                   className="hover:text-purple-600 dark:hover:text-lime-400 transition cursor-pointer"
                 >
-                  {locale === 'ua' ? 'Блог' : locale === 'es' ? 'Blog' : 'Blog'}
+                  {locale === 'ua' ? 'Блог' : locale === 'es' ? 'Blog' : locale === 'de' ? 'Blog' : 'Blog'}
                 </button>
               ) : (
                 <Link href={`/${locale}/blog`} className="hover:text-purple-600 dark:hover:text-lime-400 transition">
-                  {locale === 'ua' ? 'Блог' : locale === 'es' ? 'Blog' : 'Blog'}
+                  {locale === 'ua' ? 'Блог' : locale === 'es' ? 'Blog' : locale === 'de' ? 'Blog' : 'Blog'}
                 </Link>
               )}
             </li>
@@ -150,7 +152,15 @@ export default function BlogDetailView({
               className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-purple-600 dark:text-lime-400 hover:text-purple-700 dark:hover:text-lime-300 transition cursor-pointer"
             >
               <ArrowLeft className="w-4 h-4" aria-hidden="true" />
-              <span>{locale === 'ua' ? 'Назад до списку статей' : locale === 'es' ? 'Volver a los artículos' : 'Back to Articles'}</span>
+              <span>
+                {locale === 'ua'
+                  ? 'Назад до списку статей'
+                  : locale === 'es'
+                    ? 'Volver a los artículos'
+                    : locale === 'de'
+                      ? 'Zurück zu den Artikeln'
+                      : 'Back to Articles'}
+              </span>
             </button>
           ) : (
             <Link
@@ -158,7 +168,15 @@ export default function BlogDetailView({
               className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-purple-600 dark:text-lime-400 hover:text-purple-700 dark:hover:text-lime-300 transition"
             >
               <ArrowLeft className="w-4 h-4" aria-hidden="true" />
-              <span>{locale === 'ua' ? 'Назад до списку статей' : locale === 'es' ? 'Volver a los artículos' : 'Back to Articles'}</span>
+              <span>
+                {locale === 'ua'
+                  ? 'Назад до списку статей'
+                  : locale === 'es'
+                    ? 'Volver a los artículos'
+                    : locale === 'de'
+                      ? 'Zurück zu den Artikeln'
+                      : 'Back to Articles'}
+              </span>
             </Link>
           )}
         </div>
@@ -200,7 +218,9 @@ export default function BlogDetailView({
                   {currentPost.author.name}
                 </div>
                 <div className="text-xs text-slate-500 dark:text-slate-400">
-                  {currentPost.author.role[locale === 'ua' || locale === 'es' ? locale : 'en']}
+                  {(currentPost.author.role as Partial<Record<'en' | 'ua' | 'es' | 'de', string>>)[
+                    locale === 'ua' || locale === 'es' || locale === 'de' ? locale : 'en'
+                  ] || currentPost.author.role.en}
                 </div>
               </div>
             </div>
@@ -212,7 +232,15 @@ export default function BlogDetailView({
                 className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold bg-purple-50 dark:bg-slate-800 text-purple-700 dark:text-lime-400 border border-purple-200/70 dark:border-lime-500/30 hover:bg-purple-100 dark:hover:bg-slate-700 transition cursor-pointer"
               >
                 <Sparkles className="w-3.5 h-3.5" aria-hidden="true" />
-                <span>{locale === 'ua' ? 'Запитати AI' : locale === 'es' ? 'Preguntar a la IA' : 'Ask AI Assistant'}</span>
+                <span>
+                  {locale === 'ua'
+                    ? 'Запитати AI'
+                    : locale === 'es'
+                      ? 'Preguntar a la IA'
+                      : locale === 'de'
+                        ? 'KI-Assistenten fragen'
+                        : 'Ask AI Assistant'}
+                </span>
               </button>
               <button
                 type="button"
@@ -223,12 +251,16 @@ export default function BlogDetailView({
                       ? 'Посилання скопійовано'
                       : locale === 'es'
                         ? 'Enlace copiado'
-                        : 'Link copied'
+                        : locale === 'de'
+                          ? 'Link kopiert'
+                          : 'Link copied'
                     : locale === 'ua'
                       ? 'Поділитися статтею'
                       : locale === 'es'
                         ? 'Compartir artículo'
-                        : 'Share article'
+                        : locale === 'de'
+                          ? 'Artikel teilen'
+                          : 'Share article'
                 }
                 title={
                   copiedLink
@@ -236,12 +268,16 @@ export default function BlogDetailView({
                       ? 'Скопійовано!'
                       : locale === 'es'
                         ? '¡Copiado!'
-                        : 'Copied!'
+                        : locale === 'de'
+                          ? 'Kopiert!'
+                          : 'Copied!'
                     : locale === 'ua'
                       ? 'Поділитися'
                       : locale === 'es'
                         ? 'Compartir'
-                        : 'Share'
+                        : locale === 'de'
+                          ? 'Teilen'
+                          : 'Share'
                 }
                 className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-semibold transition cursor-pointer ${
                   copiedLink
@@ -252,12 +288,12 @@ export default function BlogDetailView({
                 {copiedLink ? (
                   <>
                     <CheckCircle2 className="w-4 h-4 text-emerald-600 dark:text-emerald-400" aria-hidden="true" />
-                    <span>{locale === 'ua' ? 'Скопійовано!' : locale === 'es' ? '¡Copiado!' : 'Copied!'}</span>
+                    <span>{locale === 'ua' ? 'Скопійовано!' : locale === 'es' ? '¡Copiado!' : locale === 'de' ? 'Kopiert!' : 'Copied!'}</span>
                   </>
                 ) : (
                   <>
                     <Share2 className="w-4 h-4" aria-hidden="true" />
-                    <span>{locale === 'ua' ? 'Поділитися' : locale === 'es' ? 'Compartir' : 'Share'}</span>
+                    <span>{locale === 'ua' ? 'Поділитися' : locale === 'es' ? 'Compartir' : locale === 'de' ? 'Teilen' : 'Share'}</span>
                   </>
                 )}
               </button>
@@ -268,7 +304,15 @@ export default function BlogDetailView({
             <div className="flex flex-wrap items-center gap-2 pt-4 mt-4 border-t border-slate-100 dark:border-white/5">
               <span className="text-xs font-bold uppercase tracking-wider text-purple-700 dark:text-lime-400 flex items-center gap-1.5">
                 <CheckCircle2 className="w-3.5 h-3.5" aria-hidden="true" />
-                <span>{locale === 'ua' ? 'Впроваджено в проєктах:' : locale === 'es' ? 'Aplicado en producción:' : 'Production Proof:'}</span>
+                <span>
+                  {locale === 'ua'
+                    ? 'Впроваджено в проєктах:'
+                    : locale === 'es'
+                      ? 'Aplicado en producción:'
+                      : locale === 'de'
+                        ? 'Praxiseinsatz:'
+                        : 'Production Proof:'}
+                </span>
               </span>
               {currentPost.appliedProjects.map((p) => {
                 const btnContent = (
@@ -319,7 +363,15 @@ export default function BlogDetailView({
           <aside className="mb-10 p-6 bg-slate-50 dark:bg-slate-800/80 rounded-2xl border border-purple-200/70 dark:border-lime-500/30 shadow-xs">
             <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-purple-700 dark:text-lime-400 mb-3">
               <CheckCircle2 className="w-4 h-4" aria-hidden="true" />
-              <span>{locale === 'ua' ? 'Ключові архітектурні тези' : locale === 'es' ? 'Puntos clave de arquitectura' : 'Key Architectural Takeaways'}</span>
+              <span>
+                {locale === 'ua'
+                  ? 'Ключові архітектурні тези'
+                  : locale === 'es'
+                    ? 'Puntos clave de arquitectura'
+                    : locale === 'de'
+                      ? 'Zentrale Architektur-Erkenntnisse'
+                      : 'Key Architectural Takeaways'}
+              </span>
             </div>
             <ul className="space-y-2 text-sm text-slate-700 dark:text-slate-300">
               {tldr.map((item, idx) => (
@@ -334,7 +386,7 @@ export default function BlogDetailView({
 
         {/* Main Content Body with Semantic Markdown & Tables */}
         <div className="mb-16">
-          <MarkdownRenderer content={content} />
+          <MarkdownRenderer content={content} locale={locale} />
         </div>
 
         {/* Applied Production Case Studies Section */}
@@ -342,21 +394,40 @@ export default function BlogDetailView({
           <section className="mb-16 p-6 sm:p-8 rounded-3xl bg-slate-50 dark:bg-slate-800/80 border border-purple-200/80 dark:border-lime-500/30 shadow-md">
             <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-purple-700 dark:text-lime-400 mb-2">
               <Sparkles className="w-4 h-4" aria-hidden="true" />
-              <span>{locale === 'ua' ? 'Практичне впровадження в коді' : locale === 'es' ? 'Implementación real en producción' : 'Battle-Tested Production Proof'}</span>
+              <span>
+                {locale === 'ua'
+                  ? 'Практичне впровадження в коді'
+                  : locale === 'es'
+                    ? 'Implementación real en producción'
+                    : locale === 'de'
+                      ? 'Praxiserprobter Produktiveinsatz'
+                      : 'Battle-Tested Production Proof'}
+              </span>
             </div>
             <h3 className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white mb-2">
-              {locale === 'ua' ? 'Де ця архітектура працює у моєму портфоліо' : locale === 'es' ? 'Dónde funciona esta arquitectura en proyectos reales' : 'Where This Architecture is Deployed in Production'}
+              {locale === 'ua'
+                ? 'Де ця архітектура працює у моєму портфоліо'
+                : locale === 'es'
+                  ? 'Dónde funciona esta arquitectura en proyectos reales'
+                  : locale === 'de'
+                    ? 'Wo diese Architektur produktiv eingesetzt wird'
+                    : 'Where This Architecture is Deployed in Production'}
             </h3>
             <p className="text-sm text-slate-600 dark:text-slate-300 mb-6">
               {locale === 'ua'
                 ? 'Ці інженерні рішення не є абстрактною теорією - вони повністю реалізовані та перевірені у наступних робочих продуктах:'
                 : locale === 'es'
                   ? 'Estas soluciones no son teoría abstracta: están desplegadas y verificadas en los siguientes productos reales:'
-                  : 'These architectural patterns are not abstract theory - they are fully deployed and benchmarked in these live production builds:'}
+                  : locale === 'de'
+                    ? 'Diese Architekturmuster sind keine abstrakte Theorie - sie sind in den folgenden Live-Produkten vollständig implementiert und getestet:'
+                    : 'These architectural patterns are not abstract theory - they are fully deployed and benchmarked in these live production builds:'}
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {currentPost.appliedProjects.map((p) => {
-                const noteText = p.note[locale === 'ua' || locale === 'es' ? locale : 'en']
+                const noteText =
+                  (p.note as Partial<Record<'en' | 'ua' | 'es' | 'de', string>>)[
+                    locale === 'ua' || locale === 'es' || locale === 'de' ? locale : 'en'
+                  ] || p.note.en
                 const cardBody = (
                   <div className="p-5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/80 dark:border-slate-800 hover:border-purple-300 dark:hover:border-lime-500/40 transition-all flex flex-col justify-between group h-full">
                     <div>
@@ -371,7 +442,15 @@ export default function BlogDetailView({
                       </p>
                     </div>
                     <div className="text-xs font-bold text-purple-600 dark:text-lime-400 flex items-center gap-1">
-                      <span>{locale === 'ua' ? 'Переглянути кейс' : locale === 'es' ? 'Ver caso de estudio' : 'Explore Case Study'}</span>
+                      <span>
+                        {locale === 'ua'
+                          ? 'Переглянути кейс'
+                          : locale === 'es'
+                            ? 'Ver caso de estudio'
+                            : locale === 'de'
+                              ? 'Fallstudie ansehen'
+                              : 'Explore Case Study'}
+                      </span>
                       <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
                     </div>
                   </div>
@@ -401,7 +480,7 @@ export default function BlogDetailView({
 
         {/* Contextual B2B Commercial Service Banner */}
         {relatedService && (() => {
-          const validLoc = (locale === 'es' || locale === 'ua' ? locale : 'en') as 'en' | 'ua' | 'es'
+          const validLoc = (locale === 'es' || locale === 'ua' || locale === 'de' ? locale : 'en') as 'en' | 'ua' | 'es' | 'de'
           const serviceContent = relatedService.content[validLoc] || relatedService.content.en
           return (
             <div className="p-6 sm:p-8 mb-12 rounded-3xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200/90 dark:border-slate-700/80 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
@@ -426,7 +505,9 @@ export default function BlogDetailView({
                     ? 'Переглянути послугу'
                     : locale === 'es'
                       ? 'Ver detalles del servicio'
-                      : 'Explore B2B Service'}
+                      : locale === 'de'
+                        ? 'Leistungsdetails ansehen'
+                        : 'Explore B2B Service'}
                 </span>
                 <ArrowRight className="w-4 h-4" aria-hidden="true" />
               </Link>
@@ -439,21 +520,33 @@ export default function BlogDetailView({
           <div className="max-w-xl">
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-lime-400/20 text-lime-300 border border-lime-400/30 mb-3">
               <Sparkles className="w-3.5 h-3.5" aria-hidden="true" />
-              <span>{locale === 'ua' ? 'Архітектурний аудит' : locale === 'es' ? 'Auditoría de Arquitectura' : 'Architecture Consulting'}</span>
+              <span>
+                {locale === 'ua'
+                  ? 'Архітектурний аудит'
+                  : locale === 'es'
+                    ? 'Auditoría de Arquitectura'
+                    : locale === 'de'
+                      ? 'Architekturberatung'
+                      : 'Architecture Consulting'}
+              </span>
             </div>
             <h3 className="text-2xl font-bold text-white mb-2">
               {locale === 'ua'
                 ? 'Плануєте міграцію стеку або розробку продукту?'
                 : locale === 'es'
                   ? '¿Planeas una migración técnica o nuevo proyecto?'
-                  : 'Planning a tech stack migration or new build?'}
+                  : locale === 'de'
+                    ? 'Planen Sie eine Stack-Migration oder einen Neuaufbau?'
+                    : 'Planning a tech stack migration or new build?'}
             </h3>
             <p className="text-sm text-slate-300 leading-relaxed">
               {locale === 'ua'
                 ? 'Обговоріть архітектурні вимоги вашого проєкту з інтерактивним RAG AI-асистентом або зв’яжіться напряму для інженерної оцінки.'
                 : locale === 'es'
                   ? 'Consulta los requerimientos de tu proyecto con el asistente de IA o solicita una evaluación técnica directa.'
-                  : 'Discuss architectural requirements with my interactive RAG AI assistant or connect directly for an engineering assessment.'}
+                  : locale === 'de'
+                    ? 'Besprechen Sie Ihre Architekturanforderungen mit meinem interaktiven RAG-KI-Assistenten oder kontaktieren Sie mich direkt für eine technische Bewertung.'
+                    : 'Discuss architectural requirements with my interactive RAG AI assistant or connect directly for an engineering assessment.'}
             </p>
           </div>
           <div className="flex flex-col sm:flex-row items-center gap-3 shrink-0">
@@ -463,7 +556,15 @@ export default function BlogDetailView({
               className="w-full sm:w-auto px-5 py-3 rounded-xl font-bold text-sm bg-lime-400 hover:bg-lime-300 text-slate-950 transition-all shadow-lg flex items-center justify-center gap-2 cursor-pointer"
             >
               <MessageSquare className="w-4 h-4" aria-hidden="true" />
-              <span>{locale === 'ua' ? 'Запитати AI-асистента' : locale === 'es' ? 'Consultar al Asistente IA' : 'Ask AI Assistant'}</span>
+              <span>
+                {locale === 'ua'
+                  ? 'Запитати AI-асистента'
+                  : locale === 'es'
+                    ? 'Consultar al Asistente IA'
+                    : locale === 'de'
+                      ? 'KI-Assistenten fragen'
+                      : 'Ask AI Assistant'}
+              </span>
             </button>
             {onBackToPortfolio ? (
               <button
@@ -476,14 +577,30 @@ export default function BlogDetailView({
                 }}
                 className="w-full sm:w-auto px-5 py-3 rounded-xl font-bold text-sm bg-white/10 hover:bg-white/20 text-white border border-white/20 transition-all flex items-center justify-center cursor-pointer"
               >
-                <span>{locale === 'ua' ? 'Написати напряму' : locale === 'es' ? 'Contactar directamente' : 'Contact Directly'}</span>
+                <span>
+                  {locale === 'ua'
+                    ? 'Написати напряму'
+                    : locale === 'es'
+                      ? 'Contactar directamente'
+                      : locale === 'de'
+                        ? 'Direkt kontaktieren'
+                        : 'Contact Directly'}
+                </span>
               </button>
             ) : (
               <Link
                 href={`/${locale}#contact`}
                 className="w-full sm:w-auto px-5 py-3 rounded-xl font-bold text-sm bg-white/10 hover:bg-white/20 text-white border border-white/20 transition-all flex items-center justify-center"
               >
-                <span>{locale === 'ua' ? 'Написати напряму' : locale === 'es' ? 'Contactar directamente' : 'Contact Directly'}</span>
+                <span>
+                  {locale === 'ua'
+                    ? 'Написати напряму'
+                    : locale === 'es'
+                      ? 'Contactar directamente'
+                      : locale === 'de'
+                        ? 'Direkt kontaktieren'
+                        : 'Contact Directly'}
+                </span>
               </Link>
             )}
           </div>
@@ -493,7 +610,13 @@ export default function BlogDetailView({
         {relatedPosts.length > 0 && (
           <div className="pt-10 border-t border-slate-200 dark:border-slate-800">
             <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">
-              {locale === 'ua' ? 'Інші інженерні статті' : locale === 'es' ? 'Otros artículos de ingeniería' : 'Related Engineering Articles'}
+              {locale === 'ua'
+                ? 'Інші інженерні статті'
+                : locale === 'es'
+                  ? 'Otros artículos de ingeniería'
+                  : locale === 'de'
+                    ? 'Weitere Engineering-Artikel'
+                    : 'Related Engineering Articles'}
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {relatedPosts.map((rel) => {
@@ -515,7 +638,7 @@ export default function BlogDetailView({
                       </p>
                     </div>
                     <div className="mt-4 pt-3 border-t border-slate-200/60 dark:border-white/5 flex items-center gap-1.5 text-xs font-semibold text-purple-600 dark:text-lime-400">
-                      <span>{locale === 'ua' ? 'Читати розбір' : locale === 'es' ? 'Leer análisis' : 'Read Article'}</span>
+                      <span>{locale === 'ua' ? 'Читати розбір' : locale === 'es' ? 'Leer análisis' : locale === 'de' ? 'Artikel lesen' : 'Read Article'}</span>
                       <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
                     </div>
                   </>

@@ -33,6 +33,8 @@ export const es: Translation = {
     sectionTitle: 'Sobre mí',
     availableForProjects: 'Disponible para proyectos',
     myJourney: 'Mi trayectoria',
+    presentLabel: 'Actualidad',
+    nowLabel: 'Ahora',
     bio: {
       p1: 'Soy un ingeniero web Fullstack orientado a resultados con más de 5 años de experiencia en el desarrollo, escalado y optimización técnica de plataformas de alta carga, con una profunda especialización arquitectónica en WordPress. Mi experiencia se sitúa en la intersección de los ecosistemas frontend modernos (React, Next.js) y la ingeniería empresarial de WordPress - desde arquitecturas PHP 8+ personalizadas y desarrollo seguro de plugins hasta configuraciones Headless CMS de alto rendimiento y optimización profunda del rendimiento.',
       p2: 'Mi principal ventaja competitiva es una sofisticada filosofía de ingeniería centrada en la IA. En lugar de tratar la IA como un simple asistente de código, integro sistemáticamente sistemas de próxima generación - incluyendo Claude Code, Cursor, Google Antigravity y pipelines personalizados de Retrieval-Augmented Generation (RAG) - directamente en el ciclo de vida del desarrollo de software (SDLC), siguiendo una metodología de Desarrollo Orientado a Especificaciones (SDD): primero defino la especificación técnica y luego la IA implementa y verifica contra ella en lugar de improvisar. Utilizo ampliamente la IA para crear asistentes RAG contextuales, automatizar flujos de trabajo de desarrollo complejos y realizar investigaciones técnicas profundas. Al combinar mi experiencia arquitectónica práctica con el desarrollo potenciado por IA, acelero refactorizaciones complejas, automatizo pruebas de regresión y comprimo drásticamente el tiempo de comercialización - todo ello manteniendo una estricta calidad del código, seguridad e integridad arquitectónica.',
@@ -78,6 +80,7 @@ export const es: Translation = {
       item0: {
         title: 'Ingeniería web avanzada y tecnologías emergentes',
         institution: 'Enfoque en ecosistemas escalables e integración de IA',
+        badge: 'I+D / Investigación técnica',
         description: {
           soloRnd: {
             label: 'Solopreneur Product R&D:',
@@ -108,6 +111,7 @@ export const es: Translation = {
       item1: {
         title: 'Cursos profesionales y autoformación',
         institution: 'Plataformas de aprendizaje continuo',
+        badge: 'Formación continua',
         description: {
           intro: 'Desarrollo profesional continuo en plataformas líderes:',
         },
@@ -115,6 +119,7 @@ export const es: Translation = {
       item2: {
         title: 'Universidad Técnica Nacional (Ucrania)',
         institution: 'VNTU - Universidad Técnica Nacional de Vinnytsia (Ucrania)',
+        badge: 'Título universitario',
         description: {
           spec: {
             label: 'Especialización:',
@@ -159,19 +164,19 @@ export const es: Translation = {
             text: 'Desarrollé temas y plugins de alto rendimiento desde cero (PHP 8.x, OOP, WPCS) y gestioné plataformas Wix avanzadas.',
           },
           lifecycle: {
-            label: 'Lifecycle Management:',
+            label: 'Gestión del ciclo de vida:',
             text: 'Gestioné el ciclo completo de despliegue, migraciones de bases de datos, parches de seguridad y soporte de ingeniería para clientes de EE.UU. hasta 2026.',
           },
           uiux: {
-            label: 'UI/UX Re-engineering:',
+            label: 'Reingeniería UI/UX:',
             text: 'Lideré rediseños de sitios heredados, convirtiéndolos en frontends modernos y adaptables.',
           },
           perf: {
-            label: 'Performance y SEO:',
+            label: 'Rendimiento y SEO:',
             text: 'Optimicé estructuras de maquetación para Core Web Vitals, logrando puntuaciones estables de Lighthouse 90+.',
           },
           agile: {
-            label: 'Agile Delivery:',
+            label: 'Entrega Ágil (Scrum):',
             text: 'Trabajé en entornos Scrum activos colaborando con equipos internacionales multifuncionales.',
           },
         },
@@ -195,6 +200,7 @@ export const es: Translation = {
       },
       item2: {
         title: 'Proyectos freelance y personales',
+        company: 'Desarrollador web (WordPress, Shopify, WIX), especialista SEO.',
         desc: {
           delivered: {
             label: 'Más de 30 proyectos entregados:',
@@ -226,6 +232,8 @@ export const es: Translation = {
       of: 'de',
       choosePhase: 'Fases del flujo',
       swipe: 'Deslizar',
+      stepBreakdown: 'Desglose de pasos',
+      techTools: 'Tecnologías y herramientas de IA',
     },
     categories: [
       {
@@ -383,6 +391,7 @@ export const es: Translation = {
     showLess: 'Ver menos',
     categories: {
       wp: {
+        title: 'Desarrollo WordPress',
         description: 'Temas y plugins personalizados. Comercio electrónico.',
         skillDetails: [
           {
@@ -408,6 +417,7 @@ export const es: Translation = {
         ],
       },
       app: {
+        title: 'Desarrollo de aplicaciones',
         description:
           'Desarrollo de aplicaciones web rápidas y escalables con React, Next.js, TypeScript y Tailwind CSS.',
         skillDetails: [
@@ -434,6 +444,7 @@ export const es: Translation = {
         ],
       },
       ai: {
+        title: 'Herramientas de IA y automatización',
         description: 'Herramientas modernas de IA y automatización para mayor productividad en el desarrollo',
         skillDetails: [
           {
@@ -459,6 +470,7 @@ export const es: Translation = {
         ],
       },
       seo: {
+        title: 'SEO y rendimiento',
         description: 'Optimización para motores de búsqueda y mejora del rendimiento web',
         skillDetails: [
           {
@@ -484,6 +496,7 @@ export const es: Translation = {
         ],
       },
       layout: {
+        title: 'Maquetación y estructura web',
         description: 'Sistemas de maquetación modernos y arquitectura de diseño adaptable',
         skillDetails: [
           {
@@ -509,6 +522,7 @@ export const es: Translation = {
         ],
       },
       design: {
+        title: 'Comprensión del diseño',
         description: 'Principios de diseño visual y optimización de la experiencia de usuario',
         skillDetails: [
           {
@@ -537,6 +551,40 @@ export const es: Translation = {
     workTools: {
       sectionLabel: 'Entorno de trabajo',
       sectionTitle: 'Herramientas de organización del trabajo',
+      items: [
+        {
+          name: 'IDEs y copilotos de IA',
+          description: 'Claude Code, Google Antigravity, Cursor, Devin, Windsurf',
+        },
+        {
+          name: 'Figma, Pencil y Claude Design',
+          description: 'Diseño UI/UX, wireframing y prototipado',
+        },
+        {
+          name: 'Redmine y Jira',
+          description: 'Seguimiento ágil de tareas y gestión de proyectos',
+        },
+        {
+          name: 'Notion, Miro y NotebookLM',
+          description: 'Colaboración, mapas mentales e investigación con IA',
+        },
+        {
+          name: 'Slack, MS Teams y Workspace',
+          description: 'Comunicación en equipo y entorno de trabajo en la nube',
+        },
+        {
+          name: 'GitHub y GitLab',
+          description: 'Flujos de trabajo Git y automatización CI/CD',
+        },
+        {
+          name: 'Vercel y Netlify',
+          description: 'Plataformas de alojamiento cloud serverless',
+        },
+        {
+          name: 'Local WP, XAMPP y Docker',
+          description: 'Desarrollo local y entornos de servidor',
+        },
+      ],
     },
     softSkills: {
       sectionLabel: 'Atributos personales',

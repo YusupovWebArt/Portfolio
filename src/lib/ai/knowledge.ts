@@ -19,6 +19,7 @@ export interface KnowledgeChunk {
   content: string
   contentUa?: string
   contentEs?: string
+  contentDe?: string
   metadata?: {
     projectId?: number
     liveUrl?: string
@@ -133,6 +134,16 @@ Detalles: ${project.fullDescriptionEs || project.descriptionEs}`
         )
       : undefined
 
+    const contentDe = project.descriptionDe
+      ? stripEmDashes(
+          `Projekttitel: ${project.title}
+Kategorie: ${project.category?.join(', ') || 'web'}
+Technologien: ${techList.join(', ')}
+Zusammenfassung: ${project.descriptionDe}
+Details: ${project.fullDescriptionDe || project.descriptionDe}`
+        )
+      : undefined
+
     chunks.push({
       id: `project-${project.id}`,
       type: 'project',
@@ -144,6 +155,7 @@ Detalles: ${project.fullDescriptionEs || project.descriptionEs}`
       content,
       contentUa,
       contentEs,
+      contentDe,
       metadata: {
         projectId: project.id,
         liveUrl: project.liveUrl,
@@ -185,6 +197,9 @@ const buildProjectFacetedSubchunks = (overviewChunks: KnowledgeChunk[]): Knowled
         contentEs: stripEmDashes(
           `Stack tecnológico utilizado en ${project.title}: ${overview.technologies.join(', ')}.`
         ),
+        contentDe: stripEmDashes(
+          `Verwendeter Technologie-Stack in ${project.title}: ${overview.technologies.join(', ')}.`
+        ),
         metadata: {
           projectId: project.id,
           keywords: ['stack', 'technologies', ...overview.technologies],
@@ -197,6 +212,21 @@ const buildProjectFacetedSubchunks = (overviewChunks: KnowledgeChunk[]): Knowled
       const featStr = project.features
         .map((f) => (typeof f === 'string' ? f : `${f.title}: ${f.description}`))
         .join('; ')
+      const featStrUa = project.features
+        .map((f) =>
+          typeof f === 'string' ? f : `${f.titleUa || f.title}: ${f.descriptionUa || f.description}`
+        )
+        .join('; ')
+      const featStrEs = project.features
+        .map((f) =>
+          typeof f === 'string' ? f : `${f.titleEs || f.title}: ${f.descriptionEs || f.description}`
+        )
+        .join('; ')
+      const featStrDe = project.features
+        .map((f) =>
+          typeof f === 'string' ? f : `${f.titleDe || f.title}: ${f.descriptionDe || f.description}`
+        )
+        .join('; ')
       facets.push({
         id: `${overview.id}-features`,
         type: 'project',
@@ -206,6 +236,9 @@ const buildProjectFacetedSubchunks = (overviewChunks: KnowledgeChunk[]): Knowled
         slug: overview.slug,
         category: overview.category,
         content: stripEmDashes(`Core features of ${project.title}: ${featStr}`),
+        contentUa: stripEmDashes(`Основні функції проєкту ${project.title}: ${featStrUa}`),
+        contentEs: stripEmDashes(`Funciones principales de ${project.title}: ${featStrEs}`),
+        contentDe: stripEmDashes(`Kernfunktionen von ${project.title}: ${featStrDe}`),
         metadata: {
           projectId: project.id,
           keywords: ['features', 'functionality', overview.slug || ''],
@@ -216,16 +249,26 @@ const buildProjectFacetedSubchunks = (overviewChunks: KnowledgeChunk[]): Knowled
     // 3. Architecture & Engineering Facet (if rich architecture rows or case study details exist)
     if (project.architecture || project.challenges || project.solutions) {
       const archParts: string[] = []
+      const archPartsDe: string[] = []
       if (project.architecture?.description) archParts.push(project.architecture.description)
+      if (project.architecture?.descriptionDe || project.architecture?.description) {
+        archPartsDe.push(project.architecture?.descriptionDe || project.architecture?.description || '')
+      }
       if (project.architecture?.rows) {
-        archParts.push(
-          project.architecture.rows
-            .map((r) => `${r.rowLabel}: ${r.steps.map((s) => s.label).join(' -> ')}`)
-            .join('; ')
-        )
+        const flowSummary = project.architecture.rows
+          .map((r) => `${r.rowLabel}: ${r.steps.map((s) => s.label).join(' -> ')}`)
+          .join('; ')
+        archParts.push(flowSummary)
+        archPartsDe.push(flowSummary)
       }
       if (project.challenges) archParts.push(`Challenges: ${project.challenges.join('; ')}`)
       if (project.solutions) archParts.push(`Solutions: ${project.solutions.join('; ')}`)
+      if (project.challengesDe || project.challenges) {
+        archPartsDe.push(`Herausforderungen: ${(project.challengesDe || project.challenges || []).join('; ')}`)
+      }
+      if (project.solutionsDe || project.solutions) {
+        archPartsDe.push(`Lösungen: ${(project.solutionsDe || project.solutions || []).join('; ')}`)
+      }
 
       facets.push({
         id: `${overview.id}-architecture`,
@@ -237,6 +280,9 @@ const buildProjectFacetedSubchunks = (overviewChunks: KnowledgeChunk[]): Knowled
         category: overview.category,
         content: stripEmDashes(
           `Architecture, engineering, challenges and solutions for ${project.title}: ${archParts.join('. ')}`
+        ),
+        contentDe: stripEmDashes(
+          `Architektur, Engineering, Herausforderungen und Lösungen für ${project.title}: ${archPartsDe.join('. ')}`
         ),
         metadata: {
           projectId: project.id,
@@ -264,6 +310,9 @@ const buildProfileChunks = (): KnowledgeChunk[] => [
     contentEs: stripEmDashes(
       'Artur Yusupov es un desarrollador Fullstack WordPress e ingeniero Next.js / React con más de 5 años de experiencia comercial. Reside en Sevilla, España, y se especializa en arquitectura web moderna, Headless CMS, temas y plugins personalizados, y desarrollo asistido por IA.'
     ),
+    contentDe: stripEmDashes(
+      'Artur Yusupov ist Fullstack-WordPress-Entwickler und Next.js / React Engineer mit über 5 Jahren kommerzieller Erfahrung. Mit Sitz in Sevilla (Spanien) spezialisiert er sich auf moderne Enterprise-Webarchitekturen, Headless CMS, individuelle Plugin-/Theme-Entwicklung, High-Performance-UI und AI-gestützte Softwareentwicklung.'
+    ),
     metadata: {
       keywords: ['artur', 'yusupov', 'bio', 'experience', 'seville', 'spain', 'fullstack'],
     },
@@ -285,6 +334,9 @@ const buildServiceChunks = (): KnowledgeChunk[] => {
       ),
       contentEs: stripEmDashes(
         'Servicios B2B de ingeniería web de Artur Yusupov: 1. Desarrollo web marca blanca para agencias digitales bajo NDA. 2. Migración de WordPress a Next.js 16 Headless. 3. Optimización Core Web Vitals y Google Ads (PageSpeed 95+). 4. Desarrollo web a medida en Sevilla y España para Pymes. 5. Asistentes virtuales de IA con RAG 24/7.'
+      ),
+      contentDe: stripEmDashes(
+        'B2B-Web-Engineering-Leistungen von Artur Yusupov: 1. White-Label-Webentwicklung für Digitalagenturen unter strenger NDA. 2. Headless-WordPress- und Monolith-Migrationen auf Next.js 16. 3. Web-Performance- & Core-Web-Vitals-Optimierung (PageSpeed 95+). 4. Maßgeschneiderte Webentwicklung für Unternehmen und Kliniken in Sevilla, Spanien & DACH. 5. Individuelle RAG-AI-Assistenten & 24/7 Business-Automatisierung.'
       ),
       metadata: {
         keywords: [
@@ -310,6 +362,7 @@ const buildServiceChunks = (): KnowledgeChunk[] => {
     const en = service.content.en
     const es = service.content.es
     const ua = service.content.ua
+    const de = service.content.de
 
     const metricsStr = en.metrics.map((m) => `${m.label}: ${m.value}`).join('; ')
     const probsStr = en.problemsSolved.map((p) => `${p.title}: ${p.desc}`).join('; ')
@@ -326,6 +379,11 @@ const buildServiceChunks = (): KnowledgeChunk[] => {
     const delivStrUa = ua.deliverables.map((d) => `${d.title}: ${d.items.join(', ')}`).join('; ')
     const faqsStrUa = ua.faqs.map((f) => `Q: ${f.q} A: ${f.a}`).join(' | ')
 
+    const metricsStrDe = de.metrics.map((m) => `${m.label}: ${m.value}`).join('; ')
+    const probsStrDe = de.problemsSolved.map((p) => `${p.title}: ${p.desc}`).join('; ')
+    const delivStrDe = de.deliverables.map((d) => `${d.title}: ${d.items.join(', ')}`).join('; ')
+    const faqsStrDe = de.faqs.map((f) => `F: ${f.q} A: ${f.a}`).join(' | ')
+
     chunks.push({
       id: `service-${service.slug}`,
       type: 'service',
@@ -340,6 +398,9 @@ const buildServiceChunks = (): KnowledgeChunk[] => {
       ),
       contentUa: stripEmDashes(
         `${ua.title}. ${ua.shortDesc} ${ua.heroLead} Метрики: ${metricsStrUa}. Проблеми, які вирішує: ${probsStrUa}. Результати: ${delivStrUa}. Часті питання: ${faqsStrUa}.`
+      ),
+      contentDe: stripEmDashes(
+        `${de.title}. ${de.shortDesc} ${de.heroLead} Kennzahlen: ${metricsStrDe}. Gelöste Probleme: ${probsStrDe}. Leistungen: ${delivStrDe}. Häufige Fragen: ${faqsStrDe}.`
       ),
       metadata: {
         keywords: [
@@ -365,6 +426,15 @@ const buildMethodologyChunks = (): KnowledgeChunk[] => [
     content: stripEmDashes(
       'Artur Yusupov adheres to the 2026 AI-Harness engineering methodology: 1. Spec-Driven Development (SDD): All features are lifecycle-managed under specs/ before coding. 2. Test-Driven Development (TDD): Strict Red-Green-Refactor discipline using Vitest and React Testing Library. 3. European Accessibility Act (EAA 2026 / WCAG 2.2 AA): Continuous axe-core scanning with zero accessibility violations. 4. DevSecOps: Strict Zero Secrets policy, Base64 contact obfuscation, opt-in Consent Mode v2 Basic for analytics, and sub-second Core Web Vitals budgets.'
     ),
+    contentUa: stripEmDashes(
+      'Артур Юсупов дотримується інженерної методології AI-Harness 2026: 1. Spec-Driven Development (SDD): усі функції проходять життєвий цикл у specs/ перед написанням коду. 2. Test-Driven Development (TDD): сувора дисципліна Red-Green-Refactor на базі Vitest та React Testing Library. 3. European Accessibility Act (EAA 2026 / WCAG 2.2 AA): безперервне сканування axe-core із нулем порушень доступності. 4. DevSecOps: сувора політика Zero Secrets, Base64-обфускація контактів, opt-in Consent Mode v2 Basic та субсекундні бюджети Core Web Vitals.'
+    ),
+    contentEs: stripEmDashes(
+      'Artur Yusupov aplica la metodología de ingeniería AI-Harness 2026: 1. Spec-Driven Development (SDD): cada funcionalidad se especifica bajo specs/ antes de programar. 2. Test-Driven Development (TDD): disciplina estricta Red-Green-Refactor con Vitest y React Testing Library. 3. European Accessibility Act (EAA 2026 / WCAG 2.2 AA): escaneo continuo con axe-core con cero violaciones. 4. DevSecOps: política Zero Secrets, ofuscación Base64 de contactos, Consent Mode v2 Basic opt-in y presupuestos Core Web Vitals subsegundo.'
+    ),
+    contentDe: stripEmDashes(
+      'Artur Yusupov folgt der AI-Harness-Engineering-Methodik 2026: 1. Spec-Driven Development (SDD): Alle Features durchlaufen vor dem Coding einen Spezifikationszyklus unter specs/. 2. Test-Driven Development (TDD): Strikte Red-Green-Refactor-Disziplin mit Vitest und React Testing Library. 3. European Accessibility Act (EAA 2026 / WCAG 2.2 AA): Kontinuierliche axe-core-Prüfungen mit null Barrierefreiheitsverstößen. 4. DevSecOps: Strikte Zero-Secrets-Richtlinie, Base64-Kontaktobfuskierung, Opt-in Consent Mode v2 Basic und Core Web Vitals Budgets unter einer Sekunde.'
+    ),
     metadata: {
       keywords: ['methodology', 'sdd', 'tdd', 'vitest', 'wcag', 'eaa', 'devsecops', 'quality'],
     },
@@ -372,38 +442,44 @@ const buildMethodologyChunks = (): KnowledgeChunk[] => [
 ]
 
 const buildBlogChunks = (): KnowledgeChunk[] => {
-  return allBlogPosts.map((post) => ({
-    id: `blog-${post.slug}`,
-    type: 'blog' as const,
-    title: post.title.en,
-    slug: post.slug,
-    category: post.category,
-    technologies: post.tags,
-    content: stripEmDashes(
-      `Engineering Article: ${post.title.en}. Category: ${post.categoryLabel.en}. Key Takeaways: ${post.tldr.en.join(' ')}. Summary: ${post.description.en}. Article link: /en/blog/${post.slug}`
-    ),
-    contentUa: stripEmDashes(
-      `Інженерна стаття: ${post.title.ua}. Категорія: ${post.categoryLabel.ua}. Ключові тези: ${post.tldr.ua.join(' ')}. Опис: ${post.description.ua}. Посилання на статтю: /ua/blog/${post.slug}`
-    ),
-    contentEs: stripEmDashes(
-      `Artículo técnico: ${post.title.es}. Categoría: ${post.categoryLabel.es}. Conclusiones: ${post.tldr.es.join(' ')}. Resumen: ${post.description.es}. Enlace al artículo: /es/blog/${post.slug}`
-    ),
-    metadata: {
-      keywords: [
-        'blog',
-        'article',
-        'architecture',
-        'tco',
-        'nextjs',
-        'wordpress',
-        'rag',
-        'wcag',
-        'eaa',
-        ...post.slug.split('-'),
-        ...post.tags.map((t) => t.toLowerCase()),
-      ],
-    },
-  }))
+  return allBlogPosts.map((post) => {
+    const titleDe = (post.title as Partial<Record<'en' | 'ua' | 'es' | 'de', string>>).de
+    const categoryDe = (post.categoryLabel as Partial<Record<'en' | 'ua' | 'es' | 'de', string>>).de
+    const tldrDe = (post.tldr as Partial<Record<'en' | 'ua' | 'es' | 'de', string[]>>).de
+    const descDe = (post.description as Partial<Record<'en' | 'ua' | 'es' | 'de', string>>).de
+
+    return {
+      id: `blog-${post.slug}`,
+      type: 'blog' as const,
+      title: post.title.en,
+      slug: post.slug,
+      category: post.category,
+      technologies: post.tags,
+      content: stripEmDashes(
+        `Engineering Article: ${post.title.en}. Category: ${post.categoryLabel.en}. Key Takeaways: ${post.tldr.en.join(' ')}. Summary: ${post.description.en}. Article link: /en/blog/${post.slug}`
+      ),
+      contentUa: stripEmDashes(
+        `Інженерна стаття: ${post.title.ua}. Категорія: ${post.categoryLabel.ua}. Ключові тези: ${post.tldr.ua.join(' ')}. Опис: ${post.description.ua}. Посилання на статтю: /ua/blog/${post.slug}`
+      ),
+      contentEs: stripEmDashes(
+        `Artículo técnico: ${post.title.es}. Categoría: ${post.categoryLabel.es}. Conclusiones: ${post.tldr.es.join(' ')}. Resumen: ${post.description.es}. Enlace al artículo: /es/blog/${post.slug}`
+      ),
+      contentDe: titleDe
+        ? stripEmDashes(
+            `Technischer Fachartikel: ${titleDe}. Kategorie: ${categoryDe || post.categoryLabel.en}. Kernaussagen: ${(tldrDe || post.tldr.en).join(' ')}. Zusammenfassung: ${descDe || post.description.en}. Artikellink: /de/blog/${post.slug}`
+          )
+        : undefined,
+      metadata: {
+        keywords: [
+          'blog',
+          'article',
+          post.category.toLowerCase(),
+          ...post.slug.split('-'),
+          ...post.tags.map((t) => t.toLowerCase()),
+        ],
+      },
+    }
+  })
 }
 
 let cachedKnowledgeBase: KnowledgeBase | null = null

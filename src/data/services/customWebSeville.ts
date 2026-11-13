@@ -291,5 +291,100 @@ export const customWebSevilleService: ServiceItem = {
       whatsappMessage: 'Вітаю Артуре! Хочу дізнатися вартість розробки професійного сайту для мого бізнесу в Іспанії.',
       schemaDescription: 'Послуги розробки сучасних веб-сайтів під ключ для малого та середнього бізнесу, клінік та юристів у Севільї та Іспанії. Миттєва швидкість, локальне SEO та доступність WCAG 2.2.',
     },
+    de: {
+      badge: 'Webentwicklung in Sevilla & Spanien / KMU & Kliniken',
+      title: 'Maßgeschneiderte Webentwicklung für Unternehmen & Kliniken in Sevilla und Spanien',
+      shortDesc: 'Schnelle, barrierefreie und konversionsstarke Websites für KMU, Praxen und Kanzleien in Sevilla und ganz Spanien. Ohne langsame Baukästen und ohne versteckte Gebühren.',
+      heroLead: 'Ich entwickle maßgeschneiderte Unternehmenswebsites, die Vertrauen schaffen und Besucher in direkte Anrufe sowie WhatsApp-Anfragen verwandeln. Von Grund auf sauber programmiert (Next.js 16 oder individuelles WordPress), optimiert für Google Maps und europäische Barrierefreiheit.',
+      metrics: [
+        { value: '100%', label: 'Individueller Code ohne Template-Ballast' },
+        { value: '<1s', label: 'Sofortiges Laden auf Smartphones' },
+        { value: 'Local SEO', label: 'Optimiert für Google Maps & regionale Suche' },
+        { value: 'EAA 2026', label: 'Europäische Barrierefreiheits-Konformität' },
+      ],
+      problemsSolved: [
+        {
+          title: 'Träge Template-Websites, die bei Google kaum gefunden werden',
+          desc: 'Viele Agenturen liefern überladene Baukasten-Templates aus, die über 4 Sekunden laden. Meine maßgeschneiderten Entwicklungen sind leichtgewichtig und blitzschnell - zur Freude von Kunden und Suchmaschinen.',
+        },
+        {
+          title: 'Schöne Websites, die jedoch keine Kundenanfragen generieren',
+          desc: 'Eine Website ist keine digitale Visitenkarte, sondern Ihr Vertriebsmitarbeiter rund um die Uhr. Ich strukturiere jede Seite mit klaren Handlungsaufforderungen, schlanken Formularen und 1-Klick-WhatsApp-Kontakt.',
+        },
+        {
+          title: 'Risiko von Bußgeldern beim European Accessibility Act (EAA 2026)',
+          desc: 'Das europäische Barrierefreiheitsrecht verlangt zugängliche kommerzielle Webangebote für alle Nutzer. Ich entwickle nach WCAG 2.2 AA Standards und schütze Ihr Unternehmen vor rechtlichen Risiken.',
+        },
+      ],
+      deliverables: [
+        {
+          title: 'Exklusives Design & maßgeschneiderte Umsetzung',
+          items: [
+            'Individuelles UI-Design passend zur visuellen Identität Ihres Unternehmens oder Ihrer Klinik.',
+            'Einwandfreie mobile Darstellung getestet auf iOS und Android mit intuitiver Touch-Bedienung.',
+            'Strukturierte Leistungsübersichten, Spezialisten-Profile und Online-Terminbuchung.',
+          ],
+        },
+        {
+          title: 'Lokales SEO & Suchmaschinen-Optimierung',
+          items: [
+            'Technisches Schema.org-Markup (LocalBusiness, MedicalBusiness oder LegalService) für Google Rich Snippets.',
+            'Direkte Anbindung an Ihr Google Unternehmensprofil und Google Maps.',
+            'Zielgerichtete Texte für lokale Suchanfragen in Sevilla, Andalusien und ganz Spanien.',
+          ],
+        },
+        {
+          title: 'Konversionskanäle & Rechtssicherheit',
+          items: [
+            '1-Klick-WhatsApp-Anbindung für direkte Anfragen vom Smartphone aus.',
+            'AEPD-konformes Cookie-Consent-System mit Google Consent Mode v2 Basic und vollständigen Rechtstexten.',
+          ],
+        },
+      ],
+      workflowSteps: [
+        {
+          step: 'Phase 1',
+          title: 'Zielanalyse & transparentes Angebot',
+          desc: 'Wir besprechen Ihre Kernleistungen, Zielgruppen in Spanien und definieren die optimale Navigationsstruktur.',
+        },
+        {
+          step: 'Phase 2',
+          title: 'UI-Design & Content-Strukturierung',
+          desc: 'Wir erstellen hochwertige Entwürfe und strukturieren Ihre Inhalte für maximale Glaubwürdigkeit.',
+        },
+        {
+          step: 'Phase 3',
+          title: 'Entwicklung & Speed-Optimierung',
+          desc: 'Wir programmieren Ihre Website mit modernem Code und prüfen Sub-Sekunden-Ladezeiten im Mobilfunk.',
+        },
+        {
+          step: 'Phase 4',
+          title: 'Go-Live & verständliche Einweisung',
+          desc: 'Wir veröffentlichen die Seite unter Ihrer Domain, richten E-Mails ein und zeigen Ihnen die einfache Inhaltsbearbeitung.',
+        },
+      ],
+      faqs: [
+        {
+          q: 'Kann ich Texte und Bilder später selbst aktualisieren?',
+          a: 'Ja, selbstverständlich. Sie erhalten ein intuitives Dashboard, in dem Sie Texte, Preise und Bilder jederzeit sicher anpassen können, ohne das Design zu gefährden.',
+        },
+        {
+          q: 'Warum lohnt sich individuelle Entwicklung statt eines günstigen Templates?',
+          a: 'Fertige Templates laden Hunderte unnötiger Skripte, verlangsamen den Aufbau und verschlechtern das Ranking. Individueller Code lädt augenblicklich, wirkt seriös und erzielt deutlich höhere Anfrageraten.',
+        },
+        {
+          q: 'Wie lange dauert die Umsetzung einer Unternehmenswebsite?',
+          a: 'Typischerweise liegt die Entwicklungszeit für eine umfassende Firmen- oder Klinikwebsite nach Erhalt der Basismaterialien bei 2 bis 4 Wochen.',
+        },
+        {
+          q: 'Bieten Sie auch laufendes Hosting und Wartung an?',
+          a: 'Ja. Auf Wunsch übernehme ich schnelles Managed Hosting, tägliche Backups, Sicherheitsupdates und direkten Support via WhatsApp.',
+        },
+      ],
+      ctaHeadline: 'Bereit, Ihren digitalen Auftritt in Sevilla und Spanien auf das nächste Level zu heben?',
+      ctaLead: 'Schreiben Sie mir per WhatsApp. Schildern Sie mir Ihre Ziele und ich erstelle ein unverbindliches, maßgeschneidertes Angebot.',
+      whatsappMessage: 'Hallo Artur, ich möchte ein Angebot für eine maßgeschneiderte Unternehmenswebsite anfragen.',
+      schemaDescription: 'Professionelle maßgeschneiderte Webentwicklung für KMU, Kliniken und Kanzleien in Sevilla und Spanien. Sub-Sekunden-Ladezeiten, lokales SEO und WCAG 2.2 Barrierefreiheit.',
+    },
   },
 }

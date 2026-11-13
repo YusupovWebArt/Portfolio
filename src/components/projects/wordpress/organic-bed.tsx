@@ -10,12 +10,16 @@ const organicBed: Project = {
     'Ізраїльський сайт із підтримкою RTL, що пропонує широкий асортимент екологічних органічних постільних речей.',
   descriptionEs:
     'Sitio web israelí con soporte RTL que ofrece una amplia gama de productos de ropa de cama ecológica y orgánica.',
+  descriptionDe:
+    'Israelische Website mit RTL-Unterstützung für ein breites Sortiment an umweltfreundlichen Bio-Bettwaren.',
   fullDescription:
     'Organic Bed is an Israeli e-commerce store built on a custom WordPress theme from scratch with full Right-to-Left (RTL) Hebrew language support. WooCommerce powers the product catalogue and checkout, while Advanced Custom Fields enable flexible content management. The site features responsive design, SEO optimization, and WebP images for high performance in the Israeli market.',
   fullDescriptionUa:
-    'Organic Bed — це ізраїльський інтернет-магазин, розроблений на унікальній темі WordPress з нуля з повною підтримкою івриту та напрямку письма справа наліво (RTL). WooCommerce відповідає за каталог товарів і оформлення замовлень, тоді як Advanced Custom Fields забезпечує гнучке управління контентом. Сайт підтримує адаптивний дизайн, SEO-оптимізацію та формат зображень WebP для високої швидкодії на ринку Ізраїлю.',
+    'Organic Bed - це ізраїльський інтернет-магазин, розроблений на унікальній темі WordPress з нуля з повною підтримкою івриту та напрямку письма справа наліво (RTL). WooCommerce відповідає за каталог товарів і оформлення замовлень, тоді як Advanced Custom Fields забезпечує гнучке управління контентом. Сайт підтримує адаптивний дизайн, SEO-оптимізацію та формат зображень WebP для високої швидкодії на ринку Ізраїлю.',
   fullDescriptionEs:
     'Organic Bed es una tienda de comercio electrónico israelí desarrollada sobre un tema de WordPress personalizado desde cero con soporte completo de escritura de derecha a izquierda (RTL) en hebreo. WooCommerce gestiona el catálogo de productos y el proceso de pago, mientras que Advanced Custom Fields permite una gestión de contenido flexible. El sitio cuenta con diseño responsivo, optimización SEO e imágenes WebP para un alto rendimiento en el mercado israelí.',
+  fullDescriptionDe:
+    'Organic Bed ist ein israelischer E-Commerce-Shop auf Basis eines von Grund auf neu entwickelten WordPress-Themes mit vollständiger Rechts-nach-Links-Unterstützung (RTL) für die hebräische Sprache. WooCommerce steuert den Produktkatalog und den Checkout, während Advanced Custom Fields eine flexible Inhaltsverwaltung ermöglicht. Die Website bietet responsives Design, SEO-Optimierung und WebP-Bilder für hohe Performance auf dem israelischen Markt.',
   detailHeroLine: 'CUSTOM WORDPRESS · RTL WOOCOMMERCE STORE',
   detailMetrics: [
     { value: '90+', label: 'PageSpeed Score', accent: 'green' },
@@ -44,6 +48,8 @@ const organicBed: Project = {
     ],
     description:
       'A custom WordPress theme with full RTL CSS support was built from scratch to serve Hebrew-speaking customers. WooCommerce manages the organic bedding product catalogue and checkout flows, with Advanced Custom Fields providing the client with flexible content editing. Nginx and Cloudflare ensure fast, secure delivery across Israel.',
+    descriptionDe:
+      'Ein maßgeschneidertes WordPress-Theme mit vollständiger RTL-CSS-Unterstützung wurde von Grund auf entwickelt, um hebräischsprachige Kunden optimal zu bedienen. WooCommerce verwaltet den Katalog für Bio-Bettwaren und die Checkout-Prozesse, während Advanced Custom Fields dem Kunden eine flexible Inhaltspflege ermöglicht. Nginx und Cloudflare sorgen für eine schnelle, sichere Auslieferung in ganz Israel.',
   },
   image: '/Portfolio/images/portfolio/thumbs/wordpress/organicbed_thumb.webp',
   fullScreenshot:
@@ -100,32 +106,53 @@ const organicBed: Project = {
   features: [
     {
       title: 'Full RTL (Right-to-Left) Support',
+      titleDe: 'Vollständige RTL-Unterstützung (Rechts-nach-Links)',
       description:
         'The theme was developed with complete RTL CSS support for the Hebrew language, ensuring correct text direction, layout mirroring, and navigation flow for Israeli users.',
+      descriptionDe:
+        'Das Theme wurde mit vollständiger RTL-CSS-Unterstützung für die hebräische Sprache entwickelt und gewährleistet korrekte Leserichtung, Layoutspiegelung und Navigationsführung für israelische Nutzer.',
     },
     {
       title: 'Custom WordPress Theme from Scratch',
+      titleDe: 'Individuelles WordPress-Theme von Grund auf',
       description:
         'A unique WordPress theme was designed and built from scratch, tailored specifically to the Organic Bed brand identity and Hebrew-market functional requirements.',
+      descriptionDe:
+        'Ein einzigartiges WordPress-Theme wurde von Grund auf entworfen und entwickelt, speziell zugeschnitten auf die Markenidentität von Organic Bed und die funktionalen Anforderungen des hebräischen Marktes.',
     },
     {
       title: 'WooCommerce Integration',
+      titleDe: 'WooCommerce-Integration',
       description:
         'WooCommerce was fully integrated to power the online store, including organic product listings, shopping cart, and a secure checkout process in Hebrew.',
+      descriptionDe:
+        'WooCommerce wurde vollständig integriert, um den Online-Shop inklusive Bio-Produktkatalog, Warenkorb und sicherem Checkout-Prozess auf Hebräisch zu betreiben.',
     },
     {
       title: 'Advanced Custom Fields',
+      titleDe: 'Advanced Custom Fields',
       description:
         'ACF was implemented to give the client flexible, user-friendly content editing capabilities without requiring developer involvement for routine updates.',
+      descriptionDe:
+        'ACF wurde implementiert, um dem Kunden eine flexible, benutzerfreundliche Inhaltspflege zu ermöglichen, ohne dass für routinemäßige Aktualisierungen ein Entwickler benötigt wird.',
     },
     {
       title: 'Responsive Design & SEO',
+      titleDe: 'Responsives Design & SEO',
       description:
         'The store is fully responsive across all devices and optimized for Hebrew-language search queries with Schema.org product markup and technical SEO best practices.',
+      descriptionDe:
+        'Der Shop ist auf allen Endgeräten vollständig responsiv und mit Schema.org-Produkt-Markup sowie bewährten Methoden des technischen SEO für hebräischsprachige Suchanfragen optimiert.',
     },
   ],
   challenges: [],
+  challengesUa: [],
+  challengesEs: [],
+  challengesDe: [],
   solutions: [],
+  solutionsUa: [],
+  solutionsEs: [],
+  solutionsDe: [],
   liveUrl: 'https://organicbed.co.il/',
   githubUrl: '#',
   category: ['wordpress'],

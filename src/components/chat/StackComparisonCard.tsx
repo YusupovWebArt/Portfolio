@@ -11,7 +11,7 @@ import {
 } from 'react-icons/lu'
 
 interface StackComparisonCardProps {
-  locale?: 'en' | 'ua' | 'es'
+  locale?: 'en' | 'ua' | 'es' | 'de'
   onNavigateToContact?: () => void
 }
 
@@ -61,9 +61,20 @@ const LABELS = {
     },
     cta: 'Consultar arquitectura para mi proyecto',
   },
+  de: {
+    badge: 'Architektur-Stack-Vergleich',
+    title: 'Die passende Technologie für Ihr Projekt wählen',
+    metrics: {
+      performance: 'Speed & Core Web Vitals',
+      seo: 'SEO & KI-Suchsichtbarkeit',
+      timeToMarket: 'Time-to-Market',
+      bestFor: 'Optimal geeignet für',
+    },
+    cta: 'Projektarchitektur besprechen',
+  },
 } as const
 
-const STACKS: Record<'en' | 'ua' | 'es', Record<StackKey, StackInfo>> = {
+const STACKS: Record<'en' | 'ua' | 'es' | 'de', Record<StackKey, StackInfo>> = {
   en: {
     nextjs: {
       name: 'Next.js 16 (App Router)',
@@ -176,6 +187,44 @@ const STACKS: Record<'en' | 'ua' | 'es', Record<StackKey, StackInfo>> = {
       seoRating: 'Sólido (Schema de productos + Open Graph)',
       timeToMarket: '2-5 semanas',
       strengths: ['Pasarelas de pago e impuestos listas', 'Gestión potente de inventario', 'Checkout rápido y seguro'],
+    },
+  },
+  de: {
+    nextjs: {
+      name: 'Next.js 16 (App Router)',
+      tagline: 'Moderne React Server Components, TypeScript & Edge Compute',
+      bestFor: 'SaaS, stark frequentierte Portale, Web-Apps, KI/RAG-Integrationen',
+      performance: '98-100 (Subsekunden-LCP & INP)',
+      seoRating: 'Top-Niveau (SSR, RSC, dynamisches JSON-LD)',
+      timeToMarket: '3-6 Wochen (Agiler SDD-Zyklus)',
+      strengths: ['Höchster Lighthouse-Score', 'Volle TypeScript-Typsicherheit', 'Integrierte hybride API-Endpunkte'],
+    },
+    headlessWp: {
+      name: 'Headless WordPress',
+      tagline: 'WordPress CMS + entkoppeltes Next.js / React Frontend',
+      bestFor: 'Medien-Blogs, Unternehmensportale mit Redaktions-Workflows',
+      performance: '95-99 (Entkoppelter statischer Cache)',
+      seoRating: 'Exzellent (Next.js SSR + WP-Metadaten)',
+      timeToMarket: '4-7 Wochen',
+      strengths: ['Gewohntes WP-Redaktionspanel', 'Kompromisslose Frontend-Geschwindigkeit', 'Gehärtete Headless-Sicherheit'],
+    },
+    customWp: {
+      name: 'Custom WordPress (PHP 8+)',
+      tagline: 'Maßgeschneidertes PHP 8+ Theme, ACF Pro, Vite & Tailwind CSS',
+      bestFor: 'Unternehmenswebsites, Leistungskataloge, schneller Launch',
+      performance: '90-95 (Sauberer Code ohne Plugin-Ballast)',
+      seoRating: 'Hoch (RankMath / Yoast + Schema.org)',
+      timeToMarket: '2-4 Wochen',
+      strengths: ['Einfache Inhaltsverwaltung', 'Keine monatlichen SaaS-Gebühren', 'Großes WordPress-Plugin-Ökosystem'],
+    },
+    shopify: {
+      name: 'Shopify Store',
+      tagline: 'Liquid-Theme-Anpassung, Storefront API & Checkout',
+      bestFor: 'E-Commerce-Marken, Einzelhandel, internationale Zahlungen',
+      performance: '85-92 (Globales Shopify-CDN)',
+      seoRating: 'Stark (Product Schema + Open Graph)',
+      timeToMarket: '2-5 Wochen',
+      strengths: ['Schlüsselfertige Zahlungs-Gateways & Steuern', 'Starke Bestandsverwaltung', 'Schneller Kunden-Checkout'],
     },
   },
 }

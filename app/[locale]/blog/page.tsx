@@ -80,7 +80,7 @@ export async function generateMetadata({
       description,
       url: `https://www.yusupovartur.com/${locale}/blog`,
       siteName: 'Artur Yusupov Engineering Blog',
-      locale: isUa ? 'uk_UA' : isEs ? 'es_ES' : 'en_US',
+      locale: isUa ? 'uk_UA' : isEs ? 'es_ES' : isDe ? 'de_DE' : 'en_US',
       type: 'website',
       images: [
         {

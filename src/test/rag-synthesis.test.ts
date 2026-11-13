@@ -138,11 +138,30 @@ describe('RAG Synthesis & Multilingual Routing Specification (TDD)', () => {
       expect(archEs).toContain('Soluciones implementadas:')
     })
 
-    it('should include Fullstack AI Lab in Next.js showcase text and slugs', () => {
+    it('should include Fullstack AI Lab in Next.js showcase text and slugs across EN and DE', () => {
       const showcase = resolveCategoryOrTechShowcase('Show me Next.js projects', 'en')
       expect(showcase).toBeDefined()
       expect(showcase?.projectSlugs).toContain('fullstack-ai-lab')
       expect(showcase?.answer).toContain('Fullstack AI Lab')
+
+      const showcaseDe = resolveCategoryOrTechShowcase('Zeig mir Next.js Projekte', 'de')
+      expect(showcaseDe).toBeDefined()
+      expect(showcaseDe?.projectSlugs).toContain('fullstack-ai-lab')
+      expect(showcaseDe?.answer).toContain('Next.js 16 Portfolio Platform')
+    })
+
+    it('should synthesize German RAG answers for blog and stack comparison queries', () => {
+      const blogDe = synthesizeLocalRagAnswer('Erzähl mir über Barrierefreiheit WCAG 2.2', {
+        locale: 'de',
+      })
+      expect(blogDe).toContain('/de/blog/wcag-22-aa-european-accessibility-act-2026')
+      expect(blogDe).not.toContain('\u2014')
+
+      const stackDe = synthesizeLocalRagAnswer('Next.js vs Headless WordPress Vergleich', {
+        locale: 'de',
+      })
+      expect(stackDe).toContain('Next.js 16 (App Router)')
+      expect(stackDe).toContain('Vergleichsmatrix')
     })
   })
 })

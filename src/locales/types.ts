@@ -31,6 +31,8 @@ export interface Translation {
     sectionTitle: string
     availableForProjects: string
     myJourney: string
+    presentLabel: string
+    nowLabel: string
     bio: {
       p1: string
       p2: string
@@ -60,6 +62,7 @@ export interface Translation {
       item0: {
         title: string
         institution: string
+        badge: string
         description: {
           soloRnd: { label: string; text: string }
           wp: { label: string; text: string }
@@ -72,6 +75,7 @@ export interface Translation {
       item1: {
         title: string
         institution: string
+        badge: string
         description: {
           intro: string
         }
@@ -79,6 +83,7 @@ export interface Translation {
       item2: {
         title: string
         institution: string
+        badge: string
         description: {
           spec: { label: string; text: string }
           infra: { label: string; text: string }
@@ -117,6 +122,7 @@ export interface Translation {
       }
       item2: {
         title: string
+        company: string
         desc: {
           delivered: { label: string; text: string }
           ecommerce: { label: string; text: string }
@@ -142,6 +148,8 @@ export interface Translation {
       of: string
       choosePhase: string
       swipe: string
+      stepBreakdown: string
+      techTools: string
     }
     categories: Array<{
       title: string
@@ -166,6 +174,7 @@ export interface Translation {
     showLess: string
     categories: {
       wp: {
+        title: string
         description: string
         skillDetails: [
           { name: string; description: string },
@@ -175,6 +184,7 @@ export interface Translation {
         ]
       }
       app: {
+        title: string
         description: string
         skillDetails: [
           { name: string; description: string },
@@ -184,6 +194,7 @@ export interface Translation {
         ]
       }
       ai: {
+        title: string
         description: string
         skillDetails: [
           { name: string; description: string },
@@ -193,6 +204,7 @@ export interface Translation {
         ]
       }
       seo: {
+        title: string
         description: string
         skillDetails: [
           { name: string; description: string },
@@ -202,6 +214,7 @@ export interface Translation {
         ]
       }
       layout: {
+        title: string
         description: string
         skillDetails: [
           { name: string; description: string },
@@ -211,6 +224,7 @@ export interface Translation {
         ]
       }
       design: {
+        title: string
         description: string
         skillDetails: [
           { name: string; description: string },
@@ -223,6 +237,16 @@ export interface Translation {
     workTools: {
       sectionLabel: string
       sectionTitle: string
+      items: [
+        { name: string; description: string },
+        { name: string; description: string },
+        { name: string; description: string },
+        { name: string; description: string },
+        { name: string; description: string },
+        { name: string; description: string },
+        { name: string; description: string },
+        { name: string; description: string },
+      ]
     }
     softSkills: {
       sectionLabel: string

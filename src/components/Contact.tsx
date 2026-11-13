@@ -439,8 +439,24 @@ const Contact = () => {
                         window.dispatchEvent(new CustomEvent('open-ai-chat'))
                       }
                     }}
-                    title={lang === 'es' ? 'Abrir en modal completo' : lang === 'ua' ? 'Розгорнути на весь екран' : 'Open in full modal'}
-                    aria-label={lang === 'es' ? 'Abrir en modal completo' : lang === 'ua' ? 'Розгорнути на весь екран' : 'Open in full modal'}
+                    title={
+                      lang === 'es'
+                        ? 'Abrir en modal completo'
+                        : lang === 'ua'
+                          ? 'Розгорнути на весь екран'
+                          : lang === 'de'
+                            ? 'Im Vollbild-Modal öffnen'
+                            : 'Open in full modal'
+                    }
+                    aria-label={
+                      lang === 'es'
+                        ? 'Abrir en modal completo'
+                        : lang === 'ua'
+                          ? 'Розгорнути на весь екран'
+                          : lang === 'de'
+                            ? 'Im Vollbild-Modal öffnen'
+                            : 'Open in full modal'
+                    }
                     className="p-1.5 hover:bg-slate-200/60 dark:hover:bg-slate-800 rounded-lg text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-700 dark:focus-visible:outline-lime-400 cursor-pointer"
                   >
                     <Maximize2 className="w-3.5 h-3.5" aria-hidden="true" />
@@ -561,7 +577,14 @@ const Contact = () => {
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                       {faqList.slice(0, 4).map((faq, idx) => {
-                        const questionText = lang === 'ua' ? faq.questionUa : lang === 'es' ? faq.questionEs : faq.question
+                        const questionText =
+                          lang === 'ua'
+                            ? faq.questionUa
+                            : lang === 'es'
+                              ? faq.questionEs
+                              : lang === 'de'
+                                ? faq.questionDe
+                                : faq.question
                         return (
                           <button
                             key={idx}
@@ -617,7 +640,14 @@ const Contact = () => {
                           </button>
                         ))
                       : activeSuggestions.slice(0, 2).map((faq, idx) => {
-                          const questionText = lang === 'ua' ? faq.questionUa : lang === 'es' ? faq.questionEs : faq.question
+                          const questionText =
+                            lang === 'ua'
+                              ? faq.questionUa
+                              : lang === 'es'
+                                ? faq.questionEs
+                                : lang === 'de'
+                                  ? faq.questionDe
+                                  : faq.question
                           return (
                             <button
                               key={idx}

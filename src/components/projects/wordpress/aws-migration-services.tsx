@@ -9,12 +9,16 @@ const awsMigrationServices: Project = {
     'Спеціалізована платформа, створена для допомоги бізнесу в перенесенні операцій у хмару Amazon Web Services (AWS). Вебсайт пропонує комплексний спектр послуг, спрямованих на забезпечення плавного, безпечного та економічно ефективного процесу міграції.',
   descriptionEs:
     'Plataforma especializada diseñada para asistir a las empresas en la transición de sus operaciones hacia la nube de Amazon Web Services (AWS). El sitio web ofrece un conjunto integral de servicios orientados a garantizar un proceso de migración fluido, seguro y rentable.',
+  descriptionDe:
+    'Spezialisierte Plattform, die Unternehmen bei der Migration ihrer Geschäftsprozesse in die Cloud von Amazon Web Services (AWS) unterstützt. Die Website bietet ein umfassendes Leistungsspektrum für einen reibungslosen, sicheren und kosteneffizienten Migrationsprozess.',
   fullDescription:
     'A high-end marketing and service platform designed to assist enterprises in migrating legacy infrastructure to the Amazon Web Services (AWS) cloud. Built with a completely custom-themed WordPress engine, bespoke PHP logic, and Advanced Custom Fields (ACF) Pro. To visually communicate complex cloud migration concepts, the site integrates custom-engineered AI graphics depicting cloud server architectures, migration pipelines, and modern security protocols.',
   fullDescriptionUa:
     'Преміальна маркетингова та сервісна платформа, створена для допомоги підприємствам у міграції застарілої інфраструктури в хмару Amazon Web Services (AWS). Побудована на повністю кастомній темі WordPress, унікальній логіці PHP та Advanced Custom Fields (ACF) Pro. Для наочної демонстрації складних концепцій міграції сайт інтегрує кастомно розроблені AI-графічні елементи, що зображують архітектури хмарних серверів, пайплайни міграції та сучасні протоколи безпеки.',
   fullDescriptionEs:
     'Plataforma de marketing y servicios de alto nivel diseñada para ayudar a las empresas a migrar su infraestructura heredada hacia la nube de Amazon Web Services (AWS). Construida con un tema WordPress completamente personalizado, lógica PHP a medida y Advanced Custom Fields (ACF) Pro. Para comunicar visualmente conceptos complejos de migración, el sitio integra gráficos de IA diseñados a medida que representan arquitecturas de servidores cloud, pipelines de migración y protocolos de seguridad modernos.',
+  fullDescriptionDe:
+    'Eine hochwertige Marketing- und Serviceplattform, die Unternehmen bei der Migration bestehender Legacy-Infrastrukturen in die Amazon Web Services (AWS) Cloud begleitet. Entwickelt auf Basis eines vollständig maßgeschneiderten WordPress-Themes, individueller PHP-Logik und Advanced Custom Fields (ACF) Pro. Um komplexe Cloud-Migrationskonzepte visuell verständlich zu vermitteln, integriert die Website eigens konzipierte KI-Grafiken, die Cloud-Server-Architekturen, Migrations-Pipelines und moderne Sicherheitsprotokolle darstellen.',
   detailHeroLine: 'CUSTOM WORDPRESS · CLOUD SOLUTION MARKETING',
   detailMetrics: [
     { value: '96+', label: 'PageSpeed', accent: 'green' },
@@ -43,6 +47,12 @@ const awsMigrationServices: Project = {
     ],
     description:
       'A customized WordPress theme built from scratch using PHP 8 and Advanced Custom Fields (ACF). Optimized for lightning-fast speeds and high-conversion marketing. Served through Cloudflare for global caching, security, and performance.',
+    descriptionUa:
+      'Кастомна тема WordPress, створена з нуля з використанням PHP 8 та Advanced Custom Fields (ACF). Оптимізована для блискавичної швидкості та висококонверсійного маркетингу. Обслуговується через Cloudflare для глобального кешування, безпеки та продуктивності.',
+    descriptionEs:
+      'Un tema de WordPress personalizado creado desde cero con PHP 8 y Advanced Custom Fields (ACF). Optimizado para velocidades ultrarrápidas y marketing de alta conversión. Servido a través de Cloudflare para caché global, seguridad y alto rendimiento.',
+    descriptionDe:
+      'Ein von Grund auf mit PHP 8 und Advanced Custom Fields (ACF) entwickeltes Custom-WordPress-Theme. Optimiert für blitzschnelle Ladezeiten und konversionsstarkes Marketing sowie über Cloudflare für globales Caching, Sicherheit und höchste Performance ausgeliefert.',
   },
   image:
     '/Portfolio/images/portfolio/thumbs/wordpress/aws-migration-services_thumb.webp',
@@ -179,37 +189,106 @@ const awsMigrationServices: Project = {
   features: [
     {
       title: 'Custom Theme from Scratch',
+      titleUa: 'Кастомна тема з нуля',
+      titleEs: 'Tema personalizado desde cero',
+      titleDe: 'Maßgeschneidertes Theme von Grund auf',
       description:
         'Engineered a unique, lightweight WordPress theme in pure PHP/CSS. Bypassed bulky pre-made page builders (Elementor/Divi), resulting in a clean codebase and rapid load times.',
+      descriptionUa:
+        'Розроблено унікальну легку тему WordPress на чистому PHP/CSS без громіздких конструкторів сторінок (Elementor/Divi), що забезпечило чисту кодову базу та миттєве завантаження.',
+      descriptionEs:
+        'Se desarrolló un tema de WordPress único y ligero en PHP/CSS puro, prescindiendo de constructores pesados (Elementor/Divi), lo que dio como resultado un código limpio y tiempos de carga ultrarrápidos.',
+      descriptionDe:
+        'Entwicklung eines einzigartigen, leichtgewichtigen WordPress-Themes in reinem PHP/CSS. Durch den Verzicht auf schwerfällige Page-Builder (Elementor/Divi) entstanden eine saubere Codebasis und extrem schnelle Ladezeiten.',
     },
     {
       title: 'ACF Pro Content Administration',
+      titleUa: 'Управління контентом через ACF Pro',
+      titleEs: 'Administración de contenidos con ACF Pro',
+      titleDe: 'Content-Verwaltung mit ACF Pro',
       description:
         'Constructed custom page fields and edit blocks using Advanced Custom Fields Pro. Provides the client with a modular, intuitive dashboard where they can manage all texts and visuals.',
+      descriptionUa:
+        'Створено кастомні поля сторінок і блоки редагування за допомогою Advanced Custom Fields Pro, що надає клієнту модульну й інтуїтивно зрозумілу панель для управління всіма текстами та візуальними матеріалами.',
+      descriptionEs:
+        'Se construyeron campos de página y bloques de edición personalizados con Advanced Custom Fields Pro, ofreciendo al cliente un panel modular e intuitivo para gestionar todos los textos y elementos visuales.',
+      descriptionDe:
+        'Aufbau individueller Seitenfelder und Bearbeitungsblöcke mit Advanced Custom Fields Pro. Dies bietet dem Kunden ein modulares, intuitives Dashboard zur einfachen Pflege sämtlicher Texte und Grafiken.',
     },
     {
       title: 'AI-Generated Graphic Identity',
+      titleUa: 'Графічна айдентика, згенерована AI',
+      titleEs: 'Identidad gráfica generada por IA',
+      titleDe: 'KI-generierte grafische Identität',
       description:
         'Conceptualized and rendered high-resolution branding graphics using Midjourney, giving the AWS migration services a futuristic, professional, and visually engaging enterprise look.',
+      descriptionUa:
+        'Розроблено концепцію та згенеровано брендову графіку високої роздільної здатності за допомогою Midjourney, що надало послугам міграції AWS футуристичного, професійного та привабливого корпоративного вигляду.',
+      descriptionEs:
+        'Se conceptualizaron y renderizaron gráficos de marca de alta resolución con Midjourney, otorgando a los servicios de migración AWS una estética empresarial futurista, profesional y visualmente atractiva.',
+      descriptionDe:
+        'Konzeption und Rendering hochauflösender Branding-Grafiken mit Midjourney, die den AWS-Migrationsdiensten einen futuristischen, professionellen und visuell überzeugenden Enterprise-Auftritt verleihen.',
     },
     {
       title: 'SEO & Structured Data',
+      titleUa: 'SEO та структуровані дані',
+      titleEs: 'SEO y datos estructurados',
+      titleDe: 'SEO & strukturierte Daten',
       description:
         'Integrated advanced search engine optimization protocols, including semantic HTML structure, Google-friendly JSON-LD schemas, and customized XML sitemaps.',
+      descriptionUa:
+        'Інтегровано передові протоколи пошукової оптимізації, включаючи семантичну структуру HTML, дружні до Google схеми JSON-LD та налаштовані XML-карти сайту.',
+      descriptionEs:
+        'Se integraron protocolos avanzados de optimización para motores de búsqueda, incluyendo estructura HTML semántica, esquemas JSON-LD optimizados para Google y mapas de sitio XML personalizados.',
+      descriptionDe:
+        'Integration fortschrittlicher SEO-Protokolle einschließlich semantischer HTML-Struktur, Google-konformer JSON-LD-Schemata und individuell konfigurierter XML-Sitemaps.',
     },
     {
       title: 'Security & Caching Hardening',
+      titleUa: 'Посилення безпеки та кешування',
+      titleEs: 'Refuerzo de seguridad y caché',
+      titleDe: 'Sicherheits- & Caching-Härtung',
       description:
         'Protected the website with Nginx-level request limitations, secure server-side form filters, and Cloudflare proxy firewalls to prevent SQL injections and spam.',
+      descriptionUa:
+        'Захищено вебсайт обмеженнями запитів на рівні Nginx, безпечними серверними фільтрами форм і проксі-фаєрволами Cloudflare для запобігання SQL-ін’єкціям та спаму.',
+      descriptionEs:
+        'Se protegió el sitio web con limitaciones de solicitudes a nivel de Nginx, filtros seguros de formularios en el servidor y cortafuegos proxy de Cloudflare para prevenir inyecciones SQL y spam.',
+      descriptionDe:
+        'Absicherung der Website durch Request-Limits auf Nginx-Ebene, sichere serverseitige Formularfilter und Cloudflare-Proxy-Firewalls zum Schutz vor SQL-Injections und Spam.',
     },
   ],
   challenges: [
     'Generating consistent, technically-accurate cloud architecture graphics using creative AI illustration generators.',
     'Achieving top-tier page load metrics on WordPress without sacrificing high-resolution illustrations and dynamic page elements.',
   ],
+  challengesUa: [
+    'Генерація узгодженої та технічно точної графіки хмарної архітектури за допомогою креативних AI-генераторів ілюстрацій.',
+    'Досягнення найвищих показників швидкості завантаження на WordPress без втрати якості ілюстрацій високої роздільної здатності та динамічних елементів сторінки.',
+  ],
+  challengesEs: [
+    'Generar gráficos de arquitectura cloud coherentes y técnicamente precisos utilizando generadores de ilustración con IA creativa.',
+    'Lograr métricas de velocidad de carga de primer nivel en WordPress sin sacrificar ilustraciones de alta resolución ni elementos dinámicos en la página.',
+  ],
+  challengesDe: [
+    'Erstellung konsistenter, technisch präziser Cloud-Architekturgrafiken mithilfe kreativer KI-Illustrationsgeneratoren.',
+    'Erreichen erstklassiger Ladezeit-Metriken unter WordPress ohne Kompromisse bei hochauflösenden Illustrationen und dynamischen Seitenelementen.',
+  ],
   solutions: [
     'Designed structured prompt presets and combined multi-layered visual outputs using editing software to establish a unified corporate visual system.',
     'Configured modern WebP image formats, deferred script loading, and setup Cloudflare CDN caching to deliver pages to cloud prospects in less than a second.',
+  ],
+  solutionsUa: [
+    'Розроблено структуровані пресети промптів і поєднано багатошарові візуальні результати у графічних редакторах для формування єдиної корпоративної візуальної системи.',
+    'Налаштовано сучасні формати зображень WebP, відкладене завантаження скриптів та кешування Cloudflare CDN для доставки сторінок потенційним клієнтам менш ніж за секунду.',
+  ],
+  solutionsEs: [
+    'Se diseñaron preajustes de prompts estructurados y se combinaron salidas visuales multicapa mediante software de edición para establecer un sistema visual corporativo unificado.',
+    'Se configuraron formatos de imagen modernos WebP, carga diferida de scripts y caché CDN de Cloudflare para entregar páginas a los clientes potenciales en menos de un segundo.',
+  ],
+  solutionsDe: [
+    'Entwurf strukturierter Prompt-Presets und Kombination mehrschichtiger visueller Ergebnisse mittels Bildbearbeitungssoftware zur Etablierung eines einheitlichen Corporate-Design-Systems.',
+    'Konfiguration moderner WebP-Bildformate, verzögertes Laden von Skripten sowie Einrichtung von Cloudflare-CDN-Caching, um Seiten für Cloud-Interessenten in unter einer Sekunde auszuliefern.',
   ],
   liveUrl: 'https://awsmigrationservices.com/',
   githubUrl: '#',

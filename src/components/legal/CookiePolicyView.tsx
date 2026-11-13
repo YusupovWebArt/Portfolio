@@ -14,13 +14,19 @@ import { useConsent } from '../../contexts/ConsentContext'
 
 interface CookiePolicyViewProps {
   data: CookiePolicyPageData
-  locale: 'en' | 'ua' | 'es'
+  locale: 'en' | 'ua' | 'es' | 'de'
 }
 
 export default function CookiePolicyView({ data, locale }: CookiePolicyViewProps) {
   const { openSettings } = useConsent()
   const backLabel =
-    locale === 'es' ? 'Volver al Inicio' : locale === 'ua' ? 'На головну' : 'Back to Home'
+    locale === 'es'
+      ? 'Volver al Inicio'
+      : locale === 'ua'
+        ? 'На головну'
+        : locale === 'de'
+          ? 'Zurück zur Startseite'
+          : 'Back to Home'
 
   return (
     <article className="min-h-screen bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100 pt-28 pb-20 selection:bg-purple-500 selection:text-white">
@@ -94,7 +100,9 @@ export default function CookiePolicyView({ data, locale }: CookiePolicyViewProps
                 ? 'Relación de Cookies e Identificadores'
                 : locale === 'ua'
                   ? 'Перелік файлів cookie та ідентифікаторів'
-                  : 'Cookie & Storage Identifier Inventory'}
+                  : locale === 'de'
+                    ? 'Übersicht über Cookies und Speicher-Identifikatoren'
+                    : 'Cookie & Storage Identifier Inventory'}
             </span>
           </h2>
 

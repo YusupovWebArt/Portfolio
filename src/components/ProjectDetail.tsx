@@ -433,9 +433,30 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
 
   // Concise tab labels on mobile for clean fit
   const stackShort = lang === 'ua' ? 'Стек' : 'Stack'
-  const featuresShort = lang === 'ua' ? 'Функції' : lang === 'es' ? 'Funciones' : 'Features'
-  const architectureShort = lang === 'ua' ? 'Архітектура' : lang === 'es' ? 'Arquitectura' : 'Arch'
-  const caseStudyShort = lang === 'ua' ? 'Кейс' : lang === 'es' ? 'Caso' : 'Case'
+  const featuresShort =
+    lang === 'ua'
+      ? 'Функції'
+      : lang === 'es'
+        ? 'Funciones'
+        : lang === 'de'
+          ? 'Funktionen'
+          : 'Features'
+  const architectureShort =
+    lang === 'ua'
+      ? 'Архітектура'
+      : lang === 'es'
+        ? 'Arquitectura'
+        : lang === 'de'
+          ? 'Architektur'
+          : 'Arch'
+  const caseStudyShort =
+    lang === 'ua'
+      ? 'Кейс'
+      : lang === 'es'
+        ? 'Caso'
+        : lang === 'de'
+          ? 'Fallstudie'
+          : 'Case'
 
   return (
     <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-20 sm:pb-12">
@@ -650,7 +671,9 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                     ? 'Власний флагманський продукт'
                     : lang === 'es'
                       ? 'Producto propio destacado'
-                      : 'Personal Flagship Product'}
+                      : lang === 'de'
+                        ? 'Eigenes Flaggschiff-Produkt'
+                        : 'Personal Flagship Product'}
                 </span>
               </div>
             )}
@@ -663,7 +686,13 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
               {project.title}
             </h1>
             <p className="text-slate-600 dark:text-slate-300 leading-relaxed text-base">
-              {lang === 'ua' && project.fullDescriptionUa ? project.fullDescriptionUa : lang === 'es' && project.fullDescriptionEs ? project.fullDescriptionEs : project.fullDescription}
+              {lang === 'ua' && project.fullDescriptionUa
+                ? project.fullDescriptionUa
+                : lang === 'es' && project.fullDescriptionEs
+                  ? project.fullDescriptionEs
+                  : lang === 'de' && project.fullDescriptionDe
+                    ? project.fullDescriptionDe
+                    : project.fullDescription}
             </p>
 
             {metrics.length > 0 && (
@@ -759,7 +788,9 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                         ? 'Повний розбір архітектури та механізмів'
                         : lang === 'es'
                           ? 'Análisis profundo de arquitectura y mecanismos'
-                          : 'Architecture & Case Study Deep-Dive'}
+                          : lang === 'de'
+                            ? 'Architektur- & Fallstudien-Analyse'
+                            : 'Architecture & Case Study Deep-Dive'}
                     </span>
                     <ArrowRight className="w-4 h-4 shrink-0" aria-hidden />
                   </a>
@@ -770,7 +801,7 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                 const relatedServices = getServicesForProject(currentSlug)
                 if (relatedServices.length === 0) return null
                 const relService = relatedServices[0]
-                const validLoc = (lang === 'es' || lang === 'ua' ? lang : 'en') as 'en' | 'ua' | 'es'
+                const validLoc = (lang === 'es' || lang === 'ua' || lang === 'de' ? lang : 'en') as 'en' | 'ua' | 'es' | 'de'
                 const serviceContent = relService.content[validLoc] || relService.content.en
                 const isSpa =
                   typeof window !== 'undefined' &&
@@ -795,7 +826,9 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                           ? `Послуга: ${serviceContent.badge}`
                           : lang === 'es'
                             ? `Servicio B2B: ${serviceContent.badge}`
-                            : `B2B Service: ${serviceContent.badge}`}
+                            : lang === 'de'
+                              ? `B2B-Leistung: ${serviceContent.badge}`
+                              : `B2B Service: ${serviceContent.badge}`}
                       </span>
                     </div>
                     <ArrowRight className="w-3.5 h-3.5 shrink-0 group-hover:translate-x-0.5 transition-transform" aria-hidden />
@@ -1022,7 +1055,9 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                           ? 'Управління контентом (CMS):'
                           : lang === 'es'
                             ? 'Gestión de contenidos (CMS):'
-                            : 'Content Management:'}
+                            : lang === 'de'
+                              ? 'Content-Management (CMS):'
+                              : 'Content Management:'}
                       </h4>
                       <ul className="list-none space-y-2 text-slate-600 dark:text-slate-300">
                         {project.technologies.contentManagement.map(
@@ -1049,7 +1084,9 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                           ? 'DevOps та безпека:'
                           : lang === 'es'
                             ? 'DevOps y seguridad:'
-                            : 'DevOps & Security:'}
+                            : lang === 'de'
+                              ? 'DevOps & Sicherheit:'
+                              : 'DevOps & Security:'}
                       </h4>
                       <ul className="list-none space-y-2 text-slate-600 dark:text-slate-300">
                         {project.technologies.devopsSecurity.map(
@@ -1076,7 +1113,9 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                           ? 'Аналітика:'
                           : lang === 'es'
                             ? 'Analítica:'
-                            : 'Analytics:'}
+                            : lang === 'de'
+                              ? 'Analytik:'
+                              : 'Analytics:'}
                       </h4>
                       <ul className="list-none space-y-2 text-slate-600 dark:text-slate-300">
                         {project.technologies.analytics.map((tech, idx) => (
@@ -1101,7 +1140,9 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                           ? 'AI-інструменти:'
                           : lang === 'es'
                             ? 'Herramientas de IA:'
-                            : 'AI Tools:'}
+                            : lang === 'de'
+                              ? 'KI-Tools:'
+                              : 'AI Tools:'}
                       </h4>
                       <ul className="list-none space-y-2 text-slate-600 dark:text-slate-300">
                         {project.technologies.aiTools.map((tech, idx) => (
@@ -1147,7 +1188,9 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                           ? 'Технічна оптимізація:'
                           : lang === 'es'
                             ? 'Optimización técnica:'
-                            : 'Technical Optimization:'}
+                            : lang === 'de'
+                              ? 'Technische Optimierung:'
+                              : 'Technical Optimization:'}
                       </h4>
                       <ul className="list-none space-y-2 text-slate-600 dark:text-slate-300">
                         {project.technologies.technicalOptimization.map(
@@ -1174,7 +1217,9 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                           ? 'Цифровий маркетинг:'
                           : lang === 'es'
                             ? 'Marketing digital:'
-                            : 'Digital Marketing:'}
+                            : lang === 'de'
+                              ? 'Digitales Marketing:'
+                              : 'Digital Marketing:'}
                       </h4>
                       <ul className="list-none space-y-2 text-slate-600 dark:text-slate-300">
                         {project.technologies.digitalMarketing.map(
@@ -1225,22 +1270,28 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                     title: string
                     titleUa?: string
                     titleEs?: string
+                    titleDe?: string
                     description: string
                     descriptionUa?: string
                     descriptionEs?: string
+                    descriptionDe?: string
                   }
                   const fTitle =
                     lang === 'ua' && feat.titleUa
                       ? feat.titleUa
                       : lang === 'es' && feat.titleEs
                         ? feat.titleEs
-                        : feat.title
+                        : lang === 'de' && feat.titleDe
+                          ? feat.titleDe
+                          : feat.title
                   const fDesc =
                     lang === 'ua' && feat.descriptionUa
                       ? feat.descriptionUa
                       : lang === 'es' && feat.descriptionEs
                         ? feat.descriptionEs
-                        : feat.description
+                        : lang === 'de' && feat.descriptionDe
+                          ? feat.descriptionDe
+                          : feat.description
 
                   return (
                     <li key={index} className="space-y-2">
@@ -1323,7 +1374,9 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                     ? project.architecture.descriptionUa
                     : lang === 'es' && project.architecture.descriptionEs
                       ? project.architecture.descriptionEs
-                      : project.architecture.description}
+                      : lang === 'de' && project.architecture.descriptionDe
+                        ? project.architecture.descriptionDe
+                        : project.architecture.description}
                 </div>
               </div>
             )}
@@ -1342,20 +1395,30 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                       ? project.challengesUa
                       : lang === 'es' && project.challengesEs
                         ? project.challengesEs
-                        : project.challenges
+                        : lang === 'de' && project.challengesDe
+                          ? project.challengesDe
+                          : project.challenges
                   const solutionsList =
                     lang === 'ua' && project.solutionsUa
                       ? project.solutionsUa
                       : lang === 'es' && project.solutionsEs
                         ? project.solutionsEs
-                        : project.solutions
+                        : lang === 'de' && project.solutionsDe
+                          ? project.solutionsDe
+                          : project.solutions
 
                   return (
                     <>
                       {challengesList && challengesList.length > 0 && (
                         <div>
                           <h4 className="font-semibold text-slate-900 dark:text-white mb-3 text-sm uppercase tracking-wider text-slate-500 dark:text-slate-400">
-                            {lang === 'ua' ? 'Виклики:' : lang === 'es' ? 'Desafíos afrontados:' : 'Challenges Faced:'}
+                            {lang === 'ua'
+                              ? 'Виклики:'
+                              : lang === 'es'
+                                ? 'Desafíos afrontados:'
+                                : lang === 'de'
+                                  ? 'Herausforderungen:'
+                                  : 'Challenges Faced:'}
                           </h4>
                           <ul className="space-y-2">
                             {challengesList.map((challenge, index) => (
@@ -1372,7 +1435,13 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                       {solutionsList && solutionsList.length > 0 && (
                         <div className="pt-2">
                           <h4 className="font-semibold text-slate-900 dark:text-white mb-3 text-sm uppercase tracking-wider text-slate-500 dark:text-slate-400">
-                            {lang === 'ua' ? 'Реалізовані рішення:' : lang === 'es' ? 'Soluciones implementadas:' : 'Solutions Implemented:'}
+                            {lang === 'ua'
+                              ? 'Реалізовані рішення:'
+                              : lang === 'es'
+                                ? 'Soluciones implementadas:'
+                                : lang === 'de'
+                                  ? 'Umgesetzte Lösungen:'
+                                  : 'Solutions Implemented:'}
                           </h4>
                           <ul className="space-y-2">
                             {solutionsList.map((solution, index) => (
@@ -1406,14 +1475,18 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                     ? 'Схожі проєкти та кейси'
                     : lang === 'es'
                       ? 'Proyectos y casos de estudio relacionados'
-                      : 'Related Case Studies & Projects'}
+                      : lang === 'de'
+                        ? 'Ähnliche Fallstudien & Projekte'
+                        : 'Related Case Studies & Projects'}
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
                   {lang === 'ua'
                     ? 'Ознайомтеся з іншими роботами у схожому стеку та бізнес-домені'
                     : lang === 'es'
                       ? 'Explora otros proyectos con tecnología y objetivos similares'
-                      : 'Explore other works with similar technical stack and domain requirements'}
+                      : lang === 'de'
+                        ? 'Entdecken Sie weitere Arbeiten mit ähnlichem Tech-Stack und vergleichbaren Geschäftszielen'
+                        : 'Explore other works with similar technical stack and domain requirements'}
                 </p>
               </div>
               {onBack && (
@@ -1422,7 +1495,15 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                   onClick={onBack}
                   className="hidden sm:inline-flex items-center gap-1.5 text-xs font-semibold text-purple-600 dark:text-lime-400 hover:text-purple-700 dark:hover:text-lime-300 transition cursor-pointer"
                 >
-                  <span>{lang === 'ua' ? 'Всі проєкти' : lang === 'es' ? 'Ver todos' : 'View all projects'}</span>
+                  <span>
+                    {lang === 'ua'
+                      ? 'Всі проєкти'
+                      : lang === 'es'
+                        ? 'Ver todos'
+                        : lang === 'de'
+                          ? 'Alle Projekte'
+                          : 'View all projects'}
+                  </span>
                   <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
                 </button>
               )}
@@ -1435,7 +1516,9 @@ const ProjectDetail: React.FC<ProjectDetailProps> = ({
                     ? relProj.descriptionEs
                     : lang === 'ua' && relProj.descriptionUa
                       ? relProj.descriptionUa
-                      : relProj.description
+                      : lang === 'de' && relProj.descriptionDe
+                        ? relProj.descriptionDe
+                        : relProj.description
                 const relSlug = projectRegistry.find((p) => p.project.id === relProj.id)?.slug
                 const basePath =
                   typeof window !== 'undefined' && window.location.pathname.startsWith('/Portfolio')

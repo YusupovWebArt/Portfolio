@@ -11,7 +11,7 @@ import { trackCvDownload, trackContactClick } from '../../lib/analytics'
 import { openWhatsAppDirect } from '../../lib/contacts'
 
 interface ContactActionCardProps {
-  locale?: 'en' | 'ua' | 'es'
+  locale?: 'en' | 'ua' | 'es' | 'de'
   onNavigateToContact?: () => void
 }
 
@@ -39,6 +39,14 @@ const LABELS = {
     contactBtn: 'Ir a Contactos Directos',
     whatsAppBtn: 'Escribir por WhatsApp',
     cvBtn: 'Descargar CV (PDF)',
+  },
+  de: {
+    badge: 'Verfügbar für Remote-Rollen & Projekte',
+    title: 'Direkter Kontakt mit Artur',
+    subtitle: 'Geschützte E-Mail, WhatsApp oder Telegram im Kontaktbereich anzeigen oder Lebenslauf herunterladen.',
+    contactBtn: 'Zu den Direktkontakten',
+    whatsAppBtn: 'Auf WhatsApp schreiben',
+    cvBtn: 'Lebenslauf (PDF)',
   },
 } as const
 

@@ -6,23 +6,27 @@ export const automatedVisualAccessibilityMetadataMultimodalLlmsEaa2026Post: Blog
     en: 'Automated Visual Accessibility & Schema.org Product Metadata Generation via Multimodal LLMs: Complying with EAA 2026 at Scale',
     ua: 'Автоматизована візуальна доступність та Schema.org метадані продуктів через мультимодальні LLM: відповідність EAA 2026 для великих каталогів',
     es: 'Accesibilidad Visual Automatizada y Metadatos Schema.org con LLMs Multimodales: Cumpliendo con EAA 2026 a Gran Escala',
+    de: 'Automatisierte visuelle Barrierefreiheit & Schema.org-Produktmetadaten via multimodale LLMs: EAA 2026-Compliance im großen Maßstab',
   },
   description: {
     en: 'An enterprise engineering blueprint for automating WCAG 2.2 AA visual accessibility and Schema.org Product metadata across 50,000+ SKUs using multimodal Vision LLMs and strict Zod schemas.',
     ua: 'Корпоративний інженерний посібник з автоматизації візуальної доступності WCAG 2.2 AA та генерації розмітки Schema.org Product для 50 000+ SKU за допомогою мультимодальних Vision LLM та Zod.',
     es: 'Guía técnica empresarial para automatizar la accesibilidad visual WCAG 2.2 AA y metadatos Schema.org Product en catálogos de más de 50.000 SKUs usando LLMs de visión multimodal y esquemas Zod.',
+    de: 'Ein Enterprise-Engineering-Blueprint zur Automatisierung der visuellen Barrierefreiheit nach WCAG 2.2 AA und Schema.org-Produktmetadaten für über 50.000 SKUs mittels multimodaler Vision-LLMs und strikter Zod-Schemata.',
   },
   date: '2026-10-29',
   readTime: {
     en: '10 min read',
     ua: '10 хв читання',
     es: '10 min de lectura',
+    de: '10 Min. Lesezeit',
   },
   category: 'accessibility-ux',
   categoryLabel: {
     en: 'Accessibility & UX',
     ua: 'Доступність та UX',
     es: 'Accesibilidad y UX',
+    de: 'Barrierefreiheit & UX',
   },
   tags: ['Accessibility', 'WCAG 2.2 AA', 'EAA 2026', 'Multimodal AI', 'Vision LLM', 'Zod', 'Schema.org', 'E-Commerce'],
   author: {
@@ -31,6 +35,7 @@ export const automatedVisualAccessibilityMetadataMultimodalLlmsEaa2026Post: Blog
       en: 'Senior Fullstack Web Engineer & Accessibility Systems Architect',
       ua: 'Senior Fullstack веб-інженер та архітектор систем доступності',
       es: 'Ingeniero Web Fullstack Senior y Arquitecto de Sistemas de Accesibilidad',
+      de: 'Senior Fullstack Web-Engineer & Architekt für Barrierefreiheitssysteme',
     },
   },
   coverImage: '/Portfolio/images/blog/cover-automated-visual-accessibility-eaa2026.svg',
@@ -43,6 +48,7 @@ export const automatedVisualAccessibilityMetadataMultimodalLlmsEaa2026Post: Blog
         en: 'Interactive EdTech platform with 1,135+ interactive lessons and strict WCAG 2.2 AA compliant multimodal diagrams and illustrations.',
         ua: 'Інтерактивна EdTech-платформа з 1 135+ уроками та повною підтримкою стандартів доступності WCAG 2.2 AA для складних схем та ілюстрацій.',
         es: 'Plataforma interactiva de EdTech con más de 1.135 lecciones y cumplimiento estricto de WCAG 2.2 AA en diagramas e ilustraciones multimodales.',
+        de: 'Interaktive EdTech-Plattform mit über 1.135 interaktiven Lektionen sowie strikt WCAG 2.2 AA-konformen multimodalen Diagrammen und Illustrationen.',
       },
     },
     {
@@ -53,6 +59,7 @@ export const automatedVisualAccessibilityMetadataMultimodalLlmsEaa2026Post: Blog
         en: 'Decoupled HealthTech nutrition catalog with automatic visual parsing of food labels and accessible nutritional metadata extraction.',
         ua: 'Відокремлений каталог HealthTech з автоматичним візуальним парсингом етикеток продуктів та вилученням доступних нутритивних метаданих.',
         es: 'Catálogo de HealthTech desacoplado con análisis visual automático de etiquetas nutricionales y extracción de metadatos accesibles.',
+        de: 'Entkoppelter HealthTech-Ernährungskatalog mit automatischer visueller Analyse von Lebensmitteletiketten und barrierefreier Extraktion von Nährwert-Metadaten.',
       },
     },
     {
@@ -63,6 +70,7 @@ export const automatedVisualAccessibilityMetadataMultimodalLlmsEaa2026Post: Blog
         en: 'High-performance portfolio engine audited at 100% WCAG 2.2 AA accessibility score with zero automated contrast or screen-reader violations.',
         ua: 'Високопродуктивна платформа портфоліо зі 100% балом доступності WCAG 2.2 AA без порушень контрасту чи помилок скрінрідерів.',
         es: 'Plataforma de portafolio de alto rendimiento auditada con puntuación del 100% en WCAG 2.2 AA sin infracciones de contraste o lectores de pantalla.',
+        de: 'Hochperformante Portfolio-Plattform, auditiert mit 100% WCAG 2.2 AA-Barrierefreiheits-Score ohne automatisierte Kontrast- oder Screenreader-Verstöße.',
       },
     },
   ],
@@ -87,6 +95,13 @@ export const automatedVisualAccessibilityMetadataMultimodalLlmsEaa2026Post: Blog
       'Un pipeline multimodal con LLMs de visión y esquemas estructurados Zod procesa 50.000 SKUs en menos de 4 horas a un coste de 0,0018 € por artículo.',
       'El flujo silencia gráficos decorativos con aria-hidden, crea textos alternativos de menos de 125 caracteres y desglosa tablas nutricionales en descripciones ampliadas.',
       'Genera simultáneamente marcado Schema.org Product e ImageObject JSON-LD válido, aumentando el tráfico visual en Google Lens y Search en un 38%.',
+    ],
+    de: [
+      'Unter dem European Accessibility Act (EAA 2026 / BFSG / EN 301 549) drohen E-Commerce-Plattformen Bußgelder von bis zu 5% des Jahresumsatzes oder über 100.000 € bei Nichterfüllung von WCAG 2.2 AA.',
+      'Über 72% der internationalen Produktkataloge scheitern am WCAG-Erfolgskriterium 1.1.1 aufgrund fehlender, generischer oder ungefilterter OCR-Alt-Texte.',
+      'Eine automatisierte multimodale Vision-Pipeline (Gemini 2.5 Flash / Claude 3.7) mit strikten strukturierten Zod-Ausgaben verarbeitet 50.000 SKUs in unter 4 Stunden für 0,0018 € pro Artikel.',
+      'Die Pipeline klassifiziert dekorative Grafiken mit aria-hidden, generiert prägnante Alt-Texte unter 125 Zeichen und verarbeitet komplexe Infografiken über erweiterte Beschreibungen.',
+      'Gleichzeitig wird reichhaltiges Schema.org Product- und ImageObject-JSON-LD erzeugt, was den organischen Traffic über Google Visual Search und Rich Snippets um 38% steigert.',
     ],
   },
   content: {
@@ -1071,6 +1086,363 @@ Resultados tras analizar **50.000 SKUs** reales:
 1. **Reflejos en envases transparentes:** La iluminación de estudio suele generar reflejos que confunden a los OCR. El sistema prompt de nuestro modelo multimodal neutraliza estos destellos priorizando la silueta real del artículo.
 2. **Gráficos puramente decorativos:** Las cintas de oferta, fondos abstractos e insignias promocionales se clasifican como \`isDecorative = true\`, asignando \`alt=""\` y \`aria-hidden="true"\` para no saturar al usuario del lector de pantalla.
 3. **Imágenes de tablas nutricionales:** La etiqueta \`alt\` principal se mantiene concisa (menos de 100 caracteres), mientras que los datos desglosados se almacenan en \`extendedDescription\` y se presentan mediante un desplegable semántico accesible.
+`,
+    de: `## Executive Summary & GEO BLUF-Antwort (Bottom Line Up Front)
+
+Unter dem **European Accessibility Act (EAA 2026 / Richtlinie 2019/882 / BFSG / EN 301 549)** drohen allen kommerziellen E-Commerce-Plattformen in der Europäischen Union Abmahnungen und behördliche Bußgelder von bis zu **5% des Jahresumsatzes oder über 100.000 € pro nicht-konformem System**, wenn digitale Storefronts die Anforderungen von **WCAG 2.2 Level AA** verfehlen. In der Praxis bleibt die visuelle Barrierefreiheit über große Produktkataloge hinweg die größte Audit-Schwachstelle: Über 72% der internationalen Online-Shops scheitern am WCAG-Erfolgskriterium 1.1.1 (Nicht-Text-Inhalt) aufgrund fehlender, repetitiver oder kontextloser \`alt\`-Attribute bei Bildern.
+
+Für Kataloge mit 20.000 bis über 100.000 SKUs erfordert eine manuelle Nachbesserung 6 bis 12 Monate und verursacht über 250.000 € an spezialisierten Redaktionskosten. Gleichzeitig liefern ältere automatisierte OCR-Systeme lediglich unzusammenhängende Textfragmente von Produktverpackungen, die Screenreader-Nutzer desorientieren und bei automatisierten Audits sofort durchfallen.
+
+Die deterministische Engineering-Lösung ist eine **automatisierte multimodale Vision-Pipeline**, die Vision-Language-Modelle (wie Gemini 2.5 Flash oder Claude 3.7 Sonnet) mit **strikter Zod-Schema-Validierung**, automatisierter Klassifizierung dekorativer Grafiken, APCA-Kontrastprüfung und synchronisierter **Schema.org Product- & ImageObject-JSON-LD-Generierung** kombiniert. Im Produktiveinsatz für **Fullstack AI Lab** und **Unitrition** verarbeitete diese Pipeline 50.000 Katalog-Assets für **0,0018 € pro SKU** in unter 4 Stunden, erreichte eine **First-Pass-Bestehensquote von 99,4% im WCAG 2.2 AA-Audit** und steigerte das Ranking in der visuellen Google-Suche um **38%**.
+
+---
+
+## 1. Die regulatorische Klippe des EAA 2026 für E-Commerce-Kataloge
+
+Mit dem Inkrafttreten des European Accessibility Act (EAA 2026 / EN 301 549 Anhang A / Barrierefreiheitsstärkungsgesetz in Deutschland) verfügen nationale Marktüberwachungsbehörden in Deutschland, Spanien, Frankreich und der gesamten EU über die gesetzliche Befugnis, Online-Händler zu sanktionieren, deren Webshops nicht WCAG 2.2 Level AA entsprechen.
+
+\`\`\`
+Traditioneller E-Commerce-Katalog (50k SKUs)
+┌────────────────────────────────────────────────────────┐
+│  • alt="IMG_9482.jpg"               [FEHLER: SC 1.1.1] │
+│  • alt="Nike Laufschuhe"            [FEHLER: Kontext]  │
+│  • alt="Produktbild"                [FEHLER: Platzh.]  │
+│  • Fehlendes Schema.org ImageObject [FEHLER: Rich SEO] │
+│  • Deko-Badge ohne aria-hidden      [FEHLER: Vorlesen] │
+└────────────────────────────────────────────────────────┘
+                       ▼
+EAA 2026 Audit-Ergebnis: 100.000+ € Bußgelder & Vertriebsverbot
+\`\`\`
+
+### Warum klassische Automatisierungsansätze in Audits scheitern
+
+Drei weit verbreitete Abkürzungen fallen bei modernen automatisierten und manuellen Barrierefreiheitsprüfungen regelmäßig durch:
+
+1. **Dateinamen-Fallbacks (\`alt="product-blue-xl.jpg"\`):** Screenreader lesen Dateiendungen und Bindestriche laut vor, was sehbehinderte Käufer frustriert und sofort gegen WCAG-Erfolgskriterium 1.1.1 verstößt.
+2. **Generisches Keyword-Stuffing (\`alt="Beste blaue Laufschuhe online kaufen Rabatt Sale"\`):** Wird von Prüfern als irreführende SEO-Manipulation eingestuft, die gegen die Richtlinien für assistive Technologien verstößt.
+3. **Ungefilterte optische Zeichenerkennung (OCR):** Das bloße Kopieren von Verpackungstexten (z. B. "VOR HITZE SCHÜTZEN NETTOGEWICHT 500G") in das \`alt\`-Attribut, ohne Form, Farbe oder Funktion des physischen Produkts zu beschreiben.
+
+Nutzer assistiver Technologien benötigen **prägnante semantische Intention**: Um welches Produkt handelt es sich? Was sind die primären visuellen Merkmale (Farbe, Silhouette, Material, Muster)? Gibt es sicherheits- oder ernährungsrelevante Angaben auf der Verpackung? Und entscheidend: Ist die Grafik rein dekorativ und muss daher mittels \`alt=""\` und \`aria-hidden="true"\` stummgeschaltet werden?
+
+---
+
+## 2. Architektur der hochskalierbaren multimodalen Pipeline
+
+Um Zehntausende von Katalogbildern ohne Halluzinationen oder API-Ratenbegrenzungen zu verarbeiten, ist die Ingestion-Pipeline in eine asynchrone, ereignisgesteuerte Edge-Architektur entkoppelt:
+
+\`\`\`
+Katalog-Ingestion-Queue (Shopify / WooCommerce / S3)
+                       │
+                       ▼
+       ┌───────────────────────────────┐
+       │ Edge Ingestion Route Handler   │
+       │ (Next.js 16 / Cloudflare Edge)│
+       └──────────────┬────────────────┘
+                      │ SHA-256 Hash-Deduplizierung (Redis)
+                      ▼
+       ┌───────────────────────────────┐
+       │ Sharp Asset Preprocessor      │
+       │ (Resize auf 1024px, WebP, Exif)│
+       └──────────────┬────────────────┘
+                      │
+                      ▼
+       ┌───────────────────────────────┐
+       │ Multimodaler Vision-LLM-Worker│
+       │ (Structured Output via Zod)   │
+       └──────────────┬────────────────┘
+                      │
+         ┌────────────┴────────────┐
+         ▼                         ▼
+┌──────────────────┐     ┌──────────────────────┐
+│ WCAG 2.2 AA Alt  │     │ Schema.org JSON-LD   │
+│ & Aria Metadaten │     │ Product & ImageObject│
+└────────┬─────────┘     └──────────┬───────────┘
+         │                          │
+         └────────────┬─────────────┘
+                      ▼
+       ┌───────────────────────────────┐
+       │ Katalog-Datenbank-Persistenz  │
+       │ (WooCommerce HPOS / Shopify)  │
+       └───────────────────────────────┘
+\`\`\`
+
+### Vorverarbeitungs- & Edge-Ingestion-Regeln
+
+1. **Perzeptuelles SHA-256-Hashing:** Vor dem Aufruf der Vision-APIs wird ein Inhalts-Hash berechnet. Wenn ein identisches Produktfoto über mehrere Farbvarianten oder Kategorien hinweg existiert, werden die zwischengespeicherten Barrierefreiheits-Metadaten in unter 2ms aus Redis aufgelöst.
+2. **Seitenverhältnis-Normalisierung:** Hochauflösende Studiofotografie (oft 4000x3000px, 8MB) wird mit Sharp auf maximal 1024px Kantenlänge skaliert. Dies senkt den LLM-Token-Verbrauch um 78%, ohne feine typografische Details auf Etiketten zu verlieren.
+3. **Kontrast-Vorabprüfung:** Der Kantenkontrast zwischen Hintergrund und Produkt wird vorab mittels APCA (Advanced Perceptual Contrast Algorithm) berechnet, um ausreichenden Kontrast in hellen und dunklen Themes sicherzustellen.
+
+---
+
+## 3. Deterministische Typsicherheit mit Zod und Structured Output
+
+Unstrukturierte LLM-Prompts erzeugen inkonsistente Textlängen, unerwünschte Einleitungen wie "Hier ist ein Alt-Text für Ihr Bild:" und unvorhersehbares JSON. Um deterministische Ergebnisse zu garantieren, erzwingen wir **JSON Schema Structured Outputs** mit Zod.
+
+Hier ist das produktive TypeScript-Schema der multimodalen Barrierefreiheits-Pipeline:
+
+\`\`\`typescript
+import { z } from 'zod'
+
+export const VisualA11yExtractionSchema = z.object({
+  // Core WCAG 2.2 AA Non-Text Content Attributes
+  isDecorative: z
+    .boolean()
+    .describe(
+      'True if the image is purely aesthetic (e.g. background pattern, divider, abstract texture, badge glow) and conveys no unique product information.'
+    ),
+
+  shortAltText: z
+    .string()
+    .max(125)
+    .describe(
+      'Concise screen-reader description under 125 characters. Must identify product type, primary color, material, and distinctive silhouette. NEVER include phrases like "image of" or "photo of". If isDecorative is true, this MUST be an empty string.'
+    ),
+
+  extendedDescription: z
+    .string()
+    .nullable()
+    .describe(
+      'Detailed accessible description for complex visual assets such as nutrition labels, ingredient lists, technical sizing charts, or infographic schematics. Null for standard product shots.'
+    ),
+
+  // Multimodal Visual Attributes
+  visualAttributes: z.object({
+    dominantColor: z.string().describe('Primary visual color (e.g., "Navy Blue", "Matte Charcoal").'),
+    secondaryColors: z.array(z.string()).describe('Accent or secondary pattern colors.'),
+    materialFinish: z.string().nullable().describe('Visual texture (e.g., "Brushed Aluminum", "Ribbed Knit", "Glossy Enamel").'),
+    packagingText: z.array(z.string()).describe('Legible text extracted from labels, certifications, or nutritional panels.'),
+  }),
+
+  // Schema.org Structured Data Attributes
+  schemaMetadata: z.object({
+    productNameInferred: z.string().describe('Inferred brand or item name based on packaging typography.'),
+    categorySuggestion: z.string().describe('Standard Google Product Taxonomy category.'),
+    accessibilityFeatures: z.array(z.string()).describe('Standard Schema.org accessibilityFeature values (e.g., "alternativeText", "highContrastDisplay").'),
+    accessibilityHazards: z.array(z.string()).describe('Standard Schema.org accessibilityHazard values (e.g., "none", "flashing").'),
+  }),
+})
+
+export type VisualA11yExtraction = z.infer<typeof VisualA11yExtractionSchema>
+\`\`\`
+
+---
+
+## 4. Implementierung des produktiven multimodalen Workers
+
+Nachfolgend sehen Sie den produktionserprobten Worker, der einen Bild-Buffer entgegennimmt, die strukturierte multimodale Extraktion über Gemini 2.5 Flash ausführt, die Antwort mit Zod validiert und bereinigte Barrierefreiheits-Attribute ausgibt:
+
+\`\`\`typescript
+import { GoogleGenAI, Type } from '@google/genai'
+import { VisualA11yExtractionSchema, type VisualA11yExtraction } from './schema'
+
+interface AnalyzeImageParams {
+  imageBuffer: Buffer
+  mimeType: 'image/jpeg' | 'image/png' | 'image/webp'
+  locale: 'en' | 'ua' | 'es'
+  productContext?: {
+    brandName?: string
+    declaredCategory?: string
+  }
+}
+
+const SYSTEM_PROMPT = [
+  'You are an expert accessibility engineer certifying e-commerce catalogs for European Accessibility Act (EAA 2026) and WCAG 2.2 Level AA compliance.',
+  'Analyze the provided product photograph with uncompromising precision:',
+  '1. If the asset is purely decorative, set isDecorative to true and shortAltText to "".',
+  '2. For functional product photos, provide a concise shortAltText under 125 characters describing the item objectively.',
+  '3. NEVER use filler words such as "image of", "photo of", "picture showing". Start directly with the subject.',
+  '4. If nutritional tables, size charts, or complex multi-line text are present, extract them into extendedDescription.',
+  '5. Identify dominant visual colors, materials, and exact readable packaging text.',
+  '6. Ensure the generated response strictly follows the requested schema without conversational wrappers.',
+].join('\\n')
+
+export async function extractVisualAccessibilityMetadata(
+  params: AnalyzeImageParams
+): Promise<VisualA11yExtraction> {
+  const { imageBuffer, mimeType, locale, productContext } = params
+
+  const ai = new GoogleGenAI()
+  const base64Data = imageBuffer.toString('base64')
+
+  const localeInstruction = {
+    en: 'Respond with shortAltText and extendedDescription strictly in English.',
+    ua: 'Надайте shortAltText та extendedDescription українською мовою з дотриманням технічної термінології.',
+    es: 'Proporcione shortAltText y extendedDescription estrictamente en español formal.',
+  }[locale]
+
+  const response = await ai.models.generateContent({
+    model: 'gemini-2.5-flash',
+    contents: [
+      {
+        role: 'user',
+        parts: [
+          { text: SYSTEM_PROMPT + '\\n' + localeInstruction + (productContext ? '\\nKnown Context: ' + JSON.stringify(productContext) : '') },
+          {
+            inlineData: {
+              data: base64Data,
+              mimeType,
+            },
+          },
+        ],
+      },
+    ],
+    config: {
+      responseMimeType: 'application/json',
+      // Strict Structured Output Schema enforcement
+      responseSchema: {
+        type: Type.OBJECT,
+        properties: {
+          isDecorative: { type: Type.BOOLEAN },
+          shortAltText: { type: Type.STRING },
+          extendedDescription: { type: Type.STRING, nullable: true },
+          visualAttributes: {
+            type: Type.OBJECT,
+            properties: {
+              dominantColor: { type: Type.STRING },
+              secondaryColors: { type: Type.ARRAY, items: { type: Type.STRING } },
+              materialFinish: { type: Type.STRING, nullable: true },
+              packagingText: { type: Type.ARRAY, items: { type: Type.STRING } },
+            },
+            required: ['dominantColor', 'secondaryColors', 'packagingText'],
+          },
+          schemaMetadata: {
+            type: Type.OBJECT,
+            properties: {
+              productNameInferred: { type: Type.STRING },
+              categorySuggestion: { type: Type.STRING },
+              accessibilityFeatures: { type: Type.ARRAY, items: { type: Type.STRING } },
+              accessibilityHazards: { type: Type.ARRAY, items: { type: Type.STRING } },
+            },
+            required: ['productNameInferred', 'categorySuggestion', 'accessibilityFeatures', 'accessibilityHazards'],
+          },
+        },
+        required: ['isDecorative', 'shortAltText', 'visualAttributes', 'schemaMetadata'],
+      },
+      temperature: 0.1, // Near-zero temperature for deterministic extraction
+    },
+  })
+
+  const rawJsonText = response.text
+  if (!rawJsonText) {
+    throw new Error('Multimodal model returned empty inference payload.')
+  }
+
+  const parsedJson = JSON.parse(rawJsonText)
+  return VisualA11yExtractionSchema.parse(parsedJson)
+}
+\`\`\`
+
+---
+
+## 5. Automatisierte Synthese von Schema.org Product & ImageObject JSON-LD
+
+Screenreader navigieren durch HTML-Markup, während Suchmaschinen-Crawler (Google Search, Bing, Google Lens und Perplexity) auf strukturierte **JSON-LD Schema.org**-Daten angewiesen sind, um visuelle Barrierefreiheitsmerkmale und Produktspezifikationen zu indizieren.
+
+Durch die Weiterleitung der multimodalen Extraktionsdaten in einen Schema.org-Generator erfüllen wir gleichzeitig die Anforderungen von **WCAG 2.2 AA** und programmatischem Visual-Commerce-SEO:
+
+\`\`\`typescript
+import type { VisualA11yExtraction } from './schema'
+
+interface GenerateSchemaParams {
+  extraction: VisualA11yExtraction
+  canonicalProductUrl: string
+  imageUrl: string
+  price: number
+  currency: string
+  sku: string
+  locale: string
+}
+
+export function generateAccessibleProductSchema(params: GenerateSchemaParams): Record<string, unknown> {
+  const { extraction, canonicalProductUrl, imageUrl, price, currency, sku, locale } = params
+
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    '@id': canonicalProductUrl + '#product',
+    url: canonicalProductUrl,
+    name: extraction.schemaMetadata.productNameInferred || sku,
+    sku: sku,
+    inLanguage: locale,
+    color: extraction.visualAttributes.dominantColor,
+    material: extraction.visualAttributes.materialFinish ?? undefined,
+    category: extraction.schemaMetadata.categorySuggestion,
+
+    // Accessible ImageObject integration
+    image: {
+      '@type': 'ImageObject',
+      '@id': imageUrl + '#primaryimage',
+      url: imageUrl,
+      caption: extraction.shortAltText,
+      description: extraction.extendedDescription ?? extraction.shortAltText,
+      representativeOfPage: true,
+      accessibilityFeature: extraction.schemaMetadata.accessibilityFeatures,
+      accessibilityHazard: extraction.schemaMetadata.accessibilityHazards,
+    },
+
+    // Standard E-Commerce Offer
+    offers: {
+      '@type': 'Offer',
+      price: price.toFixed(2),
+      priceCurrency: currency,
+      availability: 'https://schema.org/InStock',
+      url: canonicalProductUrl,
+    },
+
+    // EAA 2026 Accessibility Declarations
+    accessibilityFeature: extraction.schemaMetadata.accessibilityFeatures,
+    accessibilityHazard: extraction.schemaMetadata.accessibilityHazards,
+    accessibilitySummary:
+      'Compliant with EAA 2026 and WCAG 2.2 Level AA. High-contrast visual photography with certified screen-reader descriptions.',
+  }
+}
+\`\`\`
+
+---
+
+## 6. Empirischer Benchmark: Manuelle Redaktion vs. Legacy-OCR vs. Multimodale Vision-LLM
+
+Um den konkreten wirtschaftlichen Nutzen zu messen, wurde diese Architektur bei einer Katalogmigration von **50.000 aktiven E-Commerce-SKUs** aus den Bereichen Bekleidung, verpackte Lebensmittel und Unterhaltungselektronik evaluiert.
+
+Die empirischen Messwerte belegen eine deutliche Überlegenheit bei Durchlaufzeit, Audit-Bestehensquote und Gesamtbetriebskosten (TCO):
+
+| Engineering-Dimension | Manuelles Redaktionsteam | Klassisches Tesseract-OCR | Multimodale Vision-LLM-Pipeline |
+| :--- | :--- | :--- | :--- |
+| **Katalog-Durchlaufzeit** | 9,5 Monate | 8,2 Stunden | **3,4 Stunden** (Parallele Worker) |
+| **First-Pass WCAG 2.2 AA Bestehensquote** | 91,2% (Menschliche Ermüdung) | 18,4% (Kontextloser Text) | **99,4%** (Strikte Zod-Guardrails) |
+| **Screenreader-Verständlichkeitswert** | 88/100 | 22/100 | **96/100** (Verifiziert via NVDA/JAWS) |
+| **EAA 2026 Rechts-Audit-Bereitschaft** | Hohes Risiko (Inkonsistent) | Vollständiger Ausfall | **100% Zertifiziertes Audit-Log** |
+| **Schema.org Visuelle Anreicherung** | 12% (Zu arbeitsintensiv) | 0% (Nicht unterstützt) | **100% Automatisiertes JSON-LD** |
+| **Gesamtkosten (50k SKUs)** | 225.000 € (Redaktionsgehälter) | 350 € (Cloud-Compute) | **92,40 €** (0,0018 € / SKU API-Gebühr) |
+| **Lighthouse Accessibility Score** | 94/100 | 68/100 | **100/100 Fehlerfrei** |
+
+---
+
+## 7. Edge-Case-Engineering & Fehlermodi
+
+Produktive Kataloge enthalten zahlreiche fotografische Grenzfälle, an denen einfache KI-Implementierungen scheitern. So löst unsere Architektur diese deterministisch:
+
+### 1. Reflexionen auf transparenten & glänzenden Verpackungen
+- **Problem:** Studioblitz-Reflexionen auf Zellophanverpackungen erzeugen halluzinierten Text oder fehlerhafte Objekterkennungen.
+- **Lösung:** Wir übergeben eine vorab berechnete Schärfe- und Kantengradientenmaske in den Vision-Kontext. Der System-Prompt weist das Modell explizit an, Blendartefakte zu ignorieren und nicht-spiegelnde Typografie zu priorisieren.
+
+### 2. Rein dekorative Grafikelemente
+- **Problem:** Aktionsbänder, Sternebewertungen, Hintergrundvignetten und Trust-Badges überladen den Screenreader-Fluss, wenn sie Alt-Tags erhalten.
+- **Lösung:** Wenn \`isDecorative\` als \`true\` ausgewertet wird, rendert unsere Next.js-Bildkomponente \`alt=""\` und ergänzt \`aria-hidden="true"\` sowie \`role="presentation"\`. Dadurch überspringen assistive Technologien rein ästhetische Dekorationen ohne Audit-Warnungen.
+
+### 3. Komplexe Nährwert- & Größentabellen-Infografiken
+- **Problem:** Größenmatrizen oder Nährwerttabellen lassen sich nicht in 125 Zeichen beschreiben, ohne wichtige Daten abzuschneiden.
+- **Lösung:** Die Pipeline teilt die Metadaten auf. Das primäre \`<img>\`-Tag erhält ein prägnantes 80-Zeichen-\`alt\`-Attribut (z. B. \`alt="Nährwerttabelle für Bio-Haferflocken mit Kalorien und Makronährstoffen"\`), während ein angrenzendes \`<details>\`-Element die vollständige \`extendedDescription\` als barrierefreie semantische Tabelle darstellt.
+
+---
+
+## 8. Schritt-für-Schritt-Rollout-Strategie für die Produktion
+
+1. **Pre-Audit-Baseline:** Führen Sie \`@axe-core/cli\` und \`lighthouse-ci\` auf produktiven Kategorie- und Produktseiten aus, um die aktuelle Anzahl an Verstößen gegen WCAG 2.2 SC 1.1.1 zu erfassen.
+2. **Katalog-Ingestion-Job:** Starten Sie den multimodalen Worker in Batches von 500 SKUs über BullMQ-Queues und speichern Sie die generierten Zod-Payloads in Redis.
+3. **Datenbank-Migration:** Aktualisieren Sie WooCommerce \`wp_posts.post_content\` oder Shopify \`media.alt\`-Attribute über Batch-GraphQL-Mutationen.
+4. **Automatisiertes EAA-CI/CD-Gate:** Fügen Sie einen GitHub Actions Check hinzu, der verhindert, dass Produkte mit fehlendem oder generischem \`alt\`-Text in Staging- oder Produktions-Builds gemergt werden.
+5. **Kontinuierliche Telemetrie:** Überwachen Sie Screenreader-Sitzungsabbrüche und organischen Google Lens Discovery-Traffic in Echtzeit.
 `,
   },
 }

@@ -52,17 +52,22 @@ export async function generateMetadata({
       ? project.descriptionUa
       : locale === 'es' && project.descriptionEs
         ? project.descriptionEs
-        : project.description
+        : locale === 'de' && project.descriptionDe
+          ? project.descriptionDe
+          : project.description
 
   const caseStudyLabel =
     locale === 'ua'
       ? 'Кейс проєкту'
       : locale === 'es'
         ? 'Caso de estudio'
-        : 'Case Study'
+        : locale === 'de'
+          ? 'Fallstudie'
+          : 'Case Study'
 
   const title = `${project.title} - ${caseStudyLabel} | Artur Yusupov`
-  const ogLocale = locale === 'ua' ? 'uk_UA' : locale === 'es' ? 'es_ES' : 'en_US'
+  const ogLocale =
+    locale === 'ua' ? 'uk_UA' : locale === 'es' ? 'es_ES' : locale === 'de' ? 'de_DE' : 'en_US'
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.yusupovartur.com'
   const imageUrl = toAbsoluteAssetUrl(project.image)
 
@@ -76,6 +81,8 @@ export async function generateMetadata({
         uk: `/ua/projects/${slug}`,
         es: `/es/projects/${slug}`,
         'es-ES': `/es/projects/${slug}`,
+        de: `/de/projects/${slug}`,
+        'de-DE': `/de/projects/${slug}`,
         'x-default': `/en/projects/${slug}`,
       },
     },

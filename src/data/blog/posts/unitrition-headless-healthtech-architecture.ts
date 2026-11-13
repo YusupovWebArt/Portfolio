@@ -7,23 +7,27 @@ export const unitritionHeadlessHealthtechArchitecturePost: BlogPost = {
     en: 'Unitrition Architecture Deep-Dive: Engineering a Headless HealthTech & Precision Nutrition Platform with Next.js 16, WordPress & Supabase',
     ua: 'Повний розбір архітектури Unitrition: розробка Headless HealthTech-платформи персоналізованого харчування на Next.js 16, WordPress та Supabase',
     es: 'Análisis profundo de la arquitectura Unitrition: ingeniería de una plataforma HealthTech Headless con Next.js 16, WordPress y Supabase',
+    de: 'Unitrition Architektur-Deep-Dive: Entwicklung einer Headless-HealthTech- und Präzisions-Ernährungsplattform mit Next.js 16, WordPress und Supabase',
   },
   description: {
     en: 'Executive and technical breakdown of Unitrition (unitrition.info): decoupling WordPress CMS from Next.js 16 App Router, integrating USDA FoodData Central API for real-time Bread Units and glycemic curve modeling across 10 clinical diet frameworks, and securing user data with Supabase RLS.',
     ua: 'Технічний та архітектурний розбір платформи Unitrition (unitrition.info): поєднання Headless WordPress із Next.js 16 App Router, інтеграція USDA FoodData Central API для розрахунку Хлібних Одиниць і глікемічних кривих для 10 дієт та захист даних через Supabase RLS.',
     es: 'Desglose ejecutivo y técnico de Unitrition (unitrition.info): desacoplamiento de WordPress CMS con Next.js 16 App Router, integración de la API USDA FoodData Central para el cálculo de Unidades de Pan y curvas glucémicas en 10 dietas, y seguridad con Supabase RLS.',
+    de: 'Technischer und architektonischer Deep-Dive zu Unitrition (unitrition.info): Entkopplung von WordPress CMS und Next.js 16 App Router, Integration der USDA FoodData Central API für Echtzeit-Broteinheiten und glykämische Kurvenmodellierung über 10 klinische Ernährungsprotokolle sowie Datensicherheit durch Supabase RLS.',
   },
   date: '2026-10-21',
   readTime: {
     en: '8 min read',
     ua: '8 хв читання',
     es: '8 min de lectura',
+    de: '8 Min. Lesezeit',
   },
   category: 'architecture-comparison',
   categoryLabel: {
     en: 'System Architecture',
     ua: 'Системна архітектура',
     es: 'Arquitectura de Sistemas',
+    de: 'Systemarchitektur',
   },
   tags: ['Next.js 16', 'Headless WordPress', 'Supabase', 'USDA API', 'HealthTech', 'TypeScript', 'Schema.org'],
   author: {
@@ -32,6 +36,7 @@ export const unitritionHeadlessHealthtechArchitecturePost: BlogPost = {
       en: 'Fullstack Web Engineer & AI Developer',
       ua: 'Fullstack веб-інженер та AI-розробник',
       es: 'Ingeniero Web Fullstack y Desarrollador IA',
+      de: 'Fullstack Web-Engineer & KI-Entwickler',
     },
   },
   coverImage: '/Portfolio/images/portfolio/sliders/nextjs/unitrition/unitrition-hero-section.webp',
@@ -44,6 +49,7 @@ export const unitritionHeadlessHealthtechArchitecturePost: BlogPost = {
         en: 'Fullstack precision nutrition platform supporting 10 dietary protocols, USDA FoodData Central API integration, Bread Units calculator, and bilingual EN/ES architecture.',
         ua: 'Fullstack-платформа персоналізованого харчування з підтримкою 10 дієтичних протоколів, інтеграцією USDA API, калькулятором Хлібних Одиниць та двомовною архітектурою EN/ES.',
         es: 'Plataforma fullstack de nutrición personalizada con soporte para 10 protocolos dietéticos, integración con API USDA, calculadora de Unidades de Pan y arquitectura bilingüe EN/ES.',
+        de: 'Fullstack-Plattform für Präzisionsernährung mit Unterstützung für 10 Ernährungsprotokolle, Integration der USDA FoodData Central API, Broteinheiten-Rechner und zweisprachiger EN/ES-Architektur.',
       },
     },
   ],
@@ -65,6 +71,12 @@ export const unitritionHeadlessHealthtechArchitecturePost: BlogPost = {
       'Un proxy servidor para la API USDA FoodData Central normaliza macronutrientes y calcula Unidades de Pan (BU) y simulaciones de curvas glucémicas (CGM) en tiempo real.',
       'El motor determinista de puntuación para 10 dietas evalúa alimentos al instante frente a umbrales clínicos con indicadores visuales por colores.',
       'Aislamiento Zero-Trust de datos: la autenticación y los perfiles dietéticos se gestionan en Supabase PostgreSQL con Row Level Security (RLS), separados del CMS editorial.',
+    ],
+    de: [
+      'Entkoppelte Hybrid-Architektur: WordPress dient ausschließlich als redaktionelles Headless-CMS über die REST API, während der Next.js 16 App Router blitzschnelle SSR/ISR-Seiten und interaktive Ernährungsrechner bereitstellt.',
+      'Ein serverseitiger Proxy für die USDA FoodData Central API normalisiert Makro- und Mikronährstoffdaten und berechnet Broteinheiten (BE) sowie kontinuierliche Glukosekurven-Simulationen (CGM) in Echtzeit.',
+      'Eine deterministische 10-Diäten-Scoring-Engine bewertet Lebensmittel sofort anhand klinischer Grenzwerte (Keto, Low-GI, Mediterran, Low-FODMAP, Renal, Diabetisch usw.) mit einer übersichtlichen Ampel-Farbcodierung.',
+      'Zero-Trust-Datenisolierung: Authentifizierung und persönliche Ernährungsprofile werden in Supabase PostgreSQL mit Row Level Security (RLS) verwaltet, vollständig getrennt vom redaktionellen CMS.',
     ],
   },
   content: {
@@ -358,5 +370,102 @@ Las guías clínicas y artículos de nutrición se gestionan en WordPress median
 1. **Separación Zero-Trust entre CMS y Datos de Usuario**: Las cuentas y preferencias dietéticas residen en un clúster aislado de Supabase PostgreSQL con RLS, completamente separadas de WordPress.
 2. **Aislamiento de Credenciales en Servidor**: Las claves de la API del USDA nunca se exponen en el código JavaScript del navegador.
 3. **Validación y Control de Tasa**: Las búsquedas pasan por debounce y caché en el servidor para evitar abusos de cuota.`,
+
+    de: `### 1. Executive Summary & Die HealthTech-Herausforderung
+
+Patienten und gesundheitsbewusste Menschen, die strenge Ernährungsprotokolle befolgen (wie Diabetes Typ 1/Typ 2, ketogene, Low-FODMAP-, Nieren- oder mediterrane Diäten), stehen täglich vor einer hohen kognitiven Belastung: Sie müssen rohe Nährwertkennzeichnungen mit komplexen klinischen Leitlinien abgleichen und manuell **Broteinheiten (BE / Kohlenhydrateinheiten)** sowie die glykämische Last berechnen.
+
+Gleichzeitig leiden traditionelle Medizinportale, die auf monolithischen CMS-Templates basieren, unter einer langsamen mobilen Performance bei Abfragen großer Nährwertdatenbanken und bieten keine interaktiven clientseitigen Modellierungswerkzeuge.
+
+**Unitrition** (\`unitrition.info\`) wurde entwickelt, um klinische Ernährungsdaten mit moderner Fullstack-Performance zu verbinden. Durch die Kombination von **Headless WordPress**, **Next.js 16 App Router (React 19)**, **Supabase PostgreSQL** und der offiziellen **USDA FoodData Central API** liefert die Plattform eine Kompatibilitätsbewertung von Lebensmitteln im Subsekundenbereich über **10 Ernährungsprotokolle**, eine Echtzeit-Berechnung von Broteinheiten sowie interaktive Visualisierungen glykämischer Kurven.
+
+---
+
+### 2. Architecture Decision Records (ADR - Warum wir diesen Stack gewählt haben)
+
+| Architekturentscheidung | Verworfene Alternative | Technische & geschäftliche Begründung |
+| :--- | :--- | :--- |
+| **Hybrider Headless-Stack (Next.js 16 + Headless WordPress REST API)** | Monolithisches PHP-WordPress-Theme mit Custom AJAX | Ernährungswissenschaftler und medizinische Redakteure behalten den gewohnten WordPress/ACF Pro-Workflow bei, während Endnutzer ein blitzschnelles React 19 App Router-Frontend mit **95+ PageSpeed** und null PHP-Template-Engpässen erhalten. |
+| **Supabase PostgreSQL + Auth für Nutzerprofile** | Speicherung von Nutzerkonten in WordPress \`wp_users\` | Die Entkopplung der Nutzerauthentifizierung und persönlicher Ernährungsprotokolle in Supabase mit **Row Level Security (RLS)** verhindert, dass WordPress-Plugin-Schwachstellen jemals sensible Gesundheitspräferenzen offenlegen können. |
+| **Serverseitiger Next.js-Proxy für die USDA FoodData API** | Direkter clientseitiger \`fetch()\` zur USDA API | Schützt den privaten USDA-API-Schlüssel vor clientseitiger Offenlegung, normalisiert inkonsistente JSON-Schemata von Drittanbietern auf dem Server und wendet Edge-Caching an, um Rate-Limit-Überschreitungen zu verhindern. |
+| **Zweisprachiges Routing & Schema.org-Graph (\`EN / ES\`)** | Reine Client-Übersetzungsstrings ohne URL-Routing | Dedizierte lokalisierte URLs mit \`hreflang\`-Alternativen und strukturierten medizinischen/ernährungswissenschaftlichen \`Schema.org\`-Daten maximieren die organische Sichtbarkeit in englisch- und spanischsprachigen Suchmärkten. |
+
+---
+
+### 3. Kernmechanismen: Wie Unitrition unter der Haube arbeitet
+
+#### Mechanismus 1: Der USDA FoodData Central Proxy & die Nährstoff-Normalisierungs-Pipeline
+Die Datenbank von USDA FoodData Central enthält Hunderttausende von Lebensmitteln (Foundation Foods, SR Legacy, Branded Foods), die Nährstoffe jeweils in leicht unterschiedlichen verschachtelten Strukturen und Einheiten-IDs ausweisen (z. B. Energie in \`kcal\` vs. \`kJ\`, Gesamtkohlenhydrate nach Differenz, Ballaststoffe, Gesamtzucker).
+
+Wenn ein Nutzer in Unitrition nach einer Zutat sucht:
+1. Der Client sendet eine per Debounce verzögerte Anfrage an unseren internen Next.js Route Handler.
+2. Der Server-Proxy authentifiziert sich bei der USDA API über rein serverseitige Umgebungsvariablen, extrahiert das rohe Nährstoff-Array und überführt die Nährstoff-IDs in ein striktes, typsicheres \`NormalizedFoodItem\`-Interface.
+3. Antworten werden mit \`stale-while-revalidate\`-Headern zwischengespeichert, sodass häufige Lebensmittelabfragen in unter **30ms** aufgelöst werden.
+
+\`\`\`ts
+// Konzeptioneller Blueprint der Berechnung von Broteinheiten (BE) & Netto-Kohlenhydraten
+export interface NormalizedMacros {
+  caloriesKcal: number
+  totalCarbsGrams: number
+  dietaryFiberGrams: number
+  sugarsGrams: number
+  proteinGrams: number
+  fatGrams: number
+}
+
+export function calculateBreadUnits(macros: NormalizedMacros, portionGrams: number) {
+  const factor = portionGrams / 100
+  const digestibleCarbs = Math.max(0, (macros.totalCarbsGrams - macros.dietaryFiberGrams) * factor)
+  // 1 Broteinheit (BE) = 12g verwertbare Kohlenhydrate
+  const breadUnits = Number((digestibleCarbs / 12).toFixed(2))
+  return { digestibleCarbs: Number(digestibleCarbs.toFixed(1)), breadUnits }
+}
+\`\`\`
+
+#### Mechanismus 2: Deterministische 10-Diäten-Ampel-Scoring-Engine
+Anstatt sich auf langsame oder unvorhersehbare LLM-Aufrufe zu verlassen, um zu beurteilen, ob ein Lebensmittel zu einer Diät passt, nutzt Unitrition eine **deterministische klinische Regelmatrix** über 10 Ernährungsprotokolle hinweg:
+- Jedes Diätprofil definiert strikte Makronährstoffverhältnisse, Obergrenzen für die glykämische Last und ausgeschlossene Lebensmittelgruppen.
+- Wenn ein Nutzer einen Ernährungsplan auswählt und Lebensmittel sucht, berechnet die Engine sofort einen farbcodierten Kompatibilitätswert:
+  - **Grün (Optimale Eignung)**: Innerhalb der Makroziele und mit geringer glykämischer Auswirkung.
+  - **Gelb (Moderat / Portionskontrolle)**: Erfordert eine genaue Portionsanpassung auf Basis der berechneten Broteinheiten.
+  - **Rot (Vermeiden)**: Überschreitet Kohlenhydrat-, Natrium- oder Lipidschwellenwerte für das aktive Protokoll.
+
+#### Mechanismus 3: Simulation der kontinuierlichen Glukoseüberwachung (CGM) & PDF-Export
+Um Nutzern visuell zu verdeutlichen, *warum* Ballaststoffe und Proteine die Glukoseaufnahme im Vergleich zu raffiniertem Zucker verlangsamen, enthält Unitrition einen interaktiven **Simulator für die glykämische Reaktion**:
+- Basierend auf dem Verhältnis von verwertbaren Kohlenhydraten, Ballaststoffen, Fett und Protein in der gewählten Portion modelliert die Engine die prognostizierte postprandiale Glukosekurve über ein 180-Minuten-Fenster.
+- Nutzer können ihre ausgewählten Lebensmittel und Mahlzeitenberechnungen direkt im Browser zu einem sauberen, druckfertigen **PDF-Ernährungsbericht** zusammenstellen.
+
+#### Mechanismus 4: Entkoppeltes Redaktions-CMS über Headless WordPress & ISR
+Wissenschaftliche Ernährungsartikel und klinische Leitfäden werden in einer gehärteten Headless-WordPress-Instanz mit **Advanced Custom Fields (ACF Pro)** verwaltet:
+- Next.js ruft strukturierte Beitragsdaten über die WP REST API während des Builds und mittels Incremental Static Regeneration (**ISR**) ab.
+- Jeder Artikel generiert automatisch **Schema.org \`Article\`- und \`FAQPage\`-JSON-LD**-Markup, um medizinische und ernährungsbezogene Such-Snippets zu gewinnen.
+
+---
+
+### 4. Engineering-Glossar: Jeder Schlüsselbegriff erklärt
+
+- **Headless-CMS-Architektur**:
+  - *Was es ist*: Die Trennung des Backend-Content-Management-Systems (WordPress) von der Frontend-Präsentationsschicht (Next.js).
+  - *Warum es wichtig ist*: Redakteure arbeiten in einer vertrauten Oberfläche, während Besucher sofortige React-Seitenübergänge und höchste Sicherheit erleben, da das CMS-Admin-Panel vor öffentlichem Traffic verborgen bleibt.
+- **Incremental Static Regeneration (ISR)**:
+  - *Was es ist*: Ein Next.js-Mechanismus, der statische Seiten im Hintergrund nach dem Deployment aktualisiert, sobald sich CMS-Inhalte ändern, ohne die gesamte Website neu zu bauen.
+  - *Warum es wichtig ist*: Kombiniert die Geschwindigkeit von statischem HTML mit der Aktualität einer dynamischen Datenbank.
+- **Broteinheiten (BE / Kohlenhydrateinheit)**:
+  - *Was es ist*: Eine klinische Maßeinheit in der Ernährungsmedizin und im Diabetesmanagement (1 BE entspricht 10g-12g verwertbaren Kohlenhydraten abzüglich Ballaststoffen) zur Abschätzung des Insulinbedarfs und der glykämischen Wirkung.
+  - *Warum es wichtig ist*: Die automatische BE-Berechnung für beliebige Portionsgrößen in Gramm eliminiert manuelle Rechenfehler für Nutzer.
+- **Serverseitiger API-Proxy**:
+  - *Was es ist*: Ein zwischengeschalteter Backend-Endpunkt, der Client-Anfragen an einen externen Dienst (USDA API) weiterleitet, geheime Schlüssel auf dem Server hinzufügt und die Antwort bereinigt.
+  - *Warum es wichtig ist*: Verhindert den Diebstahl von API-Schlüsseln und schirmt das Frontend gegen Breaking Changes von Drittanbieter-APIs ab.
+- **Supabase Row Level Security (RLS)**:
+  - *Was es ist*: Feingranulare Zugriffskontrolle direkt in PostgreSQL, die \`auth.uid() = user_id\` bei jeder Datenbankabfrage erzwingt.
+  - *Warum es wichtig ist*: Stellt sicher, dass ein Nutzer niemals das gespeicherte Ernährungsprofil eines anderen Nutzers lesen oder ändern kann.
+
+---
+
+### 5. Defense-in-Depth-Sicherheitsarchitektur
+
+1. **Zero-Trust-Trennung von CMS und Nutzerdaten**: Selbst wenn das redaktionelle WordPress-CMS jemals Ziel eines Angriffs werden sollte, befinden sich Nutzerkonten und persönliche Ernährungsdaten in einem isolierten Supabase-PostgreSQL-Cluster, das durch RLS geschützt ist.
+2. **Serverseitige Geheimnis-Isolierung**: USDA-API-Schlüssel und Supabase-Service-Keys sind strikt auf serverseitige Umgebungsvariablen beschränkt und landen niemals im Client-JavaScript-Bundle.
+3. **Eingabevalidierung & Rate-Protection**: Suchanfragen und Rechnereingaben werden bereinigt und per Debounce gedrosselt, bevor sie den Server-Proxy erreichen, um eine Erschöpfung des Upstream-API-Kontingents zu verhindern.`,
   },
 }

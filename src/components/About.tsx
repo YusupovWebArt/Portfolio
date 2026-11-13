@@ -33,10 +33,10 @@ const About = () => {
 
   const education = [
     {
-      year: "2024-Present",
+      year: `2024-${ab.presentLabel}`,
       title: ab.education.item0.title,
       institution: ab.education.item0.institution,
-      badge: "R&D / Tech Research",
+      badge: ab.education.item0.badge,
       description: (
         <ul className="space-y-2 mt-2 list-none">
           <li className="flex items-start gap-3">
@@ -88,7 +88,7 @@ const About = () => {
       year: "2016",
       title: ab.education.item1.title,
       institution: "W3schools, Coursera, Udemy, Codecademy, SoloLearn, Programminghub, YouTube",
-      badge: "Continuing Education",
+      badge: ab.education.item1.badge,
       description: (
         <div className="space-y-3">
           <p>{ab.education.item1.description.intro}</p>
@@ -106,7 +106,7 @@ const About = () => {
       year: "2005-2010",
       title: ab.education.item2.title,
       institution: ab.education.item2.institution,
-      badge: "Academic Degree",
+      badge: ab.education.item2.badge,
       description: (
         <ul className="space-y-2 mt-2 list-none">
           <li className="flex items-start gap-2.5">
@@ -130,7 +130,7 @@ const About = () => {
 
   const workExperience = [
     {
-      year: "2025-Present",
+      year: `2025-${ab.presentLabel}`,
       title: ab.work.itemSolo.title,
       company: ab.work.itemSolo.company,
       companyUrl: "https://www.fullstackailab.com",
@@ -246,7 +246,7 @@ const About = () => {
     {
       year: "2016-2024",
       title: ab.work.item2.title,
-      company: "Web-developer (WordPress, Shopify, WIX), SEO-specialist.",
+      company: ab.work.item2.company,
       companyUrl: "https://freelancehunt.com/freelancer/arsly.html",
       description: (
         <ul className="space-y-2 mt-2 list-none">
@@ -395,8 +395,8 @@ const About = () => {
                     className="relative flex items-start mb-8 last:mb-0"
                   >
                     <div className="w-8 h-8 sm:w-12 sm:h-12 shrink-0 bg-gradient-to-br from-purple-500 to-blue-500 dark:from-lime-500 dark:to-lime-600 rounded-full flex items-center justify-center text-white font-bold text-[10px] sm:text-xs shadow-lg relative z-10">
-                      {item.year.includes("Present")
-                        ? "Now"
+                      {item.year.includes(ab.presentLabel)
+                        ? ab.nowLabel
                         : item.year.split("-")[0]}
                     </div>
                     <div className="ml-3 sm:ml-6 flex-1 min-w-0">
@@ -439,8 +439,8 @@ const About = () => {
                     className="relative flex items-start mb-8 last:mb-0"
                   >
                     <div className="w-8 h-8 sm:w-12 sm:h-12 shrink-0 bg-gradient-to-br from-green-500 to-teal-500 dark:from-lime-500 dark:to-lime-600 rounded-full flex items-center justify-center text-white font-bold text-[10px] sm:text-xs shadow-lg relative z-10">
-                      {item.year.includes("Present")
-                        ? "Now"
+                      {item.year.includes(ab.presentLabel)
+                        ? ab.nowLabel
                         : item.year.split("-")[0]}
                     </div>
                     <div className="ml-3 sm:ml-6 flex-1 min-w-0">

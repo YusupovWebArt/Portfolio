@@ -6,23 +6,27 @@ export const eaa2026EcommerceCompliancePost: BlogPost = {
     en: 'European Accessibility Act (EAA 2026) for E-Commerce: Compliance Architecture, Penalties & Remediation Blueprint',
     ua: 'Європейський акт про доступність (EAA 2026) для E-Commerce: архітектура відповідності, штрафи та план ремедіації',
     es: 'Ley Europea de Accesibilidad (EAA 2026) para E-Commerce: arquitectura de cumplimiento, sanciones y plan de remediación',
+    de: 'European Accessibility Act (EAA 2026 / BFSG) im E-Commerce: Compliance-Architektur, Bußgelder & technischer Umsetzungsleitfaden',
   },
   description: {
     en: 'A comprehensive engineering guide on achieving European Accessibility Act (EAA 2026 / Directive 2019/882 / EN 301 549) and WCAG 2.2 Level AA compliance for online stores in the EU. Legal implications, fines up to 100,000 EUR, checkout accessibility, screen reader patterns, and practical remediation code.',
     ua: 'Повний інженерний посібник з досягнення відповідності European Accessibility Act (EAA 2026 / Директива 2019/882 / EN 301 549) та WCAG 2.2 Level AA для онлайн-магазинів у ЄС: юридичні наслідки, штрафи до 100 000 євро, доступний чекаут та код виправлення.',
     es: 'Guía técnica exhaustiva para cumplir con la Ley Europea de Accesibilidad (EAA 2026 / Directiva 2019/882 / EN 301 549) y WCAG 2.2 Nivel AA en tiendas online en la UE: sanciones de hasta 100.000 euros, accesibilidad en el checkout y código práctico de remediación.',
+    de: 'Ein umfassender technischer Leitfaden zur Erfüllung des European Accessibility Act (EAA 2026 / Richtlinie 2019/882 / EN 301 549 / BFSG) und WCAG 2.2 Level AA für Online-Shops in der EU. Rechtliche Folgen, Bußgelder bis zu 100.000 EUR, barrierefreier Checkout, Screenreader-Muster und praxisnaher Remediation-Code.',
   },
   date: '2026-11-12',
   readTime: {
     en: '10 min read',
     ua: '10 хв читання',
     es: '10 min de lectura',
+    de: '10 Min. Lesezeit',
   },
   category: 'accessibility-compliance',
   categoryLabel: {
     en: 'Accessibility & Compliance',
     ua: 'Доступність та стандарти',
     es: 'Accesibilidad y Normativa',
+    de: 'Barrierefreiheit & Compliance',
   },
   tags: ['EAA 2026', 'WCAG 2.2 AA', 'E-Commerce', 'WooCommerce', 'React 19', 'A11y', 'EN 301 549', 'Compliance'],
   author: {
@@ -31,6 +35,7 @@ export const eaa2026EcommerceCompliancePost: BlogPost = {
       en: 'Fullstack Web Engineer & AI Developer',
       ua: 'Fullstack веб-інженер та AI-розробник',
       es: 'Ingeniero Web Fullstack y Desarrollador IA',
+      de: 'Fullstack Web-Engineer & KI-Entwickler',
     },
   },
   coverImage: '/Portfolio/images/blog/cover-eaa-2026-ecommerce-compliance.svg',
@@ -43,6 +48,7 @@ export const eaa2026EcommerceCompliancePost: BlogPost = {
         en: 'High-performance bidirectional WooCommerce store engineered with strict WCAG 2.2 AA compliance, accessible cart drawers, and RTL keyboard navigation.',
         ua: 'Високопродуктивний двонаправлений магазин WooCommerce зі суворою відповідністю WCAG 2.2 AA, доступними кошиками та RTL-навігацією.',
         es: 'Tienda WooCommerce bidireccional de alto rendimiento desarrollada con estricto cumplimiento WCAG 2.2 AA, carritos accesibles y navegación RTL por teclado.',
+        de: 'Hochperformanter bidirektionaler WooCommerce-Shop mit strikter WCAG 2.2 AA-Konformität, barrierefreien Warenkorb-Drawern und RTL-Tastaturnavigation.',
       },
     },
     {
@@ -53,6 +59,7 @@ export const eaa2026EcommerceCompliancePost: BlogPost = {
         en: 'Certified enterprise nutrition e-commerce platform featuring accessible multi-step checkout, contrast validation, and screen reader live announcements.',
         ua: 'Сертифікована e-commerce платформа спортивного харчування з доступним покроковим чекаутом, валідацією контрасту та живими оголошеннями для screen reader.',
         es: 'Plataforma de comercio electrónico certificada con checkout accesible paso a paso, validación de contraste y anuncios en vivo para lectores de pantalla.',
+        de: 'Zertifizierte Enterprise-E-Commerce-Plattform für Ernährung mit barrierefreiem mehrstufigem Checkout, Kontrastvalidierung und Live-Ansagen für Screenreader.',
       },
     },
     {
@@ -63,6 +70,7 @@ export const eaa2026EcommerceCompliancePost: BlogPost = {
         en: 'Regulated German digital software platform adhering to BFSG barrier-free accessibility guidelines and high-contrast user interfaces.',
         ua: 'Регульований німецький цифровий портал із дотриманням вимог доступності BFSG та висококонтрастним користувацьким інтерфейсом.',
         es: 'Plataforma digital alemana regulada que cumple con las directrices de accesibilidad BFSG e interfaces de usuario de alto contraste.',
+        de: 'Regulierte deutsche Softwareplattform unter Einhaltung der Barrierefreiheitsrichtlinien des BFSG und kontrastreicher Benutzeroberflächen.',
       },
     },
   ],
@@ -84,6 +92,12 @@ export const eaa2026EcommerceCompliancePost: BlogPost = {
       'El incumplimiento acarrea graves sanciones administrativas: multas de hasta 100.000 euros bajo la BFSG alemana y el Real Decreto 193/2023 en España, además del bloqueo de mercado.',
       'El estándar WCAG 2.2 Nivel AA introduce criterios cruciales para e-commerce: Foco no oculto (2.4.11), Tamaño de objetivo mínimo 24x24px (2.5.8) y Entrada redundante (3.3.7).',
       'Los widgets superpuestos (overlays de JavaScript) no superan las auditorías oficiales ni evitan demandas; únicamente una arquitectura semántica nativa del DOM ofrece inmunidad legal.',
+    ],
+    de: [
+      'Der European Accessibility Act (Richtlinie 2019/882 / EN 301 549) ist 2026 in allen 27 EU-Mitgliedstaaten für sämtliche B2C-E-Commerce-Websites und digitalen Dienste gesetzlich verpflichtend.',
+      'Bei Verstößen drohen empfindliche behördliche Sanktionen: Bußgelder bis zu 100.000 EUR nach dem deutschen BFSG und dem spanischen Real Decreto 193/2023 sowie Unterlassungsverfügungen und Vertriebsverbote.',
+      'WCAG 2.2 Level AA führt entscheidende neue Erfolgskriterien für Online-Shops ein: Fokus nicht verdeckt (2.4.11), Mindestzielgröße 24x24px (2.5.8) und Vermeidung redundanter Eingaben (3.3.7).',
+      'Overlay-Widgets (Drittanbieter-JS-Overlays) fallen bei behördlichen Prüfungen durch und schützen nicht vor Abmahnungen; nur eine echte semantische DOM-Architektur und vollständige Tastaturbedienbarkeit bieten Rechtssicherheit.',
     ],
   },
   content: {
@@ -526,6 +540,225 @@ Un proceso de pago multietapa accesible requiere navegación secuencial clara, g
 | **Pasarelas de pago** | EN 301 549 9.3.3.8 | Los iframes de Stripe/Redsys/PayPal cuentan con etiquetas accesibles |
 
 Desarrollar una tienda con accesibilidad nativa no es solo cumplir la ley: aumenta las conversiones, optimiza el posicionamiento SEO y abre el mercado a millones de usuarios.
+`,
+    de: `
+### 1. Die rechtliche Realität: Richtlinie 2019/882 & nationale Gesetze im Jahr 2026
+
+Der European Accessibility Act (EAA), verankert in der **Richtlinie (EU) 2019/882** und der harmonisierten technischen Norm **EN 301 549**, ist kein bloßer Zukunftsentwurf mehr. Seit 2026 wird er in allen 27 Mitgliedstaaten der Europäischen Union verbindlich durchgesetzt.
+
+Im Gegensatz zu früheren Barrierefreiheitsrichtlinien, die ausschließlich für öffentliche Stellen galten, reguliert der EAA direkt private Wirtschaftsunternehmen auf dem digitalen EU-Binnenmarkt.
+
+\`\`\`
+Anwendungsbereich des European Accessibility Act:
+┌────────────────────────────────────────────────────────────────────────┐
+│ - E-Commerce-Websites, mobile Apps & Checkout-Strecken                 │
+│ - Online-Banking, Verbraucherkredite & Zahlungsgateways                │
+│ - Ticketing, Reisebuchungen & Personenverkehrsdienste                  │
+│ - Digitale Medien, E-Books & Streaming-Plattformen                     │
+└────────────────────────────────────────────────────────────────────────┘
+\`\`\`
+
+#### Bußgelder in wichtigen EU-Rechtsordnungen
+Die Mitgliedstaaten haben die Richtlinie in strenge nationale Gesetze mit empfindlichen finanziellen Sanktionen umgesetzt:
+- **Deutschland (BFSG - Barrierefreiheitsstärkungsgesetz):** Marktüberwachungsbehörden können Bußgelder von bis zu **100.000 EUR** pro nicht konformem System verhängen, begleitet von sofortigen Untersagungsverfügungen, die den Online-Vertrieb stoppen können.
+- **Spanien (Real Decreto 193/2023 & Ley 11/2023):** Sieht gestaffelte Bußgelder von 30.000 EUR bei mittelschweren Verstößen bis zu **1.000.000 EUR** bei sehr schweren dauerhaften Verstößen vor.
+- **Frankreich (Loi n° 2023-171):** Bußgelder bis zu 50.000 EUR pro Produkt sowie verpflichtende öffentliche Bekanntmachung der Verstöße.
+
+Darüber hinaus unterliegen internationale Unternehmen, die in die EU verkaufen, dem Marktortprinzip: Wenn ein Online-Shop Zahlungen in EUR akzeptiert, an EU-Adressen liefert oder gezielt EU-Verbraucher anspricht, muss er die Vorgaben unabhängig vom Firmensitz erfüllen.
+
+---
+
+### 2. Der Irrtum von Accessibility-Overlays
+
+Viele Online-Händler haben versucht, Barrierefreiheit durch die Installation von Drittanbieter-JavaScript-Overlays (wie accessiBe, UserWay oder EqualWeb) zu erreichen. Im Jahr 2026 haben Aufsichtsbehörden und Gerichte diesen Ansatz ausdrücklich zurückgewiesen:
+
+1. **Keine Korrektur des nativen DOM:** Overlays legen sich lediglich über fehlerhaftes Markup, anstatt zugrunde liegende semantische Defizite zu beheben, und bestehen weder automatisierte Scanner-Prüfungen noch manuelle Tests mit assistiven Technologien.
+2. **Störung von Screenreadern:** Verbreitete Screenreader (NVDA, JAWS, VoiceOver) versagen häufig, wenn Overlay-Skripte native Tastaturnavigationsschleifen abfangen.
+3. **Rechtliche Angreifbarkeit:** Die Europäische Kommission und unabhängige Fachverbände haben bestätigt, dass Drittanbieter-Overlays die Anforderungen der EN 301 549 nicht erfüllen. Wer sich auf ein Overlay verlässt, bleibt dem vollen Bußgeldrisiko ausgesetzt.
+
+---
+
+### 3. Kritische WCAG 2.2 AA-Kriterien für den E-Commerce
+
+Während sich WCAG 2.1 auf responsive Layouts und Kontraste konzentrierte, führt **WCAG 2.2 Level AA** mehrere Erfolgskriterien ein, die den Kaufprozess im E-Commerce direkt betreffen:
+
+#### A. 3.3.7 Redundante Eingabe (Level A)
+Vom Nutzer bereits eingegebene Informationen müssen in nachfolgenden Checkout-Schritten entweder automatisch vorausgefüllt oder zur Auswahl bereitgestellt werden. Im E-Commerce stellt der Zwang, die Rechnungsadresse erneut einzutippen, obwohl sie mit der Lieferadresse übereinstimmt, einen direkten Verstoß dar.
+
+\`\`\`tsx
+// Accessible Shipping/Billing Sync Pattern
+export function BillingAddressSync({ shippingAddress, onSyncChange }: BillingSyncProps) {
+  const [sameAsShipping, setSameAsShipping] = useState(true);
+
+  return (
+    <fieldset className="mt-6 border-t border-slate-700 pt-4">
+      <legend className="text-base font-semibold text-slate-200">
+        Billing Details
+      </legend>
+      <label className="flex items-center gap-3 cursor-pointer py-2">
+        <input
+          type="checkbox"
+          checked={sameAsShipping}
+          onChange={(e) => {
+            setSameAsShipping(e.target.checked);
+            onSyncChange(e.target.checked ? shippingAddress : null);
+          }}
+          className="h-5 w-5 rounded border-slate-600 bg-slate-900 text-purple-600 focus-visible:ring-2 focus-visible:ring-purple-500"
+        />
+        <span className="text-sm text-slate-300">
+          Billing address is identical to shipping address
+        </span>
+      </label>
+      {!sameAsShipping && (
+        <div className="mt-4 space-y-4" role="region" aria-label="Separate Billing Address">
+          {/* Billing Inputs */}
+        </div>
+      )}
+    </fieldset>
+  );
+}
+\`\`\`
+
+#### B. 2.4.11 Fokus nicht verdeckt (Minimum) (Level AA)
+Wenn ein Element den Tastaturfokus erhält, darf es nicht vollständig hinter fixierten Bannern, schwebenden Rabattleisten, Cookie-Bannern oder fixierten Checkout-Buttons verdeckt werden.
+
+\`\`\`css
+/* Scroll margin ensures sticky headers do not obscure focused form inputs */
+:focus-visible {
+  outline: 2px solid #a855f7;
+  outline-offset: 3px;
+  scroll-margin-top: 96px; /* Accounts for fixed sticky header height */
+  scroll-margin-bottom: 80px; /* Accounts for sticky checkout action bar */
+}
+\`\`\`
+
+#### C. 2.5.8 Zielgröße (Minimum) (Level AA)
+Alle interaktiven Bedienelemente (Mengenauswahl-Buttons, Varianten-Umschalter, Löschen-Symbole im Warenkorb) müssen eine Klickfläche von mindestens **24x24 CSS-Pixeln** aufweisen oder über ausreichenden Abstand verfügen, sodass ein Kreis mit 24px Durchmesser auf dem Ziel kein anderes Ziel schneidet.
+
+\`\`\`tsx
+// Accessible Quantity Selector with 44x44px Touch Boundaries
+export function AccessibleQuantityStepper({ quantity, onChange, min = 1, max = 99 }: Props) {
+  return (
+    <div className="inline-flex items-center rounded-lg border border-slate-700 bg-slate-900">
+      <button
+        type="button"
+        onClick={() => onChange(Math.max(min, quantity - 1))}
+        disabled={quantity <= min}
+        aria-label="Decrease item quantity"
+        className="flex h-11 w-11 items-center justify-center text-slate-300 hover:text-white disabled:opacity-30 focus-visible:ring-2 focus-visible:ring-purple-500"
+      >
+        <MinusIcon className="h-4 w-4" aria-hidden="true" />
+      </button>
+      <span
+        aria-live="polite"
+        aria-atomic="true"
+        className="w-12 text-center font-mono text-sm font-semibold text-slate-100"
+      >
+        {quantity}
+      </span>
+      <button
+        type="button"
+        onClick={() => onChange(Math.min(max, quantity + 1))}
+        disabled={quantity >= max}
+        aria-label="Increase item quantity"
+        className="flex h-11 w-11 items-center justify-center text-slate-300 hover:text-white disabled:opacity-30 focus-visible:ring-2 focus-visible:ring-purple-500"
+      >
+        <PlusIcon className="h-4 w-4" aria-hidden="true" />
+      </button>
+    </div>
+  );
+}
+\`\`\`
+
+---
+
+### 4. Barrierefreie E-Commerce-Checkout-Stepper-Architektur
+
+Eine häufige Ursache für behördliche Beanstandungen im E-Commerce ist der mehrstufige Checkout. Blinde Nutzer und Tastaturnutzer verlieren ohne korrekte Fortschrittsansagen und Landmarken-Semantik schnell die Orientierung.
+
+Hier ist eine produktionsreife, barrierefreie Stepper-Implementierung gemäß EN 301 549:
+
+\`\`\`tsx
+interface CheckoutStep {
+  id: string;
+  name: string;
+  isComplete: boolean;
+  isCurrent: boolean;
+}
+
+export function AccessibleCheckoutNav({ steps }: { steps: CheckoutStep[] }) {
+  const currentStep = steps.find((s) => s.isCurrent);
+
+  return (
+    <nav aria-label="Checkout Progress" className="py-6">
+      {/* Screen reader live notification on step transition */}
+      <div className="sr-only" aria-live="polite" aria-atomic="true">
+        {currentStep ? \`Currently on Step: \${currentStep.name}\` : ''}
+      </div>
+
+      <ol className="flex items-center justify-between gap-4">
+        {steps.map((step, idx) => (
+          <li key={step.id} className="flex-1 flex items-center">
+            <div
+              className="flex items-center gap-3"
+              aria-current={step.isCurrent ? 'step' : undefined}
+            >
+              <span
+                className={\`flex h-9 w-9 items-center justify-center rounded-full text-sm font-bold \${
+                  step.isComplete
+                    ? 'bg-emerald-600 text-white'
+                    : step.isCurrent
+                      ? 'border-2 border-purple-500 bg-purple-950 text-purple-200'
+                      : 'border border-slate-700 bg-slate-900 text-slate-500'
+                }\`}
+              >
+                {step.isComplete ? '✓' : idx + 1}
+              </span>
+              <span
+                className={\`text-sm font-medium \${
+                  step.isCurrent
+                    ? 'text-purple-300 font-semibold'
+                    : step.isComplete
+                      ? 'text-slate-200'
+                      : 'text-slate-500'
+                }\`}
+              >
+                {step.name}
+              </span>
+            </div>
+            {idx < steps.length - 1 && (
+              <div
+                className={\`flex-1 h-0.5 mx-4 \${
+                  step.isComplete ? 'bg-emerald-600' : 'bg-slate-800'
+                }\`}
+                aria-hidden="true"
+              />
+            )}
+          </li>
+        ))}
+      </ol>
+    </nav>
+  );
+}
+\`\`\`
+
+---
+
+### 5. Produktions-Checkliste für EU-Online-Shops
+
+Überprüfen Sie vor dem Start oder beim Betrieb einer E-Commerce-Plattform auf dem europäischen Markt im Jahr 2026 die folgende Checkliste:
+
+| Prüfpunkt | WCAG 2.2 Standard | Technische Anforderung |
+| :--- | :--- | :--- |
+| **Farbkontrast** | 1.4.3 (4.5:1 Text, 3:1 UI) | In Dark- und Light-Mode getestet ohne Fehler bei Preisen und Badges |
+| **Tastatur-Tab-Fluss** | 2.1.1 & 2.1.2 | Keine Fokusfallen im Warenkorb-Drawer, in Gutschein-Modals oder Bildergalerien |
+| **Fokusringe** | 2.4.7 & 2.4.11 | Mindestens 2px sichtbarer Fokusring mit 3:1 Kontrast zum umgebenden Hintergrund |
+| **Formularfehler-Übersicht** | 3.3.1 & 3.3.3 | Live-Region-Fehlerzusammenfassung oben im Checkout-Formular bei Validierungsfehlern |
+| **Touch-Zielgröße** | 2.5.8 | Alle klickbaren Buttons und Icons haben eine Mindestfläche von 24x24px |
+| **Zahlungsgateways** | EN 301 549 9.3.3.8 | Stripe/PayPal-Iframes besitzen barrierefreie Labels und blockieren nicht die Tab-Navigation |
+| **Keine Auto-Slider ohne Stopp** | 2.2.2 Pause/Stop | Hero-Produktkarussells bieten explizite Pause-/Abspiel-Steuerelemente |
+
+Die Investition in native Barrierefreiheit ist nicht nur rechtliche Risikominderung; sie erweitert den adressierbaren Markt um 15% bis 20% der Verbraucher, die auf assistive Technologien angewiesen sind, und sorgt gleichzeitig für bessere SEO-Rankings und höhere Konversionsraten.
 `,
   },
 }

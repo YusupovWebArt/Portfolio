@@ -9,12 +9,16 @@ const aristokrat: Project = {
     'Український готельно-ресторанний комплекс пропонує гостям елегантне проживання в красиво відреставрованій історичній будівлі.',
   descriptionEs:
     'Complejo hotelero-restaurante ucraniano que ofrece a sus huéspedes un alojamiento elegante en un edificio histórico bellamente restaurado.',
+  descriptionDe:
+    'Ukrainischer Hotel- und Restaurantkomplex, der Gästen elegante Unterkünfte in einem wunderschön restaurierten historischen Gebäude bietet.',
   fullDescription:
     'A custom WordPress theme built from scratch for a Ukrainian hotel-restaurant complex, featuring an integrated room booking system and immersive 3D panorama virtual tours of the venue. Custom CSS3 and JavaScript deliver refined animations and a premium visual experience that reflects the historic elegance of the property.',
   fullDescriptionUa:
     'Кастомна тема WordPress, створена з нуля для українського готельно-ресторанного комплексу, з інтегрованою системою бронювання номерів та інтерактивними 3D-панорамними віртуальними турами. Кастомні CSS3 та JavaScript забезпечують вишукані анімації та преміальний візуальний вигляд, який відображає історичну елегантність об’єкта.',
   fullDescriptionEs:
     'Tema WordPress completamente personalizada, construida desde cero para un complejo hotelero-restaurante ucraniano, con un sistema integrado de reserva de habitaciones y tours virtuales panorámicos 3D inmersivos. CSS3 y JavaScript personalizados proporcionan animaciones refinadas y una experiencia visual premium que refleja la elegancia histórica del establecimiento.',
+  fullDescriptionDe:
+    'Ein von Grund auf neu entwickeltes Custom-WordPress-Theme für einen ukrainischen Hotel- und Restaurantkomplex mit integriertem Zimmerbuchungssystem und immersiven 3D-Panorama-Rundgängen durch das Anwesen. Maßgeschneidertes CSS3 und JavaScript sorgen für edle Animationen und ein erstklassiges visuelles Erlebnis, das die historische Eleganz des Hauses widerspiegelt.',
   detailHeroLine: 'CUSTOM WORDPRESS · HOSPITALITY & HOTEL BOOKING',
   detailMetrics: [
     { value: '90+', label: 'PageSpeed Score', accent: 'green' },
@@ -43,6 +47,12 @@ const aristokrat: Project = {
     ],
     description:
       'A fully custom WordPress PHP theme powers the hotel site, with a booking system integration enabling guests to check availability and reserve rooms directly. 3D panorama technology allows virtual walkthroughs of rooms and event spaces. Cloudflare CDN ensures fast delivery of high-resolution panorama assets and images globally.',
+    descriptionUa:
+      'Повністю кастомна PHP-тема WordPress забезпечує роботу сайту готелю з інтегрованою системою бронювання, яка дозволяє гостям перевіряти наявність місць і бронювати номери безпосередньо. Технологія 3D-панорам забезпечує віртуальні прогулянки номерами та залами для заходів. Cloudflare CDN гарантує швидку доставку панорам високої роздільної здатності та зображень по всьому світу.',
+    descriptionEs:
+      'Un tema PHP de WordPress totalmente personalizado impulsa el sitio del hotel, con una integración del sistema de reservas que permite a los huéspedes consultar disponibilidad y reservar habitaciones directamente. La tecnología panorámica 3D permite recorridos virtuales por habitaciones y espacios para eventos. Cloudflare CDN garantiza una entrega rápida de recursos panorámicos e imágenes de alta resolución a nivel global.',
+    descriptionDe:
+      'Ein vollständig maßgeschneidertes WordPress-PHP-Theme bildet das Fundament der Hotelseite, ergänzt durch ein integriertes Buchungssystem, über das Gäste Verfügbarkeiten prüfen und Zimmer direkt reservieren können. 3D-Panoramatechnologie ermöglicht virtuelle Rundgänge durch Zimmer und Veranstaltungsräume. Das Cloudflare CDN sorgt weltweit für die schnelle Auslieferung hochauflösender Panorama-Assets und Bilder.',
   },
   image: '/Portfolio/images/portfolio/thumbs/wordpress/aristokrat_thumb.webp',
   fullScreenshot:
@@ -105,32 +115,83 @@ const aristokrat: Project = {
   features: [
     {
       title: 'Integrated Room Booking System',
+      titleUa: 'Інтегрована система бронювання номерів',
+      titleEs: 'Sistema integrado de reserva de habitaciones',
+      titleDe: 'Integriertes Zimmerbuchungssystem',
       description:
         'A full booking system allows guests to check room availability, select dates, and complete reservations directly on the site, streamlining the reservation process.',
+      descriptionUa:
+        'Повноцінна система бронювання дозволяє гостям перевіряти наявність номерів, обирати дати та оформлювати резервування безпосередньо на сайті, спрощуючи процес бронювання.',
+      descriptionEs:
+        'Un sistema de reservas completo permite a los huéspedes consultar la disponibilidad de habitaciones, seleccionar fechas y completar reservas directamente en el sitio, agilizando todo el proceso.',
+      descriptionDe:
+        'Ein vollständiges Buchungssystem ermöglicht es Gästen, die Zimmerverfügbarkeit zu prüfen, Reisedaten auszuwählen und Reservierungen direkt auf der Website abzuschließen, was den Buchungsprozess erheblich vereinfacht.',
     },
     {
       title: '3D Panorama Virtual Tours',
+      titleUa: 'Віртуальні 3D-панорамні тури',
+      titleEs: 'Tours virtuales panorámicos en 3D',
+      titleDe: 'Virtuelle 3D-Panorama-Rundgänge',
       description:
         'Interactive 3D panorama technology lets prospective guests virtually explore rooms, the restaurant, and event spaces before booking, increasing conversion confidence.',
+      descriptionUa:
+        'Інтерактивна технологія 3D-панорам дозволяє потенційним гостям віртуально оглянути номери, ресторан та зали для заходів перед бронюванням, підвищуючи впевненість у виборі.',
+      descriptionEs:
+        'La tecnología interactiva de panoramas 3D permite a los futuros huéspedes explorar virtualmente las habitaciones, el restaurante y los espacios para eventos antes de reservar, aumentando la confianza de conversión.',
+      descriptionDe:
+        'Dank interaktiver 3D-Panoramatechnologie können potenzielle Gäste Zimmer, Restaurant und Veranstaltungsräume vor der Buchung virtuell erkunden, was das Vertrauen und die Buchungsrate steigert.',
     },
     {
       title: 'Custom WordPress Theme from Scratch',
+      titleUa: 'Кастомна тема WordPress з нуля',
+      titleEs: 'Tema de WordPress personalizado desde cero',
+      titleDe: 'Maßgeschneidertes WordPress-Theme von Grund auf',
       description:
         'The theme was hand-coded in PHP to precisely match the hotel\'s historic and elegant brand identity, with no page builder constraints limiting design decisions.',
+      descriptionUa:
+        'Тему було написано вручну на PHP для точної відповідності історичній та елегантній айдентиці готелю без обмежень конструкторів сторінок.',
+      descriptionEs:
+        'El tema fue programado a mano en PHP para reflejar con precisión la identidad histórica y elegante del hotel, sin limitaciones de constructores de páginas.',
+      descriptionDe:
+        'Das Theme wurde vollständig in PHP handcodiert, um die historische und elegante Markenidentität des Hotels präzise abzubilden, ganz ohne gestalterische Einschränkungen durch Page-Builder.',
     },
     {
       title: 'SEO & Local Search Optimization',
+      titleUa: 'SEO та оптимізація для локального пошуку',
+      titleEs: 'SEO y optimización para búsqueda local',
+      titleDe: 'SEO & Optimierung für die lokale Suche',
       description:
         'Technical SEO with Hotel Schema.org markup and Google Maps integration maximizes local search visibility for guests searching for hotels in the area.',
+      descriptionUa:
+        'Технічне SEO з розміткою Hotel Schema.org та інтеграцією Google Maps максимізує видимість у локальному пошуку для гостей, які шукають готелі в регіоні.',
+      descriptionEs:
+        'El SEO técnico con marcado Schema.org para hoteles e integración de Google Maps maximiza la visibilidad en búsquedas locales para huéspedes que buscan alojamiento en la zona.',
+      descriptionDe:
+        'Technisches SEO mit Hotel-Schema.org-Markup und Google-Maps-Integration maximiert die lokale Sichtbarkeit für Gäste, die nach Hotels in der Region suchen.',
     },
     {
       title: 'Responsive & Performance-Optimized',
+      titleUa: 'Адаптивний дизайн та оптимізація продуктивності',
+      titleEs: 'Diseño responsive y rendimiento optimizado',
+      titleDe: 'Responsives Design & Performance-Optimierung',
       description:
         'Fully responsive design with WebP images and Cloudflare CDN ensures the site loads quickly on all devices, even with rich panorama and photography assets.',
+      descriptionUa:
+        'Повністю адаптивний дизайн із зображеннями WebP та Cloudflare CDN забезпечує швидке завантаження сайту на всіх пристроях навіть із насиченими панорамами та фотоматеріалами.',
+      descriptionEs:
+        'El diseño totalmente responsive con imágenes WebP y Cloudflare CDN garantiza que el sitio cargue rápidamente en todos los dispositivos, incluso con abundantes recursos fotográficos y panorámicos.',
+      descriptionDe:
+        'Ein vollständig responsives Design mit WebP-Bildern und Cloudflare CDN stellt sicher, dass die Website trotz umfangreicher Panorama- und Fotoinhalte auf allen Endgeräten schnell lädt.',
     },
   ],
   challenges: [],
+  challengesUa: [],
+  challengesEs: [],
+  challengesDe: [],
   solutions: [],
+  solutionsUa: [],
+  solutionsEs: [],
+  solutionsDe: [],
   liveUrl: 'https://aristokrat-hotel24.com/',
   githubUrl: '#',
   category: ['wordpress'],

@@ -4,9 +4,20 @@ import { useEffect, useState } from 'react'
 import {
   LuArrowUp as ArrowUp,
 } from 'react-icons/lu'
+import { useOptionalLanguage } from '../contexts/LanguageContext'
+
+const SCROLL_TOP_LABELS = {
+  en: 'Scroll to top',
+  ua: 'Повернутися вгору',
+  es: 'Volver arriba',
+  de: 'Nach oben scrollen',
+} as const
 
 const ScrollToTopButton = () => {
   const [showBtn, setShowBtn] = useState(false)
+  const languageCtx = useOptionalLanguage()
+  const lang = languageCtx?.lang ?? 'en'
+  const ariaLabel = SCROLL_TOP_LABELS[lang] || SCROLL_TOP_LABELS.en
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,7 +41,7 @@ const ScrollToTopButton = () => {
             : 'opacity-0 translate-y-6 scale-75 pointer-events-none'
         }
       `}
-      aria-label="Scroll to top"
+      aria-label={ariaLabel}
     >
       <ArrowUp className="h-5 w-5 sm:h-6 sm:w-6 animate-pulse" />
     </button>

@@ -6,31 +6,36 @@ export const wcag22Eaa2026Post: BlogPost = {
     en: 'WCAG 2.2 AA & European Accessibility Act 2026: Practical Engineering Compliance Guide',
     ua: 'WCAG 2.2 AA та European Accessibility Act 2026: практичний інженерний посібник із відповідності',
     es: 'WCAG 2.2 AA y European Accessibility Act 2026: Guía práctica de cumplimiento normativo para ingenieros',
+    de: 'WCAG 2.2 AA & European Accessibility Act 2026: Praktischer technischer Leitfaden zur Barrierefreiheit',
   },
   description: {
     en: 'A pragmatic developer guide for EU companies and agencies on complying with the European Accessibility Act (EAA 2026 / EN 301 549), covering focus management, color contrast, semantic DOM, and automated CI/CD audits.',
     ua: 'Практичний посібник для компаній та агентств у ЄС щодо відповідності вимогам European Accessibility Act (EAA 2026 / EN 301 549): керування фокусом, контрастність, семантичний DOM та CI/CD тести.',
     es: 'Guía práctica para empresas y agencias europeas sobre el cumplimiento de la Ley Europea de Accesibilidad (EAA 2026 / EN 301 549): gestión de foco, contraste de color, DOM semántico y auditorías CI/CD.',
+    de: 'Ein pragmatischer Entwickler-Leitfaden für europäische Unternehmen zur Einhaltung des European Accessibility Act (EAA 2026 / EN 301 549): Fokusverwaltung, Farbkontraste, semantisches DOM und automatisierte CI/CD-Audits.',
   },
   date: '2026-10-18',
   readTime: {
     en: '6 min read',
     ua: '6 хв читання',
     es: '6 min de lectura',
+    de: '6 Min. Lesezeit',
   },
   category: 'accessibility-compliance',
   categoryLabel: {
     en: 'Accessibility & Compliance',
     ua: 'Доступність та стандарти',
     es: 'Accesibilidad y Normativa',
+    de: 'Barrierefreiheit & Standards',
   },
-  tags: ['WCAG 2.2 AA', 'EAA 2026', 'EN 301 549', 'A11y', 'React 19', 'Playwright', 'DevSecOps'],
+  tags: ['WCAG 2.2 AA', 'EAA 2026', 'EN 301 549', 'A11y', 'Compliance', 'Compliance Audit', 'React 19', 'Playwright', 'DevSecOps'],
   author: {
     name: 'Artur Yusupov',
     role: {
       en: 'Fullstack Web Engineer & AI Developer',
       ua: 'Fullstack веб-інженер та AI-розробник',
       es: 'Ingeniero Web Fullstack y Desarrollador IA',
+      de: 'Fullstack Web-Engineer & KI-Architekt',
     },
   },
   coverImage: '/Portfolio/images/blog/cover-wcag-22-eaa.svg',
@@ -43,6 +48,7 @@ export const wcag22Eaa2026Post: BlogPost = {
         en: 'Healthcare web platform certified for WCAG 2.2 AA compliance, accessible keyboard traps prevention, and contrast ratios > 7:1.',
         ua: 'Медична платформа, сертифікована за стандартом WCAG 2.2 AA із повною клавіатурною доступністю та контрастністю > 7:1.',
         es: 'Plataforma sanitaria adaptada a WCAG 2.2 AA con navegación por teclado y ratios de contraste superiores a 7:1.',
+        de: 'Medizinische Webplattform zertifiziert nach WCAG 2.2 AA, mit vollständiger Tastaturnavigation, Vermeidung von Fokusfallen und Kontrastverhältnissen über 7:1.',
       },
     },
     {
@@ -53,6 +59,7 @@ export const wcag22Eaa2026Post: BlogPost = {
         en: 'Accessible semantic e-commerce layout with zero keyboard traps, screen-reader optimized product filtering, and strict ARIA roles.',
         ua: 'Доступна семантична e-commerce верстка без пасток фокусу, оптимізована для скрінрідерів із суворими ARIA-ролями.',
         es: 'Maquetación accesible de comercio electrónico sin trampas de foco, filtrado adaptado a lectores de pantalla y roles ARIA estrictos.',
+        de: 'Barrierefreies semantisches E-Commerce-Layout ohne Tastaturfallen, Screenreader-optimierte Produktfilterung und strikte ARIA-Rollen.',
       },
     },
   ],
@@ -74,6 +81,12 @@ export const wcag22Eaa2026Post: BlogPost = {
       'La accesibilidad no se soluciona instalando widgets superpuestos (overlays); los tribunales y auditores los rechazan de forma explícita.',
       'Requisitos clave de ingeniería: indicadores de foco visibles (WCAG 2.4.7), contraste de color 4.5:1 en ambos temas, captura de foco en modales y etiquetas semánticas nativas.',
       'Las pruebas automatizadas con Playwright y @axe-core en CI/CD detectan hasta el 57% de los fallos antes de pasar a producción.',
+    ],
+    de: [
+      'Der European Accessibility Act (Richtlinie 2019/882 / EN 301 549) legt rechtsverbindliche Anforderungen an die digitale Barrierefreiheit für Unternehmen in der EU fest.',
+      'Barrierefreiheit lässt sich nicht durch externe JavaScript-Overlay-Widgets nachrüsten; Gerichte und Auditoren lehnen diese ausdrücklich ab.',
+      'Wichtige technische Anforderungen: sichtbare Fokusindikatoren (WCAG 2.4.7 / 2.4.11), 4,5:1-Textkontrast in Hell- und Dunkel-Modi, Tastatur-Fokus-Trapping in Dialogen und native semantische Landmarks.',
+      'Automatisierte CI/CD-Tests mit Playwright und @axe-core decken bis zu 57% der typischen Barrierefreiheitsfehler vor dem Release auf.',
     ],
   },
   content: {
@@ -253,5 +266,105 @@ El criterio WCAG 2.2 1.4.3 exige un ratio de contraste mínimo de **4.5:1** para
 ### 3. Automatización de auditorías en CI/CD
 
 Mediante la integración de **Playwright** y **@axe-core/playwright**, ejecutamos auditorías automáticas en cada commit de GitHub Actions, impidiendo que cualquier vulnerabilidad de accesibilidad llegue a producción.`,
+
+    de: `### Der rechtliche Wandel: Warum Barrierefreiheit keine Option mehr ist
+
+Jahrelang wurde digitale Barrierefreiheit wie ein zweitrangiger Punkt auf einer Wunschliste behandelt. Mit dem Inkrafttreten des **European Accessibility Act (Richtlinie 2019/882 / Norm EN 301 549)** hat sich Barrierefreiheit von einer ethischen Empfehlung zu einer **strikten rechtlichen Verpflichtung in allen Mitgliedstaaten der Europäischen Union** gewandelt.
+
+Unternehmen, die E-Commerce, Banking, Buchungsdienste oder öffentliche Verbraucherschnittstellen anbieten und die Vorgaben von **WCAG 2.2 Level AA** nicht erfüllen, riskieren empfindliche Bußgelder, den Ausschluss von öffentlichen Ausschreibungen und behördliche Unterlassungsverfügungen.
+
+Besonders wichtig: **Externe Barrierefreiheits-Overlay-Widgets (wie accessiBe oder UserWay) erfüllen die gesetzlichen Vorgaben nicht**. Sowohl die Europäische Kommission als auch Bürgerrechtsorganisationen haben wiederholt klargestellt, dass Overlays zusätzliche Barrieren schaffen und vor Gerichten sowie Auditoren durchfallen.
+
+Barrierefreiheit muss direkt im Fundament der Codebasis verankert werden.
+
+---
+
+### 1. Fokusverwaltung & Tastaturfallen in Dialogen
+
+Der am häufigsten von Barrierefreiheits-Auditoren bemängelte Fehler in modernen Single Page Applications (SPAs) ist eine fehlerhafte Tastaturfokus-Steuerung in Modalfenstern.
+
+Beim Öffnen eines Modaldialogs gilt:
+1. Der Tastaturfokus muss sofort auf das erste interaktive Element im Dialog gesetzt werden.
+2. Das Navigieren mit \`Tab\` und \`Shift+Tab\` muss sich strikt im Dialog bewegen, ohne in den Hintergrund auszuweichen.
+3. Das Drücken von \`Escape\` muss den Dialog schließen und den Tastaturfokus wieder auf den auslösenden Button zurücksetzen.
+
+In dieser Portfolio-Plattform haben wir dafür einen spezialisierten Custom Hook namens \`useDialogA11y\` implementiert:
+
+\`\`\`tsx
+export function useDialogA11y({
+  isOpen,
+  onClose,
+  initialFocusRef,
+  containerRef,
+}: UseDialogA11yOptions) {
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const previousFocus = document.activeElement as HTMLElement | null;
+
+    // Trap focus inside container
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        onClose();
+        return;
+      }
+      if (e.key === 'Tab') {
+        // cycle through focusable elements
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+      previousFocus?.focus(); // restore focus upon close
+    };
+  }, [isOpen, onClose]);
+}
+\`\`\`
+
+---
+
+### 2. Hohe Kontrastverhältnisse in Hell- und Dunkel-Modi
+
+Das WCAG 2.2 Erfolgskriterium 1.4.3 fordert ein Mindestkontrastverhältnis von **4,5:1** für Fließtext sowie **3:1** für großen Text und funktionale UI-Rahmen.
+
+Beim Entwerfen von Dark-Mode-Themes greifen Teams häufig zu gedämpften Grautönen wie \`text-slate-400\` auf \`bg-slate-900\`, was das Kontrastverhältnis auf 3,2:1 absenkt und die Kriterien verletzt.
+
+Richtlinien:
+- **Helles Theme**: Der primäre Fließtext nutzt sattes Schiefergrau (\`text-slate-900\` / \`#0f172a\`), was einen starken Kontrast von 18,2:1 auf weißem Hintergrund ergibt.
+- **Dunkles Theme**: Der primäre Text verwendet neutrales Reinweiß (\`text-slate-100\` / \`#f1f5f9\`), womit ein Kontrast von 14,1:1 auf dunklem Grund gewährleistet ist.
+- **Interaktive Fokus-Indikatoren**: Nutzen Sie immer ein sichtbares \`focus-visible:outline-2 focus-visible:outline-offset-2\` mit mindestens 3:1 Kontrast zur umgebenden Fläche.
+
+---
+
+### 3. Automatisierte Regressionsvermeidung in CI/CD
+
+Manuelle Tests mit Screenreadern (NVDA unter Windows, VoiceOver unter macOS/iOS) sind unverzichtbar. Automatisierte Regressionstests in der Continuous Integration fangen Fehler jedoch bereits vor dem Merge ab.
+
+Mit **Playwright** und **@axe-core/playwright** führen wir bei jedem Pull Request automatische Barrierefreiheits-Assertions durch:
+
+\`\`\`ts
+import { test, expect } from '@playwright/test';
+import AxeBuilder from '@axe-core/playwright';
+
+test('home page must have zero critical or serious WCAG 2.2 AA violations', async ({ page }) => {
+  await page.goto('/');
+  const accessibilityScanResults = await new AxeBuilder({ page })
+    .withTags(['wcag2a', 'wcag2aa', 'wcag22aa'])
+    .analyze();
+
+  expect(accessibilityScanResults.violations).toEqual([]);
+});
+\`\`\`
+
+---
+
+### 4. Checkliste für Entscheider und Product Owner
+
+1. **Native Semantik prüfen**: Ersetzen Sie klickbare \`<div>\`-Elemente durch semantische \`<button>\`- und \`<a>\`-Tags.
+2. **Formulareingaben auditieren**: Stellen Sie sicher, dass jedes Eingabefeld über ein programmatisches \`<label htmlFor="...">\` oder \`aria-label\` verfügt.
+3. **Responsives Zoomen validieren**: Das Layout muss bis zu einer Vergrößerung von 200% ohne horizontales Abschneiden oder unbrauchbare Bedienelemente skalieren.
+4. **In CI/CD durchsetzen**: Binden Sie automatisierte Accessibility-Testsuiten fest in die Deployment-Pipeline ein, damit Regressionen nie unbemerkt die Produktion erreichen.`,
   },
 }

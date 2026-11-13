@@ -291,5 +291,100 @@ export const headlessMigrationService: ServiceItem = {
       whatsappMessage: 'Вітаю Артуре! Хочемо проконсультуватися щодо міграції нашого WordPress сайту на Next.js 16 Headless.',
       schemaDescription: 'Послуги переведення монолітного WordPress на архітектуру Next.js 16 Headless в Іспанії та Європі. Максимальна швидкість, надійний захист та повне збереження SEO.',
     },
+    de: {
+      badge: 'Headless-Architektur / Web-Modernisierung',
+      title: 'Headless WordPress & Legacy-Migration zu Next.js 16',
+      shortDesc: 'Modernisieren Sie Ihre Webplattform mit der Geschwindigkeit von Next.js 16 und behalten Sie Ihr gewohntes WordPress-Backend. Keine Serverausfälle, maximaler Schutz und 100% SEO-Erhalt.',
+      heroLead: 'Entkoppeln Sie das visuelle Frontend von Ihrer Datenbank, um Besuchern sofortige Ladezeiten zu bieten, während Ihr Redaktionsteam weiterhin im vertrauten WordPress-Dashboard arbeitet. Die nachhaltige Engineering-Lösung gegen langsame Plugins und Sicherheitslücken.',
+      metrics: [
+        { value: '<0.8s', label: 'Largest Contentful Paint (LCP)' },
+        { value: '100%', label: 'Erhalt von Google-Rankings & URLs' },
+        { value: '0', label: 'Öffentliche MySQL-Abfragen pro Aufruf' },
+        { value: '95-100', label: 'Google PageSpeed Score Benchmark' },
+      ],
+      problemsSolved: [
+        {
+          title: 'Serverüberlastung und Ausfälle bei Marketing-Kampagnen und Traffic-Spitzen',
+          desc: 'Monolithisches WordPress führt bei jedem Seitenaufruf unzählige PHP- und Datenbankabfragen aus. Mit statischem Next.js 16 (SSG/ISR) kommen Seiten direkt aus globalen Edge-CDNs und meistern Millionen gleichzeitiger Besucher mühelos.',
+        },
+        {
+          title: 'Wiederkehrende Sicherheitslücken durch Drittanbieter-Plugins',
+          desc: 'Durch die Trennung von Frontend und Backend wird Ihr WordPress-Adminbereich hinter einer Edge-Firewall isoliert. Angreifer können keine schädlichen Skripte einschleusen oder die öffentliche Website kompromittieren.',
+        },
+        {
+          title: 'Risiko von Ranking-Verlusten bei technischen Website-Relaunches',
+          desc: 'Lückenloses 1:1-URL-Redirect-Mapping, validiertes Schema.org-Markup und saubere Indexierbarkeit sorgen dafür, dass Ihr organischer Suchtraffic steigt statt einbricht.',
+        },
+      ],
+      deliverables: [
+        {
+          title: 'Hochperformante Frontend-Architektur',
+          items: [
+            'Modernes Next.js 16 Frontend mit App Router, React 19 Server Components und striktem TypeScript.',
+            'On-Demand-Revalidierung per HMAC-signiertem Webhook: Eine Änderung in WordPress aktualisiert den Edge-Cache in unter 2 Sekunden.',
+            'Grüne Core Web Vitals (LCP < 0.8s, INP < 50ms, CLS 0.00) auf Desktop und Mobilgeräten.',
+          ],
+        },
+        {
+          title: 'Härtung des WordPress-Backends',
+          items: [
+            'Saubere, abgesicherte WPGraphQL- oder REST-API-Endpunkte mit persistentem Redis-Caching.',
+            'Vollständige Übernahme von Custom Post Types (CPT), Taxonomien und flexiblen ACF Pro Layouts.',
+            'Absicherung des Admin-Panels mit strengen Content Security Policies und Zwei-Faktor-Authentifizierung.',
+          ],
+        },
+        {
+          title: 'SEO-Audit & ausfallfreie Umstellung',
+          items: [
+            'Automatisierte Prüfung von Canonical-Tags, Hreflang-Verweisen und XML-Sitemaps.',
+            'Echtzeit-DNS-Umstellung ohne jede Downtime für Besucher und Suchmaschinen-Crawler.',
+          ],
+        },
+      ],
+      workflowSteps: [
+        {
+          step: 'Phase 1',
+          title: 'Plugin-Audit & Architektur-Mapping',
+          desc: 'Wir analysieren Ihre WordPress-Datenbank, ersetzen veraltete Plugins durch nativen Code und erfassen das komplette URL-Inventar.',
+        },
+        {
+          step: 'Phase 2',
+          title: 'Entwicklung des entkoppelten Next.js Frontends',
+          desc: 'Wir bauen die moderne Next.js 16 Oberfläche angebunden an Ihre WordPress-API in einer isolierten Staging-Umgebung.',
+        },
+        {
+          step: 'Phase 3',
+          title: 'Lasttests & SEO-Validierung',
+          desc: 'Wir simulieren Traffic-Spitzen und verifizieren alle Metadaten, internen Verlinkungen und Antwortzeiten gemäß Ziel-KPIs.',
+        },
+        {
+          step: 'Phase 4',
+          title: 'Ausfallfreier Launch & 72h-Monitoring',
+          desc: 'Wir schalten DNS ohne Unterbrechung auf das globale CDN um und überwachen die Telemetrie 72 Stunden lang engmaschig.',
+        },
+      ],
+      faqs: [
+        {
+          q: 'Muss sich mein Redaktionsteam an eine komplett neue Software gewöhnen?',
+          a: 'Nein. Das WordPress-Adminpanel bleibt für Redakteure und Marketing-Teams exakt gleich. Der einzige Unterschied ist, dass ein Klick auf Veröffentlichen den Edge-Cache in Sekunden aktualisiert.',
+        },
+        {
+          q: 'Ist der Betrieb einer Headless-Website teurer als klassisches Shared Hosting?',
+          a: 'In den meisten Fällen sinken die laufenden Infrastrukturkosten sogar. Das Next.js Frontend läuft effizient im Edge-CDN, und WordPress benötigt kaum noch Serverressourcen, da es keinen öffentlichen Traffic mehr bedient.',
+        },
+        {
+          q: 'Was passiert mit SEO-Plugins wie Yoast oder Rank Math?',
+          a: 'Alle SEO-Felder werden über die API ausgelesen und nativ als Metadaten sowie Schema.org-Graphen in Next.js eingebunden - mit noch besserer Auswertung durch Suchmaschinen.',
+        },
+        {
+          q: 'Wie lange dauert eine vollständige Headless-Migration?',
+          a: 'Standardmäßige Unternehmens- und Redaktionswebsites benötigen typischerweise 2 bis 4 Wochen. Umfangreiche WooCommerce-Shops planen wir mit 4 bis 8 Wochen inklusive Regressionstests.',
+        },
+      ],
+      ctaHeadline: 'Läuft Ihr WordPress träge oder stürzt bei hohem Traffic ab?',
+      ctaLead: 'Schreiben Sie mir per WhatsApp. Ich analysiere die Performance Ihrer aktuellen Website und zeige den Weg zu Headless ohne Betriebsunterbrechung.',
+      whatsappMessage: 'Hallo Artur, wir möchten eine Beratung zur Migration unserer WordPress-Website auf Headless Next.js 16 anfragen.',
+      schemaDescription: 'Entkoppeltes Headless WordPress und Legacy-Migration auf Next.js 16 in Spanien und der EU. Sub-Sekunden-Geschwindigkeit, gehärtete Sicherheit und voller SEO-Erhalt.',
+    },
   },
 }
