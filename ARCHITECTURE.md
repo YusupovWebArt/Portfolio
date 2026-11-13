@@ -79,11 +79,11 @@ Portfolio/
 
 ### Internationalization (i18n) Subsystem
 - Driven by a custom `LanguageContext` providing strict type-checked translations via `useLanguage()`.
-- **Supported Languages:** 3 languages — English (`en`), Ukrainian (`ua`), and Spanish (`es`).
-- **Header Language Switcher:** A 3-language interactive dropdown menu (`🇬🇧 EN`, `🇺🇦 UA`, `🇪🇸 ES`) with custom SVG flag icons and click-outside dismissal.
-- **Auto-Detection:** Detects visitor's browser language on first load (`navigator.language` matching `uk`/`ua` → `ua`, `es` → `es`).
+- **Supported Languages:** 4 languages - English (`en`), Ukrainian (`ua`), Spanish (`es`), and German (`de`).
+- **Header Language Switcher:** A 4-language interactive dropdown menu (`EN`, `UA`, `ES`, `DE`) with custom SVG flag icons and click-outside dismissal.
+- **Auto-Detection:** Detects visitor's browser language on first load (`navigator.language`).
 - **Persistence:** Persists language preference in `localStorage.portfolio_lang`.
-- **Localization:** Supports `en.ts`, `ua.ts`, and `es.ts` translation dictionaries. Project case studies include `descriptionUa`/`descriptionEs` and `fullDescriptionUa`/`fullDescriptionEs` for dynamic localized rendering.
+- **Localization:** Supports `en.ts`, `ua.ts`, `es.ts`, and `de.ts` translation dictionaries. Project case studies include localized descriptions across all 4 locales.
 
 ### Smooth Scroll Navigation
 - Navigation uses standard HTML `#anchor` links mapped to section `id`s.
@@ -153,4 +153,32 @@ graph TD
 2. **Serverless Edge Microservice:** Cloudflare Worker endpoint handling semantic search and streaming LLM responses.
 3. **Frontend Progressive Adapter:** `src/services/chatService.ts` providing feature-flagged hybrid routing with seamless fallback to static FAQ.
 4. **Security Enforcement:** Full compliance with the 6-tier security roadmap defined in [**`SECURITY.md` (Section 5)**](file:///d:/PORTFOLIO/Portfolio/SECURITY.md#5-future-rag-architecture-security-roadmap-ai-chatbot-upgrade).
+
+---
+
+## 6. Analytics, Telemetry & Search Engine Infrastructure (GA4 & GSC)
+
+### Privacy-Preserving GA4 Telemetry (Consent Mode v2 Basic)
+- **Zero Pre-Consent Dispatches:** By default, Google Consent Mode v2 initializes with `ad_storage: denied`, `analytics_storage: denied`, `ad_user_data: denied`, and `ad_personalization: denied`. No tracking cookies or network requests reach Google servers until the user provides explicit opt-in through `ConsentModal.tsx`.
+- **SSR-Safe Hydration:** Consent state is synchronized via React 19 `useSyncExternalStore` in `ConsentContext.tsx`, eliminating SSR hydration mismatches across static Next.js 16 routes.
+- **14-Month Data Retention:** Configured in the `Webart React Portfolio` (`yusupovartur.com`) property to preserve user and event cohorts for up to 14 months for long-term funnel analysis.
+- **Enhanced Measurement:** Captures page views across client-side App Router history state changes, outbound link clicks, file downloads, and 90% scroll depth.
+
+### Event Taxonomy & Custom Dimensions
+- **Key Events (Conversions):**
+  - `contact_click`: Triggered when visitors initiate communication via Telegram, Email, WhatsApp, LinkedIn, or GitHub.
+  - `cv_download`: Triggered when visitors download Artur Yusupov CV PDF from any UI component.
+- **Custom Dimensions (Event-Scoped):**
+  - `Contact Channel` (`contact_channel`): Categorizes the specific platform selected (`telegram`, `email`, `whatsapp`, `linkedin`, `github`).
+  - `Download Source` (`download_source`): Categorizes the UI origin initiating the CV download (`hero`, `header`, `about`, `footer`, `skills`).
+  - `Chat Action` (`chat_action`): Categorizes interactions with the Hybrid RAG AI chat assistant (`open`, `close`, `suggestion_click`, `ask_question`, `tool_call`).
+
+### Google Search Console (GSC) Domain Property Integration
+- **DNS-Verified Domain Property:** Configured under `sc-domain:yusupovartur.com`, aggregating search performance across all subdomains and protocol variants.
+- **Direct GA4 Link:** GSC is linked directly to GA4 stream `Artur Yusupov Production`, feeding Organic Google Search impressions, clicks, search queries, and landing page metrics directly into GA4 reports.
+- **Automated Multilingual XML Sitemap:** Built on Next.js 16 App Router `app/sitemap.ts`, serving `https://www.yusupovartur.com/sitemap.xml` with 512+ discovered URLs across 4 localized variants (`en`, `ua`, `es`, `de` + `x-default`) with bidirectional hreflang annotations.
+- **Proactive 4xx Resolution:** Automated verification and remediation of crawl anomalies and historical draft slugs.
+
+### Zero-Commit Secrets Compliance
+- In accordance with `SECURITY.md`, the repository remains 100% public-safe: zero private Google service keys, OAuth tokens, DNS registrar credentials, or Measurement Protocol API secrets are stored in code or specifications. Public client identifiers (`G-STZ8DN2KND`) operate exclusively within browser-safe boundaries.
 
