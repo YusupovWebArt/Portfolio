@@ -28,9 +28,6 @@ function isElementVisible(el: HTMLElement): boolean {
   if (typeof el.checkVisibility === 'function') {
     return el.checkVisibility({ checkOpacity: false, checkVisibilityCSS: true })
   }
-  if (el.offsetParent === null && typeof window !== 'undefined' && window.getComputedStyle(el).position !== 'fixed') {
-    return false
-  }
   if (typeof window !== 'undefined' && 'getComputedStyle' in window) {
     const style = window.getComputedStyle(el)
     if (style.display === 'none' || style.visibility === 'hidden') return false
