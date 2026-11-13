@@ -1,0 +1,19 @@
+<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="100" height="100" rx="22" fill="#0B0F19"/>
+  <rect x="2" y="2" width="96" height="96" rx="20" stroke="#334155" stroke-width="2.5" stroke-opacity="0.6"/>
+  <!-- Clear Letter A -->
+  <path d="M14 78L28 22H40L54 78H42L38.5 63H26.5L23 78H14ZM29 52H36L32.5 36L29 52Z" fill="url(#g-ay-purp)"/>
+  <!-- Clear Letter Y -->
+  <path d="M52 22H64L69.5 39L75 22H87L75.5 50V78H63.5V50L52 22Z" fill="url(#g-ay-lime)"/>
+  <defs>
+    <linearGradient id="g-ay-purp" x1="14" y1="22" x2="54" y2="78" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#A855F7"/>
+      <stop offset="1" stop-color="#6366F1"/>
+    </linearGradient>
+    <linearGradient id="g-ay-lime" x1="52" y1="22" x2="87" y2="78" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#BEF264"/>
+      <stop offset="0.6" stop-color="#A3E635"/>
+      <stop offset="1" stop-color="#10B981"/>
+    </linearGradient>
+  </defs>
+</svg>

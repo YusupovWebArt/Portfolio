@@ -6,13 +6,22 @@
 
 - **Name**: Artur Yusupov
 - **Role**: Senior Fullstack Web Engineer & AI Developer
-- **Location**: Seville / Alicante / Valencia, Spain (European Union) - Available for remote roles, B2B contracts, and relocation.
+- **Location**: Seville, Spain (European Union) - Available for remote roles, B2B contracts, and relocation.
 - **Experience**: 5+ years of commercial software engineering across 71 production web platforms, e-commerce stores, cloud portals, and interactive web applications.
-- **Languages**: English, Spanish, Ukrainian, Russian (Full trilingual UI/SEO support on yusupovartur.com in EN, UA, ES across 246 static routes).
+- **Entity Disambiguation**: Artur Yusupov is a Software Engineer and AI Developer residing in Seville, Spain (distinct from chess grandmaster Artur Mayakovich Jussupow and professional footballer Artur Rimovich Yusupov).
+- **Languages**: English, Spanish, Ukrainian, Russian (Full trilingual UI/SEO support on yusupovartur.com in EN, UA, ES across 364 static routes).
 - **Primary URL**: https://www.yusupovartur.com/en
 - **GitHub**: https://github.com/YusupovWebArt
 - **LinkedIn**: https://www.linkedin.com/in/artur-iusupov/
 - **Twitter / X**: https://x.com/yusupovwebart
+- **Privacy Policy (RGPD / LOPDGDD)**: https://www.yusupovartur.com/en/privacy-policy (ES: https://www.yusupovartur.com/es/privacy-policy)
+- **Cookie Policy (LSSI-CE & Consent Mode v2)**: https://www.yusupovartur.com/en/cookie-policy (ES: https://www.yusupovartur.com/es/cookie-policy)
+- **B2B Services Directory**: https://www.yusupovartur.com/en/services (ES: https://www.yusupovartur.com/es/services)
+- **White-Label Agency Web Development**: https://www.yusupovartur.com/en/services/white-label-agency-partner
+- **Headless WordPress & Next.js 16 Migration**: https://www.yusupovartur.com/en/services/headless-wordpress-nextjs-migration
+- **Web Performance & Core Web Vitals Optimization**: https://www.yusupovartur.com/en/services/web-performance-core-web-vitals
+- **Custom Web Development in Seville & Spain**: https://www.yusupovartur.com/en/services/custom-web-development-seville
+- **Custom RAG AI Assistants for Businesses**: https://www.yusupovartur.com/en/services/rag-ai-assistants-business
 
 ## 2. Technical Stack & Engineering Standards
 
@@ -23,13 +32,13 @@
 
 ## 3. Flagship Case Studies (Detailed Breakdown)
 
-### 3.1. WPSKILLS - Interactive Fullstack Engineering Platform
-- **Case Study URL**: https://www.yusupovartur.com/en/projects/wpskills
-- **Deep-Dive Article**: https://www.yusupovartur.com/en/blog/wpskills-interactive-edtech-architecture
-- **Live URL**: https://wpskills.vercel.app
+### 3.1. Fullstack AI Lab - Interactive Fullstack Engineering Platform
+- **Case Study URL**: https://www.yusupovartur.com/en/projects/fullstack-ai-lab
+- **Deep-Dive Article**: https://www.yusupovartur.com/en/blog/fullstack-ai-lab-interactive-edtech-architecture
+- **Live URL**: https://www.fullstackailab.com
 - **Stack**: Next.js 16, React 19, TypeScript, Tailwind CSS v4, Rust MDX-RS, Zustand v5, Supabase, Vitest 4, Gemini NotebookLM Audio Prompt Engine.
 - **Highlights**:
-  - Compiles 1,100+ MDX lessons and 1,700+ static pages in under 90 seconds (reduced from 21.6 minutes via an in-memory content caching pipeline and native Rust MDX-RS).
+  - Compiles 1,135+ MDX lessons and 1,700+ static pages in under 90 seconds (reduced from 21.6 minutes via an in-memory content caching pipeline and native Rust MDX-RS).
   - Features interactive Explorable Explanations (`<ArchitectureFlow>`, `<StepFlow>`, WordPress hook lifecycle and production outage simulators), formative checkpoints (+15 XP), Spaced Repetition flashcards, and Supabase-backed personal cloud progress synchronization.
   - Automated zero-metaphor first-principles prompt generator for Google NotebookLM Deep Dive Audio Overviews across 4 locales (EN/RU/UK/ES).
 
@@ -39,7 +48,7 @@
 - **Live URL**: https://www.yusupovartur.com
 - **Stack**: Next.js 16 App Router, React 19 Server Components, TypeScript 6, Tailwind CSS v4, Vercel AI SDK, Custom Hybrid RAG Engine, Vitest.
 - **Highlights**:
-  - Dual-runtime architecture supporting SSR/SSG on Vercel (213 localized project pages, 27 blog routes, and 246 total static routes) and static SPA export on GitHub Pages.
+  - Dual-runtime architecture supporting SSR/SSG on Vercel (213 localized project pages, 39 blog routes, and 258 total static routes) and static SPA export on GitHub Pages.
   - Built-in Hybrid RAG AI Assistant indexing all 71 projects and 9 engineering articles with interactive generative UI cards, timeline estimator, stack comparison matrix, and zero-leak Base64 contact protection.
 
 ### 3.3. Unitrition - Personalized Nutrition & Dietary Platform
@@ -65,14 +74,14 @@
 - **Highlights**:
   - Engineered for an AWS Advanced Consulting Partner with 95+ PageSpeed scores, multilingual architecture, and #1 Google rankings for competitive DevOps keywords.
 
-## 4. Complete Engineering Blog Index (9 Articles across EN / UA / ES = 27 Routes)
+## 4. Complete Engineering Blog Index (16 Articles across EN / UA / ES = 48 Routes)
 
 1. **Next.js 16 vs Headless WordPress vs Custom PHP: Objective TCO, Performance & SEO Analysis (2026)**: https://www.yusupovartur.com/en/blog/nextjs-vs-headless-wordpress-custom-php-2026
    - **Published**: 2026-10-18 | **Tags**: Next.js 16, WordPress, PHP 8.2, Headless CMS, Core Web Vitals, TCO
    - **Summary**: An engineering breakdown comparing architecture, maintenance overhead, Total Cost of Ownership (TCO), and Google Core Web Vitals across Next.js 16, Headless WordPress, and custom PHP.
-2. **WPSKILLS Architecture Deep-Dive: Compiling 1,100+ MDX Lessons in 90 Seconds with Next.js 16 & Rust MDX-RS**: https://www.yusupovartur.com/en/blog/wpskills-interactive-edtech-architecture
-   - **Published**: 2026-10-22 | **Tags**: Next.js 16, React 19, Rust MDX-RS, EdTech Architecture, Zustand v5, Supabase, NotebookLM AI
-   - **Summary**: Complete executive and technical breakdown of the WPSKILLS interactive engineering platform: how we cut SSG build times by 14x (from 21.6m to 1.5m), engineered interactive runtime simulators, built a zero-metaphor NotebookLM audio engine, and explained every core term and security mechanism.
+2. **Fullstack AI Lab Architecture Deep-Dive: Compiling 1,135+ MDX Lessons in 90 Seconds with Next.js 16 & Rust MDX-RS**: https://www.yusupovartur.com/en/blog/fullstack-ai-lab-interactive-edtech-architecture
+   - **Published**: 2026-10-22 | **Tags**: Next.js 16, React 19, Rust MDX-RS, WebAssembly, AI Interview Engine, EdTech Architecture, Zustand v5, Supabase, NotebookLM AI
+   - **Summary**: Complete executive and technical breakdown of the Fullstack AI Lab interactive engineering platform: how we cut SSG build times by 14x (from 21.6m to 1.5m), engineered in-browser WebAssembly WordPress sandboxes, an AI Technical Interview Engine, interactive runtime simulators, and a zero-metaphor NotebookLM audio engine.
 3. **Unitrition Architecture Deep-Dive: Engineering a Headless HealthTech & Precision Nutrition Platform with Next.js 16, WordPress & Supabase**: https://www.yusupovartur.com/en/blog/unitrition-headless-healthtech-architecture
    - **Published**: 2026-10-21 | **Tags**: Next.js 16, Headless WordPress, Supabase, USDA API, HealthTech, TypeScript, Schema.org
    - **Summary**: Executive and technical breakdown of Unitrition (unitrition.info): decoupling WordPress CMS from Next.js 16 App Router, integrating USDA FoodData Central API for real-time Bread Units and glycemic curve modeling across 10 clinical diet frameworks, and securing user data with Supabase RLS.
@@ -94,15 +103,147 @@
 9. **Zero-Downtime Legacy System Migration: Cloud Infrastructure, SEO Preservation & High-Load Reliability**: https://www.yusupovartur.com/en/blog/legacy-migration-cloud-infrastructure
    - **Published**: 2026-10-19 | **Tags**: Cloud Migration, AWS, Database Optimization, Nginx, 301 Redirects, Zero Downtime
    - **Summary**: A battle-tested blueprint for migrating legacy monolithic portals and high-traffic databases to modern cloud architectures with dual-write replication, automated 301/308 redirect mapping, and zero interruption to customer transactions.
+10. **Headless WordPress & Next.js 16: Architecting Hybrid Caching to Eliminate Cache Invalidation Hell**: https://www.yusupovartur.com/en/blog/headless-wordpress-nextjs-16-caching-architecture
+    - **Published**: 2026-11-02 | **Tags**: Next.js 16, WordPress, PHP 8.2, Headless CMS, Cache Invalidation, Core Web Vitals
+    - **Summary**: An end-to-end engineering breakdown on decoupling WordPress with Next.js 16 App Router using On-Demand Tag Revalidation, HMAC-secured webhooks, and sub-50ms TTFB without database thrashing.
+11. **WooCommerce HPOS & Redis Caching: Scaling 10,000+ SKU Catalogs to Sub-Second Checkout without Database Locks**: https://www.yusupovartur.com/en/blog/woocommerce-hpos-redis-caching-10k-skus
+    - **Published**: 2026-11-02 | **Tags**: WooCommerce, HPOS, Redis, PHP 8.2, MySQL Optimization, High Load E-Commerce
+    - **Summary**: A battle-tested engineering blueprint on migrating WooCommerce to High-Performance Order Storage (HPOS), configuring persistent Redis object caching, and eliminating MySQL postmeta contention during high-concurrency flash sales.
+12. **Running WordPress & PHP 8.4 in the Browser: WebAssembly SQLite VFS Architecture for Zero-Server Interactive Sandboxes**: https://www.yusupovartur.com/en/blog/wasm-wordpress-php-in-browser-zero-server
+    - **Published**: 2026-11-02 | **Tags**: WebAssembly, PHP 8.4, WordPress, SQLite VFS, EdTech Architecture, Zero Server
+    - **Summary**: An architectural deep dive into compiling PHP 8.4 to WebAssembly with SQLite Virtual File System (VFS), declarative JSON blueprints, and zero-server sandbox execution with $0 infrastructure fees.
+13. **Clinical & Governmental API Integrations in Headless Architecture: Real-Time USDA FoodData Central Integration in Unitrition**: https://www.yusupovartur.com/en/blog/clinical-government-api-headless-integration-unitrition
+    - **Published**: 2026-11-02 | **Tags**: HealthTech, USDA API, Next.js 16, Supabase RLS, TypeScript, HIPAA Compliance
+    - **Summary**: An engineering blueprint for integrating governmental food databases into Next.js 16 and Headless WordPress: server-side API proxying, Bread Units calculation, and HIPAA/GDPR data isolation with Supabase RLS.
+14. **Enterprise Cloud Web Security Blueprint: Mitigating Layer 7 DDoS, AI Scraping, and Bot Floods with AWS WAF & Edge Rate Limiting**: https://www.yusupovartur.com/en/blog/enterprise-cloud-web-security-waf-anti-scraping
+    - **Published**: 2026-10-25 | **Tags**: AWS WAF, Cloud Security, DevSecOps, Rate Limiting, Anti-Scraping, Next.js 16, CloudFront, Redis
+    - **Summary**: An enterprise DevSecOps blueprint for protecting high-load web applications: AWS WAFv2 rule groups, CloudFront edge inspection, sliding-window Redis rate limiting, and bot mitigation without false positives.
+15. **Headless Multi-Currency Checkout: Next.js 16, Stripe Elements & Sub-50ms Tax Calculations without Cart Drop-Off**: https://www.yusupovartur.com/en/blog/headless-multicurrency-checkout-woocommerce-stripe
+    - **Published**: 2026-10-26 | **Tags**: WooCommerce, Stripe, Headless E-Commerce, Next.js 16, Multi-Currency, Checkout Optimization, Redis, Webhooks
+    - **Summary**: An engineering blueprint for replacing slow monolithic WooCommerce checkouts with Next.js 16 and Stripe Elements: sub-50ms edge tax lookups, asynchronous idempotent webhooks, and zero cart abandonment.
+16. **In-Browser Semantic Product Discovery: Zero-Cost Vector Search with WebAssembly Embeddings & Okapi BM25**: https://www.yusupovartur.com/en/blog/in-browser-semantic-search-webassembly-embeddings-ecommerce
+    - **Published**: 2026-10-27 | **Tags**: WebAssembly, Semantic Search, Vector Search, Hybrid RAG, Okapi BM25, ONNX Runtime, Next.js 16, E-Commerce
+    - **Summary**: An engineering guide to client-side semantic search for e-commerce: compiling ONNX embedding models to WebAssembly, hybrid BM25 + Cosine ranking, and sub-25ms retrieval with $0 vector database fees.
+17. **Real-Time Omnichannel Inventory Sync: Eliminating Overselling across Shopify, WooCommerce & ERP with Redis Redlock**: https://www.yusupovartur.com/en/blog/realtime-omnichannel-inventory-sync-redlock
+    - **Published**: 2026-10-28 | **Tags**: E-Commerce, Inventory Sync, Redis, Redlock, Shopify, WooCommerce, BullMQ, Distributed Systems
+    - **Summary**: An enterprise architecture blueprint for multi-channel inventory synchronization: distributed locks with Redis Redlock, optimistic cart reservations, and debounced webhook queues preventing overselling.
+18. **Automated Visual Accessibility & Schema.org Product Metadata Generation via Multimodal LLMs: Complying with EAA 2026 at Scale**: https://www.yusupovartur.com/en/blog/automated-visual-accessibility-metadata-multimodal-llms-eaa2026
+    - **Published**: 2026-10-29 | **Tags**: Accessibility, WCAG 2.2 AA, EAA 2026, Multimodal AI, Vision LLM, Zod, Schema.org, E-Commerce
+    - **Summary**: An enterprise engineering blueprint for automating WCAG 2.2 AA visual accessibility and Schema.org Product metadata across 50,000+ SKUs using multimodal Vision LLMs and strict Zod schemas.
+19. **Autonomous Edge AI Agents: Running Structured Tool Calling & Function Execution with Zero-Cold-Start V8 Isolates**: https://www.yusupovartur.com/en/blog/autonomous-edge-ai-agents-tool-calling-v8-isolates
+    - **Published**: 2026-10-30 | **Tags**: AI Agents, V8 Isolates, Next.js 16 Edge, Tool Calling, Function Calling, Generative UI, TypeScript, Server-Sent Events
+    - **Summary**: An enterprise architecture blueprint for running autonomous AI agents at the edge: strict JSON Schema tool calling, sub-40ms execution in V8 isolates, and streaming Generative UI.
+20. **Compiling 1,100+ MDX Lessons in Under 90 Seconds: Native Rust MDX-RS vs Babel/Webpack Pipelines in Next.js 16**: https://www.yusupovartur.com/en/blog/compiling-1100-mdx-lessons-native-rust-mdx-rs-nextjs-16
+    - **Published**: 2026-10-31 | **Tags**: Rust, MDX-RS, Next.js 16, Compilers, Performance, EdTech, Build Optimization, TypeScript
+    - **Summary**: An enterprise build architecture guide: slashing Next.js 16 SSG build times from 24 minutes to 78 seconds for 1,135+ interactive MDX lessons using native Rust MDX-RS and AST virtualization.
+21. **Local-First E-Commerce PWA: Offline Cart Synchronization & Conflict-Free Replicated Data Types (CRDTs) with IndexedDB & Next.js 16**: https://www.yusupovartur.com/en/blog/local-first-ecommerce-pwa-offline-cart-crdt-yjs-indexeddb
+    - **Published**: 2026-11-01 | **Tags**: E-Commerce, Local-First, CRDT, Yjs, IndexedDB, PWA, Next.js 16, TypeScript
+    - **Summary**: An enterprise architecture blueprint for local-first e-commerce: sub-10ms cart interactions, offline checkout resilience, and conflict-free cart merges using Yjs CRDTs, IndexedDB, and Next.js 16.
+22. **Enterprise Programmatic SEO (pSEO): Generating 10,000+ High-Intent Next.js 16 Pages with Autonomous LLM Pipelines & Strict JSON-LD Validation**: https://www.yusupovartur.com/en/blog/enterprise-programmatic-seo-pseo-nextjs-16-autonomous-llm-pipelines
+    - **Published**: 2026-11-02 | **Tags**: SEO, pSEO, Next.js 16, LLM Pipelines, Schema.org, JSON-LD, Growth Engineering, TypeScript
+    - **Summary**: An enterprise growth engineering blueprint: generating 10,000+ high-ranking programmatic SEO pages with Next.js 16 App Router, autonomous LLM enrichment, and Google-compliant JSON-LD.
+23. **Enterprise B2B Headless E-Commerce: Tiered Pricing, Customer-Specific Catalogs & Real-Time ERP Sync with Next.js 16 and WooCommerce HPOS**: https://www.yusupovartur.com/en/blog/enterprise-b2b-headless-ecommerce-tiered-pricing-erp-sync-woocommerce-hpos
+    - **Published**: 2026-11-03 | **Tags**: E-Commerce, B2B, Next.js 16, WooCommerce HPOS, Tiered Pricing, ERP Sync, Redis BullMQ, TypeScript
+    - **Summary**: An enterprise B2B headless architecture: company-scoped catalogs, tiered volume pricing matrices, Net-30 invoice checkouts, and real-time ERP inventory synchronization via Redis BullMQ and WooCommerce HPOS.
+24. **Voice-Driven Conversational E-Commerce: Streaming Web Speech API, Edge AI Function Calling & Real-Time Cart Mutations in Next.js 16**: https://www.yusupovartur.com/en/blog/voice-driven-conversational-ecommerce-web-speech-edge-ai-nextjs-16
+    - **Published**: 2026-11-03 | **Tags**: Voice Commerce, Web Speech API, Next.js 16, Edge AI, React 19, Function Calling, WCAG 2.2 AA, TypeScript
+    - **Summary**: An enterprise conversational commerce blueprint: native in-browser Web Speech API, sub-180ms V8 edge isolate tool-calling, optimistic React 19 cart mutations, and WCAG 2.2 AA compliance.
+25. **Headless Subscription Architecture: Usage-Based Billing, Mid-Cycle Prorations & Automated Dunning with Stripe Billing & Next.js 16**: https://www.yusupovartur.com/en/blog/headless-subscription-architecture-usage-based-billing-stripe-nextjs-16
+    - **Published**: 2026-11-03 | **Tags**: Stripe Billing, Subscriptions, Next.js 16, SaaS, Webhooks, Redis, TypeScript, FinTech
+    - **Summary**: An enterprise headless subscription blueprint: hybrid recurring tiers, usage-based metering via Redis and Stripe Meter Events, real-time proration previews, and automated BullMQ dunning recovery.
+26. **Zero-Leakage Checkout Security: PCI-DSS v4.0 Compliance, Content Security Policy (CSP Level 3) & Subresource Integrity in Next.js 16**: https://www.yusupovartur.com/en/blog/zero-leakage-checkout-security-pci-dss-v4-csp-nextjs-16
+    - **Published**: 2026-11-03 | **Tags**: PCI-DSS v4.0, Web Security, Next.js 16, CSP Level 3, Magecart, DevSecOps, FinTech, TypeScript
+    - **Summary**: An enterprise checkout security blueprint: PCI-DSS v4.0 requirements 6.4.3 & 11.6.1, dynamic CSP nonces in Next.js 16 Edge Middleware, SHA-384 Subresource Integrity, and in-memory credential zeroization.
+27. **Multi-Zone Micro-Frontends at the Edge: Scaling Enterprise Next.js 16 Applications with Zero-Downtime Autonomous Deployments**: https://www.yusupovartur.com/en/blog/multi-zone-micro-frontends-edge-nextjs-16-autonomous-deployments
+    - **Published**: 2026-11-03 | **Tags**: Next.js 16, Micro-Frontends, Multi-Zones, Cloudflare Workers, Edge Computing, CI/CD, Turborepo, TypeScript
+    - **Summary**: An enterprise micro-frontends architecture: Next.js 16 Multi-Zones, sub-4ms Cloudflare Workers edge reverse proxy routing, shared View Transitions, and autonomous Turborepo CI/CD pipelines.
+28. **Browser-Native WASM Sandboxes for Safe AI Code Execution: Running Multi-Language Runtimes with WebContainers & WASI in Next.js 16**: https://www.yusupovartur.com/en/blog/browser-native-wasm-sandboxes-safe-ai-code-execution-nextjs-16
+    - **Published**: 2026-11-03 | **Tags**: WebAssembly, WASI, WebContainers, Next.js 16, AI Code Execution, EdTech, React 19, TypeScript
+    - **Summary**: An enterprise WebAssembly sandbox architecture: running in-browser Node.js, Python, and PHP runtimes at $0 cloud cost with WebContainers, Cross-Origin Isolation (COOP/COEP), and automated AI code repair.
+29. **Global Sub-20ms Database Read Latency at the Edge: Cloudflare Hyperdrive, Turso Embedded Replicas & Next.js 16 Caching**: https://www.yusupovartur.com/en/blog/global-sub-20ms-database-read-latency-edge-cloudflare-hyperdrive-nextjs-16
+    - **Published**: 2026-11-03 | **Tags**: Cloudflare Hyperdrive, Database, Turso, SQLite, MySQL, Edge Computing, Next.js 16, TypeScript
+    - **Summary**: An enterprise edge database architecture: combining Cloudflare Hyperdrive pre-warmed TCP connection pooling for MySQL/PostgreSQL with Turso libSQL in-memory embedded SQLite replicas for sub-20ms worldwide reads.
+
+30. **Client-Side WebGPU Predictive Personalization: On-Device Collaborative Filtering & Privacy-First Recommendations in Next.js 16**: https://www.yusupovartur.com/en/blog/clientside-webgpu-predictive-personalization-collaborative-filtering-nextjs-16
+    - **Published**: 2026-11-03 | **Tags**: WebGPU, Machine Learning, Next.js 16, ONNX Runtime Web, Privacy, Personalization, E-Commerce, TypeScript
+    - **Summary**: An enterprise client-side machine learning architecture: running quantized neural collaborative filtering models (4.2MB ONNX) on user GPUs via WebGPU for sub-12ms real-time product recommendations at $0 cloud inference cost.
+
+31. **Autonomous AI Quality Harness: Spec-Driven Development (SDD), AST Invariant Enforcement & Self-Healing Testing in Next.js 16**: https://www.yusupovartur.com/en/blog/autonomous-ai-quality-harness-spec-driven-development-sdd-nextjs-16
+    - **Published**: 2026-11-03 | **Tags**: AI Quality Harness, Spec-Driven Development, AST Invariants, Next.js 16, TypeScript, Vitest, DevSecOps, Architecture
+    - **Summary**: An enterprise autonomous AI quality harness: combining 5-phase Spec-Driven Development (SDD) gating, TypeScript Compiler API AST invariant validation, and self-healing Vitest testing loops to eliminate hallucinations and architectural drift.
+
+32. **Zero-Downtime Database Schema Migrations for High-Traffic Applications: Expand-and-Contract Pattern, Shadow Columns & Ghost Workers in Next.js 16**: https://www.yusupovartur.com/en/blog/zero-downtime-database-schema-migrations-expand-contract-nextjs-16
+    - **Published**: 2026-11-03 | **Tags**: Database Migrations, Zero-Downtime, Next.js 16, PostgreSQL, Prisma, High Availability, DevSecOps, TypeScript
+    - **Summary**: An enterprise zero-downtime database migration architecture: executing the 4-phase Expand-and-Contract pattern, dual-writing Server Actions, shadow columns, and rate-limited BullMQ backfills with zero table locks.
+
+33. **Distributed Edge Caching & Cache-Tags Invalidation Mesh: Next.js 16, Cloudflare Workers KV & Sub-80ms Global Purging at Scale**: https://www.yusupovartur.com/en/blog/distributed-edge-caching-cache-tags-invalidation-mesh-nextjs-16
+    - **Published**: 2026-11-03 | **Tags**: Edge Caching, Cache Invalidation, Next.js 16, Cloudflare Workers, Surrogate Keys, CWV, Performance, TypeScript
+    - **Summary**: An enterprise distributed edge caching architecture: uniting Next.js 16 App Router cache tags with Cloudflare Workers KV surrogate keys for sub-80ms global purges across 300+ edge locations with thundering herd protection.
+
+34. **End-to-End Cryptographic Zero-Knowledge Attestation for Headless E-Commerce: Passkeys, WebAuthn & Device Integrity in Next.js 16**: https://www.yusupovartur.com/en/blog/cryptographic-passkeys-webauthn-zero-knowledge-attestation-nextjs-16
+    - **Published**: 2026-11-03 | **Tags**: WebAuthn, Passkeys, Cryptography, Next.js 16, Zero-Knowledge, CyberSecurity, FinTech, TypeScript
+    - **Summary**: An enterprise cryptographic passkey architecture: implementing FIDO2 / WebAuthn, hardware security enclave attestation (Apple Secure Enclave, Android StrongBox), and origin-bound signature verification in Next.js 16 Route Handlers.
+
+35. **Real-Time Collaborative Multi-User State Synchronization: WebRTC DataChannels, Yjs CRDTs & Cloudflare Durable Objects in Next.js 16**: https://www.yusupovartur.com/en/blog/realtime-collaborative-state-sync-webrtc-yjs-crdt-nextjs-16
+    - **Published**: 2026-11-03 | **Tags**: Real-Time, WebRTC, Yjs, CRDT, Next.js 16, Cloudflare Durable Objects, EdTech, TypeScript
+    - **Summary**: An enterprise local-first real-time collaborative state architecture: uniting WebRTC DataChannels for sub-15ms P2P state vectors, Yjs CRDTs for deterministic convergence, and Cloudflare Durable Objects fallback.
+
+36. **Multi-Modal Streaming Voice & Vision AI Agents at the Edge: Gemini Live API, WebRTC Audio/Video & Next.js 16 Generative UI**: https://www.yusupovartur.com/en/blog/multimodal-streaming-voice-vision-edge-ai-agents-nextjs-16
+    - **Published**: 2026-11-04 | **Tags**: Gemini Live API, WebRTC, Edge AI, Generative UI, Next.js 16, Voice Agents, Vision AI, TypeScript
+    - **Summary**: An enterprise streaming multimodal AI agent architecture: integrating Google Gemini Live API with WebRTC bidirectional audio/video channels, V8 edge isolates, and Next.js 16 Generative UI component hydration.
+
+37. **Event-Driven Microservices Architecture with Kafka / Redpanda: Transactional Outbox Pattern, CDC & Distributed Sagas in Next.js 16**: https://www.yusupovartur.com/en/blog/event-driven-microservices-kafka-outbox-pattern-nextjs-16
+    - **Published**: 2026-11-04 | **Tags**: Kafka, Microservices, Transactional Outbox, Debezium, CDC, Distributed Sagas, Next.js 16, TypeScript, PostgreSQL, Redpanda
+    - **Summary**: An enterprise event-driven microservices architecture: eliminating the dual-write anti-pattern with PostgreSQL logical replication CDC, Kafka / Redpanda partitioned streaming, idempotency guards, and distributed Saga orchestrations in Next.js 16.
+
+38. **Fine-Grained Authorization & Relationship-Based Access Control (ReBAC): Implementing Google Zanzibar with OpenFGA in Next.js 16**: https://www.yusupovartur.com/en/blog/fine-grained-access-control-rebac-openfga-nextjs-16
+    - **Published**: 2026-11-04 | **Tags**: OpenFGA, ReBAC, Google Zanzibar, Authorization, Next.js 16, CyberSecurity, HealthTech, TypeScript, Multi-Tenancy
+    - **Summary**: An enterprise fine-grained authorization architecture: implementing Google Zanzibar-inspired Relationship-Based Access Control (ReBAC) with OpenFGA, sub-12ms Edge Middleware permission checks, and transitive relation graphs in Next.js 16.
+
+39. **Deterministic Financial Ledger & Double-Entry Accounting Engine: TigerBeetle, Idempotency & Temporal Workflows in Next.js 16**: https://www.yusupovartur.com/en/blog/deterministic-financial-ledger-double-entry-tigerbeetle-nextjs-16
+    - **Published**: 2026-11-04 | **Tags**: TigerBeetle, Ledger, Double-Entry, FinTech, Temporal, Next.js 16, TypeScript, Idempotency, Distributed Systems
+    - **Summary**: An enterprise deterministic financial ledger architecture: implementing strict double-entry bookkeeping with TigerBeetle distributed ledger, 128-bit integer arithmetic, and Temporal durable payment sagas in Next.js 16.
+
+40. **High-Performance Tax Software Architecture: Custom WordPress, BaFin Compliance & GDPR for Buhl WISO Germany**: https://www.yusupovartur.com/en/blog/buhl-wiso-fintech-wordpress-architecture-gdpr
+    - **Published**: 2026-11-12 | **Tags**: WordPress, Fintech, GDPR, BaFin, Performance, Nginx, Germany, Security
+    - **Summary**: An architectural case study on engineering a zero-builder custom WordPress portal for Buhl WISO tax software in Germany. Covering BaFin data security, strict GDPR compliance, FastCGI microcaching, and sub-90ms TTFB under peak tax filing seasons.
+
+41. **Interactive EdTech & Real-Time Audio Streaming: Custom WordPress Engineering for Telefontrainingskoffer Germany**: https://www.yusupovartur.com/en/blog/telefontrainingskoffer-interactive-edtech-streaming
+    - **Published**: 2026-11-12 | **Tags**: WordPress, EdTech, Audio Streaming, ACF, FastCGI, GDPR, Germany, Performance
+    - **Summary**: An architectural deep-dive into engineering an interactive training portal for Telefontrainingskoffer, a German professional call-center academy. Details custom ACF layout modeling, lightweight audio streaming, FastCGI caching, and strict DACH GDPR compliance.
+
+42. **Engineering a HIPAA-Compliant Medical Web Portal: Custom Architecture, PHI Encryption & Sub-Second Mobile Speed for All Day Medical Care USA**: https://www.yusupovartur.com/en/blog/all-day-medical-care-hipaa-healthtech-portal
+    - **Published**: 2026-11-12 | **Tags**: WordPress, HealthTech, HIPAA, Security, Encryption, USA, Performance
+    - **Summary**: A production case study detailing the architectural design of a HIPAA-compliant medical clinic portal for All Day Medical Care (USA). Explores Protected Health Information (PHI) encryption, elimination of tracking pixels per HHS rules, and sub-0.8s mobile booking.
+
+43. **Engineering an RTL WooCommerce Store: Bidirectional CSS, WebP Media Pipeline & Sub-Second Checkout for Organic Bed**: https://www.yusupovartur.com/en/blog/organic-bed-rtl-woocommerce-performance-optimization
+    - **Published**: 2026-11-12 | **Tags**: WooCommerce, WordPress, RTL, E-Commerce, WebP, Performance, Core Web Vitals
+    - **Summary**: An architectural case study on building a custom Right-to-Left (RTL) WooCommerce store for Organic Bed. Covers CSS logical properties for bidirectional layouts, an automated WebP image optimization pipeline cutting payload by 72%, and cart checkout speed optimization.
+
+44. **European Accessibility Act (EAA 2026) for E-Commerce: Compliance Architecture, Penalties & Remediation Blueprint**: https://www.yusupovartur.com/en/blog/eaa-2026-compliance-ecommerce-audit-remediation
+    - **Published**: 2026-11-12 | **Tags**: EAA 2026, WCAG 2.2 AA, E-Commerce, WooCommerce, React 19, A11y, EN 301 549, Compliance
+    - **Summary**: A comprehensive engineering guide on achieving European Accessibility Act (EAA 2026 / Directive 2019/882 / EN 301 549) and WCAG 2.2 Level AA compliance for online stores in the EU. Legal implications, fines up to 100,000 EUR, checkout accessibility, screen reader patterns, and practical remediation code.
+
+45. **Automated Accessibility Testing in CI/CD: Building a Zero-Regression Pipeline with Axe-Core, Playwright & GitHub Actions**: https://www.yusupovartur.com/en/blog/automated-accessibility-testing-cicd-axe-playwright
+    - **Published**: 2026-11-12 | **Tags**: Playwright, Axe-Core, CI/CD, GitHub Actions, WCAG 2.2 AA, DevSecOps, React 19, A11y
+    - **Summary**: A deep architectural guide to integrating automated accessibility testing into modern CI/CD pipelines. Using @axe-core/playwright, custom rule sets, color contrast matrix validation across light/dark modes, and automated PR quality gates to enforce WCAG 2.2 AA compliance before deployment.
+
+46. **Context Caching in Gemini 2.5 & Claude 3.7: Slashing LLM API Costs by 80% in Production AI Systems**: https://www.yusupovartur.com/en/blog/context-caching-llm-api-cost-optimization
+    - **Published**: 2026-11-12 | **Tags**: LLMOps, Gemini 2.5, Claude 3.7, Context Caching, RAG, Next.js 16, Cost Optimization, AI Engineering
+    - **Summary**: A production engineering guide to implementing context caching with Google Gemini 2.5 and Anthropic Claude 3.7. Prefix token reuse, KV-cache lifetime management, Time-to-First-Token (TTFT) reduction from 3.2s to 420ms, and architectural benchmarks in real-world Next.js 16 RAG systems.
+
+47. **Local-First In-Browser LLMs via WebGPU: Zero-Server Privacy-Preserving Inference in Modern Web Apps**: https://www.yusupovartur.com/en/blog/in-browser-llm-webgpu-zero-server-inference
+    - **Published**: 2026-11-12 | **Tags**: WebGPU, Local LLM, Transformers.js, ONNX Runtime, React 19, Edge AI, Privacy, Llama 3.2
+    - **Summary**: An architectural deep-dive on running quantized 1B-3B parameter Large Language Models (Llama 3.2, Gemma 2, SmolLM2) directly inside client web browsers using WebGPU, Transformers.js v3, and ONNX Runtime Web. Zero hosting costs, 100% offline capability, zero data exfiltration, and sub-second token streaming.
 
 ## 5. Complete 71-Project Portfolio Index (213 Localized Case Study Routes)
 
 1. **Next.js 16 & Hybrid RAG Portfolio Platform** (nextjs) - https://www.yusupovartur.com/en/projects/yusupovartur-nextjs-portfolio | Live: https://www.yusupovartur.com/ | Deep-Dive: https://www.yusupovartur.com/en/blog/autonomous-hybrid-rag-architecture-browser
    - **Stack**: Next.js 16 (App Router), React 19, TypeScript 6.x, Tailwind CSS v4, Trilingual i18n (/en, /ua, /es), Next.js Route Handlers
    - **Overview**: Enterprise-grade fullstack portfolio and AI engineering platform built with Next.js 16 App Router, React 19 Server Components, TypeScript 6, and a custom Hybrid RAG AI Assistant indexing 70 project case studies across 210+ localized SSG routes (EN/UA/ES), deployed on Vercel with Cloudflare DNS and WCAG 2.2 AA compliance.
-2. **WPSKILLS** (nextjs, react, wordpress, fullstack) - https://www.yusupovartur.com/en/projects/wpskills | Live: https://wpskills.vercel.app | Deep-Dive: https://www.yusupovartur.com/en/blog/wpskills-interactive-edtech-architecture
+2. **Fullstack AI Lab** (nextjs, react, wordpress, fullstack) - https://www.yusupovartur.com/en/projects/fullstack-ai-lab | Live: https://www.fullstackailab.com | Deep-Dive: https://www.yusupovartur.com/en/blog/fullstack-ai-lab-interactive-edtech-architecture
    - **Stack**: Next.js 16.3, React 19.2, TypeScript 5.8, Tailwind CSS v4, Zustand v5, Lucide React & Base UI
-   - **Overview**: An interactive engineering educational platform designed for mastering modern Fullstack development, React 19, Next.js 16 App Router, WordPress core internals, TypeScript, and AI-augmented software engineering. Powered by Rust-based MDX-RS compilation across 1,100+ lessons, interactive Explorable Explanations (<ArchitectureFlow>, <StepFlow>, checkpoints), zero-metaphor Gemini NotebookLM Audio Overview generators, gamified XP/Streak engine, and 4-locale internationalization (EN/RU/UK/ES).
+   - **Overview**: An interactive engineering educational platform designed for mastering modern Fullstack development, React 19, Next.js 16 App Router, WordPress core internals, TypeScript, and AI-augmented software engineering. Powered by Rust-based MDX-RS compilation across 1,135+ lessons, in-browser WASM WordPress 7.0 / PHP 8.4 Playground, AI Technical Interview Simulator, interactive Explorable Explanations (<ArchitectureFlow>, <StepFlow>, checkpoints), zero-metaphor Gemini NotebookLM Audio Overview generators, gamified XP/Streak engine, and 4-locale internationalization (EN/RU/UK/ES).
 3. **Unitrition** (nextjs, wordpress) - https://www.yusupovartur.com/en/projects/unitrition | Live: https://www.unitrition.info | Deep-Dive: https://www.yusupovartur.com/en/blog/unitrition-headless-healthtech-architecture
    - **Stack**: Next.js 16, React 19, TypeScript 5.9, Tailwind CSS, Recharts 3, Node.js 24 LTS
    - **Overview**: A full-stack nutrition platform that helps users find the right foods for their specific dietary plans - pick a plan, search foods, and get an instant color-coded comparison of what fits and what doesn't. Built with headless WordPress as CMS, a Next.js 16 (React 19) App Router frontend, Supabase authentication, and a custom Bread Units Calculator integrated with the USDA FoodData Central API. Supports 10 diet frameworks, bilingual content (EN/ES), and an educational nutrition blog with Schema.org markup.

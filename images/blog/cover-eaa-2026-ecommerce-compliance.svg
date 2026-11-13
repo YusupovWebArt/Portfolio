@@ -1,0 +1,161 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="50%" stop-color="#020617" />
+      <stop offset="100%" stop-color="#080d1a" />
+    </linearGradient>
+
+    <linearGradient id="euBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2563eb" />
+      <stop offset="100%" stop-color="#1d4ed8" />
+    </linearGradient>
+
+    <linearGradient id="accentLime" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#a3e635" />
+      <stop offset="100%" stop-color="#10b981" />
+    </linearGradient>
+
+    <linearGradient id="goldGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24" />
+      <stop offset="100%" stop-color="#f59e0b" />
+    </linearGradient>
+
+    <linearGradient id="panelGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" stop-opacity="0.85" />
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.95" />
+    </linearGradient>
+
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="12" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.75" stroke-opacity="0.4"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <rect width="1200" height="630" fill="url(#grid)" />
+
+  <!-- Ambient Glow Orbs -->
+  <circle cx="280" cy="240" r="240" fill="#3b82f6" opacity="0.12" filter="url(#glow)" />
+  <circle cx="920" cy="380" r="280" fill="#a3e635" opacity="0.08" filter="url(#glow)" />
+  <circle cx="620" cy="180" r="200" fill="#f59e0b" opacity="0.07" filter="url(#glow)" />
+
+  <!-- Main Left Card: EAA 2026 Regulatory Blueprint -->
+  <g transform="translate(100, 85)">
+    <!-- Outer Card Frame -->
+    <rect width="580" height="460" rx="20" fill="url(#panelGrad)" stroke="#334155" stroke-width="1.5" />
+    
+    <!-- Top Bar -->
+    <rect width="580" height="54" rx="20" fill="#0f172a" fill-opacity="0.9" />
+    <path d="M 0 54 L 580 54" stroke="#1e293b" stroke-width="1" />
+    <circle cx="34" cy="27" r="6" fill="#ef4444" />
+    <circle cx="54" cy="27" r="6" fill="#f59e0b" />
+    <circle cx="74" cy="27" r="6" fill="#10b981" />
+    <text x="100" y="33" fill="#94a3b8" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" letter-spacing="1">EU DIRECTIVE 2019/882 / EN 301 549</text>
+
+    <!-- Header Badge inside Card -->
+    <g transform="translate(35, 75)">
+      <rect width="210" height="30" rx="8" fill="#1e3a8a" fill-opacity="0.6" stroke="#3b82f6" stroke-width="1" />
+      <text x="18" y="20" fill="#93c5fd" font-family="system-ui, sans-serif" font-size="12" font-weight="700" letter-spacing="1.5">EUROPEAN ACCESSIBILITY ACT</text>
+    </g>
+
+    <!-- Main Title Inside Frame -->
+    <text x="35" y="145" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="28" font-weight="800">E-Commerce WCAG 2.2 AA</text>
+    <text x="35" y="180" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="18" font-weight="600">Compliance &amp; Remediation Architecture</text>
+
+    <!-- Key Audit Metrics Grid -->
+    <g transform="translate(35, 215)">
+      <!-- Metric 1: Legal Deadline -->
+      <rect x="0" y="0" width="245" height="90" rx="12" fill="#0b1120" stroke="#1e293b" stroke-width="1" />
+      <text x="18" y="28" fill="#64748b" font-family="system-ui, sans-serif" font-size="11" font-weight="700">MANDATORY ENFORCEMENT</text>
+      <text x="18" y="58" fill="#fbbf24" font-family="system-ui, sans-serif" font-size="22" font-weight="800">2026 ACTIVE</text>
+      <text x="18" y="78" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11">Directive 2019/882 / BFSG</text>
+
+      <!-- Metric 2: Max Sanction -->
+      <rect x="265" y="0" width="245" height="90" rx="12" fill="#0b1120" stroke="#1e293b" stroke-width="1" />
+      <text x="18" y="28" fill="#64748b" font-family="system-ui, sans-serif" font-size="11" font-weight="700">NON-COMPLIANCE RISK</text>
+      <text x="18" y="58" fill="#f87171" font-family="system-ui, sans-serif" font-size="22" font-weight="800">€100,000 FINE</text>
+      <text x="18" y="78" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11">Per store / Market exclusion</text>
+    </g>
+
+    <!-- Checklist Pillars -->
+    <g transform="translate(35, 330)">
+      <rect x="0" y="0" width="510" height="95" rx="12" fill="#0b1120" stroke="#1e293b" stroke-width="1" />
+      
+      <!-- Check 1 -->
+      <circle cx="28" cy="28" r="9" fill="#10b981" fill-opacity="0.2" stroke="#10b981" stroke-width="1.5" />
+      <path d="M 24 28 L 27 31 L 32 25" fill="none" stroke="#a3e635" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+      <text x="48" y="32" fill="#e2e8f0" font-family="system-ui, sans-serif" font-size="12" font-weight="600">Accessible Multi-Step Checkout &amp; ARIA Live Regions</text>
+
+      <!-- Check 2 -->
+      <circle cx="28" cy="62" r="9" fill="#10b981" fill-opacity="0.2" stroke="#10b981" stroke-width="1.5" />
+      <path d="M 24 62 L 27 65 L 32 59" fill="none" stroke="#a3e635" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+      <text x="48" y="66" fill="#e2e8f0" font-family="system-ui, sans-serif" font-size="12" font-weight="600">Focus Not Obscured (2.4.11) &amp; Redundant Entry Prevention (3.3.7)</text>
+    </g>
+  </g>
+
+  <!-- Right Side Visual: EAA Shield + Accessible Cart Stepper -->
+  <g transform="translate(720, 85)">
+    <!-- Right Panel Frame -->
+    <rect width="380" height="460" rx="20" fill="url(#panelGrad)" stroke="#334155" stroke-width="1.5" />
+    
+    <!-- Top Bar -->
+    <rect width="380" height="54" rx="20" fill="#0f172a" fill-opacity="0.9" />
+    <path d="M 0 54 L 380 54" stroke="#1e293b" stroke-width="1" />
+    <text x="25" y="33" fill="#a3e635" font-family="system-ui, sans-serif" font-size="13" font-weight="700">AUDIT SCORE: 100/100</text>
+    <rect x="255" y="16" width="100" height="22" rx="6" fill="#15803d" fill-opacity="0.3" stroke="#22c55e" stroke-width="1" />
+    <text x="270" y="31" fill="#86efac" font-family="system-ui, sans-serif" font-size="10" font-weight="700">WCAG 2.2 AA</text>
+
+    <!-- Stepper Component Graphic -->
+    <g transform="translate(25, 80)">
+      <text x="0" y="18" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="12" font-weight="700">ACCESSIBLE CHECKOUT FLOW</text>
+
+      <!-- Stepper Pills -->
+      <g transform="translate(0, 35)">
+        <rect x="0" y="0" width="100" height="34" rx="8" fill="#10b981" fill-opacity="0.2" stroke="#10b981" stroke-width="1" />
+        <text x="16" y="21" fill="#a3e635" font-family="system-ui, sans-serif" font-size="11" font-weight="700">1. Cart [OK]</text>
+
+        <path d="M 105 17 L 115 17" stroke="#334155" stroke-width="2" />
+
+        <rect x="120" y="0" width="100" height="34" rx="8" fill="#3b82f6" fill-opacity="0.3" stroke="#38bdf8" stroke-width="1.5" />
+        <text x="132" y="21" fill="#93c5fd" font-family="system-ui, sans-serif" font-size="11" font-weight="700">2. Ship [Active]</text>
+
+        <path d="M 225 17 L 235 17" stroke="#334155" stroke-width="2" />
+
+        <rect x="240" y="0" width="90" height="34" rx="8" fill="#0f172a" stroke="#1e293b" stroke-width="1" />
+        <text x="254" y="21" fill="#64748b" font-family="system-ui, sans-serif" font-size="11" font-weight="600">3. Pay</text>
+      </g>
+    </g>
+
+    <!-- Contrast & Touch Target Spec -->
+    <g transform="translate(25, 185)">
+      <rect width="330" height="110" rx="12" fill="#0b1120" stroke="#1e293b" stroke-width="1" />
+      <text x="18" y="26" fill="#cbd5e1" font-family="system-ui, sans-serif" font-size="12" font-weight="700">CRITICAL WCAG 2.2 CRITERIA</text>
+      
+      <text x="18" y="52" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11">• 2.5.8 Target Size: &gt;= 24x24 CSS px</text>
+      <text x="18" y="72" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11">• 1.4.3 Contrast Ratio: 7.2:1 (exceeds 4.5:1)</text>
+      <text x="18" y="92" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11">• 2.1.2 No Keyboard Trap: Esc &amp; Tab Safe</text>
+    </g>
+
+    <!-- Security & Legal Shield Graphic -->
+    <g transform="translate(25, 320)">
+      <rect width="330" height="110" rx="12" fill="#1e1b4b" fill-opacity="0.5" stroke="#6366f1" stroke-width="1" />
+      
+      <!-- Shield Icon -->
+      <path d="M 40 30 Q 55 30 55 20 Q 55 55 40 70 Q 25 55 25 20 Q 25 30 40 30 Z" fill="#4338ca" stroke="#818cf8" stroke-width="1.5" />
+      <path d="M 33 42 L 38 48 L 47 36" fill="none" stroke="#a5b4fc" stroke-width="2" stroke-linecap="round" />
+
+      <text x="75" y="42" fill="#e0e7ff" font-family="system-ui, sans-serif" font-size="13" font-weight="700">Full Legal Immunity</text>
+      <text x="75" y="62" fill="#a5b4fc" font-family="system-ui, sans-serif" font-size="11">Protected against predatory ADA</text>
+      <text x="75" y="78" fill="#a5b4fc" font-family="system-ui, sans-serif" font-size="11">&amp; EAA regulatory lawsuits in 2026</text>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,161 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080718" />
+      <stop offset="50%" stop-color="#020617" />
+      <stop offset="100%" stop-color="#0e0c24" />
+    </linearGradient>
+
+    <linearGradient id="gpuViolet" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c084fc" />
+      <stop offset="100%" stop-color="#7c3aed" />
+    </linearGradient>
+
+    <linearGradient id="cyanBlue" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#2563eb" />
+    </linearGradient>
+
+    <linearGradient id="accentLime" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#a3e635" />
+      <stop offset="100%" stop-color="#10b981" />
+    </linearGradient>
+
+    <linearGradient id="panelGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" stop-opacity="0.85" />
+      <stop offset="100%" stop-color="#0f172a" stop-opacity="0.95" />
+    </linearGradient>
+
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="12" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.75" stroke-opacity="0.4"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <rect width="1200" height="630" fill="url(#grid)" />
+
+  <!-- Ambient Glow -->
+  <circle cx="280" cy="220" r="260" fill="#7c3aed" opacity="0.12" filter="url(#glow)" />
+  <circle cx="920" cy="380" r="280" fill="#38bdf8" opacity="0.10" filter="url(#glow)" />
+  <circle cx="600" cy="480" r="220" fill="#10b981" opacity="0.08" filter="url(#glow)" />
+
+  <!-- Left Main Card: In-Browser WebGPU LLM Architecture -->
+  <g transform="translate(100, 85)">
+    <!-- Outer Card Frame -->
+    <rect width="580" height="460" rx="20" fill="url(#panelGrad)" stroke="#334155" stroke-width="1.5" />
+
+    <!-- Top Bar -->
+    <rect width="580" height="54" rx="20" fill="#0f172a" fill-opacity="0.9" />
+    <path d="M 0 54 L 580 54" stroke="#1e293b" stroke-width="1" />
+    <circle cx="34" cy="27" r="6" fill="#ef4444" />
+    <circle cx="54" cy="27" r="6" fill="#f59e0b" />
+    <circle cx="74" cy="27" r="6" fill="#10b981" />
+    <text x="100" y="33" fill="#94a3b8" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" letter-spacing="1">CLIENT-SIDE HARDWARE ACCELERATION</text>
+
+    <!-- Header Badge -->
+    <g transform="translate(35, 75)">
+      <rect width="250" height="30" rx="8" fill="#4c1d95" fill-opacity="0.6" stroke="#8b5cf6" stroke-width="1" />
+      <text x="16" y="20" fill="#ddd6fe" font-family="system-ui, sans-serif" font-size="12" font-weight="700" letter-spacing="1.5">WEBGPU &amp; ONNX RUNTIME</text>
+    </g>
+
+    <!-- Main Title -->
+    <text x="35" y="145" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="28" font-weight="800">In-Browser Local-First LLMs</text>
+    <text x="35" y="180" fill="#c084fc" font-family="system-ui, sans-serif" font-size="18" font-weight="600">Zero Servers, 100% Privacy &amp; Offline AI</text>
+
+    <!-- Architecture Diagram: Browser Sandbox Execution -->
+    <g transform="translate(35, 215)">
+      <rect x="0" y="0" width="510" height="115" rx="12" fill="#0b1120" stroke="#1e293b" stroke-width="1" />
+      
+      <!-- Box 1: Quantized Weights -->
+      <g transform="translate(18, 20)">
+        <rect width="135" height="75" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+        <text x="12" y="24" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="10" font-weight="700">1. MODEL CACHE</text>
+        <text x="12" y="44" fill="#f8fafc" font-family="system-ui, sans-serif" font-size="13" font-weight="700">Llama 3.2 1B</text>
+        <text x="12" y="60" fill="#a7f3d0" font-family="system-ui, sans-serif" font-size="10">q4f16 (640MB OPFS)</text>
+      </g>
+
+      <!-- Arrow 1 -->
+      <path d="M 160 58 L 180 58" stroke="#8b5cf6" stroke-width="2" />
+
+      <!-- Box 2: Web Worker -->
+      <g transform="translate(188, 20)">
+        <rect width="140" height="75" rx="8" fill="#2e1065" fill-opacity="0.6" stroke="#7c3aed" stroke-width="1.5" />
+        <text x="12" y="24" fill="#c4b5fd" font-family="system-ui, sans-serif" font-size="10" font-weight="700">2. ISOLATED WORKER</text>
+        <text x="12" y="44" fill="#e9d5ff" font-family="system-ui, sans-serif" font-size="13" font-weight="700">Transformers.js</text>
+        <text x="12" y="60" fill="#ddd6fe" font-family="system-ui, sans-serif" font-size="10">60 FPS main thread</text>
+      </g>
+
+      <!-- Arrow 2 -->
+      <path d="M 335 58 L 355 58" stroke="#10b981" stroke-width="2" />
+
+      <!-- Box 3: Hardware GPU -->
+      <g transform="translate(362, 20)">
+        <rect width="130" height="75" rx="8" fill="#064e3b" fill-opacity="0.6" stroke="#10b981" stroke-width="1.5" />
+        <text x="12" y="24" fill="#86efac" font-family="system-ui, sans-serif" font-size="10" font-weight="700">3. WEBGPU KERNEL</text>
+        <text x="12" y="44" fill="#a3e635" font-family="system-ui, sans-serif" font-size="13" font-weight="800">35 tok / sec</text>
+        <text x="12" y="60" fill="#6ee7b7" font-family="system-ui, sans-serif" font-size="10">Metal / DX12 / Vulkan</text>
+      </g>
+    </g>
+
+    <!-- Key Metrics Triple Grid -->
+    <g transform="translate(35, 350)">
+      <rect x="0" y="0" width="510" height="80" rx="12" fill="#0b1120" stroke="#1e293b" stroke-width="1" />
+      <g transform="translate(25, 20)">
+        <text x="0" y="16" fill="#a3e635" font-family="system-ui, sans-serif" font-size="22" font-weight="800">$0.00</text>
+        <text x="0" y="38" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11">Server Inference Cost</text>
+      </g>
+      <g transform="translate(195, 20)">
+        <text x="0" y="16" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="22" font-weight="800">0 ms</text>
+        <text x="0" y="38" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11">Network Data Transfer</text>
+      </g>
+      <g transform="translate(365, 20)">
+        <text x="0" y="16" fill="#c084fc" font-family="system-ui, sans-serif" font-size="22" font-weight="800">100%</text>
+        <text x="0" y="38" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11">Offline Capable PWA</text>
+      </g>
+    </g>
+  </g>
+
+  <!-- Right Visual: GPU Shader Pipeline & Privacy Shield -->
+  <g transform="translate(720, 85)">
+    <!-- Right Panel Frame -->
+    <rect width="380" height="460" rx="20" fill="url(#panelGrad)" stroke="#334155" stroke-width="1.5" />
+
+    <!-- Top Bar -->
+    <rect width="380" height="54" rx="20" fill="#0f172a" fill-opacity="0.9" />
+    <path d="M 0 54 L 380 54" stroke="#1e293b" stroke-width="1" />
+    <text x="25" y="33" fill="#a3e635" font-family="system-ui, sans-serif" font-size="13" font-weight="700">CLIENT COMPUTE SHADER</text>
+
+    <!-- Terminal Code Mockup -->
+    <g transform="translate(25, 75)">
+      <rect width="330" height="230" rx="10" fill="#030712" stroke="#1e293b" stroke-width="1" />
+      
+      <!-- Code lines -->
+      <text x="16" y="28" fill="#64748b" font-family="monospace" font-size="11">// Transformers.js WebGPU Engine</text>
+      <text x="16" y="50" fill="#c084fc" font-family="monospace" font-size="11">const <tspan fill="#f8fafc">generator</tspan> = <tspan fill="#60a5fa">await</tspan></text>
+      <text x="28" y="72" fill="#60a5fa" font-family="monospace" font-size="11">pipeline(<tspan fill="#a7f3d0">'text-generation'</tspan>,</text>
+      <text x="28" y="94" fill="#a7f3d0" font-family="monospace" font-size="11">  'onnx-community/Llama-3.2-1B-Instruct',</text>
+      <text x="28" y="116" fill="#f8fafc" font-family="monospace" font-size="11">  { device: <tspan fill="#38bdf8">'webgpu'</tspan>, dtype: <tspan fill="#38bdf8">'q4f16'</tspan> }</text>
+      <text x="16" y="146" fill="#f8fafc" font-family="monospace" font-size="11">);</text>
+      <text x="16" y="175" fill="#a3e635" font-family="monospace" font-size="11">const stream = generator(prompt);</text>
+      <text x="16" y="202" fill="#22c55e" font-family="monospace" font-size="11">✓ In-browser streaming active</text>
+    </g>
+
+    <!-- Bottom Privacy Assurance Block -->
+    <g transform="translate(25, 325)">
+      <rect width="330" height="105" rx="12" fill="#0b1120" stroke="#1e293b" stroke-width="1" />
+      <text x="18" y="26" fill="#cbd5e1" font-family="system-ui, sans-serif" font-size="12" font-weight="700">ENTERPRISE COMPLIANCE</text>
+      <text x="18" y="50" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11">• HIPAA &amp; GDPR: Zero data leaves user device</text>
+      <text x="18" y="70" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11">• OPFS Persistence: Cache weights permanently</text>
+      <text x="18" y="90" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="11">• Fallback: Cloud API when WebGPU unavailable</text>
+    </g>
+  </g>
+</svg>

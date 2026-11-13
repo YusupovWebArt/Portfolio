@@ -1,0 +1,98 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#070c18"/>
+      <stop offset="50%" stop-color="#0c1326"/>
+      <stop offset="100%" stop-color="#080e1d"/>
+    </linearGradient>
+    <linearGradient id="primaryGlow" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#a855f7"/>
+      <stop offset="50%" stop-color="#06b6d4"/>
+      <stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <g opacity="0.06" stroke="#38bdf8" stroke-width="1">
+    <path d="M0,70 H1200 M0,140 H1200 M0,210 H1200 M0,280 H1200 M0,350 H1200 M0,420 H1200 M0,490 H1200 M0,560 H1200"/>
+    <path d="M100,0 V630 M200,0 V630 M300,0 V630 M400,0 V630 M500,0 V630 M600,0 V630 M700,0 V630 M800,0 V630 M900,0 V630 M1000,0 V630 M1100,0 V630"/>
+  </g>
+
+  <circle cx="200" cy="160" r="140" fill="#a855f7" opacity="0.08" filter="url(#glow)"/>
+  <circle cx="980" cy="460" r="160" fill="#06b6d4" opacity="0.08" filter="url(#glow)"/>
+  <circle cx="580" cy="320" r="220" fill="#10b981" opacity="0.05" filter="url(#glow)"/>
+
+  <g transform="translate(680, 95)">
+    <rect width="450" height="440" rx="16" fill="#0f172a" stroke="#1e293b" stroke-width="2"/>
+    <rect width="450" height="40" rx="16" fill="#1e293b" opacity="0.5"/>
+    <circle cx="25" cy="20" r="6" fill="#ef4444"/>
+    <circle cx="45" cy="20" r="6" fill="#f59e0b"/>
+    <circle cx="65" cy="20" r="6" fill="#10b981"/>
+    <text x="95" y="25" fill="#94a3b8" font-family="monospace" font-size="12">edge-agent-v8-isolate.ts</text>
+
+    <g transform="translate(25, 60)" font-family="monospace" font-size="11.5">
+      <text y="20" fill="#8b5cf6">export const <tspan fill="#38bdf8">runtime</tspan> = <tspan fill="#10b981">'edge'</tspan></text>
+      <text y="42" fill="#94a3b8">// Zero-Cold-Start V8 Isolate Sandbox (&lt;1ms)</text>
+      <text y="64" fill="#8b5cf6">const <tspan fill="#38bdf8">Tools</tspan> = {</text>
+      <text y="86" fill="#94a3b8">  estimateTimeline: tool({</text>
+      <text y="108" fill="#94a3b8">    parameters: z.object({ stack: z.string() }),</text>
+      <text y="130" fill="#94a3b8">    execute: async (p) =&gt; calculateQuote(p),</text>
+      <text y="152" fill="#94a3b8">  }),</text>
+      <text y="174" fill="#8b5cf6">}</text>
+
+      <rect y="195" width="400" height="165" rx="8" fill="#0b1120" stroke="#334155" stroke-width="1"/>
+      <text x="15" y="222" fill="#10b981" font-weight="bold">✓ Streaming Generative UI Hydration</text>
+      <text x="15" y="246" fill="#cbd5e1">• V8 Isolate Startup: <tspan fill="#38bdf8">&lt; 1ms (Zero Cold Start)</tspan></text>
+      <text x="15" y="268" fill="#cbd5e1">• Time-to-First-Token: <tspan fill="#10b981">32ms (Edge SSE)</tspan></text>
+      <text x="15" y="290" fill="#cbd5e1">• Tool Determinism: <tspan fill="#f59e0b">100% JSON Schema</tspan></text>
+      <text x="15" y="312" fill="#cbd5e1">• Memory Footprint: <tspan fill="#38bdf8">1.8MB</tspan> ($0 Idle Cost)</text>
+      <text x="15" y="334" fill="#cbd5e1">• Circuit Breaker: <tspan fill="#a855f7">Max 5 Recursion Steps</tspan></text>
+    </g>
+  </g>
+
+  <g transform="translate(90, 110)">
+    <g transform="translate(0, 0)">
+      <rect width="215" height="32" rx="16" fill="#a855f7" fill-opacity="0.15" stroke="#a855f7" stroke-width="1.5"/>
+      <circle cx="16" cy="16" r="5" fill="#a855f7"/>
+      <text x="30" y="21" fill="#c084fc" font-family="system-ui, sans-serif" font-size="12" font-weight="700" letter-spacing="0.5">EDGE AI ARCHITECTURE</text>
+    </g>
+
+    <text x="0" y="85" fill="#ffffff" font-family="system-ui, sans-serif" font-size="38" font-weight="800" line-height="1.2">
+      <tspan x="0" dy="0">Autonomous Edge</tspan>
+      <tspan x="0" dy="50" fill="url(#primaryGlow)">AI Agents with V8</tspan>
+      <tspan x="0" dy="50">Zero-Cold-Start Isolates</tspan>
+    </text>
+
+    <text x="0" y="260" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="16" font-weight="400">
+      <tspan x="0" dy="0">Replacing sluggish 3-second Docker containers with sub-40ms</tspan>
+      <tspan x="0" dy="24">edge execution: deterministic JSON Schema tool calling,</tspan>
+      <tspan x="0" dy="24">streaming Generative UI, and zero idle compute costs.</tspan>
+    </text>
+
+    <g transform="translate(0, 345)">
+      <g transform="translate(0, 0)">
+        <rect width="145" height="58" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+        <text x="15" y="24" fill="#64748b" font-family="system-ui, sans-serif" font-size="11" font-weight="600">COLD START</text>
+        <text x="15" y="47" fill="#10b981" font-family="system-ui, sans-serif" font-size="20" font-weight="800">&lt; 1ms</text>
+      </g>
+      <g transform="translate(160, 0)">
+        <rect width="145" height="58" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+        <text x="15" y="24" fill="#64748b" font-family="system-ui, sans-serif" font-size="11" font-weight="600">TTFB STREAM</text>
+        <text x="15" y="47" fill="#38bdf8" font-family="system-ui, sans-serif" font-size="20" font-weight="800">32ms</text>
+      </g>
+      <g transform="translate(320, 0)">
+        <rect width="175" height="58" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+        <text x="15" y="24" fill="#64748b" font-family="system-ui, sans-serif" font-size="11" font-weight="600">EXEC RUNTIME</text>
+        <text x="15" y="47" fill="#a855f7" font-family="system-ui, sans-serif" font-size="18" font-weight="800">Next.js Edge</text>
+      </g>
+    </g>
+  </g>
+</svg>

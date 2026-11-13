@@ -1,0 +1,131 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+<defs>
+<!-- Background Gradient -->
+<linearGradient id="invBg" x1="0%" y1="0%" x2="100%" y2="100%">
+<stop offset="0%" stop-color="#030712" />
+<stop offset="50%" stop-color="#061226" />
+<stop offset="100%" stop-color="#0d1b3a" />
+</linearGradient>
+<!-- Accent Gradients -->
+<linearGradient id="lockAmber" x1="0%" y1="0%" x2="100%" y2="100%">
+<stop offset="0%" stop-color="#f59e0b" stop-opacity="0.95" />
+<stop offset="100%" stop-color="#fbbf24" stop-opacity="0.9" />
+</linearGradient>
+<linearGradient id="syncCyan" x1="0%" y1="0%" x2="100%" y2="0%">
+<stop offset="0%" stop-color="#00f0ff" stop-opacity="0.95" />
+<stop offset="100%" stop-color="#3b82f6" stop-opacity="0.9" />
+</linearGradient>
+<linearGradient id="emeraldShield" x1="0%" y1="0%" x2="100%" y2="100%">
+<stop offset="0%" stop-color="#10b981" stop-opacity="0.95" />
+<stop offset="100%" stop-color="#06b6d4" stop-opacity="0.9" />
+</linearGradient>
+<filter id="glowInv" x="-20%" y="-20%" width="140%" height="140%">
+<feGaussianBlur stdDeviation="8" result="blur" />
+<feMerge>
+<feMergeNode in="blur" />
+<feMergeNode in="SourceGraphic" />
+</feMerge>
+</filter>
+<pattern id="gridInv" width="40" height="40" patternUnits="userSpaceOnUse">
+<path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.8" stroke-opacity="0.45"/>
+</pattern>
+</defs>
+<!-- Background Layer -->
+<rect width="1200" height="630" fill="url(#invBg)" />
+<rect width="1200" height="630" fill="url(#gridInv)" />
+<!-- Ambient Light Orbs -->
+<circle cx="280" cy="220" r="230" fill="#00f0ff" opacity="0.08" filter="url(#glowInv)" />
+<circle cx="920" cy="260" r="250" fill="#f59e0b" opacity="0.08" filter="url(#glowInv)" />
+<circle cx="600" cy="180" r="190" fill="#10b981" opacity="0.07" filter="url(#glowInv)" />
+<!-- Central Inventory Console Frame -->
+<g transform="translate(160, 80)">
+<!-- Main Console Frame -->
+<rect x="40" y="30" width="800" height="410" rx="24" fill="#0b1329" stroke="#1e293b" stroke-width="1.5" opacity="0.96" />
+<rect x="40" y="30" width="800" height="410" rx="24" fill="none" stroke="#00f0ff" stroke-width="1" stroke-opacity="0.35" />
+<!-- Window Controls -->
+<circle cx="75" cy="62" r="5" fill="#f43f5e" opacity="0.8" />
+<circle cx="95" cy="62" r="5" fill="#eab308" opacity="0.8" />
+<circle cx="115" cy="62" r="5" fill="#10b981" opacity="0.8" />
+<line x1="140" y1="62" x2="380" y2="62" stroke="#334155" stroke-width="2" stroke-linecap="round" />
+<!-- Header Badge -->
+<rect x="500" y="50" width="320" height="24" rx="6" fill="#1e293b" />
+<text x="660" y="66" fill="#00f0ff" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" letter-spacing="1" text-anchor="middle">REAL-TIME INVENTORY &amp; REDLOCK ENGINE</text>
+<!-- Left Box: Inbound Sales Channels -->
+<g transform="translate(70, 95)">
+<rect width="210" height="230" rx="14" fill="#0f172a" stroke="#334155" stroke-width="1.2" />
+<rect x="15" y="15" width="180" height="28" rx="6" fill="#1e293b" />
+<text x="105" y="33" fill="#38bdf8" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" text-anchor="middle">OMNICHANNEL INGRESS</text>
+<text x="20" y="70" fill="#94a3b8" font-family="monospace" font-size="11">Shopify Storefront</text>
+<text x="190" y="70" fill="#10b981" font-family="monospace" font-size="11" text-anchor="end">Webhook</text>
+<text x="20" y="98" fill="#94a3b8" font-family="monospace" font-size="11">WooCommerce HPOS</text>
+<text x="190" y="98" fill="#10b981" font-family="monospace" font-size="11" text-anchor="end">REST Sync</text>
+<text x="20" y="126" fill="#94a3b8" font-family="monospace" font-size="11">Warehouse ERP</text>
+<text x="190" y="126" fill="#38bdf8" font-family="monospace" font-size="11" text-anchor="end">Queue Event</text>
+<text x="20" y="154" fill="#94a3b8" font-family="monospace" font-size="11">Physical POS Term</text>
+<text x="190" y="154" fill="#38bdf8" font-family="monospace" font-size="11" text-anchor="end">WebSocket</text>
+<path d="M 20 178 L 190 178" stroke="#1e293b" stroke-width="1" />
+<circle cx="28" cy="202" r="4" fill="#00f0ff" />
+<text x="40" y="206" fill="#cbd5e1" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600">Deduplication: SHA-256</text>
+</g>
+<!-- Flow Arrow 1 -->
+<path d="M 285 210 L 325 210" stroke="url(#syncCyan)" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="4 4" />
+<polygon points="328,210 320,205 320,215" fill="#00f0ff" />
+<!-- Center Box: Redis Redlock Distributed Engine -->
+<g transform="translate(335, 85)">
+<rect width="210" height="250" rx="16" fill="#091428" stroke="#f59e0b" stroke-width="1.8" />
+<!-- Padlock Icon Header -->
+<rect x="85" y="45" width="40" height="30" rx="6" fill="#1e1b4b" stroke="#f59e0b" stroke-width="2" />
+<path d="M 93 45 L 93 35 C 93 28 117 28 117 35 L 117 45" fill="none" stroke="#f59e0b" stroke-width="2.5" />
+<circle cx="105" cy="58" r="3" fill="#fbbf24" />
+<text x="105" y="105" fill="#ffffff" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" text-anchor="middle">Redis Redlock</text>
+<text x="105" y="125" fill="#fbbf24" font-family="system-ui, -apple-system, sans-serif" font-size="11" text-anchor="middle">Distributed Atomic Lock</text>
+<rect x="20" y="145" width="170" height="26" rx="6" fill="#1e293b" />
+<text x="105" y="162" fill="#10b981" font-family="monospace" font-size="10" font-weight="600" text-anchor="middle">Atomic DECRBY &amp; Hold</text>
+<rect x="20" y="178" width="170" height="26" rx="6" fill="#1e293b" />
+<text x="105" y="195" fill="#00f0ff" font-family="monospace" font-size="10" font-weight="600" text-anchor="middle">Cart Hold TTL: 15 min</text>
+<rect x="20" y="210" width="170" height="26" rx="6" fill="#1e293b" />
+<text x="105" y="227" fill="#fbbf24" font-family="monospace" font-size="10" font-weight="600" text-anchor="middle">Throughput: 1,200 ops/s</text>
+</g>
+<!-- Flow Arrow 2 -->
+<path d="M 550 210 L 590 210" stroke="url(#emeraldShield)" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="4 4" />
+<polygon points="593,210 585,205 585,215" fill="#10b981" />
+<!-- Right Box: Debounced Outbound Dispatch -->
+<g transform="translate(600, 95)">
+<rect width="210" height="230" rx="14" fill="#0f172a" stroke="#334155" stroke-width="1.2" />
+<rect x="15" y="15" width="180" height="28" rx="6" fill="#1e293b" />
+<text x="105" y="33" fill="#10b981" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" text-anchor="middle">DEBOUNCED DISPATCH</text>
+<text x="20" y="70" fill="#94a3b8" font-family="monospace" font-size="11">BullMQ Worker</text>
+<text x="190" y="70" fill="#10b981" font-family="monospace" font-size="11" text-anchor="end">Active</text>
+<text x="20" y="98" fill="#94a3b8" font-family="monospace" font-size="11">Shopify API Limit</text>
+<text x="190" y="98" fill="#00f0ff" font-family="monospace" font-size="11" text-anchor="end">Smoothed</text>
+<text x="20" y="126" fill="#94a3b8" font-family="monospace" font-size="11">ERP Write Relief</text>
+<text x="190" y="126" fill="#10b981" font-family="monospace" font-size="11" text-anchor="end">-82% Load</text>
+<text x="20" y="154" fill="#94a3b8" font-family="monospace" font-size="11">Inventory Drift</text>
+<text x="190" y="154" fill="#10b981" font-family="monospace" font-size="11" text-anchor="end">ZERO DRIFT</text>
+<path d="M 20 178 L 190 178" stroke="#1e293b" stroke-width="1" />
+<circle cx="28" cy="202" r="4" fill="#10b981" />
+<text x="40" y="206" fill="#cbd5e1" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="600">Eventual Consistency</text>
+</g>
+<!-- Bottom Telemetry Badges -->
+<g transform="translate(60, 360)">
+<rect width="160" height="50" rx="10" fill="#0f172a" stroke="#1e293b" />
+<text x="80" y="22" fill="#64748b" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="700" text-anchor="middle">OVERSELLING RATE</text>
+<text x="80" y="42" fill="#10b981" font-family="monospace" font-size="16" font-weight="700" text-anchor="middle">0.00% DRIFT</text>
+</g>
+<g transform="translate(245, 360)">
+<rect width="180" height="50" rx="10" fill="#0f172a" stroke="#1e293b" />
+<text x="90" y="22" fill="#64748b" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="700" text-anchor="middle">MUTATION LATENCY</text>
+<text x="90" y="42" fill="#00f0ff" font-family="monospace" font-size="16" font-weight="700" text-anchor="middle">&lt; 14ms AT EDGE</text>
+</g>
+<g transform="translate(450, 360)">
+<rect width="170" height="50" rx="10" fill="#0f172a" stroke="#1e293b" />
+<text x="85" y="22" fill="#64748b" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="700" text-anchor="middle">PEAK CONCURRENCY</text>
+<text x="85" y="42" fill="#fbbf24" font-family="monospace" font-size="16" font-weight="700" text-anchor="middle">1,200 OPS / S</text>
+</g>
+<g transform="translate(645, 360)">
+<rect width="165" height="50" rx="10" fill="#0f172a" stroke="#1e293b" />
+<text x="82" y="22" fill="#64748b" font-family="system-ui, -apple-system, sans-serif" font-size="10" font-weight="700" text-anchor="middle">ERP WRITE PRESSURE</text>
+<text x="82" y="42" fill="#10b981" font-family="monospace" font-size="16" font-weight="700" text-anchor="middle">-82% LOAD</text>
+</g>
+</g>
+</svg>
