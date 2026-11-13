@@ -24,6 +24,20 @@ const dialogStack: symbol[] = []
  * 5. Restoration of focus to opener upon closing (clearing inert BEFORE focusing)
  * 6. Stable callback ref to avoid effect recreation on unstable onClose references
  */
+function isElementVisible(el: HTMLElement): boolean {
+  if (typeof el.checkVisibility === 'function') {
+    return el.checkVisibility({ checkOpacity: false, checkVisibilityCSS: true })
+  }
+  if (el.offsetParent === null && typeof window !== 'undefined' && window.getComputedStyle(el).position !== 'fixed') {
+    return false
+  }
+  if (typeof window !== 'undefined' && 'getComputedStyle' in window) {
+    const style = window.getComputedStyle(el)
+    if (style.display === 'none' || style.visibility === 'hidden') return false
+  }
+  return true
+}
+
 export function useDialogA11y({
   isOpen,
   onClose,
@@ -94,9 +108,11 @@ export function useDialogA11y({
       if (initialFocusRef?.current) {
         initialFocusRef.current.focus()
       } else if (dialogRef.current) {
-        const focusable = dialogRef.current.querySelectorAll<HTMLElement>(
-          'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])',
-        )
+        const focusable = Array.from(
+          dialogRef.current.querySelectorAll<HTMLElement>(
+            'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])',
+          ),
+        ).filter(isElementVisible)
         if (focusable.length > 0) {
           focusable[0].focus()
         } else {
@@ -122,13 +138,7 @@ export function useDialogA11y({
           dialogRef.current.querySelectorAll<HTMLElement>(
             'button:not([disabled]):not([aria-hidden="true"]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])',
           ),
-        ).filter((el) => {
-          if (typeof window !== 'undefined' && 'getComputedStyle' in window) {
-            const style = window.getComputedStyle(el)
-            if (style.display === 'none' || style.visibility === 'hidden') return false
-          }
-          return true
-        })
+        ).filter(isElementVisible)
 
         if (focusable.length === 0) {
           e.preventDefault()

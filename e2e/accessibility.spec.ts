@@ -2,6 +2,18 @@ import { test, expect, type Locator } from "@playwright/test";
 import AxeBuilder from "@axe-core/playwright";
 
 test.describe("WCAG 2.2 AA Accessibility Audits (EAA 2026 / EN 301 549)", () => {
+  test.beforeEach(async ({ page }) => {
+    await page.addInitScript(() => {
+      try {
+        localStorage.clear();
+        localStorage.setItem("portfolio_theme", "dark");
+        localStorage.setItem("theme", "dark");
+      } catch {
+        // no-op
+      }
+    });
+  });
+
   test("home page in default dark theme should have zero critical or serious a11y violations", async ({ page }) => {
     await page.goto("./");
     await page.waitForLoadState("networkidle");
@@ -234,11 +246,11 @@ test.describe("WCAG 2.2 AA Accessibility Audits (EAA 2026 / EN 301 549)", () => 
     await expect(screenshotCloseBtn).toBeVisible();
     await expectOutlineOnKeyboardFocus(screenshotCloseBtn);
 
-    const prevBtn = screenshotModal.locator('button[aria-label*="previous" i], button[aria-label*="попередн" i], button[aria-label*="anterior" i]');
+    const prevBtn = screenshotModal.locator('button[aria-label*="previous" i], button[aria-label*="попередн" i], button[aria-label*="anterior" i]').first();
     await expect(prevBtn).toBeVisible();
     await expectOutlineOnKeyboardFocus(prevBtn);
 
-    const nextBtn = screenshotModal.locator('button[aria-label*="next" i], button[aria-label*="наступн" i], button[aria-label*="siguiente" i]');
+    const nextBtn = screenshotModal.locator('button[aria-label*="next" i], button[aria-label*="наступн" i], button[aria-label*="siguiente" i]').first();
     await expect(nextBtn).toBeVisible();
     await expectOutlineOnKeyboardFocus(nextBtn);
 
