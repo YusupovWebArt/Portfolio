@@ -8,8 +8,8 @@ export const whiteLabelAgencyService: ServiceItem = {
   content: {
     es: {
       badge: 'Marca Blanca / B2B Partner',
-      title: 'Desarrollo Web Marca Blanca para Agencias Digitales en España',
-      shortDesc: 'Refuerzo técnico Senior en React 19, Next.js 16 y WordPress a medida bajo estricto NDA. Sin intermediarios, sin bajas imprevistas y con estimaciones en 24-48 horas.',
+      title: 'Desarrollo Web Marca Blanca para Agencias',
+      shortDesc: 'Desarrollo web marca blanca en WordPress y Next.js para agencias digitales en España. Código Senior bajo estricto NDA, presupuestos en 24-48h y velocidad <0.8s.',
       heroLead: 'Ayudo a agencias de marketing, consultoras y estudios de diseño a escalar su capacidad técnica sin asumir costes fijos de contratación. Todo el código se entrega bajo tu marca, listo para producción y con estándares europeos de accesibilidad y rendimiento.',
       metrics: [
         { value: '24-48h', label: 'Valoración y presupuesto técnico' },
@@ -199,7 +199,7 @@ export const whiteLabelAgencyService: ServiceItem = {
     ua: {
       badge: 'Marca Blanca / B2B Партнер',
       title: 'White-Label веб-розробка Marca Blanca для digital-агенцій',
-      shortDesc: 'Підсилення команди Senior-інженером у React 19, Next.js 16 та кастомному WordPress під суворим NDA. Без посередників, з оцінкою завдань за 24-48 годин.',
+      shortDesc: 'White-label веб-розробка на WordPress та Next.js для digital-агенцій під суворим NDA. Senior код без посередників, оцінка за 24-48 годин та швидкість <0.8с.',
       heroLead: 'Допомагаю маркетинговим агенціям, студіям дизайну та ІТ-інтеграторам масштабувати технічну потужність без витрат на найм та податки. Увесь код передається під брендом вашої агенції з дотриманням європейських стандартів швидкості та доступності.',
       metrics: [
         { value: '24-48г', label: 'Оцінка та технічний кошторис' },

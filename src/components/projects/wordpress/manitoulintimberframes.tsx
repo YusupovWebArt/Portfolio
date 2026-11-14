@@ -4,13 +4,13 @@ const manitoulinTimberFrames: Project = {
   id: 12000,
   title: 'Manitoulin Timber Frames',
   description:
-    'Custom builder based on Manitoulin Island, Ontario, specializing in handcrafted timber-frame homes and structures.',
+    'Full Wix to custom WordPress migration for Canadian timber-frame builder, delivering custom theme styling, 90+ PageSpeed score, and sub-2s load times.',
   descriptionUa:
-    'Будівельна компанія з острова Манітулін, Онтаріо, що спеціалізується на ручному будівництві фахверкових будинків та дерев\'яних конструкцій.',
+    'Міграція з Wix на кастомну тему WordPress для канадської будівельної компанії з оптимізацією PageSpeed 90+ та завантаженням до 2 секунд.',
   descriptionEs:
-    'Empresa constructora de la isla Manitoulin, Ontario, especializada en viviendas y estructuras de entramado de madera artesanal.',
+    'Migración completa de Wix a WordPress personalizado para constructora canadiense, con diseño a medida, PageSpeed 90+ y carga en menos de 2s.',
   descriptionDe:
-    'Bauunternehmen auf Manitoulin Island, Ontario, spezialisiert auf handgefertigte Fachwerkhäuser und Holzkonstruktionen.',
+    'Komplette Migration von Wix zu individuellem WordPress für ein kanadisches Holzbauunternehmen mit PageSpeed 90+ und Ladezeiten unter 2 Sekunden.',
   fullDescription:
     'Manitoulin Timber Frames required a full migration from an existing Wix site to a custom WordPress theme built from scratch using Elementor, preserving the original design style as requested by the client. The project included advanced CSS3 and JavaScript enhancements, a custom contact form, SEO optimization, and Google Maps integration for local discoverability.',
   fullDescriptionUa:

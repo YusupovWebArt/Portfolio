@@ -4,13 +4,13 @@ const awsForRetail: Project = {
   id: 15000,
   title: 'AWS for Retail',
   description:
-    'Website focused on promoting retail-oriented cloud solutions and services built on Amazon Web Services (AWS). It positions AWS not just as infrastructure, but as a strategic backbone for retail businesses to modernize operations, scale dynamically, and provide seamless customer experiences.',
+    'Custom AWS development for retail: cloud architecture, serverless infrastructure, and high-performance e-commerce scaling with sub-2s response times.',
   descriptionUa:
-    'Сайт, орієнтований на просування хмарних рішень та послуг для роздрібної торгівлі на базі Amazon Web Services (AWS). Він позиціонує AWS не просто як інфраструктуру, а як стратегічну основу для модернізації операцій, динамічного масштабування та забезпечення бездоганного клієнтського досвіду ритейлерів.',
+    'Кастомна розробка на AWS для ритейлу: хмарна архітектура, безсерверна інфраструктура та масштабування e-commerce зі швидкістю до 2с.',
   descriptionEs:
-    'Sitio web orientado a promover soluciones y servicios cloud para el comercio minorista basados en Amazon Web Services (AWS). Posiciona AWS no solo como infraestructura, sino como pilar estratégico para que las empresas del retail modernicen sus operaciones, escalen dinámicamente y ofrezcan experiencias de cliente excepcionales.',
+    'Desarrollo AWS a medida para retail: arquitectura cloud, infraestructura serverless y escalabilidad e-commerce de alto rendimiento en menos de 2s.',
   descriptionDe:
-    'Website zur Präsentation von Cloud-Lösungen und Services für den Einzelhandel auf Basis von Amazon Web Services (AWS). Sie positioniert AWS nicht nur als Infrastruktur, sondern als strategisches Rückgrat, mit dem Handelsunternehmen ihre Abläufe modernisieren, dynamisch skalieren und nahtlose Kundenerlebnisse schaffen können.',
+    'Individuelle AWS-Entwicklung für den Einzelhandel: Cloud-Architektur, serverlose Infrastruktur und hochperformante E-Commerce-Skalierung unter 2s.',
   fullDescription:
     'A custom WordPress site built with Elementor and extended with custom CSS3, JavaScript, and PHP to showcase AWS retail cloud solutions. AI-generated imagery communicates complex cloud concepts visually, while a full SEO strategy drives organic traffic from retail businesses evaluating cloud modernization options.',
   fullDescriptionUa:

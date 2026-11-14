@@ -3,10 +3,14 @@ import { Project } from '../project-types'
 const causetume: Project = {
   id: 11500,
   title: 'Causetume',
-  description: 'Knitwear Brand. Cloth store',
-  descriptionUa: 'Бренд трикотажного одягу. Магазин одягу',
-  descriptionEs: 'Marca de ropa de punto. Tienda de moda.',
-  descriptionDe: 'Strickmoden-Marke. Online-Bekleidungsgeschäft.',
+  description:
+    'WooCommerce fashion e-commerce store with custom theme adaptation, variant catalog configuration, and sub-2s page load speeds.',
+  descriptionUa:
+    'E-commerce магазин одягу на WooCommerce з індивідуальною кастомізацією теми, конфігурацією варіантів товарів та швидкістю до 2с.',
+  descriptionEs:
+    'Tienda e-commerce de moda en WooCommerce con personalización avanzada de tema, catálogo de variantes y carga rápida en menos de 2s.',
+  descriptionDe:
+    'WooCommerce-Modeshop mit individueller Theme-Anpassung, Variantenkatalog-Konfiguration und schnellen Ladezeiten unter 2 Sekunden.',
   fullDescription:
     'A WooCommerce online store built on a premium WordPress theme, customized with CSS3 and JavaScript to match the Causetume knitwear brand identity. Full product catalog setup including product content, images, categories, and variant configuration was completed, giving the brand a polished e-commerce presence for their knitwear collections.',
   fullDescriptionUa:

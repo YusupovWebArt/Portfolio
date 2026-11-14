@@ -31,20 +31,20 @@ export async function generateMetadata({
   const isDe = locale === 'de'
 
   const title = isUa
-    ? 'Інженерний блог та архітектурні кейси | Артур Юсупов'
+    ? 'Архітектура Next.js 16 та інженерний блог | Артур Юсупов'
     : isEs
-      ? 'Blog de Ingeniería y Casos de Arquitectura | Artur Yusupov'
+      ? 'Arquitectura Web y Next.js 16 en Producción | Artur Yusupov'
       : isDe
-        ? 'Engineering-Blog & Architektur-Fallstudien | Artur Yusupov'
-        : 'Engineering Blog & Architectural Case Studies | Artur Yusupov'
+        ? 'Webarchitektur & Next.js 16 Engineering | Artur Yusupov'
+        : 'Web Architecture & Next.js 16 Engineering | Artur Yusupov'
 
   const description = isUa
-    ? 'Глибокі технічні статті про архітектуру вебу, Next.js 16, кастомний WordPress, автономні RAG AI-рушії та доступність WCAG 2.2 AA.'
+    ? '47 практичних досліджень: міграція на Next.js 16, кешування HPOS, автономні AI-агенти та оптимізація швидкості до < 0.8s.'
     : isEs
-      ? 'Artículos técnicos en profundidad sobre arquitectura web, Next.js 16, WordPress a medida, motores de IA con RAG y accesibilidad WCAG 2.2 AA.'
+      ? '47 artículos técnicos avanzados: Next.js 16, WordPress headless con HPOS, agentes IA autónomos y cumplimiento WCAG 2.2 AA.'
       : isDe
-        ? 'Detaillierte technische Artikel über Webarchitektur, Next.js 16, maßgeschneidertes WordPress, autonome RAG-AI-Engines und WCAG 2.2 AA Barrierefreiheit.'
-        : 'In-depth engineering articles on web architecture, Next.js 16, custom WordPress, autonomous in-browser RAG AI engines, and WCAG 2.2 AA compliance.'
+        ? '47 praxisnahe Architektur-Fallstudien: Next.js 16, Headless WordPress mit HPOS, autonome KI-Agenten und Sub-Sekunden-Performance.'
+        : 'Explore 47 production-grade engineering guides on Next.js 16, Hybrid RAG, high-concurrency WordPress, and sub-second Core Web Vitals.'
 
   const ogImageUrl = 'https://www.yusupovartur.com/images/blog/cover-nextjs-vs-headless-wp.png'
 

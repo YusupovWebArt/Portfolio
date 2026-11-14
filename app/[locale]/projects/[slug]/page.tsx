@@ -65,7 +65,10 @@ export async function generateMetadata({
           ? 'Fallstudie'
           : 'Case Study'
 
-  const title = `${project.title} - ${caseStudyLabel} | Artur Yusupov`
+  const title =
+    project.title.length > 32
+      ? `${project.title} | Artur Yusupov`
+      : `${project.title} - ${caseStudyLabel} | Artur Yusupov`
   const ogLocale =
     locale === 'ua' ? 'uk_UA' : locale === 'es' ? 'es_ES' : locale === 'de' ? 'de_DE' : 'en_US'
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.yusupovartur.com'

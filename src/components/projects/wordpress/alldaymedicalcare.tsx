@@ -5,13 +5,13 @@ const alldayMedicalcare: Project = {
   title: 'All Day Medical Care Clinic',
   deepDiveBlogSlug: 'all-day-medical-care-hipaa-healthtech-portal',
   description:
-    'Healthcare provider focused on offering a wide range of medical services.',
+    'Turnkey medical clinic website development on WordPress: custom theme, dynamic doctor filtering directory, and sub-2s load time.',
   descriptionUa:
-    'Медична установа, що спеціалізується на наданні широкого спектра медичних послуг.',
+    'Розробка медичного сайту для клініки під ключ: кастомна тема WordPress, каталог лікарів із динамічною фільтрацією за спеціальностями та швидкість до 2 секунд.',
   descriptionEs:
-    'Proveedor de atención médica centrado en ofrecer una amplia gama de servicios médicos.',
+    'Desarrollo de web médica para clínica llave en mano: tema WordPress personalizado, directorio dinámico de médicos y carga rápida en menos de 2s.',
   descriptionDe:
-    'Gesundheitsdienstleister mit Fokus auf ein breites Spektrum medizinischer Versorgungsleistungen.',
+    'Entwicklung einer schlüsselfertigen Website für eine medizinische Klinik: individuelles WordPress-Theme, dynamischer Ärztefilter und Ladezeiten unter 2s.',
   fullDescription:
     'A custom WordPress theme developed on top of an existing client theme using Elementor enhanced with custom HTML, CSS3, JavaScript, and PHP. Advanced Custom Fields (ACF) power flexible content management, while a bespoke PHP-based doctor directory template enables dynamic filtering of providers by specialty, location, and other parameters - giving patients fast access to the right care.',
   fullDescriptionUa:

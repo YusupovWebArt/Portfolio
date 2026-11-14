@@ -3,10 +3,14 @@ import { Project } from '../project-types'
 const nokyc: Project = {
   id: 5800,
   title: 'Nokyc',
-  description: 'Pure HTML/CSS/JS code.',
-  descriptionUa: 'Чистий код HTML/CSS/JS.',
-  descriptionEs: 'Código puro HTML/CSS/JS.',
-  descriptionDe: 'Reiner HTML/CSS/JS-Code.',
+  description:
+    'Lightweight static Web3 information portal engineered with pure semantic HTML5, modern CSS3, and vanilla JavaScript for sub-second performance.',
+  descriptionUa:
+    'Легкий статичний Web3 інформаційний портал на чистому семантичному HTML5, сучасному CSS3 та ванільному JavaScript із субсекундною швидкістю.',
+  descriptionEs:
+    'Portal informativo Web3 estático y ligero desarrollado con HTML5 semántico puro, CSS3 moderno y JavaScript vanilla para rendimiento sub-segundo.',
+  descriptionDe:
+    'Leichtgewichtiges statisches Web3-Informationsportal, entwickelt mit reinem semantischem HTML5, modernem CSS3 und Vanilla JavaScript für Sub-Sekunden-Ladezeiten.',
   fullDescription:
     'A static informational website built with pure HTML5, CSS3, and vanilla JavaScript. The site delivers a clean, fast-loading multi-section layout without any frameworks or CMS, showcasing efficient hand-coded frontend development deployed on GitHub Pages.',
   fullDescriptionUa:
