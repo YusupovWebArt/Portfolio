@@ -1780,6 +1780,16 @@ test('home page must have zero critical or serious WCAG 2.2 AA violations', asyn
 
 When engineering an e-commerce platform in 2026, technology leaders face a classic architectural trade-off: surrender server control for turnkey reliability (Shopify), or maintain sovereign control over database schemas, transaction fees, and business logic (custom WooCommerce).
 
+#### Quick Decision Matrix: When to Choose Which Architecture
+
+| Evaluation Dimension | Choose Shopify Liquid | Choose Custom WooCommerce |
+| :--- | :--- | :--- |
+| **Catalog Scope** | Standard retail catalog (< 5,000 SKUs) | Complex variants or large catalog (10,000+ SKUs) |
+| **B2B & Pricing Logic** | Standard D2C retail with single pricing | Multi-tier wholesale, custom B2B, ERP synchronization |
+| **Transaction Commissions** | 2% to 3% platform fees + payment gateway | 0% platform commission (direct gateway only) |
+| **Custom Code & Storage** | Sandboxed Shopify Functions & Liquid | Sovereign PHP 8.2+, MySQL indexing, Redis cache |
+| **Operational Overhead** | Zero server maintenance or patch management | Requires managed NVMe VPS and security patching |
+
 ---
 
 ### 1. Architecture & Rendering Models
@@ -1841,6 +1851,16 @@ Shopify requires an upgrade to Shopify Plus ($2,000+/month minimum). With WooCom
 
 У 2026 році вибір e-commerce платформи зводиться до балансу: віддати контроль над сервером заради простоти (Shopify) або зберегти повне володіння даними, базами даних та бізнес-логікою (кастомний WooCommerce).
 
+#### Матриця швидкого вибору архітектури
+
+| Критерій оцінки | Обирайте Shopify Liquid | Обирайте кастомний WooCommerce |
+| :--- | :--- | :--- |
+| **Обсяг каталогу** | Стандартний ритейл (< 5 000 SKU) | Складні варіації або великий каталог (10 000+ SKU) |
+| **B2B та цінова логіка** | Стандартний D2C із єдиним прайсом | Багаторівневі оптові ціни, B2B, інтеграція з ERP |
+| **Комісії платформи** | 2% - 3% комісії платформи + платіжний шлюз | 0% комісії платформи (тільки прямий шлюз) |
+| **Кастомний код і дані** | Ізольовані Shopify Functions та Liquid | Повний доступ до PHP 8.2+, індекси MySQL, Redis |
+| **Операційне обслуговування** | Нульові витрати на сервери та оновлення | Потребує керованого NVMe VPS та моніторингу |
+
 ---
 
 ### 1. Архітектура та рендеринг
@@ -1896,6 +1916,16 @@ add_filter('posts_pre_query', function ($posts, \\WP_Query $query) {
 
 En 2026, los responsables técnicos se enfrentan a un compromiso claro: ceder el control del servidor a cambio de estabilidad gestionada (Shopify) o mantener el control total sobre la base de datos y la lógica de negocio (WooCommerce a medida).
 
+#### Matriz de decisión rápida de arquitectura
+
+| Dimensión de evaluación | Elegir Shopify Liquid | Elegir WooCommerce a medida |
+| :--- | :--- | :--- |
+| **Volumen de catálogo** | Catálogo estándar (< 5.000 SKUs) | Variaciones complejas o gran catálogo (10.000+ SKUs) |
+| **Lógica B2B y precios** | D2C estándar con tarifa única | Precios mayoristas multinivel, B2B y sincronización ERP |
+| **Comisiones de plataforma** | 2% - 3% comisión de plataforma + pasarela | 0% comisión de plataforma (solo pasarela directa) |
+| **Código propio y base de datos** | Funciones aisladas de Shopify y Liquid | PHP 8.2+ soberano, índices MySQL y caché Redis |
+| **Gestión operativa** | Sin mantenimiento ni parches de servidor | Requiere VPS NVMe gestionado y soporte técnico |
+
 ---
 
 ### 1. Arquitectura y procesamiento
@@ -1944,6 +1974,16 @@ Para una tienda con una facturación anual de $1.2M, el desglose a 3 años evide
 - **WooCommerce a medida** es la opción recomendada para modelos B2B, integraciones complejas con ERP y marcas que buscan eliminar comisiones sobre ventas.`,de:`### Das strategische Dilemma: Managed SaaS vs. Self-Hosted-Infrastruktur
 
 Bei der Konzeption einer E-Commerce-Plattform im Jahr 2026 stehen technische Fuehrungskraefte vor einem klassischen architektonischen Trade-off: Die Aufgabe der Serverkontrolle zugunsten schluesselfertiger Zuverlaessigkeit (Shopify) oder die volle Souveraenitaet ueber Datenbankschemata, Transaktionsgebuehren und Geschaeftslogik (Custom WooCommerce).
+
+#### Schnelle Entscheidungsmatrix: Welche Architektur wann waehlen
+
+| Evaluierungsdimension | Shopify Liquid waehlen | Custom WooCommerce waehlen |
+| :--- | :--- | :--- |
+| **Katalogumfang** | Standard-Retail-Katalog (< 5.000 SKUs) | Komplexe Varianten oder Grosskatalog (10.000+ SKUs) |
+| **B2B- & Preislogik** | Standard-D2C mit einheitlicher Preisgestaltung | Mehrstufige Grosshandelspreise, B2B, ERP-Synchronisation |
+| **Plattformgebuehren** | 2% - 3% Transaktionsgebuehren + Gateway | 0% Plattformprovision (ausschliesslich direktes Gateway) |
+| **Eigener Code & Datenhoheit** | Isolierte Shopify Functions & Liquid | Voller Zugriff auf PHP 8.2+, MySQL-Indizes, Redis |
+| **Operativer Aufwand** | Kein Server-Wartungs- oder Patch-Aufwand | Erfordert gemanagten NVMe-VPS und Sicherheits-Patches |
 
 ---
 
