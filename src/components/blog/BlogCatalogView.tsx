@@ -319,6 +319,36 @@ export default function BlogCatalogView({
           <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
             {headerSubtitle}
           </p>
+
+          {/* Quick-Jump Curated Architectural Guides */}
+          <div className="flex flex-wrap items-center justify-center gap-2 mt-6 pt-5 border-t border-slate-200/80 dark:border-slate-800">
+            <span className="text-xs font-bold text-slate-500 dark:text-slate-400 mr-1">
+              {isUa ? 'Рекомендовані розбори:' : isEs ? 'Guías destacadas:' : isDe ? 'Empfohlene Leitfäden:' : 'Featured Guides:'}
+            </span>
+            <Link
+              href={`/${locale}/blog/unitrition-headless-healthtech-architecture`}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300 border border-emerald-200/90 dark:border-emerald-800/60 hover:bg-emerald-100 dark:hover:bg-emerald-900/40 transition shadow-2xs"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+              <span>Unitrition: HealthTech API</span>
+              <span className="text-[10px] opacity-75 font-mono bg-emerald-200/60 dark:bg-emerald-800/40 px-1.5 py-0.2 rounded">3.7m</span>
+            </Link>
+            <Link
+              href={`/${locale}/blog/nextjs-vs-headless-wordpress-custom-php-2026`}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-purple-50 dark:bg-purple-950/40 text-purple-800 dark:text-purple-300 border border-purple-200/90 dark:border-purple-800/60 hover:bg-purple-100 dark:hover:bg-purple-900/40 transition shadow-2xs"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-purple-500" />
+              <span>Next.js 16 vs Headless WP</span>
+              <span className="text-[10px] opacity-75 font-mono bg-purple-200/60 dark:bg-purple-800/40 px-1.5 py-0.2 rounded">2026</span>
+            </Link>
+            <Link
+              href={`/${locale}/blog/fullstack-ai-lab-interactive-edtech-architecture`}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-blue-50 dark:bg-blue-950/40 text-blue-800 dark:text-blue-300 border border-blue-200/90 dark:border-blue-800/60 hover:bg-blue-100 dark:hover:bg-blue-900/40 transition shadow-2xs"
+            >
+              <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+              <span>Fullstack AI Lab: EdTech</span>
+            </Link>
+          </div>
         </div>
 
         {/* Main 2-Column Grid: Left Sticky Sidebar + Right Content Area */}

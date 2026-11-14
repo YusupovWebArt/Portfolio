@@ -13,6 +13,7 @@ import {
   LuCircleCheck as CheckCircle2,
   LuMessageSquare as MessageSquare,
   LuSparkles as Sparkles,
+  LuX as X,
 } from 'react-icons/lu'
 import type { BlogPost } from '../../data/blog'
 import { getServiceForBlogPost } from '../../data/services'
@@ -48,6 +49,7 @@ export default function BlogDetailView({
   onSelectProject,
 }: BlogDetailViewProps) {
   const [copiedLink, setCopiedLink] = useState(false)
+  const [showReaderAdvisory, setShowReaderAdvisory] = useState(true)
   const currentPost = post || (slug ? getBlogPostBySlug(slug) : undefined)
   if (!currentPost) return null
 
@@ -671,6 +673,70 @@ export default function BlogDetailView({
           </div>
         )}
       </div>
+
+      {/* Floating Reader Advisory & Consultation Bar */}
+      {showReaderAdvisory && (
+        <aside
+          aria-label={
+            locale === 'ua'
+              ? 'Швидка інженерна консультація'
+              : locale === 'es'
+                ? 'Consulta técnica rápida'
+                : locale === 'de'
+                  ? 'Schnelle Architekturberatung'
+                  : 'Quick Engineering Advisory'
+          }
+          className="fixed bottom-4 left-1/2 -translate-x-1/2 z-40 w-[94%] max-w-2xl px-4 py-3 rounded-2xl bg-slate-900/95 dark:bg-slate-950/95 text-white border border-purple-500/40 shadow-2xl backdrop-blur-md flex items-center justify-between gap-3"
+        >
+          <div className="flex items-center gap-2.5 min-w-0">
+            <span className="w-2 h-2 rounded-full bg-lime-400 shrink-0" />
+            <p className="text-xs sm:text-sm font-medium text-slate-200 truncate">
+              {locale === 'ua'
+                ? 'Потрібна консультація щодо цієї архітектури?'
+                : locale === 'es'
+                  ? '¿Consultoría sobre esta arquitectura?'
+                  : locale === 'de'
+                    ? 'Architekturberatung zu diesem Stack?'
+                    : 'Consulting on this architecture?'}
+            </p>
+          </div>
+          <div className="flex items-center gap-2 shrink-0">
+            <button
+              type="button"
+              onClick={openAiChat}
+              className="px-3 py-1.5 rounded-lg text-xs font-bold bg-lime-400 hover:bg-lime-300 text-slate-950 transition flex items-center gap-1 cursor-pointer"
+            >
+              <Sparkles className="w-3.5 h-3.5" aria-hidden="true" />
+              <span className="hidden sm:inline">
+                {locale === 'ua' ? 'Запитати AI' : locale === 'es' ? 'Preguntar a IA' : locale === 'de' ? 'KI fragen' : 'Ask AI'}
+              </span>
+              <span className="sm:hidden">AI</span>
+            </button>
+            <Link
+              href={`/${locale}#contact`}
+              className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-white/10 hover:bg-white/20 text-white border border-white/20 transition flex items-center gap-1"
+            >
+              <span>{locale === 'ua' ? 'Контакт' : locale === 'es' ? 'Contacto' : locale === 'de' ? 'Kontakt' : 'Contact'}</span>
+            </Link>
+            <button
+              type="button"
+              onClick={() => setShowReaderAdvisory(false)}
+              className="p-1 rounded-md text-slate-400 hover:text-white transition cursor-pointer"
+              aria-label={
+                locale === 'ua'
+                  ? 'Закрити панель'
+                  : locale === 'es'
+                    ? 'Cerrar panel'
+                    : locale === 'de'
+                      ? 'Schliessen'
+                      : 'Dismiss advisory'
+              }
+            >
+              <X className="w-4 h-4" aria-hidden="true" />
+            </button>
+          </div>
+        </aside>
+      )}
     </article>
   )
 }
