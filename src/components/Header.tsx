@@ -166,11 +166,10 @@ const Header = () => {
   const { isDark, toggleTheme } = useTheme()
   const { lang, setLang, t } = useLanguage()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [activeSection, setActiveSection] = useState('home')
   const headerRef = useRef<HTMLElement>(null)
 
   const navItems = [
-    { id: 'home', label: t.header.nav.home, href: `/${lang}#home` },
+    { id: 'home', label: t.header.nav.home, href: `/${lang}` },
     { id: 'about', label: t.header.nav.about, href: `/${lang}#about` },
     { id: 'how-i-work', label: t.header.nav.aiWorkflow, href: `/${lang}#how-i-work` },
     { id: 'projects', label: t.header.nav.projects, href: `/${lang}#projects` },
@@ -179,6 +178,23 @@ const Header = () => {
     { id: 'blog', label: t.header.nav.blog, href: `/${lang}/blog`, isPage: true },
     { id: 'contact', label: t.header.nav.contact, href: `/${lang}#contact` },
   ]
+
+  const getInitialActiveSection = (): string => {
+    if (typeof window === 'undefined') return 'home'
+    const path = window.location.pathname
+    if (path.includes('/blog')) return 'blog'
+    if (path.includes('/services')) return 'services'
+    if (path.includes('/projects')) return 'projects'
+    if (path.includes('/privacy-policy') || path.includes('/cookie-policy')) return ''
+
+    const hash = window.location.hash.replace('#', '')
+    if (hash && ['home', 'about', 'how-i-work', 'projects', 'skills', 'contact'].includes(hash)) {
+      return hash
+    }
+    return 'home'
+  }
+
+  const [activeSection, setActiveSection] = useState<string>(getInitialActiveSection)
 
   // Outside click and Escape key dismissal for mobile drawer
   useEffect(() => {
@@ -203,16 +219,25 @@ const Header = () => {
   }, [isMenuOpen])
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (typeof window !== 'undefined') {
-        if (window.location.pathname.includes('/services')) {
-          setActiveSection('services')
-          return
-        }
-        if (window.location.pathname.includes('/blog')) {
-          setActiveSection('blog')
-          return
-        }
+    const updateActiveSection = () => {
+      if (typeof window === 'undefined') return
+
+      const path = window.location.pathname
+      if (path.includes('/blog')) {
+        setActiveSection('blog')
+        return
+      }
+      if (path.includes('/services')) {
+        setActiveSection('services')
+        return
+      }
+      if (path.includes('/projects')) {
+        setActiveSection('projects')
+        return
+      }
+      if (path.includes('/privacy-policy') || path.includes('/cookie-policy')) {
+        setActiveSection('')
+        return
       }
 
       const nonPageItems = navItems.filter((item) => !item.isPage)
@@ -223,13 +248,43 @@ const Header = () => {
         const section = sections[i]
         if (section && section.offsetTop <= scrollPosition) {
           setActiveSection(nonPageItems[i].id)
-          break
+          return
         }
+      }
+
+      const hash = window.location.hash.replace('#', '')
+      if (hash && nonPageItems.some((item) => item.id === hash)) {
+        setActiveSection(hash)
+        return
+      }
+
+      setActiveSection('home')
+    }
+
+    updateActiveSection()
+
+    if (window.location.hash) {
+      const targetId = window.location.hash.replace('#', '')
+      if (targetId) {
+        const timer = setTimeout(() => {
+          const el = document.getElementById(targetId)
+          if (el) {
+            el.scrollIntoView({ behavior: 'smooth' })
+          }
+        }, 100)
+        return () => clearTimeout(timer)
       }
     }
 
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', updateActiveSection, { passive: true })
+    window.addEventListener('popstate', updateActiveSection)
+    window.addEventListener('hashchange', updateActiveSection)
+
+    return () => {
+      window.removeEventListener('scroll', updateActiveSection)
+      window.removeEventListener('popstate', updateActiveSection)
+      window.removeEventListener('hashchange', updateActiveSection)
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [t, lang])
 
@@ -248,7 +303,13 @@ const Header = () => {
       if (isSpa) {
         e.preventDefault()
         window.open(`https://www.yusupovartur.com${item.href}`, '_blank', 'noopener,noreferrer')
+      } else {
+        if (typeof window !== 'undefined' && window.location.pathname === item.href) {
+          e.preventDefault()
+          window.scrollTo({ top: 0, behavior: 'smooth' })
+        }
       }
+      setActiveSection(item.id)
       setIsMenuOpen(false)
       return
     }
@@ -257,10 +318,14 @@ const Header = () => {
     if (element) {
       e.preventDefault()
       element.scrollIntoView({ behavior: 'smooth' })
+      setActiveSection(item.id)
     } else {
       if (isSpa) {
         e.preventDefault()
         window.dispatchEvent(new CustomEvent('navigate-to-section', { detail: item.id }))
+      } else {
+        e.preventDefault()
+        window.location.assign(item.href)
       }
     }
     setIsMenuOpen(false)
@@ -281,9 +346,9 @@ const Header = () => {
         <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16 gap-3">
             {/* Logo / Brand Name - protected against multi-line wrapping */}
-            <button
-              type="button"
-              onClick={(e) => handleNavClick(e as unknown as React.MouseEvent<HTMLAnchorElement>, navItems[0])}
+            <a
+              href={`/${lang}`}
+              onClick={(e) => handleNavClick(e, navItems[0])}
               aria-label={
                 lang === 'ua'
                   ? 'Артур Юсупов - Головна сторінка портфоліо'
@@ -296,7 +361,7 @@ const Header = () => {
               className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white hover:text-purple-600 dark:hover:text-lime-400 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-600 dark:focus-visible:outline-lime-400 rounded text-left whitespace-nowrap shrink-0 cursor-pointer"
             >
               Artur Yusupov
-            </button>
+            </a>
 
             {/* Desktop Navigation (>= 1280px xl breakpoint: guarantees zero wrapping and ample breathing room) */}
             <nav
@@ -316,6 +381,7 @@ const Header = () => {
                   key={item.id}
                   href={item.href}
                   onClick={(e) => handleNavClick(e, item)}
+                  aria-current={activeSection === item.id ? 'page' : undefined}
                   className={`text-sm font-medium whitespace-nowrap transition-colors duration-200 cursor-pointer ${
                     activeSection === item.id
                       ? 'text-purple-600 dark:text-lime-400 font-semibold'
@@ -462,6 +528,7 @@ const Header = () => {
                     key={item.id}
                     href={item.href}
                     onClick={(e) => handleNavClick(e, item)}
+                    aria-current={activeSection === item.id ? 'page' : undefined}
                     className={`flex items-center justify-between w-full text-left px-4 py-3 rounded-xl text-sm font-semibold transition-all duration-150 cursor-pointer ${
                       activeSection === item.id
                         ? 'text-purple-700 dark:text-lime-400 bg-purple-50 dark:bg-lime-950/40 border border-purple-200/60 dark:border-lime-500/30'
