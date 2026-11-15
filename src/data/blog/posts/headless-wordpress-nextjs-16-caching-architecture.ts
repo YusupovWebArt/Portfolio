@@ -6,23 +6,27 @@ export const headlessWordPressNextJs16CachingArchitecturePost: BlogPost = {
     en: 'Headless WordPress & Next.js 16: Architecting Hybrid Caching to Eliminate Cache Invalidation Hell',
     ua: 'Headless WordPress та Next.js 16: Архітектура гібридного кешування без Cache Invalidation Hell',
     es: 'Headless WordPress y Next.js 16: Arquitectura de caché híbrida para eliminar el Cache Invalidation Hell',
+    de: 'Headless WordPress & Next.js 16: Hybride Caching-Architektur zur Beseitigung der Cache-Invalidation-Hölle',
   },
   description: {
     en: 'An end-to-end engineering breakdown on decoupling WordPress with Next.js 16 App Router using On-Demand Tag Revalidation, HMAC-secured webhooks, and sub-50ms TTFB without database thrashing.',
     ua: 'Детальний інженерний розбір декуплінгу WordPress з Next.js 16 App Router: On-Demand Tag Revalidation, захищені HMAC-вебхуки та TTFB < 50мс без перевантаження бази даних.',
     es: 'Desglose técnico sobre cómo desacoplar WordPress con Next.js 16 App Router mediante On-Demand Tag Revalidation, webhooks seguros con HMAC y TTFB sub-50ms sin sobrecargar la base de datos.',
+    de: 'Detaillierte Architekturanalyse zur Entkopplung von WordPress mit dem Next.js 16 App Router: On-Demand-Tag-Revalidierung, HMAC-gesicherte Webhooks und Sub-50ms-TTFB ohne Überlastung der MySQL-Datenbank.',
   },
   date: '2026-11-02',
   readTime: {
     en: '9 min read',
     ua: '9 хв читання',
     es: '9 min de lectura',
+    de: '9 Min. Lesezeit',
   },
   category: 'architecture-tco',
   categoryLabel: {
     en: 'Architecture & TCO',
     ua: 'Архітектура та TCO',
     es: 'Arquitectura y TCO',
+    de: 'Architektur & TCO',
   },
   tags: ['Next.js 16', 'WordPress', 'PHP 8.2', 'Headless CMS', 'Cache Invalidation', 'Core Web Vitals'],
   author: {
@@ -31,6 +35,7 @@ export const headlessWordPressNextJs16CachingArchitecturePost: BlogPost = {
       en: 'Fullstack Web Engineer & AI Developer',
       ua: 'Fullstack веб-інженер та AI-розробник',
       es: 'Ingeniero Web Fullstack y Desarrollador IA',
+      de: 'Fullstack Web-Engineer & KI-Architekt',
     },
   },
   coverImage: '/Portfolio/images/blog/cover-headless-caching.svg',
@@ -43,6 +48,7 @@ export const headlessWordPressNextJs16CachingArchitecturePost: BlogPost = {
         en: 'Headless Next.js 16 and WordPress architecture utilizing selective tag-based cache purging for instant nutritional content sync and 38ms TTFB.',
         ua: 'Headless-архітектура на Next.js 16 та WordPress із вибірковим очищенням тегів кешу для миттєвої синхронізації нутриціологічного контенту та TTFB 38мс.',
         es: 'Arquitectura headless con Next.js 16 y WordPress basada en purgado selectivo por etiquetas para sincronización inmediata de contenidos y TTFB de 38ms.',
+        de: 'Headless-Architektur mit Next.js 16 und WordPress unter Nutzung selektiver Tag-basierter Cache-Bereinigung für sofortige Inhaltssynchronisierung und 38ms TTFB.',
       },
     },
     {
@@ -53,6 +59,7 @@ export const headlessWordPressNextJs16CachingArchitecturePost: BlogPost = {
         en: 'High-traffic Next.js 16 platform with event-driven revalidation pipelines handling thousands of concurrent readers without database spikes.',
         ua: 'Високонавантажена платформа на Next.js 16 із подієвими пайплайнами ревалідації, що витримує тисячі одночасних читачів без спалахів навантаження на БД.',
         es: 'Plataforma Next.js 16 de alto tráfico con pipelines de revalidación por eventos que soporta miles de lectores concurrentes sin sobrecargas en la base de datos.',
+        de: 'Hochfrequentierte Next.js 16 Plattform mit ereignisgesteuerten Revalidierungs-Pipelines, die Tausende gleichzeitige Leser ohne Datenbankspitzen bedient.',
       },
     },
   ],
@@ -74,6 +81,12 @@ export const headlessWordPressNextJs16CachingArchitecturePost: BlogPost = {
       'Un hook ligero transition_post_status en PHP 8.2 firma la carga útil con HMAC-SHA256 y envía peticiones HTTP no bloqueantes hacia Next.js.',
       'El App Router de Next.js 16 valida la firma mediante crypto.timingSafeEqual y purga de forma selectiva solo las etiquetas de la entidad afectada sin vaciar la caché global.',
       'Esta arquitectura híbrida erradica el colapso por concurrencia (cache stampede), reduce las consultas a MySQL más del 95% y minimiza costes de infraestructura.',
+    ],
+    de: [
+      'Der Wechsel von zeitbasiertem Polling (revalidate: 60) zu ereignisgesteuerter Tag-Invalidierung (revalidateTag) garantiert Edge-Lesezugriffe unter 50ms bei gleichzeitiger Veröffentlichung redaktioneller Änderungen in unter 80ms.',
+      'Ein leichtgewichtiger PHP 8.2 transition_post_status Hook signiert Event-Payloads mit HMAC-SHA256 und sendet nicht-blockierende HTTP-Anfragen an Next.js.',
+      'Der Next.js 16 App Router validiert Webhook-Signaturen mittels crypto.timingSafeEqual und invalidiert gezielt nur die betroffenen Entity-Tags ohne globale Caches zu löschen.',
+      'Diese hybride Architektur eliminiert Cache-Stampedes, reduziert die MySQL-Datenbanklast um über 95% und ermöglicht planbare, kosteneffiziente Skalierung.',
     ],
   },
   content: {
@@ -796,5 +809,246 @@ Incluso las arquitecturas más sólidas requieren salvaguardas para casos límit
 Combinar WordPress y Next.js 16 es una de las decisiones más acertadas para lograr una experiencia editorial amigable con un rendimiento web de primer nivel. No obstante, basar la estrategia en revalidación periódica genera costes innecesarios y frustración editorial. Adoptar On-Demand Tag Revalidation con autenticación HMAC garantiza sincronización inmediata, lecturas edge sub-50ms y máxima protección de la base de datos.
 
 ¿Estás planificando una migración a arquitectura headless o tu sistema actual presenta lentitud de caché? Explora nuestros casos en **Unitrition** y **Fullstack AI Lab**, o inicia una consulta con nuestro asistente de IA interactivo para calcular tiempos y ahorros de infraestructura.`,
+    de: `### 1. Executive Summary & Das Wesentliche vorweg (BLUF)
+
+Die Entkopplung von WordPress und Next.js 16 verspricht das Beste aus beiden Welten: ein praxiserprobtes Redaktionssystem kombiniert mit der Sub-Sekunden-Performance von React 19. In der Produktionspraxis geraten Entwicklungsteams jedoch häufig in die sogenannte **Cache-Invalidation-Hölle** - den permanenten Konflikt zwischen der Auslieferung veralteter Inhalte und einer Überlastung der MySQL-Ursprungsdatenbank durch ungecachte Server-Side-Rendering-Anfragen (SSR).
+
+Die optimale moderne Architektur vermeidet beide Extreme. Anstatt bei jeder Anfrage ungecachtes SSR auszuführen oder sich auf willkürliche zeitbasierte Revalidierungsintervalle (\`revalidate: 60\`) zu verlassen, sollten Produktionsteams eine **ereignisgesteuerte On-Demand-Tag-Revalidierung** mit Next.js 16 und kryptografisch gesicherten WordPress-Webhooks implementieren.
+
+Durch das Auslösen feingranularer Cache-Tag-Invalidierungen (\`revalidateTag\`) über authentifizierte HMAC-SHA256-Webhooks werden Inhaltsänderungen innerhalb von **80ms** nach dem Klick auf "Veröffentlichen" weltweit sichtbar, während die P95 Time to First Byte (TTFB) direkt von CDN-Edge-Knoten stabil bei **38ms** verbleibt.
+
+---
+
+### 2. Das Kern-Dilemma: Veraltetes Lesen vs. Datenbank-Kollaps
+
+Bei der Konzeption entkoppelter Webplattformen führen typische Standardansätze zu gravierenden Nachteilen:
+
+#### Ansatz 1: Keinerlei Caching / Ungecachtes SSR bei jeder Anfrage
+Um sicherzustellen, dass Redakteure Änderungen sofort sehen, konfigurieren Teams \`dynamic = 'force-dynamic'\` oder übergeben \`cache: 'no-store'\` an vorgelagerte \`fetch()\`-Aufrufe.
+- **Fehlermodus:** Bei Lastspitzen (wie E-Mail-Newslettern oder Produktlaunches) überfluten gleichzeitige Anfragen die REST- oder GraphQL-API von WordPress.
+- **Konsequenz:** PHP-FPM-Worker-Pools sind ausgelastet, aktive MySQL-Verbindungen erreichen ihr Maximum und der TTFB steigt von 200ms auf über 3.000ms an, bevor 504 Gateway Timeouts auftreten.
+
+#### Ansatz 2: Willkürliche zeitbasierte Revalidierung (\`revalidate: 60\`)
+Teams versuchen die Datenbank zu schützen, indem sie statische Dateien ausliefern und diese periodisch im Hintergrund revalidieren.
+- **Fehlermodus:** Redaktionsteams erleben unvorhersehbare Verzögerungen. Eine dringende Korrektur eines Tippfehlers oder eine Eilmeldung benötigt zwischen 1 und 60 Sekunden, um auf den Edge-Knoten sichtbar zu werden.
+- **Konsequenz:** Redakteure betätigen wiederholt "Cache leeren"-Buttons oder melden Störungen. Noch kritischer: Das Ablaufen stark frequentierter URLs löst Cache-Stampedes (das "Thundering Herd"-Problem) aus, bei denen Dutzende paralleler Edge-Worker Backend-Abfragen für dieselbe Seite anstoßen.
+
+| Parameter | Ungecachtes SSR (\`no-store\`) | Zeitbasiertes ISR (\`revalidate: 60\`) | Ereignisgesteuerte Tag-Revalidierung |
+| :--- | :--- | :--- | :--- |
+| **Edge Cache Hit Ratio** | 0% (Umgehung) | ~82% - 88% | **> 98.4%** |
+| **P95 TTFB-Latenz** | 680ms - 2.400ms | 140ms (Warm) / 800ms (Veraltet) | **38ms (Stabil)** |
+| **MySQL-Last (1k Anfragen)** | 14.200 Abfragen | 1.420 Abfragen | **< 15 Abfragen** |
+| **Redaktions-Verzögerung** | 0s | Bis zu 60s Verzögerung | **< 80ms** |
+| **Cache-Stampede-Risiko** | N/A (Immer langsam) | Hoch bei Ablauf des TTL | **Null (Atomarer Mutex)** |
+
+---
+
+### 3. Architekturübersicht: Die ereignisgesteuerte Revalidierungsschleife
+
+Die empfohlene Systemarchitektur entkoppelt die Cache-Lebensdauer von Zeitintervallen und transformiert Inhaltsänderungen in WordPress in gezielte Cache-Invalidierungen in Next.js 16:
+
+\`\`\`
+[ WordPress Admin (Redakteur veröffentlicht / bearbeitet Beitrag) ]
+                 │
+                 ▼ (Hook: 'transition_post_status')
+[ PHP 8.2 Webhook Generator ]
+  ├── Payload: { slug, post_type, tags, timestamp }
+  └── Signatur: HMAC-SHA256(payload, WP_REVALIDATE_SECRET)
+                 │
+                 ▼ HTTPS POST (Nicht-blockierend / Fire-and-forget)
+[ Next.js 16 Route Handler: /api/revalidate ]
+  ├── Schritt 1: Validierung der timing-sicheren HMAC-Signatur (crypto.timingSafeEqual)
+  ├── Schritt 2: Rate-Limit-Prüfung & Replay-Schutz (Zeitstempel-Validierung)
+  └── Schritt 3: Ausführung von revalidateTag(\`post-\${slug}\`) & revalidateTag('feed-posts')
+                 │
+                 ▼
+[ Next.js Daten-Cache / CDN Edge-Knoten ]
+  └── Spezifisches Tag invalidiert in < 25ms (Alle anderen Seiten bleiben warm im Cache)
+\`\`\`
+
+---
+
+### 4. Praxis-Implementierungsleitfaden
+
+#### 4.1. WordPress Core / PHP 8.2 Event-Hook
+Platzieren Sie diesen Hook in einem Must-Use-Plugin (\`wp-content/mu-plugins/nextjs-revalidation-webhook.php\`). Er reagiert auf Statusänderungen von Beiträgen und sendet eine nicht-blockierende, HMAC-signierte POST-Anfrage:
+
+\`\`\`php
+<?php
+/**
+ * Plugin Name: Next.js 16 On-Demand Revalidation Webhook
+ * Description: Sendet sichere HMAC-SHA256-Webhooks bei Inhaltsaktualisierungen.
+ * Version: 2.0.0
+ * Author: Artur Yusupov
+ */
+
+declare(strict_types=1);
+
+if (!defined('ABSPATH')) {
+    exit;
+}
+
+add_action('transition_post_status', function (string $new_status, string $old_status, \\WP_Post $post): void {
+    // Nur bei Veröffentlichung, Aktualisierung veröffentlichter Beiträge oder Aufhebung der Veröffentlichung
+    $is_published = ($new_status === 'publish' || $old_status === 'publish');
+    if (!$is_published || wp_is_post_revision($post->ID) || wp_is_post_autosave($post->ID)) {
+        return;
+    }
+
+    $secret = defined('NEXTJS_REVALIDATE_SECRET') ? NEXTJS_REVALIDATE_SECRET : getenv('NEXTJS_REVALIDATE_SECRET');
+    $endpoint = defined('NEXTJS_FRONTEND_URL') ? NEXTJS_FRONTEND_URL : getenv('NEXTJS_FRONTEND_URL');
+
+    if (empty($secret) || empty($endpoint)) {
+        return;
+    }
+
+    $payload = json_encode([
+        'id'        => $post->ID,
+        'slug'      => $post->post_name,
+        'post_type' => $post->post_type,
+        'status'    => $new_status,
+        'timestamp' => time(),
+    ], JSON_THROW_ON_ERROR);
+
+    $signature = hash_hmac('sha256', $payload, $secret);
+
+    // Nicht-blockierende Anfrage zur Vermeidung von Verzögerungen im WordPress-Redaktionsbereich
+    wp_remote_post(rtrim($endpoint, '/') . '/api/revalidate', [
+        'headers' => [
+            'Content-Type' => 'application/json',
+            'X-Signature'  => $signature,
+        ],
+        'body'      => $payload,
+        'timeout'   => 4,
+        'blocking'  => false,
+        'sslverify' => true,
+    ]);
+}, 10, 3);
+\`\`\`
+
+#### 4.2. Sicherer Next.js 16 Route Handler (\`app/api/revalidate/route.ts\`)
+Der Next.js 16 Endpunkt empfängt den Webhook, validiert die kryptografische Signatur per Konstantzeit-Vergleich zum Schutz vor Timing-Angriffen und bereinigt die exakten Tags:
+
+\`\`\`typescript
+import { NextRequest, NextResponse } from 'next/server'
+import { revalidateTag } from 'next/cache'
+import crypto from 'node:crypto'
+
+export const dynamic = 'force-dynamic'
+
+interface RevalidatePayload {
+  id: number
+  slug: string
+  post_type: string
+  status: string
+  timestamp: number
+}
+
+function verifyHmacSignature(rawBody: string, incomingSignature: string | null, secret: string): boolean {
+  if (!incomingSignature) return false
+  const calculated = crypto.createHmac('sha256', secret).update(rawBody).digest('hex')
+  const incomingBuffer = Buffer.from(incomingSignature, 'utf8')
+  const calculatedBuffer = Buffer.from(calculated, 'utf8')
+
+  if (incomingBuffer.length !== calculatedBuffer.length) {
+    return false
+  }
+
+  return crypto.timingSafeEqual(incomingBuffer, calculatedBuffer)
+}
+
+export async function POST(request: NextRequest): Promise<NextResponse> {
+  const secret = process.env.NEXTJS_REVALIDATE_SECRET
+  if (!secret) {
+    return NextResponse.json({ error: 'Server secret misconfigured' }, { status: 500 })
+  }
+
+  try {
+    const rawBody = await request.text()
+    const signature = request.headers.get('x-signature')
+
+    if (!verifyHmacSignature(rawBody, signature, secret)) {
+      return NextResponse.json({ error: 'Invalid HMAC signature' }, { status: 401 })
+    }
+
+    const payload = JSON.parse(rawBody) as RevalidatePayload
+
+    // Schutz vor Replay-Attacken, die älter als 300 Sekunden sind
+    const now = Math.floor(Date.now() / 1000)
+    if (Math.abs(now - payload.timestamp) > 300) {
+      return NextResponse.json({ error: 'Request expired' }, { status: 408 })
+    }
+
+    // Gezielte Cache-Invalidierung des Artikels und der globalen Feeds
+    revalidateTag(\`post-\${payload.slug}\`)
+    revalidateTag('feed-posts')
+    revalidateTag('sitemap')
+
+    return NextResponse.json({
+      revalidated: true,
+      slug: payload.slug,
+      timestamp: Date.now(),
+    })
+  } catch (error) {
+    return NextResponse.json({ error: 'Revalidation execution failed' }, { status: 500 })
+  }
+}
+\`\`\`
+
+#### 4.3. React 19 Server Component Datenabruf
+Verknüpfen Sie in Ihren React 19 Server Components präzise Tags mit Upstream-Anfragen anstelle starrer Cache-Zeiten:
+
+\`\`\`typescript
+import { notFound } from 'next/navigation'
+
+interface PostData {
+  title: string
+  content: string
+  slug: string
+}
+
+export async function getPostBySlug(slug: string): Promise<PostData> {
+  const endpoint = process.env.WORDPRESS_API_URL
+  const res = await fetch(\`\${endpoint}/wp-json/wp/v2/posts?slug=\${slug}&_embed\`, {
+    // Feingranulare Next.js 16 Tag-Registrierung
+    next: {
+      tags: [\`post-\${slug}\`, 'feed-posts'],
+    },
+  })
+
+  if (!res.ok) {
+    throw new Error(\`Failed to fetch post: \${res.statusText}\`)
+  }
+
+  const posts = await res.json()
+  if (!posts || posts.length === 0) {
+    notFound()
+  }
+
+  return {
+    title: posts[0].title.rendered,
+    content: posts[0].content.rendered,
+    slug: posts[0].slug,
+  }
+}
+\`\`\`
+
+---
+
+### 5. Fehlermodi, Grenzfälle & Defense-in-Depth
+
+Selbst robuste Architekturen erfordern gezielte Schutzmechanismen für Produktionsgrenzfälle:
+
+1. **Thundering-Herd-Vermeidung:** Wenn das Tag einer stark frequentierten Seite bei 500 Anfragen/Sekunde invalidiert wird, dedupliziert Next.js 16 eingehende Anfragen auf Cache-Ebene. Die erste Anfrage löst den Datenabruf bei WordPress aus, während parallele Anfragen auf dasselbe Promise warten, ohne die Datenbank zu belasten.
+2. **Beitragslöschung & Entwurfsstatus:** Wenn ein Redakteur einen Beitrag auf "Entwurf" setzt oder in den Papierkorb verschiebt, löst der PHP-Hook \`$new_status !== 'publish'\` aus. Die sofortige Tag-Invalidierung führt dazu, dass die nächste Next.js-Anfrage einen 404-Status von WordPress erhält und die statische Not-Found-Seite rendert.
+3. **Taxonomie- & Menü-Kaskaden:** Die Änderung eines Kategorienamens oder Navigationsmenüs sollte nicht jeden einzelnen Blogbeitrag invalidieren. Durch getrennte Tags (\`taxonomy-health\`, \`menu-primary\`) aktualisieren Menü-Änderungen lediglich das Layout, ohne Hunderte statischer Artikel neu zu generieren.
+
+---
+
+### 6. Architektonisches Fazit & Beratung
+
+Die Entkopplung von WordPress und Next.js 16 ist einer der effektivsten Ansätze, um vertraute redaktionelle Workflows mit herausragenden Core Web Vitals zu vereinen. Ein naives, zeitbasiertes Revalidieren führt jedoch zu unnötigen Serverkosten und Frustration in der Redaktion. Mit HMAC-gesicherter On-Demand-Tag-Revalidierung erzielt Ihr Entwicklungsteam sofortige Inhaltssynchronisierung, weltweite Lesezeiten unter 50ms und vollständigen Schutz der Datenbank.
+
+Planen Sie eine Migration auf eine Headless-Architektur oder leidet Ihr aktuelles Setup unter verzögertem Caching oder hohen Serverkosten? Informieren Sie sich über unsere Fallstudien zu **Unitrition** und **Fullstack AI Lab** oder nutzen Sie unseren interaktiven KI-Assistenten zur Berechnung von Migrationsaufwänden und Infrastruktureinsparungen.`,
   },
 }

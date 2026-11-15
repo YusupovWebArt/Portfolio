@@ -6,23 +6,27 @@ export const zeroLeakageCheckoutSecurityPciDssV4CspNextjs16Post: BlogPost = {
     en: 'Zero-Leakage Checkout Security: PCI-DSS v4.0 Compliance, Content Security Policy (CSP Level 3) & Subresource Integrity in Next.js 16',
     ua: 'Безпека чекауту без витоків: відповідність PCI-DSS v4.0, Content Security Policy (CSP Level 3) та Subresource Integrity в Next.js 16',
     es: 'Seguridad de checkout sin fugas: cumplimiento de PCI-DSS v4.0, Content Security Policy (CSP Level 3) y Subresource Integrity en Next.js 16',
+    de: 'Zero-Leakage-Checkout-Sicherheit: PCI-DSS v4.0 Konformität, Content Security Policy (CSP Level 3) & Subresource Integrity in Next.js 16',
   },
   description: {
     en: 'Engineering hardened e-commerce checkouts adhering to mandatory PCI-DSS v4.0 requirements 6.4.3 & 11.6.1 with dynamic CSP nonces in Next.js 16 Middleware, SRI hashing, and anti-Magecart defenses.',
     ua: 'Захист e-commerce чекаутів за обов’язковими вимогами стандарту PCI-DSS v4.0 (6.4.3 та 11.6.1) через динамічні nonce у Next.js 16 Middleware, SRI хешування та захист від атак Magecart.',
     es: 'Protección de pasarelas de pago bajo los requisitos obligatorios de PCI-DSS v4.0 (6.4.3 y 11.6.1) con nonces CSP dinámicos en Next.js 16 Middleware, hashes SRI y defensas anti-Magecart.',
+    de: 'Entwicklung gehärteter E-Commerce-Checkouts gemäß verbindlicher PCI-DSS v4.0 Anforderungen 6.4.3 & 11.6.1 mit dynamischen CSP-Nonces in Next.js 16 Middleware, SRI-Hashing und Anti-Magecart-Abwehr.',
   },
   date: '2026-11-03',
   readTime: {
     en: '11 min read',
     ua: '11 хв читання',
     es: '11 min de lectura',
+    de: '11 Min. Lesezeit',
   },
   category: 'ecommerce-architecture',
   categoryLabel: {
     en: 'E-Commerce & Web Security',
     ua: 'Архітектура E-Commerce та кібербезпека',
     es: 'Arquitectura de E-Commerce y ciberseguridad',
+    de: 'E-Commerce- & Web-Sicherheit',
   },
   tags: [
     'PCI-DSS v4.0',
@@ -40,6 +44,7 @@ export const zeroLeakageCheckoutSecurityPciDssV4CspNextjs16Post: BlogPost = {
       en: 'Senior Fullstack Web Engineer & E-Commerce Security Specialist',
       ua: 'Senior Fullstack веб-інженер та спеціаліст з безпеки e-commerce',
       es: 'Ingeniero Web Fullstack Senior y Especialista en Seguridad E-Commerce',
+      de: 'Fullstack Web-Engineer & KI-Architekt',
     },
   },
   coverImage: '/Portfolio/images/blog/cover-zero-leakage-checkout-security.svg',
@@ -52,6 +57,7 @@ export const zeroLeakageCheckoutSecurityPciDssV4CspNextjs16Post: BlogPost = {
         en: 'Client-side zero-trust security architecture with dynamic Base64 obfuscation and strict CSP headers protecting contact endpoints.',
         ua: 'Клієнтська архітектура Zero-Trust з динамічною Base64-обфускацією та строгими CSP-заголовками для захисту контактних даних.',
         es: 'Arquitectura de seguridad zero-trust del lado del cliente con ofuscación Base64 dinámica y cabeceras CSP estrictas.',
+        de: 'Clientseitige Zero-Trust-Sicherheitsarchitektur mit dynamischer Base64-Verschleierung und strikten CSP-Headern zum Schutz von Kontakt-Endpunkten.',
       },
     },
     {
@@ -62,6 +68,7 @@ export const zeroLeakageCheckoutSecurityPciDssV4CspNextjs16Post: BlogPost = {
         en: 'Enterprise portal handling high-value contract billing with strict script authorization and automated tamper alerting.',
         ua: 'Корпоративний портал з обробкою великих контрактних рахунків, авторизацією скриптів та автоматичним сповіщенням про підміну.',
         es: 'Portal corporativo para facturación de contratos de alto valor con autorización estricta de scripts y alertas de manipulación.',
+        de: 'Enterprise-Portal für die Abrechnung hochvolumiger Verträge mit strikter Skript-Autorisierung und automatisierten Manipulations-Alarmen.',
       },
     },
   ],
@@ -80,6 +87,11 @@ export const zeroLeakageCheckoutSecurityPciDssV4CspNextjs16Post: BlogPost = {
       'PCI-DSS v4.0 exige autorización rigurosa (Req 6.4.3) y detección automatizada de alteraciones (Req 11.6.1) en todos los scripts de pago.',
       'El middleware Edge de Next.js 16 genera nonces criptográficos para CSP en menos de 0.4 ms, aplicando directivas strict-dynamic contra ataques Magecart.',
       'El hash SHA-384 con Subresource Integrity (SRI) y la puesta a cero de credenciales en memoria evitan la filtración de datos ante CDNs comprometidas.',
+    ],
+    de: [
+      'PCI-DSS v4.0 schreibt eine strikte Autorisierung (Anforderung 6.4.3) sowie automatisierte Manipulationserkennung (Anforderung 11.6.1) für alle Skripte auf Bezahlseiten verbindlich vor.',
+      'Next.js 16 Edge Middleware generiert kryptografische CSP-Nonces in unter 0,4 ms und setzt strict-dynamic-Richtlinien gegen Magecart-Angriffe durch.',
+      'Automatisiertes Subresource Integrity (SRI) SHA-384 Hashing und clientseitiges Zeroization sensitiver Zugangsdaten verhindern Datenabflüsse über kompromittierte CDNs.',
     ],
   },
   content: {
@@ -443,5 +455,243 @@ Para evitar que los datos de pago permanezcan en la memoria del navegador, la cl
 - **Defensa anti-Magecart:** Bloqueo del 100% de scripts inyectados y conexiones no autorizadas.
 - **Sobrecarga de middleware:** Menos de **0.38 ms**, sin impacto en las métricas Core Web Vitals.
 - **Cumplimiento:** Adaptado a las exigencias del cuestionario de conformidad PCI-DSS v4.0 SAQ-A.`,
+    de: `## Executive Summary & BLUF (Bottom Line Up Front)
+
+Digital Skimming und Magecart-Angriffe auf die Software-Lieferkette stellen das größte Sicherheitsrisiko für E-Commerce-Plattformen dar. Bösartiges JavaScript, das über kompromittierte Drittanbieter-Bibliotheken (wie Web-Analytics, Chat-Widgets oder Tag-Manager) eingeschleust wird, fängt sensible Kreditkartennummern (PAN) und CVV-Sicherheitscodes direkt aus DOM-Eingabefeldern ab, noch bevor diese Daten an tokenisierte Payment-Gateways (wie Stripe Elements) übertragen werden können.
+
+Als Reaktion darauf hat der Payment Card Industry Data Security Standard mit **PCI-DSS v4.0** verbindliche Vorgaben für alle Online-Händler eingeführt:
+- **Anforderung 6.4.3:** Jedes auf Bezahlseiten ausgeführte Skript muss inventarisiert, durch einen expliziten geschäftlichen Zweck begründet und auf seine Integrität hin verifiziert sein.
+- **Anforderung 11.6.1:** Ein Mechanismus zur Erkennung von Änderungen und Manipulationen muss implementiert sein, der Bezahlseiten überwacht und Sicherheitsteams bei unautorisierten Header- oder DOM-Skript-Mutationen alarmiert.
+
+Dieser Architektur-Blueprint zeigt, wie eine lecksichere Bezahlseite auf Basis des **Next.js 16 App Routers** umgesetzt wird - unter Einsatz dynamischer kryptografischer Nonces in der Edge Middleware, Content Security Policy (CSP Level 3), automatisierter Subresource Integrity (SRI) Pipelines und speichersicherer Credential-Bereinigung (Zeroization).
+
+---
+
+## 1. Bedrohungsmodell & Angriffsvektor-Analyse
+
+\`\`\`
++-----------------------------------------------------------------------------------+
+| Kompromittierte Lieferkette (Analytics / Chat-Widget / Marketing-Tag)             |
+|                                                                                   |
+|  [Angreifer manipuliert Remote-CDN-Skript-Payload]                                |
+|          |                                                                        |
+|          v (Versuch, einen Keylogger auf der Checkout-Seite auszuführen)           |
+|  <script src="https://cdn.thirdparty.com/tag.js">                                 |
++-----------------------------------------------------------------------------------+
+                                   |
+                                   | INJEKTIONSVERSUCH
+                                   v
++-----------------------------------------------------------------------------------+
+| Next.js 16 Defense-in-Depth Sicherheitsschichten                                  |
+|                                                                                   |
+|  1. Middleware Dynamic Nonce: Skript besitzt keine aktuelle Nonce -> BLOCKIERT    |
+|  2. Subresource Integrity (SRI): SHA-384 Hash-Diskrepanz -> BROWSER BLOCKIERT     |
+|  3. CSP connect-src: Unautorisierter Exfiltrations-Endpunkt -> NETZWERK-POST STOP |
+|  4. DOM MutationObserver (Req 11.6.1): Alarmiert SIEM via Beacon in < 50ms        |
++-----------------------------------------------------------------------------------+
+                                   |
+                                   v (Geschützter Bezahlkontext)
++-----------------------------------------------------------------------------------+
+| Isolierter Bezahl-Frame (Stripe Elements / Hosted Fields)                         |
+|                                                                                   |
+|  - Speicherbereinigung (Zeroization): Tokens nach Absenden aus Heap gelöscht      |
+|  - Vollständige Isolation von PAN / CVV gegenüber dem äußeren DOM                 |
++-----------------------------------------------------------------------------------+
+\`\`\`
+
+---
+
+## 2. Dynamische CSP-Nonce-Engine in Next.js 16 Middleware
+
+Statische CSP-Header reichen für moderne Bezahlseiten nicht aus, da reaktive Web-Frontends Skript-Ausführungen erfordern, ohne Sicherheitslücken über unsafe-inline zu öffnen. Wir erzeugen für jede HTTP-Anfrage eine flüchtige, kryptografisch sichere Nonce in der Next.js 16 Edge Middleware - ohne messbare TTFB-Verzögerung:
+
+\`\`\`typescript
+// src/middleware.ts
+import { NextRequest, NextResponse } from 'next/server'
+
+export function middleware(request: NextRequest) {
+  // Strikte Bezahlrichtlinie nur auf Checkout-Routen anwenden
+  const isCheckoutRoute = request.nextUrl.pathname.startsWith('/checkout')
+
+  // Kryptografisch zufällige 128-Bit-Nonce generieren
+  const nonce = Buffer.from(crypto.randomUUID()).toString('base64')
+
+  const cspHeader = isCheckoutRoute
+    ? \`
+      default-src 'self';
+      script-src 'self' 'nonce-\${nonce}' 'strict-dynamic' https://js.stripe.com;
+      style-src 'self' 'nonce-\${nonce}';
+      img-src 'self' blob: data: https://*.stripe.com;
+      font-src 'self';
+      object-src 'none';
+      base-uri 'none';
+      form-action 'self';
+      frame-ancestors 'none';
+      frame-src https://js.stripe.com;
+      connect-src 'self' https://api.stripe.com;
+      report-uri /api/security/csp-report;
+      report-to csp-endpoint;
+    \`
+        .replace(/\\s{2,}/g, ' ')
+        .trim()
+    : \`
+      default-src 'self';
+      script-src 'self' 'nonce-\${nonce}' 'strict-dynamic';
+      style-src 'self' 'unsafe-inline';
+      img-src 'self' data: https:;
+      font-src 'self';
+      object-src 'none';
+    \`
+        .replace(/\\s{2,}/g, ' ')
+        .trim()
+
+  const requestHeaders = new Headers(request.headers)
+  requestHeaders.set('x-nonce', nonce)
+  requestHeaders.set('Content-Security-Policy', cspHeader)
+
+  const response = NextResponse.next({
+    request: {
+      headers: requestHeaders,
+    },
+  })
+
+  // Verbindliche Sicherheits-Header für PCI-DSS v4.0 Konformität setzen
+  response.headers.set('Content-Security-Policy', cspHeader)
+  response.headers.set('X-Content-Type-Options', 'nosniff')
+  response.headers.set('X-Frame-Options', 'DENY')
+  response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin')
+  response.headers.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=(), payment=(self "https://js.stripe.com")')
+
+  return response
+}
+
+export const config = {
+  matcher: [
+    {
+      source: '/((?!api|_next/static|_next/image|favicon.ico).*)',
+      missing: [
+        { type: 'header', key: 'next-router-prefetch' },
+        { type: 'header', key: 'purpose', value: 'prefetch' },
+      ],
+    },
+  ],
+}
+\`\`\`
+
+---
+
+## 3. Weitergabe der Nonce an React 19 Server Components
+
+Im Next.js 16 App Router wird die in den Request-Headern gespeicherte Nonce im Root-Layout ausgelesen und direkt an alle Inline-Styles, Schriften und geprüften Zahlungs-Skripte übergeben:
+
+\`\`\`tsx
+// src/app/[locale]/checkout/layout.tsx
+import { headers } from 'next/headers'
+import Script from 'next/script'
+import React from 'react'
+
+export default async function CheckoutLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  const headersList = await headers()
+  const nonce = headersList.get('x-nonce') || undefined
+
+  return (
+    <div className="min-h-screen bg-slate-950 text-slate-100">
+      {/* Stripe.js strikt mit dynamischer Nonce geladen */}
+      <Script
+        src="https://js.stripe.com/v3/"
+        strategy="afterInteractive"
+        nonce={nonce}
+      />
+      <main className="max-w-4xl mx-auto px-4 py-12">
+        {children}
+      </main>
+    </div>
+  )
+}
+\`\`\`
+
+---
+
+## 4. Build-Automatisierung für Subresource Integrity (SRI)
+
+Für selbst gehostete Skripte oder Drittanbieter-Ressourcen außerhalb von Stripe öffnet das Nachladen ohne Subresource Integrity Sicherheitsrisiken bei CDN-Kompromittierungen. Wir implementieren ein automatisiertes Rollup/Vite-Plugin zur Erzeugung kryptografischer SHA-384-Hashes:
+
+\`\`\`javascript
+// scripts/generate-sri-manifest.mjs
+import fs from 'node:fs'
+import crypto from 'node:crypto'
+import path from 'node:path'
+
+export function computeFileSriHash(filePath) {
+  const fileBuffer = fs.readFileSync(filePath)
+  const hash = crypto.createHash('sha384').update(fileBuffer).digest('base64')
+  return 'sha384-' + hash
+}
+
+// Erzeugt das Manifest während der Build-Pipeline
+export function generateSriManifest(distDir) {
+  const manifest = {}
+  const files = fs.readdirSync(distDir, { recursive: true })
+
+  for (const file of files) {
+    if (typeof file === 'string' && file.endsWith('.js')) {
+      const fullPath = path.join(distDir, file)
+      manifest[file] = computeFileSriHash(fullPath)
+    }
+  }
+
+  fs.writeFileSync(path.join(distDir, 'sri-manifest.json'), JSON.stringify(manifest, null, 2))
+  console.log('[SECURITY] SRI-Manifest mit SHA-384 Hashes erfolgreich generiert.')
+}
+\`\`\`
+
+---
+
+## 5. Speicherbereinigung sensibler Daten im Arbeitsspeicher (Zeroization)
+
+Der JavaScript Garbage Collector bietet keine Garantie darüber, wann verworfene Strings physisch aus dem Heap-Speicher gelöscht werden. Bei Memory-Dump-Angriffen stellen verbleibende Zahlungstoken ein erhebliches Risiko dar. Wir überschreiben Puffer mit sensiblen Zugangsdaten sofort nach der Netzwerkübertragung:
+
+\`\`\`typescript
+// src/lib/security/zeroize.ts
+export class SecureCredentialBuffer {
+  private buffer: Uint8Array
+
+  constructor(secretString: string) {
+    const encoder = new TextEncoder()
+    this.buffer = encoder.encode(secretString)
+  }
+
+  public getSecret(): string {
+    const decoder = new TextDecoder()
+    return decoder.decode(this.buffer)
+  }
+
+  // Puffer im Speicher sofort nach Verwendung kryptografisch überschreiben
+  public zeroize(): void {
+    crypto.getRandomValues(this.buffer)
+    this.buffer.fill(0)
+  }
+}
+\`\`\`
+
+---
+
+## 6. PCI-DSS v4.0 Verifikation & Produktions-Sicherheitsmetriken
+
+| Kontrollbereich | PCI-DSS v4.0 Anforderung | Technische Implementierung | Durchsetzungsebene |
+| :--- | :--- | :--- | :--- |
+| **Skript-Autorisierung** | Anforderung 6.4.3 | Dynamische CSP Level 3 Nonces + strikte Whitelist | Next.js 16 Edge Middleware |
+| **Manipulationserkennung** | Anforderung 11.6.1 | DOM MutationObserver + Integritätsüberwachung | Client Checkout Guard Worker |
+| **Asset-Integrität** | Anforderung 6.4.3 | SHA-384 Subresource Integrity (SRI) Hashes | Automatisierte Build-Pipeline |
+| **Zugangsdaten-Sicherheit** | Anforderung 3.4.1 | In-Memory-Puffer-Überschreibung & Zeroization | Web Crypto API Secure Buffers |
+
+### Ergebnisse des Sicherheitsaudits
+- **Magecart-Abwehr:** 100% aller injizierten Inline-Skripte oder unautorisierten externen Verbindungen wurden blockiert und protokolliert.
+- **Middleware-Nonce-Overhead:** Gemessen bei **< 0,38 ms**, ohne messbare Regression bei den Core Web Vitals.
+- **Audit-Bereitschaft:** Vollständige Erfüllung der Händleranforderungen nach PCI-DSS v4.0 SAQ-A.`,
   },
 }
