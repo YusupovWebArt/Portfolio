@@ -33,3 +33,19 @@ When updating personal data or architecture, ensure structured data blocks in `i
 - **Twitter Card:** `twitter:card` set to `summary_large_image`.
 - **Canonical URL:** Self-referencing canonical URL (`https://yusupovwebart.github.io/Portfolio/`).
 - **Crawler Noscript Fallback:** `index.html` contains an accessible semantic fallback inside `<noscript>` so search engine crawlers without JavaScript execution can index portfolio highlights, services, and trilingual contact information.
+
+---
+
+## 4. Generative Engine Optimization (GEO) & AI Overview Standards
+
+Empirical data from Google Search Console demonstrates that Google AI Overviews actively cites the portfolio across multiple languages (`en`, `es`, `ua`) on desktop. To maximize citation rates by search LLMs (Google AI Overviews, Perplexity, Claude):
+
+1. **Title Architecture:** Avoid generic titles. Use the proven formula:
+   `[Core Architectural Problem/Solution] + [Quantified Metric / Scale] + [Trade-Off / Standard] | Artur Yusupov`
+   Example: `WooCommerce HPOS & Redis Caching at 10,000+ SKUs: Sub-100ms Architecture | Artur Yusupov`.
+2. **5-Second Early Retention Anchor (Decision Matrix):**
+   Every technical article must include a clean Markdown comparison table within the first 150 words (`Evaluation Dimension | Option A | Option B`). This eliminates early bounce and gives search engines immediately extractable structured rows.
+3. **Structured Code & Benchmarks:** Include copy-pasteable production code recipes (PHP hooks, Next.js route handlers, TypeScript schemas) and exact quantitative metrics (`< 100ms TTFB`, `10,000+ SKUs`, `90s build time`).
+4. **4-Language Synchronization:** Maintain 100% content parity across `en`, `ua`, `es`, and `de`. Google AI Overviews indexes all localized routes.
+5. **Strict Hyphenation:** Zero em dashes (`—` or `–`); standard hyphens `-` only across all files. Zero emojis in technical data.
+
