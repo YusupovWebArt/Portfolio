@@ -134,4 +134,29 @@ describe('Responsive Header & Mobile/Tablet Navigation Specification (TDD)', () 
       value: originalLocation,
     })
   })
+
+  it('should preserve Blog as active section when scroll events occur on /blog subpage', () => {
+    const originalLocation = window.location
+    Object.defineProperty(window, 'location', {
+      writable: true,
+      value: { ...originalLocation, pathname: '/en/blog', hash: '' },
+    })
+
+    renderHeader()
+
+    // Trigger scroll event
+    fireEvent.scroll(window, { target: { scrollY: 500 } })
+
+    const blogLink = screen.getAllByRole('link', { name: /blog/i })[0]
+    expect(blogLink).toHaveAttribute('aria-current', 'page')
+    expect(blogLink.className).toContain('font-semibold')
+
+    const homeLink = screen.getAllByRole('link', { name: /^home$/i })[0]
+    expect(homeLink).not.toHaveAttribute('aria-current')
+
+    Object.defineProperty(window, 'location', {
+      writable: true,
+      value: originalLocation,
+    })
+  })
 });

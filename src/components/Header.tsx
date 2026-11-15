@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
+import { usePathname } from 'next/navigation'
 import {
   LuMenu as Menu,
   LuX as X,
@@ -179,22 +180,39 @@ const Header = () => {
     { id: 'contact', label: t.header.nav.contact, href: `/${lang}#contact` },
   ]
 
-  const getInitialActiveSection = (): string => {
-    if (typeof window === 'undefined') return 'home'
-    const path = window.location.pathname
-    if (path.includes('/blog')) return 'blog'
-    if (path.includes('/services')) return 'services'
-    if (path.includes('/projects')) return 'projects'
-    if (path.includes('/privacy-policy') || path.includes('/cookie-policy')) return ''
+  const nextPathname = usePathname()
+  const pathname =
+    typeof nextPathname === 'string' && nextPathname.length > 0
+      ? nextPathname
+      : typeof window !== 'undefined'
+        ? window.location.pathname
+        : ''
 
-    const hash = window.location.hash.replace('#', '')
-    if (hash && ['home', 'about', 'how-i-work', 'projects', 'skills', 'contact'].includes(hash)) {
-      return hash
+  const isBlog = pathname.includes('/blog')
+  const isServices = pathname.includes('/services')
+  const isProjects = pathname.includes('/projects')
+  const isLegal = pathname.includes('/privacy-policy') || pathname.includes('/cookie-policy')
+
+  const [scrollSection, setScrollSection] = useState<string>(() => {
+    if (typeof window !== 'undefined' && window.location.hash) {
+      const hash = window.location.hash.replace('#', '')
+      if (['home', 'about', 'how-i-work', 'projects', 'skills', 'contact'].includes(hash)) {
+        return hash
+      }
     }
     return 'home'
-  }
+  })
 
-  const [activeSection, setActiveSection] = useState<string>(getInitialActiveSection)
+  // Subpages strictly follow the route pathname; main landing page tracks scrollSection
+  const activeSection = isBlog
+    ? 'blog'
+    : isServices
+      ? 'services'
+      : isProjects
+        ? 'projects'
+        : isLegal
+          ? ''
+          : scrollSection
 
   // Outside click and Escape key dismissal for mobile drawer
   useEffect(() => {
@@ -219,27 +237,10 @@ const Header = () => {
   }, [isMenuOpen])
 
   useEffect(() => {
-    const updateActiveSection = () => {
-      if (typeof window === 'undefined') return
+    // If on a dedicated subpage, active section is strictly derived from pathname
+    if (isBlog || isServices || isProjects || isLegal) return
 
-      const path = window.location.pathname
-      if (path.includes('/blog')) {
-        setActiveSection('blog')
-        return
-      }
-      if (path.includes('/services')) {
-        setActiveSection('services')
-        return
-      }
-      if (path.includes('/projects')) {
-        setActiveSection('projects')
-        return
-      }
-      if (path.includes('/privacy-policy') || path.includes('/cookie-policy')) {
-        setActiveSection('')
-        return
-      }
-
+    const updateActiveScrollSection = () => {
       const nonPageItems = navItems.filter((item) => !item.isPage)
       const sections = nonPageItems.map((item) => document.getElementById(item.id))
       const scrollPosition = window.scrollY + 100
@@ -247,21 +248,21 @@ const Header = () => {
       for (let i = sections.length - 1; i >= 0; i--) {
         const section = sections[i]
         if (section && section.offsetTop <= scrollPosition) {
-          setActiveSection(nonPageItems[i].id)
+          setScrollSection(nonPageItems[i].id)
           return
         }
       }
 
       const hash = window.location.hash.replace('#', '')
       if (hash && nonPageItems.some((item) => item.id === hash)) {
-        setActiveSection(hash)
+        setScrollSection(hash)
         return
       }
 
-      setActiveSection('home')
+      setScrollSection('home')
     }
 
-    updateActiveSection()
+    updateActiveScrollSection()
 
     if (window.location.hash) {
       const targetId = window.location.hash.replace('#', '')
@@ -276,17 +277,17 @@ const Header = () => {
       }
     }
 
-    window.addEventListener('scroll', updateActiveSection, { passive: true })
-    window.addEventListener('popstate', updateActiveSection)
-    window.addEventListener('hashchange', updateActiveSection)
+    window.addEventListener('scroll', updateActiveScrollSection, { passive: true })
+    window.addEventListener('popstate', updateActiveScrollSection)
+    window.addEventListener('hashchange', updateActiveScrollSection)
 
     return () => {
-      window.removeEventListener('scroll', updateActiveSection)
-      window.removeEventListener('popstate', updateActiveSection)
-      window.removeEventListener('hashchange', updateActiveSection)
+      window.removeEventListener('scroll', updateActiveScrollSection)
+      window.removeEventListener('popstate', updateActiveScrollSection)
+      window.removeEventListener('hashchange', updateActiveScrollSection)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [t, lang])
+  }, [isBlog, isServices, isProjects, isLegal, t, lang])
 
   const handleNavClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
@@ -309,7 +310,6 @@ const Header = () => {
           window.scrollTo({ top: 0, behavior: 'smooth' })
         }
       }
-      setActiveSection(item.id)
       setIsMenuOpen(false)
       return
     }
@@ -318,7 +318,7 @@ const Header = () => {
     if (element) {
       e.preventDefault()
       element.scrollIntoView({ behavior: 'smooth' })
-      setActiveSection(item.id)
+      setScrollSection(item.id)
     } else {
       if (isSpa) {
         e.preventDefault()
@@ -537,7 +537,7 @@ const Header = () => {
                   >
                     <span>{item.label}</span>
                     {activeSection === item.id && (
-                      <span className="w-1.5 h-1.5 rounded-full bg-purple-600 dark:text-lime-400" aria-hidden="true" />
+                      <span className="w-1.5 h-1.5 rounded-full bg-purple-600 dark:bg-lime-400" aria-hidden="true" />
                     )}
                   </a>
                 ))}
