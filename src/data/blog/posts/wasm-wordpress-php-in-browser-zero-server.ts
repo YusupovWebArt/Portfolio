@@ -100,6 +100,14 @@ The modern systems engineering solution shifts the entire execution stack into t
 - **Server Compute Cost:** Reduced from thousands of dollars to exactly **$0.00** (static asset hosting via CDN).
 - **Security Blast Radius:** Reduced to zero. Malicious code or infinite loops run inside an isolated browser Worker with zero network access to your internal cloud infrastructure.
 
+#### Quick Decision Matrix: Interactive Code Playground Architectures
+
+| Execution Architecture | Cold Boot Latency | Cloud Compute Cost (10k Users) | Security Isolation | Offline PWA Support |
+| :--- | :--- | :--- | :--- | :--- |
+| **Backend Docker (AWS Fargate/ECS)** | 4,800ms - 6,200ms (Container pull) | $2,500 - $4,800/mo in idle compute | High liability (Host / Kernel escape) | Impossible (Online only) |
+| **MicroVMs (AWS Firecracker)** | 1,800ms - 2,400ms (Snapshot restore) | $800 - $1,400/mo | Medium (Network scanning risk) | Impossible (API bound) |
+| **In-Browser WebAssembly (Recommended)** | **< 120ms (Instant memory mount)** | **$0.00 (Static CDN asset delivery)** | **Complete (Isolated Web Worker sandbox)** | **100% Native (Service Worker + OPFS)** |
+
 ---
 
 ### 2. The Core Problem: Why Backend Container Sandboxes Fail at Scale
@@ -289,6 +297,14 @@ Are you building an interactive developer education platform, developer document
 - **Витрати на сервери:** знижено з тисяч доларів до **$0.00** (статичний хостинг через CDN).
 - **Радіус ураження безпеки:** зведено до нуля. Нескінченні цикли або шкідливі скрипти виконуються всередині ізольованого браузерного Worker без доступу до вашої внутрішньої хмарної мережі.
 
+#### Матриця швидкого вибору архітектури: пісочниці для інтерактивного коду
+
+| Архітектура виконання | Холодний старт (Cold Boot) | Витрати на сервери (10k студентів) | Ізоляція безпеки | Офлайн-робота (PWA) |
+| :--- | :--- | :--- | :--- | :--- |
+| **Серверний Docker (AWS Fargate/ECS)** | 4 800мс - 6 200мс (Запуск контейнера) | $2 500 - $4 800/міс за простій | Високий ризик (RCE, втеча з контейнера) | Неможливо (Тільки онлайн) |
+| **Мікро-віртуальні машини (Firecracker)** | 1 800мс - 2 400мс (Відновлення снепшоту) | $800 - $1 400/міс | Помірний (Ризик сканування мережі) | Неможливо (Прив'язка до API) |
+| **Клієнтський WebAssembly (Рекомендований)** | **< 120мс (Миттєве монтування в RAM)** | **$0.00 (Статична роздача через CDN)** | **Повна (Ізольований браузерний Worker)** | **100% Нативна (Service Worker + OPFS)** |
+
 ---
 
 ### 2. Причини проблеми: чому серверні Docker-пісочниці падають під навантаженням
@@ -476,6 +492,14 @@ La solución moderna de ingeniería de sistemas traslada la totalidad del entorn
 - **Coste de servidores:** Reducido de miles de dólares a exactamente **0,00 $** (alojamiento de recursos estáticos en CDN).
 - **Radio de impacto de seguridad:** Reducido a cero. Bucles infinitos o scripts maliciosos se ejecutan dentro del Web Worker del navegador sin acceso a la red interna cloud.
 
+#### Matriz de decisión rápida de arquitectura: Sandboxes de ejecución de código interactivo
+
+| Arquitectura de ejecución | Latencia de arranque en frío (Cold Boot) | Coste de servidores (10k usuarios) | Aislamiento y seguridad | Soporte offline (PWA) |
+| :--- | :--- | :--- | :--- | :--- |
+| **Docker en backend (AWS Fargate/ECS)** | 4.800ms - 6.200ms (Descarga de imagen) | 2.500 $ - 4.800 $/mes en cómputo | Riesgo alto (RCE, escape de contenedor) | Imposible (Solo online) |
+| **MicroVMs serverless (Firecracker)** | 1.800ms - 2.400ms (Restauración) | 800 $ - 1.400 $/mes | Moderado (Riesgo de escaneo de red) | Imposible (Depende de API) |
+| **WebAssembly en navegador (Recomendado)** | **< 120ms (Montaje instantáneo en RAM)** | **0,00 $ (Entrega estática vía CDN)** | **Total (Web Worker aislado en cliente)** | **100% Nativo (Service Worker + OPFS)** |
+
 ---
 
 ### 2. El problema central: por qué los sandboxes en Docker fracasan a escala
@@ -662,6 +686,14 @@ Die moderne Systems-Engineering-Lösung verlagert den gesamten Ausführungs-Stac
 - **Cold-Boot-Latenz:** Reduziert von **4.800ms** (AWS Fargate) auf **120ms** direkt im Browser-RAM.
 - **Server-Compute-Kosten:** Gesenkt von Tausenden Dollar auf exakt **0,00 $** (statisches Asset-Hosting über CDN).
 - **Sicherheits-Blast-Radius:** Auf null reduziert. Schadcode oder Endlosschleifen laufen in einem isolierten Browser-Worker ohne jeglichen Netzwerkzugriff auf Ihre interne Cloud-Infrastruktur.
+
+#### Schnelle Architektur-Entscheidungsmatrix: Interaktive Code-Playground-Architekturen
+
+| Ausführungsarchitektur | Kaltstart-Latenz (Cold Boot) | Cloud-Serverkosten (10k Nutzer) | Sicherheitsisolation | Offline-PWA-Fähigkeit |
+| :--- | :--- | :--- | :--- | :--- |
+| **Backend-Docker (AWS Fargate/ECS)** | 4.800ms - 6.200ms (Container-Pull) | 2.500 $ - 4.800 $/Monat Leerlauf | Hohes Risiko (RCE, Container-Escapes) | Unmöglich (Nur online) |
+| **Serverlose MicroVMs (Firecracker)** | 1.800ms - 2.400ms (Snapshot-Restore) | 800 $ - 1.400 $/Monat | Moderat (Gefahr von Netzwerkscans) | Unmöglich (API-gebunden) |
+| **In-Browser WebAssembly (Empfohlen)** | **< 120ms (Sofortiger RAM-Mount)** | **0,00 $ (Statische CDN-Auslieferung)** | **Vollständig (Isolierter Web-Worker)** | **100% Nativ (Service Worker + OPFS)** |
 
 ---
 

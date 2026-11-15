@@ -112,6 +112,14 @@ This model is fundamentally broken:
 
 The modern engineering solution is **DevSecOps for Accessibility**: shifting accessibility testing left into automated continuous integration pipelines with **Axe-Core** and **Playwright**.
 
+#### Accessibility Testing Methodology Matrix: Manual vs. Lighthouse vs. Playwright + Axe-Core
+
+| Accessibility Testing Approach | WCAG 2.2 Rule Coverage | CI/CD Integration | Execution Speed | False Positive Rate |
+| :--- | :--- | :--- | :--- | :--- |
+| **Manual Screen Reader Audit** | 100% (Includes human semantic context) | Impossible in automated PR pipeline | Days to weeks | High (Subjective to auditor) |
+| **Lighthouse CI (Basic Scan)** | ~25% - 30% of violations | Simple GitHub Action setup | 15 - 30 seconds | Moderate (Generic warnings) |
+| **Playwright + Axe-Core (Recommended)** | **~55% - 60% (All structural/contrast rules)** | **Blocking PR quality gate with SARIF** | **< 3 seconds / page** | **0% (Deterministic DOM checks)** |
+
 ---
 
 ### 2. Architectural Blueprint: The Automated Pipeline
@@ -324,6 +332,14 @@ By embedding automated accessibility testing into CI/CD:
 
 Сучасне інженерне рішення - це **DevSecOps для доступності**: перенесення перевірок у повністю автоматизований пайплайн CI/CD за допомогою **Axe-Core** та **Playwright**.
 
+#### Матриця методів тестування доступності: ручний аудит vs Lighthouse vs Playwright + Axe-Core
+
+| Підхід до тестування доступності | Охоплення правил WCAG 2.2 | Інтеграція в CI/CD | Швидкість виконання | Рівень хибних спрацьовувань |
+| :--- | :--- | :--- | :--- | :--- |
+| **Ручний аудит скрінрідером** | 100% (Включає людський смисловий контекст) | Неможливо в автоматичному PR-пайплайні | Дні або тижні | Високий (Суб'єктивність аудитора) |
+| **Lighthouse CI (Базовий)** | ~25% - 30% порушень | Просте налаштування в GitHub Actions | 15 - 30 секунд | Середній (Загальні попередження) |
+| **Playwright + Axe-Core (Рекомендований)** | **~55% - 60% (Усі структурні та контрастні дефекти)** | **Блокуючий PR-гейт із SARIF-звітами** | **< 3 секунд на сторінку** | **0% (Детерміновані перевірки DOM)** |
+
 ---
 
 ### 2. Архітектурна схема автоматизованого пайплайну
@@ -426,6 +442,14 @@ Este enfoque presenta graves deficiencias:
 
 La respuesta de ingeniería moderna es **DevSecOps para Accesibilidad**: desplazar las comprobaciones a la izquierda en pipelines de integración continua con **Axe-Core** y **Playwright**.
 
+#### Matriz de metodologías de prueba de accesibilidad: Manual vs Lighthouse vs Playwright + Axe-Core
+
+| Enfoque de auditoría | Cobertura de reglas WCAG 2.2 | Integración en CI/CD | Velocidad de ejecución | Tasa de falsos positivos |
+| :--- | :--- | :--- | :--- | :--- |
+| **Auditoría manual con lector de pantalla** | 100% (Incluye contexto semántico humano) | Imposible en pipeline automatizado | Días o semanas | Alta (Subjetividad del auditor) |
+| **Lighthouse CI (Escaneo básico)** | ~25% - 30% de violaciones | Configuración simple en GitHub Actions | 15 - 30 segundos | Moderada (Avisos genéricos) |
+| **Playwright + Axe-Core (Recomendado)** | **~55% - 60% (Estructurales y contraste)** | **Quality gate bloqueante en PR con SARIF** | **< 3 segundos / página** | **0% (Reglas DOM deterministas)** |
+
 ---
 
 ### 2. Esquema arquitectónico del pipeline automatizado
@@ -508,6 +532,14 @@ Dieses Modell ist grundlegend fehlerhaft:
 - **Ständige Regressionen:** Über 57% aller WCAG-Verstöße in der Produktion resultieren aus kleineren CSS-Styling-Updates oder Komponentenbibliotheks-Upgrades, die unbeabsichtigt den Kontrast verschlechtern oder sichtbare Fokusringe entfernen.
 
 Die moderne Engineering-Lösung lautet **DevSecOps für Barrierefreiheit**: Das Vorverlagern (Shift-Left) von Barrierefreiheitstests in automatisierte Continuous-Integration-Pipelines mit **Axe-Core** und **Playwright**.
+
+#### Matrix der Barrierefreiheits-Testmethoden: Manuell vs. Lighthouse vs. Playwright + Axe-Core
+
+| Prüfmethodik | WCAG 2.2 Regelabdeckung | CI/CD-Integration | Ausführungsgeschwindigkeit | Falsch-Positiv-Rate |
+| :--- | :--- | :--- | :--- | :--- |
+| **Manuelles Screenreader-Audit** | 100% (Inklusive semantischem Kontext) | Unmöglich im automatisierten PR-Ablauf | Tage bis Wochen | Hoch (Subjektiv je nach Prüfer) |
+| **Lighthouse CI (Basisscan)** | ~25% - 30% der Verstöße | Einfaches GitHub Actions Setup | 15 - 30 Sekunden | Moderat (Generisches Rauschen) |
+| **Playwright + Axe-Core (Empfohlen)** | **~55% - 60% (Alle Struktur- und Kontrastregeln)** | **Blockierendes PR-Quality-Gate mit SARIF** | **< 3 Sekunden / Seite** | **0% (Deterministische DOM-Prüfung)** |
 
 ---
 

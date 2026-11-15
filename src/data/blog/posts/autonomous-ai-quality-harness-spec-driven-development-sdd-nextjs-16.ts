@@ -112,6 +112,14 @@ Without deterministic guardrails, AI agents frequently introduce subtle flaws:
 
 In this deep dive, we present the production-hardened **Autonomous AI Quality Harness** engineered for high-velocity Next.js 16 codebases. By unifying **Spec-Driven Development (SDD)**, **Abstract Syntax Tree (AST) Invariant Verification via the TypeScript Compiler API**, and **Self-Healing Vitest Execution Loops**, this architecture guarantees that AI agents operate with mathematical rigor, deterministic bounds, and zero architectural drift.
 
+### Quick Decision Matrix: Autonomous AI Quality Methodologies Compared
+
+| Engineering Quality Model | Architectural Drift Risk | Type Safety Invariant Enforcement | Self-Healing Capability | Production Readiness |
+| :--- | :--- | :--- | :--- | :--- |
+| **Unconstrained Prompting (Zero Guardrails)** | Severe (Violates project boundaries and types) | Zero (Silent \`any\` types and stubbed tests) | None (Hallucinates broken syntax) | Unacceptable for enterprise |
+| **Traditional CI Lint/Prettier Only** | Moderate (Catches syntax, misses architecture) | Low (Compiler errors caught after push) | Manual (Requires human engineer PR review) | Fragile for multi-file agents |
+| **Autonomous SDD Quality Harness (Recommended)** | **Zero (AST gatekeeper + phase state machine)** | **100% Strict (AST traversal rejects violations)** | **Autonomous (Vitest error loops self-heal)** | **Enterprise Grade (Deterministic)** |
+
 ---
 
 ## 1. Architectural Blueprint: The Closed-Loop AI Harness
@@ -445,6 +453,14 @@ Autonomous AI coding agents are transforming software velocity, but unconstraine
 
 У цьому матеріалі ми детально розбираємо архітектуру **автономного середовища якості для AI** (Autonomous AI Quality Harness) у Next.js 16. Поєднуючи **розробку на базі специфікацій (SDD)**, **валідацію синтаксичних інваріантів (AST) через TypeScript Compiler API** та **цикли самовідновлення у Vitest**, ця система гарантує суворий контроль якості, відсутність галюцинацій та нульовий технічний борг.
 
+### Матриця швидкого вибору архітектури: методології контролю якості кодуючих AI-агентів
+
+| Модель інженерної якості | Ризик архітектурного дрейфу | Контроль інваріантів типізації | Здатність до самовідновлення | Готовність до продакшну |
+| :--- | :--- | :--- | :--- | :--- |
+| **Прямі промпти (Без обмежень)** | Критичний (Порушує межі модулів та типів) | Нульовий (Приховані \`any\` та фіктивні тести) | Відсутня (Галюцинації у синтаксисі) | Неприпустимо для продакшну |
+| **Традиційний CI (Тільки Lint/Prettier)** | Помірний (Фіксує синтаксис, пропускає drift) | Низький (Помилки виявляються після коміту) | Ручна (Вимагає рев'ю живим інженером) | Нестабільно для складних агентів |
+| **Автономний SDD-харнес (Рекомендований)** | **Нульовий (AST-гейткипер + кінцевий автомат)** | **100% Строгий (AST блокує будь-які порушення)** | **Автономна (Цикли Vitest самовідновлюються)** | **Корпоративний рівень (Детерміновано)** |
+
 ---
 
 ## 1. Архітектурна схема замкненого циклу якості AI
@@ -733,6 +749,14 @@ Sin límites deterministas, los agentes de IA introducen fallos sutiles:
 
 En este artículo analizamos la arquitectura de un **Harness de Calidad para IA Autónoma** diseñado para Next.js 16. Mediante la integración de **Desarrollo Dirigido por Especificaciones (SDD)**, **verificación de invariantes en árboles sintácticos abstractos (AST) con la API del compilador de TypeScript** y **bucles de auto-reparación en Vitest**, este sistema asegura rigor matemático y cero deuda técnica.
 
+### Matriz de decisión rápida de arquitectura: Metodologías de calidad para agentes de IA
+
+| Modelo de calidad de ingeniería | Riesgo de desvío arquitectónico | Verificación de invariantes de tipado | Capacidad de auto-reparación | Madurez para producción |
+| :--- | :--- | :--- | :--- | :--- |
+| **Prompting libre (Sin restricciones)** | Crítico (Viola límites de módulos y tipos) | Cero (Introduce tipos \`any\` y tests vacíos) | Nula (Alucina sintaxis defectuosa) | Inaceptable para empresas |
+| **CI tradicional (Solo Lint/Prettier)** | Moderado (Detecta sintaxis, no arquitectura) | Bajo (Errores detectados tras el commit) | Manual (Exige revisión de código humana) | Frágil para flujos multifichero |
+| **Harness SDD Autónomo (Recomendado)** | **Cero (AST gatekeeper + máquina de estados)** | **100% Estricto (AST rechaza violaciones)** | **Autónoma (Bucles Vitest auto-reparables)** | **Nivel Enterprise (Determinista)** |
+
 ---
 
 ## 1. Esquema Arquitectónico del Ciclo Cerrado de Calidad
@@ -1020,6 +1044,14 @@ Ohne deterministische Leitplanken führen KI-Agenten häufig subtile Schwachstel
 - Sie verlieren bei langen Ausführungstrajektorien den Kontext und führen bereits behobene Regressionen erneut ein.
 
 In diesem Deep Dive präsentieren wir das produktionserprobte **Autonomous AI Quality Harness** für hochfrequente Next.js-16-Codebasen. Durch die Vereinigung von **Spec-Driven Development (SDD)**, **Abstract Syntax Tree (AST) Invarianten-Prüfung über die TypeScript Compiler API** und **selbstheilenden Vitest-Ausführungsschleifen** garantiert diese Architektur, dass KI-Agenten mit mathematischer Strenge, deterministischen Grenzen und null Architektur-Drift arbeiten.
+
+### Schnelle Entscheidungsmatrix: Qualitätssicherungs-Methoden für KI-Agenten
+
+| Qualitätsmodell | Risiko von Architektur-Drift | Invarianten-Prüfung der Typsicherheit | Selbstheilungsfähigkeit | Produktionsreife |
+| :--- | :--- | :--- | :--- | :--- |
+| **Unreguliertes Prompting (Ohne Leitplanken)** | Kritisch (Verletzt Modulgrenzen und Typen) | Null (Stillschweigende \`any\`-Typen und Stubs) | Keine (Halluziniert fehlerhafte Syntax) | Inakzeptabel für Enterprise |
+| **Traditionelles CI (Nur Lint/Prettier)** | Moderat (Erkennt Syntax, übersieht Architektur) | Gering (Compilerfehler erst nach Push) | Manuell (Erfordert menschliches PR-Review) | Fragil bei Multi-File-Agenten |
+| **Autonomes SDD-Harness (Empfohlen)** | **Null (AST-Gatekeeper + Zustandsautomat)** | **100% Strikt (AST weist Verstöße ab)** | **Autonom (Vitest-Loops heilen sich selbst)** | **Enterprise-Grade (Deterministisch)** |
 
 ---
 

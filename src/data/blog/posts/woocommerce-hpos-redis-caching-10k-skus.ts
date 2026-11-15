@@ -100,6 +100,16 @@ Migrating orders to **High-Performance Order Storage (HPOS)** - dedicated, norma
 
 In production deployments like **Organic Bed**, this architecture slashes P95 checkout latency from **3,850ms to 420ms**, decreases database CPU load by **80%**, and increases concurrent transaction throughput by **8.4x**.
 
+#### Quick Architecture Decision Matrix: Scaling WooCommerce to 10k+ SKUs
+
+| Evaluation Dimension | Legacy Monolithic (wp_postmeta) | Enterprise HPOS + Redis Caching |
+| :--- | :--- | :--- |
+| **Catalog Capacity** | Struggles at > 1,500 SKUs | **Optimized for 10,000+ SKUs & Flash Sales** |
+| **Database Order Storage** | 40-65 unindexed rows in \`wp_postmeta\` | **1 atomic indexed row in \`wp_wc_orders\`** |
+| **P95 Checkout Latency** | 3,850ms - 5,200ms (High variance) | **420ms (Consistent sub-second)** |
+| **Throughput & Concurrency** | Max ~18 orders/min (Deadlock cliff) | **> 150 orders/min (Zero deadlocks)** |
+| **Database Server CPU** | 90% - 100% saturation during sales | **14% - 22% (Predictable RAM buffer)** |
+
 ---
 
 ### 2. The Core Problem: Why the Legacy Postmeta Model Crashes Under Load
@@ -266,6 +276,16 @@ Are you preparing for a major product launch or struggling with checkout lag on 
 
 У реальних проектах, таких як **Organic Bed**, ця архітектура скорочує P95 затримку чекауту з **3 850мс до 420мс**, зменшує навантаження на процесор сервера БД на **80%** та збільшує пропускну здатність успішних замовлень у **8.4 раза**.
 
+#### Матриця швидкого вибору архітектури: масштабування WooCommerce від 10 000 SKU
+
+| Критерій оцінки | Застаріла монолітна (wp_postmeta) | Корпоративна HPOS + Redis-кешування |
+| :--- | :--- | :--- |
+| **Місткість каталогу** | Сповільнюється вже від 1 500 SKU | **Оптимізовано для 10 000+ SKU та розпродажів** |
+| **Збереження замовлень** | 40-65 неіндексованих рядків у \`wp_postmeta\` | **1 атомарний індексований запис у \`wp_wc_orders\`** |
+| **P95 затримка чекауту** | 3 850мс - 5 200мс (Висока нестабільність) | **420мс (Стабільно менше секунди)** |
+| **Пропускна здатність** | Максимум ~18 замовлень/хв (Дедлоки) | **> 150 замовлень/хв (Нуль дедлоків)** |
+| **Навантаження на CPU БД** | 90% - 100% пікове перевантаження | **14% - 22% (Передбачуваний буфер пам'яті)** |
+
 ---
 
 ### 2. Причини проблеми: чому монолітна модель Postmeta падає під навантаженням
@@ -431,6 +451,16 @@ Migrar los pedidos a **High-Performance Order Storage (HPOS)** - tablas dedicada
 
 En implementaciones reales como **Organic Bed**, esta arquitectura reduce la latencia P95 del checkout de **3.850ms a 420ms**, disminuye el uso de CPU de MySQL un **80%** y multiplica el rendimiento de transacciones concurrentes por **8,4x**.
 
+#### Matriz de decisión rápida de arquitectura: Escalando WooCommerce a 10.000+ SKUs
+
+| Dimensión de evaluación | Monolito tradicional (wp_postmeta) | HPOS Empresarial + Caché Redis |
+| :--- | :--- | :--- |
+| **Capacidad de catálogo** | Colapsa a partir de 1.500 SKUs | **Optimizado para más de 10.000 SKUs y ventas flash** |
+| **Almacenamiento de pedidos** | 40-65 filas no indexadas en \`wp_postmeta\` | **1 fila atómica indexada en \`wp_wc_orders\`** |
+| **Latencia P95 de checkout** | 3.850ms - 5.200ms (Alta varianza) | **420ms (Sub-segundo consistente)** |
+| **Rendimiento concurrente** | Máximo ~18 pedidos/min (Deadlocks) | **> 150 pedidos/min (Cero bloqueos)** |
+| **Uso de CPU en servidor BD** | 90% - 100% de saturación en picos | **14% - 22% (Búfer RAM predecible)** |
+
 ---
 
 ### 2. El problema central: por qué el modelo Postmeta colapsa bajo carga
@@ -595,6 +625,16 @@ Wenn Dutzende Kunden gleichzeitig auf "Jetzt Kaufen" klicken, sperrt MySQL die P
 Die Migration von Bestelldaten auf **High-Performance Order Storage (HPOS)** - dedizierte, normalisierte und indexierte MySQL-Tabellen (\`wp_wc_orders\`, \`wp_wc_order_addresses\`, \`wp_wc_order_operational_data\`) - eliminiert in Verbindung mit einem produktionsoptimierten **persistenten Redis-Objekt-Cache** und strikter Session-Isolation Datenbank-Blockaden vollständig.
 
 In Produktivumgebungen wie **Organic Bed** senkt diese Architektur die P95-Checkout-Latenz von **3.850ms auf 420ms**, reduziert die MySQL-CPU-Last um **80%** und steigert den Durchsatz paralleler Transaktionen um das **8,4-Fache**.
+
+#### Schnelle Architektur-Entscheidungsmatrix: WooCommerce-Skalierung auf 10.000+ SKUs
+
+| Evaluierungsdimension | Traditioneller Monolith (wp_postmeta) | Enterprise HPOS + Redis-Caching |
+| :--- | :--- | :--- |
+| **Katalogkapazität** | Leistungseinbrüche ab 1.500 SKUs | **Optimiert für 10.000+ SKUs & Flash-Sales** |
+| **Bestellungs-Speichermodell** | 40-65 unindexierte Zeilen in \`wp_postmeta\` | **1 atomare indexierte Zeile in \`wp_wc_orders\`** |
+| **P95-Checkout-Latenz** | 3.850ms - 5.200ms (Hohe Varianz) | **420ms (Zuverlässig unter einer Sekunde)** |
+| **Durchsatz & Parallelität** | Max. ~18 Bestellungen/Min (Deadlocks) | **> 150 Bestellungen/Min (Null Deadlocks)** |
+| **Datenbank-CPU-Auslastung** | 90% - 100% Sättigung bei Lastspitzen | **14% - 22% (Berechenbarer RAM-Puffer)** |
 
 ---
 

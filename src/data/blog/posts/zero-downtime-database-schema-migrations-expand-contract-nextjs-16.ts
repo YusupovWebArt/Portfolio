@@ -108,6 +108,14 @@ Even on modern distributed database engines like PostgreSQL, Aurora, or MySQL Vi
 
 To achieve **99.999% SLA availability**, enterprise engineering teams rely on the **Expand-and-Contract pattern (also known as Parallel Run)**. In this deep architectural dive, we examine how to orchestrate zero-downtime schema evolution in Next.js 16 applications using dual-writing Server Actions, shadow columns, rate-limited background backfill workers, and canary read switches.
 
+### Quick Architectural Decision Matrix: Schema Migration Patterns at Scale
+
+| Migration Strategy | Downtime & Maintenance Window | Data Safety & Rollback | Lock Contention Risk | Engineering Complexity |
+| :--- | :--- | :--- | :--- | :--- |
+| **Direct DDL (ALTER TABLE)** | Requires maintenance window (Minutes to hours) | Destructive (Instant failure on syntax/type) | Catastrophic (Exclusive metadata lock cascade) | Low (Single SQL command) |
+| **Shadow Table Copy (pt-online-schema-change)** | Zero downtime (Trigger-based dual write) | High safety with automated checksums | Moderate (Trigger overhead on master writes) | Medium (Tooling & permissions) |
+| **Expand-and-Contract (Recommended)** | **Zero downtime (100% 24/7 availability)** | **Near-zero risk (Instant feature flag rollback)** | **Zero locks (Non-blocking nullable columns)** | High (Requires 4-phase rollout) |
+
 ---
 
 ## 1. The Anatomy of Migration Failure: Lock Queues & Table Bloat
@@ -348,6 +356,14 @@ Database schema evolution is the ultimate test of system resilience. By replacin
 
 Для забезпечення **доступності 99.999% SLA** провідні інженерні команди використовують **патерн Expand-and-Contract (паралельний запуск)**. У цьому матеріалі ми детально розбираємо, як реалізувати безперервну еволюцію схем баз даних у Next.js 16 за допомогою подвійного запису через Server Actions, тіньових колонок, фонових воркерів бекфілу та канареєчного перемикання читання.
 
+### Матриця швидкого вибору архітектури: патерни міграції баз даних під навантаженням
+
+| Стратегія міграції | Даунтайм і технічне вікно | Безпека даних і відкат | Ризик блокування таблиць | Інженерна складність |
+| :--- | :--- | :--- | :--- | :--- |
+| **Прямий DDL (ALTER TABLE)** | Вимагає зупинки сервісу (Хвилини або години) | Деструктивний (Миттєвий збій при невідповідності) | Катастрофічний (Каскад блокувань AccessExclusive) | Низька (Одна SQL-команда) |
+| **Копіювання тіньової таблиці (pt-online)** | Нульовий даунтайм (Тригерний подвійний запис) | Висока надійність із автоперевіркою чексум | Помірний (Накладні витрати тригерів на майстрі) | Середня (Утиліти та права доступу) |
+| **Expand-and-Contract (Рекомендований)** | **Нульовий даунтайм (100% 24/7 доступність)** | **Мінімальний ризик (Миттєвий відкат фіча-прапорцем)** | **Нуль блокувань (Безпечні nullable колонки)** | Висока (Вимагає 4-фазного релізу) |
+
 ---
 
 ## 1. Механіка відмови: черги блокувань та вичерпання з'єднань
@@ -479,6 +495,14 @@ Incluso en motores como PostgreSQL o MySQL Vitess, modificar tablas activas exig
 
 Para asegurar una **disponibilidad del 99.999% SLA**, los equipos de ingeniería implementan el **patrón Expand-and-Contract (ejecución paralela)**. En este desglose técnico analizamos cómo orquestar la evolución continua de bases de datos en Next.js 16 mediante Server Actions de doble escritura, columnas sombra, workers de relleno con límite de tasa y activación gradual de lecturas.
 
+### Matriz de decisión rápida de arquitectura: Patrones de migración de esquemas a gran escala
+
+| Estrategia de migración | Tiempo de inactividad (Downtime) | Seguridad y reversión | Riesgo de contención por bloqueos | Complejidad de ingeniería |
+| :--- | :--- | :--- | :--- | :--- |
+| **DDL directo (ALTER TABLE)** | Requiere ventana de mantenimiento (Minutos u horas) | Destructivo (Fallo inmediato ante error) | Catastrófico (Cascada de bloqueos AccessExclusive) | Baja (Una sola sentencia SQL) |
+| **Copia de tabla sombra (pt-online)** | Cero downtime (Doble escritura mediante triggers) | Alta seguridad con verificación de checksum | Moderado (Sobrecarga de triggers en escrituras) | Media (Herramientas y permisos) |
+| **Expand-and-Contract (Recomendado)** | **Cero downtime (Disponibilidad continua 24/7)** | **Riesgo casi nulo (Reversión instantánea con flag)** | **Cero bloqueos (Columnas nulas no bloqueantes)** | Alta (Requiere despliegue en 4 fases) |
+
 ---
 
 ## 1. Anatomía del fallo: colas de bloqueo y saturación
@@ -609,6 +633,14 @@ In hochfrequentierten Produktionssystemen, die Tausende Schreibtransaktionen pro
 Selbst bei modernen verteilten Datenbank-Engines wie PostgreSQL, Aurora oder MySQL Vitess fordert das Ändern aktiver Tabellen einen **exklusiven Metadaten-Lock (\`AccessExclusiveLock\`)** an. Obwohl das Hinzufügen einer Nullable-Spalte nur wenige Millisekunden Metadatenänderung benötigt, muss sich der Befehl hinter aktiven Lesetransaktionen einreihen. Alle nachfolgenden Lese- oder Schreibabfragen reihen sich wiederum hinter dem DDL-Statement ein, was Verbindungspools in Sekundenschnelle erschöpft, HTTP-504-Gateway-Timeouts auslöst und geschäftskritische Checkout-Workflows lahmlegt.
 
 Um eine **Verfügbarkeit von 99,999% SLA** zu gewährleisten, setzen führende Engineering-Teams auf das **Expand-and-Contract-Muster (auch bekannt als Parallel Run)**. In diesem tiefgehenden Architektur-Leitfaden untersuchen wir, wie sich eine unterbrechungsfreie Schema-Evolution in Next.js 16-Anwendungen mittels dual schreibender Server Actions, Schatten-Spalten, ratenbegrenzter Hintergrund-Backfill-Worker und Canary-Read-Switches realisieren lässt.
+
+### Schnelle Architektur-Entscheidungsmatrix: Schema-Migrationsmuster unter Hochlast
+
+| Migrationsstrategie | Ausfallzeit & Wartungsfenster | Datensicherheit & Rollback | Risiko von Lock-Konflikten | Engineering-Komplexität |
+| :--- | :--- | :--- | :--- | :--- |
+| **Direktes DDL (ALTER TABLE)** | Erfordert Wartungsfenster (Minuten bis Stunden) | Destruktiv (Sofortiger Abbruch bei Syntax-/Typfehlern) | Katastrophal (Kaskadierende AccessExclusive-Locks) | Gering (Einzelner SQL-Befehl) |
+| **Schatten-Tabellenkopie (pt-online)** | Zero Downtime (Trigger-basierte Doppelschreibung) | Hohe Sicherheit mit automatischer Checksumme | Moderat (Trigger-Overhead auf Master-Writes) | Mittel (Tooling & Berechtigungen) |
+| **Expand-and-Contract (Empfohlen)** | **Zero Downtime (100% 24/7-Verfügbarkeit)** | **Nahezu risikolos (Sofortiger Feature-Flag-Rollback)** | **Keine Locks (Nicht-blockierende Nullable-Spalten)** | Hoch (Erfordert 4-Phasen-Rollout) |
 
 ---
 

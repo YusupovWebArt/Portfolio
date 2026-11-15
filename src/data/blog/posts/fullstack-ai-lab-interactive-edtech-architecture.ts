@@ -102,6 +102,16 @@ Modern engineering education platforms suffer from two fundamental flaws:
 
 **Fullstack AI Lab** (\`https://www.fullstackailab.com\`) was architected from first principles to solve both challenges. Built with **Next.js 16 App Router**, **React 19 Server Components**, **Tailwind CSS v4**, and **native Rust MDX-RS**, it compiles 1,700+ interactive pages in **under 90 seconds**, achieves **98+ PageSpeed**, passes **225/225 automated tests**, and provides interactive architectural simulators alongside in-browser WebAssembly sandboxes with zero server runtime overhead.
 
+#### Quick Architecture Decision Matrix: EdTech Platform Architectures
+
+| Architecture Dimension | Traditional Video / CMS Platform | Fullstack AI Lab Engine (Next.js 16 + Rust MDX) |
+| :--- | :--- | :--- |
+| **SSG Build Duration (1,700+ routes)** | 21.6 minutes (Heavy filesystem I/O) | **1.5 minutes / 90 seconds (14x faster with Rust MDX-RS)** |
+| **Pedagogical Interactivity** | Passive video streams and static text | **Interactive simulators (<ArchitectureFlow>, Live WASM)** |
+| **Code Execution Sandboxing** | Cloud Docker containers ($0.08/session) | **Client-side WebAssembly PHP 8.4 ($0.00 cloud compute)** |
+| **User State & Progress Sync** | Mandatory login gate before first lesson | **Local-First Zustand v5 + optional Supabase RLS cloud sync** |
+| **Mobile & Offline Performance** | Heavy database round-trips & latency | **Sub-second Edge CDN + Service Worker PWA caching** |
+
 ---
 
 ### 2. Architecture Decision Records (ADR - Why We Chose This Stack)
@@ -207,6 +217,16 @@ Even for an educational platform, Fullstack AI Lab enforces strict DevSecOps bou
 2. **Деградація часу збірки при масштабуванні**: Коли платформа зростає до **1 135+ інтерактивних уроків у 4 локалях (понад 1 700 маршрутів)**, стандартна статична генерація (SSG) впирається в дискові операції вводу-виводу (I/O), збільшуючи час білду до **21.6 хвилин** із ризиком таймауту в CI/CD.
 
 Платформа **Fullstack AI Lab** (\`https://www.fullstackailab.com\`) була спроєктована з нуля для вирішення обох викликів. Побудована на **Next.js 16 App Router**, **React 19 Server Components**, **Tailwind CSS v4** та **нативному компіляторі Rust MDX-RS**, вона збирає 1 700+ інтерактивних сторінок менш ніж за **90 секунд**, досягає **98+ у PageSpeed**, успішно проходить **225/225 автоматизованих тестів** і надає інтерактивні архітектурні симулятори разом із браузерною WebAssembly-пісочницею з нульовими накладними витратами на серверний бекенд.
+
+#### Матриця швидкого вибору архітектури: платформи інженерної освіти (EdTech)
+
+| Архітектурний вимір | Традиційна CMS / Відео-платформа | Двигун Fullstack AI Lab (Next.js 16 + Rust MDX) |
+| :--- | :--- | :--- |
+| **Час збірки SSG (1 700+ маршрутів)** | 21.6 хвилин (Перевантаження файлового I/O) | **1.5 хвилини / 90 секунд (у 14 разів швидше на Rust MDX-RS)** |
+| **Дидактична інтерактивність** | Пасивні відео та статичний текст | **Інтерактивні симулятори (<ArchitectureFlow>, живий WASM)** |
+| **Пісочниця виконання коду** | Серверні Docker-контейнери ($0.08/сесія) | **Клієнтський WebAssembly PHP 8.4 ($0.00 витрат на сервери)** |
+| **Синхронізація прогресу** | Обов'язкова реєстрація перед навчанням | **Local-First Zustand v5 + вибіркова хмарна синхронізація Supabase RLS** |
+| **Мобільна та офлайн швидкодія** | Постійні запити до бази даних та затримки | **Субсекундний Edge CDN + кешування Service Worker PWA** |
 
 ---
 
@@ -314,6 +334,16 @@ Las plataformas modernas de educación en ingeniería de software sufren dos pro
 
 **Fullstack AI Lab** (\`https://www.fullstackailab.com\`) fue diseñado desde primeros principios para resolver ambos desafíos. Construido con **Next.js 16 App Router**, **React 19 Server Components**, **Tailwind CSS v4** y el compilador nativo **Rust MDX-RS**, pre-renderiza más de 1.700 páginas interactivas en **menos de 90 segundos**, alcanza **98+ en PageSpeed**, supera **225/225 pruebas automatizadas** e incorpora simuladores arquitectónicos y sandboxes WebAssembly en el navegador sin costes de infraestructura remota.
 
+#### Matriz de decisión rápida de arquitectura: Plataformas educativas de ingeniería (EdTech)
+
+| Dimensión arquitectónica | Plataforma tradicional CMS / Vídeo | Motor Fullstack AI Lab (Next.js 16 + Rust MDX) |
+| :--- | :--- | :--- |
+| **Tiempo de compilación SSG (1.700+ rutas)** | 21.6 minutos (Saturación de I/O de disco) | **1.5 minutos / 90 segundos (14x más rápido con Rust MDX-RS)** |
+| **Interactividad pedagógica** | Vídeos pasivos y texto estático | **Simuladores interactivos (<ArchitectureFlow>, WASM en vivo)** |
+| **Aislamiento para ejecución de código** | Contenedores Docker en la nube (0.08 $/sesión) | **WebAssembly en cliente con PHP 8.4 (0,00 $ en servidores)** |
+| **Estado y sincronización de progreso** | Registro obligatorio antes de la primera clase | **Local-First con Zustand v5 + sincronización opcional con Supabase RLS** |
+| **Rendimiento móvil y offline** | Peticiones continuas a base de datos remota | **Edge CDN sub-segundo + caché PWA con Service Worker** |
+
 ---
 
 ### 2. Registros de Decisiones de Arquitectura (ADR - Por qué elegimos este stack)
@@ -417,6 +447,16 @@ Moderne Bildungsplattformen fuer Software-Engineering leiden unter zwei grundleg
 2. **Build- und Laufzeit-Engpaesse bei der Skalierung**: Wächst eine Plattform auf ueber **1.135+ interaktive Lektionen in 4 Sprachen (ueber 1.700 lokalisierte Routen)** an, stoesst herkoemmliche Static Site Generation (SSG) an massive Dateisystem-I/O-Grenzen. Die CI/CD-Build-Zeiten steigen auf ueber **21,6 Minuten**, was Vercel-Deployment-Timeouts riskiert.
 
 **Fullstack AI Lab** (\`https://www.fullstackailab.com\`) wurde von Grund auf entwickelt, um beide Herausforderungen zu loesen. Entwickelt mit **Next.js 16 App Router**, **React 19 Server Components**, **Tailwind CSS v4** und nativem **Rust MDX-RS**, kompiliert die Plattform ueber 1.700 interaktive Seiten in **unter 90 Sekunden**, erzielt **98+ im PageSpeed**, besteht **225/225 automatisierte Tests** und bietet interaktive Architektur-Simulatoren sowie browserbasierte WebAssembly-Sandboxes ohne jeglichen Server-Laufzeit-Overhead.
+
+#### Schnelle Architektur-Entscheidungsmatrix: EdTech-Plattformarchitekturen im Vergleich
+
+| Architektur-Dimension | Traditionelle Video- / CMS-Plattform | Fullstack AI Lab Engine (Next.js 16 + Rust MDX) |
+| :--- | :--- | :--- |
+| **SSG-Build-Dauer (1.700+ Routen)** | 21,6 Minuten (Schwere Dateisystem-I/O-Last) | **1,5 Minuten / 90 Sekunden (14x schneller mit Rust MDX-RS)** |
+| **Didaktische Interaktivitaet** | Passive Videostreams und statischer Text | **Interaktive Simulatoren (<ArchitectureFlow>, Live-WASM)** |
+| **Code-Execution Sandboxing** | Cloud-Docker-Container (0,08 $/Sitzung) | **Clientseitiges WebAssembly PHP 8.4 (0,00 $ Server-Compute)** |
+| **Zustand & Fortschrittssynchronisierung** | Zwingende Login-Schranke vor erster Lektion | **Local-First Zustand v5 + optionale Supabase RLS Cloud-Sync** |
+| **Mobile & Offline-Performance** | Kontinuierliche Datenbank-Roundtrips & Latenz | **Sub-Second Edge-CDN + Service Worker PWA-Caching** |
 
 ---
 

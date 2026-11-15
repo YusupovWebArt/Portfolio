@@ -113,6 +113,14 @@ In 2026, multi-modal engineering has experienced a paradigm shift. With **native
 
 In this deep architectural guide, we construct a production-ready **Multi-Modal Voice & Vision Agent** inside **Next.js 16 App Router**. By uniting **duplex WebRTC/WebSocket streaming**, **client-side Web Audio API AudioWorklets for zero-latency echo cancellation**, and **streaming React 19 Generative UI widgets**, we achieve seamless voice-to-voice turn-taking in under **240 milliseconds**.
 
+### Quick Decision Matrix: Multi-Modal Voice & Vision Streaming Architectures
+
+| Architecture Model | End-to-End Latency | Vision / Video Context | Natural User Interruption (Barge-in) | Visual Generative UI Support |
+| :--- | :--- | :--- | :--- | :--- |
+| **Cascaded Cloud Pipeline (STT -> LLM -> TTS)** | 1,600ms - 2,500ms (High friction) | None (Blind textual inputs only) | Clunky (Struggles with turn overlaps) | None (Post-speech static cards) |
+| **Server-Side Audio Stream (WebSocket Proxy)** | 600ms - 900ms (Noticeable pause) | Low-framerate snapshot polling | Partial (High server cancellation latency) | Disconnected DOM rendering |
+| **Duplex Multimodal Edge Streaming (Recommended)** | **< 240ms (Sub-second conversational)** | **Native 15-30 FPS WebRTC/WebP tokens** | **Instant (< 80ms native barge-in detection)** | **Synchronous React 19 Generative UI** |
+
 ---
 
 ## 1. System Topology: Duplex Multi-Modal Pipeline
@@ -335,6 +343,14 @@ The future of conversational computing is not text-based bots reading scripts. B
 
 У цій статті ми розглядаємо архітектуру **мультимодального голосового та відео-агента** в **Next.js 16 App Router**. Завдяки поєднанню **дуплексного WebRTC/WebSocket стрімінгу**, **AudioWorklet у Web Audio API** та **потокового Generative UI у React 19**, ми досягаємо живого діалогу із затримкою до **240 мілісекунд**.
 
+### Матриця швидкого вибору архітектури: мультимодальні голосові та відео-агенти
+
+| Архітектурна модель | Наскрізна затримка | Візуальний відео-контекст | Природне перебивання (Barge-in) | Підтримка Generative UI |
+| :--- | :--- | :--- | :--- | :--- |
+| **Каскадний хмарний пайплайн (STT -> LLM -> TTS)** | 1 600мс - 2 500мс (Помітна пауза) | Відсутній (Тільки сліпий текст) | Складне (Конфлікти черг відповідей) | Відсутня (Статичні картки постфактум) |
+| **Серверний аудіо-стрім (WebSocket Proxy)** | 600мс - 900мс (Штучна пауза) | Опитування знімків камери | Часткове (Затримка скасування на сервері) | Розсинхронізований рендеринг у DOM |
+| **Дуплексний мультимодальний стрімінг (Рекомендований)** | **< 240мс (Живий живий діалог)** | **Нативні токени 15-30 FPS WebRTC** | **Миттєве (< 80мс детекція перебивання)** | **Синхронний React 19 Generative UI** |
+
 ---
 
 ## 1. Топологія дуплексного мультимодального контуру
@@ -426,6 +442,14 @@ En 2026, los **modelos multimodales nativos en streaming como Gemini 2.5 Live** 
 
 En este artículo analizamos la arquitectura de un **agente multimodal de voz y visión** para **Next.js 16 App Router**. Mediante la combinación de **streaming dúplex WebRTC/WebSocket**, **AudioWorklet de Web Audio API para cancelación de eco en cliente** y **componentes de UI Generativa en React 19**, conseguimos conversaciones en tiempo real con latencias inferiores a **240 milisegundos**.
 
+### Matriz de decisión rápida de arquitectura: Agentes multimodales de voz y visión
+
+| Modelo arquitectónico | Latencia de extremo a extremo | Contexto de visión y vídeo | Interrupción natural (Barge-in) | Soporte para UI Generativa |
+| :--- | :--- | :--- | :--- | :--- |
+| **Pipeline en cascada (STT -> LLM -> TTS)** | 1.600ms - 2.500ms (Fricción alta) | Ninguno (Entrada textual a ciegas) | Rígida (Conflictos en turnos de habla) | Nula (Tarjetas estáticas a posteriori) |
+| **Proxy de streaming de audio (WebSocket)** | 600ms - 900ms (Pausa perceptible) | Muestreo de instantáneas por sondeo | Parcial (Latencia al cancelar en servidor) | Renderizado DOM desacoplado |
+| **Streaming multimodal dúplex (Recomendado)** | **< 240ms (Conversación natural)** | **Tokens nativos 15-30 FPS WebRTC/WebP** | **Instantánea (< 80ms detección de interrupción)** | **React 19 Generative UI síncrono** |
+
 ---
 
 ## 1. Topología del canal multimodal en tiempo real
@@ -516,6 +540,14 @@ Diese **Turn-Taking-Kaskade** verursachte eine inakzeptable **Verzögerung von 1
 Im Jahr 2026 hat das multimodale Engineering einen Paradigmenwechsel vollzogen. Mit **nativen multimodalen Streaming-Modellen wie Gemini 2.5 Live** werden Audio-Wellenformen und Kamera-Videobilder direkt als Roh-Tokens verarbeitet.
 
 In diesem tiefgehenden Architektur-Leitfaden konstruieren wir einen produktionsreifen **Multimodalen Sprach- & Vision-Agenten** im **Next.js 16 App Router**. Durch die Kombination aus **bidirektionalem Duplex-WebRTC/WebSocket-Streaming**, **clientseitigen Web Audio API AudioWorklets für verzögerungsfreie Echounterdrückung** und **gestreamten React 19 Generative UI-Widgets** erreichen wir einen nahtlosen Sprachdialog in unter **240 Millisekunden**.
+
+### Schnelle Architektur-Entscheidungsmatrix: Multimodale Sprach- & Vision-Streaming-Architekturen
+
+| Architekturmodell | End-to-End-Latenz | Video- und Vision-Kontext | Natürliche Unterbrechung (Barge-in) | Generative UI-Unterstützung |
+| :--- | :--- | :--- | :--- | :--- |
+| **Kaskadierte Cloud-Pipeline (STT -> LLM -> TTS)** | 1.600ms - 2.500ms (Hohe Verzögerung) | Keine (Ausschließlich blinder Text) | Träge (Probleme bei überlappenden Turns) | Keine (Statische Karten nach Sprachausgabe) |
+| **Server-Audio-Stream (WebSocket-Proxy)** | 600ms - 900ms (Spürbare Pause) | Abfrage von Standbildern mit geringer Rate | Partiell (Verzögerter Server-Abbruch) | Entkoppeltes DOM-Rendering |
+| **Duplex-Multimodal-Streaming (Empfohlen)** | **< 240ms (Flüssiger Echtzeitdialog)** | **Native 15-30 FPS WebRTC/WebP-Tokens** | **Sofort (< 80ms native Barge-in-Erkennung)** | **Synchrone React 19 Generative UI** |
 
 ---
 
