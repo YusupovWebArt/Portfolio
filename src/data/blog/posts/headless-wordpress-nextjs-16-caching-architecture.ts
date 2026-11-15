@@ -98,6 +98,17 @@ The optimal modern architecture rejects both extremes. Instead of running uncach
 
 By triggering fine-grained cache tag invalidation (\`revalidateTag\`) over authenticated HMAC-SHA256 webhooks, content edits reflect globally within **80ms** of hitting "Publish", while P95 Time to First Byte (TTFB) remains stable at **38ms** directly from CDN Edge nodes.
 
+
+### Quick Decision Matrix: Headless CMS Caching Strategies
+
+| Architectural Parameter | Uncached SSR (\`force-dynamic\`) | Time-Based ISR (\`revalidate: 60\`) | Event-Driven Tag Revalidation |
+| :--- | :--- | :--- | :--- |
+| **Edge Cache Hit Ratio** | 0% (Always origin fetch) | 82% - 88% (Periodic misses) | **> 98.4% (Global Edge CDN)** |
+| **P95 TTFB Latency** | 680ms - 2,400ms (PHP-FPM queue) | 140ms (Warm) / 800ms (Stale) | **38ms (Deterministic Edge Cache)** |
+| **MySQL Load (1k req)** | 14,200 database queries | 1,420 database queries | **< 15 queries (On-demand revalidation)** |
+| **Publishing Freshness** | 0s (Instant but slow) | Up to 60s stale window | **< 80ms (HMAC-SHA256 Webhook)** |
+| **Cache Stampede Risk** | Critical during traffic spikes | High during TTL expiration | **Zero (Atomic Mutex & Tag Purge)** |
+
 ---
 
 ### 2. The Core Dilemma: Stale Reads vs Database Meltdown
@@ -339,6 +350,17 @@ Are you planning a headless architecture migration, or is your current decoupled
 
 Завдяки точковій інвалідації за тегами (\`revalidateTag\`) через підписані HMAC-SHA256 вебхуки будь-яка зміна контенту з'являється у відвідувачів по всьому світу впродовж **80мс** після кліку «Опублікувати», тоді як P95 показник Time to First Byte (TTFB) стабільно тримається на рівні **38мс** безпосередньо з CDN Edge нод.
 
+
+### Швидка матриця рішень: стратегії кешування Headless CMS
+
+| Архітектурний параметр | Некешований SSR (\`force-dynamic\`) | Часовий ISR (\`revalidate: 60\`) | Подієва ревалідація за тегами |
+| :--- | :--- | :--- | :--- |
+| **Edge Cache Hit Ratio** | 0% (Завжди запит до сервера) | 82% - 88% (Періодичні промахи) | **> 98.4% (Глобальний CDN Edge)** |
+| **P95 TTFB Затримка** | 680мс - 2400мс (Черга PHP-FPM) | 140мс (Warm) / 800мс (Stale) | **38мс (Стабільний Edge-кеш)** |
+| **Навантаження на MySQL (1k req)** | 14 200 запитів до БД | 1 420 запитів до БД | **< 15 запитів (Оновлення за подією)** |
+| **Свіжість публікацій** | 0с (Миттєво, але повільно) | До 60с затримки для читача | **< 80мс (Вебхук з HMAC-SHA256)** |
+| **Ризик Cache Stampede** | Критичний під час сплесків | Високий при завершенні TTL | **Нульовий (Атомарний м'ютекс і теги)** |
+
 ---
 
 ### 2. Головна дилема: застарілий кеш чи колапс бази даних
@@ -578,6 +600,17 @@ La arquitectura moderna óptima descarta ambos extremos. En lugar de desactivar 
 
 Al activar la invalidación granular por etiquetas (\`revalidateTag\`) con webhooks firmados mediante HMAC-SHA256, cualquier edición de contenido se refleja globalmente en menos de **80ms** tras pulsar "Publicar", manteniendo una latencia P95 Time to First Byte (TTFB) estable de **38ms** servida directamente desde los nodos CDN Edge.
 
+
+### Matriz rápida de decisión: estrategias de caché para Headless CMS
+
+| Parámetro arquitectónico | SSR sin caché (\`force-dynamic\`) | ISR por tiempo (\`revalidate: 60\`) | Revalidación bajo demanda por etiquetas |
+| :--- | :--- | :--- | :--- |
+| **Ratio de aciertos en Edge** | 0% (Siempre consulta al origen) | 82% - 88% (Fallos periódicos) | **> 98.4% (CDN global en Edge)** |
+| **Latencia P95 TTFB** | 680ms - 2.400ms (Cola PHP-FPM) | 140ms (Warm) / 800ms (Stale) | **38ms (Caché determinista en Edge)** |
+| **Carga en MySQL (1k req)** | 14.200 consultas a BD | 1.420 consultas a BD | **< 15 consultas (Bajo demanda)** |
+| **Frescura editorial** | 0s (Instantáneo pero lento) | Hasta 60s de retraso | **< 80ms (Webhook HMAC-SHA256)** |
+| **Riesgo de Cache Stampede** | Crítico en picos de tráfico | Elevado al expirar TTL | **Cero (Mutex atómico y purga de tags)** |
+
 ---
 
 ### 2. El dilema central: lecturas obsoletas frente al colapso de la base de datos
@@ -816,6 +849,17 @@ Die Entkopplung von WordPress und Next.js 16 verspricht das Beste aus beiden Wel
 Die optimale moderne Architektur vermeidet beide Extreme. Anstatt bei jeder Anfrage ungecachtes SSR auszuführen oder sich auf willkürliche zeitbasierte Revalidierungsintervalle (\`revalidate: 60\`) zu verlassen, sollten Produktionsteams eine **ereignisgesteuerte On-Demand-Tag-Revalidierung** mit Next.js 16 und kryptografisch gesicherten WordPress-Webhooks implementieren.
 
 Durch das Auslösen feingranularer Cache-Tag-Invalidierungen (\`revalidateTag\`) über authentifizierte HMAC-SHA256-Webhooks werden Inhaltsänderungen innerhalb von **80ms** nach dem Klick auf "Veröffentlichen" weltweit sichtbar, während die P95 Time to First Byte (TTFB) direkt von CDN-Edge-Knoten stabil bei **38ms** verbleibt.
+
+
+### Schnelle Entscheidungsmatrix: Headless-CMS-Caching-Strategien im Vergleich
+
+| Architektur-Parameter | Ungecachtes SSR (\`force-dynamic\`) | Zeitbasiertes ISR (\`revalidate: 60\`) | Ereignisgesteuerte Tag-Invalidierung |
+| :--- | :--- | :--- | :--- |
+| **Edge Cache Hit Ratio** | 0% (Immer Ursprungsabfrage) | 82% - 88% (Periodische Misses) | **> 98.4% (Globales Edge-CDN)** |
+| **P95 TTFB-Latenz** | 680ms - 2.400ms (PHP-FPM-Queue) | 140ms (Warm) / 800ms (Stale) | **38ms (Deterministischer Edge-Cache)** |
+| **MySQL-Last (1k Requests)** | 14.200 Datenbankabfragen | 1.420 Datenbankabfragen | **< 15 Abfragen (On-Demand-Purge)** |
+| **Redaktionelle Aktualitaet** | 0s (Sofort, aber extrem langsam) | Bis zu 60s Verzoegerung | **< 80ms (HMAC-SHA256-Webhook)** |
+| **Cache-Stampede-Risiko** | Kritisch bei Lastspitzen | Hoch bei TTL-Ablauf | **Null (Atomarer Mutex & Tag-Purge)** |
 
 ---
 

@@ -116,6 +116,17 @@ A headless e-commerce architecture decoupling the storefront into Next.js 16 wit
 - **Zero MySQL database deadlocks** during high-concurrency flash sales (handling 850 concurrent checkout intents per second).
 - **PCI DSS scope reduction** to SAQ A (zero cardholder data touching the origin server).
 
+
+### Quick Decision Matrix: Monolithic vs. Decoupled Edge Checkout Architecture
+
+| Architectural Dimension | Monolithic WooCommerce Checkout | Hosted SaaS (Shopify Plus) | Decoupled Next.js 16 + Stripe Elements |
+| :--- | :--- | :--- | :--- |
+| **Recalculation UI Latency** | 1,500ms - 3,200ms (Blocking AJAX) | 350ms - 800ms (Hosted checkout) | **42ms (Optimistic Edge Route Handler)** |
+| **Mobile Checkout Drop-Off** | High (> 30% latency abandonment) | Moderate (~18%) | **Minimal (< 8.5% drop-off)** |
+| **Flash Sale Concurrency** | Frequent MySQL locks & 504 timeouts | Queue-gated checkout throttle | **Zero locks (Asynchronous Redis Outbox)** |
+| **Multi-Currency & VAT** | Multi-plugin recalculation overhead | Vendor-locked currency markup | **Sub-50ms Edge OSS calculation** |
+| **PCI Compliance Scope** | SAQ D / SAQ A-EP (Origin touches form) | SAQ A (Shopify hosted page) | **SAQ A (Zero cardholder data touches origin)** |
+
 ---
 
 ## Anatomical Bottlenecks of Monolithic WooCommerce Checkout
@@ -599,6 +610,17 @@ Headless-архітектура на базі Next.js 16 та Stripe Payment Ele
 - **Повної відсутності дедлоків у MySQL** під час пікових розпродажів (обробка 850 одночасних платіжних сесій на секунду).
 - **Зменшення вимог PCI DSS** до рівня SAQ A (дані карток взагалі не потрапляють на сервер інтернет-магазину).
 
+
+### Швидка матриця рішень: монолітний чи відокремлений Edge-чекаут
+
+| Архітектурний вимір | Монолітний чекаут WooCommerce | Хмарний SaaS (Shopify Plus) | Відокремлений Next.js 16 + Stripe Elements |
+| :--- | :--- | :--- | :--- |
+| **Затримка перерахунку UI** | 1500мс - 3200мс (блокуючий AJAX) | 350мс - 800мс (хостинг чекауту) | **42мс (оптимістичний Edge Route Handler)** |
+| **Втрата мобільних кошиків** | Висока (> 30% через затримки) | Середня (~18%) | **Мінімальна (< 8.5% відмов)** |
+| **Пікові навантаження (Flash Sales)** | Дедлоки MySQL та помилки 504 | Обмеження чергами покупців | **Нуль блокувань (асинхронний Redis Outbox)** |
+| **Мультивалютність та ПДВ** | Навантаження від кількох плагінів | Комісії та прив'язка до платформи | **Розрахунок ставок EU OSS до 50мс на Edge** |
+| **Відповідність PCI DSS** | SAQ D / SAQ A-EP (сервер бачить форми) | SAQ A (хостинг сторінки у вендора) | **SAQ A (нуль платіжних даних на бекенді)** |
+
 ---
 
 ## Вразливості та анатомічні вузькі місця монолітного чекауту WooCommerce
@@ -1068,6 +1090,17 @@ Una arquitectura desacoplada en Next.js 16 con Stripe Payment Element elimina es
 - **Cero bloqueos de base de datos MySQL** durante ventas masivas (procesando 850 sesiones concurrentes de pago por segundo).
 - **Reducción del alcance PCI DSS** al nivel SAQ A (los datos de tarjeta nunca tocan el servidor de la tienda).
 
+
+### Matriz rápida de decisión: checkout monolítico vs desacoplado en el Edge
+
+| Dimensión arquitectónica | Checkout monolítico WooCommerce | SaaS gestionado (Shopify Plus) | Desacoplado Next.js 16 + Stripe Elements |
+| :--- | :--- | :--- | :--- |
+| **Latencia de recálculo en UI** | 1.500ms - 3.200ms (AJAX bloqueante) | 350ms - 800ms (checkout alojado) | **42ms (Route Handler optimista en Edge)** |
+| **Abandono en checkout móvil** | Elevado (> 30% por latencia) | Moderado (~18%) | **Mínimo (< 8.5% de abandono)** |
+| **Concurrencia en ventas flash** | Bloqueos frecuentes en MySQL y 504 | Colas de espera obligatorias | **Cero bloqueos (Outbox asíncrono en Redis)** |
+| **Multidivisa e impuestos** | Sobrecarga de múltiples plugins | Margen y dependencia de proveedor | **Cálculo de IVA OSS en menos de 50ms en Edge** |
+| **Ámbito de cumplimiento PCI** | SAQ D / SAQ A-EP (origen toca el form) | SAQ A (página alojada por Shopify) | **SAQ A (cero datos de tarjeta en el servidor)** |
+
 ---
 
 ## Cuellos de Botella del Checkout Monolítico Tradicional en WooCommerce
@@ -1536,6 +1569,17 @@ Eine Headless-E-Commerce-Architektur, die das Storefront mit Next.js 16 und dem 
 - **24,6 % Reduktion** der Kaufabbrüche auf Mobilgeräten.
 - **Null MySQL-Datenbank-Deadlocks** während hochfrequentierter Flash-Sales (Verarbeitung von 850 gleichzeitigen Checkout-Intents pro Sekunde).
 - **Reduzierung des PCI-DSS-Umfangs** auf SAQ A (keine Karteninhaberdaten berühren den Ursprungsserver).
+
+
+### Schnelle Entscheidungsmatrix: Monolithischer vs. Entkoppelter Edge-Checkout
+
+| Architektur-Dimension | Monolithischer WooCommerce-Checkout | Hosted SaaS (Shopify Plus) | Entkoppelt: Next.js 16 + Stripe Elements |
+| :--- | :--- | :--- | :--- |
+| **UI-Neuberechnungslatenz** | 1.500ms - 3.200ms (Blockierendes AJAX) | 350ms - 800ms (Gehosteter Checkout) | **42ms (Optimistischer Edge Route Handler)** |
+| **Mobiler Warenkorbabbruch** | Hoch (> 30% durch Eingabeverzoegerung) | Moderat (~18%) | **Minimal (< 8.5% Abbruchquote)** |
+| **Flash-Sale-Gleichzeitigkeit** | Haeufige MySQL-Locks & 504-Timeouts | Warteschlangen-Drosselung | **Null Sperren (Asynchroner Redis Outbox)** |
+| **Multi-Waehrung & MwSt.** | Plugin-Overhead fuer Waehrungen | Vendor-Lock-in & Plattformgebuehren | **Sub-50ms Edge OSS-Steuerberechnung** |
+| **PCI-DSS-Konformitaetsumfang** | SAQ D / SAQ A-EP (Server beruehrt Formular) | SAQ A (Von Shopify gehostet) | **SAQ A (Keine Kartendaten auf dem Origin-Server)** |
 
 ---
 

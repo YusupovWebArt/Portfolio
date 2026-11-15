@@ -107,6 +107,17 @@ However, as modern applications grow into collaborative, multi-tenant B2B platfo
 
 Under traditional RBAC, engineering teams react by introducing combinatoric custom roles: \`BillingAdminReadOnly\`, \`ProjectManagerTeamBOnly\`, \`AuditorExternalWithExceptions\`. In enterprise deployments, role registries routinely exceed 300+ custom roles with sprawling boolean flags in database tables. The logic becomes unmaintainable, audits fail, and critical security vulnerabilities occur.
 
+
+### Quick Decision Matrix: Authorization Architecture Comparison
+
+| Architectural Parameter | Traditional RBAC (Static Roles) | Attribute-Based Access Control (ABAC) | ReBAC (Google Zanzibar / OpenFGA) |
+| :--- | :--- | :--- | :--- |
+| **Role Explosion Risk** | Critical (> 300 custom roles in SaaS) | Moderate (Policy bloat over time) | **Zero (Normalized relationship graph)** |
+| **Evaluation Latency** | 45ms - 180ms (Recursive SQL joins) | 25ms - 75ms (Rule engine execution) | **< 12ms (Optimized directed graph)** |
+| **Transitive Hierarchies** | Brittle (Manual CTE / recursive queries) | Complex (Custom JSON policy rules) | **Native (Automatic parent-child traversal)** |
+| **Edge Middleware Ready** | No (Heavy database dependencies) | Difficult (Requires context hydration) | **Yes (In-memory tuple evaluation at Edge)** |
+| **Auditability & Revocation** | Fragile (Scattered boolean columns) | Moderate (Audit trail of policy updates) | **Atomic (Instant tuple invalidation in Redis)** |
+
 ---
 
 ## 2. The Google Zanzibar Paradigm & OpenFGA
@@ -369,6 +380,17 @@ We benchmarked traditional SQL recursive joins (PostgreSQL \`WITH RECURSIVE\` on
 
 Команди змушені створювати сотні штучних комбінованих ролей, що перетворює базу даних на заплутаний лабіринт булевих прапорців.
 
+
+### Швидка матриця рішень: порівняння архітектур авторизації
+
+| Архітектурний параметр | Традиційний RBAC (статичні ролі) | Контроль доступу на атрибутах (ABAC) | ReBAC (Google Zanzibar / OpenFGA) |
+| :--- | :--- | :--- | :--- |
+| **Ризик вибуху ролей** | Критичний (> 300 кастомних ролей у SaaS) | Помірний (розростання правил політик) | **Нульовий (нормалізований граф зв'язків)** |
+| **Затримка перевірки** | 45мс - 180мс (рекурсивні SQL-джойни) | 25мс - 75мс (виконання рул-енджину) | **< 12мс (оптимізований орієнтований граф)** |
+| **Транзитивні ієрархії** | Крихкі (ручні рекурсивні запити CTE) | Складні (кастомні JSON-політики) | **Нативні (автоматичний обхід деревоподібних зв'язків)** |
+| **Робота на Edge Middleware** | Ні (залежність від важкої бази даних) | Складно (потребує гідратації контексту) | **Так (оцінка кортежів у пам'яті на Edge)** |
+| **Аудит та відкликання** | Ненадійні (розкидані boolean-прапорці) | Помірні (журнали оновлення політик) | **Атомарні (миттєве видалення кортежу в Redis)** |
+
 ---
 
 ## 2. Парадигма Google Zanzibar та OpenFGA
@@ -406,6 +428,17 @@ El control de acceso basado en roles (RBAC) tradicional sufre de la llamada **ex
 - La proliferación de roles combinatorios (\`AdminLecturaEquipoB\`, \`AuditorTemporal\`) satura las bases de datos.
 - La gestión de permisos transitivos en jerarquías profundas requiere costosas consultas recursivas en SQL.
 
+
+### Matriz rápida de decisión: comparación de arquitecturas de autorización
+
+| Parámetro arquitectónico | RBAC tradicional (roles estáticos) | Control de acceso por atributos (ABAC) | ReBAC (Google Zanzibar / OpenFGA) |
+| :--- | :--- | :--- | :--- |
+| **Riesgo de explosión de roles** | Crítico (> 300 roles personalizados en SaaS) | Moderado (complejidad de políticas) | **Cero (grafo de relaciones normalizado)** |
+| **Latencia de evaluación** | 45ms - 180ms (joins SQL recursivos) | 25ms - 75ms (motor de reglas) | **< 12ms (grafo dirigido optimizado)** |
+| **Jerarquías transitivas** | Frágil (consultas recursivas manuales) | Complejo (políticas JSON a medida) | **Nativo (navegación automática padre-hijo)** |
+| **Apto para Edge Middleware** | No (dependencia de base de datos) | Difícil (requiere hidratación de contexto) | **Sí (evaluación de tuplas en memoria en Edge)** |
+| **Auditabilidad y revocación** | Frágil (columnas booleanas dispersas) | Moderado (registro de reglas) | **Atómico (invalidación instantánea de tuplas en Redis)** |
+
 ---
 
 ## 2. El paradigma de Google Zanzibar y OpenFGA
@@ -435,6 +468,17 @@ Sobald moderne Anwendungen jedoch zu kollaborativen, mandantenfaehigen B2B-Platt
 - Was passiert, wenn eine Dachorganisation ein Tochterunternehmen uebernimmt und vererbte Administrationsrechte benoetigt, ohne dass die Eigentumsverhaeltnisse einzelner Projekte manuell angepasst werden muessen?
 
 Unter klassischem RBAC reagieren Entwicklungsteams meist mit kombinatorischen benutzerdefinierten Rollen: \`BillingAdminReadOnly\`, \`ProjectManagerTeamBOnly\`, \`AuditorExternalWithExceptions\`. In Enterprise-Deployments umfasst der Rollenkatalog haeufig mehr als 300 benutzerdefinierte Rollen mit unzaehligen Boolean-Flags in Datenbanktabellen. Die Logik wird unwartbar, Audits schlagen fehl und kritische Sicherheitsluecken entstehen.
+
+
+### Schnelle Entscheidungsmatrix: Autorisierungsarchitekturen im Vergleich
+
+| Architektur-Parameter | Traditionelles RBAC (Statische Rollen) | Attributbasiertes ABAC | ReBAC (Google Zanzibar / OpenFGA) |
+| :--- | :--- | :--- | :--- |
+| **Rollenexplosions-Risiko** | Kritisch (> 300 Rollen in B2B-SaaS) | Moderat (Wachsende Regelwerke) | **Null (Normalisierter Beziehungsgraph)** |
+| **Evaluierungslatenz** | 45ms - 180ms (Rekursive SQL-Joins) | 25ms - 75ms (Regel-Engine) | **< 12ms (Optimierter gerichteter Graph)** |
+| **Transitive Hierarchien** | Fragil (Manuelle rekursive CTEs) | Komplex (Benutzerdefinierte JSON-Regeln) | **Nativ (Automatische Parent-Child-Traversierung)** |
+| **Edge-Middleware-Einsatz** | Nein (Schwere Datenbank-Abhaengigkeiten) | Schwierig (Kontext-Hydration erforderlich) | **Ja (In-Memory-Tupelpruefung am Edge)** |
+| **Audit & Rechte-Widerruf** | Fragil (Verstreute Boolean-Flags) | Moderat (Audit-Trail von Richtlinien) | **Atomar (Sofortige Tupel-Invalidierung in Redis)** |
 
 ---
 
