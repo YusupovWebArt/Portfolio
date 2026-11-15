@@ -116,7 +116,7 @@ In 2026, three major forces are accelerating the transition to **local-first, in
 
 | Architectural Dimension | Centralized Cloud APIs (OpenAI / Gemini) | In-Browser WebGPU (Local-First) |
 | :--- | :--- | :--- |
-| **Server Inference Costs** | \$0.002 - \$0.015 per query (Scales linearly) | **\$0.00 (Zero cloud GPU infrastructure cost)** |
+| **Server Inference Costs** | $0.002 - $0.015 per query (Scales linearly) | **$0.00 (Zero cloud GPU infrastructure cost)** |
 | **User Data Privacy** | Third-party transmission (Cloud compliance overhead) | **100% Client-Side Privacy (Zero network transmission)** |
 | **Offline Capability** | Fails immediately on network outage | **100% Offline Functional in Progressive Web Apps** |
 | **Generation Throughput** | Latency bottlenecked by network TTFB | **28 - 45 tokens/sec (Client hardware acceleration)** |
@@ -284,7 +284,7 @@ This pattern delivers the best of both worlds: zero-cost private inference for 8
 
 | Архітектурний вимір | Централізовані хмарні API (OpenAI / Claude) | Локальний WebGPU у браузері (Local-First) |
 | :--- | :--- | :--- |
-| **Витрати на інференс** | \$0.002 - \$0.015 за запит (Лінійне зростання) | **\$0.00 (Нуль витрат на хмарні сервери)** |
+| **Витрати на інференс** | $0.002 - $0.015 за запит (Лінійне зростання) | **$0.00 (Нуль витрат на хмарні сервери)** |
 | **Приватність даних** | Передача через мережу (Ризик витоків) | **100% Конфіденційність (Дані не виходять з пристрою)** |
 | **Офлайн-автономність** | Повна непрацездатність без інтернету | **100% Офлайн-робота у форматі PWA** |
 | **Швидкість генерації** | Обмежена мережевою затримкою (TTFB) | **28 - 45 токенів/с (Апаратне прискорення GPU)** |
@@ -344,7 +344,7 @@ En 2026, el enfoque **Local-First en el navegador** ofrece tres ventajas decisiv
 
 | Dimensión arquitectónica | APIs centralizadas en la nube (OpenAI) | WebGPU local en el navegador (Local-First) |
 | :--- | :--- | :--- |
-| **Coste de infraestructura** | \$0.002 - \$0.015 por petición (Escalado lineal) | **\$0.00 (Cero costes en servidores GPU)** |
+| **Coste de infraestructura** | $0.002 - $0.015 por petición (Escalado lineal) | **$0.00 (Cero costes en servidores GPU)** |
 | **Privacidad de datos** | Envío a servidores externos (Riesgo GDPR/HIPAA) | **100% Privacidad en cliente (Cero salida de datos)** |
 | **Disponibilidad offline** | Inutilizable ante pérdida de conexión | **100% Funcional sin red en aplicaciones PWA** |
 | **Velocidad de generación** | Limitada por la latencia de red (TTFB) | **28 - 45 tokens/s (Aceleración hardware cliente)** |
@@ -383,7 +383,7 @@ Im Jahr 2026 beschleunigen drei zentrale Kraefte den Uebergang zu **Local-First 
 
 | Architektur-Dimension | Zentralisierte Cloud-APIs (OpenAI / Gemini) | In-Browser-WebGPU (Local-First) |
 | :--- | :--- | :--- |
-| **Server-Inferenzkosten** | \$0.002 - \$0.015 pro Anfrage (Lineare Skalierung) | **\$0.00 (Keine Cloud-GPU-Infrastrukturkosten)** |
+| **Server-Inferenzkosten** | $0.002 - $0.015 pro Anfrage (Lineare Skalierung) | **$0.00 (Keine Cloud-GPU-Infrastrukturkosten)** |
 | **Datenschutz** | Uebertragung an Drittserver (DSGVO/HIPAA-Risiken) | **100% Clientseitiger Datenschutz (Keine Netzausleitung)** |
 | **Offline-Verfuegbarkeit** | Totalausfall bei Netzwerkunterbrechung | **100% Offline-funktionsfaehig als PWA** |
 | **Generierungsdurchsatz** | Begrenzt durch Netzwerk-TTFB | **28 - 45 Tokens/s (Client-Hardware-Beschleunigung)** |

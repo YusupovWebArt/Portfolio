@@ -116,7 +116,7 @@ Money cannot be modeled as a mutable column. Money must be modeled as an immutab
 
 ### Quick Decision Matrix: Mutable Balance vs Immutable Double-Entry TigerBeetle Ledger
 
-| Architectural Dimension | Mutable SQL Column (`UPDATE balance`) | Immutable Double-Entry Ledger (TigerBeetle) |
+| Architectural Dimension | Mutable SQL Column (\`UPDATE balance\`) | Immutable Double-Entry Ledger (TigerBeetle) |
 | :--- | :--- | :--- |
 | **Data Integrity Invariant** | Vulnerable to race conditions & float drift | **Guaranteed: Sum(Debits) - Sum(Credits) == 0** |
 | **Max Commit Throughput** | 1,200 - 3,500 tx/sec (Heavy row locks) | **> 1,000,000 tx/sec (Zero lock contention)** |
@@ -341,7 +341,7 @@ UPDATE users SET balance = balance - 49.99 WHERE id = 'usr_1024';
 
 ### Матриця вибору фінтех-архітектури: змінні стовпці балансу проти незмінного леджера TigerBeetle
 
-| Архітектурний критерій | Змінне поле SQL (`UPDATE balance`) | Незмінний журнал подвійного запису (TigerBeetle) |
+| Архітектурний критерій | Змінне поле SQL (\`UPDATE balance\`) | Незмінний журнал подвійного запису (TigerBeetle) |
 | :--- | :--- | :--- |
 | **Інваріант цілісності даних** | Вразливий до стану гонки та помилок float | **Гарантовано: Сума(Дебет) - Сума(Кредит) == 0** |
 | **Пропускна здатність запису**| 1 200 - 3 500 транзакцій/сек (Блокування рядків) | **> 1 000 000 транзакцій/сек (Без блокувань)** |
@@ -390,7 +390,7 @@ El dinero debe registrarse exclusivamente como un libro mayor inmutable de parti
 
 ### Matriz de decisión: Saldo mutable en SQL vs Libro mayor inmutable en TigerBeetle
 
-| Dimensión arquitectónica | Columna mutable (`UPDATE balance`) | Libro mayor de partida doble (TigerBeetle) |
+| Dimensión arquitectónica | Columna mutable (\`UPDATE balance\`) | Libro mayor de partida doble (TigerBeetle) |
 | :--- | :--- | :--- |
 | **Invariante de integridad** | Vulnerable a condiciones de carrera y redondeo | **Garantizado: Suma(Débitos) - Suma(Créditos) == 0** |
 | **Rendimiento de transacciones**| 1.200 - 3.500 tx/s (Bloqueos de filas SQL) | **> 1.000.000 tx/s (Cero contención de bloqueos)** |
@@ -433,7 +433,7 @@ Geld kann nicht als veränderliche Spalte modelliert werden. Geld muss als unver
 
 ### FinTech-Architekturmatrix: Mutierbare SQL-Spalte vs. Unveränderliches TigerBeetle-Hauptbuch
 
-| Architektur-Dimension | Mutierbare Spalte (`UPDATE balance`) | Unveränderliches Hauptbuch (TigerBeetle) |
+| Architektur-Dimension | Mutierbare Spalte (\`UPDATE balance\`) | Unveränderliches Hauptbuch (TigerBeetle) |
 | :--- | :--- | :--- |
 | **Datenintegritäts-Invariante** | Anfällig für Race Conditions & Rundungsdrift | **Garantiert: Summe(Soll) - Summe(Haben) == 0** |
 | **Maximaler Transaktionsdurchsatz** | 1.200 - 3.500 Tx/s (Schwere Zeilensperren) | **> 1.000.000 Tx/s (Vollkommen sperrenfrei)** |
