@@ -112,6 +112,18 @@ In high-concurrency production environments, this pattern is catastrophic:
 
 Money cannot be modeled as a mutable column. Money must be modeled as an immutable, append-only financial ledger.
 
+
+
+### Quick Decision Matrix: Mutable Balance vs Immutable Double-Entry TigerBeetle Ledger
+
+| Architectural Dimension | Mutable SQL Column (`UPDATE balance`) | Immutable Double-Entry Ledger (TigerBeetle) |
+| :--- | :--- | :--- |
+| **Data Integrity Invariant** | Vulnerable to race conditions & float drift | **Guaranteed: Sum(Debits) - Sum(Credits) == 0** |
+| **Max Commit Throughput** | 1,200 - 3,500 tx/sec (Heavy row locks) | **> 1,000,000 tx/sec (Zero lock contention)** |
+| **P99 Commit Latency** | 45ms - 180ms (Disk I/O serialization) | **< 800 Microseconds (Direct I/O ring buffers)** |
+| **Audit Trail Provenance** | Destroyed on update (Requires log archaeology) | **100% Immutable cryptographically linked journal** |
+| **Financial Reconcile Time** | Hours to days of nightly batch reconciliation | **Zero (Real-time sub-millisecond invariant checks)** |
+
 ---
 
 ## 2. Double-Entry Bookkeeping Invariants & TigerBeetle Architecture
@@ -325,6 +337,18 @@ UPDATE users SET balance = balance - 49.99 WHERE id = 'usr_1024';
 
 Гроші не можуть бути змінним стовпцем. Гроші - це незмінний фінансовий реєстр подвійного запису.
 
+
+
+### Матриця вибору фінтех-архітектури: змінні стовпці балансу проти незмінного леджера TigerBeetle
+
+| Архітектурний критерій | Змінне поле SQL (`UPDATE balance`) | Незмінний журнал подвійного запису (TigerBeetle) |
+| :--- | :--- | :--- |
+| **Інваріант цілісності даних** | Вразливий до стану гонки та помилок float | **Гарантовано: Сума(Дебет) - Сума(Кредит) == 0** |
+| **Пропускна здатність запису**| 1 200 - 3 500 транзакцій/сек (Блокування рядків) | **> 1 000 000 транзакцій/сек (Без блокувань)** |
+| **P99 затримка фіксації** | 45мс - 180мс (Черги дискового вводу-виводу) | **< 800 Мікросекунд (Кільцеві буфери Direct I/O)** |
+| **Історія аудиту та походження**| Втрачається при перезаписі значення | **100% Незмінний криптографічно зв'язаний журнал** |
+| **Час на фінансову звірку** | Години нічних розрахунків і виправлень | **Нуль (Звірка в реальному часі за частки мілісекунди)** |
+
 ---
 
 ## 2. Інваріант подвійного запису та архітектура TigerBeetle
@@ -362,6 +386,18 @@ El antipatrón de almacenar saldos como columnas mutables (\`UPDATE users SET ba
 
 El dinero debe registrarse exclusivamente como un libro mayor inmutable de partida doble.
 
+
+
+### Matriz de decisión: Saldo mutable en SQL vs Libro mayor inmutable en TigerBeetle
+
+| Dimensión arquitectónica | Columna mutable (`UPDATE balance`) | Libro mayor de partida doble (TigerBeetle) |
+| :--- | :--- | :--- |
+| **Invariante de integridad** | Vulnerable a condiciones de carrera y redondeo | **Garantizado: Suma(Débitos) - Suma(Créditos) == 0** |
+| **Rendimiento de transacciones**| 1.200 - 3.500 tx/s (Bloqueos de filas SQL) | **> 1.000.000 tx/s (Cero contención de bloqueos)** |
+| **Latencia P99 de confirmación**| 45ms - 180ms (Serialización de disco) | **< 800 Microsegundos (Ring buffers con Direct I/O)** |
+| **Trazabilidad y auditoría** | Destruida al sobreescribir el valor | **100% Inmutable e históricamente verificable** |
+| **Tiempo de conciliación** | Horas en procesos nocturnos por lotes | **Cero (Validación matemática en tiempo real)** |
+
 ---
 
 ## 2. Invariante de partida doble y TigerBeetle
@@ -392,6 +428,18 @@ In hochgradig nebenläufigen Produktionsumgebungen ist dieses Muster katastropha
 - **Fehlende Nachvollziehbarkeit:** Das Überschreiben eines einzelnen Skalarwerts zerstört den Prüfpfad (Audit Trail). Wenn ein Kunde seine Rechnung beanstandet oder ein Wirtschaftsprüfer den Nachweis der Mittelherkunft verlangt, können Sie ohne rekonstruierte Anwendungsprotokolle nicht beweisen, *wie* oder *warum* sich der Saldo geändert hat.
 
 Geld kann nicht als veränderliche Spalte modelliert werden. Geld muss als unveränderliches, reines Append-only-Finanzhauptbuch modelliert werden.
+
+
+
+### FinTech-Architekturmatrix: Mutierbare SQL-Spalte vs. Unveränderliches TigerBeetle-Hauptbuch
+
+| Architektur-Dimension | Mutierbare Spalte (`UPDATE balance`) | Unveränderliches Hauptbuch (TigerBeetle) |
+| :--- | :--- | :--- |
+| **Datenintegritäts-Invariante** | Anfällig für Race Conditions & Rundungsdrift | **Garantiert: Summe(Soll) - Summe(Haben) == 0** |
+| **Maximaler Transaktionsdurchsatz** | 1.200 - 3.500 Tx/s (Schwere Zeilensperren) | **> 1.000.000 Tx/s (Vollkommen sperrenfrei)** |
+| **P99-Commit-Latenz** | 45ms - 180ms (Disk-I/O-Engpässe) | **< 800 Mikrosekunden (Direct-I/O-Ringpuffer)** |
+| **Revisionssicherheit & Audit** | Geht bei Feld-Überschreibung verloren | **100% Unveränderliches, kryptografisches Journal** |
+| **Finanz-Abstimmungsdauer** | Stundenlange nächtliche Batch-Jobs | **Null (Echtzeit-Validierung im Sub-Millisekundenbereich)** |
 
 ---
 

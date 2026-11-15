@@ -122,6 +122,18 @@ Net Monthly Savings: $72,000 (-80%)
 
 Beyond direct cost reduction, context caching eliminates the processing bottleneck of transformer attention, collapsing Time-to-First-Token (TTFT) from several seconds down to a few hundred milliseconds.
 
+
+
+#### Quick Architecture Decision Matrix: Standard LLM API Calls vs Context Caching
+
+| Architectural Dimension | Uncached Prompt Transmission | Persistent Context Caching Architecture |
+| :--- | :--- | :--- |
+| **Input Token Pricing** | $3.00 - $5.00 / 1M tokens (Full rate) | **$0.30 - $0.75 / 1M tokens (-75% to -90% discount)** |
+| **Time to First Token (TTFT)** | 2,800ms - 4,200ms (Recomputing attention) | **340ms - 480ms (Instant pre-computed KV lookup)** |
+| **RAG Knowledge Base Capacity** | Limited to small chunks to conserve budget | **Up to 1M+ tokens pre-loaded in accelerator RAM** |
+| **Accelerator Energy & Compute** | 100% redundant matrix operations | **Zero recomputation on identical prompt prefixes** |
+| **Monthly Bill (10k queries/day)**| ~$90,000 / month | **~$18,000 / month ($72,000 net enterprise savings)** |
+
 ---
 
 ### 2. Under the Hood: Prefix KV-Cache Mechanics
@@ -277,6 +289,18 @@ Benchmarking 1,000 requests against a 95,000-token portfolio knowledge base yiel
 
 Окрім прямої економії, кешування контексту усуває вузьке місце механізму transformer attention, скорочуючи затримку першого токена (TTFT) з кількох секунд до 400мс.
 
+
+
+#### Матриця оптимізації LLM: звичайна передача промптів проти контекстного кешування
+
+| Архітектурний вимір | Звичайна передача промптів (Без кешу) | Архітектура зі збереженням Prefix KV-Cache |
+| :--- | :--- | :--- |
+| **Вартість вхідних токенів** | $3.00 - $5.00 за 1M токенів (Повний тариф) | **$0.30 - $0.75 за 1M токенів (Знижка 75% - 90%)** |
+| **Час до першого токена (TTFT)** | 2 800мс - 4 200мс (Повний перерахунок уваги) | **340мс - 480мс (Миттєве зчитування з пам'яті)** |
+| **Місткість бази знань RAG** | Обмежена дрібними чанками задля економії | **До 1M+ токенів постійно в RAM прискорювача** |
+| **Навантаження на обчислювачі**| 100% надлишкових матричних множень | **Нуль повторних обчислень для спільних префіксів** |
+| **Витрати на 10k запитів/день** | ~$90 000 / місяць | **~$18 000 / місяць ($72 000 чистої економії)** |
+
 ---
 
 ### 2. Як працює механізм Prefix KV-Cache
@@ -381,6 +405,18 @@ Ahorro neto mensual: $72.000 (-80%)
 
 Además de reducir drásticamente la factura de API, la caché de contexto disminuye el tiempo de respuesta inicial (TTFT) de 3.4 segundos a apenas 420 milisegundos.
 
+
+
+#### Matriz de decisión económica: Llamadas API convencionales vs Context Caching
+
+| Dimensión arquitectónica | Transmisión de prompts sin caché | Arquitectura persistente con Context Caching |
+| :--- | :--- | :--- |
+| **Coste por token de entrada** | 3.00 $ - 5.00 $ / 1M tokens (Tarifa completa) | **0.30 $ - 0.75 $ / 1M tokens (Descuento del 75% al 90%)** |
+| **Tiempo hasta el primer token (TTFT)**| 2.800ms - 4.200ms (Recálculo de matrices) | **340ms - 480ms (Lectura directa de tensores KV)** |
+| **Capacidad de contexto en RAG** | Reducida a pequeños fragmentos por coste | **Hasta 1M+ tokens precargados en memoria GPU** |
+| **Consumo de cómputo en servidor**| 100% de operaciones matriciales repetidas | **Cero recálculo en prefijos idénticos de prompt** |
+| **Factura mensual (10k consultas/día)**| ~90.000 $/mes | **~18.000 $/mes (Ahorro directo de 72.000 $/mes)** |
+
 ---
 
 ### 2. Funcionamiento interno del Prefix KV-Cache
@@ -420,6 +456,18 @@ Netto-Monatsersparnis: 72.000 $ (-80%)
 \`\`\`
 
 Neben der direkten Kostenersparnis beseitigt Kontext-Caching den Rechenengpass der Transformer-Attention und senkt die Time-to-First-Token (TTFT) von mehreren Sekunden auf wenige hundert Millisekunden.
+
+
+
+#### Entscheidungsmatrix für KI-Inferenz: Ungecachte Prompts vs. Kontext-Caching
+
+| Architektur-Dimension | Ungecachte Standard-API-Aufrufe | Persistente Kontext-Caching-Architektur |
+| :--- | :--- | :--- |
+| **Eingabe-Token-Preise** | 3,00 $ - 5,00 $ / 1M Tokens (Voller Tarif) | **0,30 $ - 0,75 $ / 1M Tokens (75% bis 90% Rabatt)** |
+| **Time-to-First-Token (TTFT)** | 2.800ms - 4.200ms (Vollständige Attention-Berechnung) | **340ms - 480ms (Direkter Abruf berechneter KV-Tensoren)** |
+| **RAG-Kontextkapazität** | Strikt limitiert zur Kostenbegrenzung | **Bis zu 1M+ Tokens dauerhaft im GPU-Speicher** |
+| **Rechenlast auf Beschleunigern** | 100% redundante Matrixmultiplikationen | **Null Neuberechnung bei identischen Prompt-Präfixen** |
+| **Monatsrechnung (10k Anfragen/Tag)** | ~90.000 $/Monat | **~18.000 $/Monat (72.000 $ Netto-Ersparnis)** |
 
 ---
 

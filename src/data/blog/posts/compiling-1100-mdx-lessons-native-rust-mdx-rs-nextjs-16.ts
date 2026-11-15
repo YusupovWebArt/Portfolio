@@ -100,6 +100,18 @@ As interactive EdTech platforms, developer portals, and technical documentation 
 
 The systems engineering solution is replacing the JavaScript AST transformation pipeline with a **native Rust-based MDX compiler (MDX-RS)** integrated into **Next.js 16 with Turbopack** via Node-API (N-API) bindings. Rust operates with **zero-copy byte slice parsing**, compiles markdown syntax directly to JSX bytecode without intermediate JavaScript object allocations, and achieves **98% multi-core CPU saturation** via threaded worker pools. In production for **Fullstack AI Lab** across **1,135 interactive lessons** (incorporating WebAssembly WordPress 7.0 playgrounds, AST checkpoints, and interactive architecture flows), this architecture reduced total build time from **24.2 minutes to 78 seconds (18.6x speedup)**, slashed peak RAM consumption from **4,280MB to 310MB (-92.7%)**, and eliminated over **$1,200/month** in CI/CD runner compute charges.
 
+
+
+### Quick Decision Matrix: JavaScript Unified Pipeline vs Native Rust MDX-RS
+
+| Engineering Vector | Legacy JS (Unified / Babel / Webpack) | Native Rust MDX-RS (Next.js 16) |
+| :--- | :--- | :--- |
+| **SSG Build Duration (1,135 lessons)** | 24.2 Minutes (1,452 seconds) | **78 Seconds (18.6x speedup)** |
+| **Peak Heap RAM Consumption** | 4,280MB (Out-of-memory hazard) | **310MB (-92.7% memory footprint)** |
+| **AST Transformation Model** | 17+ Million JavaScript heap objects | **Zero-copy byte slices in native memory** |
+| **Multi-Core CPU Saturation** | Single-threaded serialization bottleneck | **98% Multi-core CPU saturation (Rayon)** |
+| **Monthly CI/CD Compute Expense** | $1,480/month (Extended runner times) | **$65/month (Sub-90s PR check pipelines)** |
+
 ---
 
 ## 1. The JavaScript AST Chokepoint: Why Unified & Babel Collapse
@@ -339,6 +351,18 @@ To validate real-world commercial impact, we conducted parallel build benchmarks
 
 Інженерним рішенням є заміна конвеєра трансформації AST на **нативний компілятор на мові Rust (MDX-RS)**, інтегрований у **Next.js 16 із Turbopack** через біндінги Node-API (N-API). Rust використовує модель **zero-copy парсингу зрізів пам'яті**, транслює синтаксис маркдауну безпосередньо у байт-код JSX без створення мільйонів об'єктів у купі JavaScript та на **98% завантажує всі ядра CPU**. У продакшені **Fullstack AI Lab** на базі **1 135 інтерактивних уроків** (з пісочницями WebAssembly WordPress 7.0, перевірками AST та інтерактивними схемами) ця архітектура скоротила час збірки з **24.2 хвилин до 78 секунд (прискорення у 18.6 раза)**, знизила пікове споживання оперативної пам'яті з **4 280 МБ до 310 МБ (-92.7%)** та заощадила понад **$1 200 на місяць** на інфраструктурі CI/CD.
 
+
+
+### Матриця продуктивності компіляції MDX: JavaScript Unified проти нативного Rust MDX-RS
+
+| Інженерний критерій | Стек JavaScript (Unified / Babel / Webpack) | Нативний Rust MDX-RS (Next.js 16) |
+| :--- | :--- | :--- |
+| **Час збірки SSG (1 135 уроків)** | 24.2 Хвилини (1 452 секунди) | **78 Секунд (Прискорення у 18.6 раза)** |
+| **Пікове споживання пам'яті RAM** | 4 280МБ (Постійний ризик збою OOM) | **310МБ (Зменшення пам'яті на 92.7%)** |
+| **Модель обробки AST-дерева** | Понад 17 мільйонів об'єктів у JS Heap | **Zero-copy зрізи байтів у нативній пам'яті** |
+| **Утилізація ядер CPU** | Блокування однопотокової серіалізації | **98% Навантаження всіх ядер CPU (Rayon)** |
+| **Витрати на CI/CD раннери** | $1 480/місяць (Довгі черги збірок) | **$65/місяць (Швидкі перевірки PR за 90с)** |
+
 ---
 
 ## 1. Вузькі місця компіляції MDX на JavaScript
@@ -540,6 +564,18 @@ Cuando las plataformas de tecnología educativa (EdTech), los portales de desarr
 
 La solución de ingeniería es sustituir la transformación AST de JavaScript por un **compilador nativo en Rust (MDX-RS)** integrado en **Next.js 16 con Turbopack** mediante enlaces Node-API (N-API). Rust opera con **análisis de cortes de memoria zero-copy**, compila la sintaxis markdown directamente a bytecode JSX sin crear millones de objetos intermedios en la memoria de JavaScript y satura el **98% de la capacidad de la CPU multinúcleo**. En el entorno de producción de **Fullstack AI Lab** con **1.135 lecciones interactivas** (que incluyen entornos WebAssembly de WordPress 7.0, validaciones de código AST y diagramas interactivos), esta arquitectura redujo el tiempo total de compilación de **24,2 minutos a 78 segundos (18,6 veces más rápido)**, disminuyó el consumo máximo de memoria de **4.280MB a 310MB (-92,7%)** y ahorró más de **1.200 $/mes** en costes de computación en CI/CD.
 
+
+
+### Matriz de rendimiento: Pipeline JS Unified vs Rust MDX-RS Nativo
+
+| Criterio técnico | Pipeline JS Tradicional (Babel / Webpack) | Rust MDX-RS Nativo (Next.js 16) |
+| :--- | :--- | :--- |
+| **Tiempo de compilación SSG (1.135 lecciones)** | 24,2 Minutos (1.452 segundos) | **78 Segundos (18,6x más rápido)** |
+| **Consumo pico de memoria RAM** | 4.280MB (Riesgo recurrente de Out-Of-Memory) | **310MB (-92,7% de huella de memoria)** |
+| **Transformación de árboles AST** | Más de 17 millones de objetos en V8 Heap | **Zero-copy byte slices en memoria nativa** |
+| **Saturación multinúcleo de CPU** | Cuello de botella monohilo en serialización | **98% de saturación multinúcleo con Rayon** |
+| **Gasto mensual en runners CI/CD**| 1.480 $/mes (Minutos excesivos de ejecución) | **65 $/mes (Pipelines de PR en menos de 90s)** |
+
 ---
 
 ## 1. Cuello de Botella del AST en JavaScript
@@ -740,6 +776,18 @@ Métricas tras compilar **1.135 lecciones interactivas** en GitHub Actions:
 Wenn interaktive EdTech-Plattformen, Entwicklerportale und Dokumentations-Hubs auf über **1.000 interaktive MDX-Lektionen** anwachsen, stoßen standardmäßige JavaScript-basierte Build-Pipelines (\`@next/mdx\`, \`mdx-bundler\`, Babel und Unified/Remark/Rehype-AST-Plugins) an eine unüberwindbare architektonische Grenze: Die Build-Zeiten für Static Site Generation (SSG) steigen auf **20 bis 35 Minuten** an und Node.js-V8-Runtimes stürzen mit dem fatalen Fehler \`FATAL ERROR: Ineffective mark-compacts near heap limit Allocation failed - JavaScript heap out of memory\` ab.
 
 Die systemtechnische Lösung besteht darin, die JavaScript-AST-Transformationspipeline durch einen **nativen Rust-basierten MDX-Compiler (MDX-RS)** zu ersetzen, der über Node-API (N-API) Bindings in **Next.js 16 mit Turbopack** integriert ist. Rust arbeitet mit **Zero-Copy Byte-Slice-Parsing**, kompiliert Markdown-Syntax direkt in JSX-Bytecode ohne Zwischenallokationen von JavaScript-Objekten und erreicht über Thread-Worker-Pools eine **98%ige Multi-Core-CPU-Auslastung**. Im Produktivbetrieb von **Fullstack AI Lab** mit über **1.135 interaktiven Lektionen** (einschließlich WebAssembly WordPress 7.0 Playgrounds, AST-Checkpoints und interaktiven Architekturabläufen) reduzierte diese Architektur die gesamte Build-Zeit von **24,2 Minuten auf 78 Sekunden (18,6-fache Beschleunigung)**, senkte den Spitzen-RAM-Verbrauch von **4.280 MB auf 310 MB (-92,7%)** und sparte monatlich über **$1.200** an CI/CD-Runner-Rechenkosten ein.
+
+
+
+### Performance-Matrix: JavaScript Unified Pipeline vs. Natives Rust MDX-RS
+
+| Engineering-Metrik | Legacy-JS-Pipeline (Unified / Babel / Webpack) | Natives Rust MDX-RS (Next.js 16) |
+| :--- | :--- | :--- |
+| **SSG-Build-Dauer (1.135 Lektionen)** | 24,2 Minuten (1.452 Sekunden) | **78 Sekunden (18,6-fache Beschleunigung)** |
+| **Spitzen-RAM-Auslastung** | 4.280MB (Gefahr von Out-of-Memory-Abbrüchen) | **310MB (-92,7% Speicherreduktion)** |
+| **AST-Transformationsmodell** | Über 17 Millionen V8-Heap-Objekte | **Zero-Copy-Byte-Slices im nativen Speicher** |
+| **Multi-Core-CPU-Sättigung** | Single-Thread-Engpass bei Serialisierung | **98% CPU-Auslastung aller Kerne (Rayon)** |
+| **Monatliche CI/CD-Runner-Kosten** | 1.480 $/Monat (Lange Build-Warteschlangen) | **65 $/Monat (PR-Prüfungen in unter 90s)** |
 
 ---
 

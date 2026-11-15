@@ -122,6 +122,18 @@ This approach violates the fundamental laws of distributed systems:
 
 In high-concurrency e-commerce and SaaS platforms, network blips and micro-outages are inevitable. Dual-write bugs cause financial discrepancies and require costly manual reconciliations.
 
+
+
+### Quick Architectural Decision Matrix: Direct Dual-Write vs Transactional Outbox Pattern
+
+| Architectural Dimension | Direct Dual-Write (DB + Kafka Producer) | Transactional Outbox Pattern (CDC + Debezium) |
+| :--- | :--- | :--- |
+| **Transaction Atomicity** | Non-atomic (Network partition causes silent loss)| **100% Guaranteed ACID local transaction** |
+| **Data Consistency Level** | Eventual inconsistency (Ghost orders & desync) | **Strict Eventual Consistency with zero event loss** |
+| **Server Action Latency** | Blocked on broker ACK (120ms - 450ms) | **Sub-15ms (Single atomic local database commit)** |
+| **Replication Lag to Kafka** | None when working, catastrophic when broker down| **< 18ms via PostgreSQL pgoutput logical decoding** |
+| **Event Replay & Auditing** | None (Messages lost upon sender crash) | **Full auditability from append-only outbox table** |
+
 ---
 
 ## 2. The Transactional Outbox Pattern & CDC Engine
@@ -414,6 +426,18 @@ export async function createOrderAction(formData: OrderInput): Promise<OrderResu
 - **Аварійне завершення процесу:** Якщо процес Node.js/V8 аварійно перезавантажується між Кроком 1 та Кроком 2, подія втрачається назавжди.
 - **Зворотний порядок:** Якщо спершу відправити повідомлення в Kafka, а потім виконувати запис у БД, помилка обмеження цілісності або блокування залишить у Kafka фантомну подію, яку оброблять інші сервіси.
 
+
+
+### Матриця вибору розподіленої архітектури: прямий Dual-Write проти Transactional Outbox
+
+| Архітектурний вимір | Прямий подвійний запис (Dual-Write) | Патерн Transactional Outbox (CDC + Debezium) |
+| :--- | :--- | :--- |
+| **Атомарність транзакцій** | Неатомарно (Збої мережі ведуть до втрати подій) | **100% Гарантована локальна ACID-транзакція** |
+| **Рівень узгодженості даних** | Фантомні записи та розсинхронізація мікросервісів | **Сувора узгодженість без втрати повідомлень** |
+| **Затримка Server Action** | Блокування до відповіді брокера (120мс - 450мс) | **< 15мс (Швидкий атомарний коміт у локальну БД)** |
+| **Затримка реплікації в Kafka**| Катастрофічні збої при падінні брокера | **< 18мс через логічне декодування pgoutput** |
+| **Повторне відтворення подій** | Відсутнє (Повідомлення втрачаються при збої) | **Повний аудит завдяки журналу append-only** |
+
 ---
 
 ## 2. Патерн Transactional Outbox та механізм CDC
@@ -486,6 +510,18 @@ Al desarrollar aplicaciones web modernas con Next.js 16 App Router, los ingenier
 
 Una implementación ingenua en un Server Action de Next.js presenta el antipatrón de doble escritura, donde un fallo de red o reinicio del contenedor provoca pedidos huérfanos o pérdida de eventos sin registrar en el inventario.
 
+
+
+### Matriz de decisión de microservicios: Doble escritura directa vs Transactional Outbox
+
+| Dimensión arquitectónica | Doble escritura directa (DB + Productor Kafka) | Patrón Transactional Outbox (CDC + Debezium) |
+| :--- | :--- | :--- |
+| **Atomicidad transaccional** | No atómica (Cortes de red provocan pérdida de eventos)| **100% Garantizada como transacción ACID local** |
+| **Consistencia de datos** | Inconsistencia eventual (Pedidos fantasma y desincronización) | **Consistencia eventual estricta sin pérdida de eventos** |
+| **Latencia en Server Action** | Bloqueo por ACK del broker (120ms - 450ms) | **Sub-15ms (Confirmación atómica local directa)** |
+| **Retraso hacia Kafka** | Nulo en éxito, catastrófico si cae el broker | **< 18ms con decodificación lógica pgoutput** |
+| **Reproducción de eventos** | Nula (Mensajes perdidos ante caídas de proceso) | **Auditoría completa desde tabla outbox append-only** |
+
 ---
 
 ## 2. El patrón Transactional Outbox y motor CDC
@@ -530,6 +566,18 @@ Dieser Ansatz verletzt grundlegende Gesetze verteilter Systeme:
 - **Umgekehrte Reihenfolge:** Sendet man die Kafka-Nachricht zuerst und fuehrt danach das Datenbank-Commit aus, hinterlaesst ein Datenbank-Deadlock oder ein Constraint-Verstoss ein verwaistes Ereignis in Kafka, was nachgelagerte Services veranlasst, eine Phantom-Bestellung zu verarbeiten.
 
 In hochgradig nebenlaeufigen E-Commerce- und SaaS-Plattformen sind Netzwerkstoerungen unvermeidbar. Dual-Write-Fehler fuehren zu finanziellen Diskrepanzen und erfordern teure manuelle Datenabgleiche.
+
+
+
+### Microservice-Architekturmatrix: Direct Dual-Write vs. Transactional Outbox Pattern
+
+| Architektur-Dimension | Direkter Dual-Write (DB + Kafka-Producer) | Transactional Outbox Pattern (CDC + Debezium) |
+| :--- | :--- | :--- |
+| **Transaktions-Atomizität** | Nicht atomar (Netzwerk-Split führt zu Datenverlust) | **100% Garantiert atomare lokale ACID-Transaktion** |
+| **Datenkonsistenz-Niveau** | Phantom-Bestellungen & Microservice-Desynchronisation | **Strikte Eventual Consistency ohne Nachrichtenverlust**|
+| **Server-Action-Latenz** | Blockiert bis Broker-ACK (120ms - 450ms) | **Sub-15ms (Einziger atomarer lokaler DB-Commit)** |
+| **Replikations-Lag zu Kafka** | Katastrophal bei Broker-Störungen | **< 18ms via PostgreSQL pgoutput Logical Decoding** |
+| **Event-Replay & Audit** | Nicht möglich (Events bei Prozessabsturz verloren) | **Vollständige Revisionssicherheit im Append-Only-Log** |
 
 ---
 

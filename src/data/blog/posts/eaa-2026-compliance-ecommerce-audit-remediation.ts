@@ -126,6 +126,18 @@ Member states have transposed the directive into stringent domestic statutes wit
 
 Furthermore, international companies selling into the EU are subject to extraterritorial jurisdiction: if an online store accepts EUR, delivers to EU addresses, or targets EU consumers, it must comply regardless of corporate headquarters.
 
+
+
+#### Quick EAA 2026 Compliance Decision Matrix: Third-Party Overlay vs Native WCAG 2.2 AA
+
+| Compliance Criterion | Third-Party Overlay Plugin | Native Codebase Engineering (WCAG 2.2 AA) |
+| :--- | :--- | :--- |
+| **Legal Immunity (BFSG & RD 193/2023)**| **Fails EU audit** (Zero legal protection) | **100% Certified Legal Compliance** |
+| **Keyboard Focus (WCAG 2.4.11)** | Often trapped or obscured by banners | **Unobscured visible focus rings on all targets** |
+| **Target Touch Size (WCAG 2.5.8)** | Cannot fix small 14px buttons | **Enforced minimum 24x24px bounding boxes** |
+| **Redundant Input (WCAG 3.3.7)** | Cannot auto-fill checkout addresses | **Automated memory autofill across step forms** |
+| **Performance Overhead** | +180KB unvetted blocking third-party JS | **Zero third-party overhead (Native semantic DOM)** |
+
 ---
 
 ### 2. The Fallacy of Accessibility Overlays
@@ -345,6 +357,18 @@ Investing in native accessibility is not merely legal risk mitigation; it expand
 
 Крім того, міжнародні магазини (з США, Великобританії, України), які продають товари в ЄС, приймають євро або здійснюють доставку європейським клієнтам, підпадають під юрисдикцію EAA незалежно від місця реєстрації компанії.
 
+
+
+#### Матриця відповідності EAA 2026: сторонні плагіни проти нативного коду WCAG 2.2 AA
+
+| Критерій комплаєнсу | Сторонній віджет доступності (Overlay) | Нативна розробка коду (WCAG 2.2 AA) |
+| :--- | :--- | :--- |
+| **Правовий захист (BFSG / RD 193/2023)**| **Провалює аудит ЄС** (Нульовий захист) | **100% Повна сертифікована відповідність** |
+| **Видимість фокусу (WCAG 2.4.11)** | Часто перекривається плаваючими банерами | **Чіткі незакриті індикатори фокусу клавіатури** |
+| **Розмір цілей дотику (WCAG 2.5.8)** | Не здатний змінити дрібні кнопки 14px | **Гарантований мінімальний розмір від 24x24px** |
+| **Повторне введення (WCAG 3.3.7)** | Не вміє автозаповнювати поля чекауту | **Автоматичне перенесення збережених адрес** |
+| **Навантаження на бандл** | +180КБ стороннього блокуючого скрипту | **0 КБ стороннього коду (Семантичний DOM)** |
+
 ---
 
 ### 2. Ілюзія сторонніх віджетів доступності (Overlays)
@@ -485,6 +509,18 @@ Los Estados miembros han transpuesto la directiva con severos mecanismos sancion
 
 Cualquier tienda internacional que comercialice productos hacia la UE, cobre en euros o realice envíos a consumidores europeos está obligada a cumplir la directiva.
 
+
+
+#### Matriz de decisión EAA 2026: Widgets superpuestos vs Ingeniería nativa WCAG 2.2 AA
+
+| Criterio de conformidad | Widget de accesibilidad externo (Overlay) | Ingeniería nativa de código (WCAG 2.2 AA) |
+| :--- | :--- | :--- |
+| **Protección legal (RD 193/2023 / BFSG)**| **Suspende auditorías** (Sin validez legal) | **100% Cumplimiento legal certificado** |
+| **Foco visible (WCAG 2.4.11)** | Con frecuencia queda oculto bajo banners | **Contornos nítidos y visibles en todo control** |
+| **Área táctil mínima (WCAG 2.5.8)**| Incapaz de redimensionar botones de 14px | **Objetivos interactivos mínimos de 24x24px** |
+| **Entrada redundante (WCAG 3.3.7)**| No puede rellenar datos de checkout | **Autocompletado automático de direcciones** |
+| **Sobrecarga de rendimiento** | +180KB de JavaScript bloqueante ajeno | **Cero sobrecarga externa (DOM semántico)** |
+
 ---
 
 ### 2. El fracaso de los plugins de accesibilidad (Overlays)
@@ -565,6 +601,18 @@ Die Mitgliedstaaten haben die Richtlinie in strenge nationale Gesetze mit empfin
 - **Frankreich (Loi n° 2023-171):** Bußgelder bis zu 50.000 EUR pro Produkt sowie verpflichtende öffentliche Bekanntmachung der Verstöße.
 
 Darüber hinaus unterliegen internationale Unternehmen, die in die EU verkaufen, dem Marktortprinzip: Wenn ein Online-Shop Zahlungen in EUR akzeptiert, an EU-Adressen liefert oder gezielt EU-Verbraucher anspricht, muss er die Vorgaben unabhängig vom Firmensitz erfüllen.
+
+
+
+#### EAA-2026-Entscheidungsmatrix: Drittanbieter-Overlays vs. Natives WCAG 2.2 AA
+
+| Compliance-Kriterium | Externes Overlay-Plugin | Native Codebasis-Entwicklung (WCAG 2.2 AA) |
+| :--- | :--- | :--- |
+| **Rechtssicherheit (BFSG & RD 193/2023)**| **Fällt im EU-Audit durch** (Kein Schutz) | **100% Zertifizierte Rechtskonformität** |
+| **Tastaturfokus (WCAG 2.4.11)** | Häufig von Flyout-Bannern überdeckt | **Freistehende, deutliche Fokusringe auf allen Zielen** |
+| **Touch-Zielgröße (WCAG 2.5.8)** | Kann kleine 14px-Buttons nicht heilen | **Strikte Mindest-Bounding-Boxes von 24x24px** |
+| **Redundante Eingaben (WCAG 3.3.7)**| Kann Formulardaten im Checkout nicht cachen | **Automatisches Vorbefüllen gespeicherter Adressen** |
+| **Performance-Overhead** | +180KB ungeprüftes, blockierendes Fremd-JS | **Null Fremd-Overhead (Natives semantisches DOM)** |
 
 ---
 
