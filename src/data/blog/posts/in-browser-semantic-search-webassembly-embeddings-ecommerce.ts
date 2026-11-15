@@ -117,6 +117,17 @@ The standard enterprise remedy is routing queries to cloud vector databases (Pin
 
 The production-proven alternative is **In-Browser Semantic Vector Search**: running a quantized INT8 transformer model (e.g. \`bge-small-en-v1.5\` or \`all-MiniLM-L6-v2\`, 23MB) directly on the client device inside a dedicated Web Worker via WebAssembly SIMD. By caching model weights persistently in IndexedDB and combining dense vector cosine similarity with sparse lexical Okapi BM25 via Reciprocal Rank Fusion (RRF), international platforms like **yusupovartur.com** and **Fullstack AI Lab** achieved sub-18ms query latencies, 100% offline search capability, and **$0 in recurring vector database costs**.
 
+
+### Quick Decision Matrix: Search Architecture Comparison
+
+| Architectural Parameter | Lexical Search (SQL LIKE / Fulltext) | Cloud Vector API (Pinecone / OpenAI) | In-Browser Hybrid Vector Search |
+| :--- | :--- | :--- | :--- |
+| **Search-as-You-Type Latency** | 400ms - 1,200ms (Database load) | 450ms - 900ms (Network roundtrips) | **< 18ms (Client Wasm SIMD)** |
+| **Recurring Infrastructure Cost** | $0 (Included in database) | $450 - $2,500+/mo (API & index fees) | **$0/mo (Zero server overhead)** |
+| **Offline & Transit Resilience** | 0% (Fails without internet) | 0% (Fails without internet) | **100% (IndexedDB cached model & index)** |
+| **Conceptual Intent Matching** | Poor (Exact keyword match only) | Excellent (Dense semantic vectors) | **State-of-the-Art (Hybrid RRF: Dense + BM25)** |
+| **Shopper Privacy & GDPR** | Queries logged on origin server | Queries sent to third-party APIs | **100% Private (Runs locally on device)** |
+
 ---
 
 ## The E-Commerce Search Dilemma: Keyword Blindness vs Cloud Vector Latency
@@ -542,6 +553,17 @@ Looking to implement sub-second AI search, hybrid vector discovery, or in-browse
 
 Перевірена на практиці альтернатива - **Семантичний векторний пошук безпосередньо у браузері**: виконання квантованої INT8 моделі-трансформера (наприклад, \`bge-small-en-v1.5\` або \`all-MiniLM-L6-v2\`, розміром 23 МБ) на пристрої клієнта у фоновому Web Worker через WebAssembly SIMD. Завдяки зберіганню вагів моделі в IndexedDB та об'єднанню векторної схожості з класичним розрідженим пошуком Okapi BM25 через метод Reciprocal Rank Fusion (RRF), проекти **yusupovartur.com** та **Fullstack AI Lab** досягли затримки пошуку менше 18 мс, 100% роботи офлайн та **$0 витрат на векторні хмарні бази даних**.
 
+
+### Швидка матриця рішень: порівняння архітектур пошуку
+
+| Архітектурний параметр | Лексичний пошук (SQL LIKE / Fulltext) | Хмарне векторне API (Pinecone / OpenAI) | Браузерний гібридний векторний пошук |
+| :--- | :--- | :--- | :--- |
+| **Затримка під час введення** | 400мс - 1200мс (навантаження БД) | 450мс - 900мс (мережевий запит) | **< 18мс (Клієнтський Wasm SIMD)** |
+| **Щомісячні витрати на хмару** | $0 (включено у вартість БД) | $450 - $2500+/міс (API та індекси) | **$0/міс (Повна відсутність витрат на сервер)** |
+| **Стійкість до офлайну** | 0% (не працює без мережі) | 0% (не працює без мережі) | **100% (Модель та індекс у IndexedDB)** |
+| **Розуміння концептуального змісту**| Низьке (лише точні слова) | Відмінне (щільні семантичні вектори) | **Еталонне (Гібридний RRF: Вектори + BM25)** |
+| **Конфіденційність та GDPR** | Запити пишуться в логи сервера | Запити передаються стороннім API | **100% Приватно (Працює локально на пристрої)** |
+
 ---
 
 ## Дилема e-commerce пошуку: сліпота ключових слів проти затримки хмарних векторів
@@ -952,6 +974,17 @@ La solución habitual en la industria consiste en recurrir a bases de datos vect
 
 La alternativa técnica contrastada en producción es la **Búsqueda Semántica Vectorial en el Navegador**: ejecución de un modelo transformer cuantizado en INT8 (como \`bge-small-en-v1.5\` o \`all-MiniLM-L6-v2\`, de 23 MB) directamente en el dispositivo del usuario mediante WebAssembly SIMD en un Web Worker. Almacenando los pesos en IndexedDB y combinando la similitud vectorial con el análisis léxico Okapi BM25 mediante Reciprocal Rank Fusion (RRF), plataformas como **yusupovartur.com** y **Fullstack AI Lab** alcanzaron latencias inferiores a 18 ms, funcionamiento offline total y **$0 en costes de bases de datos vectoriales**.
 
+
+### Matriz rápida de decisión: comparación de arquitecturas de búsqueda
+
+| Parámetro arquitectónico | Búsqueda léxica (SQL LIKE / Fulltext) | API vectorial cloud (Pinecone / OpenAI) | Búsqueda vectorial híbrida en navegador |
+| :--- | :--- | :--- | :--- |
+| **Latencia búsqueda en vivo** | 400ms - 1.200ms (carga en BD) | 450ms - 900ms (latencia de red) | **< 18ms (Wasm SIMD en cliente)** |
+| **Coste recurrente en cloud** | $0 (incluido en la base de datos) | $450 - $2.500+/mes (costes de API) | **$0/mes (Cero coste de servidor)** |
+| **Operatividad offline** | 0% (inoperable sin conexión) | 0% (inoperable sin conexión) | **100% (Modelo e índice en IndexedDB)** |
+| **Comprensión de intención semántica** | Baja (solo coincidencia literal) | Excelente (vectores densos) | **Óptima (Híbrido RRF: Vectores + BM25)** |
+| **Privacidad y RGPD** | Consultas registradas en servidor | Consultas enviadas a terceros | **100% Privado (Se ejecuta en el dispositivo)** |
+
 ---
 
 ## El Dilemma de la Búsqueda en E-Commerce: Coincidencia Literal frente a Latencia Cloud
@@ -1361,6 +1394,17 @@ Der übliche Enterprise-Lösungsansatz besteht darin, Suchanfragen an Cloud-Vekt
 3. **Datenschutz- und Ausfallrisiken:** Suchanfragen verlassen den geschützten Sicherheitsbereich der Anwendung, und Ausfälle von Drittanbieter-APIs legen die Produktsuche des Online-Shops vollständig lahm.
 
 Die praxiserprobte Alternative ist die **semantische Vektorsuche im Browser**: die Ausführung eines quantisierten INT8-Transformer-Modells (z. B. \`bge-small-en-v1.5\` oder \`all-MiniLM-L6-v2\`, 23MB) direkt auf dem Endgerät des Nutzers in einem dedizierten Web Worker über WebAssembly SIMD. Durch dauerhafte Persistierung der Modellgewichte in IndexedDB und die Verknüpfung dichter Vektor-Kosinus-Ähnlichkeit mit dem dünnbesetzten lexikalischen Okapi BM25 über Reciprocal Rank Fusion (RRF) erzielten internationale Plattformen wie **yusupovartur.com** und **Fullstack AI Lab** Suchlatenzen unter 18ms, 100% Offline-Funktionalität und **0 $ laufende Vektordatenbank-Kosten**.
+
+
+### Schnelle Entscheidungsmatrix: Sucharchitekturen im Vergleich
+
+| Architektur-Parameter | Lexikalische Suche (SQL LIKE / Volltext) | Cloud-Vektor-API (Pinecone / OpenAI) | Browserbasierte hybride Vektorsuche |
+| :--- | :--- | :--- | :--- |
+| **Such-Latenz bei Eingabe** | 400ms - 1.200ms (Datenbank-Last) | 450ms - 900ms (Netzwerk-Roundtrip) | **< 18ms (Client Wasm SIMD)** |
+| **Laufende Cloud-Kosten** | 0 $ (In Datenbank enthalten) | 450 $ - 2.500 $+/Monat (API-Gebuehren) | **0 $/Monat (Keinerlei Server-Overhead)** |
+| **Offline-Resilienz** | 0% (Funktioniert offline nicht) | 0% (Funktioniert offline nicht) | **100% (Modell & Index in IndexedDB)** |
+| **Semantische Suchintention** | Gering (Nur exakte Stichwoerter) | Hervorragend (Dichte Vektoren) | **Optimal (Hybrides RRF: Dicht + BM25)** |
+| **Datenschutz & DSGVO** | Suchanfragen auf Server geloggt | Anfragen an Drittanbieter-APIs | **100% Privat (Laeuft lokal auf dem Geraet)** |
 
 ---
 

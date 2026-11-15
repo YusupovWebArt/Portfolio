@@ -111,6 +111,17 @@ In modern mobile commerce, over **68% of cart drop-offs and checkout abandonment
 
 The modern architectural solution is **Local-First E-Commerce**: treating the browser as the primary source of truth, persisting state locally in **IndexedDB via Conflict-Free Replicated Data Types (CRDTs powered by Yjs)**, and executing cart mutations in **sub-10ms (empirical average 4ms)** with **zero network dependencies**. When network connectivity fluctuates or the shopper opens multiple tabs across devices, state vectors synchronize bi-directionally with **Next.js 16 Edge Route Handlers** using binary delta updates (\`Y.applyUpdate\`). In production for **Organic Bed** and **Unitrition**, this architecture reduced cart mutation latency from **680ms to 4ms (-99.4%)**, guaranteed **100% offline usability**, and delivered a **+23.6% relative lift in mobile checkout conversion rate**.
 
+
+### Quick Decision Matrix: Cart State Architecture Comparison
+
+| Architectural Parameter | Server-Authoritative (REST / Shopify) | Optimistic SPA State (Redux / Context) | Local-First CRDT (Yjs + IndexedDB) |
+| :--- | :--- | :--- | :--- |
+| **Cart Mutation Latency** | 400ms - 1,200ms (Blocking network wait) | 15ms (Optimistic, reverts on error) | **< 4ms (Instant in-memory mutation)** |
+| **Multi-Tab Race Conditions** | High (Last-Write-Wins overwrites items) | Moderate (Desynchronized tab states) | **Zero (Mathematical CRDT convergence)** |
+| **Offline & Transit Resilience** | 0% (Timeout errors & lost sales) | Fragile (Lost on page refresh) | **100% (Persisted in browser IndexedDB)** |
+| **Edge Synchronization** | Heavy full cart re-fetches | Full cart JSON payloads | **Ultra-lightweight binary state deltas** |
+| **Mobile Conversion Lift** | Baseline (> 68% mobile drop-off) | Marginal (~2% - 4%) | **+23.6% Relative Mobile Conversion Lift** |
+
 ---
 
 ## 1. The Fallacy of Server-Authoritative Carts on Mobile Networks
@@ -374,6 +385,17 @@ To quantify commercial uplift, this architecture was tested on **Organic Bed** a
 
 Сучасним інженерним стандартом є **Local-First E-Commerce**: браузер клієнта є первинним джерелом правди, стан зберігається локально в **IndexedDB через безконфліктні репліковані типи даних (CRDT на базі Yjs)**, а мутації виконуються за **менше ніж 10мс (в середньому 4мс)** взагалі без очікування мережі. При відновленні зв'язку бінарні вектори стану безконфліктно синхронізуються з **Edge Route Handlers у Next.js 16** за допомогою дельта-оновлень (\`Y.applyUpdate\`). У продакшені **Organic Bed** та **Unitrition** ця архітектура скоротила затримку взаємодії з кошиком з **680мс до 4мс (-99.4%)**, забезпечила **100% працездатність офлайн** та дала **+23.6% приросту мобільної конверсії**.
 
+
+### Швидка матриця рішень: архітектури стану кошика
+
+| Архітектурний параметр | Серверний кошик (REST / Shopify) | Оптимістичний SPA стан (Redux / Context)| Local-First CRDT (Yjs + IndexedDB) |
+| :--- | :--- | :--- | :--- |
+| **Затримка зміни кошика** | 400мс - 1200мс (блокуюче очікування) | 15мс (оптимістично, відкат при збої) | **< 4мс (Миттєва мутація в пам'яті)** |
+| **Стан гонки у кількох вкладках**| Високий (перезапис замовлень) | Середній (розсинхронізація вкладок) | **Нульовий (Математична збіжність CRDT)** |
+| **Стійкість у транспорті/офлайн**| 0% (помилки та втрата кошика) | Крихка (втрата даних при оновленні) | **100% (Постійне збереження в IndexedDB)**|
+| **Синхронізація на Edge** | Важкі повні повторні запити кошика | Повні JSON-пейлоади | **Ультралегкі бінарні дельти стану** |
+| **Зростання конверсії** | Базовий рівень (> 68% відмов) | Мінімальне (~2% - 4%) | **+23.6% Приросту мобільної конверсії** |
+
 ---
 
 ## 1. Проблеми серверно-орієнтованих кошиків на мобільних пристроях
@@ -585,6 +607,17 @@ En el comercio móvil, más del **68% del abandono de carritos y pérdidas en el
 
 La solución de ingeniería es el **E-Commerce Local-First**: el navegador del usuario es la fuente primaria de verdad, el estado se almacena localmente en **IndexedDB mediante tipos de datos replicados sin conflictos (CRDTs con Yjs)** y las mutaciones del carrito se completan en **menos de 10ms (media de 4ms)** con **cero dependencia de red**. Cuando la conectividad se recupera, los vectores de estado se sincronizan bidireccionalmente con los **Route Handlers en el edge de Next.js 16** mediante deltas binarias (\`Y.applyUpdate\`). En producción para **Organic Bed** y **Unitrition**, esta arquitectura redujo la latencia de 680ms a 4ms (-99,4%), aseguró un **100% de operatividad offline** y generó un **aumento del +23,6% en la tasa de conversión móvil**.
 
+
+### Matriz rápida de decisión: arquitecturas de gestión del carrito
+
+| Parámetro arquitectónico | Basado en servidor (REST / Shopify) | Estado optimista SPA (Redux / Context) | Local-First CRDT (Yjs + IndexedDB) |
+| :--- | :--- | :--- | :--- |
+| **Latencia de mutación** | 400ms - 1.200ms (espera bloqueante) | 15ms (optimista, revierte si falla) | **< 4ms (Mutación instantánea en memoria)**|
+| **Condiciones de carrera multi-pestaña** | Alta (última escritura sobrescribe) | Moderada (desincronización entre pestañas)| **Cero (Convergencia matemática CRDT)** |
+| **Resiliencia offline y tránsito** | 0% (errores de timeout y ventas perdidas)| Frágil (se pierde al refrescar página) | **100% (Persistencia en IndexedDB)** |
+| **Sincronización en el Edge** | Consultas pesadas de carrito completo | Payloads completos en JSON | **Deltas de estado binarias ultraligeras** |
+| **Incremento en conversión móvil** | Línea base (> 68% abandono móvil) | Marginal (~2% - 4%) | **+23,6% Aumento relativo en conversión** |
+
 ---
 
 ## 1. Deficiencias de los Carritos Centralizados en Móvil
@@ -752,6 +785,17 @@ export class LocalFirstCartManager {
 Im modernen Mobile Commerce entstehen ueber **68 % der Warenkorbabbrueche und Checkout-Verluste** nicht durch Preise oder mangelnde Kaufabsicht, sondern durch Latenzspitzen im Mobilfunk, Funkloecher (U-Bahn, Aufzuege, laendliches 3G) und traeger serverseitiger Warenkorb-Mutationen. Traditionelle E-Commerce-Architekturen (Shopify Storefront API, WooCommerce REST API, Magento) sind **server-authoritativ**: Jeder Klick auf "In den Warenkorb" oder jede Mengenaenderung loest einen blockierenden HTTP-Request (\`POST /api/cart\`) aus, der mobile Nutzer **400ms bis 1.200ms** auf Ladeindikatoren warten laesst. Bricht die Verbindung auch nur fuer zwei Sekunden ab, laeuft die Anfrage ins Timeout, der Warenkorbzustand wird beschaedigt und der Verkauf geht verloren.
 
 Die moderne Architekturloesung ist **Local-First E-Commerce**: Der Browser fungiert als primaere Source of Truth, der Status wird lokal in **IndexedDB ueber konfliktfreie replizierte Datentypen (CRDTs auf Basis von Yjs)** persistiert und Warenkorbmutationen werden in **unter 10ms (empirischer Durchschnitt 4ms)** mit **vollstaendiger Netzwerkunabhaengigkeit** ausgefuehrt. Bei schwankender Netzwerkkonnektivitaet oder wenn Kaeufer mehrere Tabs geraeteuebergreifend oeffnen, synchronisieren sich die Statusvektoren bidirektional mit **Next.js 16 Edge Route Handlern** ueber binaere Delta-Updates (\`Y.applyUpdate\`). In der Produktion fuer **Organic Bed** und **Unitrition** reduzierte diese Architektur die Latenz von Warenkorbmutationen von **680ms auf 4ms (-99,4 %)**, garantierte **100 % Offline-Nutzbarkeit** und erzielte einen **relativen Zuwachs von +23,6 % bei der mobilen Checkout-Conversion-Rate**.
+
+
+### Schnelle Entscheidungsmatrix: Warenkorb-Zustandsarchitekturen im Vergleich
+
+| Architektur-Parameter | Server-Authoritative (REST / Shopify) | Optimistischer SPA-State (Redux / Context) | Local-First CRDT (Yjs + IndexedDB) |
+| :--- | :--- | :--- | :--- |
+| **Warenkorb-Mutationslatenz** | 400ms - 1.200ms (Blockierendes Warten) | 15ms (Optimistisch, Rollback bei Fehler) | **< 4ms (Sofortige In-Memory-Mutation)** |
+| **Multi-Tab-Race-Conditions** | Hoch (Last-Write-Wins ueberschreibt Daten) | Moderat (Desynchronisierte Tabs) | **Null (Mathematische CRDT-Konvergenz)** |
+| **Offline- & Funkloch-Resilienz** | 0% (Timeout-Fehler & Kaufabbrueche) | Fragil (Geht bei Reload verloren) | **100% (Persistent in Browser-IndexedDB)** |
+| **Edge-Synchronisation** | Schwere Abfragen des gesamten Korbs | Vollstaendige JSON-Payloads | **Extrem leichtgewichtige binaere Deltas** |
+| **Mobile Conversion-Steigerung**| Basislinie (> 68% mobiler Abbruch) | Marginal (~2% - 4%) | **+23,6% Relativer Conversion-Zuwachs** |
 
 ---
 

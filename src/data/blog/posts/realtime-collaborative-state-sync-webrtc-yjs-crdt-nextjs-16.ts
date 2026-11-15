@@ -111,6 +111,17 @@ Historically, architectures relied on centralized WebSocket servers running Oper
 
 In this deep architectural guide, we present the production-grade **Local-First Real-Time Collaborative Engine** engineered for Next.js 16. By combining **WebRTC DataChannels for direct Peer-to-Peer (P2P) UDP state broadcasting**, **Yjs Conflict-free Replicated Data Types (CRDTs) for mathematical convergence**, and **Cloudflare Durable Objects for edge signaling and automatic WebSocket fallback**, we achieve sub-15ms collaborative latency with zero cloud compute cost for peer data transfers.
 
+
+### Quick Decision Matrix: Real-Time Collaborative Synchronization Architecture
+
+| Architectural Dimension | Centralized WebSockets (OT / ShareDB) | Polling / Server-Sent Events (SSE) | Local-First WebRTC + Yjs CRDTs |
+| :--- | :--- | :--- | :--- |
+| **Peer Interaction Latency** | 150ms - 350ms (Cloud server relay) | 500ms - 2,000ms (Unidirectional lag) | **< 15ms (Direct P2P UDP DataChannels)** |
+| **Server Bandwidth & Compute** | Expensive (Stateful connection clusters) | Moderate (Repeated HTTP request bursts) | **$0 for Peer Transfers (Edge signaling only)** |
+| **Network Partition Handling** | Brittle (Complex rebasing & merge locks) | Desynchronized state | **Guaranteed (Deterministic CRDT convergence)** |
+| **Firewall & Proxy Traversal** | Standard WebSocket ports | Standard HTTP ports | **Dual Mode (Direct WebRTC + Durable Object relay)** |
+| **Conflict Resolution Model** | Centralized Operational Transformation | Last-Write-Wins (Data loss risk) | **Mathematical Conflict-Free Resolution (Yjs)** |
+
 ---
 
 ## 1. System Topology: Hybrid P2P Mesh with Edge Durable Objects
@@ -339,6 +350,17 @@ The era of sluggish, centralized collaboration servers is over. By unifying **We
 
 У цій статті ми розбираємо **Local-First архітектуру спільної роботи** для Next.js 16. Поєднуючи **WebRTC DataChannels для прямого P2P-обміну затримкою <15 мс**, **математичні структури Yjs CRDTs** та **Cloudflare Durable Objects для сигналінгу та автоматичного переходу на WebSockets**, ми досягаємо надшвидкої синхронізації з нульовими витратами на сервери для передачі даних.
 
+
+### Швидка матриця рішень: архітектури синхронізації для спільної роботи
+
+| Архітектурний вимір | Централізовані WebSockets (OT / ShareDB) | Polling / Server-Sent Events (SSE) | Local-First WebRTC + Yjs CRDTs |
+| :--- | :--- | :--- | :--- |
+| **Затримка між користувачами** | 150мс - 350мс (ретрансляція сервером) | 500мс - 2000мс (одностороння затримка) | **< 15мс (Прямі канали P2P UDP DataChannels)** |
+| **Навантаження та витрати сервера** | Високі (постійні з'єднання у кластері) | Середні (постійні хвилі HTTP-запитів) | **$0 на трафік (Edge лише для сигналінгу)** |
+| **Стійкість до обривів мережі** | Крихка (блокування та складні ребейзи) | Розсинхронізація даних | **Гарантована (Математична збіжність CRDT)** |
+| **Обхід корпоративних фаєрволів** | Стандартні WebSocket-порти | Стандартні HTTP-порти | **Гібридний (WebRTC P2P + Durable Objects фолбек)** |
+| **Модель вирішення конфліктів** | Централізована Operational Transformation | Last-Write-Wins (ризик втрати правок) | **Детерміноване безконфліктне зведення (Yjs)** |
+
 ---
 
 ## 1. Топологія системи: гібридна P2P-мережа та Edge Durable Objects
@@ -408,6 +430,17 @@ Tradicionalmente, estas soluciones dependían de servidores WebSockets centraliz
 
 En este artículo analizamos la **arquitectura Local-First para colaboración en tiempo real** en Next.js 16. Combinando **WebRTC DataChannels para propagación directa punto a punto (P2P) con latencias menores a 15 ms**, **CRDTs de Yjs para convergencia matemática** y **Cloudflare Durable Objects para señalización y respaldo automático por WebSockets**, logramos una experiencia ultrarrápida a coste cero en servidores para el tráfico de datos.
 
+
+### Matriz rápida de decisión: arquitecturas de sincronización colaborativa
+
+| Dimensión arquitectónica | WebSockets centralizados (OT / ShareDB) | Polling / Server-Sent Events (SSE) | Local-First WebRTC + Yjs CRDTs |
+| :--- | :--- | :--- | :--- |
+| **Latencia entre colaboradores** | 150ms - 350ms (rebote en servidor central) | 500ms - 2.000ms (retraso unidireccional) | **< 15ms (Canales P2P directos UDP DataChannels)** |
+| **Coste y tráfico de servidor** | Elevado (mantenimiento de clusters activos) | Moderado (ráfagas continuas de peticiones) | **$0 en tráfico de datos (Edge solo señalización)** |
+| **Resiliencia ante partición de red**| Frágil (bloqueos y rebase complejo) | Desincronización de estado | **Garantizada (Convergencia matemática CRDT)** |
+| **Superación de cortafuegos** | Puertos WebSocket estándar | Puertos HTTP estándar | **Modo dual (WebRTC P2P + relevo Durable Objects)** |
+| **Resolución de conflictos** | Operational Transformation centralizada | Last-Write-Wins (riesgo de pérdida) | **Resolución determinista sin conflictos (Yjs)** |
+
 ---
 
 ## 1. Topología híbrida: malla P2P con Durable Objects en el Edge
@@ -476,6 +509,17 @@ Historisch verließen sich Architekturen auf zentralisierte WebSocket-Server, di
 - **Fragilität bei Netzwerkpartitionen**: Wenn die Verbindung des Clients abbricht, schlagen komplexe Rebase-Operationen häufig fehl, was zu verlorenen Bearbeitungen oder beschädigten Dokumenten führt.
 
 In diesem tiefgehenden Architektur-Leitfaden stellen wir die produktionsreife **Local-First Real-Time Collaborative Engine** vor, die für Next.js 16 entwickelt wurde. Durch die Kombination von **WebRTC DataChannels für direktes Peer-to-Peer (P2P) UDP-Zustands-Broadcasting**, **Yjs Conflict-free Replicated Data Types (CRDTs) für mathematische Konvergenz** und **Cloudflare Durable Objects für Edge-Signaling und automatischen WebSocket-Fallback** erreichen wir eine kollaborative Latenz von unter 15 ms bei null Cloud-Rechenkosten für Peer-Datentransfers.
+
+
+### Schnelle Entscheidungsmatrix: Architekturen fuer kollaborative Echtzeitsynchronisation
+
+| Architektur-Dimension | Zentralisierte WebSockets (OT / ShareDB) | Polling / Server-Sent Events (SSE) | Local-First WebRTC + Yjs CRDTs |
+| :--- | :--- | :--- | :--- |
+| **Interaktionslatenz zwischen Peers** | 150ms - 350ms (Server-Relay-Umweg) | 500ms - 2.000ms (Einseitige Latenz) | **< 15ms (Direkte P2P UDP DataChannels)** |
+| **Server-Bandbreite & Rechenkosten** | Hoch (Zustandsbehaftete Cluster-Infrastruktur) | Moderat (Wiederkehrende HTTP-Bursts) | **0 $ fuer Peer-Transfers (Edge nur fuer Signaling)** |
+| **Netzwerk-Partitionierung** | Fragil (Komplexe Rebase- & Merge-Sperren) | Status-Desynchronisation | **Garantiert (Deterministische CRDT-Konvergenz)** |
+| **Firewall- & Proxy-Durchdringung** | Standard-WebSocket-Ports | Standard-HTTP-Ports | **Dual-Modus (WebRTC P2P + Durable Objects Fallback)** |
+| **Konfliktloesungsmodell** | Zentralisierte Operational Transformation | Last-Write-Wins (Datenverlustrisiko) | **Mathematisch konfliktfreie Aufloesung (Yjs)** |
 
 ---
 
