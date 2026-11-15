@@ -4,10 +4,10 @@ export const buhlWisoFintechWordPressPost: BlogPost = {
   slug: 'buhl-wiso-fintech-wordpress-architecture-gdpr',
   isProjectDeepDive: true,
   title: {
-    en: 'High-Performance Tax Software Architecture: Custom WordPress, BaFin Compliance & GDPR for Buhl WISO Germany',
-    ua: 'Архітектура високонавантаженого податкового ПЗ: кастомний WordPress, комплаєнс BaFin та GDPR для Buhl WISO Німеччина',
-    es: 'Arquitectura de software fiscal de alto rendimiento: WordPress a medida, cumplimiento BaFin y GDPR para Buhl WISO Alemania',
-    de: 'Hochleistungsfähige Steuersoftware-Architektur: Maßgeschneidertes WordPress, BaFin-Compliance & DSGVO für Buhl WISO Deutschland',
+    en: 'High-Performance Tax Software Architecture: Custom WordPress, BaFin Compliance & GDPR with Sub-50ms Audit Trail for Buhl WISO Germany',
+    ua: 'Архітектура високонавантаженого податкового ПЗ: кастомний WordPress, комплаєнс BaFin та GDPR з журнал-аудитом < 50мс для Buhl WISO Німеччина',
+    es: 'Arquitectura de software fiscal de alto rendimiento: WordPress a medida, cumplimiento BaFin y GDPR con auditoría sub-50ms para Buhl WISO Alemania',
+    de: 'Hochleistungsfähige Steuersoftware-Architektur: Maßgeschneidertes WordPress, BaFin-Compliance & DSGVO mit Sub-50ms-Audit-Trail für Buhl WISO Deutschland',
   },
   description: {
     en: 'An architectural case study on engineering a zero-builder custom WordPress portal for Buhl WISO tax software in Germany. Covering BaFin data security, strict GDPR compliance, FastCGI microcaching, and sub-90ms TTFB under peak tax filing seasons.',

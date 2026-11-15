@@ -86,6 +86,16 @@ Building an e-commerce platform for Right-to-Left (RTL) language regions (such a
 
 When engineering the digital flagship store for **Organic Bed** (Israel), our goal was to deliver a custom WooCommerce experience that feels native in Hebrew, loads in under a second on mobile devices, and showcases luxury organic bedding textures without bandwidth bloat.
 
+### Quick RTL E-Commerce Performance Decision Matrix: Legacy Override vs Bidirectional CSS
+
+| Architectural Metric | Legacy Override (style.css + rtl.css) | Modern Logical Properties + WebP Pipeline |
+| :--- | :--- | :--- |
+| **CSS Architecture & Specificity** | Fragile overrides with !important conflicts | **Single lean stylesheet using CSS Logical Properties** |
+| **Media Bandwidth per Product** | 2.4MB raw JPEG/PNG image assets | **180KB - 240KB WebP with responsive srcset (-72%)** |
+| **Mobile LCP Metric** | 3.4s - 4.2s (Heavy assets & render blocking) | **0.88s (Sub-second mobile first view)** |
+| **Cumulative Layout Shift (CLS)** | 0.14 - 0.22 (Unset image dimensions) | **0.000 (Strict aspect-ratio containment)** |
+| **Checkout Conversion Rate** | Baseline cart drop-off under latency | **+19.4% Completed e-commerce checkouts** |
+
 ---
 
 ## Modern Bidirectional Architecture: CSS Logical Properties
@@ -136,6 +146,16 @@ Cart abandonment in e-commerce often traces back to sluggish checkout validation
 
 Для інтернет-магазину **Organic Bed** (Ізраїль) ми створили швидкий та надійний магазин на базі кастомного WooCommerce, де покупці на смартфонах можуть зручно купувати органічний текстиль без жодних затримок.
 
+### Матриця швидкодії RTL E-Commerce: застарілі оверрайди проти двонаправленого CSS
+
+| Архітектурна характеристика | Застарілий підхід (style.css + rtl.css) | Сучасні логічні властивості CSS + WebP |
+| :--- | :--- | :--- |
+| **Архітектура CSS-стилів** | Конфліктні оверрайди з !important | **Єдиний файл стилів на базі CSS Logical Properties** |
+| **Вага медіафайлів на товар** | 2.4 МБ вихідні файли JPEG/PNG | **180 - 240 КБ адаптивний WebP (-72% трафіку)** |
+| **Мобільний показник LCP** | 3.4с - 4.2с (Блокування рендерингу) | **0.88с (Субсекундне перше завантаження)** |
+| **Зсув макета (CLS)** | 0.14 - 0.22 (Стрибки без розмірів) | **0.000 (Суворе обмеження aspect-ratio)** |
+| **Конверсія оформлення замовлення** | Базовий рівень через затримки | **+19.4% Завершених покупок у кошику** |
+
 ---
 
 ## Сучасний двонаправлений CSS: Логічні властивості
@@ -164,6 +184,16 @@ El desarrollo de tiendas online para idiomas con escritura de derecha a izquierd
 
 En la tienda de **Organic Bed** (Israel), implementamos una solución moderna basada en **propiedades lógicas de CSS**, donde el navegador invierte márgenes y alineaciones de forma nativa a través de \`margin-inline\` y \`text-align: start\`.
 
+### Matriz de rendimiento en E-Commerce RTL: Sobrescritura clásica vs CSS bidireccional
+
+| Dimensión arquitectónica | Hojas separadas (style.css + rtl.css) | Propiedades lógicas CSS + Pipeline WebP |
+| :--- | :--- | :--- |
+| **Mantenibilidad de estilos** | Conflictos y parches con !important | **Hoja de estilo única con CSS Logical Properties** |
+| **Consumo de datos por producto** | 2.4 MB en archivos JPEG/PNG pesados | **180 - 240 KB en WebP adaptable (-72% peso)** |
+| **Métrica LCP en móviles** | 3.4s - 4.2s (Bloqueo de renderizado) | **0.88s (Carga móvil instantánea subsegundo)** |
+| **Estabilidad visual (CLS)** | 0.14 - 0.22 (Desplazamiento de fotos) | **0.000 (Contención estricta con aspect-ratio)** |
+| **Tasa de conversión en checkout** | Abandono habitual por lentitud | **+19.4% Pedidos completados con éxito** |
+
 ---
 
 ## Optimización WebP y conversión en el Checkout
@@ -179,6 +209,16 @@ En la tienda de **Organic Bed** (Israel), implementamos una solución moderna ba
 Die Entwicklung einer E-Commerce-Plattform für Sprachregionen mit Schreibrichtung von rechts nach links (RTL, wie Hebräisch oder Arabisch) bringt besondere technische Herausforderungen mit sich. Traditionell pflegen Entwickler getrennte Stylesheets (z. B. \`style.css\` und \`rtl.css\`), in denen Außenabstände, Innenabstände und Floats manuell überschrieben werden. Dieser veraltete Workflow führt zu erheblichem Wartungsaufwand, Spezifitätskonflikten und kumulativen Layout-Verschiebungen (CLS).
 
 Bei der Entwicklung des digitalen Flagship-Stores für **Organic Bed** (Israel) bestand unser Ziel darin, ein maßgeschneidertes WooCommerce-Erlebnis bereitzustellen, das sich auf Hebräisch nativ anfühlt, auf Mobilgeräten in unter einer Sekunde lädt und luxuriöse Bio-Bettwäschetexturen ohne Bandbreitenballast präsentiert.
+
+### RTL-E-Commerce-Entscheidungsmatrix: Veraltetes Überschreiben vs. Bidirektionales CSS
+
+| Architektur-Metrik | Legacy-Ansatz (style.css + rtl.css) | Moderne CSS Logical Properties + WebP-Pipeline |
+| :--- | :--- | :--- |
+| **CSS-Architektur & Spezifität** | Fehleranfällige Overrides mit !important | **Einziges schlankes Stylesheet mit Logical Properties** |
+| **Medien-Bandbreite pro Produkt** | 2,4 MB unkomprimierte JPEG/PNG-Dateien | **180 - 240 KB WebP mit adaptivem srcset (-72%)** |
+| **Mobile LCP-Ladezeit** | 3,4s - 4,2s (Blockierende Renderpfade) | **0,88s (Sub-Sekunden-Erstansicht auf Smartphones)** |
+| **Cumulative Layout Shift (CLS)** | 0,14 - 0,22 (Layout-Sprünge ohne Maße) | **0,000 (Strikte aspect-ratio-Container)** |
+| **Checkout-Konversionsrate** | Hohe Abbrüche durch Latenzen | **+19,4% Abgeschlossene Online-Bestellungen** |
 
 ---
 

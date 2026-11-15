@@ -123,6 +123,16 @@ To achieve consistent 98+ Google Lighthouse scores across production workloads, 
 2. Asset-level bandwidth quotas with automated WebP pipelines
 3. Deferred hydration of secondary UI surfaces
 
+#### Quick Core Web Vitals Optimization Matrix: Monolithic SPA vs Sub-Second Pipeline
+
+| Performance Metric / Vector | Unoptimized Monolithic SPA | Tuned Core Web Vitals Architecture |
+| :--- | :--- | :--- |
+| **Initial JS Payload (Gzip)** | 480KB - 1.2MB (Monolithic vendor chunk) | **< 150KB (Fine-grained manual chunking)** |
+| **Interaction to Next Paint (INP)** | > 380ms (Main thread blocked by parsing) | **< 48ms (Predictable sub-50ms responsiveness)** |
+| **Largest Contentful Paint (LCP)** | 2.8s - 4.5s (Waiting on blocking scripts) | **< 0.82s (Priority fetch & WebP srcset)** |
+| **Cumulative Layout Shift (CLS)** | 0.18 - 0.35 (Unconstrained media jumps) | **0.000 (Strict aspect-ratio containers)** |
+| **Lighthouse Mobile Score** | 52 - 68 / 100 | **98 - 100 / 100 (Green across all vitals)** |
+
 ---
 
 ### Step 1: Deterministic Vendor Chunk Segregation
@@ -241,6 +251,16 @@ export function ChatTrigger() {
 2. Автоматизований пайплайн зображень у форматі WebP
 3. Відкладена гідратація другорядних елементів інтерфейсу
 
+#### Матриця оптимізації Core Web Vitals: монолітний SPA проти субсекундного пайплайну
+
+| Метрика продуктивності | Неоптимізований монолітний SPA | Оптимізована архітектура Core Web Vitals |
+| :--- | :--- | :--- |
+| **Початковий JS-бандл (Gzip)** | 480КБ - 1.2МБ (Монолітний vendor chunk) | **< 150КБ (Дрібнозернистий розподіл чанків)** |
+| **Interaction to Next Paint (INP)** | > 380мс (Блокування головного потоку) | **< 48мс (Миттєвий відгук інтерфейсу)** |
+| **Largest Contentful Paint (LCP)** | 2.8с - 4.5с (Очікування важких скриптів) | **< 0.82с (Priority fetch та адаптивний WebP)** |
+| **Cumulative Layout Shift (CLS)** | 0.18 - 0.35 (Зрушення контенту без розмірів) | **0.000 (Суворі контейнери з aspect-ratio)** |
+| **Оцінка Lighthouse Mobile** | 52 - 68 / 100 | **98 - 100 / 100 (Усі показники в зеленій зоні)** |
+
 ---
 
 ### Крок 1: Ізоляція вендорних залежностей у Rollup
@@ -354,6 +374,16 @@ Para mantener puntuaciones de 98+ en Google Lighthouse se aplican tres estrategi
 2. Optimización automatizada de imágenes en formato WebP
 3. Hidratación diferida para componentes secundarios
 
+#### Matriz de optimización Core Web Vitals: SPA monolítica vs Pipeline subsegundo
+
+| Métrica de rendimiento | SPA monolítica sin optimizar | Arquitectura optimizada Core Web Vitals |
+| :--- | :--- | :--- |
+| **Payload JS inicial (Gzip)** | 480KB - 1.2MB (Chunk vendor monolítico) | **< 150KB (División manual en chunks ligeros)** |
+| **Interaction to Next Paint (INP)** | > 380ms (Hilo principal bloqueado) | **< 48ms (Respuesta interactiva inmediata)** |
+| **Largest Contentful Paint (LCP)** | 2.8s - 4.5s (Retraso por scripts pesados) | **< 0.82s (Fetch prioritario y WebP adaptable)** |
+| **Cumulative Layout Shift (CLS)** | 0.18 - 0.35 (Desplazamientos inesperados) | **0.000 (Contenedores con aspect-ratio fijo)** |
+| **Puntuación móvil Lighthouse** | 52 - 68 / 100 | **98 - 100 / 100 (Verde en todas las métricas)** |
+
 ---
 
 ### Paso 1: Separación de dependencias externas
@@ -464,6 +494,16 @@ Um konsistente 98+ Google Lighthouse Scores unter realer Produktionslast zu erre
 1. Deterministisches manuelles Chunking in der Build-Pipeline
 2. Bandbreiten-Quotas auf Asset-Ebene mit automatisierten WebP-Pipelines
 3. Verzoegerte Hydratisierung sekundaerer UI-Flaechen
+
+#### Core-Web-Vitals-Optimierungsmatrix: Monolithische SPA vs. Sub-Sekunden-Pipeline
+
+| Performance-Metrik | Unoptimierte monolithische SPA | Optimierte Core-Web-Vitals-Architektur |
+| :--- | :--- | :--- |
+| **Initiale JS-Payload (Gzip)** | 480KB - 1,2MB (Monolithischer Vendor-Chunk) | **< 150KB (Feingranulares manuelles Chunking)** |
+| **Interaction to Next Paint (INP)** | > 380ms (Haupt-Thread durch Parsing blockiert) | **< 48ms (Reaktionszeit verlässlich unter 50ms)** |
+| **Largest Contentful Paint (LCP)** | 2,8s - 4,5s (Warten auf blockierende Skripte) | **< 0,82s (Priority-Fetch & WebP-Srcset)** |
+| **Cumulative Layout Shift (CLS)** | 0,18 - 0,35 (Layout-Sprünge ohne Maße) | **0,000 (Strikte aspect-ratio-Container)** |
+| **Lighthouse Mobile Score** | 52 - 68 / 100 | **98 - 100 / 100 (Grüner Bereich in allen Vitals)** |
 
 ---
 

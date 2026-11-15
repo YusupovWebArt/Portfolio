@@ -100,6 +100,16 @@ Crucially: **third-party accessibility overlay widgets (such as accessiBe or Use
 
 Accessibility must be engineered directly into the foundational codebase.
 
+#### Quick Accessibility Compliance Decision Matrix: Overlay Widgets vs Native Engineering
+
+| Compliance Vector | Third-Party Overlay Widgets | Native Codebase Engineering (WCAG 2.2 AA) |
+| :--- | :--- | :--- |
+| **EAA 2026 & EN 301 549 Mandate** | **Fails legal compliance** (Explicitly rejected by EU courts) | **100% Legally Compliant** |
+| **Screen Reader Interoperability** | Triggers phantom DOM focus loops & aria desync | Full native NVDA, JAWS & VoiceOver compatibility |
+| **Keyboard Focus Trapping** | Inconsistent or non-existent in SPAs | Strict focus confinement & Return-to-Trigger |
+| **Color Contrast Ratios** | Overrides user CSS arbitrarily | Verified 4.5:1 text & 3:1 graphical objects |
+| **Performance & Bundle Overhead** | +150KB to +350KB unvetted third-party JS | **Zero third-party overhead (Sub-50KB bundle)** |
+
 ---
 
 ### 1. Focus Management & Keyboard Trap in Dialogs
@@ -200,6 +210,16 @@ test('home page must have zero critical or serious WCAG 2.2 AA violations', asyn
 
 Доступність має бути закладена в саму основу веброзробки.
 
+#### Матриця відповідності вимогам доступності: сторонні віджети проти нативної розробки
+
+| Критерій відповідності | Сторонні JavaScript-віджети (Overlays) | Нативна інженерна розробка (WCAG 2.2 AA) |
+| :--- | :--- | :--- |
+| **Вимоги EAA 2026 та EN 301 549** | **Порушує закон** (Офіційно відхиляється судами ЄС) | **100% Повна юридична відповідність** |
+| **Сумісність зі скрінрідерами** | Створює фантомні цикли фокусу в DOM | Повна сумісність з NVDA, JAWS та VoiceOver |
+| **Захоплення фокусу клавіатури** | Ненадійне або відсутнє в SPA-додатках | Суворе утримання фокусу та повернення тригеру |
+| **Коефіцієнт контрастності** | Довільно ламає користувацькі CSS-стилі | Гарантовані 4.5:1 для тексту та 3:1 для графіки |
+| **Вплив на продуктивність сайту** | +150КБ - +350КБ стороннього неперевіреного коду | **0 КБ стороннього коду (Бандл < 50КБ)** |
+
 ---
 
 ### 1. Керування фокусом у діалогових вікнах
@@ -239,6 +259,16 @@ Punto clave: **los widgets de accesibilidad superpuestos (overlays comerciales) 
 
 La accesibilidad debe construirse desde los cimientos del código.
 
+#### Matriz de decisión de accesibilidad: Widgets superpuestos vs Ingeniería nativa
+
+| Criterio de cumplimiento | Widgets superpuestos de terceros (Overlays) | Ingeniería nativa de código (WCAG 2.2 AA) |
+| :--- | :--- | :--- |
+| **Exigencia EAA 2026 y EN 301 549** | **Incumple la ley** (Rechazado por tribunales de la UE) | **100% Conforme a la legislación europea** |
+| **Compatibilidad con lectores de pantalla** | Provoca bucles fantasma de foco en el DOM | Compatibilidad nativa total con NVDA, JAWS y VoiceOver |
+| **Captura de foco por teclado** | Deficiente o inexistente en SPAs modernas | Confinamiento estricto y retorno al elemento activador |
+| **Ratios de contraste cromático** | Altera CSS arbitrariamente | Verificado 4.5:1 en texto y 3:1 en componentes visuales |
+| **Impacto en el rendimiento web** | +150KB a +350KB de JavaScript externo | **Cero impacto externo (Bundle sub-50KB)** |
+
 ---
 
 ### 1. Gestión de foco y captura en ventanas modales
@@ -276,6 +306,16 @@ Unternehmen, die E-Commerce, Banking, Buchungsdienste oder öffentliche Verbrauc
 Besonders wichtig: **Externe Barrierefreiheits-Overlay-Widgets (wie accessiBe oder UserWay) erfüllen die gesetzlichen Vorgaben nicht**. Sowohl die Europäische Kommission als auch Bürgerrechtsorganisationen haben wiederholt klargestellt, dass Overlays zusätzliche Barrieren schaffen und vor Gerichten sowie Auditoren durchfallen.
 
 Barrierefreiheit muss direkt im Fundament der Codebasis verankert werden.
+
+#### Entscheidungsmatrix zur Barrierefreiheit: Externe Overlay-Widgets vs. Native Entwicklung
+
+| Compliance-Kriterium | Externe JavaScript-Overlays | Native Codebasis-Entwicklung (WCAG 2.2 AA) |
+| :--- | :--- | :--- |
+| **EAA 2026 & EN 301 549 Mandat** | **Gesetzeswidrig** (Von EU-Gerichten ausdrücklich verworfen) | **100% Rechtskonform** |
+| **Screenreader-Interoperabilität** | Erzeugt Phantom-Fokus-Schleifen im DOM | Vollständige native NVDA-, JAWS- & VoiceOver-Unterstützung |
+| **Tastatur-Fokus-Trapping** | Unzuverlässig oder fehlend in SPAs | Strikte Fokus-Eindämmung & Return-to-Trigger |
+| **Farbkontrast-Verhältnisse** | Überschreibt Nutzer-CSS unkontrolliert | Geprüft 4,5:1 bei Fließtext & 3:1 bei Grafikelementen |
+| **Performance- & Bundle-Overhead** | +150KB bis +350KB ungeprüftes Fremd-JS | **Null Fremd-Overhead (Sub-50KB Bundle)** |
 
 ---
 
