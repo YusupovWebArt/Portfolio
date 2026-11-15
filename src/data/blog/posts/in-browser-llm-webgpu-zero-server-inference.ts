@@ -112,6 +112,16 @@ In 2026, three major forces are accelerating the transition to **local-first, in
 2. **Absolute Data Privacy:** For regulated sectors (such as healthcare under HIPAA, or EU enterprises under GDPR), sensitive user health data, proprietary financial documents, or personal notes never traverse the public internet.
 3. **Offline Resilience:** PWAs equipped with local models function flawlessly on airplanes, remote field operations, or during network disruptions.
 
+#### Quick Architecture Decision Matrix: Cloud API Inference vs In-Browser WebGPU
+
+| Architectural Dimension | Centralized Cloud APIs (OpenAI / Gemini) | In-Browser WebGPU (Local-First) |
+| :--- | :--- | :--- |
+| **Server Inference Costs** | \$0.002 - \$0.015 per query (Scales linearly) | **\$0.00 (Zero cloud GPU infrastructure cost)** |
+| **User Data Privacy** | Third-party transmission (Cloud compliance overhead) | **100% Client-Side Privacy (Zero network transmission)** |
+| **Offline Capability** | Fails immediately on network outage | **100% Offline Functional in Progressive Web Apps** |
+| **Generation Throughput** | Latency bottlenecked by network TTFB | **28 - 45 tokens/sec (Client hardware acceleration)** |
+| **Initial Asset Download** | Zero model download (Instant start) | 600MB - 750MB (One-time cached browser download) |
+
 ---
 
 ### 2. WebGPU vs WebGL: The Technical Leap
@@ -270,6 +280,16 @@ This pattern delivers the best of both worlds: zero-cost private inference for 8
 2. **Абсолютна конфіденційність:** Для медичних сервісів (HIPAA) чи європейського бізнесу (GDPR) персональні дані користувача взагалі не залишають його пристрій.
 3. **Повна автономність:** Офлайн-робота застосунку у літаку, у польових умовах чи за нестабільного зв язку.
 
+#### Матриця вибору архітектури AI: хмарні API проти локального WebGPU у браузері
+
+| Архітектурний вимір | Централізовані хмарні API (OpenAI / Claude) | Локальний WebGPU у браузері (Local-First) |
+| :--- | :--- | :--- |
+| **Витрати на інференс** | \$0.002 - \$0.015 за запит (Лінійне зростання) | **\$0.00 (Нуль витрат на хмарні сервери)** |
+| **Приватність даних** | Передача через мережу (Ризик витоків) | **100% Конфіденційність (Дані не виходять з пристрою)** |
+| **Офлайн-автономність** | Повна непрацездатність без інтернету | **100% Офлайн-робота у форматі PWA** |
+| **Швидкість генерації** | Обмежена мережевою затримкою (TTFB) | **28 - 45 токенів/с (Апаратне прискорення GPU)** |
+| **Початкове завантаження** | Нульове завантаження моделі (Миттєвий старт) | 600 - 750 МБ (Одноразове збереження в кеш браузера) |
+
 ---
 
 ### 2. Технологічний прорив: WebGPU замість WebGL
@@ -320,6 +340,16 @@ En 2026, el enfoque **Local-First en el navegador** ofrece tres ventajas decisiv
 - **Privacidad total:** Datos confidenciales bajo normativas HIPAA o GDPR nunca salen del dispositivo del cliente.
 - **Funcionamiento 100% offline:** Aplicaciones PWA que responden sin conexión a internet.
 
+#### Matriz de decisión de arquitectura IA: APIs en la nube vs WebGPU local en navegador
+
+| Dimensión arquitectónica | APIs centralizadas en la nube (OpenAI) | WebGPU local en el navegador (Local-First) |
+| :--- | :--- | :--- |
+| **Coste de infraestructura** | \$0.002 - \$0.015 por petición (Escalado lineal) | **\$0.00 (Cero costes en servidores GPU)** |
+| **Privacidad de datos** | Envío a servidores externos (Riesgo GDPR/HIPAA) | **100% Privacidad en cliente (Cero salida de datos)** |
+| **Disponibilidad offline** | Inutilizable ante pérdida de conexión | **100% Funcional sin red en aplicaciones PWA** |
+| **Velocidad de generación** | Limitada por la latencia de red (TTFB) | **28 - 45 tokens/s (Aceleración hardware cliente)** |
+| **Carga inicial de modelos** | Sin descarga de modelo (Arranque inmediato) | 600MB - 750MB (Descarga única en caché de navegador) |
+
 ---
 
 ### 2. WebGPU frente a WebGL
@@ -348,6 +378,16 @@ Im Jahr 2026 beschleunigen drei zentrale Kraefte den Uebergang zu **Local-First 
 1. **Null Server-Inferenzkosten:** Sobald eine Anwendung geladen ist, kostet die Inferenz auf der Client-Hardware den Entwickler exakt $0.00 an Cloud-GPU-Rechenleistung.
 2. **Absoluter Datenschutz:** Fuer regulierte Sektoren (wie das Gesundheitswesen unter HIPAA oder europaeische Unternehmen unter der DSGVO) verlassen vertrauliche Gesundheitsdaten, proprietaere Finanzdokumente oder persoenliche Notizen niemals das Geraet des Nutzers.
 3. **Offline-Resilienz:** PWAs mit lokalen Modellen funktionieren fehlerfrei im Flugzeug, bei abgelegenen Ausseneinsaetzen oder bei Netzwerkausfaellen.
+
+#### KI-Architektur-Entscheidungsmatrix: Cloud-APIs vs. In-Browser-WebGPU
+
+| Architektur-Dimension | Zentralisierte Cloud-APIs (OpenAI / Gemini) | In-Browser-WebGPU (Local-First) |
+| :--- | :--- | :--- |
+| **Server-Inferenzkosten** | \$0.002 - \$0.015 pro Anfrage (Lineare Skalierung) | **\$0.00 (Keine Cloud-GPU-Infrastrukturkosten)** |
+| **Datenschutz** | Uebertragung an Drittserver (DSGVO/HIPAA-Risiken) | **100% Clientseitiger Datenschutz (Keine Netzausleitung)** |
+| **Offline-Verfuegbarkeit** | Totalausfall bei Netzwerkunterbrechung | **100% Offline-funktionsfaehig als PWA** |
+| **Generierungsdurchsatz** | Begrenzt durch Netzwerk-TTFB | **28 - 45 Tokens/s (Client-Hardware-Beschleunigung)** |
+| **Initialer Download** | Kein Modelldownload (Sofortiger Start) | 600MB - 750MB (Einmalig gecachter Browser-Download) |
 
 ---
 

@@ -107,6 +107,16 @@ Migrating an established enterprise portal is among the highest-risk engineering
 
 Here is the exact phased engineering playbook used on commercial cloud migrations.
 
+#### Quick Enterprise Migration Decision Matrix: Big-Bang Cutover vs Phased Dual-Write
+
+| Migration Vector | Big-Bang Cutover (High Risk) | Phased Dual-Write & Canary Architecture |
+| :--- | :--- | :--- |
+| **Production Downtime** | 4 to 12 Hours (Maintenance banner) | **0 Seconds (Zero-downtime continuous cutover)** |
+| **Data Inconsistency Risk** | High (Split-brain during extended sync) | **Zero (Synchronous logical replication stream)** |
+| **SEO Authority & Rank Loss** | Severe drops (-35% to -65% organic traffic) | **100% Retained (Microsecond Nginx 301/308 redirect maps)** |
+| **Rollback Time Window** | 2 to 6 Hours (Complex database restore) | **< 30 Seconds (Instant reverse-proxy traffic pivot)** |
+| **Traffic Validation** | Untested full-load live cutover | **Canary Deployment (10% -> 25% -> 50% -> 100%)** |
+
 ---
 
 ### Phase 1: DNS Preparation & Pre-Migration Crawl
@@ -182,6 +192,16 @@ Once metrics hold steady for 120 minutes, the weight is scaled to 100%, completi
 
 Нижче наведено перевірений покроковий інженерний план.
 
+#### Матриця вибору стратегії міграції: раптове перемикання проти поетапного Dual-Write
+
+| Вектор міграції | Раптове перемикання (Big-Bang, високий ризик) | Поетапна архітектура Dual-Write та Canary |
+| :--- | :--- | :--- |
+| **Час простою (Downtime)** | 4 - 12 Годин (Екран технічних робіт) | **0 Секунд (Безперервний сервіс без простою)** |
+| **Ризик розсинхронізації БД** | Високий (Конфлікти записів під час копіювання) | **Нульовий (Синхронна логічна реплікація потоку)** |
+| **Втрата позицій у SEO** | Падіння від -35% до -65% пошукового трафіку | **100% Збереження (Мікросекундні 301/308 редиректи)** |
+| **Час на відкат (Rollback)** | 2 - 6 Годин (Відновлення з бекапів) | **< 30 Секунд (Миттєве повернення трафіку на проксі)** |
+| **Валідація навантаження** | Ризиковане одночасне перемикання 100% | **Канарковий деплой (10% -> 25% -> 50% -> 100%)** |
+
 ---
 
 ### Етап 1: Підготовка DNS та аудит адрес
@@ -245,6 +265,16 @@ server {
 
 Trasladar un portal empresarial requiere un protocolo riguroso para evitar pérdida de transacciones o caídas en el posicionamiento orgánico de Google.
 
+#### Matriz de decisión de migración crítica: Corte radical vs Arquitectura progresiva Dual-Write
+
+| Vector de migración | Corte radical Big-Bang (Alto riesgo) | Arquitectura progresiva Dual-Write y Canary |
+| :--- | :--- | :--- |
+| **Tiempo de inactividad** | 4 a 12 Horas (Página de mantenimiento) | **0 Segundos (Disponibilidad continua sin paradas)** |
+| **Inconsistencia de datos** | Crítica (Desincronización de transacciones) | **Nula (Flujo continuo de replicación lógica)** |
+| **Pérdida de autoridad SEO** | Caída grave (-35% a -65% de tráfico orgánico) | **100% Retención (Mapeo 301/308 ultrarrápido en Nginx)** |
+| **Ventana de Rollback** | 2 a 6 Horas (Restauración de copias) | **< 30 Segundos (Desvío inmediato en proxy inverso)** |
+| **Validación de tráfico** | Paso al 100% sin prueba real de carga | **Despliegue Canary gradual (10% -> 25% -> 50% -> 100%)** |
+
 ---
 
 ### Fase 1: Reducción de TTL y rastreo inicial
@@ -304,6 +334,16 @@ Se transfiere inicialmente el 10% de los usuarios. Tras verificar métricas de l
 Die Migration eines etablierten Unternehmensportals gehoert zu den riskantesten Engineering-Vorhaben. Fehlerhafte Migrationen koennen zu Datenbank-Inkonsistenzen, Transaktionsabbruechen und verheerenden Verlusten bei organischen Suchmaschinen-Rankings fuehren, deren Wiederherstellung Monate dauern kann.
 
 Nachfolgend ist das exakte phasenbasierte Vorgehensmodell beschrieben, das sich in kommerziellen Cloud-Migrationen bewaehrt hat.
+
+#### Enterprise-Migrationsmatrix: Big-Bang-Cutover vs. Phasenbasierte Dual-Write-Architektur
+
+| Migrations-Vektor | Big-Bang-Cutover (Hohes Risiko) | Phasenbasierte Dual-Write- & Canary-Architektur |
+| :--- | :--- | :--- |
+| **Produktions-Downtime** | 4 bis 12 Stunden (Wartungsfenster) | **0 Sekunden (Unterbrechungsfreier 24/7-Betrieb)** |
+| **Daten-Inkonsistenzrisiko** | Hoch (Split-Brain waehrend langer Synchronisation) | **Null (Synchrone logische Replikations-Streams)** |
+| **SEO-Autoritaetsverlust** | Starke Einbrueche (-35% bis -65% Traffic) | **100% Erhalten (Mikrosekunden-Nginx-301/308-Maps)** |
+| **Rollback-Zeitfenster** | 2 bis 6 Stunden (Aufwaendiges DB-Restore) | **< 30 Sekunden (Sofortige Reverse-Proxy-Umschaltung)** |
+| **Traffic-Validierung** | Ungetestete 100%-Sofortumschaltung unter Last | **Canary-Deployment (10% -> 25% -> 50% -> 100%)** |
 
 ---
 

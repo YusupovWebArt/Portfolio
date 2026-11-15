@@ -113,6 +113,14 @@ For catalogs containing 20,000 to 100,000+ SKUs, manual accessibility remediatio
 
 The deterministic engineering solution is an **automated multimodal vision pipeline** combining vision-language models (such as Gemini 2.5 Flash or Claude 3.7 Sonnet) with **strict Zod schema validation**, automated decorative image classification, APCA contrast validation, and synchronized **Schema.org Product & ImageObject JSON-LD generation**. In production for **Fullstack AI Lab** and **Unitrition**, this pipeline processed 50,000 catalog assets at **€0.0018 per SKU**, completed processing in under 4 hours, achieved a **99.4% first-pass WCAG 2.2 AA audit pass rate**, and enriched Google Visual Search and organic rankings by **38%**.
 
+### Quick Decision Matrix: Visual Accessibility Remediation Strategies Compared
+
+| Remediation Methodology | Processing Cost (50k SKUs) | Turnaround Time | WCAG 2.2 AA Audit Pass Rate | Schema.org Structured Metadata |
+| :--- | :--- | :--- | :--- | :--- |
+| **Manual Editorial Tagging** | > €250,000 (€5.00/SKU) | 6 - 12 Months | 84% (High human fatigue variance) | None (Separate manual data entry) |
+| **Legacy OCR Regex Dump** | ~€2,500 (€0.05/SKU) | 48 - 72 Hours | 28% (Raw text dumps confuse screen-readers) | None (Unstructured strings) |
+| **Multimodal Vision LLM Pipeline** | **€90 (€0.0018/SKU)** | **< 4 Hours** | **99.4% (Strict Zod schema enforcement)** | **Automated Product & ImageObject JSON-LD** |
+
 ---
 
 ## 1. The EAA 2026 Regulatory Cliff for E-Commerce Catalogs
@@ -470,6 +478,14 @@ Production catalogs contain countless photographic edge cases that trip naive AI
 
 Надійним інженерним рішенням є **автоматизований конвеєр на базі мультимодальних Vision LLM** (Gemini 2.5 Flash або Claude 3.7 Sonnet) із **жорсткою типізацією через схеми Zod**, автоматичною класифікацією декоративних елементів, контролем контрасту APCA та генерацією розмітки **Schema.org Product та ImageObject JSON-LD**. У реальних проєктах **Fullstack AI Lab** та **Unitrition** цей конвеєр обробив 50 000 зображень каталогу за ціною **€0.0018 за один SKU**, завершив повний аналіз за 3.4 години, забезпечив **99.4% успішного проходження аудиту WCAG 2.2 AA** та збільшив органічний трафік із візуального пошуку Google на **38%**.
 
+### Матриця вибору методології виправлення візуальної доступності для 50 000 SKU
+
+| Методологія виправлення | Вартість обробки (50k SKU) | Термін виконання | Проходження аудиту WCAG 2.2 AA | Структуровані метадані Schema.org |
+| :--- | :--- | :--- | :--- | :--- |
+| **Ручне редакторське заповнення** | > €250 000 (€5.00/SKU) | 6 - 12 Місяців | 84% (Людський фактор та втома) | Відсутні (Вимагає окремого внесення) |
+| **Застарілий OCR Regex-дамп** | ~€2 500 (€0.05/SKU) | 48 - 72 Години | 28% (Незв'язний текст заважає дітям) | Відсутні (Неструктурований текст) |
+| **Мультимодальний Vision LLM конвеєр** | **€90 (€0.0018/SKU)** | **< 4 Годин** | **99.4% (Сувора валідація схем Zod)** | **Автоматичні Product & ImageObject JSON-LD** |
+
 ---
 
 ## 1. Регуляторні вимоги EAA 2026 для e-commerce каталогів
@@ -788,6 +804,14 @@ En catálogos de 20.000 a más de 100.000 SKUs, la remediación manual requiere 
 
 La solución de ingeniería es un **canal multimodal automatizado** que combina modelos de visión artificial (como Gemini 2.5 Flash o Claude 3.7 Sonnet) con **validación estricta de esquemas Zod**, clasificación de elementos decorativos, análisis de contraste APCA y generación sincronizada de **Schema.org Product e ImageObject JSON-LD**. En producción para **Fullstack AI Lab** y **Unitrition**, este sistema procesó 50.000 productos a un coste de **0,0018 € por SKU**, finalizó en menos de 4 horas, logró una **tasa de aprobación del 99,4% en auditorías WCAG 2.2 AA** y aumentó el tráfico visual orgánico de Google en un **38%**.
 
+### Matriz de decisión: Estrategias de accesibilidad visual y metadatos para 50.000 SKUs
+
+| Metodología de remediación | Coste total (50k SKUs) | Plazo de ejecución | Tasa de éxito auditoría WCAG 2.2 AA | Metadatos enriquecidos Schema.org |
+| :--- | :--- | :--- | :--- | :--- |
+| **Redacción manual editorial** | > 250.000 € (5,00 €/SKU) | 6 - 12 Meses | 84% (Inconsistencias por fatiga humana) | Nula (Requiere proceso separado) |
+| **Extracción OCR legacy** | ~2.500 € (0,05 €/SKU) | 48 - 72 Horas | 28% (Texto plano sin jerarquía) | Nula (Cadenas no estructuradas) |
+| **Pipeline multimodal con LLM Vision** | **90 € (0,0018 €/SKU)** | **< 4 Horas** | **99.4% (Validación estricta con Zod)** | **JSON-LD automático Product e ImageObject** |
+
 ---
 
 ## 1. El Marco Regulatorio EAA 2026 para Tiendas Online
@@ -1094,6 +1118,14 @@ Unter dem **European Accessibility Act (EAA 2026 / Richtlinie 2019/882 / BFSG / 
 Für Kataloge mit 20.000 bis über 100.000 SKUs erfordert eine manuelle Nachbesserung 6 bis 12 Monate und verursacht über 250.000 € an spezialisierten Redaktionskosten. Gleichzeitig liefern ältere automatisierte OCR-Systeme lediglich unzusammenhängende Textfragmente von Produktverpackungen, die Screenreader-Nutzer desorientieren und bei automatisierten Audits sofort durchfallen.
 
 Die deterministische Engineering-Lösung ist eine **automatisierte multimodale Vision-Pipeline**, die Vision-Language-Modelle (wie Gemini 2.5 Flash oder Claude 3.7 Sonnet) mit **strikter Zod-Schema-Validierung**, automatisierter Klassifizierung dekorativer Grafiken, APCA-Kontrastprüfung und synchronisierter **Schema.org Product- & ImageObject-JSON-LD-Generierung** kombiniert. Im Produktiveinsatz für **Fullstack AI Lab** und **Unitrition** verarbeitete diese Pipeline 50.000 Katalog-Assets für **0,0018 € pro SKU** in unter 4 Stunden, erreichte eine **First-Pass-Bestehensquote von 99,4% im WCAG 2.2 AA-Audit** und steigerte das Ranking in der visuellen Google-Suche um **38%**.
+
+### Entscheidungsmatrix: Strategien zur visuellen Barrierefreiheit im Vergleich
+
+| Sanierungs-Methodik | Verarbeitungskosten (50k SKUs) | Durchlaufzeit | WCAG 2.2 AA Audit-Bestehensquote | Strukturierte Schema.org-Metadaten |
+| :--- | :--- | :--- | :--- | :--- |
+| **Manuelle redaktionelle Pflege** | > 250.000 € (5,00 €/SKU) | 6 - 12 Monate | 84% (Hohe ermüdungsbedingte Varianz) | Keine (Separater manueller Pflegeaufwand) |
+| **Veralteter OCR-Regex-Dump** | ~2.500 € (0,05 €/SKU) | 48 - 72 Stunden | 28% (Unzusammenhängender Text verwirrt Screenreader) | Keine (Unstrukturierte Zeichenketten) |
+| **Multimodale Vision-LLM-Pipeline** | **90 € (0,0018 €/SKU)** | **< 4 Stunden** | **99,4% (Strikte Zod-Schema-Validierung)** | **Automatisiertes Product- & ImageObject-JSON-LD** |
 
 ---
 
