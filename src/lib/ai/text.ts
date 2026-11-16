@@ -460,14 +460,24 @@ export function detectLanguage(text: string): 'en' | 'ua' | 'es' | 'de' {
 export function sanitizeLlmInput(text: string, maxChars = 1200): string {
   if (!text) return ''
 
-  let sanitized = stripEmDashes(normalizeUnicode(text))
+  let sanitized = stripEmDashes(normalizeUnicode(text).normalize('NFKC'))
 
-  // Reject or strip injection markers
+  // Reject or strip injection markers and multilingual prompt override attempts
   sanitized = sanitized
     .replace(/<system>[\s\S]*?<\/system>/gi, '')
     .replace(/<\/?[a-z_][a-z0-9_-]*>/gi, '') // Strip XML/HTML style breakout tags
-    .replace(/###\s*(instruction|system|prompt|human|assistant):/gi, '')
-    .replace(/\b(ignore previous instructions|disregard earlier instructions)\b/gi, '')
+    .replace(/###\s*(instruction|system|prompt|human|assistant|developer):/gi, '')
+    .replace(
+      /(?:ignore\s+(?:all\s+)?(?:previous|prior|above)\s+instructions|disregard\s+(?:all\s+)?(?:earlier|previous)\s+instructions|игнорируй\s+(?:все\s+)?предыдущие\s+инструкции|ігноруй\s+(?:всі\s+|усі\s+)?попередні\s+інструкції|ignora\s+(?:todas\s+)?las\s+instrucciones\s+anteriores|ignoriere\s+(?:alle\s+)?vorherigen\s+anweisungen)/gi,
+      '',
+    )
+
+  sanitized = Array.from(sanitized)
+    .filter((ch) => {
+      const code = ch.charCodeAt(0)
+      return code === 9 || code === 10 || code === 13 || (code >= 32 && code !== 127)
+    })
+    .join('')
 
   if (sanitized.length > maxChars) {
     sanitized = sanitized.slice(0, maxChars)

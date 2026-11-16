@@ -249,8 +249,16 @@ const buildProjectFacetedSubchunks = (overviewChunks: KnowledgeChunk[]): Knowled
     // 3. Architecture & Engineering Facet (if rich architecture rows or case study details exist)
     if (project.architecture || project.challenges || project.solutions) {
       const archParts: string[] = []
+      const archPartsUa: string[] = []
+      const archPartsEs: string[] = []
       const archPartsDe: string[] = []
       if (project.architecture?.description) archParts.push(project.architecture.description)
+      if (project.architecture?.descriptionUa || project.architecture?.description) {
+        archPartsUa.push(project.architecture?.descriptionUa || project.architecture?.description || '')
+      }
+      if (project.architecture?.descriptionEs || project.architecture?.description) {
+        archPartsEs.push(project.architecture?.descriptionEs || project.architecture?.description || '')
+      }
       if (project.architecture?.descriptionDe || project.architecture?.description) {
         archPartsDe.push(project.architecture?.descriptionDe || project.architecture?.description || '')
       }
@@ -259,10 +267,24 @@ const buildProjectFacetedSubchunks = (overviewChunks: KnowledgeChunk[]): Knowled
           .map((r) => `${r.rowLabel}: ${r.steps.map((s) => s.label).join(' -> ')}`)
           .join('; ')
         archParts.push(flowSummary)
+        archPartsUa.push(flowSummary)
+        archPartsEs.push(flowSummary)
         archPartsDe.push(flowSummary)
       }
       if (project.challenges) archParts.push(`Challenges: ${project.challenges.join('; ')}`)
       if (project.solutions) archParts.push(`Solutions: ${project.solutions.join('; ')}`)
+      if (project.challengesUa || project.challenges) {
+        archPartsUa.push(`Виклики: ${(project.challengesUa || project.challenges || []).join('; ')}`)
+      }
+      if (project.solutionsUa || project.solutions) {
+        archPartsUa.push(`Рішення: ${(project.solutionsUa || project.solutions || []).join('; ')}`)
+      }
+      if (project.challengesEs || project.challenges) {
+        archPartsEs.push(`Desafíos: ${(project.challengesEs || project.challenges || []).join('; ')}`)
+      }
+      if (project.solutionsEs || project.solutions) {
+        archPartsEs.push(`Soluciones: ${(project.solutionsEs || project.solutions || []).join('; ')}`)
+      }
       if (project.challengesDe || project.challenges) {
         archPartsDe.push(`Herausforderungen: ${(project.challengesDe || project.challenges || []).join('; ')}`)
       }
@@ -280,6 +302,12 @@ const buildProjectFacetedSubchunks = (overviewChunks: KnowledgeChunk[]): Knowled
         category: overview.category,
         content: stripEmDashes(
           `Architecture, engineering, challenges and solutions for ${project.title}: ${archParts.join('. ')}`
+        ),
+        contentUa: stripEmDashes(
+          `Архітектура, інженерія, виклики та рішення проєкту ${project.title}: ${archPartsUa.join('. ')}`
+        ),
+        contentEs: stripEmDashes(
+          `Arquitectura, ingeniería, desafíos y soluciones de ${project.title}: ${archPartsEs.join('. ')}`
         ),
         contentDe: stripEmDashes(
           `Architektur, Engineering, Herausforderungen und Lösungen für ${project.title}: ${archPartsDe.join('. ')}`
@@ -441,12 +469,26 @@ const buildMethodologyChunks = (): KnowledgeChunk[] => [
   },
 ]
 
+const extractBlogSectionOutline = (markdown?: string): string => {
+  if (!markdown) return ''
+  const headings = Array.from(markdown.matchAll(/^#{2,3}\s+(.+)$/gm)).map((m) =>
+    m[1].replace(/[*_`[\]()]/g, '').trim(),
+  )
+  return headings.length > 0 ? ` Sections: ${headings.slice(0, 14).join('; ')}.` : ''
+}
+
 const buildBlogChunks = (): KnowledgeChunk[] => {
   return allBlogPosts.map((post) => {
     const titleDe = (post.title as Partial<Record<'en' | 'ua' | 'es' | 'de', string>>).de
     const categoryDe = (post.categoryLabel as Partial<Record<'en' | 'ua' | 'es' | 'de', string>>).de
     const tldrDe = (post.tldr as Partial<Record<'en' | 'ua' | 'es' | 'de', string[]>>).de
     const descDe = (post.description as Partial<Record<'en' | 'ua' | 'es' | 'de', string>>).de
+    const contentDeBody = (post.content as Partial<Record<'en' | 'ua' | 'es' | 'de', string>>).de
+
+    const outlineEn = extractBlogSectionOutline(post.content.en)
+    const outlineUa = extractBlogSectionOutline(post.content.ua)
+    const outlineEs = extractBlogSectionOutline(post.content.es)
+    const outlineDe = extractBlogSectionOutline(contentDeBody || post.content.en)
 
     return {
       id: `blog-${post.slug}`,
@@ -456,17 +498,17 @@ const buildBlogChunks = (): KnowledgeChunk[] => {
       category: post.category,
       technologies: post.tags,
       content: stripEmDashes(
-        `Engineering Article: ${post.title.en}. Category: ${post.categoryLabel.en}. Key Takeaways: ${post.tldr.en.join(' ')}. Summary: ${post.description.en}. Article link: /en/blog/${post.slug}`
+        `Engineering Article: ${post.title.en}. Category: ${post.categoryLabel.en}. Key Takeaways: ${post.tldr.en.join(' ')}. Summary: ${post.description.en}.${outlineEn} Article link: /en/blog/${post.slug}`
       ),
       contentUa: stripEmDashes(
-        `Інженерна стаття: ${post.title.ua}. Категорія: ${post.categoryLabel.ua}. Ключові тези: ${post.tldr.ua.join(' ')}. Опис: ${post.description.ua}. Посилання на статтю: /ua/blog/${post.slug}`
+        `Інженерна стаття: ${post.title.ua}. Категорія: ${post.categoryLabel.ua}. Ключові тези: ${post.tldr.ua.join(' ')}. Опис: ${post.description.ua}.${outlineUa} Посилання на статтю: /ua/blog/${post.slug}`
       ),
       contentEs: stripEmDashes(
-        `Artículo técnico: ${post.title.es}. Categoría: ${post.categoryLabel.es}. Conclusiones: ${post.tldr.es.join(' ')}. Resumen: ${post.description.es}. Enlace al artículo: /es/blog/${post.slug}`
+        `Artículo técnico: ${post.title.es}. Categoría: ${post.categoryLabel.es}. Conclusiones: ${post.tldr.es.join(' ')}. Resumen: ${post.description.es}.${outlineEs} Enlace al artículo: /es/blog/${post.slug}`
       ),
       contentDe: titleDe
         ? stripEmDashes(
-            `Technischer Fachartikel: ${titleDe}. Kategorie: ${categoryDe || post.categoryLabel.en}. Kernaussagen: ${(tldrDe || post.tldr.en).join(' ')}. Zusammenfassung: ${descDe || post.description.en}. Artikellink: /de/blog/${post.slug}`
+            `Technischer Fachartikel: ${titleDe}. Kategorie: ${categoryDe || post.categoryLabel.en}. Kernaussagen: ${(tldrDe || post.tldr.en).join(' ')}. Zusammenfassung: ${descDe || post.description.en}.${outlineDe} Artikellink: /de/blog/${post.slug}`
           )
         : undefined,
       metadata: {

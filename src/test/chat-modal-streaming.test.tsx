@@ -159,5 +159,63 @@ describe('ChatModal Client-side Streaming & Fallback Specification (TDD)', () =>
     // Dialog container itself must never be scrolled
     expect(dialog.scrollTop).toBe(0)
   }, 15000)
+
+  it('should consume X-Chat-Metadata header from /api/chat without requiring client RAG fallback', async () => {
+    const serverMeta = {
+      sourceLabel: 'Hybrid RAG · Unitrition (Case Study)',
+      showEstimateCalculator: true,
+      followUps: ['How is Unitrition architected?'],
+    }
+    const mockResponse = new Response('Unitrition timeline breakdown.', {
+      status: 200,
+      headers: {
+        'Content-Type': 'text/plain; charset=utf-8',
+        'X-Chat-Metadata': encodeURIComponent(JSON.stringify(serverMeta)),
+      },
+    })
+
+    global.fetch = vi.fn().mockResolvedValue(mockResponse)
+
+    render(
+      <LanguageProvider>
+        <ChatModal open={true} onClose={vi.fn()} />
+      </LanguageProvider>,
+    )
+
+    const input = screen.getByPlaceholderText(/Type a question/i)
+    fireEvent.change(input, {
+      target: { value: 'Estimate timeline for Unitrition' },
+    })
+
+    fireEvent.click(screen.getByTitle(/Send/i))
+
+    await waitFor(() => {
+      expect(screen.getByText('Hybrid RAG · Unitrition (Case Study)')).toBeInTheDocument()
+      expect(screen.getByText('Interactive Project Timeline Estimator')).toBeInTheDocument()
+      expect(screen.getByText('How is Unitrition architected?')).toBeInTheDocument()
+    })
+  })
+
+  it('should automatically open modal and render estimator card when URL has ?chat=estimator', async () => {
+    const originalLocation = window.location
+    try {
+      delete (window as unknown as { location?: unknown }).location
+      window.location = new URL('https://example.com/en?chat=estimator') as unknown as Location
+
+      render(
+        <LanguageProvider>
+          <ChatModal />
+        </LanguageProvider>,
+      )
+
+      await waitFor(() => {
+        expect(screen.getByRole('dialog')).toBeInTheDocument()
+        expect(screen.getByText('Interactive Project Timeline Estimator')).toBeInTheDocument()
+        expect(screen.getByText(/Use the interactive estimator below/i)).toBeInTheDocument()
+      })
+    } finally {
+      window.location = originalLocation
+    }
+  })
 })
 

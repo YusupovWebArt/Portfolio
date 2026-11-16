@@ -50,7 +50,8 @@ export function proxy(request: NextRequest) {
   if (pathname === '/') {
     const acceptLang = request.headers.get('accept-language')
     const locale = resolvePreferredLocale(acceptLang)
-    const response = NextResponse.redirect(new URL(`/${locale}`, request.url), 307)
+    const search = request.nextUrl.search || ''
+    const response = NextResponse.redirect(new URL(`/${locale}${search}`, request.url), 307)
     response.headers.set('Vary', 'Accept-Language')
     return response
   }

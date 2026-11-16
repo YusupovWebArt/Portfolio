@@ -87,11 +87,26 @@ describe('RAG Knowledge Base Specification (TDD)', () => {
     const nextjsVsWp = kb.blog.find((b) => b.slug === 'nextjs-vs-headless-wordpress-custom-php-2026')
     expect(nextjsVsWp).toBeDefined()
     expect(nextjsVsWp?.type).toBe('blog')
+    expect(nextjsVsWp?.content).toContain('Sections:')
+    expect(nextjsVsWp?.contentUa).toContain('Sections:')
+    expect(nextjsVsWp?.contentEs).toContain('Sections:')
 
     const fullstackAiLabDeepDive = kb.blog.find((b) => b.slug === 'fullstack-ai-lab-interactive-edtech-architecture')
     expect(fullstackAiLabDeepDive).toBeDefined()
 
     const unitritionDeepDive = kb.blog.find((b) => b.slug === 'unitrition-headless-healthtech-architecture')
     expect(unitritionDeepDive).toBeDefined()
+  })
+
+  it('should populate contentUa, contentEs, and contentDe on project architecture faceted chunks', () => {
+    const allChunks = getAllKnowledgeChunks()
+    const archChunks = allChunks.filter((c) => c.type === 'project' && c.facet === 'architecture')
+    expect(archChunks.length).toBeGreaterThan(0)
+    for (const chunk of archChunks) {
+      expect(chunk.contentUa).toBeTruthy()
+      expect(chunk.contentEs).toBeTruthy()
+      expect(chunk.contentDe).toBeTruthy()
+      expect(chunk.contentDe).not.toContain('\u2014')
+    }
   })
 })

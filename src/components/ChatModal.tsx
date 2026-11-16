@@ -77,47 +77,6 @@ const ChatModal = ({
     onClose?.()
   }, [onClose])
 
-  useEffect(() => {
-    const handleContextEvent = (event: Event) => {
-      event.stopImmediatePropagation()
-      const customEvent = event as CustomEvent<ProjectChatContextDetail>
-      if (customEvent.detail) {
-        setProjectContext(customEvent.detail)
-        setInternalOpen(true)
-      }
-    }
-
-    const handleOpenChat = (event: Event) => {
-      event.stopImmediatePropagation()
-      setInternalOpen(true)
-    }
-
-    window.addEventListener('open-ai-chat-context', handleContextEvent)
-    window.addEventListener('open-ai-chat', handleOpenChat)
-    window.addEventListener('close-ai-chat', handleClose)
-
-    return () => {
-      window.removeEventListener('open-ai-chat-context', handleContextEvent)
-      window.removeEventListener('open-ai-chat', handleOpenChat)
-      window.removeEventListener('close-ai-chat', handleClose)
-    }
-  }, [handleClose])
-
-  const modalRef = useRef<HTMLDivElement>(null)
-  const inputRef = useRef<HTMLInputElement>(null)
-  const [liveAnnouncement, setLiveAnnouncement] = useState('')
-  const [copiedId, setCopiedId] = useState<string | null>(null)
-  const [isStreaming, setIsStreaming] = useState(false)
-  const [isMaximized, setIsMaximized] = useState(false)
-  const [showGeneralFaqs, setShowGeneralFaqs] = useState(false)
-
-  useDialogA11y({
-    isOpen: isModalOpen,
-    onClose: handleClose,
-    dialogRef: modalRef,
-    initialFocusRef: inputRef,
-  })
-
   const [messages, setMessages] = useState<Message[]>(() => {
     if (typeof window !== 'undefined') {
       const saved = sessionStorage.getItem('portfolio_chat_modal_messages')
@@ -142,6 +101,157 @@ const ChatModal = ({
         timestamp: new Date(),
       },
     ]
+  })
+
+  useEffect(() => {
+    const handleContextEvent = (event: Event) => {
+      event.stopImmediatePropagation()
+      const customEvent = event as CustomEvent<ProjectChatContextDetail>
+      if (customEvent.detail) {
+        setProjectContext(customEvent.detail)
+        setInternalOpen(true)
+      }
+    }
+
+    const handleOpenChat = (event: Event) => {
+      event.stopImmediatePropagation()
+      const customEvent = event as CustomEvent<{ messages?: Message[] }>
+      if (customEvent.detail?.messages && customEvent.detail.messages.length > 1) {
+        setMessages(customEvent.detail.messages)
+      }
+      setInternalOpen(true)
+    }
+
+    window.addEventListener('open-ai-chat-context', handleContextEvent)
+    window.addEventListener('open-ai-chat', handleOpenChat)
+    window.addEventListener('close-ai-chat', handleClose)
+
+    // Support URL Deep Linking (?chat=open, ?chat=estimator, ?chat=comparison, ?chat=<project-slug>, ?project=<slug>)
+    const checkDeepLink = () => {
+      try {
+        const params = new URLSearchParams(window.location.search)
+        const chatParam = params.get('chat')?.toLowerCase()
+        const projectParam = params.get('project')
+        const titleParam = params.get('title')
+
+        if (projectParam) {
+          setProjectContext({
+            projectSlug: projectParam,
+            projectTitle: titleParam || projectParam,
+          })
+          setInternalOpen(true)
+        }
+
+        if (chatParam) {
+          setInternalOpen(true)
+          if (chatParam === 'estimator' || chatParam === 'calculator') {
+            const estimatorIntro =
+              lang === 'ua'
+                ? 'Скористайтеся інтерактивним калькулятором нижче, щоб розрахувати орієнтовні терміни та обсяг робіт для вашого проєкту:'
+                : lang === 'es'
+                  ? 'Utiliza la calculadora interactiva a continuación para estimar el alcance y cronograma de entrega de tu proyecto:'
+                  : lang === 'de'
+                    ? 'Nutzen Sie den interaktiven Kalkulator unten, um den geschätzten Umfang und Zeitplan für Ihr Projekt zu berechnen:'
+                    : 'Use the interactive estimator below to calculate estimated delivery turnaround and scope for your project:'
+
+            setMessages((prev) =>
+              prev.some((m) => m.showEstimateCalculator)
+                ? prev
+                : [
+                    ...prev,
+                    {
+                      id: `bot-deeplink-estimator-${Date.now()}`,
+                      from: 'bot',
+                      text: estimatorIntro,
+                      source: ct.defaultSource,
+                      showEstimateCalculator: true,
+                      timestamp: new Date(),
+                    },
+                  ],
+            )
+          } else if (chatParam === 'comparison' || chatParam === 'stack') {
+            const stackIntro =
+              lang === 'ua'
+                ? 'Ось інтерактивна порівняльна матриця архітектур (Next.js 16, Headless WP, Custom PHP, Shopify):'
+                : lang === 'es'
+                  ? 'Aquí tienes la matriz comparativa interactiva de arquitecturas (Next.js 16, Headless WP, Custom PHP, Shopify):'
+                  : lang === 'de'
+                    ? 'Hier ist die interaktive Architektur-Vergleichsmatrix (Next.js 16, Headless WP, Custom PHP, Shopify):'
+                    : 'Here is the interactive architecture comparison matrix (Next.js 16, Headless WP, Custom PHP, Shopify):'
+
+            setMessages((prev) =>
+              prev.some((m) => m.showStackComparison)
+                ? prev
+                : [
+                    ...prev,
+                    {
+                      id: `bot-deeplink-stack-${Date.now()}`,
+                      from: 'bot',
+                      text: stackIntro,
+                      source: ct.defaultSource,
+                      showStackComparison: true,
+                      timestamp: new Date(),
+                    },
+                  ],
+            )
+          } else if (chatParam === 'contact' || chatParam === 'hire') {
+            setMessages((prev) =>
+              prev.some((m) => m.showContactCard)
+                ? prev
+                : [
+                    ...prev,
+                    {
+                      id: `bot-deeplink-contact-${Date.now()}`,
+                      from: 'bot',
+                      text: ct.welcomeMessage,
+                      source: ct.defaultSource,
+                      showContactCard: true,
+                      timestamp: new Date(),
+                    },
+                  ],
+            )
+          } else if (
+            chatParam !== 'open' &&
+            chatParam !== 'true' &&
+            chatParam !== '1' &&
+            !projectParam
+          ) {
+            setProjectContext({
+              projectSlug: chatParam,
+              projectTitle: titleParam || chatParam,
+            })
+          }
+        }
+      } catch {
+        // Ignore URLSearchParams errors in non-standard environments
+      }
+    }
+
+    const deepLinkTimer = setTimeout(checkDeepLink, 0)
+    window.addEventListener('popstate', checkDeepLink)
+
+    return () => {
+      clearTimeout(deepLinkTimer)
+      window.removeEventListener('popstate', checkDeepLink)
+      window.removeEventListener('open-ai-chat-context', handleContextEvent)
+      window.removeEventListener('open-ai-chat', handleOpenChat)
+      window.removeEventListener('close-ai-chat', handleClose)
+    }
+  }, [handleClose, ct.welcomeMessage, ct.defaultSource, lang])
+
+  const modalRef = useRef<HTMLDivElement>(null)
+  const inputRef = useRef<HTMLInputElement>(null)
+  const [liveAnnouncement, setLiveAnnouncement] = useState('')
+  const [copiedId, setCopiedId] = useState<string | null>(null)
+  const [isStreaming, setIsStreaming] = useState(false)
+  const [isMaximized, setIsMaximized] = useState(false)
+  const [showGeneralFaqs, setShowGeneralFaqs] = useState(false)
+
+  useDialogA11y({
+    isOpen: isModalOpen,
+    onClose: handleClose,
+    dialogRef: modalRef,
+    initialFocusRef: inputRef,
   })
   const [input, setInput] = useState('')
   const [isTyping, setIsTyping] = useState(false)
@@ -181,6 +291,9 @@ const ChatModal = ({
         return
       }
 
+      // Do not fight user manual scrolling while tokens are actively streaming
+      if (isStreaming) return
+
       // Bot message has arrived and assistant finished typing
       const userElements = container.querySelectorAll<HTMLElement>('[data-chat-message="user"]')
       const latestUserEl = userElements[userElements.length - 1]
@@ -200,7 +313,7 @@ const ChatModal = ({
 
     const timer = setTimeout(scrollToAppropriatePosition, 60)
     return () => clearTimeout(timer)
-  }, [messages, isTyping, isModalOpen])
+  }, [messages, isTyping, isStreaming, isModalOpen])
 
   const handleCopyMessage = (id: string, text: string) => {
     if (typeof navigator !== 'undefined' && navigator.clipboard) {
@@ -265,20 +378,12 @@ const ChatModal = ({
           : lang === 'de'
             ? `Hybrid RAG · Fallstudie ${projectContext.projectTitle}`
             : `Hybrid RAG · ${projectContext.projectTitle} Case Study`
-      : lang === 'ua'
-        ? 'Hybrid RAG · База знань із 71 проєкту'
-        : lang === 'es'
-          ? 'Hybrid RAG · Base de conocimiento de 71 proyectos'
-          : lang === 'de'
-            ? 'Hybrid RAG · Wissensdatenbank mit 71 Projekten'
-            : 'Hybrid RAG · 71-Project Knowledge Base'
+      : ct.defaultSource
 
     setMessages((prev) => [...prev, userMessage])
     setInput('')
     setIsTyping(true)
     setLiveAnnouncement(ct.a11y.typing)
-
-    const ragModulePromise = import('../lib/ai/rag')
 
     const isStaticHosting =
       typeof window !== 'undefined' &&
@@ -298,7 +403,7 @@ const ChatModal = ({
         resolveBlogFromQueryOrContext,
         resolveTargetProject,
         resolveTargetService,
-      } = await ragModulePromise
+      } = await import('../lib/ai/rag')
       const sourceLabel = getRagSourceLabel(textToSend, ragOptions)
       const projectCards = getRelevantProjectCards(textToSend, ragOptions)
       const showContact = isHireOrContactQuery(textToSend)
@@ -370,6 +475,26 @@ const ChatModal = ({
         throw new Error(`Server returned ${response.status}`)
       }
 
+      const rawMetaHeader = response.headers.get('X-Chat-Metadata')
+      let serverMeta: {
+        sourceLabel?: string
+        showContactCard?: boolean
+        showStackComparison?: boolean
+        showEstimateCalculator?: boolean
+        serviceCard?: ServiceItem
+        followUps?: string[]
+        projects?: ChatProjectCardItem[]
+        activeContext?: { projectSlug: string; projectTitle: string }
+      } | null = null
+
+      if (rawMetaHeader) {
+        try {
+          serverMeta = JSON.parse(decodeURIComponent(rawMetaHeader))
+        } catch {
+          serverMeta = null
+        }
+      }
+
       const botMessageId = `bot-${++chatModalMessageIdCounter}`
       setIsTyping(false)
 
@@ -383,7 +508,7 @@ const ChatModal = ({
             id: botMessageId,
             from: 'bot',
             text: '',
-            source: initialSourceLabel,
+            source: serverMeta?.sourceLabel || initialSourceLabel,
             timestamp: new Date(),
           },
         ])
@@ -405,82 +530,110 @@ const ChatModal = ({
             id: botMessageId,
             from: 'bot',
             text,
-            source: initialSourceLabel,
+            source: serverMeta?.sourceLabel || initialSourceLabel,
             timestamp: new Date(),
           },
         ])
         setLiveAnnouncement(text)
       }
 
-      void ragModulePromise
-        .then(
-          ({
-            getRagSourceLabel,
-            getRelevantProjectCards,
-            isHireOrContactQuery,
-            isStackComparisonQuery,
-            isEstimateOrCalculatorQuery,
-            getContextualFollowUps,
-            resolveBlogFromQueryOrContext,
-            resolveTargetProject,
-            resolveTargetService,
-          }) => {
-            const sourceLabel = getRagSourceLabel(textToSend, ragOptions)
-            const projectCards = getRelevantProjectCards(textToSend, ragOptions)
-            const showContact = isHireOrContactQuery(textToSend)
-            const showStack = isStackComparisonQuery(textToSend)
-            const showEstimate = isEstimateOrCalculatorQuery(textToSend)
-            const targetService = resolveTargetService ? resolveTargetService(textToSend) : undefined
-            const followUps = getContextualFollowUps(textToSend, ragOptions)
+      if (serverMeta) {
+        if (
+          serverMeta.activeContext &&
+          serverMeta.activeContext.projectSlug !== projectContext?.projectSlug
+        ) {
+          setProjectContext(serverMeta.activeContext)
+        }
+        setMessages((prev) =>
+          prev.map((msg) =>
+            msg.id === botMessageId
+              ? {
+                  ...msg,
+                  source: serverMeta.sourceLabel || msg.source,
+                  showContactCard: serverMeta.showContactCard,
+                  showStackComparison: serverMeta.showStackComparison,
+                  showEstimateCalculator: serverMeta.showEstimateCalculator,
+                  serviceCard: serverMeta.serviceCard,
+                  followUps: serverMeta.followUps,
+                  projects:
+                    serverMeta.projects && serverMeta.projects.length > 0
+                      ? serverMeta.projects
+                      : msg.projects,
+                }
+              : msg,
+          ),
+        )
+      } else {
+        void import('../lib/ai/rag')
+          .then(
+            ({
+              getRagSourceLabel,
+              getRelevantProjectCards,
+              isHireOrContactQuery,
+              isStackComparisonQuery,
+              isEstimateOrCalculatorQuery,
+              getContextualFollowUps,
+              resolveBlogFromQueryOrContext,
+              resolveTargetProject,
+              resolveTargetService,
+            }) => {
+              const sourceLabel = getRagSourceLabel(textToSend, ragOptions)
+              const projectCards = getRelevantProjectCards(textToSend, ragOptions)
+              const showContact = isHireOrContactQuery(textToSend)
+              const showStack = isStackComparisonQuery(textToSend)
+              const showEstimate = isEstimateOrCalculatorQuery(textToSend)
+              const targetService = resolveTargetService ? resolveTargetService(textToSend) : undefined
+              const followUps = getContextualFollowUps(textToSend, ragOptions)
 
-            const resolvedBlog = resolveBlogFromQueryOrContext(
-              textToSend,
-              ragOptions,
-            )
-            if (resolvedBlog) {
-              const blogTitle =
-                (resolvedBlog.title as Partial<Record<'en' | 'ua' | 'es' | 'de', string>>)[lang] ||
-                resolvedBlog.title.en
-              setProjectContext({
-                projectSlug: resolvedBlog.slug,
-                projectTitle: blogTitle,
-              })
-            } else {
-              const resolvedProject = resolveTargetProject(
+              const resolvedBlog = resolveBlogFromQueryOrContext(
                 textToSend,
                 ragOptions,
               )
-              if (
-                resolvedProject &&
-                resolvedProject.slug !== projectContext?.projectSlug
-              ) {
+              if (resolvedBlog) {
+                const blogTitle =
+                  (resolvedBlog.title as Partial<Record<'en' | 'ua' | 'es' | 'de', string>>)[lang] ||
+                  resolvedBlog.title.en
                 setProjectContext({
-                  projectSlug: resolvedProject.slug,
-                  projectTitle: resolvedProject.project.title,
+                  projectSlug: resolvedBlog.slug,
+                  projectTitle: blogTitle,
                 })
+              } else {
+                const resolvedProject = resolveTargetProject(
+                  textToSend,
+                  ragOptions,
+                )
+                if (
+                  resolvedProject &&
+                  resolvedProject.slug !== projectContext?.projectSlug
+                ) {
+                  setProjectContext({
+                    projectSlug: resolvedProject.slug,
+                    projectTitle: resolvedProject.project.title,
+                  })
+                }
               }
-            }
 
-            setMessages((prev) =>
-              prev.map((msg) =>
-                msg.id === botMessageId
-                  ? {
-                      ...msg,
-                      source: sourceLabel,
-                      showContactCard: showContact,
-                      showStackComparison: showStack,
-                      showEstimateCalculator: showEstimate,
-                      serviceCard: targetService,
-                      followUps,
-                      projects:
-                        projectCards.length > 0 ? projectCards : msg.projects,
-                    }
-                  : msg,
-              ),
-            )
-          },
-        )
-        .catch(() => {})
+              setMessages((prev) =>
+                prev.map((msg) =>
+                  msg.id === botMessageId
+                    ? {
+                        ...msg,
+                        source: sourceLabel,
+                        showContactCard: showContact,
+                        showStackComparison: showStack,
+                        showEstimateCalculator: showEstimate,
+                        serviceCard: targetService,
+                        followUps,
+                        projects:
+                          projectCards.length > 0 ? projectCards : msg.projects,
+                      }
+                    : msg,
+                ),
+              )
+            },
+          )
+          .catch(() => {})
+      }
     } catch (err) {
       setIsStreaming(false)
       if (err instanceof DOMException && err.name === 'AbortError') {
@@ -500,7 +653,7 @@ const ChatModal = ({
         resolveBlogFromQueryOrContext,
         resolveTargetProject,
         resolveTargetService,
-      } = await ragModulePromise
+      } = await import('../lib/ai/rag')
       const sourceLabel = getRagSourceLabel(textToSend, ragOptions)
       const projectCards = getRelevantProjectCards(textToSend, ragOptions)
       const showContact = isHireOrContactQuery(textToSend)
@@ -595,18 +748,10 @@ const ChatModal = ({
           source: activeSource,
         }
       }
-      const defaultSource =
-        lang === 'ua'
-          ? 'Hybrid RAG · База знань із 71 проєкту'
-          : lang === 'es'
-            ? 'Hybrid RAG · Base de conocimiento de 71 proyectos'
-            : lang === 'de'
-              ? 'Hybrid RAG · Wissensdatenbank mit 71 Projekten'
-              : 'Hybrid RAG · 71-Project Knowledge Base'
       return {
         ...msg,
         text: ct.welcomeMessage,
-        source: defaultSource,
+        source: ct.defaultSource,
       }
     }
     return msg
@@ -763,23 +908,8 @@ const ChatModal = ({
       ? lastBotMsg.followUps
       : fallbackSuggestions
 
-  const copyLabel =
-    lang === 'ua'
-      ? 'Скопіювати відповідь'
-      : lang === 'es'
-        ? 'Copiar respuesta'
-        : lang === 'de'
-          ? 'Antwort kopieren'
-          : 'Copy response'
-
-  const stopLabel =
-    lang === 'ua'
-      ? 'Зупинити генерацію'
-      : lang === 'es'
-        ? 'Detener generación'
-        : lang === 'de'
-          ? 'Generierung stoppen'
-          : 'Stop generating'
+  const copyLabel = ct.copyMessage
+  const stopLabel = ct.stopGenerating
 
   const modalNode = (
     <div className="fixed inset-0 bg-slate-900/40 dark:bg-black/60 backdrop-blur-sm flex items-center justify-center z-[70] p-3 sm:p-6 text-left transition-all duration-300">
@@ -790,8 +920,8 @@ const ChatModal = ({
         aria-labelledby="chat-modal-title"
         className={`relative w-full bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl border border-slate-200/80 dark:border-white/10 rounded-3xl shadow-2xl flex flex-col overflow-hidden text-left transition-all duration-300 ${
           isMaximized
-            ? 'max-w-[1550px] w-[96vw] h-[95vh] max-h-[95vh]'
-            : 'max-w-3xl lg:max-w-5xl xl:max-w-6xl h-[740px] sm:h-[780px] max-h-[92vh]'
+            ? 'max-w-[1550px] w-[96vw] h-[95vh] h-[95dvh] max-h-[95vh] max-h-[95dvh]'
+            : 'max-w-3xl lg:max-w-5xl xl:max-w-6xl h-[740px] sm:h-[780px] max-h-[92vh] max-h-[92dvh]'
         }`}
       >
         {/* Polite Screen Reader Live Region for Streaming and Typing Announcements */}
@@ -827,7 +957,7 @@ const ChatModal = ({
           <div className="flex items-center space-x-2 shrink-0">
             <button
               onClick={handleClearChat}
-              className="p-2 hover:bg-slate-100 dark:hover:bg-white/5 rounded-full text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-700 dark:focus-visible:outline-lime-400"
+              className="p-2.5 sm:p-2 min-w-[40px] min-h-[40px] sm:min-w-0 sm:min-h-0 flex items-center justify-center hover:bg-slate-100 dark:hover:bg-white/5 rounded-full text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-700 dark:focus-visible:outline-lime-400"
               title={ct.clearButton}
               aria-label={ct.clearButton}
               type="button"
@@ -836,41 +966,9 @@ const ChatModal = ({
             </button>
             <button
               onClick={() => setIsMaximized((prev) => !prev)}
-              className="p-2 hover:bg-slate-100 dark:hover:bg-white/5 rounded-full text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-700 dark:focus-visible:outline-lime-400"
-              title={
-                isMaximized
-                  ? lang === 'ua'
-                    ? 'Зменшити вікно'
-                    : lang === 'es'
-                      ? 'Restaurar ventana'
-                      : lang === 'de'
-                        ? 'Fenster verkleinern'
-                        : 'Restore window'
-                  : lang === 'ua'
-                    ? 'Розгорнути вікно'
-                    : lang === 'es'
-                      ? 'Maximizar ventana'
-                      : lang === 'de'
-                        ? 'Fenster maximieren'
-                        : 'Maximize window'
-              }
-              aria-label={
-                isMaximized
-                  ? lang === 'ua'
-                    ? 'Зменшити вікно'
-                    : lang === 'es'
-                      ? 'Restaurar ventana'
-                      : lang === 'de'
-                        ? 'Fenster verkleinern'
-                        : 'Restore window'
-                  : lang === 'ua'
-                    ? 'Розгорнути вікно'
-                    : lang === 'es'
-                      ? 'Maximizar ventana'
-                      : lang === 'de'
-                        ? 'Fenster maximieren'
-                        : 'Maximize window'
-              }
+              className="p-2.5 sm:p-2 min-w-[40px] min-h-[40px] sm:min-w-0 sm:min-h-0 flex items-center justify-center hover:bg-slate-100 dark:hover:bg-white/5 rounded-full text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-700 dark:focus-visible:outline-lime-400"
+              title={isMaximized ? ct.restoreWindow : ct.maximizeWindow}
+              aria-label={isMaximized ? ct.restoreWindow : ct.maximizeWindow}
               type="button"
             >
               {isMaximized ? (
@@ -881,7 +979,7 @@ const ChatModal = ({
             </button>
             <button
               onClick={handleClose}
-              className="p-2 hover:bg-slate-100 dark:hover:bg-white/5 rounded-full text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-700 dark:focus-visible:outline-lime-400"
+              className="p-2.5 sm:p-2 min-w-[40px] min-h-[40px] sm:min-w-0 sm:min-h-0 flex items-center justify-center hover:bg-slate-100 dark:hover:bg-white/5 rounded-full text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white transition-colors cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-700 dark:focus-visible:outline-lime-400"
               title={ct.closeChat}
               aria-label={ct.closeChat}
               type="button"
@@ -901,7 +999,7 @@ const ChatModal = ({
             <button
               type="button"
               onClick={() => setProjectContext(null)}
-              className="ml-2 inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-[10px] font-semibold text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white bg-white/80 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 transition cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-700 dark:focus-visible:outline-lime-400"
+              className="ml-2 inline-flex items-center gap-1 rounded-full px-3 py-1 sm:px-2.5 sm:py-0.5 min-h-[28px] sm:min-h-0 text-[10px] font-semibold text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white bg-white/80 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 transition cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-700 dark:focus-visible:outline-lime-400"
               title={ct.clearContext}
             >
               <span>{ct.resetContext}</span>
@@ -1021,7 +1119,7 @@ const ChatModal = ({
                           onClick={() => handleCopyMessage(msg.id, msg.text)}
                           aria-label={copyLabel}
                           title={copyLabel}
-                          className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-md text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 transition-colors cursor-pointer shrink-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-700 dark:focus-visible:outline-lime-400"
+                          className="inline-flex items-center justify-center gap-1 px-2 py-1 sm:px-1.5 sm:py-0.5 min-w-[28px] min-h-[28px] sm:min-w-0 sm:min-h-0 rounded-md text-slate-500 hover:text-slate-800 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/5 transition-colors cursor-pointer shrink-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-700 dark:focus-visible:outline-lime-400"
                         >
                           {copiedId === msg.id ? (
                             <Check className="w-3 h-3 text-emerald-600 dark:text-emerald-400" aria-hidden="true" />
@@ -1081,21 +1179,7 @@ const ChatModal = ({
                   className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[11px] font-semibold text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white bg-slate-100/80 hover:bg-slate-200/70 dark:bg-slate-800/70 dark:hover:bg-slate-800 border border-slate-200/70 dark:border-white/10 transition cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-700 dark:focus-visible:outline-lime-400"
                 >
                   <span>
-                    {showGeneralFaqs
-                      ? lang === 'ua'
-                        ? 'Сховати загальні питання портфоліо'
-                        : lang === 'es'
-                          ? 'Ocultar preguntas generales del portfolio'
-                          : lang === 'de'
-                            ? 'Allgemeine Portfolio-FAQs ausblenden'
-                            : 'Hide general portfolio FAQs'
-                      : lang === 'ua'
-                        ? 'Показати загальні питання портфоліо (8)'
-                        : lang === 'es'
-                          ? 'Mostrar preguntas generales del portfolio (8)'
-                          : lang === 'de'
-                            ? 'Allgemeine Portfolio-FAQs anzeigen (8)'
-                            : 'Show general portfolio FAQs (8)'}
+                    {showGeneralFaqs ? ct.hideGeneralFaqs : ct.showGeneralFaqs}
                   </span>
                   {showGeneralFaqs ? (
                     <ChevronUp className="w-3.5 h-3.5" aria-hidden="true" />

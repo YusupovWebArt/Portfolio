@@ -370,6 +370,14 @@ export interface Translation {
       quickQueryStack: string
       quickQueryFeatures: string
       quickQueryArchitecture: string
+      defaultSource: string
+      copyMessage: string
+      stopGenerating: string
+      maximizeWindow: string
+      restoreWindow: string
+      openFullModal: string
+      showGeneralFaqs: string
+      hideGeneralFaqs: string
       a11y: {
         inputLabel: string
         typing: string

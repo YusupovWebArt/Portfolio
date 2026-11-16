@@ -164,76 +164,121 @@ export default function FormattedChatText({
   isBot = true,
 }: FormattedChatTextProps) {
   const lines = text.split('\n')
+  const elements: React.ReactNode[] = []
+  let idx = 0
+
+  while (idx < lines.length) {
+    const rawLine = lines[idx]
+    const trimmed = rawLine.trim()
+
+    if (trimmed.startsWith('```')) {
+      const codeLang = trimmed.slice(3).trim()
+      const codeLines: string[] = []
+      const blockKey = idx
+      idx++
+      while (idx < lines.length && !lines[idx].trim().startsWith('```')) {
+        codeLines.push(lines[idx])
+        idx++
+      }
+      if (idx < lines.length) {
+        idx++
+      }
+      elements.push(
+        <div
+          key={`code-${blockKey}`}
+          className="my-2 rounded-xl bg-slate-900 dark:bg-slate-950/90 border border-slate-700/70 dark:border-slate-800 overflow-hidden"
+        >
+          {codeLang && (
+            <div className="px-3 py-1 text-[10px] font-mono uppercase tracking-wider text-slate-400 bg-slate-800/70 dark:bg-slate-900 border-b border-slate-700/60 dark:border-slate-800">
+              {codeLang}
+            </div>
+          )}
+          <pre className="p-3 text-xs font-mono text-emerald-300 leading-relaxed overflow-x-auto">
+            <code>{codeLines.join('\n')}</code>
+          </pre>
+        </div>,
+      )
+      continue
+    }
+
+    if (!trimmed) {
+      elements.push(<div key={idx} className="h-1" aria-hidden="true" />)
+      idx++
+      continue
+    }
+
+    const isBullet =
+      trimmed.startsWith('- ') ||
+      trimmed.startsWith('* ') ||
+      trimmed.startsWith('• ')
+
+    if (isBullet) {
+      const content = trimmed.slice(2).trim()
+      elements.push(
+        <div key={idx} className="flex items-start gap-2 pl-1">
+          <span
+            aria-hidden="true"
+            className="mt-1.5 w-1.5 h-1.5 rounded-full bg-purple-600 dark:bg-lime-400 shrink-0"
+          />
+          <span className="flex-1 leading-relaxed">
+            {renderInlineSegments(content, isBot)}
+          </span>
+        </div>,
+      )
+      idx++
+      continue
+    }
+
+    const isHeading3 = trimmed.startsWith('### ')
+    const isHeading2 = trimmed.startsWith('## ')
+    if (isHeading3 || isHeading2) {
+      const content = trimmed.slice(isHeading3 ? 4 : 3).trim()
+      elements.push(
+        <h4
+          key={idx}
+          className={`font-bold tracking-tight text-slate-900 dark:text-white pt-1 pb-0.5 ${
+            isHeading2 ? 'text-base sm:text-lg' : 'text-sm sm:text-base'
+          }`}
+        >
+          {renderInlineSegments(content, isBot)}
+        </h4>,
+      )
+      idx++
+      continue
+    }
+
+    const isItalicLine =
+      trimmed.startsWith('*') &&
+      trimmed.endsWith('*') &&
+      !trimmed.startsWith('**') &&
+      trimmed.length > 2
+
+    if (isItalicLine) {
+      const content = trimmed.slice(1, -1).trim()
+      elements.push(
+        <div
+          key={idx}
+          className="text-xs text-slate-500 dark:text-slate-400 font-medium italic -mt-0.5 mb-1"
+        >
+          {renderInlineSegments(content, isBot)}
+        </div>,
+      )
+      idx++
+      continue
+    }
+
+    elements.push(
+      <div key={idx} className="leading-relaxed">
+        {renderInlineSegments(rawLine, isBot)}
+      </div>,
+    )
+    idx++
+  }
 
   return (
     <div className="space-y-1.5">
       {srPrefix && <span className="sr-only">{srPrefix}</span>}
-      {lines.map((rawLine, idx) => {
-        const trimmed = rawLine.trim()
-        if (!trimmed) {
-          return <div key={idx} className="h-1" aria-hidden="true" />
-        }
-
-        const isBullet =
-          trimmed.startsWith('- ') ||
-          trimmed.startsWith('* ') ||
-          trimmed.startsWith('• ')
-
-        if (isBullet) {
-          const content = trimmed.slice(2).trim()
-          return (
-            <div key={idx} className="flex items-start gap-2 pl-1">
-              <span
-                aria-hidden="true"
-                className="mt-1.5 w-1.5 h-1.5 rounded-full bg-purple-600 dark:bg-lime-400 shrink-0"
-              />
-              <span className="flex-1 leading-relaxed">
-                {renderInlineSegments(content, isBot)}
-              </span>
-            </div>
-          )
-        }
-
-        const isHeading3 = trimmed.startsWith('### ')
-        const isHeading2 = trimmed.startsWith('## ')
-        if (isHeading3 || isHeading2) {
-          const content = trimmed.slice(isHeading3 ? 4 : 3).trim()
-          return (
-            <h4
-              key={idx}
-              className={`font-bold tracking-tight text-slate-900 dark:text-white pt-1 pb-0.5 ${
-                isHeading2 ? 'text-base sm:text-lg' : 'text-sm sm:text-base'
-              }`}
-            >
-              {renderInlineSegments(content, isBot)}
-            </h4>
-          )
-        }
-
-        const isItalicLine =
-          trimmed.startsWith('*') &&
-          trimmed.endsWith('*') &&
-          !trimmed.startsWith('**') &&
-          trimmed.length > 2
-
-        if (isItalicLine) {
-          const content = trimmed.slice(1, -1).trim()
-          return (
-            <div
-              key={idx}
-              className="text-xs text-slate-500 dark:text-slate-400 font-medium italic -mt-0.5 mb-1"
-            >
-              {renderInlineSegments(content, isBot)}
-            </div>
-          )
-        }
-
-        return (
-          <div key={idx} className="leading-relaxed">
-            {renderInlineSegments(rawLine, isBot)}
-          </div>
-        )
-      })}
+      {elements}
     </div>
   )
 }

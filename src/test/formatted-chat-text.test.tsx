@@ -75,4 +75,15 @@ describe('FormattedChatText', () => {
     expect(screen.queryByRole('link', { name: 'Unsafe' })).not.toBeInTheDocument()
     expect(screen.getByText(/Unsafe/)).toBeInTheDocument()
   })
+
+  it('renders multi-line fenced code blocks with optional language badge', () => {
+    const raw = 'Here is an example:\n```typescript\nconst x: number = 42;\nconsole.log(x);\n```\nDone!'
+    const { container } = render(<FormattedChatText text={raw} isBot={true} />)
+
+    expect(screen.getByText('typescript')).toBeInTheDocument()
+    const pre = container.querySelector('pre code')
+    expect(pre).toBeInTheDocument()
+    expect(pre?.textContent).toBe('const x: number = 42;\nconsole.log(x);')
+    expect(screen.getByText('Done!')).toBeInTheDocument()
+  })
 })

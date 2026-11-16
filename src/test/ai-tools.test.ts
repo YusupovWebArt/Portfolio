@@ -11,6 +11,7 @@ interface ShowProjectsResult {
   projects: Array<{
     slug: string
     title: string
+    isPersonal?: boolean
   }>
 }
 
@@ -58,6 +59,8 @@ describe('AI Agent Tools Specification (TDD)', () => {
     expect(nextResult.projects.length).toBeGreaterThan(0)
     const slugs = nextResult.projects.map((p) => p.slug)
     expect(slugs).toContain('unitrition')
+    const unitritionCard = nextResult.projects.find((p) => p.slug === 'unitrition')
+    expect(unitritionCard?.isPersonal).toBe(true)
   })
 
   it('should execute getContactInfo tool returning only public profiles with zero direct contact URLs', async () => {

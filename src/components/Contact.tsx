@@ -175,7 +175,7 @@ const Contact = () => {
     scrollToBottom()
   }, [messages, isTyping])
 
-  const handleSend = (textToSend: string) => {
+  const handleSend = async (textToSend: string) => {
     if (!textToSend.trim()) return
     trackAiChatInteraction('send_message')
 
@@ -193,45 +193,116 @@ const Contact = () => {
         content: m.text,
       }))
 
+    const historyPayload = [
+      ...historyForRag,
+      { role: 'user' as const, content: textToSend },
+    ]
+
     setMessages((prev) => [...prev, userMsg])
     setInput('')
     setIsTyping(true)
 
-    void import('../lib/ai/rag').then(({
-      synthesizeLocalRagAnswer,
-      getRagSourceLabel,
-      getContextualFollowUps,
-      getRelevantProjectCards,
-      isHireOrContactQuery,
-      isStackComparisonQuery,
-      isEstimateOrCalculatorQuery,
-      resolveTargetService,
-    }) => {
-      setTimeout(() => {
-        setIsTyping(false)
-        const showContact = isHireOrContactQuery(textToSend)
-        const showStack = isStackComparisonQuery(textToSend)
-        const showEstimate = isEstimateOrCalculatorQuery(textToSend)
-        const targetService = resolveTargetService ? resolveTargetService(textToSend) : undefined
-        const projectCards = getRelevantProjectCards(textToSend, { locale: lang, history: historyForRag })
+    const isStaticHosting =
+      typeof window !== 'undefined' &&
+      (window.location.hostname.includes('github.io') ||
+        window.location.pathname.startsWith('/Portfolio'))
 
-        const botMsg: Message = {
-          id: `bot-${++contactMessageIdCounter}`,
-          from: 'bot',
-          text: synthesizeLocalRagAnswer(textToSend, { locale: lang, history: historyForRag }),
-          source: getRagSourceLabel(textToSend, { locale: lang, history: historyForRag }),
-          followUps: getContextualFollowUps(textToSend, { locale: lang, history: historyForRag }),
-          showContactCard: showContact,
-          showStackComparison: showStack,
-          showEstimateCalculator: showEstimate,
-          serviceCard: targetService,
-          projects: projectCards.length > 0 ? projectCards : undefined,
+    if (!isStaticHosting) {
+      try {
+        const res = await fetch('/api/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            messages: historyPayload,
+            locale: lang,
+          }),
+        })
+        if (res.ok) {
+          const text = await res.text()
+          const rawMeta = res.headers.get('X-Chat-Metadata')
+          let serverMeta: {
+            sourceLabel?: string
+            showContactCard?: boolean
+            showStackComparison?: boolean
+            showEstimateCalculator?: boolean
+            serviceCard?: ServiceItem
+            followUps?: string[]
+            projects?: ChatProjectCardItem[]
+          } | null = null
+          if (rawMeta) {
+            try {
+              serverMeta = JSON.parse(decodeURIComponent(rawMeta))
+            } catch {
+              serverMeta = null
+            }
+          }
+          setIsTyping(false)
+          if (serverMeta) {
+            setMessages((prev) => [
+              ...prev,
+              {
+                id: `bot-${++contactMessageIdCounter}`,
+                from: 'bot',
+                text,
+                source: serverMeta.sourceLabel || ct.chatbot.defaultSource,
+                followUps: serverMeta.followUps,
+                showContactCard: serverMeta.showContactCard,
+                showStackComparison: serverMeta.showStackComparison,
+                showEstimateCalculator: serverMeta.showEstimateCalculator,
+                serviceCard: serverMeta.serviceCard,
+                projects: serverMeta.projects,
+              },
+            ])
+            return
+          }
         }
-        setMessages((prev) => [...prev, botMsg])
-      }, 350)
-    }).catch(() => {
-      setIsTyping(false)
-    })
+      } catch {
+        // Fall through to local synthesis fallback
+      }
+    }
+
+    void import('../lib/ai/rag')
+      .then(
+        ({
+          synthesizeLocalRagAnswer,
+          getRagSourceLabel,
+          getContextualFollowUps,
+          getRelevantProjectCards,
+          isHireOrContactQuery,
+          isStackComparisonQuery,
+          isEstimateOrCalculatorQuery,
+          resolveTargetService,
+        }) => {
+          setTimeout(() => {
+            setIsTyping(false)
+            const showContact = isHireOrContactQuery(textToSend)
+            const showStack = isStackComparisonQuery(textToSend)
+            const showEstimate = isEstimateOrCalculatorQuery(textToSend)
+            const targetService = resolveTargetService ? resolveTargetService(textToSend) : undefined
+            const projectCards = getRelevantProjectCards(textToSend, {
+              locale: lang,
+              history: historyForRag,
+            })
+
+            const botMsg: Message = {
+              id: `bot-${++contactMessageIdCounter}`,
+              from: 'bot',
+              text: synthesizeLocalRagAnswer(textToSend, { locale: lang, history: historyForRag }),
+              source: getRagSourceLabel(textToSend, { locale: lang, history: historyForRag }),
+              followUps: getContextualFollowUps(textToSend, { locale: lang, history: historyForRag }),
+              showContactCard: showContact,
+              showStackComparison: showStack,
+              showEstimateCalculator: showEstimate,
+              serviceCard: targetService,
+              projects: projectCards.length > 0 ? projectCards : undefined,
+            }
+            setMessages((prev) => [...prev, botMsg])
+          }, 350)
+        },
+      )
+      .catch(() => {
+        setIsTyping(false)
+      })
   }
 
   const handleClearChat = () => {
@@ -436,27 +507,25 @@ const Contact = () => {
                     type="button"
                     onClick={() => {
                       if (typeof window !== 'undefined') {
-                        window.dispatchEvent(new CustomEvent('open-ai-chat'))
+                        if (messages.length > 1) {
+                          try {
+                            sessionStorage.setItem(
+                              'portfolio_chat_modal_messages',
+                              JSON.stringify(messages),
+                            )
+                          } catch {
+                            // Ignore storage write errors
+                          }
+                        }
+                        window.dispatchEvent(
+                          new CustomEvent('open-ai-chat', {
+                            detail: { messages },
+                          }),
+                        )
                       }
                     }}
-                    title={
-                      lang === 'es'
-                        ? 'Abrir en modal completo'
-                        : lang === 'ua'
-                          ? 'Розгорнути на весь екран'
-                          : lang === 'de'
-                            ? 'Im Vollbild-Modal öffnen'
-                            : 'Open in full modal'
-                    }
-                    aria-label={
-                      lang === 'es'
-                        ? 'Abrir en modal completo'
-                        : lang === 'ua'
-                          ? 'Розгорнути на весь екран'
-                          : lang === 'de'
-                            ? 'Im Vollbild-Modal öffnen'
-                            : 'Open in full modal'
-                    }
+                    title={ct.chatbot.openFullModal}
+                    aria-label={ct.chatbot.openFullModal}
                     className="p-1.5 hover:bg-slate-200/60 dark:hover:bg-slate-800 rounded-lg text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-purple-700 dark:focus-visible:outline-lime-400 cursor-pointer"
                   >
                     <Maximize2 className="w-3.5 h-3.5" aria-hidden="true" />

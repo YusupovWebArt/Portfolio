@@ -6,6 +6,15 @@ import {
   synthesizeLocalRagAnswer,
   resolveProjectFromQuery,
   inferProjectFromHistory,
+  getRagSourceLabel,
+  getRelevantProjectCards,
+  isHireOrContactQuery,
+  isStackComparisonQuery,
+  isEstimateOrCalculatorQuery,
+  getContextualFollowUps,
+  resolveBlogFromQueryOrContext,
+  resolveTargetProject,
+  resolveTargetService,
 } from '../../../src/lib/ai/rag'
 import { buildSystemPrompt } from '../../../src/lib/ai/prompts'
 import { aiTools } from '../../../src/lib/ai/tools'
@@ -57,8 +66,19 @@ export async function POST(req: Request) {
     }
 
     // 2. Payload size check (prevent DoS via massive payloads)
+    const contentLengthHeader = Number(req.headers.get('content-length') || '0')
+    if (contentLengthHeader > MAX_BODY_BYTES) {
+      return new Response(
+        JSON.stringify({ error: 'Payload too large. Maximum body size is 16KB.' }),
+        {
+          status: 413,
+          headers: { 'Content-Type': 'application/json' },
+        },
+      )
+    }
+
     const rawBody = await req.text()
-    if (rawBody.length > MAX_BODY_BYTES) {
+    if (Buffer.byteLength(rawBody, 'utf8') > MAX_BODY_BYTES) {
       return new Response(
         JSON.stringify({ error: 'Payload too large. Maximum body size is 16KB.' }),
         {
@@ -224,19 +244,68 @@ export async function POST(req: Request) {
       currentProjectTitle: verifiedProjectTitle,
     })
 
+    // 8b. Compute Generative UI & Source metadata on the server so the browser avoids downloading the 3.3MB RAG dataset
+    const historyPrior = sanitizedHistory.slice(0, -1)
+    const ragOptions = {
+      projectSlug: verifiedProjectSlug,
+      projectTitle: verifiedProjectTitle,
+      locale: validatedLocale,
+      history: historyPrior,
+      answeredQuestions: sanitizedHistory
+        .filter((m) => m.role === 'user')
+        .map((m) => m.content),
+    }
+    const sourceLabel = getRagSourceLabel(lastUserMessage, ragOptions)
+    const projectCards = getRelevantProjectCards(lastUserMessage, ragOptions)
+    const showContact = isHireOrContactQuery(lastUserMessage)
+    const showStack = isStackComparisonQuery(lastUserMessage)
+    const showEstimate = isEstimateOrCalculatorQuery(lastUserMessage)
+    const targetService = resolveTargetService(lastUserMessage)
+    const followUps = getContextualFollowUps(lastUserMessage, ragOptions)
+
+    let activeContext: { projectSlug: string; projectTitle: string } | undefined
+    const resolvedBlog = resolveBlogFromQueryOrContext(lastUserMessage, ragOptions)
+    if (resolvedBlog) {
+      const blogTitle =
+        (resolvedBlog.title as Partial<Record<'en' | 'ua' | 'es' | 'de', string>>)[
+          validatedLocale
+        ] || resolvedBlog.title.en
+      activeContext = {
+        projectSlug: resolvedBlog.slug,
+        projectTitle: blogTitle,
+      }
+    } else {
+      const resolvedProject = resolveTargetProject(lastUserMessage, ragOptions)
+      if (resolvedProject) {
+        activeContext = {
+          projectSlug: resolvedProject.slug,
+          projectTitle: resolvedProject.project.title,
+        }
+      }
+    }
+
+    const encodedMetadata = encodeURIComponent(
+      JSON.stringify({
+        sourceLabel,
+        showContactCard: showContact,
+        showStackComparison: showStack,
+        showEstimateCalculator: showEstimate,
+        serviceCard: targetService,
+        followUps,
+        projects: projectCards.length > 0 ? projectCards : undefined,
+        activeContext,
+      }),
+    )
+
     // 9. Autonomous local RAG synthesis when OPENAI_API_KEY is not configured
     if (!process.env.OPENAI_API_KEY) {
-      const localAnswer = synthesizeLocalRagAnswer(lastUserMessage, {
-        projectSlug: verifiedProjectSlug,
-        projectTitle: verifiedProjectTitle,
-        locale: validatedLocale,
-        history: sanitizedHistory.slice(0, -1),
-      })
+      const localAnswer = synthesizeLocalRagAnswer(lastUserMessage, ragOptions)
 
       return new Response(localAnswer, {
         status: 200,
         headers: {
           'Content-Type': 'text/plain; charset=utf-8',
+          'X-Chat-Metadata': encodedMetadata,
         },
       })
     }
@@ -261,7 +330,11 @@ export async function POST(req: Request) {
       },
     })
 
-    return result.toTextStreamResponse()
+    return result.toTextStreamResponse({
+      headers: {
+        'X-Chat-Metadata': encodedMetadata,
+      },
+    })
   } catch (err) {
     console.error('[api/chat]', err instanceof Error ? err.name : 'unknown')
     return new Response(JSON.stringify({ error: 'Internal error. Please try again later.' }), {

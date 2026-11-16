@@ -88,6 +88,7 @@ export const showProjectsTool = tool({
       category: project.category?.[0] || 'WebDevelopment',
       liveUrl: project.liveUrl,
       githubUrl: project.githubUrl,
+      isPersonal: Boolean(project.isPersonal),
     }))
 
     return {

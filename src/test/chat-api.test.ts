@@ -51,6 +51,12 @@ describe('Fullstack RAG Agent & Streaming Route Handler Specification (TDD)', ()
       const response = await POST(mockRequest)
       expect(response).toBeDefined()
       expect(response.status).toBe(200)
+
+      const metadataHeader = response.headers.get('X-Chat-Metadata')
+      expect(metadataHeader).toBeTruthy()
+      const parsedMeta = JSON.parse(decodeURIComponent(metadataHeader!))
+      expect(parsedMeta.sourceLabel).toContain('IT-Magic')
+      expect(Array.isArray(parsedMeta.followUps)).toBe(true)
     })
 
     it('should reject role: system injection attempts with 400 Bad Request (Finding A)', async () => {
