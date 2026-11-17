@@ -4,6 +4,8 @@ import { render, screen, fireEvent } from '@testing-library/react'
 import Projects from '../components/Projects'
 import { LanguageProvider } from '../contexts/LanguageContext'
 import { getProjectBySlug, matchesProjectSearch, getProjectTechList } from '../lib/projects'
+import { getProjectSlugById, getProjectIdBySlug } from '../data/projectSlugs'
+import { projectRegistry } from '../lib/projectRegistry'
 
 describe('Featured Projects Search & Filtering Specification (TDD)', () => {
   beforeEach(() => {
@@ -118,5 +120,45 @@ describe('Featured Projects Search & Filtering Specification (TDD)', () => {
     const personalTab = screen.getByRole('button', { name: /Personal Projects|Власні проєкти|Proyectos Propios/i })
     fireEvent.click(personalTab)
     expect(screen.getByText('Fullstack AI Lab')).toBeDefined()
+  })
+
+  it('should resolve correct project slug href for IT-Magic without falling back to #projects', () => {
+    const onSelect = vi.fn()
+    render(
+      <LanguageProvider>
+        <Projects onProjectSelect={onSelect} />
+      </LanguageProvider>,
+    )
+
+    const searchInput = screen.getByRole('textbox')
+    fireEvent.change(searchInput, { target: { value: 'IT-Magic' } })
+
+    const itMagicLink = screen.getByRole('link', {
+      name: /^IT-Magic$/i,
+    })
+    expect(itMagicLink).toBeDefined()
+    expect(itMagicLink.getAttribute('href')).toContain('/projects/it-magic')
+    expect(itMagicLink.getAttribute('href')).not.toBe('#projects')
+
+    const viewDetailsLinks = screen.getAllByRole('link', {
+      name: /view details|детальніше|ver detalles/i,
+    })
+    expect(viewDetailsLinks.length).toBeGreaterThan(0)
+    expect(viewDetailsLinks[0].getAttribute('href')).toBe('/en/projects/it-magic')
+
+    fireEvent.click(viewDetailsLinks[0])
+    expect(onSelect).toHaveBeenCalledWith(19500)
+  })
+
+  it('all 71 projects in projectRegistry must bidirectionally map between id and slug', () => {
+    expect(projectRegistry.length).toBe(71)
+
+    for (const item of projectRegistry) {
+      const slugFromId = getProjectSlugById(item.project.id)
+      expect(slugFromId).toBe(item.slug)
+
+      const idFromSlug = getProjectIdBySlug(item.slug)
+      expect(idFromSlug).toBe(item.project.id)
+    }
   })
 })

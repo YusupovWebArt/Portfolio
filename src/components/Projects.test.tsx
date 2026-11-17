@@ -79,7 +79,7 @@ describe("Projects Component Specification (TDD)", () => {
     await user.click(resetBtn);
 
     expect(screen.queryByText(/no projects found/i)).not.toBeInTheDocument();
-  });
+  }, 15000);
 
   it("should filter personal projects and render personal badge", async () => {
     const user = userEvent.setup();

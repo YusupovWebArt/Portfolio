@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState, useEffect, useRef } from 'react'
+import Link from 'next/link'
 import {
   LuExternalLink as ExternalLink,
   LuX as X,
@@ -408,7 +409,7 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
             const projectSlug = getProjectSlugById(project.id)
             const projectHref = projectSlug
               ? `/${lang}/projects/${projectSlug}`
-              : '#projects'
+              : `/${lang}#projects`
 
             return (
               <div
@@ -447,13 +448,13 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
 
                 {/* Title */}
                 <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
-                  <a
+                  <Link
                     href={projectHref}
                     onClick={(e) => handleCardLinkClick(e, project.id)}
                     className="hover:text-purple-600 dark:hover:text-lime-400 transition-colors"
                   >
                     {project.title}
-                  </a>
+                  </Link>
                 </h3>
 
                 {/* Description (full readable text) */}
@@ -518,14 +519,14 @@ const Projects: React.FC<ProjectsProps> = ({ onProjectSelect }) => {
 
                 {/* Sticky Bottom Action Footer */}
                 <div className="mt-auto pt-4 border-t border-slate-100 dark:border-white/5 flex items-center justify-between gap-3">
-                  <a
+                  <Link
                     href={projectHref}
                     onClick={(e) => handleCardLinkClick(e, project.id)}
                     className="inline-flex items-center gap-1.5 text-sm font-semibold text-purple-600 dark:text-lime-400 hover:text-purple-700 dark:hover:text-lime-300 transition-colors"
                   >
                     <span>{pr.viewDetails}</span>
                     <ArrowRight className="w-4 h-4" />
-                  </a>
+                  </Link>
 
                   {project.liveUrl && project.liveUrl !== '#' && (
                     <a
