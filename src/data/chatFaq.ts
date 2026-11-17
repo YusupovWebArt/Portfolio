@@ -30,6 +30,7 @@ export type Message = {
     category: string
     liveUrl?: string
     githubUrl?: string
+    isPersonal?: boolean
   }[]
 }
 
@@ -69,13 +70,13 @@ export const FAQ: FaqItem[] = [
       'vorstellen',
     ],
     answer:
-      'Artur Yusupov is a Fullstack WordPress Developer and React/Next.js Engineer with over 5+ years of professional experience. Currently based in Seville, Spain, he specializes in high-performance web engineering, custom themes/plugins, Hybrid RAG AI assistants, and Spec-Driven AI development.',
+      'Artur Yusupov is a Senior Full-Stack Engineer, WordPress/Headless CMS Architect, and Next.js 16 / React 19 Developer with 5+ years of commercial experience and 71+ delivered projects. Based in Seville, Spain, he engineers sub-second web platforms, autonomous Hybrid RAG AI assistants, and enterprise cloud solutions.\n\nHe is also the creator and Product Architect of his own Personal Flagship Products:\n- **Fullstack AI Lab** (fullstackailab.com) - Interactive full-stack engineering platform powered by Next.js 16, React 19, native Rust MDX-RS compilation (1,135+ lessons), in-browser WASM WordPress sandbox, AI interview simulator, Google NotebookLM audio synthesis, and Supabase RLS.\n- **Unitrition** (unitrition.info) - Personalized HealthTech nutrition platform built with Headless WordPress, Next.js 16 App Router, Supabase RLS, and USDA FoodData Central API.\n- **Next.js 16 & Hybrid RAG Portfolio Platform** (yusupovartur.com) - 4-locale enterprise platform pre-rendering 519 static pages with this autonomous Hybrid RAG engine and WCAG 2.2 AA compliance.',
     answerUa:
-      'Артур Юсупов - Fullstack WordPress-розробник та React/Next.js інженер із понад 5 роками професійного досвіду. Зараз проживає в Севільї (Іспанія) та спеціалізується на розробці високопродуктивних сайтів, кастомних тем/плагінів, Hybrid RAG AI-асистентів та розробці за методологією SDD.',
+      'Артур Юсупов - Senior Full-Stack інженер, архітектор WordPress / Headless CMS та розробник Next.js 16 / React 19 із понад 5 роками комерційного досвіду та 71+ реалізованим проєктом. Проживає в Севільї (Іспанія), спеціалізується на високопродуктивних веб-платформах, автономних Hybrid RAG AI-асистентах та хмарних enterprise-рішеннях.\n\nВін також є автором і Product Architect власних флагманських продуктів (Personal Projects):\n- **Fullstack AI Lab** (fullstackailab.com) - інтерактивна інженерна платформа на Next.js 16, React 19, нативному компіляторі Rust MDX-RS (1 135+ уроків), браузерній WASM-пісочниці, AI-симуляторі співбесід, Google NotebookLM та Supabase RLS.\n- **Unitrition** (unitrition.info) - HealthTech-платформа персоналізованого харчування на Headless WordPress, Next.js 16 App Router, Supabase RLS та USDA FoodData Central API.\n- **Next.js 16 & Hybrid RAG Portfolio Platform** (yusupovartur.com) - 4-мовна enterprise-платформа (519 статичних SSG-сторінок) із цим автономним Hybrid RAG рушієм та відповідністю WCAG 2.2 AA.',
     answerEs:
-      'Artur Yusupov es un desarrollador Fullstack de WordPress e ingeniero React/Next.js con más de 5 años de experiencia profesional. Actualmente reside en Sevilla, España, y se especializa en ingeniería web de alto rendimiento, temas y plugins personalizados, asistentes IA con arquitectura Hybrid RAG y desarrollo potenciado por IA.',
+      'Artur Yusupov es un Ingeniero Full-Stack Senior, Arquitecto de WordPress / Headless CMS y Desarrollador Next.js 16 / React 19 con más de 5 años de experiencia comercial y 71+ proyectos entregados. Reside en Sevilla, España, y se especializa en plataformas web de alto rendimiento, asistentes de IA con arquitectura Hybrid RAG y soluciones cloud empresariales.\n\nAdemás, es el creador y Product Architect de sus propios proyectos destacados (Personal Projects):\n- **Fullstack AI Lab** (fullstackailab.com) - Plataforma interactiva de ingeniería Full-Stack con Next.js 16, React 19, compilación nativa en Rust MDX-RS (1.135+ lecciones), sandbox WASM en navegador, simulador de entrevistas IA, Google NotebookLM y Supabase RLS.\n- **Unitrition** (unitrition.info) - Plataforma HealthTech de nutrición personalizada con Headless WordPress, Next.js 16 App Router, Supabase RLS y API de USDA.\n- **Next.js 16 & Hybrid RAG Portfolio Platform** (yusupovartur.com) - Plataforma empresarial en 4 idiomas (519 páginas SSG) con este motor Hybrid RAG autónomo y cumplimiento WCAG 2.2 AA.',
     answerDe:
-      'Artur Yusupov ist Fullstack-WordPress-Entwickler und React/Next.js-Engineer mit über 5 Jahren Berufserfahrung. Er lebt in Sevilla, Spanien, und ist spezialisiert auf performantes Web-Engineering, individuelle Themes und Plugins, Hybrid-RAG-KI-Assistenten sowie Spec-Driven AI Development.',
+      'Artur Yusupov ist Senior Full-Stack Engineer, WordPress- / Headless-CMS-Architekt und Next.js 16 / React 19 Entwickler mit über 5 Jahren Berufserfahrung und 71+ realisierten Projekten. Mit Sitz in Sevilla, Spanien, entwickelt er hochperformante Web-Plattformen, autonome Hybrid-RAG-KI-Assistenten und Enterprise-Cloud-Lösungen.\n\nZudem ist er Gründer und Product Architect seiner eigenen Flagship-Produkte (Personal Projects):\n- **Fullstack AI Lab** (fullstackailab.com) - Interaktive Full-Stack-Engineering-Plattform mit Next.js 16, React 19, nativer Rust MDX-RS-Kompilierung (1.135+ Lektionen), In-Browser WASM-Sandbox, KI-Interview-Simulator, Google NotebookLM und Supabase RLS.\n- **Unitrition** (unitrition.info) - Personalisierte HealthTech-Ernährungsplattform mit Headless WordPress, Next.js 16 App Router, Supabase RLS und USDA FoodData Central API.\n- **Next.js 16 & Hybrid RAG Portfolio Platform** (yusupovartur.com) - 4-sprachige Enterprise-Plattform (519 statische SSG-Seiten) mit dieser autonomen Hybrid-RAG-Engine und WCAG 2.2 AA-Konformität.',
   },
   {
     question: 'What technologies do you specialize in?',
@@ -105,13 +106,57 @@ export const FAQ: FaqItem[] = [
       'spezialisiert',
     ],
     answer:
-      'My core stack includes WordPress (custom themes/plugins, WooCommerce), React 19, Next.js 16 (App Router), TypeScript, Node.js, and PHP 8+. I also engineer custom Hybrid RAG (Retrieval-Augmented Generation) pipelines, Tailwind CSS interfaces, and REST/GraphQL APIs.',
+      'I specialize in modern **Full-Stack Web Engineering**, **Autonomous AI / Hybrid RAG Architectures**, and **Enterprise Headless CMS Platforms**:\n\n' +
+      '- **Modern Frontend & Full-Stack Core**: **Next.js 16** (App Router, React Server Components, Turbopack, SSG/ISR), **React 19**, **TypeScript 5.9+** (strict zero-any), **Tailwind CSS v4**, and **View Transitions API**.\n' +
+      '- **AI Engineering, Hybrid RAG & Native Runtimes**: Custom **Hybrid RAG** pipelines (Okapi BM25 + Damerau-Levenshtein fuzzy search + TF-IDF cosine vector similarity), **Vercel AI SDK v7** (streaming & Generative UI tool calling), native **Rust MDX-RS** compilation, in-browser **WebAssembly (WASM)** sandboxes, **Google NotebookLM** audio prompt synthesis, and **Spec-Driven AI Development (SDD + TDD)** with Claude Code, Cursor, and Google Antigravity.\n' +
+      '- **Backend, Cloud & Data Systems**: **Supabase** (PostgreSQL, Row-Level Security / RLS, OAuth, real-time gamification), **Node.js**, **REST & GraphQL APIs**, external data integrations (**USDA FoodData Central API**), and **AWS Cloud Infrastructure** (EC2, S3, CloudFront, Route 53).\n' +
+      '- **Enterprise WordPress, Headless CMS & E-Commerce**: Decoupled **Headless WordPress** with HMAC-SHA256 webhook revalidation (`revalidateTag`), **PHP 8+**, custom WordPress themes/plugins from scratch, **ACF Pro**, **Gutenberg**, **WooCommerce**, and **Shopify Liquid**.\n' +
+      '- **Performance, Security & Compliance**: Sub-second **Core Web Vitals** (`LCP < 1.2s`, `INP < 50ms`), **WCAG 2.2 AA / European Accessibility Act (EAA 2026)**, programmatic `Schema.org` JSON-LD, and Zero-Trust security (strict CSP, HSTS, Base64 anti-scraping).\n\n' +
+      '### Cutting-Edge Stack in My Personal Flagship Products:\n' +
+      '1. **Fullstack AI Lab** (`fullstackailab.com`) - Interactive full-stack engineering platform built with **Next.js 16**, **React 19**, native **Rust MDX-RS** compilation (1,135+ interactive lessons compiled in 90s), in-browser **WASM WordPress playground**, AI interview & outage simulators, **Google NotebookLM** audio prompt engine, and **Supabase RLS** gamification.\n' +
+      '2. **Unitrition** (`unitrition.info`) - Full-stack HealthTech & dietary modeling platform built with **Headless WordPress**, **Next.js 16 App Router**, **React 19**, **Supabase** authentication/RLS, and **USDA FoodData Central API** across 10 clinical/dietary frameworks.\n' +
+      '3. **Next.js 16 & Hybrid RAG Portfolio Platform** (`yusupovartur.com`) - Enterprise 4-locale platform pre-rendering 519 static pages with an autonomous **Hybrid RAG AI assistant**, **Generative UI** cards, and strict **WCAG 2.2 AA** compliance.\n' +
+      '4. **My React Portfolio Website** - High-performance SPA/PWA built with **React 19**, **TypeScript**, **Tailwind CSS v4**, **View Transitions API**, and a 29-spec **Vitest TDD** suite.\n\n' +
+      'Explore the interactive case study cards for my personal flagship projects below:',
     answerUa:
-      'Мій основний стек включає WordPress (кастомні теми та плагіни, WooCommerce), React 19, Next.js 16 (App Router), TypeScript, Node.js та PHP 8+. Також я проєктую кастомні Hybrid RAG (Retrieval-Augmented Generation) пайплайни, інтерфейси на Tailwind CSS та REST/GraphQL API.',
+      'Я спеціалізуюся на сучасній **Full-Stack веб-інженерії**, **автономних AI / Hybrid RAG архітектурах** та **Enterprise Headless CMS платформах**:\n\n' +
+      '- **Сучасний Frontend та Full-Stack ядро**: **Next.js 16** (App Router, React Server Components, Turbopack, SSG/ISR), **React 19**, **TypeScript 5.9+** (strict zero-any), **Tailwind CSS v4** та **View Transitions API**.\n' +
+      '- **AI-інженерія, Hybrid RAG та нативні рантайми**: Кастомні пайплайни **Hybrid RAG** (Okapi BM25 + нечіткий пошук Дамерау-Левенштейна + косинусна векторна подібність TF-IDF), **Vercel AI SDK v7** (стримінг та Generative UI tool calling), нативна компіляція **Rust MDX-RS**, браузерні **WebAssembly (WASM)** пісочниці, генерація аудіопромптів для **Google NotebookLM**, а також **Spec-Driven AI Development (SDD + TDD)** із Claude Code, Cursor та Google Antigravity.\n' +
+      '- **Backend, хмарні сервіси та бази даних**: **Supabase** (PostgreSQL, Row-Level Security / RLS, OAuth, гейміфікація в реальному часі), **Node.js**, **REST та GraphQL API**, інтеграція зовнішніх наукових баз (**USDA FoodData Central API**) та хмарна інфраструктура **AWS Cloud** (EC2, S3, CloudFront, Route 53).\n' +
+      '- **Enterprise WordPress, Headless CMS та E-Commerce**: Декаплена архітектура **Headless WordPress** із миттєвою інвалідацією кешу через HMAC-SHA256 вебхуки (`revalidateTag`), **PHP 8+**, кастомні теми та плагіни з нуля, **ACF Pro**, **Gutenberg**, **WooCommerce** та **Shopify Liquid**.\n' +
+      '- **Продуктивність, безпека та стандарти**: Субсекундні показники **Core Web Vitals** (`LCP < 1.2s`, `INP < 50ms`), відповідність **WCAG 2.2 AA / European Accessibility Act (EAA 2026)**, програмна мікророзмітка `Schema.org` JSON-LD та Zero-Trust безпека (CSP, HSTS, Base64-обфускація).\n\n' +
+      '### Передові технології у моїх власних флагманських проєктах (Personal Projects):\n' +
+      '1. **Fullstack AI Lab** (`fullstackailab.com`) - Інтерактивна інженерна освітня платформа на **Next.js 16**, **React 19**, нативному компіляторі **Rust MDX-RS** (1 135+ інтерактивних уроків зі збіркою за 90 секунд), браузерній **WASM WordPress-пісочниці**, симуляторах відмов та AI-співбесід, інтеграції **Google NotebookLM** і гейміфікації на **Supabase RLS**.\n' +
+      '2. **Unitrition** (`unitrition.info`) - Повнофункціональна HealthTech-платформа персоналізованого харчування на базі **Headless WordPress**, **Next.js 16 App Router**, **React 19**, **Supabase** (Auth/RLS) та **USDA FoodData Central API** для 10 дієтичних протоколів.\n' +
+      '3. **Next.js 16 & Hybrid RAG Portfolio Platform** (`yusupovartur.com`) - Enterprise-платформа на 4 мови (519 статичних SSG-сторінок) із автономним **Hybrid RAG AI-асистентом**, картками **Generative UI** та стандартом **WCAG 2.2 AA**.\n' +
+      '4. **My React Portfolio Website** - Високопродуктивний SPA/PWA застосунок на **React 19**, **TypeScript**, **Tailwind CSS v4**, **View Transitions API** та **Vitest TDD**.\n\n' +
+      'Нижче представлені інтерактивні картки моїх флагманських проєктів із переходом до детальних кейсів:',
     answerEs:
-      'Mi stack principal incluye WordPress (temas y plugins personalizados, WooCommerce), React 19, Next.js 16 (App Router), TypeScript, Node.js y PHP 8+. También desarrollo pipelines Hybrid RAG (Retrieval-Augmented Generation) personalizados, interfaces con Tailwind CSS y APIs REST/GraphQL.',
+      'Me especializo en **Ingeniería Web Full-Stack moderna**, **Arquitecturas de IA / Hybrid RAG Autónomo** y **Plataformas Enterprise Headless CMS**:\n\n' +
+      '- **Core Frontend y Full-Stack Moderno**: **Next.js 16** (App Router, React Server Components, Turbopack, SSG/ISR), **React 19**, **TypeScript 5.9+** (strict zero-any), **Tailwind CSS v4** y **View Transitions API**.\n' +
+      '- **Ingeniería de IA, Hybrid RAG y Runtimes Nativos**: Pipelines propios de **Hybrid RAG** (Okapi BM25 + búsqueda difusa Damerau-Levenshtein + similitud vectorial de coseno TF-IDF), **Vercel AI SDK v7** (streaming y Generative UI tool calling), compilación nativa en **Rust MDX-RS**, sandboxes **WebAssembly (WASM)** en el navegador, síntesis de prompts de audio para **Google NotebookLM** y **Spec-Driven AI Development (SDD + TDD)** con Claude Code, Cursor y Google Antigravity.\n' +
+      '- **Backend, Cloud y Datos**: **Supabase** (PostgreSQL, Row-Level Security / RLS, OAuth, gamificación en tiempo real), **Node.js**, **APIs REST y GraphQL**, integración de datos externos (**USDA FoodData Central API**) e infraestructura **AWS Cloud** (EC2, S3, CloudFront, Route 53).\n' +
+      '- **WordPress Enterprise, Headless CMS y E-Commerce**: Arquitectura desacoplada **Headless WordPress** con revalidación mediante webhooks HMAC-SHA256 (`revalidateTag`), **PHP 8+**, temas y plugins a medida desde cero, **ACF Pro**, **Gutenberg**, **WooCommerce** y **Shopify Liquid**.\n' +
+      '- **Rendimiento, Seguridad y Normativa**: **Core Web Vitals** subsegundo (`LCP < 1.2s`, `INP < 50ms`), cumplimiento **WCAG 2.2 AA / European Accessibility Act (EAA 2026)**, datos estructurados `Schema.org` JSON-LD y seguridad Zero-Trust (CSP estricto, HSTS, ofuscación Base64).\n\n' +
+      '### Tecnologías de Vanguardia en Mis Proyectos Propios (Personal Projects):\n' +
+      '1. **Fullstack AI Lab** (`fullstackailab.com`) - Plataforma educativa interactiva de ingeniería Full-Stack con **Next.js 16**, **React 19**, compilador nativo **Rust MDX-RS** (1.135+ lecciones compiladas en 90s), sandbox **WASM de WordPress** en navegador, simuladores de fallos y entrevistas con IA, **Google NotebookLM** y gamificación en **Supabase RLS**.\n' +
+      '2. **Unitrition** (`unitrition.info`) - Plataforma HealthTech de nutrición personalizada construida con **Headless WordPress**, **Next.js 16 App Router**, **React 19**, autenticación **Supabase RLS** y **USDA FoodData Central API** para 10 planes dietéticos.\n' +
+      '3. **Next.js 16 & Hybrid RAG Portfolio Platform** (`yusupovartur.com`) - Plataforma empresarial en 4 idiomas (519 páginas SSG) con **asistente IA Hybrid RAG autónomo**, tarjetas **Generative UI** y accesibilidad **WCAG 2.2 AA**.\n' +
+      '4. **My React Portfolio Website** - Aplicación SPA/PWA de alto rendimiento con **React 19**, **TypeScript**, **Tailwind CSS v4**, **View Transitions API** y suite **Vitest TDD**.\n\n' +
+      'Explora a continuación las tarjetas interactivas de mis proyectos propios destacados:',
     answerDe:
-      'Mein Kern-Stack umfasst WordPress (individuelle Themes/Plugins, WooCommerce), React 19, Next.js 16 (App Router), TypeScript, Node.js und PHP 8+. Zudem entwickle ich maßgeschneiderte Hybrid-RAG-Pipelines (Retrieval-Augmented Generation), Tailwind-CSS-Oberflächen sowie REST- und GraphQL-APIs.',
+      'Ich bin spezialisiert auf modernes **Full-Stack Web-Engineering**, **autonome KI- / Hybrid-RAG-Architekturen** sowie **Enterprise Headless-CMS-Plattformen**:\n\n' +
+      '- **Moderner Frontend- & Full-Stack-Kern**: **Next.js 16** (App Router, React Server Components, Turbopack, SSG/ISR), **React 19**, **TypeScript 5.9+** (strict zero-any), **Tailwind CSS v4** und **View Transitions API**.\n' +
+      '- **KI-Engineering, Hybrid RAG & Native Runtimes**: Maßgeschneiderte **Hybrid-RAG-Pipelines** (Okapi BM25 + fehlertolerante Damerau-Levenshtein-Suche + TF-IDF-Kosinus-Vektorähnlichkeit), **Vercel AI SDK v7** (Streaming & Generative UI Tool Calling), native **Rust MDX-RS**-Kompilierung, In-Browser **WebAssembly (WASM)**-Sandboxes, **Google NotebookLM** Audio-Prompt-Synthese sowie **Spec-Driven AI Development (SDD + TDD)** mit Claude Code, Cursor und Google Antigravity.\n' +
+      '- **Backend, Cloud & Datensysteme**: **Supabase** (PostgreSQL, Row-Level Security / RLS, OAuth, Echtzeit-Gamification), **Node.js**, **REST- & GraphQL-APIs**, externe Datenintegrationen (**USDA FoodData Central API**) und **AWS Cloud-Infrastruktur** (EC2, S3, CloudFront, Route 53).\n' +
+      '- **Enterprise WordPress, Headless CMS & E-Commerce**: Entkoppeltes **Headless WordPress** mit HMAC-SHA256-Webhook-Invalidierung (`revalidateTag`), **PHP 8+**, individuelle Themes/Plugins von Grund auf, **ACF Pro**, **Gutenberg**, **WooCommerce** und **Shopify Liquid**.\n' +
+      '- **Performance, Security & Compliance**: Sub-Sekunden **Core Web Vitals** (`LCP < 1.2s`, `INP < 50ms`), **WCAG 2.2 AA / European Accessibility Act (EAA 2026)**, programmatisches `Schema.org` JSON-LD und Zero-Trust-Security (strikte CSP, HSTS, Base64-Kontaktobfuskation).\n\n' +
+      '### Spitzentechnologien in meinen eigenen Flagship-Projekten (Personal Projects):\n' +
+      '1. **Fullstack AI Lab** (`fullstackailab.com`) - Interaktive Full-Stack-Engineering-Plattform auf Basis von **Next.js 16**, **React 19**, nativer **Rust MDX-RS**-Kompilierung (1.135+ interaktive Lektionen in 90s kompiliert), In-Browser **WASM-WordPress-Sandbox**, KI-Interview- & Ausfall-Simulatoren, **Google NotebookLM** und **Supabase RLS**-Gamification.\n' +
+      '2. **Unitrition** (`unitrition.info`) - Full-Stack-HealthTech- und Ernährungsplattform mit **Headless WordPress**, **Next.js 16 App Router**, **React 19**, **Supabase** Auth/RLS und **USDA FoodData Central API** für 10 Ernährungsprogramme.\n' +
+      '3. **Next.js 16 & Hybrid RAG Portfolio Platform** (`yusupovartur.com`) - 4-sprachige Enterprise-Plattform (519 statische SSG-Seiten) mit autonomem **Hybrid-RAG-KI-Assistenten**, **Generative UI**-Karten und **WCAG 2.2 AA**-Konformität.\n' +
+      '4. **My React Portfolio Website** - Hochperformante SPA/PWA mit **React 19**, **TypeScript**, **Tailwind CSS v4**, **View Transitions API** und **Vitest TDD**-Testsuite.\n\n' +
+      'Entdecken Sie nachfolgend die interaktiven Fallstudienkarten meiner eigenen Flagship-Projekte:',
   },
   {
     question: 'How many years of development experience do you have?',
@@ -136,13 +181,13 @@ export const FAQ: FaqItem[] = [
       'entwicklungserfahrung',
     ],
     answer:
-      'I have over 5+ years of professional experience in web development, having delivered 70+ completed projects ranging from custom business websites to international enterprise applications (e.g. IT-Magic, Unitrition, Frontdeskhelpers).',
+      'I have over 5+ years of commercial web development experience, having delivered 71+ production projects ranging from custom corporate platforms and AWS consulting portals (e.g. **IT-Magic**, **Front Desk Helpers**) to my own full-stack flagship products (**Fullstack AI Lab**, **Unitrition**, and this **Next.js 16 & Hybrid RAG Portfolio Platform**).',
     answerUa:
-      'Маю понад 5 років професійного досвіду у веб-розробці та 70+ реалізованих проєктів - від кастомних корпоративних сайтів до міжнародних enterprise-проєктів (наприклад, IT-Magic, Unitrition, Frontdeskhelpers).',
+      'Маю понад 5 років комерційного досвіду у веб-розробці та 71+ реалізований проєкт - від кастомних корпоративних платформ та AWS-порталів (наприклад, **IT-Magic**, **Front Desk Helpers**) до власних full-stack флагманських продуктів (**Fullstack AI Lab**, **Unitrition** та цієї платформи **Next.js 16 & Hybrid RAG Portfolio Platform**).',
     answerEs:
-      'Tengo más de 5 años de experiencia profesional en desarrollo web, con más de 70 proyectos completados, desde sitios web corporativos personalizados hasta aplicaciones empresariales internacionales (como IT-Magic, Unitrition y Frontdeskhelpers).',
+      'Tengo más de 5 años de experiencia comercial en desarrollo web, con 71+ proyectos entregados que abarcan desde portales corporativos y consultoría AWS (como **IT-Magic** y **Front Desk Helpers**) hasta mis propios productos full-stack destacados (**Fullstack AI Lab**, **Unitrition** y esta plataforma **Next.js 16 & Hybrid RAG Portfolio Platform**).',
     answerDe:
-      'Ich verfüge über mehr als 5 Jahre Berufserfahrung in der Webentwicklung und habe über 70 Projekte erfolgreich umgesetzt - von maßgeschneiderten Unternehmenswebsites bis hin zu internationalen Enterprise-Anwendungen (z. B. IT-Magic, Unitrition, Frontdeskhelpers).',
+      'Ich verfüge über mehr als 5 Jahre Berufserfahrung in der Webentwicklung und habe 71+ Projekte erfolgreich umgesetzt - von Unternehmensportalen und AWS-Plattformen (z. B. **IT-Magic**, **Front Desk Helpers**) bis hin zu meinen eigenen Full-Stack-Flagship-Produkten (**Fullstack AI Lab**, **Unitrition** und dieser **Next.js 16 & Hybrid RAG Portfolio Platform**).',
   },
   {
     question: 'What projects have you completed? / Tell me about your work',
@@ -168,13 +213,49 @@ export const FAQ: FaqItem[] = [
       'arbeitsproben',
     ],
     answer:
-      'I have launched 70+ web projects indexed directly in this Hybrid RAG assistant! You can explore them in the "Featured Projects" section or ask me about any specific project (e.g. "Tell me about IT-Magic" or "Unitrition tech stack").',
+      'I have delivered **71+ production web projects**, all indexed directly in this Hybrid RAG assistant! Key highlights include:\n\n' +
+      '- **Personal Flagship Products (Personal Projects)**:\n' +
+      '  - **Fullstack AI Lab** (`fullstackailab.com`) - Interactive engineering academy with Next.js 16, React 19, Rust MDX-RS (1,135+ lessons), in-browser WASM WordPress sandbox, NotebookLM audio prompts, and Supabase RLS.\n' +
+      '  - **Unitrition** (`unitrition.info`) - Full-stack HealthTech platform built with Headless WordPress, Next.js 16 App Router, Supabase RLS, and USDA FoodData Central API.\n' +
+      '  - **Next.js 16 & Hybrid RAG Portfolio Platform** (`yusupovartur.com`) - Enterprise 4-locale platform (519 SSG pages) with this autonomous Hybrid RAG engine and WCAG 2.2 AA compliance.\n' +
+      '- **Enterprise & E-Commerce Case Studies**:\n' +
+      '  - **IT-Magic** - Corporate cloud consulting platform for an AWS Advanced Partner.\n' +
+      '  - **Front Desk Helpers** - Enterprise B2B outsourcing platform with custom knowledge base.\n' +
+      '  - **Kidzely** - High-conversion international Shopify e-commerce storefront.\n\n' +
+      'Explore the interactive case study cards below or ask me about any specific project!',
     answerUa:
-      'Я запустив понад 70 веб-проєктів, і всі вони проіндексовані прямо в цьому Hybrid RAG асистенті! Ви можете переглянути їх у секції "Вибрані проєкти" або запитати мене про будь-який конкретний проєкт (наприклад, про IT-Magic або Unitrition).',
+      'Я реалізував **понад 71 продакшн веб-проєкт**, і всі вони проіндексовані прямо в цьому Hybrid RAG асистенті! Ключові проєкти:\n\n' +
+      '- **Власні флагманські продукти (Personal Projects)**:\n' +
+      '  - **Fullstack AI Lab** (`fullstackailab.com`) - Інтерактивна інженерна платформа на Next.js 16, React 19, Rust MDX-RS (1 135+ уроків), браузерній WASM-пісочниці, NotebookLM та Supabase RLS.\n' +
+      '  - **Unitrition** (`unitrition.info`) - HealthTech-платформа харчування на Headless WordPress, Next.js 16 App Router, Supabase RLS та USDA API.\n' +
+      '  - **Next.js 16 & Hybrid RAG Portfolio Platform** (`yusupovartur.com`) - 4-мовна enterprise-платформа (519 SSG-сторінок) із автономним Hybrid RAG рушієм та WCAG 2.2 AA.\n' +
+      '- **Enterprise та E-Commerce кейси**:\n' +
+      '  - **IT-Magic** - Корпоративний портал для AWS Advanced Consulting Partner.\n' +
+      '  - **Front Desk Helpers** - Масштабний B2B-портал аутсорсингу.\n' +
+      '  - **Kidzely** - Міжнародний e-commerce магазин на Shopify.\n\n' +
+      'Нижче доступні інтерактивні картки проєктів, або запитайте мене про будь-який конкретний кейс!',
     answerEs:
-      '¡He lanzado más de 70 proyectos web indexados directamente en este asistente Hybrid RAG! Puede explorarlos en la sección "Proyectos destacados" o preguntarme por cualquier proyecto específico (por ejemplo, IT-Magic o Unitrition).',
+      'He entregado **más de 71 proyectos web en producción**, todos indexados en este asistente Hybrid RAG. Entre los proyectos destacados se encuentran:\n\n' +
+      '- **Proyectos Propios Destacados (Personal Projects)**:\n' +
+      '  - **Fullstack AI Lab** (`fullstackailab.com`) - Plataforma interactiva de ingeniería con Next.js 16, React 19, Rust MDX-RS (1.135+ lecciones), sandbox WASM en navegador, NotebookLM y Supabase RLS.\n' +
+      '  - **Unitrition** (`unitrition.info`) - Plataforma HealthTech de nutrición con Headless WordPress, Next.js 16 App Router, Supabase RLS y API de USDA.\n' +
+      '  - **Next.js 16 & Hybrid RAG Portfolio Platform** (`yusupovartur.com`) - Plataforma empresarial en 4 idiomas (519 páginas SSG) con motor Hybrid RAG autónomo y WCAG 2.2 AA.\n' +
+      '- **Casos de Estudio Enterprise y E-Commerce**:\n' +
+      '  - **IT-Magic** - Portal corporativo para socio consultor AWS Advanced.\n' +
+      '  - **Front Desk Helpers** - Plataforma corporativa B2B de outsourcing.\n' +
+      '  - **Kidzely** - Tienda internacional de alto rendimiento en Shopify.\n\n' +
+      '¡Explora las tarjetas interactivas a continuación o pregúntame por cualquier proyecto específico!',
     answerDe:
-      'Ich habe über 70 Webprojekte umgesetzt, die direkt in diesem Hybrid-RAG-Assistenten indexiert sind! Sie können sie im Bereich "Ausgewählte Projekte" entdecken oder mich zu jedem einzelnen Projekt fragen (z. B. zu IT-Magic oder Unitrition).',
+      'Ich habe **über 71 produktive Webprojekte** umgesetzt, die alle direkt in diesem Hybrid-RAG-Assistenten indexiert sind! Zu den Highlights zählen:\n\n' +
+      '- **Eigene Flagship-Produkte (Personal Projects)**:\n' +
+      '  - **Fullstack AI Lab** (`fullstackailab.com`) - Interaktive Engineering-Plattform mit Next.js 16, React 19, Rust MDX-RS (1.135+ Lektionen), In-Browser WASM-Sandbox, NotebookLM und Supabase RLS.\n' +
+      '  - **Unitrition** (`unitrition.info`) - HealthTech-Ernährungsplattform mit Headless WordPress, Next.js 16 App Router, Supabase RLS und USDA API.\n' +
+      '  - **Next.js 16 & Hybrid RAG Portfolio Platform** (`yusupovartur.com`) - 4-sprachige Enterprise-Plattform (519 SSG-Seiten) mit autonomer Hybrid-RAG-Engine und WCAG 2.2 AA.\n' +
+      '- **Enterprise- & E-Commerce-Fallstudien**:\n' +
+      '  - **IT-Magic** - Unternehmensplattform für einen AWS Advanced Consulting Partner.\n' +
+      '  - **Front Desk Helpers** - B2B-Outsourcing-Plattform mit eigener Wissensdatenbank.\n' +
+      '  - **Kidzely** - Internationaler Shopify-Onlineshop mit hoher Conversion-Rate.\n\n' +
+      'Entdecken Sie die interaktiven Projektkarten unten oder fragen Sie mich nach einem bestimmten Projekt!',
   },
   {
     question: 'How do you use AI & RAG in your workflow?',

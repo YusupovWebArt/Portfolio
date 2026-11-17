@@ -330,19 +330,76 @@ const buildProfileChunks = (): KnowledgeChunk[] => [
     title: 'Artur Yusupov - Professional Profile',
     slug: 'artur-yusupov',
     content: stripEmDashes(
-      'Artur Yusupov is a Fullstack WordPress Developer and Next.js / React Engineer with over 5+ years of commercial web development experience. Based in Seville, Spain, he specializes in modern enterprise web architecture, Headless CMS, custom plugin/theme development, high-performance UI engineering, and AI-augmented software development.'
+      'Artur Yusupov is a Fullstack WordPress Developer and Next.js / React Engineer with over 5+ years of commercial web development experience and 71+ delivered projects. Based in Seville, Spain, he specializes in modern enterprise web architecture, Headless CMS, custom plugin/theme development, high-performance UI engineering, autonomous Hybrid RAG AI assistants, and Spec-Driven AI development. He is also the creator and architect of Personal Flagship Products including Fullstack AI Lab (fullstackailab.com), Unitrition (unitrition.info), and the Next.js 16 & Hybrid RAG Portfolio Platform (yusupovartur.com).'
     ),
     contentUa: stripEmDashes(
-      'Артур Юсупов - Fullstack WordPress-розробник та Next.js / React інженер із понад 5 роками комерційного досвіду. Проживає в Севільї (Іспанія), спеціалізується на сучасній веб-архітектурі, Headless CMS, розробці кастомних плагінів/тем, високій продуктивності та AI-орієнтованій розробці.'
+      'Артур Юсупов - Fullstack WordPress-розробник та Next.js / React інженер із понад 5 роками комерційного досвіду та 71+ реалізованим проєктом. Проживає в Севільї (Іспанія), спеціалізується на сучасній веб-архітектурі, Headless CMS, розробці кастомних плагінів/тем, високій продуктивності, автономних Hybrid RAG AI-асистентах та SDD-розробці. Є автором та архітектором власних флагманських продуктів: Fullstack AI Lab (fullstackailab.com), Unitrition (unitrition.info) та Next.js 16 & Hybrid RAG Portfolio Platform (yusupovartur.com).'
     ),
     contentEs: stripEmDashes(
-      'Artur Yusupov es un desarrollador Fullstack WordPress e ingeniero Next.js / React con más de 5 años de experiencia comercial. Reside en Sevilla, España, y se especializa en arquitectura web moderna, Headless CMS, temas y plugins personalizados, y desarrollo asistido por IA.'
+      'Artur Yusupov es un desarrollador Fullstack WordPress e ingeniero Next.js / React con más de 5 años de experiencia comercial y 71+ proyectos entregados. Reside en Sevilla, España, y se especializa en arquitectura web moderna, Headless CMS, temas y plugins personalizados, asistentes IA con arquitectura Hybrid RAG y desarrollo guiado por especificaciones (SDD). Además, es el creador y arquitecto de productos propios destacados como Fullstack AI Lab (fullstackailab.com), Unitrition (unitrition.info) y Next.js 16 & Hybrid RAG Portfolio Platform (yusupovartur.com).'
     ),
     contentDe: stripEmDashes(
-      'Artur Yusupov ist Fullstack-WordPress-Entwickler und Next.js / React Engineer mit über 5 Jahren kommerzieller Erfahrung. Mit Sitz in Sevilla (Spanien) spezialisiert er sich auf moderne Enterprise-Webarchitekturen, Headless CMS, individuelle Plugin-/Theme-Entwicklung, High-Performance-UI und AI-gestützte Softwareentwicklung.'
+      'Artur Yusupov ist Fullstack-WordPress-Entwickler und Next.js / React Engineer mit über 5 Jahren kommerzieller Erfahrung und 71+ realisierten Projekten. Mit Sitz in Sevilla (Spanien) spezialisiert er sich auf moderne Enterprise-Webarchitekturen, Headless CMS, individuelle Plugin-/Theme-Entwicklung, autonome Hybrid-RAG-KI-Assistenten und Spec-Driven AI Development. Zudem ist er Architekt eigener Flagship-Produkte wie Fullstack AI Lab (fullstackailab.com), Unitrition (unitrition.info) und der Next.js 16 & Hybrid RAG Portfolio Platform (yusupovartur.com).'
     ),
     metadata: {
-      keywords: ['artur', 'yusupov', 'bio', 'experience', 'seville', 'spain', 'fullstack'],
+      keywords: ['artur', 'yusupov', 'bio', 'experience', 'seville', 'spain', 'fullstack', 'personal', 'flagship'],
+    },
+  },
+  {
+    id: 'profile-tech-stack',
+    type: 'profile',
+    title: 'Artur Yusupov - Core Technology Stack & Personal Flagship Projects',
+    slug: 'artur-tech-stack',
+    technologies: [
+      'Next.js 16',
+      'React 19',
+      'TypeScript 5.9',
+      'Tailwind CSS v4',
+      'Rust MDX-RS',
+      'WebAssembly (WASM)',
+      'Hybrid RAG',
+      'Vercel AI SDK v7',
+      'Google NotebookLM',
+      'Supabase RLS',
+      'Headless WordPress',
+      'PHP 8+',
+      'WooCommerce',
+      'Shopify Liquid',
+      'AWS Cloud',
+      'WCAG 2.2 AA',
+    ],
+    content: stripEmDashes(
+      'Core Technology Specialization: 1. Modern Frontend & Full-Stack: Next.js 16 (App Router, React Server Components, Turbopack, SSG/ISR), React 19, TypeScript (strict zero-any), Tailwind CSS v4, View Transitions API. 2. AI Engineering, Hybrid RAG & Native Runtimes: Custom Hybrid RAG engines (Okapi BM25 + Damerau-Levenshtein fuzzy search + TF-IDF cosine vector similarity), Vercel AI SDK v7 (streaming & Generative UI tool calling), native Rust MDX-RS compilation, in-browser WebAssembly (WASM) sandboxes, Google NotebookLM audio prompt synthesis, and Spec-Driven AI Development (SDD + TDD) with Claude Code, Cursor, and Google Antigravity. 3. Backend, Cloud & Data: Supabase (PostgreSQL, Row-Level Security / RLS, OAuth, real-time gamification), Node.js, REST & GraphQL APIs, USDA FoodData Central API, AWS Cloud (EC2, S3, CloudFront, Route 53). 4. Enterprise WordPress & E-Commerce: Decoupled Headless WordPress with HMAC-SHA256 webhook revalidation (revalidateTag), PHP 8+, custom themes/plugins, ACF Pro, Gutenberg, WooCommerce, Shopify Liquid. 5. Applied in Personal Flagship Products: Fullstack AI Lab (Next.js 16, React 19, Rust MDX-RS compiling 1,135+ lessons in 90s, WASM WordPress playground, AI interview & outage simulators, NotebookLM audio prompts, Supabase RLS), Unitrition (Headless WordPress + Next.js 16 App Router, React 19, Supabase RLS, USDA API for 10 diet frameworks), Next.js 16 & Hybrid RAG Portfolio Platform (519 SSG pages across EN/UA/ES/DE, autonomous Hybrid RAG assistant, Generative UI, WCAG 2.2 AA), and My React Portfolio Website (React 19, TypeScript, Tailwind CSS v4, View Transitions API, Vitest TDD).'
+    ),
+    contentUa: stripEmDashes(
+      'Технологічна спеціалізація: 1. Сучасний Frontend та Full-Stack: Next.js 16 (App Router, React Server Components, Turbopack, SSG/ISR), React 19, TypeScript (strict zero-any), Tailwind CSS v4, View Transitions API. 2. AI-інженерія, Hybrid RAG та нативні рантайми: Кастомні пайплайни Hybrid RAG (Okapi BM25 + Дамерау-Левенштейн + TF-IDF косинусна подібність), Vercel AI SDK v7 (стримінг та Generative UI), нативний компілятор Rust MDX-RS, браузерні WebAssembly (WASM) пісочниці, Google NotebookLM, SDD + TDD із Claude Code, Cursor та Google Antigravity. 3. Backend, Cloud та дані: Supabase (PostgreSQL, RLS, OAuth, гейміфікація), Node.js, REST/GraphQL API, USDA FoodData Central API, AWS Cloud (EC2, S3, CloudFront, Route 53). 4. Enterprise WordPress та E-Commerce: Headless WordPress із HMAC-SHA256 вебхуками (revalidateTag), PHP 8+, кастомні теми/плагіни, ACF Pro, Gutenberg, WooCommerce, Shopify Liquid. 5. Втілено у власних флагманських проєктах (Personal Projects): Fullstack AI Lab (Next.js 16, React 19, Rust MDX-RS на 1 135+ уроків, WASM-пісочниця, AI-симулятори, NotebookLM, Supabase RLS), Unitrition (Headless WordPress + Next.js 16, React 19, Supabase RLS, USDA API для 10 дієт), Next.js 16 & Hybrid RAG Portfolio Platform (519 SSG-сторінок EN/UA/ES/DE, автономний Hybrid RAG, Generative UI, WCAG 2.2 AA) та My React Portfolio Website (React 19, TypeScript, Tailwind CSS v4, Vitest TDD).'
+    ),
+    contentEs: stripEmDashes(
+      'Especialización Tecnológica: 1. Frontend y Full-Stack Moderno: Next.js 16 (App Router, React Server Components, Turbopack, SSG/ISR), React 19, TypeScript (strict zero-any), Tailwind CSS v4, View Transitions API. 2. Ingeniería de IA, Hybrid RAG y Runtimes Nativos: Pipelines propios de Hybrid RAG (Okapi BM25 + Damerau-Levenshtein + similitud de coseno TF-IDF), Vercel AI SDK v7 (streaming y Generative UI), compilación nativa en Rust MDX-RS, sandboxes WebAssembly (WASM) en navegador, Google NotebookLM y SDD + TDD con Claude Code, Cursor y Google Antigravity. 3. Backend, Cloud y Datos: Supabase (PostgreSQL, RLS, OAuth, gamificación), Node.js, APIs REST/GraphQL, USDA FoodData Central API, AWS Cloud (EC2, S3, CloudFront, Route 53). 4. WordPress Enterprise y E-Commerce: Headless WordPress con webhooks HMAC-SHA256 (revalidateTag), PHP 8+, temas/plugins a medida, ACF Pro, Gutenberg, WooCommerce, Shopify Liquid. 5. Aplicado en Proyectos Propios (Personal Projects): Fullstack AI Lab (Next.js 16, React 19, Rust MDX-RS con 1.135+ lecciones, sandbox WASM, simuladores IA, NotebookLM, Supabase RLS), Unitrition (Headless WordPress + Next.js 16, React 19, Supabase RLS, API USDA para 10 dietas), Next.js 16 & Hybrid RAG Portfolio Platform (519 páginas SSG EN/UA/ES/DE, Hybrid RAG autónomo, Generative UI, WCAG 2.2 AA) y My React Portfolio Website (React 19, TypeScript, Tailwind CSS v4, Vitest TDD).'
+    ),
+    contentDe: stripEmDashes(
+      'Technologische Spezialisierung: 1. Moderner Frontend- & Full-Stack-Kern: Next.js 16 (App Router, React Server Components, Turbopack, SSG/ISR), React 19, TypeScript (strict zero-any), Tailwind CSS v4, View Transitions API. 2. KI-Engineering, Hybrid RAG & Native Runtimes: Eigene Hybrid-RAG-Pipelines (Okapi BM25 + Damerau-Levenshtein + TF-IDF-Kosinus-Vektorähnlichkeit), Vercel AI SDK v7 (Streaming & Generative UI), native Rust MDX-RS-Kompilierung, In-Browser WebAssembly (WASM)-Sandboxes, Google NotebookLM sowie SDD + TDD mit Claude Code, Cursor und Google Antigravity. 3. Backend, Cloud & Daten: Supabase (PostgreSQL, RLS, OAuth, Gamification), Node.js, REST-/GraphQL-APIs, USDA FoodData Central API, AWS Cloud (EC2, S3, CloudFront, Route 53). 4. Enterprise WordPress & E-Commerce: Entkoppeltes Headless WordPress mit HMAC-SHA256-Webhooks (revalidateTag), PHP 8+, individuelle Themes/Plugins, ACF Pro, Gutenberg, WooCommerce, Shopify Liquid. 5. Eingesetzt in eigenen Flagship-Projekten (Personal Projects): Fullstack AI Lab (Next.js 16, React 19, Rust MDX-RS mit 1.135+ Lektionen, WASM-Sandbox, KI-Simulatoren, NotebookLM, Supabase RLS), Unitrition (Headless WordPress + Next.js 16, React 19, Supabase RLS, USDA API für 10 Ernährungspläne), Next.js 16 & Hybrid RAG Portfolio Platform (519 SSG-Seiten EN/UA/ES/DE, autonomer Hybrid RAG, Generative UI, WCAG 2.2 AA) und My React Portfolio Website (React 19, TypeScript, Tailwind CSS v4, Vitest TDD).'
+    ),
+    metadata: {
+      keywords: [
+        'technologies',
+        'stack',
+        'specialize',
+        'skills',
+        'tools',
+        'frontend',
+        'backend',
+        'personal',
+        'flagship',
+        'fullstack-ai-lab',
+        'unitrition',
+        'rust',
+        'wasm',
+        'supabase',
+        'nextjs',
+        'react',
+        'wordpress',
+      ],
     },
   },
 ]

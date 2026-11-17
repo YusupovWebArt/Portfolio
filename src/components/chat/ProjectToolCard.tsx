@@ -88,7 +88,7 @@ export default function ProjectToolCard({
                   ? 'Proyecto propio'
                   : locale === 'de'
                     ? 'Eigenes Projekt'
-                    : 'Personal'}
+                    : 'Personal Project'}
             </span>
           </div>
         ) : (

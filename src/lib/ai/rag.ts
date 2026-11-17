@@ -385,6 +385,37 @@ export function retrieveKnowledge(
       matchReasons.push('blog-intent')
     }
 
+    // 10. Flagship Personal Products Authority Boost & Basic Learning Exercise Damping
+    if (score > 0 && chunk.type === 'project' && chunk.slug) {
+      const flagshipPersonalSlugs = new Set([
+        'fullstack-ai-lab',
+        'unitrition',
+        'yusupovartur-nextjs-portfolio',
+        'webart-react-portfolio',
+      ])
+      const basicLearningSlugs = new Set([
+        'js-vanilla-simple-todolist',
+        'react-simple-todo-list',
+        'react-simple-calculator',
+        'react-simple-cost-accounting',
+        'simple-javascript-calculator',
+        'simple-javascript-date-time',
+        'simple-javascript-list-users',
+        'simple-javascript-quiz',
+        'simple-vanilla-calculator',
+      ])
+
+      if (flagshipPersonalSlugs.has(chunk.slug)) {
+        score += 1.8
+        matchReasons.push('flagship-personal-boost')
+      } else if (
+        basicLearningSlugs.has(chunk.slug) &&
+        !/(todo|to-do|calculator|quiz|cost accounting|date|list users)/i.test(lowerQuery)
+      ) {
+        score *= 0.35
+      }
+    }
+
     if (score >= minScore) {
       results.push({
         chunk,
@@ -871,7 +902,7 @@ export function isHireOrContactQuery(query: string): boolean {
 
 export function isStackComparisonQuery(query: string): boolean {
   const lower = foldForSearch(query || '')
-  return /(vs|versus|compare|comparison|which stack|what tech to choose|what tech is better|which tech|better|wordpress.*next|next.*wordpress|react.*next|shopify.*wordpress|порівня|порівняти|що краще|вибрати стек|разница|что лучше|сравнить|сравнение|comparar|comparativa|que elegir|diferencia entre|vergleichen|vergleich|welcher\s+stack|welche\s+technolog|unterschied|gegenuber|gegenueber)/i.test(
+  return /(vs|versus|compare|comparison|which stack|what tech to choose|what tech is better|which tech|better|wordpress.*next|next.*wordpress|react.*next|shopify.*wordpress|порівня|порівняти|що краще|вибрати стек|разница|что лучше|сравнить|сравнение|comparar|comparativa|que elegir|diferencia entre|vergleichen|vergleich|welcher\s+stack|welche\s+technolog.*\b(besser|wahlen|waehlen|entscheiden)\b|unterschied|gegenuber|gegenueber)/i.test(
     lower,
   )
 }
@@ -899,6 +930,26 @@ export function isPersonalProjectsQuery(query: string): boolean {
   return /(personal|own|pet project|flagship product|авторськ|власн|личн|собственн|propios|personal|eigen|eigene|eigenes|personlich|persoenlich|flaggschiff)/i.test(
     lower,
   ) && /(project|app|platform|portfolio|product|work|проєкт|проект|додат|продукт|платформ|робот|proyecto|aplicacion|producto|projekt|projekte|anwendung|plattform|produkt|produkte|arbeit)/i.test(
+    lower,
+  )
+}
+
+export function isTechSpecializationQuery(query: string): boolean {
+  const lower = foldForSearch(query || '')
+  if (!lower || isStackComparisonQuery(query) || isEstimateOrCalculatorQuery(query)) {
+    return false
+  }
+  if (resolveProjectFromQuery(query)) {
+    return false
+  }
+  if (
+    /(\bthis\b|\bthat\b|\bthere\b|used in|used there|built with|цьому|тому|там|в ньому|використовувався|використано|este proyecto|ese proyecto|usado|usó|diesem projekt|jenem projekt|dort|verwendet wurde|gebaut mit)/i.test(
+      lower,
+    )
+  ) {
+    return false
+  }
+  return /(what technologies|which technologies|technologies do you|specialize in|your tech stack|your stack|what stack do you|what skills|your skills|what tools do you|на яких технологіях|яких технологіях|який.*стек|які технології|какие технологии|какой.*стек|спеціалізуєт|специализируе|навыки|навички|en que tecnologias|que tecnologias|te especializas|tu stack|cual es tu stack|tus habilidades|auf welche technologien|welche technologien.*spezialisiert|spezialisiert bist|dein tech-stack|dein stack|deine fahigkeiten|deine faehigkeiten)/i.test(
     lower,
   )
 }
@@ -1360,6 +1411,7 @@ export function resolveTargetProject(
   if (
     isBestProjectsQuery(query) ||
     isPersonalProjectsQuery(query) ||
+    isTechSpecializationQuery(query) ||
     isBlogArticlesQuery(query) ||
     Boolean(resolveBlogFromQueryOrContext(query, options))
   ) {
@@ -1695,6 +1747,22 @@ export function synthesizeLocalRagAnswer(
     )
   }
 
+  if (isTechSpecializationQuery(trimmed)) {
+    const techFaq = FAQ[1]
+    if (lang === 'ua' && techFaq?.answerUa) {
+      return stripEmDashes(techFaq.answerUa)
+    }
+    if (lang === 'es' && techFaq?.answerEs) {
+      return stripEmDashes(techFaq.answerEs)
+    }
+    if (lang === 'de' && techFaq?.answerDe) {
+      return stripEmDashes(techFaq.answerDe)
+    }
+    if (techFaq?.answer) {
+      return stripEmDashes(techFaq.answer)
+    }
+  }
+
   // 3. Blog post context or specific article query match
   const resolvedBlog = resolveBlogFromQueryOrContext(trimmed, options)
   if (resolvedBlog) {
@@ -1800,6 +1868,10 @@ export function getRagSourceLabel(
     return 'Hybrid RAG · Personal Flagship Products'
   }
 
+  if (isTechSpecializationQuery(query)) {
+    return 'Hybrid RAG · Core Tech Stack & Flagship Products'
+  }
+
   if (isBestProjectsQuery(query)) {
     return 'Hybrid RAG · Best Flagship Projects Showcase'
   }
@@ -1883,12 +1955,12 @@ export function getRelevantProjectCards(
     return []
   }
 
-  // 1. Check if user is asking for personal flagship products
-  if (isPersonalProjectsQuery(trimmed)) {
+  // 1. Check if user is asking for personal flagship products or general technology specialization
+  if (isPersonalProjectsQuery(trimmed) || isTechSpecializationQuery(trimmed)) {
     const personalSlugs = [
-      'yusupovartur-nextjs-portfolio',
       'fullstack-ai-lab',
       'unitrition',
+      'yusupovartur-nextjs-portfolio',
       'webart-react-portfolio',
     ]
     const cards: ChatProjectCardItem[] = []
@@ -1961,10 +2033,10 @@ export function getRelevantProjectCards(
 
   if (isProjectsShowcaseQuery) {
     const flagshipSlugs = [
-      'yusupovartur-nextjs-portfolio',
+      'fullstack-ai-lab',
       'unitrition',
+      'yusupovartur-nextjs-portfolio',
       'it-magic',
-      'webart-react-portfolio',
     ]
     const cards: ChatProjectCardItem[] = []
     for (const slug of flagshipSlugs) {
@@ -1977,11 +2049,31 @@ export function getRelevantProjectCards(
   }
 
   // 7. Check high-confidence BM25 project matches for domain queries (e.g. "AWS", "Shopify")
+  const basicLearningSlugs = new Set([
+    'js-vanilla-simple-todolist',
+    'react-simple-todo-list',
+    'react-simple-calculator',
+    'react-simple-cost-accounting',
+    'simple-javascript-calculator',
+    'simple-javascript-date-time',
+    'simple-javascript-list-users',
+    'simple-javascript-quiz',
+    'simple-vanilla-calculator',
+  ])
+  const isExplicitlyAskingForBasicLearningApp =
+    /(todo|to-do|calculator|quiz|cost accounting|date|list users)/i.test(lower)
+
   const retrieved = retrieveKnowledge(trimmed, { topK: 2 })
   const seenSlugs = new Set<string>()
   const matchedCards: ChatProjectCardItem[] = []
   for (const r of retrieved) {
-    if (r.chunk.type === 'project' && r.chunk.slug && r.score >= 3.0 && !seenSlugs.has(r.chunk.slug)) {
+    if (
+      r.chunk.type === 'project' &&
+      r.chunk.slug &&
+      r.score >= 3.0 &&
+      !seenSlugs.has(r.chunk.slug) &&
+      (isExplicitlyAskingForBasicLearningApp || !basicLearningSlugs.has(r.chunk.slug))
+    ) {
       const entry = projectRegistry.find((p) => p.slug === r.chunk.slug)
       if (entry) {
         seenSlugs.add(entry.slug)
@@ -2080,30 +2172,34 @@ export function getContextualFollowUps(
       .slice(0, 3)
   }
 
-  if (isPersonalProjectsQuery(trimmed) || isBestProjectsQuery(trimmed)) {
+  if (
+    isPersonalProjectsQuery(trimmed) ||
+    isBestProjectsQuery(trimmed) ||
+    isTechSpecializationQuery(trimmed)
+  ) {
     const flagshipFollowUps =
       lang === 'ua'
         ? [
+            'Розкажи про архітектуру Fullstack AI Lab',
             'Який стек технологій використано в Unitrition?',
             'Як влаштована архітектура Next.js 16 Portfolio Platform?',
-            'Розкажи детальніше про проєкт IT-Magic',
           ]
         : lang === 'es'
           ? [
+              'Háblame de la arquitectura de Fullstack AI Lab',
               '¿Qué stack tecnológico se usó en Unitrition?',
               '¿Cómo está estructurada la plataforma Next.js 16?',
-              'Cuéntame más sobre el proyecto IT-Magic',
             ]
           : lang === 'de'
             ? [
+                'Erzähl mir von der Fullstack AI Lab Architektur',
                 'Welcher Technologie-Stack wurde in Unitrition verwendet?',
                 'Wie ist die Next.js 16 Portfolio Platform aufgebaut?',
-                'Erzähl mir mehr über das Projekt IT-Magic',
               ]
             : [
+                'Tell me about Fullstack AI Lab architecture',
                 'What tech stack was used in Unitrition?',
                 'How is Next.js 16 Portfolio Platform architected?',
-                'Tell me more about the IT-Magic project',
               ]
     return flagshipFollowUps.filter((q) => !answeredSet.has(foldForSearch(q))).slice(0, 3)
   }

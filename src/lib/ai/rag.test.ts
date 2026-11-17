@@ -11,6 +11,7 @@ import {
   isEstimateOrCalculatorQuery,
   isBestProjectsQuery,
   isPersonalProjectsQuery,
+  isTechSpecializationQuery,
   isBlogArticlesQuery,
   synthesizeLocalRagAnswer,
   getRelevantProjectCards,
@@ -232,6 +233,43 @@ describe('Hybrid RAG Retriever Specification (TDD)', () => {
     expect(results.some((r) => r.chunk.type === 'blog')).toBe(true)
     const blogChunk = results.find((r) => r.chunk.type === 'blog')
     expect(blogChunk?.chunk.slug).toBe('wcag-22-aa-european-accessibility-act-2026')
+  })
+
+  it('should synthesize rich answer with Personal Flagship Products and return personal project cards for What technologies do you specialize in?', () => {
+    expect(isTechSpecializationQuery('What technologies do you specialize in?')).toBe(true)
+    expect(isTechSpecializationQuery('На яких технологіях ви спеціалізуєтеся?')).toBe(true)
+    expect(isTechSpecializationQuery('¿En qué tecnologías te especializas?')).toBe(true)
+    expect(isTechSpecializationQuery('Auf welche Technologien bist du spezialisiert?')).toBe(true)
+    expect(isTechSpecializationQuery('What tech stack was used in IT-Magic?')).toBe(false)
+    expect(isTechSpecializationQuery('What tech stack was used there?')).toBe(false)
+
+    const answerEn = synthesizeLocalRagAnswer('What technologies do you specialize in?', { locale: 'en' })
+    expect(answerEn).toContain('Fullstack AI Lab')
+    expect(answerEn).toContain('Unitrition')
+    expect(answerEn).toContain('Next.js 16 & Hybrid RAG Portfolio Platform')
+    expect(answerEn).toContain('Rust MDX-RS')
+    expect(answerEn).toContain('WebAssembly (WASM)')
+    expect(answerEn).toContain('Supabase')
+    expect(answerEn).not.toContain('\u2014')
+
+    const answerUa = synthesizeLocalRagAnswer('На яких технологіях ви спеціалізуєтеся?', { locale: 'ua' })
+    expect(answerUa).toContain('Fullstack AI Lab')
+    expect(answerUa).toContain('Unitrition')
+    expect(answerUa).toContain('Rust MDX-RS')
+
+    const cards = getRelevantProjectCards('What technologies do you specialize in?', { locale: 'en' })
+    expect(cards).toHaveLength(4)
+    expect(cards.every((c) => c.isPersonal === true)).toBe(true)
+    expect(cards.map((c) => c.slug)).toEqual([
+      'fullstack-ai-lab',
+      'unitrition',
+      'yusupovartur-nextjs-portfolio',
+      'webart-react-portfolio',
+    ])
+    expect(cards.some((c) => c.slug.includes('todolist') || c.slug.includes('todo-list'))).toBe(false)
+
+    const sourceLabel = getRagSourceLabel('What technologies do you specialize in?')
+    expect(sourceLabel).toBe('Hybrid RAG · Core Tech Stack & Flagship Products')
   })
 })
 
