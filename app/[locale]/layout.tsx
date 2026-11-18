@@ -30,20 +30,20 @@ export async function generateMetadata({
   const isDe = activeLocale === 'de'
 
   const title = isUa
-    ? 'Артур Юсупов - Fullstack веб-інженер та AI-розробник'
+    ? 'Артур Юсупов | Full-Stack Engineer (Next.js, React, WordPress) та AI (SDD/TDD)'
     : isEs
-      ? 'Artur Yusupov - Ingeniero Web Fullstack y Desarrollador AI'
+      ? 'Artur Yusupov | Full-Stack Engineer (Next.js, React, WordPress) e IA (SDD/TDD)'
       : isDe
-        ? 'Artur Yusupov - Fullstack Web-Entwickler & KI-Ingenieur'
-        : 'Artur Yusupov - Fullstack Web Engineer & AI Developer'
+        ? 'Artur Yusupov | Full-Stack Engineer (Next.js, React, WordPress) & KI (SDD/TDD)'
+        : 'Artur Yusupov | Full-Stack Engineer (Next.js, React, WordPress) & AI (SDD/TDD)'
 
   const description = isUa
-    ? 'Розробка високопродуктивних веб-продуктів, кастомного WordPress, React 19 застосунків та AI-автоматизації для бізнесу та агенцій в Іспанії.'
+    ? '5+ років розробки швидких платформ на Next.js 16, React 19 та WordPress. Spec-Driven AI (SDD), строгий TDD, Hybrid RAG та Technical SEO/GEO. 71+ реалізованих проєктів.'
     : isEs
-      ? 'Desarrollo de productos web de alto rendimiento, WordPress a medida, aplicaciones React 19 y automatización de IA para empresas y agencias en España.'
+      ? '5+ años creando plataformas de alto rendimiento en Next.js 16, React 19 y WordPress a medida. Spec-Driven AI (SDD), TDD estricto, Hybrid RAG y SEO Técnico/GEO. 71+ proyectos.'
       : isDe
-        ? 'Entwicklung hochperformanter Webprodukte, maßgeschneidertes WordPress, React 19 Anwendungen und AI-Automatisierung für Unternehmen in DACH und Europa.'
-        : 'Engineering high-performance web products, custom WordPress, React 19 apps & AI automation for businesses and agencies in Spain.'
+        ? '5+ Jahre Erfahrung mit performanten Next.js 16, React 19 & WordPress Plattformen. Spec-Driven AI (SDD), striktes TDD, Hybrid RAG & Technical SEO/GEO. 71+ Projekte.'
+        : '5+ years building high-performance Next.js 16, React 19 & custom WordPress platforms. Spec-Driven AI (SDD), strict TDD, Hybrid RAG & Technical SEO/GEO. 71+ delivered projects.'
 
   const ogLocale = isUa ? 'uk_UA' : isEs ? 'es_ES' : isDe ? 'de_DE' : 'en_US'
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.yusupovartur.com'
@@ -86,7 +86,7 @@ export async function generateMetadata({
       type: 'website',
       images: [
         {
-          url: '/images/og-image.jpg',
+          url: '/images/og-image.jpg?v=3',
           width: 1200,
           height: 630,
           alt: title,
@@ -97,7 +97,7 @@ export async function generateMetadata({
       card: 'summary_large_image',
       title,
       description,
-      images: ['/images/og-image.jpg'],
+      images: ['/images/og-image.jpg?v=3'],
     },
     other: {
       'geo.region': 'ES-AN',
