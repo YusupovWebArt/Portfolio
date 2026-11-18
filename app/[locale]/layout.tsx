@@ -52,6 +52,9 @@ export async function generateMetadata({
     metadataBase: new URL(siteUrl),
     title,
     description,
+    authors: [{ name: 'Artur Yusupov', url: `${siteUrl}/${activeLocale}` }],
+    creator: 'Artur Yusupov',
+    publisher: 'Artur Yusupov',
     alternates: {
       canonical: `/${activeLocale}`,
       languages: {
