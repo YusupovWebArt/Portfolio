@@ -14,6 +14,7 @@ All AI coding agents (Antigravity, Claude Code, Cursor) and human contributors M
 
 ### Principle 2: Security and Privacy by Design
 - **Zero Credentials in Git:** Never write API keys, internal tokens, server secrets, or private domains into code.
+- **Zero-Commit Social Promotion Assets:** Personal social media promotion plans, outreach calendars, post drafts, spreadsheets, and promotional banners containing plaintext contacts must remain strictly local and gitignored (`docs/marketing/`). Never commit promotional materials or disclose private promotion strategies inside repository files.
 - **Anti-Scraping Obfuscation:** Personal contact information (email, phone, Telegram, WhatsApp) must remain Base64-obfuscated in source files and decrypted exclusively at runtime on client interaction.
 - **Compliance:** Full compliance with EU RGPD, LSSI-CE, and LOPDGDD. Zero non-essential cookies or third-party trackers execute prior to explicit user consent (opt-in). Analytics is limited to Google Analytics 4 operated strictly under Consent Mode v2 (Basic mode: network calls blocked until explicit grant).
 - **Content Security Policy:** Production builds enforce sandboxed headers (`camera=(), microphone=(), geolocation=()`).

@@ -37,6 +37,7 @@ graph LR
 
 - **No Secrets in Code:** Under no circumstances should API keys, private domains, database passwords, or personal credentials be written directly into source files.
 - **Environment Variables:** All environment-specific variables must reside in a `.env` file (strictly excluded via `.gitignore`) and accessed exclusively via `import.meta.env.*`.
+- **Zero-Commit Social Promotion & Marketing Assets:** Personal social media promotion plans, content calendars, outreach drafts, spreadsheets, and promotional graphics containing plaintext contact details are strictly local operational artifacts. They must reside exclusively inside gitignored paths (`docs/marketing/`) or external local workspaces, and must NEVER be committed to Git or disclosed inside public repository specifications.
 - **Git History Auditing:** If a credential is ever committed, it must be purged by rewriting git history (e.g., via `git filter-repo`), as simple deletion commits retain the secret in past commit trees.
 
 ---

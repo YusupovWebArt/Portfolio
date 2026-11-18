@@ -31,3 +31,6 @@ playwright-report
 *.sw?
 .env
 .env*.local
+
+# Private local social media promotion & marketing assets (never commit)
+docs/marketing/

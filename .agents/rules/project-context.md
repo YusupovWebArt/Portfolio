@@ -53,4 +53,5 @@ Portfolio/
 
 - **Case Studies (`src/components/projects/`):** All 69 projects follow the unified schema defined in `project-types.ts`. Preserve all trilingual copy, technical highlights, and image references.
 - **Obfuscated Data:** Never replace Base64 strings in `Contact.tsx` or `Footer.tsx` with raw email or phone numbers.
+- **Private Social Promotion Isolation (`docs/marketing/`):** All social media promotion materials (content plans, spreadsheets, outreach templates, and promotional graphics with plaintext contact details) are strictly excluded from Git via `.gitignore` and must never be committed or disclosed in repository specs.
 - **Search Filtering:** Respect `.ignore` to avoid noise from `pnpm-lock.yaml`, lockfiles, and media files during ripgrep and fd queries.
