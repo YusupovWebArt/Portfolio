@@ -235,6 +235,21 @@ export const es: Translation = {
       stepBreakdown: 'Desglose de pasos',
       techTools: 'Tecnologías y herramientas de IA',
     },
+    visualizer: {
+      pipelineLabel: 'Pipeline Spec-Driven SDLC',
+      simulatePipeline: 'Simular Pipeline',
+      stopSimulation: 'Detener simulación',
+      gatePassed: 'Control superado',
+      activeStage: 'Fase activa',
+      queuedStage: 'En cola',
+      liveArtifactTab: 'Artefacto en vivo',
+      stopGatesTab: 'Controles de calidad',
+      copySnippet: 'Copiar código',
+      copied: 'Copiado!',
+      askAiCta: 'Preguntar al Asistente IA sobre SDD y TDD',
+      inspectorTitle: 'Inspector de artefactos y controles',
+      passBadge: 'PASS',
+    },
     categories: [
       {
         title: 'Ingeniería de especificaciones (Spec Engineering)',

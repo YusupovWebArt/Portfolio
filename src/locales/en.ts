@@ -236,6 +236,21 @@ export const en: Translation = {
       stepBreakdown: 'Step Breakdown',
       techTools: 'Technologies & AI Tools',
     },
+    visualizer: {
+      pipelineLabel: 'Spec-Driven SDLC Pipeline',
+      simulatePipeline: 'Simulate Pipeline',
+      stopSimulation: 'Stop Simulation',
+      gatePassed: 'Gate Passed',
+      activeStage: 'Active Stage',
+      queuedStage: 'Queued',
+      liveArtifactTab: 'Live Artifact',
+      stopGatesTab: 'Quality Stop-Gates',
+      copySnippet: 'Copy snippet',
+      copied: 'Copied!',
+      askAiCta: 'Ask AI Assistant about SDD & TDD',
+      inspectorTitle: 'Live Artifact & Gate Inspector',
+      passBadge: 'PASS',
+    },
     categories: [
       {
         title: 'Spec Engineering',

@@ -151,6 +151,21 @@ export interface Translation {
       stepBreakdown: string
       techTools: string
     }
+    visualizer: {
+      pipelineLabel: string
+      simulatePipeline: string
+      stopSimulation: string
+      gatePassed: string
+      activeStage: string
+      queuedStage: string
+      liveArtifactTab: string
+      stopGatesTab: string
+      copySnippet: string
+      copied: string
+      askAiCta: string
+      inspectorTitle: string
+      passBadge: string
+    }
     categories: Array<{
       title: string
       description: string

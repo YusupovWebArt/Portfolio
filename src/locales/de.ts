@@ -235,6 +235,21 @@ export const de: Translation = {
       stepBreakdown: 'Schritt-für-Schritt-Details',
       techTools: 'Technologien & AI-Tools',
     },
+    visualizer: {
+      pipelineLabel: 'Spec-Driven SDLC Pipeline',
+      simulatePipeline: 'Pipeline simulieren',
+      stopSimulation: 'Simulation stoppen',
+      gatePassed: 'Gate bestanden',
+      activeStage: 'Aktive Phase',
+      queuedStage: 'Warteschlange',
+      liveArtifactTab: 'Live-Artefakt',
+      stopGatesTab: 'Qualitäts-Gates',
+      copySnippet: 'Snippet kopieren',
+      copied: 'Kopiert!',
+      askAiCta: 'KI-Assistent zu SDD & TDD fragen',
+      inspectorTitle: 'Live-Artefakt & Gate-Inspektor',
+      passBadge: 'PASS',
+    },
     categories: [
       {
         title: 'Spezifikations-Engineering',

@@ -235,6 +235,21 @@ export const ua: Translation = {
       stepBreakdown: 'Деталізація кроків',
       techTools: 'Технології та AI-інструменти',
     },
+    visualizer: {
+      pipelineLabel: 'Пайплайн Spec-Driven SDLC',
+      simulatePipeline: 'Запустити симуляцію',
+      stopSimulation: 'Зупинити симуляцію',
+      gatePassed: 'Шлюз пройдено',
+      activeStage: 'Активний етап',
+      queuedStage: 'У черзі',
+      liveArtifactTab: 'Живий артефакт',
+      stopGatesTab: 'Стоп-гейти якості',
+      copySnippet: 'Копіювати код',
+      copied: 'Скопійовано!',
+      askAiCta: 'Запитати ШІ-асистента про SDD та TDD',
+      inspectorTitle: 'Інспектор артефактів і шлюзів',
+      passBadge: 'PASS',
+    },
     categories: [
       {
         title: 'Інженерія специфікацій (Spec Engineering)',

@@ -26,15 +26,16 @@ This document maintains the technical and business roadmap for the Artur Yusupov
 | **Fiscal & Legal Autónomo Architecture (Aviso Legal & IVA/IRPF)** | High | Legal & B2B Trust | Planned (Post-Autónomo Registration) |
 | **Commercial Hero CTA & Pre-sale RAG Funnel Overhaul (/es Locale)** | High | CRO & Funnel B2B | Planned in Roadmap |
 | **Verified Domain Mailbox (Custom Domain Routing) & Seville Ecosystem** | Medium | Branding & GEO | **Completed** |
-| **Interactive Project Cost & Timeline Estimator** | High | Lead Generation | Planned |
+| **Interactive Project Cost & Timeline Estimator (in RAG Chat)** | High | Lead Generation | **Completed (`?chat=estimator`)** |
 | **Public Repository Switch (Unlimited Actions)** | High | DevOps & Cost | Pending User Action |
-| **Interactive Spec-Driven SDLC Pipeline Visualizer** | Medium | AI & Architecture | Planned |
+| **Interactive Spec-Driven SDLC Pipeline Visualizer (AiWorkflow 2.0)** | Medium | AI & Architecture | **Completed (4-Node Graph + Live Inspector)** |
 | **Live "Developer Mode" HUD (Inspector for CTOs)** | Medium | Technical Proof | Planned |
-| **Serverless Hybrid RAG AI Chatbot (with Project Matchmaker)** | Medium | AI Architecture | Fully Specified |
+| **Serverless Hybrid RAG AI Chatbot (with Project Matchmaker & SDD/TDD KB)** | Medium | AI Architecture | **Completed (290+ Chunks, 4 Locales)** |
+| **Concept A1 Open Graph Preview Banner & 4-Locale Social Metadata** | Medium | Branding & SEO | **Completed (`1200x630` + LinkedIn Inspector)** |
 | **Free 2-Minute Loom Video Audit Modal** | Medium | Lead Generation | Planned |
 | **Live CI/CD Pipeline & Health Status in Footer** | Medium | DevOps & Trust | Planned |
 | **Dynamic Client-Side CV/Resume PDF Generator** | Low | Utility | Planned |
-| **DACH Market Expansion (German Locale / de)** | Medium | Internationalization | Phase 2 Planned |
+| **DACH Market Expansion (German Locale / de + 47 GEO Articles)** | Medium | Internationalization | **Completed (100% 4-Locale Parity)** |
 
 ---
 
