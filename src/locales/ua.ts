@@ -801,7 +801,7 @@ export const ua: Translation = {
       maximizeWindow: 'Розгорнути вікно',
       restoreWindow: 'Зменшити вікно',
       openFullModal: 'Розгорнути на весь екран',
-      showGeneralFaqs: 'Показати загальні питання портфоліо (8)',
+      showGeneralFaqs: 'Показати загальні питання портфоліо (10)',
       hideGeneralFaqs: 'Сховати загальні питання портфоліо',
       a11y: {
         inputLabel: 'Введіть ваше запитання про проєкти чи навички',

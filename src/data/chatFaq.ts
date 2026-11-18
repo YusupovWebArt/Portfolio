@@ -70,13 +70,41 @@ export const FAQ: FaqItem[] = [
       'vorstellen',
     ],
     answer:
-      'Artur Yusupov is a Senior Full-Stack Engineer, WordPress/Headless CMS Architect, and Next.js 16 / React 19 Developer with 5+ years of commercial experience and 71+ delivered projects. Based in Seville, Spain, he engineers sub-second web platforms, autonomous Hybrid RAG AI assistants, and enterprise cloud solutions.\n\nHe is also the creator and Product Architect of his own Personal Flagship Products:\n- **Fullstack AI Lab** (fullstackailab.com) - Interactive full-stack engineering platform powered by Next.js 16, React 19, native Rust MDX-RS compilation (1,135+ lessons), in-browser WASM WordPress sandbox, AI interview simulator, Google NotebookLM audio synthesis, and Supabase RLS.\n- **Unitrition** (unitrition.info) - Personalized HealthTech nutrition platform built with Headless WordPress, Next.js 16 App Router, Supabase RLS, and USDA FoodData Central API.\n- **Next.js 16 & Hybrid RAG Portfolio Platform** (yusupovartur.com) - 4-locale enterprise platform pre-rendering 519 static pages with this autonomous Hybrid RAG engine and WCAG 2.2 AA compliance.',
+      'Artur Yusupov is a results-driven **Senior Full-Stack Web Engineer**, **WordPress / Headless CMS Architect**, **Technical SEO & GEO Specialist**, and **AI-Augmented Software Engineer** with **5+ years of commercial experience** and **71+ delivered projects**, currently based in **Seville, Spain**.\n\n' +
+      '- **AI-First Engineering Edge**: Integrates **Claude Code**, **Google Antigravity**, **Cursor**, **Devin (Windsurf)**, and **Model Context Protocol (MCP)** into a strict **Spec-Driven Development (SDD) + Test-Driven Development (TDD)** lifecycle, increasing feature velocity by **35%+** (and up to **3x** on complex refactoring) with zero hallucinations.\n' +
+      '- **Commercial Career**: Solopreneur & Solo Product Engineer (`2025 - Present`), Fullstack Developer & Technical SEO Specialist at **Frontdeskhelpers** (`2021 - 2026`, US & EU clients), Frontend Developer at **Agenturro** (`2020 - 2021`), and 50+ freelance/e-commerce platforms delivered on Upwork & Freelancehunt (`2016 - 2024`).\n' +
+      '- **Personal Flagship Products**:\n' +
+      '  1. **Fullstack AI Lab** (`fullstackailab.com`) - Interactive full-stack engineering platform built with Next.js 16, React 19, native Rust MDX-RS compilation (1,135+ lessons compiled in 78s), in-browser WASM WordPress Playground (PHP 8.4 + SQLite VFS), AI interview & outage simulators, Google NotebookLM audio synthesis, and Supabase RLS.\n' +
+      '  2. **Unitrition** (`unitrition.info`) - HealthTech nutrition & Bread Units platform built on Headless WordPress, Next.js 16 App Router, React 19, Supabase OAuth/RLS, and USDA FoodData Central API across 10 dietary frameworks.\n' +
+      '  3. **Next.js 16 & Hybrid RAG Portfolio Platform** (`yusupovartur.com`) - 4-locale enterprise platform pre-rendering 519 static SSG pages with this autonomous Hybrid RAG engine and strict WCAG 2.2 AA / EAA 2026 compliance.\n' +
+      '- **Education & Languages**: Bachelor\'s & Master\'s Degree in Computer Systems, Web Engineering & Information Security (**VNTU, Ukraine**). Languages: **English (B2 Upper-Intermediate)**, **Spanish (B1 Intermediate)**, **Ukrainian & Russian (Native/Fluent)**.',
     answerUa:
-      'Артур Юсупов - Senior Full-Stack інженер, архітектор WordPress / Headless CMS та розробник Next.js 16 / React 19 із понад 5 роками комерційного досвіду та 71+ реалізованим проєктом. Проживає в Севільї (Іспанія), спеціалізується на високопродуктивних веб-платформах, автономних Hybrid RAG AI-асистентах та хмарних enterprise-рішеннях.\n\nВін також є автором і Product Architect власних флагманських продуктів (Personal Projects):\n- **Fullstack AI Lab** (fullstackailab.com) - інтерактивна інженерна платформа на Next.js 16, React 19, нативному компіляторі Rust MDX-RS (1 135+ уроків), браузерній WASM-пісочниці, AI-симуляторі співбесід, Google NotebookLM та Supabase RLS.\n- **Unitrition** (unitrition.info) - HealthTech-платформа персоналізованого харчування на Headless WordPress, Next.js 16 App Router, Supabase RLS та USDA FoodData Central API.\n- **Next.js 16 & Hybrid RAG Portfolio Platform** (yusupovartur.com) - 4-мовна enterprise-платформа (519 статичних SSG-сторінок) із цим автономним Hybrid RAG рушієм та відповідністю WCAG 2.2 AA.',
+      'Артур Юсупов - орієнтований на результат **Senior Full-Stack веб-інженер**, **архітектор WordPress / Headless CMS**, **фахівець із технічного SEO та GEO** та **AI-Augmented Software Engineer** із **понад 5 роками комерційного досвіду** та **71+ реалізованим проєктом**, який проживає в **Севільї (Іспанія)**.\n\n' +
+      '- **AI-First інженерна перевага**: Системно інтегрує **Claude Code**, **Google Antigravity**, **Cursor**, **Devin (Windsurf)** та **Model Context Protocol (MCP)** у суворий цикл **Spec-Driven Development (SDD) + Test-Driven Development (TDD)**, підвищуючи швидкість розробки фіч на **35%+** (і до **3x** при рефакторингу) без галюцинацій.\n' +
+      '- **Комерційна кар\'єра**: Solopreneur & Solo Product Engineer (`2025 - дотепер`), Fullstack Developer & Technical SEO Specialist у **Frontdeskhelpers** (`2021 - 2026`, клієнти зі США та ЄС), Frontend Developer в **Agenturro** (`2020 - 2021`) та 50+ проєктів під ключ на Upwork і Freelancehunt (`2016 - 2024`).\n' +
+      '- **Власні флагманські продукти (Personal Projects)**:\n' +
+      '  1. **Fullstack AI Lab** (`fullstackailab.com`) - Інтерактивна інженерна платформа на Next.js 16, React 19, нативному компіляторі Rust MDX-RS (1 135+ уроків за 78с), браузерній WASM WordPress-пісочниці (PHP 8.4 + SQLite VFS), AI-симуляторах співбесід і збоїв, Google NotebookLM та Supabase RLS.\n' +
+      '  2. **Unitrition** (`unitrition.info`) - HealthTech-платформа персоналізованого харчування та Хлібних Одиниць на Headless WordPress, Next.js 16 App Router, React 19, Supabase OAuth/RLS та USDA FoodData Central API для 10 дієт.\n' +
+      '  3. **Next.js 16 & Hybrid RAG Portfolio Platform** (`yusupovartur.com`) - 4-мовна enterprise-платформа (519 статичних SSG-сторінок) із цим автономним Hybrid RAG рушієм та стандартом WCAG 2.2 AA / EAA 2026.\n' +
+      '- **Освіта та мови**: Ступінь бакалавра та магістра з комп\'ютерних систем, веб-інженерії та інформаційної безпеки (**ВНТУ, Україна**). Мови: **англійська (B2 Upper-Intermediate)**, **іспанська (B1 Intermediate)**, **українська та російська (рідні/вільно)**.',
     answerEs:
-      'Artur Yusupov es un Ingeniero Full-Stack Senior, Arquitecto de WordPress / Headless CMS y Desarrollador Next.js 16 / React 19 con más de 5 años de experiencia comercial y 71+ proyectos entregados. Reside en Sevilla, España, y se especializa en plataformas web de alto rendimiento, asistentes de IA con arquitectura Hybrid RAG y soluciones cloud empresariales.\n\nAdemás, es el creador y Product Architect de sus propios proyectos destacados (Personal Projects):\n- **Fullstack AI Lab** (fullstackailab.com) - Plataforma interactiva de ingeniería Full-Stack con Next.js 16, React 19, compilación nativa en Rust MDX-RS (1.135+ lecciones), sandbox WASM en navegador, simulador de entrevistas IA, Google NotebookLM y Supabase RLS.\n- **Unitrition** (unitrition.info) - Plataforma HealthTech de nutrición personalizada con Headless WordPress, Next.js 16 App Router, Supabase RLS y API de USDA.\n- **Next.js 16 & Hybrid RAG Portfolio Platform** (yusupovartur.com) - Plataforma empresarial en 4 idiomas (519 páginas SSG) con este motor Hybrid RAG autónomo y cumplimiento WCAG 2.2 AA.',
+      'Artur Yusupov es un **Ingeniero Web Full-Stack Senior**, **Arquitecto de WordPress / Headless CMS**, **Especialista en SEO Técnico y GEO** e **Ingeniero de Software potenciado por IA** con **más de 5 años de experiencia comercial** y **71+ proyectos entregados**, con sede en **Sevilla, España**.\n\n' +
+      '- **Ventaja competitiva AI-First**: Integra **Claude Code**, **Google Antigravity**, **Cursor**, **Devin (Windsurf)** y **Model Context Protocol (MCP)** en un ciclo estricto de **Spec-Driven Development (SDD) + Test-Driven Development (TDD)**, aumentando la velocidad de entrega un **35%+** (y hasta **3x** en refactorización compleja) con cero alucinaciones.\n' +
+      '- **Trayectoria profesional**: Solopreneur & Solo Product Engineer (`2025 - Presente`), Fullstack Developer & Technical SEO Specialist en **Frontdeskhelpers** (`2021 - 2026`, clientes de EE. UU. y Europa), Frontend Developer en **Agenturro** (`2020 - 2021`) y más de 50 proyectos en Upwork y Freelancehunt (`2016 - 2024`).\n' +
+      '- **Proyectos Propios Destacados (Personal Projects)**:\n' +
+      '  1. **Fullstack AI Lab** (`fullstackailab.com`) - Plataforma interactiva de ingeniería Full-Stack con Next.js 16, React 19, compilación nativa en Rust MDX-RS (1.135+ lecciones en 78s), sandbox WASM de WordPress en navegador (PHP 8.4 + SQLite VFS), simuladores de entrevistas y fallos con IA, Google NotebookLM y Supabase RLS.\n' +
+      '  2. **Unitrition** (`unitrition.info`) - Plataforma HealthTech de nutrición y Unidades de Pan con Headless WordPress, Next.js 16 App Router, React 19, Supabase OAuth/RLS y API de USDA para 10 planes dietéticos.\n' +
+      '  3. **Next.js 16 & Hybrid RAG Portfolio Platform** (`yusupovartur.com`) - Plataforma empresarial en 4 idiomas (519 páginas SSG) con este motor Hybrid RAG autónomo y cumplimiento WCAG 2.2 AA / EAA 2026.\n' +
+      '- **Educación e Idiomas**: Grado y Máster en Sistemas Informáticos, Ingeniería Web y Seguridad de la Información (**VNTU, Ucrania**). Idiomas: **Inglés (B2 Upper-Intermediate)**, **Español (B1 Intermedio)**, **Ucraniano y Ruso (Nativo/Fluido)**.',
     answerDe:
-      'Artur Yusupov ist Senior Full-Stack Engineer, WordPress- / Headless-CMS-Architekt und Next.js 16 / React 19 Entwickler mit über 5 Jahren Berufserfahrung und 71+ realisierten Projekten. Mit Sitz in Sevilla, Spanien, entwickelt er hochperformante Web-Plattformen, autonome Hybrid-RAG-KI-Assistenten und Enterprise-Cloud-Lösungen.\n\nZudem ist er Gründer und Product Architect seiner eigenen Flagship-Produkte (Personal Projects):\n- **Fullstack AI Lab** (fullstackailab.com) - Interaktive Full-Stack-Engineering-Plattform mit Next.js 16, React 19, nativer Rust MDX-RS-Kompilierung (1.135+ Lektionen), In-Browser WASM-Sandbox, KI-Interview-Simulator, Google NotebookLM und Supabase RLS.\n- **Unitrition** (unitrition.info) - Personalisierte HealthTech-Ernährungsplattform mit Headless WordPress, Next.js 16 App Router, Supabase RLS und USDA FoodData Central API.\n- **Next.js 16 & Hybrid RAG Portfolio Platform** (yusupovartur.com) - 4-sprachige Enterprise-Plattform (519 statische SSG-Seiten) mit dieser autonomen Hybrid-RAG-Engine und WCAG 2.2 AA-Konformität.',
+      'Artur Yusupov ist ein ergebnisorientierter **Senior Full-Stack Web Engineer**, **WordPress- / Headless-CMS-Architekt**, **Technical SEO & GEO Spezialist** sowie **AI-Augmented Software Engineer** mit **über 5 Jahren Berufserfahrung** und **71+ realisierten Projekten** mit Sitz in **Sevilla, Spanien**.\n\n' +
+      '- **AI-First Engineering-Vorsprung**: Integriert **Claude Code**, **Google Antigravity**, **Cursor**, **Devin (Windsurf)** und das **Model Context Protocol (MCP)** in einen strikten **Spec-Driven Development (SDD) + Test-Driven Development (TDD)**-Zyklus und steigert die Entwicklungsgeschwindigkeit um **35%+** (bzw. bis zu **3x** bei komplexem Refactoring) ohne Halluzinationen.\n' +
+      '- **Karriereverlauf**: Solopreneur & Solo Product Engineer (`2025 - Heute`), Fullstack Developer & Technical SEO Specialist bei **Frontdeskhelpers** (`2021 - 2026`, US- & EU-Kunden), Frontend Developer bei **Agenturro** (`2020 - 2021`) sowie 50+ Projekte auf Upwork & Freelancehunt (`2016 - 2024`).\n' +
+      '- **Eigene Flagship-Produkte (Personal Projects)**:\n' +
+      '  1. **Fullstack AI Lab** (`fullstackailab.com`) - Interaktive Full-Stack-Engineering-Plattform mit Next.js 16, React 19, nativer Rust MDX-RS-Kompilierung (1.135+ Lektionen in 78s), In-Browser WASM-WordPress-Sandbox (PHP 8.4 + SQLite VFS), KI-Interview- & Ausfall-Simulatoren, Google NotebookLM und Supabase RLS.\n' +
+      '  2. **Unitrition** (`unitrition.info`) - HealthTech-Ernährungs- und Broteinheiten-Plattform mit Headless WordPress, Next.js 16 App Router, React 19, Supabase OAuth/RLS und USDA FoodData Central API für 10 Ernährungsprogramme.\n' +
+      '  3. **Next.js 16 & Hybrid RAG Portfolio Platform** (`yusupovartur.com`) - 4-sprachige Enterprise-Plattform (519 statische SSG-Seiten) mit dieser autonomen Hybrid-RAG-Engine und WCAG 2.2 AA / EAA 2026-Konformität.\n' +
+      '- **Ausbildung & Sprachen**: Bachelor- & Master-Abschluss in Computersystemen, Web-Engineering & Informationssicherheit (**VNTU, Ukraine**). Sprachen: **Englisch (B2 Upper-Intermediate)**, **Spanisch (B1 Mittelstufe)**, **Ukrainisch & Russisch (Muttersprache)**.',
   },
   {
     question: 'What technologies do you specialize in?',
@@ -106,88 +134,216 @@ export const FAQ: FaqItem[] = [
       'spezialisiert',
     ],
     answer:
-      'I specialize in modern **Full-Stack Web Engineering**, **Autonomous AI / Hybrid RAG Architectures**, and **Enterprise Headless CMS Platforms**:\n\n' +
-      '- **Modern Frontend & Full-Stack Core**: **Next.js 16** (App Router, React Server Components, Turbopack, SSG/ISR), **React 19**, **TypeScript 5.9+** (strict zero-any), **Tailwind CSS v4**, and **View Transitions API**.\n' +
-      '- **AI Engineering, Hybrid RAG & Native Runtimes**: Custom **Hybrid RAG** pipelines (Okapi BM25 + Damerau-Levenshtein fuzzy search + TF-IDF cosine vector similarity), **Vercel AI SDK v7** (streaming & Generative UI tool calling), native **Rust MDX-RS** compilation, in-browser **WebAssembly (WASM)** sandboxes, **Google NotebookLM** audio prompt synthesis, and **Spec-Driven AI Development (SDD + TDD)** with Claude Code, Cursor, and Google Antigravity.\n' +
-      '- **Backend, Cloud & Data Systems**: **Supabase** (PostgreSQL, Row-Level Security / RLS, OAuth, real-time gamification), **Node.js**, **REST & GraphQL APIs**, external data integrations (**USDA FoodData Central API**), and **AWS Cloud Infrastructure** (EC2, S3, CloudFront, Route 53).\n' +
-      '- **Enterprise WordPress, Headless CMS & E-Commerce**: Decoupled **Headless WordPress** with HMAC-SHA256 webhook revalidation (`revalidateTag`), **PHP 8+**, custom WordPress themes/plugins from scratch, **ACF Pro**, **Gutenberg**, **WooCommerce**, and **Shopify Liquid**.\n' +
-      '- **Performance, Security & Compliance**: Sub-second **Core Web Vitals** (`LCP < 1.2s`, `INP < 50ms`), **WCAG 2.2 AA / European Accessibility Act (EAA 2026)**, programmatic `Schema.org` JSON-LD, and Zero-Trust security (strict CSP, HSTS, Base64 anti-scraping).\n\n' +
+      'I specialize in modern **Full-Stack Web Engineering**, **Autonomous AI / Hybrid RAG Architectures**, and **Enterprise WordPress & Headless CMS Platforms**:\n\n' +
+      '- **Modern Frontend & Full-Stack Engine**: **React 19**, **Next.js 16** (App Router, React Server Components, Server Actions, Turbopack, SSG/ISR), **TypeScript 5.9+** (strict zero-any), **JavaScript (ES6+)**, **Tailwind CSS v4**, **View Transitions API**, Bootstrap, semantic HTML5, and BEM.\n' +
+      '- **AI Engineering, Hybrid RAG & Native Runtimes**: Custom **Hybrid RAG** pipelines (Okapi BM25 + Damerau-Levenshtein fuzzy search + TF-IDF cosine vector similarity), **Vercel AI SDK v7** (streaming & Generative UI tool calling), native **Rust MDX-RS** compilation, in-browser **WebAssembly (WASM)** sandboxes (PHP 8.4 + SQLite VFS), **Google NotebookLM / Gemini** research synthesis, and **Spec-Driven AI Development (SDD + TDD)** with **Claude Code**, **Google Antigravity**, **Cursor**, **Devin (Windsurf)**, and **MCP**.\n' +
+      '- **WordPress, Headless CMS & E-Commerce**: **OOP PHP 8.x** (PSR-12, WordPress Coding Standards / WPCS compliant), decoupled **Headless WordPress** with HMAC-SHA256 webhook revalidation (`revalidateTag`), **WPGraphQL**, **REST API**, custom **React Gutenberg blocks**, bespoke themes/plugins from scratch (zero bloated builders), **ACF Pro**, **WooCommerce** (Enterprise HPOS + Redis Object Cache), and **Shopify Liquid**.\n' +
+      '- **Backend, Cloud, SEO/GEO & Compliance**: **Supabase** (PostgreSQL, Row-Level Security / RLS, OAuth, real-time gamification), **Node.js**, **MySQL query optimization**, **USDA FoodData Central API**, **AWS Cloud** (EC2, S3, CloudFront, Route 53, WAFv2), **Cloudflare Workers**, **Docker**, sub-second **Core Web Vitals** (`LCP < 1.2s`, `INP < 50ms`, `CLS < 0.02`), **WCAG 2.2 AA / EAA 2026**, **Generative Engine Optimization (GEO - `llms.txt`, `AI.json`, JSON-LD `@graph`)**, and **Server-Side Tracking (`sGTM`)**.\n\n' +
       '### Cutting-Edge Stack in My Personal Flagship Products:\n' +
-      '1. **Fullstack AI Lab** (`fullstackailab.com`) - Interactive full-stack engineering platform built with **Next.js 16**, **React 19**, native **Rust MDX-RS** compilation (1,135+ interactive lessons compiled in 90s), in-browser **WASM WordPress playground**, AI interview & outage simulators, **Google NotebookLM** audio prompt engine, and **Supabase RLS** gamification.\n' +
+      '1. **Fullstack AI Lab** (`fullstackailab.com`) - Interactive full-stack engineering platform built with **Next.js 16**, **React 19**, native **Rust MDX-RS** compilation (1,135+ interactive lessons compiled in 78s), in-browser **WASM WordPress playground**, AI interview & outage simulators, **Google NotebookLM** audio prompt engine, and **Supabase RLS** gamification.\n' +
       '2. **Unitrition** (`unitrition.info`) - Full-stack HealthTech & dietary modeling platform built with **Headless WordPress**, **Next.js 16 App Router**, **React 19**, **Supabase** authentication/RLS, and **USDA FoodData Central API** across 10 clinical/dietary frameworks.\n' +
       '3. **Next.js 16 & Hybrid RAG Portfolio Platform** (`yusupovartur.com`) - Enterprise 4-locale platform pre-rendering 519 static pages with an autonomous **Hybrid RAG AI assistant**, **Generative UI** cards, and strict **WCAG 2.2 AA** compliance.\n' +
       '4. **My React Portfolio Website** - High-performance SPA/PWA built with **React 19**, **TypeScript**, **Tailwind CSS v4**, **View Transitions API**, and a 29-spec **Vitest TDD** suite.\n\n' +
       'Explore the interactive case study cards for my personal flagship projects below:',
     answerUa:
-      'Я спеціалізуюся на сучасній **Full-Stack веб-інженерії**, **автономних AI / Hybrid RAG архітектурах** та **Enterprise Headless CMS платформах**:\n\n' +
-      '- **Сучасний Frontend та Full-Stack ядро**: **Next.js 16** (App Router, React Server Components, Turbopack, SSG/ISR), **React 19**, **TypeScript 5.9+** (strict zero-any), **Tailwind CSS v4** та **View Transitions API**.\n' +
-      '- **AI-інженерія, Hybrid RAG та нативні рантайми**: Кастомні пайплайни **Hybrid RAG** (Okapi BM25 + нечіткий пошук Дамерау-Левенштейна + косинусна векторна подібність TF-IDF), **Vercel AI SDK v7** (стримінг та Generative UI tool calling), нативна компіляція **Rust MDX-RS**, браузерні **WebAssembly (WASM)** пісочниці, генерація аудіопромптів для **Google NotebookLM**, а також **Spec-Driven AI Development (SDD + TDD)** із Claude Code, Cursor та Google Antigravity.\n' +
-      '- **Backend, хмарні сервіси та бази даних**: **Supabase** (PostgreSQL, Row-Level Security / RLS, OAuth, гейміфікація в реальному часі), **Node.js**, **REST та GraphQL API**, інтеграція зовнішніх наукових баз (**USDA FoodData Central API**) та хмарна інфраструктура **AWS Cloud** (EC2, S3, CloudFront, Route 53).\n' +
-      '- **Enterprise WordPress, Headless CMS та E-Commerce**: Декаплена архітектура **Headless WordPress** із миттєвою інвалідацією кешу через HMAC-SHA256 вебхуки (`revalidateTag`), **PHP 8+**, кастомні теми та плагіни з нуля, **ACF Pro**, **Gutenberg**, **WooCommerce** та **Shopify Liquid**.\n' +
-      '- **Продуктивність, безпека та стандарти**: Субсекундні показники **Core Web Vitals** (`LCP < 1.2s`, `INP < 50ms`), відповідність **WCAG 2.2 AA / European Accessibility Act (EAA 2026)**, програмна мікророзмітка `Schema.org` JSON-LD та Zero-Trust безпека (CSP, HSTS, Base64-обфускація).\n\n' +
+      'Я спеціалізуюся на сучасній **Full-Stack веб-інженерії**, **автономних AI / Hybrid RAG архітектурах** та **Enterprise WordPress і Headless CMS платформах**:\n\n' +
+      '- **Сучасний Frontend та Full-Stack ядро**: **React 19**, **Next.js 16** (App Router, React Server Components, Server Actions, Turbopack, SSG/ISR), **TypeScript 5.9+** (strict zero-any), **JavaScript (ES6+)**, **Tailwind CSS v4**, **View Transitions API**, Bootstrap, семантичний HTML5 та BEM.\n' +
+      '- **AI-інженерія, Hybrid RAG та нативні рантайми**: Кастомні пайплайни **Hybrid RAG** (Okapi BM25 + нечіткий пошук Дамерау-Левенштейна + косинусна векторна подібність TF-IDF), **Vercel AI SDK v7** (стримінг та Generative UI tool calling), нативна компіляція **Rust MDX-RS**, браузерні **WebAssembly (WASM)** пісочниці (PHP 8.4 + SQLite VFS), **Google NotebookLM / Gemini**, а також **Spec-Driven AI Development (SDD + TDD)** із **Claude Code**, **Google Antigravity**, **Cursor**, **Devin (Windsurf)** та **MCP**.\n' +
+      '- **WordPress, Headless CMS та E-Commerce**: **OOP PHP 8.x** (стандарти PSR-12 та WordPress Coding Standards / WPCS), декаплена архітектура **Headless WordPress** із HMAC-SHA256 вебхуками (`revalidateTag`), **WPGraphQL**, **REST API**, кастомні **React Gutenberg-блоки**, розробка тем і плагінів з нуля (без важких конструкторів), **ACF Pro**, **WooCommerce** (Enterprise HPOS + Redis Object Cache) та **Shopify Liquid**.\n' +
+      '- **Backend, Cloud, SEO/GEO та стандарти**: **Supabase** (PostgreSQL, Row-Level Security / RLS, OAuth, гейміфікація), **Node.js**, оптимізація запитів **MySQL**, **USDA FoodData Central API**, **AWS Cloud** (EC2, S3, CloudFront, Route 53, WAFv2), **Cloudflare Workers**, **Docker**, субсекундні **Core Web Vitals** (`LCP < 1.2s`, `INP < 50ms`, `CLS < 0.02`), **WCAG 2.2 AA / EAA 2026**, **Generative Engine Optimization (GEO - `llms.txt`, `AI.json`, JSON-LD `@graph`)** та **Server-Side Tracking (`sGTM`)**.\n\n' +
       '### Передові технології у моїх власних флагманських проєктах (Personal Projects):\n' +
-      '1. **Fullstack AI Lab** (`fullstackailab.com`) - Інтерактивна інженерна освітня платформа на **Next.js 16**, **React 19**, нативному компіляторі **Rust MDX-RS** (1 135+ інтерактивних уроків зі збіркою за 90 секунд), браузерній **WASM WordPress-пісочниці**, симуляторах відмов та AI-співбесід, інтеграції **Google NotebookLM** і гейміфікації на **Supabase RLS**.\n' +
+      '1. **Fullstack AI Lab** (`fullstackailab.com`) - Інтерактивна інженерна освітня платформа на **Next.js 16**, **React 19**, нативному компіляторі **Rust MDX-RS** (1 135+ інтерактивних уроків зі збіркою за 78 секунд), браузерній **WASM WordPress-пісочниці**, симуляторах відмов та AI-співбесід, інтеграції **Google NotebookLM** і гейміфікації на **Supabase RLS**.\n' +
       '2. **Unitrition** (`unitrition.info`) - Повнофункціональна HealthTech-платформа персоналізованого харчування на базі **Headless WordPress**, **Next.js 16 App Router**, **React 19**, **Supabase** (Auth/RLS) та **USDA FoodData Central API** для 10 дієтичних протоколів.\n' +
       '3. **Next.js 16 & Hybrid RAG Portfolio Platform** (`yusupovartur.com`) - Enterprise-платформа на 4 мови (519 статичних SSG-сторінок) із автономним **Hybrid RAG AI-асистентом**, картками **Generative UI** та стандартом **WCAG 2.2 AA**.\n' +
       '4. **My React Portfolio Website** - Високопродуктивний SPA/PWA застосунок на **React 19**, **TypeScript**, **Tailwind CSS v4**, **View Transitions API** та **Vitest TDD**.\n\n' +
       'Нижче представлені інтерактивні картки моїх флагманських проєктів із переходом до детальних кейсів:',
     answerEs:
-      'Me especializo en **Ingeniería Web Full-Stack moderna**, **Arquitecturas de IA / Hybrid RAG Autónomo** y **Plataformas Enterprise Headless CMS**:\n\n' +
-      '- **Core Frontend y Full-Stack Moderno**: **Next.js 16** (App Router, React Server Components, Turbopack, SSG/ISR), **React 19**, **TypeScript 5.9+** (strict zero-any), **Tailwind CSS v4** y **View Transitions API**.\n' +
-      '- **Ingeniería de IA, Hybrid RAG y Runtimes Nativos**: Pipelines propios de **Hybrid RAG** (Okapi BM25 + búsqueda difusa Damerau-Levenshtein + similitud vectorial de coseno TF-IDF), **Vercel AI SDK v7** (streaming y Generative UI tool calling), compilación nativa en **Rust MDX-RS**, sandboxes **WebAssembly (WASM)** en el navegador, síntesis de prompts de audio para **Google NotebookLM** y **Spec-Driven AI Development (SDD + TDD)** con Claude Code, Cursor y Google Antigravity.\n' +
-      '- **Backend, Cloud y Datos**: **Supabase** (PostgreSQL, Row-Level Security / RLS, OAuth, gamificación en tiempo real), **Node.js**, **APIs REST y GraphQL**, integración de datos externos (**USDA FoodData Central API**) e infraestructura **AWS Cloud** (EC2, S3, CloudFront, Route 53).\n' +
-      '- **WordPress Enterprise, Headless CMS y E-Commerce**: Arquitectura desacoplada **Headless WordPress** con revalidación mediante webhooks HMAC-SHA256 (`revalidateTag`), **PHP 8+**, temas y plugins a medida desde cero, **ACF Pro**, **Gutenberg**, **WooCommerce** y **Shopify Liquid**.\n' +
-      '- **Rendimiento, Seguridad y Normativa**: **Core Web Vitals** subsegundo (`LCP < 1.2s`, `INP < 50ms`), cumplimiento **WCAG 2.2 AA / European Accessibility Act (EAA 2026)**, datos estructurados `Schema.org` JSON-LD y seguridad Zero-Trust (CSP estricto, HSTS, ofuscación Base64).\n\n' +
+      'Me especializo en **Ingeniería Web Full-Stack moderna**, **Arquitecturas de IA / Hybrid RAG Autónomo** y **Plataformas Enterprise WordPress y Headless CMS**:\n\n' +
+      '- **Core Frontend y Full-Stack Moderno**: **React 19**, **Next.js 16** (App Router, React Server Components, Server Actions, Turbopack, SSG/ISR), **TypeScript 5.9+** (strict zero-any), **JavaScript (ES6+)**, **Tailwind CSS v4**, **View Transitions API**, Bootstrap, HTML5 semántico y BEM.\n' +
+      '- **Ingeniería de IA, Hybrid RAG y Runtimes Nativos**: Pipelines propios de **Hybrid RAG** (Okapi BM25 + búsqueda difusa Damerau-Levenshtein + similitud vectorial de coseno TF-IDF), **Vercel AI SDK v7** (streaming y Generative UI tool calling), compilación nativa en **Rust MDX-RS**, sandboxes **WebAssembly (WASM)** en navegador (PHP 8.4 + SQLite VFS), **Google NotebookLM / Gemini** y **Spec-Driven AI Development (SDD + TDD)** con **Claude Code**, **Google Antigravity**, **Cursor**, **Devin (Windsurf)** y **MCP**.\n' +
+      '- **WordPress Enterprise, Headless CMS y E-Commerce**: **OOP PHP 8.x** (PSR-12 y WordPress Coding Standards / WPCS), **Headless WordPress** con webhooks HMAC-SHA256 (`revalidateTag`), **WPGraphQL**, **REST API**, bloques **Gutenberg en React** a medida, temas y plugins desde cero (sin constructores pesados), **ACF Pro**, **WooCommerce** (Enterprise HPOS + Redis Object Cache) y **Shopify Liquid**.\n' +
+      '- **Backend, Cloud, SEO/GEO y Normativa**: **Supabase** (PostgreSQL, Row-Level Security / RLS, OAuth, gamificación), **Node.js**, optimización **MySQL**, **USDA FoodData Central API**, **AWS Cloud** (EC2, S3, CloudFront, Route 53, WAFv2), **Cloudflare Workers**, **Docker**, **Core Web Vitals** subsegundo (`LCP < 1.2s`, `INP < 50ms`, `CLS < 0.02`), **WCAG 2.2 AA / EAA 2026**, **Generative Engine Optimization (GEO - `llms.txt`, `AI.json`, JSON-LD `@graph`)** y **Server-Side Tracking (`sGTM`)**.\n\n' +
       '### Tecnologías de Vanguardia en Mis Proyectos Propios (Personal Projects):\n' +
-      '1. **Fullstack AI Lab** (`fullstackailab.com`) - Plataforma educativa interactiva de ingeniería Full-Stack con **Next.js 16**, **React 19**, compilador nativo **Rust MDX-RS** (1.135+ lecciones compiladas en 90s), sandbox **WASM de WordPress** en navegador, simuladores de fallos y entrevistas con IA, **Google NotebookLM** y gamificación en **Supabase RLS**.\n' +
+      '1. **Fullstack AI Lab** (`fullstackailab.com`) - Plataforma educativa interactiva de ingeniería Full-Stack con **Next.js 16**, **React 19**, compilador nativo **Rust MDX-RS** (1.135+ lecciones compiladas en 78s), sandbox **WASM de WordPress** en navegador, simuladores de fallos y entrevistas con IA, **Google NotebookLM** y gamificación en **Supabase RLS**.\n' +
       '2. **Unitrition** (`unitrition.info`) - Plataforma HealthTech de nutrición personalizada construida con **Headless WordPress**, **Next.js 16 App Router**, **React 19**, autenticación **Supabase RLS** y **USDA FoodData Central API** para 10 planes dietéticos.\n' +
       '3. **Next.js 16 & Hybrid RAG Portfolio Platform** (`yusupovartur.com`) - Plataforma empresarial en 4 idiomas (519 páginas SSG) con **asistente IA Hybrid RAG autónomo**, tarjetas **Generative UI** y accesibilidad **WCAG 2.2 AA**.\n' +
       '4. **My React Portfolio Website** - Aplicación SPA/PWA de alto rendimiento con **React 19**, **TypeScript**, **Tailwind CSS v4**, **View Transitions API** y suite **Vitest TDD**.\n\n' +
       'Explora a continuación las tarjetas interactivas de mis proyectos propios destacados:',
     answerDe:
-      'Ich bin spezialisiert auf modernes **Full-Stack Web-Engineering**, **autonome KI- / Hybrid-RAG-Architekturen** sowie **Enterprise Headless-CMS-Plattformen**:\n\n' +
-      '- **Moderner Frontend- & Full-Stack-Kern**: **Next.js 16** (App Router, React Server Components, Turbopack, SSG/ISR), **React 19**, **TypeScript 5.9+** (strict zero-any), **Tailwind CSS v4** und **View Transitions API**.\n' +
-      '- **KI-Engineering, Hybrid RAG & Native Runtimes**: Maßgeschneiderte **Hybrid-RAG-Pipelines** (Okapi BM25 + fehlertolerante Damerau-Levenshtein-Suche + TF-IDF-Kosinus-Vektorähnlichkeit), **Vercel AI SDK v7** (Streaming & Generative UI Tool Calling), native **Rust MDX-RS**-Kompilierung, In-Browser **WebAssembly (WASM)**-Sandboxes, **Google NotebookLM** Audio-Prompt-Synthese sowie **Spec-Driven AI Development (SDD + TDD)** mit Claude Code, Cursor und Google Antigravity.\n' +
-      '- **Backend, Cloud & Datensysteme**: **Supabase** (PostgreSQL, Row-Level Security / RLS, OAuth, Echtzeit-Gamification), **Node.js**, **REST- & GraphQL-APIs**, externe Datenintegrationen (**USDA FoodData Central API**) und **AWS Cloud-Infrastruktur** (EC2, S3, CloudFront, Route 53).\n' +
-      '- **Enterprise WordPress, Headless CMS & E-Commerce**: Entkoppeltes **Headless WordPress** mit HMAC-SHA256-Webhook-Invalidierung (`revalidateTag`), **PHP 8+**, individuelle Themes/Plugins von Grund auf, **ACF Pro**, **Gutenberg**, **WooCommerce** und **Shopify Liquid**.\n' +
-      '- **Performance, Security & Compliance**: Sub-Sekunden **Core Web Vitals** (`LCP < 1.2s`, `INP < 50ms`), **WCAG 2.2 AA / European Accessibility Act (EAA 2026)**, programmatisches `Schema.org` JSON-LD und Zero-Trust-Security (strikte CSP, HSTS, Base64-Kontaktobfuskation).\n\n' +
+      'Ich bin spezialisiert auf modernes **Full-Stack Web-Engineering**, **autonome KI- / Hybrid-RAG-Architekturen** sowie **Enterprise WordPress- & Headless-CMS-Plattformen**:\n\n' +
+      '- **Moderner Frontend- & Full-Stack-Kern**: **React 19**, **Next.js 16** (App Router, React Server Components, Server Actions, Turbopack, SSG/ISR), **TypeScript 5.9+** (strict zero-any), **JavaScript (ES6+)**, **Tailwind CSS v4**, **View Transitions API**, Bootstrap, semantisches HTML5 und BEM.\n' +
+      '- **KI-Engineering, Hybrid RAG & Native Runtimes**: Maßgeschneiderte **Hybrid-RAG-Pipelines** (Okapi BM25 + fehlertolerante Damerau-Levenshtein-Suche + TF-IDF-Kosinus-Vektorähnlichkeit), **Vercel AI SDK v7** (Streaming & Generative UI Tool Calling), native **Rust MDX-RS**-Kompilierung, In-Browser **WebAssembly (WASM)**-Sandboxes (PHP 8.4 + SQLite VFS), **Google NotebookLM / Gemini** sowie **Spec-Driven AI Development (SDD + TDD)** mit **Claude Code**, **Google Antigravity**, **Cursor**, **Devin (Windsurf)** und **MCP**.\n' +
+      '- **Enterprise WordPress, Headless CMS & E-Commerce**: **OOP PHP 8.x** (PSR-12 & WordPress Coding Standards / WPCS), entkoppeltes **Headless WordPress** mit HMAC-SHA256-Webhooks (`revalidateTag`), **WPGraphQL**, **REST API**, individuelle **React-Gutenberg-Blöcke**, Themes/Plugins von Grund auf (ohne schwere Page-Builder), **ACF Pro**, **WooCommerce** (Enterprise HPOS + Redis Object Cache) und **Shopify Liquid**.\n' +
+      '- **Backend, Cloud, SEO/GEO & Compliance**: **Supabase** (PostgreSQL, Row-Level Security / RLS, OAuth, Echtzeit-Gamification), **Node.js**, **MySQL-Query-Optimierung**, **USDA FoodData Central API**, **AWS Cloud** (EC2, S3, CloudFront, Route 53, WAFv2), **Cloudflare Workers**, **Docker**, Sub-Sekunden **Core Web Vitals** (`LCP < 1.2s`, `INP < 50ms`, `CLS < 0.02`), **WCAG 2.2 AA / EAA 2026**, **Generative Engine Optimization (GEO - `llms.txt`, `AI.json`, JSON-LD `@graph`)** und **Server-Side Tracking (`sGTM`)**.\n\n' +
       '### Spitzentechnologien in meinen eigenen Flagship-Projekten (Personal Projects):\n' +
-      '1. **Fullstack AI Lab** (`fullstackailab.com`) - Interaktive Full-Stack-Engineering-Plattform auf Basis von **Next.js 16**, **React 19**, nativer **Rust MDX-RS**-Kompilierung (1.135+ interaktive Lektionen in 90s kompiliert), In-Browser **WASM-WordPress-Sandbox**, KI-Interview- & Ausfall-Simulatoren, **Google NotebookLM** und **Supabase RLS**-Gamification.\n' +
+      '1. **Fullstack AI Lab** (`fullstackailab.com`) - Interaktive Full-Stack-Engineering-Plattform auf Basis von **Next.js 16**, **React 19**, nativer **Rust MDX-RS**-Kompilierung (1.135+ interaktive Lektionen in 78s kompiliert), In-Browser **WASM-WordPress-Sandbox**, KI-Interview- & Ausfall-Simulatoren, **Google NotebookLM** und **Supabase RLS**-Gamification.\n' +
       '2. **Unitrition** (`unitrition.info`) - Full-Stack-HealthTech- und Ernährungsplattform mit **Headless WordPress**, **Next.js 16 App Router**, **React 19**, **Supabase** Auth/RLS und **USDA FoodData Central API** für 10 Ernährungsprogramme.\n' +
       '3. **Next.js 16 & Hybrid RAG Portfolio Platform** (`yusupovartur.com`) - 4-sprachige Enterprise-Plattform (519 statische SSG-Seiten) mit autonomem **Hybrid-RAG-KI-Assistenten**, **Generative UI**-Karten und **WCAG 2.2 AA**-Konformität.\n' +
       '4. **My React Portfolio Website** - Hochperformante SPA/PWA mit **React 19**, **TypeScript**, **Tailwind CSS v4**, **View Transitions API** und **Vitest TDD**-Testsuite.\n\n' +
       'Entdecken Sie nachfolgend die interaktiven Fallstudienkarten meiner eigenen Flagship-Projekte:',
   },
   {
-    question: 'How many years of development experience do you have?',
-    questionUa: 'Скільки років досвіду розробки у вас?',
-    questionEs: '¿Cuántos años de experiencia en desarrollo tienes?',
-    questionDe: 'Wie viele Jahre Entwicklungserfahrung hast du?',
+    question: 'How do you use AI tools, SDD & RAG in your workflow?',
+    questionUa: 'Як ви використовуєте AI-інструменти, SDD та RAG у розробці?',
+    questionEs: '¿Cómo usas herramientas de IA, SDD y RAG en tu flujo de desarrollo?',
+    questionDe: 'Wie nutzt du KI-Tools, SDD & RAG in deinem Entwicklungsworkflow?',
     keywords: [
-      'years',
-      'experience',
-      'how long',
-      'опыт',
-      'лет',
-      'разработке',
-      'досвід',
-      'років',
-      'anos',
-      'experiencia',
-      'cuantos',
-      'jahre',
-      'erfahrung',
-      'wie lange',
-      'entwicklungserfahrung',
+      'ai',
+      'rag',
+      'retrieval',
+      'copilot',
+      'cursor',
+      'claude code',
+      'devin',
+      'windsurf',
+      'notebooklm',
+      'artificial intelligence',
+      'agents',
+      'mcp',
+      'model context protocol',
+      'antigravity',
+      'ии',
+      'интеллект',
+      'нейросети',
+      'инструменты ии',
+      'інструменти ші',
+      'штучний',
+      'inteligencia artificial',
+      'herramientas ia',
+      'ia',
+      'workflow',
+      'ki',
+      'ki-tools',
+      'künstliche intelligenz',
+      'kuenstliche intelligenz',
+      'arbeitsablauf',
     ],
     answer:
-      'I have over 5+ years of commercial web development experience, having delivered 71+ production projects ranging from custom corporate platforms and AWS consulting portals (e.g. **IT-Magic**, **Front Desk Helpers**) to my own full-stack flagship products (**Fullstack AI Lab**, **Unitrition**, and this **Next.js 16 & Hybrid RAG Portfolio Platform**).',
+      'Rather than treating AI as a superficial autocomplete ("vibe coding"), I engineer a disciplined, **AI-First Software Development Life Cycle (SDLC)** that combines multi-agent tooling, **Spec-Driven Development (SDD)**, **Test-Driven Development (TDD)**, and **Autonomous Hybrid RAG**:\n\n' +
+      '1. **AI IDE & Agentic Stack**: I orchestrate **Claude Code**, **Google Antigravity**, **Cursor**, and **Devin (Windsurf)** connected via **Model Context Protocol (MCP)** to codebase search (`ripgrep`/`fd`), databases, and documentation. For deep architectural research and synthesis, I use **Google NotebookLM & Gemini**.\n' +
+      '2. **Spec-Driven Development (SDD) & EARS**: Every feature starts with written engineering specifications under `specs/<feature>/` (`spec.md`, `plan.md`, `tasks.md`, `analysis.md`) using **EARS (Easy Approach to Requirements Syntax)**. Defining constraints and boundary conditions upfront prevents AI hallucinations.\n' +
+      '3. **AI-Harness & Context Engineering**: Agents operate inside strict repository guardrails (`.specify/memory/constitution.md`, `AGENTS.md`, `DESIGN_SYSTEM.md`, `SECURITY.md`, `ARCHITECTURE.md`) and modular skills (`tdd-react`, `a11y-wcag22`, `perf-cwv`, `i18n-locales`, `seo-pseo`).\n' +
+      '4. **TDD & Hybrid Verification Gates**: Every AI-assisted change must pass a **Red-Green-Refactor** loop (**Vitest** 230+ specs, **React Testing Library**, **Playwright + axe-core WCAG 2.2 AA**), characterization tests for legacy migrations, and strict `tsc --noEmit` (zero-`any`) + `eslint` + `pnpm audit` checks.\n' +
+      '5. **Custom Hybrid RAG Engineering**: I build production RAG engines - including this portfolio assistant indexing 71 projects & 47 engineering articles with Okapi BM25, Damerau-Levenshtein typo tolerance, TF-IDF cosine vector scoring, and Vercel AI SDK v7 Generative UI.\n' +
+      '6. **Measurable Business ROI**: Increased overall team feature velocity by **35%+** at Frontdeskhelpers and accelerated complex multi-file refactoring and prototyping by up to **3x** with zero regressions.',
     answerUa:
-      'Маю понад 5 років комерційного досвіду у веб-розробці та 71+ реалізований проєкт - від кастомних корпоративних платформ та AWS-порталів (наприклад, **IT-Magic**, **Front Desk Helpers**) до власних full-stack флагманських продуктів (**Fullstack AI Lab**, **Unitrition** та цієї платформи **Next.js 16 & Hybrid RAG Portfolio Platform**).',
+      'Замість поверхневого автодоповнення коду ("vibe coding"), я вибудував дисциплінований **AI-First процес розробки (SDLC)**, що поєднує мультиагентні AI-інструменти, **Spec-Driven Development (SDD)**, **Test-Driven Development (TDD)** та **Autonomous Hybrid RAG**:\n\n' +
+      '1. **Екосистема AI IDE та агентів**: Щодня оркеструю **Claude Code**, **Google Antigravity**, **Cursor** та **Devin (Windsurf)**, підключені через **Model Context Protocol (MCP)** до кодової бази (`ripgrep`/`fd`), БД та документації. Для глибокого синтезу документації та RFC використовую **Google NotebookLM та Gemini**.\n' +
+      '2. **Spec-Driven Development (SDD) та EARS**: Кожна фіча починається з технічної специфікації в `specs/<feature>/` (`spec.md`, `plan.md`, `tasks.md`, `analysis.md`) у форматі **EARS (Easy Approach to Requirements Syntax)**. Чіткі межі та критерії приймання повністю усувають галюцинації моделей.\n' +
+      '3. **AI-Harness та Context Engineering**: Агенти працюють у межах жорстких правил репозиторію (`.specify/memory/constitution.md`, `AGENTS.md`, `DESIGN_SYSTEM.md`, `SECURITY.md`, `ARCHITECTURE.md`) та модульних навичок (`tdd-react`, `a11y-wcag22`, `perf-cwv`, `i18n-locales`, `seo-pseo`).\n' +
+      '4. **TDD та гібридна верифікація**: Кожна зміна проходить цикл **Red-Green-Refactor** (**Vitest** 230+ тестів, **React Testing Library**, **Playwright + axe-core WCAG 2.2 AA**), характеристичні тести при міграції legacy-коду та суворі перевірки `tsc --noEmit` (zero-`any`), `eslint` і `pnpm audit`.\n' +
+      '5. **Кастомні системи Hybrid RAG**: Проєктую продакшн RAG-асистентів - включно з цим рушієм портфоліо на 71 проєкт і 47 статей із Okapi BM25, алгоритмом Дамерау-Левенштейна, косинусною подібністю TF-IDF та Generative UI на Vercel AI SDK v7.\n' +
+      '6. **Вимірюваний бізнес-результат**: Підвищив загальну швидкість релізів у команді Frontdeskhelpers на **35%+** та прискорив складний багатофайловий рефакторинг і прототипування до **3 разів** без регресій.',
     answerEs:
-      'Tengo más de 5 años de experiencia comercial en desarrollo web, con 71+ proyectos entregados que abarcan desde portales corporativos y consultoría AWS (como **IT-Magic** y **Front Desk Helpers**) hasta mis propios productos full-stack destacados (**Fullstack AI Lab**, **Unitrition** y esta plataforma **Next.js 16 & Hybrid RAG Portfolio Platform**).',
+      'En lugar de usar la IA como un simple autocompletado ("vibe coding"), aplico un **ciclo de vida de desarrollo de software (SDLC) AI-First** basado en agentes, **Spec-Driven Development (SDD)**, **Test-Driven Development (TDD)** y **Hybrid RAG Autónomo**:\n\n' +
+      '1. **Stack de IDEs y Agentes de IA**: Orquesto **Claude Code**, **Google Antigravity**, **Cursor** y **Devin (Windsurf)** conectados mediante **Model Context Protocol (MCP)** a herramientas de búsqueda (`ripgrep`/`fd`), bases de datos y documentación, además de **Google NotebookLM y Gemini** para síntesis técnica.\n' +
+      '2. **Spec-Driven Development (SDD) y EARS**: Cada funcionalidad parte de especificaciones formales en `specs/<feature>/` (`spec.md`, `plan.md`, `tasks.md`, `analysis.md`) bajo el formato **EARS (Easy Approach to Requirements Syntax)**, eliminando alucinaciones antes de generar código.\n' +
+      '3. **AI-Harness e Ingeniería de Contexto**: Los agentes operan bajo reglas estrictas de repositorio (`.specify/memory/constitution.md`, `AGENTS.md`, `DESIGN_SYSTEM.md`, `SECURITY.md`, `ARCHITECTURE.md`) y skills modulares (`tdd-react`, `a11y-wcag22`, `perf-cwv`, `i18n-locales`, `seo-pseo`).\n' +
+      '4. **TDD y Verificación Híbrida**: Todo código pasa por un ciclo **Red-Green-Refactor** (**Vitest** con 230+ tests, **React Testing Library**, **Playwright + axe-core WCAG 2.2 AA**), pruebas de caracterización para migraciones legacy y auditorías `tsc --noEmit` (zero-`any`), `eslint` y `pnpm audit`.\n' +
+      '5. **Ingeniería Hybrid RAG a Medida**: Desarrollo motores RAG en producción - como este asistente que indexa 71 proyectos y 47 artículos con Okapi BM25, tolerancia a erratas Damerau-Levenshtein, similitud de coseno TF-IDF y Generative UI con Vercel AI SDK v7.\n' +
+      '6. **Impacto Medible**: Incrementó la velocidad de entrega de funcionalidades un **35%+** en Frontdeskhelpers y acelera refactorizaciones complejas hasta **3x** sin regresiones.',
     answerDe:
-      'Ich verfüge über mehr als 5 Jahre Berufserfahrung in der Webentwicklung und habe 71+ Projekte erfolgreich umgesetzt - von Unternehmensportalen und AWS-Plattformen (z. B. **IT-Magic**, **Front Desk Helpers**) bis hin zu meinen eigenen Full-Stack-Flagship-Produkten (**Fullstack AI Lab**, **Unitrition** und dieser **Next.js 16 & Hybrid RAG Portfolio Platform**).',
+      'Statt oberflächlichem "Vibe Coding" arbeite ich nach einem disziplinierten **AI-First Software Development Life Cycle (SDLC)**, der Multi-Agent-Tools, **Spec-Driven Development (SDD)**, **Test-Driven Development (TDD)** und **autonomes Hybrid RAG** vereint:\n\n' +
+      '1. **KI-IDE- & Agenten-Stack**: Ich orchestriere **Claude Code**, **Google Antigravity**, **Cursor** und **Devin (Windsurf)** über das **Model Context Protocol (MCP)** für direkten Zugriff auf Code-Suche (`ripgrep`/`fd`), Datenbanken und Dokumentation sowie **Google NotebookLM & Gemini** für Architektur-Research.\n' +
+      '2. **Spec-Driven Development (SDD) & EARS**: Jedes Feature beginnt mit einer schriftlichen Spezifikation unter `specs/<feature>/` (`spec.md`, `plan.md`, `tasks.md`, `analysis.md`) nach **EARS (Easy Approach to Requirements Syntax)**, um KI-Halluzinationen vorab auszuschließen.\n' +
+      '3. **AI-Harness & Context Engineering**: Agenten arbeiten innerhalb strikter Repository-Leitplanken (`.specify/memory/constitution.md`, `AGENTS.md`, `DESIGN_SYSTEM.md`, `SECURITY.md`, `ARCHITECTURE.md`) und modularer Skills (`tdd-react`, `a11y-wcag22`, `perf-cwv`, `i18n-locales`, `seo-pseo`).\n' +
+      '4. **TDD & Hybride Verifikation**: Jede Änderung durchläuft einen **Red-Green-Refactor**-Zyklus (**Vitest** mit 230+ Tests, **React Testing Library**, **Playwright + axe-core WCAG 2.2 AA**), Charakterisierungstests bei Legacy-Migrationen sowie `tsc --noEmit` (zero-`any`), `eslint` und `pnpm audit`.\n' +
+      '5. **Maßgeschneidertes Hybrid RAG**: Ich entwickle produktive RAG-Systeme - inklusive dieses Portfolio-Assistenten über 71 Projekte & 47 Fachartikel mit Okapi BM25, Damerau-Levenshtein-Fehlertoleranz, TF-IDF-Kosinusähnlichkeit und Vercel AI SDK v7 Generative UI.\n' +
+      '6. **Messbarer Business-Impact**: Steigerung der Feature-Velocity um **35%+** bei Frontdeskhelpers und bis zu **3x schnellere Umsetzung** bei komplexem Multi-File-Refactoring ohne Regressionen.',
+  },
+  {
+    question: 'How does your Spec-Driven (SDD) & TDD process work step by step?',
+    questionUa: 'Як покроково працює ваш підхід Spec-Driven (SDD) та TDD?',
+    questionEs: '¿Cómo funciona paso a paso tu enfoque Spec-Driven (SDD) y TDD?',
+    questionDe: 'Wie funktioniert dein Spec-Driven (SDD) & TDD-Prozess Schritt für Schritt?',
+    keywords: [
+      'sdd process',
+      'tdd',
+      'test-driven',
+      'spec-driven',
+      'ears',
+      'vibe coding',
+      'red-green-refactor',
+      'ai harness',
+      'ai-harness',
+      'vitest',
+      'playwright',
+      'methodology',
+      'підхід sdd',
+      'методологія sdd',
+      'тестування tdd',
+      'подход sdd',
+      'методология sdd',
+      'тестирование tdd',
+      'спецификации',
+      'специфікації',
+      'enfoque sdd',
+      'metodologia sdd',
+      'pruebas tdd',
+      'sdd-prozess',
+      'tdd-prozess',
+      'methodik',
+    ],
+    answer:
+      'My **Spec-Driven Development (SDD) + Test-Driven Development (TDD)** workflow executes across **4 deterministic engineering phases**:\n\n' +
+      '1. **Phase 1 - Spec Engineering & EARS**:\n' +
+      '   - **Requirements & Context Auditing**: Low-level audit of existing codebase, dependencies, and API boundaries before prompting any model.\n' +
+      '   - **Executable Acceptance Criteria (EARS)**: Translating business goals into unambiguous `spec.md`, `plan.md`, and `tasks.md` artifacts using EARS syntax so AI agents verify against concrete rules instead of improvising.\n' +
+      '2. **Phase 2 - Agentic Execution & MCP Guardrails**:\n' +
+      '   - **Workspace Rules & MCP**: Binding **Claude Code**, **Google Antigravity**, and **Cursor** to `AGENTS.md`, `constitution.md`, `SECURITY.md`, and **Model Context Protocol (MCP)** tools to prevent context drift.\n' +
+      '   - **Multi-File Parallel Coding & Legacy Safety Nets**: Running sandboxed agents across concurrent branches under strict **Human-in-the-Loop** architectural review, writing characterization tests first when migrating legacy PHP 7 / WordPress code to PHP 8.x or Next.js 16.\n' +
+      '3. **Phase 3 - Hybrid Verification & TDD (Red-Green-Refactor)**:\n' +
+      '   - **Red-Green-Refactor**: Authoring failing **Vitest & React Testing Library** specs using semantic ARIA roles before implementation.\n' +
+      '   - **Compiler, Linter & Security Gates**: Enforcing `pnpm exec tsc --noEmit` (strict zero-`any`), `pnpm lint` (ESLint / WPCS), `pnpm audit` (zero high/critical vulnerabilities & Base64 contact obfuscation), and **Playwright + axe-core** E2E accessibility checks.\n' +
+      '4. **Phase 4 - CWV Optimization, GEO & CI/CD Deploy**:\n' +
+      '   - **Performance & GEO**: Enforcing bundle budgets, WebP/AVIF asset pipelines (`LCP < 1.2s`, `INP < 50ms`), `Schema.org` JSON-LD graphs, and `llms.txt` for AI search engines.\n' +
+      '   - **Automated CI/CD**: Pre-commit hooks and GitHub Actions pipelines that deploy verified builds to Vercel Edge.\n\n' +
+      'Read the full architectural deep-dive: [Autonomous AI Quality Harness & SDD in Next.js 16](/en/blog/autonomous-ai-quality-harness-spec-driven-development-sdd-nextjs-16)',
+    answerUa:
+      'Мій інженерний процес **Spec-Driven Development (SDD) + Test-Driven Development (TDD)** складається з **4 детермінованих фаз**:\n\n' +
+      '1. **Фаза 1 - Spec Engineering та EARS**:\n' +
+      '   - **Аудит вимог і контексту**: Низькорівневий аналіз існуючої кодової бази, залежностей та API перед формулюванням задач для AI.\n' +
+      '   - **Критерії приймання EARS**: Перетворення вимог у однозначні артефакти `spec.md`, `plan.md` та `tasks.md` за синтаксисом EARS, які напряму компілюються в автотести.\n' +
+      '2. **Фаза 2 - Agentic Execution та MCP-обмеження**:\n' +
+      '   - **Правила воркспейсу та MCP**: Підключення **Claude Code**, **Google Antigravity** та **Cursor** до `AGENTS.md`, `constitution.md`, `SECURITY.md` і серверів **Model Context Protocol (MCP)** для захисту від втрати контексту.\n' +
+      '   - **Паралельна розробка та безпечна міграція Legacy**: Виконання багатофайлових оновлень під контролем **Human-in-the-Loop** та написання характеристичних тестів перед міграцією спадкового коду (PHP 7 -> PHP 8.x / Next.js 16).\n' +
+      '3. **Фаза 3 - Гібридна верифікація та TDD (Red-Green-Refactor)**:\n' +
+      '   - **Red-Green-Refactor**: Написання семантичних тестів **Vitest та React Testing Library** до реалізації компонентів.\n' +
+      '   - **Шлюзи компілятора, лінтера та безпеки**: Обов\'язкове проходження `pnpm exec tsc --noEmit` (strict zero-`any`), `pnpm lint`, `pnpm audit` (Zero Secrets та Base64-обфускація контактів) і **Playwright + axe-core** E2E перевірок доступності WCAG 2.2 AA.\n' +
+      '4. **Фаза 4 - Оптимізація CWV, GEO та CI/CD деплой**:\n' +
+      '   - **Продуктивність і GEO**: Контроль бандл-бюджетів, WebP/AVIF (`LCP < 1.2s`, `INP < 50ms`), графів `Schema.org` JSON-LD та `llms.txt` для AI-пошуковиків.\n' +
+      '   - **Автоматизований CI/CD**: Pre-commit хуки та пайплайни GitHub Actions із деплоєм на Vercel Edge.\n\n' +
+      'Повний архітектурний розбір у блозі: [Autonomous AI Quality Harness & SDD у Next.js 16](/ua/blog/autonomous-ai-quality-harness-spec-driven-development-sdd-nextjs-16)',
+    answerEs:
+      'Mi flujo de trabajo **Spec-Driven Development (SDD) + Test-Driven Development (TDD)** se ejecuta en **4 fases deterministas de ingeniería**:\n\n' +
+      '1. **Fase 1 - Ingeniería de Especificaciones y EARS**:\n' +
+      '   - **Auditoría de Contexto**: Análisis de bajo nivel del código existente, dependencias y endpoints antes de instruir a los modelos.\n' +
+      '   - **Criterios de Aceptación Ejecutables (EARS)**: Traducción de requisitos en artefactos `spec.md`, `plan.md` y `tasks.md` bajo sintaxis EARS para que el agente verifique contra reglas exactas sin improvisar.\n' +
+      '2. **Fase 2 - Ejecución Agéntica y Guardrails MCP**:\n' +
+      '   - **Reglas de Workspace y MCP**: Conexión de **Claude Code**, **Google Antigravity** y **Cursor** con `AGENTS.md`, `constitution.md`, `SECURITY.md` y **Model Context Protocol (MCP)** para evitar deriva de contexto.\n' +
+      '   - **Codificación Multi-Archivo y Migración Legacy**: Ejecución en ramas paralelas bajo supervisión **Human-in-the-Loop**, creando pruebas de caracterización antes de migrar sistemas heredados (PHP 7 -> PHP 8.x / Next.js 16).\n' +
+      '3. **Fase 3 - Verificación Híbrida y TDD (Red-Green-Refactor)**:\n' +
+      '   - **Red-Green-Refactor**: Creación de pruebas en **Vitest y React Testing Library** basadas en roles semánticos antes de escribir la implementación.\n' +
+      '   - **Auditorías de Compilador y Seguridad**: Validación estricta con `pnpm exec tsc --noEmit` (zero-`any`), `pnpm lint`, `pnpm audit` (cero fugas de secretos y ofuscación Base64) y tests E2E de accesibilidad WCAG 2.2 AA con **Playwright + axe-core**.\n' +
+      '4. **Fase 4 - Optimización CWV, GEO y Despliegue CI/CD**:\n' +
+      '   - **Rendimiento y GEO**: Presupuestos de bundle, imágenes WebP/AVIF (`LCP < 1.2s`, `INP < 50ms`), grafos `Schema.org` JSON-LD y `llms.txt` para motores de búsqueda IA.\n' +
+      '   - **CI/CD Automatizado**: Hooks pre-commit y flujos GitHub Actions hacia Vercel Edge.\n\n' +
+      'Lee el análisis técnico completo: [Autonomous AI Quality Harness & SDD en Next.js 16](/es/blog/autonomous-ai-quality-harness-spec-driven-development-sdd-nextjs-16)',
+    answerDe:
+      'Mein **Spec-Driven Development (SDD) + Test-Driven Development (TDD)**-Workflow durchläuft **4 deterministische Engineering-Phasen**:\n\n' +
+      '1. **Phase 1 - Spec Engineering & EARS**:\n' +
+      '   - **Anforderungs- & Kontext-Audit**: Low-Level-Analyse der bestehenden Codebasis, Abhängigkeiten und API-Schnittstellen vor dem Prompting.\n' +
+      '   - **Executable Acceptance Criteria (EARS)**: Übersetzung von Anforderungen in eindeutige `spec.md`-, `plan.md`- und `tasks.md`-Artefakte im EARS-Format, die direkt in automatisierte Tests überführt werden.\n' +
+      '2. **Phase 2 - Agentic Execution & MCP-Guardrails**:\n' +
+      '   - **Workspace-Regeln & MCP**: Anbindung von **Claude Code**, **Google Antigravity** und **Cursor** an `AGENTS.md`, `constitution.md`, `SECURITY.md` und das **Model Context Protocol (MCP)** gegen Context Drift.\n' +
+      '   - **Multi-File-Coding & Legacy-Sicherheitsnetze**: Parallele Ausführung unter **Human-in-the-Loop**-Architekturkontrolle sowie Charakterisierungstests vor Legacy-Migrationen (PHP 7 -> PHP 8.x / Next.js 16).\n' +
+      '3. **Phase 3 - Hybride Verifikation & TDD (Red-Green-Refactor)**:\n' +
+      '   - **Red-Green-Refactor**: Erstellung semantischer **Vitest- & React-Testing-Library**-Tests vor der Implementierung.\n' +
+      '   - **Compiler-, Linter- & Security-Gates**: Strikte Prüfung via `pnpm exec tsc --noEmit` (zero-`any`), `pnpm lint`, `pnpm audit` (Zero Secrets & Base64-Kontaktobfuskation) sowie **Playwright + axe-core** E2E-Tests für WCAG 2.2 AA.\n' +
+      '4. **Phase 4 - CWV-Optimierung, GEO & CI/CD-Deploy**:\n' +
+      '   - **Performance & GEO**: Bundle-Budgets, WebP/AVIF-Pipelines (`LCP < 1.2s`, `INP < 50ms`), `Schema.org` JSON-LD-Graphen und `llms.txt` für KI-Suchmaschinen.\n' +
+      '   - **Automatisiertes CI/CD**: Pre-Commit-Hooks und GitHub-Actions-Pipelines für Vercel Edge.\n\n' +
+      'Vollständigen Fachartikel lesen: [Autonomous AI Quality Harness & SDD in Next.js 16](/de/blog/autonomous-ai-quality-harness-spec-driven-development-sdd-nextjs-16)',
   },
   {
     question: 'What projects have you completed? / Tell me about your work',
@@ -214,87 +370,131 @@ export const FAQ: FaqItem[] = [
     ],
     answer:
       'I have delivered **71+ production web projects**, all indexed directly in this Hybrid RAG assistant! Key highlights include:\n\n' +
-      '- **Personal Flagship Products (Personal Projects)**:\n' +
-      '  - **Fullstack AI Lab** (`fullstackailab.com`) - Interactive engineering academy with Next.js 16, React 19, Rust MDX-RS (1,135+ lessons), in-browser WASM WordPress sandbox, NotebookLM audio prompts, and Supabase RLS.\n' +
-      '  - **Unitrition** (`unitrition.info`) - Full-stack HealthTech platform built with Headless WordPress, Next.js 16 App Router, Supabase RLS, and USDA FoodData Central API.\n' +
-      '  - **Next.js 16 & Hybrid RAG Portfolio Platform** (`yusupovartur.com`) - Enterprise 4-locale platform (519 SSG pages) with this autonomous Hybrid RAG engine and WCAG 2.2 AA compliance.\n' +
-      '- **Enterprise & E-Commerce Case Studies**:\n' +
-      '  - **IT-Magic** - Corporate cloud consulting platform for an AWS Advanced Partner.\n' +
-      '  - **Front Desk Helpers** - Enterprise B2B outsourcing platform with custom knowledge base.\n' +
-      '  - **Kidzely** - High-conversion international Shopify e-commerce storefront.\n\n' +
+      '- **Personal Flagship Products (Solopreneur & Product Architect)**:\n' +
+      '  1. **Fullstack AI Lab** (`fullstackailab.com`) - Interactive full-stack engineering academy with Next.js 16, React 19, native Rust MDX-RS compiler (1,135+ lessons compiled in 78s), in-browser WASM WordPress Playground (PHP 8.4 + SQLite VFS, 120ms cold boot), AI interview & outage simulators, Google NotebookLM audio synthesis, and Supabase RLS.\n' +
+      '  2. **Unitrition** (`unitrition.info`) - Full-stack HealthTech platform built with Headless WordPress, Next.js 16 App Router, React 19, Supabase OAuth/RLS, and USDA FoodData Central API across 10 dietary protocols.\n' +
+      '  3. **Next.js 16 & Hybrid RAG Portfolio Platform** (`yusupovartur.com`) - Enterprise 4-locale platform (519 SSG pages) with this autonomous Hybrid RAG engine, Generative UI cards, and WCAG 2.2 AA compliance.\n' +
+      '  4. **My React Portfolio Website** - High-performance SPA/PWA built with React 19, TypeScript, Tailwind CSS v4, View Transitions API, and 29 Vitest TDD specs.\n' +
+      '- **Enterprise & Commercial Client Case Studies**:\n' +
+      '  - **IT-Magic** - Corporate cloud consulting platform for an AWS Advanced Partner (95+ Lighthouse, custom PHP 8+ & Schema.org).\n' +
+      '  - **Front Desk Helpers** - US/EU B2B remote staffing & IT outsourcing portal with custom knowledge base and WCAG 2.2 AA compliance.\n' +
+      '  - **AWS Migration Services / AWS for E-Commerce / Cloud Delivery Solution** - High-conversion B2B cloud architecture portals.\n' +
+      '  - **Kidzely / Artezio EU / Prezentify** - International multi-currency Shopify Liquid e-commerce storefronts.\n\n' +
       'Explore the interactive case study cards below or ask me about any specific project!',
     answerUa:
       'Я реалізував **понад 71 продакшн веб-проєкт**, і всі вони проіндексовані прямо в цьому Hybrid RAG асистенті! Ключові проєкти:\n\n' +
-      '- **Власні флагманські продукти (Personal Projects)**:\n' +
-      '  - **Fullstack AI Lab** (`fullstackailab.com`) - Інтерактивна інженерна платформа на Next.js 16, React 19, Rust MDX-RS (1 135+ уроків), браузерній WASM-пісочниці, NotebookLM та Supabase RLS.\n' +
-      '  - **Unitrition** (`unitrition.info`) - HealthTech-платформа харчування на Headless WordPress, Next.js 16 App Router, Supabase RLS та USDA API.\n' +
-      '  - **Next.js 16 & Hybrid RAG Portfolio Platform** (`yusupovartur.com`) - 4-мовна enterprise-платформа (519 SSG-сторінок) із автономним Hybrid RAG рушієм та WCAG 2.2 AA.\n' +
-      '- **Enterprise та E-Commerce кейси**:\n' +
-      '  - **IT-Magic** - Корпоративний портал для AWS Advanced Consulting Partner.\n' +
-      '  - **Front Desk Helpers** - Масштабний B2B-портал аутсорсингу.\n' +
-      '  - **Kidzely** - Міжнародний e-commerce магазин на Shopify.\n\n' +
+      '- **Власні флагманські продукти (Solopreneur & Product Architect)**:\n' +
+      '  1. **Fullstack AI Lab** (`fullstackailab.com`) - Інтерактивна інженерна платформа на Next.js 16, React 19, Rust MDX-RS (1 135+ уроків за 78с), браузерній WASM WordPress-пісочниці (PHP 8.4 + SQLite VFS, старт за 120мс), AI-симуляторах співбесід і збоїв, Google NotebookLM та Supabase RLS.\n' +
+      '  2. **Unitrition** (`unitrition.info`) - HealthTech-платформа персоналізованого харчування на Headless WordPress, Next.js 16 App Router, React 19, Supabase OAuth/RLS та USDA API для 10 дієтичних планів.\n' +
+      '  3. **Next.js 16 & Hybrid RAG Portfolio Platform** (`yusupovartur.com`) - 4-мовна enterprise-платформа (519 SSG-сторінок) із автономним Hybrid RAG рушієм, картками Generative UI та WCAG 2.2 AA.\n' +
+      '  4. **My React Portfolio Website** - Високопродуктивний SPA/PWA на React 19, TypeScript, Tailwind CSS v4, View Transitions API та 29 Vitest TDD тестах.\n' +
+      '- **Enterprise та E-Commerce клієнтські кейси**:\n' +
+      '  - **IT-Magic** - Корпоративний портал для AWS Advanced Consulting Partner (95+ Lighthouse, кастомний PHP 8+ та Schema.org).\n' +
+      '  - **Front Desk Helpers** - Масштабний B2B-портал аутсорсингу для ринку США та ЄС із базою знань та WCAG 2.2 AA.\n' +
+      '  - **AWS Migration Services / AWS for E-Commerce / Cloud Delivery Solution** - Спеціалізовані B2B хмарні портали.\n' +
+      '  - **Kidzely / Artezio EU / Prezentify** - Міжнародні мультивалютні магазини на Shopify Liquid.\n\n' +
       'Нижче доступні інтерактивні картки проєктів, або запитайте мене про будь-який конкретний кейс!',
     answerEs:
       'He entregado **más de 71 proyectos web en producción**, todos indexados en este asistente Hybrid RAG. Entre los proyectos destacados se encuentran:\n\n' +
-      '- **Proyectos Propios Destacados (Personal Projects)**:\n' +
-      '  - **Fullstack AI Lab** (`fullstackailab.com`) - Plataforma interactiva de ingeniería con Next.js 16, React 19, Rust MDX-RS (1.135+ lecciones), sandbox WASM en navegador, NotebookLM y Supabase RLS.\n' +
-      '  - **Unitrition** (`unitrition.info`) - Plataforma HealthTech de nutrición con Headless WordPress, Next.js 16 App Router, Supabase RLS y API de USDA.\n' +
-      '  - **Next.js 16 & Hybrid RAG Portfolio Platform** (`yusupovartur.com`) - Plataforma empresarial en 4 idiomas (519 páginas SSG) con motor Hybrid RAG autónomo y WCAG 2.2 AA.\n' +
+      '- **Proyectos Propios Destacados (Solopreneur & Product Architect)**:\n' +
+      '  1. **Fullstack AI Lab** (`fullstackailab.com`) - Plataforma interactiva de ingeniería con Next.js 16, React 19, Rust MDX-RS (1.135+ lecciones en 78s), sandbox WASM de WordPress en navegador (PHP 8.4 + SQLite VFS, arranque en 120ms), simuladores de entrevistas y fallos IA, Google NotebookLM y Supabase RLS.\n' +
+      '  2. **Unitrition** (`unitrition.info`) - Plataforma HealthTech de nutrición con Headless WordPress, Next.js 16 App Router, React 19, Supabase OAuth/RLS y API de USDA para 10 planes dietéticos.\n' +
+      '  3. **Next.js 16 & Hybrid RAG Portfolio Platform** (`yusupovartur.com`) - Plataforma empresarial en 4 idiomas (519 páginas SSG) con motor Hybrid RAG autónomo, tarjetas Generative UI y WCAG 2.2 AA.\n' +
+      '  4. **My React Portfolio Website** - Aplicación SPA/PWA de alto rendimiento con React 19, TypeScript, Tailwind CSS v4, View Transitions API y 29 pruebas Vitest TDD.\n' +
       '- **Casos de Estudio Enterprise y E-Commerce**:\n' +
-      '  - **IT-Magic** - Portal corporativo para socio consultor AWS Advanced.\n' +
-      '  - **Front Desk Helpers** - Plataforma corporativa B2B de outsourcing.\n' +
-      '  - **Kidzely** - Tienda internacional de alto rendimiento en Shopify.\n\n' +
+      '  - **IT-Magic** - Portal corporativo para socio consultor AWS Advanced (95+ Lighthouse, PHP 8+ a medida y Schema.org).\n' +
+      '  - **Front Desk Helpers** - Plataforma B2B de outsourcing para clientes de EE. UU. y Europa con WCAG 2.2 AA.\n' +
+      '  - **AWS Migration Services / AWS for E-Commerce / Cloud Delivery Solution** - Portales B2B de arquitectura cloud.\n' +
+      '  - **Kidzely / Artezio EU / Prezentify** - Tiendas internacionales multidivisa en Shopify Liquid.\n\n' +
       '¡Explora las tarjetas interactivas a continuación o pregúntame por cualquier proyecto específico!',
     answerDe:
       'Ich habe **über 71 produktive Webprojekte** umgesetzt, die alle direkt in diesem Hybrid-RAG-Assistenten indexiert sind! Zu den Highlights zählen:\n\n' +
-      '- **Eigene Flagship-Produkte (Personal Projects)**:\n' +
-      '  - **Fullstack AI Lab** (`fullstackailab.com`) - Interaktive Engineering-Plattform mit Next.js 16, React 19, Rust MDX-RS (1.135+ Lektionen), In-Browser WASM-Sandbox, NotebookLM und Supabase RLS.\n' +
-      '  - **Unitrition** (`unitrition.info`) - HealthTech-Ernährungsplattform mit Headless WordPress, Next.js 16 App Router, Supabase RLS und USDA API.\n' +
-      '  - **Next.js 16 & Hybrid RAG Portfolio Platform** (`yusupovartur.com`) - 4-sprachige Enterprise-Plattform (519 SSG-Seiten) mit autonomer Hybrid-RAG-Engine und WCAG 2.2 AA.\n' +
+      '- **Eigene Flagship-Produkte (Solopreneur & Product Architect)**:\n' +
+      '  1. **Fullstack AI Lab** (`fullstackailab.com`) - Interaktive Engineering-Plattform mit Next.js 16, React 19, Rust MDX-RS (1.135+ Lektionen in 78s), In-Browser WASM-WordPress-Sandbox (PHP 8.4 + SQLite VFS, 120ms Kaltstart), KI-Interview- & Ausfall-Simulatoren, Google NotebookLM und Supabase RLS.\n' +
+      '  2. **Unitrition** (`unitrition.info`) - HealthTech-Ernährungsplattform mit Headless WordPress, Next.js 16 App Router, React 19, Supabase OAuth/RLS und USDA API für 10 Ernährungsprogramme.\n' +
+      '  3. **Next.js 16 & Hybrid RAG Portfolio Platform** (`yusupovartur.com`) - 4-sprachige Enterprise-Plattform (519 SSG-Seiten) mit autonomer Hybrid-RAG-Engine, Generative-UI-Karten und WCAG 2.2 AA.\n' +
+      '  4. **My React Portfolio Website** - Performante SPA/PWA mit React 19, TypeScript, Tailwind CSS v4, View Transitions API und 29 Vitest-TDD-Specs.\n' +
       '- **Enterprise- & E-Commerce-Fallstudien**:\n' +
-      '  - **IT-Magic** - Unternehmensplattform für einen AWS Advanced Consulting Partner.\n' +
-      '  - **Front Desk Helpers** - B2B-Outsourcing-Plattform mit eigener Wissensdatenbank.\n' +
-      '  - **Kidzely** - Internationaler Shopify-Onlineshop mit hoher Conversion-Rate.\n\n' +
+      '  - **IT-Magic** - Unternehmensplattform für einen AWS Advanced Consulting Partner (95+ Lighthouse, individuelles PHP 8+ & Schema.org).\n' +
+      '  - **Front Desk Helpers** - B2B-Outsourcing-Plattform für US- & EU-Kunden mit Wissensdatenbank und WCAG 2.2 AA.\n' +
+      '  - **AWS Migration Services / AWS for E-Commerce / Cloud Delivery Solution** - B2B-Cloud-Architektur-Portale.\n' +
+      '  - **Kidzely / Artezio EU / Prezentify** - Internationale Multi-Währungs-Shops auf Basis von Shopify Liquid.\n\n' +
       'Entdecken Sie die interaktiven Projektkarten unten oder fragen Sie mich nach einem bestimmten Projekt!',
   },
   {
-    question: 'How do you use AI & RAG in your workflow?',
-    questionUa: 'Як ви використовуєте AI та RAG у розробці?',
-    questionEs: '¿Cómo usas la IA y RAG en tu flujo de desarrollo?',
-    questionDe: 'Wie nutzt du KI & RAG in deinem Entwicklungsworkflow?',
+    question: 'How many years of development experience do you have? / Career',
+    questionUa: 'Скільки років досвіду розробки у вас? / Кар\'єра',
+    questionEs: '¿Cuántos años de experiencia tienes? / Trayectoria',
+    questionDe: 'Wie viele Jahre Erfahrung hast du? / Karriere',
     keywords: [
-      'ai',
-      'rag',
-      'retrieval',
-      'copilot',
-      'cursor',
-      'windsurf',
-      'artificial intelligence',
-      'agents',
-      'mcp',
-      'antigravity',
-      'ии',
-      'интеллект',
-      'нейросети',
-      'sdd',
-      'spec',
-      'штучний',
-      'inteligencia artificial',
-      'ia',
-      'workflow',
-      'ki',
-      'künstliche intelligenz',
-      'kuenstliche intelligenz',
-      'arbeitsablauf',
+      'years',
+      'experience',
+      'career',
+      'work history',
+      'work experience',
+      'companies',
+      'frontdeskhelpers',
+      'agenturro',
+      'solopreneur',
+      'how long',
+      'опыт',
+      'карьера',
+      'лет',
+      'разработке',
+      'досвід',
+      'кар\'єра',
+      'років',
+      'anos',
+      'experiencia',
+      'trayectoria',
+      'cuantos',
+      'jahre',
+      'erfahrung',
+      'karriere',
+      'berufserfahrung',
+      'wie lange',
+      'entwicklungserfahrung',
     ],
     answer:
-      'I build custom Hybrid RAG (Retrieval-Augmented Generation) systems - including this very portfolio assistant that indexes 70 case studies with lexical and cosine scoring. In development, I integrate Claude Code, Cursor, and Google Antigravity into a strict Spec-Driven Development (SDD) + TDD pipeline, accelerating delivery by 3x with zero hallucinations.',
+      'I have **5+ years of commercial web engineering experience** (and 8+ years including early freelance & e-commerce R&D since 2016/2017), having delivered **71+ production projects**:\n\n' +
+      '- **2025 - Present | Solopreneur & Solo Product Engineer (Independent Products & AI Lab)**:\n' +
+      '  End-to-end architecture, development, and deployment of production platforms: **Fullstack AI Lab** (`fullstackailab.com` - Next.js 16, Rust MDX-RS, WASM PHP 8.4), **Unitrition** (`unitrition.info` - Headless WP, Next.js 16, Supabase RLS, USDA API), and **Next.js 16 & Hybrid RAG Portfolio Platform** (`yusupovartur.com`).\n' +
+      '- **2021 - 2026 | Fullstack Developer & Technical SEO Specialist at Frontdeskhelpers (Remote, US & Spain/EU Clients)**:\n' +
+      '  Architected and managed high-load WordPress, Wix, and e-commerce platforms in Agile/Scrum teams; led UI/UX re-engineering and **WCAG 2.2 AA / EAA 2026 & US ADA** compliance; optimized **Core Web Vitals** (`LCP < 2.5s`, `INP < 200ms`, 95+ Lighthouse); integrated **Spec-Driven AI workflows** (Google Antigravity, Claude Code, Cursor) to increase feature velocity by **35%**.\n' +
+      '- **2020 - 2021 | Frontend Developer at Agenturro (Part-Time Remote)**:\n' +
+      '  Translated complex Figma and Adobe XD prototypes into pixel-perfect responsive interfaces, optimized custom WordPress and Shopify checkouts, and implemented `JSON-LD` (`FAQPage`, `Product`, `Article`) schemas.\n' +
+      '- **2016 - 2024 | Web Developer, E-Commerce & Technical SEO/GEO Consultant (Upwork & Freelancehunt)**:\n' +
+      '  Delivered **50+ end-to-end web applications**, engineered custom OOP PHP 8.x Gutenberg themes/plugins from scratch (WPCS compliant), launched Shopify dropshipping/POD & Etsy stores, and configured Redis caching, Cloudflare Workers, and GEO strategies.',
     answerUa:
-      'Я створюю кастомні системи Hybrid RAG (Retrieval-Augmented Generation) - включно з цим самим асистентом портфоліо, який індексує 70 кейсів із лексичним та косинусним скорингом. У розробці я інтегрую Claude Code, Cursor та Google Antigravity у строгий процес Spec-Driven Development (SDD) + TDD, що прискорює розробку в 3 рази без галюцинацій.',
+      'Маю **понад 5 років комерційного досвіду у веб-інженерії** (та 8+ років із урахуванням фрілансу та e-commerce R&D з 2016/2017 року) та **71+ реалізований продакшн-проєкт**:\n\n' +
+      '- **2025 - дотепер | Solopreneur & Solo Product Engineer (Independent Products & AI Lab)**:\n' +
+      '  Повний цикл архітектури, розробки та запуску власних продуктових платформ: **Fullstack AI Lab** (`fullstackailab.com` - Next.js 16, Rust MDX-RS, WASM PHP 8.4), **Unitrition** (`unitrition.info` - Headless WP, Next.js 16, Supabase RLS, USDA API) та **Next.js 16 & Hybrid RAG Portfolio Platform** (`yusupovartur.com`).\n' +
+      '- **2021 - 2026 | Fullstack Developer & Technical SEO Specialist у Frontdeskhelpers (Remote, клієнти зі США та Іспанії/ЄС)**:\n' +
+      '  Проєктування та підтримка високонавантажених платформ WordPress, Wix та e-commerce у Scrum-командах; реінжиніринг UI/UX та аудит доступності **WCAG 2.2 AA / EAA 2026 і US ADA**; оптимізація **Core Web Vitals** (`LCP < 2.5s`, `INP < 200ms`, 95+ Lighthouse); інтеграція **SDD + AI-процесів** (Google Antigravity, Claude Code, Cursor), що підвищила швидкість розробки фіч на **35%**.\n' +
+      '- **2020 - 2021 | Frontend Developer в Agenturro (Part-Time Remote)**:\n' +
+      '  Верстка складних макетів Figma та Adobe XD у pixel-perfect адаптивні інтерфейси, оптимізація чекаутів Shopify і WordPress, впровадження мікророзмітки `JSON-LD` (`FAQPage`, `Product`, `Article`).\n' +
+      '- **2016 - 2024 | Web Developer, E-Commerce & Technical SEO/GEO Consultant (Upwork & Freelancehunt)**:\n' +
+      '  Успішно реалізував **50+ веб-проєктів під ключ**, розробляв кастомні Gutenberg-теми та плагіни на OOP PHP 8.x (за стандартами WPCS), розвивав власні магазини на Shopify (dropshipping/POD) та Etsy, налаштовував Redis, Cloudflare Workers і стратегії GEO.',
     answerEs:
-      'Desarrollo sistemas Hybrid RAG (Retrieval-Augmented Generation) personalizados, incluido este mismo asistente de portfolio que indexa 70 casos de estudio mediante puntuación léxica y similitud de coseno. En el desarrollo, integro Claude Code, Cursor y Google Antigravity bajo una metodología Spec-Driven Development (SDD) + TDD que acelera la entrega 3 veces sin alucinaciones.',
+      'Cuento con **más de 5 años de experiencia comercial en ingeniería web** (y más de 8 años incluyendo proyectos freelance e I+D en e-commerce desde 2016/2017), con **71+ proyectos entregados en producción**:\n\n' +
+      '- **2025 - Presente | Solopreneur & Solo Product Engineer (Independent Products & AI Lab)**:\n' +
+      '  Arquitectura, desarrollo y despliegue integral de productos propios: **Fullstack AI Lab** (`fullstackailab.com` - Next.js 16, Rust MDX-RS, WASM PHP 8.4), **Unitrition** (`unitrition.info` - Headless WP, Next.js 16, Supabase RLS, API USDA) y **Next.js 16 & Hybrid RAG Portfolio Platform** (`yusupovartur.com`).\n' +
+      '- **2021 - 2026 | Fullstack Developer & Technical SEO Specialist en Frontdeskhelpers (Remoto, Clientes de EE. UU. y España/UE)**:\n' +
+      '  Arquitectura y gestión de plataformas WordPress, Wix y e-commerce de alto tráfico en equipos Agile/Scrum; cumplimiento de accesibilidad **WCAG 2.2 AA / EAA 2026 y US ADA**; optimización de **Core Web Vitals** (`LCP < 2.5s`, `INP < 200ms`, 95+ Lighthouse); integración de flujos **SDD con IA** (Google Antigravity, Claude Code, Cursor) aumentando la velocidad de entrega un **35%**.\n' +
+      '- **2020 - 2021 | Frontend Developer en Agenturro (Remoto Parcial)**:\n' +
+      '  Conversión de prototipos complejos de Figma y Adobe XD en interfaces responsivas pixel-perfect, optimización de checkouts en Shopify y WordPress e implementación de esquemas `JSON-LD` (`FAQPage`, `Product`, `Article`).\n' +
+      '- **2016 - 2024 | Web Developer, E-Commerce & Technical SEO/GEO Consultant (Upwork y Freelancehunt)**:\n' +
+      '  Entrega de **más de 50 aplicaciones web de extremo a extremo**, desarrollo de temas y plugins Gutenberg a medida con OOP PHP 8.x (WPCS), tiendas propias en Shopify (dropshipping/POD) y Etsy, caché Redis, Cloudflare Workers y estrategias GEO.',
     answerDe:
-      'Ich entwickle maßgeschneiderte Hybrid-RAG-Systeme (Retrieval-Augmented Generation) - einschließlich dieses Portfolio-Assistenten, der über 70 Fallstudien mit lexikalischem und Kosinus-Scoring indexiert. In der Entwicklung kombiniere ich Claude Code, Cursor und Google Antigravity in einer strikten Spec-Driven-Development- (SDD) und TDD-Pipeline, was die Umsetzung ohne Halluzinationen verdreifacht.',
+      'Ich verfüge über **mehr als 5 Jahre kommerzielle Berufserfahrung im Web-Engineering** (bzw. 8+ Jahre inklusive Freelance- & E-Commerce-R&D seit 2016/2017) und habe **71+ Produktionsprojekte** umgesetzt:\n\n' +
+      '- **2025 - Heute | Solopreneur & Solo Product Engineer (Independent Products & AI Lab)**:\n' +
+      '  End-to-End-Architektur, Entwicklung und Betrieb eigener Plattformen: **Fullstack AI Lab** (`fullstackailab.com` - Next.js 16, Rust MDX-RS, WASM PHP 8.4), **Unitrition** (`unitrition.info` - Headless WP, Next.js 16, Supabase RLS, USDA API) und **Next.js 16 & Hybrid RAG Portfolio Platform** (`yusupovartur.com`).\n' +
+      '- **2021 - 2026 | Fullstack Developer & Technical SEO Specialist bei Frontdeskhelpers (Remote, US- & Spanien/EU-Kunden)**:\n' +
+      '  Architektur und Betreuung performanter WordPress-, Wix- und E-Commerce-Plattformen in Agile/Scrum-Teams; Umsetzung von **WCAG 2.2 AA / EAA 2026 & US ADA** Barrierefreiheit; **Core Web Vitals**-Optimierung (`LCP < 2.5s`, `INP < 200ms`, 95+ Lighthouse); Einführung von **Spec-Driven AI Workflows** (Google Antigravity, Claude Code, Cursor) mit **+35% Feature-Velocity**.\n' +
+      '- **2020 - 2021 | Frontend Developer bei Agenturro (Part-Time Remote)**:\n' +
+      '  Umsetzung komplexer Figma- und Adobe-XD-Designs in pixelgenaue, barrierefreie Interfaces, Checkout-Optimierung für Shopify & WordPress sowie strukturierte `JSON-LD`-Daten (`FAQPage`, `Product`, `Article`).\n' +
+      '- **2016 - 2024 | Web Developer, E-Commerce & Technical SEO/GEO Consultant (Upwork & Freelancehunt)**:\n' +
+      '  Über **50 End-to-End-Webprojekte**, individuelle Gutenberg-Themes und Plugins in OOP PHP 8.x (WPCS-konform), eigene Shopify- (Dropshipping/POD) und Etsy-Stores sowie Redis-Caching, Cloudflare Workers und GEO-Strategien.',
   },
   {
     question: 'What services do you offer? / Can I hire you?',
@@ -310,6 +510,8 @@ export const FAQ: FaqItem[] = [
       'freelance',
       'contract',
       'collaboration',
+      'white-label',
+      'marca blanca',
       'услуги',
       'нанять',
       'цена',
@@ -331,23 +533,54 @@ export const FAQ: FaqItem[] = [
       'zusammenarbeit',
     ],
     answer:
-      'I am fully open to remote full-time, part-time, or contract roles. My services include custom React/Next.js 16 app engineering, custom WordPress architecture from scratch, custom RAG AI chatbot development grounded in business data, and Core Web Vitals optimization.',
+      'I am fully open to remote full-time, part-time, B2B contract roles, and White-Label agency partnerships under strict NDA. My services include:\n\n' +
+      '1. **Custom React 19 & Next.js 16 Full-Stack Engineering**: High-speed SaaS applications, corporate portals, and PWAs with Server Components, TypeScript, and Supabase.\n' +
+      '2. **Headless WordPress & Monolith Migrations to Next.js 16**: Zero-downtime transitions preserving 100% SEO rankings with HMAC-SHA256 webhook `revalidateTag` (<50ms edge TTFB).\n' +
+      '3. **Enterprise Custom WordPress & WooCommerce Architecture**: Bespoke OOP PHP 8.x themes/plugins from scratch (WPCS compliant), custom React Gutenberg blocks, and WooCommerce HPOS + Redis tuning.\n' +
+      '4. **Custom Autonomous RAG AI Assistants & Generative UI**: 24/7 AI business assistants grounded in your documentation and catalog with interactive tool cards and zero hallucinations.\n' +
+      '5. **Core Web Vitals (95+ Lighthouse), Technical SEO/GEO & EAA 2026 / WCAG 2.2 AA Audits**: Sub-second speed tuning, `llms.txt` / JSON-LD `@graph` schemas, Server-Side Tracking (`sGTM`), and accessibility compliance.\n\n' +
+      'Use the contact card below to reach out directly via Email, WhatsApp, Telegram, or LinkedIn, or download my CV!',
     answerUa:
-      'Я відкритий до дистанційної роботи (Full-time, Part-time або контракт). Мої послуги включають розробку додатків на React/Next.js 16, кастомну архітектуру WordPress з нуля, створення RAG AI-чатботів на базі даних вашого бізнесу та оптимізацію Core Web Vitals.',
+      'Я повністю відкритий до дистанційної роботи (Full-time, Part-time, B2B-контракт) та White-Label партнерства для digital-агенцій під суворим NDA. Мої послуги включають:\n\n' +
+      '1. **Кастомна розробка на React 19 та Next.js 16**: Надшвидкі SaaS-платформи, корпоративні портали та PWA на Server Components, TypeScript і Supabase.\n' +
+      '2. **Headless WordPress та міграція монолітів на Next.js 16**: Безшовний перехід зі 100% збереженням SEO-позицій та миттєвою інвалідацією кешу через HMAC-SHA256 вебхуки (`revalidateTag`).\n' +
+      '3. **Enterprise-архітектура WordPress та WooCommerce з нуля**: Чисті кастомні теми й плагіни на OOP PHP 8.x (WPCS), кастомні React Gutenberg-блоки та оптимізація WooCommerce HPOS + Redis.\n' +
+      '4. **Автономні RAG AI-асистенти та Generative UI**: Інтелектуальні бізнес-асистенти 24/7 на базі даних вашої компанії з інтерактивними картками (калькулятори, порівняння, лід-форми) без галюцинацій.\n' +
+      '5. **Оптимізація Core Web Vitals (95+ Lighthouse), технічне SEO/GEO та аудит EAA 2026 / WCAG 2.2 AA**: Прискорення до субсекундних показників, `llms.txt` і графи JSON-LD для AI-пошуку, `sGTM` та відповідність європейським стандартам доступності.\n\n' +
+      'Скористайтеся карткою контактів нижче для прямого зв\'язку в Email, WhatsApp, Telegram чи LinkedIn або завантажте моє резюме (CV)!',
     answerEs:
-      'Estoy completamente abierto a roles remotos a tiempo completo, parcial o por contrato. Mis servicios incluyen ingeniería de aplicaciones React/Next.js 16 personalizadas, arquitectura WordPress desde cero, desarrollo de asistentes IA con RAG basados en datos de negocio y optimización de Core Web Vitals.',
+      'Estoy completamente abierto a roles remotos (tiempo completo, parcial, contrato B2B) y colaboraciones Marca Blanca (White-Label) para agencias bajo estricto NDA. Mis servicios incluyen:\n\n' +
+      '1. **Ingeniería Full-Stack en React 19 y Next.js 16**: Aplicaciones SaaS, portales corporativos y PWAs ultrarrápidas con Server Components, TypeScript y Supabase.\n' +
+      '2. **Headless WordPress y Migración de Monolitos a Next.js 16**: Transiciones sin tiempo de inactividad conservando el 100% del SEO con webhooks HMAC-SHA256 (`revalidateTag`).\n' +
+      '3. **Arquitectura WordPress y WooCommerce a Medida**: Temas y plugins desde cero en OOP PHP 8.x (WPCS), bloques Gutenberg en React y optimización WooCommerce HPOS + Redis.\n' +
+      '4. **Asistentes IA con Hybrid RAG y Generative UI**: Asistentes virtuales 24/7 conectados a los datos de tu negocio con tarjetas interactivas y cero alucinaciones.\n' +
+      '5. **Optimización Core Web Vitals (95+ Lighthouse), SEO/GEO y Auditoría EAA 2026 / WCAG 2.2 AA**: Velocidad subsegundo, `llms.txt` y grafos JSON-LD para buscadores IA, Server-Side Tracking (`sGTM`) y accesibilidad europea.\n\n' +
+      '¡Utiliza la tarjeta de contacto a continuación para escribirme por Email, WhatsApp, Telegram o LinkedIn, o descargar mi CV!',
     answerDe:
-      'Ich stehe vollständig für Remote-Einsätze (Vollzeit, Teilzeit oder auf Projektbasis) zur Verfügung. Meine Leistungen umfassen individuelles React/Next.js-16-Engineering, maßgeschneiderte WordPress-Architektur von Grund auf, KI-Assistenten mit RAG auf Unternehmensdatenbasis sowie Core-Web-Vitals-Optimierung.',
+      'Ich stehe vollständig für Remote-Positionen (Vollzeit, Teilzeit, B2B-Projektvertrag) sowie White-Label-Partnerschaften für Agenturen unter strikter NDA zur Verfügung. Meine Leistungen umfassen:\n\n' +
+      '1. **Individuelles React 19 & Next.js 16 Full-Stack-Engineering**: Hochperformante SaaS-Plattformen, Unternehmensportale und PWAs mit Server Components, TypeScript und Supabase.\n' +
+      '2. **Headless WordPress & Monolith-Migrationen auf Next.js 16**: Zero-Downtime-Migrationen bei 100% SEO-Erhalt und HMAC-SHA256-Webhook-Invalidierung (`revalidateTag`).\n' +
+      '3. **Enterprise WordPress- & WooCommerce-Architektur**: Maßgeschneiderte OOP PHP 8.x Themes/Plugins von Grund auf (WPCS), eigene React-Gutenberg-Blöcke und WooCommerce HPOS + Redis-Tuning.\n' +
+      '4. **Autonome Hybrid-RAG-KI-Assistenten & Generative UI**: 24/7 KI-Berater auf Basis Ihrer Unternehmensdaten mit interaktiven Tool-Karten und null Halluzinationen.\n' +
+      '5. **Core Web Vitals (95+ Lighthouse), Technical SEO/GEO & EAA 2026 / WCAG 2.2 AA Audits**: Sub-Sekunden-Ladezeiten, `llms.txt` & JSON-LD `@graph` für KI-Suchmaschinen, Server-Side Tracking (`sGTM`) und Barrierefreiheit.\n\n' +
+      'Nutzen Sie die Kontaktkarte unten für den direkten Kontakt per E-Mail, WhatsApp, Telegram oder LinkedIn oder laden Sie meinen Lebenslauf (CV) herunter!',
   },
   {
-    question: 'Can you describe your experience with SEO?',
-    questionUa: 'Який у вас досвід у SEO?',
-    questionEs: '¿Puedes describir tu experiencia con SEO?',
-    questionDe: 'Kannst du deine Erfahrung im Bereich SEO beschreiben?',
+    question: 'Can you describe your experience with Technical SEO & GEO?',
+    questionUa: 'Який у вас досвід у технічному SEO та GEO?',
+    questionEs: '¿Cuál es tu experiencia en SEO Técnico y GEO?',
+    questionDe: 'Welche Erfahrung hast du mit Technical SEO & GEO?',
     keywords: [
       'seo',
+      'geo',
+      'generative engine optimization',
+      'llms.txt',
+      'sgtm',
+      'json-ld',
+      'core web vitals',
       'pagespeed',
       'сео',
+      'гео',
       'оптимизация',
       'поиск',
       'пошук',
@@ -357,33 +590,58 @@ export const FAQ: FaqItem[] = [
       'suchmaschinenoptimierung',
       'optimierung',
       'ladezeit',
-      'barrierefreiheit',
     ],
     answer:
-      'I specialize in technical SEO, including Core Web Vitals, site speed tuning, semantic HTML, structured data schema, and mobile-first accessibility. This helps client websites achieve higher Google rankings and better organic conversion rates.',
+      'I combine deep **Technical SEO** with **Generative Engine Optimization (GEO)** so web platforms rank at the top of both traditional Google SERPs and AI search engines (**ChatGPT Search, Claude, Google AI Overviews, Perplexity, Bing Deep Search**):\n\n' +
+      '- **Generative Engine Optimization (GEO)**: Structuring pages using the **"Inverted Pyramid"** format and high **"Fact Density"**, alongside dedicated **`llms.txt`, `robots.txt`, and `AI.json`** crawler endpoints so LLMs cite your brand accurately.\n' +
+      '- **Programmatic SEO (pSEO) & Linked Schema.org `@graph`**: Engineering interconnected JSON-LD entity graphs (`Person`, `WebSite`, `TechArticle`, `SoftwareSourceCode`, `Product`, `Service`, `FAQPage`, `BreadcrumbList`) across 519+ static SSG routes to capture rich snippets and maximize organic CTR.\n' +
+      '- **Sub-Second Core Web Vitals (95-100 Lighthouse)**: Optimizing `LCP < 1.2s - 2.5s`, `INP < 50ms - 200ms`, and `CLS < 0.02` via WebP/AVIF pipelines, code splitting, Redis Object Cache, and Edge CDN delivery.\n' +
+      '- **Privacy-First Analytics & Server-Side Tracking (`sGTM`)**: Deploying Server-Side Google Tag Manager (`sGTM`) and GDPR-compliant Consent Mode v2 Basic cookieless telemetry.\n' +
+      '- **Semantic Accessibility (`WCAG 2.2 AA / EAA 2026`)**: Enforcing clean HTML5 landmark hierarchy and ARIA semantics that boost both screen reader usability and search crawler indexing.',
     answerUa:
-      'Я спеціалізуюся на технічному SEO: оптимізація Core Web Vitals, прискорення завантаження, семантичний HTML, мікророзмітка Schema та адаптивність mobile-first. Це допомагає сайтам клієнтів займати вищі позиції у Google.',
+      'Я поєдную глибоке **технічне SEO** із **Generative Engine Optimization (GEO)**, щоб платформи займали топові позиції як у класичній видачі Google, так і у відповідях AI-пошуковиків (**ChatGPT Search, Claude, Google AI Overviews, Perplexity, Bing Deep Search**):\n\n' +
+      '- **Generative Engine Optimization (GEO)**: Структурування контенту за принципом **"Перевернутої піраміди"** та високої **"Щільності фактів" (Fact Density)**, налаштування **`llms.txt`, `robots.txt` та `AI.json`** для точного цитування бренду нейромережами.\n' +
+      '- **Програмне SEO (pSEO) та зв\'язані графи Schema.org `@graph`**: Генерація взаємопов\'язаних JSON-LD сутностей (`Person`, `WebSite`, `TechArticle`, `SoftwareSourceCode`, `Product`, `Service`, `FAQPage`, `BreadcrumbList`) на 519+ статичних SSG-сторінках для розширених сніпетів і високого CTR.\n' +
+      '- **Субсекундні Core Web Vitals (95-100 Lighthouse)**: Оптимізація `LCP < 1.2s - 2.5s`, `INP < 50ms - 200ms` та `CLS < 0.02` завдяки пайплайнам WebP/AVIF, code splitting, Redis Object Cache та Edge CDN.\n' +
+      '- **Server-Side Tracking (`sGTM`) та приватність**: Налаштування серверного Google Tag Manager (`sGTM`) і GDPR Consent Mode v2 Basic без втрати аналітики.\n' +
+      '- **Семантична доступність (`WCAG 2.2 AA / EAA 2026`)**: Чиста ієрархія HTML5-орієнтирів та ARIA-атрибутів, що одночасно покращує індексацію пошуковими роботами.',
     answerEs:
-      'Me especializo en SEO técnico, incluyendo Core Web Vitals, optimización de velocidad, HTML semántico, esquemas de datos estructurados y accesibilidad mobile-first. Esto ayuda a los sitios web a lograr mejores posiciones en Google y mayores tasas de conversión.',
+      'Combino **SEO Técnico avanzado** con **Generative Engine Optimization (GEO)** para posicionar plataformas tanto en Google tradicional como en motores de respuesta de IA (**ChatGPT Search, Claude, Google AI Overviews, Perplexity, Bing Deep Search**):\n\n' +
+      '- **Generative Engine Optimization (GEO)**: Estructuración de contenido bajo el formato de **"Pirámide Invertida"** y alta **"Densidad de Datos" (Fact Density)**, junto con endpoints **`llms.txt`, `robots.txt` y `AI.json`** para asegurar citaciones orgánicas en LLMs.\n' +
+      '- **SEO Programático (pSEO) y Grafos Schema.org `@graph`**: Implementación de grafos JSON-LD interconectados (`Person`, `WebSite`, `TechArticle`, `SoftwareSourceCode`, `Product`, `Service`, `FAQPage`, `BreadcrumbList`) en más de 519 rutas SSG para fragmentos enriquecidos y mayor CTR.\n' +
+      '- **Core Web Vitals Subsegundo (95-100 Lighthouse)**: Optimización de `LCP < 1.2s - 2.5s`, `INP < 50ms - 200ms` y `CLS < 0.02` mediante imágenes WebP/AVIF, división de código, Redis Object Cache y entrega en el Edge.\n' +
+      '- **Analítica Privada y Server-Side Tracking (`sGTM`)**: Despliegue de Google Tag Manager en servidor (`sGTM`) y telemetría sin cookies compatible con GDPR Consent Mode v2.\n' +
+      '- **Accesibilidad Semántica (`WCAG 2.2 AA / EAA 2026`)**: Jerarquía HTML5 limpia y navegación accesible que refuerzan la lectura de los rastreadores.',
     answerDe:
-      'Ich bin auf technisches SEO spezialisiert - einschließlich Core Web Vitals, Ladezeit-Optimierung, semantischem HTML, strukturierten Schema.org-Daten und Mobile-First-Barrierefreiheit. Das sorgt für bessere Google-Rankings und höhere organische Conversion-Rates.',
+      'Ich verbinde tiefgehendes **Technical SEO** mit **Generative Engine Optimization (GEO)**, damit Plattformen sowohl in klassischen Google-SERPs als auch in KI-Suchmaschinen (**ChatGPT Search, Claude, Google AI Overviews, Perplexity, Bing Deep Search**) ganz oben ranken:\n\n' +
+      '- **Generative Engine Optimization (GEO)**: Strukturierung nach dem **"Inverted Pyramid"**-Prinzip mit hoher **"Fact Density"** sowie Konfiguration von **`llms.txt`, `robots.txt` und `AI.json`** für präzise Marken-Zitationen in LLMs.\n' +
+      '- **Programmatic SEO (pSEO) & verknüpfte Schema.org `@graph`-Daten**: Aufbau vernetzter JSON-LD-Graphen (`Person`, `WebSite`, `TechArticle`, `SoftwareSourceCode`, `Product`, `Service`, `FAQPage`, `BreadcrumbList`) über 519+ statische SSG-Routen für Rich Snippets und hohe organische CTR.\n' +
+      '- **Sub-Sekunden Core Web Vitals (95-100 Lighthouse)**: Optimierung auf `LCP < 1.2s - 2.5s`, `INP < 50ms - 200ms` und `CLS < 0.02` durch WebP/AVIF-Pipelines, Code-Splitting, Redis Object Cache und Edge-CDN.\n' +
+      '- **Datenschutzkonformes Server-Side Tracking (`sGTM`)**: Einsatz von Server-Side Google Tag Manager (`sGTM`) und DSGVO-konformem Consent Mode v2 Basic.\n' +
+      '- **Semantische Barrierefreiheit (`WCAG 2.2 AA / EAA 2026`)**: Saubere HTML5-Landmarks und ARIA-Strukturen als Ranking- und Usability-Multiplikator.',
   },
   {
-    question: 'Where are you located?',
-    questionUa: 'Де ви знаходитесь?',
-    questionEs: '¿Dónde estás ubicado?',
-    questionDe: 'Wo ist dein Standort?',
+    question: 'Where are you located & what work formats do you support?',
+    questionUa: 'Де ви знаходитесь та які формати роботи підтримуєте?',
+    questionEs: '¿Dónde estás ubicado y qué modalidades de trabajo aceptas?',
+    questionDe: 'Wo ist dein Standort und welche Arbeitsmodelle unterstützt du?',
     keywords: [
       'location',
       'located',
       'where',
       'based',
       'seville',
+      'timezone',
+      'remote',
+      'relocation',
+      'hybrid',
       'где',
       'находишься',
       'локация',
       'испания',
+      'севилья',
       'де',
+      'знаходитесь',
       'ubicacion',
       'sevilla',
       'espana',
@@ -394,63 +652,133 @@ export const FAQ: FaqItem[] = [
       'sitz',
     ],
     answer:
-      'I am currently based in Seville, Spain, but I work remotely and collaborate seamlessly with international clients and teams across different time zones.',
+      'I am based in **Seville, Spain (EU, CET/CEST timezone)** and support flexible international collaboration:\n\n' +
+      '- **Work Formats**: **100% Remote** (Full-Time, Part-Time, B2B Contract, or White-Label agency partner under NDA), **Hybrid**, or **Relocation**.\n' +
+      '- **Time Zone Alignment**: Seamless daily overlap with **European (EU/UK)** business hours and **US East/West Coast** Agile/Scrum teams.\n' +
+      '- **EU Regulatory Readiness**: Native familiarity with European digital standards, including **GDPR / Consent Mode v2** privacy compliance and the **European Accessibility Act (EAA 2026 / WCAG 2.2 AA)**.',
     answerUa:
-      'Наразі я проживаю у Севільї, Іспанія, але працюю віддалено та ефективно співпрацюю з міжнародними клієнтами у різних часових поясах.',
+      'Я проживаю в **Севільї, Іспанія (ЄС, часовий пояс CET/CEST)** і підтримую гнучкі формати міжнародної співпраці:\n\n' +
+      '- **Формати роботи**: **100% Remote** (Full-Time, Part-Time, B2B-контракт або White-Label партнерство під NDA), **гібридний формат** або **релокація**.\n' +
+      '- **Часові пояси**: Повна синхронізація з робочими годинами **Європи (ЄС / Велика Британія)** та комфортне перетинання зі Scrum-командами **США (US East / West Coast)**.\n' +
+      '- **Відповідність стандартам ЄС**: Глибока експертиза у впровадженні європейських вимог **GDPR / Consent Mode v2** та **European Accessibility Act (EAA 2026 / WCAG 2.2 AA)**.',
     answerEs:
-      'Actualmente resido en Sevilla, España, pero trabajo de forma remota y colaboro con clientes y equipos internacionales en diferentes zonas horarias.',
+      'Resido en **Sevilla, España (UE, zona horaria CET/CEST)** y ofrezco total flexibilidad para colaboraciones locales e internacionales:\n\n' +
+      '- **Modalidades de Trabajo**: **100% Remoto** (Tiempo completo, parcial, contrato B2B o socio Marca Blanca bajo NDA), **Híbrido** en Sevilla/España o **Reubicación**.\n' +
+      '- **Cobertura de Zonas Horarias**: Solapamiento completo con equipos de **España, la Unión Europea y Reino Unido**, así como sincronización fluida con equipos Agile/Scrum de **Estados Unidos**.\n' +
+      '- **Normativa Europea**: Implementación nativa de normativas europeas **RGPD / Consent Mode v2** y **Acta Europea de Accesibilidad (EAA 2026 / WCAG 2.2 AA)**.',
     answerDe:
-      'Ich habe meinen Standort aktuell in Sevilla, Spanien, arbeite jedoch remote und kooperiere nahtlos mit internationalen Kunden und Teams über verschiedene Zeitzonen hinweg.',
+      'Ich habe meinen Standort in **Sevilla, Spanien (EU, Zeitzone CET/CEST)** und unterstütze flexible internationale Arbeitsmodelle:\n\n' +
+      '- **Arbeitsformate**: **100% Remote** (Vollzeit, Teilzeit, B2B-Vertrag oder White-Label-Agenturpartner unter NDA), **Hybrid** oder **Relocation**.\n' +
+      '- **Zeitzonen-Kompatibilität**: Gleiche Zeitzone wie **DACH (Deutschland, Österreich, Schweiz)** und die gesamte EU sowie nahtlose Überschneidung mit **US-Teams**.\n' +
+      '- **EU-Compliance**: Sichere Umsetzung europäischer Standards wie **DSGVO / Consent Mode v2** und **European Accessibility Act (EAA 2026 / WCAG 2.2 AA)**.',
   },
   {
-    question: 'What is your English proficiency level?',
-    questionUa: 'Який у вас рівень англійської мови?',
-    questionEs: '¿Cuál es tu nivel de inglés?',
-    questionDe: 'Wie ist dein Englischniveau?',
+    question: 'What languages do you speak & what is your English level?',
+    questionUa: 'Якими мовами ви володієте та який рівень англійської?',
+    questionEs: '¿Qué idiomas hablas y cuál es tu nivel de inglés?',
+    questionDe: 'Welche Sprachen sprichst du und wie ist dein Englischniveau?',
     keywords: [
       'english',
+      'languages',
+      'spanish',
+      'ukrainian',
       'proficiency',
       'английский',
+      'языки',
+      'испанский',
       'англійська',
+      'мови',
+      'іспанська',
       'ingles',
+      'idiomas',
+      'espanol',
       'englisch',
+      'sprachen',
       'sprachniveau',
       'sprachkenntnisse',
     ],
     answer:
-      'My English level is Upper-Intermediate (B2). I am fully comfortable participating in video calls, writing documentation, and conducting daily technical discussions.',
+      'I communicate across **4 languages** in engineering and client environments:\n\n' +
+      '- **English - Upper-Intermediate (B2)**: Fully comfortable participating in daily Scrum standups, client video calls, architectural reviews, and authoring comprehensive technical specifications (`spec.md`, EARS, API docs).\n' +
+      '- **Spanish - Intermediate (B1)**: Active day-to-day communication while living and working in Seville, Spain.\n' +
+      '- **Ukrainian & Russian - Native / Fluent (C2)**: Full native proficiency.\n' +
+      '- **Multilingual Engineering**: This entire portfolio platform (519 static pages, 71 case studies, 47 engineering articles, and this Hybrid RAG assistant) is engineered with 100% key parity across **English, Ukrainian, Spanish, and German (EN/UA/ES/DE)**.',
     answerUa:
-      'Мій рівень англійської - Upper-Intermediate (B2). Я вільно беру участь у відеодзвінках, отримую та складаю ТЗ, веду щоденні технічні обговорення.',
+      'Я використовую **4 мови** у інженерній роботі та комунікації з клієнтами:\n\n' +
+      '- **Англійська - Upper-Intermediate (B2)**: Вільно беру участь у щоденних Scrum-мітингах, відеодзвінках із клієнтами зі США та ЄС, архітектурних рев\'ю та написанні технічної документації (`spec.md`, EARS, ТЗ).\n' +
+      '- **Іспанська - Intermediate (B1)**: Практичне спілкування у повсякденному житті та локальних проєктах у Севільї (Іспанія).\n' +
+      '- **Українська та російська - Рідні / Вільно (C2)**: Повне вільне володіння.\n' +
+      '- **Мультимовна інженерія**: Уся ця платформа-портфоліо (519 статичних сторінок, 71 кейс, 47 статей блогу та цей Hybrid RAG асистент) спроєктована зі 100% паритетом локалізації на **4 мови (EN/UA/ES/DE)**.',
     answerEs:
-      'Mi nivel de inglés es Upper-Intermediate (B2). Me siento completamente cómodo participando en videollamadas, redactando documentación y manteniendo conversaciones técnicas diarias.',
+      'Me comunico en **4 idiomas** en entornos técnicos y comerciales:\n\n' +
+      '- **Inglés - Upper-Intermediate (B2)**: Total fluidez para participar en reuniones diarias Scrum, videollamadas con clientes, revisiones de arquitectura y redacción de especificaciones técnicas (`spec.md`, EARS, documentación API).\n' +
+      '- **Español - Intermedio (B1)**: Comunicación activa residiendo y colaborando con empresas en Sevilla y España.\n' +
+      '- **Ucraniano y Ruso - Nativo / Fluido (C2)**: Dominio nativo completo.\n' +
+      '- **Ingeniería Multilingüe**: Toda esta plataforma (519 páginas estáticas, 71 casos de estudio, 47 artículos técnicos y este asistente Hybrid RAG) está desarrollada en **4 idiomas completos (EN/UA/ES/DE)**.',
     answerDe:
-      'Mein Englischniveau liegt bei Upper-Intermediate (B2). Ich führe sicher Video-Calls, erstelle technische Dokumentationen und bespreche alltägliche Architekturthemen fließend auf Englisch.',
+      'Ich kommuniziere in **4 Sprachen** im Engineering- und Kundenalltag:\n\n' +
+      '- **Englisch - Upper-Intermediate (B2)**: Sichere Teilnahme an täglichen Scrum-Standups, Video-Calls mit internationalen Kunden, Architektur-Reviews sowie Erstellung technischer Spezifikationen (`spec.md`, EARS, API-Dokumentation).\n' +
+      '- **Spanisch - Mittelstufe (B1)**: Aktive Kommunikation vor Ort in Sevilla, Spanien.\n' +
+      '- **Ukrainisch & Russisch - Muttersprache (C2)**: Verhandlungssicher auf muttersprachlichem Niveau.\n' +
+      '- **Mehrsprachiges Engineering**: Diese gesamte Plattform (519 statische Seiten, 71 Fallstudien, 47 Fachartikel und dieser Hybrid-RAG-Assistent) ist mit 100% Parität in **4 Sprachen (EN/UA/ES/DE)** umgesetzt.',
   },
   {
-    question: 'What motivates you as a developer?',
-    questionUa: 'Що вас мотивує як розробника?',
-    questionEs: '¿Qué te motiva como desarrollador?',
-    questionDe: 'Was motiviert dich als Entwickler?',
+    question: 'What is your education, R&D approach & developer motivation?',
+    questionUa: 'Яка у вас освіта, підхід до R&D та що вас мотивує?',
+    questionEs: '¿Cuál es tu educación, enfoque de I+D y qué te motiva?',
+    questionDe: 'Was ist deine Ausbildung, dein R&D-Ansatz und deine Motivation?',
     keywords: [
+      'education',
+      'university',
+      'degree',
+      'vntu',
+      'study',
+      'learning',
       'motivate',
       'motivation',
       'inspire',
+      'образование',
+      'университет',
+      'диплом',
+      'обучение',
       'мотивация',
       'мотивирует',
+      'освіта',
+      'університет',
+      'навчання',
       'мотивація',
+      'educacion',
+      'universidad',
+      'formacion',
       'motivacion',
       'inspira',
+      'ausbildung',
+      'studium',
+      'universität',
+      'universitaet',
       'motiviert',
       'antreibt',
     ],
     answer:
-      'I am driven by solving complex problems, building user-friendly and fast digital experiences, and continuously learning new technologies. I love combining clean code with direct business results.',
+      'My foundation combines a **university engineering degree in Information Security** with an **AI-accelerated continuous R&D loop**:\n\n' +
+      '- **Academic Degree (`2005 - 2010`)**: **Bachelor\'s & Master\'s Degree** at **Vinnitsa National Technical University (VNTU, Ukraine)** in *Computer Systems, Web Engineering & Administrative Management in Information Security and Access Control* (systems administration, network security protocols, and infrastructure).\n' +
+      '- **AI-Accelerated Continuous R&D (`2016 - Present`)**: I use **Google NotebookLM & Gemini** to synthesize complex technical specifications, compiler documentation, and security standards. To anchor new concepts immediately, I build my own production microlearning and utility platforms - such as **Fullstack AI Lab** (1,135+ lessons compiled via Rust MDX-RS, in-browser WASM PHP 8.4) and **Unitrition**.\n' +
+      '- **Core Motivation**: I am driven by solving complex architectural bottlenecks, replacing bloated legacy setups with sub-second modern code, and combining **Spec-Driven AI engineering** with direct, measurable business growth.',
     answerUa:
-      'Мене мотивує вирішення складних задач, створення швидких та зручних цифрових продуктів і постійне вивчення нових технологій. Люблю поєднувати чистий код із реальними бізнес-результатами.',
+      'Мій фундамент поєднує **вищу інженерну освіту у сфері інформаційної безпеки** та **безперервний цикл AI-орієнтованого R&D**:\n\n' +
+      '- **Вища освіта (`2005 - 2010`)**: **Диплом бакалавра та магістра** у **Вінницькому національному технічному університеті (ВНТУ, Україна)** за спеціалізацією *Комп\'ютерні системи, веб-інженерія та адміністративний менеджмент у сфері захисту інформації з обмеженим доступом* (системне адміністрування, мережеві протоколи безпеки та інфраструктура).\n' +
+      '- **Безперервний AI R&D (`2016 - дотепер`)**: Використовую **Google NotebookLM та Gemini** для глибокого синтезу технічної документації, RFC та стандартів безпеки. Щоб закріпити нові технології на практиці, створюю власні освітні та продуктові платформи - такі як **Fullstack AI Lab** (1 135+ уроків на Rust MDX-RS, WASM PHP 8.4 у браузері) та **Unitrition**.\n' +
+      '- **Мотивація**: Мене драйвить вирішення складних архітектурних задач, заміна повільних застарілих систем на чистий субсекундний код і поєднання **Spec-Driven AI інженерії** з вимірюваним бізнес-результатом.',
     answerEs:
-      'Me impulsa resolver problemas complejos, crear experiencias digitales rápidas y amigables para el usuario, y aprender continuamente nuevas tecnologías. Me encanta combinar código limpio con resultados empresariales concretos.',
+      'Mi base combina un **título universitario de ingeniería en Seguridad de la Información** con un **bucle continuo de I+D acelerado por IA**:\n\n' +
+      '- **Formación Universitaria (`2005 - 2010`)**: **Grado y Máster** en la **Universidad Técnica Nacional de Vinnitsa (VNTU, Ucrania)** en *Sistemas Informáticos, Ingeniería Web y Gestión Administrativa en Seguridad de la Información y Control de Acceso* (administración de sistemas, protocolos de seguridad de red e infraestructura).\n' +
+      '- **I+D Continuo Acelerado por IA (`2016 - Presente`)**: Utilizo **Google NotebookLM y Gemini** para sintetizar documentación compleja y estándares técnicos, consolidando ese conocimiento mediante la creación de mis propias plataformas en producción como **Fullstack AI Lab** (1.135+ lecciones con Rust MDX-RS y WASM PHP 8.4) y **Unitrition**.\n' +
+      '- **Motivación Principal**: Me impulsa resolver cuellos de botella arquitectónicos complejos, transformar sistemas heredados lentos en aplicaciones subsegundo y unir el **desarrollo SDD con IA** con resultados empresariales medibles.',
     answerDe:
-      'Mich treibt das Lösen komplexer Probleme an, ebenso wie der Aufbau schneller, benutzerfreundlicher digitaler Produkte und das stetige Lernen neuer Technologien. Ich verbinde gerne sauberen Code mit messbarem Geschäftserfolg.',
+      'Mein Fundament verbindet ein **universitäres Ingenieurstudium in Informationssicherheit** mit einem **KI-beschleunigten R&D-Lernzyklus**:\n\n' +
+      '- **Akademischer Abschluss (`2005 - 2010`)**: **Bachelor- & Master-Abschluss** an der **Nationalen Technischen Universität Winnyzja (VNTU, Ukraine)** in *Computersystemen, Web-Engineering & Administrativem Management für Informationssicherheit und Zugriffskontrolle* (Systemadministration, Netzwerksicherheitsprotokolle und Infrastruktur).\n' +
+      '- **Kontinuierliches KI-R&D (`2016 - Heute`)**: Ich nutze **Google NotebookLM & Gemini**, um komplexe Spezifikationen und Compiler-Dokumentationen zu synthetisieren, und verankere dieses Wissen direkt in eigenen Produktionsplattformen wie **Fullstack AI Lab** (1.135+ Lektionen via Rust MDX-RS, In-Browser WASM PHP 8.4) und **Unitrition**.\n' +
+      '- **Motivation**: Mich treibt es an, komplexe Architektur-Engpässe zu lösen, träge Legacy-Systeme durch sauberen Sub-Sekunden-Code zu ersetzen und **Spec-Driven AI Engineering** mit messbarem Geschäftserfolg zu verbinden.',
   },
   {
     question: 'How do you handle Headless WordPress and Next.js 16 caching without stale data?',

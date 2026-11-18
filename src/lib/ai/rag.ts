@@ -954,6 +954,19 @@ export function isTechSpecializationQuery(query: string): boolean {
   )
 }
 
+export function isAiWorkflowOrSddQuery(query: string): boolean {
+  const lower = foldForSearch(query || '')
+  if (!lower || isStackComparisonQuery(query) || isEstimateOrCalculatorQuery(query)) {
+    return false
+  }
+  if (resolveProjectFromQuery(query)) {
+    return false
+  }
+  return /(ai tools|ai-інструменти|інструменти ші|инструменты ии|herramientas de ia|ki-tools|spec-driven|\bsdd\b|test-driven|\btdd\b|\bears\b|\bmcp\b|model context protocol|ai-harness|ai harness|claude code|antigravity|how do you use ai|ai & rag|ai та rag|ia y rag|ki & rag|ki und rag|vibe coding|red-green-refactor)/i.test(
+    lower,
+  )
+}
+
 export function isBlogArticlesQuery(query: string): boolean {
   const lower = foldForSearch(query || '')
   return /(blog|article|articles|writeup|read\s+about|статт|стат|блог|допис|дописи|articulo|articulos|artikel|blogartikel|fachartikel|beitrag|beitrage|beitraege)/i.test(
@@ -1412,6 +1425,7 @@ export function resolveTargetProject(
     isBestProjectsQuery(query) ||
     isPersonalProjectsQuery(query) ||
     isTechSpecializationQuery(query) ||
+    isAiWorkflowOrSddQuery(query) ||
     isBlogArticlesQuery(query) ||
     Boolean(resolveBlogFromQueryOrContext(query, options))
   ) {
@@ -1872,6 +1886,10 @@ export function getRagSourceLabel(
     return 'Hybrid RAG · Core Tech Stack & Flagship Products'
   }
 
+  if (isAiWorkflowOrSddQuery(query)) {
+    return 'Hybrid RAG · AI-Harness, SDD & TDD Methodology'
+  }
+
   if (isBestProjectsQuery(query)) {
     return 'Hybrid RAG · Best Flagship Projects Showcase'
   }
@@ -1946,8 +1964,20 @@ export function getRelevantProjectCards(
   const lower = foldForSearch(trimmed)
   const lang = resolveResponseLanguage(trimmed, options.locale)
 
+  if (isAiWorkflowOrSddQuery(trimmed)) {
+    const aiFlagshipSlugs = ['fullstack-ai-lab', 'yusupovartur-nextjs-portfolio']
+    const cards: ChatProjectCardItem[] = []
+    for (const slug of aiFlagshipSlugs) {
+      const entry = projectRegistry.find((p) => p.slug === slug)
+      if (entry) {
+        cards.push(toProjectCardItem(entry.slug, entry.project, lang))
+      }
+    }
+    return cards
+  }
+
   const isGeneralProfileOrServiceQuestion =
-    /(who is artur|about yourself|quien es artur|хто такий артур|wer ist artur|ueber dich|uber dich|how many years|скільки років|cuantos anos|wie viele jahre|where are you located|де ви знаходитесь|donde estas|wo ist dein standort|wo befindest|services|rates|cost|hire|послуги|ціни|precio|contratar|leistungen|dienstleistungen|preise|kosten|beauftragen|workflow|ai & rag|seo|english|englisch|motivat|motiviert)/i.test(
+    /(who is artur|about yourself|quien es artur|хто такий артур|wer ist artur|ueber dich|uber dich|how many years|скільки років|cuantos anos|wie viele jahre|where are you located|де ви знаходитесь|donde estas|wo ist dein standort|wo befindest|services|rates|cost|hire|послуги|ціни|precio|contratar|leistungen|dienstleistungen|preise|kosten|beauftragen|seo|english|englisch|motivat|motiviert)/i.test(
       lower,
     )
 
@@ -2170,6 +2200,34 @@ export function getContextualFollowUps(
       .filter((c) => !c.skip && !answeredSet.has(foldForSearch(c.text)))
       .map((c) => c.text)
       .slice(0, 3)
+  }
+
+  if (isAiWorkflowOrSddQuery(trimmed)) {
+    const aiFollowUps =
+      lang === 'ua'
+        ? [
+            'Як покроково працює ваш процес Spec-Driven (SDD) та TDD?',
+            'У яких технологіях ви спеціалізуєтесь?',
+            'Розкажи про архітектуру Fullstack AI Lab',
+          ]
+        : lang === 'es'
+          ? [
+              '¿Cómo funciona paso a paso tu proceso Spec-Driven (SDD) y TDD?',
+              '¿En qué tecnologías te especializas?',
+              'Háblame de la arquitectura de Fullstack AI Lab',
+            ]
+          : lang === 'de'
+            ? [
+                'Wie funktioniert dein Spec-Driven (SDD) & TDD-Prozess Schritt für Schritt?',
+                'Auf welche Technologien bist du spezialisiert?',
+                'Erzähl mir von der Fullstack AI Lab Architektur',
+              ]
+            : [
+                'How does your Spec-Driven (SDD) & TDD process work step by step?',
+                'What technologies do you specialize in?',
+                'Tell me about Fullstack AI Lab architecture',
+              ]
+    return aiFollowUps.filter((q) => !answeredSet.has(foldForSearch(q))).slice(0, 3)
   }
 
   if (

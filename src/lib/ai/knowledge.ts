@@ -506,22 +506,38 @@ const buildMethodologyChunks = (): KnowledgeChunk[] => [
   {
     id: 'methodology-harness',
     type: 'methodology',
-    title: 'AI-Harness, SDD, TDD, and Quality Standards',
+    title: 'AI-Harness, Spec-Driven Development (SDD), TDD, and Quality Standards',
     slug: 'methodology',
     content: stripEmDashes(
-      'Artur Yusupov adheres to the 2026 AI-Harness engineering methodology: 1. Spec-Driven Development (SDD): All features are lifecycle-managed under specs/ before coding. 2. Test-Driven Development (TDD): Strict Red-Green-Refactor discipline using Vitest and React Testing Library. 3. European Accessibility Act (EAA 2026 / WCAG 2.2 AA): Continuous axe-core scanning with zero accessibility violations. 4. DevSecOps: Strict Zero Secrets policy, Base64 contact obfuscation, opt-in Consent Mode v2 Basic for analytics, and sub-second Core Web Vitals budgets.'
+      'Artur Yusupov adheres to the 2026 AI-Harness engineering methodology across 4 phases: 1. Spec Engineering & EARS: Low-level codebase audit and translating requirements into EARS (Easy Approach to Requirements Syntax) inside specs/<feature>/ (spec.md, plan.md, tasks.md, analysis.md) before coding to prevent AI hallucinations. 2. Agentic Execution & MCP: Orchestrating Claude Code, Google Antigravity, Cursor, and Devin (Windsurf) via Model Context Protocol (MCP) and repository guardrails (constitution.md, AGENTS.md, DESIGN_SYSTEM.md, SECURITY.md) with Human-in-the-Loop review and characterization tests for legacy migrations, achieving +35% team velocity and up to 3x refactoring speed. 3. Hybrid Verification & TDD: Strict Red-Green-Refactor cycle using Vitest (230+ specs), React Testing Library, Playwright E2E + axe-core WCAG 2.2 AA / EAA 2026 compliance, tsc --noEmit (strict zero-any), ESLint/WPCS, and pnpm audit. 4. CWV Optimization, GEO & CI/CD: Sub-second Core Web Vitals (LCP < 1.2s, INP < 50ms), Generative Engine Optimization (llms.txt, AI.json, JSON-LD @graph), Server-Side Tracking (sGTM), and automated GitHub Actions / Vercel Edge deployments.'
     ),
     contentUa: stripEmDashes(
-      'Артур Юсупов дотримується інженерної методології AI-Harness 2026: 1. Spec-Driven Development (SDD): усі функції проходять життєвий цикл у specs/ перед написанням коду. 2. Test-Driven Development (TDD): сувора дисципліна Red-Green-Refactor на базі Vitest та React Testing Library. 3. European Accessibility Act (EAA 2026 / WCAG 2.2 AA): безперервне сканування axe-core із нулем порушень доступності. 4. DevSecOps: сувора політика Zero Secrets, Base64-обфускація контактів, opt-in Consent Mode v2 Basic та субсекундні бюджети Core Web Vitals.'
+      'Артур Юсупов дотримується інженерної методології AI-Harness 2026 у 4 фази: 1. Spec Engineering та EARS: аудит кодової бази та написання специфікацій у specs/<feature>/ (spec.md, plan.md, tasks.md, analysis.md) за синтаксисом EARS перед генерацією коду для усунення галюцинацій. 2. Agentic Execution та MCP: оркестрація Claude Code, Google Antigravity, Cursor та Devin (Windsurf) через Model Context Protocol (MCP) і правила воркспейсу (constitution.md, AGENTS.md, DESIGN_SYSTEM.md, SECURITY.md) із контролем Human-in-the-Loop (+35% швидкості фіч у команді та 3x прискорення рефакторингу). 3. Гібридна верифікація та TDD: цикл Red-Green-Refactor на Vitest (230+ тестів), React Testing Library, Playwright E2E + axe-core WCAG 2.2 AA / EAA 2026, tsc --noEmit (strict zero-any), ESLint/WPCS та pnpm audit. 4. Оптимізація CWV, GEO та CI/CD: субсекундні Core Web Vitals (LCP < 1.2s, INP < 50ms), GEO (llms.txt, AI.json, JSON-LD @graph), sGTM та автодеплой у GitHub Actions / Vercel Edge.'
     ),
     contentEs: stripEmDashes(
-      'Artur Yusupov aplica la metodología de ingeniería AI-Harness 2026: 1. Spec-Driven Development (SDD): cada funcionalidad se especifica bajo specs/ antes de programar. 2. Test-Driven Development (TDD): disciplina estricta Red-Green-Refactor con Vitest y React Testing Library. 3. European Accessibility Act (EAA 2026 / WCAG 2.2 AA): escaneo continuo con axe-core con cero violaciones. 4. DevSecOps: política Zero Secrets, ofuscación Base64 de contactos, Consent Mode v2 Basic opt-in y presupuestos Core Web Vitals subsegundo.'
+      'Artur Yusupov aplica la metodología de ingeniería AI-Harness 2026 en 4 fases: 1. Spec Engineering y EARS: auditoría de código y redacción de especificaciones bajo specs/<feature>/ (spec.md, plan.md, tasks.md, analysis.md) con sintaxis EARS antes de programar para evitar alucinaciones. 2. Ejecución Agéntica y MCP: orquestación de Claude Code, Google Antigravity, Cursor y Devin (Windsurf) mediante Model Context Protocol (MCP) y reglas de repositorio (constitution.md, AGENTS.md, DESIGN_SYSTEM.md, SECURITY.md) con supervisión Human-in-the-Loop (+35% de velocidad de entrega y hasta 3x en refactorización). 3. Verificación Híbrida y TDD: ciclo Red-Green-Refactor con Vitest (230+ tests), React Testing Library, Playwright E2E + axe-core WCAG 2.2 AA / EAA 2026, tsc --noEmit (zero-any), ESLint/WPCS y pnpm audit. 4. Optimización CWV, GEO y CI/CD: Core Web Vitals subsegundo (LCP < 1.2s, INP < 50ms), GEO (llms.txt, AI.json, JSON-LD @graph), sGTM y CI/CD en GitHub Actions / Vercel Edge.'
     ),
     contentDe: stripEmDashes(
-      'Artur Yusupov folgt der AI-Harness-Engineering-Methodik 2026: 1. Spec-Driven Development (SDD): Alle Features durchlaufen vor dem Coding einen Spezifikationszyklus unter specs/. 2. Test-Driven Development (TDD): Strikte Red-Green-Refactor-Disziplin mit Vitest und React Testing Library. 3. European Accessibility Act (EAA 2026 / WCAG 2.2 AA): Kontinuierliche axe-core-Prüfungen mit null Barrierefreiheitsverstößen. 4. DevSecOps: Strikte Zero-Secrets-Richtlinie, Base64-Kontaktobfuskierung, Opt-in Consent Mode v2 Basic und Core Web Vitals Budgets unter einer Sekunde.'
+      'Artur Yusupov folgt der AI-Harness-Engineering-Methodik 2026 in 4 Phasen: 1. Spec Engineering & EARS: Low-Level-Code-Audit und Spezifikation unter specs/<feature>/ (spec.md, plan.md, tasks.md, analysis.md) im EARS-Format vor dem Coding gegen KI-Halluzinationen. 2. Agentic Execution & MCP: Orchestrierung von Claude Code, Google Antigravity, Cursor und Devin (Windsurf) über das Model Context Protocol (MCP) und Repository-Regeln (constitution.md, AGENTS.md, DESIGN_SYSTEM.md, SECURITY.md) mit Human-in-the-Loop-Kontrolle (+35% Team-Velocity und bis zu 3x schnelleres Refactoring). 3. Hybride Verifikation & TDD: Strikter Red-Green-Refactor-Zyklus mit Vitest (230+ Specs), React Testing Library, Playwright E2E + axe-core WCAG 2.2 AA / EAA 2026, tsc --noEmit (zero-any), ESLint/WPCS und pnpm audit. 4. CWV-Optimierung, GEO & CI/CD: Sub-Sekunden Core Web Vitals (LCP < 1.2s, INP < 50ms), GEO (llms.txt, AI.json, JSON-LD @graph), sGTM und GitHub Actions / Vercel Edge CI/CD.'
     ),
     metadata: {
-      keywords: ['methodology', 'sdd', 'tdd', 'vitest', 'wcag', 'eaa', 'devsecops', 'quality'],
+      keywords: [
+        'methodology',
+        'sdd',
+        'tdd',
+        'ears',
+        'mcp',
+        'claude',
+        'antigravity',
+        'cursor',
+        'vitest',
+        'playwright',
+        'wcag',
+        'eaa',
+        'devsecops',
+        'quality',
+        'ai-harness',
+      ],
     },
   },
 ]

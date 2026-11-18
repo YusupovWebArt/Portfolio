@@ -802,7 +802,7 @@ export const en: Translation = {
       maximizeWindow: 'Maximize window',
       restoreWindow: 'Restore window',
       openFullModal: 'Open in full modal',
-      showGeneralFaqs: 'Show general portfolio FAQs (8)',
+      showGeneralFaqs: 'Show general portfolio FAQs (10)',
       hideGeneralFaqs: 'Hide general portfolio FAQs',
       a11y: {
         inputLabel: 'Type your question about projects or skills',

@@ -801,7 +801,7 @@ export const de: Translation = {
       maximizeWindow: 'Fenster maximieren',
       restoreWindow: 'Fenster verkleinern',
       openFullModal: 'Im Vollbild-Modal öffnen',
-      showGeneralFaqs: 'Allgemeine Portfolio-FAQs anzeigen (8)',
+      showGeneralFaqs: 'Allgemeine Portfolio-FAQs anzeigen (10)',
       hideGeneralFaqs: 'Allgemeine Portfolio-FAQs ausblenden',
       a11y: {
         inputLabel: 'Geben Sie Ihre Frage zu Projekten oder Fähigkeiten ein',

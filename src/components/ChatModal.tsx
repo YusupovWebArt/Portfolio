@@ -1195,7 +1195,7 @@ const ChatModal = ({
 
               {(!projectContext || showGeneralFaqs) && (
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                  {FAQ.slice(0, 8).map((faq, idx) => {
+                  {FAQ.slice(0, 10).map((faq, idx) => {
                     const questionText =
                       lang === 'ua'
                         ? faq.questionUa

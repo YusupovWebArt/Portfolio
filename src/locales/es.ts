@@ -801,7 +801,7 @@ export const es: Translation = {
       maximizeWindow: 'Maximizar ventana',
       restoreWindow: 'Restaurar ventana',
       openFullModal: 'Abrir en modal completo',
-      showGeneralFaqs: 'Mostrar preguntas generales del portfolio (8)',
+      showGeneralFaqs: 'Mostrar preguntas generales del portfolio (10)',
       hideGeneralFaqs: 'Ocultar preguntas generales del portfolio',
       a11y: {
         inputLabel: 'Escribe tu pregunta sobre proyectos o habilidades',

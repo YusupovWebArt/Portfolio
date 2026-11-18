@@ -12,6 +12,7 @@ import {
   isBestProjectsQuery,
   isPersonalProjectsQuery,
   isTechSpecializationQuery,
+  isAiWorkflowOrSddQuery,
   isBlogArticlesQuery,
   synthesizeLocalRagAnswer,
   getRelevantProjectCards,
@@ -270,6 +271,52 @@ describe('Hybrid RAG Retriever Specification (TDD)', () => {
 
     const sourceLabel = getRagSourceLabel('What technologies do you specialize in?')
     expect(sourceLabel).toBe('Hybrid RAG · Core Tech Stack & Flagship Products')
+  })
+
+  it('should detect AI tools, SDD, TDD & workflow queries and return flagship AI project cards', () => {
+    expect(isAiWorkflowOrSddQuery('How do you use AI tools, SDD & RAG in your workflow?')).toBe(true)
+    expect(isAiWorkflowOrSddQuery('How does your Spec-Driven (SDD) & TDD process work step by step?')).toBe(true)
+    expect(isAiWorkflowOrSddQuery('Як ви використовуєте ШІ-інструменти, SDD та RAG у розробці?')).toBe(true)
+    expect(isAiWorkflowOrSddQuery('¿Cómo utilizas herramientas de IA, SDD y RAG en tu flujo de trabajo?')).toBe(true)
+    expect(isAiWorkflowOrSddQuery('Wie nutzt du KI-Tools, SDD & RAG in deinem Entwicklungsprozess?')).toBe(true)
+
+    const aiToolsAnswer = synthesizeLocalRagAnswer('How do you use AI tools, SDD & RAG in your workflow?', { locale: 'en' })
+    expect(aiToolsAnswer).toContain('Claude Code')
+    expect(aiToolsAnswer).toContain('Google Antigravity')
+    expect(aiToolsAnswer).toContain('Cursor')
+    expect(aiToolsAnswer).toContain('Model Context Protocol (MCP)')
+    expect(aiToolsAnswer).toContain('EARS')
+    expect(aiToolsAnswer).toContain('Red-Green-Refactor')
+    expect(aiToolsAnswer).not.toContain('\u2014')
+
+    const sddStepAnswer = synthesizeLocalRagAnswer('How does your Spec-Driven (SDD) & TDD process work step by step?', { locale: 'en' })
+    expect(sddStepAnswer).toContain('Phase 1 - Spec Engineering & EARS')
+    expect(sddStepAnswer).toContain('Phase 2 - Agentic Execution & MCP Guardrails')
+    expect(sddStepAnswer).toContain('Phase 3 - Hybrid Verification & TDD (Red-Green-Refactor)')
+    expect(sddStepAnswer).toContain('Phase 4 - CWV Optimization, GEO & CI/CD Deploy')
+    expect(sddStepAnswer).not.toContain('\u2014')
+
+    const aiCards = getRelevantProjectCards('How do you use AI tools, SDD & RAG in your workflow?', { locale: 'en' })
+    expect(aiCards.map((c) => c.slug)).toEqual(['fullstack-ai-lab', 'yusupovartur-nextjs-portfolio'])
+
+    const sourceLabel = getRagSourceLabel('How do you use AI tools, SDD & RAG in your workflow?')
+    expect(sourceLabel).toBe('Hybrid RAG · AI-Harness, SDD & TDD Methodology')
+  })
+
+  it('should return resume-grounded answers for career timeline, SEO/GEO, and education', () => {
+    const careerAnswer = synthesizeLocalRagAnswer('How many years of development experience do you have?', { locale: 'en' })
+    expect(careerAnswer).toContain('Solopreneur & Solo Product Engineer')
+    expect(careerAnswer).toContain('Frontdeskhelpers')
+    expect(careerAnswer).toContain('Agenturro')
+    expect(careerAnswer).toContain('Upwork')
+
+    const geoAnswer = synthesizeLocalRagAnswer('Can you describe your experience with Technical SEO & GEO?', { locale: 'en' })
+    expect(geoAnswer).toContain('Generative Engine Optimization (GEO)')
+    expect(geoAnswer).toContain('Inverted Pyramid')
+    expect(geoAnswer).toContain('llms.txt')
+    expect(geoAnswer).toContain('Server-Side Tracking')
+    expect(geoAnswer).toContain('sGTM')
+    expect(geoAnswer).not.toContain('\u2014')
   })
 })
 
