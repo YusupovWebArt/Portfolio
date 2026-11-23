@@ -56,15 +56,18 @@ export async function generateMetadata({
     creator: 'Artur Yusupov',
     publisher: 'Artur Yusupov',
     alternates: {
-      canonical: `/${activeLocale}`,
+      canonical: `${siteUrl}/${activeLocale}`,
       languages: {
-        en: '/en',
-        uk: '/ua',
-        es: '/es',
-        'es-ES': '/es',
-        de: '/de',
-        'de-DE': '/de',
-        'x-default': '/en',
+        en: `${siteUrl}/en`,
+        uk: `${siteUrl}/ua`,
+        es: `${siteUrl}/es`,
+        'es-ES': `${siteUrl}/es`,
+        de: `${siteUrl}/de`,
+        'de-DE': `${siteUrl}/de`,
+        'x-default': `${siteUrl}/en`,
+      },
+      types: {
+        'application/rss+xml': `${siteUrl}/feed.xml`,
       },
     },
     icons: {

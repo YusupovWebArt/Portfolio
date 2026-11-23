@@ -39,7 +39,10 @@ describe('Automated Project SEO/GEO Metadata Specification (TDD)', () => {
     expect(toAbsoluteAssetUrl('/Portfolio/images/test.webp')).toBe(
       'https://www.yusupovartur.com/images/test.webp',
     )
-    expect(toAbsoluteOgImageUrl('/Portfolio/images/blog/cover-shopify-vs-woo.svg')).toBe(
+    expect(toAbsoluteOgImageUrl('/Portfolio/images/blog/cover-shopify-vs-woocommerce.svg')).toBe(
+      'https://www.yusupovartur.com/images/blog/og/cover-shopify-vs-woocommerce.png',
+    )
+    expect(toAbsoluteOgImageUrl('/Portfolio/icon.svg')).toBe(
       'https://www.yusupovartur.com/images/blog/cover-nextjs-vs-headless-wp.png',
     )
     expect(toAbsoluteOgImageUrl('/Portfolio/images/blog/cover-autonomous-hybrid-rag.png')).toBe(

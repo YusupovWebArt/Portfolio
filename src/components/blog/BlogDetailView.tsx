@@ -568,6 +568,21 @@ export default function BlogDetailView({
                       : 'Ask AI Assistant'}
               </span>
             </button>
+            <Link
+              href={`/${locale}?chat=estimator`}
+              className="w-full sm:w-auto px-5 py-3 rounded-xl font-bold text-sm bg-purple-600 hover:bg-purple-500 text-white transition-all shadow-lg flex items-center justify-center gap-2"
+            >
+              <Sparkles className="w-4 h-4" aria-hidden="true" />
+              <span>
+                {locale === 'ua'
+                  ? 'Оцінити проєкт'
+                  : locale === 'es'
+                    ? 'Estimar proyecto'
+                    : locale === 'de'
+                      ? 'Projekt schätzen'
+                      : 'Estimate Project'}
+              </span>
+            </Link>
             {onBackToPortfolio ? (
               <button
                 type="button"

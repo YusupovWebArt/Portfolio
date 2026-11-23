@@ -78,18 +78,38 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
-        source: '/:locale(en|ua|es)/projects/wpskills',
+        source: '/',
+        destination: '/en',
+        permanent: true,
+      },
+      {
+        source: '/:locale(en|ua|es|de)/projects/wpskills',
         destination: '/:locale/projects/fullstack-ai-lab',
         permanent: true,
       },
       {
-        source: '/:locale(en|ua|es)/blog/wpskills-interactive-edtech-architecture',
+        source: '/projects/wpskills',
+        destination: '/en/projects/fullstack-ai-lab',
+        permanent: true,
+      },
+      {
+        source: '/:locale(en|ua|es|de)/blog/wpskills-interactive-edtech-architecture',
         destination: '/:locale/blog/fullstack-ai-lab-interactive-edtech-architecture',
         permanent: true,
       },
       {
-        source: '/:locale(en|ua|es)/projects/all-day-medical-care-clinic',
+        source: '/blog/wpskills-interactive-edtech-architecture',
+        destination: '/en/blog/fullstack-ai-lab-interactive-edtech-architecture',
+        permanent: true,
+      },
+      {
+        source: '/:locale(en|ua|es|de)/projects/all-day-medical-care-clinic',
         destination: '/:locale/projects/alldaymedicalcare',
+        permanent: true,
+      },
+      {
+        source: '/projects/all-day-medical-care-clinic',
+        destination: '/en/projects/alldaymedicalcare',
         permanent: true,
       },
     ]

@@ -78,15 +78,15 @@ export async function generateMetadata({
     title,
     description: localizedDesc,
     alternates: {
-      canonical: `/${locale}/projects/${slug}`,
+      canonical: `${siteUrl}/${locale}/projects/${slug}`,
       languages: {
-        en: `/en/projects/${slug}`,
-        uk: `/ua/projects/${slug}`,
-        es: `/es/projects/${slug}`,
-        'es-ES': `/es/projects/${slug}`,
-        de: `/de/projects/${slug}`,
-        'de-DE': `/de/projects/${slug}`,
-        'x-default': `/en/projects/${slug}`,
+        en: `${siteUrl}/en/projects/${slug}`,
+        uk: `${siteUrl}/ua/projects/${slug}`,
+        es: `${siteUrl}/es/projects/${slug}`,
+        'es-ES': `${siteUrl}/es/projects/${slug}`,
+        de: `${siteUrl}/de/projects/${slug}`,
+        'de-DE': `${siteUrl}/de/projects/${slug}`,
+        'x-default': `${siteUrl}/en/projects/${slug}`,
       },
     },
     openGraph: {

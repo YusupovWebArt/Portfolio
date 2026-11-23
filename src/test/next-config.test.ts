@@ -23,4 +23,21 @@ describe('Next.js 16 Configuration & Package Specification (TDD)', () => {
     expect(pkg.dependencies['@ai-sdk/openai']).toBeDefined()
     expect(pkg.dependencies.zod).toBeDefined()
   })
+
+  it('should have permanent 308 redirects for root domain and localized legacy routes', async () => {
+    const configModule = await import('../../next.config')
+    const config = configModule.default
+    const redirects = (await config.redirects?.()) ?? []
+
+    const rootRedirect = redirects.find((r) => r.source === '/')
+    expect(rootRedirect).toBeDefined()
+    expect(rootRedirect?.destination).toBe('/en')
+    expect(rootRedirect?.permanent).toBe(true)
+
+    const legacyProjectRedirect = redirects.find((r) => r.source.includes('wpskills'))
+    expect(legacyProjectRedirect).toBeDefined()
+    expect(legacyProjectRedirect?.source).toContain(':locale(en|ua|es|de)')
+    expect(legacyProjectRedirect?.destination).toBe('/:locale/projects/fullstack-ai-lab')
+    expect(legacyProjectRedirect?.permanent).toBe(true)
+  })
 })

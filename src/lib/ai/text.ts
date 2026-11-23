@@ -19,6 +19,7 @@ const SHORT_TECH_WHITELIST = new Set([
   'ci',
   'cd',
   'wp',
+  'ki',
 ])
 
 const MULTILINGUAL_STOP_WORDS = new Set([
@@ -329,6 +330,15 @@ const SYNONYM_EXPANSIONS: Record<string, string[]> = {
   zeitplan: ['timeline', 'estimate'],
   dauer: ['timeline', 'duration', 'estimate'],
   rechner: ['calculator', 'estimate'],
+  ki: ['ai', 'rag', 'llm', 'assistant'],
+  dsgvo: ['gdpr', 'privacy', 'security', 'compliance'],
+  barrierefreiheit: ['accessibility', 'wcag', 'eaa', 'a11y'],
+  geschwindigkeit: ['speed', 'performance', 'cwv', 'pagespeed'],
+  agentur: ['agency', 'whitelabel', 'partner', 'b2b'],
+  onlineshop: ['ecommerce', 'woocommerce', 'shopify', 'store'],
+  webseite: ['website', 'web', 'platform'],
+  beratung: ['advisory', 'consulting', 'audit', 'service'],
+  zusammenarbeit: ['partnership', 'agency', 'contact', 'hire'],
 }
 
 /**
@@ -437,7 +447,7 @@ export function detectLanguage(text: string): 'en' | 'ua' | 'es' | 'de' {
   }
   if (
     /[äöüß]/i.test(text) ||
-    /\b(ich|und|der|die|das|für|fur|über|uber|welche|welcher|welches|projekte|projekt|erfahrung|leistungen|preise|kosten|kontakt|warum|wann|kannst|erzähl|erzahl|zeige|hallo|guten|entwickler|webentwicklung|wochen|kostenpunkt)\b/i.test(
+    /\b(ich|und|der|die|das|für|fur|über|uber|welche|welcher|welches|projekte|projekt|erfahrung|leistungen|preise|kosten|kontakt|warum|wann|kannst|erzähl|erzahl|zeige|hallo|guten|entwickler|webentwicklung|wochen|kostenpunkt|dsgvo|barrierefreiheit|agentur|geschwindigkeit|onlineshop|webseite|beratung|zusammenarbeit)\b/i.test(
       text,
     )
   ) {

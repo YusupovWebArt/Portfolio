@@ -14,8 +14,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   for (const locale of locales) {
     sitemapEntries.push({
       url: `${baseUrl}/${locale}`,
-      lastModified: new Date('2026-11-04'),
-      changeFrequency: 'monthly',
+      lastModified: new Date('2026-11-19'),
+      changeFrequency: 'weekly',
       priority: 1.0,
       alternates: {
         languages: {
@@ -36,7 +36,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     for (const entry of entries) {
       sitemapEntries.push({
         url: `${baseUrl}/${locale}/projects/${entry.slug}`,
-        lastModified: new Date('2026-11-04'),
+        lastModified: new Date('2026-11-19'),
         changeFrequency: 'monthly',
         priority: 0.8,
         alternates: {
@@ -58,7 +58,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   for (const locale of locales) {
     sitemapEntries.push({
       url: `${baseUrl}/${locale}/blog`,
-      lastModified: new Date('2026-11-04'),
+      lastModified: new Date('2026-11-19'),
       changeFrequency: 'weekly',
       priority: 0.9,
       alternates: {
@@ -80,7 +80,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     for (const post of allBlogPosts) {
       sitemapEntries.push({
         url: `${baseUrl}/${locale}/blog/${post.slug}`,
-        lastModified: new Date(post.date || '2026-11-04'),
+        lastModified: new Date(post.date || '2026-11-19'),
         changeFrequency: 'monthly',
         priority: 0.85,
         alternates: {
@@ -104,7 +104,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   for (const locale of locales) {
     sitemapEntries.push({
       url: `${baseUrl}/${locale}/services`,
-      lastModified: new Date('2026-11-04'),
+      lastModified: new Date('2026-11-19'),
       changeFrequency: 'weekly',
       priority: 0.9,
       alternates: {
@@ -126,7 +126,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     for (const service of allServices) {
       sitemapEntries.push({
         url: `${baseUrl}/${locale}/services/${service.slug}`,
-        lastModified: new Date('2026-11-04'),
+        lastModified: new Date('2026-11-19'),
         changeFrequency: 'weekly',
         priority: 0.85,
         alternates: {
@@ -150,7 +150,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     for (const slug of legalSlugs) {
       sitemapEntries.push({
         url: `${baseUrl}/${locale}/${slug}`,
-        lastModified: new Date('2026-11-04'),
+        lastModified: new Date('2026-11-19'),
         changeFrequency: 'monthly',
         priority: 0.5,
         alternates: {

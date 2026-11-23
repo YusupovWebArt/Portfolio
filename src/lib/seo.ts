@@ -20,6 +20,12 @@ export function toAbsoluteAssetUrl(imagePath: string): string {
 
 export function toAbsoluteOgImageUrl(imagePath: string): string {
   const absoluteUrl = toAbsoluteAssetUrl(imagePath)
+  const blogSvgMatch = absoluteUrl.match(
+    /^(https?:\/\/[^/]+)\/images\/blog\/([^/?#]+)\.svg(\?.*)?$/i,
+  )
+  if (blogSvgMatch) {
+    return `${blogSvgMatch[1]}/images/blog/og/${blogSvgMatch[2]}.png`
+  }
   if (/\.svg(\?.*)?$/i.test(absoluteUrl)) {
     return `${baseUrl}/images/blog/cover-nextjs-vs-headless-wp.png`
   }
