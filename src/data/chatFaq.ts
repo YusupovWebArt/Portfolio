@@ -1510,15 +1510,24 @@ export const FAQ: FaqItem[] = [
 
 ]
 
+const SHORT_KW_REGEX_CACHE = new Map<string, RegExp>()
+
 export function matchesFaqKeyword(text: string, kw: string): boolean {
   const lower = text.toLowerCase()
   const lowerKw = kw.toLowerCase()
+  if (lower.indexOf(lowerKw) === -1) {
+    return false
+  }
   if (lowerKw.length <= 4) {
-    const escaped = lowerKw.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
-    const rx = new RegExp(`(^|[^\\p{L}\\p{N}])${escaped}([^\\p{L}\\p{N}]|$)`, 'iu')
+    let rx = SHORT_KW_REGEX_CACHE.get(lowerKw)
+    if (!rx) {
+      const escaped = lowerKw.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+      rx = new RegExp(`(^|[^\\p{L}\\p{N}])${escaped}([^\\p{L}\\p{N}]|$)`, 'iu')
+      SHORT_KW_REGEX_CACHE.set(lowerKw, rx)
+    }
     return rx.test(lower)
   }
-  return lower.includes(lowerKw)
+  return true
 }
 
 export function getBotAnswer(question: string, lang: 'en' | 'ua' | 'es' | 'de' = 'en'): string {

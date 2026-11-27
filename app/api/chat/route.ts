@@ -1,5 +1,3 @@
-import { openai } from '@ai-sdk/openai'
-import { streamText, stepCountIs } from 'ai'
 import {
   retrieveKnowledge,
   formatContextForLLM,
@@ -17,11 +15,10 @@ import {
   resolveTargetService,
 } from '../../../src/lib/ai/rag'
 import { buildSystemPrompt } from '../../../src/lib/ai/prompts'
-import { aiTools } from '../../../src/lib/ai/tools'
 import { checkRateLimit } from '../../../src/lib/ratelimit'
 import { sanitizeLlmInput } from '../../../src/lib/ai/text'
 import { projectRegistry } from '../../../src/lib/projectRegistry'
-import { getBlogPostBySlug, getBlogTitle } from '../../../src/data/blog'
+import { getBlogSummaryBySlug, getBlogSummaryTitle } from '../../../src/lib/ai/knowledge'
 
 export const dynamic = 'force-dynamic'
 
@@ -217,10 +214,10 @@ export async function POST(req: Request) {
         verifiedProjectSlug = found.slug
         verifiedProjectTitle = found.project.title
       } else {
-        const blogPost = getBlogPostBySlug(slugNormalized)
+        const blogPost = getBlogSummaryBySlug(slugNormalized)
         if (blogPost) {
           verifiedProjectSlug = blogPost.slug
-          verifiedProjectTitle = getBlogTitle(blogPost, validatedLocale)
+          verifiedProjectTitle = getBlogSummaryTitle(blogPost, validatedLocale)
         }
       }
     }
@@ -233,19 +230,7 @@ export async function POST(req: Request) {
       }
     }
 
-    // 8. Knowledge retrieval via BM25
-    const retrievedChunks = retrieveKnowledge(lastUserMessage, {
-      currentProjectSlug: verifiedProjectSlug,
-      topK: 5,
-    })
-
-    const formattedContext = formatContextForLLM(retrievedChunks, 3500, validatedLocale)
-    const system = buildSystemPrompt({
-      retrievedContext: formattedContext,
-      currentProjectTitle: verifiedProjectTitle,
-    })
-
-    // 8b. Compute Generative UI & Source metadata on the server so the browser avoids downloading the 3.3MB RAG dataset
+    // 8. Compute Generative UI & Source metadata on the server so the browser avoids downloading the RAG dataset
     const historyPrior = sanitizedHistory.slice(0, -1)
     const ragOptions = {
       projectSlug: verifiedProjectSlug,
@@ -267,10 +252,7 @@ export async function POST(req: Request) {
     let activeContext: { projectSlug: string; projectTitle: string } | undefined
     const resolvedBlog = resolveBlogFromQueryOrContext(lastUserMessage, ragOptions)
     if (resolvedBlog) {
-      const blogTitle =
-        (resolvedBlog.title as Partial<Record<'en' | 'ua' | 'es' | 'de', string>>)[
-          validatedLocale
-        ] || resolvedBlog.title.en
+      const blogTitle = getBlogSummaryTitle(resolvedBlog, validatedLocale)
       activeContext = {
         projectSlug: resolvedBlog.slug,
         projectTitle: blogTitle,
@@ -311,7 +293,24 @@ export async function POST(req: Request) {
       })
     }
 
-    // 10. Live LLM streaming via OpenAI gpt-4o-mini (Finding F: text stream response)
+    // 10. Knowledge retrieval via prebuilt BM25 index + live LLM streaming via OpenAI gpt-4o-mini
+    const retrievedChunks = retrieveKnowledge(lastUserMessage, {
+      currentProjectSlug: verifiedProjectSlug,
+      topK: 5,
+    })
+
+    const formattedContext = formatContextForLLM(retrievedChunks, 3500, validatedLocale)
+    const system = buildSystemPrompt({
+      retrievedContext: formattedContext,
+      currentProjectTitle: verifiedProjectTitle,
+    })
+
+    const [{ openai }, { streamText, stepCountIs }, { aiTools }] = await Promise.all([
+      import('@ai-sdk/openai'),
+      import('ai'),
+      import('../../../src/lib/ai/tools'),
+    ])
+
     const result = streamText({
       model: openai('gpt-4o-mini'),
       system,

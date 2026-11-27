@@ -36,6 +36,7 @@
     "generate:og": "node scripts/generate-og-image.mjs",
     "generate:blog-og": "node scripts/generate-blog-og-images.mjs",
     "generate:llms": "node scripts/generate-llms.mjs",
+    "generate:rag-index": "node scripts/generate-rag-index.mjs",
     "ping:indexnow": "node scripts/ping-indexnow.mjs",
     "verify:live": "node scripts/verify-live-deployment.mjs",
     "verify": "pnpm exec tsc --noEmit && pnpm lint && pnpm test:all && pnpm audit --prod --audit-level=high && pnpm build && pnpm check:budget",

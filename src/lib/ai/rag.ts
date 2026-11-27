@@ -1,19 +1,20 @@
 import { getServiceBySlug } from '../../data/services'
 import type { ServiceItem } from '../../data/services/types'
-import { getAllKnowledgeChunks, KnowledgeChunk } from './knowledge'
-import { projectRegistry } from '../projectRegistry'
+import {
+  getAllBlogSummaries,
+  getBlogSummaryBySlug,
+  getBlogSummaryCategoryLabel,
+  getBlogSummaryDescription,
+  getBlogSummaryReadTime,
+  getBlogSummaryTitle,
+  getBlogSummaryTldr,
+  getPrebuiltKnowledgeData,
+  type BlogPostSummary,
+  type KnowledgeChunk,
+} from './knowledge'
+import { projectRegistry, type ProjectRegistryItem } from '../projectRegistry'
 import { FAQ, getBotAnswer, matchesFaqKeyword } from '../../data/chatFaq'
 import type { Project, TechnologyItem } from '../../components/projects/project-types'
-import {
-  allBlogPosts,
-  getBlogPostBySlug,
-  getBlogTitle,
-  getBlogDescription,
-  getBlogCategoryLabel,
-  getBlogReadTime,
-  getBlogTldr,
-  type BlogPost,
-} from '../../data/blog'
 import {
   tokenize,
   expandTokens,
@@ -137,91 +138,103 @@ export function detectQueryIntent(query: string): QueryIntent {
   return 'general'
 }
 
-interface IndexedChunk {
-  chunk: KnowledgeChunk
-  docLength: number
-  termFrequencies: Map<string, number>
+const FLAGSHIP_PERSONAL_SLUGS: ReadonlySet<string> = new Set([
+  'fullstack-ai-lab',
+  'unitrition',
+  'yusupovartur-nextjs-portfolio',
+  'webart-react-portfolio',
+])
+
+const BASIC_LEARNING_SLUGS: ReadonlySet<string> = new Set([
+  'js-vanilla-simple-todolist',
+  'react-simple-todo-list',
+  'react-simple-calculator',
+  'react-simple-cost-accounting',
+  'simple-javascript-calculator',
+  'simple-javascript-date-time',
+  'simple-javascript-list-users',
+  'simple-javascript-quiz',
+  'simple-vanilla-calculator',
+])
+
+const PROJECT_BY_SLUG: ReadonlyMap<string, ProjectRegistryItem> = new Map(
+  projectRegistry.map((entry) => [entry.slug.toLowerCase(), entry]),
+)
+
+interface ProjectMatchEntry {
+  entry: ProjectRegistryItem
+  slugLower: string
+  slugCompact: string
+  titleFolded: string
+  slugParts: string[]
 }
 
-interface BM25Index {
-  indexedChunks: IndexedChunk[]
-  docFrequencies: Map<string, number>
-  totalDocs: number
-  avgDocLength: number
-}
+let cachedProjectMatchIndex: ProjectMatchEntry[] | null = null
+let cachedFaqFoldedQuestions: ReadonlySet<string> | null = null
 
-let cachedIndex: BM25Index | null = null
+const QUERY_CACHE_LIMIT = 32
+const resolveProjectCache = new Map<string, ProjectRegistryItem | undefined>()
+const resolveBlogCache = new Map<string, BlogPostSummary | undefined>()
 
-function buildBM25Index(chunks: KnowledgeChunk[]): BM25Index {
-  const indexedChunks: IndexedChunk[] = []
-  const docFrequencies = new Map<string, number>()
-  let totalLength = 0
-
-  for (const chunk of chunks) {
-    const combinedText = [
-      chunk.title,
-      chunk.content,
-      chunk.contentUa || '',
-      chunk.contentEs || '',
-      chunk.contentDe || '',
-      chunk.technologies?.join(' ') || '',
-      chunk.category || '',
-      chunk.metadata?.keywords?.join(' ') || '',
-    ].join(' ')
-
-    const tokens = tokenize(combinedText)
-    const termFrequencies = new Map<string, number>()
-    const seenInDoc = new Set<string>()
-
-    for (const token of tokens) {
-      termFrequencies.set(token, (termFrequencies.get(token) || 0) + 1)
-      if (!seenInDoc.has(token)) {
-        seenInDoc.add(token)
-        docFrequencies.set(token, (docFrequencies.get(token) || 0) + 1)
+function getProjectMatchIndex(): ProjectMatchEntry[] {
+  if (!cachedProjectMatchIndex) {
+    cachedProjectMatchIndex = projectRegistry.map((entry) => {
+      const slugLower = entry.slug.toLowerCase()
+      const slugCompact = slugLower.replace(/[^a-z0-9]/g, '')
+      const slugParts = slugLower
+        .split('-')
+        .filter((part) => part.length >= 5 && !GENERIC_QUERY_WORDS.has(part))
+      return {
+        entry,
+        slugLower,
+        slugCompact,
+        titleFolded: foldForSearch(entry.project.title),
+        slugParts,
       }
-    }
-
-    const docLength = tokens.length
-    totalLength += docLength
-
-    indexedChunks.push({
-      chunk,
-      docLength,
-      termFrequencies,
     })
   }
-
-  const totalDocs = chunks.length
-  const avgDocLength = totalDocs > 0 ? totalLength / totalDocs : 1
-
-  return {
-    indexedChunks,
-    docFrequencies,
-    totalDocs,
-    avgDocLength,
-  }
+  return cachedProjectMatchIndex
 }
 
-function getBM25Index(): BM25Index {
-  if (!cachedIndex) {
-    const chunks = getAllKnowledgeChunks()
-    cachedIndex = buildBM25Index(chunks)
+function getFaqFoldedQuestions(): ReadonlySet<string> {
+  if (!cachedFaqFoldedQuestions) {
+    const folded = new Set<string>()
+    for (const item of FAQ) {
+      folded.add(foldForSearch(item.question))
+      folded.add(foldForSearch(item.questionUa))
+      folded.add(foldForSearch(item.questionEs))
+      if (item.questionDe) folded.add(foldForSearch(item.questionDe))
+    }
+    cachedFaqFoldedQuestions = folded
   }
-  return cachedIndex
+  return cachedFaqFoldedQuestions
+}
+
+function setBoundedCache<T>(cache: Map<string, T>, key: string, value: T): void {
+  if (cache.size >= QUERY_CACHE_LIMIT) {
+    const oldestKey = cache.keys().next().value
+    if (oldestKey !== undefined) {
+      cache.delete(oldestKey)
+    }
+  }
+  cache.set(key, value)
 }
 
 /**
- * Resets BM25 index cache (useful during test teardown).
+ * Resets runtime query caches (useful during test teardown).
  */
 export function resetBM25Index(): void {
-  cachedIndex = null
+  resolveProjectCache.clear()
+  resolveBlogCache.clear()
 }
 
 /**
- * Legitimate BM25 information retrieval pipeline with:
- * - Inverse Document Frequency (IDF)
+ * Legitimate BM25 information retrieval pipeline backed by a build-time
+ * precomputed inverted index for sub-millisecond edge execution:
+ * - Precomputed Robertson-Sparck Jones IDF
  * - Document length normalization (k1=1.2, b=0.75)
- * - Multilingual query expansion across EN/UA/ES
+ * - Multilingual query expansion across EN/UA/ES/DE
+ * - Hybrid TF-IDF cosine vector similarity across query subspace
  * - Intent-gated active project context boosting
  */
 export function retrieveKnowledge(
@@ -234,7 +247,9 @@ export function retrieveKnowledge(
   }
 
   const { topK = 4, currentProjectSlug, minScore = 0.1 } = options
-  const index = getBM25Index()
+  const prebuilt = getPrebuiltKnowledgeData()
+  const { chunks, chunkSearchMeta, bm25 } = prebuilt
+  const totalDocs = bm25.totalDocs
   const intent = detectQueryIntent(trimmed)
 
   // 1. Multilingual tokenization and synonym expansion
@@ -245,18 +260,60 @@ export function retrieveKnowledge(
   const baseTokenSet = new Set(baseTokens)
   const queryTokens = expandTokens(baseTokens)
   const lowerQuery = foldForSearch(trimmed)
+  const currentProjectSlugLower = currentProjectSlug ? currentProjectSlug.toLowerCase() : ''
 
   // BM25 parameters
   const k1 = 1.2
   const b = 0.75
+  const avgDocLength = bm25.avgDocLength
+  const docLengths = bm25.docLengths
+  const defaultMissingIdf = Math.log((totalDocs - 1 + 0.5) / 1.5 + 1)
 
-  const results: RetrievalResult[] = []
+  // 2. Inverted-index BM25 + TF-IDF Cosine accumulation (O(matched postings))
+  const bm25Scores = new Float64Array(totalDocs)
+  const cosineDot = new Float64Array(totalDocs)
+  const docNormSq = new Float64Array(totalDocs)
+  const matchedReasons = new Map<number, string[]>()
+
+  let queryNormSq = 0
+
+  for (const token of queryTokens) {
+    const posting = bm25.postings[token]
+    const df = posting ? posting.length >> 1 : 1
+    const idf = posting
+      ? Math.log((totalDocs - df + 0.5) / (df + 0.5) + 1)
+      : defaultMissingIdf
+    const tokenWeight = baseTokenSet.has(token) ? 1.0 : 0.4
+    const qWeight = tokenWeight * idf
+    queryNormSq += qWeight * qWeight
+
+    if (!posting) continue
+
+    for (let p = 0; p < posting.length; p += 2) {
+      const docIdx = posting[p]
+      const tf = posting[p + 1]
+      const lengthNorm = 1 - b + b * (docLengths[docIdx] / avgDocLength)
+      bm25Scores[docIdx] += tokenWeight * idf * ((tf * (k1 + 1)) / (tf + k1 * lengthNorm))
+
+      const dWeight = (1 + Math.log(tf)) * idf
+      cosineDot[docIdx] += qWeight * dWeight
+      docNormSq[docIdx] += dWeight * dWeight
+
+      let reasons = matchedReasons.get(docIdx)
+      if (!reasons) {
+        reasons = []
+        matchedReasons.set(docIdx, reasons)
+      }
+      reasons.push(`bm25-match:${token}`)
+    }
+  }
+
+  const queryNorm = Math.sqrt(queryNormSq)
 
   // Check if query explicitly mentions the current project or other project titles
   const isQuerySpecificallyAboutCurrentProject =
-    Boolean(currentProjectSlug) &&
-    (lowerQuery.includes(currentProjectSlug!.toLowerCase()) ||
-      intent === 'project-aspect')
+    Boolean(currentProjectSlugLower) &&
+    (lowerQuery.includes(currentProjectSlugLower) || intent === 'project-aspect')
 
   // Check if query is an intent that should NOT be hijacked by active project
   const isGeneralIntentQuery =
@@ -266,72 +323,52 @@ export function retrieveKnowledge(
     intent === 'methodology' ||
     intent === 'blog'
 
-  for (const { chunk, docLength, termFrequencies } of index.indexedChunks) {
-    let score = 0
-    const matchReasons: string[] = []
+  const isBasicLearningQuery =
+    /(todo|to-do|calculator|quiz|cost accounting|date|list users)/i.test(lowerQuery)
 
-    // 2. Legitimate BM25 scoring across all query tokens (synonyms damped at 0.4x)
-    for (const token of queryTokens) {
-      const tf = termFrequencies.get(token) || 0
-      if (tf > 0) {
-        const df = index.docFrequencies.get(token) || 1
-        // Standard Robertson-Sparck Jones BM25 IDF
-        const idf = Math.log(
-          (index.totalDocs - df + 0.5) / (df + 0.5) + 1,
-        )
+  const queryPrefix11 = lowerQuery.length >= 10 ? lowerQuery.slice(0, 11) : ''
+  const lowerTitles = chunkSearchMeta.lowerTitles
+  const lowerSlugs = chunkSearchMeta.lowerSlugs
+  const lowerTechnologies = chunkSearchMeta.lowerTechnologies
 
-        const lengthNorm = 1 - b + b * (docLength / index.avgDocLength)
-        const tokenWeight = baseTokenSet.has(token) ? 1.0 : 0.4
-        const termScore =
-          tokenWeight * idf * ((tf * (k1 + 1)) / (tf + k1 * lengthNorm))
+  const results: RetrievalResult[] = []
 
-        score += termScore
-        if (!matchReasons.includes(`bm25-match:${token}`)) {
-          matchReasons.push(`bm25-match:${token}`)
-        }
-      }
-    }
+  for (let docIdx = 0; docIdx < totalDocs; docIdx++) {
+    const chunk = chunks[docIdx]
+    let score = bm25Scores[docIdx]
+    let matchReasons = matchedReasons.get(docIdx)
 
     // 2b. Hybrid TF-IDF Cosine Vector Similarity across query subspace
-    if (score > 0 && queryTokens.length > 0) {
-      const queryVec: number[] = []
-      const docVec: number[] = []
-      for (const token of queryTokens) {
-        const df = index.docFrequencies.get(token) || 1
-        const idf = Math.log((index.totalDocs - df + 0.5) / (df + 0.5) + 1)
-        const qWeight = (baseTokenSet.has(token) ? 1.0 : 0.4) * idf
-        const tf = termFrequencies.get(token) || 0
-        const dWeight = tf > 0 ? (1 + Math.log(tf)) * idf : 0
-        queryVec.push(qWeight)
-        docVec.push(dWeight)
-      }
-      const cosineScore = calculateCosineSimilarity(queryVec, docVec)
+    if (score > 0 && queryNorm > 0 && docNormSq[docIdx] > 0) {
+      const cosineScore = cosineDot[docIdx] / (queryNorm * Math.sqrt(docNormSq[docIdx]))
       if (cosineScore > 0) {
         score += cosineScore * 1.5
+        if (!matchReasons) matchReasons = []
         matchReasons.push('cosine-similarity')
       }
     }
 
     // 3. Intent-Gated Active Project Boost (resolves Finding C)
-    if (
-      currentProjectSlug &&
-      chunk.slug?.toLowerCase() === currentProjectSlug.toLowerCase()
-    ) {
+    const chunkSlugLower = lowerSlugs[docIdx]
+    if (currentProjectSlugLower && chunkSlugLower === currentProjectSlugLower) {
       if (!isGeneralIntentQuery || isQuerySpecificallyAboutCurrentProject) {
         const boost = isQuerySpecificallyAboutCurrentProject ? 6.0 : 3.0
         score += boost
+        if (!matchReasons) matchReasons = []
         matchReasons.push('active-project-context')
       }
     }
 
-    // 4. Exact Title Match & Title Token Overlap (non-empty query tokens)
-    const lowerTitle = foldForSearch(chunk.title)
-    if (lowerTitle.includes(lowerQuery) || (lowerQuery.length > 3 && lowerTitle.includes(lowerQuery))) {
+    // 4. Exact Title Match & Title Token Overlap (pre-folded titles)
+    const lowerTitle = lowerTitles[docIdx]
+    if (lowerTitle.includes(lowerQuery)) {
       score += 3.5
+      if (!matchReasons) matchReasons = []
       matchReasons.push('title-match')
     } else {
-      if (lowerQuery.length >= 10 && lowerTitle.includes(lowerQuery.slice(0, 11))) {
+      if (queryPrefix11 && lowerTitle.includes(queryPrefix11)) {
         score += 4.5
+        if (!matchReasons) matchReasons = []
         matchReasons.push('title-prefix-match')
       }
       let titleTokenHits = 0
@@ -342,76 +379,54 @@ export function retrieveKnowledge(
       }
       if (titleTokenHits >= 2) {
         score += titleTokenHits * 0.85
+        if (!matchReasons) matchReasons = []
         matchReasons.push('title-token-overlap')
       }
     }
 
-    // 5. Technology Match (capped bonus)
-    if (chunk.technologies && chunk.technologies.length > 0) {
+    // 5. Technology Match (pre-folded technologies, capped bonus)
+    const chunkLowerTechs = lowerTechnologies[docIdx]
+    if (chunkLowerTechs && chunkLowerTechs.length > 0) {
       let matchedTechCount = 0
-      for (const tech of chunk.technologies) {
-        const lowerTech = foldForSearch(tech)
+      for (let tIdx = 0; tIdx < chunkLowerTechs.length; tIdx++) {
+        const lowerTech = chunkLowerTechs[tIdx]
         if (lowerTech.length >= 2 && lowerQuery.includes(lowerTech)) {
           matchedTechCount++
           if (matchedTechCount <= 2) {
             score += 1.5
-            matchReasons.push(`tech-match:${tech}`)
+            if (!matchReasons) matchReasons = []
+            matchReasons.push(`tech-match:${chunk.technologies![tIdx]}`)
           }
         }
       }
     }
 
-    // 6. Profile Intent Match
+    // 6-9. Explicit Intent Matches
     if (chunk.type === 'profile' && intent === 'profile') {
       score += 6.0
+      if (!matchReasons) matchReasons = []
       matchReasons.push('profile-intent')
-    }
-
-    // 7. Service & Pricing Intent Match
-    if (chunk.type === 'service' && intent === 'service') {
+    } else if (chunk.type === 'service' && intent === 'service') {
       score += 6.0
+      if (!matchReasons) matchReasons = []
       matchReasons.push('service-intent')
-    }
-
-    // 8. Methodology Intent Match
-    if (chunk.type === 'methodology' && intent === 'methodology') {
+    } else if (chunk.type === 'methodology' && intent === 'methodology') {
       score += 6.0
+      if (!matchReasons) matchReasons = []
       matchReasons.push('methodology-intent')
-    }
-
-    // 9. Blog Intent Match
-    if (chunk.type === 'blog' && intent === 'blog') {
+    } else if (chunk.type === 'blog' && intent === 'blog') {
       score += 6.0
+      if (!matchReasons) matchReasons = []
       matchReasons.push('blog-intent')
     }
 
     // 10. Flagship Personal Products Authority Boost & Basic Learning Exercise Damping
     if (score > 0 && chunk.type === 'project' && chunk.slug) {
-      const flagshipPersonalSlugs = new Set([
-        'fullstack-ai-lab',
-        'unitrition',
-        'yusupovartur-nextjs-portfolio',
-        'webart-react-portfolio',
-      ])
-      const basicLearningSlugs = new Set([
-        'js-vanilla-simple-todolist',
-        'react-simple-todo-list',
-        'react-simple-calculator',
-        'react-simple-cost-accounting',
-        'simple-javascript-calculator',
-        'simple-javascript-date-time',
-        'simple-javascript-list-users',
-        'simple-javascript-quiz',
-        'simple-vanilla-calculator',
-      ])
-
-      if (flagshipPersonalSlugs.has(chunk.slug)) {
+      if (FLAGSHIP_PERSONAL_SLUGS.has(chunk.slug)) {
         score += 1.8
+        if (!matchReasons) matchReasons = []
         matchReasons.push('flagship-personal-boost')
-      } else if (
-        basicLearningSlugs.has(chunk.slug) &&
-        !/(todo|to-do|calculator|quiz|cost accounting|date|list users)/i.test(lowerQuery)
-      ) {
+      } else if (BASIC_LEARNING_SLUGS.has(chunk.slug) && !isBasicLearningQuery) {
         score *= 0.35
       }
     }
@@ -420,7 +435,7 @@ export function retrieveKnowledge(
       results.push({
         chunk,
         score: Math.round(score * 100) / 100,
-        matchReasons,
+        matchReasons: matchReasons || [],
       })
     }
   }
@@ -754,39 +769,51 @@ const GENERIC_QUERY_WORDS: ReadonlySet<string> = new Set([
  * Optimal string alignment (Damerau-Levenshtein) distance supporting
  * insertions, deletions, substitutions, and adjacent character transpositions.
  */
+const DL_SCRATCH_MAX = 64
+const dlBuf0 = new Int32Array(DL_SCRATCH_MAX)
+const dlBuf1 = new Int32Array(DL_SCRATCH_MAX)
+const dlBuf2 = new Int32Array(DL_SCRATCH_MAX)
+
 export function damerauLevenshteinDistance(a: string, b: string): number {
   const lenA = a.length
   const lenB = b.length
   if (lenA === 0) return lenB
   if (lenB === 0) return lenA
 
-  const dp: number[][] = Array.from({ length: lenA + 1 }, () =>
-    new Array<number>(lenB + 1).fill(0),
-  )
+  let prevPrev = lenB < DL_SCRATCH_MAX ? dlBuf0 : new Int32Array(lenB + 1)
+  let prev = lenB < DL_SCRATCH_MAX ? dlBuf1 : new Int32Array(lenB + 1)
+  let curr = lenB < DL_SCRATCH_MAX ? dlBuf2 : new Int32Array(lenB + 1)
 
-  for (let i = 0; i <= lenA; i++) dp[i][0] = i
-  for (let j = 0; j <= lenB; j++) dp[0][j] = j
+  for (let j = 0; j <= lenB; j++) prev[j] = j
 
   for (let i = 1; i <= lenA; i++) {
+    curr[0] = i
+    const charA = a.charCodeAt(i - 1)
+    const prevCharA = i > 1 ? a.charCodeAt(i - 2) : -1
+
     for (let j = 1; j <= lenB; j++) {
-      const cost = a[i - 1] === b[j - 1] ? 0 : 1
-      dp[i][j] = Math.min(
-        dp[i - 1][j] + 1,
-        dp[i][j - 1] + 1,
-        dp[i - 1][j - 1] + cost,
-      )
-      if (
-        i > 1 &&
-        j > 1 &&
-        a[i - 1] === b[j - 2] &&
-        a[i - 2] === b[j - 1]
-      ) {
-        dp[i][j] = Math.min(dp[i][j], dp[i - 2][j - 2] + 1)
+      const charB = b.charCodeAt(j - 1)
+      const cost = charA === charB ? 0 : 1
+      let best = prev[j] + 1
+      const ins = curr[j - 1] + 1
+      if (ins < best) best = ins
+      const sub = prev[j - 1] + cost
+      if (sub < best) best = sub
+
+      if (i > 1 && j > 1 && charA === b.charCodeAt(j - 2) && prevCharA === charB) {
+        const trans = prevPrev[j - 2] + 1
+        if (trans < best) best = trans
       }
+      curr[j] = best
     }
+
+    const tmp = prevPrev
+    prevPrev = prev
+    prev = curr
+    curr = tmp
   }
 
-  return dp[lenA][lenB]
+  return prev[lenB]
 }
 
 /**
@@ -799,28 +826,41 @@ export function resolveProjectFromQuery(
   const trimmed = query ? query.trim() : ''
   if (!trimmed) return undefined
 
-  const lower = foldForSearch(trimmed)
+  if (resolveProjectCache.has(trimmed)) {
+    return resolveProjectCache.get(trimmed)
+  }
 
-  // 1. Exact title or slug substring match
-  const exact = projectRegistry.find(
-    (p) =>
-      lower.includes(foldForSearch(p.project.title)) ||
-      (p.slug.length > 3 && lower.includes(p.slug.toLowerCase())),
-  )
-  if (exact) return exact
+  const lower = foldForSearch(trimmed)
+  const matchIndex = getProjectMatchIndex()
+
+  // 1. Exact title or slug substring match (pre-folded titles)
+  for (let i = 0; i < matchIndex.length; i++) {
+    const item = matchIndex[i]
+    if (lower.includes(item.titleFolded) || (item.slugLower.length > 3 && lower.includes(item.slugLower))) {
+      setBoundedCache(resolveProjectCache, trimmed, item.entry)
+      return item.entry
+    }
+  }
 
   // 2. Compact alphanumeric match for multi-word slugs (e.g. "itmagic" -> "it-magic")
   const tokens = lower
     .split(/[^a-z0-9]+/)
     .filter((t) => t.length >= 5 && !GENERIC_QUERY_WORDS.has(t))
 
-  if (tokens.length === 0) return undefined
+  if (tokens.length === 0) {
+    setBoundedCache(resolveProjectCache, trimmed, undefined)
+    return undefined
+  }
 
   for (const token of tokens) {
-    for (const entry of projectRegistry) {
-      const slugCompact = entry.slug.toLowerCase().replace(/[^a-z0-9]/g, '')
-      if (slugCompact.length >= 6 && (token === slugCompact || (token.length >= 7 && slugCompact.startsWith(token)))) {
-        return entry
+    for (let i = 0; i < matchIndex.length; i++) {
+      const item = matchIndex[i]
+      if (
+        item.slugCompact.length >= 6 &&
+        (token === item.slugCompact || (token.length >= 7 && item.slugCompact.startsWith(token)))
+      ) {
+        setBoundedCache(resolveProjectCache, trimmed, item.entry)
+        return item.entry
       }
     }
   }
@@ -830,28 +870,32 @@ export function resolveProjectFromQuery(
   let bestDist = Infinity
 
   for (const token of tokens) {
-    for (const entry of projectRegistry) {
-      const slugCompact = entry.slug.toLowerCase().replace(/[^a-z0-9]/g, '')
-      const candidates = [
-        slugCompact,
-        ...entry.slug
-          .toLowerCase()
-          .split('-')
-          .filter((part) => part.length >= 5 && !GENERIC_QUERY_WORDS.has(part)),
-      ]
+    const tokenLen = token.length
+    for (let i = 0; i < matchIndex.length; i++) {
+      const item = matchIndex[i]
+      if (Math.abs(tokenLen - item.slugCompact.length) <= 2) {
+        const maxAllowed = item.slugCompact.length >= 7 ? 2 : 1
+        const dist = damerauLevenshteinDistance(token, item.slugCompact)
+        if (dist <= maxAllowed && dist < bestDist) {
+          bestDist = dist
+          bestEntry = item.entry
+        }
+      }
 
-      for (const candidate of candidates) {
-        if (Math.abs(token.length - candidate.length) > 2) continue
+      for (let p = 0; p < item.slugParts.length; p++) {
+        const candidate = item.slugParts[p]
+        if (Math.abs(tokenLen - candidate.length) > 2) continue
         const maxAllowed = candidate.length >= 7 ? 2 : 1
         const dist = damerauLevenshteinDistance(token, candidate)
         if (dist <= maxAllowed && dist < bestDist) {
           bestDist = dist
-          bestEntry = entry
+          bestEntry = item.entry
         }
       }
     }
   }
 
+  setBoundedCache(resolveProjectCache, trimmed, bestEntry)
   return bestEntry
 }
 
@@ -864,9 +908,7 @@ export function inferProjectFromHistory(
   currentProjectSlug?: string,
 ): { slug: string; project: Project } | undefined {
   if (currentProjectSlug) {
-    const found = projectRegistry.find(
-      (p) => p.slug.toLowerCase() === currentProjectSlug.toLowerCase(),
-    )
+    const found = PROJECT_BY_SLUG.get(currentProjectSlug.toLowerCase())
     if (found) return found
   }
 
@@ -1029,9 +1071,20 @@ export function resolveResponseLanguage(
 export function resolveBlogFromQueryOrContext(
   query: string,
   options: LocalSynthesisOptions = {},
-): BlogPost | undefined {
+): BlogPostSummary | undefined {
   const trimmed = query ? query.trim() : ''
+  const cacheKey = `${trimmed}|${options.projectSlug || ''}|${options.projectTitle || ''}|${options.locale || ''}`
+  if (resolveBlogCache.has(cacheKey)) {
+    return resolveBlogCache.get(cacheKey)
+  }
+
   const lower = foldForSearch(trimmed)
+  const blogSummaries = getAllBlogSummaries()
+
+  const finish = (result: BlogPostSummary | undefined): BlogPostSummary | undefined => {
+    setBoundedCache(resolveBlogCache, cacheKey, result)
+    return result
+  }
 
   // If query is specifically asking about a project, showcase or category, do not let options context hijack it
   const isProjectOrCategoryQuery =
@@ -1043,143 +1096,146 @@ export function resolveBlogFromQueryOrContext(
 
   // 1. Direct slug match from options.projectSlug (only if query does not target a project/category)
   if (!isProjectOrCategoryQuery && options.projectSlug) {
-    const bySlug = getBlogPostBySlug(options.projectSlug)
-    if (bySlug) return bySlug
+    const bySlug = getBlogSummaryBySlug(options.projectSlug)
+    if (bySlug) return finish(bySlug)
   }
 
   // 2. Direct title match from options.projectTitle (only if query does not target a project/category)
   if (!isProjectOrCategoryQuery && options.projectTitle) {
-    const byTitle = allBlogPosts.find((p) => {
-      const t = p.title as Partial<Record<'en' | 'ua' | 'es' | 'de', string>>
-      return (
-        foldForSearch(p.title.en) === foldForSearch(options.projectTitle!) ||
-        foldForSearch(p.title.ua) === foldForSearch(options.projectTitle!) ||
-        foldForSearch(p.title.es) === foldForSearch(options.projectTitle!) ||
-        (t.de ? foldForSearch(t.de) === foldForSearch(options.projectTitle!) : false)
-      )
+    const foldedTarget = foldForSearch(options.projectTitle)
+    const byTitle = blogSummaries.find((p) => {
+      const f = p.foldedTitles
+      if (f) {
+        return (
+          f.en === foldedTarget ||
+          f.ua === foldedTarget ||
+          f.es === foldedTarget ||
+          f.de === foldedTarget
+        )
+      }
+      return foldForSearch(p.title.en) === foldedTarget
     })
-    if (byTitle) return byTitle
+    if (byTitle) return finish(byTitle)
   }
 
-  if (!trimmed) return undefined
+  if (!trimmed) return finish(undefined)
 
-  // 3. Query contains exact blog slug or titles
-  for (const post of allBlogPosts) {
+  // 3. Query contains exact blog slug or pre-folded titles
+  for (let i = 0; i < blogSummaries.length; i++) {
+    const post = blogSummaries[i]
     if (lower.includes(post.slug.toLowerCase())) {
-      return post
+      return finish(post)
     }
-    const t = post.title as Partial<Record<'en' | 'ua' | 'es' | 'de', string>>
-    const tEn = foldForSearch(post.title.en)
-    const tUa = foldForSearch(post.title.ua)
-    const tEs = foldForSearch(post.title.es)
-    const tDe = t.de ? foldForSearch(t.de) : ''
-    if (
-      (tEn.length > 8 && lower.includes(tEn)) ||
-      (tUa.length > 8 && lower.includes(tUa)) ||
-      (tEs.length > 8 && lower.includes(tEs)) ||
-      (tDe.length > 8 && lower.includes(tDe))
-    ) {
-      return post
+    const f = post.foldedTitles
+    if (f) {
+      if (
+        (f.en.length > 8 && lower.includes(f.en)) ||
+        (f.ua.length > 8 && lower.includes(f.ua)) ||
+        (f.es.length > 8 && lower.includes(f.es)) ||
+        (f.de.length > 8 && lower.includes(f.de))
+      ) {
+        return finish(post)
+      }
     }
   }
 
   // 4. Distinct article topical phrases
   if (/\b(context[\s-]*caching|prompt[\s-]*caching|prefix[\s-]*cache|кешування[\s-]*контекст|cash.*llm|gemini.*cache|claude.*cache)/i.test(lower)) {
-    return getBlogPostBySlug('context-caching-llm-api-cost-optimization')
+    return finish(getBlogSummaryBySlug('context-caching-llm-api-cost-optimization'))
   }
 
   if (/\b(webgpu|in[\s-]*browser llm|local[\s-]*first llm|transformers\.js|onnx runtime web|локальн.*llm|браузерн.*llm)/i.test(lower)) {
-    return getBlogPostBySlug('in-browser-llm-webgpu-zero-server-inference')
+    return finish(getBlogSummaryBySlug('in-browser-llm-webgpu-zero-server-inference'))
   }
 
   if (/\b(axe[\s-]*core|playwright.*(a11y|accessibility|доступност|barrierefrei)|automated.*accessibility|ci[\s-]*cd.*accessibility)/i.test(lower)) {
-    return getBlogPostBySlug('automated-accessibility-testing-cicd-axe-playwright')
+    return finish(getBlogSummaryBySlug('automated-accessibility-testing-cicd-axe-playwright'))
   }
 
   if (/\b(eaa.*(ecommerce|e-commerce|магазин|tienda|store|checkout|onlineshop|kasse|bussgeld|штраф|fine|sanction)|ecommerce.*(accessibility|wcag|eaa)|(accessibility|wcag).*checkout)/i.test(lower)) {
-    return getBlogPostBySlug('eaa-2026-compliance-ecommerce-audit-remediation')
+    return finish(getBlogSummaryBySlug('eaa-2026-compliance-ecommerce-audit-remediation'))
   }
 
   if (/\b(wcag|eaa\b|european accessibility|accessibility act|bfsg|barrierefreiheit|доступност|доступность|accesibilidad)/i.test(lower)) {
-    return getBlogPostBySlug('wcag-22-aa-european-accessibility-act-2026')
+    return finish(getBlogSummaryBySlug('wcag-22-aa-european-accessibility-act-2026'))
   }
 
   if (/\b(zero[\s-]*trust|client[\s-]*side security|обфускац|obfuskation)/i.test(lower)) {
-    return getBlogPostBySlug('client-side-zero-trust-security')
+    return finish(getBlogSummaryBySlug('client-side-zero-trust-security'))
   }
 
   if (/\b(hybrid[\s-]*rag|browser[\s-]*rag|in[\s-]*browser rag|раг|векторн.*браузер)/i.test(lower)) {
-    return getBlogPostBySlug('autonomous-hybrid-rag-architecture-browser')
+    return finish(getBlogSummaryBySlug('autonomous-hybrid-rag-architecture-browser'))
   }
 
   if (/\b(core web vitals|cwv|bundle optimization|бандл|inp < 50)/i.test(lower)) {
-    return getBlogPostBySlug('sub-second-cwv-bundle-optimization')
+    return finish(getBlogSummaryBySlug('sub-second-cwv-bundle-optimization'))
   }
 
   if (/\b(shopify.*woocommerce|woocommerce.*shopify|liquid.*woocommerce)/i.test(lower)) {
-    return getBlogPostBySlug('shopify-liquid-vs-custom-woocommerce')
+    return finish(getBlogSummaryBySlug('shopify-liquid-vs-custom-woocommerce'))
   }
 
   if (/\b(next\.?js.*headless|headless.*next\.?js|headless.*wordpress)/i.test(lower)) {
-    return getBlogPostBySlug('nextjs-vs-headless-wordpress-custom-php-2026')
+    return finish(getBlogSummaryBySlug('nextjs-vs-headless-wordpress-custom-php-2026'))
   }
 
   if (/\b(fullstack[\s-]*ai[\s-]*lab.*(arch|статт|стат|блог|articulo|artikel|deep[\s-]*dive)|edtech architecture|mdx[\s-]*rs|interview simulator)/i.test(lower)) {
-    return getBlogPostBySlug('fullstack-ai-lab-interactive-edtech-architecture')
+    return finish(getBlogSummaryBySlug('fullstack-ai-lab-interactive-edtech-architecture'))
   }
 
   if (/\b(unitrition.*(arch|статт|стат|блог|articulo|artikel|deep[\s-]*dive)|healthtech.*(arch|статт|стат|блог|artikel)|fooddata|usda api)/i.test(lower)) {
-    return getBlogPostBySlug('unitrition-headless-healthtech-architecture')
+    return finish(getBlogSummaryBySlug('unitrition-headless-healthtech-architecture'))
   }
 
   if (/\b(wasm|webassembly|php in browser|wordpress in browser|sqlite vfs)/i.test(lower)) {
-    return getBlogPostBySlug('wasm-wordpress-php-in-browser-zero-server')
+    return finish(getBlogSummaryBySlug('wasm-wordpress-php-in-browser-zero-server'))
   }
 
   if (/\b(buhl.*(wiso|tax|податк|налог|steuer|arch|статт|стат|блог|artikel)|bafin|wiso.*steuer|dsgvo)/i.test(lower)) {
-    return getBlogPostBySlug('buhl-wiso-fintech-wordpress-architecture-gdpr')
+    return finish(getBlogSummaryBySlug('buhl-wiso-fintech-wordpress-architecture-gdpr'))
   }
 
   if (/\b(telefontraining.*(arch|статт|стат|блог|artikel|edtech|callcenter|akademie)|callcenter.*akademie)/i.test(lower)) {
-    return getBlogPostBySlug('telefontrainingskoffer-interactive-edtech-streaming')
+    return finish(getBlogSummaryBySlug('telefontrainingskoffer-interactive-edtech-streaming'))
   }
 
   if (/\b(allday.*(medical|care|clinic|arch|статт|стат|блог|artikel)|hipaa.*(medical|health|portal)|medical care clinic)/i.test(lower)) {
-    return getBlogPostBySlug('all-day-medical-care-hipaa-healthtech-portal')
+    return finish(getBlogSummaryBySlug('all-day-medical-care-hipaa-healthtech-portal'))
   }
 
   if (/\b(organic[\s-]*bed.*(arch|статт|стат|блог|artikel|woocommerce|rtl)|rtl.*woocommerce)/i.test(lower)) {
-    return getBlogPostBySlug('organic-bed-rtl-woocommerce-performance-optimization')
+    return finish(getBlogSummaryBySlug('organic-bed-rtl-woocommerce-performance-optimization'))
   }
 
   if (/\b(hpos|high[\s-]*performance order storage|redis caching.*sku)/i.test(lower)) {
-    return getBlogPostBySlug('woocommerce-hpos-redis-caching-10k-skus')
+    return finish(getBlogSummaryBySlug('woocommerce-hpos-redis-caching-10k-skus'))
   }
 
   if (/\b(edge ai|v8 isolate|tool calling.*isolate)/i.test(lower)) {
-    return getBlogPostBySlug('autonomous-edge-ai-agents-tool-calling-v8-isolates')
+    return finish(getBlogSummaryBySlug('autonomous-edge-ai-agents-tool-calling-v8-isolates'))
   }
 
   if (/\b(programmatic seo|pseo)/i.test(lower)) {
-    return getBlogPostBySlug('enterprise-programmatic-seo-pseo-nextjs-16-autonomous-llm-pipelines')
+    return finish(getBlogSummaryBySlug('enterprise-programmatic-seo-pseo-nextjs-16-autonomous-llm-pipelines'))
   }
 
   if (/\b(legacy migration|zero[\s-]*downtime migration|altlast.*migration|cloud[\s-]*migration|міграці.*хмар|миграци.*облак)/i.test(lower)) {
-    return getBlogPostBySlug('legacy-migration-cloud-infrastructure')
+    return finish(getBlogSummaryBySlug('legacy-migration-cloud-infrastructure'))
   }
 
-  return undefined
+  return finish(undefined)
 }
 
 /**
  * Formats a blog article into a rich markdown response with link, TL;DR, and applied case studies.
  */
-export function formatBlogPostDetails(post: BlogPost, lang: 'en' | 'ua' | 'es' | 'de'): string {
-  const title = getBlogTitle(post, lang)
-  const desc = getBlogDescription(post, lang)
-  const categoryLabel = getBlogCategoryLabel(post, lang)
-  const readTime = getBlogReadTime(post, lang)
-  const tldr = getBlogTldr(post, lang)
+export function formatBlogPostDetails(post: BlogPostSummary, lang: 'en' | 'ua' | 'es' | 'de'): string {
+  const title = getBlogSummaryTitle(post, lang)
+  const desc = getBlogSummaryDescription(post, lang)
+  const categoryLabel = getBlogSummaryCategoryLabel(post, lang)
+  const readTime = getBlogSummaryReadTime(post, lang)
+  const tldr = getBlogSummaryTldr(post, lang)
   const articleUrl = `/${lang}/blog/${post.slug}`
 
   const lines: string[] = [
@@ -1441,15 +1497,14 @@ export function resolveTargetProject(
   if (byQuery) return byQuery
 
   if (options.projectSlug) {
-    const bySlug = projectRegistry.find(
-      (p) => p.slug.toLowerCase() === options.projectSlug?.toLowerCase(),
-    )
+    const bySlug = PROJECT_BY_SLUG.get(options.projectSlug.toLowerCase())
     if (bySlug) return bySlug
   }
 
   if (options.projectTitle) {
+    const titleLower = options.projectTitle.toLowerCase()
     const byTitle = projectRegistry.find(
-      (p) => p.project.title.toLowerCase() === options.projectTitle?.toLowerCase(),
+      (p) => p.project.title.toLowerCase() === titleLower,
     )
     if (byTitle) return byTitle
   }
@@ -1475,15 +1530,8 @@ export function synthesizeLocalRagAnswer(
   const lang = resolveResponseLanguage(trimmed, options.locale)
 
   // 1. Check if query is an exact match for one of the general FAQ questions
-  for (const item of FAQ) {
-    if (
-      lower === foldForSearch(item.question) ||
-      lower === foldForSearch(item.questionUa) ||
-      lower === foldForSearch(item.questionEs) ||
-      (item.questionDe ? lower === foldForSearch(item.questionDe) : false)
-    ) {
-      return stripEmDashes(getBotAnswer(trimmed, lang))
-    }
+  if (getFaqFoldedQuestions().has(lower)) {
+    return stripEmDashes(getBotAnswer(trimmed, lang))
   }
 
   // 2. Dedicated query routing for stack comparison & timeline estimation
@@ -1570,6 +1618,7 @@ export function synthesizeLocalRagAnswer(
   }
 
   if (isBlogArticlesQuery(trimmed)) {
+    const allBlogSummaries = getAllBlogSummaries()
     const flagshipBlogSlugs = new Set([
       'nextjs-vs-headless-wordpress-custom-php-2026',
       'fullstack-ai-lab-interactive-edtech-architecture',
@@ -1581,19 +1630,19 @@ export function synthesizeLocalRagAnswer(
       'client-side-zero-trust-security',
       'legacy-migration-cloud-infrastructure',
     ])
-    const extraPosts = allBlogPosts
+    const extraPosts = allBlogSummaries
       .filter((p) => !flagshipBlogSlugs.has(p.slug))
       .slice(0, 3)
     const extraLines = extraPosts
       .map(
         (p, idx) =>
-          `${10 + idx}. **${getBlogTitle(p, lang)}** (/${lang}/blog/${p.slug}) - ${getBlogDescription(p, lang)}`,
+          `${10 + idx}. **${getBlogSummaryTitle(p, lang)}** (/${lang}/blog/${p.slug}) - ${getBlogSummaryDescription(p, lang)}`,
       )
       .join('\n')
 
     if (lang === 'ua') {
       return stripEmDashes(
-        `У моєму інженерному блозі опубліковані ${allBlogPosts.length} детальних архітектурних розборів для CTO та технічних команд (нижче наведені 12 ключових та нових матеріалів):\n\n` +
+        `У моєму інженерному блозі опубліковані ${allBlogSummaries.length} детальних архітектурних розборів для CTO та технічних команд (нижче наведені 12 ключових та нових матеріалів):\n\n` +
           '1. **Next.js 16 проти Headless WordPress та Custom PHP** (/ua/blog/nextjs-vs-headless-wordpress-custom-php-2026) - Об’єктивне порівняння TCO, вартості підтримки, швидкості Core Web Vitals та робочого процесу редакції.\n' +
           '2. **Повний розбір архітектури Fullstack AI Lab** (/ua/blog/fullstack-ai-lab-interactive-edtech-architecture) - Компіляція 1 135+ MDX-уроків за 90 секунд на Next.js 16 та Rust MDX-RS, WebAssembly-пісочниця WordPress та симулятор AI-співбесід.\n' +
           '3. **Повний розбір архітектури Unitrition** (/ua/blog/unitrition-headless-healthtech-architecture) - Headless HealthTech-платформа на Next.js 16, WordPress REST API, Supabase RLS та USDA FoodData Central API.\n' +
@@ -1604,12 +1653,12 @@ export function synthesizeLocalRagAnswer(
           '8. **Zero-Trust безпека на стороні клієнта** (/ua/blog/client-side-zero-trust-security) - Захист вебдодатків: Base64-обфускація контактів від спам-ботів, суворі заголовки CSP та ізоляція DOM.\n' +
           '9. **Безшовна міграція легасі-систем у хмару** (/ua/blog/legacy-migration-cloud-infrastructure) - План міграції монолітів та баз даних без зупинки бізнес-транзакцій та зі збереженням 100% SEO-трафіку.\n' +
           (extraLines ? `${extraLines}\n\n` : '\n') +
-          `Ви можете відкрити будь-яку статтю за прямим посиланням, переглянути всі ${allBlogPosts.length} статей на /ua/blog або запитати мене про будь-яку з цих тем!`
+          `Ви можете відкрити будь-яку статтю за прямим посиланням, переглянути всі ${allBlogSummaries.length} статей на /ua/blog або запитати мене про будь-яку з цих тем!`
       )
     }
     if (lang === 'es') {
       return stripEmDashes(
-        `En mi blog de ingeniería comparto ${allBlogPosts.length} análisis técnicos en profundidad pensados para CTOs y fundadores (aquí tienes 12 estudios clave y recientes):\n\n` +
+        `En mi blog de ingeniería comparto ${allBlogSummaries.length} análisis técnicos en profundidad pensados para CTOs y fundadores (aquí tienes 12 estudios clave y recientes):\n\n` +
           '1. **Next.js 16 vs Headless WordPress vs Custom PHP** (/es/blog/nextjs-vs-headless-wordpress-custom-php-2026) - Comparativa objetiva de TCO, costes de mantenimiento, Core Web Vitals y flujo editorial.\n' +
           '2. **Análisis profundo de la arquitectura Fullstack AI Lab** (/es/blog/fullstack-ai-lab-interactive-edtech-architecture) - Compilación de 1.135+ lecciones MDX en 90 segundos con Next.js 16 y Rust MDX-RS, sandbox WebAssembly de WordPress y simulador de entrevistas con IA.\n' +
           '3. **Análisis profundo de la arquitectura Unitrition** (/es/blog/unitrition-headless-healthtech-architecture) - Plataforma HealthTech Headless con Next.js 16, WordPress, Supabase RLS y API USDA FoodData Central.\n' +
@@ -1620,12 +1669,12 @@ export function synthesizeLocalRagAnswer(
           '8. **Seguridad web Zero-Trust en cliente** (/es/blog/client-side-zero-trust-security) - Protección frontend: ofuscación Base64 contra scrapers, cabeceras CSP estrictas y aislamiento de DOM.\n' +
           '9. **Migración cloud sin tiempo de inactividad** (/es/blog/legacy-migration-cloud-infrastructure) - Metodología probada para migrar sistemas heredados a la nube preservando el 100% del SEO y cero caídas operativas.\n' +
           (extraLines ? `${extraLines}\n\n` : '\n') +
-          `¡Puedes acceder a los enlaces anteriores, explorar los ${allBlogPosts.length} artículos en /es/blog o preguntarme cualquier duda sobre estos temas!`
+          `¡Puedes acceder a los enlaces anteriores, explorar los ${allBlogSummaries.length} artículos en /es/blog o preguntarme cualquier duda sobre estos temas!`
       )
     }
     if (lang === 'de') {
       return stripEmDashes(
-        `In meinem Engineering-Blog veröffentliche ich ${allBlogPosts.length} tiefgehende Architektur-Analysen für CTOs und technische Entscheider (hier sind 12 zentrale und aktuelle Beiträge):\n\n` +
+        `In meinem Engineering-Blog veröffentliche ich ${allBlogSummaries.length} tiefgehende Architektur-Analysen für CTOs und technische Entscheider (hier sind 12 zentrale und aktuelle Beiträge):\n\n` +
           '1. **Next.js 16 vs. Headless WordPress vs. Custom PHP** (/de/blog/nextjs-vs-headless-wordpress-custom-php-2026) - Objektiver Vergleich von TCO, Wartungskosten, Core Web Vitals und redaktionellem Workflow.\n' +
           '2. **Fullstack AI Lab Architektur-Deep-Dive** (/de/blog/fullstack-ai-lab-interactive-edtech-architecture) - Kompilierung von 1.135+ MDX-Lektionen in 90 Sekunden mit Next.js 16 & Rust MDX-RS, WebAssembly WordPress-Sandbox und KI-Interview-Simulator.\n' +
           '3. **Unitrition Architektur-Deep-Dive** (/de/blog/unitrition-headless-healthtech-architecture) - Entwicklung einer Headless-HealthTech-Plattform mit Next.js 16, WordPress REST API, Supabase RLS und USDA FoodData Central API.\n' +
@@ -1636,11 +1685,11 @@ export function synthesizeLocalRagAnswer(
           '8. **Client-seitige Zero-Trust-Web-Sicherheit** (/de/blog/client-side-zero-trust-security) - Frontend-Härtung mit Base64-Kontaktobfuskation gegen Scraper, strengen Content-Security-Policies und DOM-Isolation.\n' +
           '9. **Zero-Downtime-Migration von Legacy-Systemen in die Cloud** (/de/blog/legacy-migration-cloud-infrastructure) - Strukturierter Übergang alter Monolithen in hochverfügbare Cloud-Infrastruktur bei 100 % SEO-Erhalt.\n' +
           (extraLines ? `${extraLines}\n\n` : '\n') +
-          `Sie können jeden Artikel direkt über die Links oben lesen, alle ${allBlogPosts.length} Fachbeiträge auf /de/blog durchsuchen oder mir direkt Fragen dazu stellen!`
+          `Sie können jeden Artikel direkt über die Links oben lesen, alle ${allBlogSummaries.length} Fachbeiträge auf /de/blog durchsuchen oder mir direkt Fragen dazu stellen!`
       )
     }
     return stripEmDashes(
-      `In my engineering blog, I publish ${allBlogPosts.length} architectural case studies designed for CTOs and technical leads (below are 12 flagship and recent deep-dives):\n\n` +
+      `In my engineering blog, I publish ${allBlogSummaries.length} architectural case studies designed for CTOs and technical leads (below are 12 flagship and recent deep-dives):\n\n` +
         '1. **Next.js 16 vs Headless WordPress vs Custom PHP** (/en/blog/nextjs-vs-headless-wordpress-custom-php-2026) - An objective TCO, maintenance, Core Web Vitals, and editorial workflow comparison.\n' +
         '2. **Fullstack AI Lab Architecture Deep-Dive** (/en/blog/fullstack-ai-lab-interactive-edtech-architecture) - Compiling 1,135+ MDX lessons in 90 seconds with Next.js 16 & Rust MDX-RS, WebAssembly WordPress playground, and AI interview simulator.\n' +
         '3. **Unitrition Architecture Deep-Dive** (/en/blog/unitrition-headless-healthtech-architecture) - Engineering a Headless HealthTech platform with Next.js 16, WordPress REST API, Supabase RLS, and USDA FoodData Central API.\n' +
@@ -1651,7 +1700,7 @@ export function synthesizeLocalRagAnswer(
         '8. **Client-Side Zero-Trust Web Security** (/en/blog/client-side-zero-trust-security) - Frontend hardening: Base64 obfuscation against scrapers, strict Content Security Policies, and DOM isolation.\n' +
         '9. **Zero-Downtime Legacy System Migration to Cloud** (/en/blog/legacy-migration-cloud-infrastructure) - Transitioning legacy monoliths to high-availability cloud infrastructure with dual-write replication and 100% SEO preservation.\n' +
         (extraLines ? `${extraLines}\n\n` : '\n') +
-        `You can read the full articles via the direct links above, explore all ${allBlogPosts.length} articles at /en/blog, or ask me any question about these topics!`
+        `You can read the full articles via the direct links above, explore all ${allBlogSummaries.length} articles at /en/blog, or ask me any question about these topics!`
     )
   }
 
@@ -1835,13 +1884,13 @@ export function synthesizeLocalRagAnswer(
   if (retrieved.length > 0) {
     const top = retrieved[0].chunk
     if (top.type === 'project' && top.slug) {
-      const proj = projectRegistry.find((p) => p.slug === top.slug)?.project
+      const proj = PROJECT_BY_SLUG.get(top.slug.toLowerCase())?.project
       if (proj) {
         return stripEmDashes(formatProjectOverview(proj, lang))
       }
     }
     if (top.type === 'blog' && top.slug) {
-      const blog = getBlogPostBySlug(top.slug)
+      const blog = getBlogSummaryBySlug(top.slug)
       if (blog) {
         return stripEmDashes(formatBlogPostDetails(blog, lang))
       }
@@ -1896,7 +1945,7 @@ export function getRagSourceLabel(
 
   const resolvedBlog = resolveBlogFromQueryOrContext(query, options)
   if (resolvedBlog) {
-    const blogTitle = getBlogTitle(resolvedBlog, lang)
+    const blogTitle = getBlogSummaryTitle(resolvedBlog, lang)
     return `Hybrid RAG · ${stripEmDashes(blogTitle)} (Article)`
   }
 
@@ -1968,7 +2017,7 @@ export function getRelevantProjectCards(
     const aiFlagshipSlugs = ['fullstack-ai-lab', 'yusupovartur-nextjs-portfolio']
     const cards: ChatProjectCardItem[] = []
     for (const slug of aiFlagshipSlugs) {
-      const entry = projectRegistry.find((p) => p.slug === slug)
+      const entry = PROJECT_BY_SLUG.get(slug)
       if (entry) {
         cards.push(toProjectCardItem(entry.slug, entry.project, lang))
       }
@@ -1995,7 +2044,7 @@ export function getRelevantProjectCards(
     ]
     const cards: ChatProjectCardItem[] = []
     for (const slug of personalSlugs) {
-      const entry = projectRegistry.find((p) => p.slug === slug)
+      const entry = PROJECT_BY_SLUG.get(slug)
       if (entry) {
         cards.push(toProjectCardItem(entry.slug, entry.project, lang))
       }
@@ -2015,7 +2064,7 @@ export function getRelevantProjectCards(
     ]
     const cards: ChatProjectCardItem[] = []
     for (const slug of bestSlugs) {
-      const entry = projectRegistry.find((p) => p.slug === slug)
+      const entry = PROJECT_BY_SLUG.get(slug)
       if (entry) {
         cards.push(toProjectCardItem(entry.slug, entry.project, lang))
       }
@@ -2028,7 +2077,7 @@ export function getRelevantProjectCards(
   if (resolvedBlog?.appliedProjects && resolvedBlog.appliedProjects.length > 0) {
     const cards: ChatProjectCardItem[] = []
     for (const ref of resolvedBlog.appliedProjects) {
-      const entry = projectRegistry.find((p) => p.slug === ref.slug)
+      const entry = PROJECT_BY_SLUG.get(ref.slug.toLowerCase())
       if (entry) {
         cards.push(toProjectCardItem(entry.slug, entry.project, lang))
       }
@@ -2041,7 +2090,7 @@ export function getRelevantProjectCards(
   if (categoryShowcase?.projectSlugs) {
     const cards: ChatProjectCardItem[] = []
     for (const slug of categoryShowcase.projectSlugs) {
-      const entry = projectRegistry.find((p) => p.slug === slug)
+      const entry = PROJECT_BY_SLUG.get(slug.toLowerCase())
       if (entry) {
         cards.push(toProjectCardItem(entry.slug, entry.project, lang))
       }
@@ -2070,7 +2119,7 @@ export function getRelevantProjectCards(
     ]
     const cards: ChatProjectCardItem[] = []
     for (const slug of flagshipSlugs) {
-      const entry = projectRegistry.find((p) => p.slug === slug)
+      const entry = PROJECT_BY_SLUG.get(slug)
       if (entry) {
         cards.push(toProjectCardItem(entry.slug, entry.project, lang))
       }
@@ -2079,17 +2128,6 @@ export function getRelevantProjectCards(
   }
 
   // 7. Check high-confidence BM25 project matches for domain queries (e.g. "AWS", "Shopify")
-  const basicLearningSlugs = new Set([
-    'js-vanilla-simple-todolist',
-    'react-simple-todo-list',
-    'react-simple-calculator',
-    'react-simple-cost-accounting',
-    'simple-javascript-calculator',
-    'simple-javascript-date-time',
-    'simple-javascript-list-users',
-    'simple-javascript-quiz',
-    'simple-vanilla-calculator',
-  ])
   const isExplicitlyAskingForBasicLearningApp =
     /(todo|to-do|calculator|quiz|cost accounting|date|list users)/i.test(lower)
 
@@ -2102,9 +2140,9 @@ export function getRelevantProjectCards(
       r.chunk.slug &&
       r.score >= 3.0 &&
       !seenSlugs.has(r.chunk.slug) &&
-      (isExplicitlyAskingForBasicLearningApp || !basicLearningSlugs.has(r.chunk.slug))
+      (isExplicitlyAskingForBasicLearningApp || !BASIC_LEARNING_SLUGS.has(r.chunk.slug))
     ) {
-      const entry = projectRegistry.find((p) => p.slug === r.chunk.slug)
+      const entry = PROJECT_BY_SLUG.get(r.chunk.slug.toLowerCase())
       if (entry) {
         seenSlugs.add(entry.slug)
         matchedCards.push(toProjectCardItem(entry.slug, entry.project, lang))

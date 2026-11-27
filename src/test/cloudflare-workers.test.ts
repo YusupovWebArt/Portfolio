@@ -110,4 +110,26 @@ describe('Cloudflare Workers + Static Assets Migration Specification (TDD)', () 
       }
     }
   })
+
+  it('should ship a build-time precomputed inverted BM25 RAG index synced with projects and blog posts', async () => {
+    const indexPath = path.resolve(rootDir, 'src/lib/ai/generated/rag-index.generated.ts')
+    expect(fs.existsSync(indexPath)).toBe(true)
+
+    const raw = fs.readFileSync(indexPath, 'utf8')
+    expect(raw).not.toContain('\u2014')
+
+    const { getPrebuiltKnowledgeData } = await import('../lib/ai/knowledge')
+    const parsed = getPrebuiltKnowledgeData()
+
+    const { projectRegistry } = await import('../lib/projectRegistry')
+    const { allBlogPosts } = await import('../data/blog')
+
+    expect(parsed.counts.projects).toBe(projectRegistry.length)
+    expect(parsed.counts.blog).toBe(allBlogPosts.length)
+    expect(parsed.blogSummaries).toHaveLength(allBlogPosts.length)
+    expect(parsed.bm25.totalDocs).toBe(parsed.counts.totalChunks)
+    expect(Object.keys(parsed.bm25.postings).length).toBeGreaterThan(5000)
+    // Ensure lightweight summaries omit full Markdown bodies to keep Worker bundle lean
+    expect(parsed.blogSummaries[0].content).toBeUndefined()
+  })
 })

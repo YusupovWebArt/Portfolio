@@ -67,6 +67,12 @@ function main() {
   }
 
   try {
+    console.log('Generating prebuilt RAG inverted index for zero-cold-start Worker execution ...')
+    execSync('node scripts/generate-rag-index.mjs', {
+      cwd: ROOT_DIR,
+      stdio: 'inherit',
+    })
+
     if (fs.existsSync(OUT_DIR)) {
       fs.rmSync(OUT_DIR, { recursive: true, force: true })
     }
