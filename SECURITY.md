@@ -59,17 +59,23 @@ graph LR
 
 ---
 
-## 4. Client-Side App Hardening & HTTP Security Headers
+## 4. Edge & Client-Side App Hardening (HTTP Security Headers)
 
-The application enforces a sandboxed browser environment directly via `<meta>` tags in [`index.html`](file:///index.html):
+Production (`https://www.yusupovartur.com`) enforces all 7 mandatory HTTP security headers at the Cloudflare Edge via [`public/_headers`](file:///d:/PORTFOLIO/Portfolio/public/_headers) (for Static Assets) and [`worker/index.ts`](file:///d:/PORTFOLIO/Portfolio/worker/index.ts) (for `/api/chat`, plus `Cache-Control: no-store, max-age=0`), while the GitHub Pages SPA mirror reinforces CSP/Referrer/Permissions policies via `<meta>` tags in [`index.html`](file:///d:/PORTFOLIO/Portfolio/index.html):
 
-1. **Content Security Policy (CSP):**
-   - Restricts script and stylesheet execution to `'self'` and explicitly allowlisted vendors (Google Tag Manager, Google Analytics, Google Fonts).
+1. **Strict-Transport-Security (HSTS) & Always Use HTTPS:**
+   - Emits `Strict-Transport-Security: max-age=63072000; includeSubDomains; preload` on production responses, paired with Cloudflare **Always Use HTTPS** and **SSL/TLS Full** (TLS 1.3).
+2. **Content Security Policy (CSP):**
+   - Restricts script and stylesheet execution to `'self'` and explicitly allowlisted vendors (Google Tag Manager, Google Analytics).
    - Blocks unauthorized `iframe` and `object` embeds (`frame-src 'none'; object-src 'none'`).
-2. **Referrer Policy:**
-   - Set to `strict-origin-when-cross-origin` to ensure that full URL paths and query parameters are stripped during external transitions.
-3. **Permissions Policy:**
-   - Explicitly revokes browser access to sensitive hardware APIs: `camera=(), microphone=(), geolocation=()`.
+3. **Anti-Clickjacking & MIME Sniffing Protection:**
+   - Enforces `X-Frame-Options: DENY`, `X-Content-Type-Options: nosniff`, and `Cross-Origin-Opener-Policy: same-origin`.
+4. **Referrer Policy:**
+   - Set to `strict-origin-when-cross-origin` to strip full URL paths and query parameters during external transitions.
+5. **Permissions Policy:**
+   - Explicitly revokes browser access to sensitive hardware APIs: `camera=(), microphone=(), geolocation=(), payment=(), usb=(), browsing-topics=()`.
+6. **Edge WAF & Bot Protection:**
+   - Cloudflare **Bot Fight Mode** and **Cloudflare Managed Ruleset** are enabled on the `yusupovartur.com` zone.
 
 ---
 
@@ -85,51 +91,47 @@ To protect email addresses, phone numbers, and messaging handles from automated 
 
 ---
 
-## 6. CI/CD Automated Security Gating (GitHub Actions)
+## 6. CI/CD Automated Security Gating (GitHub Actions & Cloudflare Workers Builds)
 
-Configured in [`.github/workflows/deploy.yml`](file:///.github/workflows/deploy.yml), every push to the `master` branch triggers an automated 4-stage security gate before deployment:
-
-1. **Deterministic Dependency Installation:** `npm ci` verifies that `node_modules` precisely matches `package-lock.json`.
-2. **SCA Vulnerability Gate:** `npm audit --only=prod --audit-level=high` fails the pipeline if any high/critical vulnerability is detected.
-3. **SAST Compilation Gate:** `npx tsc --noEmit` verifies strict TypeScript compilation.
-4. **Code Quality Gate:** `npm run lint` ensures full ESLint compliance.
-5. **Deployment:** Only if all 4 gates pass, the compiled `dist/` bundle is deployed to GitHub Pages.
+1. **GitHub Actions ([`.github/workflows/deploy.yml`](file:///d:/PORTFOLIO/Portfolio/.github/workflows/deploy.yml)):** Every push and PR to `master` executes a 9-stage automated gate before deploying the SPA mirror to `gh-pages`:
+   - **Gitleaks Secret Scan:** Scans the working tree for leaked credentials.
+   - **Deterministic Dependency Installation:** `pnpm install --frozen-lockfile` on Node.js 24 LTS.
+   - **SAST Compilation & Lint Gates:** `pnpm exec tsc --noEmit` (zero-`any`) and `pnpm lint`.
+   - **TDD Verification Gate:** `pnpm test` (Vitest unit, component, security, and Cloudflare Worker specs).
+   - **SCA Vulnerability Gate:** `pnpm audit --prod --audit-level=high`.
+   - **Built-Output Contact Leak Gate:** `pnpm build` + `node scripts/check-contact-leak.mjs`.
+   - **E2E, A11y & CWV Gates:** Playwright E2E + axe-core WCAG 2.2 AA (`pnpm test:e2e`) and Lighthouse CI (`pnpm audit:lhci`).
+2. **Cloudflare Workers Builds (`www.yusupovartur.com`):** Every push to `master` runs `pnpm run build:cf` (`scripts/build-cf-workers.mjs`, including RAG index generation and 13-file static output verification) followed by `npx wrangler deploy`.
 
 ---
 
-## 7. Future RAG Architecture Security Roadmap (AI Chatbot Upgrade)
+## 7. Hybrid RAG Architecture Security Implementation (AI Chatbot)
 
-When upgrading the client-side FAQ chatbot to a serverless **Hybrid RAG (Retrieval-Augmented Generation)** architecture, the following 6 defense tiers must be strictly implemented:
+The production serverless **Hybrid RAG** endpoint (`POST /api/chat` in [`worker/index.ts`](file:///d:/PORTFOLIO/Portfolio/worker/index.ts) and [`app/api/chat/route.ts`](file:///d:/PORTFOLIO/Portfolio/app/api/chat/route.ts)) enforces all 6 defense tiers:
 
-### Tier 1: Zero-Commit API Key Protection (Zero-Commit Policy)
-- **Risk:** Embedding OpenAI/Gemini/Anthropic keys directly in the client bundle exposes them to extraction via browser DevTools.
-- **Enforcement:** API keys must never be committed to Git or exposed to the client. Keys are stored exclusively in encrypted environment secrets on the serverless edge (e.g., Cloudflare Workers via `wrangler secret put OPENAI_API_KEY`). The browser communicates only with the serverless proxy.
+### Tier 1: Zero-Commit Secret Protection (Cloudflare Secrets)
+- **Enforcement:** Runtime secrets (`RATE_LIMIT_SALT` and optional `OPENAI_API_KEY` / Upstash tokens) are never committed to Git or exposed to the client. They are stored exclusively as encrypted Cloudflare Worker Secrets and synchronized into `process.env` at request time inside `worker/index.ts`.
 
-### Tier 2: Domain Whitelisting (CORS Protection)
-- **Risk:** Unauthorized third-party sites copying the endpoint URL to consume API quotas.
-- **Enforcement:** The serverless worker strictly validates the `Origin` header. Requests are accepted exclusively from `https://yusupovwebart.github.io` (and `localhost` for development). All other origins receive an immediate `403 Forbidden`.
+### Tier 2: Domain Whitelisting & Method Restriction
+- **Enforcement:** `worker/index.ts` rejects non-`POST` methods with `405 Method Not Allowed`. `app/api/chat/route.ts` strictly validates the `Origin` header in production against `https://yusupovartur.com`, `https://www.yusupovartur.com`, and `https://yusupovwebart.github.io`, returning `403 Forbidden` for unauthorized origins.
 
-### Tier 3: Abuse Prevention & Hard Budget Caps (Rate Limiting & Cost Control)
-- **Risk:** Malicious bots spamming thousands of requests per minute to drain API credits.
+### Tier 3: Abuse Prevention & Payload Clamping
 - **Enforcement:**
-  - **IP-Based Rate Limiting:** Enforce a strict threshold of maximum 5–10 requests per minute per IP.
-  - **Hard Spend Limits:** Configure a monthly hard ceiling (e.g., $2.00/month) in the LLM provider console. If reached, the system auto-shuts off dynamic calls and falls back to static FAQ.
-  - **Payload Clamping:** Sanitize and truncate user input to 300 characters max, capping model completions to 250 tokens.
+  - **IP-Based Rate Limiting:** Resolves client IP with `cf-connecting-ip` highest priority, pseudonymizes it with HMAC-SHA256 (`RATE_LIMIT_SALT`), and enforces `15 requests / hour` per hashed identifier (in-memory bounded store with optional Upstash Redis Lua script).
+  - **Payload & Role Validation:** Rejects bodies over `16 KB` (`413`), messages over `1,200` chars (`400`), and non-`user`/`assistant` roles such as `role: 'system'` (`400`), clipping history to the last 8 messages.
 
 ### Tier 4: Prompt Injection Guardrails & Grounding (AI Safety)
-- **Risk:** Malicious prompts attempting to hijack persona, negotiate unauthorized rates, or leak system prompts.
 - **Enforcement:**
-  - Rigid system prompt instructing the model to act strictly as Artur's AI Assistant, ground answers exclusively on verified portfolio facts, and never agree to custom pricing or reveal internal prompts.
-  - Input Sanitization: Strip all HTML, script, and markdown executable injections before passing queries to the vector search and LLM context.
+  - `sanitizeLlmInput()` strips `<system>` blocks, HTML/XML breakout tags, control characters, and multilingual prompt-override phrases.
+  - `buildSystemPrompt()` wraps retrieved chunks in `<context>` tags with strict factual grounding boundaries and zero-em-dash rules.
 
 ### Tier 5: EU RGPD / LOPDGDD Privacy Compliance
-- **Risk:** Illegally storing visitor IP addresses or sensitive chat logs under EU privacy laws.
 - **Enforcement:**
-  - **Zero-Log Architecture:** The serverless proxy processes requests ephemerally in-memory without persisting user chat logs or IP addresses to any persistent database.
-  - Contact data remains Base64-obfuscated across all dynamic retrieval pipelines.
+  - **Zero-Log Architecture:** Chat queries are processed ephemerally in-memory without persisting raw visitor IPs or chat transcripts to any database.
+  - Contact data remains Base64-obfuscated across all retrieval and UI pipelines.
 
 ### Tier 6: Resilient Fallback (Graceful Degradation)
-- **Enforcement:** If network latency spikes, rate limits are hit, or the serverless backend is unreachable, the client frontend (`ChatModal.tsx`) automatically and silently falls back to the local static [`chatFaq.ts`](file:///d:/PORTFOLIO/Portfolio/src/data/chatFaq.ts) matching engine with zero UI disruption.
+- **Enforcement:** When `OPENAI_API_KEY` is unset (default `$0/mo` mode), `/api/chat` executes deterministic multilingual Hybrid RAG synthesis directly on Cloudflare Edge (`1.22 ms` median CPU). If the network or API is unreachable, `ChatModal.tsx` falls back transparently to the local client-side engine.
 
 ---
 

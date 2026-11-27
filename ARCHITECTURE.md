@@ -115,44 +115,61 @@ Portfolio/
 
 ## 4. Build, CI/CD, & Deploy Pipeline
 
-- **Local Compilation:** Vite uses the Rolldown bundler to perform code splitting, generating small modular files for vendor packages, icons, and components. Main bundle is optimized under 200 KB (`198.09 kB`, 53.62 kB gzip).
-- **Package Management:** Managed via **pnpm 11** with global NTFS content-addressable storage (`D:\.pnpm-store`), ensuring zero-duplication hard links and strict non-flat node_modules resolution.
-- **Continuous Integration (GitHub Actions):** On every push to the `master` branch:
-  1. Spins up an Ubuntu Linux container on Node.js 24 LTS and sets up `pnpm/action-setup@v4`.
-  2. Installs clean deterministic dependencies (`pnpm install --frozen-lockfile`).
-  3. Executes SAST: Type checks (`pnpm exec tsc --noEmit`) and lints (`pnpm lint`).
+The repository operates a **dual-target CI/CD architecture** on **Node.js 24 LTS** and **pnpm 11** (global NTFS content-addressable store at `D:\.pnpm-store`), triggered automatically on every push to `master`. For full Cloudflare runtime, DNS, SSL/TLS, and quota details, see [`specs/cloudflare-workers-deployment/spec.md`](file:///d:/PORTFOLIO/Portfolio/specs/cloudflare-workers-deployment/spec.md).
+
+### 4.1. Primary Production: Cloudflare Workers + Static Assets (`https://www.yusupovartur.com`)
+- **Automated Builds (Cloudflare Workers Builds):** Connected directly to `YusupovWebArt/Portfolio` (`master`).
+  1. Executes `pnpm run build:cf` (`scripts/build-cf-workers.mjs`):
+     - Regenerates the build-time precomputed inverted BM25 RAG index (`scripts/generate-rag-index.mjs` -> `src/lib/ai/generated/rag-index.generated.ts`).
+     - Temporarily isolates `app/api` and `proxy.ts` (restored via `finally` and signal traps) and runs `CF_STATIC_EXPORT=1 next build` to export 520 localized static pages (`en`, `ua`, `es`, `de`) into `./out`.
+     - Verifies all 13 critical export artifacts (`en/ua/es/de.html`, `404.html`, `sitemap.xml`, `robots.txt`, `feed.xml`, `llms.txt`, `llms-full.txt`, IndexNow key, `_headers`, `_redirects`).
+  2. Executes `npx wrangler deploy` (`wrangler.jsonc`), uploading 5,751 static files to **Cloudflare Static Assets** (unlimited bandwidth, 0 Worker invocations) and deploying `worker/index.ts` (~1.57 MiB gzipped) exclusively for `/api/*` (`run_worker_first: ["/api/*"]`).
+- **Edge Routing & TLS:**
+  - Root apex `yusupovartur.com` (`AAAA 100::`, Proxied) redirects `301` to `https://www.yusupovartur.com/${1}` with query-string preservation.
+  - `www.yusupovartur.com` routes directly to the `yusupovartur-portfolio` Worker + Static Assets with `SSL/TLS Full`, `Always Use HTTPS`, and `Bot Fight Mode` enabled.
+
+### 4.2. Secondary SPA Mirror: GitHub Actions -> GitHub Pages (`https://yusupovwebart.github.io/Portfolio/`)
+- **Continuous Integration (`.github/workflows/deploy.yml`):** On every push or pull request to `master`:
+  0. Executes **Gitleaks** secret scan on the working tree.
+  1. Installs deterministic dependencies (`pnpm install --frozen-lockfile`) on Node.js 24 LTS + `pnpm`.
+  2. Executes SAST: Type checks (`pnpm exec tsc --noEmit`) and lints (`pnpm lint`).
+  3. Executes TDD test suite (`pnpm test`, 44 files / 249 tests).
   4. Executes SCA: Production vulnerability audit (`pnpm audit --prod --audit-level=high`).
-  5. Compiles production bundle (`pnpm build`).
-  6. Automatically authenticates with `${{ secrets.GITHUB_TOKEN }}` and deploys the `dist` folder to the `gh-pages` branch, making changes live instantly.
+  5. Compiles Vite/Rolldown production bundle (`pnpm build`) and runs built-output contact leak scan (`node scripts/check-contact-leak.mjs`).
+  6. Runs Playwright E2E + axe-core WCAG 2.2 AA accessibility tests (`pnpm test:e2e`) and Lighthouse CI (`pnpm audit:lhci`).
+  7. On `master` push, deploys `dist/` to the `gh-pages` branch via `${{ secrets.GITHUB_TOKEN }}`.
 
 ---
 
-## 5. Future Roadmap: Hybrid RAG AI Chatbot Architecture
+## 5. Autonomous Hybrid RAG AI Chatbot Architecture (Implemented)
 
-A planned upgrade to transition the current client-side keyword matching FAQ chatbot into an enterprise **Hybrid RAG (Retrieval-Augmented Generation)** assistant while preserving 100% of the existing UI/UX:
+The portfolio runs a production **Autonomous Hybrid RAG (Retrieval-Augmented Generation)** assistant across both Cloudflare Workers (`/api/chat`) and the static SPA fallback (`ChatModal.tsx`):
 
 ```mermaid
 graph TD
-    User([Website Visitor]) --> Choice{Interaction Method}
-    Choice -- Quick FAQ Button Click --> LocalFAQ[Instant Local chatFaq.ts Matching 0ms]
-    Choice -- Free-Text Query --> EdgeRAG[Cloudflare Serverless Worker /api/chat]
-    
-    subgraph RAG Pipeline
-        EdgeRAG --> VectorDB[Vector Knowledge Base: 69 Projects, Resume, Specs]
-        VectorDB --> TopKContext[Top 3-5 Relevant Markdown Chunks]
-        TopKContext --> LLM[GPT-4o-mini / Gemini Flash Streaming]
+    User([Website Visitor]) --> Choice{Runtime Path}
+    Choice -- Production Next.js / Cloudflare --> EdgeRAG[Cloudflare Worker: worker/index.ts -> POST /api/chat]
+    Choice -- Offline / SPA Fallback --> LocalRAG[Client-Side Hybrid RAG & chatFaq.ts]
+
+    subgraph PrebuiltEdgeRAG ["Build-Time Precomputed RAG Pipeline (1.22ms Median CPU)"]
+        EdgeRAG --> RateLimit[HMAC-SHA256 IP Rate Limiter via cf-connecting-ip]
+        RateLimit --> PrebuiltIndex[Prebuilt Inverted BM25 Index: 340 Chunks, 17,293 Tokens]
+        PrebuiltIndex --> Synthesis{OPENAI_API_KEY Set?}
+        Synthesis -- No / Default $0/mo --> LocalSynth[Deterministic Multilingual Synthesis EN/UA/ES/DE + Generative UI Metadata]
+        Synthesis -- Yes / Optional --> LLM[Lazy-Loaded OpenAI gpt-4o-mini Streaming + Tool Calling]
     end
-    
-    LLM -- SSE Token Stream --> ChatUI[ChatModal.tsx Console Bubble]
-    LocalFAQ --> ChatUI
-    EdgeRAG -. Failure / Network Timeout .-> LocalFAQ
+
+    LocalSynth --> ChatUI[ChatModal.tsx Console + Project Cards / Calculator / Stack Matrix]
+    LLM --> ChatUI
+    LocalRAG --> ChatUI
+    EdgeRAG -. Network Failure / Timeout .-> LocalRAG
 ```
 
-### Key Milestones:
-1. **Knowledge Extraction & Vectorization:** Chunking 69 project case studies, resume data, and spec contracts into semantic vector embeddings.
-2. **Serverless Edge Microservice:** Cloudflare Worker endpoint handling semantic search and streaming LLM responses.
-3. **Frontend Progressive Adapter:** `src/services/chatService.ts` providing feature-flagged hybrid routing with seamless fallback to static FAQ.
-4. **Security Enforcement:** Full compliance with the 6-tier security roadmap defined in [**`SECURITY.md` (Section 5)**](file:///d:/PORTFOLIO/Portfolio/SECURITY.md#5-future-rag-architecture-security-roadmap-ai-chatbot-upgrade).
+### Implemented Architecture Highlights:
+1. **Build-Time Precomputation (`scripts/generate-rag-index.mjs`):** Pre-indexes 71 projects, faceted subchunks, 5 services, profile, methodology, and 47 engineering blog summaries (omitting ~3.4 MB of raw Markdown bodies) into `src/lib/ai/generated/rag-index.generated.ts`.
+2. **Sub-2ms Edge Retrieval (`src/lib/ai/rag.ts`):** Uses a flat inverted BM25 index with `Float64Array` accumulators, TF-IDF cosine similarity, zero-allocation Damerau-Levenshtein typo tolerance, O(1) slug maps, and bounded query memoization (verified `1.22 ms` median CPU on Cloudflare Workers Free).
+3. **Generative UI Metadata (`X-Chat-Metadata`):** Server computes structured project cards, stack comparison triggers, timeline calculator triggers, service cards, and contextual follow-ups so the browser avoids downloading the RAG dataset.
+4. **Security Enforcement:** Implements all 6 defense tiers defined in [**`SECURITY.md` (Section 7)**](file:///d:/PORTFOLIO/Portfolio/SECURITY.md#7-hybrid-rag-architecture-security-implementation-ai-chatbot).
 
 ---
 
