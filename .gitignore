@@ -13,6 +13,10 @@ dist
 dist-ssr
 build
 .next
+out
+.wrangler
+.cf-tmp-api
+.cf-tmp-proxy.ts
 coverage
 test-results
 playwright-report

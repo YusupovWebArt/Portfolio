@@ -1,0 +1,17 @@
+/ /en 308
+/en/projects/wpskills /en/projects/fullstack-ai-lab 308
+/ua/projects/wpskills /ua/projects/fullstack-ai-lab 308
+/es/projects/wpskills /es/projects/fullstack-ai-lab 308
+/de/projects/wpskills /de/projects/fullstack-ai-lab 308
+/projects/wpskills /en/projects/fullstack-ai-lab 308
+/en/blog/wpskills-interactive-edtech-architecture /en/blog/fullstack-ai-lab-interactive-edtech-architecture 308
+/ua/blog/wpskills-interactive-edtech-architecture /ua/blog/fullstack-ai-lab-interactive-edtech-architecture 308
+/es/blog/wpskills-interactive-edtech-architecture /es/blog/fullstack-ai-lab-interactive-edtech-architecture 308
+/de/blog/wpskills-interactive-edtech-architecture /de/blog/fullstack-ai-lab-interactive-edtech-architecture 308
+/blog/wpskills-interactive-edtech-architecture /en/blog/fullstack-ai-lab-interactive-edtech-architecture 308
+/en/projects/all-day-medical-care-clinic /en/projects/alldaymedicalcare 308
+/ua/projects/all-day-medical-care-clinic /ua/projects/alldaymedicalcare 308
+/es/projects/all-day-medical-care-clinic /es/projects/alldaymedicalcare 308
+/de/projects/all-day-medical-care-clinic /de/projects/alldaymedicalcare 308
+/projects/all-day-medical-care-clinic /en/projects/alldaymedicalcare 308
+/Portfolio/* /:splat 200

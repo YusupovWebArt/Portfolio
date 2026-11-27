@@ -3,6 +3,8 @@ import { getAllProjectEntries } from '../src/lib/projects'
 import { allBlogPosts } from '../src/data/blog'
 import { allServices } from '../src/data/services'
 
+export const dynamic = 'force-static'
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://www.yusupovartur.com'
   const locales = ['en', 'ua', 'es', 'de']

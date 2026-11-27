@@ -149,6 +149,7 @@ export async function POST(req: Request) {
 
     // 5. IP-based rate limiting (15 requests/hour, hashed IP in storage)
     const ip =
+      req.headers.get('cf-connecting-ip')?.trim() ||
       req.headers.get('x-vercel-forwarded-for')?.split(',')[0]?.trim() ||
       req.headers.get('x-real-ip')?.trim() ||
       req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||

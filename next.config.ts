@@ -1,6 +1,7 @@
 import type { NextConfig } from 'next'
 
 const isProd = process.env.NODE_ENV === 'production'
+const isCfStaticExport = process.env.CF_STATIC_EXPORT === '1'
 
 const cspDirectives: readonly string[] = [
   "default-src 'self'",
@@ -52,76 +53,86 @@ const securityHeaders = [
 ]
 
 const nextConfig: NextConfig = {
+  ...(isCfStaticExport
+    ? {
+        output: 'export',
+        images: { unoptimized: true },
+      }
+    : {}),
   experimental: {
     agentUpgrade: 'security',
   },
   reactStrictMode: true,
   poweredByHeader: false,
   productionBrowserSourceMaps: false,
-  async headers() {
-    return [
-      {
-        source: '/:path*',
-        headers: securityHeaders,
-      },
-      {
-        source: '/api/:path*',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'no-store, max-age=0',
-          },
-        ],
-      },
-    ]
-  },
-  async redirects() {
-    return [
-      {
-        source: '/',
-        destination: '/en',
-        permanent: true,
-      },
-      {
-        source: '/:locale(en|ua|es|de)/projects/wpskills',
-        destination: '/:locale/projects/fullstack-ai-lab',
-        permanent: true,
-      },
-      {
-        source: '/projects/wpskills',
-        destination: '/en/projects/fullstack-ai-lab',
-        permanent: true,
-      },
-      {
-        source: '/:locale(en|ua|es|de)/blog/wpskills-interactive-edtech-architecture',
-        destination: '/:locale/blog/fullstack-ai-lab-interactive-edtech-architecture',
-        permanent: true,
-      },
-      {
-        source: '/blog/wpskills-interactive-edtech-architecture',
-        destination: '/en/blog/fullstack-ai-lab-interactive-edtech-architecture',
-        permanent: true,
-      },
-      {
-        source: '/:locale(en|ua|es|de)/projects/all-day-medical-care-clinic',
-        destination: '/:locale/projects/alldaymedicalcare',
-        permanent: true,
-      },
-      {
-        source: '/projects/all-day-medical-care-clinic',
-        destination: '/en/projects/alldaymedicalcare',
-        permanent: true,
-      },
-    ]
-  },
-  async rewrites() {
-    return [
-      {
-        source: '/Portfolio/:path*',
-        destination: '/:path*',
-      },
-    ]
-  },
+  ...(!isCfStaticExport
+    ? {
+        async headers() {
+          return [
+            {
+              source: '/:path*',
+              headers: securityHeaders,
+            },
+            {
+              source: '/api/:path*',
+              headers: [
+                {
+                  key: 'Cache-Control',
+                  value: 'no-store, max-age=0',
+                },
+              ],
+            },
+          ]
+        },
+        async redirects() {
+          return [
+            {
+              source: '/',
+              destination: '/en',
+              permanent: true,
+            },
+            {
+              source: '/:locale(en|ua|es|de)/projects/wpskills',
+              destination: '/:locale/projects/fullstack-ai-lab',
+              permanent: true,
+            },
+            {
+              source: '/projects/wpskills',
+              destination: '/en/projects/fullstack-ai-lab',
+              permanent: true,
+            },
+            {
+              source: '/:locale(en|ua|es|de)/blog/wpskills-interactive-edtech-architecture',
+              destination: '/:locale/blog/fullstack-ai-lab-interactive-edtech-architecture',
+              permanent: true,
+            },
+            {
+              source: '/blog/wpskills-interactive-edtech-architecture',
+              destination: '/en/blog/fullstack-ai-lab-interactive-edtech-architecture',
+              permanent: true,
+            },
+            {
+              source: '/:locale(en|ua|es|de)/projects/all-day-medical-care-clinic',
+              destination: '/:locale/projects/alldaymedicalcare',
+              permanent: true,
+            },
+            {
+              source: '/projects/all-day-medical-care-clinic',
+              destination: '/en/projects/alldaymedicalcare',
+              permanent: true,
+            },
+          ]
+        },
+        async rewrites() {
+          return [
+            {
+              source: '/Portfolio/:path*',
+              destination: '/:path*',
+            },
+          ]
+        },
+      }
+    : {}),
 }
 
 export default nextConfig
