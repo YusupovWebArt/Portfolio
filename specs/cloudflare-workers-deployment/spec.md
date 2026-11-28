@@ -171,6 +171,13 @@ To stay comfortably inside the Cloudflare Workers Free **10 ms CPU time** budget
   - `OPENAI_API_KEY` (enables live `gpt-4o-mini` streaming when set)
   - `UPSTASH_REDIS_REST_URL` / `UPSTASH_REDIS_REST_TOKEN` (distributed rate limiting across isolates)
 
+### 4.5. External & Edge Observability (SRE Monitoring)
+
+- **UptimeRobot (External 24/7 Synthetic Monitoring):** Independently probes `https://www.yusupovartur.com` over HTTP/HTTPS and SSL to alert immediately on any downtime, including account-level hosting pauses that internal provider dashboards may not surface.
+- **Cloudflare Workers Observability:** Enabled in `wrangler.jsonc` (`observability.enabled: true`) for real-time CPU time, Wall time, Memory P50/P90, Error counts, and live Worker logs.
+- **Post-Deploy Live Smoke Verifier:** `pnpm verify:live https://www.yusupovartur.com/en` (`scripts/verify-live-deployment.mjs`) validates HTTP 200 status and all 7 mandatory HTTP security headers.
+- **Dependency & Privacy Hygiene:** Weekly grouped PRs via GitHub Dependabot (`.github/dependabot.yml`), self-hosted GDPR/DSGVO variable fonts (`@fontsource-variable/plus-jakarta-sans` and `@fontsource-variable/jetbrains-mono` with zero Google Fonts requests), and PWA Stale-While-Revalidate caching (`public/sw.js`).
+
 ---
 
 ## 5. Free-Tier Capacity & Operational Runbooks

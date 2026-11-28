@@ -78,7 +78,7 @@
 ## 4. Complete Engineering Blog Index (48 Articles across EN / UA / ES / DE = 192 Routes)
 
 1. **Migrating Next.js 16 from Vercel to Cloudflare Workers: $0/Month Unlimited Static Assets, 1.22ms Hybrid RAG & DevSecOps**: https://www.yusupovartur.com/en/blog/migrating-nextjs-16-vercel-to-cloudflare-workers-zero-cost-rag
-   - **Published**: 2026-11-28 | **Tags**: Cloudflare Workers, Next.js 16, CI/CD, DevSecOps, Hybrid RAG, BM25, SEO, GEO
+   - **Published**: 2026-11-28 | **Tags**: Cloudflare Workers, Next.js 16, CI/CD, DevSecOps, UptimeRobot, Hybrid RAG, BM25, SEO, GEO
    - **Summary**: Why we moved a 520-page 4-locale Next.js 16 platform and autonomous Hybrid RAG API off a shared 10 GB serverless origin cap onto Cloudflare Workers + Static Assets, cutting Edge CPU from 206ms to 1.22ms with dual CI/CD, full HTTP security headers, and zero SEO/GEO regressions.
 2. **Next.js 16 vs Headless WordPress vs Custom PHP: Objective TCO, Performance & SEO Analysis (2026)**: https://www.yusupovartur.com/en/blog/nextjs-vs-headless-wordpress-custom-php-2026
    - **Published**: 2026-10-18 | **Tags**: Next.js 16, WordPress, PHP 8.2, Headless CMS, Core Web Vitals, TCO

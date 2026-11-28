@@ -49,23 +49,23 @@ const yusupovarturNextjsPortfolio: Project = {
         ],
       },
       {
-        rowLabel: 'DEVSECOPS, TELEMETRY & SEO / GEO',
+        rowLabel: 'DEVSECOPS, SRE OBSERVABILITY & SEO / GEO',
         steps: [
           { label: '7 Security Headers + Bot Fight Mode', highlight: true },
-          { label: 'GA4 Consent Mode v2 (Basic Mode)' },
-          { label: 'GSC 516 URLs + IndexNow HTTP 200' },
-          { label: 'Automated llms.txt + RSS 2.0 (/feed.xml)' },
+          { label: 'UptimeRobot 24/7 + CF Observability' },
+          { label: 'GA4 Consent Mode v2 + GSC 516 URLs' },
+          { label: 'IndexNow + llms.txt + RSS 2.0' },
         ],
       },
     ],
     description:
-      'The platform combines Next.js 16 static export on unlimited Cloudflare Static Assets (99.5%+ of traffic, 0 Worker calls) with a thin /api/chat Cloudflare Worker powered by a build-time precomputed inverted BM25 RAG index (1.22ms median CPU, 17.93 MB RAM). Dual CI/CD pairs Cloudflare Workers Builds with a 9-stage GitHub Actions DevSecOps pipeline, full HTTP security headers, GA4 Consent Mode v2 Basic, GSC, IndexNow, RSS 2.0, and automated llms.txt.',
+      'The platform combines Next.js 16 static export on unlimited Cloudflare Static Assets (99.5%+ of traffic, 0 Worker calls) with a thin /api/chat Cloudflare Worker powered by a build-time precomputed inverted BM25 RAG index (1.22ms median CPU, 17.93 MB RAM). Dual CI/CD pairs Cloudflare Workers Builds with a 9-stage GitHub Actions DevSecOps pipeline, 24/7 external UptimeRobot monitoring + Cloudflare Observability, self-hosted GDPR variable fonts, GA4 Consent Mode v2 Basic, GSC, IndexNow, RSS 2.0, and automated llms.txt.',
     descriptionUa:
-      'Платформа поєднує статичний експорт Next.js 16 на безлімітних Cloudflare Static Assets (99.5%+ трафіку, 0 викликів Worker) із тонким Cloudflare Worker для /api/chat на базі передзібраного інвертованого BM25 RAG-індексу (1.22ms медіанний CPU, 17.93 MB RAM). Подвійний CI/CD об\'єднує Cloudflare Workers Builds і 9-етапний DevSecOps-пайплайн GitHub Actions, 7 заголовків безпеки, GA4 Consent Mode v2 Basic, GSC, IndexNow, RSS 2.0 та автоматизований llms.txt.',
+      'Платформа поєднує статичний експорт Next.js 16 на безлімітних Cloudflare Static Assets (99.5%+ трафіку, 0 викликів Worker) із тонким Cloudflare Worker для /api/chat на базі передзібраного інвертованого BM25 RAG-індексу (1.22ms медіанний CPU, 17.93 MB RAM). Подвійний CI/CD об\'єднує Cloudflare Workers Builds і 9-етапний DevSecOps-пайплайн GitHub Actions, зовнішній 24/7 моніторинг UptimeRobot + Cloudflare Observability, локальні GDPR-шрифти, GA4 Consent Mode v2 Basic, GSC, IndexNow, RSS 2.0 та автоматизований llms.txt.',
     descriptionEs:
-      'La plataforma combina la exportación estática de Next.js 16 sobre Cloudflare Static Assets ilimitados (99.5%+ del tráfico, 0 llamadas a Worker) con un Cloudflare Worker ligero para /api/chat impulsado por un índice invertido BM25 precompilado en build (1.22ms CPU mediana, 17.93 MB RAM). El CI/CD dual une Cloudflare Workers Builds con un pipeline DevSecOps de 9 etapas en GitHub Actions, 7 cabeceras de seguridad, GA4 Consent Mode v2 Basic, GSC, IndexNow, RSS 2.0 y llms.txt automatizado.',
+      'La plataforma combina la exportación estática de Next.js 16 sobre Cloudflare Static Assets ilimitados (99.5%+ del tráfico, 0 llamadas a Worker) con un Cloudflare Worker ligero para /api/chat impulsado por un índice invertido BM25 precompilado en build (1.22ms CPU mediana, 17.93 MB RAM). El CI/CD dual une Cloudflare Workers Builds con un pipeline DevSecOps de 9 etapas en GitHub Actions, monitoreo externo 24/7 con UptimeRobot + Cloudflare Observability, fuentes locales GDPR, GA4 Consent Mode v2 Basic, GSC, IndexNow, RSS 2.0 y llms.txt automatizado.',
     descriptionDe:
-      'Die Plattform kombiniert Next.js 16 Static Export auf unlimitierten Cloudflare Static Assets (99,5 %+ Traffic, 0 Worker-Aufrufe) mit einem schlanken /api/chat Cloudflare Worker auf Basis eines zur Build-Zeit vorberechneten invertierten BM25-RAG-Index (1,22ms Median-CPU, 17,93 MB RAM). Dual-CI/CD verbindet Cloudflare Workers Builds mit einer 9-stufigen GitHub-Actions-DevSecOps-Pipeline, 7 HTTP-Security-Headern, GA4 Consent Mode v2 Basic, GSC, IndexNow, RSS 2.0 und automatisiertem llms.txt.',
+      'Die Plattform kombiniert Next.js 16 Static Export auf unlimitierten Cloudflare Static Assets (99,5 %+ Traffic, 0 Worker-Aufrufe) mit einem schlanken /api/chat Cloudflare Worker auf Basis eines zur Build-Zeit vorberechneten invertierten BM25-RAG-Index (1,22ms Median-CPU, 17,93 MB RAM). Dual-CI/CD verbindet Cloudflare Workers Builds mit einer 9-stufigen GitHub-Actions-DevSecOps-Pipeline, externem 24/7-UptimeRobot-Monitoring + Cloudflare Observability, DSGVO-konformen Self-Hosted-Fonts, GA4 Consent Mode v2 Basic, GSC, IndexNow, RSS 2.0 und automatisiertem llms.txt.',
   },
   image:
     '/Portfolio/images/portfolio/thumbs/react/webart-react-portfolio_thumb.webp',
@@ -125,16 +125,19 @@ const yusupovarturNextjsPortfolio: Project = {
     contentManagement: [],
     devopsSecurity: [
       { short: 'Cloudflare Workers + Static Assets', full: 'Unlimited $0/mo static bandwidth for 5,751 files, automated Cloudflare Workers Builds (~1m 35s), and Wrangler 4 deploys' },
-      { short: 'Dual CI/CD (GitHub Actions 9 Gates)', full: 'Gitleaks secret scan, tsc --noEmit, ESLint, 249 Vitest specs, pnpm audit, contact-leak scan, Playwright + axe-core, and LHCI' },
-      { short: 'Edge Security & WAF', full: 'All 7 HTTP security headers via public/_headers and worker/index.ts, SSL/TLS Full (TLS 1.3), Always Use HTTPS, and Bot Fight Mode' },
+      { short: 'UptimeRobot (24/7 Monitoring)', full: 'External synthetic HTTP/HTTPS uptime and SSL monitoring with instant incident alerts independent of hosting provider telemetry' },
+      { short: 'Cloudflare Observability & verify:live', full: 'Edge CPU/Wall/Memory metrics, live Worker logs, and automated post-deploy smoke verification of all 7 security headers' },
+      { short: 'Dual CI/CD (GitHub Actions 9 Gates)', full: 'Node.js 24 LTS + pnpm 11, Gitleaks, tsc --noEmit, ESLint, 249 Vitest specs, pnpm audit, contact-leak scan, Playwright + axe-core, LHCI, and Dependabot' },
+      { short: 'Edge Security, WAF & DNS Email Auth', full: 'All 7 HTTP security headers via public/_headers and worker/index.ts, SSL/TLS Full, Always Use HTTPS, Bot Fight Mode, plus SPF/DKIM/DMARC (Cloudflare Email Routing + Brevo)' },
       { short: 'Base64 Contact Obfuscation', full: 'Client-side Base64 decoding on user interaction verified by automated built-output contact-leak scanning' },
-      { short: 'Prompt Injection Guardrails', full: 'Strict origin/role/payload validation, input sanitization, and deterministic local RAG synthesis preventing hallucinations' },
+      { short: 'Prompt Injection Guardrails', full: 'Strict origin/role/payload validation, Zod v4 schemas, input sanitization, and deterministic local RAG synthesis' },
     ],
     technicalOptimization: [
-      { short: 'Static-First Edge Delivery', full: 'Pre-rendered HTML and assets for 71 projects, 48 articles, and 5 B2B services served with 0 Worker invocations' },
+      { short: 'Dual Bundler (Turbopack + Vite 8 Rolldown)', full: 'Next.js 16 Turbopack static export for primary production paired with Rust-powered Vite 8 Rolldown for the GitHub Pages SPA mirror' },
       { short: 'Build-Time Index Precomputation', full: 'Reduced Worker CPU from 206ms cold start to 1.22ms median (~168x faster) and stripped 3.4 MB of raw Markdown from Worker bundle' },
-      { short: 'SSR-Safe Consent Mode v2', full: 'Zero-hydration-mismatch cookie consent persistence built on React 19 useSyncExternalStore' },
-      { short: 'WCAG 2.2 AA / EAA 2026', full: 'Accessible modal dialogs, keyboard navigation, ARIA landmarks, and automated Playwright + axe-core CI verification' },
+      { short: 'Self-Hosted Variable Fonts (@fontsource)', full: 'Local Plus Jakarta Sans & JetBrains Mono variable fonts eliminating third-party Google Fonts requests for 0 CLS and strict GDPR/DSGVO compliance' },
+      { short: 'PWA Service Worker & View Transitions', full: 'Stale-While-Revalidate offline caching (public/sw.js) and native 120 FPS W3C View Transitions API with zero animation library bloat' },
+      { short: 'SSR-Safe Consent Mode v2 & WCAG 2.2 AA', full: 'Zero-hydration-mismatch cookie consent on React 19 useSyncExternalStore and automated Playwright + axe-core EAA 2026 verification' },
     ],
     aiTools: [
       { short: 'Autonomous Hybrid RAG', full: 'Prebuilt inverted Okapi BM25, TF-IDF cosine similarity, zero-alloc Damerau-Levenshtein, and Generative UI metadata across 71 projects and 48 articles' },
@@ -262,22 +265,22 @@ const yusupovarturNextjsPortfolio: Project = {
   solutions: [
     'Engineered scripts/build-cf-workers.mjs to export 520+ static pages (5,751 files) to unlimited Cloudflare Static Assets and configured wrangler.jsonc with run_worker_first: ["/api/*"] so 99.5%+ of traffic bypasses the Worker completely.',
     'Built scripts/generate-rag-index.mjs to precompute the 341-chunk / 17,393-token inverted BM25 index and lightweight blogSummaries at build time, combined with Float64Array scoring, zero-allocation Damerau-Levenshtein buffers, indexOf FAQ short-circuiting, and lazy OpenAI SDK loading - reducing Edge CPU from 206ms to 1.22ms median.',
-    'Implemented edge security headers and 308 redirects in public/_headers, public/_redirects, and worker/index.ts, paired with Cloudflare Always Use HTTPS, Bot Fight Mode, a 301 root-to-www rule preserving UTM queries, encrypted RATE_LIMIT_SALT, and a 9-gate GitHub Actions DevSecOps pipeline.',
+    'Implemented edge security headers and 308 redirects in public/_headers, public/_redirects, and worker/index.ts, paired with Cloudflare Always Use HTTPS, Bot Fight Mode, a 301 root-to-www rule preserving UTM queries, encrypted RATE_LIMIT_SALT, external 24/7 UptimeRobot + Cloudflare Observability monitoring, self-hosted GDPR variable fonts, and a 9-gate GitHub Actions DevSecOps pipeline with Dependabot.',
   ],
   solutionsUa: [
     'Створено scripts/build-cf-workers.mjs для експорту 520+ статичних сторінок (5 751 файл) на безлімітні Cloudflare Static Assets та налаштовано wrangler.jsonc із run_worker_first: ["/api/*"], завдяки чому 99.5%+ трафіку обходить Worker.',
     'Реалізовано scripts/generate-rag-index.mjs для передзбірки інвертованого BM25-індексу (341 чанк, 17 393 токени) і легких blogSummaries під час білду разом із Float64Array-скорингом, zero-allocation буферами Damerau-Levenshtein, indexOf-відсіканням FAQ та лінивим OpenAI SDK - Edge CPU знижено з 206ms до 1.22ms медіанно.',
-    'Перенесено всі 7 заголовків безпеки та 308-редиректи у public/_headers, public/_redirects і worker/index.ts, підключено Cloudflare Always Use HTTPS, Bot Fight Mode, 301-правило root -> www зі збереженням UTM, зашифрований RATE_LIMIT_SALT та 9-гейтовий DevSecOps-конвеєр GitHub Actions.',
+    'Перенесено всі 7 заголовків безпеки та 308-редиректи у public/_headers, public/_redirects і worker/index.ts, підключено Cloudflare Always Use HTTPS, Bot Fight Mode, 301-правило root -> www зі збереженням UTM, зашифрований RATE_LIMIT_SALT, зовнішній 24/7 моніторинг UptimeRobot + Cloudflare Observability, локальні GDPR-шрифти та 9-гейтовий DevSecOps-конвеєр GitHub Actions із Dependabot.',
   ],
   solutionsEs: [
     'Se diseñó scripts/build-cf-workers.mjs para exportar 520+ páginas estáticas (5.751 archivos) a Cloudflare Static Assets ilimitados y se configuró wrangler.jsonc con run_worker_first: ["/api/*"] para que más del 99.5% del tráfico omita el Worker.',
     'Se creó scripts/generate-rag-index.mjs para precompilar el índice invertido BM25 (341 chunks, 17.393 tokens) y blogSummaries ligeros en build, sumando puntuación Float64Array, buffers Damerau-Levenshtein sin asignaciones, atajo indexOf en FAQ y carga diferida de OpenAI SDK, reduciendo la CPU de 206ms a 1.22ms mediana.',
-    'Se trasladaron las 7 cabeceras de seguridad y redirecciones 308 a public/_headers, public/_redirects y worker/index.ts, junto con Cloudflare Always Use HTTPS, Bot Fight Mode, regla 301 root -> www con preservación de UTM, secreto RATE_LIMIT_SALT y pipeline DevSecOps de 9 etapas en GitHub Actions.',
+    'Se trasladaron las 7 cabeceras de seguridad y redirecciones 308 a public/_headers, public/_redirects y worker/index.ts, junto con Cloudflare Always Use HTTPS, Bot Fight Mode, regla 301 root -> www con preservación de UTM, secreto RATE_LIMIT_SALT, monitoreo externo 24/7 con UptimeRobot + Cloudflare Observability, fuentes locales GDPR y pipeline DevSecOps de 9 etapas en GitHub Actions con Dependabot.',
   ],
   solutionsDe: [
     'Entwicklung von scripts/build-cf-workers.mjs für den Export von 520+ statischen Seiten (5.751 Dateien) auf unlimitierte Cloudflare Static Assets sowie wrangler.jsonc mit run_worker_first: ["/api/*"], sodass 99,5 %+ des Traffics den Worker umgehen.',
     'Aufbau von scripts/generate-rag-index.mjs zur Build-Time-Vorberechnung des invertierten BM25-Index (341 Chunks, 17.393 Tokens) und schlanker blogSummaries samt Float64Array-Scoring, Zero-Allocation-Damerau-Levenshtein-Puffern, indexOf-FAQ-Check und Lazy-Loading des OpenAI SDK - Senkung der Edge-CPU von 206ms auf 1,22ms Median.',
-    'Umsetzung aller 7 Security-Header und 308-Redirects in public/_headers, public/_redirects und worker/index.ts, kombiniert mit Cloudflare Always Use HTTPS, Bot Fight Mode, 301-Rule root -> www mit UTM-Erhalt, verschlüsseltem RATE_LIMIT_SALT und 9-stufiger GitHub-Actions-DevSecOps-Pipeline.',
+    'Umsetzung aller 7 Security-Header und 308-Redirects in public/_headers, public/_redirects und worker/index.ts, kombiniert mit Cloudflare Always Use HTTPS, Bot Fight Mode, 301-Rule root -> www mit UTM-Erhalt, verschlüsseltem RATE_LIMIT_SALT, externem 24/7-UptimeRobot-Monitoring + Cloudflare Observability, DSGVO-Self-Hosted-Fonts und 9-stufiger GitHub-Actions-DevSecOps-Pipeline samt Dependabot.',
   ],
   liveUrl: 'https://www.yusupovartur.com/',
   githubUrl: 'https://github.com/YusupovWebArt/Portfolio',

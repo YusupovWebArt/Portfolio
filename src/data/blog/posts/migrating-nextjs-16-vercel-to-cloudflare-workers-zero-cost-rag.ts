@@ -33,6 +33,7 @@ export const migratingNextjs16VercelToCloudflareWorkersPost: BlogPost = {
     'Next.js 16',
     'CI/CD',
     'DevSecOps',
+    'UptimeRobot',
     'Hybrid RAG',
     'BM25',
     'SEO',
@@ -202,7 +203,8 @@ Profiling the exact bundled Worker locally revealed **three hidden CPU killers**
 Moving off Vercel meant we could no longer rely on \`vercel.json\` or Next.js runtime middleware for headers and redirects. We achieved **100% parity** natively in Cloudflare:
 
 - **HTTP Security Headers (\`public/_headers\` + \`worker/index.ts\`):** Every static page and API response emits \`Strict-Transport-Security\`, \`Content-Security-Policy\`, \`X-Content-Type-Options: nosniff\`, \`X-Frame-Options: DENY\`, \`Referrer-Policy: strict-origin-when-cross-origin\`, \`Permissions-Policy\`, and \`Cross-Origin-Opener-Policy: same-origin\`. API responses additionally enforce \`Cache-Control: no-store, max-age=0\`.
-- **Transport & WAF Hardening:** \`SSL/TLS Full\` (TLS 1.3), **Always Use HTTPS** enabled, **Bot Fight Mode** enabled, **Cloudflare Managed Ruleset** active, and HMAC-SHA256 rate limiting (\`15 req/hour\`) keyed on \`cf-connecting-ip\` with an encrypted \`RATE_LIMIT_SALT\` Worker Secret.
+- **Transport & WAF Hardening:** \`SSL/TLS Full\` (TLS 1.3), **Always Use HTTPS** enabled, **Bot Fight Mode** enabled, **Cloudflare Managed Ruleset** active, authenticated DNS email records (\`SPF\`/\`DKIM\`/\`DMARC\` via Cloudflare Email Routing + Brevo), self-hosted GDPR variable fonts (\`@fontsource-variable\`), and HMAC-SHA256 rate limiting (\`15 req/hour\`) keyed on \`cf-connecting-ip\` with an encrypted \`RATE_LIMIT_SALT\` Worker Secret.
+- **24/7 SRE Observability (UptimeRobot + Cloudflare Observability):** External synthetic HTTP/HTTPS monitoring via **UptimeRobot** guarantees instant outage alerts independent of hosting provider dashboards (the exact layer that catches silent account-level pauses), complemented by **Cloudflare Workers Observability** (live CPU/RAM/error telemetry), **GitHub Dependabot**, and \`pnpm verify:live\` post-deploy header smoke checks.
 - **Canonical SEO Redirects:**
   - Zone-level **301 Redirect Rule** (\`https://yusupovartur.com/*\` -> \`https://www.yusupovartur.com/\${1}\`) with **Preserve query string** enabled so UTM tags and \`?chat=estimator\` deep links survive intact.
   - Permanent **308 redirects** in \`public/_redirects\` for \`/\` -> \`/en\` and legacy slugs across all 4 locales.
@@ -289,7 +291,8 @@ However, for **B2B platforms, engineering blogs, portfolios, documentation porta
 ### 5. DevSecOps, SEO та GEO на Edge без втрат
 
 - **Усі 7 HTTP-заголовків безпеки** (\`HSTS\`, \`CSP\`, \`X-Content-Type-Options\`, \`X-Frame-Options\`, \`Referrer-Policy\`, \`Permissions-Policy\`, \`COOP\`) віддаються через \`public/_headers\` і \`worker/index.ts\`.
-- **Захист трафіку:** \`SSL/TLS Full\` (TLS 1.3), **Always Use HTTPS**, **Bot Fight Mode**, **Cloudflare Managed Ruleset** та HMAC-SHA256 rate limiting по \`cf-connecting-ip\` із зашифрованим секретом \`RATE_LIMIT_SALT\`.
+- **Захист трафіку:** \`SSL/TLS Full\` (TLS 1.3), **Always Use HTTPS**, **Bot Fight Mode**, **Cloudflare Managed Ruleset**, автентифікація пошти на рівні DNS (\`SPF\`/\`DKIM\`/\`DMARC\` через Cloudflare Email Routing + Brevo), локальні GDPR-шрифти (\`@fontsource-variable\`) та HMAC-SHA256 rate limiting по \`cf-connecting-ip\` із зашифрованим секретом \`RATE_LIMIT_SALT\`.
+- **SRE-моніторинг 24/7 (UptimeRobot + Cloudflare Observability):** незалежний зовнішній HTTP/HTTPS-моніторинг **UptimeRobot** миттєво сповіщає про будь-який простій незалежно від провайдера, а **Cloudflare Workers Observability**, **GitHub Dependabot** та скрипт \`pnpm verify:live\` контролюють CPU/RAM, залежності й усі 7 заголовків безпеки на живому проді.
 - **SEO та GEO:** правило \`301\` \`yusupovartur.com/* -> www.yusupovartur.com/\${1}\` зі збереженням UTM і \`?chat=estimator\`, \`308\`-редиректи легасі-слагів у \`public/_redirects\`, **512 сторінок** підтверджено в Google Search Console, **513 URL** прийнято IndexNow (\`HTTP 200\`), \`/feed.xml\` і \`llms.txt\` працюють миттєво, а **AI Labyrinth** вимкнено, щоб не блокувати коректні AI-краулери.
 
 ---
@@ -348,7 +351,7 @@ Al precompilar el índice invertido BM25 (**17.293 tokens**) en tiempo de build 
 
 ### 5. Paridad total en DevSecOps, SEO y GEO
 
-- **Seguridad:** las 7 cabeceras HTTP obligatorias en \`public/_headers\` y \`worker/index.ts\`, \`SSL/TLS Full\` (TLS 1.3), **Always Use HTTPS**, **Bot Fight Mode** y rate limiting HMAC-SHA256 sobre \`cf-connecting-ip\` con el secreto cifrado \`RATE_LIMIT_SALT\`.
+- **Seguridad y Observabilidad SRE:** las 7 cabeceras HTTP obligatorias en \`public/_headers\` y \`worker/index.ts\`, \`SSL/TLS Full\` (TLS 1.3), **Always Use HTTPS**, **Bot Fight Mode**, autenticación DNS (\`SPF\`/\`DKIM\`/\`DMARC\` en Cloudflare Email Routing + Brevo), fuentes locales GDPR (\`@fontsource-variable\`), rate limiting HMAC-SHA256 sobre \`cf-connecting-ip\` (\`RATE_LIMIT_SALT\`), **GitHub Dependabot** y monitoreo sintético externo 24/7 con **UptimeRobot** + **Cloudflare Workers Observability** + \`pnpm verify:live\`.
 - **SEO y GEO:** regla \`301\` \`yusupovartur.com/* -> www.yusupovartur.com/\${1}\` preservando query strings (UTM y \`?chat=estimator\`), redirecciones \`308\` en \`public/_redirects\`, **512 URLs** verificadas en Google Search Console, **513 URLs** aceptadas en IndexNow (\`HTTP 200\`), \`/feed.xml\` y \`llms.txt\` activos, con **AI Labyrinth** desactivado para no bloquear rastreadores legítimos de IA.
 
 ---
@@ -407,7 +410,7 @@ Mit Build-Time-Vorberechnung des invertierten BM25-Index (**17.293 Tokens** in \
 
 ### 5. DevSecOps-, SEO- & GEO-Paritaet am Edge
 
-- **Sicherheit:** Alle 7 Pflicht-Security-Header in \`public/_headers\` und \`worker/index.ts\`, \`SSL/TLS Full\` (TLS 1.3), **Always Use HTTPS**, **Bot Fight Mode** und HMAC-SHA256-Rate-Limiting ueber \`cf-connecting-ip\` mit verschluesseltem \`RATE_LIMIT_SALT\`-Secret.
+- **Sicherheit & SRE-Observability:** Alle 7 Pflicht-Security-Header in \`public/_headers\` und \`worker/index.ts\`, \`SSL/TLS Full\` (TLS 1.3), **Always Use HTTPS**, **Bot Fight Mode**, DNS-E-Mail-Authentifizierung (\`SPF\`/\`DKIM\`/\`DMARC\` via Cloudflare Email Routing + Brevo), DSGVO-konforme Self-Hosted-Fonts (\`@fontsource-variable\`), HMAC-SHA256-Rate-Limiting ueber \`cf-connecting-ip\` (\`RATE_LIMIT_SALT\`), **GitHub Dependabot** sowie externes 24/7-Monitoring per **UptimeRobot** + **Cloudflare Workers Observability** + \`pnpm verify:live\`.
 - **SEO & GEO:** \`301\`-Redirect-Rule \`yusupovartur.com/* -> www.yusupovartur.com/\${1}\` inklusive Query-Strings (UTM & \`?chat=estimator\`), \`308\`-Legacy-Redirects in \`public/_redirects\`, **512 URLs** in der Google Search Console verifiziert, **513 URLs** per IndexNow (\`HTTP 200\`) angenommen sowie \`/feed.xml\` und \`llms.txt\` aktiv (**AI Labyrinth** bleibt bewusst deaktiviert).
 
 ---
