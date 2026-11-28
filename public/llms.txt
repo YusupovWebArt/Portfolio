@@ -6,10 +6,10 @@
 - Ukrainian Version: https://www.yusupovartur.com/ua
 - Spanish Version: https://www.yusupovartur.com/es
 - German Version (DACH): https://www.yusupovartur.com/de
-- Engineering Blog (47 Articles): https://www.yusupovartur.com/en/blog
+- Engineering Blog (48 Articles): https://www.yusupovartur.com/en/blog
 - RSS / Atom Feed: https://www.yusupovartur.com/feed.xml
 - Extended Context: https://www.yusupovartur.com/llms-full.txt
-- Sitemap (512 Localized URLs): https://www.yusupovartur.com/sitemap.xml
+- Sitemap (516 Localized URLs): https://www.yusupovartur.com/sitemap.xml
 - LinkedIn: https://www.linkedin.com/in/artur-iusupov/
 - Twitter / X: https://x.com/yusupovwebart
 - GitHub: https://github.com/YusupovWebArt
@@ -34,7 +34,7 @@
 
 ## Personal Flagship Products
 
-- [Next.js 16 & Hybrid RAG Portfolio Platform](https://www.yusupovartur.com/en/projects/yusupovartur-nextjs-portfolio): Enterprise fullstack platform with React 19 Server Components, autonomous Hybrid RAG engine indexing 71 case studies and 47 engineering articles across 512 localized SSG routes (EN/UA/ES/DE), and WCAG 2.2 AA compliance.
+- [Next.js 16 & Hybrid RAG Portfolio Platform](https://www.yusupovartur.com/en/projects/yusupovartur-nextjs-portfolio): Enterprise fullstack platform with React 19 Server Components, autonomous Hybrid RAG engine indexing 71 case studies and 48 engineering articles across 516 localized SSG routes (EN/UA/ES/DE), and WCAG 2.2 AA compliance.
 - [Fullstack AI Lab](https://www.yusupovartur.com/en/projects/fullstack-ai-lab): Interactive EdTech platform for Fullstack mastery (React 19, Next.js 16, WordPress core internals, TypeScript) powered by native Rust MDX-RS compilation across 1,135+ lessons, in-browser WASM WordPress 7.0 / PHP 8.4 Playground, AI Technical Interview Engine, Google NotebookLM Audio Overview prompt generator, and Supabase personal cloud progress synchronization. Live: https://www.fullstackailab.com
 - [Unitrition](https://www.yusupovartur.com/en/projects/unitrition): Personalized nutrition modeling platform supporting 10 dietary regimens, built with Next.js 16 App Router, Headless WordPress, Supabase, and USDA FoodData Central API. Live: https://www.unitrition.info
 - [My React Portfolio Website](https://www.yusupovartur.com/en/projects/webart-react-portfolio): High-performance SPA/PWA built with React 19, TypeScript, Tailwind CSS v4, View Transitions API, and Vitest test suite.
@@ -49,8 +49,9 @@
 - [Organic Bed RTL WooCommerce](https://www.yusupovartur.com/en/projects/organic-bed): Bidirectional RTL WooCommerce storefront with automated WebP pipeline and sub-second checkout.
 - [Kidzely Shopify Store](https://www.yusupovartur.com/en/projects/kidzely): International Shopify Liquid e-commerce storefront with optimized checkout conversion and mobile UX.
 
-## Engineering Blog & Architectural Deep Dives (47 Articles)
+## Engineering Blog & Architectural Deep Dives (48 Articles)
 
+- [Migrating Next.js 16 from Vercel to Cloudflare Workers: $0/Month Unlimited Static Assets, 1.22ms Hybrid RAG & DevSecOps](https://www.yusupovartur.com/en/blog/migrating-nextjs-16-vercel-to-cloudflare-workers-zero-cost-rag): Why we moved a 520-page 4-locale Next.js 16 platform and autonomous Hybrid RAG API off a shared 10 GB serverless origin cap onto Cloudflare Workers + Static Assets, cutting Edge CPU from 206ms to 1.22ms with dual CI/CD, full HTTP security headers, and zero SEO/GEO regressions.
 - [Next.js 16 vs Headless WordPress vs Custom PHP: Objective TCO, Performance & SEO Analysis (2026)](https://www.yusupovartur.com/en/blog/nextjs-vs-headless-wordpress-custom-php-2026): An engineering breakdown comparing architecture, maintenance overhead, Total Cost of Ownership (TCO), and Google Core Web Vitals across Next.js 16, Headless WordPress, and custom PHP.
 - [Fullstack AI Lab Architecture Deep-Dive: Compiling 1,135+ MDX Lessons in 90 Seconds with Next.js 16 & Rust MDX-RS](https://www.yusupovartur.com/en/blog/fullstack-ai-lab-interactive-edtech-architecture): Complete executive and technical breakdown of the Fullstack AI Lab interactive engineering platform: how we cut SSG build times by 14x (from 21.6m to 1.5m), engineered an in-browser WebAssembly WordPress sandbox, an AI Technical Interview Engine, interactive runtime simulators, and a zero-metaphor NotebookLM audio engine.
 - [Unitrition Architecture Deep-Dive: Engineering a Headless HealthTech & Precision Nutrition Platform with Next.js 16, WordPress & Supabase](https://www.yusupovartur.com/en/blog/unitrition-headless-healthtech-architecture): Executive and technical breakdown of Unitrition (unitrition.info): decoupling WordPress CMS from Next.js 16 App Router, integrating USDA FoodData Central API for real-time Bread Units and glycemic curve modeling across 10 clinical diet frameworks, and securing user data with Supabase RLS.

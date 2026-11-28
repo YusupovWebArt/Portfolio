@@ -1,4 +1,5 @@
 import type { BlogPost, BlogLocale } from './types'
+import { migratingNextjs16VercelToCloudflareWorkersPost } from './posts/migrating-nextjs-16-vercel-to-cloudflare-workers-zero-cost-rag'
 import { nextjsVsHeadlessWordPressPost } from './posts/nextjs-vs-headless-wordpress'
 import { fullstackAiLabInteractiveEdtechArchitecturePost } from './posts/fullstack-ai-lab-interactive-edtech-architecture'
 import { unitritionHeadlessHealthtechArchitecturePost } from './posts/unitrition-headless-healthtech-architecture'
@@ -50,6 +51,7 @@ import { inBrowserLlmWebGpuPost } from './posts/in-browser-llm-webgpu-zero-serve
 export * from './types'
 
 export const allBlogPosts: BlogPost[] = [
+  migratingNextjs16VercelToCloudflareWorkersPost,
   nextjsVsHeadlessWordPressPost,
   fullstackAiLabInteractiveEdtechArchitecturePost,
   unitritionHeadlessHealthtechArchitecturePost,

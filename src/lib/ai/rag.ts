@@ -1140,6 +1140,10 @@ export function resolveBlogFromQueryOrContext(
   }
 
   // 4. Distinct article topical phrases
+  if (/\b(cloudflare[\s-]*workers|vercel.*cloudflare|cloudflare.*vercel|static[\s-]*assets.*worker|206\s*ms|1\.22\s*ms|fast origin transfer)/i.test(lower)) {
+    return finish(getBlogSummaryBySlug('migrating-nextjs-16-vercel-to-cloudflare-workers-zero-cost-rag'))
+  }
+
   if (/\b(context[\s-]*caching|prompt[\s-]*caching|prefix[\s-]*cache|кешування[\s-]*контекст|cash.*llm|gemini.*cache|claude.*cache)/i.test(lower)) {
     return finish(getBlogSummaryBySlug('context-caching-llm-api-cost-optimization'))
   }
